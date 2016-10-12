@@ -158,6 +158,7 @@
             this.txtVenderMobile.Name = "txtVenderMobile";
             this.txtVenderMobile.Size = new System.Drawing.Size(170, 21);
             this.txtVenderMobile.TabIndex = 23;
+            this.txtVenderMobile.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVenderMobile_KeyPress);
             // 
             // txtVenderPhone
             // 
@@ -165,6 +166,7 @@
             this.txtVenderPhone.Name = "txtVenderPhone";
             this.txtVenderPhone.Size = new System.Drawing.Size(192, 21);
             this.txtVenderPhone.TabIndex = 22;
+            this.txtVenderPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVenderPhone_KeyPress);
             // 
             // txtVenderWebSite
             // 
@@ -394,7 +396,9 @@
             this.txtVenderOpeningBal.TabIndex = 3;
             this.txtVenderOpeningBal.Text = "0";
             this.txtVenderOpeningBal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtVenderOpeningBal.TextChanged += new System.EventHandler(this.txtVenderOpeningBal_TextChanged);
+            this.txtVenderOpeningBal.SizeChanged += new System.EventHandler(this.txtVenderOpeningBal_Leave);
+            this.txtVenderOpeningBal.TextChanged += new System.EventHandler(this.txtVenderOpeningBal_Leave);
+            this.txtVenderOpeningBal.GiveFeedback += new System.Windows.Forms.GiveFeedbackEventHandler(this.txtVenderOpeningBal_GiveFeedback);
             this.txtVenderOpeningBal.Enter += new System.EventHandler(this.txtVenderOpeningBal_Enter);
             this.txtVenderOpeningBal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVenderOpeningBal_KeyPress);
             this.txtVenderOpeningBal.Leave += new System.EventHandler(this.txtVenderOpeningBal_Leave);
@@ -467,9 +471,9 @@
             this.panel1.Controls.Add(this.btnUpdate);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(0, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(700, 519);
+            this.panel1.Size = new System.Drawing.Size(700, 502);
             this.panel1.TabIndex = 7;
             // 
             // button3

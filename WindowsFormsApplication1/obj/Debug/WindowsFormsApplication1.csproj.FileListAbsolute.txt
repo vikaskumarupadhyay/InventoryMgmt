@@ -88,3 +88,25 @@ E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplica
 E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\ResGen.read.1.tlog
 E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\GenerateResource-ResGen.write.1.tlog
 E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\ResGen.write.1.tlog
+D:\Project\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+D:\Project\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+D:\Project\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form10.resources
+D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form11.resources
+D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form12.resources
+D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.frmVendorDetails.resources
+D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Customer.resources
+D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Item.resources
+D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form5.resources
+D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.PurchaseOrder.resources
+D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form7.resources
+D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form8.resources
+D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form9.resources
+D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.ItemGroup.resources
+D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Unit.resources
+D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
