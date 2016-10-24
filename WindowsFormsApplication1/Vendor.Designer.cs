@@ -117,6 +117,7 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Vendor Details";
+           // this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // txtVenderDesc
             // 
@@ -396,12 +397,9 @@
             this.txtVenderOpeningBal.TabIndex = 3;
             this.txtVenderOpeningBal.Text = "0";
             this.txtVenderOpeningBal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtVenderOpeningBal.SizeChanged += new System.EventHandler(this.txtVenderOpeningBal_Leave);
-            this.txtVenderOpeningBal.TextChanged += new System.EventHandler(this.txtVenderOpeningBal_Leave);
+            this.txtVenderOpeningBal.TextChanged += new System.EventHandler(this.txtVenderOpeningBal_TextChanged);
             this.txtVenderOpeningBal.GiveFeedback += new System.Windows.Forms.GiveFeedbackEventHandler(this.txtVenderOpeningBal_GiveFeedback);
-            this.txtVenderOpeningBal.Enter += new System.EventHandler(this.txtVenderOpeningBal_Enter);
             this.txtVenderOpeningBal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVenderOpeningBal_KeyPress);
-            this.txtVenderOpeningBal.Leave += new System.EventHandler(this.txtVenderOpeningBal_Leave);
             // 
             // textBox14
             // 
@@ -471,9 +469,9 @@
             this.panel1.Controls.Add(this.btnUpdate);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(0, 5);
+            this.panel1.Location = new System.Drawing.Point(0, 467);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(700, 502);
+            this.panel1.Size = new System.Drawing.Size(700, 40);
             this.panel1.TabIndex = 7;
             // 
             // button3
@@ -513,9 +511,9 @@
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Location = new System.Drawing.Point(12, 12);
+            this.panel2.Location = new System.Drawing.Point(12, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(676, 449);
+            this.panel2.Size = new System.Drawing.Size(676, 461);
             this.panel2.TabIndex = 0;
             // 
             // dataGridView1
@@ -530,9 +528,8 @@
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(672, 445);
+            this.dataGridView1.Size = new System.Drawing.Size(672, 457);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // frmVendorDetails
             // 

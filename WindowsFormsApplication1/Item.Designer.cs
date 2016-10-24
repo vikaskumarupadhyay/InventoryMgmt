@@ -92,6 +92,7 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Item Details";
+           // this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // btnItemUnit
             // 
@@ -283,6 +284,8 @@
             this.txtItemMrp.TabIndex = 8;
             this.txtItemMrp.Text = "0";
             this.txtItemMrp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtItemMrp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemMrp_KeyPress);
+            this.txtItemMrp.MouseLeave += new System.EventHandler(this.txtItemMrp_MouseLeave);
             // 
             // textBox9
             // 
@@ -304,6 +307,7 @@
             this.txtItemSalesPrice.TabIndex = 6;
             this.txtItemSalesPrice.Text = "0";
             this.txtItemSalesPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtItemSalesPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemSalesPrice_KeyPress);
             // 
             // textBox7
             // 
@@ -325,6 +329,7 @@
             this.txtItemPrice.TabIndex = 4;
             this.txtItemPrice.Text = "0";
             this.txtItemPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtItemPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemPrice_KeyPress);
             // 
             // textBox5
             // 
@@ -382,6 +387,8 @@
             this.txtItemOpeningQuant.TabIndex = 2;
             this.txtItemOpeningQuant.Text = "0";
             this.txtItemOpeningQuant.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtItemOpeningQuant.TextChanged += new System.EventHandler(this.txtItemOpeningQuant_TextChanged);
+            this.txtItemOpeningQuant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemOpeningQuant_KeyPress);
             // 
             // txtItemRemaningQuant
             // 

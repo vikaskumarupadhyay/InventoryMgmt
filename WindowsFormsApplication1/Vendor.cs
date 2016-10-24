@@ -14,7 +14,7 @@ namespace WindowsFormsApplication1
 {
     public partial class frmVendorDetails : Form
     {
-
+        DB_Main dbmainclass=new DB_Main();
         public frmVendorDetails()
         {
             InitializeComponent();
@@ -29,75 +29,51 @@ namespace WindowsFormsApplication1
         /// <param name="e"></param>
         private void btnVenderSave_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtVenderName.Text))
+
+            if (validateallcontrol())
             {
-                MessageBox.Show("please Enter the name");
-            }
-            else
-            {
-                if (string.IsNullOrEmpty(txtCompanyName.Text))
+                if (updateCounter==0)
                 {
-                    MessageBox.Show("please Enter the Company name");
-                }
-                else
-                {
-                    if (string.IsNullOrEmpty(txtVenderAddress.Text))
+                    string saveCommand1 = "insert into VendorDetails values ('" + txtVenderCode.Text + "','" + txtVenderName.Text + "','" + txtCompanyName.Text + "','" + txtVenderAddress.Text + "','" + txtVenderCity.Text + "','" + txtVenderState.Text + "','" + txtVenderZip.Text + "','" + txtVenderCountry.Text + "','" + txtVenderEmailAddress.Text + "','" + txtVenderWebSite.Text + "','" + txtVenderPhone.Text + "', '" + txtVenderMobile.Text + "','" + txtVenderFax.Text + "','" + txtVenderDesc.Text + "')";
+
+                    string saveCommand2 = "insert into VendorAccountDetails values ('" + txtVenderCode.Text + "','" + txtVenderCode.Text + "','" + txtVenderOpeningBal.Text + "','" + txtVenderCurrentBal.Text + "')";
+
+                    int insertedRows = dbMainClass.saveDetails(saveCommand1, saveCommand2);
+                    if (insertedRows > 0)
                     {
-                        MessageBox.Show("please Enter the Address");
+                        btnVenderList.Enabled = true;
+                        MessageBox.Show("Details Saved Successfully");
+                        txtVenderName.Focus();
                     }
                     else
                     {
-
-                        if (string.IsNullOrEmpty(txtVenderPhone.Text) && string.IsNullOrEmpty(txtVenderMobile.Text))
-                        {
-                            MessageBox.Show("please Enter the  Mobile No. ya Phone No.");
-                        }
-                        else
-                        {
-                            if (updateCounter == 0)
-                            {
-                                string saveCommand1 = "insert into VendorDetails values ('" + txtVenderCode.Text + "','" + txtVenderName.Text + "','" + txtCompanyName.Text + "','" + txtVenderAddress.Text + "','" + txtVenderCity.Text + "','" + txtVenderState.Text + "','" + txtVenderZip.Text + "','" + txtVenderCountry.Text + "','" + txtVenderEmailAddress.Text + "','" + txtVenderWebSite.Text + "','" + txtVenderPhone.Text + "', '" + txtVenderMobile.Text + "','" + txtVenderFax.Text + "','" + txtVenderDesc.Text + "')";
-
-                                string saveCommand2 = "insert into VendorAccountDetails values ('" + txtVenderCode.Text + "','" + txtVenderCode.Text + "','" + txtVenderOpeningBal.Text + "','" + txtVenderCurrentBal.Text + "')";
-
-                                int insertedRows = dbMainClass.saveDetails(saveCommand1, saveCommand2);
-                                if (insertedRows > 0)
-                                {
-                                    btnVenderList.Enabled = true;
-                                    MessageBox.Show("Details Saved Successfully");
-                                    txtVenderName.Focus();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Details Not Saved Successfully");
-                                }
-
-                            }
-
-                            else if (updateCounter == 1)
-                            {
-                                string updateCommand1 = "update  VendorDetails  set  vName='" + txtVenderName.Text + "', vCompName= '" + txtCompanyName.Text + "',vAddress='" + txtVenderAddress.Text + "',vCity='" + txtVenderCity.Text + "',vState='" + txtVenderState.Text + "',vZip='" + txtVenderZip.Text + "',vCountry='" + txtVenderCountry.Text + "',vEmail='" + txtVenderEmailAddress.Text + "',vWebAddress='" + txtVenderWebSite.Text + "',vPhone='" + txtVenderPhone.Text + "', vMobile='" + txtVenderMobile.Text + "',vFax='" + txtVenderFax.Text + "',vDesc='" + txtVenderDesc.Text + "' where venderid='" + txtVenderCode.Text + "'";
-                                string updateCommand2 = "update   VendorAccountDetails set vOpeningBalance='" + txtVenderOpeningBal.Text + "',vCurrentBalance='" + txtVenderCurrentBal.Text + "' where venderId='" + txtVenderCode.Text + "'";
-
-                                int updatedRows = dbMainClass.updateDetails(updateCommand1, updateCommand2);
-                                if (updatedRows > 0)
-                                {
-                                    txtVenderName.Focus();
-                                    MessageBox.Show("Details Updated Successfully");
-
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Details Can not updated");
-                                }
-                                updateCounter = 0;
-                            }
-                            makeBlank();
-                            string Id = getId("VENDOR");
-                            txtVenderCode.Text = Id;
-                        }
+                        MessageBox.Show("Details Not Saved Successfully");
                     }
+
                 }
+
+                else if (updateCounter == 1)
+                {
+                    string updateCommand1 = "update  VendorDetails  set  vName='" + txtVenderName.Text + "', vCompName= '" + txtCompanyName.Text + "',vAddress='" + txtVenderAddress.Text + "',vCity='" + txtVenderCity.Text + "',vState='" + txtVenderState.Text + "',vZip='" + txtVenderZip.Text + "',vCountry='" + txtVenderCountry.Text + "',vEmail='" + txtVenderEmailAddress.Text + "',vWebAddress='" + txtVenderWebSite.Text + "',vPhone='" + txtVenderPhone.Text + "', vMobile='" + txtVenderMobile.Text + "',vFax='" + txtVenderFax.Text + "',vDesc='" + txtVenderDesc.Text + "' where venderid='" + txtVenderCode.Text + "'";
+                    string updateCommand2 = "update   VendorAccountDetails set vOpeningBalance='" + txtVenderOpeningBal.Text + "',vCurrentBalance='" + txtVenderCurrentBal.Text + "' where venderId='" + txtVenderCode.Text + "'";
+
+                    int updatedRows = dbMainClass.updateDetails(updateCommand1, updateCommand2);
+                    if (updatedRows > 0)
+                    {
+                        txtVenderName.Focus();
+                        MessageBox.Show("Details Updated Successfully");
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Details Can not updated");
+                    }
+                    updateCounter = 0;
+                }
+                makeBlank();
+                string Id = getId("VENDOR");
+                txtVenderCode.Text = Id;
+
             }
         }
 
@@ -156,42 +132,6 @@ namespace WindowsFormsApplication1
                 }
             }
 
-        }
-
-        private void txtVenderOpeningBal_TextChanged(object sender, EventArgs e)
-        {
-            if (txtVenderOpeningBal.Text == "")
-            {
-                MessageBox.Show("please enter the opening bal1");
-            }
-            //else
-            //{
-            //    string value = txtVenderOpeningBal.Text;
-            //    txtVenderCurrentBal.Text = value;
-            //}
-            // txtVenderOpeningBal.Text = txtVenderCurrentBal.Text;
-        }
-
-        private void txtVenderOpeningBal_Enter(object sender, EventArgs e)
-        {
-            if (txtVenderOpeningBal.Text == "0")
-            {
-                txtVenderOpeningBal.Text = "";
-            }
-        }
-
-        private void txtVenderOpeningBal_Leave(object sender, EventArgs e)
-        {
-            if (txtVenderOpeningBal.Text == "")
-            {
-                txtVenderOpeningBal.Text = "0";
-
-            }
-            else
-            {
-                string value = txtVenderOpeningBal.Text;
-                txtVenderCurrentBal.Text = value;
-            }
         }
 
         private void frmVendorDetails_Load(object sender, EventArgs e)
@@ -342,6 +282,56 @@ namespace WindowsFormsApplication1
                 }
             }
         }
+       
+        private void txtVenderOpeningBal_TextChanged(object sender, EventArgs e)
+        {
+            if (txtVenderOpeningBal.Text == " ")
+            {
+                txtVenderCurrentBal.Text = " ";
+            }
+            else
+            {
+                string value = txtVenderOpeningBal.Text;
+                txtVenderCurrentBal.Text = value;
+            }
+        }
+       public bool validateallcontrol()
+        {
+            bool isvalid = true;
+            string message=" ";
+            if (string.IsNullOrEmpty(txtVenderName.Text))
+            {
+                isvalid = false;
+                message="please select the vendor name ,";
+            }
+            if (string.IsNullOrEmpty(txtCompanyName.Text))
+            {
+                isvalid = false;
+                message += "please select your compname name ,";
+            }
+            if (string.IsNullOrEmpty(txtVenderPhone.Text))
+            {
+                isvalid = false;
+                message += "please select your phone ,";
+            }
+            if (string.IsNullOrEmpty(txtVenderMobile.Text))
+            {
+                isvalid = false;
+                message+="please select your mobile no ,";
+            }
+            if (string.IsNullOrEmpty(txtVenderOpeningBal.Text))
+            {
+                isvalid = false;
+                message += "please select your opening balance ,";
+            }
+            if (!string.IsNullOrEmpty(message))
+            {
+                MessageBox.Show(message);
+            }
+            return isvalid;
+        }
 
+
+        }
     }
-}
+

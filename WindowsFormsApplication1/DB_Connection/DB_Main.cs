@@ -186,7 +186,41 @@ using System.Configuration;
             return insertedRows;
         }
 
-
+        public int SaveDetails(List<string> insertquerycollection)
+        {
+            int insertrows = 0;
+            SqlTransaction trans = null;
+            try
+            {
+                SqlConnection con = openConnection();
+                trans = con.BeginTransaction();
+                bool success = true;
+                foreach (string sqlquery in insertquerycollection)
+                {
+                    SqlCommand cmd = new SqlCommand(sqlquery, con, trans);
+                    insertrows = cmd.ExecuteNonQuery();
+                    if (insertrows < 1)
+                    {
+                        success = false;
+                        break;
+                    }
+                }
+                if (success)
+                {
+                    trans.Commit();
+                }
+                else
+                {
+                    trans.Rollback();
+                }
+                closeConnection(con);
+            }
+            catch (Exception ex)
+            {
+                trans.Rollback();
+            }
+            return insertrows;
+        }
         public SqlConnection openConnection()
         {
             SqlConnection con = new SqlConnection();
@@ -212,7 +246,7 @@ using System.Configuration;
             {
                 if (con.State == ConnectionState.Open)
                 {
-                    con.Open();
+                    con.Close();
                 }
             }
             catch (Exception ex)
