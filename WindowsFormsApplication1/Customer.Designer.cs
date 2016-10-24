@@ -68,15 +68,12 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnList = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnCloseAgain = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnNewRecord = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.comserchvalue = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,9 +86,9 @@
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 386);
+            this.groupBox2.Location = new System.Drawing.Point(12, 405);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(659, 75);
+            this.groupBox2.Size = new System.Drawing.Size(659, 56);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Account Status";
@@ -127,9 +124,7 @@
             this.txtCustOpeningBal.Text = "0";
             this.txtCustOpeningBal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtCustOpeningBal.TextChanged += new System.EventHandler(this.txtCustOpeningBal_TextChanged);
-            this.txtCustOpeningBal.Enter += new System.EventHandler(this.txtCustOpeningBal_Enter);
             this.txtCustOpeningBal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustOpeningBal_KeyPress);
-            this.txtCustOpeningBal.Leave += new System.EventHandler(this.txtCustOpeningBal_Leave);
             // 
             // textBox14
             // 
@@ -238,6 +233,7 @@
             this.txtCustMobile.Name = "txtCustMobile";
             this.txtCustMobile.Size = new System.Drawing.Size(170, 21);
             this.txtCustMobile.TabIndex = 23;
+            this.txtCustMobile.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustMobile_KeyPress);
             // 
             // txtCustPhone
             // 
@@ -245,6 +241,7 @@
             this.txtCustPhone.Name = "txtCustPhone";
             this.txtCustPhone.Size = new System.Drawing.Size(192, 21);
             this.txtCustPhone.TabIndex = 22;
+            this.txtCustPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustPhone_KeyPress);
             // 
             // txtCustWebSite
             // 
@@ -276,7 +273,7 @@
             // 
             // txtCustState
             // 
-            this.txtCustState.Location = new System.Drawing.Point(210, 131);
+            this.txtCustState.Location = new System.Drawing.Point(205, 131);
             this.txtCustState.Name = "txtCustState";
             this.txtCustState.Size = new System.Drawing.Size(132, 21);
             this.txtCustState.TabIndex = 17;
@@ -290,7 +287,7 @@
             // 
             // txtCustAdd
             // 
-            this.txtCustAdd.Location = new System.Drawing.Point(46, 80);
+            this.txtCustAdd.Location = new System.Drawing.Point(46, 77);
             this.txtCustAdd.Multiline = true;
             this.txtCustAdd.Name = "txtCustAdd";
             this.txtCustAdd.Size = new System.Drawing.Size(575, 30);
@@ -305,7 +302,7 @@
             // 
             // txtCustName
             // 
-            this.txtCustName.Location = new System.Drawing.Point(146, 38);
+            this.txtCustName.Location = new System.Drawing.Point(143, 38);
             this.txtCustName.Name = "txtCustName";
             this.txtCustName.Size = new System.Drawing.Size(210, 21);
             this.txtCustName.TabIndex = 13;
@@ -463,72 +460,37 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnCloseAgain);
-            this.panel1.Controls.Add(this.btnUpdate);
-            this.panel1.Controls.Add(this.btnNewRecord);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(0, 5);
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.comserchvalue);
+            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Location = new System.Drawing.Point(13, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(700, 519);
+            this.panel1.Size = new System.Drawing.Size(683, 512);
             this.panel1.TabIndex = 11;
-            // 
-            // btnCloseAgain
-            // 
-            this.btnCloseAgain.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCloseAgain.Location = new System.Drawing.Point(259, 479);
-            this.btnCloseAgain.Name = "btnCloseAgain";
-            this.btnCloseAgain.Size = new System.Drawing.Size(90, 28);
-            this.btnCloseAgain.TabIndex = 3;
-            this.btnCloseAgain.Text = "Close";
-            this.btnCloseAgain.UseVisualStyleBackColor = true;
-            this.btnCloseAgain.Click += new System.EventHandler(this.btnCloseAgain_Click);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(163, 479);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(90, 28);
-            this.btnUpdate.TabIndex = 2;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnNewRecord
-            // 
-            this.btnNewRecord.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewRecord.Location = new System.Drawing.Point(20, 479);
-            this.btnNewRecord.Name = "btnNewRecord";
-            this.btnNewRecord.Size = new System.Drawing.Size(137, 28);
-            this.btnNewRecord.TabIndex = 1;
-            this.btnNewRecord.Text = "Add New Records";
-            this.btnNewRecord.UseVisualStyleBackColor = true;
-            this.btnNewRecord.Click += new System.EventHandler(this.btnNewRecord_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Location = new System.Drawing.Point(12, 12);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(676, 449);
-            this.panel2.TabIndex = 0;
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Location = new System.Drawing.Point(5, 111);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(672, 445);
+            this.dataGridView1.Size = new System.Drawing.Size(670, 375);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            // 
+            // comserchvalue
+            // 
+            this.comserchvalue.FormattingEnabled = true;
+            this.comserchvalue.Location = new System.Drawing.Point(33, 36);
+            this.comserchvalue.Name = "comserchvalue";
+            this.comserchvalue.Size = new System.Drawing.Size(121, 21);
+            this.comserchvalue.TabIndex = 1;
+            this.comserchvalue.SelectedIndexChanged += new System.EventHandler(this.searchcplumnname_SelectedIndexChanged);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(354, 37);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(193, 20);
+            this.textBox1.TabIndex = 2;
             // 
             // Customer
             // 
@@ -552,7 +514,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -600,10 +562,8 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnList;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnCloseAgain;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnNewRecord;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox comserchvalue;
         private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

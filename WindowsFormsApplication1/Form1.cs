@@ -89,21 +89,21 @@ namespace WindowsFormsApplication1
 
         private void deliveryToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Form12 F12 = new Form12();
+            salesinvoice F12 = new salesinvoice();
             F12.Show();
             F12.MdiParent = this;
         }
 
         private void quoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form10 F10 = new Form10();
+            salesorder F10 = new salesorder();
             F10.Show();
             F10.MdiParent = this;
         }
 
         private void orderToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Form11 F11 = new Form11();
+            salesdelivary F11 = new salesdelivary();
             F11.Show();
             F11.MdiParent = this;
         }

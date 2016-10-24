@@ -64,16 +64,9 @@
             this.btnItemSave = new System.Windows.Forms.Button();
             this.btnItemClose = new System.Windows.Forms.Button();
             this.btnItemList = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.buttClose = new System.Windows.Forms.Button();
-            this.buttUpdate = new System.Windows.Forms.Button();
-            this.buttAddNewRecord = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -99,6 +92,7 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Item Details";
+           // this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // btnItemUnit
             // 
@@ -290,9 +284,8 @@
             this.txtItemMrp.TabIndex = 8;
             this.txtItemMrp.Text = "0";
             this.txtItemMrp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtItemMrp.TextChanged += new System.EventHandler(this.txtItemMrp_TextChanged);
             this.txtItemMrp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemMrp_KeyPress);
-            this.txtItemMrp.Leave += new System.EventHandler(this.txtItemMrp_Leave);
+            this.txtItemMrp.MouseLeave += new System.EventHandler(this.txtItemMrp_MouseLeave);
             // 
             // textBox9
             // 
@@ -314,6 +307,7 @@
             this.txtItemSalesPrice.TabIndex = 6;
             this.txtItemSalesPrice.Text = "0";
             this.txtItemSalesPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtItemSalesPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemSalesPrice_KeyPress);
             // 
             // textBox7
             // 
@@ -335,6 +329,7 @@
             this.txtItemPrice.TabIndex = 4;
             this.txtItemPrice.Text = "0";
             this.txtItemPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtItemPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemPrice_KeyPress);
             // 
             // textBox5
             // 
@@ -393,6 +388,7 @@
             this.txtItemOpeningQuant.Text = "0";
             this.txtItemOpeningQuant.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtItemOpeningQuant.TextChanged += new System.EventHandler(this.txtItemOpeningQuant_TextChanged);
+            this.txtItemOpeningQuant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemOpeningQuant_KeyPress);
             // 
             // txtItemRemaningQuant
             // 
@@ -459,64 +455,12 @@
             this.btnItemList.TabIndex = 9;
             this.btnItemList.Text = "List";
             this.btnItemList.UseVisualStyleBackColor = true;
-            this.btnItemList.Click += new System.EventHandler(this.btnItemList_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.buttClose);
-            this.panel1.Controls.Add(this.buttUpdate);
-            this.panel1.Controls.Add(this.buttAddNewRecord);
-            this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(2, -13);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(702, 210);
-            this.panel1.TabIndex = 10;
-            // 
-            // buttClose
-            // 
-            this.buttClose.Location = new System.Drawing.Point(289, 459);
-            this.buttClose.Name = "buttClose";
-            this.buttClose.Size = new System.Drawing.Size(116, 34);
-            this.buttClose.TabIndex = 3;
-            this.buttClose.Text = "Close";
-            this.buttClose.UseVisualStyleBackColor = true;
-            this.buttClose.Click += new System.EventHandler(this.buttClose_Click);
-            // 
-            // buttUpdate
-            // 
-            this.buttUpdate.Location = new System.Drawing.Point(157, 458);
-            this.buttUpdate.Name = "buttUpdate";
-            this.buttUpdate.Size = new System.Drawing.Size(126, 35);
-            this.buttUpdate.TabIndex = 2;
-            this.buttUpdate.Text = "Update";
-            this.buttUpdate.UseVisualStyleBackColor = true;
-            this.buttUpdate.Click += new System.EventHandler(this.buttUpdate_Click);
-            // 
-            // buttAddNewRecord
-            // 
-            this.buttAddNewRecord.Location = new System.Drawing.Point(18, 459);
-            this.buttAddNewRecord.Name = "buttAddNewRecord";
-            this.buttAddNewRecord.Size = new System.Drawing.Size(133, 34);
-            this.buttAddNewRecord.TabIndex = 1;
-            this.buttAddNewRecord.Text = "Add New Record";
-            this.buttAddNewRecord.UseVisualStyleBackColor = true;
-            this.buttAddNewRecord.Click += new System.EventHandler(this.buttAddNewRecord_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(10, 23);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(676, 429);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // Item
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(727, 519);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(700, 519);
             this.Controls.Add(this.btnItemList);
             this.Controls.Add(this.btnItemClose);
             this.Controls.Add(this.btnItemSave);
@@ -535,8 +479,6 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -579,10 +521,5 @@
         private System.Windows.Forms.Button btnItemClose;
         private System.Windows.Forms.Button btnItemList;
         public System.Windows.Forms.ComboBox cmbItemItemGroup;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button buttClose;
-        private System.Windows.Forms.Button buttUpdate;
-        private System.Windows.Forms.Button buttAddNewRecord;
-        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

@@ -186,23 +186,20 @@ using System.Configuration;
             return insertedRows;
         }
 
-        public int saveDetails(List<string> insertQueryCollection)
+        public int SaveDetails(List<string> insertquerycollection)
         {
-            int insertedRows = 0;
+            int insertrows = 0;
             SqlTransaction trans = null;
             try
             {
                 SqlConnection con = openConnection();
-
-                //trans.Connection = con;
                 trans = con.BeginTransaction();
                 bool success = true;
-                foreach (string sqlQuery in insertQueryCollection)
+                foreach (string sqlquery in insertquerycollection)
                 {
-
-                    SqlCommand cmd = new SqlCommand(sqlQuery, con, trans);
-                    insertedRows = cmd.ExecuteNonQuery();
-                    if (insertedRows < 1)
+                    SqlCommand cmd = new SqlCommand(sqlquery, con, trans);
+                    insertrows = cmd.ExecuteNonQuery();
+                    if (insertrows < 1)
                     {
                         success = false;
                         break;
@@ -222,11 +219,8 @@ using System.Configuration;
             {
                 trans.Rollback();
             }
-            return insertedRows;
+            return insertrows;
         }
-
-
-
         public SqlConnection openConnection()
         {
             SqlConnection con = new SqlConnection();

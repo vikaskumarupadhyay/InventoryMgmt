@@ -29,78 +29,74 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txttotalAmount = new System.Windows.Forms.TextBox();
+            this.textBox23 = new System.Windows.Forms.TextBox();
             this.textBox22 = new System.Windows.Forms.TextBox();
             this.textBox15 = new System.Windows.Forms.TextBox();
             this.textBox21 = new System.Windows.Forms.TextBox();
             this.textBox20 = new System.Windows.Forms.TextBox();
             this.textBox19 = new System.Windows.Forms.TextBox();
             this.textBox18 = new System.Windows.Forms.TextBox();
-            this.txtdis = new System.Windows.Forms.TextBox();
+            this.textBox17 = new System.Windows.Forms.TextBox();
             this.textBox16 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.txtAmount = new System.Windows.Forms.TextBox();
+            this.textBox13 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.txtQunty = new System.Windows.Forms.TextBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.txtRate = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtProductName = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.txtItemCode = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.txtdate = new System.Windows.Forms.DateTimePicker();
-            this.txtSrNo = new System.Windows.Forms.TextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.textBox8 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtFax = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtMobile = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.txtPhone = new System.Windows.Forms.TextBox();
-            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtCompanyName = new System.Windows.Forms.TextBox();
-            this.txtVendorName = new System.Windows.Forms.TextBox();
-            this.textVendercod = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnSelectPurchaseOrder = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.txttotalAmount);
+            this.panel1.Controls.Add(this.textBox23);
             this.panel1.Controls.Add(this.textBox22);
             this.panel1.Controls.Add(this.textBox15);
             this.panel1.Controls.Add(this.textBox21);
             this.panel1.Controls.Add(this.textBox20);
             this.panel1.Controls.Add(this.textBox19);
             this.panel1.Controls.Add(this.textBox18);
-            this.panel1.Controls.Add(this.txtdis);
+            this.panel1.Controls.Add(this.textBox17);
             this.panel1.Controls.Add(this.textBox16);
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Location = new System.Drawing.Point(15, 238);
@@ -108,18 +104,18 @@
             this.panel1.Size = new System.Drawing.Size(828, 261);
             this.panel1.TabIndex = 23;
             // 
-            // txttotalAmount
+            // textBox23
             // 
-            this.txttotalAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txttotalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttotalAmount.Location = new System.Drawing.Point(738, 233);
-            this.txttotalAmount.Name = "txttotalAmount";
-            this.txttotalAmount.ReadOnly = true;
-            this.txttotalAmount.Size = new System.Drawing.Size(83, 21);
-            this.txttotalAmount.TabIndex = 35;
-            this.txttotalAmount.TabStop = false;
-            this.txttotalAmount.Text = "0";
-            this.txttotalAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox23.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox23.Location = new System.Drawing.Point(738, 233);
+            this.textBox23.Name = "textBox23";
+            this.textBox23.ReadOnly = true;
+            this.textBox23.Size = new System.Drawing.Size(83, 21);
+            this.textBox23.TabIndex = 35;
+            this.textBox23.TabStop = false;
+            this.textBox23.Text = "0";
+            this.textBox23.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox22
             // 
@@ -199,17 +195,16 @@
             this.textBox18.Text = "%";
             this.textBox18.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtdis
+            // textBox17
             // 
-            this.txtdis.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtdis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtdis.Location = new System.Drawing.Point(418, 233);
-            this.txtdis.Name = "txtdis";
-            this.txtdis.Size = new System.Drawing.Size(45, 21);
-            this.txtdis.TabIndex = 28;
-            this.txtdis.Text = "0";
-            this.txtdis.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtdis.TextChanged += new System.EventHandler(this.txtdis_TextChanged);
+            this.textBox17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox17.Location = new System.Drawing.Point(418, 233);
+            this.textBox17.Name = "textBox17";
+            this.textBox17.Size = new System.Drawing.Size(45, 21);
+            this.textBox17.TabIndex = 28;
+            this.textBox17.Text = "0";
+            this.textBox17.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox16
             // 
@@ -226,7 +221,6 @@
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
@@ -238,15 +232,15 @@
             // 
             this.groupBox3.Controls.Add(this.button4);
             this.groupBox3.Controls.Add(this.button3);
-            this.groupBox3.Controls.Add(this.txtAmount);
+            this.groupBox3.Controls.Add(this.textBox13);
             this.groupBox3.Controls.Add(this.label14);
-            this.groupBox3.Controls.Add(this.txtQunty);
+            this.groupBox3.Controls.Add(this.textBox12);
             this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Controls.Add(this.txtRate);
+            this.groupBox3.Controls.Add(this.textBox11);
             this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.txtProductName);
+            this.groupBox3.Controls.Add(this.textBox10);
             this.groupBox3.Controls.Add(this.button2);
-            this.groupBox3.Controls.Add(this.txtItemCode);
+            this.groupBox3.Controls.Add(this.textBox9);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -264,7 +258,6 @@
             this.button4.TabIndex = 18;
             this.button4.Text = "Remove Item";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -276,15 +269,14 @@
             this.button3.TabIndex = 17;
             this.button3.Text = "Add Item";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // txtAmount
+            // textBox13
             // 
-            this.txtAmount.Location = new System.Drawing.Point(532, 35);
-            this.txtAmount.Name = "txtAmount";
-            this.txtAmount.Size = new System.Drawing.Size(63, 21);
-            this.txtAmount.TabIndex = 10;
-            this.txtAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox13.Location = new System.Drawing.Point(532, 35);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(63, 21);
+            this.textBox13.TabIndex = 10;
+            this.textBox13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label14
             // 
@@ -295,15 +287,13 @@
             this.label14.TabIndex = 9;
             this.label14.Text = "Amount";
             // 
-            // txtQunty
+            // textBox12
             // 
-            this.txtQunty.Location = new System.Drawing.Point(467, 35);
-            this.txtQunty.Name = "txtQunty";
-            this.txtQunty.Size = new System.Drawing.Size(59, 21);
-            this.txtQunty.TabIndex = 8;
-            this.txtQunty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtQunty.TextChanged += new System.EventHandler(this.txtQunty_TextChanged);
-            this.txtQunty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQunty_KeyPress);
+            this.textBox12.Location = new System.Drawing.Point(467, 35);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(59, 21);
+            this.textBox12.TabIndex = 8;
+            this.textBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label13
             // 
@@ -314,13 +304,13 @@
             this.label13.TabIndex = 7;
             this.label13.Text = "Qnty";
             // 
-            // txtRate
+            // textBox11
             // 
-            this.txtRate.Location = new System.Drawing.Point(400, 35);
-            this.txtRate.Name = "txtRate";
-            this.txtRate.Size = new System.Drawing.Size(61, 21);
-            this.txtRate.TabIndex = 6;
-            this.txtRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox11.Location = new System.Drawing.Point(400, 35);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(61, 21);
+            this.textBox11.TabIndex = 6;
+            this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label12
             // 
@@ -331,15 +321,12 @@
             this.label12.TabIndex = 5;
             this.label12.Text = "Rate";
             // 
-            // txtProductName
+            // textBox10
             // 
-            this.txtProductName.Location = new System.Drawing.Point(143, 35);
-            this.txtProductName.Name = "txtProductName";
-            this.txtProductName.Size = new System.Drawing.Size(251, 21);
-            this.txtProductName.TabIndex = 4;
-            this.txtProductName.TextChanged += new System.EventHandler(this.txtProductName_TextChanged);
-            this.txtProductName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProductName_KeyDown);
-            this.txtProductName.Leave += new System.EventHandler(this.txtProductName_Leave);
+            this.textBox10.Location = new System.Drawing.Point(143, 35);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(251, 21);
+            this.textBox10.TabIndex = 4;
             // 
             // button2
             // 
@@ -350,17 +337,14 @@
             this.button2.TabStop = false;
             this.button2.Text = "...";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // txtItemCode
+            // textBox9
             // 
-            this.txtItemCode.Location = new System.Drawing.Point(23, 35);
-            this.txtItemCode.Name = "txtItemCode";
-            this.txtItemCode.Size = new System.Drawing.Size(92, 21);
-            this.txtItemCode.TabIndex = 2;
-            this.txtItemCode.Text = "I";
-            this.txtItemCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtItemCode.TextChanged += new System.EventHandler(this.txtItemCode_TextChanged);
+            this.textBox9.Location = new System.Drawing.Point(23, 35);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(92, 21);
+            this.textBox9.TabIndex = 2;
+            this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label11
             // 
@@ -384,8 +368,8 @@
             // 
             this.groupBox2.Controls.Add(this.textBox14);
             this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.txtdate);
-            this.groupBox2.Controls.Add(this.txtSrNo);
+            this.groupBox2.Controls.Add(this.dateTimePicker1);
+            this.groupBox2.Controls.Add(this.textBox8);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -397,7 +381,7 @@
             // 
             // textBox14
             // 
-            this.textBox14.Location = new System.Drawing.Point(69, 78);
+            this.textBox14.Location = new System.Drawing.Point(69, 75);
             this.textBox14.Name = "textBox14";
             this.textBox14.Size = new System.Drawing.Size(117, 21);
             this.textBox14.TabIndex = 9;
@@ -412,24 +396,24 @@
             this.label15.TabIndex = 8;
             this.label15.Text = "Ref. No. :";
             // 
-            // txtdate
+            // dateTimePicker1
             // 
-            this.txtdate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtdate.Location = new System.Drawing.Point(69, 48);
-            this.txtdate.Name = "txtdate";
-            this.txtdate.Size = new System.Drawing.Size(117, 21);
-            this.txtdate.TabIndex = 7;
-            this.txtdate.TabStop = false;
-            this.txtdate.Value = new System.DateTime(2002, 2, 12, 23, 35, 59, 0);
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(69, 48);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(117, 21);
+            this.dateTimePicker1.TabIndex = 7;
+            this.dateTimePicker1.TabStop = false;
+            this.dateTimePicker1.Value = new System.DateTime(2002, 2, 12, 23, 35, 59, 0);
             // 
-            // txtSrNo
+            // textBox8
             // 
-            this.txtSrNo.Location = new System.Drawing.Point(69, 21);
-            this.txtSrNo.Name = "txtSrNo";
-            this.txtSrNo.Size = new System.Drawing.Size(117, 21);
-            this.txtSrNo.TabIndex = 6;
-            this.txtSrNo.TabStop = false;
-            this.txtSrNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox8.Location = new System.Drawing.Point(69, 21);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(117, 21);
+            this.textBox8.TabIndex = 6;
+            this.textBox8.TabStop = false;
+            this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label9
             // 
@@ -453,18 +437,18 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox1.Controls.Add(this.txtFax);
+            this.groupBox1.Controls.Add(this.textBox7);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.txtMobile);
+            this.groupBox1.Controls.Add(this.textBox6);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.txtPhone);
-            this.groupBox1.Controls.Add(this.txtAddress);
+            this.groupBox1.Controls.Add(this.textBox5);
+            this.groupBox1.Controls.Add(this.textBox4);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.txtCompanyName);
-            this.groupBox1.Controls.Add(this.txtVendorName);
-            this.groupBox1.Controls.Add(this.textVendercod);
+            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -475,12 +459,12 @@
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             // 
-            // txtFax
+            // textBox7
             // 
-            this.txtFax.Location = new System.Drawing.Point(422, 130);
-            this.txtFax.Name = "txtFax";
-            this.txtFax.Size = new System.Drawing.Size(173, 21);
-            this.txtFax.TabIndex = 14;
+            this.textBox7.Location = new System.Drawing.Point(422, 130);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(173, 21);
+            this.textBox7.TabIndex = 14;
             // 
             // label7
             // 
@@ -491,12 +475,12 @@
             this.label7.TabIndex = 13;
             this.label7.Text = "Fax";
             // 
-            // txtMobile
+            // textBox6
             // 
-            this.txtMobile.Location = new System.Drawing.Point(220, 130);
-            this.txtMobile.Name = "txtMobile";
-            this.txtMobile.Size = new System.Drawing.Size(200, 21);
-            this.txtMobile.TabIndex = 12;
+            this.textBox6.Location = new System.Drawing.Point(216, 130);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(200, 21);
+            this.textBox6.TabIndex = 12;
             // 
             // label6
             // 
@@ -516,23 +500,22 @@
             this.button1.TabStop = false;
             this.button1.Text = "...";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // txtPhone
+            // textBox5
             // 
-            this.txtPhone.Location = new System.Drawing.Point(23, 130);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(187, 21);
-            this.txtPhone.TabIndex = 9;
+            this.textBox5.Location = new System.Drawing.Point(23, 130);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(187, 21);
+            this.textBox5.TabIndex = 9;
             // 
-            // txtAddress
+            // textBox4
             // 
-            this.txtAddress.Location = new System.Drawing.Point(23, 76);
-            this.txtAddress.Multiline = true;
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtAddress.Size = new System.Drawing.Size(572, 33);
-            this.txtAddress.TabIndex = 8;
+            this.textBox4.Location = new System.Drawing.Point(23, 76);
+            this.textBox4.Multiline = true;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox4.Size = new System.Drawing.Size(572, 33);
+            this.textBox4.TabIndex = 8;
             // 
             // label5
             // 
@@ -552,29 +535,27 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Address";
             // 
-            // txtCompanyName
+            // textBox3
             // 
-            this.txtCompanyName.Location = new System.Drawing.Point(355, 34);
-            this.txtCompanyName.Name = "txtCompanyName";
-            this.txtCompanyName.Size = new System.Drawing.Size(240, 21);
-            this.txtCompanyName.TabIndex = 5;
+            this.textBox3.Location = new System.Drawing.Point(355, 34);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(240, 21);
+            this.textBox3.TabIndex = 5;
             // 
-            // txtVendorName
+            // textBox2
             // 
-            this.txtVendorName.Location = new System.Drawing.Point(143, 34);
-            this.txtVendorName.Name = "txtVendorName";
-            this.txtVendorName.Size = new System.Drawing.Size(206, 21);
-            this.txtVendorName.TabIndex = 4;
+            this.textBox2.Location = new System.Drawing.Point(143, 34);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(206, 21);
+            this.textBox2.TabIndex = 4;
             // 
-            // textVendercod
+            // textBox1
             // 
-            this.textVendercod.Location = new System.Drawing.Point(23, 34);
-            this.textVendercod.Name = "textVendercod";
-            this.textVendercod.Size = new System.Drawing.Size(92, 21);
-            this.textVendercod.TabIndex = 3;
-            this.textVendercod.Text = "V";
-            this.textVendercod.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textVendercod.TextChanged += new System.EventHandler(this.textVendercod_TextChanged);
+            this.textBox1.Location = new System.Drawing.Point(23, 34);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(92, 21);
+            this.textBox1.TabIndex = 3;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
             // 
@@ -603,16 +584,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Vendor Code";
             // 
-            // btnSelectPurchaseOrder
+            // button6
             // 
-            this.btnSelectPurchaseOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelectPurchaseOrder.Location = new System.Drawing.Point(116, 521);
-            this.btnSelectPurchaseOrder.Name = "btnSelectPurchaseOrder";
-            this.btnSelectPurchaseOrder.Size = new System.Drawing.Size(157, 29);
-            this.btnSelectPurchaseOrder.TabIndex = 38;
-            this.btnSelectPurchaseOrder.Text = "Select Purchase Order";
-            this.btnSelectPurchaseOrder.UseVisualStyleBackColor = true;
-            this.btnSelectPurchaseOrder.Click += new System.EventHandler(this.btnSelectPurchaseOrder_Click);
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(116, 521);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(157, 29);
+            this.button6.TabIndex = 38;
+            this.button6.Text = "Select Purchase Order";
+            this.button6.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
@@ -623,7 +603,6 @@
             this.button5.TabIndex = 37;
             this.button5.Text = "Save";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button7
             // 
@@ -634,25 +613,6 @@
             this.button7.TabIndex = 39;
             this.button7.Text = "Close";
             this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.dataGridView2);
-            this.panel2.Location = new System.Drawing.Point(16, -10);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(830, 574);
-            this.panel2.TabIndex = 40;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(22, 31);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(685, 360);
-            this.dataGridView2.TabIndex = 0;
-            this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
             // 
             // Form7
             // 
@@ -660,9 +620,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(858, 564);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.button7);
-            this.Controls.Add(this.btnSelectPurchaseOrder);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox3);
@@ -683,8 +642,6 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -696,53 +653,51 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox txtAmount;
+        private System.Windows.Forms.TextBox textBox13;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtQunty;
+        private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtRate;
+        private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtProductName;
+        private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox txtItemCode;
+        private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DateTimePicker txtdate;
-        private System.Windows.Forms.TextBox txtSrNo;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtFax;
+        private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtMobile;
+        private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox txtPhone;
-        private System.Windows.Forms.TextBox txtAddress;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtCompanyName;
-        private System.Windows.Forms.TextBox txtVendorName;
-        private System.Windows.Forms.TextBox textVendercod;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.TextBox txttotalAmount;
+        private System.Windows.Forms.TextBox textBox23;
         private System.Windows.Forms.TextBox textBox22;
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.TextBox textBox21;
         private System.Windows.Forms.TextBox textBox20;
         private System.Windows.Forms.TextBox textBox19;
         private System.Windows.Forms.TextBox textBox18;
-        private System.Windows.Forms.TextBox txtdis;
+        private System.Windows.Forms.TextBox textBox17;
         private System.Windows.Forms.TextBox textBox16;
-        private System.Windows.Forms.Button btnSelectPurchaseOrder;
+        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView dataGridView2;
     }
 }

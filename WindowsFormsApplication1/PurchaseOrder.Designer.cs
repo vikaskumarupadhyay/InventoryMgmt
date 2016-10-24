@@ -77,7 +77,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.buttBack = new System.Windows.Forms.Button();
+            this.butBack = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -194,7 +194,6 @@
             this.button1.TabStop = false;
             this.button1.Text = "...";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox1
             // 
@@ -379,8 +378,6 @@
             this.txtQuanity.TabIndex = 8;
             this.txtQuanity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtQuanity.TextChanged += new System.EventHandler(this.txtQuanity_TextChanged);
-            this.txtQuanity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuanity_KeyPress);
-            this.txtQuanity.Leave += new System.EventHandler(this.txtQuanity_Leave);
             // 
             // label13
             // 
@@ -429,7 +426,6 @@
             this.button2.TabStop = false;
             this.button2.Text = "...";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // txtItemCode
             // 
@@ -601,10 +597,10 @@
             this.gridPurchaseOrder.AllowUserToResizeColumns = false;
             this.gridPurchaseOrder.AllowUserToResizeRows = false;
             this.gridPurchaseOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridPurchaseOrder.Location = new System.Drawing.Point(8, 15);
+            this.gridPurchaseOrder.Location = new System.Drawing.Point(3, 3);
             this.gridPurchaseOrder.Name = "gridPurchaseOrder";
             this.gridPurchaseOrder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridPurchaseOrder.Size = new System.Drawing.Size(818, 239);
+            this.gridPurchaseOrder.Size = new System.Drawing.Size(818, 227);
             this.gridPurchaseOrder.TabIndex = 0;
             this.gridPurchaseOrder.TabStop = false;
             // 
@@ -617,7 +613,6 @@
             this.btnSave.TabIndex = 35;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClose
             // 
@@ -628,36 +623,32 @@
             this.btnClose.TabIndex = 36;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.buttBack);
             this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Location = new System.Drawing.Point(-1, -15);
+            this.panel2.Controls.Add(this.butBack);
+            this.panel2.Location = new System.Drawing.Point(-11, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(861, 514);
+            this.panel2.Size = new System.Drawing.Size(734, 549);
             this.panel2.TabIndex = 37;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint_1);
             // 
-            // buttBack
+            // butBack
             // 
-            this.buttBack.Location = new System.Drawing.Point(23, 454);
-            this.buttBack.Name = "buttBack";
-            this.buttBack.Size = new System.Drawing.Size(141, 44);
-            this.buttBack.TabIndex = 1;
-            this.buttBack.Text = "Back";
-            this.buttBack.UseVisualStyleBackColor = true;
-            this.buttBack.Click += new System.EventHandler(this.buttBack_Click);
+            this.butBack.Location = new System.Drawing.Point(65, 472);
+            this.butBack.Name = "butBack";
+            this.butBack.Size = new System.Drawing.Size(75, 23);
+            this.butBack.TabIndex = 0;
+            this.butBack.Text = "Back";
+            this.butBack.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(22, 23);
+            this.dataGridView1.Location = new System.Drawing.Point(44, 26);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(805, 368);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            this.dataGridView1.Size = new System.Drawing.Size(669, 416);
+            this.dataGridView1.TabIndex = 1;
             // 
             // PurchaseOrder
             // 
@@ -745,7 +736,7 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button buttBack;
+        private System.Windows.Forms.Button butBack;
 
     }
 }

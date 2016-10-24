@@ -402,7 +402,7 @@ namespace WindowsFormsApplication1
                     //MessageBox.Show(Query);
                     sf.Add(Query);
                 }
-                int insertedRows1 = dbMainClass.saveDetails(sf);
+                int insertedRows1 = dbMainClass.SaveDetails(sf);
                 if (insertedRows1 > 0)
                 {
                     MessageBox.Show("Details Saved Successfully");

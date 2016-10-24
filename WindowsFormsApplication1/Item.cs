@@ -6,13 +6,11 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+
 namespace WindowsFormsApplication1
 {
     public partial class Item : Form
     {
-        ItemDetails itm = new ItemDetails();
-        public int updatecounter = 0;
         DB_Main dbMainClass = new DB_Main();
         public DataTable dt = new DataTable();
         public List<string> GroupList = new List<string>();
@@ -23,19 +21,8 @@ namespace WindowsFormsApplication1
         }
         private void Item_Load(object sender, EventArgs e)
         {
-            panel1.Visible = false;
-            string Id = getId("ItemDetails");
-            txtItemProductCode.Text = Id;
-            if (Id == "l0001")
-            {
-                btnItemList.Enabled = false;
-            }
-            else
-            {
-                btnItemList.Enabled = true;
-            }
 
-            //setID();
+            setID();
 
             string selectCommandGroup = "select groupID,GROUPNAME,GROUPDESC from dbo.ItemGroup";
             setItemGroupDetail(selectCommandGroup, cmbItemItemGroup, "Group");
@@ -43,13 +30,26 @@ namespace WindowsFormsApplication1
             string selectCommandUnit = "select unitID,unitName,unitDESC from dbo.ItemUnitList";
             setItemGroupDetail(selectCommandUnit, cmbItemUnit, "Unit");
         }
+        private void setID()
+        {
+            string ColumnID = dbMainClass.getId("ITEM");
+            txtItemProductCode.Text = ColumnID;
+        }
+        public bool validation(string textboxname)
+        {
+            bool isValidValue = true;
+            if(string.IsNullOrEmpty(textboxname))
+            {
+                isValidValue = false;
+            }
+            return isValidValue;
+        }
 
         private void setItemGroupDetail(string Query, ComboBox cmb, string Message)
         {
             //string selectCommand = "select groupID,GROUPNAME,GROUPDESC from dbo.ItemGroup";
             cmb.Items.Clear();
             cmb.Items.Add("Select A " + Message);
-
             dt = dbMainClass.getDataBoundToComboBox(Query);
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -94,47 +94,22 @@ namespace WindowsFormsApplication1
 
         private void btnItemSave_Click(object sender, EventArgs e)
         {
-            if (updatecounter == 0)
-            {
-                if (cmbItemItemGroup.SelectedIndex != 0 && cmbItemUnit.SelectedIndex != 0)
-                {
-                    string UnitId = UnitList[cmbItemUnit.SelectedIndex - 1];
-                    string GroupId = GroupList[cmbItemItemGroup.SelectedIndex - 1];
-
-                    string saveCommand1 = "insert into ItemDetails values ('" + txtItemProductCode.Text + "','" + txtItemProductName.Text + "','" + txtItemCompName.Text + "','" + txtItemDesc.Text + "','" + GroupId + "','" + UnitId + "')";
-
-                    string saveCommand2 = "insert into ItemPriceDetail values ('" + txtItemProductCode.Text + "','" + txtItemPrice.Text + "','" + txtItemSalesPrice.Text + "','" + txtItemMrp.Text + "','" + txtItemMargin.Text + "')";
-
-                    string saveCommand3 = "insert into ItemQuantityDetail values ('" + txtItemProductCode.Text + "','" + txtItemOpeningQuant.Text + "','" + txtItemRemaningQuant.Text + "')";
-
-                    int insertedRows = dbMainClass.saveDetails(saveCommand1, saveCommand2, saveCommand3);
-                    if (insertedRows > 0)
-                    {
-                        //btnList.Enabled = true;
-                        txtItemProductName.Focus();
-                        MessageBox.Show("Details Saved Successfully");
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("Details Not Saved Successfully");
-                    }
-
-                }
-            }
-            else if (updatecounter == 1)
+            if (validateAllControls())
             {
 
-                string saveCommand1 = "update ItemDetails set itemId='" + txtItemProductCode.Text + "',itemName='" + txtItemProductName.Text + "',itemCompName='" + txtItemCompName.Text + "',itemDesc='" + txtItemDesc.Text + "',groupid='" + cmbItemItemGroup.Text + "',Unitid='" + cmbItemUnit.Text + "'where itemId='" + txtItemProductCode.Text + "'";
+                string UnitId = UnitList[cmbItemUnit.SelectedIndex - 1];
+                string GroupId = GroupList[cmbItemItemGroup.SelectedIndex - 1];
 
-                string saveCommand2 = "update ItemPriceDetail  set  purChasePrice='" + txtItemPrice.Text + "', SalesPrice='" + txtItemSalesPrice.Text + "', MrpPrice='" + txtItemMrp.Text + "',Margin='" + txtItemMargin.Text + "'where itemId='" + txtItemProductCode.Text + "'";
+                string saveCommand1 = "insert into ItemDetails values ('" + txtItemProductCode.Text + "','" + txtItemProductName.Text + "','" + txtItemCompName.Text + "','" + txtItemDesc.Text + "','" + GroupId + "','" + UnitId + "')";
 
-                string saveCommand3 = "update ItemQuantityDetail set OpeningQuantity='" + txtItemOpeningQuant.Text + "',CurrentQuantity='" + txtItemRemaningQuant.Text + "' where itemId='" + txtItemProductCode.Text + "'";
+                string saveCommand2 = "insert into ItemPriceDetail values ('" + txtItemProductCode.Text + "','" + txtItemPrice.Text + "','" + txtItemSalesPrice.Text + "','" + txtItemMrp.Text + "','" + txtItemMargin.Text + "')";
+
+                string saveCommand3 = "insert into ItemQuantityDetail values ('" + txtItemProductCode.Text + "','" + txtItemOpeningQuant.Text + "','" + txtItemRemaningQuant.Text + "')";
 
                 int insertedRows = dbMainClass.saveDetails(saveCommand1, saveCommand2, saveCommand3);
                 if (insertedRows > 0)
                 {
-
+                    //btnList.Enabled = true;
                     txtItemProductName.Focus();
                     MessageBox.Show("Details Saved Successfully");
 
@@ -143,172 +118,161 @@ namespace WindowsFormsApplication1
                 {
                     MessageBox.Show("Details Not Saved Successfully");
                 }
-                makeBlank();
             }
-            string Id = getId("ItemDetails");
-            txtItemProductCode.Text = Id;
-        }
-        private void makeBlank()
-        {
-
-            txtItemProductCode.Text = "";
-            txtItemProductName.Text = "";
-            txtItemCompName.Text = "";
-            txtItemDesc.Text = "";
-            cmbItemItemGroup.Text = "";
-            cmbItemUnit.Text = "";
-            txtItemPrice.Text = "";
-            txtItemSalesPrice.Text = "";
-            txtItemMrp.Text = "";
-            txtItemMargin.Text = "0";
-            txtItemOpeningQuant.Text = "";
-            txtItemRemaningQuant.Text = "0";
 
         }
-
-        private void btnItemList_Click(object sender, EventArgs e)
-        {
-            panel1.Visible = true;
-            //SqlConnection con = dbMainClass.openConnection();
-            string selectqurry = "select itm.ItemId,itm.ItemName,itm.ItemCompName,itm.ItemDesc,itm.groupid,itm.Unitid,ipd.purChasePrice,ipd.SalesPrice,ipd.MrpPrice,ipd.Margin,iqd.OpeningQuantity,iqd.CurrentQuantity from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid";
-            //SqlCommand cmd = new SqlCommand(selectqurry, con);
-            //SqlDataAdapter sda = new SqlDataAdapter(cmd);
-            //DataSet ds = new DataSet();
-            //sda.Fill(ds);
-            //DataTable dt = ds.Tables[0];
-            DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
-            dataGridView1.DataSource = dt;
-        }
-
-        private void buttClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void buttAddNewRecord_Click(object sender, EventArgs e)
-        {
-            panel1.Visible = false;
-        }
-
-        private void buttUpdate_Click(object sender, EventArgs e)
+        private void txtItemPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
 
-            DataGridViewCellCollection cellCollection = dataGridView1.SelectedRows[0].Cells;
-            setDetails(cellCollection);
-            panel1.Visible = false;
-            updatecounter = 1;
-
-        }
-        private void setDetails(DataGridViewCellCollection cellCollection)
-        {
-            try
+            if (char.IsDigit(e.KeyChar))
             {
-                txtItemProductCode.Text = cellCollection[0].Value.ToString();
-                txtItemProductName.Text = cellCollection[1].Value.ToString();
-                txtItemCompName.Text = cellCollection[2].Value.ToString();
-                txtItemDesc.Text = cellCollection[3].Value.ToString();
-                cmbItemItemGroup.Text = cellCollection[4].Value.ToString();
-                cmbItemUnit.Text = cellCollection[5].Value.ToString();
-                txtItemPrice.Text = cellCollection[6].Value.ToString();
-                txtItemSalesPrice.Text = cellCollection[7].Value.ToString();
-                txtItemMrp.Text = cellCollection[8].Value.ToString();
-                txtItemMargin.Text = cellCollection[9].Value.ToString();
-                txtItemOpeningQuant.Text = cellCollection[10].Value.ToString();
-                txtItemRemaningQuant.Text = cellCollection[11].Value.ToString();
+                e.Handled = false;
             }
-            catch (Exception ex)
+            else
             {
-
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
             }
         }
 
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void txtItemSalesPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
-         
-            DataGridViewCellCollection cellCollection = dataGridView1.Rows[e.RowIndex].Cells;
-                setDetails(cellCollection);
-            panel1.Visible = false;
-            updatecounter = 1;
-        }
-        private string getId(string Table)
-        {
-            string Id = dbMainClass.getUniqueID("ItemDetails");
-
-            if (!Id.Contains("ERROR"))
+            if (char.IsDigit(e.KeyChar))
             {
-                if (Id.Length == 2)
-                {
-                    Id = Id[0].ToString() + "000" + Id[1].ToString();
-                }
-                else if (Id.Length == 3)
-                {
-                    Id = Id[0].ToString() + "00" + Id.Substring(1);
-                }
-                else if (Id.Length == 4)
-                {
-                    Id = Id[0].ToString() + "0" + Id.Substring(1);
-                }
-
+                e.Handled = false;
             }
-            return Id;
-        }
-
-        private void txtItemOpeningQuant_TextChanged(object sender, EventArgs e)
-        {
-            string txt = txtItemOpeningQuant.Text;
-            txtItemRemaningQuant.Text = txt;
-        }
-
-        private void txtItemMrp_Leave(object sender, EventArgs e)
-        {
-            //if (txtItemPrice.Text == "")
-            //{
-            //    txtItemPrice.Text = "0";
-            //}
-            //if (txtItemMrp.Text == "")
-            //{
-            //    txtItemMrp.Text = "0";
-            //}
-            //int pPrice = Convert.ToInt32(txtItemPrice.Text);
-            //int mrp = Convert.ToInt32(txtItemMrp.Text);
-            //int totelmrp = mrp - pPrice;
-            //txtItemMargin.Text = totelmrp.ToString();
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
         }
 
         private void txtItemMrp_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //if (txtItemPrice.Text == "")
-            //{
-            //    txtItemPrice.Text = "0";
-            //}
-            //if (txtItemMrp.Text == "")
-            //{
-            //    txtItemMrp.Text = "0";
-            //}
-            //int pPrice = Convert.ToInt32(txtItemPrice.Text);
-            //int mrp = Convert.ToInt32(txtItemMrp.Text);
-            //int totelmrp = mrp - pPrice;
-            //txtItemMargin.Text = totelmrp.ToString();
+            if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void txtItemMrp_MouseLeave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtItemPrice.Text) || string.IsNullOrEmpty(txtItemSalesPrice.Text))
+            {
+                txtItemMargin.Text = (Convert.ToInt32(txtItemSalesPrice.Text) - Convert.ToInt32(txtItemPrice.Text)).ToString();
+            }
+        }
+
+        public bool validateAllControls()
+        {
+            
+            bool isValid = true;
+            string Message = "";
+            if (string.IsNullOrEmpty(txtItemProductName.Text))
+            {
+                isValid = false;
+                Message = " please select yor product name ,";
+            }
+            if (string.IsNullOrEmpty(txtItemCompName.Text))
+            {
+                isValid = false;
+                Message += "Please enter company name ,";
+            }
+            if (cmbItemItemGroup.SelectedItem.ToString() == "Select A Group")
+            {
+                isValid = false;
+                Message+= "please select a group";
+            }
+
+            if (cmbItemUnit.SelectedItem.ToString() == "Select A Unit")
+            {
+                isValid = false;
+                Message+="please seleact a unit ,";
+            }
+            int a = Convert.ToInt32(txtItemPrice.Text);
+            if (a == 0 || string.IsNullOrEmpty(txtItemPrice.Text))
+            {
+                isValid = false;
+                Message+="please select your purchase prise,";
+            }
+            a = Convert.ToInt32(txtItemSalesPrice.Text);
+            if (a == 0 || string.IsNullOrEmpty(txtItemSalesPrice.Text))
+            {
+                isValid = false;
+                Message+="please select your sales price,";
+            }
+            a = Convert.ToInt32(txtItemMrp.Text);
+            if (a == 0 || string.IsNullOrEmpty(txtItemMrp.Text))
+            {
+                isValid = false;
+                Message+="please select your item mrp,";
+            }
+            if (!string.IsNullOrEmpty(Message))
+            {
+                MessageBox.Show(Message);
+            }
+            return isValid;
 
         }
 
-        private void txtItemMrp_TextChanged(object sender, EventArgs e)
+        private void txtItemOpeningQuant_KeyPress(object sender, KeyPressEventArgs e)
         {
 
-            if (txtItemPrice.Text == "")
+            if (Char.IsDigit(e.KeyChar))
             {
-                txtItemPrice.Text = "0";
+                e.Handled = false;
             }
-            if (txtItemMrp.Text == "")
+            else
             {
-                txtItemMrp.Text = "0";
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
             }
-            int pPrice = Convert.ToInt32(txtItemPrice.Text);
-            int mrp = Convert.ToInt32(txtItemMrp.Text);
-            int totelmrp =mrp- pPrice ;
-            txtItemMargin.Text = totelmrp.ToString();
 
         }
+
+        private void txtItemOpeningQuant_TextChanged(object sender, EventArgs e)
+        {
+            if (txtItemOpeningQuant.Text == " ")
+            {
+                txtItemRemaningQuant.Text = " ";
+            }
+            else
+            {
+                string value = txtItemOpeningQuant.Text;
+                txtItemRemaningQuant.Text = value;
+            }
+        }
+       
     }
 
 }
