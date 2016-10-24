@@ -1,0 +1,56 @@
+
+
+create procedure GetUpdateCounterVender 
+ as
+begin
+select top 1 (VenderID)  from dbo.VendorDetails order by venderID desc 
+end
+exec  GetUpdateCounterVender
+
+create procedure GetUpdateCounterCustomer
+ as
+begin
+select top 1 (CustID)  from dbo.CustomerDetails order by CustID desc 
+end
+
+create procedure GetUpdateCounterItem
+ as
+begin
+select top 1 (ItemID)  from dbo.ItemDetails order by ItemID desc 
+end
+
+
+
+create procedure GetUpdateCounterGROUP
+ as
+begin
+select top 1 (groupID)  from dbo.ItemGroup order by groupID desc 
+end
+
+
+create procedure GetUpdateCounterUNIT
+ as
+begin
+select top 1 (itemID)  from dbo.ItemDetails order by itemID desc 
+end
+
+
+
+
+
+--PROCEDURE TO GET ALL DETAILS OF VENDORS
+
+CREATE PROCEDURE GETALLDATAVENDER
+AS
+BEGIN
+select  vd.venderId as VENDORID ,vName AS NAME ,vCompName AS COMPANYNAME ,vAddress AS ADDRESS,vCity AS CITY, vState AS STATE ,vZip AS ZIP ,vCountry AS COUNTRY ,vEmail AS EMAIL , vWebAddress AS WEBADDRESS,vPhone AS PHONE ,vMobile AS MOBILE ,vFax AS FAX ,vDesc AS DESCRIPTION,vad.vOpeningBalance AS OPENINGBALANCE , vad.vCurrentBalance AS CURRENTBALANCE from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID
+END
+
+
+--------------------
+
+CREATE PROCEDURE GETALLDATACUSTOMER
+AS
+BEGIN
+select  Custd.CustId as CustID ,CustName AS NAME ,CustCompName AS COMPANYNAME ,CustAddress AS ADDRESS,CustCity AS CITY, CustState AS STATE ,CustZip AS ZIP ,CustCountry AS COUNTRY ,CustEmail AS EMAIL , CustWebAddress AS WEBADDRESS,CustPhone AS PHONE ,CustMobile AS MOBILE ,CustFax AS FAX ,CustDesc AS DESCRIPTION,Custad.CustOpeningBalance AS OPENINGBALANCE , Custad.CustCurrentBalance AS CURRENTBALANCE from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID
+END

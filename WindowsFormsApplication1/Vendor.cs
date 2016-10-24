@@ -196,6 +196,16 @@ namespace WindowsFormsApplication1
 
         private void frmVendorDetails_Load(object sender, EventArgs e)
         {
+            string selectqurry = "select * from VendorDetails";
+            DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+            List<string> ls = new List<string>();
+            foreach (DataRow dr in dt.Rows)
+            {
+                string a = dr[2].ToString();
+                ls.Add(a);
+            }
+           
+            comboBox1.DataSource = ls;
             panel1.Visible = false;
             string Id = getId("VENDOR");
             txtVenderCode.Text = Id;
@@ -341,6 +351,11 @@ namespace WindowsFormsApplication1
                     e.Handled = true;
                 }
             }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
     }
