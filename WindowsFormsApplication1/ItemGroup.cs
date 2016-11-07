@@ -24,7 +24,7 @@ namespace WindowsFormsApplication1
         DB_Main dbMainClass = new DB_Main();
         private void ItemGroup_Load(object sender, EventArgs e)
         {   
-            string ColumnID= dbMainClass.getId("GROUP");
+            string ColumnID= dbMainClass.getUniqueID("GROUP");
             txtGroupID.Text = ColumnID;
         }
         private void btnSave_Click(object sender, EventArgs e)

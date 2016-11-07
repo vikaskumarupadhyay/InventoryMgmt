@@ -23,8 +23,20 @@ namespace WindowsFormsApplication1
         }
         private void Item_Load(object sender, EventArgs e)
         {
+            string selectqurry = "select itm.ItemName,itm.ItemCompName,itm.ItemDesc,itm.groupid,itm.Unitid,ipd.purChasePrice,ipd.SalesPrice,ipd.MrpPrice,ipd.Margin,iqd.OpeningQuantity,iqd.CurrentQuantity from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid";
+            DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+            List<string> ls = new List<string>();
+            DataColumnCollection d = dt.Columns;
+            for (int a = 0; a < d.Count; a++)
+            {
+                //DataColumn dc = new DataColumn();
+                string b = d[a].ToString();
+                ls.Add(b);
+            }
+
+            searchCalmn.DataSource = ls;
             panel1.Visible = false;
-            string Id = getId("ItemDetails");
+            string Id = dbMainClass.getUniqueID("ItemDetails");
             txtItemProductCode.Text = Id;
             if (Id == "l0001")
             {
@@ -143,9 +155,10 @@ namespace WindowsFormsApplication1
                 {
                     MessageBox.Show("Details Not Saved Successfully");
                 }
-                makeBlank();
+               
             }
-            string Id = getId("ItemDetails");
+            makeBlank();
+            string Id = dbMainClass.getUniqueID("ItemDetails");
             txtItemProductCode.Text = Id;
         }
         private void makeBlank()
@@ -224,7 +237,8 @@ namespace WindowsFormsApplication1
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-         
+            txtSearch.Text = "";
+            searchCalmn.SelectedIndex = 0;
             DataGridViewCellCollection cellCollection = dataGridView1.Rows[e.RowIndex].Cells;
                 setDetails(cellCollection);
             panel1.Visible = false;
@@ -277,6 +291,21 @@ namespace WindowsFormsApplication1
 
         private void txtItemMrp_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
             //if (txtItemPrice.Text == "")
             //{
             //    txtItemPrice.Text = "0";
@@ -308,6 +337,14 @@ namespace WindowsFormsApplication1
             int totelmrp =mrp- pPrice ;
             txtItemMargin.Text = totelmrp.ToString();
 
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string s = searchCalmn.SelectedValue.ToString();
+            string selectQurry = "select itm.ItemId,itm.ItemName,itm.ItemCompName,itm.ItemDesc,itm.groupid,itm.Unitid,ipd.purChasePrice,ipd.SalesPrice,ipd.MrpPrice,ipd.Margin,iqd.OpeningQuantity,iqd.CurrentQuantity from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid  where "+s+" like '"+txtSearch.Text+"%'";
+            DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
+            dataGridView1.DataSource = dt;
         }
     }
 

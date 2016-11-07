@@ -65,6 +65,10 @@
             this.btnItemClose = new System.Windows.Forms.Button();
             this.btnItemList = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.searchCalmn = new System.Windows.Forms.ComboBox();
             this.buttClose = new System.Windows.Forms.Button();
             this.buttUpdate = new System.Windows.Forms.Button();
             this.buttAddNewRecord = new System.Windows.Forms.Button();
@@ -463,18 +467,59 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtSearch);
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.searchCalmn);
             this.panel1.Controls.Add(this.buttClose);
             this.panel1.Controls.Add(this.buttUpdate);
             this.panel1.Controls.Add(this.buttAddNewRecord);
             this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(2, -13);
+            this.panel1.Location = new System.Drawing.Point(3, -3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(702, 210);
+            this.panel1.Size = new System.Drawing.Size(712, 540);
             this.panel1.TabIndex = 10;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(227, 50);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(147, 22);
+            this.txtSearch.TabIndex = 7;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(241, 33);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(41, 13);
+            this.label14.TabIndex = 6;
+            this.label14.Text = "Search";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(53, 33);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(89, 16);
+            this.label13.TabIndex = 5;
+            this.label13.Text = "SelectSearch";
+            // 
+            // searchCalmn
+            // 
+            this.searchCalmn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchCalmn.FormattingEnabled = true;
+            this.searchCalmn.Location = new System.Drawing.Point(44, 54);
+            this.searchCalmn.Name = "searchCalmn";
+            this.searchCalmn.Size = new System.Drawing.Size(133, 24);
+            this.searchCalmn.TabIndex = 4;
             // 
             // buttClose
             // 
-            this.buttClose.Location = new System.Drawing.Point(289, 459);
+            this.buttClose.Location = new System.Drawing.Point(289, 486);
             this.buttClose.Name = "buttClose";
             this.buttClose.Size = new System.Drawing.Size(116, 34);
             this.buttClose.TabIndex = 3;
@@ -484,7 +529,7 @@
             // 
             // buttUpdate
             // 
-            this.buttUpdate.Location = new System.Drawing.Point(157, 458);
+            this.buttUpdate.Location = new System.Drawing.Point(157, 486);
             this.buttUpdate.Name = "buttUpdate";
             this.buttUpdate.Size = new System.Drawing.Size(126, 35);
             this.buttUpdate.TabIndex = 2;
@@ -494,7 +539,7 @@
             // 
             // buttAddNewRecord
             // 
-            this.buttAddNewRecord.Location = new System.Drawing.Point(18, 459);
+            this.buttAddNewRecord.Location = new System.Drawing.Point(10, 486);
             this.buttAddNewRecord.Name = "buttAddNewRecord";
             this.buttAddNewRecord.Size = new System.Drawing.Size(133, 34);
             this.buttAddNewRecord.TabIndex = 1;
@@ -504,10 +549,11 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(10, 23);
+            this.dataGridView1.Location = new System.Drawing.Point(10, 96);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(676, 429);
+            this.dataGridView1.Size = new System.Drawing.Size(676, 384);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
@@ -536,6 +582,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -584,5 +631,9 @@
         private System.Windows.Forms.Button buttUpdate;
         private System.Windows.Forms.Button buttAddNewRecord;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox searchCalmn;
     }
 }

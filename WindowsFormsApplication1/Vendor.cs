@@ -93,7 +93,7 @@ namespace WindowsFormsApplication1
                                 updateCounter = 0;
                             }
                             makeBlank();
-                            string Id = getId("VENDOR");
+                            string Id =dbMainClass.getUniqueID("VENDOR");
                             txtVenderCode.Text = Id;
                         }
                     }
@@ -196,18 +196,19 @@ namespace WindowsFormsApplication1
 
         private void frmVendorDetails_Load(object sender, EventArgs e)
         {
-            string selectqurry = "select * from VendorDetails";
-            DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+            string selectqurry = "select  vName as NAME, vCompName as COMPNAME,vAddress as ADDRESS,vCity as CITY,vState as STATE,vZip as ZIP,vCountry as COUNTRY,vEmail as EMAIL,vWebAddress as WEBADDRESS,vPhone as PHONE,vMobile as MOBILE,vFax as FAX,vDesc as DESCription from VendorDetails";
+          DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             List<string> ls = new List<string>();
-            foreach (DataRow dr in dt.Rows)
+            DataColumnCollection d = dt.Columns;
+            for (int a = 0; a < d.Count; a++)
             {
-                string a = dr[2].ToString();
-                ls.Add(a);
+                DataColumn dc = new DataColumn();
+                string b = d[a].ToString();
+                ls.Add(b);
             }
-           
             comboBox1.DataSource = ls;
             panel1.Visible = false;
-            string Id = getId("VENDOR");
+            string Id = dbMainClass.getUniqueID("VENDOR");
             txtVenderCode.Text = Id;
             if (Id == "V0001")
             {
@@ -284,8 +285,6 @@ namespace WindowsFormsApplication1
             DataGridViewCellCollection cellCollection = dataGridView1.SelectedRows[0].Cells;
             setDetails(cellCollection);
             panel1.Visible = false;
-            //panel2.Visible = false;
-            //    btnVenderSave.Text = "Update";
             updateCounter = 1;
         }
 
@@ -304,9 +303,9 @@ namespace WindowsFormsApplication1
             DataGridViewCellCollection cellCollection = dataGridView1.SelectedRows[0].Cells;
             setDetails(cellCollection);
             panel1.Visible = false;
-            //panel2.Visible = false;
-            //    btnVenderSave.Text = "Update";
             updateCounter = 1;
+            txtSearch.Text = "";
+            comboBox1.SelectedIndex =0;
         }
 
         private void txtVenderOpeningBal_GiveFeedback(object sender, GiveFeedbackEventArgs e)
@@ -357,6 +356,21 @@ namespace WindowsFormsApplication1
         {
 
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string s = comboBox1.SelectedValue.ToString();
+            string m = "v" + s;
+            string selectQurry = "select * from VendorDetails where " + m + " like '" + txtSearch.Text + "%'";
+            DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
+            dataGridView1.DataSource = dt;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
 
     }
 }
