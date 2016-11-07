@@ -23,7 +23,7 @@ namespace WindowsFormsApplication1
 
         private void Unit_Load(object sender, EventArgs e)
         {
-            string ColumnID = dbMainClass.getId("UNIT");
+            string ColumnID = dbMainClass.getUniqueID("UNIT");
             txtUnitId.Text = ColumnID;   
         }
 
