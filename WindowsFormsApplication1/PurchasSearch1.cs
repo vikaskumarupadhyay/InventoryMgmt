@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class PurchasSearch : Form
+    public partial class PurchasSearch1 : Form
     {
-        public PurchasSearch()
+        public PurchasSearch1()
         {
             InitializeComponent();
         }

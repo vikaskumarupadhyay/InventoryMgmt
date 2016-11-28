@@ -134,7 +134,7 @@ namespace WindowsFormsApplication1
 
         private void purchaseToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            PurchasSearch f13 = new PurchasSearch();
+            PurchasSearch1 f13 = new PurchasSearch1();
             f13.Show();
             f13.MdiParent = this;
         }

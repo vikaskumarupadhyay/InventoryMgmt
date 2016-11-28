@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class PurchasSearch
+    partial class PurchasSearch1
     {
         /// <summary>
         /// Required designer variable.
