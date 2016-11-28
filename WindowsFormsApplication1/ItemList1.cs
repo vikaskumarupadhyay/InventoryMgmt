@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class ItemList : Form
+    public partial class ItemList1 : Form
     {
-        public ItemList()
+        public ItemList1()
         {
             InitializeComponent();
         }

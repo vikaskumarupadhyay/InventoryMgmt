@@ -94,11 +94,11 @@
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
     <Compile Include="ItemDetails.cs" />
-    <Compile Include="ItemList.cs">
+    <Compile Include="ItemList1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ItemList.Designer.cs">
-      <DependentUpon>ItemList.cs</DependentUpon>
+    <Compile Include="ItemList1.Designer.cs">
+      <DependentUpon>ItemList1.cs</DependentUpon>
     </Compile>
     <Compile Include="Purchase\PurchaseDetails.cs" />
     <Compile Include="salessearch.cs">
@@ -175,11 +175,11 @@
     <Compile Include="Unit.Designer.cs">
       <DependentUpon>Unit.cs</DependentUpon>
     </Compile>
-    <Compile Include="VendorList.cs">
+    <Compile Include="VendorList1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VendorList.Designer.cs">
-      <DependentUpon>VendorList.cs</DependentUpon>
+    <Compile Include="VendorList1.Designer.cs">
+      <DependentUpon>VendorList1.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Customer list.resx">
       <DependentUpon>Customer list.cs</DependentUpon>
@@ -206,8 +206,8 @@
     <EmbeddedResource Include="salessearch.resx">
       <DependentUpon>salessearch.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ItemList.resx">
-      <DependentUpon>ItemList.cs</DependentUpon>
+    <EmbeddedResource Include="ItemList1.resx">
+      <DependentUpon>ItemList1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PurchasSearch1.resx">
       <DependentUpon>PurchasSearch1.cs</DependentUpon>
@@ -260,13 +260,12 @@
     <EmbeddedResource Include="Unit.resx">
       <DependentUpon>Unit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VendorList.resx">
-      <DependentUpon>VendorList.cs</DependentUpon>
+    <EmbeddedResource Include="VendorList1.resx">
+      <DependentUpon>VendorList1.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

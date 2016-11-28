@@ -141,14 +141,14 @@ namespace WindowsFormsApplication1
 
         private void vendorListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            VendorList f14 = new VendorList();
+            VendorList1 f14 = new VendorList1();
             f14.Show();
             f14.MdiParent = this;
         }
 
         private void itemToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            ItemList f15 = new ItemList();
+            ItemList1 f15 = new ItemList1();
             f15.Show();
             f15.MdiParent = this;
         }

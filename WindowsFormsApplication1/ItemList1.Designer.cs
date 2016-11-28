@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class ItemList
+    partial class ItemList1
     {
         /// <summary>
         /// Required designer variable.

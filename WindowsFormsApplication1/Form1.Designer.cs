@@ -215,10 +215,7 @@
             this.purchaseToolStripMenuItem1.Name = "purchaseToolStripMenuItem1";
             this.purchaseToolStripMenuItem1.Size = new System.Drawing.Size(160, 22);
             this.purchaseToolStripMenuItem1.Text = "Purchase Search";
-<<<<<<< HEAD
-=======
             this.purchaseToolStripMenuItem1.Click += new System.EventHandler(this.purchaseToolStripMenuItem1_Click);
->>>>>>> Umesh_Work_with_Method_desc
             // 
             // salesToolStripMenuItem1
             // 
@@ -262,10 +259,7 @@
             this.customerToolStripMenuItem1.Name = "customerToolStripMenuItem1";
             this.customerToolStripMenuItem1.Size = new System.Drawing.Size(160, 22);
             this.customerToolStripMenuItem1.Text = "Customer List";
-<<<<<<< HEAD
             this.customerToolStripMenuItem1.Click += new System.EventHandler(this.customerToolStripMenuItem1_Click);
-=======
->>>>>>> Umesh_Work_with_Method_desc
             // 
             // helpToolStripMenuItem
             // 
