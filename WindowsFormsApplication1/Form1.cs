@@ -114,5 +114,22 @@ namespace WindowsFormsApplication1
             F5.Show();
             F5.MdiParent = this;
         }
+       
+
+        private void salesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            salessearch f = new salessearch();
+            f.Show();
+            f.MdiParent = this;
+        }
+
+        private void customerToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Customer_list f = new Customer_list();
+            f.Show();
+            f.MdiParent = this;
+        }
+
+    
     }
 }

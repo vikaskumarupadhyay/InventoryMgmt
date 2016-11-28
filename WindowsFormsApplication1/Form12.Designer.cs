@@ -80,6 +80,10 @@
             this.butselectpurchasedelivary = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.comserchvalue = new System.Windows.Forms.ComboBox();
+            this.txtsearchvalue = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridsalesinvoice)).BeginInit();
@@ -156,6 +160,7 @@
             this.textBox21.ReadOnly = true;
             this.textBox21.Size = new System.Drawing.Size(26, 21);
             this.textBox21.TabIndex = 57;
+            this.textBox21.TabStop = false;
             this.textBox21.Text = "%";
             this.textBox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -205,6 +210,7 @@
             this.txtdiscount.Name = "txtdiscount";
             this.txtdiscount.Size = new System.Drawing.Size(45, 21);
             this.txtdiscount.TabIndex = 53;
+            this.txtdiscount.TabStop = false;
             this.txtdiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox16
@@ -228,7 +234,7 @@
             this.gridsalesinvoice.Name = "gridsalesinvoice";
             this.gridsalesinvoice.Size = new System.Drawing.Size(818, 227);
             this.gridsalesinvoice.TabIndex = 0;
-            this.gridsalesinvoice.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.gridsalesinvoice.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesinvoice_CellDoubleClick);
             // 
             // groupBox3
             // 
@@ -258,6 +264,7 @@
             this.butRemoveItem.Name = "butRemoveItem";
             this.butRemoveItem.Size = new System.Drawing.Size(90, 33);
             this.butRemoveItem.TabIndex = 18;
+            this.butRemoveItem.TabStop = false;
             this.butRemoveItem.Text = "Remove Item";
             this.butRemoveItem.UseVisualStyleBackColor = true;
             this.butRemoveItem.Click += new System.EventHandler(this.butRemoveItem_Click);
@@ -270,6 +277,7 @@
             this.butAdditem.Name = "butAdditem";
             this.butAdditem.Size = new System.Drawing.Size(90, 33);
             this.butAdditem.TabIndex = 17;
+            this.butAdditem.TabStop = false;
             this.butAdditem.Text = "Add Item";
             this.butAdditem.UseVisualStyleBackColor = true;
             this.butAdditem.Click += new System.EventHandler(this.butAdditem_Click);
@@ -280,6 +288,7 @@
             this.txtammount.Name = "txtammount";
             this.txtammount.Size = new System.Drawing.Size(63, 21);
             this.txtammount.TabIndex = 10;
+            this.txtammount.TabStop = false;
             this.txtammount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label14
@@ -297,6 +306,7 @@
             this.txtquantity.Name = "txtquantity";
             this.txtquantity.Size = new System.Drawing.Size(59, 21);
             this.txtquantity.TabIndex = 8;
+            this.txtquantity.TabStop = false;
             this.txtquantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtquantity.TextChanged += new System.EventHandler(this.txtquantity_TextChanged);
             this.txtquantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtquantity_KeyPress);
@@ -316,6 +326,7 @@
             this.txtrate.Name = "txtrate";
             this.txtrate.Size = new System.Drawing.Size(61, 21);
             this.txtrate.TabIndex = 6;
+            this.txtrate.TabStop = false;
             this.txtrate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label12
@@ -333,6 +344,7 @@
             this.txtproductname.Name = "txtproductname";
             this.txtproductname.Size = new System.Drawing.Size(251, 21);
             this.txtproductname.TabIndex = 4;
+            this.txtproductname.TabStop = false;
             // 
             // butitembutton
             // 
@@ -392,7 +404,9 @@
             this.txtRefNo.Name = "txtRefNo";
             this.txtRefNo.Size = new System.Drawing.Size(117, 21);
             this.txtRefNo.TabIndex = 9;
+            this.txtRefNo.TabStop = false;
             this.txtRefNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRefNo.TextChanged += new System.EventHandler(this.txtRefNo_TextChanged);
             // 
             // label15
             // 
@@ -473,6 +487,7 @@
             this.txtcustfax.Name = "txtcustfax";
             this.txtcustfax.Size = new System.Drawing.Size(173, 21);
             this.txtcustfax.TabIndex = 14;
+            this.txtcustfax.TabStop = false;
             // 
             // label7
             // 
@@ -489,6 +504,7 @@
             this.txtcustmobile.Name = "txtcustmobile";
             this.txtcustmobile.Size = new System.Drawing.Size(200, 21);
             this.txtcustmobile.TabIndex = 12;
+            this.txtcustmobile.TabStop = false;
             // 
             // label6
             // 
@@ -516,6 +532,7 @@
             this.txtcustphone.Name = "txtcustphone";
             this.txtcustphone.Size = new System.Drawing.Size(187, 21);
             this.txtcustphone.TabIndex = 9;
+            this.txtcustphone.TabStop = false;
             // 
             // txtcustaddress
             // 
@@ -525,6 +542,7 @@
             this.txtcustaddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtcustaddress.Size = new System.Drawing.Size(572, 33);
             this.txtcustaddress.TabIndex = 8;
+            this.txtcustaddress.TabStop = false;
             // 
             // label5
             // 
@@ -550,6 +568,7 @@
             this.txtcustcompname.Name = "txtcustcompname";
             this.txtcustcompname.Size = new System.Drawing.Size(240, 21);
             this.txtcustcompname.TabIndex = 5;
+            this.txtcustcompname.TabStop = false;
             // 
             // txtcustname
             // 
@@ -557,6 +576,7 @@
             this.txtcustname.Name = "txtcustname";
             this.txtcustname.Size = new System.Drawing.Size(206, 21);
             this.txtcustname.TabIndex = 4;
+            this.txtcustname.TabStop = false;
             // 
             // txtCustcode
             // 
@@ -565,6 +585,7 @@
             this.txtCustcode.Size = new System.Drawing.Size(92, 21);
             this.txtCustcode.TabIndex = 3;
             this.txtCustcode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCustcode.TextChanged += new System.EventHandler(this.txtCustcode_TextChanged);
             // 
             // label3
             // 
@@ -613,6 +634,7 @@
             this.butselectpurchasedelivary.TabIndex = 50;
             this.butselectpurchasedelivary.Text = "Select Purchase Delivery";
             this.butselectpurchasedelivary.UseVisualStyleBackColor = true;
+            this.butselectpurchasedelivary.Click += new System.EventHandler(this.butselectpurchasedelivary_Click);
             // 
             // button5
             // 
@@ -627,21 +649,59 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.comserchvalue);
+            this.panel2.Controls.Add(this.txtsearchvalue);
+            this.panel2.Controls.Add(this.label17);
+            this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.dataGridView2);
-            this.panel2.Location = new System.Drawing.Point(15, 4);
+            this.panel2.Location = new System.Drawing.Point(15, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(831, 228);
+            this.panel2.Size = new System.Drawing.Size(831, 549);
             this.panel2.TabIndex = 52;
+            // 
+            // comserchvalue
+            // 
+            this.comserchvalue.FormattingEnabled = true;
+            this.comserchvalue.Location = new System.Drawing.Point(32, 33);
+            this.comserchvalue.Name = "comserchvalue";
+            this.comserchvalue.Size = new System.Drawing.Size(121, 21);
+            this.comserchvalue.TabIndex = 4;
+            // 
+            // txtsearchvalue
+            // 
+            this.txtsearchvalue.Location = new System.Drawing.Point(420, 33);
+            this.txtsearchvalue.Name = "txtsearchvalue";
+            this.txtsearchvalue.Size = new System.Drawing.Size(141, 20);
+            this.txtsearchvalue.TabIndex = 3;
+            this.txtsearchvalue.TextChanged += new System.EventHandler(this.txtsearchvalue_TextChanged);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(449, 9);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(84, 13);
+            this.label17.TabIndex = 2;
+            this.label17.Text = "searchcharector";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(29, 5);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(85, 13);
+            this.label16.TabIndex = 1;
+            this.label16.Text = "comsearchvalue";
             // 
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(32, 20);
+            this.dataGridView2.Location = new System.Drawing.Point(32, 104);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(780, 190);
+            this.dataGridView2.Size = new System.Drawing.Size(780, 406);
             this.dataGridView2.TabIndex = 0;
-            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
             // 
             // salesinvoice
             // 
@@ -671,6 +731,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
@@ -731,5 +792,9 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.ComboBox comserchvalue;
+        private System.Windows.Forms.TextBox txtsearchvalue;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
     }
 }

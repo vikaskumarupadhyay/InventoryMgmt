@@ -80,6 +80,10 @@
             this.ButSelectPurchaseOrder = new System.Windows.Forms.Button();
             this.butSaveButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtsearchvalue = new System.Windows.Forms.TextBox();
+            this.comsearchvalue = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.lblsearchvalue = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridsalesdelivary)).BeginInit();
@@ -103,9 +107,9 @@
             this.panel1.Controls.Add(this.txtDiscount);
             this.panel1.Controls.Add(this.textBox16);
             this.panel1.Controls.Add(this.gridsalesdelivary);
-            this.panel1.Location = new System.Drawing.Point(15, 238);
+            this.panel1.Location = new System.Drawing.Point(15, 226);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(828, 261);
+            this.panel1.Size = new System.Drawing.Size(828, 273);
             this.panel1.TabIndex = 37;
             // 
             // txtTotalAmmount
@@ -203,10 +207,11 @@
             // 
             this.txtDiscount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDiscount.Location = new System.Drawing.Point(418, 233);
+            this.txtDiscount.Location = new System.Drawing.Point(414, 233);
             this.txtDiscount.Name = "txtDiscount";
             this.txtDiscount.Size = new System.Drawing.Size(45, 21);
             this.txtDiscount.TabIndex = 42;
+            this.txtDiscount.TabStop = false;
             this.txtDiscount.Text = "0";
             this.txtDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -227,12 +232,12 @@
             // 
             this.gridsalesdelivary.AllowUserToAddRows = false;
             this.gridsalesdelivary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridsalesdelivary.Location = new System.Drawing.Point(3, 3);
+            this.gridsalesdelivary.Location = new System.Drawing.Point(3, -2);
             this.gridsalesdelivary.Name = "gridsalesdelivary";
-            this.gridsalesdelivary.Size = new System.Drawing.Size(818, 227);
+            this.gridsalesdelivary.Size = new System.Drawing.Size(826, 229);
             this.gridsalesdelivary.TabIndex = 0;
             this.gridsalesdelivary.TabStop = false;
-            this.gridsalesdelivary.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.gridsalesdelivary.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesdelivary_CellEndEdit);
             // 
             // groupBox3
             // 
@@ -262,6 +267,7 @@
             this.butRemoveItem.Name = "butRemoveItem";
             this.butRemoveItem.Size = new System.Drawing.Size(90, 33);
             this.butRemoveItem.TabIndex = 18;
+            this.butRemoveItem.TabStop = false;
             this.butRemoveItem.Text = "Remove Item";
             this.butRemoveItem.UseVisualStyleBackColor = true;
             this.butRemoveItem.Click += new System.EventHandler(this.butRemoveItem_Click);
@@ -274,6 +280,7 @@
             this.butAddItem.Name = "butAddItem";
             this.butAddItem.Size = new System.Drawing.Size(90, 33);
             this.butAddItem.TabIndex = 17;
+            this.butAddItem.TabStop = false;
             this.butAddItem.Text = "Add Item";
             this.butAddItem.UseVisualStyleBackColor = true;
             this.butAddItem.Click += new System.EventHandler(this.butAddItem_Click);
@@ -284,6 +291,7 @@
             this.txtAmmount.Name = "txtAmmount";
             this.txtAmmount.Size = new System.Drawing.Size(63, 21);
             this.txtAmmount.TabIndex = 10;
+            this.txtAmmount.TabStop = false;
             this.txtAmmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label14
@@ -301,6 +309,7 @@
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(59, 21);
             this.txtQuantity.TabIndex = 8;
+            this.txtQuantity.TabStop = false;
             this.txtQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtQuantity.TextChanged += new System.EventHandler(this.txtQuantity_TextChanged);
             this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
@@ -320,6 +329,7 @@
             this.txtRate.Name = "txtRate";
             this.txtRate.Size = new System.Drawing.Size(61, 21);
             this.txtRate.TabIndex = 6;
+            this.txtRate.TabStop = false;
             this.txtRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label12
@@ -337,6 +347,7 @@
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(251, 21);
             this.txtProductName.TabIndex = 4;
+            this.txtProductName.TabStop = false;
             // 
             // butitembutton
             // 
@@ -396,7 +407,9 @@
             this.txtRefNo.Name = "txtRefNo";
             this.txtRefNo.Size = new System.Drawing.Size(117, 21);
             this.txtRefNo.TabIndex = 9;
+            this.txtRefNo.TabStop = false;
             this.txtRefNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRefNo.TextChanged += new System.EventHandler(this.txtRefNo_TextChanged);
             // 
             // label15
             // 
@@ -476,6 +489,7 @@
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(173, 21);
             this.txtFax.TabIndex = 14;
+            this.txtFax.TabStop = false;
             // 
             // label7
             // 
@@ -492,6 +506,7 @@
             this.txtMobile.Name = "txtMobile";
             this.txtMobile.Size = new System.Drawing.Size(200, 21);
             this.txtMobile.TabIndex = 12;
+            this.txtMobile.TabStop = false;
             // 
             // label6
             // 
@@ -519,6 +534,7 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(187, 21);
             this.txtPhone.TabIndex = 9;
+            this.txtPhone.TabStop = false;
             // 
             // txtAddress
             // 
@@ -528,6 +544,7 @@
             this.txtAddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtAddress.Size = new System.Drawing.Size(572, 33);
             this.txtAddress.TabIndex = 8;
+            this.txtAddress.TabStop = false;
             // 
             // label5
             // 
@@ -553,6 +570,7 @@
             this.txtCompName.Name = "txtCompName";
             this.txtCompName.Size = new System.Drawing.Size(240, 21);
             this.txtCompName.TabIndex = 5;
+            this.txtCompName.TabStop = false;
             // 
             // txtCustomerName
             // 
@@ -560,6 +578,7 @@
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.Size = new System.Drawing.Size(206, 21);
             this.txtCustomerName.TabIndex = 4;
+            this.txtCustomerName.TabStop = false;
             // 
             // txtcustomercode
             // 
@@ -568,6 +587,7 @@
             this.txtcustomercode.Size = new System.Drawing.Size(92, 21);
             this.txtcustomercode.TabIndex = 3;
             this.txtcustomercode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtcustomercode.TextChanged += new System.EventHandler(this.txtcustomercode_TextChanged);
             // 
             // label3
             // 
@@ -631,21 +651,59 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.txtsearchvalue);
+            this.panel2.Controls.Add(this.comsearchvalue);
+            this.panel2.Controls.Add(this.label16);
+            this.panel2.Controls.Add(this.lblsearchvalue);
             this.panel2.Controls.Add(this.dataGridView2);
             this.panel2.Location = new System.Drawing.Point(12, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(834, 222);
+            this.panel2.Size = new System.Drawing.Size(834, 548);
             this.panel2.TabIndex = 43;
+            // 
+            // txtsearchvalue
+            // 
+            this.txtsearchvalue.Location = new System.Drawing.Point(425, 27);
+            this.txtsearchvalue.Name = "txtsearchvalue";
+            this.txtsearchvalue.Size = new System.Drawing.Size(173, 20);
+            this.txtsearchvalue.TabIndex = 4;
+            this.txtsearchvalue.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // comsearchvalue
+            // 
+            this.comsearchvalue.FormattingEnabled = true;
+            this.comsearchvalue.Location = new System.Drawing.Point(30, 27);
+            this.comsearchvalue.Name = "comsearchvalue";
+            this.comsearchvalue.Size = new System.Drawing.Size(121, 21);
+            this.comsearchvalue.TabIndex = 3;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(456, 5);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(39, 13);
+            this.label16.TabIndex = 2;
+            this.label16.Text = "search";
+            // 
+            // lblsearchvalue
+            // 
+            this.lblsearchvalue.AutoSize = true;
+            this.lblsearchvalue.Location = new System.Drawing.Point(27, 5);
+            this.lblsearchvalue.Name = "lblsearchvalue";
+            this.lblsearchvalue.Size = new System.Drawing.Size(114, 13);
+            this.lblsearchvalue.TabIndex = 1;
+            this.lblsearchvalue.Text = "searchcomboboxvalue";
             // 
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(9, 15);
+            this.dataGridView2.Location = new System.Drawing.Point(9, 54);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(816, 205);
+            this.dataGridView2.Size = new System.Drawing.Size(816, 472);
             this.dataGridView2.TabIndex = 0;
-            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
             // 
             // salesdelivary
             // 
@@ -677,6 +735,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
@@ -737,5 +796,9 @@
         private System.Windows.Forms.Button butSaveButton;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.TextBox txtsearchvalue;
+        private System.Windows.Forms.ComboBox comsearchvalue;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lblsearchvalue;
     }
 }
