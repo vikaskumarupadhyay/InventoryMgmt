@@ -68,11 +68,14 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnList = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+<<<<<<< HEAD
             this.butclose = new System.Windows.Forms.Button();
             this.butupdate = new System.Windows.Forms.Button();
             this.butaddrecord = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.searchvalue = new System.Windows.Forms.Label();
+=======
+>>>>>>> Umesh_Work_with_Method_desc
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.comserchvalue = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -478,6 +481,7 @@
             this.panel1.Size = new System.Drawing.Size(683, 512);
             this.panel1.TabIndex = 11;
             // 
+<<<<<<< HEAD
             // butclose
             // 
             this.butclose.Location = new System.Drawing.Point(266, 452);
@@ -533,6 +537,14 @@
             this.textBox1.Size = new System.Drawing.Size(193, 20);
             this.textBox1.TabIndex = 2;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+=======
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(354, 37);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(193, 20);
+            this.textBox1.TabIndex = 2;
+>>>>>>> Umesh_Work_with_Method_desc
             // 
             // comserchvalue
             // 
@@ -548,9 +560,14 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(5, 111);
             this.dataGridView1.Name = "dataGridView1";
+<<<<<<< HEAD
             this.dataGridView1.Size = new System.Drawing.Size(670, 335);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
+=======
+            this.dataGridView1.Size = new System.Drawing.Size(670, 375);
+            this.dataGridView1.TabIndex = 0;
+>>>>>>> Umesh_Work_with_Method_desc
             // 
             // Customer
             // 

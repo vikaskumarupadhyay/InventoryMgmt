@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -94,16 +94,31 @@
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
     <Compile Include="ItemDetails.cs" />
+    <Compile Include="ItemList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemList.Designer.cs">
+      <DependentUpon>ItemList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Purchase\PurchaseDetails.cs" />
+
     <Compile Include="salessearch.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="salessearch.Designer.cs">
       <DependentUpon>salessearch.cs</DependentUpon>
     </Compile>
+
+    <Compile Include="PurchasSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasSearch.Designer.cs">
+      <DependentUpon>PurchasSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vendor.cs">
       <SubType>Form</SubType>
     </Compile>
+
     <Compile Include="Vendor.Designer.cs">
       <DependentUpon>Vendor.cs</DependentUpon>
     </Compile>
@@ -163,9 +178,16 @@
     <Compile Include="Unit.Designer.cs">
       <DependentUpon>Unit.cs</DependentUpon>
     </Compile>
+    <Compile Include="VendorList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VendorList.Designer.cs">
+      <DependentUpon>VendorList.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Customer list.resx">
       <DependentUpon>Customer list.cs</DependentUpon>
     </EmbeddedResource>
+
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -182,11 +204,19 @@
       <DependentUpon>Form12.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="salessearch.resx">
       <DependentUpon>salessearch.cs</DependentUpon>
+    </EmbeddedResource>
+
+    <EmbeddedResource Include="ItemList.resx">
+      <DependentUpon>ItemList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchasSearch.resx">
+      <DependentUpon>PurchasSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vendor.resx">
       <DependentUpon>Vendor.cs</DependentUpon>
@@ -235,6 +265,9 @@
     </Compile>
     <EmbeddedResource Include="Unit.resx">
       <DependentUpon>Unit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VendorList.resx">
+      <DependentUpon>VendorList.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>
