@@ -132,6 +132,8 @@ using System.Configuration;
             return insertedRows;
         }
 
+              
+
 
         public int saveDetails(string InsertQuery1, string InsertQuery2, string InsertQuery3)
         {
@@ -186,7 +188,7 @@ using System.Configuration;
             return insertedRows;
         }
 
-        public int SaveDetails(List<string> insertquerycollection)
+        public int saveDetails(List<string> insertquerycollection)
         {
             int insertrows = 0;
             SqlTransaction trans = null;

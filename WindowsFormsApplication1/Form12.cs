@@ -214,12 +214,11 @@ namespace WindowsFormsApplication1
                          string txtQuantity = cellcollection[3].Value.ToString();
                          string txtAmount = cellcollection[4].Value.ToString();
                          string Orderid = c;
-
                          string query = "insert into customerorderdescriptions Values('" + Orderid + "','" + txtitemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
                          show.Add(query);
                      }
 
-                     int inserirow1 = d.SaveDetails(show);
+                     int inserirow1 = d.saveDetails(show);
                      if (inserirow1 > 0)
                      {
 

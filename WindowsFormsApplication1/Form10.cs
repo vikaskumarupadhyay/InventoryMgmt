@@ -281,7 +281,7 @@ namespace WindowsFormsApplication1
                         show.Add(query);
                     }
 
-                    int inserirow1 = d.SaveDetails(show);
+                    int inserirow1 = d.saveDetails(show);
                     if(inserirow1 > 0)
                     {
                         MessageBox.Show("details save successfully");

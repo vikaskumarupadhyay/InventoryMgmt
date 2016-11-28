@@ -24,6 +24,7 @@ namespace WindowsFormsApplication1
 
         private void PurchaseOrder_Load(object sender, EventArgs e)
         {
+            dtpDate.Value = DateTime.Now;
             panel2.Visible = false;
             SqlConnection con = dbMainClass.openConnection();
             string stlect = "select Orderid from VendorOrderDetails";
@@ -237,29 +238,35 @@ namespace WindowsFormsApplication1
         #region /////////// AddToList Clicked ///////////////
         private void btnAddItem_Click(object sender, EventArgs e)
         {
-            string qurry = "select CurrentQuantity from ItemQuantityDetail where ItemId='" + txtItemCode.Text + "'";
-            DataTable dt = dbMainClass.getDetailByQuery(qurry);
-            string id = "";
-            foreach (DataRow dr in dt.Rows)
-            {
-                id = dr["CurrentQuantity"].ToString();
-            }
+            //string qurry = "select CurrentQuantity from ItemQuantityDetail where ItemId='" + txtItemCode.Text + "'";
+            //DataTable dt = dbMainClass.getDetailByQuery(qurry);
+            //string id = "";
+            //foreach (DataRow dr in dt.Rows)
+            //{
+            //    id = dr["CurrentQuantity"].ToString();
+            //}
 
-            int curentQuntity = Convert.ToInt32(txtQuanity.Text);
-            int cuentQuantity = Convert.ToInt32(id);
-            if (cuentQuantity == 0)
+            //int curentQuntity = Convert.ToInt32(txtQuanity.Text);
+            //int cuentQuantity = Convert.ToInt32(id);
+            //if (cuentQuantity == 0)
+            //{
+            //    MessageBox.Show("now CurrentQuantity of deadt");
+            //    txtQuanity.Text = "";
+            //}
+            //else
+            //{
+            //    if (cuentQuantity < curentQuntity)
+            //    {
+            //        MessageBox.Show("now CurrentQuantity of deadt");
+            //    }
+            //    else
+            //    {
+            if (txtProductName.Text == "" && txtQuanity.Text == "")
             {
-                MessageBox.Show("now CurrentQuantity of deadt");
-                txtQuanity.Text = "";
+               // MessageBox.Show("please enter the ");
             }
             else
             {
-                if (cuentQuantity < curentQuntity)
-                {
-                    MessageBox.Show("now CurrentQuantity of deadt");
-                }
-                else
-                {
                     DataRow dr = addToCartTable.NewRow();
                     dr[0] = txtItemCode.Text.Trim();
                     dr[1] = txtProductName.Text.Trim();
@@ -280,7 +287,7 @@ namespace WindowsFormsApplication1
                     txtItemCode.Focus();
                 }
 
-            }
+            //}
         }
         #endregion
 
@@ -336,9 +343,18 @@ namespace WindowsFormsApplication1
         private void button1_Click(object sender, EventArgs e)
         {
             panel2.Visible = true;
-            string selectqurry = "select venderId,vName,vCompName,vAddress,vPhone,vMobile,vFax from VendorDetails";
+            string selectqurry = "select venderId,vName as NAME,vCompName as COMPNAME,vAddress as ADDRESS,vPhone as PHONE,vMobile as MOBILE,vFax as FAX from VendorDetails";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
-            dataGridView1.DataSource = dt;
+            List<string> ls = new List<string>();
+            DataColumnCollection d = dt.Columns;
+            for (int a = 1; a < d.Count; a++)
+            {
+                DataColumn dc = new DataColumn();
+                string b = d[a].ToString();
+                ls.Add(b);
+            }
+            comboBox1.DataSource = ls;
+           dataGridView1.DataSource = dt;
 
         }
 
@@ -368,10 +384,23 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //string selectqurry = "select itm.ItemName,itm.ItemCompName,itm.ItemDesc,itm.groupid,itm.Unitid,ipd.purChasePrice,ipd.SalesPrice,ipd.MrpPrice,ipd.Margin,iqd.OpeningQuantity,iqd.CurrentQuantity from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid";
+            //DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+            //List<string> ls = new List<string>();
+            
             counter = 1;
             panel2.Visible = true;
-            string selectqurry = "select ipd.ItemId,itd.ItemName,ipd.purChasePrice,ipd.MrpPrice,iqd.CurrentQuantity from ItemPriceDetail ipd join ItemDetails itd on ipd.ItemId=itd.ItemId join ItemQuantityDetail iqd on itd.ItemId=iqd.ItemId where iqd.CurrentQuantity>0";
+            string selectqurry = "select ipd.ItemId,itd.ItemName,ipd.purChasePrice,ipd.MrpPrice,iqd.OpeningQuantity, iqd.CurrentQuantity from ItemPriceDetail ipd join ItemDetails itd on ipd.ItemId=itd.ItemId join ItemQuantityDetail iqd on itd.ItemId=iqd.ItemId where iqd.CurrentQuantity>0";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+            DataColumnCollection d = dt.Columns;
+            List<string> ls = new List<string>();
+            for (int a = 1; a < d.Count; a++)
+            {
+                //DataColumn dc = new DataColumn();
+                string b = d[a].ToString();
+                ls.Add(b);
+            }
+            comboBox1.DataSource = ls;
             dataGridView1.DataSource = dt;
         }
         private void setDetails1(DataGridViewCellCollection cellCollection)
@@ -417,7 +446,7 @@ namespace WindowsFormsApplication1
 
                 int curentQuntity = Convert.ToInt32(que);
                 int cuentQuantity = Convert.ToInt32(id);
-                int lastQuantity = cuentQuantity - curentQuntity;
+                int lastQuantity = cuentQuantity + curentQuntity;
                 string id1 = lastQuantity.ToString();
                 string updateQurry = "update ItemQuantityDetail set CurrentQuantity='" + id1 + "'where ItemId='" + itid + "'";
                 int insertedRows2 = dbMainClass.saveDetails(updateQurry);
@@ -430,41 +459,52 @@ namespace WindowsFormsApplication1
                 int insertedRows = dbMainClass.saveDetails(insertqurry);
                 if (insertedRows > 0)
                 {
+                    DataGridViewRowCollection RowCollection = gridPurchaseOrder.Rows;
+                    List<string> sf = new List<string>();
+                    for (int a = 0; a < RowCollection.Count; a++)
+                    {
 
-                    MessageBox.Show("Details Saved Successfully");
+                        DataGridViewRow currentRow = RowCollection[a];
+                        DataGridViewCellCollection cellCollection = currentRow.Cells;
+                        string txtItemCod = cellCollection[0].Value.ToString();
+                        string txtRate = cellCollection[2].Value.ToString();
+                        string txtQuanit = cellCollection[3].Value.ToString();
+                        string txtAmoun = cellCollection[4].Value.ToString();
+                        string OrderID = txtSrNo.Text;
+                        string Query = "insert into VendorOrderDesc Values('" + OrderID + "','" + txtItemCod + "','" + txtRate + "','" + txtQuanit + "','" + txtAmoun + "')";
+                        //MessageBox.Show(Query);
+                        sf.Add(Query);
+                    }
+                    int insertedRows1 = dbMainClass.saveDetails(sf);
 
-                }
-                else
-                {
-                    MessageBox.Show("Details Not Saved Successfully");
-                }
+                    if (insertedRows1 > 0)
+                    {
+                        MessageBox.Show("Details Saved Successfully");
+                    }
 
-                DataGridViewRowCollection RowCollection = gridPurchaseOrder.Rows;
-                List<string> sf = new List<string>();
-                for (int a = 0; a < RowCollection.Count; a++)
-                {
+                    else
+                    {
+                        MessageBox.Show("Details Not Saved Successfully");
+                    }
 
-                    DataGridViewRow currentRow = RowCollection[a];
-                    DataGridViewCellCollection cellCollection = currentRow.Cells;
-                    string txtItemCod = cellCollection[0].Value.ToString();
-                    string txtRate = cellCollection[2].Value.ToString();
-                    string txtQuanit = cellCollection[3].Value.ToString();
-                    string txtAmoun = cellCollection[4].Value.ToString();
-                    string OrderID = txtSrNo.Text;
-                    string Query = "insert into VendorOrderDesc Values('" + OrderID + "','" + txtItemCod + "','" + txtRate + "','" + txtQuanit + "','" + txtAmoun + "')";
-                    //MessageBox.Show(Query);
-                    sf.Add(Query);
-                }
-                int insertedRows1 = dbMainClass.SaveDetails(sf);
-                if (insertedRows1 > 0)
-                {
-                    MessageBox.Show("Details Saved Successfully");
-                }
-                else
-                {
-                    MessageBox.Show("Details Not Saved Successfully");
                 }
             }
+            makeBlank();
+            int id2 = Convert.ToInt32(txtSrNo.Text);
+            int id3 = id2 + 1;
+            txtSrNo.Text = id3.ToString();
+
+        }
+        private void makeBlank()
+        {
+             txtVendorCode.Text = "V";
+            txtVendorName.Text = "";
+            txtVendorAddress.Text = "";
+            txtVendorCompanyName.Text = "";
+            txtVendorPhone.Text = "";
+            txtVendorMobile.Text = "";
+            txtVendorFax.Text = "";
+            gridPurchaseOrder.DataSource = "";
 
         }
 
@@ -496,6 +536,8 @@ namespace WindowsFormsApplication1
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            txtsearch.Text = "";
+            comboBox1.SelectedIndex = 0;
             if (counter == 0)
             {
                 panel2.Visible = false;
@@ -519,6 +561,25 @@ namespace WindowsFormsApplication1
         private void panel2_Paint_1(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void txtsearch_TextChanged(object sender, EventArgs e)
+        {
+            if (counter == 0)
+            {
+                string s = comboBox1.SelectedValue.ToString();
+                string m = "v" + s;
+                string selectQurry = "select venderId,vName as NAME,vCompName as COMPANYNAME,vAddress as ADDRESS,vPhone as PHONE,vMobile as MOBILE,vFax as FAX from VendorDetails where " + m + " like '" + txtsearch.Text + "%'";
+                DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
+                dataGridView1.DataSource = dt;
+            }
+            else if (counter == 1)
+            {
+                string s = comboBox1.SelectedValue.ToString();
+                string selectQurry = "select ipd.ItemId,itd.ItemName,ipd.purChasePrice,ipd.MrpPrice,iqd.OpeningQuantity, iqd.CurrentQuantity from ItemPriceDetail ipd join ItemDetails itd on ipd.ItemId=itd.ItemId join ItemQuantityDetail iqd on itd.ItemId=iqd.ItemId where " + s + " like '" + txtsearch.Text + "%'";
+                DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
+                dataGridView1.DataSource = dt;
+            }
         }
 
 
