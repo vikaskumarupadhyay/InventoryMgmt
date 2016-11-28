@@ -114,5 +114,26 @@ namespace WindowsFormsApplication1
             F5.Show();
             F5.MdiParent = this;
         }
+
+        private void purchaseToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            PurchasSearch f13 = new PurchasSearch();
+            f13.Show();
+            f13.MdiParent = this;
+        }
+
+        private void vendorListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VendorList f14 = new VendorList();
+            f14.Show();
+            f14.MdiParent = this;
+        }
+
+        private void itemToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ItemList f15 = new ItemList();
+            f15.Show();
+            f15.MdiParent = this;
+        }
     }
 }

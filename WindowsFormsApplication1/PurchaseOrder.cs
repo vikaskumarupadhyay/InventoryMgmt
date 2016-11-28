@@ -27,12 +27,8 @@ namespace WindowsFormsApplication1
             dtpDate.Value = DateTime.Now;
             panel2.Visible = false;
             SqlConnection con = dbMainClass.openConnection();
-            string stlect = "select Orderid from VendorOrderDetails";
-            SqlCommand cmd = new SqlCommand(stlect, con);
-            SqlDataAdapter sda = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            sda.Fill(ds);
-            DataTable dt = ds.Tables[0];
+            string stlect = "select  Orderid from VendorOrderDetails";
+            DataTable dt = dbMainClass.getDetailByQuery(stlect);
             string id = "";
             foreach (DataRow dr in dt.Rows)
             {

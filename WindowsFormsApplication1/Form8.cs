@@ -24,6 +24,8 @@ namespace WindowsFormsApplication1
 
         private void Form8_Load(object sender, EventArgs e)
         {
+            buttAddItem.Visible = false;
+            buttRemoveItem.Visible = false;
             panel2.Visible = false;
             dtpInvoiceDate.Value = DateTime.Now;
             string stlect = "select InvoiceId  from CustomerOrderInvoice";
@@ -326,31 +328,31 @@ namespace WindowsFormsApplication1
                     //string id1 = lastQuantity.ToString();
                     //string updateQurry = "update ItemQuantityDetail set CurrentQuantity='" + id1 + "'where ItemId='" + txtItemId.Text + "'";
                     //int insertedRows = dbMainClass.saveDetails(updateQurry);
-             if (txtproductName.Text==""&& txtQuentity.Text=="")
-                  {
-                    //MessageBox.Show("now CurrentQuantity of deadt");
-                  }
-                  else
-             {
-                    DataRow dr = addToCartTable.NewRow();
-                    dr[0] = txtItemId.Text.Trim();
-                    dr[1] = txtproductName.Text.Trim();
-                    dr[2] = txtRate.Text.Trim();
-                    dr[3] = txtQuentity.Text.Trim();
-                    dr[4] = txtAmount.Text.Trim();
-                    addToCartTable.Rows.Add(dr);
-                    dataGridView1.DataSource = addToCartTable;
-                    double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
-                    totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
-                    txtTotalAmount.Text= totalAmount.ToString();
+             //if (txtproductName.Text==""&& txtQuentity.Text=="")
+             //     {
+             //       //MessageBox.Show("now CurrentQuantity of deadt");
+             //     }
+             //     else
+             //{
+             //       DataRow dr = addToCartTable.NewRow();
+             //       dr[0] = txtItemId.Text.Trim();
+             //       dr[1] = txtproductName.Text.Trim();
+             //       dr[2] = txtRate.Text.Trim();
+             //       dr[3] = txtQuentity.Text.Trim();
+             //       dr[4] = txtAmount.Text.Trim();
+             //       addToCartTable.Rows.Add(dr);
+             //       dataGridView1.DataSource = addToCartTable;
+             //       double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
+             //       totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
+             //       txtTotalAmount.Text= totalAmount.ToString();
 
-                    txtItemId.Text = "I";
-                    txtproductName.Text = "";
-                    txtRate.Text = "";
-                    txtQuentity.Text = "";
-                    txtAmount.Text = "0.0";
-                    txtItemId.Focus();
-               }
+             //       txtItemId.Text = "I";
+             //       txtproductName.Text = "";
+             //       txtRate.Text = "";
+             //       txtQuentity.Text = "";
+             //       txtAmount.Text = "0.0";
+             //       txtItemId.Focus();
+             //  }
 
             //}
         }
@@ -365,22 +367,22 @@ namespace WindowsFormsApplication1
 
         private void buttRemoveItem_Click(object sender, EventArgs e)
         {
-             if (addToCartTable.Rows.Count > 0)
-            {
-                string Amount = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
-                double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
-                totalAmount -= Convert.ToDouble(Amount.Trim());
-                txtTotalAmount.Text = totalAmount.ToString();
-                int index = dataGridView1.SelectedRows[0].Index;
-                addToCartTable.Rows.RemoveAt(index);
+            // if (addToCartTable.Rows.Count > 0)
+            //{
+            //    string Amount = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
+            //    double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
+            //    totalAmount -= Convert.ToDouble(Amount.Trim());
+            //    txtTotalAmount.Text = totalAmount.ToString();
+            //    int index = dataGridView1.SelectedRows[0].Index;
+            //    addToCartTable.Rows.RemoveAt(index);
 
-                dataGridView1.DataSource = addToCartTable;
-                if (addToCartTable.Rows.Count == 0)
-                {
-                  txtTotalAmount.Text = "0.0";
-                    txtDiscount.Text = "0.0";
-                }
-            }
+            //    dataGridView1.DataSource = addToCartTable;
+            //    if (addToCartTable.Rows.Count == 0)
+            //    {
+            //      txtTotalAmount.Text = "0.0";
+            //        txtDiscount.Text = "0.0";
+            //    }
+            //}
 
         }
 
@@ -571,11 +573,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+     
         private void txtRef_TextChanged(object sender, EventArgs e)
         {
             int totel = 0;

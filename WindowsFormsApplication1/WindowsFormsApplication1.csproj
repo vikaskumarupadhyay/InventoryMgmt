@@ -81,7 +81,19 @@
       <DependentUpon>Form12.cs</DependentUpon>
     </Compile>
     <Compile Include="ItemDetails.cs" />
+    <Compile Include="ItemList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemList.Designer.cs">
+      <DependentUpon>ItemList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Purchase\PurchaseDetails.cs" />
+    <Compile Include="PurchasSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasSearch.Designer.cs">
+      <DependentUpon>PurchasSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vendor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +156,12 @@
     <Compile Include="Unit.Designer.cs">
       <DependentUpon>Unit.cs</DependentUpon>
     </Compile>
+    <Compile Include="VendorList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VendorList.Designer.cs">
+      <DependentUpon>VendorList.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -159,6 +177,12 @@
     <EmbeddedResource Include="Form12.resx">
       <DependentUpon>Form12.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemList.resx">
+      <DependentUpon>ItemList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchasSearch.resx">
+      <DependentUpon>PurchasSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vendor.resx">
       <DependentUpon>Vendor.cs</DependentUpon>
@@ -207,6 +231,9 @@
     </Compile>
     <EmbeddedResource Include="Unit.resx">
       <DependentUpon>Unit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VendorList.resx">
+      <DependentUpon>VendorList.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>
