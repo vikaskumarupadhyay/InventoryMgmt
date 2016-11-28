@@ -43,7 +43,7 @@ using System.Configuration;
                 }
                 else if (ColumnId == "" || ColumnId == null || ColumnId.ToUpper() =="NULL")
                 {
-                    ColumnId = TableName.Substring(0, 1) + "0001";
+                    ColumnId = TableName.Substring(0, 1) + "1";
                 }
                 else
                 {
@@ -258,10 +258,10 @@ using System.Configuration;
 
         private string getProcedureName(string TableName,string ProcedureName) 
         {
-           // string ProcedureName = "GETALLDATA";//Item
+              // string ProcedureName = "GETALLDATA";//Item
                                      //VENDOR
-            if (TableName != null && TableName != "")
-            {
+              if (TableName != null && TableName != "")
+              {
                 if (TableName.ToUpper().Contains("ITEM"))
                 {
                     ProcedureName = ProcedureName + "ITEM";

@@ -117,6 +117,8 @@ E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.res
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.salesorder.resources
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.salesdelivary.resources
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.salesinvoice.resources
+E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form2.resources
+E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.salessearch.resources
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.frmVendorDetails.resources
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Customer.resources
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Item.resources
@@ -131,3 +133,5 @@ E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Unit.reso
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Customer_list.resources

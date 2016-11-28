@@ -17,13 +17,30 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
         }
-
-
-        // Load Event 
         private void Customer_Load(object sender, EventArgs e)
         {
+
+            //DataTable dt = dbMainClass.getDetails("CustomerDetails");
+            List<string> ds = new List<string>();
+            ds.Add("Name");
+            ds.Add("COMPNAME");
+            ds.Add("ADDRESS");
+            ds.Add("CITY");
+            ds.Add("STATE");
+            ds.Add("ZIP");
+            ds.Add("COUNTRY");
+            ds.Add("EMAIL");
+            ds.Add("WEBADDRESS");
+            ds.Add("PHONE");
+            ds.Add("MOBILE");
+            ds.Add("FAX");
+            ds.Add("DESC");
+            ds.Add("OPENINGBALANCE");
+            ds.Add("CURRENTBALANCE");
+            comserchvalue.DataSource = ds;
+            
             panel1.Visible = false;
-            string Id = getId("CUST");
+            string Id = dbMainClass.getUniqueID("Customerdetail");
             txtCustCode.Text = Id;
 
             if (Id == "C0001") 
@@ -35,32 +52,26 @@ namespace WindowsFormsApplication1
                 btnList.Enabled = true;
             }
         }
-        // Close again click event
+     
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        // Save Button Click Event
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtCustName.Text))
-            {
-                MessageBox.Show("please enter your name");
-            }
-            else
-            {
+          
+
                 if (updateCounter == 0)
                 {
-                    string saveCommand1 = "insert into CustomerDetails values ('" + txtCustCode.Text + "','" + txtCustName.Text + "','" + txtCustCompName.Text + "','" + txtCustAdd.Text + "','" + txtCustCity.Text + "','" + txtCustState.Text + "','" + txtCustZip.Text + "','" + txtCustCountry.Text + "','" + txtCustEmail.Text + "','" + txtCustWebSite.Text + "','" + txtCustPhone.Text + "', '" + txtCustMobile.Text + "','" + txtCustFax.Text + "','" + txtCustDesc.Text + "')";
+                    string saveCommand1 = "insert into CustomerDetails values ('" + txtCustCode.Text + "','" + txtName.Text + "','" + txtCompnyName.Text + "','" + txtAddress.Text + "','" + txtCity.Text + "','" + txtState.Text + "','" + txtZIP.Text + "','" + txtCustCountry.Text + "','" + txtEMAILADDRESS.Text + "','" + txtWEBSITE.Text + "','" + txtTXTPHONE.Text + "', '" + txtMOBILE.Text + "','" + txtFAX.Text + "','" + txtDESCRIPTION.Text + "')";
 
-                    string saveCommand2 = "insert into CustomerAccountDetails values ('" + txtCustCode.Text + "','" + txtCustCode.Text + "','" + txtCustOpeningBal.Text + "','" + txtCustCurrentBalance.Text + "')";
+                    string saveCommand2 = "insert into CustomerAccountDetails values ('" + txtCustCode.Text + "','" + txtCustCode.Text + "','" + txtOPENINGBALANCE.Text + "','" + txtCURRENTBALANCE.Text + "')";
 
                     int insertedRows = dbMainClass.saveDetails(saveCommand1, saveCommand2);
                     if (insertedRows > 0)
                     {
                         btnList.Enabled = true;
-                        txtCustName.Focus();
+                        txtName.Focus();
                         MessageBox.Show("Details Saved Successfully");
 
                     }
@@ -71,13 +82,13 @@ namespace WindowsFormsApplication1
                 }
                 else if (updateCounter == 1)
                 {
-                    string updateCommand1 = "update  CustomerDetails  set  CustName='" + txtCustName.Text + "', CustCompName= '" + txtCustCompName.Text + "',CustAddress='" + txtCustAdd.Text + "',CustCity='" + txtCustCity.Text + "',CustState='" + txtCustState.Text + "',CustZip='" + txtCustZip.Text + "',CustCountry='" + txtCustCountry.Text + "',CustEmail='" + txtCustEmail.Text + "',CustWebAddress='" + txtCustWebSite.Text + "',CustPhone='" + txtCustPhone.Text + "', CustMobile='" + txtCustMobile.Text + "',CustFax='" + txtCustFax.Text + "',CustDesc='" + txtCustDesc.Text + "' where Custid='" + txtCustCode.Text + "'";
-                    string updateCommand2 = "update   CustomerAccountDetails set CustOpeningBalance='" + txtCustOpeningBal.Text + "',CustCurrentBalance='" + txtCustCurrentBalance.Text + "' where CustId='" + txtCustCode.Text + "'";
+                    string updateCommand1 = "update  CustomerDetails  set CustAddress='" + txtAddress.Text + "',CustPhone='" + txtTXTPHONE.Text + "', CustMobile='" + txtMOBILE.Text + "'";// CustName='" + txtName.Text + "', CustCompName= '" + txtCompnyName.Text + "',CustAddress='" + txtAddress.Text + "',CustCity='" + txtCity.Text + "',CustState='" + txtState.Text + "',CustZip='" + txtZIP.Text + "',CustCountry='" + txtCustCountry.Text + "',CustEmail='" + txtEMAILADDRESS.Text + "',CustWebAddress='" + txtWEBSITE.Text + "',CustPhone='" + txtTXTPHONE.Text + "', CustMobile='" + txtMOBILE.Text + "',CustFax='" + txtFAX.Text + "',CustDesc='" + txtDESCRIPTION.Text + "' where Custid='" + txtCustCode.Text + "'";
+                    string updateCommand2 = "update   CustomerAccountDetails setCustId='" + txtCustCode.Text + "'"; //CustOpeningBalance='" + txtOPENINGBALANCE.Text + "',CustCurrentBalance='" + txtCURRENTBALANCE.Text + "' where CustId='" + txtCustCode.Text + "'";
 
                     int updatedRows = dbMainClass.updateDetails(updateCommand1, updateCommand2);
                     if (updatedRows > 0)
                     {
-                        txtCustName.Focus();
+                        txtName.Focus();
                         MessageBox.Show("Details Updated Successfully");
                     }
                     else
@@ -86,11 +97,9 @@ namespace WindowsFormsApplication1
                     }
                     updateCounter = 0;
                 }
-                makeBlank();
-                string Id = getId("CUSTOMER");
+                makeblank();
+                string Id = dbMainClass.getUniqueID("CUSTOMER");
                 txtCustCode.Text = Id;
-
-            }
         }
         private string getId(string Table)
         {
@@ -118,22 +127,22 @@ namespace WindowsFormsApplication1
         {
 
             txtCustCode.Text = "";
-            txtCustName.Text = "";
-            txtCustCompName.Text = "";
-            txtCustAdd.Text = "";
-            txtCustCity.Text = "";
-            txtCustState.Text = "";
+            txtName.Text = "";
+            txtCompnyName.Text = "";
+            txtAddress.Text = "";
+            txtCity.Text = "";
+            txtState.Text = "";
             txtCustCountry.Text = "";
-            txtCustZip.Text = "";
-            txtCustEmail.Text = "";
-            txtCustWebSite.Text = "";
-            txtCustPhone.Text = "";
-            txtCustMobile.Text = "";
-            txtCustFax.Text = "";
-            txtCustDesc.Text = "";
+            txtZIP.Text = "";
+            txtEMAILADDRESS.Text = "";
+            txtWEBSITE.Text = "";
+            txtTXTPHONE.Text = "";
+            txtMOBILE.Text = "";
+            txtFAX.Text = "";
+            txtDESCRIPTION.Text = "";
 
-            txtCustOpeningBal.Text = "0";
-            txtCustCurrentBalance.Text = "0";
+            txtOPENINGBALANCE.Text = "0";
+            txtCURRENTBALANCE.Text = "0";
             txtCustCode.Text = "";
             txtCustCode.Text = "";
 
@@ -173,38 +182,27 @@ namespace WindowsFormsApplication1
             try
             {
                 txtCustCode.Text = cellCollection[0].Value.ToString();
-                txtCustName.Text = cellCollection[1].Value.ToString();
-                txtCustCompName.Text = cellCollection[2].Value.ToString();
-                txtCustAdd.Text = cellCollection[3].Value.ToString();
-                txtCustCity.Text = cellCollection[4].Value.ToString();
-                txtCustState.Text = cellCollection[5].Value.ToString();
+                txtName.Text = cellCollection[1].Value.ToString();
+                txtCompnyName.Text = cellCollection[2].Value.ToString();
+                txtAddress.Text = cellCollection[3].Value.ToString();
+                txtCity.Text = cellCollection[4].Value.ToString();
+                txtState.Text = cellCollection[5].Value.ToString();
+                txtZIP.Text = cellCollection[6].Value.ToString();
                 txtCustCountry.Text = cellCollection[7].Value.ToString();
-                txtCustZip.Text = cellCollection[6].Value.ToString();
-                txtCustEmail.Text = cellCollection[8].Value.ToString();
-                txtCustWebSite.Text = cellCollection[9].Value.ToString();
-                txtCustPhone.Text = cellCollection[10].Value.ToString();
-                txtCustMobile.Text = cellCollection[11].Value.ToString();
-                txtCustFax.Text = cellCollection[12].Value.ToString();
-                txtCustDesc.Text = cellCollection[13].Value.ToString();
-
-                txtCustOpeningBal.Text = cellCollection[14].Value.ToString();
-                txtCustCurrentBalance.Text = cellCollection[15].Value.ToString();
+                txtEMAILADDRESS.Text = cellCollection[8].Value.ToString();
+                txtWEBSITE.Text = cellCollection[9].Value.ToString();
+                txtTXTPHONE.Text = cellCollection[10].Value.ToString();
+                txtMOBILE.Text = cellCollection[11].Value.ToString();
+                txtFAX.Text = cellCollection[12].Value.ToString();
+                txtDESCRIPTION.Text = cellCollection[13].Value.ToString();
+                txtOPENINGBALANCE.Text = cellCollection[14].Value.ToString();
+                txtCURRENTBALANCE.Text = cellCollection[15].Value.ToString();
             }
             catch (Exception ex)
             {
 
             }
 
-        }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            DataGridViewCellCollection cellCollection = dataGridView1.SelectedRows[0].Cells;
-            setDetails(cellCollection);
-            panel1.Visible = false;
-            //panel2.Visible = false;
-            //    btnVenderSave.Text = "Update";
-            updateCounter = 1;
         }
 
         private void btnCloseAgain_Click(object sender, EventArgs e)
@@ -215,16 +213,6 @@ namespace WindowsFormsApplication1
         private void btnNewRecord_Click(object sender, EventArgs e)
         {
             panel1.Visible = false;
-        }
-
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            DataGridViewCellCollection cellCollection = dataGridView1.SelectedRows[0].Cells;
-            setDetails(cellCollection);
-            panel1.Visible = false;
-            //panel2.Visible = false;
-            //    btnVenderSave.Text = "Update";
-            updateCounter = 1;
         }
 
         private void txtCustPhone_KeyPress(object sender, KeyPressEventArgs e)
@@ -267,22 +255,83 @@ namespace WindowsFormsApplication1
 
         private void txtCustOpeningBal_TextChanged(object sender, EventArgs e)
         {
-            if (txtCustOpeningBal.Text == " ")
+            if (txtOPENINGBALANCE.Text == " ")
             {
-                txtCustCurrentBalance.Text = " ";
+                txtCURRENTBALANCE.Text = " ";
             }
             else
             {
-                string v = txtCustOpeningBal.Text;
-                txtCustCurrentBalance.Text = v;
+                string v = txtOPENINGBALANCE.Text;
+                txtCURRENTBALANCE.Text = v;
             }
         }
 
-        private void searchcplumnname_SelectedIndexChanged(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            string selectquery = "select * from CustomerDetails";
-          
+           string s= comserchvalue.SelectedValue.ToString();
+           string val = "Cust"+s;
+           string selectQuery = "select cd.custid,cd.CustName,cd.CustCompName,cd.CustAddress,cd.CustCity,cd.CustState,cd.CustZip,cd.CustCountry,cd.CustEmail,cd.CustWebAddress,cd.CustPhone,cd.CustMobile,cd.CustFax,cd.CustDesc,cad.CustOpeningBalance,cad.CustCurrentBalance from CustomerDetails cd join CustomerAccountDetails cad on cd.CustId=cad.CustId  where " +val + " like '" + textBox1.Text + "%'";
+            DataTable dt = dbMainClass.getDetailByQuery(selectQuery);
+            dataGridView1.DataSource = dt;
+
         }
+
+        private void butaddrecord_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+        }
+
+        private void butupdate_Click(object sender, EventArgs e)
+        {
+            DataGridViewCellCollection cellcollection = dataGridView1.Rows[0].Cells;
+            setDetails(cellcollection);
+            panel1.Visible = false;
+            updateCounter = 1;
+        }
+
+        private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            textBox1.Text = "";
+            comserchvalue.SelectedIndex = 0;
+            DataGridViewCellCollection cellCollection = dataGridView1.Rows[e.RowIndex].Cells;
+            setDetails(cellCollection);
+            panel1.Visible = false;
+            updateCounter = 1;
+           
+        }
+
+        private void butclose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void makeblank()
+        {
+
+            txtCustCode.Text = "";
+            txtName.Text = "";
+            txtCompnyName.Text = "";
+            txtAddress.Text = "";
+            txtCity.Text = "";
+            txtState.Text = "";
+            txtCustCountry.Text = "";
+            txtZIP.Text = "";
+            txtEMAILADDRESS.Text = "";
+            txtWEBSITE.Text = "";
+            txtTXTPHONE.Text = "";
+            txtMOBILE.Text = "";
+            txtFAX.Text = "";
+            txtDESCRIPTION.Text= "";
+
+            txtOPENINGBALANCE.Text = "0";
+            txtCURRENTBALANCE.Text= "0";
+
+            txtCustCode.Text = "";
+            txtCustCode.Text= "";
+
+        }
+
+
+      
 
     }
 }

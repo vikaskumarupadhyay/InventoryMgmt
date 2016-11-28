@@ -121,7 +121,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Vendor Details";
-           // this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // txtVenderDesc
             // 
@@ -477,10 +476,11 @@
             this.panel1.Controls.Add(this.btnUpdate);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(0, 467);
+            this.panel1.Location = new System.Drawing.Point(0, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(700, 40);
+            this.panel1.Size = new System.Drawing.Size(700, 513);
             this.panel1.TabIndex = 7;
+           // this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // button3
             // 
