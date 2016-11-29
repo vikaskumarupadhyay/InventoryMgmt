@@ -80,6 +80,7 @@
             this.butselectpurchasedelivary = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.comserchvalue = new System.Windows.Forms.ComboBox();
             this.txtsearchvalue = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -324,6 +325,7 @@
             // 
             this.txtrate.Location = new System.Drawing.Point(400, 35);
             this.txtrate.Name = "txtrate";
+            this.txtrate.ReadOnly = true;
             this.txtrate.Size = new System.Drawing.Size(61, 21);
             this.txtrate.TabIndex = 6;
             this.txtrate.TabStop = false;
@@ -342,6 +344,7 @@
             // 
             this.txtproductname.Location = new System.Drawing.Point(143, 35);
             this.txtproductname.Name = "txtproductname";
+            this.txtproductname.ReadOnly = true;
             this.txtproductname.Size = new System.Drawing.Size(251, 21);
             this.txtproductname.TabIndex = 4;
             this.txtproductname.TabStop = false;
@@ -364,6 +367,7 @@
             this.txtitemcode.Size = new System.Drawing.Size(92, 21);
             this.txtitemcode.TabIndex = 2;
             this.txtitemcode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtitemcode.TextChanged += new System.EventHandler(this.txtitemcode_TextChanged);
             // 
             // label11
             // 
@@ -485,6 +489,7 @@
             // 
             this.txtcustfax.Location = new System.Drawing.Point(422, 130);
             this.txtcustfax.Name = "txtcustfax";
+            this.txtcustfax.ReadOnly = true;
             this.txtcustfax.Size = new System.Drawing.Size(173, 21);
             this.txtcustfax.TabIndex = 14;
             this.txtcustfax.TabStop = false;
@@ -502,6 +507,7 @@
             // 
             this.txtcustmobile.Location = new System.Drawing.Point(216, 130);
             this.txtcustmobile.Name = "txtcustmobile";
+            this.txtcustmobile.ReadOnly = true;
             this.txtcustmobile.Size = new System.Drawing.Size(200, 21);
             this.txtcustmobile.TabIndex = 12;
             this.txtcustmobile.TabStop = false;
@@ -530,6 +536,7 @@
             // 
             this.txtcustphone.Location = new System.Drawing.Point(23, 130);
             this.txtcustphone.Name = "txtcustphone";
+            this.txtcustphone.ReadOnly = true;
             this.txtcustphone.Size = new System.Drawing.Size(187, 21);
             this.txtcustphone.TabIndex = 9;
             this.txtcustphone.TabStop = false;
@@ -539,6 +546,7 @@
             this.txtcustaddress.Location = new System.Drawing.Point(23, 76);
             this.txtcustaddress.Multiline = true;
             this.txtcustaddress.Name = "txtcustaddress";
+            this.txtcustaddress.ReadOnly = true;
             this.txtcustaddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtcustaddress.Size = new System.Drawing.Size(572, 33);
             this.txtcustaddress.TabIndex = 8;
@@ -566,6 +574,7 @@
             // 
             this.txtcustcompname.Location = new System.Drawing.Point(355, 34);
             this.txtcustcompname.Name = "txtcustcompname";
+            this.txtcustcompname.ReadOnly = true;
             this.txtcustcompname.Size = new System.Drawing.Size(240, 21);
             this.txtcustcompname.TabIndex = 5;
             this.txtcustcompname.TabStop = false;
@@ -574,6 +583,7 @@
             // 
             this.txtcustname.Location = new System.Drawing.Point(143, 34);
             this.txtcustname.Name = "txtcustname";
+            this.txtcustname.ReadOnly = true;
             this.txtcustname.Size = new System.Drawing.Size(206, 21);
             this.txtcustname.TabIndex = 4;
             this.txtcustname.TabStop = false;
@@ -649,15 +659,26 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.comserchvalue);
             this.panel2.Controls.Add(this.txtsearchvalue);
             this.panel2.Controls.Add(this.label17);
             this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.dataGridView2);
-            this.panel2.Location = new System.Drawing.Point(15, 12);
+            this.panel2.Location = new System.Drawing.Point(15, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(831, 549);
+            this.panel2.Size = new System.Drawing.Size(831, 591);
             this.panel2.TabIndex = 52;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(32, 529);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Back";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // comserchvalue
             // 
@@ -708,7 +729,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(858, 564);
+            this.ClientSize = new System.Drawing.Size(858, 626);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.butclose);
             this.Controls.Add(this.butselectpurchasedelivary);
@@ -796,5 +817,6 @@
         private System.Windows.Forms.TextBox txtsearchvalue;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button button1;
     }
 }

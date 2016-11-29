@@ -327,6 +327,7 @@
             // 
             this.txtRate.Location = new System.Drawing.Point(400, 34);
             this.txtRate.Name = "txtRate";
+            this.txtRate.ReadOnly = true;
             this.txtRate.Size = new System.Drawing.Size(61, 21);
             this.txtRate.TabIndex = 6;
             this.txtRate.TabStop = false;
@@ -345,6 +346,7 @@
             // 
             this.txtProductName.Location = new System.Drawing.Point(143, 35);
             this.txtProductName.Name = "txtProductName";
+            this.txtProductName.ReadOnly = true;
             this.txtProductName.Size = new System.Drawing.Size(251, 21);
             this.txtProductName.TabIndex = 4;
             this.txtProductName.TabStop = false;
@@ -468,6 +470,7 @@
             // 
             this.txtcustfax.Location = new System.Drawing.Point(422, 130);
             this.txtcustfax.Name = "txtcustfax";
+            this.txtcustfax.ReadOnly = true;
             this.txtcustfax.Size = new System.Drawing.Size(173, 21);
             this.txtcustfax.TabIndex = 14;
             this.txtcustfax.TabStop = false;
@@ -485,6 +488,7 @@
             // 
             this.txtcustmobile.Location = new System.Drawing.Point(216, 130);
             this.txtcustmobile.Name = "txtcustmobile";
+            this.txtcustmobile.ReadOnly = true;
             this.txtcustmobile.Size = new System.Drawing.Size(200, 21);
             this.txtcustmobile.TabIndex = 12;
             this.txtcustmobile.TabStop = false;
@@ -513,6 +517,7 @@
             // 
             this.txtcustphone.Location = new System.Drawing.Point(23, 130);
             this.txtcustphone.Name = "txtcustphone";
+            this.txtcustphone.ReadOnly = true;
             this.txtcustphone.Size = new System.Drawing.Size(187, 21);
             this.txtcustphone.TabIndex = 9;
             this.txtcustphone.TabStop = false;
@@ -522,6 +527,7 @@
             this.txtcustaddress.Location = new System.Drawing.Point(23, 76);
             this.txtcustaddress.Multiline = true;
             this.txtcustaddress.Name = "txtcustaddress";
+            this.txtcustaddress.ReadOnly = true;
             this.txtcustaddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtcustaddress.Size = new System.Drawing.Size(572, 33);
             this.txtcustaddress.TabIndex = 8;
@@ -549,6 +555,7 @@
             // 
             this.txtcustcompname.Location = new System.Drawing.Point(355, 34);
             this.txtcustcompname.Name = "txtcustcompname";
+            this.txtcustcompname.ReadOnly = true;
             this.txtcustcompname.Size = new System.Drawing.Size(240, 21);
             this.txtcustcompname.TabIndex = 5;
             this.txtcustcompname.TabStop = false;
@@ -557,6 +564,7 @@
             // 
             this.txtcustname.Location = new System.Drawing.Point(143, 34);
             this.txtcustname.Name = "txtcustname";
+            this.txtcustname.ReadOnly = true;
             this.txtcustname.Size = new System.Drawing.Size(206, 21);
             this.txtcustname.TabIndex = 4;
             this.txtcustname.TabStop = false;
@@ -627,9 +635,9 @@
             this.panel2.Controls.Add(this.comsearchsalesvalue);
             this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.search);
-            this.panel2.Location = new System.Drawing.Point(6, 4);
+            this.panel2.Location = new System.Drawing.Point(6, 282);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(840, 548);
+            this.panel2.Size = new System.Drawing.Size(840, 270);
             this.panel2.TabIndex = 51;
             // 
             // butback

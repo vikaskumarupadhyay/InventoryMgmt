@@ -106,6 +106,65 @@ namespace WindowsFormsApplication1
 
         private void btnItemSave_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtItemProductName.Text))
+            {
+                MessageBox.Show("please select your itemname");
+            }
+            else
+            {
+                if(string.IsNullOrEmpty(txtItemCompName.Text))
+                {
+                    MessageBox.Show("please select your compnay name");
+                }
+                else
+                {
+                    if(string.IsNullOrEmpty(txtItemDesc.Text))
+                    {
+                        MessageBox.Show("please select your description");
+                    }
+                    else
+                    {
+                        if(string.IsNullOrEmpty(cmbItemItemGroup.Text))
+                        {
+                            MessageBox.Show("please select your item group");
+                        }
+                        else
+                        {
+                            if(string.IsNullOrEmpty(cmbItemUnit.Text))
+                            {
+                                MessageBox.Show("plese select your unit");
+                            }
+                            else
+                            {
+                                if(string.IsNullOrEmpty(txtItemPrice.Text))
+                                {
+                                    MessageBox.Show("please select your itemprice");
+                                }
+                                else
+                                {
+                                    if(string.IsNullOrEmpty(txtItemSalesPrice.Text))
+                                    {
+                                        MessageBox.Show("please select your sales price");
+                                   }
+                                    else
+                                    {
+                                        if(string.IsNullOrEmpty(txtItemMrp.Text))
+                                        {
+                                            MessageBox.Show("please select your mrp");
+                                    }
+                                        else
+                                        {
+                                            if(string.IsNullOrEmpty(txtItemMargin.Text))
+                                            {
+                                                MessageBox.Show("please select your margin");
+                                            }
+                                            else
+                                            {
+                                                if(string.IsNullOrEmpty(txtItemOpeningQuant.Text))
+                                                {
+                                                    MessageBox.Show("please select your opening quantity");
+                                                }
+                                            
             if (updatecounter == 0)
             {
                 if (cmbItemItemGroup.SelectedIndex != 0 && cmbItemUnit.SelectedIndex != 0)
@@ -160,6 +219,15 @@ namespace WindowsFormsApplication1
             makeBlank();
             string Id = dbMainClass.getUniqueID("ItemDetails");
             txtItemProductCode.Text = Id;
+        }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
         private void makeBlank()
         {

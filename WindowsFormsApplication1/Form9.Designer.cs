@@ -109,6 +109,7 @@
             // 
             this.txtFax.Location = new System.Drawing.Point(331, 130);
             this.txtFax.Name = "txtFax";
+            this.txtFax.ReadOnly = true;
             this.txtFax.Size = new System.Drawing.Size(150, 21);
             this.txtFax.TabIndex = 14;
             // 
@@ -125,6 +126,7 @@
             // 
             this.txtMobile.Location = new System.Drawing.Point(174, 130);
             this.txtMobile.Name = "txtMobile";
+            this.txtMobile.ReadOnly = true;
             this.txtMobile.Size = new System.Drawing.Size(151, 21);
             this.txtMobile.TabIndex = 12;
             // 
@@ -152,6 +154,7 @@
             // 
             this.txtPhone.Location = new System.Drawing.Point(33, 130);
             this.txtPhone.Name = "txtPhone";
+            this.txtPhone.ReadOnly = true;
             this.txtPhone.Size = new System.Drawing.Size(135, 21);
             this.txtPhone.TabIndex = 9;
             // 
@@ -160,6 +163,7 @@
             this.txtAddress.Location = new System.Drawing.Point(33, 76);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
+            this.txtAddress.ReadOnly = true;
             this.txtAddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtAddress.Size = new System.Drawing.Size(448, 33);
             this.txtAddress.TabIndex = 8;
@@ -186,6 +190,7 @@
             // 
             this.txtCompanyName.Location = new System.Drawing.Point(302, 34);
             this.txtCompanyName.Name = "txtCompanyName";
+            this.txtCompanyName.ReadOnly = true;
             this.txtCompanyName.Size = new System.Drawing.Size(179, 21);
             this.txtCompanyName.TabIndex = 5;
             // 
@@ -193,6 +198,7 @@
             // 
             this.txtVendorName.Location = new System.Drawing.Point(143, 34);
             this.txtVendorName.Name = "txtVendorName";
+            this.txtVendorName.ReadOnly = true;
             this.txtVendorName.Size = new System.Drawing.Size(153, 21);
             this.txtVendorName.TabIndex = 4;
             // 
@@ -447,9 +453,9 @@
             this.panel2.Controls.Add(this.txtSearch);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Location = new System.Drawing.Point(0, 103);
+            this.panel2.Location = new System.Drawing.Point(0, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(739, 355);
+            this.panel2.Size = new System.Drawing.Size(739, 455);
             this.panel2.TabIndex = 34;
             // 
             // comboBox1

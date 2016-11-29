@@ -80,6 +80,7 @@
             this.ButSelectPurchaseOrder = new System.Windows.Forms.Button();
             this.butSaveButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.txtsearchvalue = new System.Windows.Forms.TextBox();
             this.comsearchvalue = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -327,6 +328,7 @@
             // 
             this.txtRate.Location = new System.Drawing.Point(400, 35);
             this.txtRate.Name = "txtRate";
+            this.txtRate.ReadOnly = true;
             this.txtRate.Size = new System.Drawing.Size(61, 21);
             this.txtRate.TabIndex = 6;
             this.txtRate.TabStop = false;
@@ -345,6 +347,7 @@
             // 
             this.txtProductName.Location = new System.Drawing.Point(143, 35);
             this.txtProductName.Name = "txtProductName";
+            this.txtProductName.ReadOnly = true;
             this.txtProductName.Size = new System.Drawing.Size(251, 21);
             this.txtProductName.TabIndex = 4;
             this.txtProductName.TabStop = false;
@@ -367,6 +370,7 @@
             this.txtItemCode.Size = new System.Drawing.Size(92, 21);
             this.txtItemCode.TabIndex = 2;
             this.txtItemCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtItemCode.TextChanged += new System.EventHandler(this.txtItemCode_TextChanged);
             // 
             // label11
             // 
@@ -487,6 +491,7 @@
             // 
             this.txtFax.Location = new System.Drawing.Point(422, 130);
             this.txtFax.Name = "txtFax";
+            this.txtFax.ReadOnly = true;
             this.txtFax.Size = new System.Drawing.Size(173, 21);
             this.txtFax.TabIndex = 14;
             this.txtFax.TabStop = false;
@@ -504,6 +509,7 @@
             // 
             this.txtMobile.Location = new System.Drawing.Point(216, 130);
             this.txtMobile.Name = "txtMobile";
+            this.txtMobile.ReadOnly = true;
             this.txtMobile.Size = new System.Drawing.Size(200, 21);
             this.txtMobile.TabIndex = 12;
             this.txtMobile.TabStop = false;
@@ -532,6 +538,7 @@
             // 
             this.txtPhone.Location = new System.Drawing.Point(23, 130);
             this.txtPhone.Name = "txtPhone";
+            this.txtPhone.ReadOnly = true;
             this.txtPhone.Size = new System.Drawing.Size(187, 21);
             this.txtPhone.TabIndex = 9;
             this.txtPhone.TabStop = false;
@@ -541,6 +548,7 @@
             this.txtAddress.Location = new System.Drawing.Point(23, 76);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
+            this.txtAddress.ReadOnly = true;
             this.txtAddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtAddress.Size = new System.Drawing.Size(572, 33);
             this.txtAddress.TabIndex = 8;
@@ -568,6 +576,7 @@
             // 
             this.txtCompName.Location = new System.Drawing.Point(355, 34);
             this.txtCompName.Name = "txtCompName";
+            this.txtCompName.ReadOnly = true;
             this.txtCompName.Size = new System.Drawing.Size(240, 21);
             this.txtCompName.TabIndex = 5;
             this.txtCompName.TabStop = false;
@@ -576,6 +585,7 @@
             // 
             this.txtCustomerName.Location = new System.Drawing.Point(143, 34);
             this.txtCustomerName.Name = "txtCustomerName";
+            this.txtCustomerName.ReadOnly = true;
             this.txtCustomerName.Size = new System.Drawing.Size(206, 21);
             this.txtCustomerName.TabIndex = 4;
             this.txtCustomerName.TabStop = false;
@@ -651,6 +661,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.txtsearchvalue);
             this.panel2.Controls.Add(this.comsearchvalue);
             this.panel2.Controls.Add(this.label16);
@@ -660,6 +671,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(834, 548);
             this.panel2.TabIndex = 43;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(40, 501);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Back";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // txtsearchvalue
             // 
@@ -676,6 +697,7 @@
             this.comsearchvalue.Name = "comsearchvalue";
             this.comsearchvalue.Size = new System.Drawing.Size(121, 21);
             this.comsearchvalue.TabIndex = 3;
+            //this.comsearchvalue.SelectedIndexChanged += new System.EventHandler(this.comsearchvalue_SelectedIndexChanged);
             // 
             // label16
             // 
@@ -701,7 +723,7 @@
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(9, 54);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(816, 472);
+            this.dataGridView2.Size = new System.Drawing.Size(816, 424);
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
             // 
@@ -800,5 +822,6 @@
         private System.Windows.Forms.ComboBox comsearchvalue;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label lblsearchvalue;
+        private System.Windows.Forms.Button button1;
     }
 }
