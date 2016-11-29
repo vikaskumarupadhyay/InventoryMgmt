@@ -191,9 +191,9 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 30);
+            this.groupBox1.Location = new System.Drawing.Point(12, -17);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(659, 356);
+            this.groupBox1.Size = new System.Drawing.Size(659, 403);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer Details";
@@ -473,9 +473,9 @@
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.comserchvalue);
             this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(13, 5);
+            this.panel1.Location = new System.Drawing.Point(13, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(683, 512);
+            this.panel1.Size = new System.Drawing.Size(683, 514);
             this.panel1.TabIndex = 11;
             // 
             // butclose
@@ -533,7 +533,8 @@
             this.textBox1.Size = new System.Drawing.Size(193, 20);
             this.textBox1.TabIndex = 2;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-     // comserchvalue
+            // 
+            // comserchvalue
             // 
             this.comserchvalue.FormattingEnabled = true;
             this.comserchvalue.Location = new System.Drawing.Point(32, 45);

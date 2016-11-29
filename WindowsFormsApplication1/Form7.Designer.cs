@@ -325,6 +325,7 @@
             // 
             this.txtRate.Location = new System.Drawing.Point(400, 35);
             this.txtRate.Name = "txtRate";
+            this.txtRate.ReadOnly = true;
             this.txtRate.Size = new System.Drawing.Size(61, 21);
             this.txtRate.TabIndex = 6;
             this.txtRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -342,6 +343,7 @@
             // 
             this.txtProductName.Location = new System.Drawing.Point(143, 35);
             this.txtProductName.Name = "txtProductName";
+            this.txtProductName.ReadOnly = true;
             this.txtProductName.Size = new System.Drawing.Size(251, 21);
             this.txtProductName.TabIndex = 4;
             this.txtProductName.TextChanged += new System.EventHandler(this.txtProductName_TextChanged);
@@ -489,6 +491,7 @@
             // 
             this.txtFax.Location = new System.Drawing.Point(422, 130);
             this.txtFax.Name = "txtFax";
+            this.txtFax.ReadOnly = true;
             this.txtFax.Size = new System.Drawing.Size(173, 21);
             this.txtFax.TabIndex = 14;
             // 
@@ -505,6 +508,7 @@
             // 
             this.txtMobile.Location = new System.Drawing.Point(220, 130);
             this.txtMobile.Name = "txtMobile";
+            this.txtMobile.ReadOnly = true;
             this.txtMobile.Size = new System.Drawing.Size(200, 21);
             this.txtMobile.TabIndex = 12;
             // 
@@ -532,6 +536,7 @@
             // 
             this.txtPhone.Location = new System.Drawing.Point(23, 130);
             this.txtPhone.Name = "txtPhone";
+            this.txtPhone.ReadOnly = true;
             this.txtPhone.Size = new System.Drawing.Size(187, 21);
             this.txtPhone.TabIndex = 9;
             // 
@@ -540,6 +545,7 @@
             this.txtAddress.Location = new System.Drawing.Point(23, 76);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
+            this.txtAddress.ReadOnly = true;
             this.txtAddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtAddress.Size = new System.Drawing.Size(572, 33);
             this.txtAddress.TabIndex = 8;
@@ -566,6 +572,7 @@
             // 
             this.txtCompanyName.Location = new System.Drawing.Point(355, 34);
             this.txtCompanyName.Name = "txtCompanyName";
+            this.txtCompanyName.ReadOnly = true;
             this.txtCompanyName.Size = new System.Drawing.Size(240, 21);
             this.txtCompanyName.TabIndex = 5;
             // 
@@ -573,6 +580,7 @@
             // 
             this.txtVendorName.Location = new System.Drawing.Point(143, 34);
             this.txtVendorName.Name = "txtVendorName";
+            this.txtVendorName.ReadOnly = true;
             this.txtVendorName.Size = new System.Drawing.Size(206, 21);
             this.txtVendorName.TabIndex = 4;
             // 
@@ -654,9 +662,9 @@
             this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.txtSearch);
             this.panel2.Controls.Add(this.dataGridView2);
-            this.panel2.Location = new System.Drawing.Point(-1, -4);
+            this.panel2.Location = new System.Drawing.Point(-1, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(847, 553);
+            this.panel2.Size = new System.Drawing.Size(847, 537);
             this.panel2.TabIndex = 40;
             // 
             // textBox1
@@ -674,6 +682,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(146, 24);
             this.comboBox1.TabIndex = 4;
+           // this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label17
             // 

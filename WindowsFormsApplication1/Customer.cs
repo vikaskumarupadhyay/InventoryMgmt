@@ -59,8 +59,16 @@ namespace WindowsFormsApplication1
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-          
-
+            if (string.IsNullOrEmpty(txtAddress.Text))
+            {
+                MessageBox.Show("please enter your address");
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(txtTXTPHONE.Text) && string.IsNullOrEmpty(txtMOBILE.Text))
+                {
+                    MessageBox.Show("please enter your phone no and mo no");
+                }
                 if (updateCounter == 0)
                 {
                     string saveCommand1 = "insert into CustomerDetails values ('" + txtCustCode.Text + "','" + txtName.Text + "','" + txtCompnyName.Text + "','" + txtAddress.Text + "','" + txtCity.Text + "','" + txtState.Text + "','" + txtZIP.Text + "','" + txtCustCountry.Text + "','" + txtEMAILADDRESS.Text + "','" + txtWEBSITE.Text + "','" + txtTXTPHONE.Text + "', '" + txtMOBILE.Text + "','" + txtFAX.Text + "','" + txtDESCRIPTION.Text + "')";
@@ -100,6 +108,7 @@ namespace WindowsFormsApplication1
                 makeblank();
                 string Id = dbMainClass.getUniqueID("CUSTOMER");
                 txtCustCode.Text = Id;
+            }
         }
         private string getId(string Table)
         {

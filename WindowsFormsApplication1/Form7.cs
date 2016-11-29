@@ -424,17 +424,17 @@ namespace WindowsFormsApplication1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if (txtRef.Text =="")
+            if (txtRef.Text == "")
             {
                 string order = "select orderId from VendorOrderDetails";
                 DataTable dt1 = dbMainClass.getDetailByQuery(order);
                 string id2 = "";
-                foreach (DataRow dr in dt1.Rows)
+                foreach(DataRow dr in dt1.Rows)
                 {
                     id2 = dr[0].ToString();
                 }
                 int id3 = Convert.ToInt32(id2);
-                int id4 = id3+1;
+                int id4 = id3 + 1;
                 string insertqurry = "insert into VendorOrderDetails values('" + textVendercod.Text + "','" + txtdate.Text + "','" + txttotalAmount.Text + "')";
                 int insertedRows = dbMainClass.saveDetails(insertqurry);
                 if (insertedRows > 0)
@@ -711,6 +711,7 @@ namespace WindowsFormsApplication1
 
         }
 
+       
     }
         
 }

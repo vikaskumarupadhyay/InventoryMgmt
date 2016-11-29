@@ -76,7 +76,7 @@ namespace WindowsFormsApplication1
              }
              comserchvalue.DataSource = sd;
              counter = 1;
-             panel2.Visible = true;
+             panel2.Visible = false;
              string selectquery = "select i.Itemid,i.Itemname,ip.MrpPrice,iq.CurrentQuantity from itemdetails i join itempricedetail ip on i.itemid=ip.itemid join itemquantitydetail iq on ip.itemid=iq.itemid";
              DataTable dt = d.getDetailByQuery(selectquery);
              dataGridView2.DataSource = dt;
@@ -133,6 +133,7 @@ namespace WindowsFormsApplication1
              butAdditem.Visible = false;
              dtpdate.Value = DateTime.Now;
              txtCustcode.Text = "C";
+             txtitemcode.Text = "I";
              panel2.Visible = false;
              Purchase.PurchaseDetails purChaseDetailObj = new Purchase.PurchaseDetails();
              vendorDetails = purChaseDetailObj.GetVendorDetaisInDataTable();
@@ -472,6 +473,31 @@ namespace WindowsFormsApplication1
                 txttotalammount.Text= totel.ToString();
 
         }
+
+         private void button1_Click(object sender, EventArgs e)
+         {
+             panel2.Visible = false;
+         }
+
+         private void txtitemcode_TextChanged(object sender, EventArgs e)
+         {
+             string selectquery1 = "select i.ItemId,i.ItemName,ip.MrpPrice,iq.CurrentQuantity from ItemDetails i join ItemPriceDetail ip on i.ItemId=ip.ItemId join ItemQuantityDetail iq on ip.ItemId=iq.ItemId where i.ItemId='" + txtitemcode.Text + "'";
+             DataTable dt = d.getDetailByQuery(selectquery1);
+             if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
+             {
+                 foreach (DataRow dr in dt.Rows)
+                 {
+                     txtproductname.Text= dr[1].ToString();
+                     txtrate.Text = dr[2].ToString();
+                  
+                 }
+             }
+             else
+             {
+                txtproductname.Text = "";
+                 txtrate.Text= "";
+             }
+         }
          
 
         }

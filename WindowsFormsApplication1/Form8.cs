@@ -205,7 +205,7 @@ namespace WindowsFormsApplication1
         private void buttItem_Click(object sender, EventArgs e)
         {
             counter = 1;
-            panel2.Visible = true;
+            panel2.Visible = false;
             string selectqurry = "select ipd.ItemId,itd.ItemName,ipd.purChasePrice,ipd.MrpPrice,iqd.CurrentQuantity from ItemPriceDetail ipd join ItemDetails itd on ipd.ItemId=itd.ItemId join ItemQuantityDetail iqd on itd.ItemId=iqd.ItemId where CurrentQuantity>0 ";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             List<string> ls = new List<string>();

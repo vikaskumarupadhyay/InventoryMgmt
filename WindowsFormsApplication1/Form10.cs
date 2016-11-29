@@ -458,7 +458,6 @@ namespace WindowsFormsApplication1
                         txtcustname.Text = customername;
                         txtcustcompname.Text = customercompnayname;
                         txtcustaddress.Text = customeraddress;
-                        txtcustaddress.Text = customerphone;
                         txtcustphone.Text = customerphone;
                         txtcustmobile.Text = customermobile;
                         txtcustfax.Text = customerFax;

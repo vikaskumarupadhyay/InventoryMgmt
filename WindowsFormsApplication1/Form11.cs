@@ -134,6 +134,7 @@ namespace WindowsFormsApplication1
 
         private void salesdelivary_Load(object sender, EventArgs e)
         {
+            txtItemCode.Text = "I";
             dtpDate.Value = DateTime.Now;
             txtcustomercode.Text = "C";
             panel2.Visible = false;
@@ -551,6 +552,32 @@ namespace WindowsFormsApplication1
             int t = totalammount1 - totalq;
             txtTotalAmmount.Text = t.ToString();
             }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            panel2.Visible = false;
+        }
+
+        private void txtItemCode_TextChanged(object sender, EventArgs e)
+        {
+            string selectquery1 = "select i.ItemId,i.ItemName,ip.MrpPrice,iq.CurrentQuantity from ItemDetails i join ItemPriceDetail ip on i.ItemId=ip.ItemId join ItemQuantityDetail iq on ip.ItemId=iq.ItemId where i.ItemId='" + txtItemCode.Text + "'";
+            DataTable dt = d.getDetailByQuery(selectquery1);
+            if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    txtProductName.Text = dr[1].ToString();
+                    txtRate.Text = dr[2].ToString();
+
+                }
+            }
+            else
+            {
+                txtProductName.Text = "";
+                txtRate.Text = "";
+            }
+        }
+
         }
 
       

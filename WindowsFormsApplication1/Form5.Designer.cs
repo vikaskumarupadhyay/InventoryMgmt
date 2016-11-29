@@ -316,6 +316,7 @@
             // 
             this.txtfax.Location = new System.Drawing.Point(331, 130);
             this.txtfax.Name = "txtfax";
+            this.txtfax.ReadOnly = true;
             this.txtfax.Size = new System.Drawing.Size(150, 21);
             this.txtfax.TabIndex = 14;
             // 
@@ -332,6 +333,7 @@
             // 
             this.txtmobile.Location = new System.Drawing.Point(174, 130);
             this.txtmobile.Name = "txtmobile";
+            this.txtmobile.ReadOnly = true;
             this.txtmobile.Size = new System.Drawing.Size(151, 21);
             this.txtmobile.TabIndex = 12;
             // 
@@ -359,6 +361,7 @@
             // 
             this.txtphone.Location = new System.Drawing.Point(33, 130);
             this.txtphone.Name = "txtphone";
+            this.txtphone.ReadOnly = true;
             this.txtphone.Size = new System.Drawing.Size(135, 21);
             this.txtphone.TabIndex = 9;
             // 
@@ -367,6 +370,7 @@
             this.txtaddress.Location = new System.Drawing.Point(33, 76);
             this.txtaddress.Multiline = true;
             this.txtaddress.Name = "txtaddress";
+            this.txtaddress.ReadOnly = true;
             this.txtaddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtaddress.Size = new System.Drawing.Size(448, 33);
             this.txtaddress.TabIndex = 8;
@@ -393,6 +397,7 @@
             // 
             this.txtcustcompnayname.Location = new System.Drawing.Point(302, 34);
             this.txtcustcompnayname.Name = "txtcustcompnayname";
+            this.txtcustcompnayname.ReadOnly = true;
             this.txtcustcompnayname.Size = new System.Drawing.Size(179, 21);
             this.txtcustcompnayname.TabIndex = 5;
             // 
@@ -400,6 +405,7 @@
             // 
             this.txtcustname.Location = new System.Drawing.Point(143, 34);
             this.txtcustname.Name = "txtcustname";
+            this.txtcustname.ReadOnly = true;
             this.txtcustname.Size = new System.Drawing.Size(153, 21);
             this.txtcustname.TabIndex = 4;
             // 
@@ -446,9 +452,9 @@
             this.panel2.Controls.Add(this.combsearch);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Location = new System.Drawing.Point(5, 160);
+            this.panel2.Location = new System.Drawing.Point(5, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(734, 333);
+            this.panel2.Size = new System.Drawing.Size(734, 490);
             this.panel2.TabIndex = 42;
             // 
             // dataGridView2
@@ -475,7 +481,6 @@
             this.combsearch.Name = "combsearch";
             this.combsearch.Size = new System.Drawing.Size(121, 21);
             this.combsearch.TabIndex = 2;
-           // this.combsearch.SelectedIndexChanged += new System.EventHandler(this.combsearch_SelectedIndexChanged);
             // 
             // label10
             // 
