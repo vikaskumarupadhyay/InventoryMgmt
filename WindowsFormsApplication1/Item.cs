@@ -37,7 +37,7 @@ namespace WindowsFormsApplication1
             searchCalmn.DataSource = ls;
             panel1.Visible = false;
             string Id = dbMainClass.getUniqueID("ItemDetails");
-            txtItemProductCode.Text = Id;
+            txtItemProductCode.Text=Id;
             if (Id == "l0001")
             {
                 btnItemList.Enabled = false;
@@ -247,20 +247,22 @@ namespace WindowsFormsApplication1
         private string getId(string Table)
         {
             string Id = dbMainClass.getUniqueID("ItemDetails");
-
+            //string id1 = "";
             if (!Id.Contains("ERROR"))
             {
+
+
                 if (Id.Length == 2)
                 {
-                    Id = Id[0].ToString() + "000" + Id[1].ToString();
+                    Id = Id[0].ToString() + "" + Id[1].ToString();
                 }
-                else if (Id.Length == 3)
+                if (Id.Length == 3)
                 {
-                    Id = Id[0].ToString() + "00" + Id.Substring(1);
+                    Id = Id[0].ToString() + "" + Id.Substring(1);
                 }
                 else if (Id.Length == 4)
                 {
-                    Id = Id[0].ToString() + "0" + Id.Substring(1);
+                    Id = Id[0].ToString() + "" + Id.Substring(1);
                 }
 
             }

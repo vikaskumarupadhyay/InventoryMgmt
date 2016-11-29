@@ -484,11 +484,13 @@ namespace WindowsFormsApplication1
                     }
 
                 }
+                makeBlank();
+                int id2 = Convert.ToInt32(txtSrNo.Text);
+                int id3 = id2 + 1;
+                txtSrNo.Text = id3.ToString();
             }
-            makeBlank();
-            int id2 = Convert.ToInt32(txtSrNo.Text);
-            int id3 = id2 + 1;
-            txtSrNo.Text = id3.ToString();
+           
+            
 
         }
         private void makeBlank()
