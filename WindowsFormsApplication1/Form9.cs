@@ -457,7 +457,7 @@ namespace WindowsFormsApplication1
 
         private void ChaqueReado_Click(object sender, EventArgs e)
         {
-            Chaqueform ch = new Chaqueform(txtPayAmount);
+            ChaquePayment ch = new ChaquePayment(txtPayAmount);
             ch.Show();
         }
 

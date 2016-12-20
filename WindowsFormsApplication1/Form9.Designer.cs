@@ -49,7 +49,6 @@
             this.txtRefNo = new System.Windows.Forms.TextBox();
             this.txtSrNo = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.txtpayDate = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
@@ -77,6 +76,7 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.txtpayDate = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -250,11 +250,11 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtpayDate);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.txtRefNo);
             this.groupBox2.Controls.Add(this.txtSrNo);
             this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.txtpayDate);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(515, 3);
@@ -300,16 +300,6 @@
             this.label14.Size = new System.Drawing.Size(50, 15);
             this.label14.TabIndex = 12;
             this.label14.Text = "Sr. No. :";
-            // 
-            // txtpayDate
-            // 
-            this.txtpayDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtpayDate.Location = new System.Drawing.Point(71, 52);
-            this.txtpayDate.Name = "txtpayDate";
-            this.txtpayDate.Size = new System.Drawing.Size(117, 21);
-            this.txtpayDate.TabIndex = 11;
-            this.txtpayDate.TabStop = false;
-            this.txtpayDate.Value = new System.DateTime(2016, 12, 19, 0, 0, 0, 0);
             // 
             // label9
             // 
@@ -550,9 +540,9 @@
             this.panel2.Controls.Add(this.txtSearch);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Location = new System.Drawing.Point(0, 94);
+            this.panel2.Location = new System.Drawing.Point(0, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(739, 502);
+            this.panel2.Size = new System.Drawing.Size(739, 593);
             this.panel2.TabIndex = 34;
             // 
             // button2
@@ -611,6 +601,14 @@
             this.label8.Size = new System.Drawing.Size(71, 13);
             this.label8.TabIndex = 0;
             this.label8.Text = "SelectSearch";
+            // 
+            // txtpayDate
+            // 
+            this.txtpayDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txtpayDate.Location = new System.Drawing.Point(71, 58);
+            this.txtpayDate.Name = "txtpayDate";
+            this.txtpayDate.Size = new System.Drawing.Size(117, 21);
+            this.txtpayDate.TabIndex = 16;
             // 
             // Form9
             // 

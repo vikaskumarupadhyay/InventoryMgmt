@@ -137,8 +137,7 @@ D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Unit.reso
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.ItemList1.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.PurchasSearch1.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.VendorList1.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Chaqueform.resources
+D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.ChaquePayment.resources

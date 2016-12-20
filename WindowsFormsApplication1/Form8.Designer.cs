@@ -687,9 +687,9 @@
             this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.txtSearch);
             this.panel2.Controls.Add(this.dataGridView2);
-            this.panel2.Location = new System.Drawing.Point(12, -4);
+            this.panel2.Location = new System.Drawing.Point(12, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(834, 518);
+            this.panel2.Size = new System.Drawing.Size(834, 510);
             this.panel2.TabIndex = 19;
             // 
             // comboBox1

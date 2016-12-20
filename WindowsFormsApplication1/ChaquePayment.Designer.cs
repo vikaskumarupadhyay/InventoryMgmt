@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class Chaqueform
+    partial class ChaquePayment
     {
         /// <summary>
         /// Required designer variable.

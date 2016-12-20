@@ -9,16 +9,16 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class Chaqueform : Form
+    public partial class ChaquePayment : Form
     {
         DB_Main dbMain = new DB_Main();
        TextBox txtPaymentValue;
         public string Srno = "";
-        public Chaqueform()
+        public ChaquePayment()
         {
             InitializeComponent();
         }
-        public Chaqueform(TextBox txt)
+        public ChaquePayment(TextBox txt)
         {
             txtPaymentValue = txt;
             InitializeComponent();
