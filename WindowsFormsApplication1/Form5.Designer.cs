@@ -524,9 +524,9 @@
             this.panel2.Controls.Add(this.combsearch);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Location = new System.Drawing.Point(5, 160);
+            this.panel2.Location = new System.Drawing.Point(5, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(734, 424);
+            this.panel2.Size = new System.Drawing.Size(734, 581);
             this.panel2.TabIndex = 42;
             // 
             // dataGridView2

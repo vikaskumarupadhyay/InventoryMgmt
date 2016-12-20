@@ -184,7 +184,7 @@ namespace WindowsFormsApplication1
         }
         private void makeblank()
         {
-            txtcustomercode.Text = "";
+            txtcustomercode.Text = "C";
             txtCustomerName.Text = "";
             txtCompName.Text = "";
             txtAddress.Text = "";
@@ -350,7 +350,7 @@ namespace WindowsFormsApplication1
                     }
                 }
             }
-
+            makeblank();
            
                     }
      
@@ -616,6 +616,7 @@ namespace WindowsFormsApplication1
                 txtRate.Text = "";
             }
         }
+
 
         }
 

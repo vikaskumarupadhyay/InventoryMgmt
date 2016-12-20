@@ -231,7 +231,6 @@
             this.txtPanno.Name = "txtPanno";
             this.txtPanno.Size = new System.Drawing.Size(158, 21);
             this.txtPanno.TabIndex = 31;
-           // this.txtPanno.TextChanged += new System.EventHandler(this.txtPanno_TextChanged);
             this.txtPanno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPanno_KeyPress);
             // 
             // label20
@@ -535,9 +534,9 @@
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.comserchvalue);
             this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(13, 5);
+            this.panel1.Location = new System.Drawing.Point(13, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(683, 271);
+            this.panel1.Size = new System.Drawing.Size(683, 504);
             this.panel1.TabIndex = 11;
             // 
             // butclose

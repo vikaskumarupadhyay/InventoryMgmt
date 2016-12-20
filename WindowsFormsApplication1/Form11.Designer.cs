@@ -697,6 +697,7 @@
             this.comsearchvalue.Name = "comsearchvalue";
             this.comsearchvalue.Size = new System.Drawing.Size(121, 21);
             this.comsearchvalue.TabIndex = 3;
+            //this.comsearchvalue.SelectedIndexChanged += new System.EventHandler(this.comsearchvalue_SelectedIndexChanged);
             // 
             // label16
             // 
