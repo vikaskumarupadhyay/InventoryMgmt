@@ -28,7 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtTinNo = new System.Windows.Forms.TextBox();
+            this.txtPanNo = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.txtVenderDesc = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtVenderFax = new System.Windows.Forms.TextBox();
@@ -86,6 +95,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.txtTinNo);
+            this.groupBox1.Controls.Add(this.txtPanNo);
+            this.groupBox1.Controls.Add(this.label21);
+            this.groupBox1.Controls.Add(this.label20);
+            this.groupBox1.Controls.Add(this.label19);
             this.groupBox1.Controls.Add(this.txtVenderDesc);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.txtVenderFax);
@@ -117,14 +132,64 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 30);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(659, 356);
+            this.groupBox1.Size = new System.Drawing.Size(659, 405);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Vendor Details";
             // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(424, 303);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(149, 21);
+            this.textBox3.TabIndex = 33;
+            // 
+            // txtTinNo
+            // 
+            this.txtTinNo.Location = new System.Drawing.Point(247, 305);
+            this.txtTinNo.Name = "txtTinNo";
+            this.txtTinNo.Size = new System.Drawing.Size(167, 21);
+            this.txtTinNo.TabIndex = 32;
+            // 
+            // txtPanNo
+            // 
+            this.txtPanNo.Location = new System.Drawing.Point(46, 304);
+            this.txtPanNo.MaxLength = 10;
+            this.txtPanNo.Name = "txtPanNo";
+            this.txtPanNo.Size = new System.Drawing.Size(192, 21);
+            this.txtPanNo.TabIndex = 31;
+            this.txtPanNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPanNo_KeyPress);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(421, 285);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(48, 15);
+            this.label21.TabIndex = 30;
+            this.label21.Text = "label21";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(244, 286);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(40, 15);
+            this.label20.TabIndex = 29;
+            this.label20.Text = "TinNo";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(48, 285);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(45, 15);
+            this.label19.TabIndex = 28;
+            this.label19.Text = "PanNo";
+            // 
             // txtVenderDesc
             // 
-            this.txtVenderDesc.Location = new System.Drawing.Point(46, 299);
+            this.txtVenderDesc.Location = new System.Drawing.Point(31, 342);
             this.txtVenderDesc.Multiline = true;
             this.txtVenderDesc.Name = "txtVenderDesc";
             this.txtVenderDesc.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -134,7 +199,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(43, 281);
+            this.label16.Location = new System.Drawing.Point(30, 324);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(69, 15);
             this.label16.TabIndex = 26;
@@ -363,7 +428,7 @@
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 386);
+            this.groupBox2.Location = new System.Drawing.Point(14, 441);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(659, 75);
             this.groupBox2.TabIndex = 1;
@@ -439,7 +504,7 @@
             // btnVenderSave
             // 
             this.btnVenderSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVenderSave.Location = new System.Drawing.Point(20, 479);
+            this.btnVenderSave.Location = new System.Drawing.Point(12, 532);
             this.btnVenderSave.Name = "btnVenderSave";
             this.btnVenderSave.Size = new System.Drawing.Size(90, 28);
             this.btnVenderSave.TabIndex = 4;
@@ -450,7 +515,7 @@
             // btnVenderClose
             // 
             this.btnVenderClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVenderClose.Location = new System.Drawing.Point(116, 479);
+            this.btnVenderClose.Location = new System.Drawing.Point(126, 532);
             this.btnVenderClose.Name = "btnVenderClose";
             this.btnVenderClose.Size = new System.Drawing.Size(90, 28);
             this.btnVenderClose.TabIndex = 5;
@@ -479,9 +544,9 @@
             this.panel1.Controls.Add(this.btnUpdate);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(0, -12);
+            this.panel1.Location = new System.Drawing.Point(0, -11);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(700, 535);
+            this.panel1.Size = new System.Drawing.Size(700, 571);
             this.panel1.TabIndex = 7;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -571,12 +636,36 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle17;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(672, 406);
             this.dataGridView1.TabIndex = 0;
@@ -586,7 +675,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 519);
+            this.ClientSize = new System.Drawing.Size(700, 572);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnVenderList);
             this.Controls.Add(this.btnVenderClose);
@@ -662,5 +751,11 @@
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtTinNo;
+        private System.Windows.Forms.TextBox txtPanNo;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
     }
 }

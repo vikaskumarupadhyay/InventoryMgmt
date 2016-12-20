@@ -56,7 +56,7 @@ namespace WindowsFormsApplication1
                         {
                             if (updateCounter == 0)
                             {
-                                string saveCommand1 = "insert into VendorDetails values ('" + txtVenderCode.Text + "','" + txtVenderName.Text + "','" + txtCompanyName.Text + "','" + txtVenderAddress.Text + "','" + txtVenderCity.Text + "','" + txtVenderState.Text + "','" + txtVenderZip.Text + "','" + txtVenderCountry.Text + "','" + txtVenderEmailAddress.Text + "','" + txtVenderWebSite.Text + "','" + txtVenderPhone.Text + "', '" + txtVenderMobile.Text + "','" + txtVenderFax.Text + "','" + txtVenderDesc.Text + "')";
+                                string saveCommand1 = "insert into VendorDetails values ('" + txtVenderCode.Text + "','" + txtVenderName.Text + "','" + txtCompanyName.Text + "','" + txtVenderAddress.Text + "','" + txtVenderCity.Text + "','" + txtVenderState.Text + "','" + txtVenderZip.Text + "','" + txtVenderCountry.Text + "','" + txtVenderEmailAddress.Text + "','" + txtVenderWebSite.Text + "','" + txtVenderPhone.Text + "', '" + txtVenderMobile.Text + "','" + txtVenderFax.Text + "','" + txtVenderDesc.Text + "','"+txtPanNo.Text+"','"+txtTinNo.Text+"')";
 
                                 string saveCommand2 = "insert into VendorAccountDetails values ('" + txtVenderCode.Text + "','" + txtVenderCode.Text + "','" + txtVenderOpeningBal.Text + "','" + txtVenderCurrentBal.Text + "')";
 
@@ -76,7 +76,7 @@ namespace WindowsFormsApplication1
 
                             else if (updateCounter == 1)
                             {
-                                string updateCommand1 = "update  VendorDetails  set  vName='" + txtVenderName.Text + "', vCompName= '" + txtCompanyName.Text + "',vAddress='" + txtVenderAddress.Text + "',vCity='" + txtVenderCity.Text + "',vState='" + txtVenderState.Text + "',vZip='" + txtVenderZip.Text + "',vCountry='" + txtVenderCountry.Text + "',vEmail='" + txtVenderEmailAddress.Text + "',vWebAddress='" + txtVenderWebSite.Text + "',vPhone='" + txtVenderPhone.Text + "', vMobile='" + txtVenderMobile.Text + "',vFax='" + txtVenderFax.Text + "',vDesc='" + txtVenderDesc.Text + "' where venderid='" + txtVenderCode.Text + "'";
+                                string updateCommand1 = "update  VendorDetails  set  vName='" + txtVenderName.Text + "', vCompName= '" + txtCompanyName.Text + "',vAddress='" + txtVenderAddress.Text + "',vCity='" + txtVenderCity.Text + "',vState='" + txtVenderState.Text + "',vZip='" + txtVenderZip.Text + "',vCountry='" + txtVenderCountry.Text + "',vEmail='" + txtVenderEmailAddress.Text + "',vWebAddress='" + txtVenderWebSite.Text + "',vPhone='" + txtVenderPhone.Text + "', vMobile='" + txtVenderMobile.Text + "',vFax='" + txtVenderFax.Text + "',vPanNo='" + txtPanNo.Text + "',vTinNo='" + txtTinNo.Text + "',vDesc='" + txtVenderDesc.Text + "'  where venderid='" + txtVenderCode.Text + "'";
                                 string updateCommand2 = "update   VendorAccountDetails set vOpeningBalance='" + txtVenderOpeningBal.Text + "',vCurrentBalance='" + txtVenderCurrentBal.Text + "' where venderId='" + txtVenderCode.Text + "'";
 
                                 int updatedRows = dbMainClass.updateDetails(updateCommand1, updateCommand2);
@@ -125,6 +125,8 @@ namespace WindowsFormsApplication1
 
             txtVenderCode.Text = "";
             txtVenderCode.Text = "";
+            txtTinNo.Text = "";
+            txtPanNo.Text = "";
 
         }
         #endregion
@@ -196,7 +198,7 @@ namespace WindowsFormsApplication1
 
         private void frmVendorDetails_Load(object sender, EventArgs e)
         {
-            string selectqurry = "select  vName as NAME, vCompName as COMPNAME,vAddress as ADDRESS,vCity as CITY,vState as STATE,vZip as ZIP,vCountry as COUNTRY,vEmail as EMAIL,vWebAddress as WEBADDRESS,vPhone as PHONE,vMobile as MOBILE,vFax as FAX,vDesc as DESCription from VendorDetails";
+            string selectqurry = "select  vName as NAME, vCompName as COMPNAME,vAddress as ADDRESS,vCity as CITY,vState as STATE,vZip as ZIP,vCountry as COUNTRY,vEmail as EMAIL,vWebAddress as WEBADDRESS,vPhone as PHONE,vMobile as MOBILE,vFax as FAX,vDesc as DESCription,vPanNo as PanNo,vTinNo as TinNo from VendorDetails";
           DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             List<string> ls = new List<string>();
             DataColumnCollection d = dt.Columns;
@@ -267,10 +269,12 @@ namespace WindowsFormsApplication1
                 txtVenderPhone.Text = cellCollection[10].Value.ToString();
                 txtVenderMobile.Text = cellCollection[11].Value.ToString();
                 txtVenderFax.Text = cellCollection[12].Value.ToString();
-                txtVenderDesc.Text = cellCollection[13].Value.ToString();
+                txtVenderDesc.Text = cellCollection[15].Value.ToString();
 
-                txtVenderOpeningBal.Text = cellCollection[14].Value.ToString();
-                txtVenderCurrentBal.Text = cellCollection[15].Value.ToString();
+                txtVenderOpeningBal.Text = cellCollection[16].Value.ToString();
+                txtVenderCurrentBal.Text = cellCollection[17].Value.ToString();
+                txtPanNo.Text = cellCollection[13].Value.ToString();
+                txtTinNo.Text = cellCollection[14].Value.ToString();
             }
             catch (Exception ex)
             {
@@ -295,7 +299,7 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.Close();
+            panel2.Visible = false;
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -369,6 +373,26 @@ namespace WindowsFormsApplication1
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void txtPanNo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (Char.IsLetterOrDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
         }
 
 

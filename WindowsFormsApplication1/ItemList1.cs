@@ -18,11 +18,11 @@ namespace WindowsFormsApplication1
         DB_Main dbMainClass = new DB_Main();
         private void ItemList_Load(object sender, EventArgs e)
         {
-            string selectqurry = "select itm.ItemName,itm.ItemCompName,itm.ItemDesc,itm.groupid,itm.Unitid,ipd.purChasePrice,ipd.SalesPrice,ipd.MrpPrice,ipd.Margin,iqd.OpeningQuantity,iqd.CurrentQuantity from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid";
+            string selectqurry = "select itm.Itemid, itm.ItemName,itm.ItemCompName,itm.ItemDesc,itm.groupid,itm.Unitid,ipd.purChasePrice,ipd.SalesPrice,ipd.MrpPrice,ipd.Margin,iqd.OpeningQuantity,iqd.CurrentQuantity from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             List<string> ls = new List<string>();
             DataColumnCollection d = dt.Columns;
-            for (int a = 0; a < d.Count; a++)
+            for (int a = 1; a < d.Count; a++)
             {
                 string b = d[a].ToString();
                 ls.Add(b);
