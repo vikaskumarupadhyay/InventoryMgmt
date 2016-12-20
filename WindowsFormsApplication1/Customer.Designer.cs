@@ -534,10 +534,11 @@
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.comserchvalue);
             this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(13, 3);
+            this.panel1.Location = new System.Drawing.Point(13, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(683, 504);
+            this.panel1.Size = new System.Drawing.Size(683, 517);
             this.panel1.TabIndex = 11;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // butclose
             // 
