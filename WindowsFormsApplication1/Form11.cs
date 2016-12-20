@@ -98,7 +98,7 @@ namespace WindowsFormsApplication1
                 int que = maxquantity;
                 int quantity = Convert.ToInt32(txtQuantity.Text);
                 int rate = Convert.ToInt32(txtRate.Text);
-                txtAmmount.Text = (quantity * rate).ToString();
+                txtAmmount.Text = (quantity*rate).ToString();
                 if (que < quantity)
                 {
                     txtQuantity.Text = "";
@@ -192,79 +192,129 @@ namespace WindowsFormsApplication1
             txtMobile.Text = "";
             txtFax.Text = "";
             txtRefNo.Text = "";
+            addToCartTable.Clear();
             gridsalesdelivary.DataSource = "";
         }
 
         private void butSaveButton_Click(object sender, EventArgs e)
         {
+
             if (txtRefNo.Text == "")
             {
-                string order = "select orderid from orderdetails";
+
+                string order = "select orderid from orderdetails ";
                 DataTable d1 = d.getDetailByQuery(order);
                 string id = "";
                 foreach (DataRow dr in d1.Rows)
                 {
                     id = dr[0].ToString();
                 }
-                int id1 = Convert.ToInt32(id);
-                int id2 = id1 + 1;
-                string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpDate.Text + "','" + txtTotalAmmount.Text + "')";
-                int insertrows = d.saveDetails(insertquery);
-                if (insertrows > 0)
+                if (id == "")
                 {
+                    id = "1";
+                    string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpDate.Text + "','" + txtTotalAmmount.Text + "')";
+                    int insertrows = d.saveDetails(insertquery);
+                    if (insertrows > 0)
+                    {
 
-                    DataGridViewRowCollection rowcollection = gridsalesdelivary.Rows;
-                    List<string> show = new List<string>();
-                    for (int a = 0; a < rowcollection.Count; a++)
-                    {
-                        DataGridViewRow currentrow = rowcollection[a];
-                        DataGridViewCellCollection cellcollection = currentrow.Cells;
-                        string txtitemcode = cellcollection[0].Value.ToString();
-                        string txtProductName = cellcollection[1].Value.ToString();
-                        string txtRate = cellcollection[2].Value.ToString();
-                        string txtQuantity = cellcollection[3].Value.ToString();
-                        string txtAmount = cellcollection[4].Value.ToString();
-                        string Orderid = id1.ToString();
-                        string query = "insert into customerorderdescriptions Values('" + Orderid + "','" + txtitemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
-                            string salesdelivary = "Insert into salesOrderDelivery values('" + Orderid + "','true','" + dtpDate.Text + "')";
-                            int insertrow = d.saveDetails(salesdelivary);
-                        show.Add(query);
-                    }
+                        DataGridViewRowCollection rowcollection = gridsalesdelivary.Rows;
+                        List<string> show = new List<string>();
+                        for (int a = 0; a < rowcollection.Count; a++)
+                        {
+                            DataGridViewRow currentrow = rowcollection[a];
+                            DataGridViewCellCollection cellcollection = currentrow.Cells;
+                            string txtitemcode = cellcollection[0].Value.ToString();
+                            string txtProductName = cellcollection[1].Value.ToString();
+                            string txtRate = cellcollection[2].Value.ToString();
+                            string txtQuantity = cellcollection[3].Value.ToString();
+                            string txtAmount = cellcollection[5].Value.ToString();
+                            string Orderid = id;
+                            string query = "insert into customerorderdescriptions Values('" + Orderid + "','" + txtitemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
+                           
+                            // int insertrow = d.saveDetails(query);
+                            show.Add(query);
+                        }
 
-                    int inserirow1 = d.saveDetails(show);
-                    if (inserirow1 > 0)
-                    {
-                        MessageBox.Show("details save successfully");
+                        int inserirow1 = d.saveDetails(show);
+                        if (inserirow1 > 0)
+                        {
+                             string salesdelivary = "Insert into salesOrderDelivery values('" +id + "','true','" + dtpDate.Text + "')";
+                            int insert=d.saveDetails(salesdelivary);
+                                if(insert>0)
+                                {
+                              MessageBox.Show("details save successfully");
+                           }
+                        else
+                        {
+                            MessageBox.Show("details save not successfully");
+
+                        }
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("details save not successfully");
-                    }
-                 
                 }
-            }
-            else if (txtRefNo.Text == "")
+
+                else
+                {
+                    int id1 = Convert.ToInt32(id);
+                    int id2 = id1 + 1;
+                    string Orde = id2.ToString();
+                    string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpDate.Text + "','" + txtTotalAmmount.Text + "')";
+                    int insertrows = d.saveDetails(insertquery);
+                    if (insertrows > 0)
+                    {
+
+                        DataGridViewRowCollection rowcollection = gridsalesdelivary.Rows;
+                        List<string> show = new List<string>();
+                        for (int a = 0; a < rowcollection.Count; a++)
+                        {
+                            DataGridViewRow currentrow = rowcollection[a];
+                            DataGridViewCellCollection cellcollection = currentrow.Cells;
+                            string txtitemcode = cellcollection[0].Value.ToString();
+                            string txtProductName = cellcollection[1].Value.ToString();
+                            string txtRate = cellcollection[2].Value.ToString();
+                            string txtQuantity = cellcollection[3].Value.ToString();
+                            string txtAmount = cellcollection[5].Value.ToString();
+                            //string orderid = txtSrNo.Text;
+                            string query = "insert into customerorderdescriptions Values('" + Orde + "','" + txtitemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
+
+                            //int insertrow = d.saveDetails(query);
+
+                            show.Add(query);
+                        }
+
+                        int inserirow1 = d.saveDetails(show);
+                        if (inserirow1 > 0)
+                        {
+                            string salesdelivary = "Insert into salesOrderDelivery values('" + Orde + "','true','" + dtpDate.Text + "')";
+                            int insert = d.saveDetails(salesdelivary);
+                            if (insert > 0)
+                            {
+                                MessageBox.Show("details save successfully");
+                            }
+                            else
+                            {
+                                MessageBox.Show("details save not successfully");
+
+                            }
+                        }
+
+                    }
+                }
+                makeblank();
+                int value = Convert.ToInt32(txtSrNo.Text);
+                int value1 = value + 1;
+                txtSrNo.Text = value1.ToString();
+           
+                }
+
+
+            if (txtRefNo.Text != "")
             {
-
-
-                string deletequrri = "delete customerorderdescriptions where OrderId='" + txtRefNo.Text + "'";
-                DataTable dt = d.getDetailByQuery(deletequrri);
+                string deletequrri1 = "delete customerorderdescriptions where OrderId='" + txtRefNo.Text + "'";
+                DataTable dt1 = d.getDetailByQuery(deletequrri1);
                 counter = 0;
                 if (counter == 0)
                 {
-
-                    //string insertquery = "insert into orderdetails values('" + txtcustomercode.Text + "','" + dtpDate.Text + "','" + txtTotalAmmount.Text + "')";
-                    //int insertrows = d.saveDetails(insertquery);
-                    //if (insertrows > 0)
-                    //{
-                    //    MessageBox.Show("details save successfully");
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show("details save not successfully");
-                    //}
-
-
                     DataGridViewRowCollection rowcollection = gridsalesdelivary.Rows;
                     List<string> show = new List<string>();
                     for (int a = 0; a < rowcollection.Count; a++)
@@ -278,49 +328,38 @@ namespace WindowsFormsApplication1
                         string txtAmount = cellcollection[5].Value.ToString();
                         string Orderid = txtRefNo.Text;
 
-                        string query = "insert into customerorderdescriptions Values('" + Orderid+ "','" + txtitemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
+                        string query = "insert into customerorderdescriptions Values('" + Orderid + "','" + txtitemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
+                        
                         show.Add(query);
                     }
 
                     int inserirow1 = d.saveDetails(show);
-
                     if (inserirow1 > 0)
-                    {
-                        DataGridViewRowCollection rowcollection1 = gridsalesdelivary.Rows;
-                        List<string> show1 = new List<string>();
-                        for (int a = 0; a < rowcollection.Count; a++)
                         {
-                            DataGridViewRow currentrow = rowcollection[a];
-                            DataGridViewCellCollection cellcollection = currentrow.Cells;
-                            string Orderid = txtSrNo.Text;
-                            string salesdelivary = "Insert into salesOrderDelivery values('" + Orderid + "','true','" + dtpDate.Text + "')";
-                            int insertrow = d.saveDetails(salesdelivary);
-
-                            if (insertrow > 0)
-                            {
-                                MessageBox.Show("details save successfully");
-                            }
-                            else
-                            {
-                                MessageBox.Show("details save not successfully");
-                            }
+                            string insertquery = "insert into salesOrderDelivery values('" + txtRefNo.Text + "','true','" + dtpDate.Text + "')";
+                            int insert = d.saveDetails(insertquery);
+                        if(insert>0)
+                        {
+                            MessageBox.Show("details save successfully");
+                        }
+                        else
+                        {
+                            MessageBox.Show("details save not successfully");
                         }
 
-                        int value = Convert.ToInt32(txtSrNo.Text);
-                        int value1 = value + 1;
-                        txtSrNo.Text = value1.ToString();
                     }
                 }
             }
-          
-            makeblank();
-        }
+
+           
+                    }
+     
         private void setAutoCompleteMode(TextBox txt, string ColumnName, DataTable dt)
         {
             if (dt != null && dt.Rows.Count > 0)
             {
                 AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
-                foreach (DataRow dr in dt.Rows)
+               foreach(DataRow dr in dt.Rows)
                 {
                     string value = dr[ColumnName].ToString();
                     collection.Add(value);

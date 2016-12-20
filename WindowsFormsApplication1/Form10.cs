@@ -118,6 +118,7 @@ namespace WindowsFormsApplication1
             txtAmount.Text="";
             gridsalesorder.DataSource = "";
             txttotalammount.Text = "";
+            addToCartTable.Clear();
         }
         private void butadditem_Click(object sender, EventArgs e)
         {
@@ -416,6 +417,7 @@ namespace WindowsFormsApplication1
             //int rate = Convert.ToInt32(txtRate.Text);
             //int que = Convert.ToInt32(txtQuantity.Text);
             //txtAmount.Text = (rate * que).ToString();
+           
             string selectquery1 = "select i.ItemId,i.ItemName,ip.MrpPrice,iq.CurrentQuantity from ItemDetails i join ItemPriceDetail ip on i.ItemId=ip.ItemId join ItemQuantityDetail iq on ip.ItemId=iq.ItemId where i.ItemId='" + txtitemcode.Text + "'";
             DataTable dt = d.getDetailByQuery(selectquery1);
             if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
@@ -486,6 +488,10 @@ namespace WindowsFormsApplication1
         {
             panel2.Visible = false;
         }
+
+    
+
+       
     }
 }
 

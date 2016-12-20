@@ -60,6 +60,12 @@
     <Compile Include="ChaquePayment.Designer.cs">
       <DependentUpon>ChaquePayment.cs</DependentUpon>
     </Compile>
+      <Compile Include="ChaqueForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChaqueForm.Designer.cs">
+      <DependentUpon>ChaqueForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Class1.cs" />
     <Compile Include="Customer list.cs">
       <SubType>Form</SubType>
@@ -120,6 +126,7 @@
       <DependentUpon>PurchasSearch1.cs</DependentUpon>
     </Compile>
     <Compile Include="varible.cs" />
+    <Compile Include="Variable.cs" />
     <Compile Include="Vendor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +197,9 @@
     </Compile>
     <EmbeddedResource Include="ChaquePayment.resx">
       <DependentUpon>ChaquePayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChaqueForm.resx">
+      <DependentUpon>ChaqueForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Customer list.resx">
       <DependentUpon>Customer list.cs</DependentUpon>

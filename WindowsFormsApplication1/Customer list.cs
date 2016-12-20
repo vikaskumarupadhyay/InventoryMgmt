@@ -19,7 +19,7 @@ namespace WindowsFormsApplication1
 
         private void Customer_list_Load(object sender, EventArgs e)
         {
-            string selectQuery = "select cd.custid,cd.CustName,cd.CustCompName,cd.CustAddress,cd.CustCity,cd.CustState,cd.CustZip,cd.CustCountry,cd.CustEmail,cd.CustWebAddress,cd.CustPhone,cd.CustMobile,cd.CustFax,cd.CustDesc,cad.CustOpeningBalance,cad.CustCurrentBalance from CustomerDetails cd join CustomerAccountDetails cad on cd.CustId=cad.CustId ";
+            string selectQuery = "select cd.custid,cd.CustName,cd.CustCompName,cd.CustAddress,cd.CustCity,cd.CustState,cd.CustZip,cd.CustCountry,cd.CustEmail,cd.CustWebAddress,cd.CustPhone,cd.CustMobile,cd.CustFax,cd.CustDesc,cad.CustOpeningBalance,cad.CustCurrentBalance,cd.PanNo,cd.TanNo,cd.Others from CustomerDetails cd join CustomerAccountDetails cad on cd.CustId=cad.CustId ";
             DataTable dt = d.getDetailByQuery(selectQuery);
             List<string> sd = new List<string>();
             DataColumnCollection d1 = dt.Columns;
@@ -47,5 +47,6 @@ namespace WindowsFormsApplication1
             DataTable dt = d.getDetailByQuery(selectQuery);
             dataGridView1.DataSource = dt;
         }
+
     }
 }

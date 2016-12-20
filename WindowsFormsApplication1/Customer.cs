@@ -37,6 +37,9 @@ namespace WindowsFormsApplication1
             ds.Add("DESC");
             ds.Add("OPENINGBALANCE");
             ds.Add("CURRENTBALANCE");
+            ds.Add("PanNo");
+            ds.Add("TanNo");
+            ds.Add("Others");
             comserchvalue.DataSource = ds;
             
             panel1.Visible = false;
@@ -71,7 +74,7 @@ namespace WindowsFormsApplication1
                 }
                 if (updateCounter == 0)
                 {
-                    string saveCommand1 = "insert into CustomerDetails values ('" + txtCustCode.Text + "','" + txtName.Text + "','" + txtCompnyName.Text + "','" + txtAddress.Text + "','" + txtCity.Text + "','" + txtState.Text + "','" + txtZIP.Text + "','" + txtCustCountry.Text + "','" + txtEMAILADDRESS.Text + "','" + txtWEBSITE.Text + "','" + txtTXTPHONE.Text + "', '" + txtMOBILE.Text + "','" + txtFAX.Text + "','" + txtDESCRIPTION.Text + "')";
+                    string saveCommand1 = "insert into CustomerDetails values ('" + txtCustCode.Text + "','" + txtName.Text + "','" + txtCompnyName.Text + "','" + txtAddress.Text + "','" + txtCity.Text + "','" + txtState.Text + "','" + txtZIP.Text + "','" + txtCustCountry.Text + "','" + txtEMAILADDRESS.Text + "','" + txtWEBSITE.Text + "','" + txtTXTPHONE.Text + "', '" + txtMOBILE.Text + "','" + txtFAX.Text + "','" + txtDESCRIPTION.Text + "','"+txtPanno.Text+"','"+txttanno.Text+"','"+txtothers.Text+"')";
 
                     string saveCommand2 = "insert into CustomerAccountDetails values ('" + txtCustCode.Text + "','" + txtCustCode.Text + "','" + txtOPENINGBALANCE.Text + "','" + txtCURRENTBALANCE.Text + "')";
 
@@ -90,13 +93,13 @@ namespace WindowsFormsApplication1
                 }
                 else if (updateCounter == 1)
                 {
-                    string updateCommand1 = "update  CustomerDetails  set CustAddress='" + txtAddress.Text + "',CustPhone='" + txtTXTPHONE.Text + "', CustMobile='" + txtMOBILE.Text + "'";// CustName='" + txtName.Text + "', CustCompName= '" + txtCompnyName.Text + "',CustAddress='" + txtAddress.Text + "',CustCity='" + txtCity.Text + "',CustState='" + txtState.Text + "',CustZip='" + txtZIP.Text + "',CustCountry='" + txtCustCountry.Text + "',CustEmail='" + txtEMAILADDRESS.Text + "',CustWebAddress='" + txtWEBSITE.Text + "',CustPhone='" + txtTXTPHONE.Text + "', CustMobile='" + txtMOBILE.Text + "',CustFax='" + txtFAX.Text + "',CustDesc='" + txtDESCRIPTION.Text + "' where Custid='" + txtCustCode.Text + "'";
-                    string updateCommand2 = "update   CustomerAccountDetails setCustId='" + txtCustCode.Text + "'"; //CustOpeningBalance='" + txtOPENINGBALANCE.Text + "',CustCurrentBalance='" + txtCURRENTBALANCE.Text + "' where CustId='" + txtCustCode.Text + "'";
+                    string updateCommand1 = "update  CustomerDetails  set Custid='"+txtCustCode.Text+"', CustAddress='" + txtAddress.Text + "',CustPhone='" + txtTXTPHONE.Text + "', CustMobile='" + txtMOBILE.Text + "',PanNO='" + txtPanno.Text + "',TanNo='" + txttanno.Text + "',Others='" + txtothers.Text + "', CustName='" + txtName.Text + "', CustCompName= '" + txtCompnyName.Text + "',CustCity='" + txtCity.Text + "',CustState='" + txtState.Text + "',CustZip='" + txtZIP.Text + "',CustCountry='" + txtCustCountry.Text + "',CustEmail='" + txtEMAILADDRESS.Text + "',CustWebAddress='" + txtWEBSITE.Text + "',CustFax='" + txtFAX.Text + "',CustDesc='" + txtDESCRIPTION.Text + "' where Custid='" + txtCustCode.Text + "'";
+                    string updateCommand2 = "update   CustomerAccountDetails set  CustOpeningBalance='" + txtOPENINGBALANCE.Text + "',CustCurrentBalance='" + txtCURRENTBALANCE.Text + "' where Custid='"+txtCustCode.Text + "'";
 
                     int updatedRows = dbMainClass.updateDetails(updateCommand1, updateCommand2);
                     if (updatedRows > 0)
                     {
-                        txtName.Focus();
+                       txtName.Focus();
                         MessageBox.Show("Details Updated Successfully");
                     }
                     else
@@ -206,6 +209,9 @@ namespace WindowsFormsApplication1
                 txtDESCRIPTION.Text = cellCollection[13].Value.ToString();
                 txtOPENINGBALANCE.Text = cellCollection[14].Value.ToString();
                 txtCURRENTBALANCE.Text = cellCollection[15].Value.ToString();
+                txtPanno.Text = cellCollection[16].Value.ToString();
+                txttanno.Text = cellCollection[17].Value.ToString();
+                txtothers.Text = cellCollection[18].Value.ToString();
             }
             catch (Exception ex)
             {
@@ -279,7 +285,7 @@ namespace WindowsFormsApplication1
         {
            string s= comserchvalue.SelectedValue.ToString();
            string val = "Cust"+s;
-           string selectQuery = "select cd.custid,cd.CustName,cd.CustCompName,cd.CustAddress,cd.CustCity,cd.CustState,cd.CustZip,cd.CustCountry,cd.CustEmail,cd.CustWebAddress,cd.CustPhone,cd.CustMobile,cd.CustFax,cd.CustDesc,cad.CustOpeningBalance,cad.CustCurrentBalance from CustomerDetails cd join CustomerAccountDetails cad on cd.CustId=cad.CustId  where " +val + " like '" + textBox1.Text + "%'";
+           string selectQuery = "select cd.custid,cd.CustName,cd.CustCompName,cd.CustAddress,cd.CustCity,cd.CustState,cd.CustZip,cd.CustCountry,cd.CustEmail,cd.CustWebAddress,cd.CustPhone,cd.CustMobile,cd.CustFax,cd.CustDesc,cd.panno,cd.tanno,cd.tanno,cad.CustOpeningBalance,cad.CustCurrentBalance from CustomerDetails cd join CustomerAccountDetails cad on cd.CustId=cad.CustId  where " +val + " like '" + textBox1.Text + "%'";
             DataTable dt = dbMainClass.getDetailByQuery(selectQuery);
             dataGridView1.DataSource = dt;
 
@@ -339,8 +345,24 @@ namespace WindowsFormsApplication1
 
         }
 
-
-      
+        private void txtPanno_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetterOrDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+        }
 
     }
 }

@@ -32,3 +32,93 @@ create table WithoutRefrencePament(id int identity primary key,venderId varchar(
 
 -- Connection string Data Source=ASHISH-PC;Initial Catalog=SalesMaster;Persist Security Info=True;User ID=sa
 
+create table CustomerOrderInvoice(InvoiceId int identity primary key,id int foreign key references CustomerOrderDelivery(id),Orderid int foreign key references VendorOrderDetails(Orderid), DeliveryDate datetime)
+
+
+
+create table salesOrderDelivery(Delivaryid int identity primary key,Orderid int foreign key references orderdetails(Orderid),status bit, DeliveryDate datetime)
+create table salesinvoice(invoiceid int identity primary key,Delivaryid int foreign key references salesOrderDelivery(Delivaryid),Orderid int foreign key references orderdetails(Orderid),invoicedate datetime)
+5-USE [SalesMaster]
+GO
+
+/****** Object:  Table [dbo].[orderdetails]    Script Date: 11/28/2016 3:54:51 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[orderdetails](
+	[orderid] [int] IDENTITY(1,1) NOT NULL,
+	[custid] [varchar](100) NULL,
+	[date] [datetime] NULL,
+	[totalammount] [varchar](200) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[orderid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[orderdetails]  WITH CHECK ADD FOREIGN KEY([custid])
+REFERENCES [dbo].[CustomerDetails] ([custId])
+GO
+
+
+
+
+6-USE [SalesMaster]
+GO
+
+/****** Object:  Table [dbo].[customerorderdescriptions]    Script Date: 11/28/2016 3:55:25 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[customerorderdescriptions](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[orderid] [int] NULL,
+	[ItemId] [varchar](100) NULL,
+	[price] [decimal](18, 0) NULL,
+	[quantity] [int] NULL,
+	[totalammount] [decimal](18, 0) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[customerorderdescriptions]  WITH CHECK ADD FOREIGN KEY([ItemId])
+REFERENCES [dbo].[ItemDetails] ([ItemId])
+GO
+
+ALTER TABLE [dbo].[customerorderdescriptions]  WITH CHECK ADD FOREIGN KEY([orderid])
+REFERENCES [dbo].[orderdetails] ([orderid])
+GO
+
+
+
+
+
+
+Create table payment(id int identity primary key,invoiceid int foreign key references  salesinvoice(invoiceid),totalammount Decimal,payammount decimal,Remainingammount decimal,paymentmode varchar(300),paymentdate datetime )
+
+
+Create table vithautrefrancereceipt(id int identity primary key,CustId varchar(100) foreign key references CustomerDetails(custId),Totalammoun Float,Balanceammount Float,receiptdate datetime )

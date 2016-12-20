@@ -29,21 +29,27 @@
         private void InitializeComponent()
         {
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.textBox23 = new System.Windows.Forms.TextBox();
+            this.txtreamaining = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtpayammount = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txttotalammount = new System.Windows.Forms.TextBox();
             this.textBox22 = new System.Windows.Forms.TextBox();
             this.textBox15 = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.txtRefNo = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtSrNo = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.dtpdate = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
@@ -82,29 +88,66 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.textBox23);
+            this.groupBox5.Controls.Add(this.txtreamaining);
+            this.groupBox5.Controls.Add(this.label13);
+            this.groupBox5.Controls.Add(this.txtpayammount);
+            this.groupBox5.Controls.Add(this.label12);
+            this.groupBox5.Controls.Add(this.txttotalammount);
             this.groupBox5.Controls.Add(this.textBox22);
             this.groupBox5.Controls.Add(this.textBox15);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.Location = new System.Drawing.Point(12, 412);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(491, 64);
+            this.groupBox5.Size = new System.Drawing.Size(491, 105);
             this.groupBox5.TabIndex = 41;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = " ";
             // 
-            // textBox23
+            // txtreamaining
             // 
-            this.textBox23.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox23.Location = new System.Drawing.Point(235, 25);
-            this.textBox23.Name = "textBox23";
-            this.textBox23.ReadOnly = true;
-            this.textBox23.Size = new System.Drawing.Size(179, 21);
-            this.textBox23.TabIndex = 52;
-            this.textBox23.TabStop = false;
-            this.textBox23.Text = "0";
-            this.textBox23.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtreamaining.Location = new System.Drawing.Point(174, 71);
+            this.txtreamaining.Name = "txtreamaining";
+            this.txtreamaining.Size = new System.Drawing.Size(108, 21);
+            this.txtreamaining.TabIndex = 56;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(174, 53);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(75, 15);
+            this.label13.TabIndex = 55;
+            this.label13.Text = "Reamaining";
+            // 
+            // txtpayammount
+            // 
+            this.txtpayammount.Location = new System.Drawing.Point(5, 67);
+            this.txtpayammount.Name = "txtpayammount";
+            this.txtpayammount.Size = new System.Drawing.Size(117, 21);
+            this.txtpayammount.TabIndex = 54;
+            this.txtpayammount.TextChanged += new System.EventHandler(this.txtpayammount_TextChanged);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 49);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(80, 15);
+            this.label12.TabIndex = 53;
+            this.label12.Text = "Payammount";
+            // 
+            // txttotalammount
+            // 
+            this.txttotalammount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txttotalammount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttotalammount.Location = new System.Drawing.Point(235, 25);
+            this.txttotalammount.Name = "txttotalammount";
+            this.txttotalammount.ReadOnly = true;
+            this.txttotalammount.Size = new System.Drawing.Size(179, 21);
+            this.txttotalammount.TabIndex = 52;
+            this.txttotalammount.TabStop = false;
+            this.txttotalammount.Text = "0";
+            this.txttotalammount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox22
             // 
@@ -135,7 +178,7 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(116, 499);
+            this.button4.Location = new System.Drawing.Point(128, 533);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(90, 28);
             this.button4.TabIndex = 40;
@@ -146,42 +189,48 @@
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(20, 499);
+            this.button5.Location = new System.Drawing.Point(17, 533);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(90, 28);
             this.button5.TabIndex = 39;
             this.button5.Text = "Save";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.button3);
-            this.groupBox4.Controls.Add(this.button2);
+            this.groupBox4.Controls.Add(this.radioButton2);
+            this.groupBox4.Controls.Add(this.radioButton1);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(509, 412);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(216, 64);
+            this.groupBox4.Size = new System.Drawing.Size(178, 64);
             this.groupBox4.TabIndex = 36;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Payment Mode";
             // 
-            // button3
+            // radioButton2
             // 
-            this.button3.Location = new System.Drawing.Point(109, 22);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(95, 29);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Cheque";
-            this.button3.UseVisualStyleBackColor = true;
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(86, 25);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(68, 19);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Chaque";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
-            // button2
+            // radioButton1
             // 
-            this.button2.Location = new System.Drawing.Point(8, 22);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(95, 29);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Cash";
-            this.button2.UseVisualStyleBackColor = true;
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(27, 25);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(53, 19);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Cash";
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -194,6 +243,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
@@ -223,6 +273,7 @@
             this.checkBox2.Text = "Payment without refrence to sales invoice";
             this.checkBox2.UseCompatibleTextRendering = true;
             this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.Click += new System.EventHandler(this.checkBox2_Click);
             // 
             // checkBox1
             // 
@@ -235,28 +286,49 @@
             this.checkBox1.Text = "Payment with refrence to sales invoice";
             this.checkBox1.UseCompatibleTextRendering = true;
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.Click += new System.EventHandler(this.checkBox1_Click);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox18);
+            this.groupBox2.Controls.Add(this.txtRefNo);
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.txtSrNo);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.dtpdate);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(515, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(210, 94);
+            this.groupBox2.Size = new System.Drawing.Size(210, 109);
             this.groupBox2.TabIndex = 37;
             this.groupBox2.TabStop = false;
             // 
-            // textBox18
+            // txtRefNo
             // 
-            this.textBox18.Location = new System.Drawing.Point(71, 25);
-            this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(117, 21);
-            this.textBox18.TabIndex = 13;
-            this.textBox18.TabStop = false;
-            this.textBox18.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRefNo.Location = new System.Drawing.Point(80, 76);
+            this.txtRefNo.Name = "txtRefNo";
+            this.txtRefNo.Size = new System.Drawing.Size(121, 21);
+            this.txtRefNo.TabIndex = 15;
+            this.txtRefNo.TextChanged += new System.EventHandler(this.txtRefNo_TextChanged);
+            this.txtRefNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRefNo_KeyPress);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(0, 76);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(84, 15);
+            this.label11.TabIndex = 14;
+            this.label11.Text = "ReceiptRefNo";
+            // 
+            // txtSrNo
+            // 
+            this.txtSrNo.Location = new System.Drawing.Point(71, 25);
+            this.txtSrNo.Name = "txtSrNo";
+            this.txtSrNo.Size = new System.Drawing.Size(117, 21);
+            this.txtSrNo.TabIndex = 13;
+            this.txtSrNo.TabStop = false;
+            this.txtSrNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label14
             // 
@@ -452,17 +524,18 @@
             this.panel2.Controls.Add(this.combsearch);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Location = new System.Drawing.Point(5, 3);
+            this.panel2.Location = new System.Drawing.Point(5, 160);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(734, 490);
+            this.panel2.Size = new System.Drawing.Size(734, 424);
             this.panel2.TabIndex = 42;
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(15, 126);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(693, 352);
+            this.dataGridView2.Size = new System.Drawing.Size(693, 398);
             this.dataGridView2.TabIndex = 4;
             this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
             // 
@@ -504,7 +577,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(751, 542);
+            this.ClientSize = new System.Drawing.Size(751, 587);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.button4);
@@ -523,6 +596,7 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox3.ResumeLayout(false);
@@ -541,21 +615,19 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.TextBox textBox23;
+        private System.Windows.Forms.TextBox txttotalammount;
         private System.Windows.Forms.TextBox textBox22;
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox18;
+        private System.Windows.Forms.TextBox txtSrNo;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DateTimePicker dtpdate;
         private System.Windows.Forms.Label label9;
@@ -581,6 +653,14 @@
         private System.Windows.Forms.ComboBox combsearch;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtreamaining;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtpayammount;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.TextBox txtRefNo;
+        private System.Windows.Forms.Label label11;
 
 
 

@@ -36,6 +36,12 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtothers = new System.Windows.Forms.TextBox();
+            this.txttanno = new System.Windows.Forms.TextBox();
+            this.txtPanno = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.txtDESCRIPTION = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtFAX = new System.Windows.Forms.TextBox();
@@ -162,6 +168,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtothers);
+            this.groupBox1.Controls.Add(this.txttanno);
+            this.groupBox1.Controls.Add(this.txtPanno);
+            this.groupBox1.Controls.Add(this.label20);
+            this.groupBox1.Controls.Add(this.label19);
+            this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.txtDESCRIPTION);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.txtFAX);
@@ -197,6 +209,57 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer Details";
+            // 
+            // txtothers
+            // 
+            this.txtothers.Location = new System.Drawing.Point(446, 370);
+            this.txtothers.Name = "txtothers";
+            this.txtothers.Size = new System.Drawing.Size(134, 21);
+            this.txtothers.TabIndex = 33;
+            // 
+            // txttanno
+            // 
+            this.txttanno.Location = new System.Drawing.Point(244, 370);
+            this.txttanno.Name = "txttanno";
+            this.txttanno.Size = new System.Drawing.Size(152, 21);
+            this.txttanno.TabIndex = 32;
+            // 
+            // txtPanno
+            // 
+            this.txtPanno.Location = new System.Drawing.Point(46, 370);
+            this.txtPanno.MaxLength = 10;
+            this.txtPanno.Name = "txtPanno";
+            this.txtPanno.Size = new System.Drawing.Size(158, 21);
+            this.txtPanno.TabIndex = 31;
+           // this.txtPanno.TextChanged += new System.EventHandler(this.txtPanno_TextChanged);
+            this.txtPanno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPanno_KeyPress);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(472, 352);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(43, 15);
+            this.label20.TabIndex = 30;
+            this.label20.Text = "Others";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(264, 352);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(28, 15);
+            this.label19.TabIndex = 29;
+            this.label19.Text = "Tan";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(51, 352);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(47, 15);
+            this.label18.TabIndex = 28;
+            this.label18.Text = "PanNO";
             // 
             // txtDESCRIPTION
             // 
@@ -316,7 +379,6 @@
             // 
             this.txtCustCode.Location = new System.Drawing.Point(46, 38);
             this.txtCustCode.Name = "txtCustCode";
-            this.txtCustCode.ReadOnly = true;
             this.txtCustCode.Size = new System.Drawing.Size(94, 21);
             this.txtCustCode.TabIndex = 12;
             this.txtCustCode.TabStop = false;
@@ -473,9 +535,9 @@
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.comserchvalue);
             this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(13, 3);
+            this.panel1.Location = new System.Drawing.Point(13, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(683, 514);
+            this.panel1.Size = new System.Drawing.Size(683, 271);
             this.panel1.TabIndex = 11;
             // 
             // butclose
@@ -630,5 +692,11 @@
         private System.Windows.Forms.Button butclose;
         private System.Windows.Forms.Button butupdate;
         private System.Windows.Forms.Button butaddrecord;
+        private System.Windows.Forms.TextBox txtothers;
+        private System.Windows.Forms.TextBox txttanno;
+        private System.Windows.Forms.TextBox txtPanno;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
     }
 }
