@@ -301,9 +301,7 @@ namespace WindowsFormsApplication1
                     }
                 }
                 makeblank();
-                int value = Convert.ToInt32(txtSrNo.Text);
-                int value1 = value + 1;
-                txtSrNo.Text = value1.ToString();
+               
            
                 }
 
@@ -351,6 +349,9 @@ namespace WindowsFormsApplication1
                 }
             }
             makeblank();
+            int value = Convert.ToInt32(txtSrNo.Text);
+            int value1 = value + 1;
+            txtSrNo.Text = value1.ToString();
            
                     }
      

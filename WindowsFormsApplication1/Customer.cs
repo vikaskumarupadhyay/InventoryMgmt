@@ -336,6 +336,9 @@ namespace WindowsFormsApplication1
             txtMOBILE.Text = "";
             txtFAX.Text = "";
             txtDESCRIPTION.Text= "";
+            txtPanno.Text = "";
+            txttanno.Text = "";
+            txtothers.Text = "";
 
             txtOPENINGBALANCE.Text = "0";
             txtCURRENTBALANCE.Text= "0";
