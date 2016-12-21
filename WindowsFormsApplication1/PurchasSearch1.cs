@@ -19,7 +19,6 @@ namespace WindowsFormsApplication1
         
         private void PurchasSearch_Load(object sender, EventArgs e)
         {
-
             string selectqurry = "select od.Orderid,od.venderId,itd.ItemName,vod.Quantity,vod.TotalPrice,od.OrderDate,cod.DeliveryDate,coi.InvoiceDate from VendorOrderDetails od join VendorOrderDesc vod on od.Orderid=vod.Orderid join CustomerOrderDelivery cod on cod.Orderid=vod.Orderid join CustomerOrderInvoice coi on coi.Orderid=vod.Orderid join ItemDetails itd on itd.ItemId=vod.ItemId";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             List<string> ls = new List<string>();

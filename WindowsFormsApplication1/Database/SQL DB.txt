@@ -34,8 +34,6 @@ create table WithoutRefrencePament(id int identity primary key,venderId varchar(
 
 -- Connection string Data Source=ASHISH-PC;Initial Catalog=SalesMaster;Persist Security Info=True;User ID=sa
 
-create table CustomerOrderInvoice(InvoiceId int identity primary key,id int foreign key references CustomerOrderDelivery(id),Orderid int foreign key references VendorOrderDetails(Orderid), DeliveryDate datetime)
-
 
 
 create table salesOrderDelivery(Delivaryid int identity primary key,Orderid int foreign key references orderdetails(Orderid),status bit, DeliveryDate datetime)

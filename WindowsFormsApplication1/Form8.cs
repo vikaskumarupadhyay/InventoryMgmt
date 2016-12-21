@@ -587,14 +587,15 @@ namespace WindowsFormsApplication1
                         }
                     }
                 }
-                makeBlank();
+               
                 
                 int id = Convert.ToInt32(txtSrNo.Text);
                 int id1 = id + 1;
                 txtSrNo.Text = id1.ToString();
                // F9.MdiParent = this;
                 Form9 F9 = new Form9(id.ToString());
-                F9.Show();    
+                F9.Show();
+                makeBlank();
             
             }
               
@@ -863,6 +864,7 @@ namespace WindowsFormsApplication1
             txtPhone.Text = "";
             txtMobile.Text = "";
             txtFax.Text = "";
+            txtRef.Text = "";
             dataGridView1.DataSource = "";
             txtTotalAmount.Text = "0";
             addToCartTable.Clear();

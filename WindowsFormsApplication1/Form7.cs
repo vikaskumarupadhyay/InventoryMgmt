@@ -783,6 +783,7 @@ namespace WindowsFormsApplication1
             txttotalAmount.Text = "";
             dataGridView1.DataSource = "";
             addToCartTable.Clear();
+            txtRef.Text = "";
 
         }
         private void makeBlnk(string r)
