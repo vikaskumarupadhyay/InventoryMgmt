@@ -26,7 +26,7 @@ create table ItemQuantityDetail(ItemId varchar(100) foreign  key references Item
 create table VendorOrderDetails (Orderid int identity primary key,venderId varchar(100) foreign key references VendorDetails(venderId),OrderDate datetime, TotalPrice decimal)
 create table VendorOrderDesc (id int identity primary key,Orderid int   foreign key references VendorOrderDetails(Orderid),ItemId varchar(100) foreign  key references ItemDetails(ItemId), Price decimal,Quantity int,TotalPrice decimal)
 create table CustomerOrderDelivery(Deliveryid int identity primary key,Orderid int foreign key references VendorOrderDetails(Orderid),status bit, DeliveryDate datetime)
-create table CustomerOrderInvoice(InvoiceId int identity primary key,Deliveryid int foreign key references CustomerOrderDelivery(Deliveryid),Orderid int foreign key references VendorOrderDetails(Orderid), DeliveryDate datetime)
+create table CustomerOrderInvoice(InvoiceId int identity primary key,Deliveryid int foreign key references CustomerOrderDelivery(Deliveryid),Orderid int foreign key references VendorOrderDetails(Orderid), InvoiceDate datetime)
 create table VendorPayment(PaymentId int identity primary key,InvoiceId int foreign key references CustomerOrderInvoice(InvoiceId),TotalAmount decimal,PayAmount decimal,ArrearAmount decimal,PaymentMode varchar(200), PaymentDate datetime)
 
 create table ChequePement(Chequeid int identity primary key,PaymentId  int foreign key references VendorPayment(PaymentId ),ChequeDate datetime,BankName varchar(200),ChequeNo varchar(200))
@@ -34,11 +34,7 @@ create table WithoutRefrencePament(id int identity primary key,venderId varchar(
 
 -- Connection string Data Source=ASHISH-PC;Initial Catalog=SalesMaster;Persist Security Info=True;User ID=sa
 
-
-
-create table salesOrderDelivery(Delivaryid int identity primary key,Orderid int foreign key references orderdetails(Orderid),status bit, DeliveryDate datetime)
-create table salesinvoice(invoiceid int identity primary key,Delivaryid int foreign key references salesOrderDelivery(Delivaryid),Orderid int foreign key references orderdetails(Orderid),invoicedate datetime)
--USE [SalesMaster]
+USE [SalesMaster]
 GO
 
 /****** Object:  Table [dbo].[orderdetails]    Script Date: 11/28/2016 3:54:51 PM ******/
@@ -71,10 +67,11 @@ ALTER TABLE [dbo].[orderdetails]  WITH CHECK ADD FOREIGN KEY([custid])
 REFERENCES [dbo].[CustomerDetails] ([custId])
 GO
 
+create table salesOrderDelivery(Delivaryid int identity primary key,Orderid int foreign key references orderdetails(Orderid),status bit, DeliveryDate datetime)
+create table salesinvoice(invoiceid int identity primary key,Delivaryid int foreign key references salesOrderDelivery(Delivaryid),Orderid int foreign key references orderdetails(Orderid),invoicedate datetime)
 
 
-
-6-USE [SalesMaster]
+USE [SalesMaster]
 GO
 
 /****** Object:  Table [dbo].[customerorderdescriptions]    Script Date: 11/28/2016 3:55:25 PM ******/

@@ -434,14 +434,14 @@ namespace WindowsFormsApplication1
         private void txtRefNo_TextChanged(object sender, EventArgs e)
         {
             checkBox1.Checked = true;            
-            string select = "select orderid from salesinvoice Where invoiceid='" + txtRefNo.Text + "'";
-            DataTable dt = d.getDetailByQuery(select);
-            string customerid= "";
-            foreach (DataRow dr in dt.Rows)
-            {
-                customerid = dr[0].ToString();
-            }
-            string selectquery = "select  c.custId, c.CustName,c.CustCompName,c.CustAddress,c.CustPhone,c.CustMobile,c.CustFax,o.Orderid,s.Delivaryid,i.invoiceid from CustomerDetails c join orderdetails o on c.custId=o.custid join salesOrderDelivery s on o.Orderid=s.OrderId join salesinvoice i on o.Orderid=i.Orderid where i.invoiceid='"+customerid+"'";
+            //string select = "select orderid from salesinvoice Where invoiceid='" + txtRefNo.Text + "'";
+            //DataTable dt = d.getDetailByQuery(select);
+            //string customerid= "";
+            //foreach (DataRow dr in dt.Rows)
+            //{
+            //    customerid = dr[0].ToString();
+            //}
+            string selectquery = "select  c.custId, c.CustName,c.CustCompName,c.CustAddress,c.CustPhone,c.CustMobile,c.CustFax,o.Orderid,s.Delivaryid,i.invoiceid from CustomerDetails c join orderdetails o on c.custId=o.custid join salesOrderDelivery s on o.Orderid=s.OrderId join salesinvoice i on o.Orderid=i.Orderid where i.invoiceid='"+txtRefNo.Text+"'";
             DataTable dt1 = d.getDetailByQuery(selectquery);
             string orderid = "";
             if (dt1 != null && dt1.Rows != null && dt1.Rows.Count > 0)

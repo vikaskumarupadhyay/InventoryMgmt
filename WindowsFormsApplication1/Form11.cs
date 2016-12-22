@@ -95,10 +95,11 @@ namespace WindowsFormsApplication1
                 {
                     id1 = dr["CurrentQuantity"].ToString();
                 }
-                int que = maxquantity;
+                int que =0;
                 int quantity = Convert.ToInt32(txtQuantity.Text);
                 int rate = Convert.ToInt32(txtRate.Text);
-                txtAmmount.Text = (quantity*rate).ToString();
+                que=quantity*rate;
+                txtAmmount.Text = que.ToString(); 
                 if (que < quantity)
                 {
                     txtQuantity.Text = "";
