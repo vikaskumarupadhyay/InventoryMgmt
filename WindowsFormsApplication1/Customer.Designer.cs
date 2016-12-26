@@ -114,6 +114,7 @@
             this.txtCURRENTBALANCE.TabStop = false;
             this.txtCURRENTBALANCE.Text = "0";
             this.txtCURRENTBALANCE.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCURRENTBALANCE.Click += new System.EventHandler(this.txtCURRENTBALANCE_Click);
             // 
             // textBox16
             // 
@@ -134,6 +135,7 @@
             this.txtOPENINGBALANCE.TabIndex = 3;
             this.txtOPENINGBALANCE.Text = "0";
             this.txtOPENINGBALANCE.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtOPENINGBALANCE.Click += new System.EventHandler(this.txtOPENINGBALANCE_Click);
             this.txtOPENINGBALANCE.TextChanged += new System.EventHandler(this.txtCustOpeningBal_TextChanged);
             this.txtOPENINGBALANCE.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustOpeningBal_KeyPress);
             // 
@@ -212,6 +214,7 @@
             // 
             // txtothers
             // 
+            this.txtothers.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtothers.Location = new System.Drawing.Point(446, 370);
             this.txtothers.Name = "txtothers";
             this.txtothers.Size = new System.Drawing.Size(134, 21);
@@ -219,6 +222,7 @@
             // 
             // txttanno
             // 
+            this.txttanno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txttanno.Location = new System.Drawing.Point(244, 370);
             this.txttanno.Name = "txttanno";
             this.txttanno.Size = new System.Drawing.Size(152, 21);
@@ -226,7 +230,8 @@
             // 
             // txtPanno
             // 
-            this.txtPanno.Location = new System.Drawing.Point(46, 370);
+            this.txtPanno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtPanno.Location = new System.Drawing.Point(46, 376);
             this.txtPanno.MaxLength = 10;
             this.txtPanno.Name = "txtPanno";
             this.txtPanno.Size = new System.Drawing.Size(158, 21);
@@ -316,6 +321,7 @@
             this.txtWEBSITE.Name = "txtWEBSITE";
             this.txtWEBSITE.Size = new System.Drawing.Size(575, 21);
             this.txtWEBSITE.TabIndex = 21;
+            this.txtWEBSITE.Leave += new System.EventHandler(this.txtWEBSITE_Leave);
             // 
             // txtEMAILADDRESS
             // 
@@ -323,6 +329,7 @@
             this.txtEMAILADDRESS.Name = "txtEMAILADDRESS";
             this.txtEMAILADDRESS.Size = new System.Drawing.Size(575, 21);
             this.txtEMAILADDRESS.TabIndex = 20;
+            this.txtEMAILADDRESS.Leave += new System.EventHandler(this.txtEMAILADDRESS_Leave);
             // 
             // txtCustCountry
             // 
@@ -536,9 +543,8 @@
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Location = new System.Drawing.Point(13, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(683, 517);
+            this.panel1.Size = new System.Drawing.Size(683, 508);
             this.panel1.TabIndex = 11;
-            //this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // butclose
             // 
