@@ -44,7 +44,7 @@ go
 CREATE PROCEDURE GETALLDATAVENDER
 AS
 BEGIN
-select  vd.venderId as VENDORID ,vd.vName AS NAME ,vd.vCompName AS COMPANYNAME ,vd.vAddress AS ADDRESS,vd.vCity AS CITY,vd. vState AS STATE ,vd.vZip AS ZIP ,vd.vCountry AS COUNTRY ,vd.vEmail AS EMAIL ,vd. vWebAddress AS WEBADDRESS,vd.vPhone AS PHONE ,vd.vMobile AS MOBILE ,vd.vFax AS FAX ,vd.vPanNo as PanNO,vd.vTinNo as TinNO,vd.vDesc AS DESCRIPTION,vad.vOpeningBalance AS OPENINGBALANCE , vad.vCurrentBalance AS CURRENTBALANCE from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID
+select  vd.venderId as VENDORID ,vd.vName AS NAME ,vd.vCompName AS COMPANYNAME ,vd.vAddress AS ADDRESS,vd.vCity AS CITY,vd. vState AS STATE ,vd.vZip AS ZIP ,vd.vCountry AS COUNTRY ,vd.vEmail AS EMAIL ,vd. vWebAddress AS WEBADDRESS,vd.vPhone AS PHONE ,vd.vMobile AS MOBILE ,vd.vFax AS FAX ,vd.vPanNo as PanNO,vd.vTinNo as TinNO,vd.vOther,vd.vDesc AS DESCRIPTION,vad.vOpeningBalance AS OPENINGBALANCE , vad.vCurrentBalance AS CURRENTBALANCE from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID
 END
 
 go
