@@ -89,21 +89,21 @@ namespace WindowsFormsApplication1
 
         private void deliveryToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Form12 F12 = new Form12();
+            salesinvoice F12 = new salesinvoice();
             F12.Show();
             F12.MdiParent = this;
         }
 
         private void quoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form10 F10 = new Form10();
+            salesorder F10 = new salesorder();
             F10.Show();
             F10.MdiParent = this;
         }
 
         private void orderToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Form11 F11 = new Form11();
+            salesdelivary F11 = new salesdelivary();
             F11.Show();
             F11.MdiParent = this;
         }
@@ -114,5 +114,44 @@ namespace WindowsFormsApplication1
             F5.Show();
             F5.MdiParent = this;
         }
+       
+
+        private void salesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            salessearch f = new salessearch();
+            f.Show();
+            f.MdiParent = this;
+        }
+
+        private void customerToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Customer_list f = new Customer_list();
+            f.Show();
+            f.MdiParent = this;
+        }
+
+    
+
+        private void purchaseToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            PurchasSearch1 f13 = new PurchasSearch1();
+            f13.Show();
+            f13.MdiParent = this;
+        }
+
+        private void vendorListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VendorList1 f14 = new VendorList1();
+            f14.Show();
+            f14.MdiParent = this;
+        }
+
+        private void itemToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ItemList1 f15 = new ItemList1();
+            f15.Show();
+            f15.MdiParent = this;
+        }
+
     }
 }

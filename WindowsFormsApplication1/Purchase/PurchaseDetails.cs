@@ -28,7 +28,21 @@ namespace WindowsFormsApplication1.Purchase
         
         //}
 
+        public DataTable GetcustomerdetailsInDataTable()
+        {
 
+            DataTable dt = new DataTable();
+            try
+            {
+                DB_Main con = new DB_Main();
+                dt = con.getDetails("CustomerDetails");
+            }
+            catch (Exception ex)
+            {
+                dt.Clear();
+            }
+            return dt;
+        }
 
 
         public DataTable GetVendorDetaisInDataTable()

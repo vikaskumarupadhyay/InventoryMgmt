@@ -29,28 +29,34 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtCustCurrentBalance = new System.Windows.Forms.TextBox();
+            this.txtCURRENTBALANCE = new System.Windows.Forms.TextBox();
             this.textBox16 = new System.Windows.Forms.TextBox();
-            this.txtCustOpeningBal = new System.Windows.Forms.TextBox();
+            this.txtOPENINGBALANCE = new System.Windows.Forms.TextBox();
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtCustDesc = new System.Windows.Forms.TextBox();
+            this.txtothers = new System.Windows.Forms.TextBox();
+            this.txttanno = new System.Windows.Forms.TextBox();
+            this.txtPanno = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtDESCRIPTION = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.txtCustFax = new System.Windows.Forms.TextBox();
+            this.txtFAX = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.txtCustMobile = new System.Windows.Forms.TextBox();
-            this.txtCustPhone = new System.Windows.Forms.TextBox();
-            this.txtCustWebSite = new System.Windows.Forms.TextBox();
-            this.txtCustEmail = new System.Windows.Forms.TextBox();
+            this.txtMOBILE = new System.Windows.Forms.TextBox();
+            this.txtTXTPHONE = new System.Windows.Forms.TextBox();
+            this.txtWEBSITE = new System.Windows.Forms.TextBox();
+            this.txtEMAILADDRESS = new System.Windows.Forms.TextBox();
             this.txtCustCountry = new System.Windows.Forms.TextBox();
-            this.txtCustZip = new System.Windows.Forms.TextBox();
-            this.txtCustState = new System.Windows.Forms.TextBox();
-            this.txtCustCity = new System.Windows.Forms.TextBox();
-            this.txtCustAdd = new System.Windows.Forms.TextBox();
-            this.txtCustCompName = new System.Windows.Forms.TextBox();
-            this.txtCustName = new System.Windows.Forms.TextBox();
+            this.txtZIP = new System.Windows.Forms.TextBox();
+            this.txtState = new System.Windows.Forms.TextBox();
+            this.txtCity = new System.Windows.Forms.TextBox();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.txtCompnyName = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.txtCustCode = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -68,44 +74,47 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnList = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnCloseAgain = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnNewRecord = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.butclose = new System.Windows.Forms.Button();
+            this.butupdate = new System.Windows.Forms.Button();
+            this.butaddrecord = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
+            this.searchvalue = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comserchvalue = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txtCustCurrentBalance);
+            this.groupBox2.Controls.Add(this.txtCURRENTBALANCE);
             this.groupBox2.Controls.Add(this.textBox16);
-            this.groupBox2.Controls.Add(this.txtCustOpeningBal);
+            this.groupBox2.Controls.Add(this.txtOPENINGBALANCE);
             this.groupBox2.Controls.Add(this.textBox14);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 386);
+            this.groupBox2.Location = new System.Drawing.Point(12, 405);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(659, 75);
+            this.groupBox2.Size = new System.Drawing.Size(659, 56);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Account Status";
             // 
-            // txtCustCurrentBalance
+            // txtCURRENTBALANCE
             // 
-            this.txtCustCurrentBalance.Location = new System.Drawing.Point(402, 37);
-            this.txtCustCurrentBalance.Name = "txtCustCurrentBalance";
-            this.txtCustCurrentBalance.ReadOnly = true;
-            this.txtCustCurrentBalance.Size = new System.Drawing.Size(219, 21);
-            this.txtCustCurrentBalance.TabIndex = 5;
-            this.txtCustCurrentBalance.TabStop = false;
-            this.txtCustCurrentBalance.Text = "0";
-            this.txtCustCurrentBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCURRENTBALANCE.Location = new System.Drawing.Point(402, 37);
+            this.txtCURRENTBALANCE.Name = "txtCURRENTBALANCE";
+            this.txtCURRENTBALANCE.ReadOnly = true;
+            this.txtCURRENTBALANCE.Size = new System.Drawing.Size(219, 21);
+            this.txtCURRENTBALANCE.TabIndex = 5;
+            this.txtCURRENTBALANCE.TabStop = false;
+            this.txtCURRENTBALANCE.Text = "0";
+            this.txtCURRENTBALANCE.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCURRENTBALANCE.Click += new System.EventHandler(this.txtCURRENTBALANCE_Click);
             // 
             // textBox16
             // 
@@ -118,18 +127,17 @@
             this.textBox16.Text = "Rs.";
             this.textBox16.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtCustOpeningBal
+            // txtOPENINGBALANCE
             // 
-            this.txtCustOpeningBal.Location = new System.Drawing.Point(101, 37);
-            this.txtCustOpeningBal.Name = "txtCustOpeningBal";
-            this.txtCustOpeningBal.Size = new System.Drawing.Size(241, 21);
-            this.txtCustOpeningBal.TabIndex = 3;
-            this.txtCustOpeningBal.Text = "0";
-            this.txtCustOpeningBal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtCustOpeningBal.TextChanged += new System.EventHandler(this.txtCustOpeningBal_TextChanged);
-            this.txtCustOpeningBal.Enter += new System.EventHandler(this.txtCustOpeningBal_Enter);
-            this.txtCustOpeningBal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustOpeningBal_KeyPress);
-            this.txtCustOpeningBal.Leave += new System.EventHandler(this.txtCustOpeningBal_Leave);
+            this.txtOPENINGBALANCE.Location = new System.Drawing.Point(101, 37);
+            this.txtOPENINGBALANCE.Name = "txtOPENINGBALANCE";
+            this.txtOPENINGBALANCE.Size = new System.Drawing.Size(241, 21);
+            this.txtOPENINGBALANCE.TabIndex = 3;
+            this.txtOPENINGBALANCE.Text = "0";
+            this.txtOPENINGBALANCE.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtOPENINGBALANCE.Click += new System.EventHandler(this.txtOPENINGBALANCE_Click);
+            this.txtOPENINGBALANCE.TextChanged += new System.EventHandler(this.txtCustOpeningBal_TextChanged);
+            this.txtOPENINGBALANCE.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustOpeningBal_KeyPress);
             // 
             // textBox14
             // 
@@ -162,21 +170,27 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtCustDesc);
+            this.groupBox1.Controls.Add(this.txtothers);
+            this.groupBox1.Controls.Add(this.txttanno);
+            this.groupBox1.Controls.Add(this.txtPanno);
+            this.groupBox1.Controls.Add(this.label20);
+            this.groupBox1.Controls.Add(this.label19);
+            this.groupBox1.Controls.Add(this.label18);
+            this.groupBox1.Controls.Add(this.txtDESCRIPTION);
             this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.txtCustFax);
+            this.groupBox1.Controls.Add(this.txtFAX);
             this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.txtCustMobile);
-            this.groupBox1.Controls.Add(this.txtCustPhone);
-            this.groupBox1.Controls.Add(this.txtCustWebSite);
-            this.groupBox1.Controls.Add(this.txtCustEmail);
+            this.groupBox1.Controls.Add(this.txtMOBILE);
+            this.groupBox1.Controls.Add(this.txtTXTPHONE);
+            this.groupBox1.Controls.Add(this.txtWEBSITE);
+            this.groupBox1.Controls.Add(this.txtEMAILADDRESS);
             this.groupBox1.Controls.Add(this.txtCustCountry);
-            this.groupBox1.Controls.Add(this.txtCustZip);
-            this.groupBox1.Controls.Add(this.txtCustState);
-            this.groupBox1.Controls.Add(this.txtCustCity);
-            this.groupBox1.Controls.Add(this.txtCustAdd);
-            this.groupBox1.Controls.Add(this.txtCustCompName);
-            this.groupBox1.Controls.Add(this.txtCustName);
+            this.groupBox1.Controls.Add(this.txtZIP);
+            this.groupBox1.Controls.Add(this.txtState);
+            this.groupBox1.Controls.Add(this.txtCity);
+            this.groupBox1.Controls.Add(this.txtAddress);
+            this.groupBox1.Controls.Add(this.txtCompnyName);
+            this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.txtCustCode);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label11);
@@ -191,21 +205,74 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 30);
+            this.groupBox1.Location = new System.Drawing.Point(12, -17);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(659, 356);
+            this.groupBox1.Size = new System.Drawing.Size(659, 403);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer Details";
             // 
-            // txtCustDesc
+            // txtothers
             // 
-            this.txtCustDesc.Location = new System.Drawing.Point(46, 299);
-            this.txtCustDesc.Multiline = true;
-            this.txtCustDesc.Name = "txtCustDesc";
-            this.txtCustDesc.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtCustDesc.Size = new System.Drawing.Size(575, 46);
-            this.txtCustDesc.TabIndex = 27;
+            this.txtothers.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtothers.Location = new System.Drawing.Point(446, 370);
+            this.txtothers.Name = "txtothers";
+            this.txtothers.Size = new System.Drawing.Size(134, 21);
+            this.txtothers.TabIndex = 33;
+            // 
+            // txttanno
+            // 
+            this.txttanno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txttanno.Location = new System.Drawing.Point(244, 370);
+            this.txttanno.Name = "txttanno";
+            this.txttanno.Size = new System.Drawing.Size(152, 21);
+            this.txttanno.TabIndex = 32;
+            // 
+            // txtPanno
+            // 
+            this.txtPanno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtPanno.Location = new System.Drawing.Point(46, 376);
+            this.txtPanno.MaxLength = 10;
+            this.txtPanno.Name = "txtPanno";
+            this.txtPanno.Size = new System.Drawing.Size(158, 21);
+            this.txtPanno.TabIndex = 31;
+            this.txtPanno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPanno_KeyPress);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(472, 352);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(43, 15);
+            this.label20.TabIndex = 30;
+            this.label20.Text = "Others";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(264, 352);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(28, 15);
+            this.label19.TabIndex = 29;
+            this.label19.Text = "Tan";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(51, 352);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(47, 15);
+            this.label18.TabIndex = 28;
+            this.label18.Text = "PanNO";
+            // 
+            // txtDESCRIPTION
+            // 
+            this.txtDESCRIPTION.Location = new System.Drawing.Point(46, 299);
+            this.txtDESCRIPTION.Multiline = true;
+            this.txtDESCRIPTION.Name = "txtDESCRIPTION";
+            this.txtDESCRIPTION.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtDESCRIPTION.Size = new System.Drawing.Size(575, 46);
+            this.txtDESCRIPTION.TabIndex = 27;
             // 
             // label16
             // 
@@ -216,12 +283,12 @@
             this.label16.TabIndex = 26;
             this.label16.Text = "Description";
             // 
-            // txtCustFax
+            // txtFAX
             // 
-            this.txtCustFax.Location = new System.Drawing.Point(420, 257);
-            this.txtCustFax.Name = "txtCustFax";
-            this.txtCustFax.Size = new System.Drawing.Size(201, 21);
-            this.txtCustFax.TabIndex = 25;
+            this.txtFAX.Location = new System.Drawing.Point(420, 257);
+            this.txtFAX.Name = "txtFAX";
+            this.txtFAX.Size = new System.Drawing.Size(201, 21);
+            this.txtFAX.TabIndex = 25;
             // 
             // label13
             // 
@@ -232,33 +299,37 @@
             this.label13.TabIndex = 24;
             this.label13.Text = "Fax";
             // 
-            // txtCustMobile
+            // txtMOBILE
             // 
-            this.txtCustMobile.Location = new System.Drawing.Point(244, 257);
-            this.txtCustMobile.Name = "txtCustMobile";
-            this.txtCustMobile.Size = new System.Drawing.Size(170, 21);
-            this.txtCustMobile.TabIndex = 23;
+            this.txtMOBILE.Location = new System.Drawing.Point(244, 257);
+            this.txtMOBILE.Name = "txtMOBILE";
+            this.txtMOBILE.Size = new System.Drawing.Size(170, 21);
+            this.txtMOBILE.TabIndex = 23;
+            this.txtMOBILE.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustMobile_KeyPress);
             // 
-            // txtCustPhone
+            // txtTXTPHONE
             // 
-            this.txtCustPhone.Location = new System.Drawing.Point(46, 257);
-            this.txtCustPhone.Name = "txtCustPhone";
-            this.txtCustPhone.Size = new System.Drawing.Size(192, 21);
-            this.txtCustPhone.TabIndex = 22;
+            this.txtTXTPHONE.Location = new System.Drawing.Point(46, 257);
+            this.txtTXTPHONE.Name = "txtTXTPHONE";
+            this.txtTXTPHONE.Size = new System.Drawing.Size(192, 21);
+            this.txtTXTPHONE.TabIndex = 22;
+            this.txtTXTPHONE.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustPhone_KeyPress);
             // 
-            // txtCustWebSite
+            // txtWEBSITE
             // 
-            this.txtCustWebSite.Location = new System.Drawing.Point(46, 215);
-            this.txtCustWebSite.Name = "txtCustWebSite";
-            this.txtCustWebSite.Size = new System.Drawing.Size(575, 21);
-            this.txtCustWebSite.TabIndex = 21;
+            this.txtWEBSITE.Location = new System.Drawing.Point(46, 215);
+            this.txtWEBSITE.Name = "txtWEBSITE";
+            this.txtWEBSITE.Size = new System.Drawing.Size(575, 21);
+            this.txtWEBSITE.TabIndex = 21;
+            this.txtWEBSITE.Leave += new System.EventHandler(this.txtWEBSITE_Leave);
             // 
-            // txtCustEmail
+            // txtEMAILADDRESS
             // 
-            this.txtCustEmail.Location = new System.Drawing.Point(46, 173);
-            this.txtCustEmail.Name = "txtCustEmail";
-            this.txtCustEmail.Size = new System.Drawing.Size(575, 21);
-            this.txtCustEmail.TabIndex = 20;
+            this.txtEMAILADDRESS.Location = new System.Drawing.Point(46, 173);
+            this.txtEMAILADDRESS.Name = "txtEMAILADDRESS";
+            this.txtEMAILADDRESS.Size = new System.Drawing.Size(575, 21);
+            this.txtEMAILADDRESS.TabIndex = 20;
+            this.txtEMAILADDRESS.Leave += new System.EventHandler(this.txtEMAILADDRESS_Leave);
             // 
             // txtCustCountry
             // 
@@ -267,54 +338,53 @@
             this.txtCustCountry.Size = new System.Drawing.Size(146, 21);
             this.txtCustCountry.TabIndex = 19;
             // 
-            // txtCustZip
+            // txtZIP
             // 
-            this.txtCustZip.Location = new System.Drawing.Point(348, 131);
-            this.txtCustZip.Name = "txtCustZip";
-            this.txtCustZip.Size = new System.Drawing.Size(121, 21);
-            this.txtCustZip.TabIndex = 18;
+            this.txtZIP.Location = new System.Drawing.Point(348, 131);
+            this.txtZIP.Name = "txtZIP";
+            this.txtZIP.Size = new System.Drawing.Size(121, 21);
+            this.txtZIP.TabIndex = 18;
             // 
-            // txtCustState
+            // txtState
             // 
-            this.txtCustState.Location = new System.Drawing.Point(210, 131);
-            this.txtCustState.Name = "txtCustState";
-            this.txtCustState.Size = new System.Drawing.Size(132, 21);
-            this.txtCustState.TabIndex = 17;
+            this.txtState.Location = new System.Drawing.Point(205, 131);
+            this.txtState.Name = "txtState";
+            this.txtState.Size = new System.Drawing.Size(132, 21);
+            this.txtState.TabIndex = 17;
             // 
-            // txtCustCity
+            // txtCity
             // 
-            this.txtCustCity.Location = new System.Drawing.Point(46, 131);
-            this.txtCustCity.Name = "txtCustCity";
-            this.txtCustCity.Size = new System.Drawing.Size(158, 21);
-            this.txtCustCity.TabIndex = 16;
+            this.txtCity.Location = new System.Drawing.Point(46, 131);
+            this.txtCity.Name = "txtCity";
+            this.txtCity.Size = new System.Drawing.Size(158, 21);
+            this.txtCity.TabIndex = 16;
             // 
-            // txtCustAdd
+            // txtAddress
             // 
-            this.txtCustAdd.Location = new System.Drawing.Point(46, 80);
-            this.txtCustAdd.Multiline = true;
-            this.txtCustAdd.Name = "txtCustAdd";
-            this.txtCustAdd.Size = new System.Drawing.Size(575, 30);
-            this.txtCustAdd.TabIndex = 15;
+            this.txtAddress.Location = new System.Drawing.Point(46, 77);
+            this.txtAddress.Multiline = true;
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(575, 30);
+            this.txtAddress.TabIndex = 15;
             // 
-            // txtCustCompName
+            // txtCompnyName
             // 
-            this.txtCustCompName.Location = new System.Drawing.Point(362, 38);
-            this.txtCustCompName.Name = "txtCustCompName";
-            this.txtCustCompName.Size = new System.Drawing.Size(259, 21);
-            this.txtCustCompName.TabIndex = 14;
+            this.txtCompnyName.Location = new System.Drawing.Point(362, 38);
+            this.txtCompnyName.Name = "txtCompnyName";
+            this.txtCompnyName.Size = new System.Drawing.Size(259, 21);
+            this.txtCompnyName.TabIndex = 14;
             // 
-            // txtCustName
+            // txtName
             // 
-            this.txtCustName.Location = new System.Drawing.Point(146, 38);
-            this.txtCustName.Name = "txtCustName";
-            this.txtCustName.Size = new System.Drawing.Size(210, 21);
-            this.txtCustName.TabIndex = 13;
+            this.txtName.Location = new System.Drawing.Point(143, 38);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(210, 21);
+            this.txtName.TabIndex = 13;
             // 
             // txtCustCode
             // 
             this.txtCustCode.Location = new System.Drawing.Point(46, 38);
             this.txtCustCode.Name = "txtCustCode";
-            this.txtCustCode.ReadOnly = true;
             this.txtCustCode.Size = new System.Drawing.Size(94, 21);
             this.txtCustCode.TabIndex = 12;
             this.txtCustCode.TabStop = false;
@@ -463,72 +533,92 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnCloseAgain);
-            this.panel1.Controls.Add(this.btnUpdate);
-            this.panel1.Controls.Add(this.btnNewRecord);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(0, 5);
+            this.panel1.Controls.Add(this.butclose);
+            this.panel1.Controls.Add(this.butupdate);
+            this.panel1.Controls.Add(this.butaddrecord);
+            this.panel1.Controls.Add(this.label17);
+            this.panel1.Controls.Add(this.searchvalue);
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.comserchvalue);
+            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Location = new System.Drawing.Point(13, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(700, 519);
+            this.panel1.Size = new System.Drawing.Size(683, 508);
             this.panel1.TabIndex = 11;
             // 
-            // btnCloseAgain
+            // butclose
             // 
-            this.btnCloseAgain.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCloseAgain.Location = new System.Drawing.Point(259, 479);
-            this.btnCloseAgain.Name = "btnCloseAgain";
-            this.btnCloseAgain.Size = new System.Drawing.Size(90, 28);
-            this.btnCloseAgain.TabIndex = 3;
-            this.btnCloseAgain.Text = "Close";
-            this.btnCloseAgain.UseVisualStyleBackColor = true;
-            this.btnCloseAgain.Click += new System.EventHandler(this.btnCloseAgain_Click);
+            this.butclose.Location = new System.Drawing.Point(266, 452);
+            this.butclose.Name = "butclose";
+            this.butclose.Size = new System.Drawing.Size(102, 23);
+            this.butclose.TabIndex = 7;
+            this.butclose.Text = "Close";
+            this.butclose.UseVisualStyleBackColor = true;
+            this.butclose.Click += new System.EventHandler(this.butclose_Click);
             // 
-            // btnUpdate
+            // butupdate
             // 
-            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(163, 479);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(90, 28);
-            this.btnUpdate.TabIndex = 2;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.butupdate.Location = new System.Drawing.Point(162, 452);
+            this.butupdate.Name = "butupdate";
+            this.butupdate.Size = new System.Drawing.Size(87, 23);
+            this.butupdate.TabIndex = 6;
+            this.butupdate.Text = "Update";
+            this.butupdate.UseVisualStyleBackColor = true;
+            this.butupdate.Click += new System.EventHandler(this.butupdate_Click);
             // 
-            // btnNewRecord
+            // butaddrecord
             // 
-            this.btnNewRecord.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewRecord.Location = new System.Drawing.Point(20, 479);
-            this.btnNewRecord.Name = "btnNewRecord";
-            this.btnNewRecord.Size = new System.Drawing.Size(137, 28);
-            this.btnNewRecord.TabIndex = 1;
-            this.btnNewRecord.Text = "Add New Records";
-            this.btnNewRecord.UseVisualStyleBackColor = true;
-            this.btnNewRecord.Click += new System.EventHandler(this.btnNewRecord_Click);
+            this.butaddrecord.Location = new System.Drawing.Point(23, 452);
+            this.butaddrecord.Name = "butaddrecord";
+            this.butaddrecord.Size = new System.Drawing.Size(109, 23);
+            this.butaddrecord.TabIndex = 5;
+            this.butaddrecord.Text = "AddNewRecord";
+            this.butaddrecord.UseVisualStyleBackColor = true;
+            this.butaddrecord.Click += new System.EventHandler(this.butaddrecord_Click);
             // 
-            // panel2
+            // label17
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Location = new System.Drawing.Point(12, 12);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(676, 449);
-            this.panel2.TabIndex = 0;
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(371, 14);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(39, 13);
+            this.label17.TabIndex = 4;
+            this.label17.Text = "search";
+            // 
+            // searchvalue
+            // 
+            this.searchvalue.AutoSize = true;
+            this.searchvalue.Location = new System.Drawing.Point(32, 14);
+            this.searchvalue.Name = "searchvalue";
+            this.searchvalue.Size = new System.Drawing.Size(65, 13);
+            this.searchvalue.TabIndex = 3;
+            this.searchvalue.Text = "searchvalue";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(358, 44);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(193, 20);
+            this.textBox1.TabIndex = 2;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // comserchvalue
+            // 
+            this.comserchvalue.FormattingEnabled = true;
+            this.comserchvalue.Location = new System.Drawing.Point(32, 45);
+            this.comserchvalue.Name = "comserchvalue";
+            this.comserchvalue.Size = new System.Drawing.Size(121, 21);
+            this.comserchvalue.TabIndex = 1;
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Location = new System.Drawing.Point(5, 111);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(672, 445);
+            this.dataGridView1.Size = new System.Drawing.Size(670, 335);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
             // 
             // Customer
             // 
@@ -552,7 +642,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -561,28 +651,28 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txtCustCurrentBalance;
+        private System.Windows.Forms.TextBox txtCURRENTBALANCE;
         private System.Windows.Forms.TextBox textBox16;
-        private System.Windows.Forms.TextBox txtCustOpeningBal;
+        private System.Windows.Forms.TextBox txtOPENINGBALANCE;
         private System.Windows.Forms.TextBox textBox14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtCustDesc;
+        private System.Windows.Forms.TextBox txtDESCRIPTION;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox txtCustFax;
+        private System.Windows.Forms.TextBox txtFAX;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtCustMobile;
-        private System.Windows.Forms.TextBox txtCustPhone;
-        private System.Windows.Forms.TextBox txtCustWebSite;
-        private System.Windows.Forms.TextBox txtCustEmail;
+        private System.Windows.Forms.TextBox txtMOBILE;
+        private System.Windows.Forms.TextBox txtTXTPHONE;
+        private System.Windows.Forms.TextBox txtWEBSITE;
+        private System.Windows.Forms.TextBox txtEMAILADDRESS;
         private System.Windows.Forms.TextBox txtCustCountry;
-        private System.Windows.Forms.TextBox txtCustZip;
-        private System.Windows.Forms.TextBox txtCustState;
-        private System.Windows.Forms.TextBox txtCustCity;
-        private System.Windows.Forms.TextBox txtCustAdd;
-        private System.Windows.Forms.TextBox txtCustCompName;
-        private System.Windows.Forms.TextBox txtCustName;
+        private System.Windows.Forms.TextBox txtZIP;
+        private System.Windows.Forms.TextBox txtState;
+        private System.Windows.Forms.TextBox txtCity;
+        private System.Windows.Forms.TextBox txtAddress;
+        private System.Windows.Forms.TextBox txtCompnyName;
+        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtCustCode;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
@@ -600,10 +690,19 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnList;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnCloseAgain;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnNewRecord;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox comserchvalue;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label searchvalue;
+        private System.Windows.Forms.Button butclose;
+        private System.Windows.Forms.Button butupdate;
+        private System.Windows.Forms.Button butaddrecord;
+        private System.Windows.Forms.TextBox txtothers;
+        private System.Windows.Forms.TextBox txttanno;
+        private System.Windows.Forms.TextBox txtPanno;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
     }
 }

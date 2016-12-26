@@ -14,7 +14,7 @@ namespace WindowsFormsApplication1
 {
     public partial class frmVendorDetails : Form
     {
-        
+
         public frmVendorDetails()
         {
             InitializeComponent();
@@ -29,49 +29,96 @@ namespace WindowsFormsApplication1
         /// <param name="e"></param>
         private void btnVenderSave_Click(object sender, EventArgs e)
         {
-            if (updateCounter == 0)
+            if (string.IsNullOrEmpty(txtVenderName.Text))
             {
-                string saveCommand1 = "insert into VendorDetails values ('" + txtVenderCode.Text + "','" + txtVenderName.Text + "','" + txtCompanyName.Text + "','" + txtVenderAddress.Text + "','" + txtVenderCity.Text + "','" + txtVenderState.Text + "','" + txtVenderZip.Text + "','" + txtVenderCountry.Text + "','" + txtVenderEmailAddress.Text + "','" + txtVenderWebSite.Text + "','" + txtVenderPhone.Text + "', '" + txtVenderMobile.Text + "','" + txtVenderFax.Text + "','" + txtVenderDesc.Text + "')";
-
-                string saveCommand2 = "insert into VendorAccountDetails values ('" + txtVenderCode.Text + "','" + txtVenderCode.Text + "','" + txtVenderOpeningBal.Text + "','" + txtVenderCurrentBal.Text + "')";
-
-                int insertedRows = dbMainClass.saveDetails(saveCommand1, saveCommand2);
-                if (insertedRows > 0)
+                MessageBox.Show("please Enter the name");
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(txtCompanyName.Text))
                 {
-                    btnVenderList.Enabled = true; 
-                    MessageBox.Show("Details Saved Successfully");
-                    txtVenderName.Focus();
+                    MessageBox.Show("please Enter the Company name");
                 }
                 else
                 {
-                    MessageBox.Show("Details Not Saved Successfully");
-                }
-            }
-            else if(updateCounter==1)
-            {
-                string updateCommand1 = "update  VendorDetails  set  vName='" + txtVenderName.Text + "', vCompName= '" + txtCompanyName.Text + "',vAddress='" + txtVenderAddress.Text + "',vCity='" + txtVenderCity.Text + "',vState='" + txtVenderState.Text + "',vZip='" + txtVenderZip.Text + "',vCountry='" + txtVenderCountry.Text + "',vEmail='" + txtVenderEmailAddress.Text + "',vWebAddress='" + txtVenderWebSite.Text + "',vPhone='" + txtVenderPhone.Text + "', vMobile='" + txtVenderMobile.Text + "',vFax='" + txtVenderFax.Text + "',vDesc='" + txtVenderDesc.Text + "' where venderid='"+ txtVenderCode.Text+"'";
-                string updateCommand2 = "update   VendorAccountDetails set vOpeningBalance='" + txtVenderOpeningBal.Text + "',vCurrentBalance='" + txtVenderCurrentBal.Text + "' where venderId='" + txtVenderCode.Text + "'";
+                    if (string.IsNullOrEmpty(txtVenderAddress.Text))
+                    {
+                        MessageBox.Show("please Enter the Address");
+                    }
+                    else
+                    {
 
-                int updatedRows = dbMainClass.updateDetails(updateCommand1, updateCommand2);
-                if (updatedRows > 0)
-                {
-                    txtVenderName.Focus();
-                    MessageBox.Show("Details Updated Successfully");
-                    
+                        //if (string.IsNullOrEmpty(txtVenderPhone.Text) && string.IsNullOrEmpty(txtVenderMobile.Text))
+                        //{
+                        //    MessageBox.Show("please Enter the  Mobile No. ya Phone No.");
+                        //}
+                        //else
+                        //{
+                        //    if (!this.txtVenderEmailAddress.Text.Contains('@') || !this.txtVenderEmailAddress.Text.Contains('.'))
+                        //    {
+                        //        MessageBox.Show("Please Enter the Correct Email Address");
+                        //    }
+                        //    else
+                        //    {
+                                //if (!this.txtVenderWebSite.Text.Contains('@') || !this.txtVenderWebSite.Text.Contains('.') || !this.txtVenderWebSite.Text.Contains("http://"))
+                                //{
+                                //    MessageBox.Show("Please Enter the Correct Web Site Address");
+                                ////}
+                                //else
+                                //{
+
+                                    if (updateCounter == 0)
+                                    {
+                                        string saveCommand1 = "insert into VendorDetails values ('" + txtVenderCode.Text + "','" + txtVenderName.Text + "','" + txtCompanyName.Text + "','" + txtVenderAddress.Text + "','" + txtVenderCity.Text + "','" + txtVenderState.Text + "','" + txtVenderZip.Text + "','" + txtVenderCountry.Text + "','" + txtVenderEmailAddress.Text + "','" + txtVenderWebSite.Text + "','" + txtVenderPhone.Text + "', '" + txtVenderMobile.Text + "','" + txtVenderFax.Text + "','" + txtVenderDesc.Text + "','" + txtPanNo.Text + "','" + txtTinNo.Text + "','" + txtOther.Text + "')";
+
+                                        string saveCommand2 = "insert into VendorAccountDetails values ('" + txtVenderCode.Text + "','" + txtVenderCode.Text + "','" + txtVenderOpeningBal.Text + "','" + txtVenderCurrentBal.Text + "')";
+
+                                        int insertedRows = dbMainClass.saveDetails(saveCommand1, saveCommand2);
+                                        if (insertedRows > 0)
+                                        {
+                                            btnVenderList.Enabled = true;
+                                            MessageBox.Show("Details Saved Successfully");
+                                            txtVenderName.Focus();
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Details Not Saved Successfully");
+                                        }
+
+                                    }
+
+                                    else if (updateCounter == 1)
+                                    {
+                                        string updateCommand1 = "update  VendorDetails  set  vName='" + txtVenderName.Text + "', vCompName= '" + txtCompanyName.Text + "',vAddress='" + txtVenderAddress.Text + "',vCity='" + txtVenderCity.Text + "',vState='" + txtVenderState.Text + "',vZip='" + txtVenderZip.Text + "',vCountry='" + txtVenderCountry.Text + "',vEmail='" + txtVenderEmailAddress.Text + "',vWebAddress='" + txtVenderWebSite.Text + "',vPhone='" + txtVenderPhone.Text + "', vMobile='" + txtVenderMobile.Text + "',vFax='" + txtVenderFax.Text + "',vPanNo='" + txtPanNo.Text + "',vTinNo='" + txtTinNo.Text + "',vDesc='" + txtVenderDesc.Text + "',vOther='" + txtOther.Text + "'  where venderid='" + txtVenderCode.Text + "'";
+                                        string updateCommand2 = "update   VendorAccountDetails set vOpeningBalance='" + txtVenderOpeningBal.Text + "',vCurrentBalance='" + txtVenderCurrentBal.Text + "' where venderId='" + txtVenderCode.Text + "'";
+
+                                        int updatedRows = dbMainClass.updateDetails(updateCommand1, updateCommand2);
+                                        if (updatedRows > 0)
+                                        {
+                                            txtVenderName.Focus();
+                                            MessageBox.Show("Details Updated Successfully");
+
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Details Can not updated");
+                                        }
+                                        updateCounter = 0;
+                                    }
+                                    makeBlank();
+                                    Enabled2();
+                                    string Id = dbMainClass.getUniqueID("VENDOR");
+                                    txtVenderCode.Text = Id;
+                                //}
+                            //}
+                        }
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Details Can not updated");
-                }
-                updateCounter = 0;
             }
-            makeBlank();
-            string Id = getId("VENDOR");
-            txtVenderCode.Text = Id;
-        }
+        
 
         #region  To Make all Field Blanks
-        private void makeBlank() 
+        private void makeBlank()
         {
 
             txtVenderCode.Text = "";
@@ -94,7 +141,10 @@ namespace WindowsFormsApplication1
 
             txtVenderCode.Text = "";
             txtVenderCode.Text = "";
-        
+            txtTinNo.Text = "";
+            txtPanNo.Text = "";
+            txtOther.Text = "";
+
         }
         #endregion
 
@@ -102,11 +152,48 @@ namespace WindowsFormsApplication1
         {
             this.Close();
         }
+        private void Enabled1()
+        {
+            //txtVenderAddress.Enabled = false;
+           // txtVenderCity.Enabled = false;
+            //txtVenderCountry.Enabled = false;
+            txtVenderDesc.Enabled = false;
+            txtVenderName.Enabled = false;
+            txtVenderOpeningBal.Enabled = false;
+            txtCompanyName.Enabled = false;
+            txtPanNo.Enabled = false;
+            txtTinNo.Enabled = false;
+            txtOther.Enabled = false;
+            //txtVenderState.Enabled = false;
+            txtVenderWebSite.Enabled = false;
+           // txtVenderZip.Enabled = false;
+            txtVenderEmailAddress.Enabled = false;
+            btnVenderList.Enabled = false;
+        }
+        private void Enabled2()
+        {
+            txtVenderAddress.Enabled = true;
+            txtVenderCity.Enabled = true;
+            txtVenderCountry.Enabled = true;
+            txtVenderDesc.Enabled = true;
+            txtVenderName.Enabled = true;
+            txtVenderOpeningBal.Enabled = true;
+            txtCompanyName.Enabled = true;
+            txtPanNo.Enabled = true;
+            txtTinNo.Enabled = true;
+            txtOther.Enabled = true;
+            txtVenderState.Enabled = true;
+            txtVenderWebSite.Enabled = true;
+            txtVenderZip.Enabled = true;
+            txtVenderEmailAddress.Enabled = true;
+            btnVenderList.Enabled = true;
+        }
 
         private void txtVenderOpeningBal_KeyPress(object sender, KeyPressEventArgs e)
         {
             //MessageBox.Show(Char.GetNumericValue(e.KeyChar).ToString());
             //MessageBox.Show(e.KeyChar.);
+
 
             if (Char.IsDigit(e.KeyChar))
             {
@@ -114,7 +201,15 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                e.Handled = true;
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    
+                }
             }
 
         }
@@ -123,21 +218,24 @@ namespace WindowsFormsApplication1
         {
             if (txtVenderOpeningBal.Text == "")
             {
-                txtVenderCurrentBal.Text = "0";
+                MessageBox.Show("please enter the opening bal1");
             }
-            else
-            {
-                string value = txtVenderOpeningBal.Text;
-                txtVenderCurrentBal.Text = value;
-            }
+            //else
+            //{
+            //    string value = txtVenderOpeningBal.Text;
+            //    txtVenderCurrentBal.Text = value;
+            //}
+            //txtVenderOpeningBal.Text = txtVenderCurrentBal.Text;
         }
 
         private void txtVenderOpeningBal_Enter(object sender, EventArgs e)
         {
-            if (txtVenderOpeningBal.Text == "0") 
+            if (txtVenderOpeningBal.Text == "")
             {
-                txtVenderOpeningBal.Text = "";
+                txtVenderOpeningBal.Text = "0";
+
             }
+           
         }
 
         private void txtVenderOpeningBal_Leave(object sender, EventArgs e)
@@ -147,27 +245,44 @@ namespace WindowsFormsApplication1
                 txtVenderOpeningBal.Text = "0";
 
             }
+            else
+            {
+
+                string value = txtVenderOpeningBal.Text;
+                txtVenderCurrentBal.Text = value;
+            }
         }
 
         private void frmVendorDetails_Load(object sender, EventArgs e)
         {
+            string selectqurry = "select  vName as NAME, vCompName as COMPNAME,vAddress as ADDRESS,vCity as CITY,vState as STATE,vZip as ZIP,vCountry as COUNTRY,vEmail as EMAIL,vWebAddress as WEBADDRESS,vPhone as PHONE,vMobile as MOBILE,vFax as FAX,vDesc as DESCription,vPanNo as PanNo,vTinNo as TinNo from VendorDetails";
+          DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+            List<string> ls = new List<string>();
+            DataColumnCollection d = dt.Columns;
+            for (int a = 0; a < d.Count; a++)
+            {
+                DataColumn dc = new DataColumn();
+                string b = d[a].ToString();
+                ls.Add(b);
+            }
+            comboBox1.DataSource = ls;
             panel1.Visible = false;
-            string Id = getId("VENDOR");
+            string Id = dbMainClass.getUniqueID("VENDOR");
             txtVenderCode.Text = Id;
-            if (Id == "V0001") 
+            if (Id == "V0001")
             {
                 btnVenderList.Enabled = false;
-            } 
+            }
             else
             {
-                btnVenderList.Enabled = true; 
+                btnVenderList.Enabled = true;
             }
         }
 
-        private string getId(string Table) 
+        private string getId(string Table)
         {
             string Id = dbMainClass.getUniqueID("VENDOR");
-            
+
             if (!Id.Contains("ERROR"))
             {
                 if (Id.Length == 2)
@@ -182,7 +297,7 @@ namespace WindowsFormsApplication1
                 {
                     Id = Id[0].ToString() + "0" + Id.Substring(1);
                 }
-                
+
             }
             return Id;
         }
@@ -190,11 +305,11 @@ namespace WindowsFormsApplication1
         private void btnVenderList_Click(object sender, EventArgs e)
         {
             panel1.Visible = true;
-           DataTable dt= dbMainClass.getDetails("VENDORDETAILS");
-           dataGridView1.DataSource = dt;
-          }
+            DataTable dt = dbMainClass.getDetails("VENDORDETAILS");
+            dataGridView1.DataSource = dt;
+        }
 
-        private void setDetails(DataGridViewCellCollection cellCollection) 
+        private void setDetails(DataGridViewCellCollection cellCollection)
         {
             try
             {
@@ -211,27 +326,29 @@ namespace WindowsFormsApplication1
                 txtVenderPhone.Text = cellCollection[10].Value.ToString();
                 txtVenderMobile.Text = cellCollection[11].Value.ToString();
                 txtVenderFax.Text = cellCollection[12].Value.ToString();
-                txtVenderDesc.Text = cellCollection[13].Value.ToString();
+                txtVenderDesc.Text = cellCollection[16].Value.ToString();
 
-                txtVenderOpeningBal.Text = cellCollection[14].Value.ToString();
-                txtVenderCurrentBal.Text = cellCollection[15].Value.ToString();
+                txtVenderOpeningBal.Text = cellCollection[17].Value.ToString();
+                txtVenderCurrentBal.Text = cellCollection[18].Value.ToString();
+                txtPanNo.Text = cellCollection[13].Value.ToString();
+                txtTinNo.Text = cellCollection[14].Value.ToString();
+                txtOther.Text = cellCollection[15].Value.ToString();
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-            
+
             }
-            
+
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            
-                DataGridViewCellCollection cellCollection= dataGridView1.SelectedRows[0].Cells;
-                setDetails(cellCollection);
-                    panel1.Visible = false;
-                //panel2.Visible = false;
-            //    btnVenderSave.Text = "Update";
-             updateCounter = 1;
+
+            DataGridViewCellCollection cellCollection = dataGridView1.SelectedRows[0].Cells;
+            setDetails(cellCollection);
+            panel1.Visible = false;
+            updateCounter = 1;
+            Enabled1();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -241,7 +358,7 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.Close();
+            panel1.Visible = false;
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -249,11 +366,159 @@ namespace WindowsFormsApplication1
             DataGridViewCellCollection cellCollection = dataGridView1.SelectedRows[0].Cells;
             setDetails(cellCollection);
             panel1.Visible = false;
-            //panel2.Visible = false;
-            //    btnVenderSave.Text = "Update";
             updateCounter = 1;
+            txtSearch.Text = "";
+            comboBox1.SelectedIndex =0;
+            Enabled1();
         }
 
-       
+        private void txtVenderOpeningBal_GiveFeedback(object sender, GiveFeedbackEventArgs e)
+        {
+            string value = txtVenderOpeningBal.Text;
+            txtVenderCurrentBal.Text = value;
+        }
+
+        private void txtVenderPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void txtVenderMobile_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string s = comboBox1.SelectedValue.ToString();
+            string m = "v" + s;
+            string selectQurry = "select * from VendorDetails where " + m + " like '" + txtSearch.Text + "%'";
+            DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
+            dataGridView1.DataSource = dt;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtPanNo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (Char.IsLetterOrDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void txtPanNo_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void txtVenderOpeningBal_Click(object sender, EventArgs e)
+        {
+            if (txtVenderOpeningBal.Text == "")
+            {
+                txtVenderOpeningBal.Text = "0";
+            }
+            else
+            {
+                string value = txtVenderOpeningBal.Text;
+                txtVenderCurrentBal.Text = value;
+            }
+        }
+
+        private void txtVenderCurrentBal_Click(object sender, EventArgs e)
+        {
+            //txtVenderCurrentBal.Text = "";
+        }
+
+        private void txtVenderCurrentBal_TextChanged(object sender, EventArgs e)
+        {
+            if (txtVenderOpeningBal.Text == "")
+            {
+                txtVenderCurrentBal.Text = "0";
+            }
+            else
+            {
+                string value = txtVenderOpeningBal.Text;
+                txtVenderCurrentBal.Text = value;
+            }
+        }
+
+        private void txtVenderEmailAddress_Leave(object sender, EventArgs e)
+        {
+            string email = txtVenderEmailAddress.Text;
+            if ((email.LastIndexOf("@") > -1) && (email.LastIndexOf(".") > -1) || string.IsNullOrEmpty(email))
+            {
+                //MessageBox.Show("Please Enter the Correct Email Address");
+            }
+            else
+            {
+                txtVenderEmailAddress.Focus();
+                MessageBox.Show("Please Enter the Correct Email Address");
+            }
+        }
+
+        private void txtVenderWebSite_Leave(object sender, EventArgs e)
+        {
+            string WebSite = txtVenderWebSite.Text;
+            if ((WebSite.LastIndexOf("www") > -1) && (WebSite.LastIndexOf(".") > -1) && (WebSite.LastIndexOf("http://") > -1)|| string.IsNullOrEmpty(WebSite))
+            {
+                //MessageBox.Show("Please Enter the Correct Email Address");
+            }
+            else
+            {
+                txtVenderWebSite.Focus();
+                MessageBox.Show("Please Enter the Correct Web Site Address");
+            }
+        }
+
+
     }
 }

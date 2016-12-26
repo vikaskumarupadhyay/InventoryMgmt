@@ -43,7 +43,7 @@ using System.Configuration;
                 }
                 else if (ColumnId == "" || ColumnId == null || ColumnId.ToUpper() =="NULL")
                 {
-                    ColumnId = TableName.Substring(0, 1) + "0001";
+                    ColumnId = TableName.Substring(0, 1) + "1";
                 }
                 else
                 {
@@ -132,6 +132,8 @@ using System.Configuration;
             return insertedRows;
         }
 
+              
+
 
         public int saveDetails(string InsertQuery1, string InsertQuery2, string InsertQuery3)
         {
@@ -186,7 +188,41 @@ using System.Configuration;
             return insertedRows;
         }
 
-
+        public int saveDetails(List<string> insertquerycollection)
+        {
+            int insertrows = 0;
+            SqlTransaction trans = null;
+            try
+            {
+                SqlConnection con = openConnection();
+                trans = con.BeginTransaction();
+                bool success = true;
+                foreach (string sqlquery in insertquerycollection)
+                {
+                    SqlCommand cmd = new SqlCommand(sqlquery, con, trans);
+                    insertrows = cmd.ExecuteNonQuery();
+                    if (insertrows < 1)
+                    {
+                        success = false;
+                        break;
+                    }
+                }
+                if (success)
+                {
+                    trans.Commit();
+                }
+                else
+                {
+                    trans.Rollback();
+                }
+                closeConnection(con);
+            }
+            catch (Exception ex)
+            {
+                trans.Rollback();
+            }
+            return insertrows;
+        }
         public SqlConnection openConnection()
         {
             SqlConnection con = new SqlConnection();
@@ -212,7 +248,7 @@ using System.Configuration;
             {
                 if (con.State == ConnectionState.Open)
                 {
-                    con.Open();
+                    con.Close();
                 }
             }
             catch (Exception ex)
@@ -224,10 +260,10 @@ using System.Configuration;
 
         private string getProcedureName(string TableName,string ProcedureName) 
         {
-           // string ProcedureName = "GETALLDATA";//Item
+              // string ProcedureName = "GETALLDATA";//Item
                                      //VENDOR
-            if (TableName != null && TableName != "")
-            {
+              if (TableName != null && TableName != "")
+              {
                 if (TableName.ToUpper().Contains("ITEM"))
                 {
                     ProcedureName = ProcedureName + "ITEM";

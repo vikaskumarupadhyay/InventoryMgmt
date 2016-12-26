@@ -1,0 +1,125 @@
+create database SalesMaster 
+
+use SalesMaster 
+
+--drop table VendorAccountDetails
+
+create table VendorDetails(venderId varchar(100) primary key,vName varchar(1000),vCompName varchar(1000),vAddress varchar(1000),vCity varchar(100), vState varchar(100),vZip varchar(100),vCountry varchar(50),vEmail varchar(250), vWebAddress varchar(50),vPhone varchar(15),vMobile varchar(15),vFax varchar(15),vDesc varchar(500),vPanNo varchar(200),vTinNo varchar(200),vOther varchar(200))
+
+create table VendorAccountDetails (id varchar(100),venderId varchar(100) foreign key references VendorDetails(venderId),vOpeningBalance varchar(100), vCurrentBalance varchar(100))
+
+create table CustomerDetails(custId varchar(100) primary key,CustName varchar(1000),CustCompName varchar(1000),CustAddress varchar(1000),CustCity varchar(100), CustState varchar(100),CustZip varchar(100),CustCountry varchar(50),CustEmail varchar(250), CustWebAddress varchar(50),CustPhone varchar(15),CustMobile varchar(15),CustFax varchar(15),CustDesc varchar(500),PanNo varchar(200),TanNo varchar(200),others varchar(200))
+
+
+create table CustomerAccountDetails (id varchar(100),CustId varchar(100) foreign key references CustomerDetails(custId),CustOpeningBalance varchar(100), CustCurrentBalance varchar(100))
+
+--drop table ItemUnitList
+create table ItemGroup (groupID varchar(10) primary key,groupName varchar(1000),GroupDesc varchar(1000))
+create table ItemUnitList(UnitId varchar(10) primary key,unitName varchar(1000),unitDesc varchar(1000))
+
+create table ItemDetails(ItemId varchar(100) primary key,ItemName varchar(1000),ItemCompName varchar(1000),ItemDesc varchar(500), groupid varchar(10) foreign key references ItemGroup(groupId),Unitid varchar(10) foreign key references ItemUnitList(UnitId))
+
+create table ItemPriceDetail(ItemId varchar(100) foreign  key references ItemDetails(ItemId),purChasePrice varchar(100),SalesPrice varchar(100),MrpPrice varchar(100),Margin varchar(100))
+create table ItemQuantityDetail(ItemId varchar(100) foreign  key references ItemDetails(ItemId), OpeningQuantity varchar(100),CurrentQuantity varchar(100))
+
+create table VendorOrderDetails (Orderid int identity primary key,venderId varchar(100) foreign key references VendorDetails(venderId),OrderDate datetime, TotalPrice decimal)
+create table VendorOrderDesc (id int identity primary key,Orderid int   foreign key references VendorOrderDetails(Orderid),ItemId varchar(100) foreign  key references ItemDetails(ItemId), Price decimal,Quantity int,TotalPrice decimal)
+create table CustomerOrderDelivery(Deliveryid int identity primary key,Orderid int foreign key references VendorOrderDetails(Orderid),status bit, DeliveryDate datetime)
+create table CustomerOrderInvoice(InvoiceId int identity primary key,Deliveryid int foreign key references CustomerOrderDelivery(Deliveryid),Orderid int foreign key references VendorOrderDetails(Orderid), InvoiceDate datetime)
+create table VendorPayment(PaymentId int identity primary key,InvoiceId int foreign key references CustomerOrderInvoice(InvoiceId),TotalAmount decimal,PayAmount decimal,ArrearAmount decimal,PaymentMode varchar(200), PaymentDate datetime)
+
+create table ChequePement(Chequeid int identity primary key,PaymentId  int foreign key references VendorPayment(PaymentId ),ChequeDate datetime,BankName varchar(200),ChequeNo varchar(200))
+create table WithoutRefrencePament(id int identity primary key,venderId varchar(100) foreign key references VendorDetails(venderId),TotalAmount decimal,PayAmount decimal,ArrearAmount decimal, PaymentDate datetime)
+
+-- Connection string Data Source=ASHISH-PC;Initial Catalog=SalesMaster;Persist Security Info=True;User ID=sa
+
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
+USE [SalesMaster]
+GO
+
+/****** Object:  Table [dbo].[orderdetails]    Script Date: 11/28/2016 3:54:51 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[orderdetails](
+	[orderid] [int] IDENTITY(1,1) NOT NULL,
+	[custid] [varchar](100) NULL,
+	[date] [datetime] NULL,
+	[totalammount] [varchar](200) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[orderid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[orderdetails]  WITH CHECK ADD FOREIGN KEY([custid])
+REFERENCES [dbo].[CustomerDetails] ([custId])
+GO
+
+create table salesOrderDelivery(Delivaryid int identity primary key,Orderid int foreign key references orderdetails(Orderid),status bit, DeliveryDate datetime)
+create table salesinvoice(invoiceid int identity primary key,Delivaryid int foreign key references salesOrderDelivery(Delivaryid),Orderid int foreign key references orderdetails(Orderid),invoicedate datetime)
+
+<<<<<<< Updated upstream
+
+=======
+>>>>>>> Stashed changes
+USE [SalesMaster]
+GO
+
+/****** Object:  Table [dbo].[customerorderdescriptions]    Script Date: 11/28/2016 3:55:25 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[customerorderdescriptions](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[orderid] [int] NULL,
+	[ItemId] [varchar](100) NULL,
+	[price] [decimal](18, 0) NULL,
+	[quantity] [int] NULL,
+	[totalammount] [decimal](18, 0) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[customerorderdescriptions]  WITH CHECK ADD FOREIGN KEY([ItemId])
+REFERENCES [dbo].[ItemDetails] ([ItemId])
+GO
+
+ALTER TABLE [dbo].[customerorderdescriptions]  WITH CHECK ADD FOREIGN KEY([orderid])
+REFERENCES [dbo].[orderdetails] ([orderid])
+GO
+
+
+
+
+Create table payment(id int identity primary key,invoiceid int foreign key references  salesinvoice(invoiceid),totalammount Decimal,payammount decimal,Remainingammount decimal,paymentmode varchar(300),paymentdate datetime )
+
+
+Create table vithautrefrancereceipt(id int identity primary key,CustId varchar(100) foreign key references CustomerDetails(custId),Totalammoun Float,Balanceammount Float,receiptdate datetime )
