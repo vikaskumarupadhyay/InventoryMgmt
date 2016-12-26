@@ -90,9 +90,9 @@ namespace WindowsFormsApplication1
                         {
                             if (updateCounter == 0)
                             {
-                                string saveCommand1 = "insert into CustomerDetails values ('" + txtCustCode.Text + "','" + txtName.Text + "','" + txtCompnyName.Text + "','" + txtAddress.Text + "','" + txtCity.Text + "','" + txtState.Text + "','" + txtZIP.Text + "','" + txtCustCountry.Text + "','" + txtEMAILADDRESS.Text + "','" + txtWEBSITE.Text + "','" + txtTXTPHONE.Text + "', '" + txtMOBILE.Text + "','" + txtFAX.Text + "','" + txtDESCRIPTION.Text + "','" + txtPanno.Text + "','" + txttanno.Text + "')";
+                                string saveCommand1 = "insert into CustomerDetails values ('" + txtCustCode.Text + "','" + txtName.Text + "','" + txtCompnyName.Text + "','" + txtAddress.Text + "','" + txtCity.Text + "','" + txtState.Text + "','" + txtZIP.Text + "','" + txtCustCountry.Text + "','" + txtEMAILADDRESS.Text + "','" + txtWEBSITE.Text + "','" + txtTXTPHONE.Text + "', '" + txtMOBILE.Text + "','" + txtFAX.Text + "','" + txtDESCRIPTION.Text + "','" + txtPanno.Text + "','" + txttanno.Text + "','"+txtothers.Text+"')";
 
-                                string saveCommand2 = "insert into CustomerAccountDetails values ('" + txtCustCode.Text + "','" + txtCustCode.Text + "','" + txtOPENINGBALANCE.Text + "','" + txtCURRENTBALANCE.Text + "')";
+                                string saveCommand2 = "insert into CustomerAccountDetails values ('"+txtCustCode.Text+"','" + txtCustCode.Text + "','" + txtOPENINGBALANCE.Text + "','" + txtCURRENTBALANCE.Text + "')";
 
                                 int insertedRows = dbMainClass.saveDetails(saveCommand1, saveCommand2);
                                 if (insertedRows > 0)
@@ -338,17 +338,19 @@ namespace WindowsFormsApplication1
             txtState.Enabled = true;
             txtZIP.Enabled = true;
             txtCustCountry.Enabled = true;
-            txtPanno.Enabled = true;
-            txttanno.Enabled = true;
-            txtothers.Enabled = true;
+            txtPanno.Enabled = false;
+            txttanno.Enabled = false;
+            txtothers.Enabled = false;
             txtDESCRIPTION.Enabled = false;
             txtOPENINGBALANCE.Enabled = false;
             txtWEBSITE.Enabled = false;
             txtEMAILADDRESS.Enabled = false;
             txtCustCode.Enabled = false;
+            txtCURRENTBALANCE.Enabled = false;
         }
         private void blank1()
         {
+            txtCustCode.Enabled = true;
             txtName.Enabled = true;
             txtCompnyName.Enabled = true;
             txtAddress.Enabled = true;
@@ -445,7 +447,7 @@ namespace WindowsFormsApplication1
 
         private void txtEMAILADDRESS_Leave(object sender, EventArgs e)
         {
-            if ((txtEMAILADDRESS.Text.LastIndexOf("http") > -1) && (txtEMAILADDRESS.Text.LastIndexOf(".") > -1) || string.IsNullOrEmpty(txtEMAILADDRESS.Text))
+            if ((txtEMAILADDRESS.Text.LastIndexOf("@") > -1) && (txtEMAILADDRESS.Text.LastIndexOf(".") > -1) || string.IsNullOrEmpty(txtEMAILADDRESS.Text))
             {
             }
             else
@@ -456,7 +458,7 @@ namespace WindowsFormsApplication1
 
         private void txtWEBSITE_Leave(object sender, EventArgs e)
         {
-            if ((txtWEBSITE.Text.LastIndexOf("@") > -1) && (txtWEBSITE.Text.LastIndexOf(".") > -1) &&(txtWEBSITE.Text.LastIndexOf("/")>-1) || string.IsNullOrEmpty(txtEMAILADDRESS.Text))
+            if ((txtWEBSITE.Text.LastIndexOf("http://") > -1) && (txtWEBSITE.Text.LastIndexOf(".") > -1) && (txtWEBSITE.Text.LastIndexOf("www") > -1) || string.IsNullOrEmpty(txtEMAILADDRESS.Text))
             {
             }
             else

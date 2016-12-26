@@ -60,12 +60,12 @@ namespace WindowsFormsApplication1
                         //    }
                         //    else
                         //    {
-                                if (!this.txtVenderWebSite.Text.Contains('@') || !this.txtVenderWebSite.Text.Contains('.') || !this.txtVenderWebSite.Text.Contains("http://"))
-                                {
-                                    MessageBox.Show("Please Enter the Correct Web Site Address");
-                                }
-                                else
-                                {
+                                //if (!this.txtVenderWebSite.Text.Contains('@') || !this.txtVenderWebSite.Text.Contains('.') || !this.txtVenderWebSite.Text.Contains("http://"))
+                                //{
+                                //    MessageBox.Show("Please Enter the Correct Web Site Address");
+                                ////}
+                                //else
+                                //{
 
                                     if (updateCounter == 0)
                                     {
@@ -115,7 +115,7 @@ namespace WindowsFormsApplication1
                     }
                 }
             }
-        }
+        
 
         #region  To Make all Field Blanks
         private void makeBlank()
