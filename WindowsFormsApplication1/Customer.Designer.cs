@@ -36,9 +36,9 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtgstragisterno = new System.Windows.Forms.TextBox();
+            this.txtexiceragisterno = new System.Windows.Forms.TextBox();
+            this.txtservicetaxno = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -180,9 +180,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.txtgstragisterno);
+            this.groupBox1.Controls.Add(this.txtexiceragisterno);
+            this.groupBox1.Controls.Add(this.txtservicetaxno);
             this.groupBox1.Controls.Add(this.label24);
             this.groupBox1.Controls.Add(this.label23);
             this.groupBox1.Controls.Add(this.label22);
@@ -228,26 +228,29 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer Details";
             // 
-            // textBox3
+            // txtgstragisterno
             // 
-            this.textBox3.Location = new System.Drawing.Point(508, 351);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(253, 21);
-            this.textBox3.TabIndex = 39;
+            this.txtgstragisterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtgstragisterno.Location = new System.Drawing.Point(508, 351);
+            this.txtgstragisterno.Name = "txtgstragisterno";
+            this.txtgstragisterno.Size = new System.Drawing.Size(253, 21);
+            this.txtgstragisterno.TabIndex = 39;
             // 
-            // textBox2
+            // txtexiceragisterno
             // 
-            this.textBox2.Location = new System.Drawing.Point(290, 351);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(212, 21);
-            this.textBox2.TabIndex = 38;
+            this.txtexiceragisterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtexiceragisterno.Location = new System.Drawing.Point(290, 351);
+            this.txtexiceragisterno.Name = "txtexiceragisterno";
+            this.txtexiceragisterno.Size = new System.Drawing.Size(212, 21);
+            this.txtexiceragisterno.TabIndex = 38;
             // 
-            // textBox4
+            // txtservicetaxno
             // 
-            this.textBox4.Location = new System.Drawing.Point(46, 351);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(238, 21);
-            this.textBox4.TabIndex = 37;
+            this.txtservicetaxno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtservicetaxno.Location = new System.Drawing.Point(46, 351);
+            this.txtservicetaxno.Name = "txtservicetaxno";
+            this.txtservicetaxno.Size = new System.Drawing.Size(238, 21);
+            this.txtservicetaxno.TabIndex = 37;
             // 
             // label24
             // 
@@ -602,10 +605,9 @@
             this.panel1.Controls.Add(this.butclose);
             this.panel1.Controls.Add(this.butupdate);
             this.panel1.Controls.Add(this.butaddrecord);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(0, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(803, 594);
+            this.panel1.Size = new System.Drawing.Size(803, 581);
             this.panel1.TabIndex = 11;
             // 
             // groupBox3
@@ -615,9 +617,9 @@
             this.groupBox3.Controls.Add(this.textBox1);
             this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(12, 6);
+            this.groupBox3.Location = new System.Drawing.Point(12, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(777, 79);
+            this.groupBox3.Size = new System.Drawing.Size(777, 73);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Customer Search";
@@ -671,9 +673,9 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(-2, 0);
+            this.dataGridView1.Location = new System.Drawing.Point(-2, -2);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(777, 451);
+            this.dataGridView1.Size = new System.Drawing.Size(777, 453);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
             // 
@@ -714,7 +716,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(803, 594);
+            this.ClientSize = new System.Drawing.Size(803, 596);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnList);
             this.Controls.Add(this.btnClose);
@@ -796,9 +798,9 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtgstragisterno;
+        private System.Windows.Forms.TextBox txtexiceragisterno;
+        private System.Windows.Forms.TextBox txtservicetaxno;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;

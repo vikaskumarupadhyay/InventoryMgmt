@@ -23,23 +23,26 @@ namespace WindowsFormsApplication1
             //DataTable dt = dbMainClass.getDetails("CustomerDetails");
             List<string> ds = new List<string>();
             ds.Add("Name");
-            ds.Add("COMPNAME");
-            ds.Add("ADDRESS");
-            ds.Add("CITY");
-            ds.Add("STATE");
-            ds.Add("ZIP");
-            ds.Add("COUNTRY");
-            ds.Add("EMAIL");
-            ds.Add("WEBADDRESS");
-            ds.Add("PHONE");
-            ds.Add("MOBILE");
-            ds.Add("FAX");
-            ds.Add("DESC");
-            ds.Add("OPENINGBALANCE");
-            ds.Add("CURRENTBALANCE");
+            ds.Add("Compnay Name");
+            ds.Add("Address");
+            ds.Add("City");
+            ds.Add("State");
+            ds.Add("Zip");
+            ds.Add("Country");
+            ds.Add("Email");
+            ds.Add("Webaddress");
+            ds.Add("Phone");
+            ds.Add("Mobile");
+            ds.Add("Fax");
+            ds.Add("Desc");
+            ds.Add("Openingbalance");
+            ds.Add("Currentbalance");
             ds.Add("PanNo");
-            ds.Add("TanNo");
-            ds.Add("Others");
+            ds.Add("VatNo");
+            ds.Add("Cstno");
+            ds.Add("ServicetaxregnNo");
+            ds.Add("Exciseregnno");
+            ds.Add("Gstregnno");
             comserchvalue.DataSource = ds;
             
             panel1.Visible = false;
@@ -90,7 +93,7 @@ namespace WindowsFormsApplication1
                         {
                             if (updateCounter == 0)
                             {
-                                string saveCommand1 = "insert into CustomerDetails values ('" + txtCustCode.Text + "','" + txtName.Text + "','" + txtCompnyName.Text + "','" + txtAddress.Text + "','" + txtCity.Text + "','" + txtState.Text + "','" + txtZIP.Text + "','" + txtCustCountry.Text + "','" + txtEMAILADDRESS.Text + "','" + txtWEBSITE.Text + "','" + txtTXTPHONE.Text + "', '" + txtMOBILE.Text + "','" + txtFAX.Text + "','" + txtDESCRIPTION.Text + "','" + txtPanno.Text + "','" + txttanno.Text + "','"+txtothers.Text+"')";
+                                string saveCommand1 = "insert into CustomerDetails values ('" + txtCustCode.Text + "','" + txtName.Text + "','" + txtCompnyName.Text + "','" + txtAddress.Text + "','" + txtCity.Text + "','" + txtState.Text + "','" + txtZIP.Text + "','" + txtCustCountry.Text + "','" + txtEMAILADDRESS.Text + "','" + txtWEBSITE.Text + "','" + txtTXTPHONE.Text + "', '" + txtMOBILE.Text + "','" + txtFAX.Text + "','" + txtDESCRIPTION.Text + "','" + txtPanno.Text + "','" + txttanno.Text + "','"+txtothers.Text+"','"+txtservicetaxno.Text+"','"+txtexiceragisterno.Text+"','"+txtgstragisterno.Text+"')";
 
                                 string saveCommand2 = "insert into CustomerAccountDetails values ('"+txtCustCode.Text+"','" + txtCustCode.Text + "','" + txtOPENINGBALANCE.Text + "','" + txtCURRENTBALANCE.Text + "')";
 
@@ -111,7 +114,7 @@ namespace WindowsFormsApplication1
 
                             else if (updateCounter == 1)
                             {
-                                string updateCommand1 = "update  CustomerDetails  set Custid='" + txtCustCode.Text + "', CustAddress='" + txtAddress.Text + "',CustPhone='" + txtTXTPHONE.Text + "', CustMobile='" + txtMOBILE.Text + "',PanNO='" + txtPanno.Text + "',TanNo='" + txttanno.Text + "',Others='" + txtothers.Text + "', CustName='" + txtName.Text + "', CustCompName= '" + txtCompnyName.Text + "',CustCity='" + txtCity.Text + "',CustState='" + txtState.Text + "',CustZip='" + txtZIP.Text + "',CustCountry='" + txtCustCountry.Text + "',CustEmail='" + txtEMAILADDRESS.Text + "',CustWebAddress='" + txtWEBSITE.Text + "',CustFax='" + txtFAX.Text + "',CustDesc='" + txtDESCRIPTION.Text + "' where Custid='" + txtCustCode.Text + "'";
+                                string updateCommand1 = "update  CustomerDetails  set Custid='" + txtCustCode.Text + "', CustAddress='" + txtAddress.Text + "',CustPhone='" + txtTXTPHONE.Text + "', CustMobile='" + txtMOBILE.Text + "',CustPanNO='" + txtPanno.Text + "',CustVatNo='" + txttanno.Text + "',CustCstNo='" + txtothers.Text + "',CustServicetaxregnNo='" + txtservicetaxno.Text + "',CustExciseregnno='" + txtexiceragisterno.Text + "',CustGstregnno='" + txtgstragisterno.Text + "', CustName='" + txtName.Text + "', CustCompName= '" + txtCompnyName.Text + "',CustCity='" + txtCity.Text + "',CustState='" + txtState.Text + "',CustZip='" + txtZIP.Text + "',CustCountry='" + txtCustCountry.Text + "',CustEmail='" + txtEMAILADDRESS.Text + "',CustWebAddress='" + txtWEBSITE.Text + "',CustFax='" + txtFAX.Text + "',CustDesc='" + txtDESCRIPTION.Text + "' where Custid='" + txtCustCode.Text + "'";
                                 string updateCommand2 = "update   CustomerAccountDetails set  CustOpeningBalance='" + txtOPENINGBALANCE.Text + "',CustCurrentBalance='" + txtCURRENTBALANCE.Text + "' where Custid='" + txtCustCode.Text + "'";
 
                                 int updatedRows = dbMainClass.updateDetails(updateCommand1, updateCommand2);
@@ -236,6 +239,9 @@ namespace WindowsFormsApplication1
                 txtPanno.Text = cellCollection[16].Value.ToString();
                 txttanno.Text = cellCollection[17].Value.ToString();
                 txtothers.Text = cellCollection[18].Value.ToString();
+                txtservicetaxno.Text = cellCollection[19].Value.ToString();
+                txtexiceragisterno.Text = cellCollection[20].Value.ToString();
+                txtgstragisterno.Text = cellCollection[21].Value.ToString();
             }
             catch (Exception ex)
             {
@@ -309,7 +315,7 @@ namespace WindowsFormsApplication1
         {
            string s= comserchvalue.SelectedValue.ToString();
            string val = "Cust"+s;
-           string selectQuery = "select cd.custid,cd.CustName,cd.CustCompName,cd.CustAddress,cd.CustCity,cd.CustState,cd.CustZip,cd.CustCountry,cd.CustEmail,cd.CustWebAddress,cd.CustPhone,cd.CustMobile,cd.CustFax,cd.CustDesc,cd.panno,cd.tanno,cd.tanno,cad.CustOpeningBalance,cad.CustCurrentBalance from CustomerDetails cd join CustomerAccountDetails cad on cd.CustId=cad.CustId  where " +val + " like '" + textBox1.Text + "%'";
+           string selectQuery = "select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Ballance],CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO]  ,CustServicetaxRegnNo AS [Service Tax Regn. No],CustExciseRegnNo AS [Excise Regn. No] ,CustGSTRegnNo AS [GST Regn. No] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID where " + val + " like '" + textBox1.Text + "%'";
             DataTable dt = dbMainClass.getDetailByQuery(selectQuery);
             dataGridView1.DataSource = dt;
 
@@ -347,6 +353,9 @@ namespace WindowsFormsApplication1
             txtEMAILADDRESS.Enabled = false;
             txtCustCode.Enabled = false;
             txtCURRENTBALANCE.Enabled = false;
+            txtservicetaxno.Enabled = false;
+            txtexiceragisterno.Enabled = false;
+            txtgstragisterno.Enabled = false;
         }
         private void blank1()
         {
@@ -368,6 +377,9 @@ namespace WindowsFormsApplication1
             txtTXTPHONE.Enabled = true;
             txtMOBILE.Enabled = true;
             txtFAX.Enabled = true;
+            txtservicetaxno.Enabled = true;
+            txtexiceragisterno.Enabled = true;
+            txtgstragisterno.Enabled = true;
           
         }
 
@@ -410,6 +422,9 @@ namespace WindowsFormsApplication1
 
             txtOPENINGBALANCE.Text = "";
             txtCURRENTBALANCE.Text= "";
+            txtservicetaxno.Text = "";
+            txtexiceragisterno.Text = "";
+            txtgstragisterno.Text = "";
 
             txtCustCode.Text = "";
             txtCustCode.Text= "";

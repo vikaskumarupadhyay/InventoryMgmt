@@ -53,6 +53,6 @@ go
 CREATE PROCEDURE GETALLDATACUSTOMER
 AS
 BEGIN
-select  Custd.CustId as CustID ,CustName AS NAME ,CustCompName AS COMPANYNAME ,CustAddress AS ADDRESS,CustCity AS CITY, CustState AS STATE ,CustZip AS ZIP ,CustCountry AS COUNTRY ,CustEmail AS EMAIL , CustWebAddress AS WEBADDRESS,CustPhone AS PHONE ,CustMobile AS MOBILE ,CustFax AS FAX ,CustDesc AS DESCRIPTION,Custad.CustOpeningBalance AS OPENINGBALANCE , Custad.CustCurrentBalance AS CURRENTBALANCE,PanNo,TanNo,others from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID
+select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Ballance],CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO]  ,CustServicetaxRegnNo AS [Service Tax Regn. No],CustExciseRegnNo AS [Excise Regn. No] ,CustGSTRegnNo AS [GST Regn. No] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID
 END
 go
