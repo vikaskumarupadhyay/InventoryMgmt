@@ -4,7 +4,7 @@ use SalesMaster
 
 --drop table VendorAccountDetails
 
-create table VendorDetails(venderId varchar(100) primary key,vName varchar(1000),vCompName varchar(1000),vAddress varchar(1000),vCity varchar(100), vState varchar(100),vZip varchar(100),vCountry varchar(50),vEmail varchar(250), vWebAddress varchar(50),vPhone varchar(15),vMobile varchar(15),vFax varchar(15),vDesc varchar(500),vPanNo varchar(200),vTinNo varchar(200),vOther varchar(200))
+create table VendorDetails(venderId varchar(100) primary key,vName varchar(1000),vCompName varchar(1000),vAddress varchar(1000),vCity varchar(100), vState varchar(100),vZip varchar(100),vCountry varchar(50),vEmail varchar(250), vWebAddress varchar(50),vPhone varchar(15),vMobile varchar(15),vFax varchar(15),vDesc varchar(500),vPanNo varchar(200),vVatNo varchar(200),vCstNo varchar(200),vServiceTaxRegnNo varchar(100),vExciseRegnNo varchar(100),vGSTRegnNo varchar(100))
 
 create table VendorAccountDetails (id varchar(100),venderId varchar(100) foreign key references VendorDetails(venderId),vOpeningBalance varchar(100), vCurrentBalance varchar(100))
 

@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtGst = new System.Windows.Forms.TextBox();
+            this.txtExcise = new System.Windows.Forms.TextBox();
+            this.txtSarvice = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.txtOther = new System.Windows.Forms.TextBox();
-            this.txtTinNo = new System.Windows.Forms.TextBox();
+            this.txtCstNo = new System.Windows.Forms.TextBox();
+            this.txtVatNo = new System.Windows.Forms.TextBox();
             this.txtPanNo = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -100,14 +100,14 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtGst);
+            this.groupBox1.Controls.Add(this.txtExcise);
+            this.groupBox1.Controls.Add(this.txtSarvice);
             this.groupBox1.Controls.Add(this.label24);
             this.groupBox1.Controls.Add(this.label23);
             this.groupBox1.Controls.Add(this.label22);
-            this.groupBox1.Controls.Add(this.txtOther);
-            this.groupBox1.Controls.Add(this.txtTinNo);
+            this.groupBox1.Controls.Add(this.txtCstNo);
+            this.groupBox1.Controls.Add(this.txtVatNo);
             this.groupBox1.Controls.Add(this.txtPanNo);
             this.groupBox1.Controls.Add(this.label21);
             this.groupBox1.Controls.Add(this.label20);
@@ -148,26 +148,29 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Vendor Details";
             // 
-            // textBox3
+            // txtGst
             // 
-            this.textBox3.Location = new System.Drawing.Point(508, 354);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(253, 21);
-            this.textBox3.TabIndex = 18;
+
+            this.txtGst.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtGst.Location = new System.Drawing.Point(508, 354);
+            this.txtGst.Name = "txtGst";
+            this.txtGst.Size = new System.Drawing.Size(253, 21);
+            this.txtGst.TabIndex = 39;
             // 
-            // textBox2
+            // txtExcise
             // 
-            this.textBox2.Location = new System.Drawing.Point(290, 354);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(212, 21);
-            this.textBox2.TabIndex = 17;
+            this.txtExcise.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtExcise.Location = new System.Drawing.Point(290, 354);
+            this.txtExcise.Name = "txtExcise";
+            this.txtExcise.Size = new System.Drawing.Size(212, 21);
+            this.txtExcise.TabIndex = 38;
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(46, 354);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(238, 21);
-            this.textBox1.TabIndex = 16;
+            // txtSarvice
+            this.txtSarvice.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSarvice.Location = new System.Drawing.Point(46, 354);
+            this.txtSarvice.Name = "txtSarvice";
+            this.txtSarvice.Size = new System.Drawing.Size(238, 21);
+            this.txtSarvice.TabIndex = 37;
             // 
             // label24
             // 
@@ -196,22 +199,22 @@
             this.label22.TabIndex = 34;
             this.label22.Text = "Service Tax Regn. No";
             // 
-            // txtOther
+            // txtCstNo
             // 
-            this.txtOther.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtOther.Location = new System.Drawing.Point(508, 312);
-            this.txtOther.Name = "txtOther";
-            this.txtOther.Size = new System.Drawing.Size(253, 21);
-            this.txtOther.TabIndex = 15;
+
+            this.txtCstNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtCstNo.Location = new System.Drawing.Point(508, 312);
+            this.txtCstNo.Name = "txtCstNo";
+            this.txtCstNo.Size = new System.Drawing.Size(253, 21);
+            this.txtCstNo.TabIndex = 33;
             // 
-            // txtTinNo
+            // txtVatNo
             // 
-            this.txtTinNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtTinNo.Location = new System.Drawing.Point(290, 312);
-            this.txtTinNo.Name = "txtTinNo";
-            this.txtTinNo.Size = new System.Drawing.Size(212, 21);
-            this.txtTinNo.TabIndex = 14;
-            this.txtTinNo.TextChanged += new System.EventHandler(this.txtTinNo_TextChanged);
+            this.txtVatNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtVatNo.Location = new System.Drawing.Point(290, 312);
+            this.txtVatNo.Name = "txtVatNo";
+            this.txtVatNo.Size = new System.Drawing.Size(212, 21);
+            this.txtVatNo.TabIndex = 32;
             // 
             // txtPanNo
             // 
@@ -640,8 +643,7 @@
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(72, 15);
             this.label18.TabIndex = 7;
-            this.label18.Text = "Search Text";
-            // 
+            this.label18.Text = "Search Text"; 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -812,15 +814,15 @@
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox txtOther;
-        private System.Windows.Forms.TextBox txtTinNo;
+        private System.Windows.Forms.TextBox txtCstNo;
+        private System.Windows.Forms.TextBox txtVatNo;
         private System.Windows.Forms.TextBox txtPanNo;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtGst;
+        private System.Windows.Forms.TextBox txtExcise;
+        private System.Windows.Forms.TextBox txtSarvice;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
