@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtGst = new System.Windows.Forms.TextBox();
+            this.txtExcise = new System.Windows.Forms.TextBox();
+            this.txtSarvice = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.txtOther = new System.Windows.Forms.TextBox();
-            this.txtTinNo = new System.Windows.Forms.TextBox();
+            this.txtCstNo = new System.Windows.Forms.TextBox();
+            this.txtVatNo = new System.Windows.Forms.TextBox();
             this.txtPanNo = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -80,34 +80,34 @@
             this.btnVenderClose = new System.Windows.Forms.Button();
             this.btnVenderList = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.txtSearch = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtGst);
+            this.groupBox1.Controls.Add(this.txtExcise);
+            this.groupBox1.Controls.Add(this.txtSarvice);
             this.groupBox1.Controls.Add(this.label24);
             this.groupBox1.Controls.Add(this.label23);
             this.groupBox1.Controls.Add(this.label22);
-            this.groupBox1.Controls.Add(this.txtOther);
-            this.groupBox1.Controls.Add(this.txtTinNo);
+            this.groupBox1.Controls.Add(this.txtCstNo);
+            this.groupBox1.Controls.Add(this.txtVatNo);
             this.groupBox1.Controls.Add(this.txtPanNo);
             this.groupBox1.Controls.Add(this.label21);
             this.groupBox1.Controls.Add(this.label20);
@@ -148,26 +148,29 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Vendor Details";
             // 
-            // textBox3
+            // txtGst
             // 
-            this.textBox3.Location = new System.Drawing.Point(508, 354);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(253, 21);
-            this.textBox3.TabIndex = 39;
+            this.txtGst.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtGst.Location = new System.Drawing.Point(508, 354);
+            this.txtGst.Name = "txtGst";
+            this.txtGst.Size = new System.Drawing.Size(253, 21);
+            this.txtGst.TabIndex = 39;
             // 
-            // textBox2
+            // txtExcise
             // 
-            this.textBox2.Location = new System.Drawing.Point(290, 354);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(212, 21);
-            this.textBox2.TabIndex = 38;
+            this.txtExcise.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtExcise.Location = new System.Drawing.Point(290, 354);
+            this.txtExcise.Name = "txtExcise";
+            this.txtExcise.Size = new System.Drawing.Size(212, 21);
+            this.txtExcise.TabIndex = 38;
             // 
-            // textBox1
+            // txtSarvice
             // 
-            this.textBox1.Location = new System.Drawing.Point(46, 354);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(238, 21);
-            this.textBox1.TabIndex = 37;
+            this.txtSarvice.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSarvice.Location = new System.Drawing.Point(46, 354);
+            this.txtSarvice.Name = "txtSarvice";
+            this.txtSarvice.Size = new System.Drawing.Size(238, 21);
+            this.txtSarvice.TabIndex = 37;
             // 
             // label24
             // 
@@ -196,21 +199,21 @@
             this.label22.TabIndex = 34;
             this.label22.Text = "Service Tax Regn. No";
             // 
-            // txtOther
+            // txtCstNo
             // 
-            this.txtOther.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtOther.Location = new System.Drawing.Point(508, 312);
-            this.txtOther.Name = "txtOther";
-            this.txtOther.Size = new System.Drawing.Size(253, 21);
-            this.txtOther.TabIndex = 33;
+            this.txtCstNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtCstNo.Location = new System.Drawing.Point(508, 312);
+            this.txtCstNo.Name = "txtCstNo";
+            this.txtCstNo.Size = new System.Drawing.Size(253, 21);
+            this.txtCstNo.TabIndex = 33;
             // 
-            // txtTinNo
+            // txtVatNo
             // 
-            this.txtTinNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtTinNo.Location = new System.Drawing.Point(290, 312);
-            this.txtTinNo.Name = "txtTinNo";
-            this.txtTinNo.Size = new System.Drawing.Size(212, 21);
-            this.txtTinNo.TabIndex = 32;
+            this.txtVatNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtVatNo.Location = new System.Drawing.Point(290, 312);
+            this.txtVatNo.Name = "txtVatNo";
+            this.txtVatNo.Size = new System.Drawing.Size(212, 21);
+            this.txtVatNo.TabIndex = 32;
             // 
             // txtPanNo
             // 
@@ -609,11 +612,25 @@
             this.panel1.Controls.Add(this.btnUpdate);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(1, 1);
+            this.panel1.Location = new System.Drawing.Point(1, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(803, 593);
+            this.panel1.Size = new System.Drawing.Size(803, 594);
             this.panel1.TabIndex = 7;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label18);
+            this.groupBox3.Controls.Add(this.label17);
+            this.groupBox3.Controls.Add(this.comboBox1);
+            this.groupBox3.Controls.Add(this.txtSearch);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(12, 7);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(777, 79);
+            this.groupBox3.TabIndex = 8;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Vendor Search";
             // 
             // label18
             // 
@@ -624,16 +641,6 @@
             this.label18.Size = new System.Drawing.Size(46, 15);
             this.label18.TabIndex = 7;
             this.label18.Text = "Search";
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(386, 42);
-            this.txtSearch.Multiline = true;
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(363, 24);
-            this.txtSearch.TabIndex = 6;
-            this.txtSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label17
             // 
@@ -654,6 +661,16 @@
             this.comboBox1.Size = new System.Drawing.Size(355, 23);
             this.comboBox1.TabIndex = 4;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(386, 42);
+            this.txtSearch.Multiline = true;
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(363, 24);
+            this.txtSearch.TabIndex = 6;
+            this.txtSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button3
             // 
@@ -713,20 +730,6 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Controls.Add(this.label17);
-            this.groupBox3.Controls.Add(this.comboBox1);
-            this.groupBox3.Controls.Add(this.txtSearch);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(12, 7);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(777, 79);
-            this.groupBox3.TabIndex = 8;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Vendor Search";
-            // 
             // frmVendorDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -749,10 +752,10 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -808,15 +811,15 @@
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox txtOther;
-        private System.Windows.Forms.TextBox txtTinNo;
+        private System.Windows.Forms.TextBox txtCstNo;
+        private System.Windows.Forms.TextBox txtVatNo;
         private System.Windows.Forms.TextBox txtPanNo;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtGst;
+        private System.Windows.Forms.TextBox txtExcise;
+        private System.Windows.Forms.TextBox txtSarvice;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
