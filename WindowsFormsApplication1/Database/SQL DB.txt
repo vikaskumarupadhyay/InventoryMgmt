@@ -131,3 +131,12 @@ Sp_rename 'VendorDetails.vTinNo','vVatNo'
 Sp_rename 'VendorDetails.vOther','vCstNo'
 
 
+alter table CustomerDetails add ServicetaxregnNo
+
+alter table CustomerDetails add Exciseregnno
+
+alter table CustomerDetails add Gstregnno
+
+Sp_rename 'VendorDetails.vTan','CustVatNo'
+
+Sp_rename 'VendorDetails.vOther','CustCstNo'

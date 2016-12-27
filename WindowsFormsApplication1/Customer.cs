@@ -23,7 +23,7 @@ namespace WindowsFormsApplication1
             //DataTable dt = dbMainClass.getDetails("CustomerDetails");
             List<string> ds = new List<string>();
             ds.Add("Name");
-            ds.Add("Compnay Name");
+            ds.Add("CompnayName");
             ds.Add("Address");
             ds.Add("City");
             ds.Add("State");
