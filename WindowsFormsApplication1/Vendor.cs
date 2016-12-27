@@ -60,12 +60,12 @@ namespace WindowsFormsApplication1
                         //    }
                         //    else
                         //    {
-                                if (!this.txtVenderWebSite.Text.Contains('@') || !this.txtVenderWebSite.Text.Contains('.') || !this.txtVenderWebSite.Text.Contains("http://"))
-                                {
-                                    MessageBox.Show("Please Enter the Correct Web Site Address");
-                                }
-                                else
-                                {
+                                //if (!this.txtVenderWebSite.Text.Contains('@') || !this.txtVenderWebSite.Text.Contains('.') || !this.txtVenderWebSite.Text.Contains("http://"))
+                                //{
+                                //    MessageBox.Show("Please Enter the Correct Web Site Address");
+                                ////}
+                                //else
+                                //{
 
                                     if (updateCounter == 0)
                                     {
@@ -115,7 +115,7 @@ namespace WindowsFormsApplication1
                     }
                 }
             }
-        }
+        
 
         #region  To Make all Field Blanks
         private void makeBlank()
@@ -154,9 +154,9 @@ namespace WindowsFormsApplication1
         }
         private void Enabled1()
         {
-            txtVenderAddress.Enabled = false;
-            txtVenderCity.Enabled = false;
-            txtVenderCountry.Enabled = false;
+            //txtVenderAddress.Enabled = false;
+           // txtVenderCity.Enabled = false;
+            //txtVenderCountry.Enabled = false;
             txtVenderDesc.Enabled = false;
             txtVenderName.Enabled = false;
             txtVenderOpeningBal.Enabled = false;
@@ -164,9 +164,9 @@ namespace WindowsFormsApplication1
             txtPanNo.Enabled = false;
             txtTinNo.Enabled = false;
             txtOther.Enabled = false;
-            txtVenderState.Enabled = false;
+            //txtVenderState.Enabled = false;
             txtVenderWebSite.Enabled = false;
-            txtVenderZip.Enabled = false;
+           // txtVenderZip.Enabled = false;
             txtVenderEmailAddress.Enabled = false;
             btnVenderList.Enabled = false;
         }
@@ -204,7 +204,6 @@ namespace WindowsFormsApplication1
                 if (e.KeyChar == '\b')
                 {
                     e.Handled = false;
-                    //txtVenderOpeningBal.Text = "0";
                 }
                 else
                 {
@@ -226,7 +225,7 @@ namespace WindowsFormsApplication1
             //    string value = txtVenderOpeningBal.Text;
             //    txtVenderCurrentBal.Text = value;
             //}
-            // txtVenderOpeningBal.Text = txtVenderCurrentBal.Text;
+            //txtVenderOpeningBal.Text = txtVenderCurrentBal.Text;
         }
 
         private void txtVenderOpeningBal_Enter(object sender, EventArgs e)
@@ -236,6 +235,7 @@ namespace WindowsFormsApplication1
                 txtVenderOpeningBal.Text = "0";
 
             }
+           
         }
 
         private void txtVenderOpeningBal_Leave(object sender, EventArgs e)
@@ -247,7 +247,7 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                
+
                 string value = txtVenderOpeningBal.Text;
                 txtVenderCurrentBal.Text = value;
             }
@@ -255,7 +255,6 @@ namespace WindowsFormsApplication1
 
         private void frmVendorDetails_Load(object sender, EventArgs e)
         {
-            txtVenderOpeningBal.Text = "0";
             string selectqurry = "select  vName as NAME, vCompName as COMPNAME,vAddress as ADDRESS,vCity as CITY,vState as STATE,vZip as ZIP,vCountry as COUNTRY,vEmail as EMAIL,vWebAddress as WEBADDRESS,vPhone as PHONE,vMobile as MOBILE,vFax as FAX,vDesc as DESCription,vPanNo as PanNo,vTinNo as TinNo from VendorDetails";
           DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             List<string> ls = new List<string>();
@@ -375,8 +374,8 @@ namespace WindowsFormsApplication1
 
         private void txtVenderOpeningBal_GiveFeedback(object sender, GiveFeedbackEventArgs e)
         {
-            //string value = txtVenderOpeningBal.Text;
-            //txtVenderCurrentBal.Text = value;
+            string value = txtVenderOpeningBal.Text;
+            txtVenderCurrentBal.Text = value;
         }
 
         private void txtVenderPhone_KeyPress(object sender, KeyPressEventArgs e)
@@ -463,7 +462,15 @@ namespace WindowsFormsApplication1
 
         private void txtVenderOpeningBal_Click(object sender, EventArgs e)
         {
-           // txtVenderOpeningBal.Text = string.Empty;
+            if (txtVenderOpeningBal.Text == "")
+            {
+                txtVenderOpeningBal.Text = "0";
+            }
+            else
+            {
+                string value = txtVenderOpeningBal.Text;
+                txtVenderCurrentBal.Text = value;
+            }
         }
 
         private void txtVenderCurrentBal_Click(object sender, EventArgs e)
@@ -473,10 +480,15 @@ namespace WindowsFormsApplication1
 
         private void txtVenderCurrentBal_TextChanged(object sender, EventArgs e)
         {
-            //if (txtVenderOpeningBal.Text == "")
-            //{
-            //    txtVenderCurrentBal.Text = "0";
-            //}
+            if (txtVenderOpeningBal.Text == "")
+            {
+                txtVenderCurrentBal.Text = "0";
+            }
+            else
+            {
+                string value = txtVenderOpeningBal.Text;
+                txtVenderCurrentBal.Text = value;
+            }
         }
 
         private void txtVenderEmailAddress_Leave(object sender, EventArgs e)
