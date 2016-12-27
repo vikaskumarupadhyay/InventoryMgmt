@@ -265,17 +265,32 @@ namespace WindowsFormsApplication1
 
         private void frmVendorDetails_Load(object sender, EventArgs e)
         {
-            string selectqurry = "select  vd.venderId as [Vender Id ],vd.vName AS Name ,vd.vCompName AS [CompnayName] ,vd.vAddress AS Address,vd.vCity AS City,vd. vState AS State ,vd.vZip AS Zip ,vd.vCountry AS Country ,vd.vEmail AS[E-Mail ],vd. vWebAddress AS[Web-Address],vd.vPhone AS Phone ,vd.vMobile AS Mobile ,vd.vFax AS Fax ,vd.vPanNo as[Pan No],vd.vVatNo as [Vat No],vd.vCstNo as[Cst No],vd.vServiceTaxRegnNo as [Service Tax Regn.No],vd.vExciseRegnNo as [Excise Regn.No],vd.vGSTRegnNo as[ GST Regn.No],vd.vDesc AS Description,vad.vOpeningBalance AS OpeningBalance , vad.vCurrentBalance AS CurrentBalance from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID";
-          DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
-            List<string> ls = new List<string>();
+            string selectqurry = "select vd.venderId as [Vender Id ],vd.vName AS Name ,vd.vCompName AS [CompanyName] ,vd.vAddress AS Address,vd.vCity AS City,vd. vState AS State ,vd.vZip AS Zip ,vd.vCountry AS Country ,vd.vEmail AS[E-Mail ],vd. vWebAddress AS[Web-Address],vd.vPhone AS Phone ,vd.vMobile AS Mobile ,vd.vFax AS Fax ,vd.vPanNo as[Pan No],vd.vVatNo as [Vat No],vd.vCstNo as[Cst No],vd.vServiceTaxRegnNo as [Service Tax Regn.No],vd.vExciseRegnNo as [Excise Regn.No],vd.vGSTRegnNo as[ GST Regn.No],vd.vDesc AS Description,vad.vOpeningBalance AS OpeningBalance , vad.vCurrentBalance AS CurrentBalance from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID";
+            string selectqurryForActualColumnName = "select top 1 vd.venderId ,vd.vName  ,vd.vCompName  ,vd.vAddress ,vd.vCity,vd. vState  ,vd.vZip  ,vd.vCountry  ,vd.vEmail ,vd. vWebAddress ,vd.vPhone  ,vd.vMobile ,vd.vFax ,vd.vPanNo ,vd.vVatNo ,vd.vCstNo,vd.vServiceTaxRegnNo ,vd.vExciseRegnNo ,vd.vGSTRegnNo ,vd.vDesc,vad.vOpeningBalance, vad.vCurrentBalance  from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID";
+            DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+            DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
+            DataTable customDataTable = new DataTable();
+            customDataTable.Columns.Add("ActualTableColumnName");
+            customDataTable.Columns.Add("AliasTableColumnName");
+            //List<string> ls = new List<string>();
             DataColumnCollection d = dt.Columns;
+            DataColumnCollection dataColumnForName = dtOnlyColumnName.Columns;
             for (int a = 1; a < d.Count; a++)
             {
-                DataColumn dc = new DataColumn();
+                //DataColumn dc = new DataColumn();
                 string b = d[a].ToString();
-                ls.Add(b);
+                string actualColumnName=dataColumnForName[a].ToString();
+                DataRow dr = customDataTable.NewRow();
+                dr["ActualTableColumnName"] = actualColumnName;
+                dr["AliasTableColumnName"] = b;
+                customDataTable.Rows.Add(dr);
+                //  ls.Add(b);
             }
-            comboBox1.DataSource = ls;
+
+            comboBox1.DataSource = customDataTable;
+            comboBox1.ValueMember = "ActualTableColumnName";
+            comboBox1.DisplayMember = "AliasTableColumnName";
+
             panel1.Visible = false;
             string Id = dbMainClass.getUniqueID("VENDOR");
             txtVenderCode.Text = Id;
@@ -437,9 +452,9 @@ namespace WindowsFormsApplication1
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            string s = comboBox1.SelectedItem.ToString();
-            string m = "v" + s;
-            string selectQurry = "select  vd.venderId as [Vender Id],vd.vName AS Name ,vd.vCompName AS [CompnayName] ,vd.vAddress AS Address,vd.vCity AS City,vd. vState AS State ,vd.vZip AS Zip ,vd.vCountry AS Country ,vd.vEmail AS[E-Mail ],vd. vWebAddress AS[Web-Address],vd.vPhone AS Phone ,vd.vMobile AS Mobile ,vd.vFax AS Fax ,vd.vPanNo as[Pan No],vd.vVatNo as [Vat No],vd.vCstNo as[Cst No],vd.vServiceTaxRegnNo as [Service Tax Regn.No],vd.vExciseRegnNo as [Excise Regn.No],vd.vGSTRegnNo as[ GST Regn.No],vd.vDesc AS Description,vad.vOpeningBalance AS OpeningBalance , vad.vCurrentBalance AS CurrentBalance from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID where " + m + " like '" + txtSearch.Text + "%'";
+            string s = comboBox1.SelectedValue.ToString();
+            //string m = "v" + s;
+            string selectQurry = "select  vd.venderId as [Vender Id],vd.vName AS Name ,vd.vCompName AS [CompnayName] ,vd.vAddress AS Address,vd.vCity AS City,vd. vState AS State ,vd.vZip AS Zip ,vd.vCountry AS Country ,vd.vEmail AS[E-Mail ],vd. vWebAddress AS[Web-Address],vd.vPhone AS Phone ,vd.vMobile AS Mobile ,vd.vFax AS Fax ,vd.vPanNo as[Pan No],vd.vVatNo as [Vat No],vd.vCstNo as[Cst No],vd.vServiceTaxRegnNo as [Service Tax Regn.No],vd.vExciseRegnNo as [Excise Regn.No],vd.vGSTRegnNo as[ GST Regn.No],vd.vDesc AS Description,vad.vOpeningBalance AS OpeningBalance , vad.vCurrentBalance AS CurrentBalance from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID where " + s+ " like '" + txtSearch.Text + "%'";
             DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
             dataGridView1.DataSource = dt;
         }

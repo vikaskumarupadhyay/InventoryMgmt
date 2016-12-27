@@ -4,7 +4,7 @@ use SalesMaster
 
 --drop table VendorAccountDetails
 
-create table VendorDetails(venderId varchar(100) primary key,vName varchar(1000),vCompName varchar(1000),vAddress varchar(1000),vCity varchar(100), vState varchar(100),vZip varchar(100),vCountry varchar(50),vEmail varchar(250), vWebAddress varchar(50),vPhone varchar(15),vMobile varchar(15),vFax varchar(15),vDesc varchar(500),vPanNo varchar(200),vVatNo varchar(200),vCstNo varchar(200),vServiceTaxRegnNo varchar(100),vExciseRegnNo varchar(100),vGSTRegnNo varchar(100))
+create table VendorDetails(venderId varchar(100) primary key,vName varchar(1000),vCompName varchar(1000),vAddress varchar(1000),vCity varchar(100), vState varchar(100),vZip varchar(100),vCountry varchar(50),vEmail varchar(250), vWebAddress varchar(50),vPhone varchar(15),vMobile varchar(15),vFax varchar(15),vDesc varchar(500),vPanNo varchar(200),vTinNo varchar(200),vOther varchar(200),)
 
 create table VendorAccountDetails (id varchar(100),venderId varchar(100) foreign key references VendorDetails(venderId),vOpeningBalance varchar(100), vCurrentBalance varchar(100))
 
@@ -33,10 +33,7 @@ create table WithoutRefrencePament(id int identity primary key,venderId varchar(
 
 -- Connection string Data Source=ASHISH-PC;Initial Catalog=SalesMaster;Persist Security Info=True;User ID=sa
 
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
 USE [SalesMaster]
 GO
 
@@ -73,10 +70,7 @@ GO
 create table salesOrderDelivery(Delivaryid int identity primary key,Orderid int foreign key references orderdetails(Orderid),status bit, DeliveryDate datetime)
 create table salesinvoice(invoiceid int identity primary key,Delivaryid int foreign key references salesOrderDelivery(Delivaryid),Orderid int foreign key references orderdetails(Orderid),invoicedate datetime)
 
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
 USE [SalesMaster]
 GO
 
@@ -123,3 +117,17 @@ Create table payment(id int identity primary key,invoiceid int foreign key refer
 
 
 Create table vithautrefrancereceipt(id int identity primary key,CustId varchar(100) foreign key references CustomerDetails(custId),Totalammoun Float,Balanceammount Float,receiptdate datetime )
+
+
+
+alter table VendorDetails add vServiceTaxRegnNo varchar(100)
+
+alter table VendorDetails add vExciseRegnNo varchar(100)
+
+alter table VendorDetails add vGSTRegnNo varchar(100)
+
+Sp_rename 'VendorDetails.vTinNo','vVatNo'
+
+Sp_rename 'VendorDetails.vOther','vCstNo'
+
+
