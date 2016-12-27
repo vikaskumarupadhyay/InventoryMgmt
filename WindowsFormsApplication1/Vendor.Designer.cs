@@ -638,9 +638,9 @@
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.Location = new System.Drawing.Point(383, 24);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(46, 15);
+            this.label18.Size = new System.Drawing.Size(72, 15);
             this.label18.TabIndex = 7;
-            this.label18.Text = "Search";
+            this.label18.Text = "Search Text";
             // 
             // label17
             // 
@@ -648,9 +648,9 @@
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(22, 24);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(83, 15);
+            this.label17.Size = new System.Drawing.Size(87, 15);
             this.label17.TabIndex = 5;
-            this.label17.Text = "Select Search";
+            this.label17.Text = "Vendor Details";
             // 
             // comboBox1
             // 
