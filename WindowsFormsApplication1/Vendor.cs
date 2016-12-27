@@ -507,6 +507,16 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void txtTinNo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtVenderMobile_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }
