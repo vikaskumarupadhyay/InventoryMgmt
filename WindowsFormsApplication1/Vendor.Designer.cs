@@ -150,12 +150,11 @@
             // 
             // txtGst
             // 
-
             this.txtGst.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtGst.Location = new System.Drawing.Point(508, 354);
             this.txtGst.Name = "txtGst";
             this.txtGst.Size = new System.Drawing.Size(253, 21);
-            this.txtGst.TabIndex = 39;
+            this.txtGst.TabIndex = 18;
             // 
             // txtExcise
             // 
@@ -163,14 +162,15 @@
             this.txtExcise.Location = new System.Drawing.Point(290, 354);
             this.txtExcise.Name = "txtExcise";
             this.txtExcise.Size = new System.Drawing.Size(212, 21);
-            this.txtExcise.TabIndex = 38;
+            this.txtExcise.TabIndex = 17;
             // 
             // txtSarvice
+            // 
             this.txtSarvice.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSarvice.Location = new System.Drawing.Point(46, 354);
             this.txtSarvice.Name = "txtSarvice";
             this.txtSarvice.Size = new System.Drawing.Size(238, 21);
-            this.txtSarvice.TabIndex = 37;
+            this.txtSarvice.TabIndex = 16;
             // 
             // label24
             // 
@@ -201,12 +201,11 @@
             // 
             // txtCstNo
             // 
-
             this.txtCstNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCstNo.Location = new System.Drawing.Point(508, 312);
             this.txtCstNo.Name = "txtCstNo";
             this.txtCstNo.Size = new System.Drawing.Size(253, 21);
-            this.txtCstNo.TabIndex = 33;
+            this.txtCstNo.TabIndex = 15;
             // 
             // txtVatNo
             // 
@@ -214,7 +213,7 @@
             this.txtVatNo.Location = new System.Drawing.Point(290, 312);
             this.txtVatNo.Name = "txtVatNo";
             this.txtVatNo.Size = new System.Drawing.Size(212, 21);
-            this.txtVatNo.TabIndex = 32;
+            this.txtVatNo.TabIndex = 14;
             // 
             // txtPanNo
             // 
@@ -534,7 +533,7 @@
             this.txtVenderOpeningBal.Location = new System.Drawing.Point(101, 37);
             this.txtVenderOpeningBal.Name = "txtVenderOpeningBal";
             this.txtVenderOpeningBal.Size = new System.Drawing.Size(291, 21);
-            this.txtVenderOpeningBal.TabIndex = 3;
+            this.txtVenderOpeningBal.TabIndex = 20;
             this.txtVenderOpeningBal.Text = "0";
             this.txtVenderOpeningBal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtVenderOpeningBal.Click += new System.EventHandler(this.txtVenderOpeningBal_Click);
@@ -580,7 +579,7 @@
             this.btnVenderSave.Location = new System.Drawing.Point(12, 558);
             this.btnVenderSave.Name = "btnVenderSave";
             this.btnVenderSave.Size = new System.Drawing.Size(138, 28);
-            this.btnVenderSave.TabIndex = 4;
+            this.btnVenderSave.TabIndex = 21;
             this.btnVenderSave.Text = "Save";
             this.btnVenderSave.UseVisualStyleBackColor = true;
             this.btnVenderSave.Click += new System.EventHandler(this.btnVenderSave_Click);
@@ -591,7 +590,7 @@
             this.btnVenderClose.Location = new System.Drawing.Point(156, 558);
             this.btnVenderClose.Name = "btnVenderClose";
             this.btnVenderClose.Size = new System.Drawing.Size(134, 28);
-            this.btnVenderClose.TabIndex = 5;
+            this.btnVenderClose.TabIndex = 22;
             this.btnVenderClose.Text = "Close";
             this.btnVenderClose.UseVisualStyleBackColor = true;
             this.btnVenderClose.Click += new System.EventHandler(this.btnVenderClose_Click);
@@ -602,7 +601,7 @@
             this.btnVenderList.Location = new System.Drawing.Point(726, 5);
             this.btnVenderList.Name = "btnVenderList";
             this.btnVenderList.Size = new System.Drawing.Size(66, 28);
-            this.btnVenderList.TabIndex = 6;
+            this.btnVenderList.TabIndex = 23;
             this.btnVenderList.Text = "List";
             this.btnVenderList.UseVisualStyleBackColor = true;
             this.btnVenderList.Click += new System.EventHandler(this.btnVenderList_Click);
@@ -614,10 +613,9 @@
             this.panel1.Controls.Add(this.btnUpdate);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(0, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(803, 594);
+            this.panel1.Size = new System.Drawing.Size(803, 591);
             this.panel1.TabIndex = 7;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -631,7 +629,7 @@
             this.groupBox3.Location = new System.Drawing.Point(12, 6);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(777, 79);
-            this.groupBox3.TabIndex = 8;
+            this.groupBox3.TabIndex = 23;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Vendor Search";
             // 
@@ -643,7 +641,8 @@
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(72, 15);
             this.label18.TabIndex = 7;
-            this.label18.Text = "Search Text"; 
+            this.label18.Text = "Search Text";
+            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -662,7 +661,7 @@
             this.comboBox1.Location = new System.Drawing.Point(25, 42);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(355, 23);
-            this.comboBox1.TabIndex = 4;
+            this.comboBox1.TabIndex = 24;
             this.comboBox1.Text = "Select Text";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -673,7 +672,7 @@
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(363, 24);
-            this.txtSearch.TabIndex = 6;
+            this.txtSearch.TabIndex = 25;
             this.txtSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button3
@@ -682,7 +681,7 @@
             this.button3.Location = new System.Drawing.Point(250, 557);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(90, 28);
-            this.button3.TabIndex = 3;
+            this.button3.TabIndex = 29;
             this.button3.Text = "Close";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -693,7 +692,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(154, 557);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(90, 28);
-            this.btnUpdate.TabIndex = 2;
+            this.btnUpdate.TabIndex = 28;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -704,7 +703,7 @@
             this.button1.Location = new System.Drawing.Point(11, 557);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(137, 28);
-            this.button1.TabIndex = 1;
+            this.button1.TabIndex = 27;
             this.button1.Text = "Add New Records";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -726,11 +725,10 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(777, 449);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.StandardTab = true;
+            this.dataGridView1.TabIndex = 26;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // frmVendorDetails

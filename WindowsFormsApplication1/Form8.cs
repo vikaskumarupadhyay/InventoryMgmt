@@ -63,13 +63,13 @@ namespace WindowsFormsApplication1
                 string vendorId = txtVendorId.Text;
                 if (vendorId.Trim() != "" && vendorId != null)
                 {
-                    DataRow[] dr = vendorDetails.Select("vendorid='" + vendorId + "'");
+                    DataRow[] dr = vendorDetails.Select("[Vender Id ]='" + vendorId + "'");
                     if (dr != null && dr.Length > 0)
                     {
                         //venderId, , vCompName, vAddress, vCity, vState, vZip, vCountry, vEmail, vWebAddress, vPhone, vMobile, vFax, vDesc
                         string vendorName = dr[0]["Name"].ToString();
                         string vendorAddress = dr[0]["Address"].ToString();
-                        string vendorCompName = dr[0]["CompanyName"].ToString();
+                        string vendorCompName = dr[0]["Compnay Name"].ToString();
                         string vendorPhone = dr[0]["Phone"].ToString();
                         string vendorMobile = dr[0]["Mobile"].ToString();
                         string vendorFax = dr[0]["Fax"].ToString();
