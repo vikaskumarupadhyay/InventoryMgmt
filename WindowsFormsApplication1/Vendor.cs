@@ -427,7 +427,7 @@ namespace WindowsFormsApplication1
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewCellCollection cellCollection = dataGridView1.SelectedRows[0].Cells;
+            DataGridViewCellCollection cellCollection = dataGridView1.Rows[e.RowIndex].Cells;
             setDetails(cellCollection);
             panel1.Visible = false;
             updateCounter = 1;
