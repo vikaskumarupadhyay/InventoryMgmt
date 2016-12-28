@@ -142,7 +142,7 @@
             this.txtOPENINGBALANCE.Location = new System.Drawing.Point(101, 37);
             this.txtOPENINGBALANCE.Name = "txtOPENINGBALANCE";
             this.txtOPENINGBALANCE.Size = new System.Drawing.Size(291, 21);
-            this.txtOPENINGBALANCE.TabIndex = 3;
+            this.txtOPENINGBALANCE.TabIndex = 32;
             this.txtOPENINGBALANCE.Text = "0";
             this.txtOPENINGBALANCE.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtOPENINGBALANCE.Click += new System.EventHandler(this.txtOPENINGBALANCE_Click);
@@ -234,7 +234,7 @@
             this.txtgstragisterno.Location = new System.Drawing.Point(508, 351);
             this.txtgstragisterno.Name = "txtgstragisterno";
             this.txtgstragisterno.Size = new System.Drawing.Size(253, 21);
-            this.txtgstragisterno.TabIndex = 39;
+            this.txtgstragisterno.TabIndex = 30;
             // 
             // txtexiceragisterno
             // 
@@ -242,7 +242,7 @@
             this.txtexiceragisterno.Location = new System.Drawing.Point(290, 351);
             this.txtexiceragisterno.Name = "txtexiceragisterno";
             this.txtexiceragisterno.Size = new System.Drawing.Size(212, 21);
-            this.txtexiceragisterno.TabIndex = 38;
+            this.txtexiceragisterno.TabIndex = 29;
             // 
             // txtservicetaxno
             // 
@@ -250,7 +250,7 @@
             this.txtservicetaxno.Location = new System.Drawing.Point(46, 351);
             this.txtservicetaxno.Name = "txtservicetaxno";
             this.txtservicetaxno.Size = new System.Drawing.Size(238, 21);
-            this.txtservicetaxno.TabIndex = 37;
+            this.txtservicetaxno.TabIndex = 28;
             // 
             // label24
             // 
@@ -285,7 +285,7 @@
             this.txtothers.Location = new System.Drawing.Point(508, 309);
             this.txtothers.Name = "txtothers";
             this.txtothers.Size = new System.Drawing.Size(253, 21);
-            this.txtothers.TabIndex = 33;
+            this.txtothers.TabIndex = 27;
             // 
             // txttanno
             // 
@@ -293,7 +293,7 @@
             this.txttanno.Location = new System.Drawing.Point(290, 309);
             this.txttanno.Name = "txttanno";
             this.txttanno.Size = new System.Drawing.Size(212, 21);
-            this.txttanno.TabIndex = 32;
+            this.txttanno.TabIndex = 26;
             // 
             // txtPanno
             // 
@@ -302,7 +302,7 @@
             this.txtPanno.MaxLength = 10;
             this.txtPanno.Name = "txtPanno";
             this.txtPanno.Size = new System.Drawing.Size(238, 21);
-            this.txtPanno.TabIndex = 31;
+            this.txtPanno.TabIndex = 25;
             this.txtPanno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPanno_KeyPress);
             // 
             // label20
@@ -339,7 +339,7 @@
             this.txtDESCRIPTION.Name = "txtDESCRIPTION";
             this.txtDESCRIPTION.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtDESCRIPTION.Size = new System.Drawing.Size(715, 46);
-            this.txtDESCRIPTION.TabIndex = 27;
+            this.txtDESCRIPTION.TabIndex = 31;
             // 
             // label16
             // 
@@ -355,7 +355,7 @@
             this.txtFAX.Location = new System.Drawing.Point(508, 267);
             this.txtFAX.Name = "txtFAX";
             this.txtFAX.Size = new System.Drawing.Size(253, 21);
-            this.txtFAX.TabIndex = 25;
+            this.txtFAX.TabIndex = 24;
             // 
             // label13
             // 
@@ -571,7 +571,7 @@
             this.btnSave.Location = new System.Drawing.Point(12, 558);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(138, 28);
-            this.btnSave.TabIndex = 8;
+            this.btnSave.TabIndex = 33;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -582,7 +582,7 @@
             this.btnClose.Location = new System.Drawing.Point(156, 558);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(134, 28);
-            this.btnClose.TabIndex = 9;
+            this.btnClose.TabIndex = 34;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -593,7 +593,7 @@
             this.btnList.Location = new System.Drawing.Point(726, 5);
             this.btnList.Name = "btnList";
             this.btnList.Size = new System.Drawing.Size(66, 28);
-            this.btnList.TabIndex = 10;
+            this.btnList.TabIndex = 35;
             this.btnList.Text = "List";
             this.btnList.UseVisualStyleBackColor = true;
             this.btnList.Click += new System.EventHandler(this.btnList_Click);
@@ -605,9 +605,9 @@
             this.panel1.Controls.Add(this.butclose);
             this.panel1.Controls.Add(this.butupdate);
             this.panel1.Controls.Add(this.butaddrecord);
-            this.panel1.Location = new System.Drawing.Point(0, 1);
+            this.panel1.Location = new System.Drawing.Point(0, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(803, 585);
+            this.panel1.Size = new System.Drawing.Size(803, 590);
             this.panel1.TabIndex = 11;
             // 
             // groupBox3
@@ -640,7 +640,7 @@
             this.comserchvalue.Location = new System.Drawing.Point(25, 42);
             this.comserchvalue.Name = "comserchvalue";
             this.comserchvalue.Size = new System.Drawing.Size(355, 23);
-            this.comserchvalue.TabIndex = 1;
+            this.comserchvalue.TabIndex = 0;
             // 
             // textBox1
             // 
@@ -648,7 +648,7 @@
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(363, 24);
-            this.textBox1.TabIndex = 2;
+            this.textBox1.TabIndex = 1;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label17
@@ -676,7 +676,8 @@
             this.dataGridView1.Location = new System.Drawing.Point(-2, -2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(777, 453);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.StandardTab = true;
+            this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
             // 
             // butclose
@@ -685,7 +686,7 @@
             this.butclose.Location = new System.Drawing.Point(250, 557);
             this.butclose.Name = "butclose";
             this.butclose.Size = new System.Drawing.Size(90, 28);
-            this.butclose.TabIndex = 7;
+            this.butclose.TabIndex = 6;
             this.butclose.Text = "Close";
             this.butclose.UseVisualStyleBackColor = true;
             this.butclose.Click += new System.EventHandler(this.butclose_Click);
@@ -696,7 +697,7 @@
             this.butupdate.Location = new System.Drawing.Point(154, 557);
             this.butupdate.Name = "butupdate";
             this.butupdate.Size = new System.Drawing.Size(90, 28);
-            this.butupdate.TabIndex = 6;
+            this.butupdate.TabIndex = 5;
             this.butupdate.Text = "Update";
             this.butupdate.UseVisualStyleBackColor = true;
             this.butupdate.Click += new System.EventHandler(this.butupdate_Click);
@@ -707,7 +708,7 @@
             this.butaddrecord.Location = new System.Drawing.Point(11, 557);
             this.butaddrecord.Name = "butaddrecord";
             this.butaddrecord.Size = new System.Drawing.Size(137, 28);
-            this.butaddrecord.TabIndex = 5;
+            this.butaddrecord.TabIndex = 4;
             this.butaddrecord.Text = "Add New Record";
             this.butaddrecord.UseVisualStyleBackColor = true;
             this.butaddrecord.Click += new System.EventHandler(this.butaddrecord_Click);
@@ -716,7 +717,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(803, 596);
+            this.ClientSize = new System.Drawing.Size(803, 607);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnList);
             this.Controls.Add(this.btnClose);

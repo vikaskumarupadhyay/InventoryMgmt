@@ -19,31 +19,54 @@ namespace WindowsFormsApplication1
         }
         private void Customer_Load(object sender, EventArgs e)
         {
+           
         
             //DataTable dt = dbMainClass.getDetails("CustomerDetails");
-            List<string> ds = new List<string>();
-            ds.Add("Name");
-            ds.Add("CompnayName");
-            ds.Add("Address");
-            ds.Add("City");
-            ds.Add("State");
-            ds.Add("Zip");
-            ds.Add("Country");
-            ds.Add("Email");
-            ds.Add("Webaddress");
-            ds.Add("Phone");
-            ds.Add("Mobile");
-            ds.Add("Fax");
-            ds.Add("Desc");
-            ds.Add("Openingbalance");
-            ds.Add("Currentbalance");
-            ds.Add("PanNo");
-            ds.Add("VatNo");
-            ds.Add("Cstno");
-            ds.Add("ServicetaxregnNo");
-            ds.Add("Exciseregnno");
-            ds.Add("Gstregnno");
-            comserchvalue.DataSource = ds;
+            //List<string> ds = new List<string>();
+            //ds.Add("Name");
+            //ds.Add("CompnayName");
+            //ds.Add("Address");
+            //ds.Add("City");
+            //ds.Add("State");
+            //ds.Add("Zip");
+            //ds.Add("Country");
+            //ds.Add("Email");
+            //ds.Add("Webaddress");
+            //ds.Add("Phone");
+            //ds.Add("Mobile");
+            //ds.Add("Fax");
+            //ds.Add("Desc");
+            //ds.Add("Openingbalance");
+            //ds.Add("Currentbalance");
+            //ds.Add("PanNo");
+            //ds.Add("VatNo");
+            //ds.Add("Cstno");
+            //ds.Add("ServicetaxregnNo");
+            //ds.Add("Exciseregnno");
+            //ds.Add("Gstregnno");
+            //comserchvalue.DataSource = ds;
+
+            string selectQuery = "select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Ballance],CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO]  ,CustServicetaxRegnNo AS [Service Tax Regn. No],CustExciseRegnNo AS [Excise Regn. No] ,CustGSTRegnNo AS [GST Regn. No] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
+            string actualcolumn = "select  Custd.CustId  ,CustName  ,CustCompName  ,CustAddress ,CustCity , CustState  ,CustZip  ,CustCountry  ,CustEmail , CustWebAddress ,CustPhone  ,CustMobile  ,CustFax ,CustDesc ,Custad.CustOpeningBalance , Custad.CustCurrentBalance ,CustPanNo , CustVatNo ,CustCSTNo  ,CustServicetaxRegnNo ,CustExciseRegnNo  ,CustGSTRegnNo  from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
+            DataTable dt = dbMainClass.getDetailByQuery(selectQuery);
+            DataTable onlycolumnname = dbMainClass.getDetailByQuery(actualcolumn);
+            DataTable customtable = new DataTable();
+            customtable.Columns.Add("Actualtablecolumname");
+            customtable.Columns.Add("Aliascolumnname");
+            DataColumnCollection c = dt.Columns;
+            DataColumnCollection columnofname = onlycolumnname.Columns;
+            for(int b = 1; b < c.Count; b++)
+            {
+                string d = c[b].ToString();
+                string actualColumnName = columnofname[b].ToString();
+                DataRow dr = customtable.NewRow();
+                dr["Actualtablecolumname"] = actualColumnName;
+                dr["Aliascolumnname"] = d;
+                customtable.Rows.Add(dr);
+            }
+            comserchvalue.DataSource = customtable;
+            comserchvalue.ValueMember = "Actualtablecolumname";
+            comserchvalue.DisplayMember = "Aliascolumnname";
             
             panel1.Visible = false;
             string Id = dbMainClass.getUniqueID("Customerdetail");
@@ -211,11 +234,45 @@ namespace WindowsFormsApplication1
 
         private void btnList_Click(object sender, EventArgs e)
         {
+            
+            tabindex();
             panel1.Visible = true;
             DataTable dt = dbMainClass.getDetails("CUSTOMER");
             dataGridView1.DataSource = dt;
+            panel2.TabStop = false;
+            panel2.TabIndex = 2;
+            dataGridView1.TabIndex = 3;
+            comserchvalue.Focus();
         }
-
+        private void tabindex()
+        {
+            txtCustCode.TabStop = false;
+            txtName.TabStop = false;
+            txtCompnyName.TabStop = false;
+            txtAddress.TabStop = false;
+            txtCity.TabStop = false;
+            txtState.TabStop = false;
+            txtZIP.TabStop = false;
+            txtCustCountry.TabStop = false;
+            txtEMAILADDRESS.TabStop = false;
+            txtWEBSITE.TabStop = false;
+            txtTXTPHONE.TabStop = false;
+            txtMOBILE.TabStop = false;
+            txtFAX.TabStop = false;
+            txtDESCRIPTION.TabStop = false;
+            txtOPENINGBALANCE.TabStop = false;
+            txtCURRENTBALANCE.TabStop = false;
+            txtPanno.TabStop = false;
+            txttanno.TabStop = false;
+            txtothers.TabStop = false;
+            btnSave.TabStop = false;
+            btnClose.TabStop = false;
+            btnList.TabStop = false;
+           // dataGridView1.TabStop = false;
+            txtservicetaxno.TabStop = false;
+            txtexiceragisterno.TabStop = false;
+            txtgstragisterno.TabStop = false;
+        }
         private void setDetails(DataGridViewCellCollection cellCollection)
         {
             try
@@ -314,8 +371,8 @@ namespace WindowsFormsApplication1
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
            string s= comserchvalue.SelectedValue.ToString();
-           string val = "Cust"+s;
-           string selectQuery = "select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Ballance],CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO]  ,CustServicetaxRegnNo AS [Service Tax Regn. No],CustExciseRegnNo AS [Excise Regn. No] ,CustGSTRegnNo AS [GST Regn. No] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID where " + val + " like '" + textBox1.Text + "%'";
+          // string val = "Cust"+s;
+           string selectQuery = "select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Ballance],CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO]  ,CustServicetaxRegnNo AS [Service Tax Regn. No],CustExciseRegnNo AS [Excise Regn. No] ,CustGSTRegnNo AS [GST Regn. No] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID where " + s + " like '" + textBox1.Text + "%'";
             DataTable dt = dbMainClass.getDetailByQuery(selectQuery);
             dataGridView1.DataSource = dt;
 
@@ -397,7 +454,7 @@ namespace WindowsFormsApplication1
 
         private void butclose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            panel1.Visible = false;
         }
         private void makeblank()
         {

@@ -300,7 +300,6 @@ namespace WindowsFormsApplication1
              }
              if (txtRefNo.Text != "")
              {
-                 
                  string delivary = "select Delivaryid from salesOrderDelivery";
                  DataTable dt3 = d.getDetailByQuery(delivary);
                  string delivaryid = txtRefNo.Text;
@@ -311,17 +310,18 @@ namespace WindowsFormsApplication1
                  //}
                  //int del = Convert.ToInt32(delivaryid);
                  //int deli = del + 1;
-                 string order = "select Orderid from salesOrderDelivery where Delivaryid ='"+txtRefNo.Text+"' ";
-                 DataTable d1 = d.getDetailByQuery(order);
-                 string id = "";
-                 foreach (DataRow dr in d1.Rows)
-                 {
-                     id = dr[0].ToString();
-                 }
-                 string update = "update orderdetails set totalammount='" + txttotalammount.Text + "'where Orderid='"+id+"'";
-                 int c = d.saveDetails(update);
-                 string deletequrri1 = "delete customerorderdescriptions where OrderId='" + id + "'";
-                 DataTable dt1 = d.getDetailByQuery(deletequrri1);
+               
+                     string order = "select Orderid from salesOrderDelivery where Delivaryid ='" + txtRefNo.Text + "' ";
+                     DataTable d1 = d.getDetailByQuery(order);
+                     string id = "";
+                     foreach (DataRow dr in d1.Rows)
+                     {
+                         id = dr[0].ToString();
+                     }
+                     string update = "update orderdetails set totalammount='" + txttotalammount.Text + "'where Orderid='" + id + "'";
+                     int c = d.saveDetails(update);
+                     string deletequrri1 = "delete customerorderdescriptions where OrderId='" + id + "'";
+                     DataTable dt1 = d.getDetailByQuery(deletequrri1);
                      string insertquery = "insert into  orderdetails values('" + txtCustcode.Text + "','" + dtpdate.Text + "','" + txttotalammount.Text + "')";
                      int insertrows = d.saveDetails(insertquery);
                      if (insertrows > 0)
@@ -338,7 +338,7 @@ namespace WindowsFormsApplication1
                              string txtRate = cellcollection[2].Value.ToString();
                              string txtQuantity = cellcollection[3].Value.ToString();
                              string txtAmount = cellcollection[4].Value.ToString();
-                            // string Orderid = id;
+                             // string Orderid = id;
                              string query = "insert into customerorderdescriptions Values('" + id + "','" + txtitemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
 
                              show.Add(query);
@@ -349,7 +349,7 @@ namespace WindowsFormsApplication1
                          {
                              string salesdelivary = "Update  salesOrderDelivery set DeliveryDate='" + dtpdate.Text + "' where delivaryid='" + delivaryid + "'";
                              int insertrow = d.saveDetails(salesdelivary);
-                             string invoic = "Insert into salesinvoice values('" + txtRefNo.Text + "','"+id+"','" + dtpdate.Text + "')";
+                             string invoic = "Insert into salesinvoice values('" + txtRefNo.Text + "','" + id + "','" + dtpdate.Text + "')";
                              int insertrow1 = d.saveDetails(invoic);
                              if (insertrow1 > 0)
                              {
@@ -363,12 +363,14 @@ namespace WindowsFormsApplication1
                          }
                      }
                  }
+             
              int id3 = Convert.ToInt32(txtSrNo.Text);
              int id4 = id3 + 1;
              txtSrNo.Text = id4.ToString();
              Form5 s = new Form5(id3.ToString());
              s.Show();
                  makeblank();
+                 
              }   
             
     
@@ -553,17 +555,20 @@ namespace WindowsFormsApplication1
 
          private void txtRefNo_TextChanged(object sender, EventArgs e)
          {
-             //string selectquery = "select Delivaryid from salesOrderDelivery where Delivaryid='" + txtRefNo.Text + "'";
-             //DataTable dt = d.getDetailByQuery(selectquery);
-             //if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
-             //{
-             //    DataRow dr = dt.Rows[0];
-             //    string c = dr[0].ToString();
-
-             string selectquery1 = "select  c.custId, c.CustName,c.CustCompName,c.CustAddress,c.CustPhone,c.CustMobile,c.CustFax,o.Orderid,s.Delivaryid from CustomerDetails c join orderdetails o on c.custId=o.custid join salesOrderDelivery s on o.Orderid=s.OrderId where s.Delivaryid='" + txtRefNo.Text + "'";
+             string selectquery = "select Delivaryid from salesinvoice where Delivaryid='" + txtRefNo.Text + "'";
+             DataTable dt = d.getDetailByQuery(selectquery);
+             if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
+             {
+                 button5.Enabled = false;
+             }
+             else
+             {
+                 button5.Enabled = true;
+             }
+                 string selectquery1 = "select  c.custId, c.CustName,c.CustCompName,c.CustAddress,c.CustPhone,c.CustMobile,c.CustFax,o.Orderid,s.Delivaryid from CustomerDetails c join orderdetails o on c.custId=o.custid join salesOrderDelivery s on o.Orderid=s.OrderId where s.Delivaryid='" + txtRefNo.Text + "'";
                  DataTable dt1 = d.getDetailByQuery(selectquery1);
-                 string OrderId = "";    
-             if (dt1 != null && dt1.Rows != null && dt1.Rows.Count > 0)
+                 string OrderId = "";
+                 if (dt1 != null && dt1.Rows != null && dt1.Rows.Count > 0)
                  {
                      foreach (DataRow dr1 in dt1.Rows)
                      {
@@ -577,9 +582,9 @@ namespace WindowsFormsApplication1
                          OrderId = dr1[7].ToString();
                      }
                  }
-             
+
                  int totel = 0;
-                 string selectquery2 = "select it.itemid,iq.ItemName,it.price,it.quantity,it.totalammount from customerorderdescriptions it join ItemDetails iq on it.ItemId=iq.ItemId where Orderid='"+ OrderId+ "'";
+                 string selectquery2 = "select it.itemid,iq.ItemName,it.price,it.quantity,it.totalammount from customerorderdescriptions it join ItemDetails iq on it.ItemId=iq.ItemId where Orderid='" + OrderId + "'";
                  DataTable dt3 = d.getDetailByQuery(selectquery2);
                  int totelrow = addToCartTable.Rows.Count;
                  for (int a = 0; a < totelrow; a++)
@@ -608,8 +613,8 @@ namespace WindowsFormsApplication1
 
                  gridsalesinvoice.DataSource = addToCartTable;
                  txttotalammount.Text = totel.ToString();
-
-             }
+             
+         }
          
 
          private void button1_Click(object sender, EventArgs e)
