@@ -137,6 +137,17 @@ alter table CustomerDetails add Exciseregnno varchar (200)
 
 alter table CustomerDetails add Gstregnno varchar (200)
 
-Sp_rename 'CustomerDetails.vTan','CustVatNo'
+ 
+ Sp_rename 'CustomerDetails.TanNo','CustVatNo'
+  
+ Sp_rename 'CustomerDetails.PanNo','CustPanNo'
 
-Sp_rename 'CustomerDetails.vOther','CustCstNo'
+ Sp_rename 'CustomerDetails.Others','CustCstNo'
+
+ Sp_rename 'CustomerDetails.Exciseregnno','CustExciseRegnNo'
+
+ Sp_rename 'CustomerDetails.ServicetaxregnNo','CustServicetaxRegnNo'
+
+ Sp_rename 'CustomerDetails.Exciseregnno','CustExciseRegnNo'
+
+
