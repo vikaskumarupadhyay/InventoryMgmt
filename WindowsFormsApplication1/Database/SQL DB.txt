@@ -130,13 +130,22 @@ Sp_rename 'VendorDetails.vTinNo','vVatNo'
 
 Sp_rename 'VendorDetails.vOther','vCstNo'
 
+ 
+alter table CustomerDetails add ServicetaxregnNo varchar(200)
 
-alter table CustomerDetails add ServicetaxregnNo
+alter table CustomerDetails add Exciseregnno varchar(200)
 
-alter table CustomerDetails add Exciseregnno
+alter table CustomerDetails add Gstregnno varchar(200)
 
-alter table CustomerDetails add Gstregnno
+Sp_rename 'CustomerDetails.TanNo','CustVatNo'
 
-Sp_rename 'VendorDetails.vTan','CustVatNo'
+Sp_rename 'CustomerDetails.PanNo','CustPanNo'
 
-Sp_rename 'VendorDetails.vOther','CustCstNo'
+Sp_rename 'CustomerDetails.Others','CustCstNo'
+
+Sp_rename 'CustomerDetails.ServicetaxregnNo','CustServicetaxRegnNo'
+
+Sp_rename 'CustomerDetails.Exciseregnno','CustExciseRegnNo'
+
+Sp_rename 'CustomerDetails.Gstregnno','CustGSTRegnNo'
+
