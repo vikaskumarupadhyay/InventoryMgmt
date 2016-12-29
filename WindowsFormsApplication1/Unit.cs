@@ -24,42 +24,51 @@ namespace WindowsFormsApplication1
         private void Unit_Load(object sender, EventArgs e)
         {
             string ColumnID = dbMainClass.getUniqueID("UNIT");
-            txtUnitId.Text = ColumnID;   
+            txtUnitId.Text = ColumnID;
         }
 
         private void btnUnitClose_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void btnUnitSave_Click(object sender, EventArgs e)
         {
-            int index = item.Items.IndexOf(txtUnitName.Text.ToUpper());
-            if (index >= 0)
+            if (string.IsNullOrEmpty(txtUnitName.Text))
             {
-                MessageBox.Show("Unit allready exists");
+                txtUnitName.Focus();
+                MessageBox.Show("Pleas Enter The UnitName");
             }
-            else
+             else
             {
-                string insertQuery = "insert into dbo.ItemUnitList values ('" + txtUnitId.Text + "','" + txtUnitName.Text.ToUpper() + "','" + txtUnitDesc.Text + "')";
-                int insertedRecord = dbMainClass.saveDetails(insertQuery);
-                if (insertedRecord > 0)
+                int index = item.Items.IndexOf(txtUnitName.Text.ToUpper());
+                if (index >= 0)
                 {
-                    if (item.Items.Contains("Add New Unit"))
-                    {
-                        item.Items.Remove("Add New Unit");
-                        item.Items.Insert(0, "Select A Unit");
-                    }
-                    UnitList.Add(txtUnitId.Text);
-                    item.Items.Add(txtUnitName.Text);
-                    item.SelectedIndex = item.Items.IndexOf(txtUnitName.Text);
-                    this.Close();
+                    MessageBox.Show("Unit allready exists");
                 }
                 else
                 {
-                    MessageBox.Show("Details Can Not Saved");
+                    string insertQuery = "insert into dbo.ItemUnitList values ('" + txtUnitId.Text + "','" + txtUnitName.Text.ToUpper() + "','" + txtUnitDesc.Text + "')";
+                    int insertedRecord = dbMainClass.saveDetails(insertQuery);
+                    if (insertedRecord > 0)
+                    {
+                        if (item.Items.Contains("Add New Unit"))
+                        {
+                            item.Items.Remove("Add New Unit");
+                            item.Items.Insert(0, "Select A Unit");
+                        }
+                        UnitList.Add(txtUnitId.Text);
+                        item.Items.Add(txtUnitName.Text);
+                        item.SelectedIndex = item.Items.IndexOf(txtUnitName.Text);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Details Can Not Saved");
+                    }
                 }
             }
+                
         }
     }
 }

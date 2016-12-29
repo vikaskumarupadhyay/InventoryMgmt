@@ -236,8 +236,8 @@ namespace WindowsFormsApplication1
             txtItemProductName.Text = "";
             txtItemCompName.Text = "";
             txtItemDesc.Text = "";
-            cmbItemItemGroup.Text = "";
-            cmbItemUnit.Text = "";
+            cmbItemItemGroup.Text = "Select A Group";
+            cmbItemUnit.Text = "Select A Unit";
             txtItemPrice.Text = "";
             txtItemSalesPrice.Text = "";
             txtItemMrp.Text = "";
@@ -263,7 +263,7 @@ namespace WindowsFormsApplication1
 
         private void buttClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            panel1.Visible = false;
         }
 
         private void buttAddNewRecord_Click(object sender, EventArgs e)
@@ -274,7 +274,7 @@ namespace WindowsFormsApplication1
         private void buttUpdate_Click(object sender, EventArgs e)
         {
 
-            DataGridViewCellCollection cellCollection = dataGridView1.SelectedRows[0].Cells;
+            DataGridViewCellCollection cellCollection = dataGridView1.Rows[0].Cells;
             setDetails(cellCollection);
             panel1.Visible = false;
             updatecounter = 1;

@@ -104,6 +104,7 @@ namespace WindowsFormsApplication1
                                             MessageBox.Show("Details Can not updated");
                                         }
                                         updateCounter = 0;
+                                        
                                     }
                                     makeBlank();
                                     Enabled2();
@@ -114,6 +115,8 @@ namespace WindowsFormsApplication1
                         }
                     }
                 }
+            txtVenderName.Focus();
+
             }
         
 
@@ -228,6 +231,37 @@ namespace WindowsFormsApplication1
             btnVenderClose.TabStop = false;
             btnVenderList.TabStop = false;
            
+        }
+        private void Tabindex2()
+        {
+            //txtVenderCode.TabStop = false;
+            //txtVenderName.TabStop = false;
+            //txtCompanyName.TabStop = false;
+            txtVenderAddress.TabStop = true;
+            txtVenderCity.TabStop = true;
+            txtVenderState.TabStop = true;
+            txtVenderCountry.TabStop = true;
+            txtVenderZip.TabStop = true;
+            //txtVenderEmailAddress.TabStop = false;
+            //txtVenderWebSite.TabStop = false;
+            txtVenderPhone.TabStop = true;
+            txtVenderMobile.TabStop = true;
+            txtVenderFax.TabStop = true;
+            //txtVenderDesc.TabStop = false;
+            //txtSarvice.TabStop = false;
+            //txtExcise.TabStop = false;
+            //txtCstNo.TabStop = false;
+            //txtGst.TabStop = false;
+
+            //txtVenderOpeningBal.TabStop = false;
+            //txtVenderCurrentBal.TabStop = false;
+            //txtPanNo.TabStop = false;
+            //txtVatNo.TabStop = false;
+            //dataGridView1.TabStop = false;
+            btnVenderSave.TabStop = true;
+            btnVenderClose.TabStop = true;
+            btnVenderList.TabStop = true;
+
         }
         private void txtVenderOpeningBal_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -408,11 +442,13 @@ namespace WindowsFormsApplication1
         private void btnUpdate_Click(object sender, EventArgs e)
         {
 
-            DataGridViewCellCollection cellCollection = dataGridView1.SelectedRows[0].Cells;
+            DataGridViewCellCollection cellCollection = dataGridView1.Rows[0].Cells;
             setDetails(cellCollection);
             panel1.Visible = false;
             updateCounter = 1;
             Enabled1();
+            txtVenderAddress.Focus();
+            Tabindex2();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -432,7 +468,7 @@ namespace WindowsFormsApplication1
             panel1.Visible = false;
             updateCounter = 1;
             txtSearch.Text = "";
-            comboBox1.SelectedIndex =0;
+            comboBox1.SelectedIndex = 0;
             Enabled1();
         }
 
@@ -593,6 +629,17 @@ namespace WindowsFormsApplication1
 
         }
 
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+                //DataGridViewCellCollection cellCollection = dataGridView1.Rows[e.RowIndex].Cells;
+                //setDetails(cellCollection);
+                //panel1.Visible = false;
+                //updateCounter = 1;
+                //txtSearch.Text = "";
+                //comboBox1.SelectedIndex = 0;
+                //Enabled1();
+
+        }
 
     }
 }

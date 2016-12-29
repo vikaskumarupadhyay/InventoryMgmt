@@ -29,31 +29,39 @@ namespace WindowsFormsApplication1
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            int index = item.Items.IndexOf(txtGroupName.Text.ToUpper());
-            if (index >= 0) 
+            if (string.IsNullOrEmpty(txtGroupName.Text))
             {
-                MessageBox.Show("GroupName allready exists");
+                txtGroupName.Focus();
+                MessageBox.Show("Pleas Enter The GroupName");
             }
             else
             {
-                string insertQuery = "insert into dbo.ItemGroup values ('" + txtGroupID.Text + "','" + txtGroupName.Text.ToUpper() + "','" + txtGroupDesc.Text + "')";
-                int insertedRecord = dbMainClass.saveDetails(insertQuery);
-                if (insertedRecord > 0)
+                int index = item.Items.IndexOf(txtGroupName.Text.ToUpper());
+                if (index >= 0)
                 {
-                    if (item.Items.Contains("Add New Group"))
-                    {
-                        item.Items.Remove("Add New Group");
-                        item.Items.Insert(0, "Select A Group");
-                    }
-                    GroupList.Add(txtGroupID.Text);
-                    item.Items.Add(txtGroupName.Text);
-                    
-                    item.SelectedIndex = item.Items.IndexOf(txtGroupName.Text);
-                    this.Close();
+                    MessageBox.Show("GroupName allready exists");
                 }
                 else
                 {
-                    MessageBox.Show("Details Can Not Saved");
+                    string insertQuery = "insert into dbo.ItemGroup values ('" + txtGroupID.Text + "','" + txtGroupName.Text.ToUpper() + "','" + txtGroupDesc.Text + "')";
+                    int insertedRecord = dbMainClass.saveDetails(insertQuery);
+                    if (insertedRecord > 0)
+                    {
+                        if (item.Items.Contains("Add New Group"))
+                        {
+                            item.Items.Remove("Add New Group");
+                            item.Items.Insert(0, "Select A Group");
+                        }
+                        GroupList.Add(txtGroupID.Text);
+                        item.Items.Add(txtGroupName.Text);
+
+                        item.SelectedIndex = item.Items.IndexOf(txtGroupName.Text);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Details Can Not Saved");
+                    }
                 }
             }
         }
