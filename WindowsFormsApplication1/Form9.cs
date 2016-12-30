@@ -367,6 +367,16 @@ namespace WindowsFormsApplication1
 
         private void txtRefNo_TextChanged(object sender, EventArgs e)
         {
+            string refqurry = "select InvoiceId from VendorPayment where InvoiceId ='" +txtRefNo.Text + "'";
+            DataTable refdt = dbMainClass.getDetailByQuery(refqurry);
+            if (refdt != null && refdt.Rows != null && refdt.Rows.Count > 0)
+            {
+                buttSave.Enabled = false;
+            }
+            else
+            {
+                buttSave.Enabled = true;
+            }
             checkBox1.Checked = true; 
             string select = "select Orderid from CustomerOrderInvoice where InvoiceId='" + txtRefNo.Text + "'";
             DataTable dt = dbMainClass.getDetailByQuery(select);

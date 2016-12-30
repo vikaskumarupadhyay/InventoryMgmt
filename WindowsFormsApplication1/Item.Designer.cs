@@ -451,6 +451,7 @@
             this.btnItemClose.TabIndex = 18;
             this.btnItemClose.Text = "Close";
             this.btnItemClose.UseVisualStyleBackColor = true;
+            this.btnItemClose.Click += new System.EventHandler(this.btnItemClose_Click);
             // 
             // btnItemList
             // 
@@ -473,9 +474,9 @@
             this.panel1.Controls.Add(this.buttUpdate);
             this.panel1.Controls.Add(this.buttAddNewRecord);
             this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(3, -4);
+            this.panel1.Location = new System.Drawing.Point(3, -5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(712, 541);
+            this.panel1.Size = new System.Drawing.Size(712, 542);
             this.panel1.TabIndex = 10;
             // 
             // txtSearch
@@ -484,7 +485,7 @@
             this.txtSearch.Location = new System.Drawing.Point(227, 50);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(147, 22);
-            this.txtSearch.TabIndex = 7;
+            this.txtSearch.TabIndex = 1;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // label14
@@ -513,14 +514,14 @@
             this.searchCalmn.Location = new System.Drawing.Point(44, 54);
             this.searchCalmn.Name = "searchCalmn";
             this.searchCalmn.Size = new System.Drawing.Size(133, 24);
-            this.searchCalmn.TabIndex = 4;
+            this.searchCalmn.TabIndex = 0;
             // 
             // buttClose
             // 
             this.buttClose.Location = new System.Drawing.Point(289, 486);
             this.buttClose.Name = "buttClose";
             this.buttClose.Size = new System.Drawing.Size(116, 34);
-            this.buttClose.TabIndex = 3;
+            this.buttClose.TabIndex = 5;
             this.buttClose.Text = "Close";
             this.buttClose.UseVisualStyleBackColor = true;
             this.buttClose.Click += new System.EventHandler(this.buttClose_Click);
@@ -530,7 +531,7 @@
             this.buttUpdate.Location = new System.Drawing.Point(157, 486);
             this.buttUpdate.Name = "buttUpdate";
             this.buttUpdate.Size = new System.Drawing.Size(126, 35);
-            this.buttUpdate.TabIndex = 2;
+            this.buttUpdate.TabIndex = 4;
             this.buttUpdate.Text = "Update";
             this.buttUpdate.UseVisualStyleBackColor = true;
             this.buttUpdate.Click += new System.EventHandler(this.buttUpdate_Click);
@@ -540,7 +541,7 @@
             this.buttAddNewRecord.Location = new System.Drawing.Point(10, 486);
             this.buttAddNewRecord.Name = "buttAddNewRecord";
             this.buttAddNewRecord.Size = new System.Drawing.Size(133, 34);
-            this.buttAddNewRecord.TabIndex = 1;
+            this.buttAddNewRecord.TabIndex = 3;
             this.buttAddNewRecord.Text = "Add New Record";
             this.buttAddNewRecord.UseVisualStyleBackColor = true;
             this.buttAddNewRecord.Click += new System.EventHandler(this.buttAddNewRecord_Click);
@@ -553,8 +554,10 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(676, 384);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.StandardTab = true;
+            this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
             // 
             // Item
             // 

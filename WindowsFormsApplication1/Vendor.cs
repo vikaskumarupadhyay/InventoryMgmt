@@ -641,5 +641,20 @@ namespace WindowsFormsApplication1
 
         }
 
+        private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int currrentIndex = dataGridView1.CurrentRow.Index;
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                DataGridViewCellCollection cellCollection = dataGridView1.Rows[currrentIndex-1].Cells;
+                setDetails(cellCollection);
+                panel1.Visible = false;
+                updateCounter = 1;
+                txtSearch.Text = "";
+                comboBox1.SelectedIndex = 0;
+                Enabled1();
+            }
+        }
+
     }
 }

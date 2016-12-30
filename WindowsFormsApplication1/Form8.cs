@@ -779,6 +779,16 @@ namespace WindowsFormsApplication1
      
         private void txtRef_TextChanged(object sender, EventArgs e)
         {
+            string refqurry = "select Deliveryid from CustomerOrderDelivery where Deliveryid ='" + txtRef.Text + "'";
+            DataTable refdt = dbMainClass.getDetailByQuery(refqurry);
+            if (refdt != null && refdt.Rows != null && refdt.Rows.Count > 0)
+            {
+                buttSave.Enabled = false;
+            }
+            else
+            {
+                buttSave.Enabled = true;
+            }
             int totel = 0;
             string selc = "select * from CustomerOrderDelivery where Deliveryid ='" + txtRef.Text + "'";
             DataTable dt2 = dbMainClass.getDetailByQuery(selc);

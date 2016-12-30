@@ -16,6 +16,7 @@ namespace WindowsFormsApplication1
         DataTable vendorDetails = new DataTable();
         DataTable ItemDetails = new DataTable();
         DataTable addToCartTable = new DataTable();
+       
         public Form7()
         {
             InitializeComponent();
@@ -424,7 +425,6 @@ namespace WindowsFormsApplication1
 
         private void button5_Click(object sender, EventArgs e)
         {
-           
             if (txtRef.Text == "")
             {
                 string order = "select orderId from VendorOrderDetails";
@@ -686,6 +686,7 @@ namespace WindowsFormsApplication1
 
         private void txtRef_TextChanged(object sender, EventArgs e)
         {
+
             int totel = 0;
             string select = "select vo.Orderid,vo.venderId,vod.ItemId from VendorOrderDesc vod join VendorOrderDetails vo on vod.Orderid=vo.Orderid where vo.Orderid='" + txtRef.Text + "'";
             DataTable dt = dbMainClass.getDetailByQuery(select);

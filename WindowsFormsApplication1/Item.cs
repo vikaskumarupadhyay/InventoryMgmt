@@ -228,6 +228,7 @@ namespace WindowsFormsApplication1
                     }
                 }
             }
+            txtItemProductName.Focus();
         }
         private void makeBlank()
         {
@@ -259,16 +260,20 @@ namespace WindowsFormsApplication1
             //DataTable dt = ds.Tables[0];
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             dataGridView1.DataSource = dt;
+            tabindix();
+            searchCalmn.Focus();
         }
 
         private void buttClose_Click(object sender, EventArgs e)
         {
             panel1.Visible = false;
+            txtItemProductName.Focus();
         }
 
         private void buttAddNewRecord_Click(object sender, EventArgs e)
         {
             panel1.Visible = false;
+            txtItemProductName.Focus();
         }
 
         private void buttUpdate_Click(object sender, EventArgs e)
@@ -278,6 +283,7 @@ namespace WindowsFormsApplication1
             setDetails(cellCollection);
             panel1.Visible = false;
             updatecounter = 1;
+            txtItemProductName.Focus();
 
         }
         private void setDetails(DataGridViewCellCollection cellCollection)
@@ -311,6 +317,7 @@ namespace WindowsFormsApplication1
                 setDetails(cellCollection);
             panel1.Visible = false;
             updatecounter = 1;
+            txtItemProductName.Focus();
         }
         private string getId(string Table)
         {
@@ -357,6 +364,27 @@ namespace WindowsFormsApplication1
             //int mrp = Convert.ToInt32(txtItemMrp.Text);
             //int totelmrp = mrp - pPrice;
             //txtItemMargin.Text = totelmrp.ToString();
+        }
+        private void tabindix()
+        {
+            txtItemProductCode.TabStop = false;
+            txtItemProductName.TabStop = false;
+            txtItemCompName.TabStop = false;
+            txtItemDesc.TabStop = false;
+            txtItemMargin.TabStop = false;
+            txtItemMrp.TabStop = false;
+            txtItemOpeningQuant.TabStop = false;
+            txtItemPrice.TabStop = false;
+            txtItemRemaningQuant.TabStop = false;
+            txtItemSalesPrice.TabStop = false;
+            cmbItemItemGroup.TabStop = false;
+            cmbItemUnit.TabStop = false;
+            btnItemList.TabStop = false;
+            btnItemGroup.TabStop = false;
+            panel1.TabStop = false;
+            btnItemUnit.TabStop = false;
+            btnItemSave.TabStop = false;
+            btnItemClose.TabStop = false;
         }
 
         private void txtItemMrp_KeyPress(object sender, KeyPressEventArgs e)
@@ -415,6 +443,27 @@ namespace WindowsFormsApplication1
             string selectQurry = "select itm.ItemId,itm.ItemName,itm.ItemCompName,itm.ItemDesc,itm.groupid,itm.Unitid,ipd.purChasePrice,ipd.SalesPrice,ipd.MrpPrice,ipd.Margin,iqd.OpeningQuantity,iqd.CurrentQuantity from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid  where "+s+" like '"+txtSearch.Text+"%'";
             DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
             dataGridView1.DataSource = dt;
+        }
+
+        private void btnItemClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+             int currrentIndex = dataGridView1.CurrentRow.Index;
+             if (e.KeyChar == (char)Keys.Enter)
+             {
+                 txtSearch.Text = "";
+                 searchCalmn.SelectedIndex = 0;
+                 DataGridViewCellCollection cellCollection = dataGridView1.Rows[currrentIndex].Cells;
+                 setDetails(cellCollection);
+                 panel1.Visible = false;
+                 updatecounter = 1;
+                 txtItemProductName.Focus();
+             }
+
         }
     }
 
