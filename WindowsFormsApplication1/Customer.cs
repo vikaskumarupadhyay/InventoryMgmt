@@ -156,6 +156,9 @@ namespace WindowsFormsApplication1
                             blank1();
                             string Id = dbMainClass.getUniqueID("CUSTOMER");
                             txtCustCode.Text = Id;
+                            txtName.Focus();
+                            btnList.Enabled = true;
+                            tabindex2();
                         }
                     }
                 }
@@ -273,6 +276,49 @@ namespace WindowsFormsApplication1
             txtexiceragisterno.TabStop = false;
             txtgstragisterno.TabStop = false;
         }
+        private void tabindex2()
+        {
+            txtCustCode.TabStop = true;
+            txtName.TabStop = true;
+            txtCompnyName.TabStop = true;
+            txtAddress.TabStop = true;
+            txtCity.TabStop = true;
+            txtState.TabStop = true;
+            txtZIP.TabStop = true;
+            txtCustCountry.TabStop = true;
+            txtEMAILADDRESS.TabStop = true;
+            txtWEBSITE.TabStop = true;
+            txtTXTPHONE.TabStop = true;
+            txtMOBILE.TabStop = true;
+            txtFAX.TabStop = true;
+            txtDESCRIPTION.TabStop = true;
+            txtOPENINGBALANCE.TabStop = true;
+            txtCURRENTBALANCE.TabStop = true;
+            txtPanno.TabStop = true;
+            txttanno.TabStop = true;
+            txtothers.TabStop = true;
+            btnSave.TabStop = true;
+            btnClose.TabStop = true;
+            btnList.TabStop = true;
+            // dataGridView1.TabStop = false;
+            txtservicetaxno.TabStop = true;
+            txtexiceragisterno.TabStop = true;
+            txtgstragisterno.TabStop = true;
+        }
+        private void tabindex1()
+    {
+        txtAddress.Focus();
+         txtAddress.TabStop = true;
+            txtCity.TabStop = true;
+            txtState.TabStop = true;
+            txtZIP.TabStop = true;
+        txtCustCountry.TabStop = true;
+         txtTXTPHONE.TabStop = true;
+            txtMOBILE.TabStop = true;
+            txtFAX.TabStop = true;
+         btnSave.TabStop = true;
+            btnClose.TabStop = true;
+    }
         private void setDetails(DataGridViewCellCollection cellCollection)
         {
             try
@@ -391,6 +437,7 @@ namespace WindowsFormsApplication1
             updateCounter = 1;
             btnList.Enabled = false;
             blank();
+            tabindex1();
         }
         private void blank()
         {
@@ -437,7 +484,6 @@ namespace WindowsFormsApplication1
             txtservicetaxno.Enabled = true;
             txtexiceragisterno.Enabled = true;
             txtgstragisterno.Enabled = true;
-          
         }
 
         private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
@@ -454,6 +500,8 @@ namespace WindowsFormsApplication1
 
         private void butclose_Click(object sender, EventArgs e)
         {
+            txtName.Focus();
+            tabindex2();
             panel1.Visible = false;
         }
         private void makeblank()
@@ -539,6 +587,24 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int currentIndex = dataGridView1.CurrentRow.Index; 
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if (dataGridView1.SelectedRows != null && dataGridView1.SelectedRows.Count > 0)
+                {
+                      
+                DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex-1].Cells;
+                    setDetails(cellcollection);
+                    panel1.Visible = false;
+                    updateCounter = 1;
+                    btnList.Enabled = false;
+                    blank();
+                    tabindex1();
+                }
+            }
+        }
 
     }
 }

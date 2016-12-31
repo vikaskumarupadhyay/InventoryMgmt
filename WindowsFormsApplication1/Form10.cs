@@ -116,6 +116,7 @@ namespace WindowsFormsApplication1
             txtRate.Text = "";
             txtQuantity.Text="";
             txtAmount.Text="";
+            txtdiscount.Text = "";
             gridsalesorder.DataSource = "";
             txttotalammount.Text = "";
             addToCartTable.Clear();
@@ -143,6 +144,7 @@ namespace WindowsFormsApplication1
             //        MessageBox.Show("now current quantity is not available");
             //    }
 
+            button4.Enabled = true;
                 DataRow dr = addToCartTable.NewRow();
                 dr[0] = txtitemcode.Text.Trim();
                 dr[1] = txtProductName.Text.Trim();
@@ -168,6 +170,8 @@ namespace WindowsFormsApplication1
 
         private void salesorder_Load(object sender, EventArgs e)
         {
+            tabindex();
+            button4.Enabled = false;
             dtpdate.Value = DateTime.Now;
             txtcustomercode.Text = "C";
             txtitemcode.Text = "I";
@@ -197,6 +201,20 @@ namespace WindowsFormsApplication1
             }
 
         }
+        private void tabindex()
+        {
+            //txtcustomercode.Focus();
+           txtcustomercode.TabStop = true;
+            button1.Focus();
+            button1.TabStop = true;
+            txtitemcode.TabStop = true;
+            button2.TabStop = true;
+            txtQuantity.TabStop = true;
+            butadditem.TabStop = true;
+            button4.TabStop = true;
+            savebutton.TabStop = true;
+            button6.TabStop = true;
+        }
         private void setAutoCompleteMode(TextBox txt, string ColumnName, DataTable dt)
         {
             if (dt != null && dt.Rows.Count > 0)
@@ -225,6 +243,14 @@ namespace WindowsFormsApplication1
 
         private void button4_Click(object sender, EventArgs e)
         {
+            if (gridsalesorder.Rows.Count > 0)
+            {
+                button4.Enabled = true;
+            }
+            else
+            {
+                button4.Enabled = false;
+            }
             if (addToCartTable.Rows.Count > 0)
             {
                 string Amount = gridsalesorder.SelectedRows[0].Cells[4].Value.ToString();
@@ -261,7 +287,7 @@ namespace WindowsFormsApplication1
                 counter = 0;
                 if (counter == 0)
                 {
-                    string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpdate.Text + "','" + txttotalammount.Text + "')";
+                    string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpdate.Text + "','" + txttotalammount.Text + "','"+txtdiscount.Text+"')";
                     int insertrows = d.saveDetails(insertquery);
                    
                    
@@ -347,6 +373,7 @@ namespace WindowsFormsApplication1
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+           
             panel2.Visible = false;
             if (counter == 0)
             {
@@ -375,6 +402,7 @@ namespace WindowsFormsApplication1
 
         private void gridsalesorder_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+          
             DataGridViewCellCollection Collection1 = dataGridView1.Rows[e.RowIndex].Cells;
             rowcollection1(Collection1);
             panel1.Visible = false;
@@ -488,6 +516,25 @@ namespace WindowsFormsApplication1
         {
             panel2.Visible = false;
         }
+
+        private void txtdiscount_TextChanged(object sender, EventArgs e)
+        {
+            double totalAmount = 0.0;
+            foreach (DataRow dr in addToCartTable.Rows)
+            {
+                totalAmount += Convert.ToDouble(dr[4].ToString());
+            }
+            string discountAmount = txtdiscount.Text;
+            //double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
+            double amount = 0.0;
+            if (double.TryParse(discountAmount, out amount))
+            {
+                double totalDiscount = Convert.ToDouble(discountAmount);
+                totalAmount = totalAmount - ((totalAmount * totalDiscount) / 100);
+                txttotalammount.Text = totalAmount.ToString();
+            }
+        }
+
 
     
 

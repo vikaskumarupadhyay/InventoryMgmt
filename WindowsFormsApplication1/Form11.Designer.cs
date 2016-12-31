@@ -414,6 +414,7 @@
             this.txtRefNo.TabStop = false;
             this.txtRefNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtRefNo.TextChanged += new System.EventHandler(this.txtRefNo_TextChanged);
+            this.txtRefNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRefNo_KeyDown);
             // 
             // label15
             // 

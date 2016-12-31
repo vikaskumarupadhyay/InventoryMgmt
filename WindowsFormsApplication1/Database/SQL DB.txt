@@ -137,6 +137,8 @@ alter table CustomerDetails add Exciseregnno varchar (200)
 
 alter table CustomerDetails add Gstregnno varchar (200)
 
+alter table orderdetails add Discount float
+
  
  Sp_rename 'CustomerDetails.TanNo','CustVatNo'
   

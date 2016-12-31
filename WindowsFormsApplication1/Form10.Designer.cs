@@ -212,6 +212,7 @@
             this.txtdiscount.TabStop = false;
             this.txtdiscount.Text = "0";
             this.txtdiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtdiscount.TextChanged += new System.EventHandler(this.txtdiscount_TextChanged);
             // 
             // textBox16
             // 
@@ -417,6 +418,7 @@
             // 
             this.txtsrno.Location = new System.Drawing.Point(64, 23);
             this.txtsrno.Name = "txtsrno";
+            this.txtsrno.ReadOnly = true;
             this.txtsrno.Size = new System.Drawing.Size(117, 21);
             this.txtsrno.TabIndex = 6;
             this.txtsrno.TabStop = false;
@@ -507,7 +509,7 @@
             this.button1.Location = new System.Drawing.Point(116, 33);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(21, 23);
-            this.button1.TabIndex = 10;
+            this.button1.TabIndex = 2;
             this.button1.TabStop = false;
             this.button1.Text = "...";
             this.button1.UseVisualStyleBackColor = true;
@@ -574,7 +576,7 @@
             this.txtcustomercode.Location = new System.Drawing.Point(23, 34);
             this.txtcustomercode.Name = "txtcustomercode";
             this.txtcustomercode.Size = new System.Drawing.Size(92, 21);
-            this.txtcustomercode.TabIndex = 3;
+            this.txtcustomercode.TabIndex = 1;
             this.txtcustomercode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtcustomercode.TextChanged += new System.EventHandler(this.txtcustomercode_TextChanged);
             // 
@@ -635,9 +637,9 @@
             this.panel2.Controls.Add(this.comsearchsalesvalue);
             this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.search);
-            this.panel2.Location = new System.Drawing.Point(6, 4);
+            this.panel2.Location = new System.Drawing.Point(6, 260);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(840, 548);
+            this.panel2.Size = new System.Drawing.Size(840, 292);
             this.panel2.TabIndex = 51;
             // 
             // butback

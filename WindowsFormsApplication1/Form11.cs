@@ -111,6 +111,7 @@ namespace WindowsFormsApplication1
 
         private void butAddItem_Click(object sender, EventArgs e)
         {
+            butRemoveItem.Enabled = true;
             DataRow dr = addToCartTable.NewRow();
             dr[0] = txtItemCode.Text.Trim();
             dr[1] = txtProductName.Text.Trim();
@@ -135,6 +136,7 @@ namespace WindowsFormsApplication1
 
         private void salesdelivary_Load(object sender, EventArgs e)
         {
+            tabindex();
             txtItemCode.Text = "I";
             dtpDate.Value = DateTime.Now;
             txtcustomercode.Text = "C";
@@ -162,6 +164,20 @@ namespace WindowsFormsApplication1
                 int t1 = t + 1;
                 txtSrNo.Text = t1.ToString();
             }
+        }
+        private void tabindex()
+        {
+            butcustomercode.TabStop=true;
+            txtItemCode.TabStop = true;
+            butitembutton.TabStop = true;
+            txtQuantity.TabStop = true;
+            butAddItem.TabStop = true;
+            butRemoveItem.TabStop = true;
+            butSaveButton.TabStop = true;
+            ButSelectPurchaseOrder.TabStop = true;
+            butClose.TabStop = true;
+            
+
         }
 
         private void butRemoveItem_Click(object sender, EventArgs e)
@@ -543,7 +559,7 @@ namespace WindowsFormsApplication1
                 //}
 
                 int totel = 0;
-                string selectquery1 = "select it.itemid,iq.ItemName,it.price,it.quantity,it.totalammount from customerorderdescriptions it join ItemDetails iq on it.ItemId=iq.ItemId where orderid='" + txtRefNo.Text + "'";
+                string selectquery1 = "select it.itemid,iq.ItemName,it.price,it.quantity,it.totalammount from customerorderdescriptions it join ItemDetails iq on it.ItemId=iq.ItemId  where orderid='" + txtRefNo.Text + "'";
                 DataTable dt3 = d.getDetailByQuery(selectquery1);
                 int totelrow = addToCartTable.Rows.Count;
                 for (int a = 0; a < totelrow; a++)
@@ -558,6 +574,7 @@ namespace WindowsFormsApplication1
                     string rate = dr1[2].ToString();
                     string quantity = dr1[3].ToString();
                     string ammount = dr1[4].ToString();
+                    //string ammount1 = dr1[5].ToString();
                     int amt = Convert.ToInt32(ammount);
                     totel = totel + amt;
                     dr1 = addToCartTable.NewRow();
@@ -617,6 +634,11 @@ namespace WindowsFormsApplication1
                 txtProductName.Text = "";
                 txtRate.Text = "";
             }
+        }
+
+        private void txtRefNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            makeblank();
         }
 
 

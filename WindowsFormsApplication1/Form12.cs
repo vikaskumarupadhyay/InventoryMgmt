@@ -128,9 +128,22 @@ namespace WindowsFormsApplication1
              txtammount.Text = "";
              txtitemcode.Focus();
          }
+         private void tabindex()
+         {
+             butcustbutton.TabStop = true;
+             txtitemcode.TabStop = true;
+             butitembutton.TabStop = true;
+             txtquantity.TabStop = true;
+             butAdditem.TabStop = true;
+             butRemoveItem.TabStop = true;
+             button5.TabStop = true;
+             butselectpurchasedelivary.TabStop = true;
+             butclose.TabStop = true;
+         }
 
          private void salesinvoice_Load(object sender, EventArgs e)
          {
+             tabindex();
              butRemoveItem.Visible = true;
              butAdditem.Visible = true;
              dtpdate.Value = DateTime.Now;
