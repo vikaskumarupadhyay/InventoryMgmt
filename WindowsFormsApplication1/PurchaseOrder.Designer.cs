@@ -644,7 +644,7 @@
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Location = new System.Drawing.Point(-1, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(861, 495);
+            this.panel2.Size = new System.Drawing.Size(861, 412);
             this.panel2.TabIndex = 37;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint_1);
             // 

@@ -474,9 +474,9 @@
             this.panel1.Controls.Add(this.buttUpdate);
             this.panel1.Controls.Add(this.buttAddNewRecord);
             this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(3, -5);
+            this.panel1.Location = new System.Drawing.Point(3, -6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(712, 542);
+            this.panel1.Size = new System.Drawing.Size(712, 543);
             this.panel1.TabIndex = 10;
             // 
             // txtSearch

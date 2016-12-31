@@ -80,6 +80,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.butClose = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -183,6 +184,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(818, 231);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.TabStop = false;
@@ -222,7 +224,7 @@
             this.txtdis.Location = new System.Drawing.Point(418, 233);
             this.txtdis.Name = "txtdis";
             this.txtdis.Size = new System.Drawing.Size(45, 21);
-            this.txtdis.TabIndex = 28;
+            this.txtdis.TabIndex = 17;
             this.txtdis.Text = "0";
             this.txtdis.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtdis.TextChanged += new System.EventHandler(this.txtdis_TextChanged);
@@ -267,7 +269,7 @@
             this.button4.Location = new System.Drawing.Point(714, 22);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(90, 33);
-            this.button4.TabIndex = 18;
+            this.button4.TabIndex = 16;
             this.button4.Text = "Remove Item";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -279,7 +281,7 @@
             this.button3.Location = new System.Drawing.Point(618, 22);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(90, 33);
-            this.button3.TabIndex = 17;
+            this.button3.TabIndex = 15;
             this.button3.Text = "Add Item";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -306,7 +308,7 @@
             this.txtQunty.Location = new System.Drawing.Point(467, 35);
             this.txtQunty.Name = "txtQunty";
             this.txtQunty.Size = new System.Drawing.Size(59, 21);
-            this.txtQunty.TabIndex = 8;
+            this.txtQunty.TabIndex = 14;
             this.txtQunty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtQunty.TextChanged += new System.EventHandler(this.txtQunty_TextChanged);
             this.txtQunty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQunty_KeyPress);
@@ -326,7 +328,7 @@
             this.txtRate.Name = "txtRate";
             this.txtRate.ReadOnly = true;
             this.txtRate.Size = new System.Drawing.Size(61, 21);
-            this.txtRate.TabIndex = 6;
+            this.txtRate.TabIndex = 13;
             this.txtRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label12
@@ -344,7 +346,7 @@
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.ReadOnly = true;
             this.txtProductName.Size = new System.Drawing.Size(251, 21);
-            this.txtProductName.TabIndex = 4;
+            this.txtProductName.TabIndex = 12;
             this.txtProductName.TextChanged += new System.EventHandler(this.txtProductName_TextChanged);
             this.txtProductName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProductName_KeyDown);
             this.txtProductName.Leave += new System.EventHandler(this.txtProductName_Leave);
@@ -354,7 +356,7 @@
             this.button2.Location = new System.Drawing.Point(116, 34);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(21, 23);
-            this.button2.TabIndex = 3;
+            this.button2.TabIndex = 11;
             this.button2.TabStop = false;
             this.button2.Text = "...";
             this.button2.UseVisualStyleBackColor = true;
@@ -365,7 +367,7 @@
             this.txtItemCode.Location = new System.Drawing.Point(23, 35);
             this.txtItemCode.Name = "txtItemCode";
             this.txtItemCode.Size = new System.Drawing.Size(92, 21);
-            this.txtItemCode.TabIndex = 2;
+            this.txtItemCode.TabIndex = 10;
             this.txtItemCode.Text = "I";
             this.txtItemCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtItemCode.TextChanged += new System.EventHandler(this.txtItemCode_TextChanged);
@@ -492,7 +494,7 @@
             this.txtFax.Name = "txtFax";
             this.txtFax.ReadOnly = true;
             this.txtFax.Size = new System.Drawing.Size(173, 21);
-            this.txtFax.TabIndex = 14;
+            this.txtFax.TabIndex = 8;
             // 
             // label7
             // 
@@ -509,7 +511,7 @@
             this.txtMobile.Name = "txtMobile";
             this.txtMobile.ReadOnly = true;
             this.txtMobile.Size = new System.Drawing.Size(200, 21);
-            this.txtMobile.TabIndex = 12;
+            this.txtMobile.TabIndex = 7;
             // 
             // label6
             // 
@@ -525,7 +527,7 @@
             this.button1.Location = new System.Drawing.Point(116, 33);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(21, 23);
-            this.button1.TabIndex = 10;
+            this.button1.TabIndex = 2;
             this.button1.TabStop = false;
             this.button1.Text = "...";
             this.button1.UseVisualStyleBackColor = true;
@@ -537,7 +539,7 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.ReadOnly = true;
             this.txtPhone.Size = new System.Drawing.Size(187, 21);
-            this.txtPhone.TabIndex = 9;
+            this.txtPhone.TabIndex = 6;
             // 
             // txtAddress
             // 
@@ -547,7 +549,7 @@
             this.txtAddress.ReadOnly = true;
             this.txtAddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtAddress.Size = new System.Drawing.Size(572, 33);
-            this.txtAddress.TabIndex = 8;
+            this.txtAddress.TabIndex = 5;
             // 
             // label5
             // 
@@ -573,7 +575,7 @@
             this.txtCompanyName.Name = "txtCompanyName";
             this.txtCompanyName.ReadOnly = true;
             this.txtCompanyName.Size = new System.Drawing.Size(240, 21);
-            this.txtCompanyName.TabIndex = 5;
+            this.txtCompanyName.TabIndex = 4;
             // 
             // txtVendorName
             // 
@@ -581,14 +583,14 @@
             this.txtVendorName.Name = "txtVendorName";
             this.txtVendorName.ReadOnly = true;
             this.txtVendorName.Size = new System.Drawing.Size(206, 21);
-            this.txtVendorName.TabIndex = 4;
+            this.txtVendorName.TabIndex = 3;
             // 
             // textVendercod
             // 
             this.textVendercod.Location = new System.Drawing.Point(23, 34);
             this.textVendercod.Name = "textVendercod";
             this.textVendercod.Size = new System.Drawing.Size(92, 21);
-            this.textVendercod.TabIndex = 3;
+            this.textVendercod.TabIndex = 1;
             this.textVendercod.Text = "V";
             this.textVendercod.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textVendercod.TextChanged += new System.EventHandler(this.textVendercod_TextChanged);
@@ -626,7 +628,7 @@
             this.btnSelectPurchaseOrder.Location = new System.Drawing.Point(116, 521);
             this.btnSelectPurchaseOrder.Name = "btnSelectPurchaseOrder";
             this.btnSelectPurchaseOrder.Size = new System.Drawing.Size(157, 29);
-            this.btnSelectPurchaseOrder.TabIndex = 38;
+            this.btnSelectPurchaseOrder.TabIndex = 19;
             this.btnSelectPurchaseOrder.Text = "Select Purchase Order";
             this.btnSelectPurchaseOrder.UseVisualStyleBackColor = true;
             this.btnSelectPurchaseOrder.Click += new System.EventHandler(this.btnSelectPurchaseOrder_Click);
@@ -637,7 +639,7 @@
             this.button5.Location = new System.Drawing.Point(20, 521);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(90, 28);
-            this.button5.TabIndex = 37;
+            this.button5.TabIndex = 18;
             this.button5.Text = "Save";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
@@ -648,13 +650,14 @@
             this.button7.Location = new System.Drawing.Point(279, 521);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(90, 29);
-            this.button7.TabIndex = 39;
+            this.button7.TabIndex = 20;
             this.button7.Text = "Close";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.butClose);
             this.panel2.Controls.Add(this.comboBox1);
             this.panel2.Controls.Add(this.label17);
             this.panel2.Controls.Add(this.label16);
@@ -662,8 +665,18 @@
             this.panel2.Controls.Add(this.dataGridView2);
             this.panel2.Location = new System.Drawing.Point(-1, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(847, 545);
+            this.panel2.Size = new System.Drawing.Size(847, 99);
             this.panel2.TabIndex = 40;
+            // 
+            // butClose
+            // 
+            this.butClose.Location = new System.Drawing.Point(118, 518);
+            this.butClose.Name = "butClose";
+            this.butClose.Size = new System.Drawing.Size(80, 26);
+            this.butClose.TabIndex = 5;
+            this.butClose.Text = "Close";
+            this.butClose.UseVisualStyleBackColor = true;
+            this.butClose.Click += new System.EventHandler(this.butClose_Click);
             // 
             // comboBox1
             // 
@@ -718,7 +731,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(858, 573);
+            this.ClientSize = new System.Drawing.Size(858, 605);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.btnSelectPurchaseOrder);
@@ -808,5 +821,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button butClose;
     }
 }

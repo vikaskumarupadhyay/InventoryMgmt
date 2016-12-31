@@ -488,6 +488,7 @@ namespace WindowsFormsApplication1
                 int id2 = Convert.ToInt32(txtSrNo.Text);
                 int id3 = id2 + 1;
                 txtSrNo.Text = id3.ToString();
+                txtVendorCode.Focus();
             }
            
             
@@ -502,6 +503,8 @@ namespace WindowsFormsApplication1
             txtVendorPhone.Text = "";
             txtVendorMobile.Text = "";
             txtVendorFax.Text = "";
+            txtTotalAmount.Text = "";
+            txtDiscount.Text = "";
             gridPurchaseOrder.DataSource = "";
 
         }

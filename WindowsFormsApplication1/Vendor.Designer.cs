@@ -376,7 +376,7 @@
             this.txtVenderCode.Name = "txtVenderCode";
             this.txtVenderCode.ReadOnly = true;
             this.txtVenderCode.Size = new System.Drawing.Size(83, 21);
-            this.txtVenderCode.TabIndex = 12;
+            this.txtVenderCode.TabIndex = 0;
             this.txtVenderCode.TabStop = false;
             this.txtVenderCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -510,7 +510,7 @@
             this.txtVenderCurrentBal.Name = "txtVenderCurrentBal";
             this.txtVenderCurrentBal.ReadOnly = true;
             this.txtVenderCurrentBal.Size = new System.Drawing.Size(282, 21);
-            this.txtVenderCurrentBal.TabIndex = 5;
+            this.txtVenderCurrentBal.TabIndex = 21;
             this.txtVenderCurrentBal.TabStop = false;
             this.txtVenderCurrentBal.Text = "0";
             this.txtVenderCurrentBal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -579,7 +579,7 @@
             this.btnVenderSave.Location = new System.Drawing.Point(12, 558);
             this.btnVenderSave.Name = "btnVenderSave";
             this.btnVenderSave.Size = new System.Drawing.Size(138, 28);
-            this.btnVenderSave.TabIndex = 21;
+            this.btnVenderSave.TabIndex = 22;
             this.btnVenderSave.Text = "Save";
             this.btnVenderSave.UseVisualStyleBackColor = true;
             this.btnVenderSave.Click += new System.EventHandler(this.btnVenderSave_Click);
@@ -590,7 +590,7 @@
             this.btnVenderClose.Location = new System.Drawing.Point(156, 558);
             this.btnVenderClose.Name = "btnVenderClose";
             this.btnVenderClose.Size = new System.Drawing.Size(134, 28);
-            this.btnVenderClose.TabIndex = 22;
+            this.btnVenderClose.TabIndex = 23;
             this.btnVenderClose.Text = "Close";
             this.btnVenderClose.UseVisualStyleBackColor = true;
             this.btnVenderClose.Click += new System.EventHandler(this.btnVenderClose_Click);
@@ -601,7 +601,7 @@
             this.btnVenderList.Location = new System.Drawing.Point(726, 5);
             this.btnVenderList.Name = "btnVenderList";
             this.btnVenderList.Size = new System.Drawing.Size(66, 28);
-            this.btnVenderList.TabIndex = 23;
+            this.btnVenderList.TabIndex = 24;
             this.btnVenderList.Text = "List";
             this.btnVenderList.UseVisualStyleBackColor = true;
             this.btnVenderList.Click += new System.EventHandler(this.btnVenderList_Click);
@@ -613,9 +613,9 @@
             this.panel1.Controls.Add(this.btnUpdate);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(0, 5);
+            this.panel1.Location = new System.Drawing.Point(0, -2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(803, 591);
+            this.panel1.Size = new System.Drawing.Size(803, 588);
             this.panel1.TabIndex = 7;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -626,9 +626,9 @@
             this.groupBox3.Controls.Add(this.comboBox1);
             this.groupBox3.Controls.Add(this.txtSearch);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(12, 6);
+            this.groupBox3.Location = new System.Drawing.Point(12, 0);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(777, 79);
+            this.groupBox3.Size = new System.Drawing.Size(777, 85);
             this.groupBox3.TabIndex = 23;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Vendor Search";

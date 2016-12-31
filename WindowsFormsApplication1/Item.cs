@@ -23,18 +23,28 @@ namespace WindowsFormsApplication1
         }
         private void Item_Load(object sender, EventArgs e)
         {
-            string selectqurry = "select itm.ItemName,itm.ItemCompName,itm.ItemDesc,itm.groupid,itm.Unitid,ipd.purChasePrice,ipd.SalesPrice,ipd.MrpPrice,ipd.Margin,iqd.OpeningQuantity,iqd.CurrentQuantity from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid";
+            string selectqurry = "select  itm.ItemId,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
+            string selectqurryForActualColumnName = "select top 1  itm.ItemId, itm.ItemName,itm.ItemCompName ,itm.ItemDesc ,ig.groupName,iul.unitName ,ipd.purChasePrice ,ipd.SalesPrice ,ipd.MrpPrice ,ipd.Margin ,iqd.OpeningQuantity ,iqd.CurrentQuantity from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
-            List<string> ls = new List<string>();
+            DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
+            DataTable customDataTable = new DataTable();
+            customDataTable.Columns.Add("ActualTableColumnName");
+            customDataTable.Columns.Add("AliasTableColumnName");
             DataColumnCollection d = dt.Columns;
-            for (int a = 0; a < d.Count; a++)
+            DataColumnCollection dataColumnForName = dtOnlyColumnName.Columns;
+            for (int a = 1; a < d.Count; a++)
             {
-                //DataColumn dc = new DataColumn();
                 string b = d[a].ToString();
-                ls.Add(b);
+                string actualColumnName = dataColumnForName[a].ToString();
+                DataRow dr = customDataTable.NewRow();
+                dr["ActualTableColumnName"] = actualColumnName;
+                dr["AliasTableColumnName"] = b;
+                customDataTable.Rows.Add(dr);
             }
 
-            searchCalmn.DataSource = ls;
+            searchCalmn.DataSource = customDataTable;
+            searchCalmn.ValueMember = "ActualTableColumnName";
+            searchCalmn.DisplayMember = "AliasTableColumnName";
             panel1.Visible = false;
             string Id = dbMainClass.getUniqueID("ItemDetails");
             txtItemProductCode.Text=Id;
@@ -252,7 +262,7 @@ namespace WindowsFormsApplication1
         {
             panel1.Visible = true;
             //SqlConnection con = dbMainClass.openConnection();
-            string selectqurry = "select itm.ItemId,itm.ItemName,itm.ItemCompName,itm.ItemDesc,itm.groupid,itm.Unitid,ipd.purChasePrice,ipd.SalesPrice,ipd.MrpPrice,ipd.Margin,iqd.OpeningQuantity,iqd.CurrentQuantity from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid";
+            string selectqurry = "select  itm.ItemId as[Item Id],itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
             //SqlCommand cmd = new SqlCommand(selectqurry, con);
             //SqlDataAdapter sda = new SqlDataAdapter(cmd);
             //DataSet ds = new DataSet();
@@ -267,12 +277,14 @@ namespace WindowsFormsApplication1
         private void buttClose_Click(object sender, EventArgs e)
         {
             panel1.Visible = false;
+            tabindix1();
             txtItemProductName.Focus();
         }
 
         private void buttAddNewRecord_Click(object sender, EventArgs e)
         {
             panel1.Visible = false;
+            tabindix1();
             txtItemProductName.Focus();
         }
 
@@ -283,6 +295,7 @@ namespace WindowsFormsApplication1
             setDetails(cellCollection);
             panel1.Visible = false;
             updatecounter = 1;
+            tabindix1();
             txtItemProductName.Focus();
 
         }
@@ -386,7 +399,27 @@ namespace WindowsFormsApplication1
             btnItemSave.TabStop = false;
             btnItemClose.TabStop = false;
         }
-
+        private void tabindix1()
+        {
+            txtItemProductCode.TabStop = true;
+            txtItemProductName.TabStop = true;
+            txtItemCompName.TabStop = true;
+            txtItemDesc.TabStop = true;
+            txtItemMargin.TabStop = false;
+            txtItemMrp.TabStop = true;
+            txtItemOpeningQuant.TabStop = true;
+            txtItemPrice.TabStop = true;
+            txtItemRemaningQuant.TabStop = false;
+            txtItemSalesPrice.TabStop = true;
+            cmbItemItemGroup.TabStop = true;
+            cmbItemUnit.TabStop = true;
+            btnItemList.TabStop = true;
+            btnItemGroup.TabStop = true;
+            panel1.TabStop = true;
+            btnItemUnit.TabStop = true;
+            btnItemSave.TabStop = true;
+            btnItemClose.TabStop = true;
+        }
         private void txtItemMrp_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (Char.IsDigit(e.KeyChar))
@@ -440,7 +473,7 @@ namespace WindowsFormsApplication1
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             string s = searchCalmn.SelectedValue.ToString();
-            string selectQurry = "select itm.ItemId,itm.ItemName,itm.ItemCompName,itm.ItemDesc,itm.groupid,itm.Unitid,ipd.purChasePrice,ipd.SalesPrice,ipd.MrpPrice,ipd.Margin,iqd.OpeningQuantity,iqd.CurrentQuantity from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid  where "+s+" like '"+txtSearch.Text+"%'";
+            string selectQurry = "select itm.ItemId as[Item Id],itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId  where " + s + " like '" + txtSearch.Text + "%'";
             DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
             dataGridView1.DataSource = dt;
         }
@@ -461,6 +494,7 @@ namespace WindowsFormsApplication1
                  setDetails(cellCollection);
                  panel1.Visible = false;
                  updatecounter = 1;
+                 tabindix1();
                  txtItemProductName.Focus();
              }
 

@@ -104,10 +104,11 @@ namespace WindowsFormsApplication1
                                             MessageBox.Show("Details Can not updated");
                                         }
                                         updateCounter = 0;
-                                        
+                                        Enabled2();
                                     }
                                     makeBlank();
-                                    Enabled2();
+                                    //Enabled2();
+                                    Tabindex1();
                                     string Id = dbMainClass.getUniqueID("VENDOR");
                                     txtVenderCode.Text = Id;
                                 //}
@@ -263,6 +264,39 @@ namespace WindowsFormsApplication1
             btnVenderList.TabStop = true;
 
         }
+        private void Tabindex1()
+        {
+            txtVenderCode.TabStop = true;
+            txtVenderName.TabStop = true;
+            txtCompanyName.TabStop = true;
+            txtVenderAddress.TabStop = true;
+            txtVenderCity.TabStop = true;
+            txtVenderState.TabStop = true;
+            txtVenderCountry.TabStop = true;
+            txtVenderZip.TabStop = true;
+            txtVenderEmailAddress.TabStop = true;
+            txtVenderWebSite.TabStop = true;
+            txtVenderPhone.TabStop = true;
+            txtVenderMobile.TabStop = true;
+            txtVenderFax.TabStop = true;
+            txtVenderDesc.TabStop = true;
+            txtSarvice.TabStop = true;
+            txtExcise.TabStop = true;
+            txtCstNo.TabStop = true;
+            txtGst.TabStop = true;
+
+            txtVenderOpeningBal.TabStop = true;
+            txtVenderCurrentBal.TabStop = true;
+            txtPanNo.TabStop = true;
+            txtVatNo.TabStop = true;
+            //dataGridView1.TabStop = false;
+            btnVenderSave.TabStop = true;
+            btnVenderClose.TabStop = true;
+            btnVenderList.TabStop = true;
+           // btnVenderList.Enabled = false;
+
+        }
+
         private void txtVenderOpeningBal_KeyPress(object sender, KeyPressEventArgs e)
         {
             //MessageBox.Show(Char.GetNumericValue(e.KeyChar).ToString());
@@ -356,6 +390,7 @@ namespace WindowsFormsApplication1
             comboBox1.DisplayMember = "AliasTableColumnName";
 
             panel1.Visible = false;
+            //btnVenderList.Enabled = false;
             string Id = dbMainClass.getUniqueID("VENDOR");
             txtVenderCode.Text = Id;
             if (Id == "V0001")
@@ -459,6 +494,8 @@ namespace WindowsFormsApplication1
         private void button3_Click(object sender, EventArgs e)
         {
             panel1.Visible = false;
+            Tabindex1();
+            txtVenderName.Focus();
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -653,6 +690,8 @@ namespace WindowsFormsApplication1
                 txtSearch.Text = "";
                 comboBox1.SelectedIndex = 0;
                 Enabled1();
+                txtVenderAddress.Focus();
+                Tabindex2();
             }
         }
 

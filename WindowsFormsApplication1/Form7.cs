@@ -24,6 +24,7 @@ namespace WindowsFormsApplication1
 
         private void Form7_Load(object sender, EventArgs e)
         {
+            button4.Enabled = false;
             txtdate.Value = DateTime.Now;
             string stlect = "select Deliveryid from CustomerOrderDelivery";
             DataTable dt = dbMainClass.getDetailByQuery(stlect);
@@ -340,6 +341,7 @@ namespace WindowsFormsApplication1
         #region /////////// AddToList Clicked ///////////////
         private void button3_Click(object sender, EventArgs e)
         {
+            button4.Enabled = true;
                  if (txtProductName.Text==""&&txtQunty.Text=="")
                   {
                     //MessageBox.Show("now CurrentQuantity of deadt");
@@ -387,22 +389,34 @@ namespace WindowsFormsApplication1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (addToCartTable.Rows.Count > 0)
+            //if (dataGridView1.RowCount!=null && dataGridView1.Rows.Count>0)
+            if (dataGridView1.Rows.Count>0)
             {
-                string Amount = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
-                double totalAmount = Convert.ToDouble(txttotalAmount.Text);
-                totalAmount -= Convert.ToDouble(Amount.Trim());
-                txttotalAmount.Text = totalAmount.ToString();
-                int index = dataGridView1.SelectedRows[0].Index;
-                addToCartTable.Rows.RemoveAt(index);
-
-                dataGridView1.DataSource = addToCartTable;
-                if (addToCartTable.Rows.Count == 0)
-                {
-                    txttotalAmount.Text = "0.0";
-                    txtdis.Text = "0.0";
-                }
+                button4.Enabled = true;
             }
+                 else
+            {
+                button4.Enabled = false;
+            }
+
+                if (addToCartTable.Rows.Count > 0)
+                {
+                    string Amount = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
+                    double totalAmount = Convert.ToDouble(txttotalAmount.Text);
+                    totalAmount -= Convert.ToDouble(Amount.Trim());
+                    txttotalAmount.Text = totalAmount.ToString();
+                    int index = dataGridView1.SelectedRows[0].Index;
+                    addToCartTable.Rows.RemoveAt(index);
+
+                    dataGridView1.DataSource = addToCartTable;
+                    if (addToCartTable.Rows.Count == 0)
+                    {
+                        txttotalAmount.Text = "0.0";
+                        txtdis.Text = "0.0";
+                    }
+                }
+           
+           
         }
 
         private void txtdis_TextChanged(object sender, EventArgs e)
@@ -709,7 +723,7 @@ namespace WindowsFormsApplication1
                 //}
                
                 string b = dr[0].ToString();
-                string selectqurry1 = "select vodd.ItemId,td.ItemName, vodd.Quantity,vodd.Price,vodd.TotalPrice from VendorOrderDetails vod join VendorOrderDesc vodd on vod.Orderid=vodd.Orderid join ItemDetails td on td.ItemId=vodd.ItemId where vod. Orderid='" + b + "'";
+                string selectqurry1 = "select vodd.ItemId,td.ItemName, vodd.Quantity,vodd.Price,vodd.TotalPrice,vod.TotalPrice from VendorOrderDetails vod join VendorOrderDesc vodd on vod.Orderid=vodd.Orderid join ItemDetails td on td.ItemId=vodd.ItemId where vod. Orderid='" + b + "'";
                 DataTable dt2 = dbMainClass.getDetailByQuery(selectqurry1);
                 int totalRowCount = addToCartTable.Rows.Count;
                 for(int rowCount=0;rowCount<totalRowCount;rowCount++)
@@ -725,8 +739,8 @@ namespace WindowsFormsApplication1
                     string txtQuanity = dr2[2].ToString();
                     string txtAmoun = dr2[3].ToString();
                     string txtitemNmae = dr2[4].ToString();
-                    //string txtitemNmae = dr2[5].ToString();
-                    int amt = Convert.ToInt32(txtitemNmae);
+                    string txtitemNmea = dr2[5].ToString();
+                    int amt = Convert.ToInt32(txtitemNmea);
                     totel = totel + amt;
                     dr2 = addToCartTable.NewRow();
                     dr2[0] = txtItemCode.Trim();
@@ -830,6 +844,11 @@ namespace WindowsFormsApplication1
             int tam = tamunt - trea;
             txttotalAmount.Text = tam.ToString();
 
+        }
+
+        private void butClose_Click(object sender, EventArgs e)
+        {
+            panel2.Visible = false;
         }
 
        
