@@ -124,7 +124,7 @@
             this.txtVendorCode.Location = new System.Drawing.Point(23, 34);
             this.txtVendorCode.Name = "txtVendorCode";
             this.txtVendorCode.Size = new System.Drawing.Size(92, 21);
-            this.txtVendorCode.TabIndex = 3;
+            this.txtVendorCode.TabIndex = 0;
             this.txtVendorCode.Text = "V";
             this.txtVendorCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtVendorCode.TextChanged += new System.EventHandler(this.txtVendorCode_TextChanged);
@@ -194,8 +194,7 @@
             this.button1.Location = new System.Drawing.Point(116, 33);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(21, 23);
-            this.button1.TabIndex = 10;
-            this.button1.TabStop = false;
+            this.button1.TabIndex = 1;
             this.button1.Text = "...";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -339,7 +338,7 @@
             this.txtRemoveItem.Location = new System.Drawing.Point(714, 22);
             this.txtRemoveItem.Name = "txtRemoveItem";
             this.txtRemoveItem.Size = new System.Drawing.Size(90, 33);
-            this.txtRemoveItem.TabIndex = 18;
+            this.txtRemoveItem.TabIndex = 6;
             this.txtRemoveItem.Text = "Remove Item";
             this.txtRemoveItem.UseVisualStyleBackColor = true;
             this.txtRemoveItem.Click += new System.EventHandler(this.txtRemoveItem_Click);
@@ -351,10 +350,11 @@
             this.btnAddItem.Location = new System.Drawing.Point(618, 22);
             this.btnAddItem.Name = "btnAddItem";
             this.btnAddItem.Size = new System.Drawing.Size(90, 33);
-            this.btnAddItem.TabIndex = 17;
+            this.btnAddItem.TabIndex = 5;
             this.btnAddItem.Text = "Add Item";
             this.btnAddItem.UseVisualStyleBackColor = true;
             this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
+            this.btnAddItem.Leave += new System.EventHandler(this.btnAddItem_Leave);
             // 
             // txtAmount
             // 
@@ -380,7 +380,7 @@
             this.txtQuanity.Location = new System.Drawing.Point(467, 35);
             this.txtQuanity.Name = "txtQuanity";
             this.txtQuanity.Size = new System.Drawing.Size(59, 21);
-            this.txtQuanity.TabIndex = 8;
+            this.txtQuanity.TabIndex = 4;
             this.txtQuanity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtQuanity.TextChanged += new System.EventHandler(this.txtQuanity_TextChanged);
             this.txtQuanity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuanity_KeyPress);
@@ -420,6 +420,7 @@
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(251, 21);
             this.txtProductName.TabIndex = 4;
+            this.txtProductName.TabStop = false;
             this.txtProductName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProductName_KeyDown);
             this.txtProductName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtProductName_KeyPress);
             this.txtProductName.Leave += new System.EventHandler(this.txtProductName_Leave);
@@ -430,7 +431,6 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(21, 23);
             this.button2.TabIndex = 3;
-            this.button2.TabStop = false;
             this.button2.Text = "...";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -618,7 +618,7 @@
             this.btnSave.Location = new System.Drawing.Point(20, 521);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(90, 28);
-            this.btnSave.TabIndex = 35;
+            this.btnSave.TabIndex = 7;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -629,7 +629,7 @@
             this.btnClose.Location = new System.Drawing.Point(116, 521);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(90, 29);
-            this.btnClose.TabIndex = 36;
+            this.btnClose.TabIndex = 8;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -642,9 +642,9 @@
             this.panel2.Controls.Add(this.comboBox1);
             this.panel2.Controls.Add(this.buttBack);
             this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Location = new System.Drawing.Point(-1, 4);
+            this.panel2.Location = new System.Drawing.Point(-1, -5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(861, 412);
+            this.panel2.Size = new System.Drawing.Size(861, 557);
             this.panel2.TabIndex = 37;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint_1);
             // 
@@ -702,9 +702,11 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(22, 80);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(805, 368);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(805, 293);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
             // 
             // PurchaseOrder
             // 

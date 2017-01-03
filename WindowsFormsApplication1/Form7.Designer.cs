@@ -273,6 +273,7 @@
             this.button4.Text = "Remove Item";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.button4_KeyPress);
             // 
             // button3
             // 
@@ -285,6 +286,7 @@
             this.button3.Text = "Add Item";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Leave += new System.EventHandler(this.button3_Leave);
             // 
             // txtAmount
             // 
@@ -371,6 +373,7 @@
             this.txtItemCode.Text = "I";
             this.txtItemCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtItemCode.TextChanged += new System.EventHandler(this.txtItemCode_TextChanged);
+            this.txtItemCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemCode_KeyPress);
             // 
             // label11
             // 
@@ -665,7 +668,7 @@
             this.panel2.Controls.Add(this.dataGridView2);
             this.panel2.Location = new System.Drawing.Point(-1, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(847, 99);
+            this.panel2.Size = new System.Drawing.Size(847, 589);
             this.panel2.TabIndex = 40;
             // 
             // butClose
@@ -722,9 +725,11 @@
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(54, 126);
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(733, 351);
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
+            this.dataGridView2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView2_KeyPress);
             // 
             // Form7
             // 

@@ -24,8 +24,9 @@ namespace WindowsFormsApplication1
 
         private void Form8_Load(object sender, EventArgs e)
         {
-            //buttAddItem.Visible = false;
-            //buttRemoveItem.Visible = false;
+            txtQuentity.ReadOnly = true;
+            buttAddItem.Enabled = false;
+            buttRemoveItem.Enabled = false;
             panel2.Visible = false;
             dtpInvoiceDate.Value = DateTime.Now;
             string stlect = "select InvoiceId  from CustomerOrderInvoice";
@@ -160,9 +161,9 @@ namespace WindowsFormsApplication1
                 txtVendorName.Text = cellCollection[1].Value.ToString();
                 txtVendorCompanyName.Text = cellCollection[2].Value.ToString();
                 txtVendorAddress.Text = cellCollection[3].Value.ToString();
-                txtPhone.Text = cellCollection[4].Value.ToString();
-                txtMobile.Text = cellCollection[5].Value.ToString();
-                txtFax.Text = cellCollection[6].Value.ToString();
+                txtPhone.Text = cellCollection[10].Value.ToString();
+                txtMobile.Text = cellCollection[11].Value.ToString();
+                txtFax.Text = cellCollection[12].Value.ToString();
             }
             catch (Exception ex)
             {
@@ -173,17 +174,28 @@ namespace WindowsFormsApplication1
         {
             counter = 0;
             panel2.Visible = true;
-            string selectqurry = "select venderId,vName as NAME,vCompName as COMPNAME,vAddress as ADDRESS,vPhone as PHONE,vMobile as MOBILE,vFax as FAX from VendorDetails";
+            string selectqurry = "select vd.venderId as [Vender Id ],vd.vName AS Name ,vd.vCompName AS [Company Name] ,vd.vAddress AS Address,vd.vCity AS City,vd. vState AS State ,vd.vZip AS Zip ,vd.vCountry AS Country ,vd.vEmail AS[E-Mail ],vd. vWebAddress AS[Web Address],vd.vPhone AS Phone ,vd.vMobile AS Mobile ,vd.vFax AS Fax ,vd.vPanNo as[PAN No],vd.vVatNo as [VAT No],vd.vCstNo as[CST No],vd.vServiceTaxRegnNo as [Service Tax Regn.No],vd.vExciseRegnNo as [Excise Regn.No],vd.vGSTRegnNo as[GST Regn.No],vd.vDesc AS Description,vad.vOpeningBalance AS [Opening Balance] , vad.vCurrentBalance AS [Current Balance] from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID";
+            string selectqurryForActualColumnName = "select top 1 vd.venderId ,vd.vName  ,vd.vCompName  ,vd.vAddress ,vd.vCity,vd. vState  ,vd.vZip  ,vd.vCountry  ,vd.vEmail ,vd. vWebAddress ,vd.vPhone  ,vd.vMobile ,vd.vFax ,vd.vPanNo ,vd.vVatNo ,vd.vCstNo,vd.vServiceTaxRegnNo ,vd.vExciseRegnNo ,vd.vGSTRegnNo ,vd.vDesc,vad.vOpeningBalance, vad.vCurrentBalance  from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
-            List<string> ls = new List<string>();
+            DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
+            DataTable customDataTable = new DataTable();
+            customDataTable.Columns.Add("ActualTableColumnName");
+            customDataTable.Columns.Add("AliasTableColumnName");
             DataColumnCollection d = dt.Columns;
+            DataColumnCollection dataColumnForName = dtOnlyColumnName.Columns;
             for (int a = 1; a < d.Count; a++)
             {
-                DataColumn dc = new DataColumn();
                 string b = d[a].ToString();
-                ls.Add(b);
+                string actualColumnName = dataColumnForName[a].ToString();
+                DataRow dr = customDataTable.NewRow();
+                dr["ActualTableColumnName"] = actualColumnName;
+                dr["AliasTableColumnName"] = b;
+                customDataTable.Rows.Add(dr);
             }
-            comboBox1.DataSource = ls;
+
+            comboBox1.DataSource = customDataTable;
+            comboBox1.ValueMember = "ActualTableColumnName";
+            comboBox1.DisplayMember = "AliasTableColumnName";
             dataGridView2.DataSource = dt;
         }
         private void setDetails1(DataGridViewCellCollection cellCollection)
@@ -192,8 +204,8 @@ namespace WindowsFormsApplication1
             {
                 txtItemId.Text = cellCollection[0].Value.ToString();
                 txtproductName.Text = cellCollection[1].Value.ToString();
-                txtRate.Text = cellCollection[2].Value.ToString();
-                txtAmount.Text = cellCollection[3].Value.ToString();
+                txtRate.Text = cellCollection[6].Value.ToString();
+                //txtAmount.Text = cellCollection[3].Value.ToString();
                 // txtQuanity.Text = cellCollection[4].Value.ToString();
 
             }
@@ -205,18 +217,28 @@ namespace WindowsFormsApplication1
         private void buttItem_Click(object sender, EventArgs e)
         {
             counter = 1;
-            panel2.Visible = false;
-            string selectqurry = "select ipd.ItemId,itd.ItemName,ipd.purChasePrice,ipd.MrpPrice,iqd.CurrentQuantity from ItemPriceDetail ipd join ItemDetails itd on ipd.ItemId=itd.ItemId join ItemQuantityDetail iqd on itd.ItemId=iqd.ItemId where CurrentQuantity>0 ";
+            panel2.Visible = true;
+            string selectqurry = "select  itm.ItemId,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId where iqd.CurrentQuantity>0";
+            string selectqurryForActualColumnName = "select top 1  itm.ItemId, itm.ItemName,itm.ItemCompName ,itm.ItemDesc ,ig.groupName,iul.unitName ,ipd.purChasePrice ,ipd.SalesPrice ,ipd.MrpPrice ,ipd.Margin ,iqd.OpeningQuantity ,iqd.CurrentQuantity from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
-            List<string> ls = new List<string>();
+            DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
+            DataTable customDataTable = new DataTable();
+            customDataTable.Columns.Add("ActualTableColumnName");
+            customDataTable.Columns.Add("AliasTableColumnName");
             DataColumnCollection d = dt.Columns;
+            DataColumnCollection dataColumnForName = dtOnlyColumnName.Columns;
             for (int a = 1; a < d.Count; a++)
             {
-                DataColumn dc = new DataColumn();
                 string b = d[a].ToString();
-                ls.Add(b);
+                string actualColumnName = dataColumnForName[a].ToString();
+                DataRow dr = customDataTable.NewRow();
+                dr["ActualTableColumnName"] = actualColumnName;
+                dr["AliasTableColumnName"] = b;
+                customDataTable.Rows.Add(dr);
             }
-            comboBox1.DataSource = ls;
+            comboBox1.DataSource = customDataTable;
+            comboBox1.ValueMember = "ActualTableColumnName";
+            comboBox1.DisplayMember = "AliasTableColumnName";
             dataGridView2.DataSource = dt;
         }
 
@@ -255,6 +277,8 @@ namespace WindowsFormsApplication1
         {
             string itemCode = txtItemId.Text;
             setitemVlue("ItemId", itemCode);
+            txtQuentity.ReadOnly = false;
+            buttAddItem.Enabled = true;
         }
 
         private void txtproductName_TextChanged(object sender, EventArgs e)
@@ -334,6 +358,7 @@ namespace WindowsFormsApplication1
             //      }
             //      else
             // {
+            buttRemoveItem.Enabled = true;
                     DataRow dr = addToCartTable.NewRow();
                     dr[0] = txtItemId.Text.Trim();
                     dr[1] = txtproductName.Text.Trim();
@@ -381,6 +406,14 @@ namespace WindowsFormsApplication1
                 {
                   txtTotalAmount.Text = "0.0";
                     txtDiscount.Text = "0.0";
+                }
+                if (dataGridView1.Rows.Count > 0)
+                {
+                    buttRemoveItem.Enabled = true;
+                }
+                else
+                {
+                    buttRemoveItem.Enabled = false;
                 }
             }
 
@@ -714,6 +747,8 @@ namespace WindowsFormsApplication1
                 panel2.Visible = false;
                 DataGridViewCellCollection CellCollection = dataGridView2.Rows[e.RowIndex].Cells;
                 setDetails1(CellCollection);
+                txtQuentity.ReadOnly = false;
+                buttAddItem.Enabled = true;
             }
          else if (counter == 2)
             {
@@ -755,15 +790,15 @@ namespace WindowsFormsApplication1
             if (counter == 0)
             {
                 string s = comboBox1.SelectedValue.ToString();
-                string m = "v" + s;
-                string selectQurry = "select venderId,vName as NAME,vCompName as COMPANYNAME,vAddress as ADDRESS,vPhone as PHONE,vMobile as MOBILE,vFax as FAX from VendorDetails where " + m + " like '" + txtSearch.Text + "%'";
+                //string m = "v" + s;
+                string selectQurry = "select vd.venderId as [Vender Id ],vd.vName AS Name ,vd.vCompName AS [Company Name] ,vd.vAddress AS Address,vd.vCity AS City,vd. vState AS State ,vd.vZip AS Zip ,vd.vCountry AS Country ,vd.vEmail AS[E-Mail ],vd. vWebAddress AS[Web Address],vd.vPhone AS Phone ,vd.vMobile AS Mobile ,vd.vFax AS Fax ,vd.vPanNo as[PAN No],vd.vVatNo as [VAT No],vd.vCstNo as[CST No],vd.vServiceTaxRegnNo as [Service Tax Regn.No],vd.vExciseRegnNo as [Excise Regn.No],vd.vGSTRegnNo as[GST Regn.No],vd.vDesc AS Description,vad.vOpeningBalance AS [Opening Balance] , vad.vCurrentBalance AS [Current Balance] from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID where " + s + " like '" + txtSearch.Text + "%'";
                 DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
                 dataGridView2.DataSource = dt;
             }
             else if (counter == 1)
             {
                 string s = comboBox1.SelectedValue.ToString();
-                string selectQurry = "select ipd.ItemId,itd.ItemName,ipd.purChasePrice,ipd.MrpPrice,iqd.OpeningQuantity, iqd.CurrentQuantity from ItemPriceDetail ipd join ItemDetails itd on ipd.ItemId=itd.ItemId join ItemQuantityDetail iqd on itd.ItemId=iqd.ItemId where " + s + " like '" + txtSearch.Text + "%'";
+                string selectQurry = "select  itm.ItemId,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId where " + s + " like '" + txtSearch.Text + "%'";
                 DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
                 dataGridView2.DataSource = dt;
             }
@@ -909,6 +944,64 @@ namespace WindowsFormsApplication1
                     e.Handled = true;
                 }
             }
+        }
+
+        private void dataGridView2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            comboBox1.SelectedIndex = 0;
+            txtSearch.Text = "";
+            if (counter == 0)
+            {
+                panel2.Visible = false;
+                DataGridViewCellCollection CellCollection = dataGridView2.SelectedRows[0].Cells;
+                setDetails(CellCollection);
+            }
+            else if (counter == 1)
+            {
+                panel2.Visible = false;
+                DataGridViewCellCollection CellCollection = dataGridView2.SelectedRows[0].Cells;
+                setDetails1(CellCollection);
+                txtQuentity.ReadOnly = false;
+                buttAddItem.Enabled = true;
+            }
+            else if (counter == 2)
+            {
+                panel2.Visible = false;
+                DataGridViewCellCollection CellCollection = dataGridView2.SelectedRows[0].Cells;
+                string s = CellCollection[0].Value.ToString();
+                string s1 = CellCollection[1].Value.ToString();
+                //MessageBox.Show(" "+s +" "+s1);
+                string selectqurry = "select venderId,vName,vCompName,vAddress,vPhone,vMobile,vFax from VendorDetails where venderId='" + s1 + "'";
+                makeBlnk(selectqurry);
+                //DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+                //foreach (DataRow dr in dt.Rows)
+                //{
+                //    txtVendorId.Text = dr[0].ToString();
+                //    txtVendorName.Text = dr[1].ToString();
+                //    txtVendorCompanyName.Text = dr[2].ToString();
+                //    txtVendorAddress.Text = dr[3].ToString();
+                //    txtPhone.Text = dr[4].ToString();
+                //    txtMobile.Text = dr[5].ToString();
+                //    txtFax.Text = dr[6].ToString();
+                //}
+                string selectqurry1 = "select vodd.ItemId,td.ItemName, vodd.Quantity,vodd.Price,vodd.TotalPrice from VendorOrderDetails vod join VendorOrderDesc vodd on vod.Orderid=vodd.Orderid join ItemDetails td on td.ItemId=vodd.ItemId where vod. Orderid='" + s + "'";
+                DataTable dt1 = dbMainClass.getDetailByQuery(selectqurry1);
+                List<string> ls = new List<string>();
+                DataColumnCollection d = dt1.Columns;
+                for (int a = 1; a < d.Count; a++)
+                {
+                    DataColumn dc = new DataColumn();
+                    string b = d[a].ToString();
+                    ls.Add(b);
+                }
+                comboBox1.DataSource = ls;
+                dataGridView1.DataSource = dt1;
+            }
+        }
+
+        private void buttAddItem_Leave(object sender, EventArgs e)
+        {
+            buttAddItem.Enabled = false;
         }
 
         }
