@@ -233,6 +233,7 @@
             this.gridsalesinvoice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridsalesinvoice.Location = new System.Drawing.Point(3, 3);
             this.gridsalesinvoice.Name = "gridsalesinvoice";
+            this.gridsalesinvoice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridsalesinvoice.Size = new System.Drawing.Size(818, 227);
             this.gridsalesinvoice.TabIndex = 0;
             this.gridsalesinvoice.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesinvoice_CellDoubleClick);
@@ -667,7 +668,7 @@
             this.panel2.Controls.Add(this.dataGridView2);
             this.panel2.Location = new System.Drawing.Point(15, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(831, 579);
+            this.panel2.Size = new System.Drawing.Size(831, 594);
             this.panel2.TabIndex = 52;
             // 
             // button1
@@ -720,9 +721,12 @@
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(32, 104);
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(780, 406);
+            this.dataGridView2.StandardTab = true;
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
+            this.dataGridView2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView2_KeyPress);
             // 
             // salesinvoice
             // 

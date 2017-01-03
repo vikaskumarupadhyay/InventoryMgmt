@@ -587,15 +587,17 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
+       
+
+        private void dataGridView1_KeyPress_1(object sender, KeyPressEventArgs e)
         {
-            int currentIndex = dataGridView1.CurrentRow.Index; 
+            int currentIndex = dataGridView1.CurrentRow.Index;
             if (e.KeyChar == (char)Keys.Enter)
             {
                 if (dataGridView1.SelectedRows != null && dataGridView1.SelectedRows.Count > 0)
                 {
-                      
-                DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex-1].Cells;
+
+                    DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex - 1].Cells;
                     setDetails(cellcollection);
                     panel1.Visible = false;
                     updateCounter = 1;
