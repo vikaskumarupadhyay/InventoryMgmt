@@ -22,10 +22,11 @@ namespace WindowsFormsApplication1
         DataTable addToCartTable = new DataTable();
         DataTable customerdetails = new DataTable();
         DataTable ItemDetails = new DataTable();
-        private void tab1()
+        private void tab()
         {
-            txtcustomercode.TabStop = false;
-            butcustomercode.TabStop = false;
+            txtcustomercode.Focus();
+            txtcustomercode.TabStop = true;
+            butcustomercode.TabStop = true;
             txtItemCode.TabStop = false;
             butitembutton.TabStop = false;
             txtQuantity.TabStop = false;
@@ -35,22 +36,56 @@ namespace WindowsFormsApplication1
             butClose.TabStop = false;
             ButSelectPurchaseOrder.TabStop = false;
         }
-        private void tab2()
+        private void tab1()
         {
             txtItemCode.Focus();
             txtItemCode.TabStop = true;
             butitembutton.TabStop = true;
-            txtQuantity.TabStop = true;
-            butAddItem.TabStop = true;
         }
-        private void tab3()
+        private void tab2()
         {
-            txtItemCode.Focus();
+            txtQuantity.Focus();
+            txtcustomercode.TabStop = false;
+            butcustomercode.TabStop = false;
             txtItemCode.TabStop = true;
             butitembutton.TabStop = true;
             txtQuantity.TabStop = false;
-
+            butAddItem.TabStop = true;
+            butRemoveItem.TabStop = true;
+            butSaveButton.TabStop = false;
+            butClose.TabStop = false;
+            ButSelectPurchaseOrder.TabStop = false;
         }
+        //private void tabindex()
+        //{
+        //    butcustomercode.TabStop = true;
+        //    txtItemCode.TabStop = true;
+        //    butitembutton.TabStop = true;
+        //    txtQuantity.TabStop = true;
+        //    butAddItem.TabStop = true;
+        //    butRemoveItem.TabStop = true;
+        //    butSaveButton.TabStop = true;
+        //    ButSelectPurchaseOrder.TabStop = true;
+        //    butClose.TabStop = true;
+
+
+        //}
+        //private void tab2()
+        //{
+        //    txtItemCode.Focus();
+        //    txtItemCode.TabStop = true;
+        //    butitembutton.TabStop = true;
+        //    txtQuantity.TabStop = true;
+        //    butAddItem.TabStop = true;
+        //}
+        //private void tab3()
+        //{
+        //    txtItemCode.Focus();
+        //    txtItemCode.TabStop = true;
+        //    butitembutton.TabStop = true;
+        //   // txtQuantity.TabStop = false;
+
+        //}
         private void butcustomercode_Click(object sender, EventArgs e)
         {
             //string selectquery1 = "select CustName,CustCompName,CustAddress,CustPhone,Custmobile,CustFax from CustomerDetails";
@@ -84,7 +119,9 @@ namespace WindowsFormsApplication1
             
             DataTable dt = d.getDetailByQuery(selectquery);
             dataGridView2.DataSource = dt;
-            tab1();
+            txtQuantity.TabStop = false;
+            txtcustomercode.TabStop = false;
+            butcustomercode.TabStop = false;
             comsearchvalue.Focus();
             comsearchvalue.TabIndex = 1;
             txtsearchvalue.TabIndex = 2;
@@ -107,8 +144,8 @@ namespace WindowsFormsApplication1
         {
             txtItemCode.Text = cell1[0].Value.ToString();
             txtProductName.Text = cell1[1].Value.ToString();
-            txtRate.Text = cell1[2].Value.ToString();
-            maxquantity = Convert.ToInt32((cell1[3].Value.ToString()));
+            txtRate.Text = cell1[6].Value.ToString();
+           // maxquantity = Convert.ToInt32((cell1[3].Value.ToString()));
             txtQuantity.Text = "";
             txtAmmount.Text = "";
 
@@ -150,12 +187,15 @@ namespace WindowsFormsApplication1
            // string selectquery = "select i.Itemid,i.Itemname,ip.MrpPrice,iq.CurrentQuantity from itemdetails i join itempricedetail ip on i.itemid=ip.itemid join itemquantitydetail iq on ip.itemid=iq.itemid";
             DataTable dt = d.getDetailByQuery(selectquery);
             dataGridView2.DataSource = dt;
-            tab1();
+            txtQuantity.TabStop = false;
+            txtcustomercode.TabStop = false;
+            butcustomercode.TabStop = false;
             comsearchvalue.Focus();
             comsearchvalue.TabIndex = 1;
             txtsearchvalue.TabIndex = 2;
             dataGridView2.TabIndex = 3;
             button1.TabIndex = 4;
+            
         }
 
         private void txtQuantity_TextChanged(object sender, EventArgs e)
@@ -211,13 +251,13 @@ namespace WindowsFormsApplication1
 
         private void salesdelivary_Load(object sender, EventArgs e)
         {
-            tabindex();
+            tab();
             txtQuantity.ReadOnly = true;
             butRemoveItem.Enabled = false;
             butAddItem.Enabled = false;
-            txtItemCode.Text = "I";
+           // txtItemCode.Text = "I";
             dtpDate.Value = DateTime.Now;
-            txtcustomercode.Text = "C";
+           // txtcustomercode.Text = "C";
             panel2.Visible = false;
             Purchase.PurchaseDetails purChaseDetailObj = new Purchase.PurchaseDetails();
             vendorDetails = purChaseDetailObj.GetVendorDetaisInDataTable();
@@ -243,47 +283,39 @@ namespace WindowsFormsApplication1
                 txtSrNo.Text = t1.ToString();
             }
         }
-        private void tabindex()
-        {
-            butcustomercode.TabStop=true;
-            txtItemCode.TabStop = true;
-            butitembutton.TabStop = true;
-            txtQuantity.TabStop = true;
-            butAddItem.TabStop = true;
-            butRemoveItem.TabStop = true;
-            butSaveButton.TabStop = true;
-            ButSelectPurchaseOrder.TabStop = true;
-            butClose.TabStop = true;
-            
-
-        }
+       
 
         private void butRemoveItem_Click(object sender, EventArgs e)
         {
-            if (addToCartTable.Rows.Count > 0)
-            {
-                string Amount = gridsalesdelivary.SelectedRows[0].Cells[4].Value.ToString();
-                double totalAmount = Convert.ToDouble(txtTotalAmmount.Text);
-                totalAmount -= Convert.ToDouble(Amount.Trim());
-                txtTotalAmmount.Text = totalAmount.ToString();
-                int index = gridsalesdelivary.SelectedRows[0].Index;
-                addToCartTable.Rows.RemoveAt(index);
+            butRemoveItem.Enabled = false;
+            gridsalesdelivary.Focus();
+            gridsalesdelivary.TabIndex = 1;
+            txtItemCode.Enabled = false;
+            butitembutton.Enabled = false;
+            //if (addToCartTable.Rows.Count > 0)
+            //{
+            //    string Amount = gridsalesdelivary.SelectedRows[0].Cells[4].Value.ToString();
+            //    double totalAmount = Convert.ToDouble(txtTotalAmmount.Text);
+            //    totalAmount -= Convert.ToDouble(Amount.Trim());
+            //    txtTotalAmmount.Text = totalAmount.ToString();
+            //    int index = gridsalesdelivary.SelectedRows[0].Index;
+            //    addToCartTable.Rows.RemoveAt(index);
 
-                gridsalesdelivary.DataSource = addToCartTable;
-                if (addToCartTable.Rows.Count == 0)
-                {
-                    txtTotalAmmount.Text = "0.0";
-                    txtDiscount.Text = "0.0";
-                }
-                if (gridsalesdelivary.Rows.Count > 0)
-                {
-                    butRemoveItem.Enabled = true;
-                }
-                else
-                {
-                    butRemoveItem.Enabled = false;
-                }
-            }
+            //    gridsalesdelivary.DataSource = addToCartTable;
+            //    if (addToCartTable.Rows.Count == 0)
+            //    {
+            //        txtTotalAmmount.Text = "0.0";
+            //        txtDiscount.Text = "0.0";
+            //    }
+            //    if (gridsalesdelivary.Rows.Count > 0)
+            //    {
+            //        butRemoveItem.Enabled = true;
+            //    }
+            //    else
+            //    {
+            //        butRemoveItem.Enabled = false;
+            //    }
+            //}
         }
         private void makeblank()
         {
@@ -503,6 +535,7 @@ namespace WindowsFormsApplication1
             string selectquery = "select orderid, custid,date,totalammount from orderdetails";
             DataTable dt = d.getDetailByQuery(selectquery);
             dataGridView2.DataSource = dt;
+            
         }
 
         private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
@@ -573,12 +606,14 @@ namespace WindowsFormsApplication1
                 DataGridViewCellCollection Collection = dataGridView2.Rows[e.RowIndex].Cells;
                 rowcollection(Collection);
                 panel2.Visible = false;
+                tab1();
             }
             if (counter == 1)
             {
                 DataGridViewCellCollection Collection1 = dataGridView2.Rows[e.RowIndex].Cells;
                 rowcollection1(Collection1);
                 panel2.Visible = false;
+                tab2();
             }
             if (counter == 2)
             {
@@ -586,15 +621,15 @@ namespace WindowsFormsApplication1
                 panel1.Visible = true;
                 DataGridViewCellCollection dell = dataGridView2.Rows[e.RowIndex].Cells;
                 string val = dell[0].Value.ToString();
-
                 txtRefNo.Text = val;
 
             }
-            tab3();
+          
         }
 
         private void txtcustomercode_TextChanged(object sender, EventArgs e)
         {
+            tab1();
             string selectquery = "select CustName,CustCompName,CustAddress,CustPhone,CustMobile,CustFax from CustomerDetails Where Custid='" + txtcustomercode.Text + "'";
             DataTable dt = d.getDetailByQuery(selectquery);
             if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
@@ -711,6 +746,7 @@ namespace WindowsFormsApplication1
 
         private void txtItemCode_TextChanged(object sender, EventArgs e)
         {
+            tab2();
             string selectquery1 = "select i.ItemId,i.ItemName,ip.MrpPrice,iq.CurrentQuantity from ItemDetails i join ItemPriceDetail ip on i.ItemId=ip.ItemId join ItemQuantityDetail iq on ip.ItemId=iq.ItemId where i.ItemId='" + txtItemCode.Text + "'";
             DataTable dt = d.getDetailByQuery(selectquery1);
             if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
@@ -721,7 +757,7 @@ namespace WindowsFormsApplication1
                     txtRate.Text = dr[2].ToString();
                     txtQuantity.ReadOnly = false;
                     butAddItem.Enabled = true;
-                    tab2();
+                   
                 }
             }
             else
@@ -749,20 +785,56 @@ namespace WindowsFormsApplication1
             {
                 if (dataGridView2.SelectedRows != null && dataGridView2.SelectedRows.Count > 0)
                 {
+                    if (dataGridView2.RowCount == currentIndex + 1)
+                        currentIndex = currentIndex + 1;
                     if (counter == 0)
                     {
                         DataGridViewCellCollection Collection = dataGridView2.Rows[currentIndex-1].Cells;
                         rowcollection(Collection);
                         panel2.Visible = false;
+                        tab1();
                     }
                     if (counter == 1)
                     {
                         DataGridViewCellCollection Collection1 = dataGridView2.Rows[currentIndex-1].Cells;
                         rowcollection1(Collection1);
                         panel2.Visible = false;
+                        tab2();
                     }
+                   
 
                 }
+            }
+        }
+
+        private void gridsalesdelivary_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (addToCartTable.Rows.Count > 0)
+            {
+                string Amount = gridsalesdelivary.SelectedRows[0].Cells[4].Value.ToString();
+                double totalAmount = Convert.ToDouble(txtTotalAmmount.Text);
+                totalAmount -= Convert.ToDouble(Amount.Trim());
+                txtTotalAmmount.Text = totalAmount.ToString();
+                int index = gridsalesdelivary.SelectedRows[0].Index;
+                addToCartTable.Rows.RemoveAt(index);
+
+                gridsalesdelivary.DataSource = addToCartTable;
+                if (addToCartTable.Rows.Count == 0)
+                {
+                    txtTotalAmmount.Text = "0.0";
+                    txtDiscount.Text = "0.0";
+                }
+                if (gridsalesdelivary.Rows.Count > 0)
+                {
+                    butRemoveItem.Enabled = true;
+                    gridsalesdelivary.Rows[gridsalesdelivary.Rows.Count-1].Selected = true;
+                }
+                else
+                {
+                    butRemoveItem.Enabled = false;
+                }
+                butRemoveItem.Enabled = false;
+                
             }
         }
 

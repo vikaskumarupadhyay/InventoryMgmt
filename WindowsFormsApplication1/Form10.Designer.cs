@@ -236,9 +236,11 @@
             this.gridsalesorder.Name = "gridsalesorder";
             this.gridsalesorder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridsalesorder.Size = new System.Drawing.Size(818, 227);
+            this.gridsalesorder.StandardTab = true;
             this.gridsalesorder.TabIndex = 0;
             this.gridsalesorder.TabStop = false;
             this.gridsalesorder.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesorder_CellDoubleClick);
+            this.gridsalesorder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridsalesorder_KeyPress);
             // 
             // groupBox3
             // 
@@ -369,6 +371,7 @@
             this.txtitemcode.Name = "txtitemcode";
             this.txtitemcode.Size = new System.Drawing.Size(92, 21);
             this.txtitemcode.TabIndex = 2;
+            this.txtitemcode.Text = "I";
             this.txtitemcode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtitemcode.TextChanged += new System.EventHandler(this.txtitemcode_TextChanged);
             // 
@@ -577,6 +580,7 @@
             this.txtcustomercode.Name = "txtcustomercode";
             this.txtcustomercode.Size = new System.Drawing.Size(92, 21);
             this.txtcustomercode.TabIndex = 1;
+            this.txtcustomercode.Text = "C";
             this.txtcustomercode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtcustomercode.TextChanged += new System.EventHandler(this.txtcustomercode_TextChanged);
             // 
@@ -641,7 +645,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(840, 548);
             this.panel2.TabIndex = 51;
-           // this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.s);
             // 
             // butback
             // 

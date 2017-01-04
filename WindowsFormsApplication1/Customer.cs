@@ -596,7 +596,8 @@ namespace WindowsFormsApplication1
             {
                 if (dataGridView1.SelectedRows != null && dataGridView1.SelectedRows.Count > 0)
                 {
-
+                    if (dataGridView1.RowCount == currentIndex + 1)
+                        currentIndex = currentIndex + 1;
                     DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex - 1].Cells;
                     setDetails(cellcollection);
                     panel1.Visible = false;

@@ -237,9 +237,10 @@
             this.gridsalesdelivary.Name = "gridsalesdelivary";
             this.gridsalesdelivary.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridsalesdelivary.Size = new System.Drawing.Size(826, 229);
+            this.gridsalesdelivary.StandardTab = true;
             this.gridsalesdelivary.TabIndex = 0;
-            this.gridsalesdelivary.TabStop = false;
             this.gridsalesdelivary.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesdelivary_CellEndEdit);
+            this.gridsalesdelivary.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridsalesdelivary_KeyPress);
             // 
             // groupBox3
             // 
@@ -370,6 +371,7 @@
             this.txtItemCode.Name = "txtItemCode";
             this.txtItemCode.Size = new System.Drawing.Size(92, 21);
             this.txtItemCode.TabIndex = 2;
+            this.txtItemCode.Text = "I";
             this.txtItemCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtItemCode.TextChanged += new System.EventHandler(this.txtItemCode_TextChanged);
             // 
@@ -598,6 +600,7 @@
             this.txtcustomercode.Name = "txtcustomercode";
             this.txtcustomercode.Size = new System.Drawing.Size(92, 21);
             this.txtcustomercode.TabIndex = 3;
+            this.txtcustomercode.Text = "C";
             this.txtcustomercode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtcustomercode.TextChanged += new System.EventHandler(this.txtcustomercode_TextChanged);
             // 
@@ -671,7 +674,7 @@
             this.panel2.Controls.Add(this.dataGridView2);
             this.panel2.Location = new System.Drawing.Point(12, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(834, 548);
+            this.panel2.Size = new System.Drawing.Size(834, 495);
             this.panel2.TabIndex = 43;
             // 
             // button1

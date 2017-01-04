@@ -236,6 +236,7 @@ namespace WindowsFormsApplication1
          private void salesinvoice_Load(object sender, EventArgs e)
          {
              tabindex();
+             tab4();
              txtquantity.ReadOnly = true;
              butRemoveItem.Enabled = false;
              butRemoveItem.Visible = true;
@@ -778,6 +779,8 @@ namespace WindowsFormsApplication1
              {
                  if (dataGridView2.SelectedRows != null && dataGridView2.SelectedRows.Count > 0)
                  {
+                     if (dataGridView2.RowCount == currentIndex + 1)
+                         currentIndex = currentIndex + 1;
                      if (counter == 0)
                      {
                          DataGridViewCellCollection Collection = dataGridView2.Rows[currentIndex-1].Cells;
@@ -790,6 +793,7 @@ namespace WindowsFormsApplication1
                          rowcollection1(Collection1);
                          panel2.Visible = false;
                      }
+                     tab4();
                  }
              }
          }
