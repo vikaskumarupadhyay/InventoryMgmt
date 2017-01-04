@@ -24,6 +24,7 @@ namespace WindowsFormsApplication1
 
         private void Form7_Load(object sender, EventArgs e)
         {
+            IndexTex1();
             txtQunty.ReadOnly = true;
             button4.Enabled = false;
             button3.Enabled = false;
@@ -177,6 +178,7 @@ namespace WindowsFormsApplication1
             comboBox1.ValueMember = "ActualTableColumnName";
             comboBox1.DisplayMember = "AliasTableColumnName";
             dataGridView2.DataSource = dt;
+            IndexTex();
         }
 
         private void setDetails(DataGridViewCellCollection cellCollection)
@@ -282,6 +284,7 @@ namespace WindowsFormsApplication1
             comboBox1.ValueMember = "ActualTableColumnName";
             comboBox1.DisplayMember = "AliasTableColumnName";
             dataGridView2.DataSource = dt;
+            IndexTex();
 
         }
 
@@ -314,6 +317,7 @@ namespace WindowsFormsApplication1
             if (textVendercod.Text.Trim() != "" && textVendercod.Text.StartsWith("V"))
             {
                 setVAlue();
+                IndexTex3();
             }
         }
 
@@ -323,6 +327,7 @@ namespace WindowsFormsApplication1
             setitemVlue("ItemId", itemCode);
             txtQunty.ReadOnly = false;
             button3.Enabled = true;
+            txtQunty.Focus();
         }
 
         private void txtProductName_TextChanged(object sender, EventArgs e)
@@ -369,6 +374,8 @@ namespace WindowsFormsApplication1
         private void button3_Click(object sender, EventArgs e)
         {
             button4.Enabled = true;
+            txtQunty.TabStop = false;
+            txtQunty.Enabled = false;
                  if (txtProductName.Text==""&&txtQunty.Text=="")
                   {
                     //MessageBox.Show("now CurrentQuantity of deadt");
@@ -396,6 +403,7 @@ namespace WindowsFormsApplication1
             txtQunty.Text = "";
             txtAmount.Text = "0.0";
             txtItemCode.Focus();
+            button3.Enabled = false;
             }
 
             //}
@@ -915,53 +923,123 @@ namespace WindowsFormsApplication1
         {
             txtSearch.Text = "";
             comboBox1.SelectedIndex = 0;
-            if (counter == 0)
-            {
-                panel2.Visible = false;
-                DataGridViewCellCollection CellCollection = dataGridView2.SelectedRows[0].Cells;
-                setDetails(CellCollection);
-            }
-            else if (counter == 1)
-            {
-                panel2.Visible = false;
-                DataGridViewCellCollection CellCollection = dataGridView2.SelectedRows[0].Cells;
-                setDetails1(CellCollection);
-                txtQunty.ReadOnly = false;
-                button3.Enabled = true;
-            }
-            if (counter == 2)
-            {
-                panel2.Visible = false;
-                DataGridViewCellCollection CellCollection = dataGridView2.SelectedRows[0].Cells;
-                string s = CellCollection[0].Value.ToString();
-                string s1 = CellCollection[1].Value.ToString();
-                txtRef.Text = s;
-                //MessageBox.Show(" "+s +" "+s1);
-                string selectqurry = "select venderId,vName,vCompName,vAddress,vPhone,vMobile,vFax from VendorDetails where venderId='" + s1 + "'";
-                makeBlnk(selectqurry);
-                //DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
-                //foreach (DataRow dr in dt.Rows)
-                //{
-                //    textVendercod.Text = dr[0].ToString();
-                //    txtVendorName.Text = dr[1].ToString();
-                //    txtCompanyName.Text = dr[2].ToString();
-                //    txtAddress.Text = dr[3].ToString();
-                //    txtPhone.Text = dr[4].ToString();
-                //    txtMobile.Text = dr[5].ToString();
-                //    txtFax.Text = dr[6].ToString();
-                //}
-                string selectqurry1 = "select  itm.ItemId,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId where vod. Orderid='" + s + "'";
-                DataTable dt1 = dbMainClass.getDetailByQuery(selectqurry1);
-                dataGridView1.DataSource = dt1;
-            }
+              int currentIndex = dataGridView2.CurrentRow.Index;
+              if (e.KeyChar == (char)Keys.Enter)
+              {
+                  if (dataGridView1.RowCount == currentIndex + 1)
+                      currentIndex = currentIndex + 1;
+                  if (counter == 0)
+                  {
+                      panel2.Visible = false;
+                      DataGridViewCellCollection CellCollection = dataGridView2.Rows[currentIndex - 1].Cells;
+                      setDetails(CellCollection);
+                      IndexTex3();
+                  }
+                  if (counter == 1)
+                  {
+                      panel2.Visible = false;
+                      DataGridViewCellCollection CellCollection = dataGridView2.Rows[currentIndex - 1].Cells;
+                      setDetails1(CellCollection);
+                      txtQunty.ReadOnly = false;
+                      button3.Enabled = true;
+                      IndexTex2();
+                      txtQunty.Focus();
+                  }
+                  if (counter == 2)
+                  {
+                      panel2.Visible = false;
+                      DataGridViewCellCollection CellCollection = dataGridView1.Rows[currentIndex - 1].Cells;
+                      string s = CellCollection[0].Value.ToString();
+                      string s1 = CellCollection[1].Value.ToString();
+                      txtRef.Text = s;
+                      //MessageBox.Show(" "+s +" "+s1);
+                      string selectqurry = "select venderId,vName,vCompName,vAddress,vPhone,vMobile,vFax from VendorDetails where venderId='" + s1 + "'";
+                      makeBlnk(selectqurry);
+                      //DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+                      //foreach (DataRow dr in dt.Rows)
+                      //{
+                      //    textVendercod.Text = dr[0].ToString();
+                      //    txtVendorName.Text = dr[1].ToString();
+                      //    txtCompanyName.Text = dr[2].ToString();
+                      //    txtAddress.Text = dr[3].ToString();
+                      //    txtPhone.Text = dr[4].ToString();
+                      //    txtMobile.Text = dr[5].ToString();
+                      //    txtFax.Text = dr[6].ToString();
+                      //}
+                      string selectqurry1 = "select  itm.ItemId,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId where vod. Orderid='" + s + "'";
+                      DataTable dt1 = dbMainClass.getDetailByQuery(selectqurry1);
+                      dataGridView1.DataSource = dt1;
+                  }
+              }
         }
 
         private void button3_Leave(object sender, EventArgs e)
         {
-            button3.Enabled = false;
+           // button3.Enabled = false;
         }
 
-       
+        private void IndexTex()
+        {
+            comboBox1.Focus();
+            textVendercod.TabStop = false;
+            button1.TabStop = false;
+            txtItemCode.TabStop = false;
+            button2.TabStop = false;
+            button7.TabStop = false;
+            button5.TabStop = false;
+            btnSelectPurchaseOrder.TabStop = false;
+            txtdis.TabStop = false;
+            txtQunty.TabStop = false;
+            txtItemCode.TabStop = false;
+            button4.TabStop = false;
+            txtProductName.TabStop = false;
+            button3.TabStop = false;
+            panel2.TabStop = false;
+            panel1.TabStop = false;
+            txtRate.TabStop = false;
+            txtAmount.TabStop = false;
+            txtRef.TabStop = false;
+        }
+        private void IndexTex3()
+        {
+            txtItemCode.Focus();
+            txtItemCode.TabStop = true;
+            button2.TabStop = true;
+            textVendercod.TabStop = false;
+            button1.TabStop = false;
+            textVendercod.TabStop = true;
+            button1.TabStop = true;
+        }
+        private void IndexTex1()
+        {
+           //txtVendorCode.TabStop = false;
+            button1.TabStop = true; ;
+            txtItemCode.TabStop = false;
+            button2.TabStop = false;
+            button7.TabStop = false;
+            button5.TabStop = false;
+            txtdis.TabStop = false;
+            txtQunty.TabStop = false;
+            txtItemCode.TabStop = false;
+            txtProductName.TabStop = false;
+            button3.TabStop = false;
+            panel2.TabStop = false;
+            //panel1.TabStop = false;
+            txtRef.TabStop = false;
+            txtAmount.TabStop = false;
+            txtRate.TabStop = false;
+            btnSelectPurchaseOrder.TabStop = false;
+        }
+        private void IndexTex2()
+        {
+            txtQunty.Focus();
+            txtItemCode.TabStop = true;
+            button2.TabStop = true;
+            txtdis.TabStop = false;
+            txtQunty.TabStop = true;
+            button3.TabStop = true;
+            button4.TabStop = true;
+        }
     }
         
 }

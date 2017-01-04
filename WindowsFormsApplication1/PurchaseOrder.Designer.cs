@@ -642,9 +642,9 @@
             this.panel2.Controls.Add(this.comboBox1);
             this.panel2.Controls.Add(this.buttBack);
             this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Location = new System.Drawing.Point(-1, -5);
+            this.panel2.Location = new System.Drawing.Point(-1, -6);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(861, 557);
+            this.panel2.Size = new System.Drawing.Size(861, 558);
             this.panel2.TabIndex = 37;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint_1);
             // 
@@ -699,11 +699,14 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(22, 80);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(805, 293);
+            this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);

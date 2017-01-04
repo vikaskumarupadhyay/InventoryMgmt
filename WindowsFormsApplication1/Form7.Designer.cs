@@ -185,7 +185,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(818, 231);
+            this.dataGridView1.Size = new System.Drawing.Size(818, 224);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.TabStop = false;
             this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView1_CellBeginEdit);
@@ -292,6 +292,7 @@
             // 
             this.txtAmount.Location = new System.Drawing.Point(532, 35);
             this.txtAmount.Name = "txtAmount";
+            this.txtAmount.ReadOnly = true;
             this.txtAmount.Size = new System.Drawing.Size(63, 21);
             this.txtAmount.TabIndex = 10;
             this.txtAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -336,7 +337,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(397, 17);
+            this.label12.Location = new System.Drawing.Point(413, 19);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(33, 15);
             this.label12.TabIndex = 5;
@@ -498,6 +499,7 @@
             this.txtFax.ReadOnly = true;
             this.txtFax.Size = new System.Drawing.Size(173, 21);
             this.txtFax.TabIndex = 8;
+            this.txtFax.TabStop = false;
             // 
             // label7
             // 
@@ -515,6 +517,7 @@
             this.txtMobile.ReadOnly = true;
             this.txtMobile.Size = new System.Drawing.Size(200, 21);
             this.txtMobile.TabIndex = 7;
+            this.txtMobile.TabStop = false;
             // 
             // label6
             // 
@@ -543,6 +546,7 @@
             this.txtPhone.ReadOnly = true;
             this.txtPhone.Size = new System.Drawing.Size(187, 21);
             this.txtPhone.TabIndex = 6;
+            this.txtPhone.TabStop = false;
             // 
             // txtAddress
             // 
@@ -553,6 +557,7 @@
             this.txtAddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtAddress.Size = new System.Drawing.Size(572, 33);
             this.txtAddress.TabIndex = 5;
+            this.txtAddress.TabStop = false;
             // 
             // label5
             // 
@@ -579,6 +584,7 @@
             this.txtCompanyName.ReadOnly = true;
             this.txtCompanyName.Size = new System.Drawing.Size(240, 21);
             this.txtCompanyName.TabIndex = 4;
+            this.txtCompanyName.TabStop = false;
             // 
             // txtVendorName
             // 
@@ -587,6 +593,7 @@
             this.txtVendorName.ReadOnly = true;
             this.txtVendorName.Size = new System.Drawing.Size(206, 21);
             this.txtVendorName.TabIndex = 3;
+            this.txtVendorName.TabStop = false;
             // 
             // textVendercod
             // 
@@ -666,9 +673,9 @@
             this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.txtSearch);
             this.panel2.Controls.Add(this.dataGridView2);
-            this.panel2.Location = new System.Drawing.Point(-1, 4);
+            this.panel2.Location = new System.Drawing.Point(-1, -15);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(847, 589);
+            this.panel2.Size = new System.Drawing.Size(847, 608);
             this.panel2.TabIndex = 40;
             // 
             // butClose
@@ -676,7 +683,7 @@
             this.butClose.Location = new System.Drawing.Point(118, 518);
             this.butClose.Name = "butClose";
             this.butClose.Size = new System.Drawing.Size(80, 26);
-            this.butClose.TabIndex = 5;
+            this.butClose.TabIndex = 4;
             this.butClose.Text = "Close";
             this.butClose.UseVisualStyleBackColor = true;
             this.butClose.Click += new System.EventHandler(this.butClose_Click);
@@ -688,7 +695,7 @@
             this.comboBox1.Location = new System.Drawing.Point(31, 59);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(146, 24);
-            this.comboBox1.TabIndex = 4;
+            this.comboBox1.TabIndex = 1;
             // 
             // label17
             // 
@@ -716,18 +723,19 @@
             this.txtSearch.Location = new System.Drawing.Point(293, 50);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(136, 22);
-            this.txtSearch.TabIndex = 1;
+            this.txtSearch.TabIndex = 2;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(54, 126);
+            this.dataGridView2.Location = new System.Drawing.Point(31, 143);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(733, 351);
-            this.dataGridView2.TabIndex = 0;
+            this.dataGridView2.Size = new System.Drawing.Size(733, 321);
+            this.dataGridView2.StandardTab = true;
+            this.dataGridView2.TabIndex = 3;
             this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
             this.dataGridView2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView2_KeyPress);
             // 

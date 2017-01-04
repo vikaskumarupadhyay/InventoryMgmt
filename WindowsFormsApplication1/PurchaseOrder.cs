@@ -24,6 +24,7 @@ namespace WindowsFormsApplication1
 
         private void PurchaseOrder_Load(object sender, EventArgs e)
         {
+            IndexTex1();
             btnAddItem.Enabled = false;
             txtRemoveItem.Enabled = false;
             txtQuanity.ReadOnly = true;
@@ -134,6 +135,7 @@ namespace WindowsFormsApplication1
             if (txtVendorCode.Text.Trim() != "" && txtVendorCode.Text.StartsWith("V"))
             {
                 setVAlue();
+                IndexTex3();
             }
         }
 
@@ -181,12 +183,13 @@ namespace WindowsFormsApplication1
         }
 
         private void txtItemCode_TextChanged(object sender, EventArgs e)
-        {
+       {
             string itemCode = txtItemCode.Text;
             setitemVlue("ItemId", itemCode);
             txtQuanity.ReadOnly = false;
             btnAddItem.Enabled = true;
-          
+            txtQuanity.Enabled = true;
+            IndexTex2();
         }
 
         private void txtProductName_TextChanged(object sender, EventArgs e)
@@ -239,6 +242,10 @@ namespace WindowsFormsApplication1
         #region /////////// AddToList Clicked ///////////////
         private void btnAddItem_Click(object sender, EventArgs e)
         {
+            txtRemoveItem.Focus();
+            txtVendorCode.TabStop = false;
+            button1.TabStop = false;
+            txtDiscount.TabStop = false;
             //string qurry = "select CurrentQuantity from ItemQuantityDetail where ItemId='" + txtItemCode.Text + "'";
             //DataTable dt = dbMainClass.getDetailByQuery(qurry);
             //string id = "";
@@ -286,7 +293,11 @@ namespace WindowsFormsApplication1
                     txtRate.Text = "";
                     txtQuanity.Text = "";
                     txtAmount.Text = "0.0";
-                    txtItemCode.Focus();
+                   // txtItemCode.Focus();
+                    btnAddItem.Enabled = false;
+                    txtRemoveItem.Focus();
+                    txtQuanity.TabStop = false;
+                    txtQuanity.Enabled = false;
                 }
 
             //}
@@ -306,6 +317,7 @@ namespace WindowsFormsApplication1
 
         private void txtRemoveItem_Click(object sender, EventArgs e)
         {
+           
             if (addToCartTable.Rows.Count > 0)
             {
                 string Amount = gridPurchaseOrder.SelectedRows[0].Cells[4].Value.ToString();
@@ -583,6 +595,7 @@ namespace WindowsFormsApplication1
                 panel2.Visible = false;
                 DataGridViewCellCollection CellCollection = dataGridView1.Rows[e.RowIndex].Cells;
                 setDetails(CellCollection);
+                IndexTex3();
             }
             else if (counter == 1)
             {
@@ -591,6 +604,8 @@ namespace WindowsFormsApplication1
                 setDetails1(CellCollection);
                 txtQuanity.ReadOnly = false;
                 btnAddItem.Enabled = true;
+                txtQuanity.Enabled = true;
+                IndexTex2();
             }
 
         }
@@ -628,28 +643,36 @@ namespace WindowsFormsApplication1
         {
              txtsearch.Text = "";
             comboBox1.SelectedIndex = 0;
-            if (counter == 0)
+            int currentIndex = dataGridView1.CurrentRow.Index;
+            if (e.KeyChar == (char)Keys.Enter)
             {
-                panel2.Visible = false;
-                DataGridViewCellCollection CellCollection = dataGridView1.SelectedRows[0].Cells;
-                setDetails(CellCollection);
-                txtItemCode.Focus();
-            }
-            else if (counter == 1)
-            {
-                panel2.Visible = false;
-                DataGridViewCellCollection CellCollection = dataGridView1.SelectedRows[0].Cells;
-                setDetails1(CellCollection);
-                txtQuanity.ReadOnly = false;
-                btnAddItem.Enabled = true;
-                txtQuanity.Focus();
+                if (dataGridView1.RowCount == currentIndex + 1)
+                    currentIndex = currentIndex + 1;
+                if (counter == 0)
+                {
+                    panel2.Visible = false;
+                    DataGridViewCellCollection CellCollection = dataGridView1.Rows[currentIndex - 1].Cells;
+                    setDetails(CellCollection);
+                    IndexTex3();
+                    
+                }
+                else if (counter == 1)
+                {
+                    panel2.Visible = false;
+                    DataGridViewCellCollection CellCollection = dataGridView1.Rows[currentIndex - 1].Cells;
+                    setDetails1(CellCollection);
+                    txtQuanity.ReadOnly = false;
+                    btnAddItem.Enabled = true;
+                    txtQuanity.Enabled = true;
+                    IndexTex2();
+                }
             }
         }
 
         private void btnAddItem_Leave(object sender, EventArgs e)
         {
-            btnAddItem.Enabled = false;
-            txtRemoveItem.Focus();
+           // btnAddItem.Enabled = false;
+            //txtRemoveItem.Focus();
         }
         private void IndexTex()
         {
@@ -661,10 +684,52 @@ namespace WindowsFormsApplication1
             btnSave.TabStop = false;
             txtDiscount.TabStop = false;
             txtQuanity.TabStop = false;
-            //txtItemCode.TabStop = false;
+            txtItemCode.TabStop = false;
+            txtRemoveItem.TabStop = false;
+            txtProductName.TabStop = false;
+            btnAddItem.TabStop = false;
+            btnClose.TabStop = false;
+            btnSave.TabStop = false;
+            panel2.TabStop = false;
+            panel1.TabStop = false;
         }
-
-
-
+        private void IndexTex3()
+        {
+            txtItemCode.Focus();
+            txtItemCode.TabStop = true;
+            button2.TabStop = true;
+            txtVendorCode.TabStop = false;
+            button1.TabStop = false;
+            txtVendorCode.TabStop = true;
+            button1.TabStop = true;
+        }
+        private void IndexTex1()
+        {
+           // txtVendorCode.TabStop = false;
+            //button1.TabStop = false;
+            txtItemCode.TabStop = false;
+            button2.TabStop = false;
+            btnClose.TabStop = false;
+            btnSave.TabStop = false;
+            txtDiscount.TabStop = false;
+            txtQuanity.TabStop = false;
+            txtItemCode.TabStop = false;
+            txtProductName.TabStop = false;
+            btnAddItem.TabStop = false;
+            btnClose.TabStop = false;
+            btnSave.TabStop = false;
+            panel2.TabStop = false;
+            panel1.TabStop = false;
+        }
+        private void IndexTex2()
+        {
+            txtQuanity.Focus();
+            txtItemCode.TabStop = true;
+            button2.TabStop = true;
+            txtDiscount.TabStop = false;
+            txtQuanity.TabStop = true;
+            btnAddItem.TabStop = true;
+            txtRemoveItem.TabStop = true;
+        }
     }
 }

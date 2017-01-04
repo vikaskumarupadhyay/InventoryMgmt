@@ -485,12 +485,12 @@ namespace WindowsFormsApplication1
 
         private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
         {
-             int currrentIndex = dataGridView1.CurrentRow.Index;
+             int currentIndex = dataGridView1.CurrentRow.Index;
              if (e.KeyChar == (char)Keys.Enter)
              {
                  txtSearch.Text = "";
                  searchCalmn.SelectedIndex = 0;
-                 DataGridViewCellCollection cellCollection = dataGridView1.Rows[currrentIndex].Cells;
+                 DataGridViewCellCollection cellCollection = dataGridView1.Rows[currentIndex].Cells;
                  setDetails(cellCollection);
                  panel1.Visible = false;
                  updatecounter = 1;
