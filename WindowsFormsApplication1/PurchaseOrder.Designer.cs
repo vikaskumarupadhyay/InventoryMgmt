@@ -609,8 +609,10 @@
             this.gridPurchaseOrder.Name = "gridPurchaseOrder";
             this.gridPurchaseOrder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridPurchaseOrder.Size = new System.Drawing.Size(818, 239);
+            this.gridPurchaseOrder.StandardTab = true;
             this.gridPurchaseOrder.TabIndex = 0;
             this.gridPurchaseOrder.TabStop = false;
+            this.gridPurchaseOrder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridPurchaseOrder_KeyPress);
             // 
             // btnSave
             // 

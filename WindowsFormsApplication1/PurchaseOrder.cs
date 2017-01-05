@@ -317,31 +317,32 @@ namespace WindowsFormsApplication1
 
         private void txtRemoveItem_Click(object sender, EventArgs e)
         {
+            gridPurchaseOrder.Focus();
            
-            if (addToCartTable.Rows.Count > 0)
-            {
-                string Amount = gridPurchaseOrder.SelectedRows[0].Cells[4].Value.ToString();
-                double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
-                totalAmount -= Convert.ToDouble(Amount.Trim());
-                txtTotalAmount.Text = totalAmount.ToString();
-                int index = gridPurchaseOrder.SelectedRows[0].Index;
-                addToCartTable.Rows.RemoveAt(index);
+            //if (addToCartTable.Rows.Count > 0)
+            //{
+            //    string Amount = gridPurchaseOrder.SelectedRows[0].Cells[4].Value.ToString();
+            //    double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
+            //    totalAmount -= Convert.ToDouble(Amount.Trim());
+            //    txtTotalAmount.Text = totalAmount.ToString();
+            //    int index = gridPurchaseOrder.SelectedRows[0].Index;
+            //    addToCartTable.Rows.RemoveAt(index);
 
-                gridPurchaseOrder.DataSource = addToCartTable;
-                if (addToCartTable.Rows.Count == 0)
-                {
-                    txtTotalAmount.Text = "0.0";
-                    txtDiscount.Text = "0.0";
-                }
-                if (gridPurchaseOrder.Rows.Count > 0)
-                {
-                    txtRemoveItem.Enabled = true;
-                }
-                else
-                {
-                    txtRemoveItem.Enabled =false;
-                }
-            }
+            //    gridPurchaseOrder.DataSource = addToCartTable;
+            //    if (addToCartTable.Rows.Count == 0)
+            //    {
+            //        txtTotalAmount.Text = "0.0";
+            //        txtDiscount.Text = "0.0";
+            //    }
+            //    if (gridPurchaseOrder.Rows.Count > 0)
+            //    {
+            //        txtRemoveItem.Enabled = true;
+            //    }
+            //    else
+            //    {
+            //        txtRemoveItem.Enabled =false;
+            //    }
+            //}
         }
 
         private void txtDiscount_TextChanged(object sender, EventArgs e)
@@ -730,6 +731,48 @@ namespace WindowsFormsApplication1
             txtQuanity.TabStop = true;
             btnAddItem.TabStop = true;
             txtRemoveItem.TabStop = true;
+        }
+
+        private void gridPurchaseOrder_KeyPress(object sender, KeyPressEventArgs e)
+        {
+             if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                if (addToCartTable.Rows.Count > 0)
+                {
+                    string Amount = gridPurchaseOrder.SelectedRows[0].Cells[4].Value.ToString();
+                    double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
+                    totalAmount -= Convert.ToDouble(Amount.Trim());
+                    txtTotalAmount.Text = totalAmount.ToString();
+                    int index = gridPurchaseOrder.SelectedRows[0].Index;
+                    addToCartTable.Rows.RemoveAt(index);
+
+                    gridPurchaseOrder.DataSource = addToCartTable;
+                    if (addToCartTable.Rows.Count == 0)
+                    {
+                        txtTotalAmount.Text = "0.0";
+                        txtDiscount.Text = "0.0";
+                    }
+                    if (gridPurchaseOrder.Rows.Count==0)
+                    {
+                        txtItemCode.Focus();
+                    }
+                    //if (gridPurchaseOrder.Rows.Count > 0)
+                    //{
+                    //    txtRemoveItem.Enabled = true;
+                    //}
+                    //else
+                    //{
+                    //    txtRemoveItem.Enabled = false;
+                    //}
+                   
+                }
+            }
+             if (e.KeyChar == Convert.ToChar(Keys.Escape))
+             {
+                 txtItemCode.Focus();
+                 txtRemoveItem.Enabled = true;
+             }
+
         }
     }
 }

@@ -327,7 +327,11 @@ namespace WindowsFormsApplication1
             setitemVlue("ItemId", itemCode);
             txtQunty.ReadOnly = false;
             button3.Enabled = true;
+            txtQunty.Enabled = true;
             txtQunty.Focus();
+            IndexTex2();
+            textVendercod.TabStop = false;
+            button1.TabStop = false;
         }
 
         private void txtProductName_TextChanged(object sender, EventArgs e)
@@ -402,7 +406,9 @@ namespace WindowsFormsApplication1
             txtRate.Text = "";
             txtQunty.Text = "";
             txtAmount.Text = "0.0";
-            txtItemCode.Focus();
+            button4.Focus();
+            txtQunty.TabStop = false;
+            txtQunty.Enabled = false;
             button3.Enabled = false;
             }
 
@@ -424,33 +430,35 @@ namespace WindowsFormsApplication1
 
         private void button4_Click(object sender, EventArgs e)
         {
-
-                if (addToCartTable.Rows.Count > 0)
-                {
+            dataGridView1.Focus();
+                //if (addToCartTable.Rows.Count > 0)
+                //{
                     
-                    string Amount = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
-                    double totalAmount = Convert.ToDouble(txttotalAmount.Text);
-                    totalAmount -= Convert.ToDouble(Amount.Trim());
-                    txttotalAmount.Text = totalAmount.ToString();
-                    int index = dataGridView1.SelectedRows[0].Index;
-                    addToCartTable.Rows.RemoveAt(index);
+                //    string Amount = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
+                //    double totalAmount = Convert.ToDouble(txttotalAmount.Text);
+                //    totalAmount -= Convert.ToDouble(Amount.Trim());
+                //    txttotalAmount.Text = totalAmount.ToString();
+                //    int index = dataGridView1.SelectedRows[0].Index;
+                //    addToCartTable.Rows.RemoveAt(index);
 
-                    dataGridView1.DataSource = addToCartTable;
-                    if (addToCartTable.Rows.Count == 0)
-                    {
-                        txttotalAmount.Text = "0.0";
-                        txtdis.Text = "0.0";
-                    }
-                    if (dataGridView1.Rows.Count > 0)
-                    {
-                        button4.Enabled = true;
-                    }
-                    else
-                    {
-                        button4.Enabled = false;
-                    }
+                //    dataGridView1.DataSource = addToCartTable;
+                //    if (addToCartTable.Rows.Count == 0)
+                //    {
+                //        txttotalAmount.Text = "0.0";
+                //        txtdis.Text = "0.0";
+                //    }
+                //    if (dataGridView1.Rows.Count > 0)
+                //    {
+                //        button4.Enabled = true;
+                //    }
+                //    else
+                //    {
+                     button4.Enabled = false;
+                     txtQunty.Enabled = false;
+                     txtQunty.TabStop = false;
+                //    }
                      
-                }
+                //}
            
            
         }
@@ -940,10 +948,11 @@ namespace WindowsFormsApplication1
                       panel2.Visible = false;
                       DataGridViewCellCollection CellCollection = dataGridView2.Rows[currentIndex - 1].Cells;
                       setDetails1(CellCollection);
-                      txtQunty.ReadOnly = false;
+                      txtQunty.ReadOnly =false;
                       button3.Enabled = true;
-                      IndexTex2();
                       txtQunty.Focus();
+                      IndexTex2();
+                      txtQunty.Enabled = true;
                   }
                   if (counter == 2)
                   {
@@ -1032,13 +1041,55 @@ namespace WindowsFormsApplication1
         }
         private void IndexTex2()
         {
-            txtQunty.Focus();
             txtItemCode.TabStop = true;
             button2.TabStop = true;
             txtdis.TabStop = false;
             txtQunty.TabStop = true;
             button3.TabStop = true;
             button4.TabStop = true;
+            panel2.TabStop = false;
+        }
+
+        private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+
+                if (addToCartTable.Rows.Count > 0)
+                {
+
+                    string Amount = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
+                    double totalAmount = Convert.ToDouble(txttotalAmount.Text);
+                    totalAmount -= Convert.ToDouble(Amount.Trim());
+                    txttotalAmount.Text = totalAmount.ToString();
+                    int index = dataGridView1.SelectedRows[0].Index;
+                    addToCartTable.Rows.RemoveAt(index);
+
+                    dataGridView1.DataSource = addToCartTable;
+                    if (addToCartTable.Rows.Count == 0)
+                    {
+                        txttotalAmount.Text = "0.0";
+                        txtdis.Text = "0.0";
+                    }
+                    if (dataGridView1.Rows.Count == 0)
+                    {
+                        txtItemCode.Focus();
+                    }
+                    //if (dataGridView1.Rows.Count > 0)
+                    //{
+                    //    button4.Enabled = true;
+                    //}
+                    //else
+                    //{
+                    //    button4.Enabled = false;
+                    //}
+                }
+            }
+            if (e.KeyChar == Convert.ToChar(Keys.Escape))
+            {
+                txtItemCode.Focus();
+                button4.Enabled = true;
+            }
         }
     }
         
