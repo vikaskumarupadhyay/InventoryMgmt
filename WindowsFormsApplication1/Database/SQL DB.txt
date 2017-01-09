@@ -153,3 +153,7 @@ alter table orderdetails add Discount float
  Sp_rename 'CustomerDetails.Exciseregnno','CustExciseRegnNo'
 
 
+
+ create table CompnayDetails(CompnayId int identity primary key,Name varchar(1000),Address varchar(1000),City varchar(100), State varchar(100),Zip varchar(100),Country varchar(50),Email varchar(250), WebAddress varchar(50),Phone varchar(15),Mobile varchar(15),Fax varchar(15),Description varchar(500),PANNO varchar(200),VATNO varchar(200),CSTNO varchar(200),ServiceTaxAmmount decimal,ExciseTaxAmmount decimal,GSTTaxAmmount decimal, Isactive bit,RagistrationDate datetime)
+
+

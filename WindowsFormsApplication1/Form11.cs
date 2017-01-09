@@ -54,6 +54,7 @@ namespace WindowsFormsApplication1
             butRemoveItem.TabStop = true;
             butSaveButton.TabStop = false;
             butClose.TabStop = false;
+            gridsalesdelivary.TabStop = false;
             ButSelectPurchaseOrder.TabStop = false;
         }
         //private void tabindex()
@@ -607,6 +608,8 @@ namespace WindowsFormsApplication1
                 rowcollection(Collection);
                 panel2.Visible = false;
                 tab1();
+                txtcustomercode.TabStop = true;
+                butcustomercode.TabStop = true;
             }
             if (counter == 1)
             {
@@ -809,33 +812,53 @@ namespace WindowsFormsApplication1
 
         private void gridsalesdelivary_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (addToCartTable.Rows.Count > 0)
+            if (gridsalesdelivary.Rows.Count > 0)
             {
-                string Amount = gridsalesdelivary.SelectedRows[0].Cells[4].Value.ToString();
-                double totalAmount = Convert.ToDouble(txtTotalAmmount.Text);
-                totalAmount -= Convert.ToDouble(Amount.Trim());
-                txtTotalAmmount.Text = totalAmount.ToString();
-                int index = gridsalesdelivary.SelectedRows[0].Index;
-                addToCartTable.Rows.RemoveAt(index);
-
-                gridsalesdelivary.DataSource = addToCartTable;
-                if (addToCartTable.Rows.Count == 0)
-                {
-                    txtTotalAmmount.Text = "0.0";
-                    txtDiscount.Text = "0.0";
-                }
-                if (gridsalesdelivary.Rows.Count > 0)
-                {
-                    butRemoveItem.Enabled = true;
-                    gridsalesdelivary.Rows[gridsalesdelivary.Rows.Count-1].Selected = true;
-                }
-                else
-                {
-                    butRemoveItem.Enabled = false;
-                }
-                butRemoveItem.Enabled = false;
-                
+                butRemoveItem.Enabled = true;
             }
+          
+             if (e.KeyChar == (char)Keys.Escape)
+            {
+                txtItemCode.Enabled= true;
+                txtItemCode.Focus();
+                txtItemCode.TabIndex = 1;
+            }
+             if (e.KeyChar == (char)Keys.Enter)
+             {
+                 if (addToCartTable.Rows.Count > 0)
+                 {
+                     string Amount = gridsalesdelivary.SelectedRows[0].Cells[4].Value.ToString();
+                     double totalAmount = Convert.ToDouble(txtTotalAmmount.Text);
+                     totalAmount -= Convert.ToDouble(Amount.Trim());
+                     txtTotalAmmount.Text = totalAmount.ToString();
+                     int index = gridsalesdelivary.SelectedRows[0].Index;
+                     addToCartTable.Rows.RemoveAt(index);
+
+                     gridsalesdelivary.DataSource = addToCartTable;
+                     if (addToCartTable.Rows.Count == 0)
+                     {
+                         txtTotalAmmount.Text = "0.0";
+                         txtDiscount.Text = "0.0";
+                     }
+                     if (gridsalesdelivary.Rows.Count > 0)
+                     {
+                         butRemoveItem.Enabled = true;
+                         gridsalesdelivary.Rows[gridsalesdelivary.Rows.Count - 1].Selected = true;
+                     }
+                     if (gridsalesdelivary.Rows.Count == 0)
+                     {
+                         txtItemCode.Enabled = true;
+                         txtItemCode.Focus();
+                     }
+
+                     else
+                     {
+                         butRemoveItem.Enabled = false;
+                     }
+                     butRemoveItem.Enabled = false;
+
+                 }
+             }
         }
 
 

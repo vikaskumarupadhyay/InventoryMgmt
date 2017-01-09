@@ -233,6 +233,7 @@ namespace WindowsFormsApplication1
                 txtAmount.Text = "";
                 txtitemcode.Focus();
               
+        
         }
     
 
@@ -453,6 +454,8 @@ namespace WindowsFormsApplication1
                 rowcollection(Collection);
                 panel2.Visible = false;
                 tab1();
+                txtcustomercode.TabStop = true;
+                button1.TabStop = true;
             }
             if (counter == 1)
             {
@@ -460,6 +463,7 @@ namespace WindowsFormsApplication1
                 rowcollection1(Collection1);
                 panel2.Visible = false;
                 tab2();
+               
             }
             if (counter == 2)
             {
@@ -657,49 +661,67 @@ namespace WindowsFormsApplication1
                         panel2.Visible = false;
                         tab2();
                     }
-                   
-                   
-                   
-                   
                    // tab5();
                 }
             }
         }
 
-       
+
 
         private void gridsalesorder_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (addToCartTable.Rows.Count > 0)
+            if (gridsalesorder.Rows.Count > 0)
             {
-                string Amount = gridsalesorder.SelectedRows[0].Cells[4].Value.ToString();
-                double totalAmount = Convert.ToDouble(txttotalammount.Text);
-                totalAmount -= Convert.ToDouble(Amount.Trim());
-                txttotalammount.Text = totalAmount.ToString();
-                int index = gridsalesorder.SelectedRows[0].Index;
-                addToCartTable.Rows.RemoveAt(index);
-
-                gridsalesorder.DataSource = addToCartTable;
-                if (addToCartTable.Rows.Count == 0)
-                {
-                    txttotalammount.Text = "0.0";
-                    txtdiscount.Text = "0.0";
-                }
-                if (gridsalesorder.Rows.Count > 0)
-                {
-                    button4.Enabled = true;
-                    gridsalesorder.Rows[gridsalesorder.Rows.Count-1].Selected = true;
-                }
-                else
-                {
-                    button4.Enabled = false;
-                }
-                txtQuantity.TabStop = false;
+                button4.Enabled = true;
             }
-            button4.Enabled = false;
-           
+          
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                txtitemcode.Enabled = true;
+                txtitemcode.Focus();
+                txtitemcode.TabIndex = 1;
+            }
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if (addToCartTable.Rows.Count > 0)
+                {
+                    string Amount = gridsalesorder.SelectedRows[0].Cells[4].Value.ToString();
+                    double totalAmount = Convert.ToDouble(txttotalammount.Text);
+                    totalAmount -= Convert.ToDouble(Amount.Trim());
+                    txttotalammount.Text = totalAmount.ToString();
+                    int index = gridsalesorder.SelectedRows[0].Index;
+                    addToCartTable.Rows.RemoveAt(index);
+
+                    gridsalesorder.DataSource = addToCartTable;
+                    if (addToCartTable.Rows.Count == 0)
+                    {
+                        txttotalammount.Text = "0.0";
+                        txtdiscount.Text = "0.0";
+                    }
+                   
+                    if (gridsalesorder.Rows.Count > 0)
+                    {
+                        button4.Enabled = true;
+                        gridsalesorder.Rows[gridsalesorder.Rows.Count - 1].Selected = true;
+                    }
+                    if (gridsalesorder.Rows.Count == 0)
+                    {
+                        txtitemcode.Enabled = true;
+                        txtitemcode.Focus();
+                    }
+                    else
+                    {
+                        button4.Enabled = false;
+                    }
+                    txtQuantity.TabStop = false;
+                }
+               
+                button4.Enabled = false;
+
+            }
         }
 
+      
        
 
   

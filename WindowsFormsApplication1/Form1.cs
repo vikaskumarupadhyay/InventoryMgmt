@@ -153,5 +153,12 @@ namespace WindowsFormsApplication1
             f15.MdiParent = this;
         }
 
+        private void compnayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Compnay f = new Compnay();
+            f.Show();
+            f.MdiParent = this;
+        }
+
     }
 }

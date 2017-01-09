@@ -83,7 +83,8 @@
             this.itemToolStripMenuItem,
             this.customerToolStripMenuItem,
             this.toolStripSeparator1,
-            this.exitToolStripMenuItem});
+            this.exitToolStripMenuItem,
+            this.compnayToolStripMenuItem});
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.newToolStripMenuItem.Text = "New";
@@ -271,6 +272,7 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
+<<<<<<< HEAD
             // companyToolStripMenuItem
             // 
             this.companyToolStripMenuItem.Name = "companyToolStripMenuItem";
@@ -281,6 +283,14 @@
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
+=======
+            // compnayToolStripMenuItem
+            // 
+            this.compnayToolStripMenuItem.Name = "compnayToolStripMenuItem";
+            this.compnayToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.compnayToolStripMenuItem.Text = "Compnay";
+            this.compnayToolStripMenuItem.Click += new System.EventHandler(this.compnayToolStripMenuItem_Click);
+>>>>>>> dinesh change
             // 
             // Form1
             // 
@@ -331,8 +341,12 @@
         private System.Windows.Forms.ToolStripMenuItem purchaseToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+<<<<<<< HEAD
         private System.Windows.Forms.ToolStripMenuItem companyToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+=======
+        private System.Windows.Forms.ToolStripMenuItem compnayToolStripMenuItem;
+>>>>>>> dinesh change
     }
 }
 

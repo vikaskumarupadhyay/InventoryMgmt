@@ -605,9 +605,9 @@
             this.panel1.Controls.Add(this.butclose);
             this.panel1.Controls.Add(this.butupdate);
             this.panel1.Controls.Add(this.butaddrecord);
-            this.panel1.Location = new System.Drawing.Point(0, 5);
+            this.panel1.Location = new System.Drawing.Point(0, 92);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(803, 617);
+            this.panel1.Size = new System.Drawing.Size(803, 530);
             this.panel1.TabIndex = 11;
             // 
             // groupBox3
@@ -679,6 +679,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(777, 453);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 2;
+            //this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
             this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress_1);
             // 
