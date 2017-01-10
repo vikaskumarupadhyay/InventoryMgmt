@@ -157,9 +157,9 @@ namespace WindowsFormsApplication1
 
         private void companyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Compnay f = new Compnay();
-            //f.Show();
-            //f.MdiParent = this;
+            Company_New f = new Company_New();
+            f.Show();
+            f.MdiParent = this;
         }
 
     }

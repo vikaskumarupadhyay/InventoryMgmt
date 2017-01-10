@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class Compnay
+    partial class Company_New
     {
         /// <summary>
         /// Required designer variable.

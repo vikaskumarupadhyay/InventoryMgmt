@@ -6,19 +6,18 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace WindowsFormsApplication1
 {
-    public partial class Compnay : Form
+    public partial class Company_New : Form
     {
         DB_Main d = new DB_Main();
         public int updatecounter = 0;
-        public Compnay()
+        public Company_New()
         {
             InitializeComponent();
         }
-       
+
 
         private void Compnay_Load(object sender, EventArgs e)
         {
@@ -65,25 +64,25 @@ namespace WindowsFormsApplication1
             txtCompnayName.Text = "";
             txtCompnayAddress.Text = "";
             txtCity.Text = "";
-            txtState.Text="";
+            txtState.Text = "";
             txtZip.Text = "";
-            txtCountry.Text="";
+            txtCountry.Text = "";
             txtEmailAddress.Text = "";
             txtWebSite.Text = "";
             txtPhone.Text = "";
             txtMobile.Text = "";
             txtFax.Text = "";
             txtPanNo.Text = "";
-            txtVatNo.Text="";
-            txtCstNo.Text="";
-            txtExcise.Text="";
+            txtVatNo.Text = "";
+            txtCstNo.Text = "";
+            txtExcise.Text = "";
             txtSarvice.Text = "";
             txtGst.Text = "";
             txtDescription.Text = "";
-            
+
 
         }
-       
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (updatecounter == 0)
@@ -127,13 +126,13 @@ namespace WindowsFormsApplication1
 
             DataTable dt = d.getDetailByQuery(selectQuery1);
             dataGridView1.DataSource = dt;
-           // panel1.Visible = false;
+            // panel1.Visible = false;
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             string s = ComDetails.SelectedValue.ToString();
-            string selectQuery1 = "select CompnayId, Name ,Address,City,State,Zip,Country,Email,WebAddress,Phone,Mobile,Fax,Description,PANNO,VATNO,CSTNO,ServiceTaxAmmount,ExciseTaxAmmount,GSTTaxAmmount,Isactive,RagistrationDate from CompnayDetails where " + s+ " like '" + txtSearch.Text + "%'";
+            string selectQuery1 = "select CompnayId, Name ,Address,City,State,Zip,Country,Email,WebAddress,Phone,Mobile,Fax,Description,PANNO,VATNO,CSTNO,ServiceTaxAmmount,ExciseTaxAmmount,GSTTaxAmmount,Isactive,RagistrationDate from CompnayDetails where " + s + " like '" + txtSearch.Text + "%'";
 
             DataTable dt = d.getDetailByQuery(selectQuery1);
             dataGridView1.DataSource = dt;
@@ -161,8 +160,8 @@ namespace WindowsFormsApplication1
                 txtExcise.Text = cellcolection[16].Value.ToString();
                 txtGst.Text = cellcolection[17].Value.ToString();
                 txtDescription.Text = cellcolection[18].Value.ToString();
-             }
-            catch(Exception ex)
+            }
+            catch (Exception ex)
             {
             }
         }
@@ -173,7 +172,7 @@ namespace WindowsFormsApplication1
             DataGridViewCellCollection cellcollection = dataGridView1.Rows[0].Cells;
             setdetails(cellcollection);
             panel1.Visible = false;
-         
+
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -184,7 +183,7 @@ namespace WindowsFormsApplication1
             panel1.Visible = false;
         }
 
-       
+
 
     }
 }

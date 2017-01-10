@@ -67,11 +67,11 @@
       <DependentUpon>ChaqueForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
-    <Compile Include="Compnay.cs">
+    <Compile Include="Company_New.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Compnay.Designer.cs">
-      <DependentUpon>Compnay.cs</DependentUpon>
+    <Compile Include="Company_New.Designer.cs">
+      <DependentUpon>Company_New.cs</DependentUpon>
     </Compile>
     <Compile Include="Customer list.cs">
       <SubType>Form</SubType>
@@ -212,9 +212,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ChaqueForm.resx">
       <DependentUpon>ChaqueForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Compnay.resx">
-      <DependentUpon>Compnay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Customer list.resx">
       <DependentUpon>Customer list.cs</DependentUpon>
