@@ -207,6 +207,7 @@ namespace WindowsFormsApplication1
         private void txtProductName_KeyPress(object sender, KeyPressEventArgs e)
         {
 
+
         }
 
         private void txtProductName_KeyDown(object sender, KeyEventArgs e)
@@ -318,6 +319,7 @@ namespace WindowsFormsApplication1
         private void txtRemoveItem_Click(object sender, EventArgs e)
         {
             gridPurchaseOrder.Focus();
+            txtRemoveItem.Enabled = false;
            
             //if (addToCartTable.Rows.Count > 0)
             //{
@@ -503,7 +505,7 @@ namespace WindowsFormsApplication1
             counter = 0;
             if (counter == 0)
             {
-                string insertqurry = "insert into VendorOrderDetails values('" + txtVendorCode.Text + "','" + dtpDate.Text + "','" + txtTotalAmount.Text + "')";
+                string insertqurry = "insert into VendorOrderDetails values('" + txtVendorCode.Text + "','" + dtpDate.Text + "','" + txtTotalAmount.Text + "','"+txtDiscount.Text+"')";
                 int insertedRows = dbMainClass.saveDetails(insertqurry);
                 if (insertedRows > 0)
                 {
@@ -756,14 +758,14 @@ namespace WindowsFormsApplication1
                     {
                         txtItemCode.Focus();
                     }
-                    //if (gridPurchaseOrder.Rows.Count > 0)
-                    //{
-                    //    txtRemoveItem.Enabled = true;
-                    //}
-                    //else
-                    //{
-                    //    txtRemoveItem.Enabled = false;
-                    //}
+                    if (gridPurchaseOrder.Rows.Count > 0)
+                    {
+                        gridPurchaseOrder.Rows[gridPurchaseOrder.Rows.Count - 1].Selected = true;
+                    }
+                    else
+                    {
+                        //txtRemoveItem.Enabled = false;
+                    }
                    
                 }
             }
@@ -787,7 +789,28 @@ namespace WindowsFormsApplication1
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+        }
+        private void txtItemCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                    txtAmount.Text = "";
+                    txtQuanity.Text = "";
+                    txtItemCode.Focus();
 
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
         }
     }
 }

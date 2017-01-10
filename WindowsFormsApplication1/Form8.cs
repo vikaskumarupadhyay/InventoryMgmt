@@ -824,7 +824,7 @@ namespace WindowsFormsApplication1
             {
                 buttSave.Enabled = true;
             }
-            int totel = 0;
+            int totel =0;
             string selc = "select * from CustomerOrderDelivery where Deliveryid ='" + txtRef.Text + "'";
             DataTable dt2 = dbMainClass.getDetailByQuery(selc);
             if (dt2 != null && dt2.Rows != null && dt2.Rows.Count > 0)
@@ -854,7 +854,7 @@ namespace WindowsFormsApplication1
                     //    txtFax.Text = dr1[6].ToString();
                     //}
                     //string b = dr[2].ToString();
-                   string selectqurry1 = "select vodd.ItemId,td.ItemName, vodd.Quantity,vodd.Price,vodd.TotalPrice from VendorOrderDetails vod join VendorOrderDesc vodd on vod.Orderid=vodd.Orderid join ItemDetails td on td.ItemId=vodd.ItemId where vod. Orderid='" + c + "'";
+                    string selectqurry1 = "select vodd.ItemId,td.ItemName, vodd.Quantity,vodd.Price,vodd.TotalPrice,vod.TotalPrice from VendorOrderDetails vod join VendorOrderDesc vodd on vod.Orderid=vodd.Orderid join ItemDetails td on td.ItemId=vodd.ItemId where vod. Orderid='" + c + "'";
                     DataTable dt3 = dbMainClass.getDetailByQuery(selectqurry1);
                     int totalRowCount = addToCartTable.Rows.Count;
                     for (int rowCount = 0; rowCount < totalRowCount; rowCount++)
@@ -870,6 +870,7 @@ namespace WindowsFormsApplication1
                         string txtQuanity = dr2[2].ToString();
                         string txtAmoun = dr2[3].ToString();
                         string txtitemNmae = dr2[4].ToString();
+                        //totel = dr2[5].ToString();
                         int amt = Convert.ToInt32(txtitemNmae);
                         totel = totel + amt;
 

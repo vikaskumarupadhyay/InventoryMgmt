@@ -465,7 +465,7 @@ namespace WindowsFormsApplication1
 
         private void txtdis_TextChanged(object sender, EventArgs e)
         {
-            double totalAmount = 0.0;
+            double totalAmount = 0.00;//Convert.ToDouble(txttotalAmount.Text);
             foreach (DataRow dr in addToCartTable.Rows)
             {
                 totalAmount += Convert.ToDouble(dr[4].ToString());
@@ -743,14 +743,18 @@ namespace WindowsFormsApplication1
 
         private void txtRef_TextChanged(object sender, EventArgs e)
         {
-
+            string tot = "";
             int totel = 0;
-            string select = "select vo.Orderid,vo.venderId,vod.ItemId from VendorOrderDesc vod join VendorOrderDetails vo on vod.Orderid=vo.Orderid where vo.Orderid='" + txtRef.Text + "'";
+            string select = "select vo.Orderid,vo.venderId,vod.ItemId,vo.Discount from VendorOrderDesc vod join VendorOrderDetails vo on vod.Orderid=vo.Orderid where vo.Orderid='" + txtRef.Text + "'";
             DataTable dt = dbMainClass.getDetailByQuery(select);
+            //string dis = "";
             if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
             {
                 DataRow dr = dt.Rows[0];
                 string a = dr[1].ToString();
+                string dis = dr[3].ToString();
+               txtdis.Text = dis;
+               //txttotalAmount.Text = dis;
                 string select1 = "select venderId,vName,vCompName,vAddress ,vPhone,vMobile,vFax from VendorDetails where venderId='" + a + "'";
                 makeBlnk(select1);
                 //DataTable dt1 = dbMainClass.getDetailByQuery(select1);
@@ -783,8 +787,9 @@ namespace WindowsFormsApplication1
                     string txtAmoun = dr2[3].ToString();
                     string txtitemNmae = dr2[4].ToString();
                     string txtitemNmea = dr2[5].ToString();
-                    int amt = Convert.ToInt32(txtitemNmea);
-                    totel = totel + amt;
+                    tot = txtitemNmea;
+                    //int amt = Convert.ToInt32(txtitemNmea);
+                    //totel = totel + amt;
                     dr2 = addToCartTable.NewRow();
                     dr2[0] = txtItemCode.Trim();
                     dr2[1] = txtRate.Trim();
@@ -796,7 +801,7 @@ namespace WindowsFormsApplication1
                     addToCartTable.Rows.Add(dr2);
                 }
                 dataGridView1.DataSource = addToCartTable;
-                txttotalAmount.Text = totel.ToString();
+                txttotalAmount.Text = tot;
             }
         }
 
@@ -908,23 +913,25 @@ namespace WindowsFormsApplication1
 
         private void txtItemCode_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //if (Char.IsDigit(e.KeyChar))
-            //{
-            //    e.Handled = false;
-            //}
-            //else
-            //{
-            //    if (e.KeyChar == '\b')
-            //    {
-                   
-            //        e.Handled = false;
-            //        txtQunty.ReadOnly = true;
-            //    }
-            //    else
-            //    {
-            //        e.Handled = true;
-            //    }
-            //}
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                    txtAmount.Text = "";
+                    txtQunty.Text = "";
+                    txtItemCode.Focus();
+
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
         }
 
         private void dataGridView2_KeyPress(object sender, KeyPressEventArgs e)
@@ -1075,10 +1082,10 @@ namespace WindowsFormsApplication1
                     {
                         txtItemCode.Focus();
                     }
-                    //if (dataGridView1.Rows.Count > 0)
-                    //{
-                    //    button4.Enabled = true;
-                    //}
+                    if (dataGridView1.Rows.Count > 0)
+                    {
+                        dataGridView1.Rows[dataGridView1.Rows.Count - 1].Selected = true;
+                    }
                     //else
                     //{
                     //    button4.Enabled = false;

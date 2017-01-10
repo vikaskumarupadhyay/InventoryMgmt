@@ -728,6 +728,18 @@
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
+            this.panel2.Size = new System.Drawing.Size(847, 591);
+            this.panel2.TabIndex = 40;
+            // 
+            // butClose
+            // 
+            this.butClose.Location = new System.Drawing.Point(118, 518);
+            this.butClose.Name = "butClose";
+            this.butClose.Size = new System.Drawing.Size(80, 26);
+            this.butClose.TabIndex = 4;
+            this.butClose.Text = "Close";
+            this.butClose.UseVisualStyleBackColor = true;
+            this.butClose.Click += new System.EventHandler(this.butClose_Click);
             // 
             // comboBox1
             // 
