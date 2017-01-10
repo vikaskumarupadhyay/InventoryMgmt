@@ -60,7 +60,7 @@
     <Compile Include="ChaquePayment.Designer.cs">
       <DependentUpon>ChaquePayment.cs</DependentUpon>
     </Compile>
-      <Compile Include="ChaqueForm.cs">
+    <Compile Include="ChaqueForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ChaqueForm.Designer.cs">
@@ -104,6 +104,12 @@
     </Compile>
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form3.Designer.cs">
+      <DependentUpon>Form3.cs</DependentUpon>
     </Compile>
     <Compile Include="ItemDetails.cs" />
     <Compile Include="ItemList1.cs">

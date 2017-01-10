@@ -153,11 +153,13 @@ namespace WindowsFormsApplication1
             f15.MdiParent = this;
         }
 
-        private void compnayToolStripMenuItem_Click(object sender, EventArgs e)
+        
+
+        private void companyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Compnay f = new Compnay();
-            f.Show();
-            f.MdiParent = this;
+            //Compnay f = new Compnay();
+            //f.Show();
+            //f.MdiParent = this;
         }
 
     }
