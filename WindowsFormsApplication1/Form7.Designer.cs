@@ -441,6 +441,7 @@
             // 
             this.txtSrNo.Location = new System.Drawing.Point(69, 21);
             this.txtSrNo.Name = "txtSrNo";
+            this.txtSrNo.ReadOnly = true;
             this.txtSrNo.Size = new System.Drawing.Size(135, 21);
             this.txtSrNo.TabIndex = 6;
             this.txtSrNo.TabStop = false;
@@ -603,6 +604,7 @@
             this.textVendercod.Text = "V";
             this.textVendercod.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textVendercod.TextChanged += new System.EventHandler(this.textVendercod_TextChanged);
+            this.textVendercod.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textVendercod_KeyPress);
             // 
             // label3
             // 
@@ -713,7 +715,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1036, 598);
-            this.panel2.TabIndex = 67;
+            this.panel2.TabIndex = 40;
             // 
             // groupBox4
             // 
@@ -728,18 +730,6 @@
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
-            this.panel2.Size = new System.Drawing.Size(847, 591);
-            this.panel2.TabIndex = 40;
-            // 
-            // butClose
-            // 
-            this.butClose.Location = new System.Drawing.Point(118, 518);
-            this.butClose.Name = "butClose";
-            this.butClose.Size = new System.Drawing.Size(80, 26);
-            this.butClose.TabIndex = 4;
-            this.butClose.Text = "Close";
-            this.butClose.UseVisualStyleBackColor = true;
-            this.butClose.Click += new System.EventHandler(this.butClose_Click);
             // 
             // comboBox1
             // 
@@ -788,6 +778,7 @@
             this.butClose.TabIndex = 4;
             this.butClose.Text = "Back";
             this.butClose.UseVisualStyleBackColor = true;
+            this.butClose.Click += new System.EventHandler(this.butClose_Click);
             // 
             // dataGridView2
             // 
@@ -799,6 +790,7 @@
             this.dataGridView2.Size = new System.Drawing.Size(1007, 467);
             this.dataGridView2.StandardTab = true;
             this.dataGridView2.TabIndex = 3;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // Form7
             // 

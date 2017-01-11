@@ -126,6 +126,8 @@ alter table VendorDetails add vExciseRegnNo varchar(100)
 
 alter table VendorDetails add vGSTRegnNo varchar(100)
 
+alter table VendorOrderDetails add Discount decimal
+
 Sp_rename 'VendorDetails.vTinNo','vVatNo'
 
 Sp_rename 'VendorDetails.vOther','vCstNo'

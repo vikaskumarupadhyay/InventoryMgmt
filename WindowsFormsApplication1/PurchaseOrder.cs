@@ -63,7 +63,10 @@ namespace WindowsFormsApplication1
 
         private void txtVendorCode_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                IndexTex3();
+            }
         }
 
         private void txtVendorCode_KeyUp(object sender, KeyEventArgs e)
@@ -132,10 +135,11 @@ namespace WindowsFormsApplication1
 
         private void txtVendorCode_TextChanged(object sender, EventArgs e)
         {
+
             if (txtVendorCode.Text.Trim() != "" && txtVendorCode.Text.StartsWith("V"))
             {
                 setVAlue();
-                IndexTex3();
+                
             }
         }
 
@@ -186,10 +190,8 @@ namespace WindowsFormsApplication1
        {
             string itemCode = txtItemCode.Text;
             setitemVlue("ItemId", itemCode);
-            txtQuanity.ReadOnly = false;
-            btnAddItem.Enabled = true;
-            txtQuanity.Enabled = true;
-            IndexTex2();
+            txtItemCode.Focus();
+           
         }
 
         private void txtProductName_TextChanged(object sender, EventArgs e)
@@ -206,7 +208,7 @@ namespace WindowsFormsApplication1
 
         private void txtProductName_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+          
 
         }
 
@@ -243,10 +245,12 @@ namespace WindowsFormsApplication1
         #region /////////// AddToList Clicked ///////////////
         private void btnAddItem_Click(object sender, EventArgs e)
         {
-            txtRemoveItem.Focus();
+            txtItemCode.Focus();
             txtVendorCode.TabStop = false;
             button1.TabStop = false;
             txtDiscount.TabStop = false;
+            //txtRemoveItem.Focus();
+           
             //string qurry = "select CurrentQuantity from ItemQuantityDetail where ItemId='" + txtItemCode.Text + "'";
             //DataTable dt = dbMainClass.getDetailByQuery(qurry);
             //string id = "";
@@ -296,7 +300,7 @@ namespace WindowsFormsApplication1
                     txtAmount.Text = "0.0";
                    // txtItemCode.Focus();
                     btnAddItem.Enabled = false;
-                    txtRemoveItem.Focus();
+                    //txtRemoveItem.Focus();
                     txtQuanity.TabStop = false;
                     txtQuanity.Enabled = false;
                 }
@@ -530,6 +534,10 @@ namespace WindowsFormsApplication1
                     if (insertedRows1 > 0)
                     {
                         MessageBox.Show("Details Saved Successfully");
+
+                        int id2 = Convert.ToInt32(txtSrNo.Text);
+                        int id3 = id2 + 1;
+                        txtSrNo.Text = id3.ToString();
                     }
 
                     else
@@ -538,14 +546,11 @@ namespace WindowsFormsApplication1
                     }
 
                 }
-                makeBlank();
-                int id2 = Convert.ToInt32(txtSrNo.Text);
-                int id3 = id2 + 1;
-                txtSrNo.Text = id3.ToString();
-                txtVendorCode.Focus();
+               
             }
-           
-            
+
+            makeBlank();
+            txtVendorCode.Focus(); 
 
         }
         private void makeBlank()
@@ -570,6 +575,10 @@ namespace WindowsFormsApplication1
 
         private void txtQuanity_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                btnAddItem.Focus();
+            }
             if (Char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
@@ -792,6 +801,17 @@ namespace WindowsFormsApplication1
         }
         private void txtItemCode_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                txtQuanity.ReadOnly = false;
+                btnAddItem.Enabled = true;
+                txtQuanity.Enabled = true;
+                IndexTex2();
+            }
+            if (e.KeyChar == Convert.ToChar(Keys.Escape))
+            {
+                txtRemoveItem.Focus();
+            }
             if (Char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
@@ -810,6 +830,30 @@ namespace WindowsFormsApplication1
                 {
                     e.Handled = true;
                 }
+            }
+        }
+
+        private void panel2_Paint_2(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnAddItem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                txtItemCode.Focus();
+                txtVendorCode.TabStop = false;
+                button1.TabStop = false;
+                txtDiscount.TabStop = false;
+            }
+        }
+
+        private void txtRemoveItem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Escape))
+            {
+                gridPurchaseOrder.Focus();
             }
         }
     }

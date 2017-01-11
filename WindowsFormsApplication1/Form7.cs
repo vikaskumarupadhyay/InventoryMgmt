@@ -317,7 +317,6 @@ namespace WindowsFormsApplication1
             if (textVendercod.Text.Trim() != "" && textVendercod.Text.StartsWith("V"))
             {
                 setVAlue();
-                IndexTex3();
             }
         }
 
@@ -325,13 +324,8 @@ namespace WindowsFormsApplication1
         {
             string itemCode = txtItemCode.Text;
             setitemVlue("ItemId", itemCode);
-            txtQunty.ReadOnly = false;
-            button3.Enabled = true;
-            txtQunty.Enabled = true;
-            txtQunty.Focus();
-            IndexTex2();
-            textVendercod.TabStop = false;
-            button1.TabStop = false;
+            txtItemCode.Focus();
+         
         }
 
         private void txtProductName_TextChanged(object sender, EventArgs e)
@@ -406,7 +400,7 @@ namespace WindowsFormsApplication1
             txtRate.Text = "";
             txtQunty.Text = "";
             txtAmount.Text = "0.0";
-            button4.Focus();
+            txtItemCode.Focus();
             txtQunty.TabStop = false;
             txtQunty.Enabled = false;
             button3.Enabled = false;
@@ -497,7 +491,7 @@ namespace WindowsFormsApplication1
                 {
                     id2 = "1";
                     OrderID = id2;
-                    string insertqurry = "insert into VendorOrderDetails values('" + textVendercod.Text + "','" + txtdate.Text + "','" + txttotalAmount.Text + "')";
+                    string insertqurry = "insert into VendorOrderDetails values('" + textVendercod.Text + "','" + txtdate.Text + "','" + txttotalAmount.Text + "','"+txtdis.Text+"')";
                     int insertedRows = dbMainClass.saveDetails(insertqurry);
                     if (insertedRows > 0)
                     {
@@ -571,7 +565,7 @@ namespace WindowsFormsApplication1
                     int id3 = Convert.ToInt32(id2);
                     int id4 = id3 + 1;
                     OrderID = id4.ToString();
-                    string insertqurry1 = "insert into VendorOrderDetails values('" + textVendercod.Text + "','" + txtdate.Text + "','" + txttotalAmount.Text + "')";
+                    string insertqurry1 = "insert into VendorOrderDetails values('" + textVendercod.Text + "','" + txtdate.Text + "','" + txttotalAmount.Text + "','"+txtdis.Text+"')";
                     int insertedRows1 = dbMainClass.saveDetails(insertqurry1);
                     if (insertedRows1 > 0)
                     {
@@ -696,6 +690,10 @@ namespace WindowsFormsApplication1
         }
         private void txtQunty_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                button3.Focus();
+            }
             if (Char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
@@ -901,8 +899,10 @@ namespace WindowsFormsApplication1
 
         private void button4_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //if (dataGridView1.Rows.Count > 0)
-            //{
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                dataGridView1.Focus();
+            }
             //    button4.Enabled = true;
             //}
             //else
@@ -913,6 +913,21 @@ namespace WindowsFormsApplication1
 
         private void txtItemCode_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                txtQunty.ReadOnly = false;
+                button3.Enabled = true;
+                txtQunty.Enabled = true;
+                txtQunty.Focus();
+                IndexTex2();
+                textVendercod.TabStop = false;
+                button1.TabStop = false;
+            }
+            if (e.KeyChar == Convert.ToChar(Keys.Escape))
+            {
+               // txtItemCode.Focus();
+                button4.Focus();
+            }
             if (Char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
@@ -1096,6 +1111,19 @@ namespace WindowsFormsApplication1
             {
                 txtItemCode.Focus();
                 button4.Enabled = true;
+            }
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void textVendercod_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                IndexTex3();
             }
         }
     }

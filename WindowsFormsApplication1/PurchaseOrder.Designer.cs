@@ -292,6 +292,7 @@
             // 
             this.txtSrNo.Location = new System.Drawing.Point(67, 22);
             this.txtSrNo.Name = "txtSrNo";
+            this.txtSrNo.ReadOnly = true;
             this.txtSrNo.Size = new System.Drawing.Size(135, 21);
             this.txtSrNo.TabIndex = 6;
             this.txtSrNo.TabStop = false;
@@ -347,6 +348,7 @@
             this.txtRemoveItem.Text = "Remove Item";
             this.txtRemoveItem.UseVisualStyleBackColor = true;
             this.txtRemoveItem.Click += new System.EventHandler(this.txtRemoveItem_Click);
+            this.txtRemoveItem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRemoveItem_KeyPress);
             // 
             // btnAddItem
             // 
@@ -359,6 +361,7 @@
             this.btnAddItem.Text = "Add Item";
             this.btnAddItem.UseVisualStyleBackColor = true;
             this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
+            this.btnAddItem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnAddItem_KeyPress);
             this.btnAddItem.Leave += new System.EventHandler(this.btnAddItem_Leave);
             // 
             // txtAmount
@@ -688,6 +691,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1036, 598);
             this.panel2.TabIndex = 65;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint_2);
             // 
             // groupBox4
             // 

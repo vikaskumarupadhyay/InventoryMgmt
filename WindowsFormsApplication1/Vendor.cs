@@ -481,7 +481,7 @@ namespace WindowsFormsApplication1
             setDetails(cellCollection);
             panel1.Visible = false;
             updateCounter = 1;
-            Enabled1();
+           // Enabled1();
             txtVenderAddress.Focus();
             Tabindex2();
         }
