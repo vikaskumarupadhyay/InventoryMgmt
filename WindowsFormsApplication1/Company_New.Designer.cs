@@ -30,14 +30,8 @@
         {
             this.btnList = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.txtCstNo = new System.Windows.Forms.TextBox();
-            this.txtVatNo = new System.Windows.Forms.TextBox();
-            this.txtPanNo = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.btnClose = new System.Windows.Forms.Button();
-            this.label19 = new System.Windows.Forms.Label();
             this.txtFax = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtMobile = new System.Windows.Forms.TextBox();
@@ -53,6 +47,8 @@
             this.txtCompnayCode = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtwonername = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.dtpdate = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -62,6 +58,12 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
+            this.txtCstNo = new System.Windows.Forms.TextBox();
+            this.txtVatNo = new System.Windows.Forms.TextBox();
+            this.txtPanNo = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -82,6 +84,12 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.ComDetails = new System.Windows.Forms.ComboBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.txtcst = new System.Windows.Forms.TextBox();
+            this.checkcst = new System.Windows.Forms.CheckBox();
+            this.txtvat = new System.Windows.Forms.TextBox();
+            this.checkvat = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -94,7 +102,7 @@
             this.btnList.Location = new System.Drawing.Point(740, 8);
             this.btnList.Name = "btnList";
             this.btnList.Size = new System.Drawing.Size(66, 28);
-            this.btnList.TabIndex = 30;
+            this.btnList.TabIndex = 23;
             this.btnList.Text = "List";
             this.btnList.UseVisualStyleBackColor = true;
             this.btnList.Click += new System.EventHandler(this.btnList_Click);
@@ -102,56 +110,13 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(30, 558);
+            this.btnSave.Location = new System.Drawing.Point(45, 557);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(96, 28);
-            this.btnSave.TabIndex = 28;
+            this.btnSave.TabIndex = 21;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // txtCstNo
-            // 
-            this.txtCstNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCstNo.Location = new System.Drawing.Point(508, 312);
-            this.txtCstNo.Name = "txtCstNo";
-            this.txtCstNo.Size = new System.Drawing.Size(253, 21);
-            this.txtCstNo.TabIndex = 15;
-            // 
-            // txtVatNo
-            // 
-            this.txtVatNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtVatNo.Location = new System.Drawing.Point(290, 312);
-            this.txtVatNo.Name = "txtVatNo";
-            this.txtVatNo.Size = new System.Drawing.Size(212, 21);
-            this.txtVatNo.TabIndex = 14;
-            // 
-            // txtPanNo
-            // 
-            this.txtPanNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtPanNo.Location = new System.Drawing.Point(46, 312);
-            this.txtPanNo.MaxLength = 10;
-            this.txtPanNo.Name = "txtPanNo";
-            this.txtPanNo.Size = new System.Drawing.Size(238, 21);
-            this.txtPanNo.TabIndex = 13;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(505, 294);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(49, 15);
-            this.label21.TabIndex = 30;
-            this.label21.Text = "CST No";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(287, 294);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(47, 15);
-            this.label20.TabIndex = 29;
-            this.label20.Text = "VAT No";
             // 
             // txtDescription
             // 
@@ -160,26 +125,17 @@
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtDescription.Size = new System.Drawing.Size(715, 53);
-            this.txtDescription.TabIndex = 19;
+            this.txtDescription.TabIndex = 20;
             // 
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(132, 558);
+            this.btnClose.Location = new System.Drawing.Point(149, 555);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(102, 28);
-            this.btnClose.TabIndex = 29;
+            this.btnClose.TabIndex = 22;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(43, 294);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(50, 15);
-            this.label19.TabIndex = 28;
-            this.label19.Text = "PAN No";
             // 
             // txtFax
             // 
@@ -230,28 +186,28 @@
             this.txtCountry.Location = new System.Drawing.Point(584, 144);
             this.txtCountry.Name = "txtCountry";
             this.txtCountry.Size = new System.Drawing.Size(177, 21);
-            this.txtCountry.TabIndex = 7;
+            this.txtCountry.TabIndex = 6;
             // 
             // txtZip
             // 
             this.txtZip.Location = new System.Drawing.Point(427, 144);
             this.txtZip.Name = "txtZip";
             this.txtZip.Size = new System.Drawing.Size(151, 21);
-            this.txtZip.TabIndex = 6;
+            this.txtZip.TabIndex = 5;
             // 
             // txtState
             // 
             this.txtState.Location = new System.Drawing.Point(258, 144);
             this.txtState.Name = "txtState";
             this.txtState.Size = new System.Drawing.Size(163, 21);
-            this.txtState.TabIndex = 5;
+            this.txtState.TabIndex = 4;
             // 
             // txtCity
             // 
             this.txtCity.Location = new System.Drawing.Point(46, 144);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(206, 21);
-            this.txtCity.TabIndex = 4;
+            this.txtCity.TabIndex = 3;
             // 
             // txtCompnayAddress
             // 
@@ -259,11 +215,11 @@
             this.txtCompnayAddress.Multiline = true;
             this.txtCompnayAddress.Name = "txtCompnayAddress";
             this.txtCompnayAddress.Size = new System.Drawing.Size(715, 43);
-            this.txtCompnayAddress.TabIndex = 3;
+            this.txtCompnayAddress.TabIndex = 2;
             // 
             // txtCompnayName
             // 
-            this.txtCompnayName.Location = new System.Drawing.Point(135, 38);
+            this.txtCompnayName.Location = new System.Drawing.Point(330, 38);
             this.txtCompnayName.Name = "txtCompnayName";
             this.txtCompnayName.Size = new System.Drawing.Size(286, 21);
             this.txtCompnayName.TabIndex = 1;
@@ -288,6 +244,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtwonername);
+            this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.dtpdate);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.groupBox3);
@@ -330,13 +288,29 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Compnay Details";
             // 
+            // txtwonername
+            // 
+            this.txtwonername.Location = new System.Drawing.Point(144, 36);
+            this.txtwonername.Name = "txtwonername";
+            this.txtwonername.Size = new System.Drawing.Size(160, 21);
+            this.txtwonername.TabIndex = 44;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(141, 21);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(77, 15);
+            this.label17.TabIndex = 43;
+            this.label17.Text = "WonerName";
+            // 
             // dtpdate
             // 
             this.dtpdate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpdate.Location = new System.Drawing.Point(645, 36);
             this.dtpdate.Name = "dtpdate";
             this.dtpdate.Size = new System.Drawing.Size(103, 21);
-            this.dtpdate.TabIndex = 43;
+            this.dtpdate.TabIndex = 23;
             // 
             // label16
             // 
@@ -358,7 +332,7 @@
             this.groupBox3.Location = new System.Drawing.Point(52, 339);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(709, 59);
-            this.groupBox3.TabIndex = 31;
+            this.groupBox3.TabIndex = 16;
             this.groupBox3.TabStop = false;
             // 
             // txtGst
@@ -367,7 +341,7 @@
             this.txtGst.Location = new System.Drawing.Point(460, 31);
             this.txtGst.Name = "txtGst";
             this.txtGst.Size = new System.Drawing.Size(253, 21);
-            this.txtGst.TabIndex = 39;
+            this.txtGst.TabIndex = 19;
             // 
             // txtExcise
             // 
@@ -375,7 +349,7 @@
             this.txtExcise.Location = new System.Drawing.Point(242, 31);
             this.txtExcise.Name = "txtExcise";
             this.txtExcise.Size = new System.Drawing.Size(212, 21);
-            this.txtExcise.TabIndex = 38;
+            this.txtExcise.TabIndex = 18;
             // 
             // txtSarvice
             // 
@@ -383,7 +357,7 @@
             this.txtSarvice.Location = new System.Drawing.Point(-2, 31);
             this.txtSarvice.Name = "txtSarvice";
             this.txtSarvice.Size = new System.Drawing.Size(238, 21);
-            this.txtSarvice.TabIndex = 37;
+            this.txtSarvice.TabIndex = 17;
             // 
             // label24
             // 
@@ -411,6 +385,58 @@
             this.label22.Size = new System.Drawing.Size(125, 15);
             this.label22.TabIndex = 41;
             this.label22.Text = "Service Tax Regn. No";
+            // 
+            // txtCstNo
+            // 
+            this.txtCstNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtCstNo.Location = new System.Drawing.Point(508, 312);
+            this.txtCstNo.Name = "txtCstNo";
+            this.txtCstNo.Size = new System.Drawing.Size(253, 21);
+            this.txtCstNo.TabIndex = 15;
+            // 
+            // txtVatNo
+            // 
+            this.txtVatNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtVatNo.Location = new System.Drawing.Point(290, 312);
+            this.txtVatNo.Name = "txtVatNo";
+            this.txtVatNo.Size = new System.Drawing.Size(212, 21);
+            this.txtVatNo.TabIndex = 14;
+            // 
+            // txtPanNo
+            // 
+            this.txtPanNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtPanNo.Location = new System.Drawing.Point(46, 312);
+            this.txtPanNo.MaxLength = 10;
+            this.txtPanNo.Name = "txtPanNo";
+            this.txtPanNo.Size = new System.Drawing.Size(238, 21);
+            this.txtPanNo.TabIndex = 13;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(505, 294);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(49, 15);
+            this.label21.TabIndex = 30;
+            this.label21.Text = "CST No";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(287, 294);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(47, 15);
+            this.label20.TabIndex = 29;
+            this.label20.Text = "VAT No";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(43, 294);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(50, 15);
+            this.label19.TabIndex = 28;
+            this.label19.Text = "PAN No";
             // 
             // label11
             // 
@@ -487,7 +513,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(154, 20);
+            this.label2.Location = new System.Drawing.Point(325, 20);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 15);
             this.label2.TabIndex = 1;
@@ -513,9 +539,9 @@
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.ComDetails);
-            this.panel1.Location = new System.Drawing.Point(27, 8);
+            this.panel1.Location = new System.Drawing.Point(27, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(793, 614);
+            this.panel1.Size = new System.Drawing.Size(793, 533);
             this.panel1.TabIndex = 31;
             // 
             // butClose
@@ -555,8 +581,10 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(761, 474);
+            this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
             // 
             // txtSearch
             // 
@@ -600,17 +628,85 @@
             this.ComDetails.Size = new System.Drawing.Size(165, 21);
             this.ComDetails.TabIndex = 0;
             // 
-            // Compnay
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(672, 559);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(122, 20);
+            this.textBox3.TabIndex = 37;
+            this.textBox3.Text = "0";
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(611, 561);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(48, 17);
+            this.checkBox3.TabIndex = 36;
+            this.checkBox3.Text = "GST";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.Click += new System.EventHandler(this.checkBox3_Click);
+            // 
+            // txtcst
+            // 
+            this.txtcst.Location = new System.Drawing.Point(483, 561);
+            this.txtcst.Name = "txtcst";
+            this.txtcst.ReadOnly = true;
+            this.txtcst.Size = new System.Drawing.Size(122, 20);
+            this.txtcst.TabIndex = 35;
+            this.txtcst.Text = "0";
+            // 
+            // checkcst
+            // 
+            this.checkcst.AutoSize = true;
+            this.checkcst.Location = new System.Drawing.Point(428, 563);
+            this.checkcst.Name = "checkcst";
+            this.checkcst.Size = new System.Drawing.Size(47, 17);
+            this.checkcst.TabIndex = 34;
+            this.checkcst.Text = "CST";
+            this.checkcst.UseVisualStyleBackColor = true;
+            this.checkcst.Click += new System.EventHandler(this.checkcst_Click);
+            // 
+            // txtvat
+            // 
+            this.txtvat.Location = new System.Drawing.Point(310, 561);
+            this.txtvat.Name = "txtvat";
+            this.txtvat.ReadOnly = true;
+            this.txtvat.Size = new System.Drawing.Size(112, 20);
+            this.txtvat.TabIndex = 33;
+            this.txtvat.Text = "0";
+            this.txtvat.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // checkvat
+            // 
+            this.checkvat.AutoSize = true;
+            this.checkvat.Location = new System.Drawing.Point(257, 562);
+            this.checkvat.Name = "checkvat";
+            this.checkvat.Size = new System.Drawing.Size(47, 17);
+            this.checkvat.TabIndex = 32;
+            this.checkvat.Text = "VAT";
+            this.checkvat.UseVisualStyleBackColor = true;
+            this.checkvat.Click += new System.EventHandler(this.checkvat_Click);
+            // 
+            // Company_New
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(832, 626);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.checkBox3);
+            this.Controls.Add(this.txtcst);
+            this.Controls.Add(this.checkcst);
+            this.Controls.Add(this.txtvat);
+            this.Controls.Add(this.checkvat);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnList);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Compnay";
+            this.Name = "Company_New";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Compnay";
             this.Load += new System.EventHandler(this.Compnay_Load);
             this.groupBox1.ResumeLayout(false);
@@ -621,6 +717,7 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -628,14 +725,8 @@
 
         private System.Windows.Forms.Button btnList;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.TextBox txtCstNo;
-        private System.Windows.Forms.TextBox txtVatNo;
-        private System.Windows.Forms.TextBox txtPanNo;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox txtFax;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtMobile;
@@ -664,10 +755,8 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtGst;
         private System.Windows.Forms.TextBox txtExcise;
-        private System.Windows.Forms.TextBox txtSarvice;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.DateTimePicker dtpdate;
         private System.Windows.Forms.Panel panel1;
@@ -680,6 +769,22 @@
         private System.Windows.Forms.Button butAddNewRecord;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.TextBox txtSarvice;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox txtCstNo;
+        private System.Windows.Forms.TextBox txtVatNo;
+        private System.Windows.Forms.TextBox txtPanNo;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.TextBox txtcst;
+        private System.Windows.Forms.CheckBox checkcst;
+        private System.Windows.Forms.TextBox txtvat;
+        private System.Windows.Forms.CheckBox checkvat;
+        private System.Windows.Forms.TextBox txtwonername;
+        private System.Windows.Forms.Label label17;
 
 
     }

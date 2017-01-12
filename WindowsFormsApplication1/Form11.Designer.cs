@@ -374,6 +374,7 @@
             this.txtItemCode.Text = "I";
             this.txtItemCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtItemCode.TextChanged += new System.EventHandler(this.txtItemCode_TextChanged);
+            this.txtItemCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemCode_KeyPress);
             // 
             // label11
             // 
@@ -603,6 +604,7 @@
             this.txtcustomercode.Text = "C";
             this.txtcustomercode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtcustomercode.TextChanged += new System.EventHandler(this.txtcustomercode_TextChanged);
+            this.txtcustomercode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcustomercode_KeyPress);
             // 
             // label3
             // 
@@ -674,7 +676,7 @@
             this.panel2.Controls.Add(this.dataGridView2);
             this.panel2.Location = new System.Drawing.Point(12, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(834, 495);
+            this.panel2.Size = new System.Drawing.Size(834, 548);
             this.panel2.TabIndex = 43;
             // 
             // button1

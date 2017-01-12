@@ -392,6 +392,10 @@ namespace WindowsFormsApplication1
 
         private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                butadditem.Focus();
+            }
             if (char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
@@ -495,7 +499,7 @@ namespace WindowsFormsApplication1
            // {
                // setvalue();
             ///}
-            tab1();
+           // tab1();
             string selectquery = "select CustName,CustCompName,CustAddress,CustPhone,CustMobile,CustFax from CustomerDetails Where Custid='" + txtcustomercode.Text + "'";
             DataTable dt = d.getDetailByQuery(selectquery);
 
@@ -536,7 +540,7 @@ namespace WindowsFormsApplication1
             //{
                 
                 //txtQuantity.ReadOnly = false;
-                  tab2();
+                 // tab2();
                 string selectquery1 = "select i.ItemId,i.ItemName,ip.MrpPrice,iq.CurrentQuantity from ItemDetails i join ItemPriceDetail ip on i.ItemId=ip.ItemId join ItemQuantityDetail iq on ip.ItemId=iq.ItemId where i.ItemId='" + txtitemcode.Text + "'";
                 DataTable dt = d.getDetailByQuery(selectquery1);
                 if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
@@ -718,6 +722,26 @@ namespace WindowsFormsApplication1
                
                 button4.Enabled = false;
 
+            }
+        }
+
+        private void txtcustomercode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                    tab1();   
+            }
+        }
+
+        private void txtitemcode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                button4.Focus();
+            }
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                tab2();
             }
         }
 

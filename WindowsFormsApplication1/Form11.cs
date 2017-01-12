@@ -541,6 +541,10 @@ namespace WindowsFormsApplication1
 
         private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                butAddItem.Focus();
+            }
             if (char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
@@ -632,7 +636,7 @@ namespace WindowsFormsApplication1
 
         private void txtcustomercode_TextChanged(object sender, EventArgs e)
         {
-            tab1();
+           // tab1();
             string selectquery = "select CustName,CustCompName,CustAddress,CustPhone,CustMobile,CustFax from CustomerDetails Where Custid='" + txtcustomercode.Text + "'";
             DataTable dt = d.getDetailByQuery(selectquery);
             if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
@@ -749,7 +753,7 @@ namespace WindowsFormsApplication1
 
         private void txtItemCode_TextChanged(object sender, EventArgs e)
         {
-            tab2();
+            //tab2();
             string selectquery1 = "select i.ItemId,i.ItemName,ip.MrpPrice,iq.CurrentQuantity from ItemDetails i join ItemPriceDetail ip on i.ItemId=ip.ItemId join ItemQuantityDetail iq on ip.ItemId=iq.ItemId where i.ItemId='" + txtItemCode.Text + "'";
             DataTable dt = d.getDetailByQuery(selectquery1);
             if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
@@ -859,6 +863,26 @@ namespace WindowsFormsApplication1
 
                  }
              }
+        }
+
+        private void txtcustomercode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                tab1();
+            }
+        }
+
+        private void txtItemCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                butRemoveItem.Focus();
+            }
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                tab2();
+            }
         }
 
 
