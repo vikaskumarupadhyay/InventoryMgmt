@@ -80,8 +80,20 @@
             this.checkcst = new System.Windows.Forms.CheckBox();
             this.txtvat = new System.Windows.Forms.TextBox();
             this.checkvat = new System.Windows.Forms.CheckBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.butClose = new System.Windows.Forms.Button();
+            this.butUpdate = new System.Windows.Forms.Button();
+            this.butAddNewRecord = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.ComDetails = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnList
@@ -583,11 +595,107 @@
             this.checkvat.UseVisualStyleBackColor = true;
             this.checkvat.Click += new System.EventHandler(this.checkvat_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.butClose);
+            this.panel1.Controls.Add(this.butUpdate);
+            this.panel1.Controls.Add(this.butAddNewRecord);
+            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.txtSearch);
+            this.panel1.Controls.Add(this.label15);
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.ComDetails);
+            this.panel1.Location = new System.Drawing.Point(20, -1);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(793, 646);
+            this.panel1.TabIndex = 32;
+            // 
+            // butClose
+            // 
+            this.butClose.Location = new System.Drawing.Point(215, 557);
+            this.butClose.Name = "butClose";
+            this.butClose.Size = new System.Drawing.Size(75, 23);
+            this.butClose.TabIndex = 8;
+            this.butClose.Text = "Close";
+            this.butClose.UseVisualStyleBackColor = true;
+            // 
+            // butUpdate
+            // 
+            this.butUpdate.Location = new System.Drawing.Point(132, 557);
+            this.butUpdate.Name = "butUpdate";
+            this.butUpdate.Size = new System.Drawing.Size(75, 23);
+            this.butUpdate.TabIndex = 7;
+            this.butUpdate.Text = "Update";
+            this.butUpdate.UseVisualStyleBackColor = true;
+            // 
+            // butAddNewRecord
+            // 
+            this.butAddNewRecord.Location = new System.Drawing.Point(20, 557);
+            this.butAddNewRecord.Name = "butAddNewRecord";
+            this.butAddNewRecord.Size = new System.Drawing.Size(103, 23);
+            this.butAddNewRecord.TabIndex = 6;
+            this.butAddNewRecord.Text = "AddNewRecord";
+            this.butAddNewRecord.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(18, 77);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(761, 474);
+            this.dataGridView1.StandardTab = true;
+            this.dataGridView1.TabIndex = 5;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(311, 40);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(159, 20);
+            this.txtSearch.TabIndex = 4;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(327, 24);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(65, 13);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Search Text";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(42, 24);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(81, 13);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "Compnay Detail";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(42, 24);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 13);
+            this.label3.TabIndex = 1;
+            // 
+            // ComDetails
+            // 
+            this.ComDetails.FormattingEnabled = true;
+            this.ComDetails.Location = new System.Drawing.Point(42, 43);
+            this.ComDetails.Name = "ComDetails";
+            this.ComDetails.Size = new System.Drawing.Size(165, 21);
+            this.ComDetails.TabIndex = 0;
+            // 
             // Company_New
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(832, 657);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnList);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
@@ -600,6 +708,9 @@
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -658,6 +769,16 @@
         private System.Windows.Forms.CheckBox checkvat;
         private System.Windows.Forms.TextBox txtwonername;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button butClose;
+        private System.Windows.Forms.Button butUpdate;
+        private System.Windows.Forms.Button butAddNewRecord;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox ComDetails;
 
 
     }
