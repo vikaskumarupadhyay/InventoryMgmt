@@ -74,16 +74,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.butClose = new System.Windows.Forms.Button();
-            this.butUpdate = new System.Windows.Forms.Button();
-            this.butAddNewRecord = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.ComDetails = new System.Windows.Forms.ComboBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.txtcst = new System.Windows.Forms.TextBox();
@@ -92,8 +82,6 @@
             this.checkvat = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnList
@@ -110,7 +98,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(45, 557);
+            this.btnSave.Location = new System.Drawing.Point(30, 617);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(96, 28);
             this.btnSave.TabIndex = 21;
@@ -130,7 +118,7 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(149, 555);
+            this.btnClose.Location = new System.Drawing.Point(143, 617);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(102, 28);
             this.btnClose.TabIndex = 22;
@@ -244,11 +232,17 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBox3);
             this.groupBox1.Controls.Add(this.txtwonername);
+            this.groupBox1.Controls.Add(this.checkBox3);
             this.groupBox1.Controls.Add(this.label17);
+            this.groupBox1.Controls.Add(this.checkcst);
+            this.groupBox1.Controls.Add(this.txtcst);
             this.groupBox1.Controls.Add(this.dtpdate);
             this.groupBox1.Controls.Add(this.label16);
+            this.groupBox1.Controls.Add(this.txtvat);
             this.groupBox1.Controls.Add(this.groupBox3);
+            this.groupBox1.Controls.Add(this.checkvat);
             this.groupBox1.Controls.Add(this.txtCstNo);
             this.groupBox1.Controls.Add(this.txtVatNo);
             this.groupBox1.Controls.Add(this.txtPanNo);
@@ -283,7 +277,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(27, 42);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(779, 497);
+            this.groupBox1.Size = new System.Drawing.Size(779, 557);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Compnay Details";
@@ -528,121 +522,21 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Compnay Code";
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.butClose);
-            this.panel1.Controls.Add(this.butUpdate);
-            this.panel1.Controls.Add(this.butAddNewRecord);
-            this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Controls.Add(this.txtSearch);
-            this.panel1.Controls.Add(this.label15);
-            this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.ComDetails);
-            this.panel1.Location = new System.Drawing.Point(27, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(793, 533);
-            this.panel1.TabIndex = 31;
-            // 
-            // butClose
-            // 
-            this.butClose.Location = new System.Drawing.Point(215, 557);
-            this.butClose.Name = "butClose";
-            this.butClose.Size = new System.Drawing.Size(75, 23);
-            this.butClose.TabIndex = 8;
-            this.butClose.Text = "Close";
-            this.butClose.UseVisualStyleBackColor = true;
-            // 
-            // butUpdate
-            // 
-            this.butUpdate.Location = new System.Drawing.Point(132, 557);
-            this.butUpdate.Name = "butUpdate";
-            this.butUpdate.Size = new System.Drawing.Size(75, 23);
-            this.butUpdate.TabIndex = 7;
-            this.butUpdate.Text = "Update";
-            this.butUpdate.UseVisualStyleBackColor = true;
-            this.butUpdate.Click += new System.EventHandler(this.butUpdate_Click);
-            // 
-            // butAddNewRecord
-            // 
-            this.butAddNewRecord.Location = new System.Drawing.Point(20, 557);
-            this.butAddNewRecord.Name = "butAddNewRecord";
-            this.butAddNewRecord.Size = new System.Drawing.Size(103, 23);
-            this.butAddNewRecord.TabIndex = 6;
-            this.butAddNewRecord.Text = "AddNewRecord";
-            this.butAddNewRecord.UseVisualStyleBackColor = true;
-            this.butAddNewRecord.Click += new System.EventHandler(this.butAddNewRecord_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(18, 77);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(761, 474);
-            this.dataGridView1.StandardTab = true;
-            this.dataGridView1.TabIndex = 5;
-            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-            this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(311, 40);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(159, 20);
-            this.txtSearch.TabIndex = 4;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(327, 24);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(65, 13);
-            this.label15.TabIndex = 3;
-            this.label15.Text = "Search Text";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(42, 24);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(81, 13);
-            this.label14.TabIndex = 2;
-            this.label14.Text = "Compnay Detail";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(42, 24);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 13);
-            this.label3.TabIndex = 1;
-            // 
-            // ComDetails
-            // 
-            this.ComDetails.FormattingEnabled = true;
-            this.ComDetails.Location = new System.Drawing.Point(42, 43);
-            this.ComDetails.Name = "ComDetails";
-            this.ComDetails.Size = new System.Drawing.Size(165, 21);
-            this.ComDetails.TabIndex = 0;
-            // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(672, 559);
+            this.textBox3.Location = new System.Drawing.Point(613, 488);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(122, 20);
+            this.textBox3.Size = new System.Drawing.Size(122, 21);
             this.textBox3.TabIndex = 37;
             this.textBox3.Text = "0";
             // 
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(611, 561);
+            this.checkBox3.Location = new System.Drawing.Point(547, 488);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(48, 17);
+            this.checkBox3.Size = new System.Drawing.Size(50, 19);
             this.checkBox3.TabIndex = 36;
             this.checkBox3.Text = "GST";
             this.checkBox3.UseVisualStyleBackColor = true;
@@ -650,19 +544,19 @@
             // 
             // txtcst
             // 
-            this.txtcst.Location = new System.Drawing.Point(483, 561);
+            this.txtcst.Location = new System.Drawing.Point(410, 488);
             this.txtcst.Name = "txtcst";
             this.txtcst.ReadOnly = true;
-            this.txtcst.Size = new System.Drawing.Size(122, 20);
+            this.txtcst.Size = new System.Drawing.Size(122, 21);
             this.txtcst.TabIndex = 35;
             this.txtcst.Text = "0";
             // 
             // checkcst
             // 
             this.checkcst.AutoSize = true;
-            this.checkcst.Location = new System.Drawing.Point(428, 563);
+            this.checkcst.Location = new System.Drawing.Point(342, 492);
             this.checkcst.Name = "checkcst";
-            this.checkcst.Size = new System.Drawing.Size(47, 17);
+            this.checkcst.Size = new System.Drawing.Size(49, 19);
             this.checkcst.TabIndex = 34;
             this.checkcst.Text = "CST";
             this.checkcst.UseVisualStyleBackColor = true;
@@ -670,10 +564,10 @@
             // 
             // txtvat
             // 
-            this.txtvat.Location = new System.Drawing.Point(310, 561);
+            this.txtvat.Location = new System.Drawing.Point(172, 486);
             this.txtvat.Name = "txtvat";
             this.txtvat.ReadOnly = true;
-            this.txtvat.Size = new System.Drawing.Size(112, 20);
+            this.txtvat.Size = new System.Drawing.Size(112, 21);
             this.txtvat.TabIndex = 33;
             this.txtvat.Text = "0";
             this.txtvat.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
@@ -681,9 +575,9 @@
             // checkvat
             // 
             this.checkvat.AutoSize = true;
-            this.checkvat.Location = new System.Drawing.Point(257, 562);
+            this.checkvat.Location = new System.Drawing.Point(106, 486);
             this.checkvat.Name = "checkvat";
-            this.checkvat.Size = new System.Drawing.Size(47, 17);
+            this.checkvat.Size = new System.Drawing.Size(47, 19);
             this.checkvat.TabIndex = 32;
             this.checkvat.Text = "VAT";
             this.checkvat.UseVisualStyleBackColor = true;
@@ -693,14 +587,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(832, 626);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.txtcst);
-            this.Controls.Add(this.checkcst);
-            this.Controls.Add(this.txtvat);
-            this.Controls.Add(this.checkvat);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(832, 657);
             this.Controls.Add(this.btnList);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
@@ -713,11 +600,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -759,16 +642,6 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.DateTimePicker dtpdate;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox ComDetails;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button butClose;
-        private System.Windows.Forms.Button butUpdate;
-        private System.Windows.Forms.Button butAddNewRecord;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.TextBox txtSarvice;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox txtCstNo;
