@@ -769,6 +769,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(1007, 467);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress_1);
             // 
             // PurchaseOrder
             // 

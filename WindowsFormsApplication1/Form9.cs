@@ -496,5 +496,10 @@ namespace WindowsFormsApplication1
             panel2.Visible = false;
         }
 
+        private void dataGridView2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
     }
 }

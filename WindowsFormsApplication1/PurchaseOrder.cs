@@ -646,32 +646,7 @@ namespace WindowsFormsApplication1
 
         private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
         {
-             txtsearch.Text = "";
-            comboBox1.SelectedIndex = 0;
-            int currentIndex = dataGridView1.CurrentRow.Index;
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                if (dataGridView1.RowCount == currentIndex + 1)
-                    currentIndex = currentIndex + 1;
-                if (counter == 0)
-                {
-                    panel2.Visible = false;
-                    DataGridViewCellCollection CellCollection = dataGridView1.Rows[currentIndex - 1].Cells;
-                    setDetails(CellCollection);
-                    IndexTex3();
-                    
-                }
-                else if (counter == 1)
-                {
-                    panel2.Visible = false;
-                    DataGridViewCellCollection CellCollection = dataGridView1.Rows[currentIndex - 1].Cells;
-                    setDetails1(CellCollection);
-                    txtQuanity.ReadOnly = false;
-                    btnAddItem.Enabled = true;
-                    txtQuanity.Enabled = true;
-                    IndexTex2();
-                }
-            }
+            
         }
 
         private void btnAddItem_Leave(object sender, EventArgs e)
@@ -871,6 +846,36 @@ namespace WindowsFormsApplication1
                 string selectQurry = "select  itm.ItemId,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId where " + s + " like '" + txtsearch.Text + "%'";
                 DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
                 dataGridView1.DataSource = dt;
+            }
+        }
+
+        private void dataGridView1_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            txtsearch.Text = "";
+            comboBox1.SelectedIndex = 0;
+            int currentIndex = dataGridView1.CurrentRow.Index;
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if (dataGridView1.RowCount == currentIndex + 1)
+                    currentIndex = currentIndex + 1;
+                if (counter == 0)
+                {
+                    panel2.Visible = false;
+                    DataGridViewCellCollection CellCollection = dataGridView1.Rows[currentIndex - 1].Cells;
+                    setDetails(CellCollection);
+                    IndexTex3();
+
+                }
+                else if (counter == 1)
+                {
+                    panel2.Visible = false;
+                    DataGridViewCellCollection CellCollection = dataGridView1.Rows[currentIndex - 1].Cells;
+                    setDetails1(CellCollection);
+                    txtQuanity.ReadOnly = false;
+                    btnAddItem.Enabled = true;
+                    txtQuanity.Enabled = true;
+                    IndexTex2();
+                }
             }
         }
     }
