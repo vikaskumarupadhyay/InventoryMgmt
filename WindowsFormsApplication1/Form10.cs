@@ -195,14 +195,14 @@ namespace WindowsFormsApplication1
             txtcustphone.Text = "";
             txtcustmobile.Text = "";
             txtcustfax.Text = "";
-            txtitemcode.Text = " I";
+            txtitemcode.Text = "I";
             txtProductName.Text = "";
             txtRate.Text = "";
             txtQuantity.Text="";
             txtAmount.Text="";
-            txtdiscount.Text = "";
+            //txtdiscount.Text = "";
             gridsalesorder.DataSource = "";
-            txttotalammount.Text = "";
+            txttotalammount.Text = "0";
             txtsearchvalue.Text = "";
             addToCartTable.Clear();
         }
@@ -270,6 +270,14 @@ namespace WindowsFormsApplication1
                 int t = Convert.ToInt32(id);
                 int t1 = t + 1;
                 txtsrno.Text = t1.ToString();
+            }
+            string select = "select VAT, CST,GST from CompnayDetails";
+            DataTable d1 = d.getDetailByQuery(select);
+            foreach (DataRow dr1 in d1.Rows)
+            {
+                txtdiscount.Text = dr1[0].ToString();
+                textBox2.Text = dr1[1].ToString();
+                textBox20.Text = dr1[2].ToString();
             }
 
         }
@@ -386,7 +394,9 @@ namespace WindowsFormsApplication1
                     id = id + 1;
                     txtsrno.Text = id.ToString() ;
                     makeblank();
+                 
                 }
+                txtcustomercode.Focus();
 
             }
 
@@ -411,31 +421,6 @@ namespace WindowsFormsApplication1
                 {
                     e.Handled = true;
                 }
-            }
-        }
-
-        private void txtsearchvalue_TextChanged(object sender, EventArgs e)
-        {
-            if (counter == 0)
-            {
-                string s = comsearchsalesvalue.SelectedValue.ToString();
-               // string val = s;
-                   string selectQuery = "select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Ballance],CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO]  ,CustServicetaxRegnNo AS [Service Tax Regn. No],CustExciseRegnNo AS [Excise Regn. No] ,CustGSTRegnNo AS [GST Regn. No] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID where " + s + " like '" + txtsearchvalue.Text + "%'";
-           
-               // string selectQuery = "select Custid as [Customer Id], CustName as Name,CustCompName as[Compnay Name],CustAddress as [Address],CustPhone as[Phone],Custmobile as[Mobile],CustFax as[Fax] from CustomerDetails where " + s + " like '" + txtsearchvalue.Text + "%'";
-                DataTable dt = d.getDetailByQuery(selectQuery);
-                dataGridView1.DataSource = dt;
-            }
-           else if (counter == 1)
-            {
-                string s1 = comsearchsalesvalue.SelectedValue.ToString();
-               // string val1 = s1;
-                string selectQuery1 = "select itm.ItemId as[Item Id],itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId  where " + s1 + " like '" + txtsearchvalue.Text + "%'";
-               
-               
-                //string selectQuery1 = "select it.ItemId as[Item Id], it.ItemName as[Name],ip.Mrpprice as[MRP],iq.CurrentQuantity as[Current Quantity] from ItemDetails it join ItemPriceDetail ip on it.Itemid=ip.Itemid join ItemQuantityDetail iq on ip.ItemId=iq.Itemid where " + s1+ " like '" + txtsearchvalue.Text + "%'";
-                DataTable dt1 = d.getDetailByQuery(selectQuery1);
-                dataGridView1.DataSource = dt1;
             }
         }
 
@@ -538,10 +523,9 @@ namespace WindowsFormsApplication1
             //}
             //else
             //{
-                
                 //txtQuantity.ReadOnly = false;
                  // tab2();
-                string selectquery1 = "select i.ItemId,i.ItemName,ip.MrpPrice,iq.CurrentQuantity from ItemDetails i join ItemPriceDetail ip on i.ItemId=ip.ItemId join ItemQuantityDetail iq on ip.ItemId=iq.ItemId where i.ItemId='" + txtitemcode.Text + "'";
+                string selectquery1 = "select i.ItemId,i.ItemName,ip.MrpPrice,iq.CurrentQuantity from ItemDetails i join ItemPriceDetail ip on i.ItemId=ip.ItemId join ItemQuantityDetail iq on ip.ItemId=iq.ItemId where i.ItemId='"+txtitemcode.Text+"'";
                 DataTable dt = d.getDetailByQuery(selectquery1);
                 if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
                 {
@@ -617,10 +601,6 @@ namespace WindowsFormsApplication1
 
         public DataGridView orderid { get; set; }
 
-        private void butback_Click(object sender, EventArgs e)
-        {
-            panel2.Visible = false;
-        }
 
         private void txtdiscount_TextChanged(object sender, EventArgs e)
         {
@@ -735,19 +715,46 @@ namespace WindowsFormsApplication1
 
         private void txtitemcode_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Escape)
-            {
-                button4.Focus();
-            }
+           
             if (e.KeyChar == (char)Keys.Enter)
             {
                 tab2();
             }
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                button4.Focus();
+            }
         }
 
-      
-       
+        private void txtsearchvalue_TextChanged_1(object sender, EventArgs e)
+        {
+            if (counter == 0)
+            {
+                string s = comsearchsalesvalue.SelectedValue.ToString();
+                // string val = s;
+                string selectQuery = "select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Ballance],CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO]  ,CustServicetaxRegnNo AS [Service Tax Regn. No],CustExciseRegnNo AS [Excise Regn. No] ,CustGSTRegnNo AS [GST Regn. No] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID where " + s + " like '" + txtsearchvalue.Text + "%'";
 
+                // string selectQuery = "select Custid as [Customer Id], CustName as Name,CustCompName as[Compnay Name],CustAddress as [Address],CustPhone as[Phone],Custmobile as[Mobile],CustFax as[Fax] from CustomerDetails where " + s + " like '" + txtsearchvalue.Text + "%'";
+                DataTable dt = d.getDetailByQuery(selectQuery);
+                dataGridView1.DataSource = dt;
+            }
+            else if (counter == 1)
+            {
+                string s1 = comsearchsalesvalue.SelectedValue.ToString();
+                // string val1 = s1;
+                string selectQuery1 = "select itm.ItemId as[Item Id],itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId  where " + s1 + " like '" + txtsearchvalue.Text + "%'";
+
+
+                //string selectQuery1 = "select it.ItemId as[Item Id], it.ItemName as[Name],ip.Mrpprice as[MRP],iq.CurrentQuantity as[Current Quantity] from ItemDetails it join ItemPriceDetail ip on it.Itemid=ip.Itemid join ItemQuantityDetail iq on ip.ItemId=iq.Itemid where " + s1+ " like '" + txtsearchvalue.Text + "%'";
+                DataTable dt1 = d.getDetailByQuery(selectQuery1);
+                dataGridView1.DataSource = dt1;
+            }
+        }
+
+        private void butback_Click_1(object sender, EventArgs e)
+        {
+            panel2.Visible = false;
+        }
   
     }
 }

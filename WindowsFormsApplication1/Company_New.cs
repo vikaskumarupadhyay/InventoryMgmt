@@ -21,7 +21,8 @@ namespace WindowsFormsApplication1
 
         private void Compnay_Load(object sender, EventArgs e)
         {
-            txtCompnayName.Focus();
+           // btnList.Enabled = false;
+            
             // txtCompnayCode.Text = "C";
             //    string id1 = d.getUniqueID("CompnayDetails");
             //    txtCompnayCode.Text = id1;
@@ -57,6 +58,7 @@ namespace WindowsFormsApplication1
                 int s1 = s + 1;
                 txtCompnayCode.Text = "C" + s1.ToString();
             }
+            txtwonername.Focus();
          
             }
         private void makeblank()
@@ -158,11 +160,6 @@ namespace WindowsFormsApplication1
         }
 
 
-        private void butAddNewRecord_Click(object sender, EventArgs e)
-        {
-            panel1.Visible = false;
-        }
-
         private void btnList_Click(object sender, EventArgs e)
         {
             tabindex();
@@ -174,15 +171,6 @@ namespace WindowsFormsApplication1
             DataTable dt = d.getDetailByQuery(selectQuery1);
             dataGridView1.DataSource = dt;
             // panel1.Visible = false;
-        }
-
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            string s = ComDetails.SelectedValue.ToString();
-            string selectQuery1 = "select CompnayId,)OerName, Name ,Address,City,State,Zip,Country,Email,WebAddress,Phone,Mobile,Fax,Description,PANNO,VATNO,CSTNO,ServiceTaxAmmount,ExciseTaxAmmount,GSTTaxAmmount,VAT,CST,GSTIsactive,RagistrationDate from CompnayDetails where " + s + " like '" + txtSearch.Text + "%'";
-
-            DataTable dt = d.getDetailByQuery(selectQuery1);
-            dataGridView1.DataSource = dt;
         }
         private void setdetails(DataGridViewCellCollection cellcolection)
         {
@@ -218,22 +206,6 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void butUpdate_Click(object sender, EventArgs e)
-        {
-            updatecounter = 1;
-            DataGridViewCellCollection cellcollection = dataGridView1.Rows[0].Cells;
-            setdetails(cellcollection);
-            panel1.Visible = false;
-
-        }
-
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            updatecounter = 1;
-            DataGridViewCellCollection cellcollection = dataGridView1.Rows[0].Cells;
-            setdetails(cellcollection);
-            panel1.Visible = false;
-        }
 
         private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -273,7 +245,34 @@ namespace WindowsFormsApplication1
             textBox3.ReadOnly = false;
         }
 
+        private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            updatecounter = 1;
+            DataGridViewCellCollection cellcollection = dataGridView1.Rows[0].Cells;
+            setdetails(cellcollection);
+            panel1.Visible = false;
+        }
 
+        private void butUpdate_Click_1(object sender, EventArgs e)
+        {
+            updatecounter = 1;
+            DataGridViewCellCollection cellcollection = dataGridView1.Rows[0].Cells;
+            setdetails(cellcollection);
+            panel1.Visible = false;
+        }
 
+        private void butAddNewRecord_Click_1(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+        }
+
+        private void txtSearch_TextChanged_1(object sender, EventArgs e)
+        {
+            string s = ComDetails.SelectedValue.ToString();
+            string selectQuery1 = "select CompnayId,OnerName, Name ,Address,City,State,Zip,Country,Email,WebAddress,Phone,Mobile,Fax,Description,PANNO,VATNO,CSTNO,ServiceTaxAmmount,ExciseTaxAmmount,GSTTaxAmmount,VAT,CST,GST,Isactive,RagistrationDate from CompnayDetails where " + s + " like '" + txtSearch.Text + "%'";
+
+            DataTable dt = d.getDetailByQuery(selectQuery1);
+            dataGridView1.DataSource = dt;
+        }
     }
 }

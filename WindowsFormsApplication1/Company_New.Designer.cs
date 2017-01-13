@@ -47,10 +47,15 @@
             this.txtCompnayCode = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.txtwonername = new System.Windows.Forms.TextBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.label17 = new System.Windows.Forms.Label();
+            this.checkcst = new System.Windows.Forms.CheckBox();
+            this.txtcst = new System.Windows.Forms.TextBox();
             this.dtpdate = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
+            this.txtvat = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtGst = new System.Windows.Forms.TextBox();
             this.txtExcise = new System.Windows.Forms.TextBox();
@@ -58,6 +63,7 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
+            this.checkvat = new System.Windows.Forms.CheckBox();
             this.txtCstNo = new System.Windows.Forms.TextBox();
             this.txtVatNo = new System.Windows.Forms.TextBox();
             this.txtPanNo = new System.Windows.Forms.TextBox();
@@ -74,12 +80,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.txtcst = new System.Windows.Forms.TextBox();
-            this.checkcst = new System.Windows.Forms.CheckBox();
-            this.txtvat = new System.Windows.Forms.TextBox();
-            this.checkvat = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.butClose = new System.Windows.Forms.Button();
             this.butUpdate = new System.Windows.Forms.Button();
@@ -110,7 +110,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(30, 617);
+            this.btnSave.Location = new System.Drawing.Point(30, 605);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(96, 28);
             this.btnSave.TabIndex = 21;
@@ -130,7 +130,7 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(143, 617);
+            this.btnClose.Location = new System.Drawing.Point(143, 605);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(102, 28);
             this.btnClose.TabIndex = 22;
@@ -294,6 +294,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Compnay Details";
             // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(613, 488);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(122, 21);
+            this.textBox3.TabIndex = 37;
+            this.textBox3.Text = "0";
+            // 
             // txtwonername
             // 
             this.txtwonername.Location = new System.Drawing.Point(144, 36);
@@ -301,14 +310,45 @@
             this.txtwonername.Size = new System.Drawing.Size(160, 21);
             this.txtwonername.TabIndex = 44;
             // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(547, 488);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(50, 19);
+            this.checkBox3.TabIndex = 36;
+            this.checkBox3.Text = "GST";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.Click += new System.EventHandler(this.checkBox3_Click);
+            // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(141, 21);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(77, 15);
+            this.label17.Size = new System.Drawing.Size(68, 15);
             this.label17.TabIndex = 43;
-            this.label17.Text = "WonerName";
+            this.label17.Text = "OnerName";
+            // 
+            // checkcst
+            // 
+            this.checkcst.AutoSize = true;
+            this.checkcst.Location = new System.Drawing.Point(342, 492);
+            this.checkcst.Name = "checkcst";
+            this.checkcst.Size = new System.Drawing.Size(49, 19);
+            this.checkcst.TabIndex = 34;
+            this.checkcst.Text = "CST";
+            this.checkcst.UseVisualStyleBackColor = true;
+            this.checkcst.Click += new System.EventHandler(this.checkcst_Click);
+            // 
+            // txtcst
+            // 
+            this.txtcst.Location = new System.Drawing.Point(410, 488);
+            this.txtcst.Name = "txtcst";
+            this.txtcst.ReadOnly = true;
+            this.txtcst.Size = new System.Drawing.Size(122, 21);
+            this.txtcst.TabIndex = 35;
+            this.txtcst.Text = "0";
             // 
             // dtpdate
             // 
@@ -326,6 +366,16 @@
             this.label16.Size = new System.Drawing.Size(69, 15);
             this.label16.TabIndex = 42;
             this.label16.Text = "Description";
+            // 
+            // txtvat
+            // 
+            this.txtvat.Location = new System.Drawing.Point(172, 486);
+            this.txtvat.Name = "txtvat";
+            this.txtvat.ReadOnly = true;
+            this.txtvat.Size = new System.Drawing.Size(112, 21);
+            this.txtvat.TabIndex = 33;
+            this.txtvat.Text = "0";
+            this.txtvat.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // groupBox3
             // 
@@ -391,6 +441,17 @@
             this.label22.Size = new System.Drawing.Size(125, 15);
             this.label22.TabIndex = 41;
             this.label22.Text = "Service Tax Regn. No";
+            // 
+            // checkvat
+            // 
+            this.checkvat.AutoSize = true;
+            this.checkvat.Location = new System.Drawing.Point(106, 486);
+            this.checkvat.Name = "checkvat";
+            this.checkvat.Size = new System.Drawing.Size(47, 19);
+            this.checkvat.TabIndex = 32;
+            this.checkvat.Text = "VAT";
+            this.checkvat.UseVisualStyleBackColor = true;
+            this.checkvat.Click += new System.EventHandler(this.checkvat_Click);
             // 
             // txtCstNo
             // 
@@ -534,67 +595,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Compnay Code";
             // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(613, 488);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(122, 21);
-            this.textBox3.TabIndex = 37;
-            this.textBox3.Text = "0";
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(547, 488);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(50, 19);
-            this.checkBox3.TabIndex = 36;
-            this.checkBox3.Text = "GST";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            this.checkBox3.Click += new System.EventHandler(this.checkBox3_Click);
-            // 
-            // txtcst
-            // 
-            this.txtcst.Location = new System.Drawing.Point(410, 488);
-            this.txtcst.Name = "txtcst";
-            this.txtcst.ReadOnly = true;
-            this.txtcst.Size = new System.Drawing.Size(122, 21);
-            this.txtcst.TabIndex = 35;
-            this.txtcst.Text = "0";
-            // 
-            // checkcst
-            // 
-            this.checkcst.AutoSize = true;
-            this.checkcst.Location = new System.Drawing.Point(342, 492);
-            this.checkcst.Name = "checkcst";
-            this.checkcst.Size = new System.Drawing.Size(49, 19);
-            this.checkcst.TabIndex = 34;
-            this.checkcst.Text = "CST";
-            this.checkcst.UseVisualStyleBackColor = true;
-            this.checkcst.Click += new System.EventHandler(this.checkcst_Click);
-            // 
-            // txtvat
-            // 
-            this.txtvat.Location = new System.Drawing.Point(172, 486);
-            this.txtvat.Name = "txtvat";
-            this.txtvat.ReadOnly = true;
-            this.txtvat.Size = new System.Drawing.Size(112, 21);
-            this.txtvat.TabIndex = 33;
-            this.txtvat.Text = "0";
-            this.txtvat.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // checkvat
-            // 
-            this.checkvat.AutoSize = true;
-            this.checkvat.Location = new System.Drawing.Point(106, 486);
-            this.checkvat.Name = "checkvat";
-            this.checkvat.Size = new System.Drawing.Size(47, 19);
-            this.checkvat.TabIndex = 32;
-            this.checkvat.Text = "VAT";
-            this.checkvat.UseVisualStyleBackColor = true;
-            this.checkvat.Click += new System.EventHandler(this.checkvat_Click);
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.butClose);
@@ -606,9 +606,9 @@
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.ComDetails);
-            this.panel1.Location = new System.Drawing.Point(20, -1);
+            this.panel1.Location = new System.Drawing.Point(20, 8);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(793, 646);
+            this.panel1.Size = new System.Drawing.Size(793, 644);
             this.panel1.TabIndex = 32;
             // 
             // butClose
@@ -628,6 +628,7 @@
             this.butUpdate.TabIndex = 7;
             this.butUpdate.Text = "Update";
             this.butUpdate.UseVisualStyleBackColor = true;
+            this.butUpdate.Click += new System.EventHandler(this.butUpdate_Click_1);
             // 
             // butAddNewRecord
             // 
@@ -637,6 +638,7 @@
             this.butAddNewRecord.TabIndex = 6;
             this.butAddNewRecord.Text = "AddNewRecord";
             this.butAddNewRecord.UseVisualStyleBackColor = true;
+            this.butAddNewRecord.Click += new System.EventHandler(this.butAddNewRecord_Click_1);
             // 
             // dataGridView1
             // 
@@ -648,6 +650,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(761, 474);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 5;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
             // 
             // txtSearch
             // 
@@ -655,6 +658,7 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(159, 20);
             this.txtSearch.TabIndex = 4;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged_1);
             // 
             // label15
             // 

@@ -213,6 +213,9 @@
     <EmbeddedResource Include="ChaqueForm.resx">
       <DependentUpon>ChaqueForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Company_New.resx">
+      <DependentUpon>Company_New.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Customer list.resx">
       <DependentUpon>Customer list.cs</DependentUpon>
     </EmbeddedResource>
