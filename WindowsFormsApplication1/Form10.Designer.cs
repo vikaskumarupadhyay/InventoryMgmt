@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.gridsalesorder = new System.Windows.Forms.DataGridView();
             this.txttotalammount = new System.Windows.Forms.TextBox();
             this.textBox15 = new System.Windows.Forms.TextBox();
             this.textBox14 = new System.Windows.Forms.TextBox();
@@ -38,7 +39,6 @@
             this.textBox18 = new System.Windows.Forms.TextBox();
             this.txtdiscount = new System.Windows.Forms.TextBox();
             this.textBox16 = new System.Windows.Forms.TextBox();
-            this.gridsalesorder = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
             this.butadditem = new System.Windows.Forms.Button();
@@ -76,6 +76,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.savebutton = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.butback = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -95,137 +98,11 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.txttotalammount);
-            this.panel1.Controls.Add(this.textBox15);
-            this.panel1.Controls.Add(this.textBox14);
-            this.panel1.Controls.Add(this.textBox21);
-            this.panel1.Controls.Add(this.textBox20);
-            this.panel1.Controls.Add(this.textBox19);
-            this.panel1.Controls.Add(this.textBox18);
-            this.panel1.Controls.Add(this.txtdiscount);
-            this.panel1.Controls.Add(this.textBox16);
             this.panel1.Controls.Add(this.gridsalesorder);
             this.panel1.Location = new System.Drawing.Point(15, 238);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(828, 261);
             this.panel1.TabIndex = 48;
-            // 
-            // txttotalammount
-            // 
-            this.txttotalammount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txttotalammount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttotalammount.Location = new System.Drawing.Point(738, 233);
-            this.txttotalammount.Name = "txttotalammount";
-            this.txttotalammount.ReadOnly = true;
-            this.txttotalammount.Size = new System.Drawing.Size(83, 21);
-            this.txttotalammount.TabIndex = 56;
-            this.txttotalammount.TabStop = false;
-            this.txttotalammount.Text = "0";
-            this.txttotalammount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox15
-            // 
-            this.textBox15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox15.Location = new System.Drawing.Point(709, 233);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.ReadOnly = true;
-            this.textBox15.Size = new System.Drawing.Size(29, 21);
-            this.textBox15.TabIndex = 55;
-            this.textBox15.TabStop = false;
-            this.textBox15.Text = "Rs";
-            this.textBox15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox14
-            // 
-            this.textBox14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox14.Location = new System.Drawing.Point(619, 233);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.ReadOnly = true;
-            this.textBox14.Size = new System.Drawing.Size(90, 21);
-            this.textBox14.TabIndex = 54;
-            this.textBox14.TabStop = false;
-            this.textBox14.Text = "Total Amount";
-            this.textBox14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox21
-            // 
-            this.textBox21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox21.Location = new System.Drawing.Point(587, 233);
-            this.textBox21.Name = "textBox21";
-            this.textBox21.ReadOnly = true;
-            this.textBox21.Size = new System.Drawing.Size(26, 21);
-            this.textBox21.TabIndex = 53;
-            this.textBox21.TabStop = false;
-            this.textBox21.Text = "%";
-            this.textBox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox20
-            // 
-            this.textBox20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox20.Location = new System.Drawing.Point(541, 233);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.ReadOnly = true;
-            this.textBox20.Size = new System.Drawing.Size(46, 21);
-            this.textBox20.TabIndex = 52;
-            this.textBox20.TabStop = false;
-            this.textBox20.Text = "0";
-            this.textBox20.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox19
-            // 
-            this.textBox19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox19.Location = new System.Drawing.Point(494, 233);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.ReadOnly = true;
-            this.textBox19.Size = new System.Drawing.Size(47, 21);
-            this.textBox19.TabIndex = 51;
-            this.textBox19.TabStop = false;
-            this.textBox19.Text = "Tax";
-            this.textBox19.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox18
-            // 
-            this.textBox18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox18.Location = new System.Drawing.Point(462, 233);
-            this.textBox18.Name = "textBox18";
-            this.textBox18.ReadOnly = true;
-            this.textBox18.Size = new System.Drawing.Size(26, 21);
-            this.textBox18.TabIndex = 50;
-            this.textBox18.TabStop = false;
-            this.textBox18.Text = "%";
-            this.textBox18.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtdiscount
-            // 
-            this.txtdiscount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtdiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtdiscount.Location = new System.Drawing.Point(417, 233);
-            this.txtdiscount.Name = "txtdiscount";
-            this.txtdiscount.Size = new System.Drawing.Size(45, 21);
-            this.txtdiscount.TabIndex = 49;
-            this.txtdiscount.TabStop = false;
-            this.txtdiscount.Text = "0";
-            this.txtdiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtdiscount.TextChanged += new System.EventHandler(this.txtdiscount_TextChanged);
-            // 
-            // textBox16
-            // 
-            this.textBox16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox16.Location = new System.Drawing.Point(351, 233);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.ReadOnly = true;
-            this.textBox16.Size = new System.Drawing.Size(66, 21);
-            this.textBox16.TabIndex = 48;
-            this.textBox16.TabStop = false;
-            this.textBox16.Text = "Discount";
-            this.textBox16.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // gridsalesorder
             // 
@@ -241,6 +118,122 @@
             this.gridsalesorder.TabStop = false;
             this.gridsalesorder.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesorder_CellDoubleClick);
             this.gridsalesorder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridsalesorder_KeyPress);
+            // 
+            // txttotalammount
+            // 
+            this.txttotalammount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txttotalammount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttotalammount.Location = new System.Drawing.Point(774, 522);
+            this.txttotalammount.Name = "txttotalammount";
+            this.txttotalammount.ReadOnly = true;
+            this.txttotalammount.Size = new System.Drawing.Size(83, 21);
+            this.txttotalammount.TabIndex = 56;
+            this.txttotalammount.TabStop = false;
+            this.txttotalammount.Text = "0";
+            this.txttotalammount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox15
+            // 
+            this.textBox15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox15.Location = new System.Drawing.Point(745, 522);
+            this.textBox15.Name = "textBox15";
+            this.textBox15.ReadOnly = true;
+            this.textBox15.Size = new System.Drawing.Size(29, 21);
+            this.textBox15.TabIndex = 55;
+            this.textBox15.TabStop = false;
+            this.textBox15.Text = "Rs";
+            this.textBox15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox14
+            // 
+            this.textBox14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox14.Location = new System.Drawing.Point(655, 522);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.ReadOnly = true;
+            this.textBox14.Size = new System.Drawing.Size(90, 21);
+            this.textBox14.TabIndex = 54;
+            this.textBox14.TabStop = false;
+            this.textBox14.Text = "Total Amount";
+            this.textBox14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox21
+            // 
+            this.textBox21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox21.Location = new System.Drawing.Point(628, 522);
+            this.textBox21.Name = "textBox21";
+            this.textBox21.ReadOnly = true;
+            this.textBox21.Size = new System.Drawing.Size(26, 21);
+            this.textBox21.TabIndex = 53;
+            this.textBox21.TabStop = false;
+            this.textBox21.Text = "%";
+            this.textBox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox20
+            // 
+            this.textBox20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox20.Location = new System.Drawing.Point(564, 521);
+            this.textBox20.Name = "textBox20";
+            this.textBox20.Size = new System.Drawing.Size(65, 21);
+            this.textBox20.TabIndex = 52;
+            this.textBox20.TabStop = false;
+            this.textBox20.Text = "0";
+            this.textBox20.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox19
+            // 
+            this.textBox19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox19.Location = new System.Drawing.Point(513, 522);
+            this.textBox19.Name = "textBox19";
+            this.textBox19.ReadOnly = true;
+            this.textBox19.Size = new System.Drawing.Size(47, 21);
+            this.textBox19.TabIndex = 51;
+            this.textBox19.TabStop = false;
+            this.textBox19.Text = "GST";
+            this.textBox19.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox18
+            // 
+            this.textBox18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox18.Location = new System.Drawing.Point(347, 520);
+            this.textBox18.Name = "textBox18";
+            this.textBox18.ReadOnly = true;
+            this.textBox18.Size = new System.Drawing.Size(26, 21);
+            this.textBox18.TabIndex = 50;
+            this.textBox18.TabStop = false;
+            this.textBox18.Text = "%";
+            this.textBox18.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtdiscount
+            // 
+            this.txtdiscount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtdiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtdiscount.Location = new System.Drawing.Point(273, 519);
+            this.txtdiscount.Name = "txtdiscount";
+            this.txtdiscount.Size = new System.Drawing.Size(68, 21);
+            this.txtdiscount.TabIndex = 49;
+            this.txtdiscount.TabStop = false;
+            this.txtdiscount.Text = "0";
+            this.txtdiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtdiscount.TextChanged += new System.EventHandler(this.txtdiscount_TextChanged);
+            // 
+            // textBox16
+            // 
+            this.textBox16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox16.Location = new System.Drawing.Point(217, 519);
+            this.textBox16.Name = "textBox16";
+            this.textBox16.ReadOnly = true;
+            this.textBox16.Size = new System.Drawing.Size(55, 21);
+            this.textBox16.TabIndex = 48;
+            this.textBox16.TabStop = false;
+            this.textBox16.Text = "VAT";
+            this.textBox16.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox3
             // 
@@ -635,6 +628,35 @@
             this.savebutton.UseVisualStyleBackColor = true;
             this.savebutton.Click += new System.EventHandler(this.savebutton_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Location = new System.Drawing.Point(379, 521);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(36, 20);
+            this.textBox1.TabIndex = 57;
+            this.textBox1.Text = "CST";
+            // 
+            // textBox2
+            // 
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox2.Location = new System.Drawing.Point(414, 521);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(68, 20);
+            this.textBox2.TabIndex = 58;
+            this.textBox2.Text = "0";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox3
+            // 
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox3.Location = new System.Drawing.Point(477, 521);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(30, 20);
+            this.textBox3.TabIndex = 59;
+            this.textBox3.Text = "%";
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.butback);
@@ -643,10 +665,12 @@
             this.panel2.Controls.Add(this.comsearchsalesvalue);
             this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.search);
-            this.panel2.Location = new System.Drawing.Point(6, -4);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(840, 566);
-            this.panel2.TabIndex = 51;
+
+            this.panel2.Size = new System.Drawing.Size(858, 564);
+            this.panel2.TabIndex = 60;
             // 
             // butback
             // 
@@ -656,7 +680,7 @@
             this.butback.TabIndex = 5;
             this.butback.Text = "Back";
             this.butback.UseVisualStyleBackColor = true;
-            this.butback.Click += new System.EventHandler(this.butback_Click);
+            this.butback.Click += new System.EventHandler(this.butback_Click_1);
             // 
             // dataGridView1
             // 
@@ -668,8 +692,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(760, 416);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 4;
-            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-            this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
             // 
             // txtsearchvalue
             // 
@@ -677,7 +699,7 @@
             this.txtsearchvalue.Name = "txtsearchvalue";
             this.txtsearchvalue.Size = new System.Drawing.Size(132, 20);
             this.txtsearchvalue.TabIndex = 3;
-            this.txtsearchvalue.TextChanged += new System.EventHandler(this.txtsearchvalue_TextChanged);
+            this.txtsearchvalue.TextChanged += new System.EventHandler(this.txtsearchvalue_TextChanged_1);
             // 
             // comsearchsalesvalue
             // 
@@ -712,12 +734,24 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(858, 564);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button6);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.savebutton);
+            this.Controls.Add(this.txttotalammount);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.textBox15);
             this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.textBox14);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.textBox21);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.textBox20);
+            this.Controls.Add(this.textBox19);
+            this.Controls.Add(this.textBox16);
+            this.Controls.Add(this.textBox18);
+            this.Controls.Add(this.txtdiscount);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "salesorder";
@@ -725,7 +759,6 @@
             this.Text = "Sales Order";
             this.Load += new System.EventHandler(this.salesorder_Load);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridsalesorder)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -737,6 +770,7 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -790,12 +824,15 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button savebutton;
         private System.Windows.Forms.TextBox txtcustname;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button butback;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox txtsearchvalue;
         private System.Windows.Forms.ComboBox comsearchsalesvalue;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label search;
-        private System.Windows.Forms.Button butback;
     }
 }
