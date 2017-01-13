@@ -757,6 +757,8 @@
             this.dataGridView2.Size = new System.Drawing.Size(816, 424);
             this.dataGridView2.StandardTab = true;
             this.dataGridView2.TabIndex = 0;
+            this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick_1);
+            this.dataGridView2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView2_KeyPress_1);
             // 
             // salesdelivary
             // 

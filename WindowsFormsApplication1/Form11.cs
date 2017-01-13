@@ -613,34 +613,7 @@ namespace WindowsFormsApplication1
 
         private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtsearchvalue.Text = "";
-
-            if (counter == 0)
-            {
-                DataGridViewCellCollection Collection = dataGridView2.Rows[e.RowIndex].Cells;
-                rowcollection(Collection);
-                panel2.Visible = false;
-                tab1();
-                txtcustomercode.TabStop = true;
-                butcustomercode.TabStop = true;
-            }
-            if (counter == 1)
-            {
-                DataGridViewCellCollection Collection1 = dataGridView2.Rows[e.RowIndex].Cells;
-                rowcollection1(Collection1);
-                panel2.Visible = false;
-                tab2();
-            }
-            if (counter == 2)
-            {
-                panel2.Visible = false;
-                panel1.Visible = true;
-                DataGridViewCellCollection dell = dataGridView2.Rows[e.RowIndex].Cells;
-                string val = dell[0].Value.ToString();
-                txtRefNo.Text = val;
-
-            }
-          
+           
         }
 
         private void txtcustomercode_TextChanged(object sender, EventArgs e)
@@ -792,31 +765,7 @@ namespace WindowsFormsApplication1
         private void dataGridView2_KeyPress(object sender, KeyPressEventArgs e)
         {
 
-            int currentIndex = dataGridView2.CurrentRow.Index;
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                if (dataGridView2.SelectedRows != null && dataGridView2.SelectedRows.Count > 0)
-                {
-                    if (dataGridView2.RowCount == currentIndex + 1)
-                        currentIndex = currentIndex + 1;
-                    if (counter == 0)
-                    {
-                        DataGridViewCellCollection Collection = dataGridView2.Rows[currentIndex-1].Cells;
-                        rowcollection(Collection);
-                        panel2.Visible = false;
-                        tab1();
-                    }
-                    if (counter == 1)
-                    {
-                        DataGridViewCellCollection Collection1 = dataGridView2.Rows[currentIndex-1].Cells;
-                        rowcollection1(Collection1);
-                        panel2.Visible = false;
-                        tab2();
-                    }
-                   
-
-                }
-            }
+           
         }
 
         private void gridsalesdelivary_KeyPress(object sender, KeyPressEventArgs e)
@@ -925,6 +874,67 @@ namespace WindowsFormsApplication1
         private void button1_Click(object sender, EventArgs e)
         {
             panel2.Visible = false;
+        }
+
+        private void dataGridView2_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            txtsearchvalue.Text = "";
+
+            if (counter == 0)
+            {
+                DataGridViewCellCollection Collection = dataGridView2.Rows[e.RowIndex].Cells;
+                rowcollection(Collection);
+                panel2.Visible = false;
+                tab1();
+                txtcustomercode.TabStop = true;
+                butcustomercode.TabStop = true;
+            }
+            if (counter == 1)
+            {
+                DataGridViewCellCollection Collection1 = dataGridView2.Rows[e.RowIndex].Cells;
+                rowcollection1(Collection1);
+                panel2.Visible = false;
+                tab2();
+            }
+            if (counter == 2)
+            {
+                panel2.Visible = false;
+                panel1.Visible = true;
+                DataGridViewCellCollection dell = dataGridView2.Rows[e.RowIndex].Cells;
+                string val = dell[0].Value.ToString();
+                txtRefNo.Text = val;
+
+            }
+          
+        }
+
+        private void dataGridView2_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            int currentIndex = dataGridView2.CurrentRow.Index;
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if (dataGridView2.SelectedRows != null && dataGridView2.SelectedRows.Count > 0)
+                {
+                    if (dataGridView2.RowCount == currentIndex + 1)
+                        currentIndex = currentIndex + 1;
+                    if (counter == 0)
+                    {
+                        DataGridViewCellCollection Collection = dataGridView2.Rows[currentIndex - 1].Cells;
+                        rowcollection(Collection);
+                        panel2.Visible = false;
+                        tab1();
+                    }
+                    if (counter == 1)
+                    {
+                        DataGridViewCellCollection Collection1 = dataGridView2.Rows[currentIndex - 1].Cells;
+                        rowcollection1(Collection1);
+                        panel2.Visible = false;
+                        tab2();
+                    }
+
+
+                }
+            }
         }
 
 

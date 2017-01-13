@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.gridsalesinvoice = new System.Windows.Forms.DataGridView();
             this.txttotalammount = new System.Windows.Forms.TextBox();
             this.textBox22 = new System.Windows.Forms.TextBox();
             this.textBox15 = new System.Windows.Forms.TextBox();
@@ -38,7 +39,6 @@
             this.textBox18 = new System.Windows.Forms.TextBox();
             this.txtdiscount = new System.Windows.Forms.TextBox();
             this.textBox16 = new System.Windows.Forms.TextBox();
-            this.gridsalesinvoice = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.butRemoveItem = new System.Windows.Forms.Button();
             this.butAdditem = new System.Windows.Forms.Button();
@@ -106,6 +106,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(828, 261);
             this.panel1.TabIndex = 48;
+            // 
+            // gridsalesinvoice
+            // 
+            this.gridsalesinvoice.AllowUserToAddRows = false;
+            this.gridsalesinvoice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridsalesinvoice.Location = new System.Drawing.Point(3, 3);
+            this.gridsalesinvoice.Name = "gridsalesinvoice";
+            this.gridsalesinvoice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridsalesinvoice.Size = new System.Drawing.Size(818, 227);
+            this.gridsalesinvoice.TabIndex = 0;
+            this.gridsalesinvoice.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesinvoice_CellDoubleClick);
             // 
             // txttotalammount
             // 
@@ -221,17 +232,6 @@
             this.textBox16.TabStop = false;
             this.textBox16.Text = "CST";
             this.textBox16.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // gridsalesinvoice
-            // 
-            this.gridsalesinvoice.AllowUserToAddRows = false;
-            this.gridsalesinvoice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridsalesinvoice.Location = new System.Drawing.Point(3, 3);
-            this.gridsalesinvoice.Name = "gridsalesinvoice";
-            this.gridsalesinvoice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridsalesinvoice.Size = new System.Drawing.Size(818, 227);
-            this.gridsalesinvoice.TabIndex = 0;
-            this.gridsalesinvoice.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesinvoice_CellDoubleClick);
             // 
             // groupBox3
             // 
@@ -751,6 +751,8 @@
             this.dataGridView2.Size = new System.Drawing.Size(780, 406);
             this.dataGridView2.StandardTab = true;
             this.dataGridView2.TabIndex = 0;
+            this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick_1);
+            this.dataGridView2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView2_KeyPress_1);
             // 
             // salesinvoice
             // 

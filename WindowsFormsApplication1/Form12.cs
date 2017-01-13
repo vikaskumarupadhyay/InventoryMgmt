@@ -573,31 +573,7 @@ namespace WindowsFormsApplication1
 
          private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
          {
-             txtsearchvalue.Text = "";
-             if (counter == 0)
-             {
-                 DataGridViewCellCollection Collection = dataGridView2.Rows[e.RowIndex].Cells;
-                 rowcollection(Collection);
-                 panel2.Visible = false;
-             }
-             if (counter == 1)
-             {
-                 DataGridViewCellCollection Collection1 = dataGridView2.Rows[e.RowIndex].Cells;
-                 rowcollection1(Collection1);
-                 panel2.Visible = false;
-             }
-             if (counter == 2)
-             {
-                 panel2.Visible = false;
-                 panel1.Visible = true;
-                 DataGridViewCellCollection dell = dataGridView2.Rows[e.RowIndex].Cells;
-                 string val = dell[0].Value.ToString();
-                 txtRefNo.Text = val;
-                 //string selectquery1 = "select i.itemid,id.itemname,i.price,i.quantity,i.totalprice from customerorderdescriptions i join ItemDetails id on i.itemid=id.ItemId where orderid='" + val + "'";
-                 //DataTable dt1 = d.getDetailByQuery(selectquery1);
-                 //gridsalesinvoice.DataSource = dt1;
-             }
-             tab4();
+            
          }
 
          private void butselectpurchasedelivary_Click(object sender, EventArgs e)
@@ -745,28 +721,7 @@ namespace WindowsFormsApplication1
 
          private void dataGridView2_KeyPress(object sender, KeyPressEventArgs e)
          {
-             int currentIndex = dataGridView2.CurrentRow.Index;
-             if (e.KeyChar == (char)Keys.Enter)
-             {
-                 if (dataGridView2.SelectedRows != null && dataGridView2.SelectedRows.Count > 0)
-                 {
-                     if (dataGridView2.RowCount == currentIndex + 1)
-                         currentIndex = currentIndex + 1;
-                     if (counter == 0)
-                     {
-                         DataGridViewCellCollection Collection = dataGridView2.Rows[currentIndex-1].Cells;
-                         rowcollection(Collection);
-                         panel2.Visible = false;
-                     }
-                     if (counter == 1)
-                     {
-                         DataGridViewCellCollection Collection1 = dataGridView2.Rows[currentIndex-1].Cells;
-                         rowcollection1(Collection1);
-                         panel2.Visible = false;
-                     }
-                     tab4();
-                 }
-             }
+             
          }
 
          private void txtsearchvalue_TextChanged_1(object sender, EventArgs e)
@@ -804,6 +759,61 @@ namespace WindowsFormsApplication1
          private void button1_Click(object sender, EventArgs e)
          {
              panel2.Visible = false;
+         }
+
+         private void dataGridView2_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
+         {
+             txtsearchvalue.Text = "";
+             if (counter == 0)
+             {
+                 DataGridViewCellCollection Collection = dataGridView2.Rows[e.RowIndex].Cells;
+                 rowcollection(Collection);
+                 panel2.Visible = false;
+             }
+             if (counter == 1)
+             {
+                 DataGridViewCellCollection Collection1 = dataGridView2.Rows[e.RowIndex].Cells;
+                 rowcollection1(Collection1);
+                 panel2.Visible = false;
+             }
+             if (counter == 2)
+             {
+                 panel2.Visible = false;
+                 panel1.Visible = true;
+                 DataGridViewCellCollection dell = dataGridView2.Rows[e.RowIndex].Cells;
+                 string val = dell[0].Value.ToString();
+                 txtRefNo.Text = val;
+                 //string selectquery1 = "select i.itemid,id.itemname,i.price,i.quantity,i.totalprice from customerorderdescriptions i join ItemDetails id on i.itemid=id.ItemId where orderid='" + val + "'";
+                 //DataTable dt1 = d.getDetailByQuery(selectquery1);
+                 //gridsalesinvoice.DataSource = dt1;
+             }
+             tab4();
+         }
+
+         private void dataGridView2_KeyPress_1(object sender, KeyPressEventArgs e)
+         {
+             int currentIndex = dataGridView2.CurrentRow.Index;
+             if (e.KeyChar == (char)Keys.Enter)
+             {
+                 if (dataGridView2.SelectedRows != null && dataGridView2.SelectedRows.Count > 0)
+                 {
+                     if (dataGridView2.RowCount == currentIndex + 1)
+                         currentIndex = currentIndex + 1;
+                     if (counter == 0)
+                     {
+                         DataGridViewCellCollection Collection = dataGridView2.Rows[currentIndex - 1].Cells;
+                         rowcollection(Collection);
+                         panel2.Visible = false;
+                     }
+                     if (counter == 1)
+                     {
+                         DataGridViewCellCollection Collection1 = dataGridView2.Rows[currentIndex - 1].Cells;
+                         rowcollection1(Collection1);
+                         panel2.Visible = false;
+                     }
+                     tab4();
+                 }
+             }
          }
 
        

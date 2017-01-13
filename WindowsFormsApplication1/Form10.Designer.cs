@@ -668,7 +668,6 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-
             this.panel2.Size = new System.Drawing.Size(858, 564);
             this.panel2.TabIndex = 60;
             // 
@@ -692,6 +691,8 @@
             this.dataGridView1.Size = new System.Drawing.Size(760, 416);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 4;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
+            this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress_1);
             // 
             // txtsearchvalue
             // 
