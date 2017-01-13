@@ -128,6 +128,15 @@ alter table VendorDetails add vGSTRegnNo varchar(100)
 
 alter table VendorOrderDetails add Discount decimal
 
+alter table VendorOrderDetails add Vat decimal
+
+alter table VendorOrderDetails add CST decimal
+
+alter table VendorOrderDetails add GST decimal
+
+
+alter table VendorOrderDetails add WithoutTexAmount  decimal
+
 Sp_rename 'VendorDetails.vTinNo','vVatNo'
 
 Sp_rename 'VendorDetails.vOther','vCstNo'

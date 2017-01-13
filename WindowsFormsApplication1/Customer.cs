@@ -11,15 +11,28 @@ namespace WindowsFormsApplication1
 {
     public partial class Customer : Form
     {
+        int value = 0;
         DB_Main dbMainClass = new DB_Main();
         public int updateCounter = 0;
         public Customer()
         {
             InitializeComponent();
         }
+        public Customer(int value1)
+        {
+            value = value1;
+            InitializeComponent();
+        }
         private void Customer_Load(object sender, EventArgs e)
         {
-           
+            if (value == 1)
+            {
+                panel1.Visible = true;
+            }
+            else if (value == 0)
+            {
+                panel1.Visible = false;
+            }
         
             //DataTable dt = dbMainClass.getDetails("CustomerDetails");
             //List<string> ds = new List<string>();
@@ -46,8 +59,8 @@ namespace WindowsFormsApplication1
             //ds.Add("Gstregnno");
             //comserchvalue.DataSource = ds;
 
-            string selectQuery = "select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Ballance],CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO]  ,CustServicetaxRegnNo AS [Service Tax Regn. No],CustExciseRegnNo AS [Excise Regn. No] ,CustGSTRegnNo AS [GST Regn. No] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
-            string actualcolumn = "select  Custd.CustId  ,CustName  ,CustCompName  ,CustAddress ,CustCity , CustState  ,CustZip  ,CustCountry  ,CustEmail , CustWebAddress ,CustPhone  ,CustMobile  ,CustFax ,CustDesc ,Custad.CustOpeningBalance , Custad.CustCurrentBalance ,CustPanNo , CustVatNo ,CustCSTNo  ,CustServicetaxRegnNo ,CustExciseRegnNo  ,CustGSTRegnNo  from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
+            string selectQuery = "select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Ballance],CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO]  ,CustServicetaxRegnNo AS [Service Tax Regn. No],CustExciseRegnNo AS [Excise Regn. No] ,Gstregnno AS [GST Regn. No] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
+            string actualcolumn = "select  Custd.CustId  ,CustName  ,CustCompName  ,CustAddress ,CustCity , CustState  ,CustZip  ,CustCountry  ,CustEmail , CustWebAddress ,CustPhone  ,CustMobile  ,CustFax ,CustDesc ,Custad.CustOpeningBalance , Custad.CustCurrentBalance ,CustPanNo , CustVatNo ,CustCSTNo  ,CustServicetaxRegnNo ,CustExciseRegnNo  ,Gstregnno  from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
             DataTable dt = dbMainClass.getDetailByQuery(selectQuery);
             DataTable onlycolumnname = dbMainClass.getDetailByQuery(actualcolumn);
             DataTable customtable = new DataTable();
@@ -67,8 +80,9 @@ namespace WindowsFormsApplication1
             comserchvalue.DataSource = customtable;
             comserchvalue.ValueMember = "Actualtablecolumname";
             comserchvalue.DisplayMember = "Aliascolumnname";
+            dataGridView1.DataSource = dt;
             
-            panel1.Visible = false;
+            //panel1.Visible = false;
             string Id = dbMainClass.getUniqueID("Customerdetail");
             txtCustCode.Text = Id;
 

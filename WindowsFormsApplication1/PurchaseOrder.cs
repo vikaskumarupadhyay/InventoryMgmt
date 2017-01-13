@@ -52,7 +52,14 @@ namespace WindowsFormsApplication1
                 int txt1 = txt + 1;
                 txtSrNo.Text = txt1.ToString();
             }
-
+            string stlect1 = "select VATNO,CSTNO,GST from CompnayDetails";
+            DataTable dt1 = dbMainClass.getDetailByQuery(stlect1);
+            foreach (DataRow dr1 in dt1.Rows)
+            {
+                VATNO.Text = dr1[0].ToString();
+                txtDiscount.Text = dr1[1].ToString();
+                GSTNO.Text = dr1[2].ToString();
+            }
             Purchase.PurchaseDetails purChaseDetailObj = new Purchase.PurchaseDetails();
             vendorDetails = purChaseDetailObj.GetVendorDetaisInDataTable();
             ItemDetails = purChaseDetailObj.GetItemPriceAndNameDetaisInDataTable();
@@ -353,20 +360,20 @@ namespace WindowsFormsApplication1
 
         private void txtDiscount_TextChanged(object sender, EventArgs e)
         {
-            double totalAmount = 0.0;
-            foreach (DataRow dr in addToCartTable.Rows)
-            {
-                totalAmount += Convert.ToDouble(dr[4].ToString());
-            }
-            string discountAmount = txtDiscount.Text;
-            //double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
-            double amount = 0.0;
-            if (double.TryParse(discountAmount, out amount))
-            {
-                double totalDiscount = Convert.ToDouble(discountAmount);
-                totalAmount = totalAmount - ((totalAmount * totalDiscount) / 100);
-                txtTotalAmount.Text = totalAmount.ToString();
-            }
+            //double totalAmount = 0.0;
+            //foreach (DataRow dr in addToCartTable.Rows)
+            //{
+            //    totalAmount += Convert.ToDouble(dr[4].ToString());
+            //}
+            //string discountAmount = txtDiscount.Text;
+            ////double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
+            //double amount = 0.0;
+            //if (double.TryParse(discountAmount, out amount))
+            //{
+            //    double totalDiscount = Convert.ToDouble(discountAmount);
+            //    totalAmount = totalAmount - ((totalAmount * totalDiscount) / 100);
+            //    txtTotalAmount.Text = totalAmount.ToString();
+            //}
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -634,21 +641,7 @@ namespace WindowsFormsApplication1
 
         private void txtsearch_TextChanged(object sender, EventArgs e)
         {
-            if (counter == 0)
-            {
-                string s = comboBox1.SelectedValue.ToString();
-                //string m = "v" + s;
-                string selectQurry = "select vd.venderId as [Vender Id ],vd.vName AS Name ,vd.vCompName AS [Company Name] ,vd.vAddress AS Address,vd.vCity AS City,vd. vState AS State ,vd.vZip AS Zip ,vd.vCountry AS Country ,vd.vEmail AS[E-Mail ],vd. vWebAddress AS[Web Address],vd.vPhone AS Phone ,vd.vMobile AS Mobile ,vd.vFax AS Fax ,vd.vPanNo as[PAN No],vd.vVatNo as [VAT No],vd.vCstNo as[CST No],vd.vServiceTaxRegnNo as [Service Tax Regn.No],vd.vExciseRegnNo as [Excise Regn.No],vd.vGSTRegnNo as[GST Regn.No],vd.vDesc AS Description,vad.vOpeningBalance AS [Opening Balance] , vad.vCurrentBalance AS [Current Balance] from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID where " + s + " like '" + txtsearch.Text + "%'";
-                DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
-                dataGridView1.DataSource = dt;
-            }
-            else if (counter == 1)
-            {
-                string s = comboBox1.SelectedValue.ToString();
-                string selectQurry = "select  itm.ItemId,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId where " + s + " like '" + txtsearch.Text + "%'";
-                DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
-                dataGridView1.DataSource = dt;
-            }
+           
         }
 
         private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
@@ -854,6 +847,30 @@ namespace WindowsFormsApplication1
             if (e.KeyChar == Convert.ToChar(Keys.Escape))
             {
                 gridPurchaseOrder.Focus();
+            }
+        }
+
+        private void buttBack_Click_1(object sender, EventArgs e)
+        {
+            panel2.Visible = false;
+        }
+
+        private void txtsearch_TextChanged_1(object sender, EventArgs e)
+        {
+            if (counter == 0)
+            {
+                string s = comboBox1.SelectedValue.ToString();
+                //string m = "v" + s;
+                string selectQurry = "select vd.venderId as [Vender Id ],vd.vName AS Name ,vd.vCompName AS [Company Name] ,vd.vAddress AS Address,vd.vCity AS City,vd. vState AS State ,vd.vZip AS Zip ,vd.vCountry AS Country ,vd.vEmail AS[E-Mail ],vd. vWebAddress AS[Web Address],vd.vPhone AS Phone ,vd.vMobile AS Mobile ,vd.vFax AS Fax ,vd.vPanNo as[PAN No],vd.vVatNo as [VAT No],vd.vCstNo as[CST No],vd.vServiceTaxRegnNo as [Service Tax Regn.No],vd.vExciseRegnNo as [Excise Regn.No],vd.vGSTRegnNo as[GST Regn.No],vd.vDesc AS Description,vad.vOpeningBalance AS [Opening Balance] , vad.vCurrentBalance AS [Current Balance] from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID where " + s + " like '" + txtsearch.Text + "%'";
+                DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
+                dataGridView1.DataSource = dt;
+            }
+            else if (counter == 1)
+            {
+                string s = comboBox1.SelectedValue.ToString();
+                string selectQurry = "select  itm.ItemId,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId where " + s + " like '" + txtsearch.Text + "%'";
+                DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
+                dataGridView1.DataSource = dt;
             }
         }
     }

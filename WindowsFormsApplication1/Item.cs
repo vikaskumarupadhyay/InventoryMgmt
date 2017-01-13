@@ -11,6 +11,7 @@ namespace WindowsFormsApplication1
 {
     public partial class Item : Form
     {
+        int value = 0;
         ItemDetails itm = new ItemDetails();
         public int updatecounter = 0;
         DB_Main dbMainClass = new DB_Main();
@@ -21,8 +22,21 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
         }
+        public Item(int value1)
+        {
+            value = value1;
+            InitializeComponent();
+        }
         private void Item_Load(object sender, EventArgs e)
         {
+            if (value == 1)
+            {
+                panel1.Visible = true;
+            }
+            else if (value == 0)
+            {
+                panel1.Visible = false;
+            }
             string selectqurry = "select  itm.ItemId,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
             string selectqurryForActualColumnName = "select top 1  itm.ItemId, itm.ItemName,itm.ItemCompName ,itm.ItemDesc ,ig.groupName,iul.unitName ,ipd.purChasePrice ,ipd.SalesPrice ,ipd.MrpPrice ,ipd.Margin ,iqd.OpeningQuantity ,iqd.CurrentQuantity from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
@@ -45,7 +59,8 @@ namespace WindowsFormsApplication1
             searchCalmn.DataSource = customDataTable;
             searchCalmn.ValueMember = "ActualTableColumnName";
             searchCalmn.DisplayMember = "AliasTableColumnName";
-            panel1.Visible = false;
+            dataGridView1.DataSource = dt;
+           // panel1.Visible = false;
             string Id = dbMainClass.getUniqueID("ItemDetails");
             txtItemProductCode.Text=Id;
             if (Id == "l0001")

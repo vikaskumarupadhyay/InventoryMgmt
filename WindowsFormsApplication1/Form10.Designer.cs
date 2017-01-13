@@ -645,7 +645,7 @@
             this.panel2.Controls.Add(this.search);
             this.panel2.Location = new System.Drawing.Point(6, -4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(840, 471);
+            this.panel2.Size = new System.Drawing.Size(840, 566);
             this.panel2.TabIndex = 51;
             // 
             // butback

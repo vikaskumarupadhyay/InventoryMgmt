@@ -70,7 +70,7 @@
             this.textBox15 = new System.Windows.Forms.TextBox();
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.textBox21 = new System.Windows.Forms.TextBox();
-            this.txtTax = new System.Windows.Forms.TextBox();
+            this.GSTNO = new System.Windows.Forms.TextBox();
             this.textBox19 = new System.Windows.Forms.TextBox();
             this.textBox18 = new System.Windows.Forms.TextBox();
             this.txtDiscount = new System.Windows.Forms.TextBox();
@@ -78,7 +78,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.VATNO = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtsearch = new System.Windows.Forms.TextBox();
@@ -565,19 +565,19 @@
             this.textBox21.Text = "%";
             this.textBox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtTax
+            // GSTNO
             // 
-            this.txtTax.BackColor = System.Drawing.Color.White;
-            this.txtTax.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTax.Location = new System.Drawing.Point(755, 540);
-            this.txtTax.Name = "txtTax";
-            this.txtTax.ReadOnly = true;
-            this.txtTax.Size = new System.Drawing.Size(39, 21);
-            this.txtTax.TabIndex = 56;
-            this.txtTax.TabStop = false;
-            this.txtTax.Text = "0";
-            this.txtTax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.GSTNO.BackColor = System.Drawing.Color.White;
+            this.GSTNO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.GSTNO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GSTNO.Location = new System.Drawing.Point(755, 540);
+            this.GSTNO.Name = "GSTNO";
+            this.GSTNO.ReadOnly = true;
+            this.GSTNO.Size = new System.Drawing.Size(39, 21);
+            this.GSTNO.TabIndex = 56;
+            this.GSTNO.TabStop = false;
+            this.GSTNO.Text = "0";
+            this.GSTNO.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox19
             // 
@@ -667,29 +667,28 @@
             this.textBox3.Text = "VAT";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox2
+            // VATNO
             // 
-            this.textBox2.BackColor = System.Drawing.Color.White;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(523, 540);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(39, 21);
-            this.textBox2.TabIndex = 62;
-            this.textBox2.TabStop = false;
-            this.textBox2.Text = "0";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.VATNO.BackColor = System.Drawing.Color.White;
+            this.VATNO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.VATNO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VATNO.Location = new System.Drawing.Point(523, 540);
+            this.VATNO.Name = "VATNO";
+            this.VATNO.ReadOnly = true;
+            this.VATNO.Size = new System.Drawing.Size(39, 21);
+            this.VATNO.TabIndex = 62;
+            this.VATNO.TabStop = false;
+            this.VATNO.Text = "0";
+            this.VATNO.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.buttBack);
             this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1036, 598);
+            this.panel2.Size = new System.Drawing.Size(1036, 591);
             this.panel2.TabIndex = 65;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint_2);
             // 
@@ -715,6 +714,7 @@
             this.txtsearch.Name = "txtsearch";
             this.txtsearch.Size = new System.Drawing.Size(471, 24);
             this.txtsearch.TabIndex = 5;
+            this.txtsearch.TextChanged += new System.EventHandler(this.txtsearch_TextChanged_1);
             // 
             // comboBox1
             // 
@@ -755,6 +755,7 @@
             this.buttBack.TabIndex = 1;
             this.buttBack.Text = "Back";
             this.buttBack.UseVisualStyleBackColor = true;
+            this.buttBack.Click += new System.EventHandler(this.buttBack_Click_1);
             // 
             // dataGridView1
             // 
@@ -777,7 +778,7 @@
             this.ClientSize = new System.Drawing.Size(1036, 598);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.VATNO);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.txtTotalAmount);
@@ -788,7 +789,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.textBox21);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.txtTax);
+            this.Controls.Add(this.GSTNO);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBox19);
             this.Controls.Add(this.textBox16);
@@ -859,7 +860,7 @@
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.TextBox textBox14;
         private System.Windows.Forms.TextBox textBox21;
-        private System.Windows.Forms.TextBox txtTax;
+        private System.Windows.Forms.TextBox GSTNO;
         private System.Windows.Forms.TextBox textBox19;
         private System.Windows.Forms.TextBox textBox18;
         private System.Windows.Forms.TextBox txtDiscount;
@@ -869,7 +870,7 @@
         private System.Windows.Forms.TextBox txtTotalAmount;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox VATNO;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtsearch;
         private System.Windows.Forms.Label label16;

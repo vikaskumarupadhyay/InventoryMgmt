@@ -14,9 +14,15 @@ namespace WindowsFormsApplication1
 {
     public partial class frmVendorDetails : Form
     {
+        int counter = 0;
 
         public frmVendorDetails()
         {
+            InitializeComponent();
+        }
+        public frmVendorDetails(int counter1)
+        {
+            counter = counter1;
             InitializeComponent();
         }
         public int updateCounter = 0;
@@ -363,6 +369,17 @@ namespace WindowsFormsApplication1
 
         private void frmVendorDetails_Load(object sender, EventArgs e)
         {
+            if (counter == 1)
+            {
+                //panel2.Visible = true;
+                panel1.Visible = true;
+            
+            }
+            else if (counter == 0) 
+            {
+                //panel2.Visible = false;
+                panel1.Visible = false;
+            }
             string selectqurry = "select vd.venderId as [Vender Id ],vd.vName AS Name ,vd.vCompName AS [Company Name] ,vd.vAddress AS Address,vd.vCity AS City,vd. vState AS State ,vd.vZip AS Zip ,vd.vCountry AS Country ,vd.vEmail AS[E-Mail ],vd. vWebAddress AS[Web Address],vd.vPhone AS Phone ,vd.vMobile AS Mobile ,vd.vFax AS Fax ,vd.vPanNo as[PAN No],vd.vVatNo as [VAT No],vd.vCstNo as[CST No],vd.vServiceTaxRegnNo as [Service Tax Regn.No],vd.vExciseRegnNo as [Excise Regn.No],vd.vGSTRegnNo as[GST Regn.No],vd.vDesc AS Description,vad.vOpeningBalance AS [Opening Balance] , vad.vCurrentBalance AS [Current Balance] from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID";
             string selectqurryForActualColumnName = "select top 1 vd.venderId ,vd.vName  ,vd.vCompName  ,vd.vAddress ,vd.vCity,vd. vState  ,vd.vZip  ,vd.vCountry  ,vd.vEmail ,vd. vWebAddress ,vd.vPhone  ,vd.vMobile ,vd.vFax ,vd.vPanNo ,vd.vVatNo ,vd.vCstNo,vd.vServiceTaxRegnNo ,vd.vExciseRegnNo ,vd.vGSTRegnNo ,vd.vDesc,vad.vOpeningBalance, vad.vCurrentBalance  from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
@@ -388,8 +405,8 @@ namespace WindowsFormsApplication1
             comboBox1.DataSource = customDataTable;
             comboBox1.ValueMember = "ActualTableColumnName";
             comboBox1.DisplayMember = "AliasTableColumnName";
+            dataGridView1.DataSource = dt;
 
-            panel1.Visible = false;
             //btnVenderList.Enabled = false;
             string Id = dbMainClass.getUniqueID("VENDOR");
             txtVenderCode.Text = Id;

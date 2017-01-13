@@ -23,7 +23,7 @@ namespace WindowsFormsApplication1
 
         private void vendorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmVendorDetails F2 = new frmVendorDetails();
+            frmVendorDetails F2 = new frmVendorDetails(0);
             F2.Show();
             F2.MdiParent = this;
         }
@@ -35,14 +35,14 @@ namespace WindowsFormsApplication1
 
         private void customerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Customer F3 = new Customer();
+            Customer F3 = new Customer(0);
             F3.Show();
             F3.MdiParent = this;
         }
 
         private void itemToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Item F4 = new Item();
+            Item F4 = new Item(0);
             F4.Show();
             F4.MdiParent = this;
         }
@@ -125,9 +125,12 @@ namespace WindowsFormsApplication1
 
         private void customerToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Customer_list f = new Customer_list();
-            f.Show();
-            f.MdiParent = this;
+              Customer F3 = new Customer(1);
+            F3.Show();
+            F3.MdiParent = this;
+        //    Customer_list f = new Customer_list();
+        //    f.Show();
+        //    f.MdiParent = this;
         }
 
     
@@ -141,22 +144,29 @@ namespace WindowsFormsApplication1
 
         private void vendorListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            VendorList1 f14 = new VendorList1();
-            f14.Show();
-            f14.MdiParent = this;
+            frmVendorDetails F2 = new frmVendorDetails(1);
+            F2.Show();
+            F2.MdiParent = this;
+            //VendorList1 f14 = new VendorList1();
+            //f14.Show();
+            //f14.MdiParent = this;
         }
 
         private void itemToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            ItemList1 f15 = new ItemList1();
-            f15.Show();
-            f15.MdiParent = this;
+            Item F4 = new Item(1);
+            F4.Show();
+            F4.MdiParent = this;
+            //ItemList1 f15 = new ItemList1();
+            //f15.Show();
+            //f15.MdiParent = this;
         }
 
         
 
         private void companyToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             Company_New f = new Company_New();
             f.Show();
             f.MdiParent = this;
