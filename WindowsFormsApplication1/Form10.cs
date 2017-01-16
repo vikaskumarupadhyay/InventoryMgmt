@@ -658,15 +658,22 @@ namespace WindowsFormsApplication1
 
         private void txtitemcode_KeyPress(object sender, KeyPressEventArgs e)
         {
-           
             if (e.KeyChar == (char)Keys.Enter)
             {
                 tab2();
             }
             if (e.KeyChar == (char)Keys.Escape)
             {
-                button4.Focus();
+                if (dataGridView1.Rows.Count>1)
+                {
+                    button4.Focus();
+                }
+                else
+                {
+                    savebutton.Focus();
+                }
             }
+          
         }
 
         private void txtsearchvalue_TextChanged_1(object sender, EventArgs e)
@@ -763,6 +770,14 @@ namespace WindowsFormsApplication1
                     }
                     // tab5();
                 }
+            }
+        }
+
+        private void savebutton_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                txtcustomercode.Focus();
             }
         }
   

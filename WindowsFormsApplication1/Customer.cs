@@ -451,6 +451,7 @@ namespace WindowsFormsApplication1
             updateCounter = 1;
             btnList.Enabled = false;
             blank();
+            textBox1.Text = "";
             tabindex1();
         }
         private void blank()
@@ -474,6 +475,7 @@ namespace WindowsFormsApplication1
             txtservicetaxno.Enabled = false;
             txtexiceragisterno.Enabled = false;
             txtgstragisterno.Enabled = false;
+            
         }
         private void blank1()
         {
