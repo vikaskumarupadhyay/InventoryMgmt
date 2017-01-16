@@ -220,8 +220,9 @@ namespace WindowsFormsApplication1
             }
             else if (updatecounter == 1)
             {
+                //string groupname = cmbItemItemGroup.Text;
 
-                string saveCommand1 = "update ItemDetails set itemId='" + txtItemProductCode.Text + "',itemName='" + txtItemProductName.Text + "',itemCompName='" + txtItemCompName.Text + "',itemDesc='" + txtItemDesc.Text + "',groupid='" + cmbItemItemGroup.Text + "',Unitid='" + cmbItemUnit.Text + "'where itemId='" + txtItemProductCode.Text + "'";
+                string saveCommand1 = "update ItemDetails set itemId='" + txtItemProductCode.Text + "',itemName='" + txtItemProductName.Text + "',itemCompName='" + txtItemCompName.Text + "',itemDesc='" + txtItemDesc.Text + "'where itemId='" + txtItemProductCode.Text + "'";
 
                 string saveCommand2 = "update ItemPriceDetail  set  purChasePrice='" + txtItemPrice.Text + "', SalesPrice='" + txtItemSalesPrice.Text + "', MrpPrice='" + txtItemMrp.Text + "',Margin='" + txtItemMargin.Text + "'where itemId='" + txtItemProductCode.Text + "'";
 
@@ -244,6 +245,7 @@ namespace WindowsFormsApplication1
             makeBlank();
             string Id = dbMainClass.getUniqueID("ItemDetails");
             txtItemProductCode.Text = Id;
+            btnItemList.Enabled = true;
         }
                                         }
                                     }
@@ -265,10 +267,10 @@ namespace WindowsFormsApplication1
             cmbItemItemGroup.Text = "Select A Group";
             cmbItemUnit.Text = "Select A Unit";
             txtItemPrice.Text = "";
-            txtItemSalesPrice.Text = "";
-            txtItemMrp.Text = "";
+            txtItemSalesPrice.Text = "0";
+            txtItemMrp.Text = "0";
             txtItemMargin.Text = "0";
-            txtItemOpeningQuant.Text = "";
+            txtItemOpeningQuant.Text = "0";
             txtItemRemaningQuant.Text = "0";
 
         }
@@ -445,6 +447,10 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyChar == '\b')
                 {
+                    if (txtItemMrp.Text == "")
+                    {
+                        txtItemMrp.Text = "0";
+                    }
                     e.Handled = false;
                 }
                 else
@@ -452,10 +458,7 @@ namespace WindowsFormsApplication1
                     e.Handled = true;
                 }
             }
-            //if (txtItemPrice.Text == "")
-            //{
-            //    txtItemPrice.Text = "0";
-            //}
+           
             //if (txtItemMrp.Text == "")
             //{
             //    txtItemMrp.Text = "0";
@@ -470,18 +473,18 @@ namespace WindowsFormsApplication1
         private void txtItemMrp_TextChanged(object sender, EventArgs e)
         {
 
-            if (txtItemPrice.Text == "")
-            {
-                txtItemPrice.Text = "0";
-            }
-            if (txtItemMrp.Text == "")
-            {
-                txtItemMrp.Text = "0";
-            }
-            int pPrice = Convert.ToInt32(txtItemPrice.Text);
-            int mrp = Convert.ToInt32(txtItemMrp.Text);
-            int totelmrp =mrp- pPrice ;
-            txtItemMargin.Text = totelmrp.ToString();
+            //if (txtItemPrice.Text == "")
+            //{
+            //    txtItemPrice.Text = "0";
+            //}
+            //if (txtItemMrp.Text == "")
+            //{
+            //    txtItemMrp.Text = "0";
+            //}
+            //int pPrice = Convert.ToInt32(txtItemPrice.Text);
+            //int mrp = Convert.ToInt32(txtItemMrp.Text);
+            //int totelmrp =mrp- pPrice ;
+            //txtItemMargin.Text = totelmrp.ToString();
 
         }
 
@@ -511,8 +514,41 @@ namespace WindowsFormsApplication1
                  updatecounter = 1;
                  tabindix1();
                  txtItemProductName.Focus();
+                 btnItemList.Enabled =false;
              }
 
+        }
+
+        private void txtItemSalesPrice_TextChanged(object sender, EventArgs e)
+        {
+            if (txtItemPrice.Text == "")
+            {
+                txtItemPrice.Text = "0";
+            }
+            if (txtItemSalesPrice.Text == "")
+            {
+                txtItemSalesPrice.Text = "0";
+            }
+            int pPrice = Convert.ToInt32(txtItemPrice.Text);
+            int mrp = Convert.ToInt32(txtItemSalesPrice.Text);
+            int totelmrp = mrp - pPrice;
+            txtItemMargin.Text = totelmrp.ToString();
+        }
+
+        private void txtItemPrice_TextChanged(object sender, EventArgs e)
+        {
+            if (txtItemPrice.Text == "")
+            {
+                txtItemPrice.Text = "0";
+            }
+            if (txtItemSalesPrice.Text == "")
+            {
+                txtItemSalesPrice.Text = "0";
+            }
+            int pPrice = Convert.ToInt32(txtItemPrice.Text);
+            int mrp = Convert.ToInt32(txtItemSalesPrice.Text);
+            int totelmrp = mrp - pPrice;
+            txtItemMargin.Text = totelmrp.ToString();
         }
     }
 

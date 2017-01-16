@@ -316,6 +316,7 @@
             this.txtItemSalesPrice.TabIndex = 13;
             this.txtItemSalesPrice.Text = "0";
             this.txtItemSalesPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtItemSalesPrice.TextChanged += new System.EventHandler(this.txtItemSalesPrice_TextChanged);
             // 
             // textBox7
             // 
@@ -337,6 +338,7 @@
             this.txtItemPrice.TabIndex = 12;
             this.txtItemPrice.Text = "0";
             this.txtItemPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtItemPrice.TextChanged += new System.EventHandler(this.txtItemPrice_TextChanged);
             // 
             // textBox5
             // 
@@ -552,6 +554,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(10, 96);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(676, 384);
             this.dataGridView1.StandardTab = true;

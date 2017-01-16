@@ -493,7 +493,7 @@ namespace WindowsFormsApplication1
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-
+            txtSearch.Text = "";
             DataGridViewCellCollection cellCollection = dataGridView1.Rows[0].Cells;
             setDetails(cellCollection);
             panel1.Visible = false;
