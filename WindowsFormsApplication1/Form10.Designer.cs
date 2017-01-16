@@ -267,6 +267,7 @@
             this.button4.Text = "Remove Item";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.button4_KeyPress);
             // 
             // butadditem
             // 
@@ -616,6 +617,7 @@
             this.button6.Text = "Close";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.button6_KeyPress);
             // 
             // savebutton
             // 
@@ -666,9 +668,10 @@
             this.panel2.Controls.Add(this.comsearchsalesvalue);
             this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.search);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(858, 418);
+            this.panel2.Size = new System.Drawing.Size(858, 564);
             this.panel2.TabIndex = 60;
             // 
             // butback

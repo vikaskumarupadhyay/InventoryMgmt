@@ -152,6 +152,7 @@
             this.butRemoveItem.Text = "Remove Item";
             this.butRemoveItem.UseVisualStyleBackColor = true;
             this.butRemoveItem.Click += new System.EventHandler(this.butRemoveItem_Click);
+            this.butRemoveItem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.butRemoveItem_KeyPress);
             // 
             // butAddItem
             // 
@@ -521,6 +522,7 @@
             this.butClose.Text = "Close";
             this.butClose.UseVisualStyleBackColor = true;
             this.butClose.Click += new System.EventHandler(this.butClose_Click);
+            this.butClose.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.butClose_KeyPress);
             // 
             // ButSelectPurchaseOrder
             // 
@@ -532,6 +534,7 @@
             this.ButSelectPurchaseOrder.Text = "Select Purchase Order";
             this.ButSelectPurchaseOrder.UseVisualStyleBackColor = true;
             this.ButSelectPurchaseOrder.Click += new System.EventHandler(this.ButSelectPurchaseOrder_Click);
+            this.ButSelectPurchaseOrder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ButSelectPurchaseOrder_KeyPress);
             // 
             // butSaveButton
             // 
@@ -543,6 +546,7 @@
             this.butSaveButton.Text = "Save";
             this.butSaveButton.UseVisualStyleBackColor = true;
             this.butSaveButton.Click += new System.EventHandler(this.butSaveButton_Click);
+            this.butSaveButton.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.butSaveButton_KeyPress);
             // 
             // textBox16
             // 

@@ -35,6 +35,9 @@ namespace WindowsFormsApplication1
             butSaveButton.TabStop = false;
             butClose.TabStop = false;
             ButSelectPurchaseOrder.TabStop = false;
+            textBox1.TabStop = false;
+            textBox2.TabStop = false;
+            textBox3.TabStop = false;
         }
         private void tab1()
         {
@@ -56,6 +59,9 @@ namespace WindowsFormsApplication1
             butClose.TabStop = false;
             gridsalesdelivary.TabStop = false;
             ButSelectPurchaseOrder.TabStop = false;
+            textBox1.TabStop = false;
+            textBox2.TabStop = false;
+            textBox3.TabStop = false;
         }
         //private void tabindex()
         //{
@@ -837,6 +843,19 @@ namespace WindowsFormsApplication1
             {
                 tab2();
             }
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                if (gridsalesdelivary.Rows.Count > 0)
+                {
+                    butRemoveItem.Focus();
+                }
+                else
+                {
+                    butSaveButton.Focus();
+                    ButSelectPurchaseOrder.TabStop = true;
+                    butClose.TabStop = true;
+                }
+            }
         }
 
         private void txtsearchvalue_TextChanged(object sender, EventArgs e)
@@ -934,6 +953,37 @@ namespace WindowsFormsApplication1
 
 
                 }
+            }
+        }
+
+        private void butSaveButton_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                txtcustomercode.Focus();
+            }
+        }
+
+        private void ButSelectPurchaseOrder_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            txtcustomercode.Focus();
+        }
+
+        private void butClose_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            txtcustomercode.Focus();
+        }
+
+        private void butRemoveItem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                butSaveButton.Focus();
+                ButSelectPurchaseOrder.TabStop = true;
+                butClose.TabStop = true;
+                txtcustomercode.TabStop = true;
+                butcustomercode.TabStop = true;
+               
             }
         }
 

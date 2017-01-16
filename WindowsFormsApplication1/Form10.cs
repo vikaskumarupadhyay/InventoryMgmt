@@ -36,6 +36,9 @@ namespace WindowsFormsApplication1
             button4.TabStop = false;
             savebutton.TabStop = false;
             button6.TabStop = false;
+            textBox1.TabStop = false;
+            textBox2.TabStop = false;
+            textBox3.TabStop = false;
         }
        
         private void tab1()
@@ -43,6 +46,7 @@ namespace WindowsFormsApplication1
             txtitemcode.Focus();
             button2.TabStop = true;
             txtitemcode.TabStop = true;
+          
         }
         private void tab2()
         {
@@ -57,6 +61,9 @@ namespace WindowsFormsApplication1
            // gridsalesorder.TabStop = true;
             savebutton.TabStop = false;
             button6.TabStop = false;
+            textBox1.TabStop = false;
+            textBox2.TabStop = false;
+            textBox3.TabStop = false;
         }
        
         private void button1_Click(object sender, EventArgs e)
@@ -607,6 +614,7 @@ namespace WindowsFormsApplication1
                 txtitemcode.Enabled = true;
                 txtitemcode.Focus();
                 txtitemcode.TabIndex = 1;
+             
             }
             if (e.KeyChar == (char)Keys.Enter)
             {
@@ -634,6 +642,7 @@ namespace WindowsFormsApplication1
                     if (gridsalesorder.Rows.Count == 0)
                     {
                         txtitemcode.Enabled = true;
+                       
                         txtitemcode.Focus();
                     }
                     else
@@ -654,6 +663,10 @@ namespace WindowsFormsApplication1
             {
                     tab1();   
             }
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                txtitemcode.Focus();
+            }
         }
 
         private void txtitemcode_KeyPress(object sender, KeyPressEventArgs e)
@@ -664,13 +677,14 @@ namespace WindowsFormsApplication1
             }
             if (e.KeyChar == (char)Keys.Escape)
             {
-                if (dataGridView1.Rows.Count>1)
+                if (gridsalesorder.Rows.Count>0)
                 {
                     button4.Focus();
                 }
                 else
                 {
                     savebutton.Focus();
+                    button6.TabStop = true;
                 }
             }
           
@@ -778,6 +792,25 @@ namespace WindowsFormsApplication1
             if (e.KeyChar == (char)Keys.Escape)
             {
                 txtcustomercode.Focus();
+            }
+        }
+
+        private void button6_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                txtcustomercode.Focus();
+            }
+        }
+
+        private void button4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                savebutton.Focus();
+                button6.TabStop = true;
+                txtcustomercode.TabStop = true;
+                button1.TabStop = true;
             }
         }
   
