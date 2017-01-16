@@ -643,6 +643,7 @@
             this.btnSelectPurchaseOrder.Text = "Select Purchase Order";
             this.btnSelectPurchaseOrder.UseVisualStyleBackColor = true;
             this.btnSelectPurchaseOrder.Click += new System.EventHandler(this.btnSelectPurchaseOrder_Click);
+            this.btnSelectPurchaseOrder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnSelectPurchaseOrder_KeyPress);
             // 
             // button5
             // 
@@ -654,6 +655,7 @@
             this.button5.Text = "Save";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.button5_KeyPress);
             // 
             // button7
             // 
@@ -665,6 +667,7 @@
             this.button7.Text = "Close";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.button7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.button7_KeyPress);
             // 
             // textBox3
             // 
@@ -711,10 +714,9 @@
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.butClose);
             this.panel2.Controls.Add(this.dataGridView2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1036, 598);
+            this.panel2.Size = new System.Drawing.Size(1036, 591);
             this.panel2.TabIndex = 40;
             // 
             // groupBox4

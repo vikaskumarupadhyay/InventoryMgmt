@@ -314,6 +314,7 @@ namespace WindowsFormsApplication1
             updatecounter = 1;
             tabindix1();
             txtItemProductName.Focus();
+            btnItemList.Enabled = false;
 
         }
         private void setDetails(DataGridViewCellCollection cellCollection)
@@ -348,6 +349,7 @@ namespace WindowsFormsApplication1
             panel1.Visible = false;
             updatecounter = 1;
             txtItemProductName.Focus();
+            btnItemList.Enabled = false;
         }
         private string getId(string Table)
         {

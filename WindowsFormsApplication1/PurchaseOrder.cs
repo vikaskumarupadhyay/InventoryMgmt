@@ -74,6 +74,11 @@ namespace WindowsFormsApplication1
             {
                 IndexTex3();
             }
+            if (e.KeyChar == Convert.ToChar(Keys.Escape))
+            {
+                IndexTex3();
+            }
+
         }
 
         private void txtVendorCode_KeyUp(object sender, KeyEventArgs e)
@@ -778,7 +783,14 @@ namespace WindowsFormsApplication1
             }
             if (e.KeyChar == Convert.ToChar(Keys.Escape))
             {
-                txtRemoveItem.Focus();
+                if (gridPurchaseOrder.Rows != null && gridPurchaseOrder.RowCount > 0)
+                {
+                    txtRemoveItem.Focus();
+                }
+                else
+                {
+                    btnSave.Focus();
+                }
             }
             if (Char.IsDigit(e.KeyChar))
             {
@@ -819,9 +831,14 @@ namespace WindowsFormsApplication1
 
         private void txtRemoveItem_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == Convert.ToChar(Keys.Escape))
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
                 gridPurchaseOrder.Focus();
+            }
+            if (e.KeyChar == Convert.ToChar(Keys.Escape))
+            {
+                btnSave.Focus();
+                btnClose.TabStop = true;
             }
         }
 
@@ -876,6 +893,22 @@ namespace WindowsFormsApplication1
                     txtQuanity.Enabled = true;
                     IndexTex2();
                 }
+            }
+        }
+
+        private void btnSave_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Escape))
+            {
+                txtVendorCode.Focus();
+            }
+        }
+
+        private void btnClose_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Escape))
+            {
+                txtVendorCode.Focus();
             }
         }
     }

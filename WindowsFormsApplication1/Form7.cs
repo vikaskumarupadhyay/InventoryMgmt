@@ -883,6 +883,12 @@ namespace WindowsFormsApplication1
             {
                 dataGridView1.Focus();
             }
+            if (e.KeyChar == Convert.ToChar(Keys.Escape))
+            {
+                button5.Focus();
+                button7.TabStop = true;
+                btnSelectPurchaseOrder.TabStop = true;
+            }
             //    button4.Enabled = true;
             //}
             //else
@@ -905,8 +911,14 @@ namespace WindowsFormsApplication1
             }
             if (e.KeyChar == Convert.ToChar(Keys.Escape))
             {
-               // txtItemCode.Focus();
-                button4.Focus();
+                if (dataGridView1.Rows != null && dataGridView1.RowCount > 0)
+                {
+                    button4.Focus();
+                }
+                else
+                {
+                    button5.Focus();
+                }
             }
             if (Char.IsDigit(e.KeyChar))
             {
@@ -1055,6 +1067,10 @@ namespace WindowsFormsApplication1
             {
                 IndexTex3();
             }
+            if (e.KeyChar == Convert.ToChar(Keys.Escape))
+            {
+                IndexTex3();
+            }
         }
 
         private void txtSearch_TextChanged_1(object sender, EventArgs e)
@@ -1191,6 +1207,30 @@ namespace WindowsFormsApplication1
                     string selectqurry1 = "select  itm.ItemId,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId where vod. Orderid='" + s + "'";
                     DataTable dt1 = dbMainClass.getDetailByQuery(selectqurry1);
                     dataGridView1.DataSource = dt1;
+            }
+        }
+
+        private void button5_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Escape))
+            {
+                textVendercod.Focus();
+            }
+        }
+
+        private void btnSelectPurchaseOrder_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Escape))
+            {
+                textVendercod.Focus();
+            }
+        }
+
+        private void button7_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Escape))
+            {
+                textVendercod.Focus();
             }
         }
     }
