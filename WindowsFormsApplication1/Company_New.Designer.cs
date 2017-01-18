@@ -56,13 +56,6 @@
             this.dtpdate = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
             this.txtvat = new System.Windows.Forms.TextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtGst = new System.Windows.Forms.TextBox();
-            this.txtExcise = new System.Windows.Forms.TextBox();
-            this.txtSarvice = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
             this.checkvat = new System.Windows.Forms.CheckBox();
             this.txtCstNo = new System.Windows.Forms.TextBox();
             this.txtVatNo = new System.Windows.Forms.TextBox();
@@ -90,16 +83,24 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.ComDetails = new System.Windows.Forms.ComboBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.txtSarvice = new System.Windows.Forms.TextBox();
+            this.txtExcise = new System.Windows.Forms.TextBox();
+            this.txtGst = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnList
             // 
             this.btnList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnList.Location = new System.Drawing.Point(740, 8);
+            this.btnList.Location = new System.Drawing.Point(726, 5);
             this.btnList.Name = "btnList";
             this.btnList.Size = new System.Drawing.Size(66, 28);
             this.btnList.TabIndex = 23;
@@ -120,7 +121,7 @@
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(46, 427);
+            this.txtDescription.Location = new System.Drawing.Point(46, 398);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -139,7 +140,7 @@
             // 
             // txtFax
             // 
-            this.txtFax.Location = new System.Drawing.Point(508, 270);
+            this.txtFax.Location = new System.Drawing.Point(508, 272);
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(253, 21);
             this.txtFax.TabIndex = 12;
@@ -147,7 +148,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(505, 252);
+            this.label13.Location = new System.Drawing.Point(505, 254);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(27, 15);
             this.label13.TabIndex = 24;
@@ -155,80 +156,81 @@
             // 
             // txtMobile
             // 
-            this.txtMobile.Location = new System.Drawing.Point(290, 270);
+            this.txtMobile.Location = new System.Drawing.Point(290, 272);
             this.txtMobile.Name = "txtMobile";
             this.txtMobile.Size = new System.Drawing.Size(212, 21);
             this.txtMobile.TabIndex = 11;
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(46, 270);
+            this.txtPhone.Location = new System.Drawing.Point(46, 272);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(238, 21);
             this.txtPhone.TabIndex = 10;
             // 
             // txtWebSite
             // 
-            this.txtWebSite.Location = new System.Drawing.Point(46, 228);
+            this.txtWebSite.Location = new System.Drawing.Point(46, 230);
             this.txtWebSite.Name = "txtWebSite";
             this.txtWebSite.Size = new System.Drawing.Size(715, 21);
             this.txtWebSite.TabIndex = 9;
             // 
             // txtEmailAddress
             // 
-            this.txtEmailAddress.Location = new System.Drawing.Point(46, 186);
+            this.txtEmailAddress.Location = new System.Drawing.Point(46, 188);
             this.txtEmailAddress.Name = "txtEmailAddress";
             this.txtEmailAddress.Size = new System.Drawing.Size(715, 21);
             this.txtEmailAddress.TabIndex = 8;
             // 
             // txtCountry
             // 
-            this.txtCountry.Location = new System.Drawing.Point(584, 144);
+            this.txtCountry.Location = new System.Drawing.Point(584, 146);
             this.txtCountry.Name = "txtCountry";
             this.txtCountry.Size = new System.Drawing.Size(177, 21);
             this.txtCountry.TabIndex = 6;
             // 
             // txtZip
             // 
-            this.txtZip.Location = new System.Drawing.Point(427, 144);
+            this.txtZip.Location = new System.Drawing.Point(427, 146);
             this.txtZip.Name = "txtZip";
             this.txtZip.Size = new System.Drawing.Size(151, 21);
             this.txtZip.TabIndex = 5;
             // 
             // txtState
             // 
-            this.txtState.Location = new System.Drawing.Point(258, 144);
+            this.txtState.Location = new System.Drawing.Point(258, 146);
             this.txtState.Name = "txtState";
             this.txtState.Size = new System.Drawing.Size(163, 21);
             this.txtState.TabIndex = 4;
             // 
             // txtCity
             // 
-            this.txtCity.Location = new System.Drawing.Point(46, 144);
+            this.txtCity.Location = new System.Drawing.Point(46, 146);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(206, 21);
             this.txtCity.TabIndex = 3;
             // 
             // txtCompnayAddress
             // 
-            this.txtCompnayAddress.Location = new System.Drawing.Point(46, 80);
+            this.txtCompnayAddress.Location = new System.Drawing.Point(46, 82);
             this.txtCompnayAddress.Multiline = true;
             this.txtCompnayAddress.Name = "txtCompnayAddress";
+            this.txtCompnayAddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtCompnayAddress.Size = new System.Drawing.Size(715, 43);
             this.txtCompnayAddress.TabIndex = 2;
             // 
             // txtCompnayName
             // 
-            this.txtCompnayName.Location = new System.Drawing.Point(330, 38);
+            this.txtCompnayName.Location = new System.Drawing.Point(427, 38);
             this.txtCompnayName.Name = "txtCompnayName";
-            this.txtCompnayName.Size = new System.Drawing.Size(286, 21);
+            this.txtCompnayName.Size = new System.Drawing.Size(334, 21);
             this.txtCompnayName.TabIndex = 1;
             // 
             // txtCompnayCode
             // 
             this.txtCompnayCode.Location = new System.Drawing.Point(46, 38);
             this.txtCompnayCode.Name = "txtCompnayCode";
-            this.txtCompnayCode.Size = new System.Drawing.Size(83, 21);
+            this.txtCompnayCode.Size = new System.Drawing.Size(104, 21);
             this.txtCompnayCode.TabIndex = 0;
             this.txtCompnayCode.TabStop = false;
             this.txtCompnayCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -236,7 +238,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(287, 252);
+            this.label12.Location = new System.Drawing.Point(287, 254);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(45, 15);
             this.label12.TabIndex = 11;
@@ -244,17 +246,15 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.txtGst);
+            this.groupBox1.Controls.Add(this.txtExcise);
             this.groupBox1.Controls.Add(this.txtwonername);
-            this.groupBox1.Controls.Add(this.checkBox3);
+            this.groupBox1.Controls.Add(this.txtSarvice);
+            this.groupBox1.Controls.Add(this.label24);
             this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Controls.Add(this.checkcst);
-            this.groupBox1.Controls.Add(this.txtcst);
-            this.groupBox1.Controls.Add(this.dtpdate);
+            this.groupBox1.Controls.Add(this.label23);
+            this.groupBox1.Controls.Add(this.label22);
             this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.txtvat);
-            this.groupBox1.Controls.Add(this.groupBox3);
-            this.groupBox1.Controls.Add(this.checkvat);
             this.groupBox1.Controls.Add(this.txtCstNo);
             this.groupBox1.Controls.Add(this.txtVatNo);
             this.groupBox1.Controls.Add(this.txtPanNo);
@@ -287,33 +287,34 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(27, 42);
+            this.groupBox1.Location = new System.Drawing.Point(12, 30);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(779, 557);
+            this.groupBox1.Size = new System.Drawing.Size(779, 467);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Compnay Details";
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(613, 488);
+            this.textBox3.Location = new System.Drawing.Point(404, 16);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(122, 21);
+            this.textBox3.Size = new System.Drawing.Size(52, 21);
             this.textBox3.TabIndex = 37;
             this.textBox3.Text = "0";
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtwonername
             // 
-            this.txtwonername.Location = new System.Drawing.Point(144, 36);
+            this.txtwonername.Location = new System.Drawing.Point(156, 38);
             this.txtwonername.Name = "txtwonername";
-            this.txtwonername.Size = new System.Drawing.Size(160, 21);
+            this.txtwonername.Size = new System.Drawing.Size(265, 21);
             this.txtwonername.TabIndex = 44;
             // 
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(547, 488);
+            this.checkBox3.Location = new System.Drawing.Point(354, 21);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(50, 19);
             this.checkBox3.TabIndex = 36;
@@ -324,16 +325,16 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(141, 21);
+            this.label17.Location = new System.Drawing.Point(153, 20);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(68, 15);
+            this.label17.Size = new System.Drawing.Size(80, 15);
             this.label17.TabIndex = 43;
-            this.label17.Text = "OnerName";
+            this.label17.Text = "Owner Name";
             // 
             // checkcst
             // 
             this.checkcst.AutoSize = true;
-            this.checkcst.Location = new System.Drawing.Point(342, 492);
+            this.checkcst.Location = new System.Drawing.Point(184, 29);
             this.checkcst.Name = "checkcst";
             this.checkcst.Size = new System.Drawing.Size(49, 19);
             this.checkcst.TabIndex = 34;
@@ -343,25 +344,26 @@
             // 
             // txtcst
             // 
-            this.txtcst.Location = new System.Drawing.Point(410, 488);
+            this.txtcst.Location = new System.Drawing.Point(227, 27);
             this.txtcst.Name = "txtcst";
             this.txtcst.ReadOnly = true;
-            this.txtcst.Size = new System.Drawing.Size(122, 21);
+            this.txtcst.Size = new System.Drawing.Size(51, 21);
             this.txtcst.TabIndex = 35;
             this.txtcst.Text = "0";
+            this.txtcst.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // dtpdate
             // 
             this.dtpdate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpdate.Location = new System.Drawing.Point(645, 36);
+            this.dtpdate.Location = new System.Drawing.Point(609, 3);
             this.dtpdate.Name = "dtpdate";
-            this.dtpdate.Size = new System.Drawing.Size(103, 21);
+            this.dtpdate.Size = new System.Drawing.Size(103, 20);
             this.dtpdate.TabIndex = 23;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(60, 409);
+            this.label16.Location = new System.Drawing.Point(43, 380);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(69, 15);
             this.label16.TabIndex = 42;
@@ -369,83 +371,19 @@
             // 
             // txtvat
             // 
-            this.txtvat.Location = new System.Drawing.Point(172, 486);
+            this.txtvat.Location = new System.Drawing.Point(85, 27);
             this.txtvat.Name = "txtvat";
             this.txtvat.ReadOnly = true;
-            this.txtvat.Size = new System.Drawing.Size(112, 21);
+            this.txtvat.Size = new System.Drawing.Size(64, 21);
             this.txtvat.TabIndex = 33;
             this.txtvat.Text = "0";
+            this.txtvat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtvat.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.txtGst);
-            this.groupBox3.Controls.Add(this.txtExcise);
-            this.groupBox3.Controls.Add(this.txtSarvice);
-            this.groupBox3.Controls.Add(this.label24);
-            this.groupBox3.Controls.Add(this.label23);
-            this.groupBox3.Controls.Add(this.label22);
-            this.groupBox3.Location = new System.Drawing.Point(52, 339);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(709, 59);
-            this.groupBox3.TabIndex = 16;
-            this.groupBox3.TabStop = false;
-            // 
-            // txtGst
-            // 
-            this.txtGst.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtGst.Location = new System.Drawing.Point(460, 31);
-            this.txtGst.Name = "txtGst";
-            this.txtGst.Size = new System.Drawing.Size(253, 21);
-            this.txtGst.TabIndex = 19;
-            // 
-            // txtExcise
-            // 
-            this.txtExcise.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtExcise.Location = new System.Drawing.Point(242, 31);
-            this.txtExcise.Name = "txtExcise";
-            this.txtExcise.Size = new System.Drawing.Size(212, 21);
-            this.txtExcise.TabIndex = 18;
-            // 
-            // txtSarvice
-            // 
-            this.txtSarvice.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSarvice.Location = new System.Drawing.Point(-2, 31);
-            this.txtSarvice.Name = "txtSarvice";
-            this.txtSarvice.Size = new System.Drawing.Size(238, 21);
-            this.txtSarvice.TabIndex = 17;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(457, 13);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(86, 15);
-            this.label24.TabIndex = 43;
-            this.label24.Text = "GST Regn. No";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(239, 13);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(98, 15);
-            this.label23.TabIndex = 42;
-            this.label23.Text = "Excise Regn. No";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(-5, 13);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(125, 15);
-            this.label22.TabIndex = 41;
-            this.label22.Text = "Service Tax Regn. No";
             // 
             // checkvat
             // 
             this.checkvat.AutoSize = true;
-            this.checkvat.Location = new System.Drawing.Point(106, 486);
+            this.checkvat.Location = new System.Drawing.Point(32, 29);
             this.checkvat.Name = "checkvat";
             this.checkvat.Size = new System.Drawing.Size(47, 19);
             this.checkvat.TabIndex = 32;
@@ -456,7 +394,7 @@
             // txtCstNo
             // 
             this.txtCstNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCstNo.Location = new System.Drawing.Point(508, 312);
+            this.txtCstNo.Location = new System.Drawing.Point(508, 314);
             this.txtCstNo.Name = "txtCstNo";
             this.txtCstNo.Size = new System.Drawing.Size(253, 21);
             this.txtCstNo.TabIndex = 15;
@@ -464,7 +402,7 @@
             // txtVatNo
             // 
             this.txtVatNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtVatNo.Location = new System.Drawing.Point(290, 312);
+            this.txtVatNo.Location = new System.Drawing.Point(290, 314);
             this.txtVatNo.Name = "txtVatNo";
             this.txtVatNo.Size = new System.Drawing.Size(212, 21);
             this.txtVatNo.TabIndex = 14;
@@ -472,7 +410,7 @@
             // txtPanNo
             // 
             this.txtPanNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtPanNo.Location = new System.Drawing.Point(46, 312);
+            this.txtPanNo.Location = new System.Drawing.Point(46, 314);
             this.txtPanNo.MaxLength = 10;
             this.txtPanNo.Name = "txtPanNo";
             this.txtPanNo.Size = new System.Drawing.Size(238, 21);
@@ -481,7 +419,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(505, 294);
+            this.label21.Location = new System.Drawing.Point(505, 296);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(49, 15);
             this.label21.TabIndex = 30;
@@ -490,7 +428,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(287, 294);
+            this.label20.Location = new System.Drawing.Point(287, 296);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(47, 15);
             this.label20.TabIndex = 29;
@@ -499,7 +437,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(43, 294);
+            this.label19.Location = new System.Drawing.Point(43, 296);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(50, 15);
             this.label19.TabIndex = 28;
@@ -508,7 +446,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(43, 252);
+            this.label11.Location = new System.Drawing.Point(43, 254);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(43, 15);
             this.label11.TabIndex = 10;
@@ -517,7 +455,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(43, 210);
+            this.label10.Location = new System.Drawing.Point(43, 212);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(56, 15);
             this.label10.TabIndex = 9;
@@ -526,7 +464,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(39, 168);
+            this.label9.Location = new System.Drawing.Point(43, 170);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(90, 15);
             this.label9.TabIndex = 8;
@@ -535,7 +473,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(581, 126);
+            this.label8.Location = new System.Drawing.Point(581, 128);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(48, 15);
             this.label8.TabIndex = 7;
@@ -562,7 +500,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(43, 126);
+            this.label5.Location = new System.Drawing.Point(43, 128);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(26, 15);
             this.label5.TabIndex = 4;
@@ -580,7 +518,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(325, 20);
+            this.label2.Location = new System.Drawing.Point(424, 20);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 15);
             this.label2.TabIndex = 1;
@@ -606,9 +544,9 @@
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.ComDetails);
-            this.panel1.Location = new System.Drawing.Point(20, 8);
+            this.panel1.Location = new System.Drawing.Point(20, 260);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(793, 644);
+            this.panel1.Size = new System.Drawing.Size(793, 95);
             this.panel1.TabIndex = 32;
             // 
             // butClose
@@ -694,27 +632,109 @@
             this.ComDetails.Size = new System.Drawing.Size(165, 21);
             this.ComDetails.TabIndex = 0;
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(43, 338);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(125, 15);
+            this.label22.TabIndex = 41;
+            this.label22.Text = "Service Tax Regn. No";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(287, 338);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(98, 15);
+            this.label23.TabIndex = 42;
+            this.label23.Text = "Excise Regn. No";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(505, 338);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(86, 15);
+            this.label24.TabIndex = 43;
+            this.label24.Text = "GST Regn. No";
+            // 
+            // txtSarvice
+            // 
+            this.txtSarvice.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSarvice.Location = new System.Drawing.Point(46, 356);
+            this.txtSarvice.Name = "txtSarvice";
+            this.txtSarvice.Size = new System.Drawing.Size(238, 21);
+            this.txtSarvice.TabIndex = 17;
+            // 
+            // txtExcise
+            // 
+            this.txtExcise.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtExcise.Location = new System.Drawing.Point(290, 356);
+            this.txtExcise.Name = "txtExcise";
+            this.txtExcise.Size = new System.Drawing.Size(212, 21);
+            this.txtExcise.TabIndex = 18;
+            // 
+            // txtGst
+            // 
+            this.txtGst.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtGst.Location = new System.Drawing.Point(508, 356);
+            this.txtGst.Name = "txtGst";
+            this.txtGst.Size = new System.Drawing.Size(253, 21);
+            this.txtGst.TabIndex = 19;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.checkvat);
+            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.txtvat);
+            this.groupBox2.Controls.Add(this.txtcst);
+            this.groupBox2.Controls.Add(this.checkcst);
+            this.groupBox2.Controls.Add(this.checkBox3);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(12, 497);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(780, 59);
+            this.groupBox2.TabIndex = 33;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Tax Type";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(140, 27);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(20, 21);
+            this.textBox1.TabIndex = 34;
+            this.textBox1.TabStop = false;
+            this.textBox1.Text = "%";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // Company_New
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(832, 657);
+            this.ClientSize = new System.Drawing.Size(803, 634);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnList);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.dtpdate);
             this.Name = "Company_New";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Compnay";
             this.Load += new System.EventHandler(this.Compnay_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -750,15 +770,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox txtGst;
-        private System.Windows.Forms.TextBox txtExcise;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.DateTimePicker dtpdate;
-        private System.Windows.Forms.TextBox txtSarvice;
-        private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox txtCstNo;
         private System.Windows.Forms.TextBox txtVatNo;
         private System.Windows.Forms.TextBox txtPanNo;
@@ -783,6 +796,14 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox ComDetails;
+        private System.Windows.Forms.TextBox txtGst;
+        private System.Windows.Forms.TextBox txtExcise;
+        private System.Windows.Forms.TextBox txtSarvice;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox textBox1;
 
 
     }

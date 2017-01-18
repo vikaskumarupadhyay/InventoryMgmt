@@ -428,9 +428,10 @@
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(46, 77);
+            this.txtAddress.Location = new System.Drawing.Point(46, 80);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
+            this.txtAddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtAddress.Size = new System.Drawing.Size(715, 43);
             this.txtAddress.TabIndex = 15;
             // 
@@ -605,9 +606,10 @@
             this.panel1.Controls.Add(this.butclose);
             this.panel1.Controls.Add(this.butupdate);
             this.panel1.Controls.Add(this.butaddrecord);
-            this.panel1.Location = new System.Drawing.Point(0, 5);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(803, 617);
+            this.panel1.Size = new System.Drawing.Size(803, 634);
             this.panel1.TabIndex = 11;
             // 
             // groupBox3
