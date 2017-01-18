@@ -363,7 +363,7 @@ namespace WindowsFormsApplication1
                 if (id == "")
                 {
                     id = "1";
-                    string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpDate.Text + "','" + txtTotalAmmount.Text + "')";
+                    string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpDate.Text + "','" + txtTotalAmmount.Text + "','"+txtDiscount.Text+"')";
                     int insertrows = d.saveDetails(insertquery);
                     if (insertrows > 0)
                     {
@@ -409,7 +409,7 @@ namespace WindowsFormsApplication1
                     int id1 = Convert.ToInt32(id);
                     int id2 = id1 + 1;
                     string Orde = id2.ToString();
-                    string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpDate.Text + "','" + txtTotalAmmount.Text + "')";
+                    string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpDate.Text + "','" + txtTotalAmmount.Text + "','"+txtDiscount.Text+"')";
                     int insertrows = d.saveDetails(insertquery);
                     if (insertrows > 0)
                     {

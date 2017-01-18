@@ -594,14 +594,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-           
-        }
-
-
-
+        
         private void gridsalesorder_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (gridsalesorder.Rows.Count > 0)
