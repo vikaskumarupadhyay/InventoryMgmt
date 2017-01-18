@@ -688,9 +688,9 @@
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.buttBack);
             this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Location = new System.Drawing.Point(0, -4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1036, 591);
+            this.panel2.Size = new System.Drawing.Size(1036, 595);
             this.panel2.TabIndex = 65;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint_2);
             // 
@@ -701,9 +701,9 @@
             this.groupBox4.Controls.Add(this.label16);
             this.groupBox4.Controls.Add(this.label15);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(15, 4);
+            this.groupBox4.Location = new System.Drawing.Point(15, 0);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1007, 70);
+            this.groupBox4.Size = new System.Drawing.Size(1007, 74);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";

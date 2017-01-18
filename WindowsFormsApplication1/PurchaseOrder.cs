@@ -52,7 +52,7 @@ namespace WindowsFormsApplication1
                 int txt1 = txt + 1;
                 txtSrNo.Text = txt1.ToString();
             }
-            string stlect1 = "select VATNO,CSTNO,GST from CompnayDetails";
+            string stlect1 = "select VAT,CST,GST from CompnayDetails";
             DataTable dt1 = dbMainClass.getDetailByQuery(stlect1);
             foreach (DataRow dr1 in dt1.Rows)
             {
@@ -296,9 +296,10 @@ namespace WindowsFormsApplication1
                     DataRow dr = addToCartTable.NewRow();
                     dr[0] = txtItemCode.Text.Trim();
                     dr[1] = txtProductName.Text.Trim();
-                    dr[2] = txtRate.Text.Trim();
-                    dr[3] = txtQuanity.Text.Trim();
+                    dr[2] = txtQuanity.Text.Trim();
+                    dr[3] = txtRate.Text.Trim();
                     dr[4] = txtAmount.Text.Trim();
+                    dr[5] = txtAmount.Text.Trim();
                     addToCartTable.Rows.Add(dr);
                     gridPurchaseOrder.DataSource = addToCartTable;
                     double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
@@ -326,9 +327,10 @@ namespace WindowsFormsApplication1
         {
             addToCartTable.Columns.Add(new DataColumn("ItemCode"));
             addToCartTable.Columns.Add(new DataColumn("ProductName"));
-            addToCartTable.Columns.Add(new DataColumn("Rate"));
             addToCartTable.Columns.Add(new DataColumn("Quantity"));
+            addToCartTable.Columns.Add(new DataColumn("Rate"));
             addToCartTable.Columns.Add(new DataColumn("Amount"));
+            addToCartTable.Columns.Add(new DataColumn("TexAmount"));
         }
         #endregion
 
@@ -521,7 +523,7 @@ namespace WindowsFormsApplication1
             counter = 0;
             if (counter == 0)
             {
-                string insertqurry = "insert into VendorOrderDetails values('" + txtVendorCode.Text + "','" + dtpDate.Text + "','" + txtTotalAmount.Text + "','"+txtDiscount.Text+"')";
+                string insertqurry = "insert into VendorOrderDetails values('" + txtVendorCode.Text + "','" + dtpDate.Text + "','" + txtTotalAmount.Text + "','"+txtDiscount.Text+"','"+VATNO.Text+"','"+GSTNO.Text+"','"+txtTotalAmount.Text+"','"+txtDiscount.Text+"')";
                 int insertedRows = dbMainClass.saveDetails(insertqurry);
                 if (insertedRows > 0)
                 {

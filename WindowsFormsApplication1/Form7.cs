@@ -491,7 +491,7 @@ namespace WindowsFormsApplication1
                 {
                     id2 = "1";
                     OrderID = id2;
-                    string insertqurry = "insert into VendorOrderDetails values('" + textVendercod.Text + "','" + txtdate.Text + "','" + txttotalAmount.Text + "','"+txtdis.Text+"')";
+                    string insertqurry = "insert into VendorOrderDetails values('" + textVendercod.Text + "','" + txtdate.Text + "','" + txttotalAmount.Text + "','"+txtdis.Text+"','"+txtvat.Text+"','"+txtgst.Text+"','"+txtdis.Text+"','"+txttotalAmount.Text+"')";
                     int insertedRows = dbMainClass.saveDetails(insertqurry);
                     if (insertedRows > 0)
                     {
@@ -565,7 +565,7 @@ namespace WindowsFormsApplication1
                     int id3 = Convert.ToInt32(id2);
                     int id4 = id3 + 1;
                     OrderID = id4.ToString();
-                    string insertqurry1 = "insert into VendorOrderDetails values('" + textVendercod.Text + "','" + txtdate.Text + "','" + txttotalAmount.Text + "','"+txtdis.Text+"')";
+                    string insertqurry1 = "insert into VendorOrderDetails values('" + textVendercod.Text + "','" + txtdate.Text + "','" + txttotalAmount.Text + "','" + txtdis.Text + "','" + txtvat.Text + "','" + txtgst.Text + "','" + txtdis.Text + "','" + txttotalAmount.Text + "')";
                     int insertedRows1 = dbMainClass.saveDetails(insertqurry1);
                     if (insertedRows1 > 0)
                     {

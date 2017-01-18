@@ -34,7 +34,7 @@
             this.textBox22 = new System.Windows.Forms.TextBox();
             this.textBox15 = new System.Windows.Forms.TextBox();
             this.textBox21 = new System.Windows.Forms.TextBox();
-            this.textBox20 = new System.Windows.Forms.TextBox();
+            this.txtgst = new System.Windows.Forms.TextBox();
             this.textBox19 = new System.Windows.Forms.TextBox();
             this.textBox18 = new System.Windows.Forms.TextBox();
             this.txtdis = new System.Windows.Forms.TextBox();
@@ -80,7 +80,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtvat = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -177,18 +177,18 @@
             this.textBox21.Text = "%";
             this.textBox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox20
+            // txtgst
             // 
-            this.textBox20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox20.Location = new System.Drawing.Point(746, 540);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.ReadOnly = true;
-            this.textBox20.Size = new System.Drawing.Size(45, 21);
-            this.textBox20.TabIndex = 31;
-            this.textBox20.TabStop = false;
-            this.textBox20.Text = "0";
-            this.textBox20.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtgst.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtgst.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtgst.Location = new System.Drawing.Point(746, 540);
+            this.txtgst.Name = "txtgst";
+            this.txtgst.ReadOnly = true;
+            this.txtgst.Size = new System.Drawing.Size(45, 21);
+            this.txtgst.TabIndex = 31;
+            this.txtgst.TabStop = false;
+            this.txtgst.Text = "0";
+            this.txtgst.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox19
             // 
@@ -682,19 +682,19 @@
             this.textBox3.Text = "VAT";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox2
+            // txtvat
             // 
-            this.textBox2.BackColor = System.Drawing.Color.White;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(508, 540);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(39, 21);
-            this.textBox2.TabIndex = 65;
-            this.textBox2.TabStop = false;
-            this.textBox2.Text = "0";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtvat.BackColor = System.Drawing.Color.White;
+            this.txtvat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtvat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtvat.Location = new System.Drawing.Point(508, 540);
+            this.txtvat.Name = "txtvat";
+            this.txtvat.ReadOnly = true;
+            this.txtvat.Size = new System.Drawing.Size(39, 21);
+            this.txtvat.TabIndex = 65;
+            this.txtvat.TabStop = false;
+            this.txtvat.Text = "0";
+            this.txtvat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox1
             // 
@@ -714,9 +714,9 @@
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.butClose);
             this.panel2.Controls.Add(this.dataGridView2);
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Location = new System.Drawing.Point(0, -6);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1036, 591);
+            this.panel2.Size = new System.Drawing.Size(1036, 597);
             this.panel2.TabIndex = 40;
             // 
             // groupBox4
@@ -806,7 +806,7 @@
             this.ClientSize = new System.Drawing.Size(1036, 598);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtvat);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.txttotalAmount);
             this.Controls.Add(this.textBox22);
@@ -814,7 +814,7 @@
             this.Controls.Add(this.button7);
             this.Controls.Add(this.textBox21);
             this.Controls.Add(this.btnSelectPurchaseOrder);
-            this.Controls.Add(this.textBox20);
+            this.Controls.Add(this.txtgst);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBox19);
@@ -892,7 +892,7 @@
         private System.Windows.Forms.TextBox textBox22;
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.TextBox textBox21;
-        private System.Windows.Forms.TextBox textBox20;
+        private System.Windows.Forms.TextBox txtgst;
         private System.Windows.Forms.TextBox textBox19;
         private System.Windows.Forms.TextBox textBox18;
         private System.Windows.Forms.TextBox txtdis;
@@ -901,7 +901,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtvat;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button butClose;
