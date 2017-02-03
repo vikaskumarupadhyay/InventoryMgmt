@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class print
+    partial class customerprint
     {
         /// <summary>
         /// Required designer variable.

@@ -141,3 +141,5 @@ E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Propertie
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Unit.resources
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.VendorList1.resources
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb

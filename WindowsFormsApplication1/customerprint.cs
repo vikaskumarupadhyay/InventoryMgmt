@@ -9,13 +9,13 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class print : Form
+    public partial class customerprint : Form
     {
         int s = 1;
         DB_Main dbMainClass = new DB_Main();
         Class2 s1 = new Class2();
         List<Class2> class2Collection = new List<Class2>();
-        public print(List<Class2> class2Obejct)
+        public customerprint(List<Class2> class2Obejct)
         {
             class2Collection = class2Obejct;
             InitializeComponent();

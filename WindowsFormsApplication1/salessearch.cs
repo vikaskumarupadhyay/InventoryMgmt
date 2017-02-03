@@ -238,7 +238,7 @@ namespace WindowsFormsApplication1
                 class2Collection.Add(gridViewClassObject);
 
             }
-            print p = new print(class2Collection);
+            customerprint p = new customerprint(class2Collection);
             p.Show();
         }
 
