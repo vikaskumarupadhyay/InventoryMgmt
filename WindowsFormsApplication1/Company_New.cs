@@ -154,8 +154,8 @@ namespace WindowsFormsApplication1
                 {
                     MessageBox.Show("Details save not successfully");
                 }
-            }      
-            
+            }
+
             makeblank();
         }
 
@@ -232,17 +232,39 @@ namespace WindowsFormsApplication1
 
         private void checkvat_Click(object sender, EventArgs e)
         {
-            txtvat.ReadOnly = false;
+            if (checkvat.Checked = true)
+            {
+
+                txtvat.ReadOnly = false;
+                txtcst.ReadOnly = true;
+                textBox3.ReadOnly = true;
+                checkcst.Checked = false;
+                checkBox3.Checked = false;
+            }
         }
 
         private void checkcst_Click(object sender, EventArgs e)
         {
-            txtcst.ReadOnly = false;
+            if (checkcst.Checked = true)
+            {
+                txtcst.ReadOnly = false;
+                checkvat.Checked = false;
+                textBox3.ReadOnly = true;
+                checkBox3.Checked = false;
+                txtvat.ReadOnly = true;
+            }
         }
 
         private void checkBox3_Click(object sender, EventArgs e)
         {
-            textBox3.ReadOnly = false;
+            if (checkBox3.Checked = true)
+            {
+                textBox3.ReadOnly = false;
+                txtvat.ReadOnly = true;
+                txtcst.ReadOnly = true;
+                checkvat.Checked = false;
+                checkcst.Checked = false;
+            }
         }
 
         private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
@@ -275,9 +297,5 @@ namespace WindowsFormsApplication1
             dataGridView1.DataSource = dt;
         }
 
-        private void txtCity_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

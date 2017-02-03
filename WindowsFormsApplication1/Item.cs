@@ -523,34 +523,99 @@ namespace WindowsFormsApplication1
 
         private void txtItemSalesPrice_TextChanged(object sender, EventArgs e)
         {
-            if (txtItemPrice.Text == "")
-            {
-                txtItemPrice.Text = "0";
-            }
-            if (txtItemSalesPrice.Text == "")
-            {
-                txtItemSalesPrice.Text = "0";
-            }
-            int pPrice = Convert.ToInt32(txtItemPrice.Text);
-            int mrp = Convert.ToInt32(txtItemSalesPrice.Text);
-            int totelmrp = mrp - pPrice;
-            txtItemMargin.Text = totelmrp.ToString();
+                if (txtItemPrice.Text == "")
+                {
+                    txtItemPrice.Text = "0";
+                }
+                if (txtItemSalesPrice.Text == "")
+                {
+                    txtItemSalesPrice.Text = "0";
+                }
+                int pPrice = Convert.ToInt32(txtItemPrice.Text);
+                int mrp = Convert.ToInt32(txtItemSalesPrice.Text);
+                int totelmrp = mrp - pPrice;
+                txtItemMargin.Text = totelmrp.ToString();
+
         }
 
         private void txtItemPrice_TextChanged(object sender, EventArgs e)
         {
-            if (txtItemPrice.Text == "")
+            if (txtItemSalesPrice.Text == "0")
             {
-                txtItemPrice.Text = "0";
+                if (txtItemPrice.Text == "")
+                {
+                    txtItemPrice.Text = "0";
+                }
+                if (txtItemSalesPrice.Text == "")
+                {
+                    txtItemSalesPrice.Text = "0";
+                }
+                int pPrice = Convert.ToInt32(txtItemPrice.Text);
+                int mrp = Convert.ToInt32(txtItemSalesPrice.Text);
+                int totelmrp = mrp - pPrice;
+                txtItemMargin.Text = "0";//totelmrp.ToString();
             }
-            if (txtItemSalesPrice.Text == "")
+            if (txtItemSalesPrice.Text != "0")
             {
-                txtItemSalesPrice.Text = "0";
+                if (txtItemPrice.Text == "")
+                {
+                    txtItemPrice.Text = "0";
+                }
+                if (txtItemSalesPrice.Text == "")
+                {
+                    txtItemSalesPrice.Text = "0";
+                }
+                int pPrice = Convert.ToInt32(txtItemPrice.Text);
+                int mrp = Convert.ToInt32(txtItemSalesPrice.Text);
+                int totelmrp = mrp - pPrice;
+                txtItemMargin.Text = totelmrp.ToString();
             }
-            int pPrice = Convert.ToInt32(txtItemPrice.Text);
-            int mrp = Convert.ToInt32(txtItemSalesPrice.Text);
-            int totelmrp = mrp - pPrice;
-            txtItemMargin.Text = totelmrp.ToString();
+        }
+
+        private void butPrint_Click(object sender, EventArgs e)
+        {
+            DataGridViewRowCollection RowCollection = dataGridView1.Rows;
+            List<printclass> classCollection = new List<printclass>();
+            for (int a = 0; a < RowCollection.Count; a++)
+            {
+
+                DataGridViewRow currentRow = RowCollection[a];
+                DataGridViewCellCollection cellCollection = currentRow.Cells;
+                printclass classObject = new printclass();
+                classObject.Name = cellCollection[1].Value.ToString();
+                classObject.Address = cellCollection[2].Value.ToString();
+                classObject.Phone = cellCollection[6].Value.ToString();
+                classObject.Email = cellCollection[7].Value.ToString();
+                classObject.OpningBalnce = cellCollection[8].Value.ToString();
+                classObject.CurrentBalnce = cellCollection[10].Value.ToString();
+                classObject.mrp = cellCollection[11].Value.ToString();
+                classCollection.Add(classObject);
+            }
+            VendorPrint vp = new VendorPrint(classCollection,2);
+            vp.Show();
+        }
+
+        private void txtItemSalesPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    if (txtItemSalesPrice.Text == "0")
+                    {
+                        txtItemMargin.Text = "0";
+                    }
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
         }
     }
 

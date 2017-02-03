@@ -209,7 +209,7 @@
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(206, 21);
             this.txtCity.TabIndex = 3;
-            this.txtCity.TextChanged += new System.EventHandler(this.txtCity_TextChanged);
+        //    this.txtCity.TextChanged += new System.EventHandler(this.txtCity_TextChanged);
             // 
             // txtCompnayAddress
             // 
@@ -294,6 +294,7 @@
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Compnay Details";
+          //  this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // txtGst
             // 
@@ -596,9 +597,11 @@
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.ComDetails);
-            this.panel1.Location = new System.Drawing.Point(20, 326);
+
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(793, 155);
+            this.panel1.Size = new System.Drawing.Size(803, 634);
             this.panel1.TabIndex = 32;
             // 
             // butClose
@@ -696,7 +699,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 497);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(780, 59);
+            this.groupBox2.Size = new System.Drawing.Size(780, 54);
             this.groupBox2.TabIndex = 33;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tax Type";
@@ -718,13 +721,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(803, 634);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnList);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dtpdate);
+            this.Controls.Add(this.groupBox2);
             this.Name = "Company_New";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Compnay";

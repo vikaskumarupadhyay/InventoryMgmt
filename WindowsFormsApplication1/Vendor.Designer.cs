@@ -80,6 +80,7 @@
             this.btnVenderClose = new System.Windows.Forms.Button();
             this.btnVenderList = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.butprint = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -608,6 +609,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.butprint);
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.btnUpdate);
@@ -617,7 +619,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(803, 589);
             this.panel1.TabIndex = 7;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // butprint
+            // 
+            this.butprint.Location = new System.Drawing.Point(358, 556);
+            this.butprint.Name = "butprint";
+            this.butprint.Size = new System.Drawing.Size(75, 29);
+            this.butprint.TabIndex = 30;
+            this.butprint.Text = "Print";
+            this.butprint.UseVisualStyleBackColor = true;
+            this.butprint.Click += new System.EventHandler(this.butprint_Click);
             // 
             // groupBox3
             // 
@@ -663,7 +674,6 @@
             this.comboBox1.Size = new System.Drawing.Size(355, 23);
             this.comboBox1.TabIndex = 24;
             this.comboBox1.Text = "Select Text";
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // txtSearch
             // 
@@ -828,5 +838,6 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button butprint;
     }
 }

@@ -65,6 +65,7 @@
             this.btnItemClose = new System.Windows.Forms.Button();
             this.btnItemList = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.butPrint = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -317,6 +318,7 @@
             this.txtItemSalesPrice.Text = "0";
             this.txtItemSalesPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtItemSalesPrice.TextChanged += new System.EventHandler(this.txtItemSalesPrice_TextChanged);
+            this.txtItemSalesPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemSalesPrice_KeyPress);
             // 
             // textBox7
             // 
@@ -468,6 +470,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.butPrint);
             this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label13);
@@ -478,8 +481,18 @@
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Location = new System.Drawing.Point(3, -6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(712, 543);
+            this.panel1.Size = new System.Drawing.Size(712, 552);
             this.panel1.TabIndex = 10;
+            // 
+            // butPrint
+            // 
+            this.butPrint.Location = new System.Drawing.Point(428, 489);
+            this.butPrint.Name = "butPrint";
+            this.butPrint.Size = new System.Drawing.Size(75, 32);
+            this.butPrint.TabIndex = 7;
+            this.butPrint.Text = "Print";
+            this.butPrint.UseVisualStyleBackColor = true;
+            this.butPrint.Click += new System.EventHandler(this.butPrint_Click);
             // 
             // txtSearch
             // 
@@ -640,5 +653,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox searchCalmn;
+        private System.Windows.Forms.Button butPrint;
     }
 }

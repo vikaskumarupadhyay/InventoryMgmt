@@ -220,8 +220,8 @@
             this.reportsToolStripMenuItem,
             this.toolStripSeparator2,
             this.vendorListToolStripMenuItem,
-            this.itemToolStripMenuItem1,
-            this.customerToolStripMenuItem1});
+            this.customerToolStripMenuItem1,
+            this.itemToolStripMenuItem1});
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
             this.searchToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.searchToolStripMenuItem.Text = "Explore";

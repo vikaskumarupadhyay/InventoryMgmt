@@ -6,7 +6,6 @@ begin
 select top 1 (VenderID)  from dbo.VendorDetails order by venderID desc 
 end
 go
-exec  GetUpdateCounterVender
 
 ALTER procedure [dbo].[GetUpdateCounterVender] 
  as

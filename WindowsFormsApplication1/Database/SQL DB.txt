@@ -161,8 +161,10 @@ alter table orderdetails add Discount float
 
  Sp_rename 'CustomerDetails.ServicetaxregnNo','CustServicetaxRegnNo'
 
- Sp_rename 'CustomerDetails.Exciseregnno','CustExciseRegnNo'
- 
+ --Sp_rename 'CustomerDetails.Exciseregnno','CustExciseRegnNo'
+ alter table CompnayDetails Alter column ServiceTaxAmmount varchar(200)
+alter table CompnayDetails Alter column ExciseTaxAmmount varchar(200)
+alter table CompnayDetails Alter column GSTTaxAmmount varchar(200)
 
 
  

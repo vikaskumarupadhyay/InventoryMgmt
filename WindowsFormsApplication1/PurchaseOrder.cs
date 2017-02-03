@@ -299,7 +299,7 @@ namespace WindowsFormsApplication1
                     dr[2] = txtQuanity.Text.Trim();
                     dr[3] = txtRate.Text.Trim();
                     dr[4] = txtAmount.Text.Trim();
-                    dr[5] = txtAmount.Text.Trim();
+                    //dr[5] = txtAmount.Text.Trim();
                     addToCartTable.Rows.Add(dr);
                     gridPurchaseOrder.DataSource = addToCartTable;
                     double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
@@ -330,7 +330,7 @@ namespace WindowsFormsApplication1
             addToCartTable.Columns.Add(new DataColumn("Quantity"));
             addToCartTable.Columns.Add(new DataColumn("Rate"));
             addToCartTable.Columns.Add(new DataColumn("Amount"));
-            addToCartTable.Columns.Add(new DataColumn("TexAmount"));
+            //addToCartTable.Columns.Add(new DataColumn("TexAmount"));
         }
         #endregion
 
@@ -500,7 +500,7 @@ namespace WindowsFormsApplication1
                 DataGridViewRow currentRow1 = call[c];
                 DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
                 string itid = cellCollection1[0].Value.ToString();
-                string que = cellCollection1[3].Value.ToString();
+                string que = cellCollection1[2].Value.ToString();
 
 
 
@@ -523,7 +523,7 @@ namespace WindowsFormsApplication1
             counter = 0;
             if (counter == 0)
             {
-                string insertqurry = "insert into VendorOrderDetails values('" + txtVendorCode.Text + "','" + dtpDate.Text + "','" + txtTotalAmount.Text + "','"+txtDiscount.Text+"','"+VATNO.Text+"','"+GSTNO.Text+"','"+txtTotalAmount.Text+"','"+txtDiscount.Text+"')";
+                string insertqurry = "insert into VendorOrderDetails values('" + txtVendorCode.Text + "','" + dtpDate.Value.ToString() + "','" + txtTotalAmount.Text + "','"+txtDiscount.Text+"','"+VATNO.Text+"','"+GSTNO.Text+"','"+txtTotalAmount.Text+"','"+txtDiscount.Text+"')";
                 int insertedRows = dbMainClass.saveDetails(insertqurry);
                 if (insertedRows > 0)
                 {

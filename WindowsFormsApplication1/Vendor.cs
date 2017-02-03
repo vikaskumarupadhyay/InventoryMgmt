@@ -506,6 +506,8 @@ namespace WindowsFormsApplication1
         private void button1_Click(object sender, EventArgs e)
         {
             panel1.Visible = false;
+            Tabindex1();
+            txtVenderName.Focus();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -570,11 +572,6 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             string s = comboBox1.SelectedValue.ToString();
@@ -582,11 +579,6 @@ namespace WindowsFormsApplication1
             string selectQurry = "select vd.venderId as [Vender Id ],vd.vName AS Name ,vd.vCompName AS [Company Name] ,vd.vAddress AS Address,vd.vCity AS City,vd. vState AS State ,vd.vZip AS Zip ,vd.vCountry AS Country ,vd.vEmail AS[E-Mail ],vd. vWebAddress AS[Web Address],vd.vPhone AS Phone ,vd.vMobile AS Mobile ,vd.vFax AS Fax ,vd.vPanNo as[PAN No],vd.vVatNo as [VAT No],vd.vCstNo as[CST No],vd.vServiceTaxRegnNo as [Service Tax Regn.No],vd.vExciseRegnNo as [Excise Regn.No],vd.vGSTRegnNo as[GST Regn.No],vd.vDesc AS Description,vad.vOpeningBalance AS [Opening Balance] , vad.vCurrentBalance AS [Current Balance] from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID where " + s + " like '" + txtSearch.Text + "%'";
             DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
             dataGridView1.DataSource = dt;
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void txtPanNo_KeyPress(object sender, KeyPressEventArgs e)
@@ -713,6 +705,28 @@ namespace WindowsFormsApplication1
                 txtVenderAddress.Focus();
                 Tabindex2();
             }
+        }
+
+        private void butprint_Click(object sender, EventArgs e)
+        {
+            DataGridViewRowCollection RowCollection = dataGridView1.Rows;
+            List<printclass> classCollection = new List<printclass>();
+            for (int a = 0; a < RowCollection.Count; a++)
+            {
+
+                DataGridViewRow currentRow = RowCollection[a];
+                DataGridViewCellCollection cellCollection = currentRow.Cells;
+                printclass classObject = new printclass();
+                classObject.Name = cellCollection[1].Value.ToString();
+                classObject.Address = cellCollection[3].Value.ToString();
+                classObject.Phone = cellCollection[11].Value.ToString();
+                classObject.Email = cellCollection[8].Value.ToString();
+                classObject.OpningBalnce = cellCollection[20].Value.ToString();
+                classObject.CurrentBalnce = cellCollection[21].Value.ToString();
+                classCollection.Add(classObject);
+            }
+            VendorPrint vp = new VendorPrint(classCollection,1);
+            vp.Show();
         }
 
     }
