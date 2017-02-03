@@ -109,6 +109,7 @@
             this.txtreamaining.Name = "txtreamaining";
             this.txtreamaining.Size = new System.Drawing.Size(108, 21);
             this.txtreamaining.TabIndex = 56;
+            this.txtreamaining.Text = "0";
             // 
             // label13
             // 
@@ -125,6 +126,7 @@
             this.txtpayammount.Name = "txtpayammount";
             this.txtpayammount.Size = new System.Drawing.Size(117, 21);
             this.txtpayammount.TabIndex = 54;
+            this.txtpayammount.Text = "0";
             this.txtpayammount.TextChanged += new System.EventHandler(this.txtpayammount_TextChanged);
             // 
             // label12
@@ -524,9 +526,9 @@
             this.panel2.Controls.Add(this.combsearch);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Location = new System.Drawing.Point(5, 214);
+            this.panel2.Location = new System.Drawing.Point(5, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(734, 370);
+            this.panel2.Size = new System.Drawing.Size(734, 581);
             this.panel2.TabIndex = 42;
             // 
             // dataGridView2

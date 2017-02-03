@@ -132,9 +132,9 @@ namespace WindowsFormsApplication1
                         {
                             if (updateCounter == 0)
                             {
-                                string saveCommand1 = "insert into CustomerDetails values ('" + txtCustCode.Text + "','" + txtName.Text + "','" + txtCompnyName.Text + "','" + txtAddress.Text + "','" + txtCity.Text + "','" + txtState.Text + "','" + txtZIP.Text + "','" + txtCustCountry.Text + "','" + txtEMAILADDRESS.Text + "','" + txtWEBSITE.Text + "','" + txtTXTPHONE.Text + "', '" + txtMOBILE.Text + "','" + txtFAX.Text + "','"+txtDESCRIPTION.Text+"','" + txtPanno.Text + "','" + txttanno.Text + "','"+txtothers.Text+"','"+txtservicetaxno.Text+"','"+txtexiceragisterno.Text+"','"+txtgstragisterno.Text+"')";
+                                string saveCommand1 = "insert into CustomerDetails values ('" + txtCustCode.Text + "','" + txtName.Text + "','" + txtCompnyName.Text + "','" + txtAddress.Text + "','" + txtCity.Text + "','" + txtState.Text + "','" + txtZIP.Text + "','" + txtCustCountry.Text + "','" + txtEMAILADDRESS.Text + "','" + txtWEBSITE.Text + "','" + txtTXTPHONE.Text + "', '" + txtMOBILE.Text + "','" + txtFAX.Text + "','"+txtDESCRIPTION.Text+"','" + txtPanno.Text + "','" + txttanno.Text + "','"+txtothers.Text+"','"+txtservicetaxno.Text+"','"+txtexiceragisterno.Text+"','"+txtgstragisterno.Text+"','0')";
 
-                                string saveCommand2 = "insert into CustomerAccountDetails values ('"+txtCustCode.Text+"','" + txtOPENINGBALANCE.Text + "','" + txtCURRENTBALANCE.Text + "')";
+                                string saveCommand2 = "insert into CustomerAccountDetails values ('"+txtCustCode.Text+"','"+txtCustCode.Text+"','" + txtOPENINGBALANCE.Text + "','" + txtCURRENTBALANCE.Text + "')";
 
                                 int insertedRows = dbMainClass.saveDetails(saveCommand1, saveCommand2);
                                 if (insertedRows > 0)
