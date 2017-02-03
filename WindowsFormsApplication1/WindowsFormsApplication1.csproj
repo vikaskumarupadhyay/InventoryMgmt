@@ -67,6 +67,7 @@
       <DependentUpon>ChaqueForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
+    <Compile Include="Class2.cs" />
     <Compile Include="Company_New.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,12 +112,6 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form3.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form3.Designer.cs">
-      <DependentUpon>Form3.cs</DependentUpon>
-    </Compile>
     <Compile Include="ItemDetails.cs" />
     <Compile Include="ItemList1.cs">
       <SubType>Form</SubType>
@@ -124,18 +119,30 @@
     <Compile Include="ItemList1.Designer.cs">
       <DependentUpon>ItemList1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Purchase\PurchaseDetails.cs" />
-    <Compile Include="salessearch.cs">
+    <Compile Include="practise.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="salessearch.Designer.cs">
-      <DependentUpon>salessearch.cs</DependentUpon>
+    <Compile Include="practise.Designer.cs">
+      <DependentUpon>practise.cs</DependentUpon>
     </Compile>
+    <Compile Include="print.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="print.Designer.cs">
+      <DependentUpon>print.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Purchase\PurchaseDetails.cs" />
     <Compile Include="PurchasSearch1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PurchasSearch1.Designer.cs">
       <DependentUpon>PurchasSearch1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="salessearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="salessearch.designer.cs">
+      <DependentUpon>salessearch.cs</DependentUpon>
     </Compile>
     <Compile Include="varible.cs" />
     <Compile Include="Variable.cs" />
@@ -238,14 +245,20 @@
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="salessearch.resx">
-      <DependentUpon>salessearch.cs</DependentUpon>
+    <EmbeddedResource Include="practise.resx">
+      <DependentUpon>practise.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="print.resx">
+      <DependentUpon>print.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ItemList1.resx">
       <DependentUpon>ItemList1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PurchasSearch1.resx">
       <DependentUpon>PurchasSearch1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="salessearch.resx">
+      <DependentUpon>salessearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vendor.resx">
       <DependentUpon>Vendor.cs</DependentUpon>

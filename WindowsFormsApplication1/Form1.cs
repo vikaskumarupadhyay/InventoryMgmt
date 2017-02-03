@@ -118,19 +118,19 @@ namespace WindowsFormsApplication1
 
         private void salesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            salessearch f = new salessearch();
-            f.Show();
-            f.MdiParent = this;
+           // salessearch f = new salessearch();
+           // f.Show();
+            //f.MdiParent = this;
         }
 
         private void customerToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-              Customer F3 = new Customer(1);
+            Customer F3 = new Customer(1);
             F3.Show();
             F3.MdiParent = this;
-        //    Customer_list f = new Customer_list();
-        //    f.Show();
-        //    f.MdiParent = this;
+            //Customer_list f = new Customer_list();
+            //f.Show();
+            //f.MdiParent = this;
         }
 
     
@@ -162,14 +162,17 @@ namespace WindowsFormsApplication1
             //f15.MdiParent = this;
         }
 
-        
-
         private void companyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             Company_New f = new Company_New();
             f.Show();
             f.MdiParent = this;
+        }
+
+        private void salesToolStripMenuItem1_Click_1(object sender, EventArgs e)
+        {
+           salessearch s = new salessearch();
+            s.Show();
         }
 
     }

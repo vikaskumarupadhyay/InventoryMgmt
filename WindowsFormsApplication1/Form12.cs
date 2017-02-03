@@ -446,8 +446,8 @@ namespace WindowsFormsApplication1
                      string update = "update orderdetails set totalammount='" + txttotalammount.Text + "'where Orderid='" + id + "'";
                      int c = d.saveDetails(update);
                      string deletequrri1 = "delete customerorderdescriptions where OrderId='" + id + "'";
-                     DataTable dt1 = d.getDetailByQuery(deletequrri1);
-                     string insertquery = "insert into  orderdetails values('" + txtCustcode.Text + "','" + dtpdate.Text + "','" + txttotalammount.Text + "')";
+                    DataTable dt1 = d.getDetailByQuery(deletequrri1);
+                     string insertquery = "insert into  orderdetails values('" + txtCustcode.Text + "','" + dtpdate.Text + "','" + txttotalammount.Text + "','"+txtdiscount.Text+"')";
                      int insertrows = d.saveDetails(insertquery);
                      if (insertrows > 0)
                      {
@@ -635,7 +635,7 @@ namespace WindowsFormsApplication1
              DataTable dt = d.getDetailByQuery(selectquery);
              if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
              {
-                 button5.Enabled = false;
+                // button5.Enabled = false;
              }
              else
              {
@@ -815,6 +815,8 @@ namespace WindowsFormsApplication1
                  }
              }
          }
+
+       
 
        
     }

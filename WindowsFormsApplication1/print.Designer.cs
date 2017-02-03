@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class Form3
+    partial class print
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // print
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form3";
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(914, 455);
+            this.Name = "print";
+            this.Text = "print";
+            this.Load += new System.EventHandler(this.print_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+
     }
 }

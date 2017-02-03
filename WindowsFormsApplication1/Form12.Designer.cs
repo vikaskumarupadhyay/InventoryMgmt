@@ -691,10 +691,9 @@
             this.panel2.Controls.Add(this.label17);
             this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.dataGridView2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Location = new System.Drawing.Point(0, 171);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(858, 636);
+            this.panel2.Size = new System.Drawing.Size(858, 465);
             this.panel2.TabIndex = 64;
             // 
             // button1

@@ -82,17 +82,17 @@
             this.txtsearch.TabIndex = 4;
             this.txtsearch.TextChanged += new System.EventHandler(this.txtsearch_TextChanged);
             // 
-            // PurchasSearch
+            // PurchasSearch1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(691, 462);
+            this.ClientSize = new System.Drawing.Size(698, 462);
             this.Controls.Add(this.txtsearch);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboPurchasesearch);
             this.Controls.Add(this.gridPurchaseSearch);
-            this.Name = "PurchasSearch";
+            this.Name = "PurchasSearch1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PurchasSearch";
             this.Load += new System.EventHandler(this.PurchasSearch_Load);

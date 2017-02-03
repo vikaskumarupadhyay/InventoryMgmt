@@ -701,10 +701,9 @@
             this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.lblsearchvalue);
             this.panel2.Controls.Add(this.dataGridView2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Location = new System.Drawing.Point(0, 277);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(858, 599);
+            this.panel2.Size = new System.Drawing.Size(858, 322);
             this.panel2.TabIndex = 53;
             // 
             // button1

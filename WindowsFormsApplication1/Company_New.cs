@@ -274,5 +274,10 @@ namespace WindowsFormsApplication1
             DataTable dt = d.getDetailByQuery(selectQuery1);
             dataGridView1.DataSource = dt;
         }
+
+        private void txtCity_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

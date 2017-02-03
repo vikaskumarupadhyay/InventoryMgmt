@@ -23,6 +23,7 @@ namespace WindowsFormsApplication1
             value = value1;
             InitializeComponent();
         }
+     
         private void Customer_Load(object sender, EventArgs e)
         {
             if (value == 1)
@@ -58,6 +59,7 @@ namespace WindowsFormsApplication1
             //ds.Add("Exciseregnno");
             //ds.Add("Gstregnno");
             //comserchvalue.DataSource = ds;
+          
 
             string selectQuery = "select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Ballance],CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO]  ,CustServicetaxRegnNo AS [Service Tax Regn. No],CustExciseRegnNo AS [Excise Regn. No] ,Gstregnno AS [GST Regn. No] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
             string actualcolumn = "select  Custd.CustId  ,CustName  ,CustCompName  ,CustAddress ,CustCity , CustState  ,CustZip  ,CustCountry  ,CustEmail , CustWebAddress ,CustPhone  ,CustMobile  ,CustFax ,CustDesc ,Custad.CustOpeningBalance , Custad.CustCurrentBalance ,CustPanNo , CustVatNo ,CustCSTNo  ,CustServicetaxRegnNo ,CustExciseRegnNo  ,Gstregnno  from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
@@ -130,9 +132,9 @@ namespace WindowsFormsApplication1
                         {
                             if (updateCounter == 0)
                             {
-                                string saveCommand1 = "insert into CustomerDetails values ('" + txtCustCode.Text + "','" + txtName.Text + "','" + txtCompnyName.Text + "','" + txtAddress.Text + "','" + txtCity.Text + "','" + txtState.Text + "','" + txtZIP.Text + "','" + txtCustCountry.Text + "','" + txtEMAILADDRESS.Text + "','" + txtWEBSITE.Text + "','" + txtTXTPHONE.Text + "', '" + txtMOBILE.Text + "','" + txtFAX.Text + "','" + txtDESCRIPTION.Text + "','" + txtPanno.Text + "','" + txttanno.Text + "','"+txtothers.Text+"','"+txtservicetaxno.Text+"','"+txtexiceragisterno.Text+"','"+txtgstragisterno.Text+"')";
+                                string saveCommand1 = "insert into CustomerDetails values ('" + txtCustCode.Text + "','" + txtName.Text + "','" + txtCompnyName.Text + "','" + txtAddress.Text + "','" + txtCity.Text + "','" + txtState.Text + "','" + txtZIP.Text + "','" + txtCustCountry.Text + "','" + txtEMAILADDRESS.Text + "','" + txtWEBSITE.Text + "','" + txtTXTPHONE.Text + "', '" + txtMOBILE.Text + "','" + txtFAX.Text + "','"+txtDESCRIPTION.Text+"','" + txtPanno.Text + "','" + txttanno.Text + "','"+txtothers.Text+"','"+txtservicetaxno.Text+"','"+txtexiceragisterno.Text+"','"+txtgstragisterno.Text+"')";
 
-                                string saveCommand2 = "insert into CustomerAccountDetails values ('"+txtCustCode.Text+"','" + txtCustCode.Text + "','" + txtOPENINGBALANCE.Text + "','" + txtCURRENTBALANCE.Text + "')";
+                                string saveCommand2 = "insert into CustomerAccountDetails values ('"+txtCustCode.Text+"','" + txtOPENINGBALANCE.Text + "','" + txtCURRENTBALANCE.Text + "')";
 
                                 int insertedRows = dbMainClass.saveDetails(saveCommand1, saveCommand2);
                                 if (insertedRows > 0)
@@ -510,6 +512,7 @@ namespace WindowsFormsApplication1
             setDetails(cellCollection);
             panel1.Visible = false;
             updateCounter = 1;
+            tabindex1();
             blank();
            
         }
@@ -624,6 +627,33 @@ namespace WindowsFormsApplication1
                 }
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DataGridViewRowCollection rowcollection = dataGridView1.Rows;
+            List<Class2> class2Collection=new List<Class2>();
+
+            for (int a = 0; a < rowcollection.Count; a++)
+            {
+                DataGridViewRow currentrow = rowcollection[a];
+                DataGridViewCellCollection cellcollecton = currentrow.Cells;
+
+                Class2 gridViewClassObject = new Class2();
+
+                gridViewClassObject.name = cellcollecton[1].Value.ToString();
+                gridViewClassObject.address = cellcollecton[3].Value.ToString();
+                gridViewClassObject.mobileno = cellcollecton[11].Value.ToString();
+                gridViewClassObject.Emailaddress=cellcollecton[8].Value.ToString();
+                gridViewClassObject.openingbalance = cellcollecton[14].Value.ToString();
+                gridViewClassObject.currentbalance = cellcollecton[15].Value.ToString();
+                class2Collection.Add(gridViewClassObject);
+
+            }
+            print p = new print(class2Collection);
+            p.Show();
+        }
+
+      
 
     }
 }

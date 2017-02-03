@@ -47,16 +47,15 @@
             this.txtCompnayCode = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtGst = new System.Windows.Forms.TextBox();
+            this.txtExcise = new System.Windows.Forms.TextBox();
             this.txtwonername = new System.Windows.Forms.TextBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.txtSarvice = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.checkcst = new System.Windows.Forms.CheckBox();
-            this.txtcst = new System.Windows.Forms.TextBox();
-            this.dtpdate = new System.Windows.Forms.DateTimePicker();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.txtvat = new System.Windows.Forms.TextBox();
-            this.checkvat = new System.Windows.Forms.CheckBox();
             this.txtCstNo = new System.Windows.Forms.TextBox();
             this.txtVatNo = new System.Windows.Forms.TextBox();
             this.txtPanNo = new System.Windows.Forms.TextBox();
@@ -73,6 +72,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkcst = new System.Windows.Forms.CheckBox();
+            this.txtcst = new System.Windows.Forms.TextBox();
+            this.dtpdate = new System.Windows.Forms.DateTimePicker();
+            this.txtvat = new System.Windows.Forms.TextBox();
+            this.checkvat = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.butClose = new System.Windows.Forms.Button();
             this.butUpdate = new System.Windows.Forms.Button();
@@ -83,12 +89,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.ComDetails = new System.Windows.Forms.ComboBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.txtSarvice = new System.Windows.Forms.TextBox();
-            this.txtExcise = new System.Windows.Forms.TextBox();
-            this.txtGst = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
@@ -209,6 +209,7 @@
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(206, 21);
             this.txtCity.TabIndex = 3;
+            this.txtCity.TextChanged += new System.EventHandler(this.txtCity_TextChanged);
             // 
             // txtCompnayAddress
             // 
@@ -294,15 +295,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Compnay Details";
             // 
-            // textBox3
+            // txtGst
             // 
-            this.textBox3.Location = new System.Drawing.Point(404, 16);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(52, 21);
-            this.textBox3.TabIndex = 37;
-            this.textBox3.Text = "0";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtGst.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtGst.Location = new System.Drawing.Point(508, 356);
+            this.txtGst.Name = "txtGst";
+            this.txtGst.Size = new System.Drawing.Size(253, 21);
+            this.txtGst.TabIndex = 19;
+            // 
+            // txtExcise
+            // 
+            this.txtExcise.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtExcise.Location = new System.Drawing.Point(290, 356);
+            this.txtExcise.Name = "txtExcise";
+            this.txtExcise.Size = new System.Drawing.Size(212, 21);
+            this.txtExcise.TabIndex = 18;
             // 
             // txtwonername
             // 
@@ -311,16 +318,22 @@
             this.txtwonername.Size = new System.Drawing.Size(265, 21);
             this.txtwonername.TabIndex = 44;
             // 
-            // checkBox3
+            // txtSarvice
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(354, 21);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(50, 19);
-            this.checkBox3.TabIndex = 36;
-            this.checkBox3.Text = "GST";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            this.checkBox3.Click += new System.EventHandler(this.checkBox3_Click);
+            this.txtSarvice.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSarvice.Location = new System.Drawing.Point(46, 356);
+            this.txtSarvice.Name = "txtSarvice";
+            this.txtSarvice.Size = new System.Drawing.Size(238, 21);
+            this.txtSarvice.TabIndex = 17;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(505, 338);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(86, 15);
+            this.label24.TabIndex = 43;
+            this.label24.Text = "GST Regn. No";
             // 
             // label17
             // 
@@ -331,34 +344,23 @@
             this.label17.TabIndex = 43;
             this.label17.Text = "Owner Name";
             // 
-            // checkcst
+            // label23
             // 
-            this.checkcst.AutoSize = true;
-            this.checkcst.Location = new System.Drawing.Point(184, 29);
-            this.checkcst.Name = "checkcst";
-            this.checkcst.Size = new System.Drawing.Size(49, 19);
-            this.checkcst.TabIndex = 34;
-            this.checkcst.Text = "CST";
-            this.checkcst.UseVisualStyleBackColor = true;
-            this.checkcst.Click += new System.EventHandler(this.checkcst_Click);
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(287, 338);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(98, 15);
+            this.label23.TabIndex = 42;
+            this.label23.Text = "Excise Regn. No";
             // 
-            // txtcst
+            // label22
             // 
-            this.txtcst.Location = new System.Drawing.Point(227, 27);
-            this.txtcst.Name = "txtcst";
-            this.txtcst.ReadOnly = true;
-            this.txtcst.Size = new System.Drawing.Size(51, 21);
-            this.txtcst.TabIndex = 35;
-            this.txtcst.Text = "0";
-            this.txtcst.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // dtpdate
-            // 
-            this.dtpdate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpdate.Location = new System.Drawing.Point(609, 3);
-            this.dtpdate.Name = "dtpdate";
-            this.dtpdate.Size = new System.Drawing.Size(103, 20);
-            this.dtpdate.TabIndex = 23;
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(43, 338);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(125, 15);
+            this.label22.TabIndex = 41;
+            this.label22.Text = "Service Tax Regn. No";
             // 
             // label16
             // 
@@ -368,28 +370,6 @@
             this.label16.Size = new System.Drawing.Size(69, 15);
             this.label16.TabIndex = 42;
             this.label16.Text = "Description";
-            // 
-            // txtvat
-            // 
-            this.txtvat.Location = new System.Drawing.Point(85, 27);
-            this.txtvat.Name = "txtvat";
-            this.txtvat.ReadOnly = true;
-            this.txtvat.Size = new System.Drawing.Size(64, 21);
-            this.txtvat.TabIndex = 33;
-            this.txtvat.Text = "0";
-            this.txtvat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtvat.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // checkvat
-            // 
-            this.checkvat.AutoSize = true;
-            this.checkvat.Location = new System.Drawing.Point(32, 29);
-            this.checkvat.Name = "checkvat";
-            this.checkvat.Size = new System.Drawing.Size(47, 19);
-            this.checkvat.TabIndex = 32;
-            this.checkvat.Text = "VAT";
-            this.checkvat.UseVisualStyleBackColor = true;
-            this.checkvat.Click += new System.EventHandler(this.checkvat_Click);
             // 
             // txtCstNo
             // 
@@ -533,6 +513,78 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Compnay Code";
             // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(404, 16);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(52, 21);
+            this.textBox3.TabIndex = 37;
+            this.textBox3.Text = "0";
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(354, 21);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(50, 19);
+            this.checkBox3.TabIndex = 36;
+            this.checkBox3.Text = "GST";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.Click += new System.EventHandler(this.checkBox3_Click);
+            // 
+            // checkcst
+            // 
+            this.checkcst.AutoSize = true;
+            this.checkcst.Location = new System.Drawing.Point(184, 29);
+            this.checkcst.Name = "checkcst";
+            this.checkcst.Size = new System.Drawing.Size(49, 19);
+            this.checkcst.TabIndex = 34;
+            this.checkcst.Text = "CST";
+            this.checkcst.UseVisualStyleBackColor = true;
+            this.checkcst.Click += new System.EventHandler(this.checkcst_Click);
+            // 
+            // txtcst
+            // 
+            this.txtcst.Location = new System.Drawing.Point(227, 27);
+            this.txtcst.Name = "txtcst";
+            this.txtcst.ReadOnly = true;
+            this.txtcst.Size = new System.Drawing.Size(51, 21);
+            this.txtcst.TabIndex = 35;
+            this.txtcst.Text = "0";
+            this.txtcst.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // dtpdate
+            // 
+            this.dtpdate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpdate.Location = new System.Drawing.Point(609, 3);
+            this.dtpdate.Name = "dtpdate";
+            this.dtpdate.Size = new System.Drawing.Size(103, 20);
+            this.dtpdate.TabIndex = 23;
+            // 
+            // txtvat
+            // 
+            this.txtvat.Location = new System.Drawing.Point(85, 27);
+            this.txtvat.Name = "txtvat";
+            this.txtvat.ReadOnly = true;
+            this.txtvat.Size = new System.Drawing.Size(64, 21);
+            this.txtvat.TabIndex = 33;
+            this.txtvat.Text = "0";
+            this.txtvat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtvat.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // checkvat
+            // 
+            this.checkvat.AutoSize = true;
+            this.checkvat.Location = new System.Drawing.Point(32, 29);
+            this.checkvat.Name = "checkvat";
+            this.checkvat.Size = new System.Drawing.Size(47, 19);
+            this.checkvat.TabIndex = 32;
+            this.checkvat.Text = "VAT";
+            this.checkvat.UseVisualStyleBackColor = true;
+            this.checkvat.Click += new System.EventHandler(this.checkvat_Click);
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.butClose);
@@ -544,9 +596,9 @@
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.ComDetails);
-            this.panel1.Location = new System.Drawing.Point(20, 260);
+            this.panel1.Location = new System.Drawing.Point(20, 326);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(793, 95);
+            this.panel1.Size = new System.Drawing.Size(793, 155);
             this.panel1.TabIndex = 32;
             // 
             // butClose
@@ -631,57 +683,6 @@
             this.ComDetails.Name = "ComDetails";
             this.ComDetails.Size = new System.Drawing.Size(165, 21);
             this.ComDetails.TabIndex = 0;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(43, 338);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(125, 15);
-            this.label22.TabIndex = 41;
-            this.label22.Text = "Service Tax Regn. No";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(287, 338);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(98, 15);
-            this.label23.TabIndex = 42;
-            this.label23.Text = "Excise Regn. No";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(505, 338);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(86, 15);
-            this.label24.TabIndex = 43;
-            this.label24.Text = "GST Regn. No";
-            // 
-            // txtSarvice
-            // 
-            this.txtSarvice.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSarvice.Location = new System.Drawing.Point(46, 356);
-            this.txtSarvice.Name = "txtSarvice";
-            this.txtSarvice.Size = new System.Drawing.Size(238, 21);
-            this.txtSarvice.TabIndex = 17;
-            // 
-            // txtExcise
-            // 
-            this.txtExcise.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtExcise.Location = new System.Drawing.Point(290, 356);
-            this.txtExcise.Name = "txtExcise";
-            this.txtExcise.Size = new System.Drawing.Size(212, 21);
-            this.txtExcise.TabIndex = 18;
-            // 
-            // txtGst
-            // 
-            this.txtGst.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtGst.Location = new System.Drawing.Point(508, 356);
-            this.txtGst.Name = "txtGst";
-            this.txtGst.Size = new System.Drawing.Size(253, 21);
-            this.txtGst.TabIndex = 19;
             // 
             // groupBox2
             // 

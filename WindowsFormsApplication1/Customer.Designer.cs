@@ -80,6 +80,7 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnList = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.searchvalue = new System.Windows.Forms.Label();
             this.comserchvalue = new System.Windows.Forms.ComboBox();
@@ -432,6 +433,7 @@
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtAddress.ShortcutsEnabled = false;
             this.txtAddress.Size = new System.Drawing.Size(715, 43);
             this.txtAddress.TabIndex = 15;
             // 
@@ -601,16 +603,26 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.butclose);
             this.panel1.Controls.Add(this.butupdate);
             this.panel1.Controls.Add(this.butaddrecord);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(0, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(803, 634);
+            this.panel1.Size = new System.Drawing.Size(803, 610);
             this.panel1.TabIndex = 11;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(356, 558);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Print";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox3
             // 
@@ -811,5 +823,6 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button button1;
     }
 }

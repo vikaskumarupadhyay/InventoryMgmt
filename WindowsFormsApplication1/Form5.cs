@@ -28,6 +28,8 @@ namespace WindowsFormsApplication1
         }
         private void Form5_Load(object sender, EventArgs e)
         {
+       
+
             button1.Visible = false;
             Purchase.PurchaseDetails purchasedetailobj = new Purchase.PurchaseDetails();
             customerdetails = purchasedetailobj.GetcustomerdetailsInDataTable();
@@ -37,9 +39,9 @@ namespace WindowsFormsApplication1
             txtRefNo.Text = s;
             panel2.Visible = false;
             string select = " select Orderid from salesinvoice where invoiceid='" + s + "'";
-            DataTable dt = d.getDetailByQuery(select);
+            DataTable dt7 = d.getDetailByQuery(select);
             string invo = "";
-            foreach (DataRow dr in dt.Rows)
+            foreach (DataRow dr in dt7.Rows)
             {
                 invo = dr[0].ToString();
             }
@@ -64,16 +66,16 @@ namespace WindowsFormsApplication1
             }
             string select3 = "select vod.ItemId,ide.ItemName,vod.Price,vod.Quantity,vod.totalammount from customerorderdescriptions vod join ItemDetails ide on Vod.ItemId=ide.ItemId where vod.Orderid='" + invo + "'";
             DataTable dt4 = d.getDetailByQuery(select3);
-            string selectquery = "select totalammount from orderdetails where orderid='" + invo + "'";
-            DataTable dt5 = d.getDetailByQuery(selectquery);
-            foreach (DataRow dr in dt5.Rows)
+            string selectquery3 = "select totalammount from orderdetails where orderid='" + invo + "'";
+            DataTable dt8 = d.getDetailByQuery(selectquery3);
+            foreach (DataRow dr in dt8.Rows)
             {
                 txttotalammount.Text = dr[0].ToString();
             }
             dataGridView1.DataSource = dt4;
 
-            string selectquery1 = "select id from payment";
-            DataTable dt3 = d.getDetailByQuery(selectquery1);
+            string selectquery4 = "select id from payment";
+            DataTable dt3 = d.getDetailByQuery(selectquery4);
             string id = "";
             foreach (DataRow dr in dt3.Rows)
             {
@@ -105,7 +107,7 @@ namespace WindowsFormsApplication1
                 string customerid = txtcustomerid.Text;
                 if (customerid.Trim() != "" && customerid != null)
                 {
-                    DataRow[] dr = customerdetails.Select("CustId='" + customerid + "'");
+                    DataRow[] dr = customerdetails.Select("[custId]='" + customerid + "'");
                     if (dr != null && dr.Length > 0)
                     {
                         string customername = dr[0]["Name"].ToString();
@@ -204,7 +206,25 @@ namespace WindowsFormsApplication1
             //if (txtcustomerid.Text.Trim() != "" && txtcustomerid.Text.StartsWith("C"))
             //{
             //    setvalue();
+            //    string selectquery = "select c.CustName,c.CustCompName,c.CustAddress,c.CustPhone,c.CustMobile,c.CustFax ,ca.CustCurrentBalance from CustomerDetails c Join CustomerAccountDetails ca on c.Custid=ca.Custid Where c.Custid='" + txtcustomerid.Text + "'";
+            //    DataTable dt = d.getDetailByQuery(selectquery);
+            //    string v = "";
+            //    foreach (DataRow dr in dt.Rows)
+            //    {
+            //        v = dr[0].ToString();
+            //    }
+            //    txttotalammount.Text = v;
             //}
+            //string v = "";
+            //string selectquery1 = "select ca.CustCurrentBalance from CustomerAccountDetails where ca.custid=ca.custid";
+            //DataTable dt1 = d.getDetailByQuery(selectquery1);
+            //foreach(DataRow dr1 in dt1.Rows)
+            //{
+            //    v = dr1[0].ToString();
+            //}
+            //txttotalammount.Text = v;
+
+           
             string selectquery = "select c.CustName,c.CustCompName,c.CustAddress,c.CustPhone,c.CustMobile,c.CustFax ,ca.CustCurrentBalance from CustomerDetails c Join CustomerAccountDetails ca on c.Custid=ca.Custid Where c.Custid='" + txtcustomerid.Text + "'";
             DataTable dt = d.getDetailByQuery(selectquery);
 
@@ -220,15 +240,16 @@ namespace WindowsFormsApplication1
                     txtfax.Text = dr[5].ToString();
                     txttotalammount.Text = dr[6].ToString();
                 }
+               // txttotalammount.Text = v;
             }
             else
             {
                 txtcustname.Text = "";
                 txtcustcompnayname.Text = "";
                 txtaddress.Text = "";
-                txtphone.Text= "";
+                txtphone.Text = "";
                 txtmobile.Text = "";
-                txtfax.Text= "";
+                txtfax.Text = "";
                 txttotalammount.Text = "";
             }
         }
@@ -433,44 +454,72 @@ namespace WindowsFormsApplication1
 
         private void txtRefNo_TextChanged(object sender, EventArgs e)
         {
-            checkBox1.Checked = true;            
-            //string select = "select orderid from salesinvoice Where invoiceid='" + txtRefNo.Text + "'";
-            //DataTable dt = d.getDetailByQuery(select);
-            //string customerid= "";
-            //foreach (DataRow dr in dt.Rows)
-            //{
-            //    customerid = dr[0].ToString();
-            //}
-            string selectquery = "select  c.custId, c.CustName,c.CustCompName,c.CustAddress,c.CustPhone,c.CustMobile,c.CustFax,o.Orderid,s.Delivaryid,i.invoiceid from CustomerDetails c join orderdetails o on c.custId=o.custid join salesOrderDelivery s on o.Orderid=s.OrderId join salesinvoice i on o.Orderid=i.Orderid where i.invoiceid='"+txtRefNo.Text+"'";
-            DataTable dt1 = d.getDetailByQuery(selectquery);
-            string orderid = "";
-            if (dt1 != null && dt1.Rows != null && dt1.Rows.Count > 0)
-            {
-                foreach (DataRow dr in dt1.Rows)
-                {
-                    txtcustomerid.Text = dr[0].ToString();
-                    txtcustname.Text = dr[1].ToString();
-                    txtcustcompnayname.Text = dr[2].ToString();
-                    txtaddress.Text = dr[3].ToString();
-                    txtphone.Text = dr[4].ToString();
-                    txtmobile.Text = dr[5].ToString();
-                    txtfax.Text = dr[6].ToString();
-                    orderid = dr[7].ToString();
-                }
-            }
-            string total="";
-            string selectq= "select it.itemid,iq.ItemName,it.price,it.quantity,it.totalammount from customerorderdescriptions it join ItemDetails iq on it.ItemId=iq.ItemId where orderid='"+orderid + "'";
-             DataTable dt3 = d.getDetailByQuery(selectq);
-             string select2 = " select totalammount from orderdetails where orderid='" + orderid + "'";
-             DataTable dt4 = d.getDetailByQuery(select2);
-             foreach (DataRow dr1 in dt4.Rows)
+            checkBox1.Checked = true;
+            string selectquery = "select Delivaryid from salesinvoice where Delivaryid='" + txtRefNo.Text + "'";
+            DataTable dt = d.getDetailByQuery(selectquery);
+             string DilId="";
+             foreach (DataRow dr1 in dt.Rows)
              {
-                total = dr1[0].ToString();
+                 DilId = dr1[0].ToString();
              }
 
-             dataGridView1.DataSource = dt3;
-             txttotalammount.Text =total;
-            
+            if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
+            {
+                 button5.Enabled = false;
+            }
+            else
+            {
+                button5.Enabled = true;
+            }
+            string selectquery1 = "select  c.custId, c.CustName,c.CustCompName,c.CustAddress,c.CustPhone,c.CustMobile,c.CustFax,o.Orderid,s.Delivaryid from CustomerDetails c join orderdetails o on c.custId=o.custid join salesOrderDelivery s on o.Orderid=s.OrderId where s.Delivaryid='" + txtRefNo.Text + "'";
+            DataTable dt1 = d.getDetailByQuery(selectquery1);
+            string OrderId = "";
+            if (dt1 != null && dt1.Rows != null && dt1.Rows.Count > 0)
+            {
+                foreach (DataRow dr1 in dt1.Rows)
+                {
+                    txtcustomerid.Text = dr1[0].ToString();
+                    txtcustname.Text = dr1[1].ToString();
+                    txtcustcompnayname.Text = dr1[2].ToString();
+                    txtaddress.Text = dr1[3].ToString();
+                    txtphone.Text = dr1[4].ToString();
+                    txtmobile.Text = dr1[5].ToString();
+                    txtfax.Text = dr1[6].ToString();
+                    OrderId = dr1[7].ToString();
+                }
+            }
+
+            int totel = 0;
+            string selectquery2 = "select it.itemid,iq.ItemName,it.price,it.quantity,it.totalammount from customerorderdescriptions it join ItemDetails iq on it.ItemId=iq.ItemId where Orderid='" + OrderId + "'";
+            DataTable dt3 = d.getDetailByQuery(selectquery2);
+            int totelrow = addToCartTable.Rows.Count;
+            for (int a = 0; a < totelrow; a++)
+            {
+                addToCartTable.Rows.RemoveAt(0);
+            }
+            for (int a = 0; a < dt3.Rows.Count; a++)
+            {
+                DataRow dr1 = dt3.Rows[a];
+                string t = dr1[0].ToString();
+                string t2 = dr1[1].ToString();
+                string t1 = dr1[2].ToString();
+                string t3 = dr1[3].ToString();
+                string totalamt = dr1[4].ToString();
+                int amt = Convert.ToInt32(totalamt);
+                totel = totel + amt;
+                //dr1 = addToCartTable.NewRow();
+                //dr1[0] = t.Trim();
+                //dr1[1] = t2.Trim();
+                //dr1[2] = t1.Trim();
+                //dr1[3] = t3.Trim();
+                //dr1[4] = totalamt.Trim();
+                //addToCartTable.Rows.Add(dr1);
+
+            }
+
+            dataGridView1.DataSource = dt3; //addToCartTable;
+            txttotalammount.Text = totel.ToString();
+             
            
         }
 

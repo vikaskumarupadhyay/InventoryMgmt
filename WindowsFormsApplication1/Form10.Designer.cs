@@ -668,10 +668,9 @@
             this.panel2.Controls.Add(this.comsearchsalesvalue);
             this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.search);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Location = new System.Drawing.Point(0, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(858, 564);
+            this.panel2.Size = new System.Drawing.Size(858, 552);
             this.panel2.TabIndex = 60;
             // 
             // butback
