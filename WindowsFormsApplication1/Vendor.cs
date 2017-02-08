@@ -369,6 +369,7 @@ namespace WindowsFormsApplication1
 
         private void frmVendorDetails_Load(object sender, EventArgs e)
         {
+           
             if (counter == 1)
             {
                 //panel2.Visible = true;
