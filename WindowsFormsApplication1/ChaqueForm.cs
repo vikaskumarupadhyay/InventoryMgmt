@@ -39,10 +39,5 @@ namespace WindowsFormsApplication1
         {
             this.Close();
         }
-
-        private void ChaqueForm_Load(object sender, EventArgs e)
-        {
-
-        } 
     }
 }

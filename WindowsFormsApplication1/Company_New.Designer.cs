@@ -130,6 +130,7 @@
             // 
             // btnClose
             // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Location = new System.Drawing.Point(143, 605);
             this.btnClose.Name = "btnClose";
@@ -209,7 +210,6 @@
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(206, 21);
             this.txtCity.TabIndex = 3;
-        //    this.txtCity.TextChanged += new System.EventHandler(this.txtCity_TextChanged);
             // 
             // txtCompnayAddress
             // 
@@ -294,7 +294,6 @@
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Compnay Details";
-          //  this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // txtGst
             // 
@@ -597,11 +596,9 @@
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.ComDetails);
-
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(0, 161);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(803, 634);
+            this.panel1.Size = new System.Drawing.Size(803, 473);
             this.panel1.TabIndex = 32;
             // 
             // butClose
@@ -729,6 +726,7 @@
             this.Controls.Add(this.dtpdate);
             this.Controls.Add(this.groupBox2);
             this.Name = "Company_New";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Compnay";
             this.Load += new System.EventHandler(this.Compnay_Load);

@@ -164,9 +164,21 @@ namespace WindowsFormsApplication1
 
         private void companyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Company_New f = new Company_New();
-            f.Show();
-            f.MdiParent = this;
+           // this.Hide();
+            //Company_New f = new Company_New();
+            //if (f.ShowDialog() != DialogResult.OK)
+            //{
+            //this.Close();
+                 Company_New f1 = new Company_New();
+                 f1.Show();
+                 f1.MdiParent = this;
+               
+                 //f1.ShowDialog();
+             
+            //}
+           
+         
+            
         }
 
         private void salesToolStripMenuItem1_Click_1(object sender, EventArgs e)

@@ -154,3 +154,7 @@ E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.Ge
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.practise.resources
+<<<<<<< Updated upstream
+=======
+E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+>>>>>>> Stashed changes
