@@ -276,6 +276,7 @@
             // txtVenderFax
             // 
             this.txtVenderFax.Location = new System.Drawing.Point(508, 270);
+            this.txtVenderFax.MaxLength = 10;
             this.txtVenderFax.Name = "txtVenderFax";
             this.txtVenderFax.Size = new System.Drawing.Size(253, 21);
             this.txtVenderFax.TabIndex = 12;
@@ -292,6 +293,7 @@
             // txtVenderMobile
             // 
             this.txtVenderMobile.Location = new System.Drawing.Point(290, 270);
+            this.txtVenderMobile.MaxLength = 10;
             this.txtVenderMobile.Name = "txtVenderMobile";
             this.txtVenderMobile.Size = new System.Drawing.Size(212, 21);
             this.txtVenderMobile.TabIndex = 11;
@@ -301,6 +303,7 @@
             // txtVenderPhone
             // 
             this.txtVenderPhone.Location = new System.Drawing.Point(46, 270);
+            this.txtVenderPhone.MaxLength = 10;
             this.txtVenderPhone.Name = "txtVenderPhone";
             this.txtVenderPhone.Size = new System.Drawing.Size(238, 21);
             this.txtVenderPhone.TabIndex = 10;

@@ -5,30 +5,37 @@ use SalesMaster
 --drop table VendorAccountDetails
 
 create table VendorDetails(venderId varchar(100) primary key,vName varchar(1000),vCompName varchar(1000),vAddress varchar(1000),vCity varchar(100), vState varchar(100),vZip varchar(100),vCountry varchar(50),vEmail varchar(250), vWebAddress varchar(50),vPhone varchar(15),vMobile varchar(15),vFax varchar(15),vDesc varchar(500),vPanNo varchar(200),vTinNo varchar(200),vOther varchar(200),)
-
+go
 create table VendorAccountDetails (id varchar(100),venderId varchar(100) foreign key references VendorDetails(venderId),vOpeningBalance varchar(100), vCurrentBalance varchar(100))
-
+go
 create table CustomerDetails(custId varchar(100) primary key,CustName varchar(1000),CustCompName varchar(1000),CustAddress varchar(1000),CustCity varchar(100), CustState varchar(100),CustZip varchar(100),CustCountry varchar(50),CustEmail varchar(250), CustWebAddress varchar(50),CustPhone varchar(15),CustMobile varchar(15),CustFax varchar(15),CustDesc varchar(500),PanNo varchar(200),TanNo varchar(200),others varchar(200))
-
+go
 
 create table CustomerAccountDetails (id varchar(100),CustId varchar(100) foreign key references CustomerDetails(custId),CustOpeningBalance varchar(100), CustCurrentBalance varchar(100))
 
 --drop table ItemUnitList
 create table ItemGroup (groupID varchar(10) primary key,groupName varchar(1000),GroupDesc varchar(1000))
+go
 create table ItemUnitList(UnitId varchar(10) primary key,unitName varchar(1000),unitDesc varchar(1000))
-
+go
 create table ItemDetails(ItemId varchar(100) primary key,ItemName varchar(1000),ItemCompName varchar(1000),ItemDesc varchar(500), groupid varchar(10) foreign key references ItemGroup(groupId),Unitid varchar(10) foreign key references ItemUnitList(UnitId))
-
+go
 create table ItemPriceDetail(ItemId varchar(100) foreign  key references ItemDetails(ItemId),purChasePrice varchar(100),SalesPrice varchar(100),MrpPrice varchar(100),Margin varchar(100))
+go
 create table ItemQuantityDetail(ItemId varchar(100) foreign  key references ItemDetails(ItemId), OpeningQuantity varchar(100),CurrentQuantity varchar(100))
-
+go
 create table VendorOrderDetails (Orderid int identity primary key,venderId varchar(100) foreign key references VendorDetails(venderId),OrderDate datetime, TotalPrice decimal)
+go
 create table VendorOrderDesc (id int identity primary key,Orderid int   foreign key references VendorOrderDetails(Orderid),ItemId varchar(100) foreign  key references ItemDetails(ItemId), Price decimal,Quantity int,TotalPrice decimal)
+go
 create table CustomerOrderDelivery(Deliveryid int identity primary key,Orderid int foreign key references VendorOrderDetails(Orderid),status bit, DeliveryDate datetime)
+go
 create table CustomerOrderInvoice(InvoiceId int identity primary key,Deliveryid int foreign key references CustomerOrderDelivery(Deliveryid),Orderid int foreign key references VendorOrderDetails(Orderid), InvoiceDate datetime)
+go
 create table VendorPayment(PaymentId int identity primary key,InvoiceId int foreign key references CustomerOrderInvoice(InvoiceId),TotalAmount decimal,PayAmount decimal,ArrearAmount decimal,PaymentMode varchar(200), PaymentDate datetime)
-
+go
 create table ChequePement(Chequeid int identity primary key,PaymentId  int foreign key references VendorPayment(PaymentId ),ChequeDate datetime,BankName varchar(200),ChequeNo varchar(200))
+go
 create table WithoutRefrencePament(id int identity primary key,venderId varchar(100) foreign key references VendorDetails(venderId),TotalAmount decimal,PayAmount decimal,ArrearAmount decimal, PaymentDate datetime)
 
 -- Connection string Data Source=ASHISH-PC;Initial Catalog=SalesMaster;Persist Security Info=True;User ID=sa
@@ -114,27 +121,25 @@ GO
 
 
 Create table payment(id int identity primary key,invoiceid int foreign key references  salesinvoice(invoiceid),totalammount Decimal,payammount decimal,Remainingammount decimal,paymentmode varchar(300),paymentdate datetime )
-
-
+go
 Create table vithautrefrancereceipt(id int identity primary key,CustId varchar(100) foreign key references CustomerDetails(custId),Totalammoun Float,Balanceammount Float,receiptdate datetime )
 
 
 
 alter table VendorDetails add vServiceTaxRegnNo varchar(100)
-
+go
 alter table VendorDetails add vExciseRegnNo varchar(100)
-
+go
 alter table VendorDetails add vGSTRegnNo varchar(100)
-
+go
 alter table VendorOrderDetails add Discount decimal
-
+go
 alter table VendorOrderDetails add Vat decimal
-
+go
 alter table VendorOrderDetails add CST decimal
-
+go
 alter table VendorOrderDetails add GST decimal
-
-
+go
 alter table VendorOrderDetails add WithoutTexAmount  decimal
 
 Sp_rename 'VendorDetails.vTinNo','vVatNo'
@@ -143,11 +148,11 @@ Sp_rename 'VendorDetails.vOther','vCstNo'
 
 
 alter table CustomerDetails add ServicetaxregnNo varchar(200)
-
+go
 alter table CustomerDetails add Exciseregnno varchar (200)
-
+go
 alter table CustomerDetails add Gstregnno varchar (200)
-
+go
 alter table orderdetails add Discount float
 
  

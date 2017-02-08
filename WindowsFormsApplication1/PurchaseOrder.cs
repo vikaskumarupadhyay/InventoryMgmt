@@ -78,6 +78,29 @@ namespace WindowsFormsApplication1
             {
                 IndexTex3();
             }
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                btnAddItem.Focus();
+            }
+            if (Char.IsLetterOrDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    if (txtVendorCode.Text == "")
+                    {
+                        txtVendorCode.Text = "V";
+                    }
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
 
         }
 
@@ -292,6 +315,13 @@ namespace WindowsFormsApplication1
             }
             else
             {
+                if (txtAmount.Text == "")
+                {
+                   // txtAmount.Text = "0";
+                    MessageBox.Show("Please Enter the Quanity");
+                }
+                else
+                {
                 txtRemoveItem.Enabled = true;
                     DataRow dr = addToCartTable.NewRow();
                     dr[0] = txtItemCode.Text.Trim();
@@ -310,7 +340,7 @@ namespace WindowsFormsApplication1
                     txtProductName.Text = "";
                     txtRate.Text = "";
                     txtQuanity.Text = "";
-                    txtAmount.Text = "0.0";
+                    txtAmount.Text = "";
                    // txtItemCode.Focus();
                     btnAddItem.Enabled = false;
                     //txtRemoveItem.Focus();
@@ -318,7 +348,7 @@ namespace WindowsFormsApplication1
                     txtQuanity.Enabled = false;
                 }
 
-            //}
+            }
         }
         #endregion
 
@@ -535,8 +565,8 @@ namespace WindowsFormsApplication1
                         DataGridViewRow currentRow = RowCollection[a];
                         DataGridViewCellCollection cellCollection = currentRow.Cells;
                         string txtItemCod = cellCollection[0].Value.ToString();
-                        string txtRate = cellCollection[2].Value.ToString();
-                        string txtQuanit = cellCollection[3].Value.ToString();
+                        string txtQuanit = cellCollection[2].Value.ToString();
+                        string txtRate  = cellCollection[3].Value.ToString();
                         string txtAmoun = cellCollection[4].Value.ToString();
                         string OrderID = txtSrNo.Text;
                         string Query = "insert into VendorOrderDesc Values('" + OrderID + "','" + txtItemCod + "','" + txtRate + "','" + txtQuanit + "','" + txtAmoun + "')";
@@ -794,7 +824,7 @@ namespace WindowsFormsApplication1
                     btnSave.Focus();
                 }
             }
-            if (Char.IsDigit(e.KeyChar))
+            if (Char.IsLetterOrDigit(e.KeyChar))
             {
                 e.Handled = false;
             }
@@ -802,6 +832,10 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyChar == '\b')
                 {
+                    if (txtItemCode.Text == "")
+                    {
+                        txtItemCode.Text = "I";
+                    }
                     e.Handled = false;
                     txtAmount.Text = "";
                     txtQuanity.Text = "";

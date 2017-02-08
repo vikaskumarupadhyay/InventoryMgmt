@@ -330,16 +330,15 @@ namespace WindowsFormsApplication1
         {
             if (radioBottCash.Checked)
             {
-                if (txtPayAmount.Text == "")
+                if (txtPayAmount.Text != "")
                 {
-                    txtPayAmount.Text = "0";
                     int total = Convert.ToInt32(txttotalAmount.Text);
                     int payamount = Convert.ToInt32(txtPayAmount.Text);
                     int arrearAmount = total - payamount;
                     txtRemaning.Text = arrearAmount.ToString();
                 }
             }
-            else if (ChaqueReado.Checked)
+             if (ChaqueReado.Checked)
             {
                 txtPayAmount.Text = varible.chaqueAmount;
                 int total = Convert.ToInt32(txttotalAmount.Text);
@@ -376,9 +375,30 @@ namespace WindowsFormsApplication1
 
         private void txtPayAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(txtPayAmount.Text=="")
+            if (Char.IsDigit(e.KeyChar))
             {
-                txtPayAmount.Text = "0";
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    if (txtPayAmount.Text == "")
+                        {
+                       // txttotalAmount.Text
+                          txtRemaning.Text  = txttotalAmount.Text;
+                       }
+                    if (txtPayAmount.Text == "0")
+                    {
+                        // txttotalAmount.Text
+                        txtRemaning.Text = txttotalAmount.Text;
+                    }
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
             }
         //    int total = Convert.ToInt32(txttotalAmount.Text);
         //    int payamount = Convert.ToInt32(txtPayAmount.Text);
@@ -389,75 +409,136 @@ namespace WindowsFormsApplication1
 
         private void txtRefNo_TextChanged(object sender, EventArgs e)
         {
-            int totel = 0;
-            string refqurry = "select InvoiceId from VendorPayment where InvoiceId ='" + txtRefNo.Text + "'";
-            DataTable refdt = dbMainClass.getDetailByQuery(refqurry);
-                if (refdt != null && refdt.Rows != null && refdt.Rows.Count > 0)
-                {
-                    buttSave.Enabled = false;
-                }
-                else
-                {
-                    buttSave.Enabled = true;
-                }
-                checkBox1.Checked = true;
-                string select = "select Deliveryid from CustomerOrderInvoice where InvoiceId='" + txtRefNo.Text + "'";
-                DataTable dt = dbMainClass.getDetailByQuery(select);
-                string orderid = "";
-                foreach (DataRow dr in dt.Rows)
-                {
-                    orderid = dr[0].ToString();
-                }
-                //int totel = 0;
-                string selc = "select * from CustomerOrderDelivery where Deliveryid ='" + orderid + "'";
-                DataTable dt2 = dbMainClass.getDetailByQuery(selc);
-                if (dt2 != null && dt2.Rows != null && dt2.Rows.Count > 0)
-                {
-                    DataRow dr0 = dt2.Rows[0];
-                    string c = dr0[1].ToString();
-                    // MessageBox.Show(c);
-                    string select1 = "select vo.Orderid,vo.venderId,vod.ItemId from VendorOrderDesc vod join VendorOrderDetails vo on vod.Orderid=vo.Orderid where vo.Orderid='" + c + "'";
-                    DataTable dt1 = dbMainClass.getDetailByQuery(select1);
+            //int totel = 0;
+            //string refqurry = "select InvoiceId from VendorPayment where InvoiceId ='" + txtRefNo.Text + "'";
+            //DataTable refdt = dbMainClass.getDetailByQuery(refqurry);
+            //if (refdt != null && refdt.Rows != null && refdt.Rows.Count > 0)
+            //{
+            //    MessageBox.Show("This Invoice completed");
+            //    txtRefNo.Text = "";
+            //    txtvendorId.Focus();
+            //    //buttSave.Enabled = false;
+            //    //checkBox1.Checked = true;
+            //    //string select = "select Deliveryid from CustomerOrderInvoice where InvoiceId='" + txtRefNo.Text + "'";
+            //    //DataTable dt = dbMainClass.getDetailByQuery(select);
+            //    //string orderid = "";
+            //    //foreach (DataRow dr in dt.Rows)
+            //    //{
+            //    //    orderid = dr[0].ToString();
+            //    //}
+            //    ////int totel = 0;
+            //    //string selc = "select * from CustomerOrderDelivery where Deliveryid ='" + orderid + "'";
+            //    //DataTable dt2 = dbMainClass.getDetailByQuery(selc);
+            //    //if (dt2 != null && dt2.Rows != null && dt2.Rows.Count > 0)
+            //    //{
+            //    //    DataRow dr0 = dt2.Rows[0];
+            //    //    string c = dr0[1].ToString();
+            //    //    // MessageBox.Show(c);
+            //    //    string select1 = "select vo.Orderid,vo.venderId,vod.ItemId from VendorOrderDesc vod join VendorOrderDetails vo on vod.Orderid=vo.Orderid where vo.Orderid='" + c + "'";
+            //    //    DataTable dt1 = dbMainClass.getDetailByQuery(select1);
 
-                    //dataGridView1.DataSource = dt;
-                    DataRow dr = dt1.Rows[0];
-                    string a = dr[1].ToString();
-                    string select2 = "select venderId,vName,vCompName,vAddress ,vPhone,vMobile,vFax from VendorDetails where venderId='" + a + "'";
-                    DataTable dt3 = dbMainClass.getDetailByQuery(select2);
-                    foreach (DataRow dr5 in dt3.Rows)
-                    {
-                        txtvendorId.Text = dr5[0].ToString();
-                        txtVendorName.Text = dr5[1].ToString();
-                        txtCompanyName.Text = dr5[2].ToString();
-                        txtAddress.Text = dr5[3].ToString();
-                        txtPhone.Text = dr5[4].ToString();
-                        txtMobile.Text = dr5[5].ToString();
-                        txtFax.Text = dr5[6].ToString();
-                    }
-                    //string b = dr[2].ToString();
-                    string selectqurry1 = "select vodd.ItemId,td.ItemName, vodd.Quantity,vodd.Price,vodd.TotalPrice from VendorOrderDetails vod join VendorOrderDesc vodd on vod.Orderid=vodd.Orderid join ItemDetails td on td.ItemId=vodd.ItemId where vod. Orderid='" + c + "'";
-                    DataTable dt4 = dbMainClass.getDetailByQuery(selectqurry1);
-                    int totalRowCount = addToCartTable.Rows.Count;
-                    for (int rowCount = 0; rowCount < totalRowCount; rowCount++)
-                    {
-                        addToCartTable.Rows.RemoveAt(0);
-                    }
+            //    //    //dataGridView1.DataSource = dt;
+            //    //    DataRow dr = dt1.Rows[0];
+            //    //    string a = dr[1].ToString();
+            //    //    string select2 = "select venderId,vName,vCompName,vAddress ,vPhone,vMobile,vFax from VendorDetails where venderId='" + a + "'";
+            //    //    DataTable dt3 = dbMainClass.getDetailByQuery(select2);
+            //    //    foreach (DataRow dr5 in dt3.Rows)
+            //    //    {
+            //    //        txtvendorId.Text = dr5[0].ToString();
+            //    //        txtVendorName.Text = dr5[1].ToString();
+            //    //        txtCompanyName.Text = dr5[2].ToString();
+            //    //        txtAddress.Text = dr5[3].ToString();
+            //    //        txtPhone.Text = dr5[4].ToString();
+            //    //        txtMobile.Text = dr5[5].ToString();
+            //    //        txtFax.Text = dr5[6].ToString();
+            //    //    }
+            //    //    //string b = dr[2].ToString();
+            //    //    string selectqurry1 = "select vodd.ItemId,td.ItemName, vodd.Quantity,vodd.Price,vodd.TotalPrice from VendorOrderDetails vod join VendorOrderDesc vodd on vod.Orderid=vodd.Orderid join ItemDetails td on td.ItemId=vodd.ItemId where vod. Orderid='" + c + "'";
+            //    //    DataTable dt4 = dbMainClass.getDetailByQuery(selectqurry1);
+            //    //    int totalRowCount = addToCartTable.Rows.Count;
+            //    //    for (int rowCount = 0; rowCount < totalRowCount; rowCount++)
+            //    //    {
+            //    //        addToCartTable.Rows.RemoveAt(0);
+            //    //    }
 
-                    for (int d = 0; d < dt4.Rows.Count; d++)
-                    {
-                        DataRow dr2 = dt4.Rows[d];
-                        string txtItemCode = dr2[0].ToString();
-                        string txtRate = dr2[1].ToString();
-                        string txtQuanity = dr2[2].ToString();
-                        string txtAmoun = dr2[3].ToString();
-                        string txtitemNmae = dr2[4].ToString();
-                        //totel = dr2[5].ToString();
-                        int amt = Convert.ToInt32(txtitemNmae);
-                        totel = totel + amt;
-                    }
-                    dataGridView1.DataSource = dt4;
-                    txttotalAmount.Text = totel.ToString();
-            }
+            //    //    for (int d = 0; d < dt4.Rows.Count; d++)
+            //    //    {
+            //    //        DataRow dr2 = dt4.Rows[d];
+            //    //        string txtItemCode = dr2[0].ToString();
+            //    //        string txtRate = dr2[1].ToString();
+            //    //        string txtQuanity = dr2[2].ToString();
+            //    //        string txtAmoun = dr2[3].ToString();
+            //    //        string txtitemNmae = dr2[4].ToString();
+            //    //        //totel = dr2[5].ToString();
+            //    //        int amt = Convert.ToInt32(txtitemNmae);
+            //    //        totel = totel + amt;
+            //    //    }
+            //    //    dataGridView1.DataSource = dt4;
+            //    //    txttotalAmount.Text = totel.ToString();
+            //    //}
+            //}
+            //else
+            //{
+            //    buttSave.Enabled = true;
+            //    checkBox1.Checked = true;
+            //    string select = "select Deliveryid from CustomerOrderInvoice where InvoiceId='" + txtRefNo.Text + "'";
+            //    DataTable dt = dbMainClass.getDetailByQuery(select);
+            //    string orderid = "";
+            //    foreach (DataRow dr in dt.Rows)
+            //    {
+            //        orderid = dr[0].ToString();
+            //    }
+            //    //int totel = 0;
+            //    string selc = "select * from CustomerOrderDelivery where Deliveryid ='" + orderid + "'";
+            //    DataTable dt2 = dbMainClass.getDetailByQuery(selc);
+            //    if (dt2 != null && dt2.Rows != null && dt2.Rows.Count > 0)
+            //    {
+            //        DataRow dr0 = dt2.Rows[0];
+            //        string c = dr0[1].ToString();
+            //        // MessageBox.Show(c);
+            //        string select1 = "select vo.Orderid,vo.venderId,vod.ItemId from VendorOrderDesc vod join VendorOrderDetails vo on vod.Orderid=vo.Orderid where vo.Orderid='" + c + "'";
+            //        DataTable dt1 = dbMainClass.getDetailByQuery(select1);
+
+            //        //dataGridView1.DataSource = dt;
+            //        DataRow dr = dt1.Rows[0];
+            //        string a = dr[1].ToString();
+            //        string select2 = "select venderId,vName,vCompName,vAddress ,vPhone,vMobile,vFax from VendorDetails where venderId='" + a + "'";
+            //        DataTable dt3 = dbMainClass.getDetailByQuery(select2);
+            //        foreach (DataRow dr5 in dt3.Rows)
+            //        {
+            //            txtvendorId.Text = dr5[0].ToString();
+            //            txtVendorName.Text = dr5[1].ToString();
+            //            txtCompanyName.Text = dr5[2].ToString();
+            //            txtAddress.Text = dr5[3].ToString();
+            //            txtPhone.Text = dr5[4].ToString();
+            //            txtMobile.Text = dr5[5].ToString();
+            //            txtFax.Text = dr5[6].ToString();
+            //        }
+            //        //string b = dr[2].ToString();
+            //        string selectqurry1 = "select vodd.ItemId,td.ItemName, vodd.Quantity,vodd.Price,vodd.TotalPrice from VendorOrderDetails vod join VendorOrderDesc vodd on vod.Orderid=vodd.Orderid join ItemDetails td on td.ItemId=vodd.ItemId where vod. Orderid='" + c + "'";
+            //        DataTable dt4 = dbMainClass.getDetailByQuery(selectqurry1);
+            //        int totalRowCount = addToCartTable.Rows.Count;
+            //        for (int rowCount = 0; rowCount < totalRowCount; rowCount++)
+            //        {
+            //            addToCartTable.Rows.RemoveAt(0);
+            //        }
+
+            //        for (int d = 0; d < dt4.Rows.Count; d++)
+            //        {
+            //            DataRow dr2 = dt4.Rows[d];
+            //            string txtItemCode = dr2[0].ToString();
+            //            string txtRate = dr2[1].ToString();
+            //            string txtQuanity = dr2[2].ToString();
+            //            string txtAmoun = dr2[3].ToString();
+            //            string txtitemNmae = dr2[4].ToString();
+            //            //totel = dr2[5].ToString();
+            //            int amt = Convert.ToInt32(txtitemNmae);
+            //            totel = totel + amt;
+            //        }
+            //        dataGridView1.DataSource = dt4;
+            //        txttotalAmount.Text = totel.ToString();
+            //    }
+            //}
         }
          private int vendid()
         {
@@ -490,6 +571,81 @@ namespace WindowsFormsApplication1
 
         private void txtRefNo_KeyPress(object sender, KeyPressEventArgs e)
         {
+
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                int totel = 0;
+                string refqurry = "select InvoiceId from VendorPayment where InvoiceId ='" + txtRefNo.Text + "'";
+                DataTable refdt = dbMainClass.getDetailByQuery(refqurry);
+                if (refdt != null && refdt.Rows != null && refdt.Rows.Count > 0)
+                {
+                    MessageBox.Show("This Invoice completed");
+                    txtRefNo.Text = "";
+                    txtvendorId.Focus();
+                }
+                else
+                {
+                    buttSave.Enabled = true;
+                    checkBox1.Checked = true;
+                    string select = "select Deliveryid from CustomerOrderInvoice where InvoiceId='" + txtRefNo.Text + "'";
+                    DataTable dt = dbMainClass.getDetailByQuery(select);
+                    string orderid = "";
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        orderid = dr[0].ToString();
+                    }
+                    //int totel = 0;
+                    string selc = "select * from CustomerOrderDelivery where Deliveryid ='" + orderid + "'";
+                    DataTable dt2 = dbMainClass.getDetailByQuery(selc);
+                    if (dt2 != null && dt2.Rows != null && dt2.Rows.Count > 0)
+                    {
+                        DataRow dr0 = dt2.Rows[0];
+                        string c = dr0[1].ToString();
+                        // MessageBox.Show(c);
+                        string select1 = "select vo.Orderid,vo.venderId,vod.ItemId from VendorOrderDesc vod join VendorOrderDetails vo on vod.Orderid=vo.Orderid where vo.Orderid='" + c + "'";
+                        DataTable dt1 = dbMainClass.getDetailByQuery(select1);
+
+                        //dataGridView1.DataSource = dt;
+                        DataRow dr = dt1.Rows[0];
+                        string a = dr[1].ToString();
+                        string select2 = "select venderId,vName,vCompName,vAddress ,vPhone,vMobile,vFax from VendorDetails where venderId='" + a + "'";
+                        DataTable dt3 = dbMainClass.getDetailByQuery(select2);
+                        foreach (DataRow dr5 in dt3.Rows)
+                        {
+                            txtvendorId.Text = dr5[0].ToString();
+                            txtVendorName.Text = dr5[1].ToString();
+                            txtCompanyName.Text = dr5[2].ToString();
+                            txtAddress.Text = dr5[3].ToString();
+                            txtPhone.Text = dr5[4].ToString();
+                            txtMobile.Text = dr5[5].ToString();
+                            txtFax.Text = dr5[6].ToString();
+                        }
+                        //string b = dr[2].ToString();
+                        string selectqurry1 = "select vodd.ItemId,td.ItemName, vodd.Quantity,vodd.Price,vodd.TotalPrice from VendorOrderDetails vod join VendorOrderDesc vodd on vod.Orderid=vodd.Orderid join ItemDetails td on td.ItemId=vodd.ItemId where vod. Orderid='" + c + "'";
+                        DataTable dt4 = dbMainClass.getDetailByQuery(selectqurry1);
+                        int totalRowCount = addToCartTable.Rows.Count;
+                        for (int rowCount = 0; rowCount < totalRowCount; rowCount++)
+                        {
+                            addToCartTable.Rows.RemoveAt(0);
+                        }
+
+                        for (int d = 0; d < dt4.Rows.Count; d++)
+                        {
+                            DataRow dr2 = dt4.Rows[d];
+                            string txtItemCode = dr2[0].ToString();
+                            string txtRate = dr2[1].ToString();
+                            string txtQuanity = dr2[2].ToString();
+                            string txtAmoun = dr2[3].ToString();
+                            string txtitemNmae = dr2[4].ToString();
+                            //totel = dr2[5].ToString();
+                            int amt = Convert.ToInt32(txtitemNmae);
+                            totel = totel + amt;
+                        }
+                        dataGridView1.DataSource = dt4;
+                        txttotalAmount.Text = totel.ToString();
+                    }
+                }
+            }
             if (Char.IsLetterOrDigit(e.KeyChar))
             {
                 e.Handled = false;
@@ -511,8 +667,10 @@ namespace WindowsFormsApplication1
 
         private void ChaqueReado_Click(object sender, EventArgs e)
         {
+           // txtPayAmount.Text = "0";
             ChaquePayment ch = new ChaquePayment(txtPayAmount);
             ch.Show();
+            
         }
 
         private void checkBox2_Click(object sender, EventArgs e)

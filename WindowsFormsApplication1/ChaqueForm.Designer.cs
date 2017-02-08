@@ -143,7 +143,7 @@
             this.Name = "ChaqueForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ChaqueForm";
-           // this.Load += new System.EventHandler(this.ChaqueForm_Load);
+            this.Load += new System.EventHandler(this.ChaqueForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
