@@ -177,31 +177,49 @@ namespace WindowsFormsApplication1
 
         private void txtQuantity_TextChanged(object sender, EventArgs e)
         {
-         //   txtQuantity.ReadOnly = true;
-           
-            //string s="";
-            //string select = "select CurrentQuantity from ItemQuantityDetail";
-            //DataTable dt = d.getDetailByQuery(select);
+            // txtQuantity.ReadOnly = true;
+            string select = "select CurrentQuantity from ItemQuantityDetail where itemid='" + txtitemcode.Text + "'";
+            DataTable dt = d.getDetailByQuery(select);
+            string s = "";
+            foreach (DataRow dr in dt.Rows)
+            {
+                s = dr[0].ToString();
 
-            //foreach (DataRow dr in dt.Rows)
-            //{
-            //    s = dr[0].ToString();
-            //}
-            //int g = Convert.ToInt32(s);
-            //if (g < maxItemQuantity)
-            //{
-                if ((!string.IsNullOrEmpty(txtQuantity.Text)) && char.IsDigit(txtQuantity.Text, txtQuantity.Text.Length - 1) && (!string.IsNullOrEmpty(txtRate.Text)))
-                {
-                    //     txtQuantity.ReadOnly = false;
-                    int que = maxItemQuantity;
-                    int quantity = Convert.ToInt32(txtQuantity.Text);
-                    int rate = Convert.ToInt32(txtRate.Text);
-                    txtAmount.Text = (quantity * rate).ToString();
-                }
-               // MessageBox.Show("successfully");
-           // }
-            
             }
+            if (s != "")
+            {
+                int g = Convert.ToInt32(s);
+                int quantity = Convert.ToInt32(txtQuantity.Text);
+                if (quantity < g)
+                {
+                    //    MessageBox.Show("d");
+
+                    // if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
+                    if ((!string.IsNullOrEmpty(txtQuantity.Text)) && char.IsDigit(txtQuantity.Text, txtQuantity.Text.Length - 1) && (!string.IsNullOrEmpty(txtRate.Text)))
+                    {
+                        //     txtQuantity.ReadOnly = false;
+                        int que = maxItemQuantity;
+                        quantity = Convert.ToInt32(txtQuantity.Text);
+                        int rate = Convert.ToInt32(txtRate.Text);
+                        txtAmount.Text = (quantity * rate).ToString();
+                    }
+                }
+
+                    else if (quantity > g)
+                    {
+                        MessageBox.Show("Quantity is not available");
+                        txtQuantity.Text = "0";
+                        txtAmount.Text = "0";
+                    }
+                }
+            }
+            
+        
+            
+               
+        
+               // MessageBox.Show("successfully");
+         
 
             //else if (que < quantity)
             //{
@@ -233,20 +251,59 @@ namespace WindowsFormsApplication1
         {
            
               //tab6();
-            txtQuantity.TabStop = false;
+            if (txtQuantity.Text == "")
+            {
+                txtQuantity.Text = "0";
+            }
+            if (txtAmount.Text == "")
+            {
+                txtAmount.Text = "0";
+            }
+
+            if (txtQuantity.Text=="0")
+            {
+                MessageBox.Show("please enter the Quantity");
+               // makeblank();
+               // MessageBox.Show("s");
+                //txtQuantity.TabStop = false;
+                //button4.Enabled = true;
+                //DataRow dr = addToCartTable.NewRow();
+                //dr[0] = txtitemcode.Text.Trim();
+                //dr[1] = txtProductName.Text.Trim();
+                //dr[2] = txtRate.Text.Trim();
+                //dr[3] = txtQuantity.Text.Trim();
+                //// textBox14.Text = dr[4].ToString();
+                //dr[4] = txtAmount.Text.Trim();
+                //addToCartTable.Rows.Add(dr);
+                //gridsalesorder.DataSource = addToCartTable;
+                //double totalAmount = Convert.ToDouble(txttotalammount.Text);
+                //totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
+                //txttotalammount.Text = totalAmount.ToString();
+
+                //txtitemcode.Text = "I";
+                //txtProductName.Text = "";
+                //txtRate.Text = "";
+                //txtQuantity.Text = "";
+                ////textBox14.Text = "";
+                //txtAmount.Text = "";
+                //txtitemcode.Focus();
+            }
+            else if (txtQuantity.Text != "0")
+            {
+                txtQuantity.TabStop = false;
                 button4.Enabled = true;
-                DataRow dr = addToCartTable.NewRow();
-                dr[0] = txtitemcode.Text.Trim();
-                dr[1] = txtProductName.Text.Trim();
-                dr[2] = txtRate.Text.Trim();
-                dr[3] = txtQuantity.Text.Trim();
-               // textBox14.Text = dr[4].ToString();
-                dr[4] = txtAmount.Text.Trim();
-                addToCartTable.Rows.Add(dr);
+                DataRow dr1 = addToCartTable.NewRow();
+                dr1[0] = txtitemcode.Text.Trim();
+                dr1[1] = txtProductName.Text.Trim();
+                dr1[2] = txtRate.Text.Trim();
+                dr1[3] = txtQuantity.Text.Trim();
+                // textBox14.Text = dr[4].ToString();
+                dr1[4] = txtAmount.Text.Trim();
+                addToCartTable.Rows.Add(dr1);
                 gridsalesorder.DataSource = addToCartTable;
-                double totalAmount = Convert.ToDouble(txttotalammount.Text);
-                totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
-                txttotalammount.Text = totalAmount.ToString();
+                double totalAmount1 = Convert.ToDouble(txttotalammount.Text);
+                totalAmount1 += Convert.ToDouble(txtAmount.Text.Trim());
+                txttotalammount.Text = totalAmount1.ToString();
 
                 txtitemcode.Text = "I";
                 txtProductName.Text = "";
@@ -255,8 +312,10 @@ namespace WindowsFormsApplication1
                 //textBox14.Text = "";
                 txtAmount.Text = "";
                 txtitemcode.Focus();
-              
-        
+            }
+            
+            
+           
         }
     
 
@@ -847,6 +906,50 @@ namespace WindowsFormsApplication1
                 button1.TabStop = true;
             }
         }
+
+        private void gridsalesorder_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            string id = gridsalesorder.Rows[e.RowIndex].Cells[0].Value.ToString();
+            string a1 = gridsalesorder.Rows[e.RowIndex].Cells[4].Value.ToString();
+            // string newquantity = gridsalesdelivary.Rows[e.RowIndex].Cells[3].Value.ToString();
+            string select = "select CurrentQuantity from ItemQuantityDetail where itemid='" + id + "'";
+            DataTable dt = d.getDetailByQuery(select);
+            string s = "";
+            foreach (DataRow dr in dt.Rows)
+            {
+                s = dr[0].ToString();
+
+            }
+            if (s != "")
+            {
+                int g = Convert.ToInt32(s);
+                int quantity = Convert.ToInt32(a1);
+                if (quantity < g)
+                {
+                    string a = gridsalesorder.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    string rate = gridsalesorder.Rows[e.RowIndex].Cells[2].Value.ToString();
+                    quantity = Convert.ToInt32(a);
+                    int r = Convert.ToInt32(rate);
+                    int totalammount = quantity * r;
+                    gridsalesorder.Rows[e.RowIndex].Cells[4].Value = totalammount.ToString();
+                    string newquantity = gridsalesorder.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    int quantity1 = Convert.ToInt32(newquantity);
+                    int finalquantity = quantity1 - quantity;
+                    int totalq = r * finalquantity;
+                    int totalammount1 = Convert.ToInt32(txttotalammount.Text);
+                    int t = totalammount1 - totalq;
+                    txttotalammount.Text = t.ToString();
+                }
+                else if (quantity > g)
+                {
+                    MessageBox.Show("Quantity is not available");
+                    gridsalesorder.Rows[e.RowIndex].Cells[4].Value = "0";
+                    //txtAmmount.Text = "0";
+                }
+            }
+        }
+
+     
   
     }
 }

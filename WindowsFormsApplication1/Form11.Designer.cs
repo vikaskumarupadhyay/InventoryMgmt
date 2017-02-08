@@ -297,7 +297,8 @@
             this.txtRefNo.TabStop = false;
             this.txtRefNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtRefNo.TextChanged += new System.EventHandler(this.txtRefNo_TextChanged);
-            this.txtRefNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRefNo_KeyDown);
+            this.txtRefNo.Enter += new System.EventHandler(this.txtRefNo_Enter);
+            this.txtRefNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRefNo_KeyPress);
             // 
             // label15
             // 
@@ -701,9 +702,9 @@
             this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.lblsearchvalue);
             this.panel2.Controls.Add(this.dataGridView2);
-            this.panel2.Location = new System.Drawing.Point(0, 277);
+            this.panel2.Location = new System.Drawing.Point(0, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(858, 322);
+            this.panel2.Size = new System.Drawing.Size(858, 595);
             this.panel2.TabIndex = 53;
             // 
             // button1

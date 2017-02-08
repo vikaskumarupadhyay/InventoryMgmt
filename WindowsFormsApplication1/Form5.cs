@@ -256,20 +256,26 @@ namespace WindowsFormsApplication1
 
         private void txtpayammount_TextChanged(object sender, EventArgs e)
         {
+            if (txtpayammount.Text == "")
+            {
+                txtpayammount.Text = "0";
+            }
+            int payment = 0;
+            int totalammount = 0;
             if (radioButton1.Checked)
             {
 
                // txtpayammount.Text = Value.chaqueammount;
-                int totalammount = Convert.ToInt32(txttotalammount.Text);
-                int payment = Convert.ToInt32(txtpayammount.Text);
+                 totalammount = Convert.ToInt32(txttotalammount.Text);
+                 payment = Convert.ToInt32(txtpayammount.Text);
                 int remaining = totalammount - payment;
                 txtreamaining.Text = remaining.ToString();
             }
             else if (radioButton2.Checked)
             {
                 txtpayammount.Text = Value.chaqueammount;
-                int totalammount = Convert.ToInt32(txttotalammount.Text);
-                int payment = Convert.ToInt32(txtpayammount.Text);
+                 totalammount = Convert.ToInt32(txttotalammount.Text);
+                 payment = Convert.ToInt32(txtpayammount.Text);
                 int remaining = totalammount - payment;
                 txtreamaining.Text = remaining.ToString();
             }
@@ -455,17 +461,28 @@ namespace WindowsFormsApplication1
         private void txtRefNo_TextChanged(object sender, EventArgs e)
         {
             checkBox1.Checked = true;
+           
+           
+        }
+
+        private void txtRefNo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
             string selectquery = "select Delivaryid from salesinvoice where Delivaryid='" + txtRefNo.Text + "'";
             DataTable dt = d.getDetailByQuery(selectquery);
-             string DilId="";
-             foreach (DataRow dr1 in dt.Rows)
-             {
-                 DilId = dr1[0].ToString();
-             }
+            string DilId = "";
+            foreach (DataRow dr1 in dt.Rows)
+            {
+                DilId = dr1[0].ToString();
+            }
 
             if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
             {
-                 button5.Enabled = false;
+                MessageBox.Show("invoice detail is completed");
+                txtRefNo.Text = "";
+                dataGridView1.DataSource = "";
             }
             else
             {
@@ -519,12 +536,8 @@ namespace WindowsFormsApplication1
 
             dataGridView1.DataSource = dt3; //addToCartTable;
             txttotalammount.Text = totel.ToString();
-             
-           
         }
 
-        private void txtRefNo_KeyPress(object sender, KeyPressEventArgs e)
-        {
             if (char.IsLetterOrDigit(e.KeyChar))
             {
                 e.Handled = false;
@@ -560,8 +573,24 @@ namespace WindowsFormsApplication1
             makeblank();
         }
 
-
-        
+        private void txtpayammount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+        }
 
         }
        

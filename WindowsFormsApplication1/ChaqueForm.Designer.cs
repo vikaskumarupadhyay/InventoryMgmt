@@ -90,6 +90,7 @@
             this.txtBankName.Name = "txtBankName";
             this.txtBankName.Size = new System.Drawing.Size(100, 20);
             this.txtBankName.TabIndex = 5;
+            //this.txtBankName.TextChanged += new System.EventHandler(this.txtBankName_TextChanged);
             // 
             // txtChaqueno
             // 

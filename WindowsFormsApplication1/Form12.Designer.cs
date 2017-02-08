@@ -117,6 +117,7 @@
             this.gridsalesinvoice.Size = new System.Drawing.Size(818, 227);
             this.gridsalesinvoice.TabIndex = 0;
             this.gridsalesinvoice.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesinvoice_CellDoubleClick);
+            this.gridsalesinvoice.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesinvoice_CellEndEdit);
             // 
             // txttotalammount
             // 
@@ -406,7 +407,8 @@
             this.txtRefNo.TabIndex = 9;
             this.txtRefNo.TabStop = false;
             this.txtRefNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtRefNo.TextChanged += new System.EventHandler(this.txtRefNo_TextChanged);
+            //this.txtRefNo.TextChanged += new System.EventHandler(this.txtRefNo_TextChanged);
+            this.txtRefNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRefNo_KeyPress);
             // 
             // label15
             // 
@@ -691,9 +693,9 @@
             this.panel2.Controls.Add(this.label17);
             this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.dataGridView2);
-            this.panel2.Location = new System.Drawing.Point(0, 4);
+            this.panel2.Location = new System.Drawing.Point(0, 171);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(858, 632);
+            this.panel2.Size = new System.Drawing.Size(858, 465);
             this.panel2.TabIndex = 64;
             // 
             // button1
