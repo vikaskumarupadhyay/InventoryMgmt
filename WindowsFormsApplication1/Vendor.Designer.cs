@@ -80,6 +80,7 @@
             this.btnVenderClose = new System.Windows.Forms.Button();
             this.btnVenderList = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.butprint = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -609,22 +610,35 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.butprint);
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.btnUpdate);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(0, -3);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(803, 589);
+            this.panel1.Size = new System.Drawing.Size(803, 599);
             this.panel1.TabIndex = 7;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(250, 557);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(131, 28);
+            this.button2.TabIndex = 31;
+            this.button2.Text = "Export To Excel";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // butprint
             // 
-            this.butprint.Location = new System.Drawing.Point(358, 556);
+            this.butprint.Location = new System.Drawing.Point(387, 557);
             this.butprint.Name = "butprint";
-            this.butprint.Size = new System.Drawing.Size(75, 29);
+            this.butprint.Size = new System.Drawing.Size(75, 28);
             this.butprint.TabIndex = 30;
             this.butprint.Text = "Print";
             this.butprint.UseVisualStyleBackColor = true;
@@ -637,9 +651,9 @@
             this.groupBox3.Controls.Add(this.comboBox1);
             this.groupBox3.Controls.Add(this.txtSearch);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(12, 0);
+            this.groupBox3.Location = new System.Drawing.Point(12, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(777, 85);
+            this.groupBox3.Size = new System.Drawing.Size(777, 73);
             this.groupBox3.TabIndex = 23;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Vendor Search";
@@ -688,7 +702,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(250, 557);
+            this.button3.Location = new System.Drawing.Point(468, 557);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(90, 28);
             this.button3.TabIndex = 29;
@@ -748,7 +762,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(803, 594);
+            this.ClientSize = new System.Drawing.Size(803, 599);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnVenderList);
             this.Controls.Add(this.btnVenderClose);
@@ -839,5 +853,6 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button butprint;
+        private System.Windows.Forms.Button button2;
     }
 }
