@@ -5,7 +5,9 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Windows.Forms;
+using ExcelLibrary.SpreadSheet;
 
 namespace WindowsFormsApplication1
 {
@@ -651,6 +653,54 @@ namespace WindowsFormsApplication1
             }
             customerprint p = new customerprint(class2Collection);
             p.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //DataGridViewColumnCollection column = dataGridView1.Columns;
+           string column1 = "";
+           int cout = 0;
+           int rowCoumt = 0;
+          // column1 = dc.Name.ToString();
+           string file = System.Configuration.ConfigurationManager.AppSettings["ExcelFilePath"]+ "newdoc.xls";
+           Workbook workbook = new Workbook();
+           Worksheet worksheet = new Worksheet("First Sheet");
+
+            foreach (DataGridViewColumn dc in dataGridView1.Columns)
+            {
+                
+                worksheet.Cells[rowCoumt,cout ] = new Cell(dc.Name);
+                cout++;
+                
+            }
+
+            //foreach (DataGridViewRow row in dataGridView1.Rows) { }
+            DataGridViewRowCollection rowcollection = dataGridView1.Rows;
+           
+            int rowindex = 1;
+            //int countindex = 0;
+            for (int a = 0; a < rowcollection.Count; a++)
+            {
+                DataGridViewRow currentrow = rowcollection[a];
+                DataGridViewCellCollection cellcollecton = currentrow.Cells;
+                int countrow = 0;
+             
+                for (int b = 0; b < currentrow.Cells.Count;b++ )
+                {
+                    worksheet.Cells[rowindex, countrow] = new Cell(currentrow.Cells[b].Value.ToString());
+                   // countindex++;
+                    countrow++;
+                }
+               // name = cellcollecton[0].Value.ToString() + " , " + cellcollecton[1].Value.ToString() + " , " + cellcollecton[2].Value.ToString() + " , " + cellcollecton[3].Value.ToString() + " , " + cellcollecton[4].Value.ToString() + " , " + cellcollecton[5].Value.ToString() + "  , " + cellcollecton[6].Value.ToString() + " , " + cellcollecton[7].Value.ToString() + " , " + cellcollecton[8].Value.ToString() + " , " + cellcollecton[9].Value.ToString() + " , " + cellcollecton[10].Value.ToString() + " , " + cellcollecton[11].Value.ToString() + " , " + cellcollecton[12].Value.ToString() + ", " + cellcollecton[13].Value.ToString() + " , " + cellcollecton[14].Value.ToString() + " , " + cellcollecton[15].Value.ToString();
+               rowindex++;
+            }
+            workbook.Worksheets.Add(worksheet);
+            workbook.Save(file);
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
    

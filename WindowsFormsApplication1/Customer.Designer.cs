@@ -80,6 +80,7 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnList = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.searchvalue = new System.Windows.Forms.Label();
@@ -91,7 +92,6 @@
             this.butclose = new System.Windows.Forms.Button();
             this.butupdate = new System.Windows.Forms.Button();
             this.butaddrecord = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -615,8 +615,18 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(803, 599);
-
             this.panel1.TabIndex = 11;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(250, 557);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(131, 28);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "Export To Excel";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -692,12 +702,13 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(23, -49);
+            this.dataGridView1.Location = new System.Drawing.Point(23, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(736, 475);
+            this.dataGridView1.Size = new System.Drawing.Size(736, 454);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
             this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress_1);
             // 
@@ -733,16 +744,6 @@
             this.butaddrecord.Text = "Add New Record";
             this.butaddrecord.UseVisualStyleBackColor = true;
             this.butaddrecord.Click += new System.EventHandler(this.butaddrecord_Click);
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(250, 557);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(131, 28);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Export To Excel";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // Customer
             // 

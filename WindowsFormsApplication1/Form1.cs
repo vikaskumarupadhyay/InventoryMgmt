@@ -265,28 +265,20 @@ namespace WindowsFormsApplication1
             F11 = null;
             //throw new NotImplementedException();
         }
-        Form5 F51;
         private void invoiceToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (F51 == null)
+            if (F5 == null)
             {
-                F51 = new Form5();
-                F51.Show();
-                F51.MdiParent = this;
-                F51.FormClosed += new FormClosedEventHandler(F51_FormClosed);
+                F5 = new Form5();
+                F5.Show();
+                F5.MdiParent = this;
+                F5.FormClosed +=new FormClosedEventHandler(F5_FormClosed);
             }
             else
             {
-                F51.Activate();
+                F5.Activate();
             }
         }
-
-        void F51_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            F51 = null;
-            //throw new NotImplementedException();
-        }
-       
 
         private void salesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -297,28 +289,58 @@ namespace WindowsFormsApplication1
 
         private void customerToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Customer F3 = new Customer(1);
-            F3.Show();
-            F3.MdiParent = this;
+            if (F3 == null)
+            {
+                F3 = new Customer(1);
+                F3.Show();
+                F3.MdiParent = this;
+                F3.FormClosed += new FormClosedEventHandler(F3_FormClosed);
+            }
+            else
+            {
+                F3.Activate();
+            }
             //Customer_list f = new Customer_list();
             //f.Show();
             //f.MdiParent = this;
         }
 
-    
+        PurchasSearch1 f13;
 
         private void purchaseToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            PurchasSearch1 f13 = new PurchasSearch1();
-            f13.Show();
-            f13.MdiParent = this;
+            if (f13 == null)
+            {
+                f13 = new PurchasSearch1();
+                f13.Show();
+                f13.MdiParent = this;
+                f13.FormClosed += new FormClosedEventHandler(f13_FormClosed);
+            }
+            else
+            {
+                f13.Activate();
+            }
+        }
+
+        void f13_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            f13 = null;
+            //throw new NotImplementedException();
         }
 
         private void vendorListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmVendorDetails F2 = new frmVendorDetails(1);
-            F2.Show();
-            F2.MdiParent = this;
+            if (F2 == null)
+            {
+                F2 = new frmVendorDetails(1);
+                F2.Show();
+                F2.MdiParent = this;
+                F2.FormClosed += new FormClosedEventHandler(F2_FormClosed);
+            }
+            else
+            {
+                F2.Activate();
+            }
             //VendorList1 f14 = new VendorList1();
             //f14.Show();
             //f14.MdiParent = this;
@@ -326,24 +348,41 @@ namespace WindowsFormsApplication1
 
         private void itemToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Item F4 = new Item(1);
-            F4.Show();
-            F4.MdiParent = this;
+            if (F4 == null)
+            {
+                F4 = new Item(1);
+                F4.Show();
+                F4.MdiParent = this;
+                F4.FormClosed += new FormClosedEventHandler(F4_FormClosed);
+            }
+            else
+            {
+                F4.Activate();
+            }
             //ItemList1 f15 = new ItemList1();
             //f15.Show();
             //f15.MdiParent = this;
         }
-
+        Company_New f1;
         private void companyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // this.Hide();
-            //Company_New f = new Company_New();
-            //if (f.ShowDialog() != DialogResult.OK)
-            //{
-            //this.Close();
-                 Company_New f1 = new Company_New();
-                 f1.Show();
-                 f1.MdiParent = this;
+            if (f1 == null)
+            {
+                // this.Hide();
+                //Company_New f = new Company_New();
+                //if (f.ShowDialog() != DialogResult.OK)
+                //{
+                //this.Close();
+
+                f1 = new Company_New();
+                f1.Show();
+                f1.MdiParent = this;
+                f1.FormClosed += new FormClosedEventHandler(f1_FormClosed);
+            }
+            else
+            {
+                f1.Activate();
+            }
                
                  //f1.ShowDialog();
              
@@ -351,6 +390,12 @@ namespace WindowsFormsApplication1
            
          
             
+        }
+
+        void f1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            f1 = null;
+            //throw new NotImplementedException();
         }
 
         private void salesToolStripMenuItem1_Click_1(object sender, EventArgs e)
