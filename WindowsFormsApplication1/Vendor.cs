@@ -506,7 +506,7 @@ namespace WindowsFormsApplication1
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             txtSearch.Text = "";
-            DataGridViewCellCollection cellCollection = dataGridView1.Rows[0].Cells;
+            DataGridViewCellCollection cellCollection = dataGridView1.SelectedRows[0].Cells;
             setDetails(cellCollection);
             panel1.Visible = false;
             updateCounter = 1;
@@ -705,8 +705,9 @@ namespace WindowsFormsApplication1
             int currentIndex = dataGridView1.CurrentRow.Index;
             if (e.KeyChar == (char)Keys.Enter)
             {
-                if (dataGridView1.RowCount == currentIndex + 1)
-                    currentIndex = currentIndex + 1;
+
+                //if (dataGridView1.RowCount == currentIndex + 1)
+                //    currentIndex = currentIndex + 1;
 
                 DataGridViewCellCollection cellCollection = dataGridView1.Rows[currentIndex-1].Cells;
                 setDetails(cellCollection);
