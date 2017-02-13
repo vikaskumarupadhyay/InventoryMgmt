@@ -318,6 +318,10 @@ namespace WindowsFormsApplication1
                 if (e.KeyChar == '\b')
                 {
                     e.Handled = false;
+                    if (txtVenderOpeningBal.Text == "")
+                    {
+                        txtVenderOpeningBal.Text = "";
+                    }
                 }
                 else
                 {
@@ -344,17 +348,17 @@ namespace WindowsFormsApplication1
 
         private void txtVenderOpeningBal_Enter(object sender, EventArgs e)
         {
-            if (txtVenderOpeningBal.Text == "")
-            {
-                txtVenderOpeningBal.Text = "0";
+            //if (txtVenderOpeningBal.Text == "")
+            //{
+            //    txtVenderOpeningBal.Text = "0";
 
-            }
+            //}
            
         }
 
         private void txtVenderOpeningBal_Leave(object sender, EventArgs e)
         {
-            if (txtVenderOpeningBal.Text == "")
+            if (txtVenderOpeningBal.Text =="")
             {
                 txtVenderOpeningBal.Text = "0";
 
@@ -453,6 +457,11 @@ namespace WindowsFormsApplication1
             comboBox1.Focus();
             panel2.TabStop = false;
             panel2.TabIndex = 26;
+            btnUpdate.TabIndex = 4;
+            button1.TabIndex = 5;
+            butprint.TabIndex = 6;
+            button2.TabIndex = 7;
+            button3.TabIndex = 8;
             //dataGridView1.TabIndex = 26;
         }
 
@@ -499,6 +508,7 @@ namespace WindowsFormsApplication1
             setDetails(cellCollection);
             panel1.Visible = false;
             updateCounter = 1;
+            btnVenderList.Enabled = false;
            // Enabled1();
             txtVenderAddress.Focus();
             Tabindex2();
@@ -611,7 +621,7 @@ namespace WindowsFormsApplication1
         {
             if (txtVenderOpeningBal.Text == "")
             {
-                txtVenderOpeningBal.Text = "0";
+               // txtVenderOpeningBal.Text = "0";
             }
             else
             {
@@ -627,15 +637,15 @@ namespace WindowsFormsApplication1
 
         private void txtVenderCurrentBal_TextChanged(object sender, EventArgs e)
         {
-            if (txtVenderOpeningBal.Text == "")
-            {
-                txtVenderCurrentBal.Text = "0";
-            }
-            else
-            {
-                string value = txtVenderOpeningBal.Text;
-                txtVenderCurrentBal.Text = value;
-            }
+            //if (txtVenderOpeningBal.Text == "")
+            //{
+            //    txtVenderCurrentBal.Text = "0";
+            //}
+            //else
+            //{
+            //    string value = txtVenderOpeningBal.Text;
+            //    txtVenderCurrentBal.Text = value;
+            //}
         }
 
         private void txtVenderEmailAddress_Leave(object sender, EventArgs e)

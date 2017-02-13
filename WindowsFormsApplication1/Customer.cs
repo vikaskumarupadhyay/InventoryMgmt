@@ -654,15 +654,17 @@ namespace WindowsFormsApplication1
             customerprint p = new customerprint(class2Collection);
             p.Show();
         }
-
+        int num = 0;
         private void button2_Click(object sender, EventArgs e)
         {
+                num++;
+                string pathName = "ExcelFilePath";
+            string FolderName=pathName+num;
             //DataGridViewColumnCollection column = dataGridView1.Columns;
-           string column1 = "";
            int cout = 0;
            int rowCoumt = 0;
           // column1 = dc.Name.ToString();
-           string file = System.Configuration.ConfigurationManager.AppSettings["ExcelFilePath"]+ "newdoc.xls";
+           string file = System.Configuration.ConfigurationManager.AppSettings["ExcelFilePath"] + FolderName + "newdoc.xls";
            Workbook workbook = new Workbook();
            Worksheet worksheet = new Worksheet("First Sheet");
 
