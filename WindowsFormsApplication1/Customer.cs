@@ -155,7 +155,7 @@ namespace WindowsFormsApplication1
 
                             else if (updateCounter == 1)
                             {
-                                string updateCommand1 = "update  CustomerDetails  set Custid='" + txtCustCode.Text + "', CustAddress='" + txtAddress.Text + "',CustPhone='" + txtTXTPHONE.Text + "', CustMobile='" + txtMOBILE.Text + "',CustPanNO='" + txtPanno.Text + "',CustVatNo='" + txttanno.Text + "',CustCstNo='" + txtothers.Text + "',CustServicetaxregnNo='" + txtservicetaxno.Text + "',CustExciseregnno='" + txtexiceragisterno.Text + "',CustGstregnno='" + txtgstragisterno.Text + "', CustName='" + txtName.Text + "', CustCompName= '" + txtCompnyName.Text + "',CustCity='" + txtCity.Text + "',CustState='" + txtState.Text + "',CustZip='" + txtZIP.Text + "',CustCountry='" + txtCustCountry.Text + "',CustEmail='" + txtEMAILADDRESS.Text + "',CustWebAddress='" + txtWEBSITE.Text + "',CustFax='" + txtFAX.Text + "',CustDesc='" + txtDESCRIPTION.Text + "' where Custid='" + txtCustCode.Text + "'";
+                                string updateCommand1 = "update  CustomerDetails  set Custid='" + txtCustCode.Text + "', CustAddress='" + txtAddress.Text + "',CustPhone='" + txtTXTPHONE.Text + "', CustMobile='" + txtMOBILE.Text + "',CustPanNO='" + txtPanno.Text + "',CustVatNo='" + txttanno.Text + "',CustCstNo='" + txtothers.Text + "',CustServicetaxregnNo='" + txtservicetaxno.Text + "',CustExciseregnno='" + txtexiceragisterno.Text + "',Gstregnno='" + txtgstragisterno.Text + "', CustName='" + txtName.Text + "', CustCompName= '" + txtCompnyName.Text + "',CustCity='" + txtCity.Text + "',CustState='" + txtState.Text + "',CustZip='" + txtZIP.Text + "',CustCountry='" + txtCustCountry.Text + "',CustEmail='" + txtEMAILADDRESS.Text + "',CustWebAddress='" + txtWEBSITE.Text + "',CustFax='" + txtFAX.Text + "',CustDesc='" + txtDESCRIPTION.Text + "' where Custid='" + txtCustCode.Text + "'";
                                 string updateCommand2 = "update   CustomerAccountDetails set  CustOpeningBalance='" + txtOPENINGBALANCE.Text + "',CustCurrentBalance='" + txtCURRENTBALANCE.Text + "' where Custid='" + txtCustCode.Text + "'";
 
                                 int updatedRows = dbMainClass.updateDetails(updateCommand1, updateCommand2);
@@ -166,7 +166,7 @@ namespace WindowsFormsApplication1
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Details Can not updated");
+                                    MessageBox.Show("Details Update not updated");
                                 }
                                 updateCounter = 0;
                             }
@@ -332,7 +332,7 @@ namespace WindowsFormsApplication1
             txtFAX.TabStop = true;
             txtDESCRIPTION.TabStop = true;
             txtOPENINGBALANCE.TabStop = true;
-            txtCURRENTBALANCE.TabStop = true;
+           // txtCURRENTBALANCE.TabStop = true;
             txtPanno.TabStop = true;
             txttanno.TabStop = true;
             txtothers.TabStop = true;
@@ -466,16 +466,14 @@ namespace WindowsFormsApplication1
         private void butaddrecord_Click(object sender, EventArgs e)
         {
             panel1.Visible = false;
+            txtName.Focus();
+            tabindex2();
         }
 
         private void butupdate_Click(object sender, EventArgs e)
         {
-             int currentIndex = dataGridView1.CurrentRow.Index;
-             if (dataGridView1.SelectedRows != null && dataGridView1.SelectedRows.Count > 0)
-             {
-                 if (dataGridView1.RowCount == currentIndex + 1)
-                     currentIndex = currentIndex + 1;
-                 DataGridViewCellCollection cellcollection = dataGridView1.Rows[0].Cells;
+            
+                DataGridViewCellCollection cellcollection = dataGridView1.SelectedRows[0].Cells;
                  setDetails(cellcollection);
                  panel1.Visible = false;
                  updateCounter = 1;
@@ -483,7 +481,7 @@ namespace WindowsFormsApplication1
                  blank();
                  textBox1.Text = "";
                  tabindex1();
-             }
+             
         }
         private void blank()
         {
@@ -644,9 +642,9 @@ namespace WindowsFormsApplication1
             {
                 if (dataGridView1.SelectedRows != null && dataGridView1.SelectedRows.Count > 0)
                 {
-                    if (dataGridView1.RowCount == currentIndex + 1)
-                        currentIndex = currentIndex + 1;
-                    DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex - 1].Cells;
+                //    if (dataGridView1.RowCount == currentIndex - 1)
+                //        currentIndex = currentIndex - 1;
+                    DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex-1].Cells;
                     setDetails(cellcollection);
                     panel1.Visible = false;
                     updateCounter = 1;
@@ -725,6 +723,11 @@ namespace WindowsFormsApplication1
             }
             workbook.Worksheets.Add(worksheet);
             workbook.Save(file);
+        }
+
+        private void txtOPENINGBALANCE_Leave(object sender, EventArgs e)
+        {
+            txtOPENINGBALANCE.Text = "0";
         }
 
         
