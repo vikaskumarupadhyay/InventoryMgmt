@@ -695,7 +695,7 @@
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Location = new System.Drawing.Point(12, 92);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(780, 501);
+            this.panel2.Size = new System.Drawing.Size(780, 446);
             this.panel2.TabIndex = 8;
             // 
             // dataGridView1
@@ -708,7 +708,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(736, 454);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 2;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            //this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
             this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress_1);
             // 
