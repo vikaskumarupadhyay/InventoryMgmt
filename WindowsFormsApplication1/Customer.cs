@@ -470,14 +470,20 @@ namespace WindowsFormsApplication1
 
         private void butupdate_Click(object sender, EventArgs e)
         {
-            DataGridViewCellCollection cellcollection = dataGridView1.Rows[0].Cells;
-            setDetails(cellcollection);
-            panel1.Visible = false;
-            updateCounter = 1;
-            btnList.Enabled = false;
-            blank();
-            textBox1.Text = "";
-            tabindex1();
+             int currentIndex = dataGridView1.CurrentRow.Index;
+             if (dataGridView1.SelectedRows != null && dataGridView1.SelectedRows.Count > 0)
+             {
+                 if (dataGridView1.RowCount == currentIndex + 1)
+                     currentIndex = currentIndex + 1;
+                 DataGridViewCellCollection cellcollection = dataGridView1.Rows[0].Cells;
+                 setDetails(cellcollection);
+                 panel1.Visible = false;
+                 updateCounter = 1;
+                 btnList.Enabled = false;
+                 blank();
+                 textBox1.Text = "";
+                 tabindex1();
+             }
         }
         private void blank()
         {
@@ -721,10 +727,7 @@ namespace WindowsFormsApplication1
             workbook.Save(file);
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        
 
    
     }
