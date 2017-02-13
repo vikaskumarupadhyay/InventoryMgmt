@@ -261,8 +261,7 @@ namespace WindowsFormsApplication1
             DataTable dt = dbMainClass.getDetails("CUSTOMER");
             dataGridView1.DataSource = dt;
             panel2.TabStop = false;
-            panel2.TabIndex = 2;
-            dataGridView1.TabIndex = 3;
+            correcttabindexlist();
             comserchvalue.Focus();
         }
         private void tabindex()
@@ -289,10 +288,32 @@ namespace WindowsFormsApplication1
             btnSave.TabStop = false;
             btnClose.TabStop = false;
             btnList.TabStop = false;
-           // dataGridView1.TabStop = false;
+            
             txtservicetaxno.TabStop = false;
             txtexiceragisterno.TabStop = false;
             txtgstragisterno.TabStop = false;
+            button1.TabStop = true;
+            butaddrecord.TabStop = true;
+            butupdate.TabStop = true;
+            button2.TabStop = true;
+            butclose.TabStop = true;
+            comserchvalue.TabStop = true;
+            textBox1.TabStop = true;
+            dataGridView1.TabStop = true;
+            
+        }
+        private void correcttabindexlist()
+        {
+            comserchvalue.TabIndex = 1;
+            textBox1.TabIndex = 2;
+            panel2.TabIndex = 2;
+            dataGridView1.TabIndex = 3;
+            butupdate.TabIndex = 4;
+            butaddrecord.TabIndex = 5;
+            button1.TabIndex = 6;
+            button2.TabIndex = 7;
+            butclose.TabIndex = 8;
+            
         }
         private void tabindex2()
         {

@@ -1,126 +1,3 @@
-D:\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
-D:\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
-D:\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\ResolveAssemblyReference.cache
-D:\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
-D:\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
-D:\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
-D:\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
-D:\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form2.resources
-D:\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form3.resources
-D:\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form4.resources
-D:\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form5.resources
-D:\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form6.resources
-D:\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form7.resources
-D:\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form8.resources
-D:\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form9.resources
-D:\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form10.resources
-D:\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form11.resources
-D:\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form12.resources
-D:\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\GenerateResource-ResGen.read.1.tlog
-D:\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\GenerateResource-ResGen.write.1.tlog
-D:\New folder\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
-D:\New folder\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
-D:\New folder\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\ResolveAssemblyReference.cache
-D:\New folder\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
-D:\New folder\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form10.resources
-D:\New folder\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form11.resources
-D:\New folder\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form12.resources
-D:\New folder\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form5.resources
-D:\New folder\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form7.resources
-D:\New folder\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form8.resources
-D:\New folder\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form9.resources
-D:\New folder\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
-D:\New folder\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\GenerateResource-ResGen.read.1.tlog
-D:\New folder\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\GenerateResource-ResGen.write.1.tlog
-D:\New folder\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
-D:\New folder\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
-D:\New folder\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
-D:\New folder\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.frmVendorDetails.resources
-D:\New folder\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Customer.resources
-D:\New folder\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Item.resources
-D:\New folder\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.ItemGroup.resources
-D:\New folder\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Unit.resources
-D:\New folder\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.PurchaseOrder.resources
-G:\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
-G:\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
-G:\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
-G:\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
-G:\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
-G:\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
-G:\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form10.resources
-G:\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form11.resources
-G:\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form12.resources
-G:\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.frmVendorDetails.resources
-G:\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Customer.resources
-G:\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Item.resources
-G:\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form5.resources
-G:\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.PurchaseOrder.resources
-G:\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form7.resources
-G:\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form8.resources
-G:\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form9.resources
-G:\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.ItemGroup.resources
-G:\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
-G:\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Unit.resources
-G:\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
-G:\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
-E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
-E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
-E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
-E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
-E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
-E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\ResolveAssemblyReference.cache
-E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
-E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form10.resources
-E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form11.resources
-E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form12.resources
-E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.frmVendorDetails.resources
-E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Customer.resources
-E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Item.resources
-E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form5.resources
-E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.PurchaseOrder.resources
-E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form7.resources
-E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form8.resources
-E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form9.resources
-E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.ItemGroup.resources
-E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
-E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Unit.resources
-E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\GenerateResource-ResGen.read.1.tlog
-E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\ResGen.read.1.tlog
-E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\GenerateResource-ResGen.write.1.tlog
-E:\vikas\Projects\Inventory Project\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\ResGen.write.1.tlog
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.ChaquePayment.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.ChaqueForm.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Company_New.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Customer_list.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.customerprint.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.salesorder.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.salesdelivary.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.salesinvoice.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form2.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.practise.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.VendorPrint.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.ItemList1.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.PurchasSearch1.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.salessearch.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.frmVendorDetails.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Customer.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Item.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form5.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.PurchaseOrder.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form7.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form8.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form9.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.ItemGroup.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Unit.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.VendorList1.resources
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
-D:\Project\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
-D:\Project\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
-D:\Project\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
 E:\Project\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
 E:\Project\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
 E:\Project\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
@@ -134,6 +11,7 @@ E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.salesorde
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.salesdelivary.resources
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.salesinvoice.resources
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form2.resources
+E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.practise.resources
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.VendorPrint.resources
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.ItemList1.resources
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.PurchasSearch1.resources
@@ -153,8 +31,5 @@ E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.VendorLis
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
-E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.practise.resources
-<<<<<<< Updated upstream
-=======
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
->>>>>>> Stashed changes
+E:\Project\WindowsFormsApplication1\bin\Debug\ExcelLibrary.dll
