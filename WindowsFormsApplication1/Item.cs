@@ -373,9 +373,15 @@ namespace WindowsFormsApplication1
 
         private void txtItemOpeningQuant_TextChanged(object sender, EventArgs e)
         {
-        
-            string txt = txtItemOpeningQuant.Text;
-            txtItemRemaningQuant.Text = txt;
+            if (txtItemOpeningQuant.Text =="")
+            {
+                txtItemRemaningQuant.Text ="0";
+            }
+            if (txtItemOpeningQuant.Text != "")
+            {
+                string txt = txtItemOpeningQuant.Text;
+                txtItemRemaningQuant.Text = txt;
+            }
         }
 
         private void txtItemMrp_Leave(object sender, EventArgs e)
@@ -686,7 +692,7 @@ namespace WindowsFormsApplication1
             if (txtItemOpeningQuant.Text == "0")
             {
                 txtItemOpeningQuant.Text = "";
-                txtItemRemaningQuant.Text = "0";
+               txtItemRemaningQuant.Text = "0";
             }
         }
 
@@ -694,22 +700,27 @@ namespace WindowsFormsApplication1
         {
             if (txtItemOpeningQuant.Text =="")
             {
-                txtItemOpeningQuant.Text ="0";
+                txtItemRemaningQuant.Text = "0";
             }
+
+            string txt = txtItemOpeningQuant.Text;
+            txtItemRemaningQuant.Text = txt;
         }
 
         private void txtItemOpeningQuant_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsNumber(e.KeyChar) || Char.IsPunctuation(e.KeyChar))
+            if (Char.IsNumber(e.KeyChar))
             {
                 e.Handled = false;
             }
             else
             {
+                
                 if (e.KeyChar == '\b')
                 {
+                    //txtItemRemaningQuant.Text = "0";
                     e.Handled = false;
-                    txtItemRemaningQuant.Text = "0";
+                   
                 }
                 else
                 {
