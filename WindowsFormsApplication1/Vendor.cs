@@ -311,7 +311,7 @@ namespace WindowsFormsApplication1
             //MessageBox.Show(e.KeyChar.);
 
 
-            if (Char.IsDigit(e.KeyChar))
+            if (Char.IsNumber(e.KeyChar) || Char.IsPunctuation(e.KeyChar))
             {
                 e.Handled = false;
             }
@@ -320,15 +320,10 @@ namespace WindowsFormsApplication1
                 if (e.KeyChar == '\b')
                 {
                     e.Handled = false;
-                    if (txtVenderOpeningBal.Text == "")
-                    {
-                        txtVenderOpeningBal.Text = "";
-                    }
                 }
                 else
                 {
                     e.Handled = true;
-                    
                 }
             }
 
@@ -338,14 +333,14 @@ namespace WindowsFormsApplication1
         {
             if (txtVenderOpeningBal.Text == "")
             {
-                MessageBox.Show("please enter the opening bal1");
+                txtVenderCurrentBal.Text = "";
             }
-            //else
-            //{
-            //    string value = txtVenderOpeningBal.Text;
-            //    txtVenderCurrentBal.Text = value;
-            //}
-            //txtVenderOpeningBal.Text = txtVenderCurrentBal.Text;
+            else
+            {
+                string value = txtVenderOpeningBal.Text;
+                txtVenderCurrentBal.Text = value;
+            }
+           // txtVenderOpeningBal.Text = txtVenderCurrentBal.Text;
         }
 
         private void txtVenderOpeningBal_Enter(object sender, EventArgs e)
@@ -360,7 +355,7 @@ namespace WindowsFormsApplication1
 
         private void txtVenderOpeningBal_Leave(object sender, EventArgs e)
         {
-            if (txtVenderOpeningBal.Text =="")
+            if (txtVenderOpeningBal.Text == "")
             {
                 txtVenderOpeningBal.Text = "0";
 
@@ -621,15 +616,17 @@ namespace WindowsFormsApplication1
 
         private void txtVenderOpeningBal_Click(object sender, EventArgs e)
         {
-            if (txtVenderOpeningBal.Text == "")
-            {
-               // txtVenderOpeningBal.Text = "0";
-            }
-            else
-            {
-                string value = txtVenderOpeningBal.Text;
-                txtVenderCurrentBal.Text = value;
-            }
+            //txtVenderOpeningBal.Text = string.Empty;
+            //txtVenderOpeningBal.Text = "";
+            ////if (txtVenderOpeningBal.Text == "")
+            ////{
+            ////   // txtVenderOpeningBal.Text = "0";
+            ////}
+            ////else
+            ////{
+            ////    string value = txtVenderOpeningBal.Text;
+            ////    txtVenderCurrentBal.Text = value;
+            //}
         }
 
         private void txtVenderCurrentBal_Click(object sender, EventArgs e)
@@ -775,6 +772,27 @@ namespace WindowsFormsApplication1
         //        s.WriteLine(value);
         //    }
         //    s.Close();
+        }
+
+        private void txtVenderOpeningBal_TextChanged_1(object sender, EventArgs e)
+        {
+            if (txtVenderOpeningBal.Text == "")
+            {
+                txtVenderCurrentBal.Text = "0";
+            }
+            else
+            {
+                string value = txtVenderOpeningBal.Text;
+                txtVenderCurrentBal.Text = value;
+            }
+        }
+
+        private void txtVenderOpeningBal_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (txtVenderOpeningBal.Text == "0")
+            {
+                txtVenderOpeningBal.Text = "";
+            }
         }
 
     }

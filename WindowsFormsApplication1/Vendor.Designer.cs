@@ -542,9 +542,8 @@
             this.txtVenderOpeningBal.Text = "0";
             this.txtVenderOpeningBal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtVenderOpeningBal.Click += new System.EventHandler(this.txtVenderOpeningBal_Click);
-            this.txtVenderOpeningBal.SizeChanged += new System.EventHandler(this.txtVenderOpeningBal_Leave);
-            this.txtVenderOpeningBal.TextChanged += new System.EventHandler(this.txtVenderOpeningBal_Leave);
-            this.txtVenderOpeningBal.GiveFeedback += new System.Windows.Forms.GiveFeedbackEventHandler(this.txtVenderOpeningBal_GiveFeedback);
+            this.txtVenderOpeningBal.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtVenderOpeningBal_MouseClick);
+            this.txtVenderOpeningBal.TextChanged += new System.EventHandler(this.txtVenderOpeningBal_TextChanged_1);
             this.txtVenderOpeningBal.Enter += new System.EventHandler(this.txtVenderOpeningBal_Enter);
             this.txtVenderOpeningBal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVenderOpeningBal_KeyPress);
             this.txtVenderOpeningBal.Leave += new System.EventHandler(this.txtVenderOpeningBal_Leave);
@@ -621,9 +620,9 @@
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(0, -2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(803, 597);
+            this.panel1.Size = new System.Drawing.Size(803, 435);
             this.panel1.TabIndex = 7;
             // 
             // button2

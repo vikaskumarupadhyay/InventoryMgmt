@@ -280,11 +280,6 @@ namespace WindowsFormsApplication1
             panel1.Visible = true;
             //SqlConnection con = dbMainClass.openConnection();
             string selectqurry = "select  itm.ItemId as[Item Id],itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
-            //SqlCommand cmd = new SqlCommand(selectqurry, con);
-            //SqlDataAdapter sda = new SqlDataAdapter(cmd);
-            //DataSet ds = new DataSet();
-            //sda.Fill(ds);
-            //DataTable dt = ds.Tables[0];
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             dataGridView1.DataSource = dt;
             tabindix();
@@ -308,7 +303,7 @@ namespace WindowsFormsApplication1
         private void buttUpdate_Click(object sender, EventArgs e)
         {
 
-            DataGridViewCellCollection cellCollection = dataGridView1.Rows[0].Cells;
+            DataGridViewCellCollection cellCollection = dataGridView1.SelectedRows[0].Cells;
             setDetails(cellCollection);
             panel1.Visible = false;
             updatecounter = 1;
@@ -378,6 +373,7 @@ namespace WindowsFormsApplication1
 
         private void txtItemOpeningQuant_TextChanged(object sender, EventArgs e)
         {
+        
             string txt = txtItemOpeningQuant.Text;
             txtItemRemaningQuant.Text = txt;
         }
@@ -388,10 +384,10 @@ namespace WindowsFormsApplication1
             //{
             //    txtItemPrice.Text = "0";
             //}
-            //if (txtItemMrp.Text == "")
-            //{
-            //    txtItemMrp.Text = "0";
-            //}
+            if (txtItemMrp.Text == "")
+            {
+                txtItemMrp.Text = "0";
+            }
             //int pPrice = Convert.ToInt32(txtItemPrice.Text);
             //int mrp = Convert.ToInt32(txtItemMrp.Text);
             //int totelmrp = mrp - pPrice;
@@ -510,7 +506,7 @@ namespace WindowsFormsApplication1
              {
                  txtSearch.Text = "";
                  searchCalmn.SelectedIndex = 0;
-                 DataGridViewCellCollection cellCollection = dataGridView1.Rows[currentIndex].Cells;
+                 DataGridViewCellCollection cellCollection = dataGridView1.Rows[currentIndex-1].Cells;
                  setDetails(cellCollection);
                  panel1.Visible = false;
                  updatecounter = 1;
@@ -523,51 +519,55 @@ namespace WindowsFormsApplication1
 
         private void txtItemSalesPrice_TextChanged(object sender, EventArgs e)
         {
-                if (txtItemPrice.Text == "")
+            string num=txtItemPrice.Text;
+            string num1=txtItemSalesPrice.Text;
+            if (num == "")
                 {
-                    txtItemPrice.Text = "0";
+                    num = "0";
                 }
-                if (txtItemSalesPrice.Text == "")
+            if (num1 == "")
                 {
-                    txtItemSalesPrice.Text = "0";
+                    num1 = "0";
                 }
-                int pPrice = Convert.ToInt32(txtItemPrice.Text);
-                int mrp = Convert.ToInt32(txtItemSalesPrice.Text);
-                int totelmrp = mrp - pPrice;
+                double pPrice = Convert.ToDouble(num);
+                double mrp = Convert.ToDouble(num1);
+                double totelmrp = mrp - pPrice;
                 txtItemMargin.Text = totelmrp.ToString();
 
         }
 
         private void txtItemPrice_TextChanged(object sender, EventArgs e)
         {
-            if (txtItemSalesPrice.Text == "0")
+            string value = txtItemSalesPrice.Text;
+            string value1 = txtItemPrice.Text;
+            if (value == "0")
             {
-                if (txtItemPrice.Text == "")
+            if (value1 == "")
                 {
-                    txtItemPrice.Text = "0";
+                    value1 = "0";
                 }
-                if (txtItemSalesPrice.Text == "")
+            if (value == "")
                 {
-                    txtItemSalesPrice.Text = "0";
+                    value = "0";
                 }
-                int pPrice = Convert.ToInt32(txtItemPrice.Text);
-                int mrp = Convert.ToInt32(txtItemSalesPrice.Text);
-                int totelmrp = mrp - pPrice;
+                double pPrice = Convert.ToDouble(value1);
+                double mrp = Convert.ToDouble(value);
+              double totelmrp = mrp - pPrice;
                 txtItemMargin.Text = "0";//totelmrp.ToString();
-            }
-            if (txtItemSalesPrice.Text != "0")
+           }
+            if (value != "0")
             {
-                if (txtItemPrice.Text == "")
+                if (value1 == "")
                 {
-                    txtItemPrice.Text = "0";
+                    value1 = "0";
                 }
-                if (txtItemSalesPrice.Text == "")
+                if (value == "")
                 {
-                    txtItemSalesPrice.Text = "0";
+                    value = "0";
                 }
-                int pPrice = Convert.ToInt32(txtItemPrice.Text);
-                int mrp = Convert.ToInt32(txtItemSalesPrice.Text);
-                int totelmrp = mrp - pPrice;
+                double pPrice = Convert.ToDouble(value1);
+                double mrp = Convert.ToDouble(value);
+                double totelmrp = mrp - pPrice;
                 txtItemMargin.Text = totelmrp.ToString();
             }
         }
@@ -597,7 +597,7 @@ namespace WindowsFormsApplication1
 
         private void txtItemSalesPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsDigit(e.KeyChar))
+            if (Char.IsNumber(e.KeyChar) || Char.IsPunctuation(e.KeyChar))
             {
                 e.Handled = false;
             }
@@ -605,11 +605,111 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyChar == '\b')
                 {
-                    if (txtItemSalesPrice.Text == "0")
-                    {
-                        txtItemMargin.Text = "0";
-                    }
                     e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void txtItemPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsNumber(e.KeyChar) || Char.IsPunctuation(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void txtItemPrice_Leave(object sender, EventArgs e)
+        {
+            if (txtItemPrice.Text == "")
+            {
+                txtItemPrice.Text = "0";
+            }
+
+        }
+
+        private void txtItemSalesPrice_Leave(object sender, EventArgs e)
+        {
+            if (txtItemSalesPrice.Text == "")
+            {
+                txtItemSalesPrice.Text = "0";
+            }
+        }
+
+        private void txtItemPrice_MouseEnter(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void txtItemPrice_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (txtItemPrice.Text == "0")
+            {
+                txtItemPrice.Text = "";
+            }
+        }
+
+        private void txtItemMrp_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (txtItemMrp.Text == "0")
+            {
+                txtItemMrp.Text = "";
+            }
+
+        }
+
+        private void txtItemSalesPrice_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (txtItemSalesPrice.Text == "0")
+            {
+                txtItemSalesPrice.Text = "";
+            }
+
+        }
+
+        private void txtItemOpeningQuant_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (txtItemOpeningQuant.Text == "0")
+            {
+                txtItemOpeningQuant.Text = "";
+                txtItemRemaningQuant.Text = "0";
+            }
+        }
+
+        private void txtItemOpeningQuant_Leave(object sender, EventArgs e)
+        {
+            if (txtItemOpeningQuant.Text =="")
+            {
+                txtItemOpeningQuant.Text ="0";
+            }
+        }
+
+        private void txtItemOpeningQuant_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsNumber(e.KeyChar) || Char.IsPunctuation(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                    txtItemRemaningQuant.Text = "0";
                 }
                 else
                 {

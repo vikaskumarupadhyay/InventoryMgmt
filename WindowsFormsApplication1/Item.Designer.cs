@@ -72,7 +72,7 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.butPrint = new System.Windows.Forms.Button();
-            this.buttClose = new System.Windows.Forms.Button();
+            this.buttClose2 = new System.Windows.Forms.Button();
             this.buttUpdate = new System.Windows.Forms.Button();
             this.buttAddNewRecord = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -296,6 +296,7 @@
             this.txtItemMrp.TabIndex = 14;
             this.txtItemMrp.Text = "0";
             this.txtItemMrp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtItemMrp.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtItemMrp_MouseClick);
             this.txtItemMrp.TextChanged += new System.EventHandler(this.txtItemMrp_TextChanged);
             this.txtItemMrp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemMrp_KeyPress);
             this.txtItemMrp.Leave += new System.EventHandler(this.txtItemMrp_Leave);
@@ -320,8 +321,10 @@
             this.txtItemSalesPrice.TabIndex = 13;
             this.txtItemSalesPrice.Text = "0";
             this.txtItemSalesPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtItemSalesPrice.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtItemSalesPrice_MouseClick);
             this.txtItemSalesPrice.TextChanged += new System.EventHandler(this.txtItemSalesPrice_TextChanged);
             this.txtItemSalesPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemSalesPrice_KeyPress);
+            this.txtItemSalesPrice.Leave += new System.EventHandler(this.txtItemSalesPrice_Leave);
             // 
             // textBox7
             // 
@@ -343,7 +346,11 @@
             this.txtItemPrice.TabIndex = 12;
             this.txtItemPrice.Text = "0";
             this.txtItemPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtItemPrice.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtItemPrice_MouseClick);
             this.txtItemPrice.TextChanged += new System.EventHandler(this.txtItemPrice_TextChanged);
+            this.txtItemPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemPrice_KeyPress);
+            this.txtItemPrice.Leave += new System.EventHandler(this.txtItemPrice_Leave);
+            this.txtItemPrice.MouseEnter += new System.EventHandler(this.txtItemPrice_MouseEnter);
             // 
             // textBox5
             // 
@@ -401,7 +408,10 @@
             this.txtItemOpeningQuant.TabIndex = 16;
             this.txtItemOpeningQuant.Text = "0";
             this.txtItemOpeningQuant.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtItemOpeningQuant.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtItemOpeningQuant_MouseClick);
             this.txtItemOpeningQuant.TextChanged += new System.EventHandler(this.txtItemOpeningQuant_TextChanged);
+            this.txtItemOpeningQuant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemOpeningQuant_KeyPress);
+            this.txtItemOpeningQuant.Leave += new System.EventHandler(this.txtItemOpeningQuant_Leave);
             // 
             // txtItemRemaningQuant
             // 
@@ -476,14 +486,13 @@
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.butPrint);
-            this.panel1.Controls.Add(this.buttClose);
+            this.panel1.Controls.Add(this.buttClose2);
             this.panel1.Controls.Add(this.buttUpdate);
             this.panel1.Controls.Add(this.buttAddNewRecord);
             this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(809, 510);
+            this.panel1.Size = new System.Drawing.Size(809, 507);
             this.panel1.TabIndex = 10;
             // 
             // button2
@@ -492,7 +501,7 @@
             this.button2.Location = new System.Drawing.Point(249, 467);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(131, 28);
-            this.button2.TabIndex = 32;
+            this.button2.TabIndex = 6;
             this.button2.Text = "Export To Excel";
             this.button2.UseVisualStyleBackColor = true;
             // 
@@ -554,21 +563,21 @@
             this.butPrint.Location = new System.Drawing.Point(386, 467);
             this.butPrint.Name = "butPrint";
             this.butPrint.Size = new System.Drawing.Size(75, 28);
-            this.butPrint.TabIndex = 7;
+            this.butPrint.TabIndex = 5;
             this.butPrint.Text = "Print";
             this.butPrint.UseVisualStyleBackColor = true;
             this.butPrint.Click += new System.EventHandler(this.butPrint_Click);
             // 
-            // buttClose
+            // buttClose2
             // 
-            this.buttClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttClose.Location = new System.Drawing.Point(467, 467);
-            this.buttClose.Name = "buttClose";
-            this.buttClose.Size = new System.Drawing.Size(90, 28);
-            this.buttClose.TabIndex = 5;
-            this.buttClose.Text = "Close";
-            this.buttClose.UseVisualStyleBackColor = true;
-            this.buttClose.Click += new System.EventHandler(this.buttClose_Click);
+            this.buttClose2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttClose2.Location = new System.Drawing.Point(467, 467);
+            this.buttClose2.Name = "buttClose2";
+            this.buttClose2.Size = new System.Drawing.Size(90, 28);
+            this.buttClose2.TabIndex = 7;
+            this.buttClose2.Text = "Close";
+            this.buttClose2.UseVisualStyleBackColor = true;
+            this.buttClose2.Click += new System.EventHandler(this.buttClose_Click);
             // 
             // buttUpdate
             // 
@@ -576,7 +585,7 @@
             this.buttUpdate.Location = new System.Drawing.Point(153, 467);
             this.buttUpdate.Name = "buttUpdate";
             this.buttUpdate.Size = new System.Drawing.Size(90, 28);
-            this.buttUpdate.TabIndex = 4;
+            this.buttUpdate.TabIndex = 3;
             this.buttUpdate.Text = "Update";
             this.buttUpdate.UseVisualStyleBackColor = true;
             this.buttUpdate.Click += new System.EventHandler(this.buttUpdate_Click);
@@ -587,14 +596,13 @@
             this.buttAddNewRecord.Location = new System.Drawing.Point(10, 467);
             this.buttAddNewRecord.Name = "buttAddNewRecord";
             this.buttAddNewRecord.Size = new System.Drawing.Size(137, 28);
-            this.buttAddNewRecord.TabIndex = 3;
+            this.buttAddNewRecord.TabIndex = 4;
             this.buttAddNewRecord.Text = "Add New Record";
             this.buttAddNewRecord.UseVisualStyleBackColor = true;
             this.buttAddNewRecord.Click += new System.EventHandler(this.buttAddNewRecord_Click);
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 95);
             this.dataGridView1.Name = "dataGridView1";
@@ -677,7 +685,7 @@
         private System.Windows.Forms.Button btnItemList;
         public System.Windows.Forms.ComboBox cmbItemItemGroup;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button buttClose;
+        private System.Windows.Forms.Button buttClose2;
         private System.Windows.Forms.Button buttUpdate;
         private System.Windows.Forms.Button buttAddNewRecord;
         private System.Windows.Forms.DataGridView dataGridView1;
