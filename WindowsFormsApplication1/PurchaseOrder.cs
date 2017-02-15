@@ -281,8 +281,8 @@ namespace WindowsFormsApplication1
         private void btnAddItem_Click(object sender, EventArgs e)
         {
             txtItemCode.Focus();
-            txtVendorCode.TabStop = false;
-            button1.TabStop = false;
+            txtVendorCode.TabStop = true;
+            button1.TabStop = true;
             txtDiscount.TabStop = false;
             //txtRemoveItem.Focus();
            
@@ -415,6 +415,7 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            txtsearch.Text = "";
             panel2.Visible = true;
             string selectqurry = "select vd.venderId as [Vender Id ],vd.vName AS Name ,vd.vCompName AS [Company Name] ,vd.vAddress AS Address,vd.vCity AS City,vd. vState AS State ,vd.vZip AS Zip ,vd.vCountry AS Country ,vd.vEmail AS[E-Mail ],vd. vWebAddress AS[Web Address],vd.vPhone AS Phone ,vd.vMobile AS Mobile ,vd.vFax AS Fax ,vd.vPanNo as[PAN No],vd.vVatNo as [VAT No],vd.vCstNo as[CST No],vd.vServiceTaxRegnNo as [Service Tax Regn.No],vd.vExciseRegnNo as [Excise Regn.No],vd.vGSTRegnNo as[GST Regn.No],vd.vDesc AS Description,vad.vOpeningBalance AS [Opening Balance] , vad.vCurrentBalance AS [Current Balance] from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID";
             string selectqurryForActualColumnName = "select top 1 vd.venderId ,vd.vName  ,vd.vCompName  ,vd.vAddress ,vd.vCity,vd. vState  ,vd.vZip  ,vd.vCountry  ,vd.vEmail ,vd. vWebAddress ,vd.vPhone  ,vd.vMobile ,vd.vFax ,vd.vPanNo ,vd.vVatNo ,vd.vCstNo,vd.vServiceTaxRegnNo ,vd.vExciseRegnNo ,vd.vGSTRegnNo ,vd.vDesc,vad.vOpeningBalance, vad.vCurrentBalance  from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID";
@@ -470,6 +471,7 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
+            txtsearch.Text = "";
             //string selectqurry = "select itm.ItemName,itm.ItemCompName,itm.ItemDesc,itm.groupid,itm.Unitid,ipd.purChasePrice,ipd.SalesPrice,ipd.MrpPrice,ipd.Margin,iqd.OpeningQuantity,iqd.CurrentQuantity from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid";
             //DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             //List<string> ls = new List<string>();
@@ -644,7 +646,7 @@ namespace WindowsFormsApplication1
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtsearch.Text = "";
+            //txtsearch.Text = "";
             comboBox1.SelectedIndex = 0;
             if (counter == 0)
             {
@@ -715,8 +717,8 @@ namespace WindowsFormsApplication1
             txtItemCode.Focus();
             txtItemCode.TabStop = true;
             button2.TabStop = true;
-            txtVendorCode.TabStop = false;
-            button1.TabStop = false;
+           txtVendorCode.TabStop = false;
+           button1.TabStop = false;
             txtVendorCode.TabStop = true;
             button1.TabStop = true;
         }
@@ -747,6 +749,10 @@ namespace WindowsFormsApplication1
             txtQuanity.TabStop = true;
             btnAddItem.TabStop = true;
             txtRemoveItem.TabStop = true;
+            btnSave.TabStop = true;
+            btnClose.TabStop = true;
+            txtVendorCode.TabStop = true;
+            button1.TabStop = true;
         }
 
         private void gridPurchaseOrder_KeyPress(object sender, KeyPressEventArgs e)
@@ -904,17 +910,15 @@ namespace WindowsFormsApplication1
 
         private void dataGridView1_KeyPress_1(object sender, KeyPressEventArgs e)
         {
-            txtsearch.Text = "";
+            //txtsearch.Text = "";
             comboBox1.SelectedIndex = 0;
             int currentIndex = dataGridView1.CurrentRow.Index;
             if (e.KeyChar == (char)Keys.Enter)
             {
-                if (dataGridView1.RowCount == currentIndex + 1)
-                    currentIndex = currentIndex + 1;
                 if (counter == 0)
                 {
                     panel2.Visible = false;
-                    DataGridViewCellCollection CellCollection = dataGridView1.Rows[currentIndex - 1].Cells;
+                    DataGridViewCellCollection CellCollection = dataGridView1.Rows[currentIndex-1].Cells;
                     setDetails(CellCollection);
                     IndexTex3();
 
@@ -945,6 +949,31 @@ namespace WindowsFormsApplication1
             if (e.KeyChar == Convert.ToChar(Keys.Escape))
             {
                 txtVendorCode.Focus();
+            }
+        }
+
+        private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            //txtsearch.Text = "";
+            comboBox1.SelectedIndex = 0;
+           
+                if (counter == 0)
+                {
+                    panel2.Visible = false;
+                    DataGridViewCellCollection CellCollection = dataGridView1.SelectedRows[0].Cells;
+                    setDetails(CellCollection);
+                    IndexTex3();
+
+                }
+                else if (counter == 1)
+                {
+                    panel2.Visible = false;
+                    DataGridViewCellCollection CellCollection = dataGridView1.SelectedRows[0].Cells;
+                    setDetails1(CellCollection);
+                    txtQuanity.ReadOnly = false;
+                    btnAddItem.Enabled = true;
+                    txtQuanity.Enabled = true;
+                    IndexTex2();
             }
         }
     }
