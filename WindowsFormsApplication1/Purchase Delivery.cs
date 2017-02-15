@@ -313,6 +313,7 @@ namespace WindowsFormsApplication1
             }
             comboBox1.DataSource = ls;
             dataGridView2.DataSource = dt;
+            IndexTex();
 
         }
 
@@ -1080,8 +1081,8 @@ namespace WindowsFormsApplication1
                 txtQunty.Enabled = true;
                 txtQunty.Focus();
                 IndexTex2();
-                textVendercod.TabStop = false;
-                button1.TabStop = false;
+                textVendercod.TabStop =true;
+                button1.TabStop = true;
             }
             if (e.KeyChar == Convert.ToChar(Keys.Escape))
             {
@@ -1190,6 +1191,8 @@ namespace WindowsFormsApplication1
             button3.TabStop = true;
             button4.TabStop = true;
             panel2.TabStop = false;
+            button5.TabStop = true;
+            button7.TabStop = true;
         }
 
         private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
@@ -1417,6 +1420,7 @@ namespace WindowsFormsApplication1
 
         private void btnSelectPurchaseOrder_KeyPress(object sender, KeyPressEventArgs e)
         {
+
             if (e.KeyChar == Convert.ToChar(Keys.Escape))
             {
                 textVendercod.Focus();
