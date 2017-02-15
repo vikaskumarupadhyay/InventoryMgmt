@@ -343,6 +343,7 @@ namespace WindowsFormsApplication1
                 setDetails(cellCollection);
             panel1.Visible = false;
             updatecounter = 1;
+            tabindix1();
             txtItemProductName.Focus();
             btnItemList.Enabled = false;
         }

@@ -160,6 +160,7 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            txtSearch.Text = "";
             counter = 0;
             panel2.Visible = true;
             string selectqurry = "select vd.venderId as [Vender Id ],vd.vName AS Name ,vd.vCompName AS [Company Name] ,vd.vAddress AS Address,vd.vCity AS City,vd. vState AS State ,vd.vZip AS Zip ,vd.vCountry AS Country ,vd.vEmail AS[E-Mail ],vd. vWebAddress AS[Web Address],vd.vPhone AS Phone ,vd.vMobile AS Mobile ,vd.vFax AS Fax ,vd.vPanNo as[PAN No],vd.vVatNo as [VAT No],vd.vCstNo as[CST No],vd.vServiceTaxRegnNo as [Service Tax Regn.No],vd.vExciseRegnNo as [Excise Regn.No],vd.vGSTRegnNo as[GST Regn.No],vd.vDesc AS Description,vad.vOpeningBalance AS [Opening Balance] , vad.vCurrentBalance AS [Current Balance] from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID";
@@ -222,7 +223,7 @@ namespace WindowsFormsApplication1
 
         private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtSearch.Text = "";
+            //txtSearch.Text = "";
             comboBox1.SelectedIndex = 0;
             if (counter == 0)
             {
@@ -267,6 +268,7 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
+            txtSearch.Text = "";
             counter = 1;
             panel2.Visible = true;
             string selectqurry = "select  itm.ItemId,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId where iqd.CurrentQuantity>0";
@@ -311,6 +313,7 @@ namespace WindowsFormsApplication1
             }
             comboBox1.DataSource = ls;
             dataGridView2.DataSource = dt;
+            IndexTex();
 
         }
 
@@ -1078,8 +1081,8 @@ namespace WindowsFormsApplication1
                 txtQunty.Enabled = true;
                 txtQunty.Focus();
                 IndexTex2();
-                textVendercod.TabStop = false;
-                button1.TabStop = false;
+                textVendercod.TabStop =true;
+                button1.TabStop = true;
             }
             if (e.KeyChar == Convert.ToChar(Keys.Escape))
             {
@@ -1188,6 +1191,8 @@ namespace WindowsFormsApplication1
             button3.TabStop = true;
             button4.TabStop = true;
             panel2.TabStop = false;
+            button5.TabStop = true;
+            button7.TabStop = true;
         }
 
         private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
@@ -1295,13 +1300,13 @@ namespace WindowsFormsApplication1
 
         private void dataGridView2_KeyPress_1(object sender, KeyPressEventArgs e)
         {
-            txtSearch.Text = "";
+           // txtSearch.Text = "";
             comboBox1.SelectedIndex = 0;
             int currentIndex = dataGridView2.CurrentRow.Index;
             if (e.KeyChar == (char)Keys.Enter)
             {
-                if (dataGridView1.RowCount == currentIndex + 1)
-                    currentIndex = currentIndex + 1;
+                //if (dataGridView1.RowCount == currentIndex + 1)
+                //    currentIndex = currentIndex + 1;
                 if (counter == 0)
                 {
                     panel2.Visible = false;
@@ -1415,6 +1420,7 @@ namespace WindowsFormsApplication1
 
         private void btnSelectPurchaseOrder_KeyPress(object sender, KeyPressEventArgs e)
         {
+
             if (e.KeyChar == Convert.ToChar(Keys.Escape))
             {
                 textVendercod.Focus();

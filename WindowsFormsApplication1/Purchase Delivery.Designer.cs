@@ -716,7 +716,7 @@
             this.panel2.Controls.Add(this.dataGridView2);
             this.panel2.Location = new System.Drawing.Point(0, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1036, 587);
+            this.panel2.Size = new System.Drawing.Size(1036, 480);
             this.panel2.TabIndex = 40;
             // 
             // groupBox4
@@ -785,7 +785,6 @@
             // 
             // dataGridView2
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(15, 80);
             this.dataGridView2.Name = "dataGridView2";

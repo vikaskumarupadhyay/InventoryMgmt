@@ -172,6 +172,7 @@ namespace WindowsFormsApplication1
 
         private void buttVendor_Click(object sender, EventArgs e)
         {
+            txtSearch.Text = "";
             counter = 0;
             panel2.Visible = true;
             string selectqurry = "select vd.venderId as [Vender Id ],vd.vName AS Name ,vd.vCompName AS [Company Name] ,vd.vAddress AS Address,vd.vCity AS City,vd. vState AS State ,vd.vZip AS Zip ,vd.vCountry AS Country ,vd.vEmail AS[E-Mail ],vd. vWebAddress AS[Web Address],vd.vPhone AS Phone ,vd.vMobile AS Mobile ,vd.vFax AS Fax ,vd.vPanNo as[PAN No],vd.vVatNo as [VAT No],vd.vCstNo as[CST No],vd.vServiceTaxRegnNo as [Service Tax Regn.No],vd.vExciseRegnNo as [Excise Regn.No],vd.vGSTRegnNo as[GST Regn.No],vd.vDesc AS Description,vad.vOpeningBalance AS [Opening Balance] , vad.vCurrentBalance AS [Current Balance] from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID";
@@ -216,6 +217,7 @@ namespace WindowsFormsApplication1
 
         private void buttItem_Click(object sender, EventArgs e)
         {
+            txtSearch.Text = "";
             counter = 1;
             panel2.Visible = true;
             string selectqurry = "select  itm.ItemId,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId where iqd.CurrentQuantity>0";
@@ -1032,17 +1034,18 @@ namespace WindowsFormsApplication1
         private void dataGridView2_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             comboBox1.SelectedIndex = 0;
-            txtSearch.Text = "";
+            //txtSearch.Text = "";
+            int currentIndex = dataGridView2.CurrentRow.Index;
             if (counter == 0)
             {
                 panel2.Visible = false;
-                DataGridViewCellCollection CellCollection = dataGridView2.SelectedRows[0].Cells;
+                DataGridViewCellCollection CellCollection = dataGridView2.Rows[currentIndex-1].Cells;
                 setDetails(CellCollection);
             }
             else if (counter == 1)
             {
                 panel2.Visible = false;
-                DataGridViewCellCollection CellCollection = dataGridView2.SelectedRows[0].Cells;
+                DataGridViewCellCollection CellCollection = dataGridView2.Rows[currentIndex - 1].Cells;
                 setDetails1(CellCollection);
                 txtQuentity.ReadOnly = false;
                 buttAddItem.Enabled = true;
