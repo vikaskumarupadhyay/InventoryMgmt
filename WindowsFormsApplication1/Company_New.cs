@@ -21,6 +21,7 @@ namespace WindowsFormsApplication1
 
         private void Compnay_Load(object sender, EventArgs e)
         {
+            txtCompnayCode.Focus();
            // btnList.Enabled = false;
             
             // txtCompnayCode.Text = "C";
@@ -58,7 +59,7 @@ namespace WindowsFormsApplication1
                 int s1 = s + 1;
                 txtCompnayCode.Text = "C" + s1.ToString();
             }
-            txtwonername.Focus();
+            //txtwonername.Focus();
          
             }
         private void makeblank()
@@ -88,7 +89,19 @@ namespace WindowsFormsApplication1
             txtGst.Text = "";
 
         }
-        private void tabindex()
+        private void tabindex1()
+        {
+            ComDetails.Focus();
+            txtSearch.TabIndex = 1;
+            dataGridView1.TabIndex = 2;
+            butUpdate.TabIndex = 3;
+            butAddNewRecord.TabIndex = 4;
+            btnPrint.TabIndex = 5;
+            btnExportToExcel.TabIndex = 6;
+            btnClose.TabIndex = 7;
+            tabindex();
+        }
+   private void tabindex()
         {
             txtCompnayCode.TabStop = false;
             txtwonername.TabStop = false;
@@ -117,10 +130,52 @@ namespace WindowsFormsApplication1
             txtvat.TabStop = false;
             txtcst.TabStop = false;
             txtGst.TabStop = false;
-      
-          
-           
+            textBox3.TabStop = false;
+            checkvat.TabStop = false;
+            checkcst.TabStop = false;
+           checkBox3.TabStop = false;
+           txtcst.TabStop = false;
+           txtvat.TabStop = false;
         }
+   private void tabindex2()
+   {
+       //txtCompnayCode.TabStop = false;
+      // txtwonername.TabStop = false;
+       txtCompnayName.TabStop =true;
+       txtCompnayAddress.TabStop = true;
+       txtCity.TabStop = true;
+       txtState.TabStop = true;
+       txtZip.TabStop = true;
+       txtCountry.TabStop = true;
+       txtEmailAddress.TabStop = true;
+       txtWebSite.TabStop = true;
+       txtPhone.TabStop = true;
+       txtMobile.TabStop = true;
+       txtFax.TabStop = true;
+       txtPanNo.TabStop = true;
+       txtVatNo.TabStop = true;
+       txtCstNo.TabStop = true;
+       txtExcise.TabStop = true;
+       txtSarvice.TabStop = true;
+       txtGst.TabStop = true;
+       txtDescription.TabStop = true;
+       
+       //dtpdate.TabStop = true;
+       txtvat.TabStop = true;
+       txtcst.TabStop = true;
+       txtGst.TabStop = true;
+       textBox3.TabStop = true;
+       btnSave.TabStop = true;
+       btnList.TabStop = true;
+       btnClose.TabStop = true;
+       checkvat.TabStop = true;
+       checkcst.TabStop = true;
+       checkBox3.TabStop =true;
+       txtcst.TabStop =true;
+       txtvat.TabStop = true;
+       textBox3.TabStop = true;
+
+   }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -142,9 +197,10 @@ namespace WindowsFormsApplication1
 
                 }
             }
-            else if (updatecounter == 1)
+           
+            if (updatecounter == 1)
             {
-                string updatecommand = "update CompnayDetails set OnerName='" + txtwonername.Text + "', Name='" + txtCompnayName.Text + "',Address='" + txtCompnayAddress.Text + "',City='" + txtCity.Text + "',State='" + txtState.Text + "',Zip='" + txtZip.Text + "',Country='" + txtCountry.Text + "',Email='" + txtEmailAddress.Text + "',WebAddress='" + txtWebSite.Text + "',Phone='" + txtPhone.Text + "',Mobile='" + txtMobile.Text + "',Fax='" + txtFax.Text + "',PANNO='" + txtPanNo.Text + "',VATNO='" + txtVatNo.Text + "',CSTNO='" + txtCstNo.Text + "',ServiceTaxAmmount='" + txtSarvice.Text + "',ExciseTaxAmmount='" + txtExcise.Text + "',GSTTaxAmmount='" + txtGst.Text + "',Description='" + txtDescription.Text + "',VAT='" + txtvat.Text + "',CST='" + txtcst.Text + "',GST='" + textBox3.Text + "'RagistrationDate='" + dtpdate.Text + "'";
+                string updatecommand = "update CompnayDetails set OnerName='" + txtwonername.Text + "', Name='" + txtCompnayName.Text + "',Address='" + txtCompnayAddress.Text + "',City='" + txtCity.Text + "',State='" + txtState.Text + "',Zip='" + txtZip.Text + "',Country='" + txtCountry.Text + "',Email='" + txtEmailAddress.Text + "',WebAddress='" + txtWebSite.Text + "',Phone='" + txtPhone.Text + "',Mobile='" + txtMobile.Text + "',Fax='" + txtFax.Text + "',PANNO='" + txtPanNo.Text + "',VATNO='" + txtVatNo.Text + "',CSTNO='" + txtCstNo.Text + "',ServiceTaxAmmount='" + txtSarvice.Text + "',ExciseTaxAmmount='" + txtExcise.Text + "',GSTTaxAmmount='" + txtGst.Text + "',Description='" + txtDescription.Text + "',VAT='" + txtvat.Text + "',CST='" + txtcst.Text + "',GST='" + textBox3.Text + "',RagistrationDate='" + dtpdate.Value.ToString() + "'";
                 int updatequrry = d.saveDetails(updatecommand);
                 if (updatequrry > 0)
                 {
@@ -162,15 +218,17 @@ namespace WindowsFormsApplication1
 
         private void btnList_Click(object sender, EventArgs e)
         {
-            tabindex();
-            ComDetails.Focus();
-            ComDetails.TabIndex = 1;
+           
+           
+           // ComDetails.TabIndex = 1;
+
             panel1.Visible = true;
             string selectQuery1 = "select CompnayId,OnerName, Name ,Address,City,State,Zip,Country,Email,WebAddress,Phone,Mobile,Fax,Description,PANNO,VATNO,CSTNO,ServiceTaxAmmount,ExciseTaxAmmount,GSTTaxAmmount,VAT,CST,GST,Isactive,RagistrationDate from CompnayDetails";
-
             DataTable dt = d.getDetailByQuery(selectQuery1);
             dataGridView1.DataSource = dt;
+            tabindex1();
             // panel1.Visible = false;
+           
         }
         private void setdetails(DataGridViewCellCollection cellcolection)
         {
@@ -232,7 +290,7 @@ namespace WindowsFormsApplication1
 
         private void checkvat_Click(object sender, EventArgs e)
         {
-            if (checkvat.Checked = true)
+            if (checkvat.Checked)
             {
 
                 txtvat.ReadOnly = false;
@@ -245,7 +303,7 @@ namespace WindowsFormsApplication1
 
         private void checkcst_Click(object sender, EventArgs e)
         {
-            if (checkcst.Checked = true)
+            if (checkcst.Checked)
             {
                 txtcst.ReadOnly = false;
                 checkvat.Checked = false;
@@ -257,7 +315,7 @@ namespace WindowsFormsApplication1
 
         private void checkBox3_Click(object sender, EventArgs e)
         {
-            if (checkBox3.Checked = true)
+            if (checkBox3.Checked)
             {
                 textBox3.ReadOnly = false;
                 txtvat.ReadOnly = true;
@@ -273,6 +331,8 @@ namespace WindowsFormsApplication1
             DataGridViewCellCollection cellcollection = dataGridView1.Rows[0].Cells;
             setdetails(cellcollection);
             panel1.Visible = false;
+            txtwonername.Focus();
+            tabindex2();
         }
 
         private void butUpdate_Click_1(object sender, EventArgs e)
@@ -281,6 +341,8 @@ namespace WindowsFormsApplication1
             DataGridViewCellCollection cellcollection = dataGridView1.Rows[0].Cells;
             setdetails(cellcollection);
             panel1.Visible = false;
+            txtwonername.Focus();
+            tabindex2();
         }
 
         private void butAddNewRecord_Click_1(object sender, EventArgs e)
@@ -295,6 +357,27 @@ namespace WindowsFormsApplication1
 
             DataTable dt = d.getDetailByQuery(selectQuery1);
             dataGridView1.DataSource = dt;
+        }
+
+        private void butClose_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+        }
+
+        private void dataGridView1_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+             int currentIndex = dataGridView1.CurrentRow.Index;
+             if (e.KeyChar == (char)Keys.Enter)
+             {
+                 updatecounter = 1;
+                 DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex-1].Cells;
+                 setdetails(cellcollection);
+                 panel1.Visible = false;
+                 txtwonername.Focus();
+                 tabindex2();
+                 
+
+             }
         }
 
     }

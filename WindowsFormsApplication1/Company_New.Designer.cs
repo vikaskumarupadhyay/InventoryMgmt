@@ -91,6 +91,8 @@
             this.ComDetails = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnExportToExcel = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -103,7 +105,7 @@
             this.btnList.Location = new System.Drawing.Point(726, 5);
             this.btnList.Name = "btnList";
             this.btnList.Size = new System.Drawing.Size(66, 28);
-            this.btnList.TabIndex = 23;
+            this.btnList.TabIndex = 28;
             this.btnList.Text = "List";
             this.btnList.UseVisualStyleBackColor = true;
             this.btnList.Click += new System.EventHandler(this.btnList_Click);
@@ -114,7 +116,7 @@
             this.btnSave.Location = new System.Drawing.Point(30, 605);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(96, 28);
-            this.btnSave.TabIndex = 21;
+            this.btnSave.TabIndex = 27;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -135,7 +137,7 @@
             this.btnClose.Location = new System.Drawing.Point(143, 605);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(102, 28);
-            this.btnClose.TabIndex = 22;
+            this.btnClose.TabIndex = 29;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             // 
@@ -188,28 +190,28 @@
             this.txtCountry.Location = new System.Drawing.Point(584, 146);
             this.txtCountry.Name = "txtCountry";
             this.txtCountry.Size = new System.Drawing.Size(177, 21);
-            this.txtCountry.TabIndex = 6;
+            this.txtCountry.TabIndex = 7;
             // 
             // txtZip
             // 
             this.txtZip.Location = new System.Drawing.Point(427, 146);
             this.txtZip.Name = "txtZip";
             this.txtZip.Size = new System.Drawing.Size(151, 21);
-            this.txtZip.TabIndex = 5;
+            this.txtZip.TabIndex = 6;
             // 
             // txtState
             // 
             this.txtState.Location = new System.Drawing.Point(258, 146);
             this.txtState.Name = "txtState";
             this.txtState.Size = new System.Drawing.Size(163, 21);
-            this.txtState.TabIndex = 4;
+            this.txtState.TabIndex = 5;
             // 
             // txtCity
             // 
             this.txtCity.Location = new System.Drawing.Point(46, 146);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(206, 21);
-            this.txtCity.TabIndex = 3;
+            this.txtCity.TabIndex = 4;
             // 
             // txtCompnayAddress
             // 
@@ -218,14 +220,14 @@
             this.txtCompnayAddress.Name = "txtCompnayAddress";
             this.txtCompnayAddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtCompnayAddress.Size = new System.Drawing.Size(715, 43);
-            this.txtCompnayAddress.TabIndex = 2;
+            this.txtCompnayAddress.TabIndex = 3;
             // 
             // txtCompnayName
             // 
             this.txtCompnayName.Location = new System.Drawing.Point(427, 38);
             this.txtCompnayName.Name = "txtCompnayName";
             this.txtCompnayName.Size = new System.Drawing.Size(334, 21);
-            this.txtCompnayName.TabIndex = 1;
+            this.txtCompnayName.TabIndex = 2;
             // 
             // txtCompnayCode
             // 
@@ -316,7 +318,7 @@
             this.txtwonername.Location = new System.Drawing.Point(156, 38);
             this.txtwonername.Name = "txtwonername";
             this.txtwonername.Size = new System.Drawing.Size(265, 21);
-            this.txtwonername.TabIndex = 44;
+            this.txtwonername.TabIndex = 1;
             // 
             // txtSarvice
             // 
@@ -515,21 +517,21 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(404, 16);
+            this.textBox3.Location = new System.Drawing.Point(374, 20);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(52, 21);
-            this.textBox3.TabIndex = 37;
+            this.textBox3.TabIndex = 26;
             this.textBox3.Text = "0";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(354, 21);
+            this.checkBox3.Location = new System.Drawing.Point(318, 22);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(50, 19);
-            this.checkBox3.TabIndex = 36;
+            this.checkBox3.TabIndex = 25;
             this.checkBox3.Text = "GST";
             this.checkBox3.UseVisualStyleBackColor = true;
             this.checkBox3.Click += new System.EventHandler(this.checkBox3_Click);
@@ -540,7 +542,7 @@
             this.checkcst.Location = new System.Drawing.Point(184, 29);
             this.checkcst.Name = "checkcst";
             this.checkcst.Size = new System.Drawing.Size(49, 19);
-            this.checkcst.TabIndex = 34;
+            this.checkcst.TabIndex = 23;
             this.checkcst.Text = "CST";
             this.checkcst.UseVisualStyleBackColor = true;
             this.checkcst.Click += new System.EventHandler(this.checkcst_Click);
@@ -551,7 +553,7 @@
             this.txtcst.Name = "txtcst";
             this.txtcst.ReadOnly = true;
             this.txtcst.Size = new System.Drawing.Size(51, 21);
-            this.txtcst.TabIndex = 35;
+            this.txtcst.TabIndex = 24;
             this.txtcst.Text = "0";
             this.txtcst.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -569,7 +571,7 @@
             this.txtvat.Name = "txtvat";
             this.txtvat.ReadOnly = true;
             this.txtvat.Size = new System.Drawing.Size(64, 21);
-            this.txtvat.TabIndex = 33;
+            this.txtvat.TabIndex = 22;
             this.txtvat.Text = "0";
             this.txtvat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtvat.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
@@ -580,13 +582,15 @@
             this.checkvat.Location = new System.Drawing.Point(32, 29);
             this.checkvat.Name = "checkvat";
             this.checkvat.Size = new System.Drawing.Size(47, 19);
-            this.checkvat.TabIndex = 32;
+            this.checkvat.TabIndex = 21;
             this.checkvat.Text = "VAT";
             this.checkvat.UseVisualStyleBackColor = true;
             this.checkvat.Click += new System.EventHandler(this.checkvat_Click);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnPrint);
+            this.panel1.Controls.Add(this.btnExportToExcel);
             this.panel1.Controls.Add(this.butClose);
             this.panel1.Controls.Add(this.butUpdate);
             this.panel1.Controls.Add(this.butAddNewRecord);
@@ -596,25 +600,26 @@
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.ComDetails);
-            this.panel1.Location = new System.Drawing.Point(0, -4);
+            this.panel1.Location = new System.Drawing.Point(0, -6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(803, 638);
+            this.panel1.Size = new System.Drawing.Size(803, 647);
             this.panel1.TabIndex = 32;
             // 
             // butClose
             // 
-            this.butClose.Location = new System.Drawing.Point(215, 557);
+            this.butClose.Location = new System.Drawing.Point(433, 589);
             this.butClose.Name = "butClose";
-            this.butClose.Size = new System.Drawing.Size(75, 23);
+            this.butClose.Size = new System.Drawing.Size(75, 31);
             this.butClose.TabIndex = 8;
             this.butClose.Text = "Close";
             this.butClose.UseVisualStyleBackColor = true;
+            this.butClose.Click += new System.EventHandler(this.butClose_Click);
             // 
             // butUpdate
             // 
-            this.butUpdate.Location = new System.Drawing.Point(132, 557);
+            this.butUpdate.Location = new System.Drawing.Point(132, 589);
             this.butUpdate.Name = "butUpdate";
-            this.butUpdate.Size = new System.Drawing.Size(75, 23);
+            this.butUpdate.Size = new System.Drawing.Size(89, 31);
             this.butUpdate.TabIndex = 7;
             this.butUpdate.Text = "Update";
             this.butUpdate.UseVisualStyleBackColor = true;
@@ -622,9 +627,9 @@
             // 
             // butAddNewRecord
             // 
-            this.butAddNewRecord.Location = new System.Drawing.Point(20, 557);
+            this.butAddNewRecord.Location = new System.Drawing.Point(21, 589);
             this.butAddNewRecord.Name = "butAddNewRecord";
-            this.butAddNewRecord.Size = new System.Drawing.Size(103, 23);
+            this.butAddNewRecord.Size = new System.Drawing.Size(103, 31);
             this.butAddNewRecord.TabIndex = 6;
             this.butAddNewRecord.Text = "AddNewRecord";
             this.butAddNewRecord.UseVisualStyleBackColor = true;
@@ -632,15 +637,15 @@
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(18, 77);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(761, 474);
+            this.dataGridView1.Size = new System.Drawing.Size(761, 506);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
+            this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress_1);
             // 
             // txtSearch
             // 
@@ -713,11 +718,29 @@
             this.textBox1.Text = "%";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // btnExportToExcel
+            // 
+            this.btnExportToExcel.Location = new System.Drawing.Point(227, 589);
+            this.btnExportToExcel.Name = "btnExportToExcel";
+            this.btnExportToExcel.Size = new System.Drawing.Size(119, 31);
+            this.btnExportToExcel.TabIndex = 9;
+            this.btnExportToExcel.Text = "Export To Excel";
+            this.btnExportToExcel.UseVisualStyleBackColor = true;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(352, 589);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(75, 31);
+            this.btnPrint.TabIndex = 10;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            // 
             // Company_New
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(803, 634);
+            this.ClientSize = new System.Drawing.Size(803, 644);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnList);
             this.Controls.Add(this.btnSave);
@@ -806,6 +829,8 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.Button btnExportToExcel;
 
 
     }
