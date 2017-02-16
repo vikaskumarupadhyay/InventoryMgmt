@@ -284,6 +284,10 @@ using System.Configuration;
                 {
                     ProcedureName = ProcedureName + "UNIT";
                 }
+                else if (TableName.ToUpper().Contains("TEX"))
+                {
+                    ProcedureName = ProcedureName + "TEX";
+                }
             }
             return ProcedureName;
         }

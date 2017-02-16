@@ -13,6 +13,8 @@ namespace WindowsFormsApplication1
     {
         DB_Main d = new DB_Main();
         public int updatecounter = 0;
+        public List<string> TexList = new List<string>();
+        public DataTable dt = new DataTable();
         public Company_New()
         {
             InitializeComponent();
@@ -60,8 +62,40 @@ namespace WindowsFormsApplication1
                 txtCompnayCode.Text = "C" + s1.ToString();
             }
           txtwonername.Focus();
+          string selectCommandGroup = "select TexId,TexName,TexAmount,TexDescription from dbo.CompnayTex";
+          setItemGroupDetail(selectCommandGroup, combComp, "TEX");
          
             }
+        private void setItemGroupDetail(string Query, ComboBox cmb, string Message)
+        {
+            //string selectCommand = "select groupID,GROUPNAME,GROUPDESC from dbo.ItemGroup";
+            cmb.Items.Clear();
+            cmb.Items.Add("Select A " + Message);
+
+            dt = d.getDataBoundToComboBox(Query);
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    cmb.Items.Add(dr[1].ToString().ToUpper());
+                    if (Message.ToUpper() == "TEX")
+                    {
+                        TexList.Add(dr[0].ToString());
+                    }
+                    else
+                    {
+                        //GroupList.Add(dr[0].ToString());
+                    }
+                }
+                dt.Dispose();
+            }
+            else if (dt != null && dt.Rows.Count == 0)
+            {
+                cmb.Items.Clear();
+                cmb.Items.Add("Add New " + Message);
+            }
+            cmb.SelectedIndex = 0;
+        }
         private void makeblank()
         {
             txtCompnayCode.Text = "C";
@@ -383,6 +417,24 @@ namespace WindowsFormsApplication1
                  
 
              }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Tex t = new Tex(this.combComp, TexList);
+            t.Show();
+           // t.MdiParent = this;
+        }
+
+        private void combComp_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string Name = combComp.SelectedItem.ToString();
+            string selectName = "select TexAmount from CompnayTex where TexName='" + Name + "'";
+            DataTable dt = d.getDetailByQuery(selectName);
+            foreach (DataRow dr in dt.Rows)
+            {
+                txtTexAmount.Text = dr[0].ToString();
+            }
         }
 
     }
