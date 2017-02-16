@@ -154,6 +154,10 @@
     <Compile Include="salessearch.designer.cs">
       <DependentUpon>salessearch.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tex.cs" />
+    <Compile Include="Tex.designer.cs">
+      <DependentUpon>Tex.cs</DependentUpon>
+    </Compile>
     <Compile Include="varible.cs" />
     <Compile Include="Variable.cs" />
     <Compile Include="Vendor.cs">
@@ -272,6 +276,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="salessearch.resx">
       <DependentUpon>salessearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tex.resx">
+      <DependentUpon>Tex.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vendor.resx">
       <DependentUpon>Vendor.cs</DependentUpon>
