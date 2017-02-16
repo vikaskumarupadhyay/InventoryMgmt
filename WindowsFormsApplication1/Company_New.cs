@@ -141,7 +141,7 @@ namespace WindowsFormsApplication1
         }
    private void tabindex2()
    {
-       btnClose.TabIndex = 30;
+       btnClose.TabIndex = 29;
        //txtCompnayCode.TabStop = false;
       txtwonername.TabStop = true;
        txtCompnayName.TabStop =true;
