@@ -21,7 +21,7 @@ namespace WindowsFormsApplication1
 
         private void Compnay_Load(object sender, EventArgs e)
         {
-            txtCompnayCode.Focus();
+            //txtCompnayCode.Focus();
            // btnList.Enabled = false;
             
             // txtCompnayCode.Text = "C";
@@ -59,7 +59,7 @@ namespace WindowsFormsApplication1
                 int s1 = s + 1;
                 txtCompnayCode.Text = "C" + s1.ToString();
             }
-            //txtwonername.Focus();
+          txtwonername.Focus();
          
             }
         private void makeblank()
@@ -136,11 +136,14 @@ namespace WindowsFormsApplication1
            checkBox3.TabStop = false;
            txtcst.TabStop = false;
            txtvat.TabStop = false;
+           groupBox2.TabStop =false;
+           groupBox1.TabStop = false;
         }
    private void tabindex2()
    {
+       btnClose.TabIndex = 30;
        //txtCompnayCode.TabStop = false;
-      // txtwonername.TabStop = false;
+      txtwonername.TabStop = true;
        txtCompnayName.TabStop =true;
        txtCompnayAddress.TabStop = true;
        txtCity.TabStop = true;
@@ -174,6 +177,8 @@ namespace WindowsFormsApplication1
        txtcst.TabStop =true;
        txtvat.TabStop = true;
        textBox3.TabStop = true;
+       groupBox2.TabStop = true;
+       groupBox1.TabStop = true;
 
    }
 

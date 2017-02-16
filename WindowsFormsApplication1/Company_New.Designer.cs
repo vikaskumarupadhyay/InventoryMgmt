@@ -80,6 +80,8 @@
             this.txtvat = new System.Windows.Forms.TextBox();
             this.checkvat = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.btnExportToExcel = new System.Windows.Forms.Button();
             this.butClose = new System.Windows.Forms.Button();
             this.butUpdate = new System.Windows.Forms.Button();
             this.butAddNewRecord = new System.Windows.Forms.Button();
@@ -91,8 +93,6 @@
             this.ComDetails = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnExportToExcel = new System.Windows.Forms.Button();
-            this.btnPrint = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -105,7 +105,7 @@
             this.btnList.Location = new System.Drawing.Point(726, 5);
             this.btnList.Name = "btnList";
             this.btnList.Size = new System.Drawing.Size(66, 28);
-            this.btnList.TabIndex = 28;
+            this.btnList.TabIndex = 29;
             this.btnList.Text = "List";
             this.btnList.UseVisualStyleBackColor = true;
             this.btnList.Click += new System.EventHandler(this.btnList_Click);
@@ -116,7 +116,7 @@
             this.btnSave.Location = new System.Drawing.Point(30, 605);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(96, 28);
-            this.btnSave.TabIndex = 27;
+            this.btnSave.TabIndex = 28;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -137,7 +137,7 @@
             this.btnClose.Location = new System.Drawing.Point(143, 605);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(102, 28);
-            this.btnClose.TabIndex = 29;
+            this.btnClose.TabIndex = 30;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             // 
@@ -293,7 +293,7 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 30);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(779, 467);
-            this.groupBox1.TabIndex = 25;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Compnay Details";
             // 
@@ -521,7 +521,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(52, 21);
-            this.textBox3.TabIndex = 26;
+            this.textBox3.TabIndex = 27;
             this.textBox3.Text = "0";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -531,7 +531,7 @@
             this.checkBox3.Location = new System.Drawing.Point(318, 22);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(50, 19);
-            this.checkBox3.TabIndex = 25;
+            this.checkBox3.TabIndex = 26;
             this.checkBox3.Text = "GST";
             this.checkBox3.UseVisualStyleBackColor = true;
             this.checkBox3.Click += new System.EventHandler(this.checkBox3_Click);
@@ -542,7 +542,7 @@
             this.checkcst.Location = new System.Drawing.Point(184, 29);
             this.checkcst.Name = "checkcst";
             this.checkcst.Size = new System.Drawing.Size(49, 19);
-            this.checkcst.TabIndex = 23;
+            this.checkcst.TabIndex = 24;
             this.checkcst.Text = "CST";
             this.checkcst.UseVisualStyleBackColor = true;
             this.checkcst.Click += new System.EventHandler(this.checkcst_Click);
@@ -553,7 +553,7 @@
             this.txtcst.Name = "txtcst";
             this.txtcst.ReadOnly = true;
             this.txtcst.Size = new System.Drawing.Size(51, 21);
-            this.txtcst.TabIndex = 24;
+            this.txtcst.TabIndex = 25;
             this.txtcst.Text = "0";
             this.txtcst.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -571,7 +571,7 @@
             this.txtvat.Name = "txtvat";
             this.txtvat.ReadOnly = true;
             this.txtvat.Size = new System.Drawing.Size(64, 21);
-            this.txtvat.TabIndex = 22;
+            this.txtvat.TabIndex = 23;
             this.txtvat.Text = "0";
             this.txtvat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtvat.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
@@ -582,7 +582,7 @@
             this.checkvat.Location = new System.Drawing.Point(32, 29);
             this.checkvat.Name = "checkvat";
             this.checkvat.Size = new System.Drawing.Size(47, 19);
-            this.checkvat.TabIndex = 21;
+            this.checkvat.TabIndex = 22;
             this.checkvat.Text = "VAT";
             this.checkvat.UseVisualStyleBackColor = true;
             this.checkvat.Click += new System.EventHandler(this.checkvat_Click);
@@ -600,10 +600,28 @@
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.ComDetails);
-            this.panel1.Location = new System.Drawing.Point(0, -6);
+            this.panel1.Location = new System.Drawing.Point(0, -8);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(803, 647);
+            this.panel1.Size = new System.Drawing.Size(803, 640);
             this.panel1.TabIndex = 32;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(352, 589);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(75, 31);
+            this.btnPrint.TabIndex = 10;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            // 
+            // btnExportToExcel
+            // 
+            this.btnExportToExcel.Location = new System.Drawing.Point(227, 589);
+            this.btnExportToExcel.Name = "btnExportToExcel";
+            this.btnExportToExcel.Size = new System.Drawing.Size(119, 31);
+            this.btnExportToExcel.TabIndex = 9;
+            this.btnExportToExcel.Text = "Export To Excel";
+            this.btnExportToExcel.UseVisualStyleBackColor = true;
             // 
             // butClose
             // 
@@ -702,7 +720,7 @@
             this.groupBox2.Location = new System.Drawing.Point(12, 497);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(780, 54);
-            this.groupBox2.TabIndex = 33;
+            this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tax Type";
             // 
@@ -717,24 +735,6 @@
             this.textBox1.TabStop = false;
             this.textBox1.Text = "%";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // btnExportToExcel
-            // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(227, 589);
-            this.btnExportToExcel.Name = "btnExportToExcel";
-            this.btnExportToExcel.Size = new System.Drawing.Size(119, 31);
-            this.btnExportToExcel.TabIndex = 9;
-            this.btnExportToExcel.Text = "Export To Excel";
-            this.btnExportToExcel.UseVisualStyleBackColor = true;
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.Location = new System.Drawing.Point(352, 589);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(75, 31);
-            this.btnPrint.TabIndex = 10;
-            this.btnPrint.Text = "Print";
-            this.btnPrint.UseVisualStyleBackColor = true;
             // 
             // Company_New
             // 
