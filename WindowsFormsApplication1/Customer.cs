@@ -536,11 +536,13 @@ namespace WindowsFormsApplication1
             textBox1.Text = "";
             comserchvalue.SelectedIndex = 0;
             DataGridViewCellCollection cellCollection = dataGridView1.Rows[e.RowIndex].Cells;
-            setDetails(cellCollection);
-            panel1.Visible = false;
-            updateCounter = 1;
-            tabindex1();
-            blank();
+                setDetails(cellCollection);
+                panel1.Visible = false;
+                updateCounter = 1;
+                tabindex1();
+                blank();
+            
+     
            
         }
 

@@ -170,6 +170,8 @@ alter table orderdetails add Discount float
  alter table CompnayDetails Alter column ServiceTaxAmmount varchar(200)
 alter table CompnayDetails Alter column ExciseTaxAmmount varchar(200)
 alter table CompnayDetails Alter column GSTTaxAmmount varchar(200)
+alter table ItemQuantityDetail Alter column  OpeningQuantity varchar(200)
+alter table CustomerAccountDetails Alter column CustOpeningBalance decimal
 
 
  

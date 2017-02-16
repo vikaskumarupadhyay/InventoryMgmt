@@ -407,7 +407,6 @@
             this.txtRefNo.TabIndex = 9;
             this.txtRefNo.TabStop = false;
             this.txtRefNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            //this.txtRefNo.TextChanged += new System.EventHandler(this.txtRefNo_TextChanged);
             this.txtRefNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRefNo_KeyPress);
             // 
             // label15
@@ -693,9 +692,9 @@
             this.panel2.Controls.Add(this.label17);
             this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.dataGridView2);
-            this.panel2.Location = new System.Drawing.Point(0, 171);
+            this.panel2.Location = new System.Drawing.Point(0, 119);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(858, 465);
+            this.panel2.Size = new System.Drawing.Size(858, 517);
             this.panel2.TabIndex = 64;
             // 
             // button1
@@ -715,6 +714,7 @@
             this.comserchvalue.Name = "comserchvalue";
             this.comserchvalue.Size = new System.Drawing.Size(121, 21);
             this.comserchvalue.TabIndex = 4;
+           // this.comserchvalue.SelectedIndexChanged += new System.EventHandler(this.comserchvalue_SelectedIndexChanged);
             // 
             // txtsearchvalue
             // 

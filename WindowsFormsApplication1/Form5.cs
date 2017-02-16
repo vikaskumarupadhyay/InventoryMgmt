@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace WindowsFormsApplication1
 {
@@ -144,19 +145,19 @@ namespace WindowsFormsApplication1
         private void button1_Click(object sender, EventArgs e)
         {
             panel2.Visible = true;
-            string selectquery1 = " Select c.custid,c.CustName as Name,c.CustCompName as CompnayName,c.CustAddress as Address,c.CustPhone as Phone,c.CustMobile as Mobile,c.CustFax  as Fax,ca.CustCurrentBalance from CustomerDetails c join CustomerAccountDetails ca on c.custid=ca.custid";
-            DataTable dt1 = d.getDetailByQuery(selectquery1);
-           // string val = " ";
+            string selectquery2 = " Select c.custid,c.CustName as Name,c.CustCompName as CompnayName,c.CustAddress as Address,c.CustPhone as Phone,c.CustMobile as Mobile,c.CustFax  as Fax,ca.CustCurrentBalance from CustomerDetails c join CustomerAccountDetails ca on c.custid=ca.custid";
+            DataTable dt2 = d.getDetailByQuery(selectquery2);
+            // string val = " ";
             List<string> sd = new List<string>();
-            DataColumnCollection d1 = dt1.Columns;
-            for(int a=1;a<d1.Count;a++)
+            DataColumnCollection d1 = dt2.Columns;
+            for (int a = 1; a < d1.Count; a++)
             {
                 DataColumn dc = new DataColumn();
                 string val = d1[a].ToString();
                 sd.Add(val);
             }
             combsearch.DataSource = sd;
-            dataGridView2.DataSource = dt1;
+            dataGridView2.DataSource = dt2;
          
         }
 
@@ -195,8 +196,8 @@ namespace WindowsFormsApplication1
         private void textBox8_TextChanged(object sender, EventArgs e)
         {
             string s = combsearch.SelectedValue.ToString();
-            string m = "c" + s;
-            string selectquery = "custid,CustName as Name,CustCompName as CompnayName,CustAddress as Address,CustPhone as Phone,CustMobile as Mobile,CustFax  as Fax from CustomerDetails";
+            //string m = "Cust" + s;
+            string selectquery = " select custId ,CustName as Name,CustCompName as CompnayName,CustAddress as Address,CustPhone as Phone,CustMobile as Mobile,CustFax as Fax from CustomerDetails where " + s + " like '" + textBox8.Text + "%'";
             DataTable dt = d.getDetailByQuery(selectquery);
             dataGridView2.DataSource = dt;
         }

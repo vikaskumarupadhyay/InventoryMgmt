@@ -18,10 +18,34 @@ namespace WindowsFormsApplication1
             InitializeComponent();
         }
 
-
+        //private void tabindex1()
+        //{
+        //    txtwonername.TabIndex = 1;
+        //    txtCompnayName.TabIndex = 2;
+        //    txtCompnayAddress.TabIndex = 3;
+        //    txtCity.TabIndex = 4;
+        //    txtState.TabIndex = 5;
+        //    txtZip.TabIndex = 6;
+        //    txtCountry.TabIndex = 7;
+        //    txtEmailAddress.TabIndex = 8;
+        //    txtWebSite.TabIndex = 9;
+        //    txtPhone.TabIndex = 10;
+        //    txtMobile.TabIndex = 11;
+        //    txtFax.TabIndex = 12;
+        //    txtPanNo.TabIndex = 13;
+        //    txtVatNo.TabIndex = 14;
+        //    txtCstNo.TabIndex = 15;
+        //    txtSarvice.TabIndex = 16;
+        //    txtExcise.TabIndex = 17;
+        //    txtGst.TabIndex = 18;
+        //    txtDescription.TabIndex = 19;
+        //    groupBox2.TabIndex = 20;
+        //    txtvat.TabIndex = 21;
+        //}
         private void Compnay_Load(object sender, EventArgs e)
         {
             //txtCompnayCode.Focus();
+
            // btnList.Enabled = false;
             
             // txtCompnayCode.Text = "C";
@@ -60,6 +84,7 @@ namespace WindowsFormsApplication1
                 txtCompnayCode.Text = "C" + s1.ToString();
             }
           txtwonername.Focus();
+        
          
             }
         private void makeblank()
@@ -138,6 +163,7 @@ namespace WindowsFormsApplication1
            txtvat.TabStop = false;
            groupBox2.TabStop =false;
            groupBox1.TabStop = false;
+
         }
    private void tabindex2()
    {
@@ -206,6 +232,7 @@ namespace WindowsFormsApplication1
             if (updatecounter == 1)
             {
                 string updatecommand = "update CompnayDetails set OnerName='" + txtwonername.Text + "', Name='" + txtCompnayName.Text + "',Address='" + txtCompnayAddress.Text + "',City='" + txtCity.Text + "',State='" + txtState.Text + "',Zip='" + txtZip.Text + "',Country='" + txtCountry.Text + "',Email='" + txtEmailAddress.Text + "',WebAddress='" + txtWebSite.Text + "',Phone='" + txtPhone.Text + "',Mobile='" + txtMobile.Text + "',Fax='" + txtFax.Text + "',PANNO='" + txtPanNo.Text + "',VATNO='" + txtVatNo.Text + "',CSTNO='" + txtCstNo.Text + "',ServiceTaxAmmount='" + txtSarvice.Text + "',ExciseTaxAmmount='" + txtExcise.Text + "',GSTTaxAmmount='" + txtGst.Text + "',Description='" + txtDescription.Text + "',VAT='" + txtvat.Text + "',CST='" + txtcst.Text + "',GST='" + textBox3.Text + "',RagistrationDate='" + dtpdate.Value.ToString() + "'";
+
                 int updatequrry = d.saveDetails(updatecommand);
                 if (updatequrry > 0)
                 {
@@ -215,17 +242,18 @@ namespace WindowsFormsApplication1
                 {
                     MessageBox.Show("Details save not successfully");
                 }
+                updatecounter = 0;
             }
 
             makeblank();
+            string id = d.getUniqueID("Compnay");
+            txtCompnayCode.Text = id;
+            txtwonername.Focus();
         }
 
 
         private void btnList_Click(object sender, EventArgs e)
         {
-           
-           
-           // ComDetails.TabIndex = 1;
 
             panel1.Visible = true;
             string selectQuery1 = "select CompnayId,OnerName, Name ,Address,City,State,Zip,Country,Email,WebAddress,Phone,Mobile,Fax,Description,PANNO,VATNO,CSTNO,ServiceTaxAmmount,ExciseTaxAmmount,GSTTaxAmmount,VAT,CST,GST,Isactive,RagistrationDate from CompnayDetails";
@@ -332,12 +360,14 @@ namespace WindowsFormsApplication1
 
         private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            updatecounter = 1;
-            DataGridViewCellCollection cellcollection = dataGridView1.Rows[0].Cells;
+            txtSarvice.Text = "";
+            ComDetails.SelectedIndex = 0;
+            DataGridViewCellCollection cellcollection = dataGridView1.Rows[e.RowIndex].Cells;
             setdetails(cellcollection);
             panel1.Visible = false;
             txtwonername.Focus();
             tabindex2();
+
         }
 
         private void butUpdate_Click_1(object sender, EventArgs e)

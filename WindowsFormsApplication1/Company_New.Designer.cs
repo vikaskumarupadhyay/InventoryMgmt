@@ -96,6 +96,7 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -109,6 +110,7 @@
             this.btnList.Name = "btnList";
             this.btnList.Size = new System.Drawing.Size(66, 28);
             this.btnList.TabIndex = 30;
+
             this.btnList.Text = "List";
             this.btnList.UseVisualStyleBackColor = true;
             this.btnList.Click += new System.EventHandler(this.btnList_Click);
@@ -120,6 +122,7 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(96, 28);
             this.btnSave.TabIndex = 28;
+
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -131,7 +134,7 @@
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtDescription.Size = new System.Drawing.Size(715, 53);
-            this.txtDescription.TabIndex = 20;
+            this.txtDescription.TabIndex = 19;
             // 
             // btnClose
             // 
@@ -141,6 +144,7 @@
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(102, 28);
             this.btnClose.TabIndex = 29;
+
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             // 
@@ -297,6 +301,7 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(779, 467);
             this.groupBox1.TabIndex = 0;
+
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Compnay Details";
             // 
@@ -306,7 +311,7 @@
             this.txtGst.Location = new System.Drawing.Point(508, 356);
             this.txtGst.Name = "txtGst";
             this.txtGst.Size = new System.Drawing.Size(253, 21);
-            this.txtGst.TabIndex = 19;
+            this.txtGst.TabIndex = 18;
             // 
             // txtExcise
             // 
@@ -314,7 +319,7 @@
             this.txtExcise.Location = new System.Drawing.Point(290, 356);
             this.txtExcise.Name = "txtExcise";
             this.txtExcise.Size = new System.Drawing.Size(212, 21);
-            this.txtExcise.TabIndex = 18;
+            this.txtExcise.TabIndex = 17;
             // 
             // txtwonername
             // 
@@ -329,7 +334,7 @@
             this.txtSarvice.Location = new System.Drawing.Point(46, 356);
             this.txtSarvice.Name = "txtSarvice";
             this.txtSarvice.Size = new System.Drawing.Size(238, 21);
-            this.txtSarvice.TabIndex = 17;
+            this.txtSarvice.TabIndex = 16;
             // 
             // label24
             // 
@@ -525,6 +530,7 @@
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(52, 21);
             this.textBox3.TabIndex = 27;
+
             this.textBox3.Text = "0";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -535,6 +541,7 @@
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(50, 19);
             this.checkBox3.TabIndex = 26;
+
             this.checkBox3.Text = "GST";
             this.checkBox3.UseVisualStyleBackColor = true;
             this.checkBox3.Click += new System.EventHandler(this.checkBox3_Click);
@@ -546,6 +553,7 @@
             this.checkcst.Name = "checkcst";
             this.checkcst.Size = new System.Drawing.Size(49, 19);
             this.checkcst.TabIndex = 24;
+
             this.checkcst.Text = "CST";
             this.checkcst.UseVisualStyleBackColor = true;
             this.checkcst.Click += new System.EventHandler(this.checkcst_Click);
@@ -557,6 +565,7 @@
             this.txtcst.ReadOnly = true;
             this.txtcst.Size = new System.Drawing.Size(51, 21);
             this.txtcst.TabIndex = 25;
+
             this.txtcst.Text = "0";
             this.txtcst.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -566,7 +575,7 @@
             this.dtpdate.Location = new System.Drawing.Point(609, 3);
             this.dtpdate.Name = "dtpdate";
             this.dtpdate.Size = new System.Drawing.Size(103, 20);
-            this.dtpdate.TabIndex = 23;
+            this.dtpdate.TabIndex = 30;
             // 
             // txtvat
             // 
@@ -575,6 +584,7 @@
             this.txtvat.ReadOnly = true;
             this.txtvat.Size = new System.Drawing.Size(64, 21);
             this.txtvat.TabIndex = 23;
+
             this.txtvat.Text = "0";
             this.txtvat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtvat.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
@@ -586,6 +596,7 @@
             this.checkvat.Name = "checkvat";
             this.checkvat.Size = new System.Drawing.Size(47, 19);
             this.checkvat.TabIndex = 22;
+
             this.checkvat.Text = "VAT";
             this.checkvat.UseVisualStyleBackColor = true;
             this.checkvat.Click += new System.EventHandler(this.checkvat_Click);
@@ -594,6 +605,7 @@
             // 
             this.panel1.Controls.Add(this.btnPrint);
             this.panel1.Controls.Add(this.btnExportToExcel);
+
             this.panel1.Controls.Add(this.butClose);
             this.panel1.Controls.Add(this.butUpdate);
             this.panel1.Controls.Add(this.butAddNewRecord);
@@ -629,6 +641,7 @@
             // butClose
             // 
             this.butClose.Location = new System.Drawing.Point(433, 589);
+
             this.butClose.Name = "butClose";
             this.butClose.Size = new System.Drawing.Size(75, 31);
             this.butClose.TabIndex = 8;
@@ -642,6 +655,7 @@
             this.butUpdate.Name = "butUpdate";
             this.butUpdate.Size = new System.Drawing.Size(89, 31);
             this.butUpdate.TabIndex = 7;
+
             this.butUpdate.Text = "Update";
             this.butUpdate.UseVisualStyleBackColor = true;
             this.butUpdate.Click += new System.EventHandler(this.butUpdate_Click_1);
@@ -652,6 +666,7 @@
             this.butAddNewRecord.Name = "butAddNewRecord";
             this.butAddNewRecord.Size = new System.Drawing.Size(103, 31);
             this.butAddNewRecord.TabIndex = 6;
+
             this.butAddNewRecord.Text = "AddNewRecord";
             this.butAddNewRecord.UseVisualStyleBackColor = true;
             this.butAddNewRecord.Click += new System.EventHandler(this.butAddNewRecord_Click_1);
@@ -663,8 +678,9 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(761, 303);
+
             this.dataGridView1.StandardTab = true;
-            this.dataGridView1.TabIndex = 5;
+            this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
             this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress_1);
             // 
@@ -673,7 +689,7 @@
             this.txtSearch.Location = new System.Drawing.Point(311, 40);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(159, 20);
-            this.txtSearch.TabIndex = 4;
+            this.txtSearch.TabIndex = 2;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged_1);
             // 
             // label15
@@ -708,7 +724,7 @@
             this.ComDetails.Location = new System.Drawing.Point(42, 43);
             this.ComDetails.Name = "ComDetails";
             this.ComDetails.Size = new System.Drawing.Size(165, 21);
-            this.ComDetails.TabIndex = 0;
+            this.ComDetails.TabIndex = 1;
             // 
             // groupBox2
             // 
@@ -766,6 +782,7 @@
             this.button1.Text = "..";
             this.button1.UseVisualStyleBackColor = true;
             // 
+
             // Company_New
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -864,6 +881,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.ComboBox comboBox1;
+
 
 
     }
