@@ -86,11 +86,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.ComDetails = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.btnTex = new System.Windows.Forms.Button();
             this.txtTexAmount = new System.Windows.Forms.TextBox();
             this.combComp = new System.Windows.Forms.ComboBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -536,7 +536,7 @@
             this.panel1.Controls.Add(this.ComDetails);
             this.panel1.Location = new System.Drawing.Point(0, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(803, 622);
+            this.panel1.Size = new System.Drawing.Size(803, 494);
             this.panel1.TabIndex = 32;
             // 
             // btnPrint
@@ -656,6 +656,24 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tax Type";
             // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(389, 24);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(107, 15);
+            this.label25.TabIndex = 39;
+            this.label25.Text = "Tax Amount (In %)";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(43, 24);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(64, 15);
+            this.label18.TabIndex = 38;
+            this.label18.Text = "Tax Name";
+            // 
             // btnTex
             // 
             this.btnTex.Location = new System.Drawing.Point(729, 41);
@@ -684,24 +702,6 @@
             this.combComp.Size = new System.Drawing.Size(339, 23);
             this.combComp.TabIndex = 35;
             this.combComp.SelectedIndexChanged += new System.EventHandler(this.combComp_SelectedIndexChanged);
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(43, 24);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(64, 15);
-            this.label18.TabIndex = 38;
-            this.label18.Text = "Tax Name";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(389, 24);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(107, 15);
-            this.label25.TabIndex = 39;
-            this.label25.Text = "Tax Amount (In %)";
             // 
             // Company_New
             // 

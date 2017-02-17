@@ -9,6 +9,7 @@ using System.Configuration;
 
     class DB_Main
     {
+        public static string taxName;
 
         public int saveDetails(string InsertQuery)
         {

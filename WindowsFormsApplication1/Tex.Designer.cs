@@ -59,7 +59,7 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tax Details";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+           // this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // txtGroupDesc
             // 
@@ -116,7 +116,7 @@
             this.label3.Size = new System.Drawing.Size(107, 15);
             this.label3.TabIndex = 2;
             this.label3.Text = "Tex Amount (In %)";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            //this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // lblTexName
             // 

@@ -360,13 +360,14 @@ namespace WindowsFormsApplication1
 
         private void combComp_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string Name = combComp.SelectedItem.ToString();
-            string selectName = "select TexAmount from CompnayTex where TexName='" + Name + "'";
+            DB_Main.taxName = combComp.SelectedItem.ToString();
+            string selectName = "select TexAmount from CompnayTex where TexName='" + DB_Main.taxName + "'";
             DataTable dt = d.getDetailByQuery(selectName);
             foreach (DataRow dr in dt.Rows)
             {
                 txtTexAmount.Text = dr[0].ToString();
             }
+         
         }
 
     }

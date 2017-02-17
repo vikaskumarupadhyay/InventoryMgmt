@@ -367,6 +367,14 @@ namespace WindowsFormsApplication1
                 textBox2.Text = dr1[1].ToString();
                 textBox20.Text = dr1[2].ToString();
             }
+            string selectName = "select TexAmount from CompnayTex where TexName='" + DB_Main.taxName + "'";
+            DataTable dt = d.getDetailByQuery(selectName);
+            textBox16.Text = DB_Main.taxName;
+            foreach (DataRow dr in dt.Rows)
+            {
+                //txtTexAmount.Text 
+                txtdiscount.Text = dr[0].ToString();
+            }
 
         }
       
