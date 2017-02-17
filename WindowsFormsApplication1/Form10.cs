@@ -287,11 +287,17 @@ namespace WindowsFormsApplication1
                 ////textBox14.Text = "";
                 //txtAmount.Text = "";
                 //txtitemcode.Focus();
+               
             }
             else if (txtQuantity.Text != "0")
             {
                 txtQuantity.TabStop = false;
                 button4.Enabled = true;
+                savebutton.TabStop = true;
+                button6.TabStop = true;
+                button1.TabStop = true;
+                txtcustomercode.TabStop = true;
+                button2.Enabled = true;
                 DataRow dr1 = addToCartTable.NewRow();
                 dr1[0] = txtitemcode.Text.Trim();
                 dr1[1] = txtProductName.Text.Trim();
@@ -467,7 +473,7 @@ namespace WindowsFormsApplication1
                 counter = 0;
                 if (counter == 0)
                 {
-                    string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpdate.Text + "','" + txttotalammount.Text + "','"+txtdiscount.Text+"')";
+                    string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpdate.Text + "','" + txttotalammount.Text + "','"+txtdiscount.Text+"','"+txtdiscount.Text+"')";
                     int insertrows = d.saveDetails(insertquery);
                    
                    
@@ -746,6 +752,11 @@ namespace WindowsFormsApplication1
                 }
 
                 button4.Enabled = false;
+                savebutton.TabStop = false;
+                button6.TabStop = false;
+                txtcustomercode.TabStop = true;
+                button1.TabStop = true;
+                button2.TabStop = true;
 
             }
         }
@@ -901,7 +912,7 @@ namespace WindowsFormsApplication1
             if (e.KeyChar == (char)Keys.Escape)
             {
                 savebutton.Focus();
-                button6.TabStop = true;
+                savebutton.TabStop = false;
                 txtcustomercode.TabStop = true;
                 button1.TabStop = true;
             }

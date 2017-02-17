@@ -154,7 +154,9 @@
     <Compile Include="salessearch.designer.cs">
       <DependentUpon>salessearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tex.cs" />
+    <Compile Include="Tex.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Tex.designer.cs">
       <DependentUpon>Tex.cs</DependentUpon>
     </Compile>

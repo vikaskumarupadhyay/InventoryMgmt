@@ -428,7 +428,7 @@ namespace WindowsFormsApplication1
                      int id1 = Convert.ToInt32(id);
                      int id2 = id1 + 1;
                      string Orde = id2.ToString();
-                     string insertquery1 = "insert into  orderdetails values('" + txtCustcode.Text + "','" + dtpdate.Text + "','" + txttotalammount.Text + "')";
+                     string insertquery1 = "insert into  orderdetails values('" + txtCustcode.Text + "','" + dtpdate.Text + "','" + txttotalammount.Text + "','"+textBox2.Text+"','"+textBox2.Text+"')";
                      int insertrows1 = d.saveDetails(insertquery1);
                      if (insertrows1 > 0)
                      {
@@ -497,7 +497,7 @@ namespace WindowsFormsApplication1
                      int c = d.saveDetails(update);
                      string deletequrri1 = "delete customerorderdescriptions where OrderId='" + id + "'";
                     DataTable dt1 = d.getDetailByQuery(deletequrri1);
-                     string insertquery = "insert into  orderdetails values('" + txtCustcode.Text + "','" + dtpdate.Text + "','" + txttotalammount.Text + "','"+txtdiscount.Text+"')";
+                     string insertquery = "insert into  orderdetails values('" + txtCustcode.Text + "','" + dtpdate.Text + "','" + txttotalammount.Text + "','"+txtdiscount.Text+"','"+txtdiscount.Text+"')";
                      int insertrows = d.saveDetails(insertquery);
                      if (insertrows > 0)
                      {

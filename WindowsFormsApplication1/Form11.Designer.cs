@@ -296,7 +296,6 @@
             this.txtRefNo.TabIndex = 9;
             this.txtRefNo.TabStop = false;
             this.txtRefNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtRefNo.TextChanged += new System.EventHandler(this.txtRefNo_TextChanged);
             this.txtRefNo.Enter += new System.EventHandler(this.txtRefNo_Enter);
             this.txtRefNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRefNo_KeyPress);
             // 
@@ -704,7 +703,8 @@
             this.panel2.Controls.Add(this.dataGridView2);
             this.panel2.Location = new System.Drawing.Point(0, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(858, 595);
+
+            this.panel2.Size = new System.Drawing.Size(858, 583);
             this.panel2.TabIndex = 53;
             // 
             // button1
@@ -753,9 +753,8 @@
             // 
             // dataGridView2
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(9, 54);
+            this.dataGridView2.Location = new System.Drawing.Point(9, 63);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(816, 424);

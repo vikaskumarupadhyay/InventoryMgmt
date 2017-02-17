@@ -415,7 +415,7 @@ namespace WindowsFormsApplication1
                 if (id == "")
                 {
                     id = "1";
-                    string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpDate.Text + "','" + txtTotalAmmount.Text + "','"+txtDiscount.Text+"')";
+                    string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpDate.Text + "','" + txtTotalAmmount.Text + "','"+textBox2.Text+"')";
                     int insertrows = d.saveDetails(insertquery);
                     if (insertrows > 0)
                     {
@@ -461,7 +461,7 @@ namespace WindowsFormsApplication1
                     int id1 = Convert.ToInt32(id);
                     int id2 = id1 + 1;
                     string Orde = id2.ToString();
-                    string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpDate.Text + "','" + txtTotalAmmount.Text + "','"+txtDiscount.Text+"')";
+                    string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpDate.Text + "','" + txtTotalAmmount.Text + "','"+textBox2.Text+"','"+textBox2.Text+"')";
                     int insertrows = d.saveDetails(insertquery);
                     if (insertrows > 0)
                     {
@@ -600,7 +600,7 @@ namespace WindowsFormsApplication1
             comsearchvalue.DataSource = sd;
             counter = 2;
             panel2.Visible = true;
-            string selectquery = "select orderid, custid,date,totalammount from orderdetails";
+            string selectquery = "select o.orderid, o.custid,o.date,o.totalammount,c.CustName,c.CustCompName from orderdetails o join CustomerDetails c on o.Custid=c.Custid";
             DataTable dt = d.getDetailByQuery(selectquery);
             dataGridView2.DataSource = dt;
             
@@ -668,12 +668,6 @@ namespace WindowsFormsApplication1
             }
         }
 
-
-        private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-        }
-
         private void txtcustomercode_TextChanged(object sender, EventArgs e)
         {
            // tab1();
@@ -701,13 +695,6 @@ namespace WindowsFormsApplication1
                     txtFax.Text = "";
                 }
             }
-
-
-
-        private void txtRefNo_TextChanged(object sender, EventArgs e)
-        {
-           
-        }
 
         private void gridsalesdelivary_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {

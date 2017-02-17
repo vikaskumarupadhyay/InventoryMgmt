@@ -95,6 +95,7 @@
             this.btnTex = new System.Windows.Forms.Button();
             this.txtTexAmount = new System.Windows.Forms.TextBox();
             this.combComp = new System.Windows.Forms.ComboBox();
+
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -606,6 +607,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(803, 488);
+
             this.panel1.TabIndex = 32;
             // 
             // btnPrint
@@ -663,6 +665,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(761, 471);
+
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
@@ -757,17 +760,23 @@
             this.combComp.SelectedIndexChanged += new System.EventHandler(this.combComp_SelectedIndexChanged);
             // 
             // textBox1
+
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(140, 27);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(20, 21);
-            this.textBox1.TabIndex = 34;
-            this.textBox1.TabStop = false;
-            this.textBox1.Text = "%";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            //this.button1.Location = new System.Drawing.Point(693, 17);
+            //this.button1.Name = "button1";
+            //this.button1.Size = new System.Drawing.Size(29, 23);
+            //this.button1.TabIndex = 37;
+            //this.button1.Text = "..";
+            //this.button1.UseVisualStyleBackColor = true;
+            //// 
+            //// textBox2
+            //// 
+            //this.textBox2.Location = new System.Drawing.Point(587, 18);
+            //this.textBox2.Name = "textBox2";
+            //this.textBox2.Size = new System.Drawing.Size(100, 21);
+            //this.textBox2.TabIndex = 36;
             // 
+
             // Company_New
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
