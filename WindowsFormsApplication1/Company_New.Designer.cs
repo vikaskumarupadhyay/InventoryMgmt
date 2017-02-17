@@ -536,7 +536,7 @@
             this.panel1.Controls.Add(this.ComDetails);
             this.panel1.Location = new System.Drawing.Point(0, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(803, 494);
+            this.panel1.Size = new System.Drawing.Size(803, 504);
             this.panel1.TabIndex = 32;
             // 
             // btnPrint
@@ -590,7 +590,7 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(18, 77);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 68);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(761, 491);
@@ -693,6 +693,8 @@
             this.txtTexAmount.TabIndex = 36;
             this.txtTexAmount.Text = "0";
             this.txtTexAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTexAmount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtTexAmount_MouseClick);
+            this.txtTexAmount.Leave += new System.EventHandler(this.txtTexAmount_Leave);
             // 
             // combComp
             // 

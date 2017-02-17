@@ -31,7 +31,7 @@ namespace WindowsFormsApplication1
             //    string id1 = d.getUniqueID("CompnayDetails");
             //    txtCompnayCode.Text = id1;
             dtpdate.TabStop = false;
-            string selectQuery1 = "select OnerName, Name ,Address,City,State,Zip,Country,Email,WebAddress,Phone,Mobile,Fax,Description,PANNO,VATNO,CSTNO,ServiceTaxAmmount,ExciseTaxAmmount,GSTTaxAmmount,Isactive,RagistrationDate from CompnayDetails";
+            string selectQuery1 = "select cd.OnerName, cd.Name ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email,cd.WebAddress,cd.Phone,cd.Mobile,cd.Fax,cd.Description,cd.PANNO,cd.VATNO,cd.CSTNO,cd.ServiceTaxAmmount,cd.ExciseTaxAmmount,cd.GSTTaxAmmount,cd.Isactive,cd.RagistrationDate,ct.TexName,ct.TexAmount from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId";
             DataTable dt1 = d.getDetailByQuery(selectQuery1);
             ComDetails.DataSource = dt1;
             string val = "";
@@ -58,9 +58,12 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                int s = Convert.ToInt32(id);
+                string id1 = id.Substring(0,1);
+                string id2 = id.Substring(1);
+                int s = Convert.ToInt32(id2);
                 int s1 = s + 1;
-                txtCompnayCode.Text = "C" + s1.ToString();
+                string id3 = id1 + s1.ToString();
+                txtCompnayCode.Text = id3;
             }
           txtwonername.Focus();
           string selectCommandGroup = "select TexId,TexName,TexAmount,TexDescription from dbo.CompnayTex";
@@ -119,6 +122,8 @@ namespace WindowsFormsApplication1
             txtGst.Text = "";
             txtDescription.Text = "";
             txtGst.Text = "";
+            combComp.Text = "Select Tax";
+            txtTexAmount.Text = "0";
 
         }
         private void tabindex1()
@@ -159,10 +164,12 @@ namespace WindowsFormsApplication1
             btnClose.TabStop = false;
             btnList.TabStop = false;
             dtpdate.TabStop = false;
-           
-            txtGst.TabStop = false;
+            combComp.TabStop = false;
+            txtTexAmount.TabStop = false;
+            //txtGst.TabStop = false;
            groupBox2.TabStop =false;
            groupBox1.TabStop = false;
+           btnTex.TabStop = false;
         }
  
 
@@ -189,7 +196,9 @@ namespace WindowsFormsApplication1
        txtSarvice.TabStop = true;
        txtGst.TabStop = true;
        txtDescription.TabStop = true;
-       
+       combComp.TabStop = true;
+       txtTexAmount.TabStop = true;
+       btnTex.TabStop = true;
        txtGst.TabStop = true;
        btnSave.TabStop = true;
        btnList.TabStop = true;
@@ -201,10 +210,14 @@ namespace WindowsFormsApplication1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
+            string taxId = "";
+            if (combComp.SelectedIndex != 0)
+                {
+                    taxId = TexList[combComp.SelectedIndex - 1];
+            }
             if (updatecounter == 0)
             {
-                   string insertquery = "insert into CompnayDetails (OnerName,Name,Address,City,State,Zip,Country,Email,WebAddress,Phone,Mobile,Fax,PANNO,VATNO,CSTNO,ServiceTaxAmmount,ExciseTaxAmmount,GSTTaxAmmount,Description,RagistrationDate )Values('" + txtwonername.Text + "','" + txtCompnayName.Text + "','" + txtCompnayAddress.Text + "','" + txtCity.Text + "','" + txtState.Text + "','" + txtZip.Text + "','" + txtCountry.Text + "','" + txtEmailAddress.Text + "','" + txtWebSite.Text + "','" + txtPhone.Text + "','" + txtMobile.Text + "','" + txtFax.Text + "','" + txtPanNo.Text + "','" + txtVatNo.Text + "','" + txtCstNo.Text + "','" + txtSarvice.Text + "','" + txtExcise.Text + "','" + txtGst.Text + "','" + txtDescription.Text + "','" + dtpdate.Text + "')";
+                    string insertquery = "insert into CompnayDetails Values ('" + txtCompnayCode.Text + "','" + txtwonername.Text + "','" + txtCompnayName.Text + "','" + txtCompnayAddress.Text + "','" + txtCity.Text + "','" + txtState.Text + "','" + txtZip.Text + "','" + txtCountry.Text + "','" + txtEmailAddress.Text + "','" + txtWebSite.Text + "','" + txtPhone.Text + "','" + txtMobile.Text + "','" + txtFax.Text + "','" + txtPanNo.Text + "','" + txtVatNo.Text + "','" + txtCstNo.Text + "','" + txtSarvice.Text + "','" + txtExcise.Text + "','" + txtGst.Text + "','" + txtDescription.Text + "','" + taxId + "','" + true + "','" + dtpdate.Value.ToString() + "')";
                     int insertrow = d.saveDetails(insertquery);
                     if (insertrow > 0)
                     {
@@ -216,18 +229,22 @@ namespace WindowsFormsApplication1
                     }
 
                 }
-           
             if (updatecounter == 1)
             {
                 string updatecommand = "update CompnayDetails set OnerName='" + txtwonername.Text + "', Name='" + txtCompnayName.Text + "',Address='" + txtCompnayAddress.Text + "',City='" + txtCity.Text + "',State='" + txtState.Text + "',Zip='" + txtZip.Text + "',Country='" + txtCountry.Text + "',Email='" + txtEmailAddress.Text + "',WebAddress='" + txtWebSite.Text + "',Phone='" + txtPhone.Text + "',Mobile='" + txtMobile.Text + "',Fax='" + txtFax.Text + "',PANNO='" + txtPanNo.Text + "',VATNO='" + txtVatNo.Text + "',CSTNO='" + txtCstNo.Text + "',ServiceTaxAmmount='" + txtSarvice.Text + "',ExciseTaxAmmount='" + txtExcise.Text + "',GSTTaxAmmount='" + txtGst.Text + "',Description='" + txtDescription.Text + "',RagistrationDate='" + dtpdate.Value.ToString() + "'";
                 int updatequrry = d.saveDetails(updatecommand);
                 if (updatequrry > 0)
                 {
-                    MessageBox.Show("Details Save successfully");
-                }
-                else
-                {
-                    MessageBox.Show("Details save not successfully");
+                    string updateTax = "update CompnayTex set TexAmount='" + txtTexAmount.Text + "' where TexId='" + taxId + "'";
+                    int updatequrry1 = d.saveDetails(updateTax);
+                    if (updatequrry1 > 0)
+                    {
+                        MessageBox.Show("Details Save successfully");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Details save not successfully");
+                    }
                 }
             }
 
@@ -242,7 +259,7 @@ namespace WindowsFormsApplication1
             ComDetails.TabIndex = 0;
 
             panel1.Visible = true;
-            string selectQuery1 = "select CompnayId,OnerName, Name ,Address,City,State,Zip,Country,Email,WebAddress,Phone,Mobile,Fax,Description,PANNO,VATNO,CSTNO,ServiceTaxAmmount,ExciseTaxAmmount,GSTTaxAmmount,Isactive,RagistrationDate from CompnayDetails";
+            string selectQuery1 = "select cd.CompnayId, cd.OnerName, cd.Name ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email,cd.WebAddress,cd.Phone,cd.Mobile,cd.Fax,cd.Description,cd.PANNO,cd.VATNO,cd.CSTNO,cd.ServiceTaxAmmount,cd.ExciseTaxAmmount,cd.GSTTaxAmmount,cd.Isactive,cd.RagistrationDate,ct.TexName,ct.TexAmount from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId";
             DataTable dt = d.getDetailByQuery(selectQuery1);
             dataGridView1.DataSource = dt;
             tabindex1();
@@ -273,7 +290,8 @@ namespace WindowsFormsApplication1
                 txtSarvice.Text = cellcolection[17].Value.ToString();
                 txtExcise.Text = cellcolection[18].Value.ToString();
                 txtGst.Text = cellcolection[19].Value.ToString();
-                
+                combComp.Text = cellcolection[22].Value.ToString();
+                txtTexAmount.Text = cellcolection[23].Value.ToString();
             }
             catch (Exception ex)
             {
@@ -324,7 +342,7 @@ namespace WindowsFormsApplication1
         private void txtSearch_TextChanged_1(object sender, EventArgs e)
         {
             string s = ComDetails.SelectedValue.ToString();
-            string selectQuery1 = "select CompnayId,OnerName, Name ,Address,City,State,Zip,Country,Email,WebAddress,Phone,Mobile,Fax,Description,PANNO,VATNO,CSTNO,ServiceTaxAmmount,ExciseTaxAmmount,GSTTaxAmmount,Isactive,RagistrationDate from CompnayDetails where " + s + " like '" + txtSearch.Text + "%'";
+            string selectQuery1 = "selectselect cd.CompnayId,cd.OnerName, cd.Name ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email,cd.WebAddress,cd.Phone,cd.Mobile,cd.Fax,cd.Description,cd.PANNO,cd.VATNO,cd.CSTNO,cd.ServiceTaxAmmount,cd.ExciseTaxAmmount,cd.GSTTaxAmmount,cd.Isactive,cd.RagistrationDate,ct.TexName,ct.TexAmount from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId where " + s + " like '" + txtSearch.Text + "%'";
 
             DataTable dt = d.getDetailByQuery(selectQuery1);
             dataGridView1.DataSource = dt;
@@ -366,6 +384,22 @@ namespace WindowsFormsApplication1
             foreach (DataRow dr in dt.Rows)
             {
                 txtTexAmount.Text = dr[0].ToString();
+            }
+        }
+
+        private void txtTexAmount_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (txtTexAmount.Text =="0")
+            {
+                txtTexAmount.Text = "";
+            }
+        }
+
+        private void txtTexAmount_Leave(object sender, EventArgs e)
+        {
+            if (txtTexAmount.Text == "")
+            {
+                txtTexAmount.Text = "0";
             }
         }
 

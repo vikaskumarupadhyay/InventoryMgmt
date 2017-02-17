@@ -59,7 +59,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tax Details";
-           // this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // txtGroupDesc
             // 
@@ -79,6 +78,8 @@
             this.txtTexAmount.TabIndex = 6;
             this.txtTexAmount.Text = "0";
             this.txtTexAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTexAmount.Leave += new System.EventHandler(this.txtTexAmount_Leave);
+            this.txtTexAmount.MouseEnter += new System.EventHandler(this.txtTexAmount_MouseEnter);
             // 
             // txtTexName
             // 
@@ -116,7 +117,6 @@
             this.label3.Size = new System.Drawing.Size(107, 15);
             this.label3.TabIndex = 2;
             this.label3.Text = "Tex Amount (In %)";
-            //this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // lblTexName
             // 
