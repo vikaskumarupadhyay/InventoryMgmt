@@ -49,14 +49,14 @@ namespace WindowsFormsApplication1
                 txtSrNo.Text = txt1.ToString();
             }
             panel2.Visible = false;
-            string stlect1 = "select VAT,CST,GST from CompnayDetails";
-            DataTable dt1 = dbMainClass.getDetailByQuery(stlect1);
-            foreach (DataRow dr1 in dt1.Rows)
-            {
-               txtvat.Text  = dr1[0].ToString();
-               txtdis.Text = dr1[1].ToString();
-               txtgst.Text = dr1[2].ToString();
-            }
+            //string stlect1 = "select VAT,CST,GST from CompnayDetails";
+            //DataTable dt1 = dbMainClass.getDetailByQuery(stlect1);
+            //foreach (DataRow dr1 in dt1.Rows)
+            //{
+            //   txtvat.Text  = dr1[0].ToString();
+            //   txtdis.Text = dr1[1].ToString();
+            //   txtgst.Text = dr1[2].ToString();
+            //}
             Purchase.PurchaseDetails purChaseDetailObj = new Purchase.PurchaseDetails();
             vendorDetails = purChaseDetailObj.GetVendorDetaisInDataTable();
             ItemDetails = purChaseDetailObj.GetItemPriceAndNameDetaisInDataTable();

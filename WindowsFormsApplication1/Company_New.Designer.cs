@@ -72,13 +72,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkcst = new System.Windows.Forms.CheckBox();
-            this.txtcst = new System.Windows.Forms.TextBox();
             this.dtpdate = new System.Windows.Forms.DateTimePicker();
-            this.txtvat = new System.Windows.Forms.TextBox();
-            this.checkvat = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnExportToExcel = new System.Windows.Forms.Button();
@@ -96,7 +90,6 @@
             this.txtTexAmount = new System.Windows.Forms.TextBox();
             this.combComp = new System.Windows.Forms.ComboBox();
 
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -519,48 +512,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Compnay Code";
             // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(374, 20);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(52, 21);
-            this.textBox3.TabIndex = 27;
-            this.textBox3.Text = "0";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(318, 22);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(50, 19);
-            this.checkBox3.TabIndex = 26;
-            this.checkBox3.Text = "GST";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            this.checkBox3.Click += new System.EventHandler(this.checkBox3_Click);
-            // 
-            // checkcst
-            // 
-            this.checkcst.AutoSize = true;
-            this.checkcst.Location = new System.Drawing.Point(184, 29);
-            this.checkcst.Name = "checkcst";
-            this.checkcst.Size = new System.Drawing.Size(49, 19);
-            this.checkcst.TabIndex = 24;
-            this.checkcst.Text = "CST";
-            this.checkcst.UseVisualStyleBackColor = true;
-            this.checkcst.Click += new System.EventHandler(this.checkcst_Click);
-            // 
-            // txtcst
-            // 
-            this.txtcst.Location = new System.Drawing.Point(227, 27);
-            this.txtcst.Name = "txtcst";
-            this.txtcst.ReadOnly = true;
-            this.txtcst.Size = new System.Drawing.Size(51, 21);
-            this.txtcst.TabIndex = 25;
-            this.txtcst.Text = "0";
-            this.txtcst.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // dtpdate
             // 
             this.dtpdate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -568,28 +519,6 @@
             this.dtpdate.Name = "dtpdate";
             this.dtpdate.Size = new System.Drawing.Size(103, 20);
             this.dtpdate.TabIndex = 23;
-            // 
-            // txtvat
-            // 
-            this.txtvat.Location = new System.Drawing.Point(85, 27);
-            this.txtvat.Name = "txtvat";
-            this.txtvat.ReadOnly = true;
-            this.txtvat.Size = new System.Drawing.Size(64, 21);
-            this.txtvat.TabIndex = 23;
-            this.txtvat.Text = "0";
-            this.txtvat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtvat.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // checkvat
-            // 
-            this.checkvat.AutoSize = true;
-            this.checkvat.Location = new System.Drawing.Point(32, 29);
-            this.checkvat.Name = "checkvat";
-            this.checkvat.Size = new System.Drawing.Size(47, 19);
-            this.checkvat.TabIndex = 22;
-            this.checkvat.Text = "VAT";
-            this.checkvat.UseVisualStyleBackColor = true;
-            this.checkvat.Click += new System.EventHandler(this.checkvat_Click);
             // 
             // panel1
             // 
@@ -606,8 +535,7 @@
             this.panel1.Controls.Add(this.ComDetails);
             this.panel1.Location = new System.Drawing.Point(0, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(803, 488);
-
+            this.panel1.Size = new System.Drawing.Size(803, 630);
             this.panel1.TabIndex = 32;
             // 
             // btnPrint
@@ -718,13 +646,6 @@
             this.groupBox2.Controls.Add(this.btnTex);
             this.groupBox2.Controls.Add(this.txtTexAmount);
             this.groupBox2.Controls.Add(this.combComp);
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.checkvat);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.txtvat);
-            this.groupBox2.Controls.Add(this.txtcst);
-            this.groupBox2.Controls.Add(this.checkcst);
-            this.groupBox2.Controls.Add(this.checkBox3);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 497);
             this.groupBox2.Name = "groupBox2";
@@ -758,23 +679,6 @@
             this.combComp.Size = new System.Drawing.Size(121, 23);
             this.combComp.TabIndex = 35;
             this.combComp.SelectedIndexChanged += new System.EventHandler(this.combComp_SelectedIndexChanged);
-            // 
-            // textBox1
-
-            // 
-            //this.button1.Location = new System.Drawing.Point(693, 17);
-            //this.button1.Name = "button1";
-            //this.button1.Size = new System.Drawing.Size(29, 23);
-            //this.button1.TabIndex = 37;
-            //this.button1.Text = "..";
-            //this.button1.UseVisualStyleBackColor = true;
-            //// 
-            //// textBox2
-            //// 
-            //this.textBox2.Location = new System.Drawing.Point(587, 18);
-            //this.textBox2.Name = "textBox2";
-            //this.textBox2.Size = new System.Drawing.Size(100, 21);
-            //this.textBox2.TabIndex = 36;
             // 
 
             // Company_New
@@ -844,12 +748,6 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.TextBox txtcst;
-        private System.Windows.Forms.CheckBox checkcst;
-        private System.Windows.Forms.TextBox txtvat;
-        private System.Windows.Forms.CheckBox checkvat;
         private System.Windows.Forms.TextBox txtwonername;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Panel panel1;
@@ -869,7 +767,6 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Button btnExportToExcel;
         private System.Windows.Forms.Button btnTex;

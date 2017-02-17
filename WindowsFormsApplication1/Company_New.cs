@@ -23,6 +23,7 @@ namespace WindowsFormsApplication1
 
         private void Compnay_Load(object sender, EventArgs e)
         {
+            
             //txtCompnayCode.Focus();
            // btnList.Enabled = false;
             
@@ -30,7 +31,7 @@ namespace WindowsFormsApplication1
             //    string id1 = d.getUniqueID("CompnayDetails");
             //    txtCompnayCode.Text = id1;
             dtpdate.TabStop = false;
-            string selectQuery1 = "select OnerName, Name as[Name],Address,City,State,Zip,Country,Email,WebAddress,Phone,Mobile,Fax,PANNO,VATNO,CSTNO,ServiceTaxAmmount,ExciseTaxAmmount,GSTTaxAmmount ,Description,VAT,CST,GST,Isactive,RagistrationDate from CompnayDetails";
+            string selectQuery1 = "select OnerName, Name ,Address,City,State,Zip,Country,Email,WebAddress,Phone,Mobile,Fax,Description,PANNO,VATNO,CSTNO,ServiceTaxAmmount,ExciseTaxAmmount,GSTTaxAmmount,Isactive,RagistrationDate from CompnayDetails";
             DataTable dt1 = d.getDetailByQuery(selectQuery1);
             ComDetails.DataSource = dt1;
             string val = "";
@@ -64,7 +65,6 @@ namespace WindowsFormsApplication1
           txtwonername.Focus();
           string selectCommandGroup = "select TexId,TexName,TexAmount,TexDescription from dbo.CompnayTex";
           setItemGroupDetail(selectCommandGroup, combComp, "TEX");
-         
             }
         private void setItemGroupDetail(string Query, ComboBox cmb, string Message)
         {
@@ -118,8 +118,6 @@ namespace WindowsFormsApplication1
             txtSarvice.Text = "";
             txtGst.Text = "";
             txtDescription.Text = "";
-            txtvat.Text = "";
-            txtcst.Text="";
             txtGst.Text = "";
 
         }
@@ -161,18 +159,13 @@ namespace WindowsFormsApplication1
             btnClose.TabStop = false;
             btnList.TabStop = false;
             dtpdate.TabStop = false;
-            txtvat.TabStop = false;
-            txtcst.TabStop = false;
+           
             txtGst.TabStop = false;
-            textBox3.TabStop = false;
-            checkvat.TabStop = false;
-            checkcst.TabStop = false;
-           checkBox3.TabStop = false;
-           txtcst.TabStop = false;
-           txtvat.TabStop = false;
            groupBox2.TabStop =false;
            groupBox1.TabStop = false;
         }
+ 
+
    private void tabindex2()
    {
        btnClose.TabIndex = 29;
@@ -197,20 +190,10 @@ namespace WindowsFormsApplication1
        txtGst.TabStop = true;
        txtDescription.TabStop = true;
        
-       //dtpdate.TabStop = true;
-       txtvat.TabStop = true;
-       txtcst.TabStop = true;
        txtGst.TabStop = true;
-       textBox3.TabStop = true;
        btnSave.TabStop = true;
        btnList.TabStop = true;
        btnClose.TabStop = true;
-       checkvat.TabStop = true;
-       checkcst.TabStop = true;
-       checkBox3.TabStop =true;
-       txtcst.TabStop =true;
-       txtvat.TabStop = true;
-       textBox3.TabStop = true;
        groupBox2.TabStop = true;
        groupBox1.TabStop = true;
 
@@ -221,9 +204,7 @@ namespace WindowsFormsApplication1
 
             if (updatecounter == 0)
             {
-                if (string.IsNullOrEmpty(txtvat.Text) == false || string.IsNullOrEmpty(txtcst.Text) == false || string.IsNullOrEmpty(textBox3.Text) == false)
-                {
-                    string insertquery = "insert into CompnayDetails (OnerName,Name,Address,City,State,Zip,Country,Email,WebAddress,Phone,Mobile,Fax,PANNO,VATNO,CSTNO,ServiceTaxAmmount,ExciseTaxAmmount,GSTTaxAmmount,Description,VAT,CST,GST,RagistrationDate )Values('" + txtwonername.Text + "','" + txtCompnayName.Text + "','" + txtCompnayAddress.Text + "','" + txtCity.Text + "','" + txtState.Text + "','" + txtZip.Text + "','" + txtCountry.Text + "','" + txtEmailAddress.Text + "','" + txtWebSite.Text + "','" + txtPhone.Text + "','" + txtMobile.Text + "','" + txtFax.Text + "','" + txtPanNo.Text + "','" + txtVatNo.Text + "','" + txtCstNo.Text + "','" + txtSarvice.Text + "','" + txtExcise.Text + "','" + txtGst.Text + "','" + txtDescription.Text + "','" + txtvat.Text + "','" + txtcst.Text + "','" + textBox3.Text + "','" + dtpdate.Text + "')";
+                   string insertquery = "insert into CompnayDetails (OnerName,Name,Address,City,State,Zip,Country,Email,WebAddress,Phone,Mobile,Fax,PANNO,VATNO,CSTNO,ServiceTaxAmmount,ExciseTaxAmmount,GSTTaxAmmount,Description,RagistrationDate )Values('" + txtwonername.Text + "','" + txtCompnayName.Text + "','" + txtCompnayAddress.Text + "','" + txtCity.Text + "','" + txtState.Text + "','" + txtZip.Text + "','" + txtCountry.Text + "','" + txtEmailAddress.Text + "','" + txtWebSite.Text + "','" + txtPhone.Text + "','" + txtMobile.Text + "','" + txtFax.Text + "','" + txtPanNo.Text + "','" + txtVatNo.Text + "','" + txtCstNo.Text + "','" + txtSarvice.Text + "','" + txtExcise.Text + "','" + txtGst.Text + "','" + txtDescription.Text + "','" + dtpdate.Text + "')";
                     int insertrow = d.saveDetails(insertquery);
                     if (insertrow > 0)
                     {
@@ -235,11 +216,10 @@ namespace WindowsFormsApplication1
                     }
 
                 }
-            }
            
             if (updatecounter == 1)
             {
-                string updatecommand = "update CompnayDetails set OnerName='" + txtwonername.Text + "', Name='" + txtCompnayName.Text + "',Address='" + txtCompnayAddress.Text + "',City='" + txtCity.Text + "',State='" + txtState.Text + "',Zip='" + txtZip.Text + "',Country='" + txtCountry.Text + "',Email='" + txtEmailAddress.Text + "',WebAddress='" + txtWebSite.Text + "',Phone='" + txtPhone.Text + "',Mobile='" + txtMobile.Text + "',Fax='" + txtFax.Text + "',PANNO='" + txtPanNo.Text + "',VATNO='" + txtVatNo.Text + "',CSTNO='" + txtCstNo.Text + "',ServiceTaxAmmount='" + txtSarvice.Text + "',ExciseTaxAmmount='" + txtExcise.Text + "',GSTTaxAmmount='" + txtGst.Text + "',Description='" + txtDescription.Text + "',VAT='" + txtvat.Text + "',CST='" + txtcst.Text + "',GST='" + textBox3.Text + "',RagistrationDate='" + dtpdate.Value.ToString() + "'";
+                string updatecommand = "update CompnayDetails set OnerName='" + txtwonername.Text + "', Name='" + txtCompnayName.Text + "',Address='" + txtCompnayAddress.Text + "',City='" + txtCity.Text + "',State='" + txtState.Text + "',Zip='" + txtZip.Text + "',Country='" + txtCountry.Text + "',Email='" + txtEmailAddress.Text + "',WebAddress='" + txtWebSite.Text + "',Phone='" + txtPhone.Text + "',Mobile='" + txtMobile.Text + "',Fax='" + txtFax.Text + "',PANNO='" + txtPanNo.Text + "',VATNO='" + txtVatNo.Text + "',CSTNO='" + txtCstNo.Text + "',ServiceTaxAmmount='" + txtSarvice.Text + "',ExciseTaxAmmount='" + txtExcise.Text + "',GSTTaxAmmount='" + txtGst.Text + "',Description='" + txtDescription.Text + "',RagistrationDate='" + dtpdate.Value.ToString() + "'";
                 int updatequrry = d.saveDetails(updatecommand);
                 if (updatequrry > 0)
                 {
@@ -257,12 +237,12 @@ namespace WindowsFormsApplication1
 
         private void btnList_Click(object sender, EventArgs e)
         {
-           
-           
-           // ComDetails.TabIndex = 1;
+
+            txtSearch.Text = "";
+            ComDetails.TabIndex = 0;
 
             panel1.Visible = true;
-            string selectQuery1 = "select CompnayId,OnerName, Name ,Address,City,State,Zip,Country,Email,WebAddress,Phone,Mobile,Fax,Description,PANNO,VATNO,CSTNO,ServiceTaxAmmount,ExciseTaxAmmount,GSTTaxAmmount,VAT,CST,GST,Isactive,RagistrationDate from CompnayDetails";
+            string selectQuery1 = "select CompnayId,OnerName, Name ,Address,City,State,Zip,Country,Email,WebAddress,Phone,Mobile,Fax,Description,PANNO,VATNO,CSTNO,ServiceTaxAmmount,ExciseTaxAmmount,GSTTaxAmmount,Isactive,RagistrationDate from CompnayDetails";
             DataTable dt = d.getDetailByQuery(selectQuery1);
             dataGridView1.DataSource = dt;
             tabindex1();
@@ -293,9 +273,6 @@ namespace WindowsFormsApplication1
                 txtSarvice.Text = cellcolection[17].Value.ToString();
                 txtExcise.Text = cellcolection[18].Value.ToString();
                 txtGst.Text = cellcolection[19].Value.ToString();
-                txtvat.Text = cellcolection[20].Value.ToString();
-                txtcst.Text = cellcolection[21].Value.ToString();
-                textBox3.Text = cellcolection[22].Value.ToString();
                 
             }
             catch (Exception ex)
@@ -317,51 +294,6 @@ namespace WindowsFormsApplication1
                      setdetails(cellcollection);
                  }
              }
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            if (checkvat.Checked)
-            {
-               
-            }
-        }
-
-        private void checkvat_Click(object sender, EventArgs e)
-        {
-            if (checkvat.Checked)
-            {
-
-                txtvat.ReadOnly = false;
-                txtcst.ReadOnly = true;
-                textBox3.ReadOnly = true;
-                checkcst.Checked = false;
-                checkBox3.Checked = false;
-            }
-        }
-
-        private void checkcst_Click(object sender, EventArgs e)
-        {
-            if (checkcst.Checked)
-            {
-                txtcst.ReadOnly = false;
-                checkvat.Checked = false;
-                textBox3.ReadOnly = true;
-                checkBox3.Checked = false;
-                txtvat.ReadOnly = true;
-            }
-        }
-
-        private void checkBox3_Click(object sender, EventArgs e)
-        {
-            if (checkBox3.Checked)
-            {
-                textBox3.ReadOnly = false;
-                txtvat.ReadOnly = true;
-                txtcst.ReadOnly = true;
-                checkvat.Checked = false;
-                checkcst.Checked = false;
-            }
         }
 
         private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
@@ -392,7 +324,7 @@ namespace WindowsFormsApplication1
         private void txtSearch_TextChanged_1(object sender, EventArgs e)
         {
             string s = ComDetails.SelectedValue.ToString();
-            string selectQuery1 = "select CompnayId,OnerName, Name ,Address,City,State,Zip,Country,Email,WebAddress,Phone,Mobile,Fax,Description,PANNO,VATNO,CSTNO,ServiceTaxAmmount,ExciseTaxAmmount,GSTTaxAmmount,VAT,CST,GST,Isactive,RagistrationDate from CompnayDetails where " + s + " like '" + txtSearch.Text + "%'";
+            string selectQuery1 = "select CompnayId,OnerName, Name ,Address,City,State,Zip,Country,Email,WebAddress,Phone,Mobile,Fax,Description,PANNO,VATNO,CSTNO,ServiceTaxAmmount,ExciseTaxAmmount,GSTTaxAmmount,Isactive,RagistrationDate from CompnayDetails where " + s + " like '" + txtSearch.Text + "%'";
 
             DataTable dt = d.getDetailByQuery(selectQuery1);
             dataGridView1.DataSource = dt;
