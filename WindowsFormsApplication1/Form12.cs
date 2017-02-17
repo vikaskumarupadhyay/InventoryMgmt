@@ -45,12 +45,50 @@ namespace WindowsFormsApplication1
             txtquantity.TabStop = true;
             butAdditem.TabStop = true;
         }
-        private void tab4()
+        private void tab()
         {
             txtitemcode.Focus();
+            gridsalesinvoice.TabStop = false;
+            butclose.TabStop = false;
+            textBox1.TabStop = false;
+            textBox2.TabStop = false;
+            textBox3.TabStop = false;
+            butselectpurchasedelivary.TabStop = false;
             txtitemcode.TabStop = true;
             butitembutton.TabStop = true;
+            button5.TabStop = false;
+            txtCustcode.TabStop = true;
+            button1.TabStop = true;
         }
+        private void tab5()
+        {
+            txtquantity.Focus();
+            gridsalesinvoice.TabStop = false;
+            butclose.TabStop = false;
+            textBox1.TabStop = false;
+            textBox2.TabStop = false;
+            textBox3.TabStop = false;
+            butselectpurchasedelivary.TabStop = false;
+            txtitemcode.TabStop = false;
+            butitembutton.TabStop = false;
+            button5.TabStop = false;
+            txtCustcode.TabStop = false;
+            button1.TabStop = false;
+        }
+        private void tab4()
+        {
+            txtCustcode.TabStop = true;
+            butcustbutton.TabStop = true;
+            gridsalesinvoice.TabStop = false;
+            butclose.TabStop = false;
+            textBox1.TabStop = false;
+            textBox2.TabStop = false;
+            textBox3.TabStop = false;
+            butselectpurchasedelivary.TabStop = false;
+            txtitemcode.TabStop = false;
+            button5.TabStop = false;
+        }
+      
         private void butcustbutton_Click(object sender, EventArgs e)
         {
             //string selectquery1 = "select CustName,CustCompName,CustAddress,CustPhone,Custmobile,CustFax from CustomerDetails";
@@ -249,6 +287,15 @@ namespace WindowsFormsApplication1
             else if (txtquantity.Text != "0")
             {
                 butRemoveItem.Enabled = true;
+                button5.TabStop= true;
+                butselectpurchasedelivary.TabStop = true;
+                butclose.TabStop = true;
+                txtCustcode.TabStop = true;
+                butcustbutton.TabStop = true;
+                butitembutton.TabStop = true;
+                butRemoveItem.TabStop = true;
+                txtitemcode.TabStop = true;
+                txtquantity.TabStop = false;
                 DataRow dr = addToCartTable.NewRow();
                 dr[0] = txtitemcode.Text.Trim();
                 dr[1] = txtproductname.Text.Trim();
@@ -277,15 +324,15 @@ namespace WindowsFormsApplication1
              txtquantity.TabStop = true;
              butAdditem.TabStop = true;
              butRemoveItem.TabStop = true;
-             button5.TabStop = true;
-             butselectpurchasedelivary.TabStop = true;
+             button5.TabStop = false;
+             butselectpurchasedelivary.TabStop = false;
              butclose.TabStop = true;
              gridsalesinvoice.TabStop = false;
          }
 
          private void salesinvoice_Load(object sender, EventArgs e)
          {
-             tabindex();
+             //tabindex();
              tab4();
              txtquantity.ReadOnly = true;
              butRemoveItem.Enabled = false;
@@ -331,31 +378,42 @@ namespace WindowsFormsApplication1
 
          private void butRemoveItem_Click(object sender, EventArgs e)
          {
-            
-             if (addToCartTable.Rows.Count > 0)
-             {
-                 string Amount = gridsalesinvoice.SelectedRows[0].Cells[4].Value.ToString();
-                 double totalAmount = Convert.ToDouble(txttotalammount.Text);
-                 totalAmount -= Convert.ToDouble(Amount.Trim());
-                 txttotalammount.Text = totalAmount.ToString();
-                 int index = gridsalesinvoice.SelectedRows[0].Index;
-                 addToCartTable.Rows.RemoveAt(index);
 
-                 gridsalesinvoice.DataSource = addToCartTable;
-                 if (addToCartTable.Rows.Count == 0)
-                 {
-                     txttotalammount.Text = "0.0";
-                     txtdiscount.Text = "0.0";
-                 }
-                 if (gridsalesinvoice.Rows.Count > 0)
-                 {
-                     butRemoveItem.Enabled = true;
-                 }
-                 else
-                 {
-                     butRemoveItem.Enabled = false;
-                 }
-             }
+             butRemoveItem.Enabled = false;
+             gridsalesinvoice.Focus();
+             gridsalesinvoice.TabIndex = 1;
+             txtitemcode.Enabled = false;
+             butitembutton.Enabled = true;
+             button5.TabStop = false;
+             butselectpurchasedelivary.TabStop = false;
+             butclose.TabStop = false;
+             txtCustcode.TabStop= true;
+             butcustbutton.TabStop = true;
+            
+             //if (addToCartTable.Rows.Count > 0)
+             //{
+             //    string Amount = gridsalesinvoice.SelectedRows[0].Cells[4].Value.ToString();
+             //    double totalAmount = Convert.ToDouble(txttotalammount.Text);
+             //    totalAmount -= Convert.ToDouble(Amount.Trim());
+             //    txttotalammount.Text = totalAmount.ToString();
+             //    int index = gridsalesinvoice.SelectedRows[0].Index;
+             //    addToCartTable.Rows.RemoveAt(index);
+
+             //    gridsalesinvoice.DataSource = addToCartTable;
+             //    if (addToCartTable.Rows.Count == 0)
+             //    {
+             //        txttotalammount.Text = "0.0";
+             //        txtdiscount.Text = "0.0";
+             //    }
+             //    if (gridsalesinvoice.Rows.Count > 0)
+             //    {
+             //        butRemoveItem.Enabled = true;
+             //    }
+             //    else
+             //    {
+             //        butRemoveItem.Enabled = false;
+             //    }
+             //}
          }
 
          private void button5_Click(object sender, EventArgs e)
@@ -601,6 +659,10 @@ namespace WindowsFormsApplication1
 
          private void txtquantity_KeyPress(object sender, KeyPressEventArgs e)
          {
+             if (e.KeyChar == (char)Keys.Enter)
+             {
+                 butAdditem.Focus();
+             }
              if (char.IsDigit(e.KeyChar))
              {
                  e.Handled = false;
@@ -915,6 +977,111 @@ namespace WindowsFormsApplication1
                      gridsalesinvoice.Rows[e.RowIndex].Cells[3].Value = "0";
                      //txtAmmount.Text = "0";
                  }
+             }
+         }
+
+         private void txtCustcode_KeyPress(object sender, KeyPressEventArgs e)
+         {
+             if (e.KeyChar == (char)Keys.Enter)
+             {
+                 tab();
+             }
+         }
+
+         private void txtitemcode_KeyPress(object sender, KeyPressEventArgs e)
+         {
+             if (e.KeyChar == (char)Keys.Escape)
+             {
+                 butRemoveItem.Focus();
+             }
+             if (e.KeyChar == (char)Keys.Enter)
+             {
+                 tab5();
+             }
+             if (e.KeyChar == (char)Keys.Escape)
+             {
+                 if (gridsalesinvoice.Rows.Count > 0)
+                 {
+                     butRemoveItem.Focus();
+                 }
+                 else
+                 {
+                     button5.Focus();
+                     butselectpurchasedelivary.TabStop = true;
+                     butclose.TabStop = true;
+                 }
+             }
+         }
+
+         private void gridsalesinvoice_KeyPress(object sender, KeyPressEventArgs e)
+         {
+             if (e.KeyChar == (char)Keys.Escape)
+             {
+                 txtitemcode.Enabled = true;
+                 butitembutton.Enabled = true;
+                 txtitemcode.Focus();
+                 txtitemcode.TabStop = true;
+                 txtitemcode.TabIndex = 1;
+                 button5.TabStop = true;
+                 butselectpurchasedelivary.TabStop = true;
+                 butclose.TabStop = true;
+                
+             }
+             if (gridsalesinvoice.Rows.Count > 0)
+             {
+                 butRemoveItem.Enabled = true;
+             }
+
+            
+             if (e.KeyChar == (char)Keys.Enter)
+             {
+                 if (addToCartTable.Rows.Count > 0)
+                 {
+                     string Amount = gridsalesinvoice.SelectedRows[0].Cells[4].Value.ToString();
+                     double totalAmount = Convert.ToDouble(txttotalammount.Text);
+                     totalAmount -= Convert.ToDouble(Amount.Trim());
+                     txttotalammount.Text = totalAmount.ToString();
+                     int index = gridsalesinvoice.SelectedRows[0].Index;
+                     addToCartTable.Rows.RemoveAt(index);
+
+                     gridsalesinvoice.DataSource = addToCartTable;
+                     if (addToCartTable.Rows.Count == 0)
+                     {
+                         txtammount.Text = "0.0";
+                         txtdiscount.Text = "0.0";
+                     }
+                     if (gridsalesinvoice.Rows.Count > 0)
+                     {
+                         butRemoveItem.Enabled = true;
+                         gridsalesinvoice.Rows[gridsalesinvoice.Rows.Count - 1].Selected = true;
+                     }
+                     if (gridsalesinvoice.Rows.Count == 0)
+                     {
+                         txtitemcode.Enabled= true;
+                         txtitemcode.Focus();
+                     }
+
+                     else
+                     {
+                         butRemoveItem.Enabled = false;
+                     }
+                     butRemoveItem.Enabled = false;
+
+                 }
+             }
+         }
+
+         private void butRemoveItem_KeyPress(object sender, KeyPressEventArgs e)
+         {
+
+             if (e.KeyChar == (char)Keys.Escape)
+             {
+                 button5.Focus();
+                 butselectpurchasedelivary.TabStop = true;
+                 butclose.TabStop = true;
+                 txtCustcode.TabStop = true;
+                 butitembutton.TabStop = true;
+
              }
          }
 

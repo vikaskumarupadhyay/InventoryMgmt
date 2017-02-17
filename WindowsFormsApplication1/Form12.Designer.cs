@@ -118,6 +118,7 @@
             this.gridsalesinvoice.TabIndex = 0;
             this.gridsalesinvoice.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesinvoice_CellDoubleClick);
             this.gridsalesinvoice.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesinvoice_CellEndEdit);
+            this.gridsalesinvoice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridsalesinvoice_KeyPress);
             // 
             // txttotalammount
             // 
@@ -266,6 +267,7 @@
             this.butRemoveItem.Text = "Remove Item";
             this.butRemoveItem.UseVisualStyleBackColor = true;
             this.butRemoveItem.Click += new System.EventHandler(this.butRemoveItem_Click);
+            this.butRemoveItem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.butRemoveItem_KeyPress);
             // 
             // butAdditem
             // 
@@ -365,6 +367,7 @@
             this.txtitemcode.TabIndex = 2;
             this.txtitemcode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtitemcode.TextChanged += new System.EventHandler(this.txtitemcode_TextChanged);
+            this.txtitemcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtitemcode_KeyPress);
             // 
             // label11
             // 
@@ -407,7 +410,6 @@
             this.txtRefNo.TabIndex = 9;
             this.txtRefNo.TabStop = false;
             this.txtRefNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            //this.txtRefNo.TextChanged += new System.EventHandler(this.txtRefNo_TextChanged);
             this.txtRefNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRefNo_KeyPress);
             // 
             // label15
@@ -594,6 +596,7 @@
             this.txtCustcode.TabIndex = 3;
             this.txtCustcode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtCustcode.TextChanged += new System.EventHandler(this.txtCustcode_TextChanged);
+            this.txtCustcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustcode_KeyPress);
             // 
             // label3
             // 
@@ -693,10 +696,9 @@
             this.panel2.Controls.Add(this.label17);
             this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.dataGridView2);
-
-            this.panel2.Location = new System.Drawing.Point(0, 4);
+            this.panel2.Location = new System.Drawing.Point(0, 368);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(858, 607);
+            this.panel2.Size = new System.Drawing.Size(858, 256);
             this.panel2.TabIndex = 64;
             // 
             // button1
