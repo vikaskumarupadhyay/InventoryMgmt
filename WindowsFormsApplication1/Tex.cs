@@ -78,5 +78,21 @@ namespace WindowsFormsApplication1
                 }
             }
         }
+
+        private void txtTexAmount_MouseEnter(object sender, EventArgs e)
+        {
+            if (txtTexAmount.Text == "0")
+            {
+                txtTexAmount.Text = "";
+            }
+        }
+
+        private void txtTexAmount_Leave(object sender, EventArgs e)
+        {
+            if (txtTexAmount.Text == "")
+            {
+                txtTexAmount.Text = "0";
+            }
+        }
     }
 }

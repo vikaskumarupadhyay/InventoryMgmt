@@ -32,6 +32,11 @@ E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.Ge
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
 E:\Project\WindowsFormsApplication1\bin\Debug\ExcelLibrary.dll
+E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Tex.resources
+D:\Project\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+D:\Project\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+D:\Project\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+D:\Project\WindowsFormsApplication1\bin\Debug\ExcelLibrary.dll
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.ChaquePayment.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.ChaqueForm.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Company_New.resources
@@ -47,6 +52,7 @@ D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.VendorPri
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.ItemList1.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.PurchasSearch1.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.salessearch.resources
+D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Tex.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.frmVendorDetails.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Customer.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Item.resources
@@ -60,12 +66,5 @@ D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Propertie
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Unit.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.VendorList1.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
-D:\Project\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
-D:\Project\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
-D:\Project\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
-D:\Project\WindowsFormsApplication1\bin\Debug\ExcelLibrary.dll
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Tex.resources
-E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Tex.resources
-E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache

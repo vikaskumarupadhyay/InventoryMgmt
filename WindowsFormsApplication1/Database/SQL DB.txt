@@ -170,9 +170,9 @@ alter table orderdetails add Tax float
 
 
  
- create table CompnayDetails(CompnayId int identity primary key,OnerName varchar(200),Name varchar(1000),Address varchar(1000),City varchar(100), State varchar(100),Zip varchar(100),Country varchar(50),Email varchar(250), WebAddress varchar(50),Phone varchar(15),Mobile varchar(15),Fax varchar(15),PANNO varchar(200),VATNO varchar(200),CSTNO varchar(200),ServiceTaxAmmount decimal,ExciseTaxAmmount decimal,GSTTaxAmmount decimal,Description varchar(500),VAT decimal,CST decimal,GST decimal, Isactive bit,RagistrationDate datetime)
+ create table CompnayDetails(CompnayId varchar(200)  primary key,OnerName varchar(200),Name varchar(1000),Address varchar(1000),City varchar(100), State varchar(100),Zip varchar(100),Country varchar(50),Email varchar(250), WebAddress varchar(50),Phone varchar(15),Mobile varchar(15),Fax varchar(15),PANNO varchar(200),VATNO varchar(200),CSTNO varchar(200),ServiceTaxAmmount decimal,ExciseTaxAmmount decimal,GSTTaxAmmount decimal,Description varchar(500),VAT decimal,CST decimal,GST decimal,TexId varchar(100) foreign key references CompnayTex(TexId), Isactive bit,RagistrationDate datetime)
  
- create table CompnayTex(TexId varchar(100),TexName varchar(200),TexAmount decimal ,TexDescription varchar(200))
+ create table CompnayTex(TexId varchar(100) primary key,TexName varchar(200),TexAmount decimal ,TexDescription varchar(200))
  
  alter table CompnayDetails Alter column ServiceTaxAmmount varchar(200)
 
