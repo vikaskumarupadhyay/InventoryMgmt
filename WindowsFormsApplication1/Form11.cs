@@ -27,6 +27,7 @@ namespace WindowsFormsApplication1
             txtcustomercode.Focus();
             txtcustomercode.TabStop = true;
             butcustomercode.TabStop = true;
+            gridsalesdelivary.TabStop = false;
             txtItemCode.TabStop = false;
             butitembutton.TabStop = false;
             txtQuantity.TabStop = false;
@@ -38,6 +39,7 @@ namespace WindowsFormsApplication1
             textBox1.TabStop = false;
             textBox2.TabStop = false;
             textBox3.TabStop = false;
+            
         }
         private void tab1()
         {
@@ -285,6 +287,12 @@ namespace WindowsFormsApplication1
 
                 butAddItem.Enabled = true;
                 butRemoveItem.Enabled = true;
+                butSaveButton.TabStop = true;
+                ButSelectPurchaseOrder.TabStop = true;
+                butClose.TabStop = true;
+                txtcustomercode.TabStop = true;
+                butcustomercode.TabStop = true;
+
                 DataRow dr = addToCartTable.NewRow();
                 dr[0] = txtItemCode.Text.Trim();
                 dr[1] = txtProductName.Text.Trim();
@@ -341,14 +349,14 @@ namespace WindowsFormsApplication1
                 int t1 = t + 1;
                 txtSrNo.Text = t1.ToString();
             }
-            string select = "select VAT, CST,GST from CompnayDetails";
-            DataTable d1 = d.getDetailByQuery(select);
-            foreach (DataRow dr1 in d1.Rows)
-            {
-                textBox2.Text = dr1[0].ToString();
-                txtDiscount.Text = dr1[1].ToString();
-                textBox20.Text = dr1[2].ToString();
-            }
+            //string select = "select VAT, CST,GST from CompnayDetails";
+            //DataTable d1 = d.getDetailByQuery(select);
+            //foreach (DataRow dr1 in d1.Rows)
+            //{
+            //    textBox2.Text = dr1[0].ToString();
+            //    txtDiscount.Text = dr1[1].ToString();
+            //    textBox20.Text = dr1[2].ToString();
+            //}
 
         }
        
@@ -359,7 +367,12 @@ namespace WindowsFormsApplication1
             gridsalesdelivary.Focus();
             gridsalesdelivary.TabIndex = 1;
             txtItemCode.Enabled = false;
-            butitembutton.Enabled = false;
+            butitembutton.Enabled = true;
+            butSaveButton.TabStop = false;
+            ButSelectPurchaseOrder.TabStop = false;
+            butClose.TabStop = false;
+            txtcustomercode.TabStop = true;
+            butcustomercode.TabStop = true;
             //if (addToCartTable.Rows.Count > 0)
             //{
             //    string Amount = gridsalesdelivary.SelectedRows[0].Cells[4].Value.ToString();
@@ -1143,6 +1156,8 @@ namespace WindowsFormsApplication1
         
             }
         }
+
+       
 
 
 

@@ -68,3 +68,4 @@ D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Tex.resources
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Tex.resources
+E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache

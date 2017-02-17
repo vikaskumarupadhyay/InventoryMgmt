@@ -367,7 +367,6 @@ namespace WindowsFormsApplication1
             {
                 txtTexAmount.Text = dr[0].ToString();
             }
-         
         }
 
     }
