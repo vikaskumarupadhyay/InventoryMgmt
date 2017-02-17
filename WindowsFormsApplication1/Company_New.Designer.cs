@@ -89,7 +89,8 @@
             this.btnTex = new System.Windows.Forms.Button();
             this.txtTexAmount = new System.Windows.Forms.TextBox();
             this.combComp = new System.Windows.Forms.ComboBox();
-
+            this.label18 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -110,7 +111,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(30, 605);
+            this.btnSave.Location = new System.Drawing.Point(12, 583);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(96, 28);
             this.btnSave.TabIndex = 28;
@@ -131,7 +132,7 @@
             // 
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(143, 605);
+            this.btnClose.Location = new System.Drawing.Point(114, 583);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(102, 28);
             this.btnClose.TabIndex = 29;
@@ -535,12 +536,12 @@
             this.panel1.Controls.Add(this.ComDetails);
             this.panel1.Location = new System.Drawing.Point(0, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(803, 630);
+            this.panel1.Size = new System.Drawing.Size(803, 622);
             this.panel1.TabIndex = 32;
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(352, 589);
+            this.btnPrint.Location = new System.Drawing.Point(349, 577);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(75, 31);
             this.btnPrint.TabIndex = 10;
@@ -549,7 +550,7 @@
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(227, 589);
+            this.btnExportToExcel.Location = new System.Drawing.Point(224, 577);
             this.btnExportToExcel.Name = "btnExportToExcel";
             this.btnExportToExcel.Size = new System.Drawing.Size(119, 31);
             this.btnExportToExcel.TabIndex = 9;
@@ -558,7 +559,7 @@
             // 
             // butClose
             // 
-            this.butClose.Location = new System.Drawing.Point(433, 589);
+            this.butClose.Location = new System.Drawing.Point(430, 577);
             this.butClose.Name = "butClose";
             this.butClose.Size = new System.Drawing.Size(75, 31);
             this.butClose.TabIndex = 8;
@@ -568,7 +569,7 @@
             // 
             // butUpdate
             // 
-            this.butUpdate.Location = new System.Drawing.Point(132, 589);
+            this.butUpdate.Location = new System.Drawing.Point(129, 577);
             this.butUpdate.Name = "butUpdate";
             this.butUpdate.Size = new System.Drawing.Size(89, 31);
             this.butUpdate.TabIndex = 7;
@@ -578,7 +579,7 @@
             // 
             // butAddNewRecord
             // 
-            this.butAddNewRecord.Location = new System.Drawing.Point(21, 589);
+            this.butAddNewRecord.Location = new System.Drawing.Point(18, 577);
             this.butAddNewRecord.Name = "butAddNewRecord";
             this.butAddNewRecord.Size = new System.Drawing.Size(103, 31);
             this.butAddNewRecord.TabIndex = 6;
@@ -592,8 +593,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(18, 77);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(761, 471);
-
+            this.dataGridView1.Size = new System.Drawing.Size(761, 491);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
@@ -643,49 +643,71 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label25);
+            this.groupBox2.Controls.Add(this.label18);
             this.groupBox2.Controls.Add(this.btnTex);
             this.groupBox2.Controls.Add(this.txtTexAmount);
             this.groupBox2.Controls.Add(this.combComp);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 497);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(780, 54);
+            this.groupBox2.Size = new System.Drawing.Size(780, 80);
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tax Type";
             // 
             // btnTex
             // 
-            this.btnTex.Location = new System.Drawing.Point(693, 17);
+            this.btnTex.Location = new System.Drawing.Point(729, 41);
             this.btnTex.Name = "btnTex";
-            this.btnTex.Size = new System.Drawing.Size(29, 23);
+            this.btnTex.Size = new System.Drawing.Size(32, 24);
             this.btnTex.TabIndex = 37;
-            this.btnTex.Text = "..";
+            this.btnTex.Text = "...";
             this.btnTex.UseVisualStyleBackColor = true;
             this.btnTex.Click += new System.EventHandler(this.button1_Click);
             // 
             // txtTexAmount
             // 
-            this.txtTexAmount.Location = new System.Drawing.Point(587, 18);
+            this.txtTexAmount.Location = new System.Drawing.Point(391, 42);
+            this.txtTexAmount.Multiline = true;
             this.txtTexAmount.Name = "txtTexAmount";
-            this.txtTexAmount.Size = new System.Drawing.Size(100, 21);
+            this.txtTexAmount.Size = new System.Drawing.Size(335, 23);
             this.txtTexAmount.TabIndex = 36;
+            this.txtTexAmount.Text = "0";
+            this.txtTexAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // combComp
             // 
             this.combComp.FormattingEnabled = true;
-            this.combComp.Location = new System.Drawing.Point(450, 19);
+            this.combComp.Location = new System.Drawing.Point(46, 42);
             this.combComp.Name = "combComp";
-            this.combComp.Size = new System.Drawing.Size(121, 23);
+            this.combComp.Size = new System.Drawing.Size(339, 23);
             this.combComp.TabIndex = 35;
             this.combComp.SelectedIndexChanged += new System.EventHandler(this.combComp_SelectedIndexChanged);
             // 
-
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(43, 24);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(64, 15);
+            this.label18.TabIndex = 38;
+            this.label18.Text = "Tax Name";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(389, 24);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(107, 15);
+            this.label25.TabIndex = 39;
+            this.label25.Text = "Tax Amount (In %)";
+            // 
             // Company_New
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(803, 644);
+            this.ClientSize = new System.Drawing.Size(803, 625);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnList);
             this.Controls.Add(this.btnSave);
@@ -772,6 +794,8 @@
         private System.Windows.Forms.Button btnTex;
         private System.Windows.Forms.TextBox txtTexAmount;
         private System.Windows.Forms.ComboBox combComp;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label18;
 
 
     }
