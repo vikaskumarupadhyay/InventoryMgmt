@@ -612,15 +612,16 @@
             this.panel1.Controls.Add(this.butclose);
             this.panel1.Controls.Add(this.butupdate);
             this.panel1.Controls.Add(this.butaddrecord);
-            this.panel1.Location = new System.Drawing.Point(0, 5);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(803, 594);
+            this.panel1.Size = new System.Drawing.Size(803, 599);
             this.panel1.TabIndex = 11;
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(250, 557);
+            this.button2.Location = new System.Drawing.Point(332, 560);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(131, 28);
             this.button2.TabIndex = 11;
@@ -631,7 +632,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(387, 557);
+            this.button1.Location = new System.Drawing.Point(251, 560);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 28);
             this.button1.TabIndex = 10;
@@ -701,10 +702,11 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(23, 3);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(736, 454);
+            this.dataGridView1.Size = new System.Drawing.Size(776, 456);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
@@ -713,7 +715,7 @@
             // butclose
             // 
             this.butclose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.butclose.Location = new System.Drawing.Point(468, 557);
+            this.butclose.Location = new System.Drawing.Point(469, 560);
             this.butclose.Name = "butclose";
             this.butclose.Size = new System.Drawing.Size(90, 28);
             this.butclose.TabIndex = 6;
@@ -724,7 +726,7 @@
             // butupdate
             // 
             this.butupdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.butupdate.Location = new System.Drawing.Point(154, 557);
+            this.butupdate.Location = new System.Drawing.Point(12, 560);
             this.butupdate.Name = "butupdate";
             this.butupdate.Size = new System.Drawing.Size(90, 28);
             this.butupdate.TabIndex = 5;
@@ -735,7 +737,7 @@
             // butaddrecord
             // 
             this.butaddrecord.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.butaddrecord.Location = new System.Drawing.Point(11, 557);
+            this.butaddrecord.Location = new System.Drawing.Point(108, 560);
             this.butaddrecord.Name = "butaddrecord";
             this.butaddrecord.Size = new System.Drawing.Size(137, 28);
             this.butaddrecord.TabIndex = 4;

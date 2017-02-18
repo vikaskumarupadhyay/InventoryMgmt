@@ -91,10 +91,14 @@
             this.btnTex = new System.Windows.Forms.Button();
             this.txtTexAmount = new System.Windows.Forms.TextBox();
             this.combComp = new System.Windows.Forms.ComboBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnList
@@ -523,45 +527,46 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Controls.Add(this.btnPrint);
             this.panel1.Controls.Add(this.btnExportToExcel);
             this.panel1.Controls.Add(this.butClose);
             this.panel1.Controls.Add(this.butUpdate);
             this.panel1.Controls.Add(this.butAddNewRecord);
-            this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Controls.Add(this.txtSearch);
-            this.panel1.Controls.Add(this.label15);
-            this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.ComDetails);
-            this.panel1.Location = new System.Drawing.Point(0, 3);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(803, 504);
+            this.panel1.Size = new System.Drawing.Size(803, 625);
             this.panel1.TabIndex = 32;
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(349, 577);
+            this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.Location = new System.Drawing.Point(251, 586);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(75, 31);
+            this.btnPrint.Size = new System.Drawing.Size(75, 28);
             this.btnPrint.TabIndex = 10;
             this.btnPrint.Text = "Print";
             this.btnPrint.UseVisualStyleBackColor = true;
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(224, 577);
+            this.btnExportToExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportToExcel.Location = new System.Drawing.Point(332, 586);
             this.btnExportToExcel.Name = "btnExportToExcel";
-            this.btnExportToExcel.Size = new System.Drawing.Size(119, 31);
+            this.btnExportToExcel.Size = new System.Drawing.Size(131, 28);
             this.btnExportToExcel.TabIndex = 9;
             this.btnExportToExcel.Text = "Export To Excel";
             this.btnExportToExcel.UseVisualStyleBackColor = true;
             // 
             // butClose
             // 
-            this.butClose.Location = new System.Drawing.Point(430, 577);
+            this.butClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.butClose.Location = new System.Drawing.Point(469, 586);
             this.butClose.Name = "butClose";
-            this.butClose.Size = new System.Drawing.Size(75, 31);
+            this.butClose.Size = new System.Drawing.Size(90, 28);
             this.butClose.TabIndex = 8;
             this.butClose.Text = "Close";
             this.butClose.UseVisualStyleBackColor = true;
@@ -569,9 +574,10 @@
             // 
             // butUpdate
             // 
-            this.butUpdate.Location = new System.Drawing.Point(129, 577);
+            this.butUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.butUpdate.Location = new System.Drawing.Point(12, 586);
             this.butUpdate.Name = "butUpdate";
-            this.butUpdate.Size = new System.Drawing.Size(89, 31);
+            this.butUpdate.Size = new System.Drawing.Size(90, 28);
             this.butUpdate.TabIndex = 7;
             this.butUpdate.Text = "Update";
             this.butUpdate.UseVisualStyleBackColor = true;
@@ -579,21 +585,23 @@
             // 
             // butAddNewRecord
             // 
-            this.butAddNewRecord.Location = new System.Drawing.Point(18, 577);
+            this.butAddNewRecord.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.butAddNewRecord.Location = new System.Drawing.Point(108, 586);
             this.butAddNewRecord.Name = "butAddNewRecord";
-            this.butAddNewRecord.Size = new System.Drawing.Size(103, 31);
+            this.butAddNewRecord.Size = new System.Drawing.Size(137, 28);
             this.butAddNewRecord.TabIndex = 6;
-            this.butAddNewRecord.Text = "AddNewRecord";
+            this.butAddNewRecord.Text = "Add New Record";
             this.butAddNewRecord.UseVisualStyleBackColor = true;
             this.butAddNewRecord.Click += new System.EventHandler(this.butAddNewRecord_Click_1);
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 68);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(761, 491);
+            this.dataGridView1.Size = new System.Drawing.Size(773, 481);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
@@ -601,27 +609,28 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(311, 40);
+            this.txtSearch.Location = new System.Drawing.Point(386, 42);
+            this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(159, 20);
+            this.txtSearch.Size = new System.Drawing.Size(363, 24);
             this.txtSearch.TabIndex = 4;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged_1);
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(327, 24);
+            this.label15.Location = new System.Drawing.Point(383, 24);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(65, 13);
+            this.label15.Size = new System.Drawing.Size(72, 15);
             this.label15.TabIndex = 3;
             this.label15.Text = "Search Text";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(42, 24);
+            this.label14.Location = new System.Drawing.Point(22, 24);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(81, 13);
+            this.label14.Size = new System.Drawing.Size(94, 15);
             this.label14.TabIndex = 2;
             this.label14.Text = "Compnay Detail";
             // 
@@ -636,9 +645,9 @@
             // ComDetails
             // 
             this.ComDetails.FormattingEnabled = true;
-            this.ComDetails.Location = new System.Drawing.Point(42, 43);
+            this.ComDetails.Location = new System.Drawing.Point(25, 42);
             this.ComDetails.Name = "ComDetails";
-            this.ComDetails.Size = new System.Drawing.Size(165, 21);
+            this.ComDetails.Size = new System.Drawing.Size(355, 23);
             this.ComDetails.TabIndex = 0;
             // 
             // groupBox2
@@ -705,6 +714,29 @@
             this.combComp.TabIndex = 35;
             this.combComp.SelectedIndexChanged += new System.EventHandler(this.combComp_SelectedIndexChanged);
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.ComDetails);
+            this.groupBox3.Controls.Add(this.label14);
+            this.groupBox3.Controls.Add(this.txtSearch);
+            this.groupBox3.Controls.Add(this.label15);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(12, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(777, 73);
+            this.groupBox3.TabIndex = 11;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Company Details";
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.dataGridView1);
+            this.panel2.Location = new System.Drawing.Point(12, 92);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(777, 485);
+            this.panel2.TabIndex = 12;
+            // 
             // Company_New
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -729,6 +761,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -798,6 +833,8 @@
         private System.Windows.Forms.ComboBox combComp;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Panel panel2;
 
 
     }
