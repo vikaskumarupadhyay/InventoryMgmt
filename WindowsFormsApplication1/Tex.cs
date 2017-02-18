@@ -62,7 +62,7 @@ namespace WindowsFormsApplication1
                             if (item.Items.Contains("Add New Tax"))
                             {
                                 item.Items.Remove("Add New Tax");
-                                item.Items.Insert(0, "Select A Tax");
+                                item.Items.Insert(0, "Select  Tax");
                             }
                             TexList.Add(txtTexId.Text);
                             item.Items.Add(txtTexName.Text);
