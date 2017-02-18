@@ -12,7 +12,7 @@ namespace WindowsFormsApplication1
     public partial class Tex : Form
     {
         ComboBox item;
-        List<string> TexList;
+      List<string> TexList;
         DataColumn dc = new DataColumn();
         public Tex(ComboBox item, List<string> TexList)
         {
@@ -59,10 +59,10 @@ namespace WindowsFormsApplication1
                         int insertedRecord = dbMainClass.saveDetails(insertQuery);
                         if (insertedRecord > 0)
                         {
-                            if (item.Items.Contains("Add New Group"))
+                            if (item.Items.Contains("Add New Tax"))
                             {
-                                item.Items.Remove("Add New Group");
-                                item.Items.Insert(0, "Select A Group");
+                                item.Items.Remove("Add New Tax");
+                                item.Items.Insert(0, "Select A Tax");
                             }
                             TexList.Add(txtTexId.Text);
                             item.Items.Add(txtTexName.Text);
@@ -81,10 +81,7 @@ namespace WindowsFormsApplication1
 
         private void txtTexAmount_MouseEnter(object sender, EventArgs e)
         {
-            if (txtTexAmount.Text == "0")
-            {
-                txtTexAmount.Text = "";
-            }
+
         }
 
         private void txtTexAmount_Leave(object sender, EventArgs e)
@@ -92,6 +89,14 @@ namespace WindowsFormsApplication1
             if (txtTexAmount.Text == "")
             {
                 txtTexAmount.Text = "0";
+            }
+        }
+
+        private void txtTexAmount_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(txtTexAmount.Text=="0")
+            {
+                txtTexAmount.Text="";
             }
         }
     }
