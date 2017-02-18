@@ -349,6 +349,14 @@ namespace WindowsFormsApplication1
                 int t1 = t + 1;
                 txtSrNo.Text = t1.ToString();
             }
+            string selectName = "select TexAmount from CompnayTex where TexName='" + DB_Main.taxName + "'";
+            DataTable dt = d.getDetailByQuery(selectName);
+            textBox1.Text = DB_Main.taxName;
+            foreach (DataRow dr in dt.Rows)
+            {
+                //txtTexAmount.Text 
+                textBox2.Text = dr[0].ToString();
+            }
             //string select = "select VAT, CST,GST from CompnayDetails";
             //DataTable d1 = d.getDetailByQuery(select);
             //foreach (DataRow dr1 in d1.Rows)
@@ -796,6 +804,9 @@ namespace WindowsFormsApplication1
                 txtItemCode.Enabled= true;
                 txtItemCode.Focus();
                 txtItemCode.TabIndex = 1;
+                butSaveButton.TabStop = true;
+                ButSelectPurchaseOrder.TabStop = true;
+                butClose.TabStop = true;
             }
              if (e.KeyChar == (char)Keys.Enter)
              {

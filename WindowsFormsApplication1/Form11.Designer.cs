@@ -111,13 +111,12 @@
             // 
             this.gridsalesdelivary.AllowUserToAddRows = false;
             this.gridsalesdelivary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridsalesdelivary.Location = new System.Drawing.Point(3, -2);
+            this.gridsalesdelivary.Location = new System.Drawing.Point(-5, -46);
             this.gridsalesdelivary.Name = "gridsalesdelivary";
             this.gridsalesdelivary.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridsalesdelivary.Size = new System.Drawing.Size(826, 229);
+            this.gridsalesdelivary.Size = new System.Drawing.Size(826, 284);
             this.gridsalesdelivary.StandardTab = true;
             this.gridsalesdelivary.TabIndex = 0;
-           // this.gridsalesdelivary.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesdelivary_CellContentClick);
             this.gridsalesdelivary.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesdelivary_CellEndEdit);
             this.gridsalesdelivary.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridsalesdelivary_KeyPress);
             // 
@@ -670,9 +669,9 @@
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox1.Location = new System.Drawing.Point(149, 566);
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(50, 20);
             this.textBox1.TabIndex = 50;
-            this.textBox1.Text = "VAT";
             // 
             // textBox2
             // 
@@ -702,9 +701,9 @@
             this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.lblsearchvalue);
             this.panel2.Controls.Add(this.dataGridView2);
-            this.panel2.Location = new System.Drawing.Point(0, 389);
+            this.panel2.Location = new System.Drawing.Point(0, -5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(858, 198);
+            this.panel2.Size = new System.Drawing.Size(858, 592);
             this.panel2.TabIndex = 53;
             // 
             // button1

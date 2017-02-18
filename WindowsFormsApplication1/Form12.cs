@@ -63,14 +63,17 @@ namespace WindowsFormsApplication1
         private void tab5()
         {
             txtquantity.Focus();
+            txtitemcode.TabStop = true;
+            butitembutton.TabStop = true;
+            butAdditem.TabStop = true;
+            butRemoveItem.TabStop = true;
+            butcustbutton.TabStop = false;
             gridsalesinvoice.TabStop = false;
             butclose.TabStop = false;
             textBox1.TabStop = false;
             textBox2.TabStop = false;
             textBox3.TabStop = false;
             butselectpurchasedelivary.TabStop = false;
-            txtitemcode.TabStop = false;
-            butitembutton.TabStop = false;
             button5.TabStop = false;
             txtCustcode.TabStop = false;
             button1.TabStop = false;
@@ -366,13 +369,21 @@ namespace WindowsFormsApplication1
                  int t1 = t + 1;
                  txtSrNo.Text = t1.ToString();
              }
-             string select = "select VAT, CST,GST from CompnayDetails";
-             DataTable d1 = d.getDetailByQuery(select);
-             foreach (DataRow dr1 in d1.Rows)
+             //string select = "select VAT, CST,GST from CompnayDetails";
+             //DataTable d1 = d.getDetailByQuery(select);
+             //foreach (DataRow dr1 in d1.Rows)
+             //{
+             //    textBox2.Text = dr1[0].ToString();
+             //    txtdiscount.Text = dr1[1].ToString();
+             //    textBox20.Text = dr1[2].ToString();
+             //}
+             string selectName = "select TexAmount from CompnayTex where TexName='" + DB_Main.taxName + "'";
+             DataTable dt = d.getDetailByQuery(selectName);
+             textBox1.Text = DB_Main.taxName;
+             foreach (DataRow dr in dt.Rows)
              {
-                 textBox2.Text = dr1[0].ToString();
-                 txtdiscount.Text = dr1[1].ToString();
-                 textBox20.Text = dr1[2].ToString();
+                 //txtTexAmount.Text 
+                 textBox2.Text = dr[0].ToString();
              }
          }
 
