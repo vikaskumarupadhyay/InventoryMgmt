@@ -78,8 +78,8 @@
             this.txtTexAmount.TabIndex = 6;
             this.txtTexAmount.Text = "0";
             this.txtTexAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTexAmount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtTexAmount_MouseClick);
             this.txtTexAmount.Leave += new System.EventHandler(this.txtTexAmount_Leave);
-            this.txtTexAmount.MouseEnter += new System.EventHandler(this.txtTexAmount_MouseEnter);
             // 
             // txtTexName
             // 

@@ -11,7 +11,7 @@ namespace WindowsFormsApplication1
 {
     public partial class Company_New : Form
     {
-        DB_Main d = new DB_Main();
+        DB_Main dbMainClass = new DB_Main();
         public int updatecounter = 0;
         public List<string> TexList = new List<string>();
         public DataTable dt = new DataTable();
@@ -23,31 +23,39 @@ namespace WindowsFormsApplication1
 
         private void Compnay_Load(object sender, EventArgs e)
         {
-            
-            //txtCompnayCode.Focus();
-           // btnList.Enabled = false;
-            
-            // txtCompnayCode.Text = "C";
-            //    string id1 = d.getUniqueID("CompnayDetails");
-            //    txtCompnayCode.Text = id1;
-            dtpdate.TabStop = false;
-            string selectQuery1 = "select cd.OnerName, cd.Name ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email,cd.WebAddress,cd.Phone,cd.Mobile,cd.Fax,cd.Description,cd.PANNO,cd.VATNO,cd.CSTNO,cd.ServiceTaxAmmount,cd.ExciseTaxAmmount,cd.GSTTaxAmmount,cd.Isactive,cd.RagistrationDate,ct.TexName,ct.TexAmount from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId";
-            DataTable dt1 = d.getDetailByQuery(selectQuery1);
-            ComDetails.DataSource = dt1;
-            string val = "";
-            List<string> ls = new List<string>();
-            foreach (DataColumn dr in dt1.Columns)
-            {
-                val = dr.ColumnName;
-                ls.Add(val);
 
+            string selectqurry = "select cd.CompnayId as[Company Id], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.Description,cd.PANNO as[PAN No],cd.VATNO as[VAT No],cd.CSTNO as[CST No],cd.ServiceTaxAmmount as[Service Tax Ammount],cd.ExciseTaxAmmount as[Excise Tax Ammount],cd.GSTTaxAmmount as[GST Tax Ammount],cd.Isactive,cd.RagistrationDate as[Ragistrtion Date],ct.TexName as[Tax Name],ct.TexAmount as[Tax Ammount] from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId";
+            string selectqurryForActualColumnName = "select top 1 cd.CompnayId, cd.OnerName, cd.Name ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email,cd.WebAddress,cd.Phone,cd.Mobile,cd.Fax,cd.Description,cd.PANNO,cd.VATNO,cd.CSTNO,cd.ServiceTaxAmmount,cd.ExciseTaxAmmount,cd.GSTTaxAmmount,cd.Isactive,cd.RagistrationDate,ct.TexName,ct.TexAmount from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId";
+            DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+            DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
+            DataTable customDataTable = new DataTable();
+            customDataTable.Columns.Add("ActualTableColumnName");
+            customDataTable.Columns.Add("AliasTableColumnName");
+            List<string> ls = new List<string>();
+            DataColumnCollection d = dt.Columns;
+            DataColumnCollection dataColumnForName = dtOnlyColumnName.Columns;
+            for (int a = 1; a <d.Count; a++)
+            {
+                //DataColumn dc = new DataColumn();
+                string b = d[a].ToString();
+                string actualColumnName = dataColumnForName[a].ToString();
+                DataRow dr = customDataTable.NewRow();
+                dr["ActualTableColumnName"] = actualColumnName;
+                dr["AliasTableColumnName"] = b;
+                customDataTable.Rows.Add(dr);
+                //  ls.Add(b);
             }
-            ComDetails.DataSource = ls;
+
+            ComDetails.DataSource = customDataTable;
+            ComDetails.ValueMember = "ActualTableColumnName";
+            ComDetails.DisplayMember = "AliasTableColumnName";
+            dataGridView1.DataSource = dt;
+
             panel1.Visible = false;
             string selectqury = "select CompnayId from compnaydetails";
-            DataTable dt = d.getDetailByQuery(selectqury);
+            DataTable dt1 = dbMainClass.getDetailByQuery(selectqury);
             string id = "";
-            foreach (DataRow dr in dt.Rows)
+            foreach (DataRow dr in dt1.Rows)
             {
                 id = dr[0].ToString();
             }
@@ -67,7 +75,7 @@ namespace WindowsFormsApplication1
             }
           txtwonername.Focus();
           string selectCommandGroup = "select TexId,TexName,TexAmount,TexDescription from dbo.CompnayTex";
-          setItemGroupDetail(selectCommandGroup, combComp, "TEX");
+          setItemGroupDetail(selectCommandGroup, combComp, "TAX");
             }
         private void setItemGroupDetail(string Query, ComboBox cmb, string Message)
         {
@@ -75,13 +83,17 @@ namespace WindowsFormsApplication1
             cmb.Items.Clear();
             cmb.Items.Add("Select A " + Message);
 
-            dt = d.getDataBoundToComboBox(Query);
+            dt = dbMainClass.getDataBoundToComboBox(Query);
             if (dt != null && dt.Rows.Count > 0)
             {
+             //   cmb.DataSource = dt;
+              //  cmb.ValueMember = "";
+               // cmb.DisplayMember = "";
+                
                 foreach (DataRow dr in dt.Rows)
                 {
                     cmb.Items.Add(dr[1].ToString().ToUpper());
-                    if (Message.ToUpper() == "TEX")
+                    if (Message.ToUpper() == "TAX")
                     {
                         TexList.Add(dr[0].ToString());
                     }
@@ -101,7 +113,7 @@ namespace WindowsFormsApplication1
         }
         private void makeblank()
         {
-            txtCompnayCode.Text = "C";
+            //txtCompnayCode.Text = "C";
             txtwonername.Text = "";
             txtCompnayName.Text = "";
             txtCompnayAddress.Text = "";
@@ -212,13 +224,13 @@ namespace WindowsFormsApplication1
         {
             string taxId = "";
             if (combComp.SelectedIndex != 0)
-                {
-                    taxId = TexList[combComp.SelectedIndex - 1];
-            }
-            if (updatecounter == 0)
             {
+              taxId =TexList[combComp.SelectedIndex - 1];
+            }
+                if (updatecounter == 0)
+                {
                     string insertquery = "insert into CompnayDetails Values ('" + txtCompnayCode.Text + "','" + txtwonername.Text + "','" + txtCompnayName.Text + "','" + txtCompnayAddress.Text + "','" + txtCity.Text + "','" + txtState.Text + "','" + txtZip.Text + "','" + txtCountry.Text + "','" + txtEmailAddress.Text + "','" + txtWebSite.Text + "','" + txtPhone.Text + "','" + txtMobile.Text + "','" + txtFax.Text + "','" + txtPanNo.Text + "','" + txtVatNo.Text + "','" + txtCstNo.Text + "','" + txtSarvice.Text + "','" + txtExcise.Text + "','" + txtGst.Text + "','" + txtDescription.Text + "','" + taxId + "','" + true + "','" + dtpdate.Value.ToString() + "')";
-                    int insertrow = d.saveDetails(insertquery);
+                    int insertrow = dbMainClass.saveDetails(insertquery);
                     if (insertrow > 0)
                     {
                         MessageBox.Show("Details Save successfully");
@@ -227,27 +239,47 @@ namespace WindowsFormsApplication1
                     {
                         MessageBox.Show("Details save not successfully");
                     }
-
+                    string id = txtCompnayCode.Text;
+                    string id1 = id.Substring(0, 1);
+                    string id2 = id.Substring(1);
+                    int s = Convert.ToInt32(id2);
+                    int s1 = s + 1;
+                    string id3 = id1 + s1.ToString();
+                    txtCompnayCode.Text = id3;
                 }
             if (updatecounter == 1)
             {
-                string updatecommand = "update CompnayDetails set OnerName='" + txtwonername.Text + "', Name='" + txtCompnayName.Text + "',Address='" + txtCompnayAddress.Text + "',City='" + txtCity.Text + "',State='" + txtState.Text + "',Zip='" + txtZip.Text + "',Country='" + txtCountry.Text + "',Email='" + txtEmailAddress.Text + "',WebAddress='" + txtWebSite.Text + "',Phone='" + txtPhone.Text + "',Mobile='" + txtMobile.Text + "',Fax='" + txtFax.Text + "',PANNO='" + txtPanNo.Text + "',VATNO='" + txtVatNo.Text + "',CSTNO='" + txtCstNo.Text + "',ServiceTaxAmmount='" + txtSarvice.Text + "',ExciseTaxAmmount='" + txtExcise.Text + "',GSTTaxAmmount='" + txtGst.Text + "',Description='" + txtDescription.Text + "',RagistrationDate='" + dtpdate.Value.ToString() + "'";
-                int updatequrry = d.saveDetails(updatecommand);
-                if (updatequrry > 0)
-                {
-                    string updateTax = "update CompnayTex set TexAmount='" + txtTexAmount.Text + "' where TexId='" + taxId + "'";
-                    int updatequrry1 = d.saveDetails(updateTax);
-                    if (updatequrry1 > 0)
+                    string updatecommand = "update CompnayDetails set OnerName='" + txtwonername.Text + "', Name='" + txtCompnayName.Text + "',Address='" + txtCompnayAddress.Text + "',City='" + txtCity.Text + "',State='" + txtState.Text + "',Zip='" + txtZip.Text + "',Country='" + txtCountry.Text + "',Email='" + txtEmailAddress.Text + "',WebAddress='" + txtWebSite.Text + "',Phone='" + txtPhone.Text + "',Mobile='" + txtMobile.Text + "',Fax='" + txtFax.Text + "',PANNO='" + txtPanNo.Text + "',VATNO='" + txtVatNo.Text + "',CSTNO='" + txtCstNo.Text + "',ServiceTaxAmmount='" + txtSarvice.Text + "',ExciseTaxAmmount='" + txtExcise.Text + "',GSTTaxAmmount='" + txtGst.Text + "',Description='" + txtDescription.Text + "',RagistrationDate='" + dtpdate.Value.ToString() + "'";
+                    int updatequrry = dbMainClass.saveDetails(updatecommand);
+                    if (updatequrry > 0)
                     {
-                        MessageBox.Show("Details Save successfully");
+                        string updateTax = "update CompnayTex set TexAmount='" + txtTexAmount.Text + "' where TexId='" + taxId + "'";
+                        int updatequrry1 = dbMainClass.saveDetails(updateTax);
+                        if (updatequrry1 > 0)
+                        {
+                            MessageBox.Show("Details Save successfully");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Details save not successfully");
+                        }
                     }
-                    else
+                    string selectqury = "select max (CompnayId) from compnaydetails";
+                    DataTable dt1 = dbMainClass.getDetailByQuery(selectqury);
+                    string id = "";
+                    foreach (DataRow dr in dt1.Rows)
                     {
-                        MessageBox.Show("Details save not successfully");
+                        id = dr[0].ToString();
                     }
+                        string id1 = id.Substring(0, 1);
+                        string id2 = id.Substring(1);
+                        int s = Convert.ToInt32(id2);
+                        int s1 = s + 1;
+                        string id3 = id1 + s1.ToString();
+                        txtCompnayCode.Text = id3;
                 }
-            }
-
+            
+            btnList.Enabled =true;
             makeblank();
         }
 
@@ -259,8 +291,8 @@ namespace WindowsFormsApplication1
             ComDetails.TabIndex = 0;
 
             panel1.Visible = true;
-            string selectQuery1 = "select cd.CompnayId, cd.OnerName, cd.Name ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email,cd.WebAddress,cd.Phone,cd.Mobile,cd.Fax,cd.Description,cd.PANNO,cd.VATNO,cd.CSTNO,cd.ServiceTaxAmmount,cd.ExciseTaxAmmount,cd.GSTTaxAmmount,cd.Isactive,cd.RagistrationDate,ct.TexName,ct.TexAmount from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId";
-            DataTable dt = d.getDetailByQuery(selectQuery1);
+            string selectQuery1 = "select cd.CompnayId as[Company Id], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.Description,cd.PANNO as[PAN No],cd.VATNO as[VAT No],cd.CSTNO as[CST No],cd.ServiceTaxAmmount as[Service Tax Ammount],cd.ExciseTaxAmmount as[Excise Tax Ammount],cd.GSTTaxAmmount as[GST Tax Ammount],cd.Isactive,cd.RagistrationDate as[Ragistrtion Date],ct.TexName as[Tax Name],ct.TexAmount as[Tax Ammount] from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId";
+            DataTable dt = dbMainClass.getDetailByQuery(selectQuery1);
             dataGridView1.DataSource = dt;
             tabindex1();
             // panel1.Visible = false;
@@ -306,9 +338,9 @@ namespace WindowsFormsApplication1
              {
                  if (dataGridView1.SelectedRows != null && dataGridView1.SelectedRows.Count > 0)
                  {
-                     if (dataGridView1.RowCount == currentIndex + 1)
-                         currentIndex = currentIndex + 1;
-                     DataGridViewCellCollection cellcollection = dataGridView1.Rows[0].Cells;
+                     //if (dataGridView1.RowCount == currentIndex + 1)
+                     //    currentIndex = currentIndex + 1;
+                     DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex].Cells;
                      setdetails(cellcollection);
                  }
              }
@@ -317,7 +349,8 @@ namespace WindowsFormsApplication1
         private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
             updatecounter = 1;
-            DataGridViewCellCollection cellcollection = dataGridView1.Rows[0].Cells;
+            int currentIndex = dataGridView1.CurrentRow.Index;
+            DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex].Cells;
             setdetails(cellcollection);
             panel1.Visible = false;
             txtwonername.Focus();
@@ -327,30 +360,36 @@ namespace WindowsFormsApplication1
         private void butUpdate_Click_1(object sender, EventArgs e)
         {
             updatecounter = 1;
-            DataGridViewCellCollection cellcollection = dataGridView1.Rows[0].Cells;
+            int currentIndex = dataGridView1.CurrentRow.Index;
+            DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex].Cells;
             setdetails(cellcollection);
             panel1.Visible = false;
             txtwonername.Focus();
+            btnList.Enabled = false;
             tabindex2();
         }
 
         private void butAddNewRecord_Click_1(object sender, EventArgs e)
         {
             panel1.Visible = false;
+            txtwonername.Focus();
+            tabindex2();
         }
 
         private void txtSearch_TextChanged_1(object sender, EventArgs e)
         {
             string s = ComDetails.SelectedValue.ToString();
-            string selectQuery1 = "selectselect cd.CompnayId,cd.OnerName, cd.Name ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email,cd.WebAddress,cd.Phone,cd.Mobile,cd.Fax,cd.Description,cd.PANNO,cd.VATNO,cd.CSTNO,cd.ServiceTaxAmmount,cd.ExciseTaxAmmount,cd.GSTTaxAmmount,cd.Isactive,cd.RagistrationDate,ct.TexName,ct.TexAmount from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId where " + s + " like '" + txtSearch.Text + "%'";
+            string selectQuery1 = "select cd.CompnayId as[Company Id], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.Description,cd.PANNO as[PAN No],cd.VATNO as[VAT No],cd.CSTNO as[CST No],cd.ServiceTaxAmmount as[Service Tax Ammount],cd.ExciseTaxAmmount as[Excise Tax Ammount],cd.GSTTaxAmmount as[GST Tax Ammount],cd.Isactive,cd.RagistrationDate as[Ragistrtion Date],ct.TexName as[Tax Name],ct.TexAmount as[Tax Ammount] from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId where " + s + " like '" + txtSearch.Text + "%'";
 
-            DataTable dt = d.getDetailByQuery(selectQuery1);
+            DataTable dt = dbMainClass.getDetailByQuery(selectQuery1);
             dataGridView1.DataSource = dt;
         }
 
         private void butClose_Click(object sender, EventArgs e)
         {
             panel1.Visible = false;
+            txtwonername.Focus();
+            tabindex2();
         }
 
         private void dataGridView1_KeyPress_1(object sender, KeyPressEventArgs e)
@@ -380,7 +419,7 @@ namespace WindowsFormsApplication1
         {
             DB_Main.taxName = combComp.SelectedItem.ToString();
             string selectName = "select TexAmount from CompnayTex where TexName='" + DB_Main.taxName + "'";
-            DataTable dt = d.getDetailByQuery(selectName);
+            DataTable dt = dbMainClass.getDetailByQuery(selectName);
             foreach (DataRow dr in dt.Rows)
             {
                 txtTexAmount.Text = dr[0].ToString();
