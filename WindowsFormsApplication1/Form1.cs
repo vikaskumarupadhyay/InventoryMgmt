@@ -28,8 +28,9 @@ namespace WindowsFormsApplication1
             {
                  F2 = new frmVendorDetails(0);
                  F2.MdiParent = this;
-                F2.FormClosed += new FormClosedEventHandler(F2_FormClosed);
-                F2.Show();
+                 F2.FormClosed += new FormClosedEventHandler(F2_FormClosed);
+                 F2.Show();
+                 F2.WindowState = FormWindowState.Maximized;
             }
             else
             {
@@ -57,6 +58,8 @@ namespace WindowsFormsApplication1
                 F3.MdiParent = this;
                 F3.FormClosed += new FormClosedEventHandler(F3_FormClosed);
                 F3.Show();
+                F3.WindowState = FormWindowState.Maximized;
+
             }
             else
             {
@@ -78,6 +81,7 @@ namespace WindowsFormsApplication1
                 F4.MdiParent = this;
                 F4.FormClosed += new FormClosedEventHandler(F4_FormClosed);
                 F4.Show();
+                F4.WindowState = FormWindowState.Maximized;
             }
             else
             {
@@ -354,6 +358,7 @@ namespace WindowsFormsApplication1
                 F4.Show();
                 F4.MdiParent = this;
                 F4.FormClosed += new FormClosedEventHandler(F4_FormClosed);
+
             }
             else
             {
@@ -411,5 +416,11 @@ namespace WindowsFormsApplication1
         {
 
         }
+
+        private void companyListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+        }
     }
-}
+

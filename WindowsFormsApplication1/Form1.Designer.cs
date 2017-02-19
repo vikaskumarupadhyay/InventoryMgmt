@@ -57,6 +57,7 @@
             this.customerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.itemToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.companyListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -219,6 +220,7 @@
             this.toolStripSeparator3,
             this.reportsToolStripMenuItem,
             this.toolStripSeparator2,
+            this.companyListToolStripMenuItem,
             this.vendorListToolStripMenuItem,
             this.customerToolStripMenuItem1,
             this.itemToolStripMenuItem1});
@@ -283,6 +285,13 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
+            // companyListToolStripMenuItem
+            // 
+            this.companyListToolStripMenuItem.Name = "companyListToolStripMenuItem";
+            this.companyListToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.companyListToolStripMenuItem.Text = "Company List";
+            this.companyListToolStripMenuItem.Click += new System.EventHandler(this.companyListToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -335,6 +344,7 @@
 
         private System.Windows.Forms.ToolStripMenuItem companyToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem companyListToolStripMenuItem;
 
     }
 }
