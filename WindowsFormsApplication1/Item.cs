@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using ExcelLibrary.SpreadSheet;
 namespace WindowsFormsApplication1
+
 {
     public partial class Item : Form
     {
@@ -277,6 +279,8 @@ namespace WindowsFormsApplication1
 
         private void btnItemList_Click(object sender, EventArgs e)
         {
+            txtSearch.Text = "";
+            searchCalmn.SelectedIndex = 0;
             panel1.Visible = true;
             //SqlConnection con = dbMainClass.openConnection();
             string selectqurry = "select  itm.ItemId as[Item Id],itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
@@ -302,8 +306,8 @@ namespace WindowsFormsApplication1
 
         private void buttUpdate_Click(object sender, EventArgs e)
         {
-
-            DataGridViewCellCollection cellCollection = dataGridView1.SelectedRows[0].Cells;
+            int currentIndex = dataGridView1.CurrentRow.Index;
+            DataGridViewCellCollection cellCollection = dataGridView1.Rows[currentIndex].Cells;
             setDetails(cellCollection);
             panel1.Visible = false;
             updatecounter = 1;
@@ -337,9 +341,9 @@ namespace WindowsFormsApplication1
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtSearch.Text = "";
-            searchCalmn.SelectedIndex = 0;
-            DataGridViewCellCollection cellCollection = dataGridView1.Rows[e.RowIndex].Cells;
+          
+            int currentIndex = dataGridView1.CurrentRow.Index;
+            DataGridViewCellCollection cellCollection = dataGridView1.Rows[currentIndex].Cells;
                 setDetails(cellCollection);
             panel1.Visible = false;
             updatecounter = 1;
@@ -513,7 +517,7 @@ namespace WindowsFormsApplication1
              {
                  txtSearch.Text = "";
                  searchCalmn.SelectedIndex = 0;
-                 DataGridViewCellCollection cellCollection = dataGridView1.Rows[currentIndex-1].Cells;
+                 DataGridViewCellCollection cellCollection = dataGridView1.Rows[currentIndex].Cells;
                  setDetails(cellCollection);
                  panel1.Visible = false;
                  updatecounter = 1;
@@ -728,6 +732,51 @@ namespace WindowsFormsApplication1
                     e.Handled = true;
                 }
             }
+        }
+        int num = 0;
+        private void button2_Click(object sender, EventArgs e)
+        {
+            num++;
+            string pathName = "ExcelFilePath";
+            string FolderName = pathName + num;
+            //DataGridViewColumnCollection column = dataGridView1.Columns;
+            int cout = 0;
+            int rowCoumt = 0;
+            // column1 = dc.Name.ToString();
+            string file = System.Configuration.ConfigurationManager.AppSettings["ExcelFilePath"] + FolderName + "newdoc.xls";
+            Workbook workbook = new Workbook();
+            Worksheet worksheet = new Worksheet("First Sheet");
+
+            foreach (DataGridViewColumn dc in dataGridView1.Columns)
+            {
+
+                worksheet.Cells[rowCoumt, cout] = new Cell(dc.Name);
+                cout++;
+
+            }
+
+            //foreach (DataGridViewRow row in dataGridView1.Rows) { }
+            DataGridViewRowCollection rowcollection = dataGridView1.Rows;
+
+            int rowindex = 1;
+            //int countindex = 0;
+            for (int a = 0; a < rowcollection.Count; a++)
+            {
+                DataGridViewRow currentrow = rowcollection[a];
+                DataGridViewCellCollection cellcollecton = currentrow.Cells;
+                int countrow = 0;
+
+                for (int b = 0; b < currentrow.Cells.Count; b++)
+                {
+                    worksheet.Cells[rowindex, countrow] = new Cell(currentrow.Cells[b].Value.ToString());
+                    // countindex++;
+                    countrow++;
+                }
+                // name = cellcollecton[0].Value.ToString() + " , " + cellcollecton[1].Value.ToString() + " , " + cellcollecton[2].Value.ToString() + " , " + cellcollecton[3].Value.ToString() + " , " + cellcollecton[4].Value.ToString() + " , " + cellcollecton[5].Value.ToString() + "  , " + cellcollecton[6].Value.ToString() + " , " + cellcollecton[7].Value.ToString() + " , " + cellcollecton[8].Value.ToString() + " , " + cellcollecton[9].Value.ToString() + " , " + cellcollecton[10].Value.ToString() + " , " + cellcollecton[11].Value.ToString() + " , " + cellcollecton[12].Value.ToString() + ", " + cellcollecton[13].Value.ToString() + " , " + cellcollecton[14].Value.ToString() + " , " + cellcollecton[15].Value.ToString();
+                rowindex++;
+            }
+            workbook.Worksheets.Add(worksheet);
+            workbook.Save(file);
         }
     }
 
