@@ -111,10 +111,11 @@
             // 
             this.gridsalesdelivary.AllowUserToAddRows = false;
             this.gridsalesdelivary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridsalesdelivary.Location = new System.Drawing.Point(-5, -46);
+            this.gridsalesdelivary.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridsalesdelivary.Location = new System.Drawing.Point(0, 0);
             this.gridsalesdelivary.Name = "gridsalesdelivary";
             this.gridsalesdelivary.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridsalesdelivary.Size = new System.Drawing.Size(826, 284);
+            this.gridsalesdelivary.Size = new System.Drawing.Size(824, 269);
             this.gridsalesdelivary.StandardTab = true;
             this.gridsalesdelivary.TabIndex = 0;
             this.gridsalesdelivary.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesdelivary_CellEndEdit);
