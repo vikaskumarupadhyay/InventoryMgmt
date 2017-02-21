@@ -29,8 +29,10 @@ namespace WindowsFormsApplication1
                  F2 = new frmVendorDetails(0);
                  F2.MdiParent = this;
                  F2.FormClosed += new FormClosedEventHandler(F2_FormClosed);
+                 F2.ControlBox = false;
                  F2.Show();
                  F2.WindowState = FormWindowState.Maximized;
+                 
             }
             else
             {
@@ -57,6 +59,7 @@ namespace WindowsFormsApplication1
                 F3 = new Customer(0);
                 F3.MdiParent = this;
                 F3.FormClosed += new FormClosedEventHandler(F3_FormClosed);
+                F3.ControlBox = false;
                 F3.Show();
                 F3.WindowState = FormWindowState.Maximized;
 
@@ -80,6 +83,7 @@ namespace WindowsFormsApplication1
                 F4 = new Item(0);
                 F4.MdiParent = this;
                 F4.FormClosed += new FormClosedEventHandler(F4_FormClosed);
+                F4.ControlBox = false;
                 F4.Show();
                 F4.WindowState = FormWindowState.Maximized;
             }
@@ -296,9 +300,12 @@ namespace WindowsFormsApplication1
             if (F3 == null)
             {
                 F3 = new Customer(1);
-                F3.Show();
+                
                 F3.MdiParent = this;
                 F3.FormClosed += new FormClosedEventHandler(F3_FormClosed);
+                F3.ControlBox = false;
+                F3.Show();
+                F3.WindowState = FormWindowState.Maximized;
             }
             else
             {
@@ -337,9 +344,12 @@ namespace WindowsFormsApplication1
             if (F2 == null)
             {
                 F2 = new frmVendorDetails(1);
-                F2.Show();
+                
                 F2.MdiParent = this;
                 F2.FormClosed += new FormClosedEventHandler(F2_FormClosed);
+                F2.ControlBox = false;
+                F2.Show();
+                F2.WindowState = FormWindowState.Maximized;
             }
             else
             {
@@ -355,9 +365,12 @@ namespace WindowsFormsApplication1
             if (F4 == null)
             {
                 F4 = new Item(1);
-                F4.Show();
+                
                 F4.MdiParent = this;
                 F4.FormClosed += new FormClosedEventHandler(F4_FormClosed);
+                F4.ControlBox = false;
+                F4.Show();
+                F4.WindowState = FormWindowState.Maximized;
 
             }
             else
@@ -380,9 +393,11 @@ namespace WindowsFormsApplication1
                 //this.Close();
 
                 f1 = new Company_New();
-                f1.Show();
                 f1.MdiParent = this;
                 f1.FormClosed += new FormClosedEventHandler(f1_FormClosed);
+                f1.ControlBox = false;
+                f1.Show();
+                f1.WindowState = FormWindowState.Maximized;
             }
             else
             {
