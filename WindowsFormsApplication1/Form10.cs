@@ -53,7 +53,6 @@ namespace WindowsFormsApplication1
         private void tab2()
         {
             txtQuantity.Focus();
-            txtQuantity.ReadOnly = false;
             txtcustomercode.TabStop = false;
             button1.TabStop = true;
             button2.TabStop = true;
@@ -727,6 +726,7 @@ namespace WindowsFormsApplication1
                 txtitemcode.Enabled = true;
                 txtitemcode.Focus();
                 txtitemcode.TabIndex = 1;
+                button2.Enabled = false;
              
             }
             if (e.KeyChar == (char)Keys.Enter)
@@ -755,7 +755,7 @@ namespace WindowsFormsApplication1
                     if (gridsalesorder.Rows.Count == 0)
                     {
                         txtitemcode.Enabled = true;
-                       
+                        button2.Enabled = true;
                         txtitemcode.Focus();
                     }
                     else
