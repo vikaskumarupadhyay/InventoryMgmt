@@ -547,7 +547,7 @@
             this.label6.Size = new System.Drawing.Size(35, 15);
             this.label6.TabIndex = 5;
             this.label6.Text = "State";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+           // this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label5
             // 
