@@ -67,6 +67,24 @@ namespace WindowsFormsApplication1
             textBox2.TabStop = false;
             textBox3.TabStop = false;
         }
+        private void tab7()
+        {
+            txtQuantity.Focus();
+            txtcustomercode.TabStop = true;
+            butcustomercode.TabStop = true;
+            txtItemCode.TabStop = true;
+            butitembutton.TabStop = true;
+            txtQuantity.TabStop = false;
+            butAddItem.TabStop = false;
+            butRemoveItem.TabStop = true;
+            butSaveButton.TabStop = false;
+            butClose.TabStop = false;
+            gridsalesdelivary.TabStop = false;
+            ButSelectPurchaseOrder.TabStop = false;
+            textBox1.TabStop = false;
+            textBox2.TabStop = false;
+            textBox3.TabStop = false;
+        }
         //private void tabindex()
         //{
         //    butcustomercode.TabStop = true;
@@ -760,8 +778,6 @@ namespace WindowsFormsApplication1
                 }
             }
         }
-
-
         private void txtItemCode_TextChanged(object sender, EventArgs e)
         {
             //tab2();
@@ -789,10 +805,6 @@ namespace WindowsFormsApplication1
               
             }
         }
-
-      
-
-      
 
         private void gridsalesdelivary_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -864,7 +876,7 @@ namespace WindowsFormsApplication1
             }
             if (e.KeyChar == (char)Keys.Enter)
             {
-                tab2();
+                tab7();
             }
             if (e.KeyChar == (char)Keys.Escape)
             {

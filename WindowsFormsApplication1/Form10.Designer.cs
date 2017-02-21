@@ -305,6 +305,7 @@
             // 
             this.txtQuantity.Location = new System.Drawing.Point(467, 35);
             this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.ReadOnly = true;
             this.txtQuantity.Size = new System.Drawing.Size(59, 21);
             this.txtQuantity.TabIndex = 8;
             this.txtQuantity.TabStop = false;
@@ -669,9 +670,9 @@
             this.panel2.Controls.Add(this.comsearchsalesvalue);
             this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.search);
-            this.panel2.Location = new System.Drawing.Point(0, 4);
+            this.panel2.Location = new System.Drawing.Point(0, 317);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(858, 553);
+            this.panel2.Size = new System.Drawing.Size(858, 240);
             this.panel2.TabIndex = 60;
             // 
             // butback

@@ -53,6 +53,7 @@ namespace WindowsFormsApplication1
         private void tab2()
         {
             txtQuantity.Focus();
+            txtQuantity.ReadOnly = false;
             txtcustomercode.TabStop = false;
             button1.TabStop = true;
             button2.TabStop = true;

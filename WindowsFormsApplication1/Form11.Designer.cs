@@ -701,7 +701,6 @@
             this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.lblsearchvalue);
             this.panel2.Controls.Add(this.dataGridView2);
-
             this.panel2.Location = new System.Drawing.Point(0, 4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(858, 583);
@@ -760,7 +759,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(816, 424);
             this.dataGridView2.StandardTab = true;
             this.dataGridView2.TabIndex = 0;
-            //this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick_1);
             this.dataGridView2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView2_KeyPress_1);
             // 
