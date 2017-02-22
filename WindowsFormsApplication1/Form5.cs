@@ -12,7 +12,7 @@ namespace WindowsFormsApplication1
     public partial class Form5 : Form
 
     {
-        string invoice = "";
+       public string invoice;
         DB_Main d = new DB_Main();
         DataTable customerdetails = new DataTable();
         DataTable addToCartTable = new DataTable();
