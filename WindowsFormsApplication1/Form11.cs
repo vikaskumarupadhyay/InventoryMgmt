@@ -229,6 +229,7 @@ namespace WindowsFormsApplication1
 
         private void txtQuantity_TextChanged(object sender, EventArgs e)
         {
+           
             string select = "select CurrentQuantity from ItemQuantityDetail where itemid='" + txtItemCode.Text + "'";
             DataTable dt = d.getDetailByQuery(select);
             string s = "";
@@ -236,6 +237,10 @@ namespace WindowsFormsApplication1
             {
                 s = dr[0].ToString();
 
+            }
+            if (txtQuantity.Text=="")
+            {
+                txtQuantity.Text ="0";
             }
             if (s != "")
             {
@@ -358,6 +363,7 @@ namespace WindowsFormsApplication1
                 butRemoveItem.TabStop = true;
                 txtItemCode.TabStop = true;
                 txtQuantity.TabStop = false;
+                butSaveButton.TabStop = true;
                 DataRow dr = addToCartTable.NewRow();
                 dr[0] = txtItemCode.Text.Trim();
                 dr[1] = txtProductName.Text.Trim();
@@ -512,9 +518,9 @@ namespace WindowsFormsApplication1
                             DataGridViewRow currentrow = rowcollection[a];
                             DataGridViewCellCollection cellcollection = currentrow.Cells;
                             string txtitemcode = cellcollection[0].Value.ToString();
-                            string txtProductName = cellcollection[1].Value.ToString();
+                           // string txtProductName = cellcollection[1].Value.ToString();
                             string txtRate = cellcollection[2].Value.ToString();
-                            string txtQuantity = cellcollection[3].Value.ToString();
+                            string txtQuantity = cellcollection[4].Value.ToString();
                             string txtAmount = cellcollection[5].Value.ToString();
                             string Orderid = id;
                             string query = "insert into customerorderdescriptions Values('" + Orderid + "','" + txtitemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
@@ -558,10 +564,10 @@ namespace WindowsFormsApplication1
                             DataGridViewRow currentrow = rowcollection[a];
                             DataGridViewCellCollection cellcollection = currentrow.Cells;
                             string txtitemcode = cellcollection[0].Value.ToString();
-                            string txtProductName = cellcollection[1].Value.ToString();
+                           // string txtProductName = cellcollection[1].Value.ToString();
                             string txtRate = cellcollection[2].Value.ToString();
                             string txtQuantity = cellcollection[3].Value.ToString();
-                            string txtAmount = cellcollection[5].Value.ToString();
+                            string txtAmount = cellcollection[4].Value.ToString();
                             //string orderid = txtSrNo.Text;
                             string query = "insert into customerorderdescriptions Values('" + Orde + "','" + txtitemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
 

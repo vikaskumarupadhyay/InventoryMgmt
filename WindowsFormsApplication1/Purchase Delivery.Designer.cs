@@ -714,9 +714,12 @@
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.butClose);
             this.panel2.Controls.Add(this.dataGridView2);
+
             this.panel2.Location = new System.Drawing.Point(0, -5);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1036, 596);
+
+
             this.panel2.TabIndex = 40;
             // 
             // groupBox4

@@ -182,7 +182,24 @@ namespace WindowsFormsApplication1
 
         private void txtQuantity_TextChanged(object sender, EventArgs e)
         {
-            // txtQuantity.ReadOnly = true;
+            //txtQuantity.Text = string.Empty;
+            //string QuantiTy = txtQuantity.Text;
+            //int result = 0;
+            //if (int.TryParse(QuantiTy, out result))
+            //{
+
+            //    int TotalQuantity = Convert.ToInt32(QuantiTy);
+            //    if (TotalQuantity > 0)
+            //    {
+            //        double RatePerPice = Convert.ToDouble(txtRate.Text.Trim());
+            //        txtAmount.Text = (TotalQuantity * RatePerPice).ToString();
+            //    }
+            //    else
+            //    {
+            //        txtAmount.Text = "";
+            //    }
+            //}
+            //txtQuantity.ReadOnly = true;
             string select = "select CurrentQuantity from ItemQuantityDetail where itemid='" + txtitemcode.Text + "'";
             DataTable dt = d.getDetailByQuery(select);
             string s = "";
@@ -190,6 +207,10 @@ namespace WindowsFormsApplication1
             {
                 s = dr[0].ToString();
 
+            }
+            if (txtQuantity.Text == "")
+            {
+                txtQuantity.Text = "0";
             }
             if (s != "")
             {
@@ -210,13 +231,15 @@ namespace WindowsFormsApplication1
                     }
                 }
 
-                    else if (quantity > g)
-                    {
-                        MessageBox.Show("Quantity is not available");
-                        txtQuantity.Text = "0";
-                        txtAmount.Text = "0";
-                    }
+                else if (quantity > g)
+                {
+                    MessageBox.Show("Quantity is not available");
+                    txtQuantity.Text = "0";
+                    txtAmount.Text = "0";
                 }
+            }
+           
+           
             }
             
         
