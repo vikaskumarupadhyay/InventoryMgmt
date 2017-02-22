@@ -305,6 +305,7 @@
             // 
             this.txtQuantity.Location = new System.Drawing.Point(467, 35);
             this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.ReadOnly = true;
             this.txtQuantity.Size = new System.Drawing.Size(59, 21);
             this.txtQuantity.TabIndex = 8;
             this.txtQuantity.TabStop = false;

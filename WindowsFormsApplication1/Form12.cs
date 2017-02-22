@@ -911,76 +911,178 @@ namespace WindowsFormsApplication1
                  }
              }
          }
+         private void SetVendor(string r)
+         {
+             DataTable dt = d.getDetailByQuery(r);
+             foreach (DataRow dr in dt.Rows)
+             {
+                 txtCustcode.Text = dr[0].ToString();
+                 txtcustname.Text = dr[1].ToString();
+                 txtcustcompname.Text = dr[2].ToString();
+                 txtcustaddress.Text = dr[3].ToString();
+                 txtcustphone.Text = dr[4].ToString();
+                 txtcustmobile.Text = dr[5].ToString();
+                 txtcustfax.Text = dr[6].ToString();
+                 //txtRefNo.Text = dr[7].ToString();
+             }
+         }
 
          private void txtRefNo_KeyPress(object sender, KeyPressEventArgs e)
          {
              if (e.KeyChar == Convert.ToChar(Keys.Enter))
              {
-             string selectquery = "select Delivaryid from salesinvoice where Delivaryid='" + txtRefNo.Text + "'";
-             DataTable dt = d.getDetailByQuery(selectquery);
-             if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
+                 string selectquery2 = "select Orderid from salesinvoice where Orderid='" + txtRefNo.Text + "'";
+                 DataTable dt1 = d.getDetailByQuery(selectquery2);
+                 if (dt1 != null && dt1.Rows != null && dt1.Rows.Count > 0)
+                 {
+                     MessageBox.Show("order details is completed");
+                     // txtRefNo.Text = "";
+                     //gridsalesdelivary.DataSource = "";
+                 }
+
+            
+
+                 else
+                 {
+                     button5.TabStop= true;
+                     string select = "select vo.orderid,vo.custid,vod.ItemId,vo.Discount from orderdetails vo join customerorderdescriptions vod on vod.Orderid=vo.Orderid where vo.Orderid ='" + txtRefNo.Text + "'";
+                     DataTable dt = d.getDetailByQuery(select);
+                     string a = "";
+                     if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
+                     {
+                         DataRow dr = dt.Rows[0];
+                         a = dr[1].ToString();
+
+                         string discount = dr[3].ToString();
+                         txtdiscount.Text = discount;
+                     }
+                     string selectquery = "select  c.custId, c.CustName,c.CustCompName,c.CustAddress,c.CustPhone,c.CustMobile,c.CustFax from CustomerDetails c  where  c.custId='" + a + "'";
+                     //DataTable dt2 = d.getDetailByQuery(selectquery);
+                     SetVendor(selectquery);
+                     string selectquery1 = "select it.itemid,iq.ItemName,it.price,it.quantity,it.totalammount from customerorderdescriptions it join ItemDetails iq on it.ItemId=iq.ItemId  where orderid='" + txtRefNo.Text + "'";
+                     DataTable dt3 = d.getDetailByQuery(selectquery1);
+                     int totalrowcount = addToCartTable.Rows.Count;
+                     for (int rowcount = 0; rowcount < totalrowcount; rowcount++)
+                     {
+                         addToCartTable.Rows.RemoveAt(0);
+                     }
+
+                     int totel = 0;
+
+                     for (int b = 0; b < dt3.Rows.Count; b++)
+                     {
+                         DataRow dr1 = dt3.Rows[b];
+                         string itemcode = dr1[0].ToString();
+                         string productname = dr1[1].ToString();
+                         string rate = dr1[2].ToString();
+                         string quantity = dr1[3].ToString();
+                         string ammount = dr1[4].ToString();
+                         //string ammount1 = dr1[5].ToString();
+                         int amt = Convert.ToInt32(ammount);
+                         totel = totel + amt;
+                         dr1 = addToCartTable.NewRow();
+                         dr1[0] = itemcode.Trim();
+                         dr1[1] = productname.Trim();
+                         dr1[2] = rate.Trim();
+                         dr1[3] = quantity.Trim();
+                        // dr1[4] = quantity.Trim();
+                         dr1[4] = ammount.Trim();
+                         addToCartTable.Rows.Add(dr1);
+
+                     }
+                    // gridsalesdelivary.DataSource = null;
+                     gridsalesinvoice.DataSource = addToCartTable;
+                     txttotalammount.Text = totel.ToString();
+
+                 }
+                 //}
+
+             }
+             if (Char.IsLetterOrDigit(e.KeyChar))
              {
-                 MessageBox.Show("delivary details is completed");
-                 txtRefNo.Text = "";
-                 gridsalesinvoice.DataSource = "";
-
-
+                 e.Handled = false;
              }
              else
              {
-                 button5.Enabled = true;
-
-                 string selectquery1 = "select  c.custId, c.CustName,c.CustCompName,c.CustAddress,c.CustPhone,c.CustMobile,c.CustFax,o.Orderid,s.Delivaryid from CustomerDetails c join orderdetails o on c.custId=o.custid join salesOrderDelivery s on o.Orderid=s.OrderId where s.Delivaryid='" + txtRefNo.Text + "'";
-                 DataTable dt1 = d.getDetailByQuery(selectquery1);
-                 string OrderId = "";
-                 if (dt1 != null && dt1.Rows != null && dt1.Rows.Count > 0)
+                 if (e.KeyChar == '\b')
                  {
-                     foreach (DataRow dr1 in dt1.Rows)
-                     {
-                         txtCustcode.Text = dr1[0].ToString();
-                         txtcustname.Text = dr1[1].ToString();
-                         txtcustcompname.Text = dr1[2].ToString();
-                         txtcustaddress.Text = dr1[3].ToString();
-                         txtcustphone.Text = dr1[4].ToString();
-                         txtcustmobile.Text = dr1[5].ToString();
-                         txtcustfax.Text = dr1[6].ToString();
-                         OrderId = dr1[7].ToString();
-                     }
-                 }
+                     txtRefNo.ReadOnly = false;
+                     makeblank();
 
-                 int totel = 0;
-                 string selectquery2 = "select it.itemid,iq.ItemName,it.price,it.quantity,it.totalammount from customerorderdescriptions it join ItemDetails iq on it.ItemId=iq.ItemId where Orderid='" + OrderId + "'";
-                 DataTable dt3 = d.getDetailByQuery(selectquery2);
-                 int totelrow = addToCartTable.Rows.Count;
-                 for (int a = 0; a < totelrow; a++)
+                     e.Handled = false;
+                 }
+                 else
                  {
-                     addToCartTable.Rows.RemoveAt(0);
+                     e.Handled = true;
                  }
-                 for (int a = 0; a < dt3.Rows.Count; a++)
-                 {
-                     DataRow dr1 = dt3.Rows[a];
-                     string t = dr1[0].ToString();
-                     string t2 = dr1[1].ToString();
-                     string t1 = dr1[2].ToString();
-                     string t3 = dr1[3].ToString();
-                     string totalamt = dr1[4].ToString();
-                     int amt = Convert.ToInt32(totalamt);
-                     totel = totel + amt;
-                     dr1 = addToCartTable.NewRow();
-                     dr1[0] = t.Trim();
-                     dr1[1] = t2.Trim();
-                     dr1[2] = t1.Trim();
-                     dr1[3] = t3.Trim();
-                     dr1[4] = totalamt.Trim();
-                     addToCartTable.Rows.Add(dr1);
-
-                 }
-
-                 gridsalesinvoice.DataSource = addToCartTable;
-                 txttotalammount.Text = totel.ToString();
-
              }
-         }
+         //    if (e.KeyChar == Convert.ToChar(Keys.Enter))
+         //    {
+         //    string selectquery = "select Delivaryid from salesinvoice where Delivaryid='" + txtRefNo.Text + "'";
+         //    DataTable dt = d.getDetailByQuery(selectquery);
+         //    if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
+         //    {
+         //        MessageBox.Show("delivary details is completed");
+         //        txtRefNo.Text = "";
+         //        gridsalesinvoice.DataSource = "";
+
+
+         //    }
+         //    else
+         //    {
+         //        button5.Enabled = true;
+
+         //        string selectquery1 = "select  c.custId, c.CustName,c.CustCompName,c.CustAddress,c.CustPhone,c.CustMobile,c.CustFax,o.Orderid,s.Delivaryid from CustomerDetails c join orderdetails o on c.custId=o.custid join salesOrderDelivery s on o.Orderid=s.OrderId where s.Delivaryid='" + txtRefNo.Text + "'";
+         //        DataTable dt1 = d.getDetailByQuery(selectquery1);
+         //        string OrderId = "";
+         //        if (dt1 != null && dt1.Rows != null && dt1.Rows.Count > 0)
+         //        {
+         //            foreach (DataRow dr1 in dt1.Rows)
+         //            {
+         //                txtCustcode.Text = dr1[0].ToString();
+         //                txtcustname.Text = dr1[1].ToString();
+         //                txtcustcompname.Text = dr1[2].ToString();
+         //                txtcustaddress.Text = dr1[3].ToString();
+         //                txtcustphone.Text = dr1[4].ToString();
+         //                txtcustmobile.Text = dr1[5].ToString();
+         //                txtcustfax.Text = dr1[6].ToString();
+         //                OrderId = dr1[7].ToString();
+         //            }
+         //        }
+
+         //        int totel = 0;
+         //        string selectquery2 = "select it.itemid,iq.ItemName,it.price,it.quantity,it.totalammount from customerorderdescriptions it join ItemDetails iq on it.ItemId=iq.ItemId where Orderid='" + OrderId + "'";
+         //        DataTable dt3 = d.getDetailByQuery(selectquery2);
+         //        int totelrow = addToCartTable.Rows.Count;
+         //        for (int a = 0; a < totelrow; a++)
+         //        {
+         //            addToCartTable.Rows.RemoveAt(0);
+         //        }
+         //        for (int a = 0; a < dt3.Rows.Count; a++)
+         //        {
+         //            DataRow dr1 = dt3.Rows[a];
+         //            string t = dr1[0].ToString();
+         //            string t2 = dr1[1].ToString();
+         //            string t1 = dr1[2].ToString();
+         //            string t3 = dr1[3].ToString();
+         //            string totalamt = dr1[4].ToString();
+         //            int amt = Convert.ToInt32(totalamt);
+         //            totel = totel + amt;
+         //            dr1 = addToCartTable.NewRow();
+         //            dr1[0] = t.Trim();
+         //            dr1[1] = t2.Trim();
+         //            dr1[2] = t1.Trim();
+         //            dr1[3] = t3.Trim();
+         //            dr1[4] = totalamt.Trim();
+         //            addToCartTable.Rows.Add(dr1);
+
+         //        }
+
+         //        gridsalesinvoice.DataSource = addToCartTable;
+         //        txttotalammount.Text = totel.ToString();
+
+         //    }
+         //}
          }
 
          private void gridsalesinvoice_CellEndEdit(object sender, DataGridViewCellEventArgs e)

@@ -428,9 +428,9 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(43, 210);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(56, 15);
+            this.label10.Size = new System.Drawing.Size(188, 15);
             this.label10.TabIndex = 9;
-            this.label10.Text = "Web Site";
+            this.label10.Text = "Web Site(http://www.google.com)";
             // 
             // label9
             // 
@@ -644,11 +644,10 @@
             this.panel1.Controls.Add(this.btnUpdate);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1172, 634);
+            this.panel1.Size = new System.Drawing.Size(1172, 622);
             this.panel1.TabIndex = 7;
             // 
             // button2
@@ -660,7 +659,7 @@
             this.button2.TabIndex = 31;
             this.button2.Text = "Export To Excel";
             this.button2.UseVisualStyleBackColor = true;
-            //this.button2.Click += new System.EventHandler(this.button2_Click_1);
+
             // 
             // butprint
             // 

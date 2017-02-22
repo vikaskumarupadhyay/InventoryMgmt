@@ -370,11 +370,24 @@ namespace WindowsFormsApplication1
 
         private void frmVendorDetails_Load(object sender, EventArgs e)
         {
+
            
             if (counter == 1)
             {
                 //panel2.Visible = true;
                 panel1.Visible = true;
+                Tabindex();
+                comboBox1.Focus();
+                panel2.TabStop = false;
+                panel2.TabIndex = 26;
+                comboBox1.TabIndex = 0;
+                txtSearch.TabIndex = 2;
+                dataGridView1.TabIndex = 3;
+                btnUpdate.TabIndex = 4;
+                button1.TabIndex = 5;
+                butprint.TabIndex = 6;
+                button2.TabIndex = 7;
+                button3.TabIndex = 8;
             
             }
             else if (counter == 0) 
@@ -501,9 +514,20 @@ namespace WindowsFormsApplication1
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             txtSearch.Text = "";
-            DataGridViewCellCollection cellCollection = dataGridView1.SelectedRows[0].Cells;
-            setDetails(cellCollection);
-            panel1.Visible = false;
+             DataGridViewCellCollection cellCollection = dataGridView1.SelectedRows[0].Cells;
+             for (int i = 0; i < dataGridView1.Rows.Count; i++)
+             {
+                 if ((String)dataGridView1.SelectedRows[0].Cells[i].Value == null)
+                 {
+                     panel1.Visible = true;
+                 }
+                 else
+                 {
+                     setDetails(cellCollection);
+                     panel1.Visible = false;
+                 }
+             }
+           
             updateCounter = 1;
             btnVenderList.Enabled = false;
            // Enabled1();
@@ -528,8 +552,9 @@ namespace WindowsFormsApplication1
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewCellCollection cellCollection = dataGridView1.Rows[e.RowIndex].Cells;
-            setDetails(cellCollection);
-            panel1.Visible = false;
+           
+                 setDetails(cellCollection);
+                  panel1.Visible = false;
             updateCounter = 1;
             txtSearch.Text = "";
             comboBox1.SelectedIndex = 0;
@@ -707,6 +732,7 @@ namespace WindowsFormsApplication1
                 //    currentIndex = currentIndex + 1;
 
                 DataGridViewCellCollection cellCollection = dataGridView1.Rows[currentIndex-1].Cells;
+
                 setDetails(cellCollection);
                 panel1.Visible = false;
                 updateCounter = 1;
