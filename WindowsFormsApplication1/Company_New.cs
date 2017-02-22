@@ -341,7 +341,14 @@ namespace WindowsFormsApplication1
                      //if (dataGridView1.RowCount == currentIndex + 1)
                      //    currentIndex = currentIndex + 1;
                      DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex].Cells;
-                     setdetails(cellcollection);
+                     if (!string.IsNullOrEmpty(cellcollection[0].Value.ToString()))
+                     {
+                         setdetails(cellcollection);
+                         panel1.Visible = false;
+                         txtwonername.Focus();
+                         tabindex2();
+
+                     }
                  }
              }
         }
@@ -351,10 +358,13 @@ namespace WindowsFormsApplication1
             updatecounter = 1;
             int currentIndex = dataGridView1.CurrentRow.Index;
             DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex].Cells;
-            setdetails(cellcollection);
-            panel1.Visible = false;
-            txtwonername.Focus();
-            tabindex2();
+            if (!string.IsNullOrEmpty(cellcollection[0].Value.ToString()))
+            {
+                setdetails(cellcollection);
+                panel1.Visible = false;
+                txtwonername.Focus();
+                tabindex2();
+            }
         }
 
         private void butUpdate_Click_1(object sender, EventArgs e)
@@ -362,11 +372,14 @@ namespace WindowsFormsApplication1
             updatecounter = 1;
             int currentIndex = dataGridView1.CurrentRow.Index;
             DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex].Cells;
-            setdetails(cellcollection);
-            panel1.Visible = false;
-            txtwonername.Focus();
-            btnList.Enabled = false;
-            tabindex2();
+            if (!string.IsNullOrEmpty(cellcollection[0].Value.ToString()))
+            {
+                setdetails(cellcollection);
+                panel1.Visible = false;
+                txtwonername.Focus();
+                btnList.Enabled = false;
+                tabindex2();
+            }
         }
 
         private void butAddNewRecord_Click_1(object sender, EventArgs e)
@@ -399,11 +412,13 @@ namespace WindowsFormsApplication1
              {
                  updatecounter = 1;
                  DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex-1].Cells;
-                 setdetails(cellcollection);
-                 panel1.Visible = false;
-                 txtwonername.Focus();
-                 tabindex2();
-                 
+                 if (!string.IsNullOrEmpty(cellcollection[0].Value.ToString()))
+                 {
+                     setdetails(cellcollection);
+                     panel1.Visible = false;
+                     txtwonername.Focus();
+                     tabindex2();
+                 }
 
              }
         }

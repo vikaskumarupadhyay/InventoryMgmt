@@ -229,40 +229,49 @@ namespace WindowsFormsApplication1
             {
                 panel2.Visible = false;
                 DataGridViewCellCollection CellCollection = dataGridView2.Rows[e.RowIndex].Cells;
-                setDetails(CellCollection);
+                if (!string.IsNullOrEmpty(CellCollection[0].Value.ToString()))
+                {
+                    setDetails(CellCollection);
+                }
             }
             else if (counter == 1)
             {
                 panel2.Visible = false;
                 DataGridViewCellCollection CellCollection = dataGridView2.Rows[e.RowIndex].Cells;
-                setDetails1(CellCollection);
-                txtQunty.ReadOnly = false;
-                button3.Enabled = true;
+                if (!string.IsNullOrEmpty(CellCollection[0].Value.ToString()))
+                {
+                    setDetails1(CellCollection);
+                    txtQunty.ReadOnly = false;
+                    button3.Enabled = true;
+                }
             }
             if (counter == 2)
             {
                 panel2.Visible = false;
                 DataGridViewCellCollection CellCollection = dataGridView2.Rows[e.RowIndex].Cells;
-                string s = CellCollection[0].Value.ToString();
-                string s1 = CellCollection[1].Value.ToString();
-                txtRef.Text = s;
-                //MessageBox.Show(" "+s +" "+s1);
-                string selectqurry = "select venderId,vName,vCompName,vAddress,vPhone,vMobile,vFax from VendorDetails where venderId='" + s1 + "'";
-                SetVendor(selectqurry);
-                //DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
-                //foreach (DataRow dr in dt.Rows)
-                //{
-                //    textVendercod.Text = dr[0].ToString();
-                //    txtVendorName.Text = dr[1].ToString();
-                //    txtCompanyName.Text = dr[2].ToString();
-                //    txtAddress.Text = dr[3].ToString();
-                //    txtPhone.Text = dr[4].ToString();
-                //    txtMobile.Text = dr[5].ToString();
-                //    txtFax.Text = dr[6].ToString();
-                //}
-                string selectqurry1 = "select vodd.ItemId,td.ItemName, vodd.Quantity,vodd.Price,vodd.TotalPrice from VendorOrderDetails vod join VendorOrderDesc vodd on vod.Orderid=vodd.Orderid join ItemDetails td on td.ItemId=vodd.ItemId where vod. Orderid='" + s + "'";
-                DataTable dt1 = dbMainClass.getDetailByQuery(selectqurry1);
-                dataGridView1.DataSource = dt1;
+                if (!string.IsNullOrEmpty(CellCollection[0].Value.ToString()))
+                {
+                    string s = CellCollection[0].Value.ToString();
+                    string s1 = CellCollection[1].Value.ToString();
+                    txtRef.Text = s;
+                    //MessageBox.Show(" "+s +" "+s1);
+                    string selectqurry = "select venderId,vName,vCompName,vAddress,vPhone,vMobile,vFax from VendorDetails where venderId='" + s1 + "'";
+                    SetVendor(selectqurry);
+                    //DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+                    //foreach (DataRow dr in dt.Rows)
+                    //{
+                    //    textVendercod.Text = dr[0].ToString();
+                    //    txtVendorName.Text = dr[1].ToString();
+                    //    txtCompanyName.Text = dr[2].ToString();
+                    //    txtAddress.Text = dr[3].ToString();
+                    //    txtPhone.Text = dr[4].ToString();
+                    //    txtMobile.Text = dr[5].ToString();
+                    //    txtFax.Text = dr[6].ToString();
+                    //}
+                    string selectqurry1 = "select vodd.ItemId,td.ItemName, vodd.Quantity,vodd.Price,vodd.TotalPrice from VendorOrderDetails vod join VendorOrderDesc vodd on vod.Orderid=vodd.Orderid join ItemDetails td on td.ItemId=vodd.ItemId where vod. Orderid='" + s + "'";
+                    DataTable dt1 = dbMainClass.getDetailByQuery(selectqurry1);
+                    dataGridView1.DataSource = dt1;
+                }
             }
         }
 
@@ -1311,44 +1320,53 @@ namespace WindowsFormsApplication1
                 {
                     panel2.Visible = false;
                     DataGridViewCellCollection CellCollection = dataGridView2.Rows[currentIndex - 1].Cells;
-                    setDetails(CellCollection);
-                    IndexTex3();
+                    if (!string.IsNullOrEmpty(CellCollection[0].Value.ToString()))
+                    {
+                        setDetails(CellCollection);
+                        IndexTex3();
+                    }
                 }
                 if (counter == 1)
                 {
                     panel2.Visible = false;
                     DataGridViewCellCollection CellCollection = dataGridView2.Rows[currentIndex - 1].Cells;
-                    setDetails1(CellCollection);
-                    txtQunty.ReadOnly = false;
-                    button3.Enabled = true;
-                    txtQunty.Focus();
-                    IndexTex2();
-                    txtQunty.Enabled = true;
+                    if (!string.IsNullOrEmpty(CellCollection[0].Value.ToString()))
+                    {
+                        setDetails1(CellCollection);
+                        txtQunty.ReadOnly = false;
+                        button3.Enabled = true;
+                        txtQunty.Focus();
+                        IndexTex2();
+                        txtQunty.Enabled = true;
+                    }
                 }
                 if (counter == 2)
                 {
                     panel2.Visible = false;
                     DataGridViewCellCollection CellCollection = dataGridView1.Rows[currentIndex].Cells;
-                    string s = CellCollection[0].Value.ToString();
-                    string s1 = CellCollection[1].Value.ToString();
-                    txtRef.Text = s;
-                    //MessageBox.Show(" "+s +" "+s1);
-                    string selectqurry = "select venderId,vName,vCompName,vAddress,vPhone,vMobile,vFax from VendorDetails where venderId='" + s1 + "'";
-                    SetVendor(selectqurry);
-                    //DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
-                    //foreach (DataRow dr in dt.Rows)
-                    //{
-                    //    textVendercod.Text = dr[0].ToString();
-                    //    txtVendorName.Text = dr[1].ToString();
-                    //    txtCompanyName.Text = dr[2].ToString();
-                    //    txtAddress.Text = dr[3].ToString();
-                    //    txtPhone.Text = dr[4].ToString();
-                    //    txtMobile.Text = dr[5].ToString();
-                    //    txtFax.Text = dr[6].ToString();
-                    //}
-                    string selectqurry1 = "select  itm.ItemId,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId where vod. Orderid='" + s + "'";
-                    DataTable dt1 = dbMainClass.getDetailByQuery(selectqurry1);
-                    dataGridView1.DataSource = dt1;
+                    if (!string.IsNullOrEmpty(CellCollection[0].Value.ToString()))
+                    {
+                        string s = CellCollection[0].Value.ToString();
+                        string s1 = CellCollection[1].Value.ToString();
+                        txtRef.Text = s;
+                        //MessageBox.Show(" "+s +" "+s1);
+                        string selectqurry = "select venderId,vName,vCompName,vAddress,vPhone,vMobile,vFax from VendorDetails where venderId='" + s1 + "'";
+                        SetVendor(selectqurry);
+                        //DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+                        //foreach (DataRow dr in dt.Rows)
+                        //{
+                        //    textVendercod.Text = dr[0].ToString();
+                        //    txtVendorName.Text = dr[1].ToString();
+                        //    txtCompanyName.Text = dr[2].ToString();
+                        //    txtAddress.Text = dr[3].ToString();
+                        //    txtPhone.Text = dr[4].ToString();
+                        //    txtMobile.Text = dr[5].ToString();
+                        //    txtFax.Text = dr[6].ToString();
+                        //}
+                        string selectqurry1 = "select  itm.ItemId,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId where vod. Orderid='" + s + "'";
+                        DataTable dt1 = dbMainClass.getDetailByQuery(selectqurry1);
+                        dataGridView1.DataSource = dt1;
+                    }
                 }
             }
         }
@@ -1369,45 +1387,55 @@ namespace WindowsFormsApplication1
                 {
                     panel2.Visible = false;
                     DataGridViewCellCollection CellCollection = dataGridView2.Rows[e.RowIndex].Cells;
-                    setDetails(CellCollection);
-                    IndexTex3();
+                    if (!string.IsNullOrEmpty(CellCollection[0].Value.ToString()))
+                    {
+                        setDetails(CellCollection);
+                        IndexTex3();
+                    }
                 }
                 if (counter == 1)
                 {
                     panel2.Visible = false;
                     DataGridViewCellCollection CellCollection = dataGridView2.Rows[e.RowIndex].Cells;
-                    setDetails1(CellCollection);
-                    txtQunty.ReadOnly = false;
-                    button3.Enabled = true;
-                    txtQunty.Focus();
-                    IndexTex2();
-                    txtQunty.Enabled = true;
+
+                    if (!string.IsNullOrEmpty(CellCollection[0].Value.ToString()))
+                    {
+                        setDetails1(CellCollection);
+                        txtQunty.ReadOnly = false;
+                        button3.Enabled = true;
+                        txtQunty.Focus();
+                        IndexTex2();
+                        txtQunty.Enabled = true;
+                    }
                 }
                 if (counter == 2)
                 {
                     panel2.Visible = false;
                     DataGridViewCellCollection CellCollection = dataGridView2.Rows[e.RowIndex].Cells;
-                    string s = CellCollection[0].Value.ToString();
-                    string s1 = CellCollection[1].Value.ToString();
-                    txtRef.Text = s;
-                    //MessageBox.Show(" "+s +" "+s1);
-                    string selectqurry = "select venderId,vName,vCompName,vAddress,vPhone,vMobile,vFax from VendorDetails where venderId='" + s1 + "'";
-                    SetVendor(selectqurry);
-                    //DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
-                    //foreach (DataRow dr in dt.Rows)
-                    //{
-                    //    textVendercod.Text = dr[0].ToString();
-                    //    txtVendorName.Text = dr[1].ToString();
-                    //    txtCompanyName.Text = dr[2].ToString();
-                    //    txtAddress.Text = dr[3].ToString();
-                    //    txtPhone.Text = dr[4].ToString();
-                    //    txtMobile.Text = dr[5].ToString();
-                    //    txtFax.Text = dr[6].ToString();
-                    //}
-                    string selectqurry1 = "select  itm.ItemId as[ItemCode],itm.ItemName as[ProductName],ipd.MrpPrice as[Rate],vod.Quantity as[Quantity],vod.TotalPrice as[Amount] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join VendorOrderDesc vod on ipd.ItemId=vod.ItemId  where vod. Orderid='" + s + "'";
-                    DataTable dt1 = dbMainClass.getDetailByQuery(selectqurry1);
-                    dataGridView1.DataSource = dt1;
-            }
+                    if (!string.IsNullOrEmpty(CellCollection[0].Value.ToString()))
+                    {
+                        string s = CellCollection[0].Value.ToString();
+                        string s1 = CellCollection[1].Value.ToString();
+                        txtRef.Text = s;
+                        //MessageBox.Show(" "+s +" "+s1);
+                        string selectqurry = "select venderId,vName,vCompName,vAddress,vPhone,vMobile,vFax from VendorDetails where venderId='" + s1 + "'";
+                        SetVendor(selectqurry);
+                        //DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+                        //foreach (DataRow dr in dt.Rows)
+                        //{
+                        //    textVendercod.Text = dr[0].ToString();
+                        //    txtVendorName.Text = dr[1].ToString();
+                        //    txtCompanyName.Text = dr[2].ToString();
+                        //    txtAddress.Text = dr[3].ToString();
+                        //    txtPhone.Text = dr[4].ToString();
+                        //    txtMobile.Text = dr[5].ToString();
+                        //    txtFax.Text = dr[6].ToString();
+                        //}
+                        string selectqurry1 = "select  itm.ItemId as[ItemCode],itm.ItemName as[ProductName],ipd.MrpPrice as[Rate],vod.Quantity as[Quantity],vod.TotalPrice as[Amount] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join VendorOrderDesc vod on ipd.ItemId=vod.ItemId  where vod. Orderid='" + s + "'";
+                        DataTable dt1 = dbMainClass.getDetailByQuery(selectqurry1);
+                        dataGridView1.DataSource = dt1;
+                    }
+                }
         }
 
         private void button5_KeyPress(object sender, KeyPressEventArgs e)

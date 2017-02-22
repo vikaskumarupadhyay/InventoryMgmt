@@ -515,24 +515,17 @@ namespace WindowsFormsApplication1
         {
             txtSearch.Text = "";
              DataGridViewCellCollection cellCollection = dataGridView1.SelectedRows[0].Cells;
-             for (int i = 0; i < dataGridView1.Rows.Count; i++)
+             if (!string.IsNullOrEmpty(cellCollection[0].Value.ToString()))
              {
-                 if ((String)dataGridView1.SelectedRows[0].Cells[i].Value == null)
-                 {
-                     panel1.Visible = true;
-                 }
-                 else
-                 {
-                     setDetails(cellCollection);
-                     panel1.Visible = false;
-                 }
+                 setDetails(cellCollection);
+                 panel1.Visible = false;
+
+                 updateCounter = 1;
+                 btnVenderList.Enabled = false;
+                 // Enabled1();
+                 txtVenderAddress.Focus();
+                 Tabindex2();
              }
-           
-            updateCounter = 1;
-            btnVenderList.Enabled = false;
-           // Enabled1();
-            txtVenderAddress.Focus();
-            Tabindex2();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -551,14 +544,16 @@ namespace WindowsFormsApplication1
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewCellCollection cellCollection = dataGridView1.Rows[e.RowIndex].Cells;
-           
-                 setDetails(cellCollection);
-                  panel1.Visible = false;
-            updateCounter = 1;
-            txtSearch.Text = "";
-            comboBox1.SelectedIndex = 0;
-            Enabled1();
+            DataGridViewCellCollection cellCollection = dataGridView1.SelectedRows[0].Cells;
+            if (!string.IsNullOrEmpty(cellCollection[0].Value.ToString()))
+            {
+                setDetails(cellCollection);
+                panel1.Visible = false;
+                updateCounter = 1;
+                txtSearch.Text = "";
+                comboBox1.SelectedIndex = 0;
+                Enabled1();
+            }
         }
 
         private void txtVenderOpeningBal_GiveFeedback(object sender, GiveFeedbackEventArgs e)
@@ -710,18 +705,6 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-                //DataGridViewCellCollection cellCollection = dataGridView1.Rows[e.RowIndex].Cells;
-                //setDetails(cellCollection);
-                //panel1.Visible = false;
-                //updateCounter = 1;
-                //txtSearch.Text = "";
-                //comboBox1.SelectedIndex = 0;
-                //Enabled1();
-
-        }
-
         private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
         {
             int currentIndex = dataGridView1.CurrentRow.Index;
@@ -731,16 +714,18 @@ namespace WindowsFormsApplication1
                 //if (dataGridView1.RowCount == currentIndex + 1)
                 //    currentIndex = currentIndex + 1;
 
-                DataGridViewCellCollection cellCollection = dataGridView1.Rows[currentIndex-1].Cells;
-
-                setDetails(cellCollection);
-                panel1.Visible = false;
-                updateCounter = 1;
-                txtSearch.Text = "";
-                comboBox1.SelectedIndex = 0;
-                Enabled1();
-                txtVenderAddress.Focus();
-                Tabindex2();
+                DataGridViewCellCollection cellCollection = dataGridView1.Rows[currentIndex].Cells;
+                if (!string.IsNullOrEmpty(cellCollection[0].Value.ToString()))
+                {
+                    setDetails(cellCollection);
+                    panel1.Visible = false;
+                    updateCounter = 1;
+                    txtSearch.Text = "";
+                    comboBox1.SelectedIndex = 0;
+                    Enabled1();
+                    txtVenderAddress.Focus();
+                    Tabindex2();
+                }
             }
         }
 

@@ -175,7 +175,10 @@ namespace WindowsFormsApplication1
 
             panel2.Visible = false;
             DataGridViewCellCollection call = dataGridView2.Rows[e.RowIndex].Cells;
-            setDetails(call);
+            if (!string.IsNullOrEmpty(call[0].Value.ToString()))
+            {
+                setDetails(call);
+            }
         }
         private void setDetails(DataGridViewCellCollection cellCollection)
         {

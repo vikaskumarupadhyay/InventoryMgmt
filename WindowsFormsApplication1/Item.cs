@@ -308,12 +308,15 @@ namespace WindowsFormsApplication1
         {
             int currentIndex = dataGridView1.CurrentRow.Index;
             DataGridViewCellCollection cellCollection = dataGridView1.Rows[currentIndex].Cells;
-            setDetails(cellCollection);
-            panel1.Visible = false;
-            updatecounter = 1;
-            tabindix1();
-            txtItemProductName.Focus();
-            btnItemList.Enabled = false;
+            if (!string.IsNullOrEmpty(cellCollection[0].Value.ToString()))
+            {
+                setDetails(cellCollection);
+                panel1.Visible = false;
+                updatecounter = 1;
+                tabindix1();
+                txtItemProductName.Focus();
+                btnItemList.Enabled = false;
+            }
 
         }
         private void setDetails(DataGridViewCellCollection cellCollection)
@@ -344,12 +347,15 @@ namespace WindowsFormsApplication1
           
             int currentIndex = dataGridView1.CurrentRow.Index;
             DataGridViewCellCollection cellCollection = dataGridView1.Rows[currentIndex].Cells;
+            if (!string.IsNullOrEmpty(cellCollection[0].Value.ToString()))
+            {
                 setDetails(cellCollection);
-            panel1.Visible = false;
-            updatecounter = 1;
-            tabindix1();
-            txtItemProductName.Focus();
-            btnItemList.Enabled = false;
+                panel1.Visible = false;
+                updatecounter = 1;
+                tabindix1();
+                txtItemProductName.Focus();
+                btnItemList.Enabled = false;
+            }
         }
         private string getId(string Table)
         {
@@ -518,12 +524,15 @@ namespace WindowsFormsApplication1
                  txtSearch.Text = "";
                  searchCalmn.SelectedIndex = 0;
                  DataGridViewCellCollection cellCollection = dataGridView1.Rows[currentIndex].Cells;
-                 setDetails(cellCollection);
-                 panel1.Visible = false;
-                 updatecounter = 1;
-                 tabindix1();
-                 txtItemProductName.Focus();
-                 btnItemList.Enabled =false;
+                 if (!string.IsNullOrEmpty(cellCollection[0].Value.ToString()))
+                 {
+                     setDetails(cellCollection);
+                     panel1.Visible = false;
+                     updatecounter = 1;
+                     tabindix1();
+                     txtItemProductName.Focus();
+                     btnItemList.Enabled = false;
+                 }
              }
 
         }
