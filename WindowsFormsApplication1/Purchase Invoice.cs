@@ -541,7 +541,7 @@ namespace WindowsFormsApplication1
                     int id3 = Convert.ToInt32(id2);
                     int id4 = id3 + 1;
                     OrderID = id4.ToString();
-                    string insertqurry1 = "insert into VendorOrderDetails values('" + txtVendorId.Text + "','" + dtpInvoiceDate.Value.ToString() + "','" + txtTotalAmount.Text + "','"+txtDiscount.Text+"')";
+                    string insertqurry1 = "insert into VendorOrderDetails(venderId,OrderDate,TotalPrice,Discount) values('" + txtVendorId.Text + "','" + dtpInvoiceDate.Value.ToString() + "','" + txtTotalAmount.Text + "','"+txtDiscount.Text+"')";
                     int insertedRows1 = dbMainClass.saveDetails(insertqurry1);
                     //if (insertedRows1 > 0)
                     //{
