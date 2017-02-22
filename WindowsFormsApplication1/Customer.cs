@@ -475,13 +475,16 @@ namespace WindowsFormsApplication1
         {
             
                 DataGridViewCellCollection cellcollection = dataGridView1.SelectedRows[0].Cells;
-                 setDetails(cellcollection);
-                 panel1.Visible = false;
-                 updateCounter = 1;
-                 btnList.Enabled = false;
-                 blank();
-                 textBox1.Text = "";
-                 tabindex1();
+                if (!string.IsNullOrEmpty(cellcollection[0].Value.ToString()))
+                {
+                    setDetails(cellcollection);
+                    panel1.Visible = false;
+                    updateCounter = 1;
+                    btnList.Enabled = false;
+                    blank();
+                    textBox1.Text = "";
+                    tabindex1();
+                }
              
         }
         private void blank()

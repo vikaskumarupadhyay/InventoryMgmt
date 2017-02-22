@@ -652,18 +652,24 @@ namespace WindowsFormsApplication1
             {
                 panel2.Visible = false;
                 DataGridViewCellCollection CellCollection = dataGridView1.Rows[e.RowIndex].Cells;
-                setDetails(CellCollection);
-                IndexTex3();
+                if (!string.IsNullOrEmpty(CellCollection[0].Value.ToString()))
+                {
+                    setDetails(CellCollection);
+                    IndexTex3();
+                }
             }
             else if (counter == 1)
             {
                 panel2.Visible = false;
                 DataGridViewCellCollection CellCollection = dataGridView1.Rows[e.RowIndex].Cells;
-                setDetails1(CellCollection);
-                txtQuanity.ReadOnly = false;
-                btnAddItem.Enabled = true;
-                txtQuanity.Enabled = true;
-                IndexTex2();
+                if (!string.IsNullOrEmpty(CellCollection[0].Value.ToString()))
+                {
+                    setDetails1(CellCollection);
+                    txtQuanity.ReadOnly = false;
+                    btnAddItem.Enabled = true;
+                    txtQuanity.Enabled = true;
+                    IndexTex2();
+                }
             }
 
         }
@@ -919,19 +925,24 @@ namespace WindowsFormsApplication1
                 {
                     panel2.Visible = false;
                     DataGridViewCellCollection CellCollection = dataGridView1.Rows[currentIndex-1].Cells;
-                    setDetails(CellCollection);
-                    IndexTex3();
-
+                    if (!string.IsNullOrEmpty(CellCollection[0].Value.ToString()))
+                    {
+                        setDetails(CellCollection);
+                        IndexTex3();
+                    }
                 }
                 else if (counter == 1)
                 {
                     panel2.Visible = false;
                     DataGridViewCellCollection CellCollection = dataGridView1.Rows[currentIndex - 1].Cells;
-                    setDetails1(CellCollection);
-                    txtQuanity.ReadOnly = false;
-                    btnAddItem.Enabled = true;
-                    txtQuanity.Enabled = true;
-                    IndexTex2();
+                    if (!string.IsNullOrEmpty(CellCollection[0].Value.ToString()))
+                    {
+                        setDetails1(CellCollection);
+                        txtQuanity.ReadOnly = false;
+                        btnAddItem.Enabled = true;
+                        txtQuanity.Enabled = true;
+                        IndexTex2();
+                    }
                 }
             }
         }
@@ -961,20 +972,25 @@ namespace WindowsFormsApplication1
                 {
                     panel2.Visible = false;
                     DataGridViewCellCollection CellCollection = dataGridView1.SelectedRows[0].Cells;
-                    setDetails(CellCollection);
-                    IndexTex3();
-
+                    if (!string.IsNullOrEmpty(CellCollection[0].Value.ToString()))
+                    {
+                        setDetails(CellCollection);
+                        IndexTex3();
+                    }
                 }
                 else if (counter == 1)
                 {
                     panel2.Visible = false;
                     DataGridViewCellCollection CellCollection = dataGridView1.SelectedRows[0].Cells;
-                    setDetails1(CellCollection);
-                    txtQuanity.ReadOnly = false;
-                    btnAddItem.Enabled = true;
-                    txtQuanity.Enabled = true;
-                    IndexTex2();
-            }
+                    if (!string.IsNullOrEmpty(CellCollection[0].Value.ToString()))
+                    {
+                        setDetails1(CellCollection);
+                        txtQuanity.ReadOnly = false;
+                        btnAddItem.Enabled = true;
+                        txtQuanity.Enabled = true;
+                        IndexTex2();
+                    }
+                }
         }
     }
 }
