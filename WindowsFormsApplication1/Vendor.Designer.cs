@@ -644,10 +644,11 @@
             this.panel1.Controls.Add(this.btnUpdate);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.panel2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1172, 622);
+            this.panel1.Size = new System.Drawing.Size(1172, 634);
             this.panel1.TabIndex = 7;
             // 
             // button2
@@ -659,7 +660,6 @@
             this.button2.TabIndex = 31;
             this.button2.Text = "Export To Excel";
             this.button2.UseVisualStyleBackColor = true;
-
             // 
             // butprint
             // 
@@ -726,7 +726,7 @@
             this.txtSearch.Location = new System.Drawing.Point(687, 42);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(429, 24);
+            this.txtSearch.Size = new System.Drawing.Size(429, 23);
             this.txtSearch.TabIndex = 25;
             this.txtSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 

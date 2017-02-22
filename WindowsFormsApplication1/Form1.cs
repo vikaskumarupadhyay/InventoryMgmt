@@ -112,7 +112,9 @@ namespace WindowsFormsApplication1
                 F6 = new PurchaseOrder();
                 F6.MdiParent = this;
                 F6.FormClosed += new FormClosedEventHandler(F6_FormClosed);
+                F6.ControlBox = false;
                 F6.Show();
+                F6.WindowState = FormWindowState.Maximized;
             }
             else
             {
