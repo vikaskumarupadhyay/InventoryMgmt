@@ -714,7 +714,7 @@ namespace WindowsFormsApplication1
                 //if (dataGridView1.RowCount == currentIndex + 1)
                 //    currentIndex = currentIndex + 1;
 
-                DataGridViewCellCollection cellCollection = dataGridView1.Rows[currentIndex].Cells;
+                DataGridViewCellCollection cellCollection = dataGridView1.Rows[currentIndex-1].Cells;
                 if (!string.IsNullOrEmpty(cellCollection[0].Value.ToString()))
                 {
                     setDetails(cellCollection);
