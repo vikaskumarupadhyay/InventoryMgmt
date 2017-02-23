@@ -393,6 +393,39 @@ namespace WindowsFormsApplication1
             button4.Enabled = true;
             txtQunty.TabStop = false;
             txtQunty.Enabled = false;
+           /* string itemid = "";
+            string quntity = "";
+            string rate = "";
+            string prise = "";
+            foreach (DataRow dr3 in addToCartTable.Rows)
+            {
+                int q3 = 0;
+                itemid = dr3[0].ToString();
+                quntity = dr3[3].ToString();
+                rate = dr3[2].ToString();
+                prise = dr3[5].ToString();
+                if (itemid == txtItemCode.Text)
+                {
+                    int q1 = Convert.ToInt32(quntity);
+                    int q2 = Convert.ToInt32(txtQunty.Text);
+                    q3 = q1 + q2;
+                    dr3[3] = q3.ToString();
+                    dr3[4] = q3.ToString();
+                    int rate1 = Convert.ToInt32(prise);
+                    int rate2 = Convert.ToInt32(txtAmount.Text);
+                    int rate3 = rate1 + rate2;
+                    dr3[5] = rate3.ToString();
+                    int rate4 = Convert.ToInt32(txttotalAmount.Text);
+                    int rate5 = rate4 + rate2;
+                    txttotalAmount.Text = rate5.ToString();//rate3.ToString();
+                    // MessageBox.Show("Please Enter the Quanity");
+                    txtItemCode.Text = "I";
+                    txtProductName.Text = "";
+                    txtRate.Text = "";
+                    txtQunty.Text = "";
+                    txtAmount.Text = "";
+                }
+            }*/
                  if (txtProductName.Text==""&&txtQunty.Text=="")
                   {
                     //MessageBox.Show("now CurrentQuantity of deadt");
@@ -1048,10 +1081,10 @@ namespace WindowsFormsApplication1
             dataGridView1.Rows[e.RowIndex].Cells[5].Value = toteamount.ToString();
             string qun = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
             int quanti = Convert.ToInt32(qun);
-            int vauequn = quanti - quantity;
-            int trea = reta * vauequn;
+            int vauequn =quantity- quanti;
+            int trea = reta * quanti;
             int tamunt = Convert.ToInt32(txttotalAmount.Text);
-            int tam = tamunt - trea;
+            int tam = tamunt + trea;
             txttotalAmount.Text = tam.ToString();
 
         }
