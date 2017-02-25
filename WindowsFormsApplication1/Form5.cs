@@ -16,6 +16,7 @@ namespace WindowsFormsApplication1
         DB_Main d = new DB_Main();
         DataTable customerdetails = new DataTable();
         DataTable addToCartTable = new DataTable();
+        public string s;
         public Form5()
         {
             InitializeComponent();
@@ -35,8 +36,9 @@ namespace WindowsFormsApplication1
             customerdetails = purchasedetailobj.GetcustomerdetailsInDataTable();
             panel2.Visible = false;
             txtcustomerid.Text = "C";
-            string s = invoice;
             txtRefNo.Text = s;
+            s = invoice;
+            
             panel2.Visible = false;
             string select = " select Orderid from salesinvoice where invoiceid='" + s + "'";
             DataTable dt7 = d.getDetailByQuery(select);
@@ -64,15 +66,37 @@ namespace WindowsFormsApplication1
                 txtmobile.Text = dr[5].ToString();
                 txtfax.Text = dr[6].ToString();
             }
+            int totel = 0;
             string select3 = "select vod.ItemId,ide.ItemName,vod.Price,vod.Quantity,vod.totalammount from customerorderdescriptions vod join ItemDetails ide on Vod.ItemId=ide.ItemId where vod.Orderid='" + invo + "'";
             DataTable dt4 = d.getDetailByQuery(select3);
-            string selectquery3 = "select totalammount from orderdetails where orderid='" + invo + "'";
-            DataTable dt8 = d.getDetailByQuery(selectquery3);
-            foreach (DataRow dr in dt8.Rows)
+            int totalRowCount = addToCartTable.Rows.Count;
+            for (int rowCount = 0; rowCount < totalRowCount; rowCount++)
             {
-                txttotalammount.Text = dr[0].ToString();
+                addToCartTable.Rows.RemoveAt(0);
+            }
+
+            for (int h = 0; h < dt4.Rows.Count; h++)
+            {
+                DataRow dr2 = dt4.Rows[h];
+                string txtItemCode = dr2[0].ToString();
+                string txtitemNmae = dr2[1].ToString();
+                string txtRate = dr2[2].ToString();
+                string txtQuanity = dr2[3].ToString();
+                string txtAmoun = dr2[4].ToString();
+               
+                //totel = dr2[5].ToString();
+                int amt = Convert.ToInt32(txtAmoun);
+                totel = totel + amt;
             }
             dataGridView1.DataSource = dt4;
+            txttotalammount.Text = totel.ToString();
+            //string selectquery3 = "select totalammount from orderdetails where orderid='" + invo + "'";
+            //DataTable dt8 = d.getDetailByQuery(selectquery3);
+            //foreach (DataRow dr in dt8.Rows)
+            //{
+            //    txttotalammount.Text = dr[0].ToString();
+            //}
+            //dataGridView1.DataSource = dt4;
 
             string selectquery4 = "select id from payment";
             DataTable dt3 = d.getDetailByQuery(selectquery4);

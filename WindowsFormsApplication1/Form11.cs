@@ -369,7 +369,8 @@ namespace WindowsFormsApplication1
                 dr[1] = txtProductName.Text.Trim();
                 dr[2] = txtRate.Text.Trim();
                 dr[3] = txtQuantity.Text.Trim();
-                dr[4] = txtAmmount.Text.Trim();
+                dr[4] = txtQuantity.Text.Trim();
+                dr[5] = txtAmmount.Text.Trim();
                 addToCartTable.Rows.Add(dr);
                 gridsalesdelivary.DataSource = addToCartTable;
                 double totalAmount = Convert.ToDouble(txtTotalAmmount.Text);
@@ -499,6 +500,7 @@ namespace WindowsFormsApplication1
                 string order = "select orderid from orderdetails ";
                 DataTable d1 = d.getDetailByQuery(order);
                 string id = "";
+                string id5 = "";
                 foreach (DataRow dr in d1.Rows)
                 {
                     id = dr[0].ToString();
@@ -506,7 +508,7 @@ namespace WindowsFormsApplication1
                 if (id == "")
                 {
                     id = "1";
-                    string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpDate.Text + "','" + txtTotalAmmount.Text + "','"+textBox2.Text+"')";
+                    string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpDate.Text + "','" + txtTotalAmmount.Text + "','" + textBox2.Text + "')";
                     int insertrows = d.saveDetails(insertquery);
                     if (insertrows > 0)
                     {
@@ -518,13 +520,15 @@ namespace WindowsFormsApplication1
                             DataGridViewRow currentrow = rowcollection[a];
                             DataGridViewCellCollection cellcollection = currentrow.Cells;
                             string txtitemcode = cellcollection[0].Value.ToString();
-                           // string txtProductName = cellcollection[1].Value.ToString();
+                            // string txtProductName = cellcollection[1].Value.ToString();
                             string txtRate = cellcollection[2].Value.ToString();
                             string txtQuantity = cellcollection[4].Value.ToString();
                             string txtAmount = cellcollection[5].Value.ToString();
                             string Orderid = id;
+                            string updatequery = "update orderdetails set totalammount='" + txtTotalAmmount.Text + "' where orderid='" + Orderid + "' ";
+                            int update = d.saveDetails(updatequery);
                             string query = "insert into customerorderdescriptions Values('" + Orderid + "','" + txtitemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
-                           
+
                             // int insertrow = d.saveDetails(query);
                             show.Add(query);
                         }
@@ -532,17 +536,50 @@ namespace WindowsFormsApplication1
                         int inserirow1 = d.saveDetails(show);
                         if (inserirow1 > 0)
                         {
-                             string salesdelivary = "Insert into salesOrderDelivery values('" +id + "','true','" + dtpDate.Text + "')";
-                            int insert=d.saveDetails(salesdelivary);
-                                if(insert>0)
-                                {
-                              MessageBox.Show("details save successfully");
-                           }
-                        else
-                        {
-                            MessageBox.Show("details save not successfully");
 
-                        }
+                            if (id5 == "")
+                            {
+                                string deleteQurry = "delete VendorOrderDesc where Orderid='" + id + "'";
+                                DataTable dt = d.getDetailByQuery(deleteQurry);
+                                //dataGridView1.DataSource = "";
+
+
+                                DataGridViewRowCollection RowCollection2 = gridsalesdelivary.Rows;
+                                List<string> sf1 = new List<string>();
+                                for (int a = 0; a < RowCollection2.Count; a++)
+                                {
+
+                                    DataGridViewRow currentRow = RowCollection2[a];
+                                    DataGridViewCellCollection cellCollection = currentRow.Cells;
+                                    string txtItemCode = cellCollection[0].Value.ToString();
+                                    string txtRate = cellCollection[2].Value.ToString();
+                                    string txtQuanity = cellCollection[4].Value.ToString();
+                                    string txtAmoun = cellCollection[5].Value.ToString();
+                                    string OrderID1 = id;
+                                    string updatequery = "update orderdetails set totalammount='" + txtTotalAmmount.Text + "' where orderid='" + OrderID1+ "' ";
+                                    int update = d.saveDetails(updatequery);
+                                    string Query = "insert into customerorderdescriptions Values('" + OrderID1 + "','" + txtItemCode + "','" + txtRate + "','" + txtQuanity + "','" + txtAmoun + "')";
+                                    //MessageBox.Show(Query);
+
+                                    sf1.Add(Query);
+
+                                }
+                                int insertedRows4 = d.saveDetails(sf1);
+                                if (insertedRows4 > 0)
+                                {
+                                    string salesdelivary = "Insert into salesOrderDelivery values('" + id + "','true','" + dtpDate.Text + "')";
+                                    int insert = d.saveDetails(salesdelivary);
+                                    if (insert > 0)
+                                    {
+                                        MessageBox.Show("details save successfully");
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("details save not successfully");
+
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -552,7 +589,7 @@ namespace WindowsFormsApplication1
                     int id1 = Convert.ToInt32(id);
                     int id2 = id1 + 1;
                     string Orde = id2.ToString();
-                    string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpDate.Text + "','" + txtTotalAmmount.Text + "','"+textBox2.Text+"','"+textBox2.Text+"')";
+                    string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpDate.Text + "','" + txtTotalAmmount.Text + "','" + textBox2.Text + "','" + textBox2.Text + "')";
                     int insertrows = d.saveDetails(insertquery);
                     if (insertrows > 0)
                     {
@@ -564,11 +601,13 @@ namespace WindowsFormsApplication1
                             DataGridViewRow currentrow = rowcollection[a];
                             DataGridViewCellCollection cellcollection = currentrow.Cells;
                             string txtitemcode = cellcollection[0].Value.ToString();
-                           // string txtProductName = cellcollection[1].Value.ToString();
+                            // string txtProductName = cellcollection[1].Value.ToString();
                             string txtRate = cellcollection[2].Value.ToString();
-                            string txtQuantity = cellcollection[3].Value.ToString();
-                            string txtAmount = cellcollection[4].Value.ToString();
+                            string txtQuantity = cellcollection[4].Value.ToString();
+                            string txtAmount = cellcollection[5].Value.ToString();
                             //string orderid = txtSrNo.Text;
+                            string updatequery = "update orderdetails set totalammount='" + txtTotalAmmount.Text + "' where orderid='" + txtRefNo.Text + "' ";
+                            int update = d.saveDetails(updatequery);
                             string query = "insert into customerorderdescriptions Values('" + Orde + "','" + txtitemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
 
                             //int insertrow = d.saveDetails(query);
@@ -579,19 +618,52 @@ namespace WindowsFormsApplication1
                         int inserirow1 = d.saveDetails(show);
                         if (inserirow1 > 0)
                         {
-                            string salesdelivary = "Insert into salesOrderDelivery values('" + Orde + "','true','" + dtpDate.Text + "')";
-                            int insert = d.saveDetails(salesdelivary);
-                            if (insert > 0)
+
+                            if (id5 == "")
                             {
-                                MessageBox.Show("details save successfully");
-                            }
-                            else
-                            {
-                                MessageBox.Show("details save not successfully");
+                                string deleteQurry = "delete VendorOrderDesc where Orderid='" + id + "'";
+                                DataTable dt = d.getDetailByQuery(deleteQurry);
+                                //dataGridView1.DataSource = "";
+
+
+                                DataGridViewRowCollection RowCollection2 = gridsalesdelivary.Rows;
+                                List<string> sf1 = new List<string>();
+                                for (int a = 0; a < RowCollection2.Count; a++)
+                                {
+
+                                    DataGridViewRow currentRow = RowCollection2[a];
+                                    DataGridViewCellCollection cellCollection = currentRow.Cells;
+                                    string txtItemCode = cellCollection[0].Value.ToString();
+                                    string txtRate = cellCollection[2].Value.ToString();
+                                    string txtQuanity = cellCollection[4].Value.ToString();
+                                    string txtAmoun = cellCollection[5].Value.ToString();
+                                    string OrderID1 = id;
+                                    string updatequery = "update orderdetails set totalammount='" + txtTotalAmmount.Text + "' where orderid='" + OrderID1 + "' ";
+                                    int update = d.saveDetails(updatequery);
+                                    string Query = "insert into customerorderdescriptions Values('" + OrderID1 + "','" + txtItemCode + "','" + txtRate + "','" + txtQuanity + "','" + txtAmoun + "')";
+                                    //MessageBox.Show(Query);
+
+                                    sf1.Add(Query);
+
+                                }
+                                int insertedRows4 = d.saveDetails(sf1);
+                                if (insertedRows4 > 0)
+                                {
+                                    string salesdelivary = "Insert into salesOrderDelivery values('" + Orde + "','true','" + dtpDate.Text + "')";
+                                    int insert = d.saveDetails(salesdelivary);
+                                    if (insert > 0)
+                                    {
+                                        MessageBox.Show("details save successfully");
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("details save not successfully");
+
+                                    }
+                                }
 
                             }
                         }
-
                     }
                 }
                 makeblank();
@@ -619,17 +691,18 @@ namespace WindowsFormsApplication1
                         string txtQuantity = cellcollection[4].Value.ToString();
                         string txtAmount = cellcollection[5].Value.ToString();
                         string Orderid = txtRefNo.Text;
-
+                        string updatequery = "update orderdetails set totalammount='" + txtTotalAmmount.Text + "' where orderid='"+Orderid+"' ";
+                        int update = d.saveDetails(updatequery);
                         string query = "insert into customerorderdescriptions Values('" + Orderid + "','" + txtitemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
-                        
+                       
                         show.Add(query);
                     }
 
                     int inserirow1 = d.saveDetails(show);
                     if (inserirow1 > 0)
                         {
-                            string insertquery = "insert into salesOrderDelivery values('" + txtRefNo.Text + "','true','" + dtpDate.Text + "')";
-                            int insert = d.saveDetails(insertquery);
+                            string insertquery1 = "insert into salesOrderDelivery values('" + txtRefNo.Text + "','true','" + dtpDate.Text + "')";
+                            int insert = d.saveDetails(insertquery1);
                         if(insert>0)
                         {
                             MessageBox.Show("details save successfully");
@@ -646,8 +719,13 @@ namespace WindowsFormsApplication1
             int value = Convert.ToInt32(txtSrNo.Text);
             int value1 = value + 1;
             txtSrNo.Text = value1.ToString();
-           
-                    }
+
+            }
+                   
+        
+        
+            
+            
      
         private void setAutoCompleteMode(TextBox txt, string ColumnName, DataTable dt)
         {
@@ -699,14 +777,15 @@ namespace WindowsFormsApplication1
 
         private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                butAddItem.Focus();
-            }
             if (char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
             }
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                butAddItem.Focus();
+            }
+          
             else
             {
                 if (e.KeyChar == '\b')
@@ -812,13 +891,23 @@ namespace WindowsFormsApplication1
                     int r = Convert.ToInt32(rate);
                     int totalammount = quantity * r;
                     gridsalesdelivary.Rows[e.RowIndex].Cells[5].Value = totalammount.ToString();
-                    string newquantity = gridsalesdelivary.Rows[e.RowIndex].Cells[3].Value.ToString();
-                    int quantity1 = Convert.ToInt32(newquantity);
-                    int finalquantity = quantity1 - quantity;
-                    int totalq = r * finalquantity;
+                    //string newquantity = gridsalesdelivary.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    string rate1 = gridsalesdelivary.Rows[e.RowIndex].Cells[2].Value.ToString();
+                    int quantity1 = Convert.ToInt32(a);
+                    int finalquantity = Convert.ToInt32(rate1);
+                     finalquantity = quantity1 - quantity;
+                    int totalq = quantity1 * finalquantity;
                     int totalammount1 = Convert.ToInt32(txtTotalAmmount.Text);
-                    int t = totalammount1 - totalq;
-                    txtTotalAmmount.Text = t.ToString();
+                    int t = totalammount1 + totalq;
+                    txtTotalAmmount.Text =totalammount.ToString();
+
+                    double totalValues = 0.0;
+                    foreach (DataGridViewRow row in gridsalesdelivary.Rows) 
+                    {
+                        string amountValue= row.Cells[row.Cells.Count - 1].Value.ToString();
+                        totalValues+=  Convert.ToDouble(amountValue); 
+                    }
+                    txtTotalAmmount.Text = totalValues.ToString();
                 }
                 else if (quantity > g)
                 {
@@ -826,6 +915,7 @@ namespace WindowsFormsApplication1
                     gridsalesdelivary.Rows[e.RowIndex].Cells[4].Value="0";
                     //txtAmmount.Text = "0";
                 }
+          
             }
         }
         private void txtItemCode_TextChanged(object sender, EventArgs e)

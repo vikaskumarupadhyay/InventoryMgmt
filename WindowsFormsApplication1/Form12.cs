@@ -1303,8 +1303,10 @@ namespace WindowsFormsApplication1
                                  dr1[1] = productname.Trim();
                                  dr1[2] = rate.Trim();
                                  dr1[3] = quantity.Trim();
-                                 // dr1[4] = quantity.Trim();
                                  dr1[4] = ammount.Trim();
+                                 
+                                 // dr1[4] = quantity.Trim();
+                                
                                  addToCartTable.Rows.Add(dr1);
 
                              }
