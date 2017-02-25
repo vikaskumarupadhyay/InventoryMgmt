@@ -1050,12 +1050,7 @@ namespace WindowsFormsApplication1
              DataTable dt = d.getDetailByQuery(selectquery);
              dataGridView2.DataSource = dt;
          }
-         private void gridsalesinvoice_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-         {
-             DataGridViewCellCollection Collection1 = dataGridView2.Rows[e.RowIndex].Cells;
-             rowcollection1(Collection1);
-             panel1.Visible = false;
-         }
+        
 
          private void txtCustcode_TextChanged(object sender, EventArgs e)
          {
@@ -1243,6 +1238,9 @@ namespace WindowsFormsApplication1
          {
              if (e.KeyChar == Convert.ToChar(Keys.Enter))
              {
+                 txtitemcode.Enabled = false;
+                 butitembutton.Enabled = false;
+                 butRemoveItem.Enabled = false;
                  string selectquery2 = "select Delivaryid from salesinvoice where Delivaryid='" + txtRefNo.Text + "'";
                  DataTable dt1 = d.getDetailByQuery(selectquery2);
                  if (dt1 != null && dt1.Rows != null && dt1.Rows.Count > 0)

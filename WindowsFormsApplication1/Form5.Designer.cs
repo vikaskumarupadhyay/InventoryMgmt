@@ -276,6 +276,7 @@
             this.checkBox2.Text = "Payment without refrence to sales invoice";
             this.checkBox2.UseCompatibleTextRendering = true;
             this.checkBox2.UseVisualStyleBackColor = true;
+           // this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             this.checkBox2.Click += new System.EventHandler(this.checkBox2_Click);
             // 
             // checkBox1

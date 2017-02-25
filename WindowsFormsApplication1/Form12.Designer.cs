@@ -83,23 +83,23 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comserchvalue = new System.Windows.Forms.ComboBox();
-            this.txtsearchvalue = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.txtsearchvalue = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.comserchvalue = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridsalesinvoice)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox4.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -123,7 +123,6 @@
             this.gridsalesinvoice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridsalesinvoice.Size = new System.Drawing.Size(1135, 316);
             this.gridsalesinvoice.TabIndex = 0;
-            this.gridsalesinvoice.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesinvoice_CellDoubleClick);
             this.gridsalesinvoice.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesinvoice_CellEndEdit);
             this.gridsalesinvoice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridsalesinvoice_KeyPress);
             // 
@@ -730,60 +729,22 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.button1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Location = new System.Drawing.Point(0, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1172, 634);
-
+            this.panel2.Size = new System.Drawing.Size(1172, 630);
             this.panel2.TabIndex = 64;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // button1
+            // panel3
             // 
-            this.button1.Location = new System.Drawing.Point(15, 589);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 28);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Back";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // comserchvalue
-            // 
-            this.comserchvalue.FormattingEnabled = true;
-            this.comserchvalue.Location = new System.Drawing.Point(25, 42);
-            this.comserchvalue.Name = "comserchvalue";
-            this.comserchvalue.Size = new System.Drawing.Size(656, 23);
-            this.comserchvalue.TabIndex = 4;
-            // 
-            // txtsearchvalue
-            // 
-            this.txtsearchvalue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtsearchvalue.Location = new System.Drawing.Point(687, 42);
-            this.txtsearchvalue.Multiline = true;
-            this.txtsearchvalue.Name = "txtsearchvalue";
-            this.txtsearchvalue.Size = new System.Drawing.Size(429, 23);
-            this.txtsearchvalue.TabIndex = 3;
-            this.txtsearchvalue.TextChanged += new System.EventHandler(this.txtsearchvalue_TextChanged_1);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(684, 24);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(46, 15);
-            this.label17.TabIndex = 2;
-            this.label17.Text = "Search";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(22, 24);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(72, 15);
-            this.label16.TabIndex = 1;
-            this.label16.Text = "Search Text";
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.dataGridView2);
+            this.panel3.Location = new System.Drawing.Point(12, 105);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1141, 476);
+            this.panel3.TabIndex = 7;
             // 
             // dataGridView2
             // 
@@ -814,16 +775,52 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
             // 
-            // panel3
+            // txtsearchvalue
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtsearchvalue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel3.Controls.Add(this.dataGridView2);
-            this.panel3.Location = new System.Drawing.Point(12, 105);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1141, 476);
-            this.panel3.TabIndex = 7;
+            this.txtsearchvalue.Location = new System.Drawing.Point(687, 42);
+            this.txtsearchvalue.Multiline = true;
+            this.txtsearchvalue.Name = "txtsearchvalue";
+            this.txtsearchvalue.Size = new System.Drawing.Size(429, 23);
+            this.txtsearchvalue.TabIndex = 3;
+            this.txtsearchvalue.TextChanged += new System.EventHandler(this.txtsearchvalue_TextChanged_1);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(22, 24);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(72, 15);
+            this.label16.TabIndex = 1;
+            this.label16.Text = "Search Text";
+            // 
+            // comserchvalue
+            // 
+            this.comserchvalue.FormattingEnabled = true;
+            this.comserchvalue.Location = new System.Drawing.Point(25, 42);
+            this.comserchvalue.Name = "comserchvalue";
+            this.comserchvalue.Size = new System.Drawing.Size(656, 23);
+            this.comserchvalue.TabIndex = 4;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(684, 24);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(46, 15);
+            this.label17.TabIndex = 2;
+            this.label17.Text = "Search";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(15, 589);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(90, 28);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Back";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // salesinvoice
             // 
@@ -864,10 +861,10 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
