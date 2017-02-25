@@ -250,7 +250,7 @@
             // 
             this.butitembutton.Location = new System.Drawing.Point(116, 34);
             this.butitembutton.Name = "butitembutton";
-            this.butitembutton.Size = new System.Drawing.Size(21, 23);
+            this.butitembutton.Size = new System.Drawing.Size(24, 23);
             this.butitembutton.TabIndex = 3;
             this.butitembutton.TabStop = false;
             this.butitembutton.Text = "...";
@@ -429,7 +429,7 @@
             // 
             this.butcustomercode.Location = new System.Drawing.Point(116, 33);
             this.butcustomercode.Name = "butcustomercode";
-            this.butcustomercode.Size = new System.Drawing.Size(21, 23);
+            this.butcustomercode.Size = new System.Drawing.Size(24, 23);
             this.butcustomercode.TabIndex = 10;
             this.butcustomercode.TabStop = false;
             this.butcustomercode.Text = "...";
@@ -790,7 +790,7 @@
             this.txtsearchvalue.Location = new System.Drawing.Point(687, 42);
             this.txtsearchvalue.Multiline = true;
             this.txtsearchvalue.Name = "txtsearchvalue";
-            this.txtsearchvalue.Size = new System.Drawing.Size(1042, 23);
+            this.txtsearchvalue.Size = new System.Drawing.Size(429, 23);
             this.txtsearchvalue.TabIndex = 4;
             this.txtsearchvalue.TextChanged += new System.EventHandler(this.txtsearchvalue_TextChanged);
             // 
@@ -856,8 +856,6 @@
             this.Controls.Add(this.txtDiscount);
             this.Controls.Add(this.textBox18);
             this.Controls.Add(this.textBox16);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "salesdelivary";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sales Delivery";
