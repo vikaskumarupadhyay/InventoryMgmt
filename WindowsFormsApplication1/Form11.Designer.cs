@@ -741,6 +741,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1172, 634);
+
             this.panel2.TabIndex = 53;
             // 
             // panel3
@@ -829,7 +830,18 @@
             this.button1.Text = "Back";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
+//=======
+//            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+//            this.dataGridView2.Location = new System.Drawing.Point(11, 54);
+//            this.dataGridView2.Name = "dataGridView2";
+//            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+//            this.dataGridView2.Size = new System.Drawing.Size(816, 424);
+//            this.dataGridView2.StandardTab = true;
+//            this.dataGridView2.TabIndex = 0;
+//            this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick_1);
+//            this.dataGridView2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView2_KeyPress_1);
+//>>>>>>> salesdelivarypage
+//            // 
             // salesdelivary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
