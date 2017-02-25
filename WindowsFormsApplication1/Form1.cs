@@ -134,9 +134,12 @@ namespace WindowsFormsApplication1
             {
 
                 F7 = new Form7();
-                F7.Show();
+                
                 F7.MdiParent = this;
                 F7.FormClosed += new FormClosedEventHandler(F7_FormClosed);
+                F7.ControlBox = false;
+                F7.Show();
+                F7.WindowState = FormWindowState.Maximized;
             }
             else
             {
@@ -155,9 +158,12 @@ namespace WindowsFormsApplication1
             if (F8 == null)
             {
                 F8 = new Form8();
-                F8.Show();
+                
                 F8.MdiParent = this;
                 F8.FormClosed += new FormClosedEventHandler(F8_FormClosed);
+                F8.ControlBox = false;
+                F8.Show();
+                F8.WindowState = FormWindowState.Maximized;
             }
             else
             {
@@ -218,9 +224,12 @@ namespace WindowsFormsApplication1
             if (F12 == null)
             {
                 F12 = new salesinvoice();
-                F12.Show();
+                
                 F12.MdiParent = this;
                 F12.FormClosed += new FormClosedEventHandler(F12_FormClosed);
+                F12.ControlBox = false;
+                F12.Show();
+                F12.WindowState = FormWindowState.Maximized;
             }
             else
             {
@@ -239,9 +248,12 @@ namespace WindowsFormsApplication1
             if (F10 == null)
             {
                 F10 = new salesorder();
-                F10.Show();
+                
                 F10.MdiParent = this;
                 F10.FormClosed += new FormClosedEventHandler(F10_FormClosed);
+                F10.ControlBox = false;
+                F10.Show();
+                F10.WindowState = FormWindowState.Maximized;
             }
             else
             {
@@ -260,9 +272,12 @@ namespace WindowsFormsApplication1
             if (F11 == null)
             {
                 F11 = new salesdelivary();
-                F11.Show();
+               
                 F11.MdiParent = this;
                 F11.FormClosed += new FormClosedEventHandler(F11_FormClosed);
+                F11.ControlBox = false;
+                F11.Show();
+                F11.WindowState = FormWindowState.Maximized;
             }
             else
             {
