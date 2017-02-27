@@ -227,7 +227,7 @@
             // 
             this.txtPanNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtPanNo.Location = new System.Drawing.Point(46, 312);
-            this.txtPanNo.MaxLength = 10;
+            this.txtPanNo.MaxLength = 105;
             this.txtPanNo.Name = "txtPanNo";
             this.txtPanNo.Size = new System.Drawing.Size(382, 21);
             this.txtPanNo.TabIndex = 13;
@@ -286,7 +286,7 @@
             this.txtVenderFax.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtVenderFax.Location = new System.Drawing.Point(864, 270);
-            this.txtVenderFax.MaxLength = 10;
+            this.txtVenderFax.MaxLength = 105;
             this.txtVenderFax.Name = "txtVenderFax";
             this.txtVenderFax.Size = new System.Drawing.Size(252, 21);
             this.txtVenderFax.TabIndex = 12;
@@ -303,7 +303,7 @@
             // txtVenderMobile
             // 
             this.txtVenderMobile.Location = new System.Drawing.Point(434, 270);
-            this.txtVenderMobile.MaxLength = 10;
+            this.txtVenderMobile.MaxLength = 105;
             this.txtVenderMobile.Name = "txtVenderMobile";
             this.txtVenderMobile.Size = new System.Drawing.Size(424, 21);
             this.txtVenderMobile.TabIndex = 11;
@@ -313,7 +313,7 @@
             // txtVenderPhone
             // 
             this.txtVenderPhone.Location = new System.Drawing.Point(46, 270);
-            this.txtVenderPhone.MaxLength = 10;
+            this.txtVenderPhone.MaxLength = 150;
             this.txtVenderPhone.Name = "txtVenderPhone";
             this.txtVenderPhone.Size = new System.Drawing.Size(382, 21);
             this.txtVenderPhone.TabIndex = 10;
