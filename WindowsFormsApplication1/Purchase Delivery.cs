@@ -426,44 +426,45 @@ namespace WindowsFormsApplication1
                     txtAmount.Text = "";
                 }
             }*/
-                 if (txtProductName.Text==""&&txtQunty.Text=="")
-                  {
+                if (txtProductName.Text == "" && txtQunty.Text == "")
+                {
                     //MessageBox.Show("now CurrentQuantity of deadt");
-                  }
-                  else
-             {
-           if(txtAmount.Text=="")
-           {
-               MessageBox.Show("please Enter Quantity");
-           }
-           else
-           {
-            DataRow dr = addToCartTable.NewRow();
-            dr[0] = txtItemCode.Text.Trim();
-            dr[1] = txtProductName.Text.Trim();
-            dr[2] = txtRate.Text.Trim();
-            dr[3] = txtQunty.Text.Trim();
-            dr[4] = txtQunty.Text.Trim();
-            dr[5] = txtAmount.Text.Trim();
-            addToCartTable.Rows.Add(dr);
+                }
+                else
+                {
+                    if (txtAmount.Text == "")
+                    {
+                        MessageBox.Show("please Enter Quantity");
+                    }
+                    else
+                    {
+                        DataRow dr = addToCartTable.NewRow();
+                        dr[0] = txtItemCode.Text.Trim();
+                        dr[1] = txtProductName.Text.Trim();
+                        dr[2] = txtRate.Text.Trim();
+                        dr[3] = txtQunty.Text.Trim();
+                        dr[4] = txtQunty.Text.Trim();
+                        dr[5] = txtAmount.Text.Trim();
+                        addToCartTable.Rows.Add(dr);
 
-            dataGridView1.DataSource = addToCartTable;
-            double totalAmount = Convert.ToDouble(txttotalAmount.Text);
-            totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
-            txttotalAmount.Text = totalAmount.ToString();
+                        dataGridView1.DataSource = addToCartTable;
+                        double totalAmount = Convert.ToDouble(txttotalAmount.Text);
+                        totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
+                        txttotalAmount.Text = totalAmount.ToString();
 
-            txtItemCode.Text = "I";
-            txtProductName.Text = "";
-            txtRate.Text = "";
-            txtQunty.Text = "";
-            txtAmount.Text = "";
-            txtItemCode.Focus();
-            txtQunty.TabStop = false;
-            txtQunty.Enabled = false;
-            button3.Enabled = false;
+                        txtItemCode.Text = "I";
+                        txtProductName.Text = "";
+                        txtRate.Text = "";
+                        txtQunty.Text = "";
+                        txtAmount.Text = "";
+                        txtItemCode.Focus();
+                        txtQunty.TabStop = false;
+                        txtQunty.Enabled = false;
+                        button3.Enabled = false;
+                    }
+
+                //}
             }
-
-           }
         }
         #endregion
 
@@ -1082,7 +1083,7 @@ namespace WindowsFormsApplication1
             string qun = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
             int quanti = Convert.ToInt32(qun);
             int vauequn =quantity- quanti;
-            int trea = reta * quanti;
+            int trea = reta * vauequn;
             int tamunt = Convert.ToInt32(txttotalAmount.Text);
             int tam = tamunt + trea;
             txttotalAmount.Text = tam.ToString();
