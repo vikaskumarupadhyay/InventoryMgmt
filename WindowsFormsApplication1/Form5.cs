@@ -29,7 +29,7 @@ namespace WindowsFormsApplication1
         }
         private void Form5_Load(object sender, EventArgs e)
         {
-
+            
             txtpayammount.Text = "0";
             button1.Visible = false;
             Purchase.PurchaseDetails purchasedetailobj = new Purchase.PurchaseDetails();

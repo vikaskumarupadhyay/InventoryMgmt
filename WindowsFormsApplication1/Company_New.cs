@@ -24,7 +24,7 @@ namespace WindowsFormsApplication1
         private void Compnay_Load(object sender, EventArgs e)
         {
 
-            string selectqurry = "select cd.CompnayId as[Company Id], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.Description,cd.PANNO as[PAN No],cd.VATNO as[VAT No],cd.CSTNO as[CST No],cd.ServiceTaxAmmount as[Service Tax Ammount],cd.ExciseTaxAmmount as[Excise Tax Ammount],cd.GSTTaxAmmount as[GST Tax Ammount],cd.Isactive,cd.RagistrationDate as[Ragistrtion Date],ct.TexName as[Tax Name],ct.TexAmount as[Tax Ammount] from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId";
+            string selectqurry = "select cd.CompnayId as[Company Id], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.PANNO as[PAN NO],cd.VATNO as[VAT NO],cd.CSTNO as[CST NO],cd.ServiceTaxAmmount as[SERVICE TAX NO],cd.ExciseTaxAmmount as[EXCISE NO],cd.GSTTaxAmmount as[GST NO] from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId";
             string selectqurryForActualColumnName = "select top 1 cd.CompnayId, cd.OnerName, cd.Name ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email,cd.WebAddress,cd.Phone,cd.Mobile,cd.Fax,cd.Description,cd.PANNO,cd.VATNO,cd.CSTNO,cd.ServiceTaxAmmount,cd.ExciseTaxAmmount,cd.GSTTaxAmmount,cd.Isactive,cd.RagistrationDate,ct.TexName,ct.TexAmount from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
@@ -240,12 +240,12 @@ namespace WindowsFormsApplication1
                         MessageBox.Show("Details save not successfully");
                     }
                     string id = txtCompnayCode.Text;
-                    string id1 = id.Substring(0, 1);
-                    string id2 = id.Substring(1);
-                    int s = Convert.ToInt32(id2);
-                    int s1 = s + 1;
-                    string id3 = id1 + s1.ToString();
-                    txtCompnayCode.Text = id3;
+                    //string id1 = id.Substring(0, 1);
+                    //string id2 = id.Substring(1);
+                   // int s = Convert.ToInt32(id2);
+                   // int s1 = s + 1;
+                    //string id3 = id1 + s1.ToString();
+                    txtCompnayCode.Text = id;
                 }
             if (updatecounter == 1)
             {
@@ -257,7 +257,7 @@ namespace WindowsFormsApplication1
                         int updatequrry1 = dbMainClass.saveDetails(updateTax);
                         if (updatequrry1 > 0)
                         {
-                            MessageBox.Show("Details Save successfully");
+                            MessageBox.Show("Details Updated Successfully");
                         }
                         else
                         {
@@ -280,7 +280,9 @@ namespace WindowsFormsApplication1
                 }
             
             btnList.Enabled =true;
+           
             makeblank();
+            txtwonername.Focus();
         }
 
 
@@ -365,6 +367,10 @@ namespace WindowsFormsApplication1
                 txtwonername.Focus();
                 tabindex2();
             }
+            else
+            {
+                MessageBox.Show("Select proper row");
+            }
         }
 
         private void butUpdate_Click_1(object sender, EventArgs e)
@@ -372,14 +378,21 @@ namespace WindowsFormsApplication1
             updatecounter = 1;
             int currentIndex = dataGridView1.CurrentRow.Index;
             DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex].Cells;
-            if (!string.IsNullOrEmpty(cellcollection[0].Value.ToString()))
+            if ((string)dataGridView1.SelectedRows[0].Cells[0].Value==null)
             {
+                MessageBox.Show("Select proper row");
+            }
+            else
+            {
+
                 setdetails(cellcollection);
                 panel1.Visible = false;
                 txtwonername.Focus();
                 btnList.Enabled = false;
                 tabindex2();
             }
+           
+           
         }
 
         private void butAddNewRecord_Click_1(object sender, EventArgs e)
@@ -419,8 +432,7 @@ namespace WindowsFormsApplication1
                      txtwonername.Focus();
                      tabindex2();
                  }
-
-             }
+             }    
         }
 
         private void button1_Click(object sender, EventArgs e)
