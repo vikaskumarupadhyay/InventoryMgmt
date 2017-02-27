@@ -36,11 +36,9 @@ namespace WindowsFormsApplication1
             customerdetails = purchasedetailobj.GetcustomerdetailsInDataTable();
             panel2.Visible = false;
             txtcustomerid.Text = "C";
-            txtRefNo.Text = s;
-            s = invoice;
-            
+            txtRefNo.Text = invoice; 
             panel2.Visible = false;
-            string select = " select Orderid from salesinvoice where invoiceid='" + s + "'";
+            string select = " select Orderid from salesinvoice where invoiceid='" + invoice + "'";
             DataTable dt7 = d.getDetailByQuery(select);
             string invo = "";
             foreach (DataRow dr in dt7.Rows)
@@ -582,19 +580,20 @@ namespace WindowsFormsApplication1
 
         private void checkBox2_Click(object sender, EventArgs e)
         {
-            txtcustomerid.ReadOnly = true;
-            checkBox1.Checked = false;
-            button1.Visible = true;
-            txtSrNo.ReadOnly= true;
-            txtRefNo.ReadOnly = true;
-        }
-
-        private void checkBox1_Click(object sender, EventArgs e)
-        {
             txtcustomerid.ReadOnly = false;
             checkBox2.Checked = false;
             button1.Visible = false;
             makeblank();
+           
+        }
+
+        private void checkBox1_Click(object sender, EventArgs e)
+        {
+            txtcustomerid.ReadOnly = true;
+            checkBox1.Checked = false;
+            button1.Visible = true;
+            txtSrNo.ReadOnly = true;
+            txtRefNo.ReadOnly = true;
         }
 
         private void txtpayammount_KeyPress(object sender, KeyPressEventArgs e)

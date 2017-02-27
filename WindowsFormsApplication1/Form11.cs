@@ -487,6 +487,7 @@ namespace WindowsFormsApplication1
             txtMobile.Text = "";
             txtFax.Text = "";
             txtRefNo.Text = "";
+            txtTotalAmmount.Text = "";
             addToCartTable.Clear();
             gridsalesdelivary.DataSource = "";
         }
@@ -1368,6 +1369,8 @@ namespace WindowsFormsApplication1
                 //txtRefNo.Text = dr[7].ToString();
             }
         }
+
+       
        
 
 
