@@ -121,3 +121,13 @@ ALTER procedure [dbo].[GetUpdateCounterTEX]
 begin
 select top 1 (TexId)  from dbo.CompnayTex order by  Convert(int,SuBString( TexId,2,(len(TexId)-1))) desc 
 end
+go
+
+alter procedure GETALLDATAVENDER
+AS
+BEGIN
+
+select  vd.venderId as [Vender Id ],vd.vName AS Name ,vd.vCompName AS [Compnay Name] ,vd.vAddress AS Address,vd.vCity AS City,vd. vState AS State ,vd.vZip AS Zip ,vd.vCountry AS Country ,vd.vEmail AS[E-Mail ],vd. vWebAddress AS[Web Address],vd.vPhone AS Phone ,vd.vMobile AS Mobile ,vd.vFax AS Fax ,vd.vPanNo as[PAN NO],vd.vVatNo as [VAT NO],vd.vCstNo as[CST NO],vd.vServiceTaxRegnNo as [SERVICE TAX NO],vd.vExciseRegnNo as [EXCISE NO],vd.vGSTRegnNo as[GST NO],vd.vDesc AS Description,vad.vOpeningBalance AS [Opening Balance] , vad.vCurrentBalance AS [Current Balance] from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID
+
+END
+GO 
