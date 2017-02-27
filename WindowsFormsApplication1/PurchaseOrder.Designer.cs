@@ -443,6 +443,7 @@
             // 
             this.txtProductName.Location = new System.Drawing.Point(143, 35);
             this.txtProductName.Name = "txtProductName";
+            this.txtProductName.ReadOnly = true;
             this.txtProductName.Size = new System.Drawing.Size(381, 21);
             this.txtProductName.TabIndex = 4;
             this.txtProductName.TabStop = false;
@@ -502,7 +503,6 @@
             // 
             // gridPurchaseOrder
             // 
-            this.gridPurchaseOrder.AllowUserToAddRows = false;
             this.gridPurchaseOrder.AllowUserToDeleteRows = false;
             this.gridPurchaseOrder.AllowUserToOrderColumns = true;
             this.gridPurchaseOrder.AllowUserToResizeColumns = false;
@@ -516,6 +516,7 @@
             this.gridPurchaseOrder.StandardTab = true;
             this.gridPurchaseOrder.TabIndex = 0;
             this.gridPurchaseOrder.TabStop = false;
+            this.gridPurchaseOrder.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPurchaseOrder_CellEndEdit);
             this.gridPurchaseOrder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridPurchaseOrder_KeyPress);
             // 
             // textBox1
@@ -719,10 +720,16 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.buttBack);
+<<<<<<< HEAD
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1172, 634);
+=======
+            this.panel2.Location = new System.Drawing.Point(0, -5);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1170, 631);
+>>>>>>> UME-23-Feb-17
             this.panel2.TabIndex = 65;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint_2);
             // 
@@ -734,7 +741,11 @@
             this.panel3.Controls.Add(this.dataGridView1);
             this.panel3.Location = new System.Drawing.Point(12, 105);
             this.panel3.Name = "panel3";
+<<<<<<< HEAD
             this.panel3.Size = new System.Drawing.Size(1141, 476);
+=======
+            this.panel3.Size = new System.Drawing.Size(1139, 476);
+>>>>>>> UME-23-Feb-17
             this.panel3.TabIndex = 7;
             // 
             // dataGridView1
@@ -746,7 +757,11 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+<<<<<<< HEAD
             this.dataGridView1.Size = new System.Drawing.Size(1137, 472);
+=======
+            this.dataGridView1.Size = new System.Drawing.Size(1135, 472);
+>>>>>>> UME-23-Feb-17
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
@@ -763,7 +778,7 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(12, 25);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1141, 73);
+            this.groupBox4.Size = new System.Drawing.Size(1139, 73);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
@@ -776,7 +791,11 @@
             this.txtsearch.Location = new System.Drawing.Point(687, 42);
             this.txtsearch.Multiline = true;
             this.txtsearch.Name = "txtsearch";
+<<<<<<< HEAD
             this.txtsearch.Size = new System.Drawing.Size(429, 23);
+=======
+            this.txtsearch.Size = new System.Drawing.Size(495, 24);
+>>>>>>> UME-23-Feb-17
             this.txtsearch.TabIndex = 5;
             this.txtsearch.TextChanged += new System.EventHandler(this.txtsearch_TextChanged_1);
             // 
@@ -826,7 +845,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1172, 634);
+            this.ClientSize = new System.Drawing.Size(1172, 637);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.VATNO);

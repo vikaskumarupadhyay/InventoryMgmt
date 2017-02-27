@@ -82,7 +82,7 @@ namespace WindowsFormsApplication1
             {
                 btnAddItem.Focus();
             }
-            if (Char.IsLetterOrDigit(e.KeyChar))
+            if (Char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
             }
@@ -872,7 +872,7 @@ namespace WindowsFormsApplication1
                     btnSave.Focus();
                 }
             }
-            if (Char.IsLetterOrDigit(e.KeyChar))
+            if (Char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
             }
@@ -1027,6 +1027,46 @@ namespace WindowsFormsApplication1
                         IndexTex2();
                     }
                 }
+        }
+
+        private void gridPurchaseOrder_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            //string itemid = gridPurchaseOrder.Rows[e.RowIndex].Cells[0].Value.ToString();
+            //string selectqurry = "select Ids.ItemName,ipd.SalesPrice from ItemDetails Ids  join ItemPriceDetail ipd on Ids.ItemId=ipd.ItemId where Ids.ItemId='" + itemid + "'";
+            //DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+            //string rate = "";
+            //foreach (DataRow dr in dt.Rows)
+            //{
+            //    gridPurchaseOrder.Rows[e.RowIndex].Cells[1].Value = dr[0].ToString();
+            //    rate = dr[1].ToString();
+            //}
+            //if (gridPurchaseOrder.Rows[e.RowIndex].Cells[0].Value !=null)
+            //{
+            //    //gridPurchaseOrder.Focus();
+            //    gridPurchaseOrder.CurrentCell = gridPurchaseOrder[gridPurchaseOrder.CurrentCell.ColumnIndex + 2, gridPurchaseOrder.CurrentCell.RowIndex];
+            //    gridPurchaseOrder.Focus();
+            //}
+            //gridPurchaseOrder.Rows[e.RowIndex].Cells[3].Value = rate;
+            //string quantity = gridPurchaseOrder.Rows[e.RowIndex].Cells[2].Value.ToString();
+            //if (quantity == "")
+            //{
+            //    quantity = "0";
+            //}
+            //int q1 = Convert.ToInt32(quantity);
+            //int rate1 = Convert.ToInt32(rate);
+            //int price = rate1 * q1;
+            //if (price.ToString() == "")
+            //{
+            //    price = 0;
+            //}
+            //gridPurchaseOrder.Rows[e.RowIndex].Cells[4].Value = price.ToString();
+            //int totalammount = Convert.ToInt32(txtTotalAmount.Text);
+            //int toat = totalammount + price;
+            //txtTotalAmount.Text = toat.ToString();
+            ////if(itemid=="I1")
+            ////{
+            ////    MessageBox.Show("please enter the ");
+            ////}
         }
     }
 }
