@@ -185,6 +185,8 @@ alter table CompnayDetails Alter column GSTTaxAmmount varchar(200)
 ALTER TABLE CompnayDetails DROP COLUMN CST
 
 ALTER TABLE CompnayDetails DROP COLUMN GST
+
+ALTER TABLE CompnayTex ALTER COLUMN TexAmount decimal(18,2)
  
 
 
