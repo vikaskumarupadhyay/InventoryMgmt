@@ -187,6 +187,8 @@ ALTER TABLE CompnayDetails DROP COLUMN CST
 ALTER TABLE CompnayDetails DROP COLUMN GST
 
 ALTER TABLE CompnayTex ALTER COLUMN TexAmount decimal(18,2)
+ALTER TABLE VendorAccountDetails ALTER COLUMN vOpeningBalance decimal(18,2)
+ALTER TABLE VendorAccountDetails ALTER COLUMN vCurrentBalance decimal(18,2)
  
 
 

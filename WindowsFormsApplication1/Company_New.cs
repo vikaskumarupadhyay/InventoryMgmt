@@ -357,6 +357,7 @@ namespace WindowsFormsApplication1
 
         private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
+            btnList.Enabled = false;
             updatecounter = 1;
             int currentIndex = dataGridView1.CurrentRow.Index;
             DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex].Cells;
@@ -435,13 +436,28 @@ namespace WindowsFormsApplication1
              }    
         }
 
+        Tex t;
         private void button1_Click(object sender, EventArgs e)
         {
-            Tex t = new Tex(this.combComp, TexList);
-            t.Show();
-           // t.MdiParent = this;
-            dtpdate.TabStop = false;
-            btnSave.Focus();
+            if (t == null)
+            {
+                t = new Tex(this.combComp, TexList);
+                t.Show();
+                t.FormClosed += new FormClosedEventHandler(t_FormClosed);
+                // t.MdiParent = this;
+                dtpdate.TabStop = false;
+                btnSave.Focus();
+            }
+            else
+            {
+                t.Activate();
+            }
+        }
+
+        void t_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            t = null;
+            //throw new NotImplementedException();
         }
 
         private void combComp_SelectedIndexChanged(object sender, EventArgs e)
