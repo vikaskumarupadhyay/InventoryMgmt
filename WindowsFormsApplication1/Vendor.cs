@@ -556,19 +556,22 @@ namespace WindowsFormsApplication1
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewCellCollection cellCollection = dataGridView1.SelectedRows[0].Cells;
-            if (string.IsNullOrEmpty(cellCollection[0].Value.ToString()))
-            {
-                MessageBox.Show("Select proper row ! ");
-                dataGridView1.Focus();
-            }
-            else
+            if (!string.IsNullOrEmpty(cellCollection[0].Value.ToString()))
             {
                 setDetails(cellCollection);
                 panel1.Visible = false;
                 updateCounter = 1;
-                txtSearch.Text = "";
-                comboBox1.SelectedIndex = 0;
+                txtVenderAddress.Focus();
+                Tabindex2();
+                //txtSearch.Text = "";
+                //comboBox1.SelectedIndex = 0;
                 Enabled1();
+               
+            }
+            else
+            {
+                MessageBox.Show("Select proper row ! ");
+                dataGridView1.Focus(); 
             }
         }
 
