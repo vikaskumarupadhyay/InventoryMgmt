@@ -609,8 +609,8 @@ namespace WindowsFormsApplication1
             txttanno.Text = "";
             txtothers.Text = "";
 
-            txtOPENINGBALANCE.Text = "";
-            txtCURRENTBALANCE.Text= "";
+            txtOPENINGBALANCE.Text = "0";
+            txtCURRENTBALANCE.Text= "0";
             txtservicetaxno.Text = "";
             txtexiceragisterno.Text = "";
             txtgstragisterno.Text = "";
