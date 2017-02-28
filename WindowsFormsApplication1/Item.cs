@@ -268,7 +268,7 @@ namespace WindowsFormsApplication1
             txtItemDesc.Text = "";
             cmbItemItemGroup.Text = "Select A Group";
             cmbItemUnit.Text = "Select A Unit";
-            txtItemPrice.Text = "";
+            txtItemPrice.Text = "0";
             txtItemSalesPrice.Text = "0";
             txtItemMrp.Text = "0";
             txtItemMargin.Text = "0";
@@ -454,7 +454,7 @@ namespace WindowsFormsApplication1
         }
         private void txtItemMrp_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsDigit(e.KeyChar))
+           if (Char.IsNumber(e.KeyChar) || Char.IsPunctuation(e.KeyChar))
             {
                 e.Handled = false;
             }
