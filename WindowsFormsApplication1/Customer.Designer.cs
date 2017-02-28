@@ -547,8 +547,6 @@
             this.label6.Size = new System.Drawing.Size(35, 15);
             this.label6.TabIndex = 5;
             this.label6.Text = "State";
-            //this.label6.Click += new System.EventHandler(this.label6_Click);
-
             // 
             // label5
             // 
@@ -638,10 +636,9 @@
             this.panel1.Controls.Add(this.butclose);
             this.panel1.Controls.Add(this.butupdate);
             this.panel1.Controls.Add(this.butaddrecord);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(0, -1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1172, 634);
+            this.panel1.Size = new System.Drawing.Size(1172, 617);
             this.panel1.TabIndex = 11;
             // 
             // button2

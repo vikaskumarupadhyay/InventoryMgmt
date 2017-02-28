@@ -227,7 +227,9 @@ namespace WindowsFormsApplication1
             {
               taxId =TexList[combComp.SelectedIndex - 1];
             }
-                if (updatecounter == 0)
+            if (updatecounter == 0)
+            {
+                for (updatecounter = 0; updatecounter <1; updatecounter++)
                 {
                     string insertquery = "insert into CompnayDetails Values ('" + txtCompnayCode.Text + "','" + txtwonername.Text + "','" + txtCompnayName.Text + "','" + txtCompnayAddress.Text + "','" + txtCity.Text + "','" + txtState.Text + "','" + txtZip.Text + "','" + txtCountry.Text + "','" + txtEmailAddress.Text + "','" + txtWebSite.Text + "','" + txtPhone.Text + "','" + txtMobile.Text + "','" + txtFax.Text + "','" + txtPanNo.Text + "','" + txtVatNo.Text + "','" + txtCstNo.Text + "','" + txtSarvice.Text + "','" + txtExcise.Text + "','" + txtGst.Text + "','" + txtDescription.Text + "','" + taxId + "','" + true + "','" + dtpdate.Value.ToString() + "')";
                     int insertrow = dbMainClass.saveDetails(insertquery);
@@ -237,16 +239,17 @@ namespace WindowsFormsApplication1
                     }
                     else
                     {
-                        MessageBox.Show("Details save not successfully");
+                        MessageBox.Show("You can not allow author value");
                     }
                     string id = txtCompnayCode.Text;
                     //string id1 = id.Substring(0, 1);
                     //string id2 = id.Substring(1);
-                   // int s = Convert.ToInt32(id2);
-                   // int s1 = s + 1;
+                    // int s = Convert.ToInt32(id2);
+                    // int s1 = s + 1;
                     //string id3 = id1 + s1.ToString();
                     txtCompnayCode.Text = id;
                 }
+            }
             if (updatecounter == 1)
             {
                 string updatecommand = "update CompnayDetails set OnerName='" + txtwonername.Text + "', Name='" + txtCompnayName.Text + "',Address='" + txtCompnayAddress.Text + "',City='" + txtCity.Text + "',State='" + txtState.Text + "',Zip='" + txtZip.Text + "',Country='" + txtCountry.Text + "',Email='" + txtEmailAddress.Text + "',WebAddress='" + txtWebSite.Text + "',Phone='" + txtPhone.Text + "',Mobile='" + txtMobile.Text + "',Fax='" + txtFax.Text + "',PANNO='" + txtPanNo.Text + "',VATNO='" + txtVatNo.Text + "',CSTNO='" + txtCstNo.Text + "',ServiceTaxAmmount='" + txtSarvice.Text + "',ExciseTaxAmmount='" + txtExcise.Text + "',GSTTaxAmmount='" + txtGst.Text + "',Description='" + txtDescription.Text + "',RagistrationDate='" + dtpdate.Value.ToString() + "' where CompnayId='"+txtCompnayCode.Text+"' ";
@@ -278,20 +281,18 @@ namespace WindowsFormsApplication1
                         string id3 = id1 + s1.ToString();
                         txtCompnayCode.Text = id3;
                 }
-            
             btnList.Enabled =true;
-           
             makeblank();
+            ComDetails.SelectedIndex = 0;
             txtwonername.Focus();
+            
         }
 
 
         private void btnList_Click(object sender, EventArgs e)
         {
-
             txtSearch.Text = "";
             ComDetails.TabIndex = 0;
-
             panel1.Visible = true;
             string selectQuery1 = "select cd.CompnayId as[Company Id], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.Description,cd.PANNO as[PAN No],cd.VATNO as[VAT No],cd.CSTNO as[CST No],cd.ServiceTaxAmmount as[Service Tax Ammount],cd.ExciseTaxAmmount as[Excise Tax Ammount],cd.GSTTaxAmmount as[GST Tax Ammount],cd.Isactive,cd.RagistrationDate as[Ragistrtion Date],ct.TexName as[Tax Name],ct.TexAmount as[Tax Ammount] from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId ";
             DataTable dt = dbMainClass.getDetailByQuery(selectQuery1);
