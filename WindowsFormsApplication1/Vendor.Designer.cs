@@ -231,7 +231,7 @@
             this.txtPanNo.Name = "txtPanNo";
             this.txtPanNo.Size = new System.Drawing.Size(382, 21);
             this.txtPanNo.TabIndex = 13;
-            this.txtPanNo.TextChanged += new System.EventHandler(this.txtPanNo_TextChanged);
+           // this.txtPanNo.TextChanged += new System.EventHandler(this.txtPanNo_TextChanged);
             this.txtPanNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPanNo_KeyPress);
             // 
             // label21
@@ -307,7 +307,7 @@
             this.txtVenderMobile.Name = "txtVenderMobile";
             this.txtVenderMobile.Size = new System.Drawing.Size(424, 21);
             this.txtVenderMobile.TabIndex = 11;
-            this.txtVenderMobile.TextChanged += new System.EventHandler(this.txtVenderMobile_TextChanged);
+           // this.txtVenderMobile.TextChanged += new System.EventHandler(this.txtVenderMobile_TextChanged);
             this.txtVenderMobile.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVenderMobile_KeyPress);
             // 
             // txtVenderPhone
@@ -543,7 +543,7 @@
             this.txtVenderCurrentBal.TabStop = false;
             this.txtVenderCurrentBal.Text = "0";
             this.txtVenderCurrentBal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtVenderCurrentBal.Click += new System.EventHandler(this.txtVenderCurrentBal_Click);
+           // this.txtVenderCurrentBal.Click += new System.EventHandler(this.txtVenderCurrentBal_Click);
             this.txtVenderCurrentBal.TextChanged += new System.EventHandler(this.txtVenderCurrentBal_TextChanged);
             // 
             // textBox16
@@ -644,11 +644,10 @@
             this.panel1.Controls.Add(this.btnUpdate);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1172, 634);
+            this.panel1.Size = new System.Drawing.Size(1172, 622);
             this.panel1.TabIndex = 7;
             // 
             // button2

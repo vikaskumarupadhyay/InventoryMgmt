@@ -28,6 +28,7 @@ namespace WindowsFormsApplication1
      
         private void Customer_Load(object sender, EventArgs e)
         {
+            txtCURRENTBALANCE.Text = "0";
             if (value == 1)
             {
                 panel1.Visible = true;
@@ -244,11 +245,14 @@ namespace WindowsFormsApplication1
                 if(e.KeyChar=='\b')
                 {
                     e.Handled=false;
+                   
                 }
             else
             {
                 e.Handled = true;
+               
             }
+               
 
         }
 
@@ -445,7 +449,7 @@ namespace WindowsFormsApplication1
         {
             if (txtOPENINGBALANCE.Text == "")
             {
-                txtCURRENTBALANCE.Text = "";
+                txtCURRENTBALANCE.Text = "0";
             }
             else
             {
@@ -473,18 +477,34 @@ namespace WindowsFormsApplication1
 
         private void butupdate_Click(object sender, EventArgs e)
         {
+            updateCounter = 1;
+            int currentIndex = dataGridView1.CurrentRow.Index;
+            DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex].Cells;
+            if ((string)dataGridView1.SelectedRows[0].Cells[0].Value == null)
+            {
+                MessageBox.Show("Select proper row");
+            }
+            else
+            {
+
+                setDetails(cellcollection);
+                panel1.Visible = false;
+               // txtwonername.Focus();
+                btnList.Enabled = false;
+                tabindex1();
+            }
             
-                DataGridViewCellCollection cellcollection = dataGridView1.SelectedRows[0].Cells;
-                if (!string.IsNullOrEmpty(cellcollection[0].Value.ToString()))
-                {
-                    setDetails(cellcollection);
-                    panel1.Visible = false;
-                    updateCounter = 1;
-                    btnList.Enabled = false;
-                    blank();
-                    textBox1.Text = "";
-                    tabindex1();
-                }
+                //DataGridViewCellCollection cellcollection = dataGridView1.SelectedRows[0].Cells;
+                //if (!string.IsNullOrEmpty(cellcollection[0].Value.ToString()))
+                //{
+                //    setDetails(cellcollection);
+                //    panel1.Visible = false;
+                //    updateCounter = 1;
+                //    btnList.Enabled = false;
+                //    blank();
+                //    textBox1.Text = "";
+                //    tabindex1();
+                //}
              
         }
         private void blank()
@@ -537,14 +557,28 @@ namespace WindowsFormsApplication1
 
         private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            textBox1.Text = "";
-            comserchvalue.SelectedIndex = 0;
-            DataGridViewCellCollection cellCollection = dataGridView1.Rows[e.RowIndex].Cells;
-            setDetails(cellCollection);
-            panel1.Visible = false;
             updateCounter = 1;
-            tabindex1();
-            blank();
+            int currentIndex = dataGridView1.CurrentRow.Index;
+            DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex].Cells;
+            if (!string.IsNullOrEmpty(cellcollection[0].Value.ToString()))
+            {
+                setDetails(cellcollection);
+                panel1.Visible = false;
+               
+                tabindex1();
+            }
+            else
+            {
+                MessageBox.Show("Select proper row");
+            }
+            //textBox1.Text = "";
+            //comserchvalue.SelectedIndex = 0;
+            //DataGridViewCellCollection cellCollection = dataGridView1.Rows[e.RowIndex].Cells;
+            //setDetails(cellCollection);
+            //panel1.Visible = false;
+            //updateCounter = 1;
+            //tabindex1();
+            //blank();
            
         }
 
@@ -731,11 +765,18 @@ namespace WindowsFormsApplication1
 
         private void txtOPENINGBALANCE_Leave(object sender, EventArgs e)
         {
-            txtOPENINGBALANCE.Text = "0";
+            if (txtOPENINGBALANCE.Text == "")
+            {
+                txtOPENINGBALANCE.Text= "0";
+
+            }
+            else
+            {
+
+                string value = txtOPENINGBALANCE.Text;
+                txtCURRENTBALANCE.Text = value;
+            }
         }
-
-        
-
    
     }
 }

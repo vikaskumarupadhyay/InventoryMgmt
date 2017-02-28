@@ -294,7 +294,7 @@ namespace WindowsFormsApplication1
             txtGst.TabStop = true;
 
             txtVenderOpeningBal.TabStop = true;
-            txtVenderCurrentBal.TabStop = true;
+            txtVenderCurrentBal.TabStop = false;
             txtPanNo.TabStop = true;
             txtVatNo.TabStop = true;
             //dataGridView1.TabStop = false;
@@ -542,6 +542,7 @@ namespace WindowsFormsApplication1
         {
             panel1.Visible = false;
             Tabindex1();
+           
             txtVenderName.Focus();
         }
 
@@ -644,10 +645,6 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void txtPanNo_TextChanged(object sender, EventArgs e)
-        {
-           
-        }
 
         private void txtVenderOpeningBal_Click(object sender, EventArgs e)
         {
@@ -663,12 +660,6 @@ namespace WindowsFormsApplication1
             ////    txtVenderCurrentBal.Text = value;
             //}
         }
-
-        private void txtVenderCurrentBal_Click(object sender, EventArgs e)
-        {
-            //txtVenderCurrentBal.Text = "";
-        }
-
         private void txtVenderCurrentBal_TextChanged(object sender, EventArgs e)
         {
             //if (txtVenderOpeningBal.Text == "")
@@ -710,15 +701,6 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void txtTinNo_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtVenderMobile_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
         {

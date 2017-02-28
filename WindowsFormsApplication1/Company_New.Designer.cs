@@ -560,7 +560,7 @@
             this.panel1.Controls.Add(this.butUpdate);
             this.panel1.Controls.Add(this.butAddNewRecord);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(0, 3);
+            this.panel1.Location = new System.Drawing.Point(0, 4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1172, 619);
             this.panel1.TabIndex = 32;
