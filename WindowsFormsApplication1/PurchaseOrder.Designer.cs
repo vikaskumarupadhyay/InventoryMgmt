@@ -721,9 +721,9 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.buttBack);
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Location = new System.Drawing.Point(0, 270);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1172, 625);
+            this.panel2.Size = new System.Drawing.Size(1172, 355);
             this.panel2.TabIndex = 65;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint_2);
             // 
