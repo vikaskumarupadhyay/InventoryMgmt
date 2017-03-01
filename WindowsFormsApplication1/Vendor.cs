@@ -460,6 +460,7 @@ namespace WindowsFormsApplication1
 
         private void btnVenderList_Click(object sender, EventArgs e)
         {
+            dataGridView1.AllowUserToAddRows = true;
             comboBox1.SelectedIndex = 0;
             txtSearch.Text = "";
             panel1.Visible = true;
@@ -750,39 +751,10 @@ namespace WindowsFormsApplication1
             VendorPrint vp = new VendorPrint(classCollection,1);
             vp.Show();
         }
-
+       
         private void button2_Click(object sender, EventArgs e)
         {
             
-   // create new xls file string file = "C:\newdoc.xls";
-         Workbook workbook = new Workbook(); Worksheet worksheet = new Worksheet("First Sheet"); worksheet.Cells[0, 1] = new Cell((short)1); worksheet.Cells[2, 0] = new Cell(9999999); worksheet.Cells[3, 3] = new Cell((decimal)3.45); worksheet.Cells[2, 2] = new Cell("Text string"); worksheet.Cells[2, 4] = new Cell("Second string"); worksheet.Cells[4, 0] = new Cell(32764.5, "#,##0.00"); worksheet.Cells[5, 1] = new Cell(DateTime.Now, @"YYYY-MM-DD"); worksheet.Cells.ColumnWidth[0, 1] = 3000; workbook.Worksheets.Add(worksheet); //workbook.Save(file);
-
-// open xls file Workbook book = Workbook.Load(file); Worksheet sheet = book.Worksheets[0];
-
-// traverse cells foreach (Pair, Cell> cell in sheet.Cells) { dgvCells[cell.Left.Right, cell.Left.Left].Value = cell.Right.Value; }
-
-// traverse rows by Index for (int rowIndex = sheet.Cells.FirstRowIndex; rowIndex <= sheet.Cells.LastRowIndex; rowIndex++) { Row row = sheet.Cells.GetRow(rowIndex); for (int colIndex = row.FirstColIndex; colIndex <= row.LastColIndex; colIndex++) { Cell cell = row.GetCell(colIndex); } } ```
-
-      //Project Information
-
-      //  License: GNU Lesser GPL
-      //    395 stars
-      //  svn-based source control
-      // Labels: 
-      //     Excel Office CSharp .NET DotNet
-
-
-        //    StreamWriter s = new StreamWriter("test1.txt");
-        //    DataGridViewRowCollection rowcollection = dataGridView1.Rows;
-        //    string value = "";
-        //    for (int a = 0; a < rowcollection.Count; a++)
-        //    {
-        //        DataGridViewRow currentrow = rowcollection[a];
-        //        DataGridViewCellCollection cellcollecton = currentrow.Cells;
-        //        value = cellcollecton[0].Value.ToString() + " , " + cellcollecton[1].Value.ToString() + " , " + cellcollecton[2].Value.ToString() + " , " + cellcollecton[3].Value.ToString() + " , " + cellcollecton[4].Value.ToString() + " , " + cellcollecton[5].Value.ToString() + "  , " + cellcollecton[6].Value.ToString() + " , " + cellcollecton[7].Value.ToString() + " , " + cellcollecton[8].Value.ToString() + " , " + cellcollecton[9].Value.ToString() + " , " + cellcollecton[10].Value.ToString() + " , " + cellcollecton[11].Value.ToString() + " , " + cellcollecton[12].Value.ToString() + ", " + cellcollecton[13].Value.ToString() + " , " + cellcollecton[14].Value.ToString() + " , " + cellcollecton[15].Value.ToString() + " ," + cellcollecton[16].Value.ToString() + " ," + cellcollecton[17].Value.ToString() + " ," + cellcollecton[18].Value.ToString() + " ," + cellcollecton[19].Value.ToString() + " ," + cellcollecton[20].Value.ToString() + " ," + cellcollecton[21].Value.ToString();
-        //        s.WriteLine(value);
-        //    }
-        //    s.Close();
         }
 
         private void txtVenderOpeningBal_TextChanged_1(object sender, EventArgs e)
@@ -804,6 +776,55 @@ namespace WindowsFormsApplication1
             {
                 txtVenderOpeningBal.Text = "";
             }
+        }
+        int num = 0;
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            if (dataGridView1.AllowUserToAddRows == true)
+            {
+                dataGridView1.AllowUserToAddRows = false;
+            }
+            num++;
+            string pathName = "Vendor";
+            string FolderName = pathName + num;
+            //DataGridViewColumnCollection column = dataGridView1.Columns;
+            int cout = 0;
+            int rowCoumt = 0;
+            // column1 = dc.Name.ToString();
+            string file = System.Configuration.ConfigurationManager.AppSettings["ExcelFilePath1"] + FolderName + "newdoc.xls";
+            Workbook workbook = new Workbook();
+            Worksheet worksheet = new Worksheet("First Sheet");
+
+            foreach (DataGridViewColumn dc in dataGridView1.Columns)
+            {
+
+                worksheet.Cells[rowCoumt, cout] = new Cell(dc.Name);
+                cout++;
+
+            }
+
+            //foreach (DataGridViewRow row in dataGridView1.Rows) { }
+            DataGridViewRowCollection rowcollection = dataGridView1.Rows;
+
+            int rowindex = 1;
+            //int countindex = 0;
+            for (int a = 0; a < rowcollection.Count; a++)
+            {
+                DataGridViewRow currentrow = rowcollection[a];
+                DataGridViewCellCollection cellcollecton = currentrow.Cells;
+                int countrow = 0;
+
+                for (int b = 0; b < currentrow.Cells.Count; b++)
+                {
+                        worksheet.Cells[rowindex, countrow] = new Cell(currentrow.Cells[b].Value.ToString());
+                        // countindex++;
+                        countrow++;
+                     }
+                // name = cellcollecton[0].Value.ToString() + " , " + cellcollecton[1].Value.ToString() + " , " + cellcollecton[2].Value.ToString() + " , " + cellcollecton[3].Value.ToString() + " , " + cellcollecton[4].Value.ToString() + " , " + cellcollecton[5].Value.ToString() + "  , " + cellcollecton[6].Value.ToString() + " , " + cellcollecton[7].Value.ToString() + " , " + cellcollecton[8].Value.ToString() + " , " + cellcollecton[9].Value.ToString() + " , " + cellcollecton[10].Value.ToString() + " , " + cellcollecton[11].Value.ToString() + " , " + cellcollecton[12].Value.ToString() + ", " + cellcollecton[13].Value.ToString() + " , " + cellcollecton[14].Value.ToString() + " , " + cellcollecton[15].Value.ToString();
+                rowindex++;
+            }
+            workbook.Worksheets.Add(worksheet);
+            workbook.Save(file);
         }
 
     }

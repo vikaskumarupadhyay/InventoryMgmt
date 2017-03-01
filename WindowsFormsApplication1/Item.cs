@@ -462,10 +462,7 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyChar == '\b')
                 {
-                    if (txtItemMrp.Text == "")
-                    {
-                        txtItemMrp.Text = "0";
-                    }
+                    
                     e.Handled = false;
                 }
                 else
@@ -714,7 +711,7 @@ namespace WindowsFormsApplication1
         {
             if (txtItemOpeningQuant.Text =="")
             {
-                txtItemRemaningQuant.Text = "0";
+                txtItemOpeningQuant.Text = "0";
             }
 
             string txt = txtItemOpeningQuant.Text;
