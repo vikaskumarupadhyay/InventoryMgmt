@@ -231,7 +231,6 @@
             this.txtPanNo.Name = "txtPanNo";
             this.txtPanNo.Size = new System.Drawing.Size(382, 21);
             this.txtPanNo.TabIndex = 13;
-           // this.txtPanNo.TextChanged += new System.EventHandler(this.txtPanNo_TextChanged);
             this.txtPanNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPanNo_KeyPress);
             // 
             // label21
@@ -307,7 +306,6 @@
             this.txtVenderMobile.Name = "txtVenderMobile";
             this.txtVenderMobile.Size = new System.Drawing.Size(424, 21);
             this.txtVenderMobile.TabIndex = 11;
-           // this.txtVenderMobile.TextChanged += new System.EventHandler(this.txtVenderMobile_TextChanged);
             this.txtVenderMobile.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVenderMobile_KeyPress);
             // 
             // txtVenderPhone
@@ -543,7 +541,6 @@
             this.txtVenderCurrentBal.TabStop = false;
             this.txtVenderCurrentBal.Text = "0";
             this.txtVenderCurrentBal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-           // this.txtVenderCurrentBal.Click += new System.EventHandler(this.txtVenderCurrentBal_Click);
             this.txtVenderCurrentBal.TextChanged += new System.EventHandler(this.txtVenderCurrentBal_TextChanged);
             // 
             // textBox16
@@ -659,6 +656,7 @@
             this.button2.TabIndex = 31;
             this.button2.Text = "Export To Excel";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // butprint
             // 
