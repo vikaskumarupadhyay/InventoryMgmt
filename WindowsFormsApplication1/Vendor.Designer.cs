@@ -657,6 +657,7 @@
             this.button2.Text = "Export To Excel";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
+           // this.button2.Leave += new System.EventHandler(this.button2_Leave);
             // 
             // butprint
             // 

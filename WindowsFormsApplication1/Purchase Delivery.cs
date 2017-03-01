@@ -393,39 +393,109 @@ namespace WindowsFormsApplication1
             button4.Enabled = true;
             txtQunty.TabStop = false;
             txtQunty.Enabled = false;
-           /* string itemid = "";
-            string quntity = "";
-            string rate = "";
-            string prise = "";
-            foreach (DataRow dr3 in addToCartTable.Rows)
+            if (txtRef.Text == "")
             {
-                int q3 = 0;
-                itemid = dr3[0].ToString();
-                quntity = dr3[3].ToString();
-                rate = dr3[2].ToString();
-                prise = dr3[5].ToString();
-                if (itemid == txtItemCode.Text)
+              
+                string itemid = "";
+                string quntity = "";
+                string rate = "";
+                string prise = "";
+                foreach (DataRow dr3 in addToCartTable.Rows)
                 {
-                    int q1 = Convert.ToInt32(quntity);
-                    int q2 = Convert.ToInt32(txtQunty.Text);
-                    q3 = q1 + q2;
-                    dr3[3] = q3.ToString();
-                    dr3[4] = q3.ToString();
-                    int rate1 = Convert.ToInt32(prise);
-                    int rate2 = Convert.ToInt32(txtAmount.Text);
-                    int rate3 = rate1 + rate2;
-                    dr3[5] = rate3.ToString();
-                    int rate4 = Convert.ToInt32(txttotalAmount.Text);
-                    int rate5 = rate4 + rate2;
-                    txttotalAmount.Text = rate5.ToString();//rate3.ToString();
-                    // MessageBox.Show("Please Enter the Quanity");
-                    txtItemCode.Text = "I";
-                    txtProductName.Text = "";
-                    txtRate.Text = "";
-                    txtQunty.Text = "";
-                    txtAmount.Text = "";
-                }
-            }*/
+                    int q3 = 0;
+                    itemid = dr3[0].ToString();
+                    quntity = dr3[3].ToString();
+                    rate = dr3[2].ToString();
+                    prise = dr3[4].ToString();
+                    if (itemid == txtItemCode.Text)
+                    {
+                        int q1 = Convert.ToInt32(quntity);
+                        int q2 = Convert.ToInt32(txtQunty.Text);
+                        q3 = q1 + q2;
+                        dr3[3] = q3.ToString();
+                        //dr3[4] = q3.ToString();
+                        int rate1 = Convert.ToInt32(prise);
+                        int rate2 = Convert.ToInt32(txtAmount.Text);
+                        int rate3 = rate1 + rate2;
+                        dr3[4] = rate3.ToString();
+                        int rate4 = Convert.ToInt32(txttotalAmount.Text);
+                        int rate5 = rate4 + rate2;
+                        txttotalAmount.Text = rate5.ToString();//rate3.ToString();
+                        // MessageBox.Show("Please Enter the Quanity");
+                       /* txtItemCode.Text = "I";
+                        txtProductName.Text = "";
+                        txtRate.Text = "";
+                        txtQunty.Text = "";
+                        txtAmount.Text = "";
+                        //addToCartTable.Columns.Add("Qtuhjh");*/
+                    }
+                   }
+                    if (addToCartTable != null && addToCartTable.Rows != null && addToCartTable.Rows.Count > 0)
+                    {
+                            if (itemid == txtItemCode.Text)
+                            {
+                                txtItemCode.Text = "I";
+                                txtProductName.Text = "";
+                                txtRate.Text = "";
+                                txtQunty.Text = "";
+                                txtAmount.Text = "";
+                            }
+                            else
+                            {
+                                DataRow dr = addToCartTable.NewRow();
+                                dr[0] = txtItemCode.Text.Trim();
+                                dr[1] = txtProductName.Text.Trim();
+                                dr[3] = txtQunty.Text.Trim();
+                                dr[2] = txtRate.Text.Trim();
+                                dr[4] = txtAmount.Text.Trim();
+
+                                //dr[5] = txtAmount.Text.Trim();
+                                addToCartTable.Rows.Add(dr);
+                                dataGridView1.DataSource = addToCartTable;
+                                double totalAmount = Convert.ToDouble(txttotalAmount.Text);
+                                totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
+                                txttotalAmount.Text = totalAmount.ToString();
+
+                                txtItemCode.Text = "I";
+                                txtProductName.Text = "";
+                                txtRate.Text = "";
+                                txtQunty.Text = "";
+                                txtAmount.Text = "";
+                            }
+                       // }
+
+                    }
+                    else
+                    {
+                        addToCartTable.Columns.RemoveAt(4);
+                        DataRow dr = addToCartTable.NewRow();
+                        dr[0] = txtItemCode.Text.Trim();
+                        dr[1] = txtProductName.Text.Trim();
+                        dr[3] = txtQunty.Text.Trim();
+                        dr[2] = txtRate.Text.Trim();
+                        dr[4] = txtAmount.Text.Trim();
+
+                        //dr[5] = txtAmount.Text.Trim();
+                        addToCartTable.Rows.Add(dr);
+                        dataGridView1.DataSource = addToCartTable;
+                        double totalAmount = Convert.ToDouble(txttotalAmount.Text);
+                        totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
+                        txttotalAmount.Text = totalAmount.ToString();
+
+                        txtItemCode.Text = "I";
+                        txtProductName.Text = "";
+                        txtRate.Text = "";
+                        txtQunty.Text = "";
+                        txtAmount.Text = "";
+                        txtQunty.TabStop = false;
+                        txtQunty.Enabled = false;
+                        button3.Enabled = false;
+                    }
+               // }
+            }
+
+            else if (txtRef.Text != "")
+            {
                 if (txtProductName.Text == "" && txtQunty.Text == "")
                 {
                     //MessageBox.Show("now CurrentQuantity of deadt");
@@ -463,7 +533,7 @@ namespace WindowsFormsApplication1
                         button3.Enabled = false;
                     }
 
-                //}
+                }
             }
         }
         #endregion
