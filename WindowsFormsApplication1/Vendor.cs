@@ -460,7 +460,6 @@ namespace WindowsFormsApplication1
 
         private void btnVenderList_Click(object sender, EventArgs e)
         {
-            dataGridView1.AllowUserToAddRows = true;
             comboBox1.SelectedIndex = 0;
             txtSearch.Text = "";
             panel1.Visible = true;
@@ -825,6 +824,7 @@ namespace WindowsFormsApplication1
             }
             workbook.Worksheets.Add(worksheet);
             workbook.Save(file);
+            dataGridView1.AllowUserToAddRows = true;
         }
 
     }
