@@ -636,9 +636,9 @@
             this.panel1.Controls.Add(this.butclose);
             this.panel1.Controls.Add(this.butupdate);
             this.panel1.Controls.Add(this.butaddrecord);
-            this.panel1.Location = new System.Drawing.Point(0, 7);
+            this.panel1.Location = new System.Drawing.Point(0, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1172, 615);
+            this.panel1.Size = new System.Drawing.Size(1172, 621);
             this.panel1.TabIndex = 11;
             // 
             // button2
