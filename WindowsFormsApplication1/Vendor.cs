@@ -370,24 +370,22 @@ namespace WindowsFormsApplication1
 
         private void frmVendorDetails_Load(object sender, EventArgs e)
         {
-
-           
             if (counter == 1)
             {
                 //panel2.Visible = true;
                 panel1.Visible = true;
                 Tabindex();
-                comboBox1.Focus();
                 panel2.TabStop = false;
-                panel2.TabIndex = 26;
-                comboBox1.TabIndex = 0;
-                txtSearch.TabIndex = 2;
-                dataGridView1.TabIndex = 3;
-                btnUpdate.TabIndex = 4;
-                button1.TabIndex = 5;
-                butprint.TabIndex = 6;
-                button2.TabIndex = 7;
-                button3.TabIndex = 8;
+               panel2.TabIndex = 26;
+                comboBox1.Focus();
+              // comboBox1.TabIndex = 0;
+               // txtSearch.TabIndex = 1;
+               // dataGridView1.TabIndex = 2;
+                //btnUpdate.TabIndex = 3;
+                //button1.TabIndex = 4;
+                //butprint.TabIndex = 5;
+                //button2.TabIndex = 6;
+                //button3.TabIndex = 7;
             
             }
             else if (counter == 0) 
@@ -826,6 +824,8 @@ namespace WindowsFormsApplication1
             workbook.Save(file);
             dataGridView1.AllowUserToAddRows = true;
         }
+
+       
 
     }
 }

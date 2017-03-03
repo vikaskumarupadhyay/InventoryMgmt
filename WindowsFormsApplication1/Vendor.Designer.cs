@@ -641,10 +641,11 @@
             this.panel1.Controls.Add(this.btnUpdate);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.panel2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(0, 2);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1172, 620);
+            this.panel1.Size = new System.Drawing.Size(1172, 634);
             this.panel1.TabIndex = 7;
             // 
             // button2
@@ -734,7 +735,7 @@
             this.button3.Location = new System.Drawing.Point(469, 582);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(90, 28);
-            this.button3.TabIndex = 29;
+            this.button3.TabIndex = 32;
             this.button3.Text = "Close";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -756,7 +757,7 @@
             this.button1.Location = new System.Drawing.Point(108, 582);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(137, 28);
-            this.button1.TabIndex = 27;
+            this.button1.TabIndex = 29;
             this.button1.Text = "Add New Records";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -767,9 +768,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Location = new System.Drawing.Point(12, 105);
+            this.panel2.Location = new System.Drawing.Point(12, 114);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1142, 467);
+            this.panel2.Size = new System.Drawing.Size(1142, 458);
             this.panel2.TabIndex = 0;
             // 
             // dataGridView1
@@ -783,7 +784,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1138, 463);
+            this.dataGridView1.Size = new System.Drawing.Size(1138, 454);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 26;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);

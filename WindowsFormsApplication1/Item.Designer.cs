@@ -503,8 +503,6 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.groupBox4);
@@ -512,10 +510,11 @@
             this.panel1.Controls.Add(this.buttClose2);
             this.panel1.Controls.Add(this.buttUpdate);
             this.panel1.Controls.Add(this.buttAddNewRecord);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1172, 548);
-            this.panel1.TabIndex = 10;
+            this.panel1.Size = new System.Drawing.Size(1172, 549);
+            this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
@@ -538,7 +537,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1146, 382);
             this.dataGridView1.StandardTab = true;
-            this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
             // 
@@ -548,7 +547,7 @@
             this.button2.Location = new System.Drawing.Point(334, 501);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(131, 28);
-            this.button2.TabIndex = 6;
+            this.button2.TabIndex = 23;
             this.button2.Text = "Export To Excel";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -565,7 +564,7 @@
             this.groupBox4.Location = new System.Drawing.Point(12, 25);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(1150, 73);
-            this.groupBox4.TabIndex = 8;
+            this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Item Search";
             // 
@@ -587,7 +586,7 @@
             this.searchCalmn.Location = new System.Drawing.Point(25, 42);
             this.searchCalmn.Name = "searchCalmn";
             this.searchCalmn.Size = new System.Drawing.Size(656, 24);
-            this.searchCalmn.TabIndex = 0;
+            this.searchCalmn.TabIndex = 2;
             // 
             // txtSearch
             // 
@@ -598,7 +597,7 @@
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(430, 24);
-            this.txtSearch.TabIndex = 1;
+            this.txtSearch.TabIndex = 3;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // label14
@@ -616,7 +615,7 @@
             this.butPrint.Location = new System.Drawing.Point(253, 501);
             this.butPrint.Name = "butPrint";
             this.butPrint.Size = new System.Drawing.Size(75, 28);
-            this.butPrint.TabIndex = 5;
+            this.butPrint.TabIndex = 22;
             this.butPrint.Text = "Print";
             this.butPrint.UseVisualStyleBackColor = true;
             this.butPrint.Click += new System.EventHandler(this.butPrint_Click);
@@ -627,7 +626,7 @@
             this.buttClose2.Location = new System.Drawing.Point(471, 501);
             this.buttClose2.Name = "buttClose2";
             this.buttClose2.Size = new System.Drawing.Size(90, 28);
-            this.buttClose2.TabIndex = 7;
+            this.buttClose2.TabIndex = 24;
             this.buttClose2.Text = "Close";
             this.buttClose2.UseVisualStyleBackColor = true;
             this.buttClose2.Click += new System.EventHandler(this.buttClose_Click);
@@ -638,7 +637,7 @@
             this.buttUpdate.Location = new System.Drawing.Point(14, 501);
             this.buttUpdate.Name = "buttUpdate";
             this.buttUpdate.Size = new System.Drawing.Size(90, 28);
-            this.buttUpdate.TabIndex = 3;
+            this.buttUpdate.TabIndex = 20;
             this.buttUpdate.Text = "Update";
             this.buttUpdate.UseVisualStyleBackColor = true;
             this.buttUpdate.Click += new System.EventHandler(this.buttUpdate_Click);
@@ -649,7 +648,7 @@
             this.buttAddNewRecord.Location = new System.Drawing.Point(110, 501);
             this.buttAddNewRecord.Name = "buttAddNewRecord";
             this.buttAddNewRecord.Size = new System.Drawing.Size(137, 28);
-            this.buttAddNewRecord.TabIndex = 4;
+            this.buttAddNewRecord.TabIndex = 21;
             this.buttAddNewRecord.Text = "Add New Record";
             this.buttAddNewRecord.UseVisualStyleBackColor = true;
             this.buttAddNewRecord.Click += new System.EventHandler(this.buttAddNewRecord_Click);
@@ -728,7 +727,6 @@
         private System.Windows.Forms.Button buttUpdate;
         private System.Windows.Forms.Button buttAddNewRecord;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox searchCalmn;
@@ -736,5 +734,6 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }

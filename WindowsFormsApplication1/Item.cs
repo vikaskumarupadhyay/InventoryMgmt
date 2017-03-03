@@ -29,17 +29,52 @@ namespace WindowsFormsApplication1
             value = value1;
             InitializeComponent();
         }
+        private void tabindex2()
+        {
+            txtItemProductCode.TabStop = false;
+            txtItemProductName.TabStop = false;
+            txtItemCompName.TabStop = false;
+            txtItemDesc.TabStop = false;
+            cmbItemItemGroup.TabStop = false;
+            btnItemGroup.TabStop = false;
+            cmbItemUnit.TabStop = false;
+            btnItemUnit.TabStop = false;
+            txtItemPrice.TabStop = false;
+            txtItemSalesPrice.TabStop = false;
+            txtItemMrp.TabStop = false;
+            txtItemMargin.TabStop = false;
+            txtItemOpeningQuant.TabStop = false;
+            txtItemRemaningQuant.TabStop = false;
+            btnItemSave.TabStop = false;
+            btnItemClose.TabStop = false;
+            btnItemList.TabStop = false;
+        }
         private void Item_Load(object sender, EventArgs e)
         {
-            if (value == 1)
+            if(value==1)
             {
-                panel1.Visible = true;
+            panel1.Visible = true;
+            tabindex2();
+            panel2.TabStop = false;
+           // panel2.TabIndex = 26;
+               searchCalmn.Focus();
+               searchCalmn.TabStop = true;
+              
             }
             else if (value == 0)
             {
+                //panel2.Visible = false;
                 panel1.Visible = false;
             }
-            string selectqurry = "select  itm.ItemId,itm.ItemName as[Product Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],ipd.MrpPrice as[Mrp Price] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
+            //if (value == 1)
+            //{
+            //    panel1.Visible = true;
+            //}
+            //else if (value == 0)
+            //{
+            //    panel1.Visible = false;
+            //}
+            string selectqurry =" select  itm.ItemId,itm.ItemName as[Product Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],ipd.MrpPrice as[Mrp Price],itm.Unitid as[Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.Margin as [Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as [Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
             string selectqurryForActualColumnName = "select top 1  itm.ItemId, itm.ItemName,itm.ItemCompName ,itm.ItemDesc ,ig.groupName,iul.unitName ,ipd.purChasePrice ,ipd.SalesPrice ,ipd.MrpPrice ,ipd.Margin ,iqd.OpeningQuantity ,iqd.CurrentQuantity from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
@@ -292,6 +327,7 @@ namespace WindowsFormsApplication1
 
         private void buttClose_Click(object sender, EventArgs e)
         {
+            
             panel1.Visible = false;
             tabindix1();
             txtItemProductName.Focus();
@@ -515,23 +551,24 @@ namespace WindowsFormsApplication1
 
         private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
         {
-             int currentIndex = dataGridView1.CurrentRow.Index;
-             if (e.KeyChar == (char)Keys.Enter)
-             {
-                 txtSearch.Text = "";
-                 searchCalmn.SelectedIndex = 0;
-                 DataGridViewCellCollection cellCollection = dataGridView1.Rows[currentIndex].Cells;
-                 if (!string.IsNullOrEmpty(cellCollection[0].Value.ToString()))
-                 {
-                     setDetails(cellCollection);
-                     panel1.Visible = false;
-                     updatecounter = 1;
-                     tabindix1();
-                     txtItemProductName.Focus();
-                     btnItemList.Enabled = false;
-                 }
-             }
-
+            int currentIndex = dataGridView1.CurrentRow.Index;
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if (dataGridView1.SelectedRows != null && dataGridView1.SelectedRows.Count > 0)
+                {
+                    //    if (dataGridView1.RowCount == currentIndex - 1)
+                    //        currentIndex = currentIndex - 1;
+                    DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex - 1].Cells;
+                    setDetails(cellcollection);
+                    panel1.Visible = false;
+                    updatecounter = 1;
+                    btnItemList.Enabled = false;
+                    tabindix1();
+                    txtItemProductName.Focus();
+                   
+                }
+            }
+            
         }
 
         private void txtItemSalesPrice_TextChanged(object sender, EventArgs e)
@@ -784,6 +821,8 @@ namespace WindowsFormsApplication1
             workbook.Worksheets.Add(worksheet);
             workbook.Save(file);
         }
+
+       
     }
 
 }
