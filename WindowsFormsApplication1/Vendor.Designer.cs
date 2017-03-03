@@ -767,9 +767,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Location = new System.Drawing.Point(12, 155);
+            this.panel2.Location = new System.Drawing.Point(12, 114);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1050, 417);
+            this.panel2.Size = new System.Drawing.Size(1142, 458);
             this.panel2.TabIndex = 0;
             // 
             // dataGridView1
@@ -783,7 +783,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1046, 413);
+            this.dataGridView1.Size = new System.Drawing.Size(1138, 454);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 26;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
