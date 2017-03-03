@@ -782,11 +782,13 @@ namespace WindowsFormsApplication1
                 dataGridView1.AllowUserToAddRows = false;
             }
             string acc = "";
-            FolderBrowserDialog openFileDialog1 = new FolderBrowserDialog();
+            SaveFileDialog openFileDialog1 = new SaveFileDialog();
+           //FolderBrowserDialog openFileDialog1 = new FolderBrowserDialog();
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
              {
-               acc = openFileDialog1.SelectedPath;
+               acc = openFileDialog1.FileName;
               }
+            MessageBox.Show(acc);
                 num++;
                 string pathName = "Vendor";
                 string FolderName = pathName + num;
@@ -794,7 +796,7 @@ namespace WindowsFormsApplication1
                 int cout = 0;
                 int rowCoumt = 0;
                 // column1 = dc.Name.ToString();
-                string file = acc +"\\"+ FolderName + "newdoc.xls"; //System.Configuration.ConfigurationManager.AppSettings["ExcelFilePath1"] + FolderName + "newdoc.xls";
+                string file = acc + "newdoc.xls"; //System.Configuration.ConfigurationManager.AppSettings["ExcelFilePath1"] + FolderName + "newdoc.xls";
                 Workbook workbook = new Workbook();
                 Worksheet worksheet = new Worksheet("First Sheet");
 
