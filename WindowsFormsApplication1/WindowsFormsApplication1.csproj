@@ -77,12 +77,6 @@
     <Compile Include="Company_New.Designer.cs">
       <DependentUpon>Company_New.cs</DependentUpon>
     </Compile>
-    <Compile Include="Customer list.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Customer list.Designer.cs">
-      <DependentUpon>Customer list.cs</DependentUpon>
-    </Compile>
     <Compile Include="customerprint.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,12 +116,6 @@
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
     <Compile Include="ItemDetails.cs" />
-    <Compile Include="ItemList1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ItemList1.Designer.cs">
-      <DependentUpon>ItemList1.cs</DependentUpon>
-    </Compile>
     <Compile Include="practise.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -224,12 +212,6 @@
     <Compile Include="Unit.Designer.cs">
       <DependentUpon>Unit.cs</DependentUpon>
     </Compile>
-    <Compile Include="VendorList1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VendorList1.Designer.cs">
-      <DependentUpon>VendorList1.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="ChaquePayment.resx">
       <DependentUpon>ChaquePayment.cs</DependentUpon>
     </EmbeddedResource>
@@ -238,9 +220,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Company_New.resx">
       <DependentUpon>Company_New.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Customer list.resx">
-      <DependentUpon>Customer list.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="customerprint.resx">
       <DependentUpon>customerprint.cs</DependentUpon>
@@ -269,9 +248,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="print.resx">
       <DependentUpon>print.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ItemList1.resx">
-      <DependentUpon>ItemList1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PurchasSearch1.resx">
       <DependentUpon>PurchasSearch1.cs</DependentUpon>
@@ -329,9 +305,6 @@
     </Compile>
     <EmbeddedResource Include="Unit.resx">
       <DependentUpon>Unit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VendorList1.resx">
-      <DependentUpon>VendorList1.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>

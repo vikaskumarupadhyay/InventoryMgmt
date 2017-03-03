@@ -636,10 +636,11 @@
             this.panel1.Controls.Add(this.butclose);
             this.panel1.Controls.Add(this.butupdate);
             this.panel1.Controls.Add(this.butaddrecord);
-            this.panel1.Location = new System.Drawing.Point(0, 1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1172, 621);
-            this.panel1.TabIndex = 11;
+            this.panel1.Size = new System.Drawing.Size(1172, 634);
+            this.panel1.TabIndex = 0;
             // 
             // button2
             // 
@@ -647,7 +648,7 @@
             this.button2.Location = new System.Drawing.Point(332, 582);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(131, 28);
-            this.button2.TabIndex = 11;
+            this.button2.TabIndex = 33;
             this.button2.Text = "Export To Excel";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -658,7 +659,7 @@
             this.button1.Location = new System.Drawing.Point(251, 582);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 28);
-            this.button1.TabIndex = 10;
+            this.button1.TabIndex = 32;
             this.button1.Text = "Print";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -675,7 +676,7 @@
             this.groupBox3.Location = new System.Drawing.Point(12, 25);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(1142, 73);
-            this.groupBox3.TabIndex = 9;
+            this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Customer Search";
             // 
@@ -695,7 +696,7 @@
             this.comserchvalue.Location = new System.Drawing.Point(25, 41);
             this.comserchvalue.Name = "comserchvalue";
             this.comserchvalue.Size = new System.Drawing.Size(656, 23);
-            this.comserchvalue.TabIndex = 0;
+            this.comserchvalue.TabIndex = 2;
             // 
             // textBox1
             // 
@@ -705,7 +706,7 @@
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(429, 22);
-            this.textBox1.TabIndex = 1;
+            this.textBox1.TabIndex = 3;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label17
@@ -723,9 +724,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Location = new System.Drawing.Point(12, 105);
+            this.panel2.Location = new System.Drawing.Point(12, 104);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1142, 467);
+            this.panel2.Size = new System.Drawing.Size(1142, 468);
             this.panel2.TabIndex = 8;
             // 
             // dataGridView1
@@ -735,9 +736,9 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1138, 463);
+            this.dataGridView1.Size = new System.Drawing.Size(1138, 464);
             this.dataGridView1.StandardTab = true;
-            this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
             this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress_1);
             // 
@@ -747,7 +748,7 @@
             this.butclose.Location = new System.Drawing.Point(469, 582);
             this.butclose.Name = "butclose";
             this.butclose.Size = new System.Drawing.Size(90, 28);
-            this.butclose.TabIndex = 6;
+            this.butclose.TabIndex = 34;
             this.butclose.Text = "Close";
             this.butclose.UseVisualStyleBackColor = true;
             this.butclose.Click += new System.EventHandler(this.butclose_Click);
@@ -758,7 +759,7 @@
             this.butupdate.Location = new System.Drawing.Point(12, 582);
             this.butupdate.Name = "butupdate";
             this.butupdate.Size = new System.Drawing.Size(90, 28);
-            this.butupdate.TabIndex = 5;
+            this.butupdate.TabIndex = 30;
             this.butupdate.Text = "Update";
             this.butupdate.UseVisualStyleBackColor = true;
             this.butupdate.Click += new System.EventHandler(this.butupdate_Click);
@@ -769,7 +770,7 @@
             this.butaddrecord.Location = new System.Drawing.Point(108, 582);
             this.butaddrecord.Name = "butaddrecord";
             this.butaddrecord.Size = new System.Drawing.Size(137, 28);
-            this.butaddrecord.TabIndex = 4;
+            this.butaddrecord.TabIndex = 31;
             this.butaddrecord.Text = "Add New Record";
             this.butaddrecord.UseVisualStyleBackColor = true;
             this.butaddrecord.Click += new System.EventHandler(this.butaddrecord_Click);

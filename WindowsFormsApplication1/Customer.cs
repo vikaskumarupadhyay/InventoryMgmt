@@ -28,42 +28,42 @@ namespace WindowsFormsApplication1
      
         private void Customer_Load(object sender, EventArgs e)
         {
-            txtCURRENTBALANCE.Text = "0";
+            comserchvalue.Focus();
             if (value == 1)
             {
+                //panel2.Visible = true;
                 panel1.Visible = true;
+                tabindex7();
+                panel2.TabStop = false;
+              // panel2.TabIndex = 26;
+                comserchvalue.Focus();
+                comserchvalue.TabStop = true;
+                
+                // comboBox1.TabIndex = 0;
+                // txtSearch.TabIndex = 1;
+                // dataGridView1.TabIndex = 2;
+                //btnUpdate.TabIndex = 3;
+                //button1.TabIndex = 4;
+                //butprint.TabIndex = 5;
+                //button2.TabIndex = 6;
+                //button3.TabIndex = 7;
+
             }
             else if (value == 0)
             {
+                //panel2.Visible = false;
                 panel1.Visible = false;
             }
-        
-            //DataTable dt = dbMainClass.getDetails("CustomerDetails");
-            //List<string> ds = new List<string>();
-            //ds.Add("Name");
-            //ds.Add("CompnayName");
-            //ds.Add("Address");
-            //ds.Add("City");
-            //ds.Add("State");
-            //ds.Add("Zip");
-            //ds.Add("Country");
-            //ds.Add("Email");
-            //ds.Add("Webaddress");
-            //ds.Add("Phone");
-            //ds.Add("Mobile");
-            //ds.Add("Fax");
-            //ds.Add("Desc");
-            //ds.Add("Openingbalance");
-            //ds.Add("Currentbalance");
-            //ds.Add("PanNo");
-            //ds.Add("VatNo");
-            //ds.Add("Cstno");
-            //ds.Add("ServicetaxregnNo");
-            //ds.Add("Exciseregnno");
-            //ds.Add("Gstregnno");
-            //comserchvalue.DataSource = ds;
-          
 
+            //txtCURRENTBALANCE.Text = "0";
+            //if (value == 1)
+            //{
+            //    panel1.Visible = true;
+            //}
+            //else if (value == 0)
+            //{
+            //    panel1.Visible = false;
+            //}
             string selectQuery = "select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO]  ,CustServicetaxRegnNo AS [SERVICE TAX NO],CustExciseRegnNo AS [EXICE NO] ,Gstregnno AS [GST NO] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
             string actualcolumn = "select  Custd.CustId  ,CustName  ,CustCompName  ,CustAddress ,CustCity , CustState  ,CustZip  ,CustCountry  ,CustEmail , CustWebAddress ,CustPhone  ,CustMobile  ,CustFax ,CustDesc ,Custad.CustOpeningBalance , Custad.CustCurrentBalance ,CustPanNo , CustVatNo ,CustCSTNo  ,CustServicetaxRegnNo  ,CustExciseRegnNo  ,Gstregnno  from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
             DataTable dt = dbMainClass.getDetailByQuery(selectQuery);
@@ -308,6 +308,37 @@ namespace WindowsFormsApplication1
             textBox1.TabStop = true;
             dataGridView1.TabStop = true;
             
+        }
+        private void tabindex7()
+        {
+            txtCustCode.TabStop = false;
+            txtName.TabStop = false;
+            txtCompnyName.TabStop = false;
+            txtAddress.TabStop = false;
+            txtCity.TabStop = false;
+            txtState.TabStop = false;
+            txtZIP.TabStop = false;
+            txtCustCountry.TabStop = false;
+            txtEMAILADDRESS.TabStop = false;
+            txtWEBSITE.TabStop = false;
+            txtTXTPHONE.TabStop = false;
+            txtMOBILE.TabStop = false;
+            txtFAX.TabStop = false;
+            txtDESCRIPTION.TabStop = false;
+            txtOPENINGBALANCE.TabStop = false;
+            txtCURRENTBALANCE.TabStop = false;
+            txtPanno.TabStop = false;
+            txttanno.TabStop = false;
+            txtothers.TabStop = false;
+            btnSave.TabStop = false;
+            btnClose.TabStop = false;
+            btnList.TabStop = false;
+
+            txtservicetaxno.TabStop = false;
+            txtexiceragisterno.TabStop = false;
+            txtgstragisterno.TabStop = false;
+          
+
         }
         private void correcttabindexlist()
         {
@@ -779,6 +810,8 @@ namespace WindowsFormsApplication1
                 txtCURRENTBALANCE.Text = value;
             }
         }
+
+        
    
     }
 }
