@@ -315,37 +315,13 @@ namespace WindowsFormsApplication1
 
 
 
-            //txtRemoveItem.Focus();
-
-            //string qurry = "select CurrentQuantity from ItemQuantityDetail where ItemId='" + txtItemCode.Text + "'";
-            //DataTable dt = dbMainClass.getDetailByQuery(qurry);
-            //string id = "";
-            //foreach (DataRow dr in dt.Rows)
+       
+            //if (txtProductName.Text == "" && txtQuantity.Text == "")
             //{
-            //    id = dr["CurrentQuantity"].ToString();
-            //}
-
-            //int curentQuntity = Convert.ToInt32(txtQuanity.Text);
-            //int cuentQuantity = Convert.ToInt32(id);
-            //if (cuentQuantity == 0)
-            //{
-            //    MessageBox.Show("now CurrentQuantity of deadt");
-            //    txtQuanity.Text = "";
+            //    // MessageBox.Show("please enter the ");
             //}
             //else
-            //{
-            //    if (cuentQuantity < curentQuntity)
-            //    {
-            //        MessageBox.Show("now CurrentQuantity of deadt");
-            //    }
-            //    else
-            //    {
-            if (txtProductName.Text == "" && txtQuantity.Text == "")
-            {
-                // MessageBox.Show("please enter the ");
-            }
-            else
-            {
+           // {
                 if (txtAmount.Text == "")
                 {
                     // txtAmount.Text = "0";
@@ -457,7 +433,7 @@ namespace WindowsFormsApplication1
 
 
 
-            }
+            //}
         }
 
         private void salesorder_Load(object sender, EventArgs e)
