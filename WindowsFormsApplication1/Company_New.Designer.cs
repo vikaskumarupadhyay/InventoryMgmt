@@ -661,6 +661,7 @@
             this.btnExportToExcel.TabIndex = 9;
             this.btnExportToExcel.Text = "Export To Excel";
             this.btnExportToExcel.UseVisualStyleBackColor = true;
+            this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
             // butClose
             // 
