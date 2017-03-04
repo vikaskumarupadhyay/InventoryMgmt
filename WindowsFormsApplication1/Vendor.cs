@@ -774,29 +774,27 @@ namespace WindowsFormsApplication1
                 txtVenderOpeningBal.Text = "";
             }
         }
-        int num = 0;
         private void button2_Click_1(object sender, EventArgs e)
         {
             if (dataGridView1.AllowUserToAddRows == true)
             {
                 dataGridView1.AllowUserToAddRows = false;
             }
-            string acc = "";
+            string FileName = "";
             SaveFileDialog openFileDialog1 = new SaveFileDialog();
            //FolderBrowserDialog openFileDialog1 = new FolderBrowserDialog();
+            openFileDialog1.Filter = "xls files (*.xls)|*.xls|All files (*.*)|*.*";
+            openFileDialog1.FileName = "Vendor Details";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
              {
-               acc = openFileDialog1.FileName;
+                 FileName = openFileDialog1.FileName;
+              
               }
-            MessageBox.Show(acc);
-                num++;
-                string pathName = "Vendor";
-                string FolderName = pathName + num;
                 //DataGridViewColumnCollection column = dataGridView1.Columns;
                 int cout = 0;
                 int rowCoumt = 0;
                 // column1 = dc.Name.ToString();
-                string file = acc + "newdoc.xls"; //System.Configuration.ConfigurationManager.AppSettings["ExcelFilePath1"] + FolderName + "newdoc.xls";
+                string file = FileName;//+ ".xls"; //System.Configuration.ConfigurationManager.AppSettings["ExcelFilePath1"] + FolderName + "newdoc.xls";
                 Workbook workbook = new Workbook();
                 Worksheet worksheet = new Worksheet("First Sheet");
 

@@ -779,14 +779,25 @@ namespace WindowsFormsApplication1
         int num = 0;
         private void button2_Click(object sender, EventArgs e)
         {
-            num++;
-            string pathName = "ExcelFilePath";
-            string FolderName = pathName + num;
+            if (dataGridView1.AllowUserToAddRows == true)
+            {
+                dataGridView1.AllowUserToAddRows = false;
+            }
+            string FileName = "";
+            SaveFileDialog openFileDialog1 = new SaveFileDialog();
+            //FolderBrowserDialog openFileDialog1 = new FolderBrowserDialog();
+            openFileDialog1.Filter = "xls files (*.xls)|*.xls|All files (*.*)|*.*";
+            openFileDialog1.FileName = "Item Details";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                FileName = openFileDialog1.FileName;
+
+            }
             //DataGridViewColumnCollection column = dataGridView1.Columns;
             int cout = 0;
             int rowCoumt = 0;
             // column1 = dc.Name.ToString();
-            string file = System.Configuration.ConfigurationManager.AppSettings["ExcelFilePath"] + FolderName + "newdoc.xls";
+            string file = FileName;//+ ".xls"; //System.Configuration.ConfigurationManager.AppSettings["ExcelFilePath1"] + FolderName + "newdoc.xls";
             Workbook workbook = new Workbook();
             Worksheet worksheet = new Worksheet("First Sheet");
 
@@ -820,6 +831,7 @@ namespace WindowsFormsApplication1
             }
             workbook.Worksheets.Add(worksheet);
             workbook.Save(file);
+            dataGridView1.AllowUserToAddRows = true;
         }
 
        
