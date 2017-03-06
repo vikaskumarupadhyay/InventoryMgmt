@@ -70,9 +70,20 @@ namespace WindowsFormsApplication1
 
         private void txtVendorCode_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            string getId = "select venderId from VendorDetails where venderId='" + txtVendorCode.Text + "'";
+            DataTable dt = dbMainClass.getDetailByQuery(getId);
+            if (e.KeyChar == (Char)Keys.Enter)
             {
-                IndexTex3();
+
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    IndexTex3();
+                }
+                else
+                {
+                    MessageBox.Show("Please Correct Vendor Id");
+                }
+
             }
             if (e.KeyChar == Convert.ToChar(Keys.Escape))
             {
@@ -101,7 +112,7 @@ namespace WindowsFormsApplication1
                     e.Handled = true;
                 }
             }
-
+                 
         }
 
         private void txtVendorCode_KeyUp(object sender, KeyEventArgs e)
@@ -115,34 +126,36 @@ namespace WindowsFormsApplication1
                 string vendorId = txtVendorCode.Text;
                 if (vendorId.Trim() != "" && vendorId != null)
                 {
-                    DataRow[] dr = vendorDetails.Select("[Vender Id ]='" + vendorId + "'");
-                    if (dr != null && dr.Length > 0)
-                    {
-                        //venderId, , vCompName, vAddress, vCity, vState, vZip, vCountry, vEmail, vWebAddress, vPhone, vMobile, vFax, vDesc
-                        string vendorName = dr[0]["Name"].ToString();
-                        string vendorAddress = dr[0]["Address"].ToString();
-                        string vendorCompName = dr[0]["Compnay Name"].ToString();
-                        string vendorPhone = dr[0]["Phone"].ToString();
-                        string vendorMobile = dr[0]["Mobile"].ToString();
-                        string vendorFax = dr[0]["Fax"].ToString();
+                    
+                            DataRow[] dr = vendorDetails.Select("[Vender Id ]='" + vendorId + "'");
+                            if (dr != null && dr.Length > 0)
+                            {
+                                //venderId, , vCompName, vAddress, vCity, vState, vZip, vCountry, vEmail, vWebAddress, vPhone, vMobile, vFax, vDesc
+                                string vendorName = dr[0]["Name"].ToString();
+                                string vendorAddress = dr[0]["Address"].ToString();
+                                string vendorCompName = dr[0]["Compnay Name"].ToString();
+                                string vendorPhone = dr[0]["Phone"].ToString();
+                                string vendorMobile = dr[0]["Mobile"].ToString();
+                                string vendorFax = dr[0]["Fax"].ToString();
 
-                        txtVendorName.Text = vendorName;
-                        txtVendorAddress.Text = vendorAddress;
-                        txtVendorCompanyName.Text = vendorCompName;
-                        txtVendorPhone.Text = vendorPhone;
-                        txtVendorMobile.Text = vendorMobile;
-                        txtVendorFax.Text = vendorFax;
-                    }
-                    else
-                    {
-                        txtVendorName.Text = "";
-                        txtVendorAddress.Text = "";
-                        txtVendorCompanyName.Text = "";
-                        txtVendorPhone.Text = "";
-                        txtVendorMobile.Text = "";
-                        txtVendorFax.Text = "";
-                    }
-                }
+                                txtVendorName.Text = vendorName;
+                                txtVendorAddress.Text = vendorAddress;
+                                txtVendorCompanyName.Text = vendorCompName;
+                                txtVendorPhone.Text = vendorPhone;
+                                txtVendorMobile.Text = vendorMobile;
+                                txtVendorFax.Text = vendorFax;
+                            }
+                            else
+                            {
+                                txtVendorName.Text = "";
+                                txtVendorAddress.Text = "";
+                                txtVendorCompanyName.Text = "";
+                                txtVendorPhone.Text = "";
+                                txtVendorMobile.Text = "";
+                                txtVendorFax.Text = "";
+                            }
+                        }
+                
             }
         }
 
@@ -173,8 +186,7 @@ namespace WindowsFormsApplication1
 
             if (txtVendorCode.Text.Trim() != "" && txtVendorCode.Text.StartsWith("V"))
             {
-                setVAlue();
-                
+                   setVAlue(); 
             }
         }
 
@@ -854,12 +866,22 @@ namespace WindowsFormsApplication1
         }
         private void txtItemCode_KeyPress(object sender, KeyPressEventArgs e)
         {
+
+            string getId = "select ItemId from ItemDetails where ItemId=='" + txtItemCode.Text + "'";
+            DataTable dt = dbMainClass.getDetailByQuery(getId);
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                txtQuanity.ReadOnly = false;
-                btnAddItem.Enabled = true;
-                txtQuanity.Enabled = true;
-                IndexTex2();
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    txtQuanity.ReadOnly = false;
+                    btnAddItem.Enabled = true;
+                    txtQuanity.Enabled = true;
+                    IndexTex2();
+                }
+                else
+                {
+                    MessageBox.Show("Please Enter the Correct Item Id");
+                }
             }
             if (e.KeyChar == Convert.ToChar(Keys.Escape))
             {
@@ -1068,5 +1090,7 @@ namespace WindowsFormsApplication1
             ////    MessageBox.Show("please enter the ");
             ////}
         }
+
+       
     }
 }
