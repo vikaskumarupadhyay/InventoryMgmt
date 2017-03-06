@@ -366,7 +366,6 @@
             this.txtItemPrice.TextChanged += new System.EventHandler(this.txtItemPrice_TextChanged);
             this.txtItemPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemPrice_KeyPress);
             this.txtItemPrice.Leave += new System.EventHandler(this.txtItemPrice_Leave);
-            this.txtItemPrice.MouseEnter += new System.EventHandler(this.txtItemPrice_MouseEnter);
             // 
             // textBox5
             // 
@@ -510,10 +509,9 @@
             this.panel1.Controls.Add(this.buttClose2);
             this.panel1.Controls.Add(this.buttUpdate);
             this.panel1.Controls.Add(this.buttAddNewRecord);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(0, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1172, 549);
+            this.panel1.Size = new System.Drawing.Size(1172, 534);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -581,6 +579,7 @@
             // searchCalmn
             // 
             this.searchCalmn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.searchCalmn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.searchCalmn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchCalmn.FormattingEnabled = true;
             this.searchCalmn.Location = new System.Drawing.Point(25, 42);

@@ -692,6 +692,7 @@
             // comserchvalue
             // 
             this.comserchvalue.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comserchvalue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comserchvalue.FormattingEnabled = true;
             this.comserchvalue.Location = new System.Drawing.Point(25, 41);
             this.comserchvalue.Name = "comserchvalue";

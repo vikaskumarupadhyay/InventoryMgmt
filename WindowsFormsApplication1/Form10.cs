@@ -662,12 +662,7 @@ namespace WindowsFormsApplication1
             this.Close();
         }
 
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-           
-          
-        }
+      
 
         private void gridsalesorder_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -686,8 +681,8 @@ namespace WindowsFormsApplication1
            // tab1();
             string selectquery = "select CustName,CustCompName,CustAddress,CustPhone,CustMobile,CustFax from CustomerDetails Where Custid='" + txtcustomercode.Text + "'";
             DataTable dt = d.getDetailByQuery(selectquery);
-
-            if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
+           // 
+            if (dt != null && dt.Rows != null&& dt.Rows.Count > 0)
             {
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -698,8 +693,10 @@ namespace WindowsFormsApplication1
                     txtcustmobile.Text = dr[4].ToString();
                     txtcustfax.Text = dr[5].ToString();
                 }
+               
             }
-            else
+           
+            else 
             {
                 txtcustname.Text = "";
                 txtcustcompname.Text = "";
@@ -707,6 +704,8 @@ namespace WindowsFormsApplication1
                 txtcustphone.Text = "";
                 txtcustmobile.Text = "";
                 txtcustfax.Text = "";
+              
+               
             }
             
         }
@@ -883,14 +882,31 @@ namespace WindowsFormsApplication1
 
         private void txtcustomercode_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter)
+           
+           
+
+           if (e.KeyChar == (char)Keys.Enter )
             {
-                    tab1();   
+                tab1();
             }
+         
             if (e.KeyChar == (char)Keys.Escape)
             {
                 txtitemcode.Focus();
             }
+           
+            string selectquery = "select CustName,CustCompName,CustAddress,CustPhone,CustMobile,CustFax from CustomerDetails Where Custid='" + txtcustomercode.Text + "'";
+            DataTable dt = d.getDetailByQuery(selectquery);
+            if (dt.Rows.Count > 0)
+            {
+               
+            }
+           else if (e.KeyChar == (char)Keys.Enter && dt.Rows != null && dt!=null)
+            {
+                txtcustomercode.Focus();
+                MessageBox.Show("please select your correct customer code ");
+            }
+           
         }
 
         private void txtitemcode_KeyPress(object sender, KeyPressEventArgs e)
@@ -908,11 +924,22 @@ namespace WindowsFormsApplication1
                 {
                     button4.Focus();
                 }
+                     
                 else
                 {
                     savebutton.Focus();
                     button6.TabStop = true;
                 }
+            }
+            string selectquery1 = "select i.ItemId,i.ItemName,ip.MrpPrice,iq.CurrentQuantity from ItemDetails i join ItemPriceDetail ip on i.ItemId=ip.ItemId join ItemQuantityDetail iq on ip.ItemId=iq.ItemId where i.ItemId='" + txtitemcode.Text + "'";
+            DataTable dt = d.getDetailByQuery(selectquery1);
+            if (dt.Rows.Count > 0)
+            {
+            }
+            else if (e.KeyChar == (char)Keys.Enter && dt.Rows != null && dt != null)
+            {
+                txtitemcode.Focus();
+                MessageBox.Show("Please select your correct Itemid");
             }
           
         }

@@ -658,7 +658,6 @@
             this.button2.Text = "Export To Excel";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
-           // this.button2.Leave += new System.EventHandler(this.button2_Leave);
             // 
             // butprint
             // 
@@ -709,13 +708,13 @@
             // comboBox1
             // 
             this.comboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(25, 42);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(656, 23);
             this.comboBox1.TabIndex = 24;
-            this.comboBox1.Text = "Select Text";
             // 
             // txtSearch
             // 
