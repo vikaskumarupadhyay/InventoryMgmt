@@ -607,6 +607,7 @@
             // 
             // ComDetails
             // 
+            this.ComDetails.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComDetails.FormattingEnabled = true;
             this.ComDetails.Location = new System.Drawing.Point(25, 42);
             this.ComDetails.Name = "ComDetails";

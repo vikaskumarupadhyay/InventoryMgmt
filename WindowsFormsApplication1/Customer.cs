@@ -806,6 +806,7 @@ namespace WindowsFormsApplication1
                 rowindex++;
             }
             workbook.Worksheets.Add(worksheet);
+            this.Close();
             workbook.Save(file);
             dataGridView1.AllowUserToAddRows = true;
         }

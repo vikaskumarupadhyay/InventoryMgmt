@@ -782,6 +782,7 @@
             // 
             // comsearchsalesvalue
             // 
+            this.comsearchsalesvalue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comsearchsalesvalue.FormattingEnabled = true;
             this.comsearchsalesvalue.Location = new System.Drawing.Point(25, 42);
             this.comsearchsalesvalue.Name = "comsearchsalesvalue";

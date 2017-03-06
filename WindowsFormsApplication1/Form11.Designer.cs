@@ -739,7 +739,7 @@
             this.panel2.Controls.Add(this.button1);
             this.panel2.Location = new System.Drawing.Point(0, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1172, 630);
+            this.panel2.Size = new System.Drawing.Size(1172, 627);
             this.panel2.TabIndex = 53;
             // 
             // panel3
@@ -813,6 +813,7 @@
             // 
             // comsearchvalue
             // 
+            this.comsearchvalue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comsearchvalue.FormattingEnabled = true;
             this.comsearchvalue.Location = new System.Drawing.Point(25, 42);
             this.comsearchvalue.Name = "comsearchvalue";
