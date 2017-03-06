@@ -1187,15 +1187,25 @@ namespace WindowsFormsApplication1
 
         private void txtItemCode_KeyPress(object sender, KeyPressEventArgs e)
         {
+            string getId = "select ItemId from ItemDetails where ItemId=='" + txtItemCode.Text + "'";
+            DataTable dt = dbMainClass.getDetailByQuery(getId);
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                txtQunty.ReadOnly = false;
-                button3.Enabled = true;
-                txtQunty.Enabled = true;
-                txtQunty.Focus();
-                IndexTex2();
-                textVendercod.TabStop =true;
-                button1.TabStop = true;
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    txtQunty.ReadOnly = false;
+                    button3.Enabled = true;
+                    txtQunty.Enabled = true;
+                    txtQunty.Focus();
+                    IndexTex2();
+                    textVendercod.TabStop = true;
+                    button1.TabStop = true;
+                }
+                else
+                {
+                    MessageBox.Show("Please Enter The Correct Item Id");
+                   
+                }
             }
             if (e.KeyChar == Convert.ToChar(Keys.Escape))
             {
@@ -1357,9 +1367,20 @@ namespace WindowsFormsApplication1
 
         private void textVendercod_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            string getId = "select venderId from VendorDetails where venderId='" +textVendercod.Text + "'";
+            DataTable dt = dbMainClass.getDetailByQuery(getId);
+            if (e.KeyChar == (Char)Keys.Enter)
             {
-                IndexTex3();
+
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    IndexTex3();
+                }
+                else
+                {
+                    MessageBox.Show("Please Enter The Correct Vendor Id");
+                }
+
             }
             if (e.KeyChar == Convert.ToChar(Keys.Escape))
             {
