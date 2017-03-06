@@ -280,8 +280,8 @@ namespace WindowsFormsApplication1
             txtSearch.Text = "";
             counter = 1;
             panel2.Visible = true;
-            string selectqurry = "select  itm.ItemId,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId where iqd.CurrentQuantity>0";
-            string selectqurryForActualColumnName = "select top 1  itm.ItemId, itm.ItemName,itm.ItemCompName ,itm.ItemDesc ,ig.groupName,iul.unitName ,ipd.purChasePrice ,ipd.SalesPrice ,ipd.MrpPrice ,ipd.Margin ,iqd.OpeningQuantity ,iqd.CurrentQuantity from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
+            string selectqurry = "select  itm.ItemId,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],ipd.purChasePrice as [Purchase Price],ipd.MrpPrice as[Mrp Price] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId where iqd.CurrentQuantity>0";
+            string selectqurryForActualColumnName = "select top 1  itm.ItemId, itm.ItemName,itm.ItemCompName ,itm.ItemDesc ,ig.groupName ,ipd.purChasePrice  ,ipd.MrpPrice  from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
             DataTable customDataTable = new DataTable();
@@ -301,7 +301,9 @@ namespace WindowsFormsApplication1
             comboBox1.DataSource = customDataTable;
             comboBox1.ValueMember = "ActualTableColumnName";
             comboBox1.DisplayMember = "AliasTableColumnName";
-            dataGridView2.DataSource = dt;
+            string select = "select  itm.ItemId,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId where iqd.CurrentQuantity>0";
+            DataTable dt1 = dbMainClass.getDetailByQuery(select);
+            dataGridView2.DataSource = dt1;
             IndexTex();
 
         }
@@ -1187,9 +1189,9 @@ namespace WindowsFormsApplication1
 
         private void txtItemCode_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string getId = "select ItemId from ItemDetails where ItemId=='" + txtItemCode.Text + "'";
+            string getId = "select ItemId from ItemDetails where ItemId ='" + txtItemCode.Text + "'";
             DataTable dt = dbMainClass.getDetailByQuery(getId);
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            if (e.KeyChar == (Char)Keys.Enter)
             {
                 if (dt != null && dt.Rows.Count > 0)
                 {

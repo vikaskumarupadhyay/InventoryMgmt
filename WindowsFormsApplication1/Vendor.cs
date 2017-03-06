@@ -831,7 +831,5 @@ namespace WindowsFormsApplication1
                 dataGridView1.AllowUserToAddRows = true;
         }
 
-       
-
     }
 }
