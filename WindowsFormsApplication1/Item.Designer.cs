@@ -509,9 +509,10 @@
             this.panel1.Controls.Add(this.buttClose2);
             this.panel1.Controls.Add(this.buttUpdate);
             this.panel1.Controls.Add(this.buttAddNewRecord);
-            this.panel1.Location = new System.Drawing.Point(0, 12);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1172, 534);
+            this.panel1.Size = new System.Drawing.Size(1172, 549);
             this.panel1.TabIndex = 0;
             // 
             // panel2

@@ -128,10 +128,10 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            counter = 1;
-            string selectquery1 = "select  itm.ItemId as [Item Id],itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
+
+            string selectquery1 = "select  itm.ItemId as [Item Id],itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
             string actualcolumn = "select top 1  itm.ItemId, itm.ItemName,itm.ItemCompName ,itm.ItemDesc ,ig.groupName,iul.unitName ,ipd.purChasePrice ,ipd.SalesPrice ,ipd.MrpPrice ,ipd.Margin ,iqd.OpeningQuantity ,iqd.CurrentQuantity from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
-            //DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+           //DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
            // string selectquery1="select it.ItemName as[Name],ip.Mrpprice as[MRP],iq.CurrentQuantity as[Current Quantity] from ItemDetails it join ItemPriceDetail ip on it.Itemid=ip.Itemid join ItemQuantityDetail iq on ip.ItemId=iq.Itemid";
            // string actualcolumn = "select it.ItemName ,ip.Mrpprice ,iq.CurrentQuantity  from ItemDetails it join ItemPriceDetail ip on it.Itemid=ip.Itemid join ItemQuantityDetail iq on ip.ItemId=iq.Itemid";
             DataTable dt1 = d.getDetailByQuery(selectquery1);
@@ -141,7 +141,7 @@ namespace WindowsFormsApplication1
             custometable.Columns.Add("aliascolumnname");
             DataColumnCollection c = dt1.Columns;
             DataColumnCollection columnofname = onlycolumn.Columns;
-            for (int a = 0; a < c.Count; a++)
+            for (int a = 1; a < c.Count; a++)
             {
                 string s = c[a].ToString();
                 string actualcolumnname = columnofname[a].ToString();
@@ -154,6 +154,8 @@ namespace WindowsFormsApplication1
             comsearchsalesvalue.ValueMember = "actualcolumnname";
             comsearchsalesvalue.DisplayMember = "aliascolumnname";
 
+            counter = 1;
+
             panel2.Visible = true;
             string selectquery = "select  itm.ItemId as [Item Id],itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
 
@@ -162,12 +164,13 @@ namespace WindowsFormsApplication1
             dataGridView1.DataSource = dt;
             txtcustomercode.TabStop = false;
             button2.TabStop = false;
-
+            
             comsearchsalesvalue.Focus();
             comsearchsalesvalue.TabIndex = 1;
             txtsearchvalue.TabIndex = 2;
             dataGridView1.TabIndex = 3;
             butback.TabIndex = 4;
+            txtsearchvalue.Text = "";
         }
 
         public void rowcollection1(DataGridViewCellCollection cell1)
@@ -958,14 +961,16 @@ namespace WindowsFormsApplication1
             }
             else if (counter == 1)
             {
-                string s1 = comsearchsalesvalue.SelectedValue.ToString();
+                string s = comsearchsalesvalue.SelectedValue.ToString();
                 // string val1 = s1;
-                string selectQuery1 = "select itm.ItemId as[Item Id],itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId  where " + s1 + " like '" + txtsearchvalue.Text + "%'";
+                string selectQurry = "select itm.ItemId as[Item Id],itm.ItemName as[Product Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId  where " + s + " like '" + txtsearchvalue.Text + "%'";
+                DataTable dt = d.getDetailByQuery(selectQurry);
+                //string selectQuery1 = "select itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId  where " + s1 + " like '" + txtsearchvalue.Text + "%'";
 
 
-                //string selectQuery1 = "select it.ItemId as[Item Id], it.ItemName as[Name],ip.Mrpprice as[MRP],iq.CurrentQuantity as[Current Quantity] from ItemDetails it join ItemPriceDetail ip on it.Itemid=ip.Itemid join ItemQuantityDetail iq on ip.ItemId=iq.Itemid where " + s1+ " like '" + txtsearchvalue.Text + "%'";
-                DataTable dt1 = d.getDetailByQuery(selectQuery1);
-                dataGridView1.DataSource = dt1;
+                ////string selectQuery1 = "select it.ItemId as[Item Id], it.ItemName as[Name],ip.Mrpprice as[MRP],iq.CurrentQuantity as[Current Quantity] from ItemDetails it join ItemPriceDetail ip on it.Itemid=ip.Itemid join ItemQuantityDetail iq on ip.ItemId=iq.Itemid where " + s1+ " like '" + txtsearchvalue.Text + "%'";
+                //DataTable dt1 = d.getDetailByQuery(selectQuery1);
+                dataGridView1.DataSource = dt;
             }
         }
 
