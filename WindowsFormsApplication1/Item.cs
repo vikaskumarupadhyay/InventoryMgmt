@@ -74,7 +74,7 @@ namespace WindowsFormsApplication1
             //{
             //    panel1.Visible = false;
             //}
-            string selectqurry = " select  itm.ItemId,itm.ItemName as[Product Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],itm.Unitid as[Unit Name],ipd.MrpPrice as[Mrp Price],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.Margin as [Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as [Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
+            string selectqurry = " select  itm.ItemId,itm.ItemName as[Product Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],ipd.MrpPrice as[Mrp Price],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
             string selectqurryForActualColumnName = "select top 1  itm.ItemId, itm.ItemName,itm.ItemCompName ,itm.ItemDesc ,ig.groupName,iul.unitName ,ipd.purChasePrice ,ipd.SalesPrice ,ipd.MrpPrice ,ipd.Margin ,iqd.OpeningQuantity ,iqd.CurrentQuantity from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
@@ -830,6 +830,8 @@ namespace WindowsFormsApplication1
             workbook.Save(file);
             dataGridView1.AllowUserToAddRows = true;
         }
+
+       
 
       
 
