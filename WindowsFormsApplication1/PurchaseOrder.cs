@@ -77,6 +77,9 @@ namespace WindowsFormsApplication1
             setAutoCompleteMode(txtProductName, "ItemName", ItemDetails);
             setAddToCraftTable();
             //setAutoCompleteMode(txtVendorName, "Name", vendorDetails);
+
+           
+
         }
 
         private void txtVendorCode_KeyPress(object sender, KeyPressEventArgs e)
