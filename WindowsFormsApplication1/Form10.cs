@@ -473,7 +473,7 @@ namespace WindowsFormsApplication1
                 int t1 = t + 1;
                 txtsrno.Text = t1.ToString();
             }
-            string select = "select VAT, CST,GST from CompnayDetails";
+            string select = "select PANNO,VATNO,CSTNO FROM CompnayDetails";
             DataTable d1 = d.getDetailByQuery(select);
             foreach (DataRow dr1 in d1.Rows)
             {
@@ -481,6 +481,7 @@ namespace WindowsFormsApplication1
                 textBox2.Text = dr1[1].ToString();
                 textBox20.Text = dr1[2].ToString();
             }
+            
             string selectName = "select TexAmount from CompnayTex where TexName='" + DB_Main.taxName + "'";
             DataTable dt = d.getDetailByQuery(selectName);
             textBox16.Text = DB_Main.taxName;
