@@ -52,14 +52,25 @@ namespace WindowsFormsApplication1
                 int txt1 = txt + 1;
                 txtSrNo.Text = txt1.ToString();
             }
-            //string stlect1 = "select VAT,CST,GST from CompnayDetails";
-            //DataTable dt1 = dbMainClass.getDetailByQuery(stlect1);
-            //foreach (DataRow dr1 in dt1.Rows)
-            //{
-            //    VATNO.Text = dr1[0].ToString();
-            //    txtDiscount.Text = dr1[1].ToString();
-            //    GSTNO.Text = dr1[2].ToString();
-            //}
+            string comQurry = "select TexId from CompnayDetails";
+            DataTable dt2 = dbMainClass.getDetailByQuery(comQurry);
+             string taxtid="";
+            foreach (DataRow dr in dt2.Rows)
+            {
+               
+
+               taxtid = dr[0].ToString();
+            }
+            string selectName = "select TexAmount,TexName from CompnayTex where TexId='" + taxtid + "'"; //TexName='" + DB_Main.taxName + "'";
+            DataTable dt1 = dbMainClass.getDetailByQuery(selectName);
+            //textBox16.Text = DB_Main.taxName;
+            foreach (DataRow dr in dt1.Rows)
+            {
+                //txtTexAmount.Text 
+
+                txtDiscount.Text = dr[0].ToString();
+                textBox16.Text = dr[1].ToString();
+            }
             Purchase.PurchaseDetails purChaseDetailObj = new Purchase.PurchaseDetails();
             vendorDetails = purChaseDetailObj.GetVendorDetaisInDataTable();
             ItemDetails = purChaseDetailObj.GetItemPriceAndNameDetaisInDataTable();
