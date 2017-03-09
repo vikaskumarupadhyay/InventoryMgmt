@@ -24,7 +24,6 @@ namespace WindowsFormsApplication1
 
         private void Compnay_Load(object sender, EventArgs e)
         {
-
             string selectqurry = "select cd.CompnayId as[Company Id], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.PANNO as[PAN NO],cd.VATNO as[VAT NO],cd.CSTNO as[CST NO],cd.ServiceTaxAmmount as[SERVICE TAX NO],cd.ExciseTaxAmmount as[EXCISE NO],cd.GSTTaxAmmount as[GST NO] from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId";
             string selectqurryForActualColumnName = "select top 1 cd.CompnayId, cd.OnerName, cd.Name ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email,cd.WebAddress,cd.Phone,cd.Mobile,cd.Fax,cd.Description,cd.PANNO,cd.VATNO,cd.CSTNO,cd.ServiceTaxAmmount,cd.ExciseTaxAmmount,cd.GSTTaxAmmount,cd.Isactive,cd.RagistrationDate,ct.TexName,ct.TexAmount from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
@@ -230,7 +229,7 @@ namespace WindowsFormsApplication1
             }
             if (updatecounter == 0)
             {
-                for (updatecounter = 0; updatecounter <1; updatecounter++)
+                if (txtCompnayCode.Text == "C1")
                 {
                     string insertquery = "insert into CompnayDetails Values ('" + txtCompnayCode.Text + "','" + txtwonername.Text + "','" + txtCompnayName.Text + "','" + txtCompnayAddress.Text + "','" + txtCity.Text + "','" + txtState.Text + "','" + txtZip.Text + "','" + txtCountry.Text + "','" + txtEmailAddress.Text + "','" + txtWebSite.Text + "','" + txtPhone.Text + "','" + txtMobile.Text + "','" + txtFax.Text + "','" + txtPanNo.Text + "','" + txtVatNo.Text + "','" + txtCstNo.Text + "','" + txtSarvice.Text + "','" + txtExcise.Text + "','" + txtGst.Text + "','" + txtDescription.Text + "','" + taxId + "','" + true + "','" + dtpdate.Value.ToString() + "')";
                     int insertrow = dbMainClass.saveDetails(insertquery);
@@ -240,15 +239,19 @@ namespace WindowsFormsApplication1
                     }
                     else
                     {
-                        MessageBox.Show("You can not allow author value");
+                        MessageBox.Show("Details Not Save successfully");
                     }
                     string id = txtCompnayCode.Text;
-                    //string id1 = id.Substring(0, 1);
-                    //string id2 = id.Substring(1);
-                    // int s = Convert.ToInt32(id2);
-                    // int s1 = s + 1;
-                    //string id3 = id1 + s1.ToString();
-                    txtCompnayCode.Text = id;
+                    string id1 = id.Substring(0, 1);
+                    string id2 = id.Substring(1);
+                    int s = Convert.ToInt32(id2);
+                    int s1 = s + 1;
+                    string id3 = id1 + s1.ToString();
+                    txtCompnayCode.Text = id3;
+                }
+                else
+                {
+                    MessageBox.Show("Compnay Not Issu");
                 }
             }
             if (updatecounter == 1)
