@@ -426,9 +426,9 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(43, 210);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(188, 15);
+            this.label10.Size = new System.Drawing.Size(201, 15);
             this.label10.TabIndex = 9;
-            this.label10.Text = "Web Site(http://www.google.com)";
+            this.label10.Text = "Web Site (http://www.example.com)";
             // 
             // label9
             // 
@@ -641,6 +641,7 @@
             this.panel1.Controls.Add(this.btnUpdate);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.panel2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -714,7 +715,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(656, 23);
             this.comboBox1.TabIndex = 24;
-           // this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // txtSearch
             // 
@@ -800,10 +800,12 @@
             this.Controls.Add(this.btnVenderSave);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.KeyPreview = true;
             this.Name = "frmVendorDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Vendor Details";
             this.Load += new System.EventHandler(this.frmVendorDetails_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmVendorDetails_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

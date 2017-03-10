@@ -826,6 +826,27 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void Customer_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F2)
+            {
+                tabindex();
+                panel1.Visible = true;
+                string selectQuery = "select Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO],CustServicetaxRegnNo AS [SERVICE TAX NO],CustExciseRegnNo AS [EXICE NO] ,Gstregnno AS [GST NO],CustDesc as [Description],CustOpeningBalance as[Opening Balance] ,CustCurrentBalance as[Current Balance] from  CustomerDetails Custd join CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
+                DataTable dt = dbMainClass.getDetailByQuery(selectQuery);
+                dataGridView1.DataSource = dt;
+                //dataGridView1.DataSource = dt;
+                panel2.TabStop = false;
+                correcttabindexlist();
+                comserchvalue.Focus();
+            }
+        }
+
+        private void btnSave_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+        }
+
         
    
     }

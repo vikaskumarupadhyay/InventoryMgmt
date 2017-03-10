@@ -559,5 +559,25 @@ namespace WindowsFormsApplication1
             dataGridView1.AllowUserToAddRows = true;
         }
 
+        private void btnList_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private void Company_New_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F2)
+            {
+                txtSearch.Text = "";
+                ComDetails.TabIndex = 0;
+                panel1.Visible = true;
+                string selectQuery1 = "select cd.CompnayId as[Company Id], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.Description,cd.PANNO as[PAN No],cd.VATNO as[VAT No],cd.CSTNO as[CST No],cd.ServiceTaxAmmount as[Service Tax Ammount],cd.ExciseTaxAmmount as[Excise Tax Ammount],cd.GSTTaxAmmount as[GST Tax Ammount],cd.Isactive,cd.RagistrationDate as[Ragistrtion Date],ct.TexName as[Tax Name],ct.TexAmount as[Tax Ammount] from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId ";
+                DataTable dt = dbMainClass.getDetailByQuery(selectQuery1);
+                dataGridView1.DataSource = dt;
+                tabindex1();
+                // panel1.Visible = false;
+            }
+        }
+
     }
 }

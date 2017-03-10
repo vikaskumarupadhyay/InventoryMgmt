@@ -112,6 +112,7 @@
             this.btnList.Text = "List";
             this.btnList.UseVisualStyleBackColor = true;
             this.btnList.Click += new System.EventHandler(this.btnList_Click);
+            this.btnList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnList_KeyDown);
             // 
             // btnSave
             // 
@@ -464,9 +465,9 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(43, 212);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(56, 15);
+            this.label10.Size = new System.Drawing.Size(201, 15);
             this.label10.TabIndex = 9;
-            this.label10.Text = "Web Site";
+            this.label10.Text = "Web Site (http://www.example.com)";
             // 
             // label9
             // 
@@ -560,9 +561,10 @@
             this.panel1.Controls.Add(this.butUpdate);
             this.panel1.Controls.Add(this.butAddNewRecord);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(0, 12);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1172, 618);
+            this.panel1.Size = new System.Drawing.Size(1172, 634);
             this.panel1.TabIndex = 32;
             // 
             // panel2
@@ -637,7 +639,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(383, 24);
+            this.label15.Location = new System.Drawing.Point(684, 24);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(72, 15);
             this.label15.TabIndex = 3;
@@ -725,7 +727,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(389, 24);
+            this.label25.Location = new System.Drawing.Point(684, 24);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(107, 15);
             this.label25.TabIndex = 39;
@@ -787,11 +789,13 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dtpdate);
             this.Controls.Add(this.groupBox2);
+            this.KeyPreview = true;
             this.Name = "Company_New";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Compnay";
             this.Load += new System.EventHandler(this.Compnay_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Company_New_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);

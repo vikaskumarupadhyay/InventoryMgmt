@@ -831,5 +831,27 @@ namespace WindowsFormsApplication1
                 dataGridView1.AllowUserToAddRows = true;
         }
 
+        private void frmVendorDetails_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F2)
+            {
+                comboBox1.SelectedIndex = 0;
+                txtSearch.Text = "";
+                panel1.Visible = true;
+                DataTable dt = dbMainClass.getDetails("VENDORDETAILS");
+                dataGridView1.DataSource = dt;
+                Tabindex();
+                comboBox1.Focus();
+                panel2.TabStop = false;
+                panel2.TabIndex = 26;
+                btnUpdate.TabIndex = 4;
+                button1.TabIndex = 5;
+                butprint.TabIndex = 6;
+                button2.TabIndex = 7;
+                button3.TabIndex = 8;
+                //dataGridView1.TabIndex = 26;
+            }
+        }
+
     }
 }
