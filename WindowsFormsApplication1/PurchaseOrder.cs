@@ -317,21 +317,22 @@ namespace WindowsFormsApplication1
             {
                 int q3 = 0;
                 itemid = dr3[0].ToString();
-                quntity = dr3[2].ToString();
-                rate = dr3[4].ToString();
+                quntity = dr3[4].ToString();
+                rate = dr3[5].ToString();
 
                  if (itemid == txtItemCode.Text)
                 {
                     int q1 = Convert.ToInt32(quntity);
                     int q2 = Convert.ToInt32(txtQuanity.Text);
                     q3 = q1 + q2;
-                    dr3[2] = q3.ToString();
-                    int rate1 = Convert.ToInt32(rate);
-                    int rate2 = Convert.ToInt32(txtAmount.Text);
-                    int rate3 = rate1 + rate2;
-                    dr3[4] = rate3.ToString();
-                    int rate4 = Convert.ToInt32(txtTotalAmount.Text);
-                    int rate5 = rate4 + rate2;
+                    dr3[4] = q3.ToString();
+                    Double rate1 = Convert.ToDouble(rate);
+                    Double rate6 = rate1 * q2;
+                    Double rate2 = Convert.ToDouble(txtAmount.Text);
+                    Double rate3 = rate6 + rate2;
+                    dr3[6] = rate3.ToString();
+                    Double rate4 = Convert.ToDouble(txtTotalAmount.Text);
+                    Double rate5 = rate4 + rate2;
                     txtTotalAmount.Text = rate5.ToString();//rate3.ToString();
                    // MessageBox.Show("Please Enter the Quanity");
                     txtItemCode.Text = "I";
@@ -382,14 +383,26 @@ namespace WindowsFormsApplication1
                         }
                         else
                         {
+                            string selectq = "select ids.ItemCompName,ipd.MrpPrice from ItemPriceDetail ipd join ItemDetails ids on ipd.ItemId=ids.ItemId where ipd.ItemId='"+txtItemCode.Text+"'";
+                            DataTable dta = dbMainClass.getDetailByQuery(selectq);
+                            string ConpanyName = "";
+                            string Mrp = "";
+                            foreach (DataRow dr1 in dta.Rows)
+                            {
+                                ConpanyName = dr1[0].ToString();
+                                Mrp = dr1[1].ToString();
+                            }
+   
                             txtRemoveItem.Enabled = true;
                             DataRow dr = addToCartTable.NewRow();
                             dr[0] = txtItemCode.Text.Trim();
                             dr[1] = txtProductName.Text.Trim();
-                            dr[2] = txtQuanity.Text.Trim();
-                            dr[3] = txtRate.Text.Trim();
-                            dr[4] = txtAmount.Text.Trim();
-
+                            dr[2] = ConpanyName.Trim();
+                            dr[3] = Mrp.Trim();
+                            dr[4] = txtQuanity.Text.Trim();
+                            dr[5] = txtRate.Text.Trim();
+                            dr[6] = txtAmount.Text.Trim();
+                           
                             //dr[5] = txtAmount.Text.Trim();
                             addToCartTable.Rows.Add(dr);
                             gridPurchaseOrder.DataSource = addToCartTable;
@@ -417,11 +430,14 @@ namespace WindowsFormsApplication1
         #region /////////// add Column to AddToCraft DataTable///////////////
         private void setAddToCraftTable()
         {
-            addToCartTable.Columns.Add(new DataColumn("ItemCode"));
-            addToCartTable.Columns.Add(new DataColumn("ProductName"));
+            addToCartTable.Columns.Add(new DataColumn("Item Code"));
+            addToCartTable.Columns.Add(new DataColumn("Product Name"));
+            addToCartTable.Columns.Add(new DataColumn("Company Name"));
+            addToCartTable.Columns.Add(new DataColumn("Mrp"));
             addToCartTable.Columns.Add(new DataColumn("Quantity"));
             addToCartTable.Columns.Add(new DataColumn("Rate"));
             addToCartTable.Columns.Add(new DataColumn("Amount"));
+           
             //addToCartTable.Columns.Add(new DataColumn("TexAmount"));
         }
         #endregion
@@ -590,7 +606,7 @@ namespace WindowsFormsApplication1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            DataGridViewRowCollection call = gridPurchaseOrder.Rows;
+           /* DataGridViewRowCollection call = gridPurchaseOrder.Rows;
             for (int c = 0; c < call.Count; c++)
             {
                 DataGridViewRow currentRow1 = call[c];
@@ -614,7 +630,7 @@ namespace WindowsFormsApplication1
                 string id1 = lastQuantity.ToString();
                 string updateQurry = "update ItemQuantityDetail set CurrentQuantity='" + id1 + "'where ItemId='" + itid + "'";
                 int insertedRows2 = dbMainClass.saveDetails(updateQurry);
-            }
+            }*/
 
             counter = 0;
             if (counter == 0)
@@ -626,14 +642,14 @@ namespace WindowsFormsApplication1
                     DataGridViewRowCollection RowCollection = gridPurchaseOrder.Rows;
                     List<string> sf = new List<string>();
                     for (int a = 0; a < RowCollection.Count; a++)
-                    {
+                      {
 
                         DataGridViewRow currentRow = RowCollection[a];
                         DataGridViewCellCollection cellCollection = currentRow.Cells;
                         string txtItemCod = cellCollection[0].Value.ToString();
-                        string txtQuanit = cellCollection[2].Value.ToString();
-                        string txtRate  = cellCollection[3].Value.ToString();
-                        string txtAmoun = cellCollection[4].Value.ToString();
+                        string txtQuanit = cellCollection[4].Value.ToString();
+                        string txtRate  = cellCollection[5].Value.ToString();
+                        string txtAmoun = cellCollection[6].Value.ToString();
                         string OrderID = txtSrNo.Text;
                         string Query = "insert into VendorOrderDesc Values('" + OrderID + "','" + txtItemCod + "','" + txtRate + "','" + txtQuanit + "','" + txtAmoun + "')";
                         //MessageBox.Show(Query);
