@@ -856,7 +856,7 @@ namespace WindowsFormsApplication1
             {
                 if (addToCartTable.Rows.Count > 0)
                 {
-                    string Amount = gridPurchaseOrder.SelectedRows[0].Cells[4].Value.ToString();
+                    string Amount = gridPurchaseOrder.SelectedRows[0].Cells[6].Value.ToString();
                     double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
                     totalAmount -= Convert.ToDouble(Amount.Trim());
                     txtTotalAmount.Text = totalAmount.ToString();
