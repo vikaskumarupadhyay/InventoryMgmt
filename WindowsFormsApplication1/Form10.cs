@@ -229,7 +229,7 @@ namespace WindowsFormsApplication1
                         //     txtQuantity.ReadOnly = false;
                         int que = maxItemQuantity;
                         quantity = Convert.ToInt32(txtQuantity.Text);
-                        int rate = Convert.ToInt32(txtRate.Text);
+                        double rate = Convert.ToDouble(txtRate.Text);
                         txtAmount.Text = (quantity * rate).ToString();
                     }
                 }
@@ -291,7 +291,7 @@ namespace WindowsFormsApplication1
             {
                 int q3 = 0;
                 itemid = dr3[0].ToString();
-                quntity = dr3[3].ToString();
+                quntity = dr3[5].ToString();
                 rate = dr3[4].ToString();
 
                 if (itemid == txtitemcode.Text)
@@ -299,13 +299,13 @@ namespace WindowsFormsApplication1
                     int q1 = Convert.ToInt32(quntity);
                     int q2 = Convert.ToInt32(txtQuantity.Text);
                     q3 = q1 + q2;
-                    dr3[3] = q3.ToString();
-                    int rate1 = Convert.ToInt32(rate);
-                    int rate2 = Convert.ToInt32(txtAmount.Text);
-                    int rate3 = rate1 + rate2;
-                    dr3[4] = rate3.ToString();
-                    int rate4 = Convert.ToInt32(txttotalammount.Text);
-                    int rate5 = rate4 + rate2;
+                    dr3[5] = q3.ToString();
+                    double rate1 = Convert.ToDouble(rate);
+                    double rate2 = Convert.ToDouble(txtAmount.Text);
+                    double rate4 = Convert.ToDouble(txttotalammount.Text);
+                    double rate3 = rate4 + rate2;
+                    dr3[6] = rate3.ToString();
+                    double rate5 = rate4 + rate2;
                     txttotalammount.Text = rate5.ToString();//rate3.ToString();
                     // MessageBox.Show("Please Enter the Quanity");
                     txtitemcode.Text = "I";
@@ -332,13 +332,24 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
+                    string selectq = "select ids.ItemCompName,ipd.MrpPrice from ItemPriceDetail ipd join ItemDetails ids on ipd.ItemId=ids.ItemId where ipd.ItemId='" + txtitemcode.Text + "'";
+                    DataTable dta = d.getDetailByQuery(selectq);
+                    string ConpanyName = "";
+                    string Mrp = "";
+                    foreach (DataRow dr1 in dta.Rows)
+                    {
+                        ConpanyName = dr1[0].ToString();
+                        Mrp = dr1[1].ToString();
+                    }
                     button4.Enabled = true;
                     DataRow dr = addToCartTable.NewRow();
                     dr[0] = txtitemcode.Text.Trim();
                     dr[1] = txtProductName.Text.Trim();
-                    dr[3] = txtQuantity.Text.Trim();
-                    dr[2] = txtRate.Text.Trim();
-                    dr[4] = txtAmount.Text.Trim();
+                    dr[2] = ConpanyName.Trim();
+                    dr[3] = Mrp.Trim();
+                    dr[5] = txtQuantity.Text.Trim();
+                    dr[4] = txtRate.Text.Trim();
+                    dr[6] = txtAmount.Text.Trim();
 
                     //dr[5] = txtAmount.Text.Trim();
                     addToCartTable.Rows.Add(dr);
@@ -364,79 +375,6 @@ namespace WindowsFormsApplication1
 
 
               
-                //tab6();
-                //if (txtQuantity.Text == "")
-                //{
-                //    txtQuantity.Text = "0";
-                //}
-                //if (txtAmount.Text == "")
-                //{
-                //    txtAmount.Text = "0";
-                //}
-
-                //if (txtQuantity.Text=="0")
-                //{
-                //    MessageBox.Show("please enter the Quantity");
-                //   // makeblank();
-                //   // MessageBox.Show("s");
-                //    //txtQuantity.TabStop = false;
-                //    //button4.Enabled = true;
-                //    //DataRow dr = addToCartTable.NewRow();
-                //    //dr[0] = txtitemcode.Text.Trim();
-                //    //dr[1] = txtProductName.Text.Trim();
-                //    //dr[2] = txtRate.Text.Trim();
-                //    //dr[3] = txtQuantity.Text.Trim();
-                //    //// textBox14.Text = dr[4].ToString();
-                //    //dr[4] = txtAmount.Text.Trim();
-                //    //addToCartTable.Rows.Add(dr);
-                //    //gridsalesorder.DataSource = addToCartTable;
-                //    //double totalAmount = Convert.ToDouble(txttotalammount.Text);
-                //    //totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
-                //    //txttotalammount.Text = totalAmount.ToString();
-
-                //    //txtitemcode.Text = "I";
-                //    //txtProductName.Text = "";
-                //    //txtRate.Text = "";
-                //    //txtQuantity.Text = "";
-                //    ////textBox14.Text = "";
-                //    //txtAmount.Text = "";
-                //    //txtitemcode.Focus();
-
-                //}
-                //else if (txtQuantity.Text != "0")
-                //{
-                //    txtQuantity.TabStop = false;
-                //    button4.Enabled = true;
-                //    savebutton.TabStop = true;
-                //    button6.TabStop = true;
-                //    button1.TabStop = true;
-                //    txtcustomercode.TabStop = true;
-                //    button2.Enabled = true;
-                //    DataRow dr1 = addToCartTable.NewRow();
-                //    dr1[0] = txtitemcode.Text.Trim();
-                //    dr1[1] = txtProductName.Text.Trim();
-                //    dr1[2] = txtRate.Text.Trim();
-                //    dr1[3] = txtQuantity.Text.Trim();
-                //    // textBox14.Text = dr[4].ToString();
-                //    dr1[4] = txtAmount.Text.Trim();
-                //    addToCartTable.Rows.Add(dr1);
-                //    gridsalesorder.DataSource = addToCartTable;
-                //    double totalAmount1 = Convert.ToDouble(txttotalammount.Text);
-                //    totalAmount1 += Convert.ToDouble(txtAmount.Text.Trim());
-                //    txttotalammount.Text = totalAmount1.ToString();
-
-                //    txtitemcode.Text = "I";
-                //    txtProductName.Text = "";
-                //    txtRate.Text = "";
-                //    txtQuantity.Text = "";
-                //    //textBox14.Text = "";
-                //    txtAmount.Text = "";
-                //    txtitemcode.Focus();
-                //}
-
-
-
-            //}
         }
 
         private void salesorder_Load(object sender, EventArgs e)
@@ -516,6 +454,8 @@ namespace WindowsFormsApplication1
         {
             addToCartTable.Columns.Add(new DataColumn("ItemCode"));
             addToCartTable.Columns.Add(new DataColumn("ProductName"));
+            addToCartTable.Columns.Add(new DataColumn("CompnayName"));
+            addToCartTable.Columns.Add(new DataColumn("MRP"));
             addToCartTable.Columns.Add(new DataColumn("Rate"));
             addToCartTable.Columns.Add(new DataColumn("Quantity"));
             addToCartTable.Columns.Add(new DataColumn("Amount"));
@@ -579,20 +519,20 @@ namespace WindowsFormsApplication1
 
 
 
-                string qurry = "select CurrentQuantity from ItemQuantityDetail where ItemId='" + itid + "'";
-                DataTable dt = d.getDetailByQuery(qurry);
-                string id = "";
-                foreach (DataRow dr in dt.Rows)
-                {
-                    id = dr["CurrentQuantity"].ToString();
-                }
+                //string qurry = "select CurrentQuantity from ItemQuantityDetail where ItemId='" + itid + "'";
+                //DataTable dt = d.getDetailByQuery(qurry);
+                //string id = "";
+                //foreach (DataRow dr in dt.Rows)
+                //{
+                //    id = dr["CurrentQuantity"].ToString();
+                //}
 
-                int curentQuntity = Convert.ToInt32(que);
-                int cuentQuantity = Convert.ToInt32(id);
-                int lastQuantity = cuentQuantity - curentQuntity;
-                string id1 = lastQuantity.ToString();
-                string updateQurry = "update ItemQuantityDetail set CurrentQuantity='" + id1 + "'where ItemId='" + itid + "'";
-                int insertedRows2 = d.saveDetails(updateQurry);
+                //int curentQuntity = Convert.ToInt32(que);
+                //int cuentQuantity = Convert.ToInt32(id);
+                //int lastQuantity = cuentQuantity - curentQuntity;
+                //string id1 = lastQuantity.ToString();
+                //string updateQurry = "update ItemQuantityDetail set CurrentQuantity='" + id1 + "'where ItemId='" + itid + "'";
+                //int insertedRows2 = d.saveDetails(updateQurry);
             }
                
                 counter = 0;
@@ -610,9 +550,11 @@ namespace WindowsFormsApplication1
                         DataGridViewCellCollection cellcollection = currentrow.Cells;
                         string txtitemcode = cellcollection[0].Value.ToString();
                         string txtProductName = cellcollection[1].Value.ToString();
-                        string txtRate = cellcollection[2].Value.ToString();
-                        string txtQuantity = cellcollection[3].Value.ToString();
-                        string txtAmount = cellcollection[4].Value.ToString();
+                        string Compnayname = cellcollection[2].Value.ToString();
+                        string mrp = cellcollection[3].Value.ToString();
+                        string txtRate = cellcollection[4].Value.ToString();
+                        string txtQuantity = cellcollection[5].Value.ToString();
+                        string txtAmount = cellcollection[6].Value.ToString();
                         string Orderid = txtsrno.Text;
                         string query = "insert into customerorderdescriptions Values('" + txtsrno.Text + "','" + txtitemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
                        

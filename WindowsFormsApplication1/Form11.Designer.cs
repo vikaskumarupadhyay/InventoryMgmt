@@ -310,7 +310,6 @@
             this.txtRefNo.TabIndex = 9;
             this.txtRefNo.TabStop = false;
             this.txtRefNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtRefNo.Enter += new System.EventHandler(this.txtRefNo_Enter);
             this.txtRefNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRefNo_KeyPress);
             // 
             // label15
@@ -737,9 +736,9 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.button1);
-            this.panel2.Location = new System.Drawing.Point(0, 4);
+            this.panel2.Location = new System.Drawing.Point(0, 355);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1172, 511);
+            this.panel2.Size = new System.Drawing.Size(1172, 180);
             this.panel2.TabIndex = 53;
             // 
             // panel3
