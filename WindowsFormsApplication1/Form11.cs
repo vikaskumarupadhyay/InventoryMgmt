@@ -369,7 +369,7 @@ namespace WindowsFormsApplication1
                         addToCartTable.Rows.Add(dr);
                         gridsalesdelivary.DataSource = addToCartTable;
                         double totalAmount = Convert.ToDouble(txtTotalAmmount.Text);
-                        totalAmount += Convert.ToDouble(txtAmmount.Text.Trim());
+                        totalAmount += Convert.ToDouble(txtAmmount.Text);
                         txtTotalAmmount.Text= totalAmount.ToString();
 
                         txtItemCode.Text = "I";
