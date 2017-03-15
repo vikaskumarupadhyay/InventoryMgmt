@@ -295,7 +295,7 @@ namespace WindowsFormsApplication1
         private void butAddItem_Click(object sender, EventArgs e)
         {
 
-            butRemoveItem.Enabled = false;
+            butRemoveItem.Enabled = true;
             txtItemCode.Focus();
             //txtQuantity.Enabled = false;
             if (txtRefNo.Text == "")
