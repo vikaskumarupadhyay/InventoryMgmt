@@ -310,10 +310,11 @@ namespace WindowsFormsApplication1
                     q3 = q1 + q2;
                     dr3[5] = q3.ToString();
                     double rate1 = Convert.ToDouble(rate);
+                    double rate6 = q3 * rate1;
                     double rate2 = Convert.ToDouble(txtAmount.Text);
                     double rate4 = Convert.ToDouble(txttotalammount.Text);
                     double rate3 = rate4 + rate2;
-                    dr3[6] = rate3.ToString();
+                    dr3[6] = rate6.ToString();
                     double rate5 = rate4 + rate2;
                     txttotalammount.Text = rate5.ToString();//rate3.ToString();
                     // MessageBox.Show("Please Enter the Quanity");
@@ -793,16 +794,25 @@ namespace WindowsFormsApplication1
             }
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
+            //    if (this.gridsalesorder.Rows.Count > 0)
+            //    {
+            //        gridsalesorder.Rows.RemoveAt(this.gridsalesorder.SelectedRows[0].Index);
+            //    }
                 if (addToCartTable.Rows.Count > 0)
                 {
-                    string Amount = gridsalesorder.SelectedRows[0].Cells[4].Value.ToString();
+                    int current = gridsalesorder.CurrentRow.Index;
+                    string Amount = gridsalesorder.Rows[current-1].Cells[6].Value.ToString();
                     double totalAmount = Convert.ToDouble(txttotalammount.Text);
                     totalAmount -= Convert.ToDouble(Amount.Trim());
                     txttotalammount.Text = totalAmount.ToString();
                     int index = gridsalesorder.SelectedRows[0].Index;
-                    addToCartTable.Rows.RemoveAt(index-1);
+                    addToCartTable.Rows.RemoveAt(index-1 );
+                    //int index = gridsalesorder.CurrentCell.RowIndex;
+                    //addToCartTable.Rows.RemoveAt(0);
 
                     gridsalesorder.DataSource = addToCartTable;
+                
+             
                     if (addToCartTable.Rows.Count == 0)
                     {
                         txttotalammount.Text = "0.0";
@@ -836,6 +846,7 @@ namespace WindowsFormsApplication1
 
             }
         }
+        
 
         private void txtcustomercode_KeyPress(object sender, KeyPressEventArgs e)
         {
