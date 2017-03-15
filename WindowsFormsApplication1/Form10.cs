@@ -203,6 +203,9 @@ namespace WindowsFormsApplication1
             //    }
             //}
             //txtQuantity.ReadOnly = true;
+
+
+
             string select = "select CurrentQuantity from ItemQuantityDetail where itemid='" + txtitemcode.Text + "'";
             DataTable dt = d.getDetailByQuery(select);
             string s = "";
@@ -219,31 +222,36 @@ namespace WindowsFormsApplication1
             {
                 int g = Convert.ToInt32(s);
                 int quantity = Convert.ToInt32(txtQuantity.Text);
-                if (quantity < g)
+                if (quantity <= g)
                 {
-                    //    MessageBox.Show("d");
+                    //MessageBox.Show("d");
 
-                    // if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
-                    if ((!string.IsNullOrEmpty(txtQuantity.Text)) && char.IsDigit(txtQuantity.Text, txtQuantity.Text.Length - 1) && (!string.IsNullOrEmpty(txtRate.Text)))
-                    {
-                        //     txtQuantity.ReadOnly = false;
-                        int que = maxItemQuantity;
-                        quantity = Convert.ToInt32(txtQuantity.Text);
-                        double rate = Convert.ToDouble(txtRate.Text);
-                        txtAmount.Text = (quantity * rate).ToString();
-                    }
+                    if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
+                        if ((!string.IsNullOrEmpty(txtQuantity.Text)) && char.IsDigit(txtQuantity.Text, txtQuantity.Text.Length - 1) && (!string.IsNullOrEmpty(txtRate.Text)))
+                        {
+                            txtQuantity.ReadOnly = false;
+                            int que = maxItemQuantity;
+                            quantity = Convert.ToInt32(txtQuantity.Text);
+                            double rate = Convert.ToDouble(txtRate.Text);
+                            txtAmount.Text = (quantity * rate).ToString();
+                        }
                 }
 
                 else if (quantity > g)
                 {
-                    MessageBox.Show("Quantity is not available");
-                    txtQuantity.Text = "0";
-                    txtAmount.Text = "0";
+
+                    int que = maxItemQuantity;
+                    quantity = Convert.ToInt32(txtQuantity.Text);
+                    double rate = Convert.ToDouble(txtRate.Text);
+                    txtAmount.Text = (quantity * rate).ToString();
+                    //MessageBox.Show("Quantity is not available");
+                    //txtQuantity.Text = "0";
+                    //txtAmount.Text = "0";
                 }
             }
-           
-           
-            }
+
+
+        }
             
         
             
@@ -280,6 +288,7 @@ namespace WindowsFormsApplication1
         }
         private void butadditem_Click(object sender, EventArgs e)
         {
+            
             txtitemcode.Focus();
             txtcustomercode.TabStop = true;
             button1.TabStop = true;
@@ -778,11 +787,11 @@ namespace WindowsFormsApplication1
             {
                 txtitemcode.Enabled = true;
                 txtitemcode.Focus();
-                txtitemcode.TabIndex = 1;
+               // txtitemcode.TabIndex = 1;
                 button2.Enabled = false;
              
             }
-            if (e.KeyChar == (char)Keys.Enter)
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
                 if (addToCartTable.Rows.Count > 0)
                 {
@@ -791,7 +800,7 @@ namespace WindowsFormsApplication1
                     totalAmount -= Convert.ToDouble(Amount.Trim());
                     txttotalammount.Text = totalAmount.ToString();
                     int index = gridsalesorder.SelectedRows[0].Index;
-                    addToCartTable.Rows.RemoveAt(index);
+                    addToCartTable.Rows.RemoveAt(index-1);
 
                     gridsalesorder.DataSource = addToCartTable;
                     if (addToCartTable.Rows.Count == 0)
@@ -831,8 +840,6 @@ namespace WindowsFormsApplication1
         private void txtcustomercode_KeyPress(object sender, KeyPressEventArgs e)
         {
            
-           
-
            if (e.KeyChar == (char)Keys.Enter )
             {
                 tab1();
