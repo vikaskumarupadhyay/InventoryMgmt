@@ -503,7 +503,6 @@
             // 
             // gridPurchaseOrder
             // 
-            this.gridPurchaseOrder.AllowUserToAddRows = false;
             this.gridPurchaseOrder.AllowUserToDeleteRows = false;
             this.gridPurchaseOrder.AllowUserToOrderColumns = true;
             this.gridPurchaseOrder.AllowUserToResizeColumns = false;
@@ -519,6 +518,7 @@
             this.gridPurchaseOrder.TabStop = false;
             this.gridPurchaseOrder.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPurchaseOrder_CellEndEdit);
             this.gridPurchaseOrder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridPurchaseOrder_KeyPress);
+            this.gridPurchaseOrder.Leave += new System.EventHandler(this.gridPurchaseOrder_Leave);
             // 
             // textBox1
             // 
@@ -721,10 +721,9 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.buttBack);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1172, 637);
+            this.panel2.Size = new System.Drawing.Size(1172, 386);
             this.panel2.TabIndex = 65;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint_2);
             // 

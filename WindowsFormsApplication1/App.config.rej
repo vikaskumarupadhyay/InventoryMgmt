@@ -1,0 +1,10 @@
+diff a/WindowsFormsApplication1/App.config b/WindowsFormsApplication1/App.config	(rejected hunks)
+@@ -3,7 +3,7 @@
+   <appSettings>
+     <!--<add key="ConnectionString" value="Data Source=ASHISH-PC;Initial Catalog=SalesMaster;Persist Security Info=True;User ID=sa; Password=sandeep;"/>-->
+     <!--<add key="ConnectionString" value="Data Source=MANOJ-PC;Initial Catalog=SalesMaster;Persist Security Info=True;User ID=sa; Password=123456;"/>-->
+-    <add key="ConnectionString" value="Data Source=DINESHTIWARI-PC\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=true;"/>
++    <add key="ConnectionString" value="Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;"/>
+     <add key="ExcelFilePath" value="D:\\excel file path\\"/>
+   </appSettings>
+ 

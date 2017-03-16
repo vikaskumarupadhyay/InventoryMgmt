@@ -926,7 +926,15 @@ namespace WindowsFormsApplication1
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                button3.Focus();
+                if (txtQunty.Text == "")
+                {
+                    MessageBox.Show("Please Enter The Qunty");
+                    txtQunty.Focus();
+                }
+                else
+                {
+                    button3.Focus();
+                }
             }
             if (Char.IsDigit(e.KeyChar))
             {
@@ -1378,13 +1386,13 @@ namespace WindowsFormsApplication1
 
                 if (addToCartTable.Rows.Count > 0)
                 {
-
-                    string Amount = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
+                    int courentrow = dataGridView1.CurrentRow.Index;
+                    string Amount = dataGridView1.Rows[courentrow - 1].Cells[6].Value.ToString();
                     double totalAmount = Convert.ToDouble(txttotalAmount.Text);
                     totalAmount -= Convert.ToDouble(Amount.Trim());
                     txttotalAmount.Text = totalAmount.ToString();
                     int index = dataGridView1.SelectedRows[0].Index;
-                    addToCartTable.Rows.RemoveAt(index);
+                    addToCartTable.Rows.RemoveAt(index-1);
 
                     dataGridView1.DataSource = addToCartTable;
                     if (addToCartTable.Rows.Count == 0)
@@ -1404,6 +1412,7 @@ namespace WindowsFormsApplication1
                     //{
                     //    button4.Enabled = false;
                     //}
+                   
                 }
             }
             if (e.KeyChar == Convert.ToChar(Keys.Escape))
@@ -1411,6 +1420,7 @@ namespace WindowsFormsApplication1
                 txtItemCode.Focus();
                 button4.Enabled = true;
             }
+          
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
