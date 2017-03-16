@@ -78,6 +78,7 @@ namespace WindowsFormsApplication1
             setAddToCraftTable();
             //setAutoCompleteMode(txtVendorName, "Name", vendorDetails);
 
+            gridPurchaseOrder.DataSource = addToCartTable;
            
 
         }
@@ -313,12 +314,14 @@ namespace WindowsFormsApplication1
             string itemid="";
             string quntity = "";
             string rate = "";
+            string ammount = "";
             foreach (DataRow dr3 in addToCartTable.Rows)
             {
                 int q3 = 0;
                 itemid = dr3[0].ToString();
                 quntity = dr3[4].ToString();
                 rate = dr3[5].ToString();
+                ammount = dr3[6].ToString();
 
                  if (itemid == txtItemCode.Text)
                 {
@@ -328,11 +331,12 @@ namespace WindowsFormsApplication1
                     dr3[4] = q3.ToString();
                     Double rate1 = Convert.ToDouble(rate);
                     Double rate6 = rate1 * q2;
-                    Double rate2 = Convert.ToDouble(txtAmount.Text);
+                    Double rate2 = Convert.ToDouble(ammount);
+                    Double rate7 = Convert.ToDouble(txtAmount.Text);
                     Double rate3 = rate6 + rate2;
                     dr3[6] = rate3.ToString();
                     Double rate4 = Convert.ToDouble(txtTotalAmount.Text);
-                    Double rate5 = rate4 + rate2;
+                    Double rate5 = rate4 + rate7;
                     txtTotalAmount.Text = rate5.ToString();//rate3.ToString();
                    // MessageBox.Show("Please Enter the Quanity");
                     txtItemCode.Text = "I";
@@ -689,8 +693,9 @@ namespace WindowsFormsApplication1
             txtVendorPhone.Text = "";
             txtVendorMobile.Text = "";
             txtVendorFax.Text = "";
-            txtTotalAmount.Text = "";
-            txtDiscount.Text = "";
+            txtTotalAmount.Text = "0.00";
+           /// txtDiscount.Text = "";
+            addToCartTable.Clear();
             gridPurchaseOrder.DataSource = "";
 
         }
@@ -856,12 +861,13 @@ namespace WindowsFormsApplication1
             {
                 if (addToCartTable.Rows.Count > 0)
                 {
-                    string Amount = gridPurchaseOrder.SelectedRows[0].Cells[6].Value.ToString();
+                    int courentrow = gridPurchaseOrder.CurrentRow.Index;
+                    string Amount = gridPurchaseOrder.Rows[courentrow-1].Cells[6].Value.ToString();
                     double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
                     totalAmount -= Convert.ToDouble(Amount.Trim());
                     txtTotalAmount.Text = totalAmount.ToString();
                     int index = gridPurchaseOrder.SelectedRows[0].Index;
-                    addToCartTable.Rows.RemoveAt(index);
+                    addToCartTable.Rows.RemoveAt(index-1);
 
                     gridPurchaseOrder.DataSource = addToCartTable;
                     if (addToCartTable.Rows.Count == 0)
@@ -881,7 +887,6 @@ namespace WindowsFormsApplication1
                     {
                         //txtRemoveItem.Enabled = false;
                     }
-                   
                 }
             }
              if (e.KeyChar == Convert.ToChar(Keys.Escape))
@@ -1094,42 +1099,54 @@ namespace WindowsFormsApplication1
 
         private void gridPurchaseOrder_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            //string itemid = gridPurchaseOrder.Rows[e.RowIndex].Cells[0].Value.ToString();
-            //string selectqurry = "select Ids.ItemName,ipd.SalesPrice from ItemDetails Ids  join ItemPriceDetail ipd on Ids.ItemId=ipd.ItemId where Ids.ItemId='" + itemid + "'";
-            //DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
-            //string rate = "";
-            //foreach (DataRow dr in dt.Rows)
-            //{
-            //    gridPurchaseOrder.Rows[e.RowIndex].Cells[1].Value = dr[0].ToString();
-            //    rate = dr[1].ToString();
-            //}
-            //if (gridPurchaseOrder.Rows[e.RowIndex].Cells[0].Value !=null)
-            //{
-            //    //gridPurchaseOrder.Focus();
-            //    gridPurchaseOrder.CurrentCell = gridPurchaseOrder[gridPurchaseOrder.CurrentCell.ColumnIndex + 2, gridPurchaseOrder.CurrentCell.RowIndex];
-            //    gridPurchaseOrder.Focus();
-            //}
-            //gridPurchaseOrder.Rows[e.RowIndex].Cells[3].Value = rate;
-            //string quantity = gridPurchaseOrder.Rows[e.RowIndex].Cells[2].Value.ToString();
-            //if (quantity == "")
-            //{
-            //    quantity = "0";
-            //}
-            //int q1 = Convert.ToInt32(quantity);
-            //int rate1 = Convert.ToInt32(rate);
-            //int price = rate1 * q1;
-            //if (price.ToString() == "")
-            //{
-            //    price = 0;
-            //}
-            //gridPurchaseOrder.Rows[e.RowIndex].Cells[4].Value = price.ToString();
-            //int totalammount = Convert.ToInt32(txtTotalAmount.Text);
-            //int toat = totalammount + price;
-            //txtTotalAmount.Text = toat.ToString();
-            ////if(itemid=="I1")
-            ////{
-            ////    MessageBox.Show("please enter the ");
-            ////}
+             string itemid = gridPurchaseOrder.Rows[e.RowIndex].Cells[0].Value.ToString();
+             string selectqurry = "select Ids.ItemName,Ids.ItemCompName,ipd.MrpPrice, ipd.SalesPrice from ItemDetails Ids  join ItemPriceDetail ipd on Ids.ItemId=ipd.ItemId  where Ids.ItemId='" + itemid + "'";
+             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+             string rate = "";
+             foreach (DataRow dr in dt.Rows)
+             {
+                 gridPurchaseOrder.Rows[e.RowIndex].Cells[1].Value = dr[0].ToString();
+             gridPurchaseOrder.Rows[e.RowIndex].Cells[2].Value=dr[1].ToString();
+             gridPurchaseOrder.Rows[e.RowIndex].Cells[3].Value=dr[2].ToString();
+            // gridPurchaseOrder.Rows[e.RowIndex].Cells[5].Value=dr[3].ToString();
+            
+                 rate = dr[3].ToString();
+             }
+             if (gridPurchaseOrder.Rows[e.RowIndex].Cells[0].Value != null)
+             {
+                 int co = gridPurchaseOrder.CurrentRow.Index;
+                 DataGridViewRow selectedRow = gridPurchaseOrder.Rows[0];
+                 selectedRow.Selected = true;
+                 selectedRow.Cells[4].Selected = true;
+                //gridPurchaseOrder.CurrentCell = gridPurchaseOrder[gridPurchaseOrder.CurrentCell.ColumnIndex + 2, gridPurchaseOrder.CurrentCell.RowIndex];
+                //gridPurchaseOrder.Focus();
+             }
+             gridPurchaseOrder.Rows[e.RowIndex].Cells[5].Value = rate;
+             string quantity = gridPurchaseOrder.Rows[e.RowIndex].Cells[4].Value.ToString();
+             if (quantity == "")
+             {
+                 quantity = "0";
+             }
+             int q1 = Convert.ToInt32(quantity);
+             Double rate1 = Convert.ToDouble(rate);
+             Double price = rate1 * q1;
+             if (price.ToString() == "")
+             {
+                 price = 0;
+             }
+             gridPurchaseOrder.Rows[e.RowIndex].Cells[6].Value = price.ToString();
+             Double totalammount = Convert.ToDouble(txtTotalAmount.Text);
+             Double toat = totalammount + price;
+             txtTotalAmount.Text = toat.ToString();
+             //if(itemid=="I1")
+             //{
+             //    MessageBox.Show("please enter the ");
+             //}
+        }
+
+        private void gridPurchaseOrder_Leave(object sender, EventArgs e)
+        {
+            
         }
 
        
