@@ -250,9 +250,9 @@ namespace WindowsFormsApplication1
 
         private void txtItemCode_TextChanged(object sender, EventArgs e)
        {
-            string itemCode = txtItemCode.Text;
-            setitemVlue("ItemId", itemCode);
-            txtItemCode.Focus();
+           // string itemCode = txtItemCode.Text;
+           // setitemVlue("ItemId", itemCode);
+            //txtItemCode.Focus();
            
         }
 
@@ -344,6 +344,7 @@ namespace WindowsFormsApplication1
                     txtRate.Text = "";
                     txtQuanity.Text = "";
                     txtAmount.Text = "";
+                    btnAddItem.Enabled = false;
                 }
             }
                 
@@ -636,7 +637,7 @@ namespace WindowsFormsApplication1
                 string updateQurry = "update ItemQuantityDetail set CurrentQuantity='" + id1 + "'where ItemId='" + itid + "'";
                 int insertedRows2 = dbMainClass.saveDetails(updateQurry);
             }*/
-
+            gridPurchaseOrder.AllowUserToAddRows = false;
             counter = 0;
             if (counter == 0)
             {
@@ -665,7 +666,7 @@ namespace WindowsFormsApplication1
                     if (insertedRows1 > 0)
                     {
                         MessageBox.Show("Details Saved Successfully");
-
+                        gridPurchaseOrder.AllowUserToAddRows = true;
                         int id2 = Convert.ToInt32(txtSrNo.Text);
                         int id3 = id2 + 1;
                         txtSrNo.Text = id3.ToString();
@@ -912,57 +913,75 @@ namespace WindowsFormsApplication1
         }
         private void txtItemCode_KeyPress(object sender, KeyPressEventArgs e)
         {
+           
 
-            string getId = "select ItemId from ItemDetails where ItemId ='" + txtItemCode.Text + "'";
-            DataTable dt = dbMainClass.getDetailByQuery(getId);
-            if (e.KeyChar == (Char)Keys.Enter)
-            {
-                if (dt != null && dt.Rows.Count > 0)
+                string getId = "select ItemId from ItemDetails where ItemId ='" + txtItemCode.Text + "'";
+                DataTable dt = dbMainClass.getDetailByQuery(getId);
+                if (e.KeyChar == (Char)Keys.Enter)
                 {
-                    txtQuanity.ReadOnly = false;
-                    btnAddItem.Enabled = true;
-                    txtQuanity.Enabled = true;
-                    IndexTex2();
-                }
-                else
-                {
-                    MessageBox.Show("Please Enter the Correct Item Id");
-                }
-            }
-            if (e.KeyChar == Convert.ToChar(Keys.Escape))
-            {
-                if (gridPurchaseOrder.Rows != null && gridPurchaseOrder.RowCount > 0)
-                {
-                    txtRemoveItem.Focus();
-                }
-                else
-                {
-                    btnSave.Focus();
-                }
-            }
-            if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                if (e.KeyChar == '\b')
-                {
-                    if (txtItemCode.Text == "")
+                    if (txtVendorCode.Text == "V")
                     {
+                        MessageBox.Show("Please Enter The Vendor Code");
+                        txtVendorCode.Focus();
                         txtItemCode.Text = "I";
+                        txtProductName.Text = "";
+                        txtRate.Text = "";
+                        txtQuanity.Text = "";
+                        txtAmount.Text = "";
+                        btnAddItem.Enabled = false;
                     }
+                    else
+                    {
+                        string itemCode = txtItemCode.Text;
+                         setitemVlue("ItemId", itemCode);
+                        if (dt != null && dt.Rows.Count > 0)
+                        {
+                            txtQuanity.ReadOnly = false;
+                            btnAddItem.Enabled = true;
+                            txtQuanity.Enabled = true;
+                            IndexTex2();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please Enter the Correct Item Id");
+                        }
+                    }
+                }
+                if (e.KeyChar == Convert.ToChar(Keys.Escape))
+                {
+                    if (gridPurchaseOrder.Rows != null && gridPurchaseOrder.RowCount > 0)
+                    {
+                        txtRemoveItem.Focus();
+                    }
+                    else
+                    {
+                        btnSave.Focus();
+                    }
+                }
+                if (Char.IsDigit(e.KeyChar))
+                {
                     e.Handled = false;
-                    txtAmount.Text = "";
-                    txtQuanity.Text = "";
-                    txtItemCode.Focus();
-
                 }
                 else
                 {
-                    e.Handled = true;
+                    if (e.KeyChar == '\b')
+                    {
+                        if (txtItemCode.Text == "")
+                        {
+                            txtItemCode.Text = "I";
+                        }
+                        e.Handled = false;
+                        txtAmount.Text = "";
+                        txtQuanity.Text = "";
+                        txtItemCode.Focus();
+
+                    }
+                    else
+                    {
+                        e.Handled = true;
+                    }
                 }
-            }
+            //}
         }
 
         private void panel2_Paint_2(object sender, PaintEventArgs e)
