@@ -518,7 +518,7 @@
             this.gridPurchaseOrder.TabStop = false;
             this.gridPurchaseOrder.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPurchaseOrder_CellEndEdit);
             this.gridPurchaseOrder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridPurchaseOrder_KeyPress);
-            this.gridPurchaseOrder.Leave += new System.EventHandler(this.gridPurchaseOrder_Leave);
+        //    this.gridPurchaseOrder.Leave += new System.EventHandler(this.gridPurchaseOrder_Leave);
             // 
             // textBox1
             // 

@@ -5,13 +5,16 @@ D:\Project\WindowsFormsApplication1\bin\Debug\ExcelLibrary.dll
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.ChaquePayment.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.ChaqueForm.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Company_New.resources
+D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Customer_list.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.customerprint.resources
+D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.salesorder.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.salesdelivary.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.salesinvoice.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form2.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.practise.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.VendorPrint.resources
+D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.ItemList1.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.PurchasSearch1.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.salessearch.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Tex.resources
@@ -26,6 +29,7 @@ D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form9.res
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.ItemGroup.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Unit.resources
+D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.VendorList1.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
@@ -61,5 +65,3 @@ E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Unit.reso
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
-D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.MainForm.resources
