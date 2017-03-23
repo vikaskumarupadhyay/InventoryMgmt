@@ -109,7 +109,7 @@
             this.btnList.Name = "btnList";
             this.btnList.Size = new System.Drawing.Size(66, 28);
             this.btnList.TabIndex = 30;
-            this.btnList.Text = "List";
+            this.btnList.Text = "&List";
             this.btnList.UseVisualStyleBackColor = true;
             this.btnList.Click += new System.EventHandler(this.btnList_Click);
             this.btnList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnList_KeyDown);
@@ -144,7 +144,7 @@
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(134, 28);
             this.btnClose.TabIndex = 29;
-            this.btnClose.Text = "Close";
+            this.btnClose.Text = "&Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -673,7 +673,7 @@
             this.butClose.Name = "butClose";
             this.butClose.Size = new System.Drawing.Size(90, 28);
             this.butClose.TabIndex = 8;
-            this.butClose.Text = "Close";
+            this.butClose.Text = "&Back";
             this.butClose.UseVisualStyleBackColor = true;
             this.butClose.Click += new System.EventHandler(this.butClose_Click);
             // 

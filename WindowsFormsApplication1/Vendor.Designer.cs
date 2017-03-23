@@ -616,7 +616,7 @@
             this.btnVenderClose.Name = "btnVenderClose";
             this.btnVenderClose.Size = new System.Drawing.Size(134, 28);
             this.btnVenderClose.TabIndex = 23;
-            this.btnVenderClose.Text = "Close";
+            this.btnVenderClose.Text = "&Close";
             this.btnVenderClose.UseVisualStyleBackColor = true;
             this.btnVenderClose.Click += new System.EventHandler(this.btnVenderClose_Click);
             // 
@@ -628,7 +628,7 @@
             this.btnVenderList.Name = "btnVenderList";
             this.btnVenderList.Size = new System.Drawing.Size(66, 28);
             this.btnVenderList.TabIndex = 24;
-            this.btnVenderList.Text = "List";
+            this.btnVenderList.Text = "&List";
             this.btnVenderList.UseVisualStyleBackColor = true;
             this.btnVenderList.Click += new System.EventHandler(this.btnVenderList_Click);
             // 
@@ -735,7 +735,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(90, 28);
             this.button3.TabIndex = 32;
-            this.button3.Text = "Close";
+            this.button3.Text = "&Back";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
