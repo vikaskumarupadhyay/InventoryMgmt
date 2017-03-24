@@ -507,7 +507,6 @@ namespace WindowsFormsApplication1
 
         private void savebutton_Click(object sender, EventArgs e)
         {
-           
             //if (id == "")
             //{
             //    id = "1";
@@ -522,11 +521,14 @@ namespace WindowsFormsApplication1
             DataGridViewRowCollection call = gridsalesorder.Rows;
             for (int c = 0; c < call.Count; c++)
             {
-                DataGridViewRow currentRow1 = call[c];
-                DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
-                string itid = cellCollection1[0].Value.ToString();
-                string que = cellCollection1[3].Value.ToString();
-
+                    DataGridViewRow currentRow1 = call[c];
+                    DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
+                    string itid = cellCollection1[0].Value.ToString();
+                    string que = cellCollection1[3].Value.ToString();
+                     
+                
+              
+              
 
 
                 //string qurry = "select CurrentQuantity from ItemQuantityDetail where ItemId='" + itid + "'";
@@ -544,7 +546,7 @@ namespace WindowsFormsApplication1
                 //string updateQurry = "update ItemQuantityDetail set CurrentQuantity='" + id1 + "'where ItemId='" + itid + "'";
                 //int insertedRows2 = d.saveDetails(updateQurry);
             }
-               
+            
                 counter = 0;
                 if (counter == 0)
                 {
@@ -556,20 +558,22 @@ namespace WindowsFormsApplication1
                     List<string> show = new List<string>();
                     for (int a = 0; a < rowcollection.Count; a++)
                     {
-                        DataGridViewRow currentrow = rowcollection[a];
-                        DataGridViewCellCollection cellcollection = currentrow.Cells;
-                        string txtitemcode = cellcollection[0].Value.ToString();
-                        string txtProductName = cellcollection[1].Value.ToString();
-                        string Compnayname = cellcollection[2].Value.ToString();
-                        string mrp = cellcollection[3].Value.ToString();
-                        string txtRate = cellcollection[4].Value.ToString();
-                        string txtQuantity = cellcollection[5].Value.ToString();
-                        string txtAmount = cellcollection[6].Value.ToString();
-                        string Orderid = txtsrno.Text;
-                        string query = "insert into customerorderdescriptions Values('" + txtsrno.Text + "','" + txtitemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
-                       
-                        show.Add(query);
-                    }
+                      
+                            DataGridViewRow currentrow = rowcollection[a];
+                            DataGridViewCellCollection cellcollection = currentrow.Cells;
+                            string txtitemcode = cellcollection[0].Value.ToString();
+                            string txtProductName = cellcollection[1].Value.ToString();
+                            string Compnayname = cellcollection[2].Value.ToString();
+                            string mrp = cellcollection[3].Value.ToString();
+                            string txtRate = cellcollection[4].Value.ToString();
+                            string txtQuantity = cellcollection[5].Value.ToString();
+                            string txtAmount = cellcollection[6].Value.ToString();
+                            string Orderid = txtsrno.Text;
+                            string query = "insert into customerorderdescriptions Values('" + txtsrno.Text + "','" + txtitemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
+
+                            show.Add(query);
+                        }
+                    
 
                     int inserirow1 = d.saveDetails(show);
                     if(inserirow1 > 0)
@@ -681,33 +685,33 @@ namespace WindowsFormsApplication1
             //{
                 //txtQuantity.ReadOnly = false;
                  // tab2();
-                string selectquery1 = "select i.ItemId,i.ItemName,ip.MrpPrice,iq.CurrentQuantity from ItemDetails i join ItemPriceDetail ip on i.ItemId=ip.ItemId join ItemQuantityDetail iq on ip.ItemId=iq.ItemId where i.ItemId='"+txtitemcode.Text+"'";
-                DataTable dt = d.getDetailByQuery(selectquery1);
-                if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
-                {
-                    foreach (DataRow dr in dt.Rows)
-                    {
-                        txtProductName.Text = dr[1].ToString();
-                        txtRate.Text = dr[2].ToString();
-                        //txtRate.Text = dr[3].ToString();
-                        //txtQuantity.Text = dr[3].ToString();
-                        // txtAmount.Text = dr[4].ToString();
-                        txtQuantity.Text = "";
-                        txtQuantity.ReadOnly = false;
-                        butadditem.Enabled = true;
-                        //tab6();
-                    }
-                }
-                else
-                {
-                    txtProductName.Text = "";
-                    txtRate.Text = "";
-                    txtQuantity.ReadOnly = true; ;
-                    txtQuantity.Text = "";
-                    txtAmount.Text = "";
-                    butadditem.Enabled = false;
-                   
-                }
+            //string selectquery1 = "select i.ItemId,i.ItemName,ip.MrpPrice,iq.CurrentQuantity from ItemDetails i join ItemPriceDetail ip on i.ItemId=ip.ItemId join ItemQuantityDetail iq on ip.ItemId=iq.ItemId where i.ItemId='" + txtitemcode.Text + "'";
+            //DataTable dt = d.getDetailByQuery(selectquery1);
+            //if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
+            //{
+            //    foreach (DataRow dr in dt.Rows)
+            //    {
+            //        txtProductName.Text = dr[1].ToString();
+            //        txtRate.Text = dr[2].ToString();
+            //        //txtRate.Text = dr[3].ToString();
+            //        //txtQuantity.Text = dr[3].ToString();
+            //        // txtAmount.Text = dr[4].ToString();
+            //        txtQuantity.Text = "";
+            //        txtQuantity.ReadOnly = false;
+            //        butadditem.Enabled = true;
+            //        //tab6();
+            //    }
+            //}
+            //else
+            //{
+            //    txtProductName.Text = "";
+            //    txtRate.Text = "";
+            //    txtQuantity.ReadOnly = true; ;
+            //    txtQuantity.Text = "";
+            //    txtAmount.Text = "";
+            //    butadditem.Enabled = false;
+
+            //}
             }
         
         
@@ -821,6 +825,7 @@ namespace WindowsFormsApplication1
 
                     if (gridsalesorder.Rows.Count > 0)
                     {
+
                         button4.Enabled = true;
                         gridsalesorder.Rows[gridsalesorder.Rows.Count - 1].Selected = true;
                     }
@@ -836,6 +841,7 @@ namespace WindowsFormsApplication1
                     }
                     txtQuantity.TabStop = false;
                 }
+
 
                 button4.Enabled = false;
                 savebutton.TabStop = false;
@@ -877,39 +883,79 @@ namespace WindowsFormsApplication1
 
         private void txtitemcode_KeyPress(object sender, KeyPressEventArgs e)
         {
-            txtQuantity.Enabled = false;
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                txtQuantity.Enabled = true;
-                tab2();
-
-            }
-            if (e.KeyChar == (char)Keys.Escape)
-            {
-                if (gridsalesorder.Rows.Count > 0)
-                {
-                    button4.Focus();
-                }
-                     
-                else
-                {
-                    savebutton.Focus();
-                    button6.TabStop = true;
-                }
-            }
-            string selectquery1 = "select i.ItemId,i.ItemName,ip.MrpPrice,iq.CurrentQuantity from ItemDetails i join ItemPriceDetail ip on i.ItemId=ip.ItemId join ItemQuantityDetail iq on ip.ItemId=iq.ItemId where i.ItemId='" + txtitemcode.Text + "'";
-            DataTable dt = d.getDetailByQuery(selectquery1);
-            if (dt.Rows.Count > 0)
-            {
-            }
-            else if (e.KeyChar == (char)Keys.Enter && dt.Rows != null && dt != null)
-            {
-                txtitemcode.Focus();
-                MessageBox.Show("Please select your correct Itemid");
-            }
           
-        }
+                txtQuantity.Enabled = false;
+                if (e.KeyChar == (char)Keys.Enter)
+                {
+                    if (txtcustomercode.Text == "C")
+                    {
+                        MessageBox.Show("please enter the customercode");
+                        txtcustomercode.Focus();
 
+                    }
+                    else
+                    {
+
+                        string selectquery1 = "select i.ItemId,i.ItemName,ip.MrpPrice,iq.CurrentQuantity from ItemDetails i join ItemPriceDetail ip on i.ItemId=ip.ItemId join ItemQuantityDetail iq on ip.ItemId=iq.ItemId where i.ItemId='" + txtitemcode.Text + "'";
+                        DataTable dt = d.getDetailByQuery(selectquery1);
+                        if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
+                        {
+                            foreach (DataRow dr in dt.Rows)
+                            {
+                                txtProductName.Text = dr[1].ToString();
+                                txtRate.Text = dr[2].ToString();
+                                //txtRate.Text = dr[3].ToString();
+                                //txtQuantity.Text = dr[3].ToString();
+                                // txtAmount.Text = dr[4].ToString();
+                                txtQuantity.Text = "";
+                                txtQuantity.ReadOnly = false;
+                                butadditem.Enabled = true;
+                                //tab6();
+                            }
+                        }
+                        else
+                        {
+                            txtProductName.Text = "";
+                            txtRate.Text = "";
+                            txtQuantity.ReadOnly = true; ;
+                            txtQuantity.Text = "";
+                            txtAmount.Text = "";
+                            butadditem.Enabled = false;
+
+                        }
+                        txtQuantity.Enabled = true;
+                        tab2();
+
+                    }
+                }
+                if (e.KeyChar == (char)Keys.Escape)
+                {
+                    if (gridsalesorder.Rows.Count > 0)
+                    {
+                        button4.Focus();
+                    }
+
+                    else
+                    {
+                        savebutton.Focus();
+                        button6.TabStop = true;
+                    }
+                }
+             
+
+                string selectquery2 = "select i.ItemId,i.ItemName,ip.MrpPrice,iq.CurrentQuantity from ItemDetails i join ItemPriceDetail ip on i.ItemId=ip.ItemId join ItemQuantityDetail iq on ip.ItemId=iq.ItemId where i.ItemId='" + txtitemcode.Text + "'";
+                DataTable dt2 = d.getDetailByQuery(selectquery2);
+                if (dt2.Rows.Count > 0)
+                {
+                }
+                else if (e.KeyChar == (char)Keys.Enter && dt2.Rows != null && dt2 != null)
+                {
+                    txtitemcode.Focus();
+                    MessageBox.Show("Please select your correct Itemid");
+                }
+            }
+
+        
         private void txtsearchvalue_TextChanged_1(object sender, EventArgs e)
         {
             if (counter == 0)
