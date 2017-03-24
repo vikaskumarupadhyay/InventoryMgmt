@@ -54,8 +54,6 @@ namespace WindowsFormsApplication1
             string taxtid = "";
             foreach (DataRow dr in dt2.Rows)
             {
-
-
                 taxtid = dr[0].ToString();
             }
             string selectName = "select TexAmount,TexName from CompnayTex where TexId='" + taxtid + "'"; //TexName='" + DB_Main.taxName + "'";
@@ -64,7 +62,6 @@ namespace WindowsFormsApplication1
             foreach (DataRow dr in dt1.Rows)
             {
                 //txtTexAmount.Text 
-
                 txtdis.Text = dr[0].ToString();
                 textBox16.Text = dr[1].ToString();
             }
@@ -926,15 +923,7 @@ namespace WindowsFormsApplication1
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                if (txtQunty.Text == "")
-                {
-                    MessageBox.Show("Please Enter The Qunty");
-                    txtQunty.Focus();
-                }
-                else
-                {
-                    button3.Focus();
-                }
+                button3.Focus();
             }
             if (Char.IsDigit(e.KeyChar))
             {
@@ -1386,13 +1375,13 @@ namespace WindowsFormsApplication1
 
                 if (addToCartTable.Rows.Count > 0)
                 {
-                    int courentrow = dataGridView1.CurrentRow.Index;
-                    string Amount = dataGridView1.Rows[courentrow - 1].Cells[6].Value.ToString();
+
+                    string Amount = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
                     double totalAmount = Convert.ToDouble(txttotalAmount.Text);
                     totalAmount -= Convert.ToDouble(Amount.Trim());
                     txttotalAmount.Text = totalAmount.ToString();
                     int index = dataGridView1.SelectedRows[0].Index;
-                    addToCartTable.Rows.RemoveAt(index-1);
+                    addToCartTable.Rows.RemoveAt(index);
 
                     dataGridView1.DataSource = addToCartTable;
                     if (addToCartTable.Rows.Count == 0)
@@ -1412,7 +1401,6 @@ namespace WindowsFormsApplication1
                     //{
                     //    button4.Enabled = false;
                     //}
-                   
                 }
             }
             if (e.KeyChar == Convert.ToChar(Keys.Escape))
@@ -1420,7 +1408,6 @@ namespace WindowsFormsApplication1
                 txtItemCode.Focus();
                 button4.Enabled = true;
             }
-          
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
