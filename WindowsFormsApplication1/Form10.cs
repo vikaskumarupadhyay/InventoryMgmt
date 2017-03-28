@@ -507,6 +507,7 @@ namespace WindowsFormsApplication1
 
         private void savebutton_Click(object sender, EventArgs e)
         {
+            panel2.Visible = true;
             //if (id == "")
             //{
             //    id = "1";
@@ -518,13 +519,13 @@ namespace WindowsFormsApplication1
             //    int t1 = t + 1;
             //    txtsrno.Text = t1.ToString();
             //}
-            DataGridViewRowCollection call = gridsalesorder.Rows;
-            for (int c = 0; c < call.Count; c++)
-            {
-                    DataGridViewRow currentRow1 = call[c];
-                    DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
-                    string itid = cellCollection1[0].Value.ToString();
-                    string que = cellCollection1[3].Value.ToString();
+            //DataGridViewRowCollection call = gridsalesorder.Rows;
+            //for (int c = 0; c < call.Count; c++)
+            //{
+            //        DataGridViewRow currentRow1 = call[c];
+            //        DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
+            //        string itid = cellCollection1[0].Value.ToString();
+            //        string que = cellCollection1[3].Value.ToString();
                      
                 
               
@@ -545,7 +546,8 @@ namespace WindowsFormsApplication1
                 //string id1 = lastQuantity.ToString();
                 //string updateQurry = "update ItemQuantityDetail set CurrentQuantity='" + id1 + "'where ItemId='" + itid + "'";
                 //int insertedRows2 = d.saveDetails(updateQurry);
-            }
+          //  }
+            gridsalesorder.AllowUserToAddRows = false;
             
                 counter = 0;
                 if (counter == 0)
@@ -576,9 +578,33 @@ namespace WindowsFormsApplication1
                     
 
                     int inserirow1 = d.saveDetails(show);
-                    if(inserirow1 > 0)
+                    if (inserirow1 > 0)
                     {
                         MessageBox.Show("details save successfully");
+                        DialogResult result = MessageBox.Show("this page is print", "Impotant questiuon", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
+                        {
+
+                            string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
+                            SqlConnection con = new SqlConnection(a);
+                            con.Open();
+                            string selectquery = "select * from salesorderreport where orderid='" + txtsrno.Text + "'";
+                            SqlCommand cmd = new SqlCommand(selectquery, con);
+                            SqlDataAdapter sd = new SqlDataAdapter(cmd);
+                            DataSet1 ds = new DataSet1();
+                            sd.Fill(ds, "compnaydetails");
+
+                            //CrystalReport1 cr = new CrystalReport1();
+                            // cr.ParameterFields.Add(textBox1.Text);
+                            // cr.Load("C:\\Users\\dineshtiwari\\Documents\\Visual Studio 2010\\Projects\\report11\\report11\\CrystalReport1.rpt");
+
+                            CrystalReport1 report1 = new CrystalReport1();
+                            report1.SetDataSource(ds.Tables[1]);
+
+                            crystalReportViewer1.ReportSource = report1;
+                            crystalReportViewer1.Refresh();
+                            con.Close();
+                        }
                     }
                     else
                     {

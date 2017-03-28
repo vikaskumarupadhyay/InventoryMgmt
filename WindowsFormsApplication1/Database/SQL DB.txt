@@ -140,6 +140,8 @@ alter table VendorOrderDetails add CST decimal
 go
 alter table VendorOrderDetails add GST decimal
 go
+ALTER TABLE orderdetails ALTER COLUMN totalammount Money
+go
 alter table VendorOrderDetails add WithoutTexAmount  decimal
 
 Sp_rename 'VendorDetails.vTinNo','vVatNo'
