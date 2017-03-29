@@ -28,7 +28,7 @@ namespace WindowsFormsApplication1
         {
             txtcustomercode.Focus();
             txtcustomercode.TabStop = true;
-            button1.TabStop = true;
+            button1.TabStop =  true;
             button2.TabStop = false;
             txtitemcode.TabStop = false;
             txtQuantity.TabStop = false;
