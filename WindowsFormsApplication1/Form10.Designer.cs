@@ -89,6 +89,8 @@
             this.search = new System.Windows.Forms.Label();
             this.comsearchsalesvalue = new System.Windows.Forms.ComboBox();
             this.butback = new System.Windows.Forms.Button();
+            this.discountamount = new System.Windows.Forms.TextBox();
+            this.txttaxamount = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridsalesorder)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -140,6 +142,7 @@
             this.txttotalammount.TabStop = false;
             this.txttotalammount.Text = "0";
             this.txttotalammount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txttotalammount.TextChanged += new System.EventHandler(this.txttotalammount_TextChanged);
             // 
             // textBox15
             // 
@@ -812,12 +815,28 @@
             this.butback.UseVisualStyleBackColor = true;
             this.butback.Click += new System.EventHandler(this.butback_Click_1);
             // 
+            // discountamount
+            // 
+            this.discountamount.Location = new System.Drawing.Point(862, 591);
+            this.discountamount.Name = "discountamount";
+            this.discountamount.Size = new System.Drawing.Size(100, 20);
+            this.discountamount.TabIndex = 61;
+            // 
+            // txttaxamount
+            // 
+            this.txttaxamount.Location = new System.Drawing.Point(632, 589);
+            this.txttaxamount.Name = "txttaxamount";
+            this.txttaxamount.Size = new System.Drawing.Size(100, 20);
+            this.txttaxamount.TabIndex = 62;
+            // 
             // salesorder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1172, 634);
+            this.Controls.Add(this.txttaxamount);
+            this.Controls.Add(this.discountamount);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
@@ -922,5 +941,7 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Panel panel3;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
+        private System.Windows.Forms.TextBox discountamount;
+        private System.Windows.Forms.TextBox txttaxamount;
     }
 }
