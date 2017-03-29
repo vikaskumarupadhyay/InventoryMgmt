@@ -80,6 +80,7 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -88,6 +89,8 @@
             this.search = new System.Windows.Forms.Label();
             this.comsearchsalesvalue = new System.Windows.Forms.ComboBox();
             this.butback = new System.Windows.Forms.Button();
+            this.discountamount = new System.Windows.Forms.TextBox();
+            this.txttaxamount = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridsalesorder)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -139,6 +142,7 @@
             this.txttotalammount.TabStop = false;
             this.txttotalammount.Text = "0";
             this.txttotalammount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txttotalammount.TextChanged += new System.EventHandler(this.txttotalammount_TextChanged);
             // 
             // textBox15
             // 
@@ -194,6 +198,7 @@
             this.textBox20.TabStop = false;
             this.textBox20.Text = "0";
             this.textBox20.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox20.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox20_KeyPress);
             // 
             // textBox19
             // 
@@ -674,7 +679,6 @@
             this.textBox1.TabIndex = 57;
             this.textBox1.Text = "CST";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox2
             // 
@@ -702,6 +706,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.crystalReportViewer1);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.butback);
@@ -710,6 +715,17 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1172, 634);
             this.panel2.TabIndex = 60;
+            // 
+            // crystalReportViewer1
+            // 
+            this.crystalReportViewer1.ActiveViewIndex = -1;
+            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.crystalReportViewer1.Name = "crystalReportViewer1";
+            this.crystalReportViewer1.Size = new System.Drawing.Size(1172, 634);
+            this.crystalReportViewer1.TabIndex = 8;
             // 
             // panel3
             // 
@@ -799,12 +815,28 @@
             this.butback.UseVisualStyleBackColor = true;
             this.butback.Click += new System.EventHandler(this.butback_Click_1);
             // 
+            // discountamount
+            // 
+            this.discountamount.Location = new System.Drawing.Point(862, 591);
+            this.discountamount.Name = "discountamount";
+            this.discountamount.Size = new System.Drawing.Size(100, 20);
+            this.discountamount.TabIndex = 61;
+            // 
+            // txttaxamount
+            // 
+            this.txttaxamount.Location = new System.Drawing.Point(632, 589);
+            this.txttaxamount.Name = "txttaxamount";
+            this.txttaxamount.Size = new System.Drawing.Size(100, 20);
+            this.txttaxamount.TabIndex = 62;
+            // 
             // salesorder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1172, 634);
+            this.Controls.Add(this.txttaxamount);
+            this.Controls.Add(this.discountamount);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
@@ -908,5 +940,8 @@
         private System.Windows.Forms.Label search;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Panel panel3;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
+        private System.Windows.Forms.TextBox discountamount;
+        private System.Windows.Forms.TextBox txttaxamount;
     }
 }
