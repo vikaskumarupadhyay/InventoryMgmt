@@ -679,14 +679,14 @@ namespace WindowsFormsApplication1
                             string selectqurry = "select * from VwPurchesOrderDatils where OrderId='" + txtSrNo.Text + "'";
                             SqlCommand cmd = new SqlCommand(selectqurry, con);
                             SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                            Dtsetumesh ds = new Dtsetumesh();
-                            sda.Fill(ds, "VwPurchesOrderDatils");
-                            CrystalReport1 cryRpt = new CrystalReport1();
-                            //ReportDocument cryRpt = new ReportDocument();
-                            // cryRpt.Load("C:\\Users\\Umesh\\Documents\\visual studio 2010\\Projects\\WindowsFormsApplication5\\WindowsFormsApplication5\\CrystalReport1.rpt");
-                            cryRpt.SetDataSource(ds.Tables[1]);
-                            crystalReportViewer1.ReportSource = cryRpt;
-                            crystalReportViewer1.Refresh();
+                       //     Dtsetumesh ds = new Dtsetumesh();
+                         //   sda.Fill(ds, "VwPurchesOrderDatils");
+                            //CrystalReport1 cryRpt = new CrystalReport1();
+                            ////ReportDocument cryRpt = new ReportDocument();
+                            //// cryRpt.Load("C:\\Users\\Umesh\\Documents\\visual studio 2010\\Projects\\WindowsFormsApplication5\\WindowsFormsApplication5\\CrystalReport1.rpt");
+                            //cryRpt.SetDataSource(ds.Tables[1]);
+                            //crystalReportViewer1.ReportSource = cryRpt;
+                            //crystalReportViewer1.Refresh();
                         }
                         if (result1 == System.Windows.Forms.DialogResult.No)
                         {
