@@ -34,7 +34,7 @@
             this.textBox22 = new System.Windows.Forms.TextBox();
             this.textBox15 = new System.Windows.Forms.TextBox();
             this.textBox21 = new System.Windows.Forms.TextBox();
-            this.txtgst = new System.Windows.Forms.TextBox();
+            this.txtDiscount = new System.Windows.Forms.TextBox();
             this.textBox19 = new System.Windows.Forms.TextBox();
             this.textBox18 = new System.Windows.Forms.TextBox();
             this.txtdis = new System.Windows.Forms.TextBox();
@@ -184,19 +184,20 @@
             this.textBox21.Text = "%";
             this.textBox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtgst
+            // txtDiscount
             // 
-            this.txtgst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtgst.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtgst.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtgst.Location = new System.Drawing.Point(876, 562);
-            this.txtgst.Name = "txtgst";
-            this.txtgst.ReadOnly = true;
-            this.txtgst.Size = new System.Drawing.Size(45, 21);
-            this.txtgst.TabIndex = 31;
-            this.txtgst.TabStop = false;
-            this.txtgst.Text = "0";
-            this.txtgst.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDiscount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiscount.Location = new System.Drawing.Point(876, 562);
+            this.txtDiscount.Name = "txtDiscount";
+            this.txtDiscount.Size = new System.Drawing.Size(45, 21);
+            this.txtDiscount.TabIndex = 31;
+            this.txtDiscount.TabStop = false;
+            this.txtDiscount.Text = "0";
+            this.txtDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDiscount.TextChanged += new System.EventHandler(this.txtDiscount_TextChanged);
+            this.txtDiscount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiscount_KeyPress);
             // 
             // textBox19
             // 
@@ -210,6 +211,7 @@
             this.textBox19.TabIndex = 30;
             this.textBox19.TabStop = false;
             this.textBox19.Text = "Disc.";
+
             this.textBox19.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox18
@@ -861,7 +863,7 @@
             this.Controls.Add(this.button7);
             this.Controls.Add(this.textBox21);
             this.Controls.Add(this.btnSelectPurchaseOrder);
-            this.Controls.Add(this.txtgst);
+            this.Controls.Add(this.txtDiscount);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBox19);
@@ -938,7 +940,7 @@
         private System.Windows.Forms.TextBox textBox22;
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.TextBox textBox21;
-        private System.Windows.Forms.TextBox txtgst;
+        private System.Windows.Forms.TextBox txtDiscount;
         private System.Windows.Forms.TextBox textBox19;
         private System.Windows.Forms.TextBox textBox18;
         private System.Windows.Forms.TextBox txtdis;

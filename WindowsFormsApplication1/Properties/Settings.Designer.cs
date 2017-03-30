@@ -26,8 +26,8 @@ namespace WindowsFormsApplication1.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Sec" +
-            "urity=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True")]
+
         public string SalesMasterConnectionString {
             get {
                 return ((string)(this["SalesMasterConnectionString"]));

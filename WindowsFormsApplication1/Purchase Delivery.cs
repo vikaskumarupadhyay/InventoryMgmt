@@ -444,7 +444,6 @@ namespace WindowsFormsApplication1
                    }
                     if (addToCartTable != null && addToCartTable.Rows != null && addToCartTable.Rows.Count > 0)
                     {
-                        dataGridView1.AllowUserToAddRows = false;
                         string it="";
                         for(int c=0;c<ls.Count;c++)
                         {
@@ -474,8 +473,8 @@ namespace WindowsFormsApplication1
                                 dr[1] = txtProductName.Text.Trim();
                                 dr[2] = ConpanyName.Trim();
                                 dr[3] = Mrp.Trim();
-                                dr[4] = txtQunty.Text.Trim();
-                                dr[5] = txtRate.Text.Trim();
+                                dr[5] = txtQunty.Text.Trim();
+                                dr[4] = txtRate.Text.Trim();
                                 dr[6] = txtAmount.Text.Trim();
 
                                 //dr[5] = txtAmount.Text.Trim();
@@ -643,7 +642,7 @@ namespace WindowsFormsApplication1
 
         private void txtdis_TextChanged(object sender, EventArgs e)
         {
-            double totalAmount = 0.00;//Convert.ToDouble(txttotalAmount.Text);
+            /*double totalAmount = 0.00;//Convert.ToDouble(txttotalAmount.Text);
             foreach (DataRow dr in addToCartTable.Rows)
             {
                 totalAmount += Convert.ToDouble(dr[4].ToString());
@@ -656,7 +655,7 @@ namespace WindowsFormsApplication1
                 double totalDiscount = Convert.ToDouble(discountAmount);
                 totalAmount = totalAmount - ((totalAmount * totalDiscount) / 100);
                 txttotalAmount.Text = totalAmount.ToString();
-            }
+            }*/
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -703,7 +702,7 @@ namespace WindowsFormsApplication1
                 {
                     id2 = "1";
                     OrderID = id2;
-                    string insertqurry = "insert into VendorOrderDetails values('" + textVendercod.Text + "','" + txtdate.Value.ToString() + "','" + txttotalAmount.Text + "','" + txtdis.Text + "','" + txtvat.Text + "','" + txtgst.Text + "','" + txtdis.Text + "','" + txttotalAmount.Text + "')";
+                    string insertqurry = "insert into VendorOrderDetails values('" + textVendercod.Text + "','" + txtdate.Value.ToString() + "','" + txttotalAmount.Text + "','" + txtdis.Text + "','" + txtvat.Text + "','" + txtDiscount.Text + "','" + txtdis.Text + "','" + txttotalAmount.Text + "')";
                     int insertedRows = dbMainClass.saveDetails(insertqurry);
                     if (insertedRows > 0)
                     {
@@ -778,7 +777,7 @@ namespace WindowsFormsApplication1
                     int id3 = Convert.ToInt32(id2);
                     int id4 = id3 + 1;
                     OrderID = id4.ToString();
-                    string insertqurry1 = "insert into VendorOrderDetails values('" + textVendercod.Text + "','" + txtdate.Value.ToString() + "','" + txttotalAmount.Text + "','" + txtdis.Text + "','" + txtvat.Text + "','" + txtgst.Text + "','" + txtdis.Text + "','" + txttotalAmount.Text + "')";
+                    string insertqurry1 = "insert into VendorOrderDetails values('" + textVendercod.Text + "','" + txtdate.Value.ToString() + "','" + txttotalAmount.Text + "','" + txtdis.Text + "','" + txtvat.Text + "','" + txtDiscount.Text + "','" + txtdis.Text + "','" + txttotalAmount.Text + "')";
                     int insertedRows1 = dbMainClass.saveDetails(insertqurry1);
                     if (insertedRows1 > 0)
                     {
@@ -1713,6 +1712,46 @@ namespace WindowsFormsApplication1
             if (e.KeyChar == Convert.ToChar(Keys.Escape))
             {
                 textVendercod.Focus();
+            }
+        }
+
+        private void txtDiscount_TextChanged(object sender, EventArgs e)
+        {
+            //double totalAmount = 0.00;//Convert.ToDouble(txttotalAmount.Text);
+            //foreach (DataRow dr in addToCartTable.Rows)
+            //{
+            //    totalAmount += Convert.ToDouble(dr[6].ToString());
+            //}
+            //string discountAmount = txtDiscount.Text;
+            ////double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
+            //double amount = 0.0;
+            //if (double.TryParse(discountAmount, out amount))
+            //{
+            //    double totalDiscount = Convert.ToDouble(discountAmount);
+            //    totalAmount = totalAmount - ((totalAmount * totalDiscount) / 100);
+            //    txttotalAmount.Text = totalAmount.ToString();
+            //}
+
+        }
+
+        private void txtDiscount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                double totalAmount = 0.00;//Convert.ToDouble(txttotalAmount.Text);
+                foreach (DataRow dr in addToCartTable.Rows)
+                {
+                    totalAmount += Convert.ToDouble(dr[6].ToString());
+                }
+                string discountAmount = txtDiscount.Text;
+                //double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
+                double amount = 0.0;
+                if (double.TryParse(discountAmount, out amount))
+                {
+                    double totalDiscount = Convert.ToDouble(discountAmount);
+                    totalAmount = totalAmount - ((totalAmount * totalDiscount) / 100);
+                    txttotalAmount.Text = totalAmount.ToString();
+                }
             }
         }
 
