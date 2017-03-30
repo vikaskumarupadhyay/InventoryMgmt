@@ -24,6 +24,7 @@ namespace WindowsFormsApplication1
 
         private void PurchaseOrder_Load(object sender, EventArgs e)
         {
+            crystalReportViewer1.Visible = false;
             IndexTex1();
             btnAddItem.Enabled = false;
             txtRemoveItem.Enabled = false;
@@ -339,6 +340,7 @@ namespace WindowsFormsApplication1
                     Double rate5 = rate4 + rate7;
                     txtTotalAmount.Text = rate5.ToString();//rate3.ToString();
                    // MessageBox.Show("Please Enter the Quanity");
+                    tAmmount.Text = rate5.ToString();
                     txtItemCode.Text = "I";
                     txtProductName.Text = "";
                     txtRate.Text = "";
@@ -414,7 +416,7 @@ namespace WindowsFormsApplication1
                             double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
                             totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
                             txtTotalAmount.Text = totalAmount.ToString();
-
+                            tAmmount.Text = totalAmount.ToString();
                             txtItemCode.Text = "I";
                             txtProductName.Text = "";
                             txtRate.Text = "";
@@ -612,6 +614,7 @@ namespace WindowsFormsApplication1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            
            /* DataGridViewRowCollection call = gridPurchaseOrder.Rows;
             for (int c = 0; c < call.Count; c++)
             {
@@ -641,7 +644,7 @@ namespace WindowsFormsApplication1
             counter = 0;
             if (counter == 0)
             {
-                string insertqurry = "insert into VendorOrderDetails values('" + txtVendorCode.Text + "','" + dtpDate.Value.ToString() + "','" + txtTotalAmount.Text + "','"+txtDiscount.Text+"','"+VATNO.Text+"','"+GSTNO.Text+"','"+txtTotalAmount.Text+"','"+txtDiscount.Text+"')";
+                string insertqurry = "insert into VendorOrderDetails values('" + txtVendorCode.Text + "','" + dtpDate.Value.ToString() + "','" + txtTotalAmount.Text + "','"+txtDiscount.Text+"','"+VATNO.Text+"','"+Distxt.Text+"','"+txtTotalAmount.Text+"','"+txtDiscount.Text+"')";
                 int insertedRows = dbMainClass.saveDetails(insertqurry);
                 if (insertedRows > 0)
                 {
@@ -666,6 +669,30 @@ namespace WindowsFormsApplication1
                     if (insertedRows1 > 0)
                     {
                         MessageBox.Show("Details Saved Successfully");
+                        DialogResult result1 = MessageBox.Show("This Page Print", "Important Question", MessageBoxButtons.YesNo);
+                        if (result1 == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            crystalReportViewer1.Visible = true;
+                            panel2.Visible = true;
+                            string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345";
+                            SqlConnection con = new SqlConnection(conntion);
+                            string selectqurry = "select * from VwPurchesOrderDatils where OrderId='" + txtSrNo.Text + "'";
+                            SqlCommand cmd = new SqlCommand(selectqurry, con);
+                            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                            Dtsetumesh ds = new Dtsetumesh();
+                            sda.Fill(ds, "VwPurchesOrderDatils");
+                            CrystalReport1 cryRpt = new CrystalReport1();
+                            //ReportDocument cryRpt = new ReportDocument();
+                            // cryRpt.Load("C:\\Users\\Umesh\\Documents\\visual studio 2010\\Projects\\WindowsFormsApplication5\\WindowsFormsApplication5\\CrystalReport1.rpt");
+                            cryRpt.SetDataSource(ds.Tables[1]);
+                            crystalReportViewer1.ReportSource = cryRpt;
+                            crystalReportViewer1.Refresh();
+                        }
+                        if (result1 == System.Windows.Forms.DialogResult.No)
+                        {
+                            crystalReportViewer1.Visible = false;
+                            panel2.Visible = false;
+                        }
                         gridPurchaseOrder.AllowUserToAddRows = true;
                         int id2 = Convert.ToInt32(txtSrNo.Text);
                         int id3 = id2 + 1;
@@ -1163,11 +1190,27 @@ namespace WindowsFormsApplication1
              //}
         }
 
-        private void gridPurchaseOrder_Leave(object sender, EventArgs e)
+        private void Distxt_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                double totalAmount = 0.00;//Convert.ToDouble(txttotalAmount.Text);
+                foreach (DataRow dr in addToCartTable.Rows)
+                {
+                    totalAmount += Convert.ToDouble(dr[6].ToString());
+                }
+                string discountAmount = Distxt.Text;
+                //double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
+                double amount = 0.0;
+                if (double.TryParse(discountAmount, out amount))
+                {
+                    double totalDiscount = Convert.ToDouble(discountAmount);
+                    totalAmount = totalAmount - ((totalAmount * totalDiscount) / 100);
+                    txtTotalAmount.Text = totalAmount.ToString();
+                   // DisAmmount.Text = totalDiscount.ToString();
+                }
+            }
         }
-
        
     }
 }
