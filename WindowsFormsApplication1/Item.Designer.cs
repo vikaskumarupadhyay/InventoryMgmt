@@ -484,7 +484,7 @@
             this.btnItemClose.Name = "btnItemClose";
             this.btnItemClose.Size = new System.Drawing.Size(90, 28);
             this.btnItemClose.TabIndex = 18;
-            this.btnItemClose.Text = "Close";
+            this.btnItemClose.Text = "&Close";
             this.btnItemClose.UseVisualStyleBackColor = true;
             this.btnItemClose.Click += new System.EventHandler(this.btnItemClose_Click);
             // 
@@ -496,7 +496,7 @@
             this.btnItemList.Name = "btnItemList";
             this.btnItemList.Size = new System.Drawing.Size(66, 28);
             this.btnItemList.TabIndex = 19;
-            this.btnItemList.Text = "List";
+            this.btnItemList.Text = "&List";
             this.btnItemList.UseVisualStyleBackColor = true;
             this.btnItemList.Click += new System.EventHandler(this.btnItemList_Click);
             // 
@@ -528,6 +528,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
@@ -627,7 +628,7 @@
             this.buttClose2.Name = "buttClose2";
             this.buttClose2.Size = new System.Drawing.Size(90, 28);
             this.buttClose2.TabIndex = 24;
-            this.buttClose2.Text = "Close";
+            this.buttClose2.Text = "&Back";
             this.buttClose2.UseVisualStyleBackColor = true;
             this.buttClose2.Click += new System.EventHandler(this.buttClose_Click);
             // 

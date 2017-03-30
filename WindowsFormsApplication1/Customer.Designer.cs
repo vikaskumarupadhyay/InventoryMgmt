@@ -612,7 +612,7 @@
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(134, 28);
             this.btnClose.TabIndex = 34;
-            this.btnClose.Text = "Close";
+            this.btnClose.Text = "&Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -624,7 +624,7 @@
             this.btnList.Name = "btnList";
             this.btnList.Size = new System.Drawing.Size(66, 28);
             this.btnList.TabIndex = 35;
-            this.btnList.Text = "List";
+            this.btnList.Text = "&List";
             this.btnList.UseVisualStyleBackColor = true;
             this.btnList.Click += new System.EventHandler(this.btnList_Click);
             // 
@@ -637,9 +637,10 @@
             this.panel1.Controls.Add(this.butclose);
             this.panel1.Controls.Add(this.butupdate);
             this.panel1.Controls.Add(this.butaddrecord);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1035, 232);
+            this.panel1.Size = new System.Drawing.Size(1172, 634);
             this.panel1.TabIndex = 0;
             // 
             // button2
@@ -675,7 +676,7 @@
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(12, 25);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1005, 73);
+            this.groupBox3.Size = new System.Drawing.Size(1142, 73);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Customer Search";
@@ -706,7 +707,7 @@
             this.textBox1.Location = new System.Drawing.Point(687, 42);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(292, 22);
+            this.textBox1.Size = new System.Drawing.Size(429, 22);
             this.textBox1.TabIndex = 3;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -727,7 +728,7 @@
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Location = new System.Drawing.Point(12, 104);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1005, 468);
+            this.panel2.Size = new System.Drawing.Size(1142, 468);
             this.panel2.TabIndex = 8;
             // 
             // dataGridView1
@@ -737,7 +738,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1001, 464);
+            this.dataGridView1.Size = new System.Drawing.Size(1138, 464);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
@@ -750,7 +751,7 @@
             this.butclose.Name = "butclose";
             this.butclose.Size = new System.Drawing.Size(90, 28);
             this.butclose.TabIndex = 34;
-            this.butclose.Text = "Close";
+            this.butclose.Text = "&Back";
             this.butclose.UseVisualStyleBackColor = true;
             this.butclose.Click += new System.EventHandler(this.butclose_Click);
             // 
