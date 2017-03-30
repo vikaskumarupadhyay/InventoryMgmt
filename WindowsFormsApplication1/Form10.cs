@@ -591,6 +591,7 @@ namespace WindowsFormsApplication1
                     if (result == System.Windows.Forms.DialogResult.Yes)
                     {
                         crystalReportViewer1.Visible = true;
+                        gridsalesorder.AllowUserToAddRows = false;
                         string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
                         SqlConnection con = new SqlConnection(a);
                         con.Open();
@@ -1240,6 +1241,8 @@ namespace WindowsFormsApplication1
             txttaxamount.Text = totaltax.ToString();
 
         }
+
+      
         
 
 
