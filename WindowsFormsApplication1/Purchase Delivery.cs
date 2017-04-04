@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
+using System.Data.SqlClient;
 namespace WindowsFormsApplication1
 {
     public partial class Form7 : Form
@@ -25,6 +25,9 @@ namespace WindowsFormsApplication1
         private void Form7_Load(object sender, EventArgs e)
         {
             IndexTex1();
+            txtTaxAmount.Visible = false;
+            txtWAmount.Visible = false;
+            txtDisAmount.Visible = false;
             txtQunty.ReadOnly = true;
             button4.Enabled = false;
             button3.Enabled = false;
@@ -171,6 +174,7 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            DeliveryReportViewer.Visible = false; 
             txtSearch.Text = "";
             counter = 0;
             panel2.Visible = true;
@@ -288,6 +292,7 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
+            DeliveryReportViewer.Visible = false;
             txtSearch.Text = "";
             counter = 1;
             panel2.Visible = true;
@@ -322,6 +327,7 @@ namespace WindowsFormsApplication1
         private void btnSelectPurchaseOrder_Click(object sender, EventArgs e)
         {
             counter = 2;
+            DeliveryReportViewer.Visible = false;
             panel2.Visible = true;
             string selectqurry = "select * from VendorOrderDetails";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
@@ -486,6 +492,7 @@ namespace WindowsFormsApplication1
                                 double totalAmount = Convert.ToDouble(txttotalAmount.Text);
                                 totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
                                 txttotalAmount.Text = totalAmount.ToString();
+                                txtWAmount.Text = totalAmount.ToString();
 
                                 txtItemCode.Text = "I";
                                 txtProductName.Text = "";
@@ -525,6 +532,7 @@ namespace WindowsFormsApplication1
                         double totalAmount = Convert.ToDouble(txttotalAmount.Text);
                         totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
                         txttotalAmount.Text = totalAmount.ToString();
+                        txtWAmount.Text = totalAmount.ToString();
 
                         txtItemCode.Text = "I";
                         txtProductName.Text = "";
@@ -577,6 +585,7 @@ namespace WindowsFormsApplication1
                         double totalAmount = Convert.ToDouble(txttotalAmount.Text);
                         totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
                         txttotalAmount.Text = totalAmount.ToString();
+                        txtWAmount.Text = totalAmount.ToString();
 
                         txtItemCode.Text = "I";
                         txtProductName.Text = "";
@@ -705,7 +714,7 @@ namespace WindowsFormsApplication1
                 {
                     id2 = "1";
                     OrderID = id2;
-                    string insertqurry = "insert into VendorOrderDetails values('" + textVendercod.Text + "','" + txtdate.Value.ToString() + "','" + txttotalAmount.Text + "','" + txtdis.Text + "','" + txtvat.Text + "','" + txtDiscount.Text + "','" + txtdis.Text + "','" + txttotalAmount.Text + "')";
+                    string insertqurry = "insert into VendorOrderDetails values('" + textVendercod.Text + "','" + txtdate.Value.ToString() + "','" + txttotalAmount.Text + "','" + txtdis.Text + "','" + txtvat.Text + "','" + txtDisAmount.Text + "','" + txtTaxAmount.Text + "','" + txtWAmount.Text + "')";
                     int insertedRows = dbMainClass.saveDetails(insertqurry);
                     if (insertedRows > 0)
                     {
@@ -780,7 +789,7 @@ namespace WindowsFormsApplication1
                     int id3 = Convert.ToInt32(id2);
                     int id4 = id3 + 1;
                     OrderID = id4.ToString();
-                    string insertqurry1 = "insert into VendorOrderDetails values('" + textVendercod.Text + "','" + txtdate.Value.ToString() + "','" + txttotalAmount.Text + "','" + txtdis.Text + "','" + txtvat.Text + "','" + txtDiscount.Text + "','" + txtdis.Text + "','" + txttotalAmount.Text + "')";
+                    string insertqurry1 = "insert into VendorOrderDetails values('" + textVendercod.Text + "','" + txtdate.Value.ToString() + "','" + txttotalAmount.Text + "','" + txtdis.Text + "','" + txtvat.Text + "','" + txtDisAmount.Text + "','" + txtTaxAmount.Text + "','" +txtWAmount.Text + "')";
                     int insertedRows1 = dbMainClass.saveDetails(insertqurry1);
                     if (insertedRows1 > 0)
                     {
@@ -835,6 +844,34 @@ namespace WindowsFormsApplication1
                                 {
 
                                     MessageBox.Show("Details Saved Successfully");
+                                    DialogResult result1 = MessageBox.Show("This Page Print", "Important Question", MessageBoxButtons.YesNo);
+                                    if (result1 == System.Windows.Forms.DialogResult.Yes)
+                                    {
+                                        DeliveryReportViewer.Visible = true;
+                                        panel2.Visible = true;
+                                        string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345";
+                                        SqlConnection con = new SqlConnection(conntion);
+                                        string selectqurry = "select * from purchesDelivery where Deliveryid='" + txtSrNo.Text + "'";
+                                        SqlCommand cmd = new SqlCommand(selectqurry, con);
+                                        SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                                        PurchesDelivery ds = new PurchesDelivery();
+                                        sda.Fill(ds, "purchesDelivery");
+                                        DeliveryPage cryRpt = new DeliveryPage();
+                                        //ReportDocument cryRpt = new ReportDocument();
+                                        //cryRpt.Load("C:\\Users\\Umesh\\Documents\\visual studio 2010\\Projects\\WindowsFormsApplication5\\WindowsFormsApplication5\\PurchesCrystalReport.rpt");
+                                        cryRpt.SetDataSource(ds.Tables[1]);
+                                        DeliveryReportViewer.ReportSource = cryRpt;
+                                        DeliveryReportViewer.Refresh();
+                                    }
+                                    if (result1 == System.Windows.Forms.DialogResult.No)
+                                    {
+                                        DeliveryReportViewer.Visible = false;
+                                        panel2.Visible = false;
+                                    }
+
+
+
+
                                     dataGridView1.AllowUserToAddRows = true;
                                 }
                                 else
@@ -855,6 +892,10 @@ namespace WindowsFormsApplication1
             }
             else if (txtRef.Text != "")
             {
+                string updateQurry1 = "update VendorOrderDetails set venderId='"+textVendercod.Text+"',TotalPrice='"+txttotalAmount.Text+"',Discount='"+txtDiscount.Text+"',DisAmount='"+txtDisAmount.Text+"',TextTaxAmmount='"+txtTaxAmount.Text+"' where Orderid='"+txtRef.Text+"'";
+                int insertedRows3 = dbMainClass.saveDetails(updateQurry1);
+                if(insertedRows3>0)
+                {
                 dataGridView1.AllowUserToAddRows = false;
                 DataGridViewRowCollection call = dataGridView1.Rows;
                 for (int c = 0; c < call.Count; c++)
@@ -922,12 +963,38 @@ namespace WindowsFormsApplication1
                         {
                             MessageBox.Show("Details Saved Successfully");
                             txtRef.Text = "";
+                            DialogResult result1 = MessageBox.Show("This Page Print", "Important Question", MessageBoxButtons.YesNo);
+                            if (result1 == System.Windows.Forms.DialogResult.Yes)
+                            {
+                                DeliveryReportViewer.Visible = true;
+                                panel2.Visible = true;
+                                string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345";
+                                SqlConnection con = new SqlConnection(conntion);
+                                string selectqurry = "select * from purchesDelivery where Deliveryid='" + txtSrNo.Text + "'";
+                                SqlCommand cmd = new SqlCommand(selectqurry, con);
+                                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                                PurchesDelivery ds = new PurchesDelivery();
+                                sda.Fill(ds, "purchesDelivery");
+                                PurchesDelivery2 cryRpt = new PurchesDelivery2();
+                                //ReportDocument cryRpt = new ReportDocument();
+                                //cryRpt.Load("C:\\Users\\Umesh\\Documents\\visual studio 2010\\Projects\\WindowsFormsApplication5\\WindowsFormsApplication5\\PurchesCrystalReport.rpt");
+                                cryRpt.SetDataSource(ds.Tables[1]);
+                                DeliveryReportViewer.ReportSource = cryRpt;
+                                DeliveryReportViewer.Refresh();
+                            }
+                            if (result1 == System.Windows.Forms.DialogResult.No)
+                            {
+                                DeliveryReportViewer.Visible = false;
+                                panel2.Visible = false;
+                            }
+
                             dataGridView1.AllowUserToAddRows = true;
                         }
                         else
                         {
                             MessageBox.Show("Details Not Saved Successfully");
                         }
+                    }
                     }
                 }
             }
@@ -1239,6 +1306,7 @@ namespace WindowsFormsApplication1
         private void butClose_Click(object sender, EventArgs e)
         {
             panel2.Visible = false;
+            DeliveryReportViewer.Visible = false;
         }
 
         private void button4_KeyPress(object sender, KeyPressEventArgs e)
@@ -1751,23 +1819,64 @@ namespace WindowsFormsApplication1
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                double totalAmount = 0.00;//Convert.ToDouble(txttotalAmount.Text);
-                foreach (DataRow dr in addToCartTable.Rows)
+                if (txtRef.Text == "")
                 {
-                    totalAmount += Convert.ToDouble(dr[6].ToString());
+                    double totalAmount = 0.00;//Convert.ToDouble(txttotalAmount.Text);
+                    foreach (DataRow dr in addToCartTable.Rows)
+                    {
+                        totalAmount += Convert.ToDouble(dr[6].ToString());
+                    }
+                    string discountAmount = txtDiscount.Text;
+                    //double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
+                    double amount = 0.0;
+                    if (double.TryParse(discountAmount, out amount))
+                    {
+                        double totalDiscount = Convert.ToDouble(discountAmount);
+                        totalAmount = totalAmount - ((totalAmount * totalDiscount) / 100);
+                        txttotalAmount.Text = totalAmount.ToString();
+                        double dis = totalAmount * totalDiscount / 100;
+                        txtDisAmount.Text = dis.ToString();
+                    }
                 }
-                string discountAmount = txtDiscount.Text;
-                //double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
-                double amount = 0.0;
-                if (double.TryParse(discountAmount, out amount))
+                if (txtRef.Text != "")
                 {
-                    double totalDiscount = Convert.ToDouble(discountAmount);
-                    totalAmount = totalAmount - ((totalAmount * totalDiscount) / 100);
-                    txttotalAmount.Text = totalAmount.ToString();
+                    double totalAmount = 0.00;//Convert.ToDouble(txttotalAmount.Text);
+                    foreach (DataRow dr in addToCartTable.Rows)
+                    {
+                        totalAmount += Convert.ToDouble(dr[7].ToString());
+                    }
+                    string discountAmount = txtDiscount.Text;
+                    //double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
+                    double amount = 0.0;
+                    if (double.TryParse(discountAmount, out amount))
+                    {
+                        double totalDiscount = Convert.ToDouble(discountAmount);
+                        totalAmount = totalAmount - ((totalAmount * totalDiscount) / 100);
+                        txttotalAmount.Text = totalAmount.ToString();
+                        double dis = totalAmount * totalDiscount / 100;
+                        txtDisAmount.Text = dis.ToString();
+                    }
                 }
+
             }
         }
 
+        private void txttotalAmount_TextChanged(object sender, EventArgs e)
+        {
+            if (txttotalAmount.Text == "")
+            {
+                txttotalAmount.Text = "0";
+            }
+            double d = 1;
+            double total = Convert.ToDouble(txttotalAmount.Text);
+            double g = Convert.ToDouble(txtDiscount.Text);
+            double tax = d + ((g / 100));
+            double taxamount = total / tax;
+            double totaltax = total - taxamount;
+            txtTaxAmount.Text = totaltax.ToString();
+        }
+
+       
       
 
     }

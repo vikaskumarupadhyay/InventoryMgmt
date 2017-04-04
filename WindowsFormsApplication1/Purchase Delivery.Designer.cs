@@ -83,6 +83,7 @@
             this.txtvat = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.DeliveryReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -91,6 +92,9 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.butClose = new System.Windows.Forms.Button();
+            this.txtTaxAmount = new System.Windows.Forms.TextBox();
+            this.txtDisAmount = new System.Windows.Forms.TextBox();
+            this.txtWAmount = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -141,6 +145,7 @@
             this.txttotalAmount.TabStop = false;
             this.txttotalAmount.Text = "0";
             this.txttotalAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txttotalAmount.TextChanged += new System.EventHandler(this.txttotalAmount_TextChanged);
             // 
             // textBox22
             // 
@@ -742,6 +747,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.DeliveryReportViewer);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.butClose);
@@ -750,6 +756,17 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1172, 634);
             this.panel2.TabIndex = 40;
+            // 
+            // DeliveryReportViewer
+            // 
+            this.DeliveryReportViewer.ActiveViewIndex = -1;
+            this.DeliveryReportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DeliveryReportViewer.Cursor = System.Windows.Forms.Cursors.Default;
+            this.DeliveryReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DeliveryReportViewer.Location = new System.Drawing.Point(0, 0);
+            this.DeliveryReportViewer.Name = "DeliveryReportViewer";
+            this.DeliveryReportViewer.Size = new System.Drawing.Size(1172, 634);
+            this.DeliveryReportViewer.TabIndex = 7;
             // 
             // panel3
             // 
@@ -846,12 +863,36 @@
             this.butClose.UseVisualStyleBackColor = true;
             this.butClose.Click += new System.EventHandler(this.butClose_Click);
             // 
+            // txtTaxAmount
+            // 
+            this.txtTaxAmount.Location = new System.Drawing.Point(518, 590);
+            this.txtTaxAmount.Name = "txtTaxAmount";
+            this.txtTaxAmount.Size = new System.Drawing.Size(100, 20);
+            this.txtTaxAmount.TabIndex = 67;
+            // 
+            // txtDisAmount
+            // 
+            this.txtDisAmount.Location = new System.Drawing.Point(655, 589);
+            this.txtDisAmount.Name = "txtDisAmount";
+            this.txtDisAmount.Size = new System.Drawing.Size(100, 20);
+            this.txtDisAmount.TabIndex = 68;
+            // 
+            // txtWAmount
+            // 
+            this.txtWAmount.Location = new System.Drawing.Point(808, 590);
+            this.txtWAmount.Name = "txtWAmount";
+            this.txtWAmount.Size = new System.Drawing.Size(100, 20);
+            this.txtWAmount.TabIndex = 69;
+            // 
             // Form7
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1172, 634);
+            this.Controls.Add(this.txtWAmount);
+            this.Controls.Add(this.txtDisAmount);
+            this.Controls.Add(this.txtTaxAmount);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.txtvat);
@@ -956,8 +997,12 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.TextBox txtTaxAmount;
+        private System.Windows.Forms.TextBox txtDisAmount;
+        private System.Windows.Forms.TextBox txtWAmount;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer DeliveryReportViewer;
     }
 }
