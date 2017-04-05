@@ -24,7 +24,11 @@ namespace WindowsFormsApplication1
 
         private void PurchaseOrder_Load(object sender, EventArgs e)
         {
-            crystalReportViewer1.Visible = false;
+
+            PurchesCrystalReportViewer.Visible = false;
+            TOAmmount.Visible = false;
+            DisAmmount.Visible = false;
+            TextTaxAmmount.Visible = false;
             IndexTex1();
             btnAddItem.Enabled = false;
             txtRemoveItem.Enabled = false;
@@ -340,7 +344,8 @@ namespace WindowsFormsApplication1
                     Double rate5 = rate4 + rate7;
                     txtTotalAmount.Text = rate5.ToString();//rate3.ToString();
                    // MessageBox.Show("Please Enter the Quanity");
-                    tAmmount.Text = rate5.ToString();
+
+                    TOAmmount.Text = rate5.ToString();
                     txtItemCode.Text = "I";
                     txtProductName.Text = "";
                     txtRate.Text = "";
@@ -416,7 +421,8 @@ namespace WindowsFormsApplication1
                             double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
                             totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
                             txtTotalAmount.Text = totalAmount.ToString();
-                            tAmmount.Text = totalAmount.ToString();
+
+                            TOAmmount.Text = totalAmount.ToString();
                             txtItemCode.Text = "I";
                             txtProductName.Text = "";
                             txtRate.Text = "";
@@ -644,7 +650,8 @@ namespace WindowsFormsApplication1
             counter = 0;
             if (counter == 0)
             {
-                string insertqurry = "insert into VendorOrderDetails values('" + txtVendorCode.Text + "','" + dtpDate.Value.ToString() + "','" + txtTotalAmount.Text + "','"+txtDiscount.Text+"','"+VATNO.Text+"','"+Distxt.Text+"','"+txtTotalAmount.Text+"','"+txtDiscount.Text+"')";
+                string insertqurry = "insert into VendorOrderDetails values('" + txtVendorCode.Text + "','" + dtpDate.Value.ToString() + "','" + txtTotalAmount.Text + "','" + txtDiscount.Text + "','" + VATNO.Text + "','" + DisAmmount.Text + "','" + TextTaxAmmount.Text + "','" + TOAmmount.Text + "')";
+
                 int insertedRows = dbMainClass.saveDetails(insertqurry);
                 if (insertedRows > 0)
                 {
@@ -672,25 +679,29 @@ namespace WindowsFormsApplication1
                         DialogResult result1 = MessageBox.Show("This Page Print", "Important Question", MessageBoxButtons.YesNo);
                         if (result1 == System.Windows.Forms.DialogResult.Yes)
                         {
-                            crystalReportViewer1.Visible = true;
+
+                            PurchesCrystalReportViewer.Visible = true;
+
                             panel2.Visible = true;
                             string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345";
                             SqlConnection con = new SqlConnection(conntion);
                             string selectqurry = "select * from VwPurchesOrderDatils where OrderId='" + txtSrNo.Text + "'";
                             SqlCommand cmd = new SqlCommand(selectqurry, con);
                             SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                       //     Dtsetumesh ds = new Dtsetumesh();
-                         //   sda.Fill(ds, "VwPurchesOrderDatils");
-                            //CrystalReport1 cryRpt = new CrystalReport1();
-                            ////ReportDocument cryRpt = new ReportDocument();
-                            //// cryRpt.Load("C:\\Users\\Umesh\\Documents\\visual studio 2010\\Projects\\WindowsFormsApplication5\\WindowsFormsApplication5\\CrystalReport1.rpt");
-                            //cryRpt.SetDataSource(ds.Tables[1]);
-                            //crystalReportViewer1.ReportSource = cryRpt;
-                            //crystalReportViewer1.Refresh();
+
+                            PurchSet ds = new PurchSet();
+                            sda.Fill(ds, "VwPurchesOrderDatils");
+                            PurchesCrystalReport cryRpt = new PurchesCrystalReport();
+                            //ReportDocument cryRpt = new ReportDocument();
+                            //cryRpt.Load("C:\\Users\\Umesh\\Documents\\visual studio 2010\\Projects\\WindowsFormsApplication5\\WindowsFormsApplication5\\PurchesCrystalReport.rpt");
+                            cryRpt.SetDataSource(ds.Tables[1]);
+                            PurchesCrystalReportViewer.ReportSource = cryRpt;
+                            PurchesCrystalReportViewer.Refresh();
                         }
                         if (result1 == System.Windows.Forms.DialogResult.No)
                         {
-                            crystalReportViewer1.Visible = false;
+                            PurchesCrystalReportViewer.Visible = false;
+
                             panel2.Visible = false;
                         }
                         gridPurchaseOrder.AllowUserToAddRows = true;
@@ -722,7 +733,7 @@ namespace WindowsFormsApplication1
             txtVendorMobile.Text = "";
             txtVendorFax.Text = "";
             txtTotalAmount.Text = "0.00";
-           /// txtDiscount.Text = "";
+            Distxt.Text = "0";
             addToCartTable.Clear();
             gridPurchaseOrder.DataSource = "";
 
@@ -1207,9 +1218,24 @@ namespace WindowsFormsApplication1
                     double totalDiscount = Convert.ToDouble(discountAmount);
                     totalAmount = totalAmount - ((totalAmount * totalDiscount) / 100);
                     txtTotalAmount.Text = totalAmount.ToString();
+
+                    double dis = totalAmount * totalDiscount / 100;
+                    DisAmmount.Text = dis.ToString();
+
                    // DisAmmount.Text = totalDiscount.ToString();
                 }
             }
+        }
+
+        private void txtTotalAmount_TextChanged(object sender, EventArgs e)
+        {
+            double d = 1;
+            double total = Convert.ToDouble(txtTotalAmount.Text);
+            double g = Convert.ToDouble(txtDiscount.Text);
+            double tax = d + ((g / 100));
+            double taxamount = total / tax;
+            double totaltax = total - taxamount;
+           TextTaxAmmount.Text = totaltax.ToString();
         }
        
     }

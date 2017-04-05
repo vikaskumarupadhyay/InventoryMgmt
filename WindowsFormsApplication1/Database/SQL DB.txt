@@ -195,6 +195,16 @@ ALTER TABLE CompnayDetails DROP COLUMN GST
 ALTER TABLE CompnayTex ALTER COLUMN TexAmount decimal(18,2)
 ALTER TABLE VendorAccountDetails ALTER COLUMN vOpeningBalance decimal(18,2)
 ALTER TABLE VendorAccountDetails ALTER COLUMN vCurrentBalance decimal(18,2)
+
+Sp_rename 'VendorOrderDetails.CST','DisAmount'
+Sp_rename 'VendorOrderDetails.GST','TextTaxAmmount'
+ALTER TABLE VendorOrderDetails ALTER COLUMN TextTaxAmmount decimal(18,2)
+go
+ALTER TABLE VendorOrderDetails ALTER COLUMN DisAmount decimal(18,2)
+go
+ALTER TABLE VendorOrderDetails ALTER COLUMN WithoutTexAmount decimal(18,2)
+go
+ALTER TABLE VendorOrderDetails ALTER COLUMN TotalPrice decimal(18,2)
  
 
 

@@ -80,7 +80,7 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.VATNO = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            //this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -89,9 +89,11 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.buttBack = new System.Windows.Forms.Button();
-            this.TextTax = new System.Windows.Forms.TextBox();
+
+            this.TextTaxAmmount = new System.Windows.Forms.TextBox();
             this.DisAmmount = new System.Windows.Forms.TextBox();
-            this.tAmmount = new System.Windows.Forms.TextBox();
+            this.TOAmmount = new System.Windows.Forms.TextBox();
+            this.PurchesCrystalReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -552,6 +554,7 @@
             this.txtTotalAmount.TabStop = false;
             this.txtTotalAmount.Text = "0.0";
             this.txtTotalAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTotalAmount.TextChanged += new System.EventHandler(this.txtTotalAmount_TextChanged);
             // 
             // textBox15
             // 
@@ -621,8 +624,8 @@
             this.textBox19.Size = new System.Drawing.Size(47, 21);
             this.textBox19.TabIndex = 55;
             this.textBox19.TabStop = false;
-            this.textBox19.Text = "Disc.";
 
+            this.textBox19.Text = "Dis";
             this.textBox19.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox18
@@ -723,7 +726,8 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.crystalReportViewer1);
+
+            this.panel2.Controls.Add(this.PurchesCrystalReportViewer);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.buttBack);
@@ -737,15 +741,15 @@
             // 
             // crystalReportViewer1
             // 
-            this.crystalReportViewer1.ActiveViewIndex = -1;
-            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(1172, 417);
-            this.crystalReportViewer1.TabIndex = 1;
-            // 
+            //this.crystalReportViewer1.ActiveViewIndex = -1;
+            //this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            //this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
+            //this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            //this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
+            //this.crystalReportViewer1.Name = "crystalReportViewer1";
+            //this.crystalReportViewer1.Size = new System.Drawing.Size(1172, 417);
+            //this.crystalReportViewer1.TabIndex = 1;
+            //// 
             // panel3
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -842,12 +846,13 @@
             this.buttBack.UseVisualStyleBackColor = true;
             this.buttBack.Click += new System.EventHandler(this.buttBack_Click_1);
             // 
-            // TextTax
+
+            // TextTaxAmmount
             // 
-            this.TextTax.Location = new System.Drawing.Point(475, 594);
-            this.TextTax.Name = "TextTax";
-            this.TextTax.Size = new System.Drawing.Size(100, 20);
-            this.TextTax.TabIndex = 66;
+            this.TextTaxAmmount.Location = new System.Drawing.Point(475, 594);
+            this.TextTaxAmmount.Name = "TextTaxAmmount";
+            this.TextTaxAmmount.Size = new System.Drawing.Size(100, 20);
+            this.TextTaxAmmount.TabIndex = 66;
             // 
             // DisAmmount
             // 
@@ -856,12 +861,23 @@
             this.DisAmmount.Size = new System.Drawing.Size(100, 20);
             this.DisAmmount.TabIndex = 67;
             // 
-            // tAmmount
+            // TOAmmount
             // 
-            this.tAmmount.Location = new System.Drawing.Point(723, 597);
-            this.tAmmount.Name = "tAmmount";
-            this.tAmmount.Size = new System.Drawing.Size(100, 20);
-            this.tAmmount.TabIndex = 68;
+            this.TOAmmount.Location = new System.Drawing.Point(723, 597);
+            this.TOAmmount.Name = "TOAmmount";
+            this.TOAmmount.Size = new System.Drawing.Size(100, 20);
+            this.TOAmmount.TabIndex = 68;
+            // 
+            // PurchesCrystalReportViewer
+            // 
+            this.PurchesCrystalReportViewer.ActiveViewIndex = -1;
+            this.PurchesCrystalReportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PurchesCrystalReportViewer.Cursor = System.Windows.Forms.Cursors.Default;
+            this.PurchesCrystalReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PurchesCrystalReportViewer.Location = new System.Drawing.Point(0, 0);
+            this.PurchesCrystalReportViewer.Name = "PurchesCrystalReportViewer";
+            this.PurchesCrystalReportViewer.Size = new System.Drawing.Size(1172, 637);
+            this.PurchesCrystalReportViewer.TabIndex = 8;
             // 
             // PurchaseOrder
             // 
@@ -869,9 +885,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1172, 637);
-            this.Controls.Add(this.tAmmount);
+
+            this.Controls.Add(this.TOAmmount);
             this.Controls.Add(this.DisAmmount);
-            this.Controls.Add(this.TextTax);
+            this.Controls.Add(this.TextTaxAmmount);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.VATNO);
@@ -975,10 +992,11 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Panel panel3;
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
-        private System.Windows.Forms.TextBox TextTax;
+
+        private System.Windows.Forms.TextBox TextTaxAmmount;
         private System.Windows.Forms.TextBox DisAmmount;
-        private System.Windows.Forms.TextBox tAmmount;
+        private System.Windows.Forms.TextBox TOAmmount;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer PurchesCrystalReportViewer;
 
     }
 }
