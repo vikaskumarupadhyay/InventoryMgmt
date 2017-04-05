@@ -37,7 +37,7 @@
             this.textBox20 = new System.Windows.Forms.TextBox();
             this.textBox19 = new System.Windows.Forms.TextBox();
             this.textBox18 = new System.Windows.Forms.TextBox();
-            this.txtdiscount = new System.Windows.Forms.TextBox();
+            this.txttax = new System.Windows.Forms.TextBox();
             this.textBox16 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
@@ -91,6 +91,7 @@
             this.butback = new System.Windows.Forms.Button();
             this.discountamount = new System.Windows.Forms.TextBox();
             this.txttaxamount = new System.Windows.Forms.TextBox();
+            this.txttotaltax = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridsalesorder)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -228,19 +229,19 @@
             this.textBox18.Text = "%";
             this.textBox18.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtdiscount
+            // txttax
             // 
-            this.txtdiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtdiscount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtdiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtdiscount.Location = new System.Drawing.Point(632, 562);
-            this.txtdiscount.Name = "txtdiscount";
-            this.txtdiscount.Size = new System.Drawing.Size(45, 21);
-            this.txtdiscount.TabIndex = 49;
-            this.txtdiscount.TabStop = false;
-            this.txtdiscount.Text = "0";
-            this.txtdiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtdiscount.TextChanged += new System.EventHandler(this.txtdiscount_TextChanged);
+            this.txttax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txttax.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txttax.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttax.Location = new System.Drawing.Point(632, 562);
+            this.txttax.Name = "txttax";
+            this.txttax.Size = new System.Drawing.Size(45, 21);
+            this.txttax.TabIndex = 49;
+            this.txttax.TabStop = false;
+            this.txttax.Text = "0";
+            this.txttax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txttax.TextChanged += new System.EventHandler(this.txtdiscount_TextChanged);
             // 
             // textBox16
             // 
@@ -726,7 +727,7 @@
             this.crystalReportViewer1.Name = "crystalReportViewer1";
             this.crystalReportViewer1.Size = new System.Drawing.Size(1172, 634);
             this.crystalReportViewer1.TabIndex = 8;
-            //this.crystalReportViewer1.Load += new System.EventHandler(this.crystalReportViewer1_Load);
+            this.crystalReportViewer1.Load += new System.EventHandler(this.ss);
             // 
             // panel3
             // 
@@ -830,12 +831,20 @@
             this.txttaxamount.Size = new System.Drawing.Size(100, 20);
             this.txttaxamount.TabIndex = 62;
             // 
+            // txttotaltax
+            // 
+            this.txttotaltax.Location = new System.Drawing.Point(1028, 585);
+            this.txttotaltax.Name = "txttotaltax";
+            this.txttotaltax.Size = new System.Drawing.Size(100, 20);
+            this.txttotaltax.TabIndex = 63;
+            // 
             // salesorder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1172, 634);
+            this.Controls.Add(this.txttotaltax);
             this.Controls.Add(this.txttaxamount);
             this.Controls.Add(this.discountamount);
             this.Controls.Add(this.panel2);
@@ -856,7 +865,7 @@
             this.Controls.Add(this.textBox19);
             this.Controls.Add(this.textBox16);
             this.Controls.Add(this.textBox18);
-            this.Controls.Add(this.txtdiscount);
+            this.Controls.Add(this.txttax);
             this.Name = "salesorder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Sales Order";
@@ -924,7 +933,7 @@
         private System.Windows.Forms.TextBox textBox20;
         private System.Windows.Forms.TextBox textBox19;
         private System.Windows.Forms.TextBox textBox18;
-        private System.Windows.Forms.TextBox txtdiscount;
+        private System.Windows.Forms.TextBox txttax;
         private System.Windows.Forms.TextBox textBox16;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button savebutton;
@@ -944,5 +953,6 @@
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
         private System.Windows.Forms.TextBox discountamount;
         private System.Windows.Forms.TextBox txttaxamount;
+        private System.Windows.Forms.TextBox txttotaltax;
     }
 }

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+<xs:schema id="salesdelivaryDataSet" targetNamespace="http://tempuri.org/salesdelivaryDataSet.xsd" xmlns:mstns="http://tempuri.org/salesdelivaryDataSet.xsd" xmlns="http://tempuri.org/salesdelivaryDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
@@ -17,14 +17,16 @@
                          CustomerDetails.CustCompName, CustomerDetails.CustAddress, CustomerDetails.CustCity, CustomerDetails.CustState, CustomerDetails.CustZip, 
                          CustomerDetails.CustCountry, CustomerDetails.CustEmail, CustomerDetails.CustWebAddress, CustomerDetails.CustPhone, CustomerDetails.CustMobile, 
                          customerorderdescriptions.orderid, customerorderdescriptions.ItemId, customerorderdescriptions.price, customerorderdescriptions.quantity, 
-                         customerorderdescriptions.totalammount, ItemDetails.ItemName, ItemPriceDetail.MrpPrice, orderdetails.date, orderdetails.totalammount AS Expr1, 
-                         orderdetails.Discount, orderdetails.Discountamount, orderdetails.Tax, orderdetails.Taxamount, orderdetails.WithautTaxamount
-FROM            CompnayDetails CROSS JOIN
+                         customerorderdescriptions.totalammount, ItemDetails.ItemName, ItemPriceDetail.MrpPrice, orderdetails.totalammount AS Expr1, orderdetails.Discount, 
+                         orderdetails.Discountamount, orderdetails.Tax, orderdetails.Taxamount, orderdetails.WithautTaxamount, salesOrderDelivery.Delivaryid, 
+                         salesOrderDelivery.Orderid AS Expr2, salesOrderDelivery.DeliveryDate
+FROM            salesOrderDelivery INNER JOIN
                          ItemDetails INNER JOIN
                          customerorderdescriptions ON ItemDetails.ItemId = customerorderdescriptions.ItemId INNER JOIN
                          ItemPriceDetail ON ItemDetails.ItemId = ItemPriceDetail.ItemId INNER JOIN
                          orderdetails ON customerorderdescriptions.orderid = orderdetails.orderid INNER JOIN
-                         CustomerDetails ON orderdetails.custid = CustomerDetails.custId</CommandText>
+                         CustomerDetails ON orderdetails.custid = CustomerDetails.custId ON salesOrderDelivery.Orderid = orderdetails.orderid CROSS JOIN
+                         CompnayDetails</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -59,13 +61,15 @@ FROM            CompnayDetails CROSS JOIN
               <Mapping SourceColumn="totalammount" DataSetColumn="totalammount" />
               <Mapping SourceColumn="ItemName" DataSetColumn="ItemName" />
               <Mapping SourceColumn="MrpPrice" DataSetColumn="MrpPrice" />
-              <Mapping SourceColumn="date" DataSetColumn="date" />
               <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
               <Mapping SourceColumn="Discount" DataSetColumn="Discount" />
               <Mapping SourceColumn="Discountamount" DataSetColumn="Discountamount" />
               <Mapping SourceColumn="Tax" DataSetColumn="Tax" />
               <Mapping SourceColumn="Taxamount" DataSetColumn="Taxamount" />
               <Mapping SourceColumn="WithautTaxamount" DataSetColumn="WithautTaxamount" />
+              <Mapping SourceColumn="Delivaryid" DataSetColumn="Delivaryid" />
+              <Mapping SourceColumn="Expr2" DataSetColumn="Expr2" />
+              <Mapping SourceColumn="DeliveryDate" DataSetColumn="DeliveryDate" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -74,7 +78,7 @@ FROM            CompnayDetails CROSS JOIN
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+  <xs:element name="salesdelivaryDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="salesdelivaryDataSet" msprop:Generator_UserDSName="salesdelivaryDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
@@ -252,17 +256,23 @@ FROM            CompnayDetails CROSS JOIN
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="date" msprop:Generator_ColumnVarNameInTable="columndate" msprop:Generator_ColumnPropNameInRow="date" msprop:Generator_ColumnPropNameInTable="dateColumn" msprop:Generator_UserColumnName="date" type="xs:dateTime" minOccurs="0" />
               <xs:element name="Expr1" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_UserColumnName="Expr1" type="xs:decimal" minOccurs="0" />
               <xs:element name="Discount" msprop:Generator_ColumnVarNameInTable="columnDiscount" msprop:Generator_ColumnPropNameInRow="Discount" msprop:Generator_ColumnPropNameInTable="DiscountColumn" msprop:Generator_UserColumnName="Discount" type="xs:double" minOccurs="0" />
               <xs:element name="Discountamount" msprop:Generator_ColumnVarNameInTable="columnDiscountamount" msprop:Generator_ColumnPropNameInRow="Discountamount" msprop:Generator_ColumnPropNameInTable="DiscountamountColumn" msprop:Generator_UserColumnName="Discountamount" type="xs:double" minOccurs="0" />
               <xs:element name="Tax" msprop:Generator_ColumnVarNameInTable="columnTax" msprop:Generator_ColumnPropNameInRow="Tax" msprop:Generator_ColumnPropNameInTable="TaxColumn" msprop:Generator_UserColumnName="Tax" type="xs:double" minOccurs="0" />
               <xs:element name="Taxamount" msprop:Generator_ColumnVarNameInTable="columnTaxamount" msprop:Generator_ColumnPropNameInRow="Taxamount" msprop:Generator_ColumnPropNameInTable="TaxamountColumn" msprop:Generator_UserColumnName="Taxamount" type="xs:double" minOccurs="0" />
               <xs:element name="WithautTaxamount" msprop:Generator_ColumnVarNameInTable="columnWithautTaxamount" msprop:Generator_ColumnPropNameInRow="WithautTaxamount" msprop:Generator_ColumnPropNameInTable="WithautTaxamountColumn" msprop:Generator_UserColumnName="WithautTaxamount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Delivaryid" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnDelivaryid" msprop:Generator_ColumnPropNameInRow="Delivaryid" msprop:Generator_ColumnPropNameInTable="DelivaryidColumn" msprop:Generator_UserColumnName="Delivaryid" type="xs:int" />
+              <xs:element name="Expr2" msprop:Generator_ColumnVarNameInTable="columnExpr2" msprop:Generator_ColumnPropNameInRow="Expr2" msprop:Generator_ColumnPropNameInTable="Expr2Column" msprop:Generator_UserColumnName="Expr2" type="xs:int" minOccurs="0" />
+              <xs:element name="DeliveryDate" msprop:Generator_ColumnVarNameInTable="columnDeliveryDate" msprop:Generator_ColumnPropNameInRow="DeliveryDate" msprop:Generator_ColumnPropNameInTable="DeliveryDateColumn" msprop:Generator_UserColumnName="DeliveryDate" type="xs:dateTime" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
       </xs:choice>
     </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DataTable1" />
+      <xs:field xpath="mstns:Delivaryid" />
+    </xs:unique>
   </xs:element>
 </xs:schema>
