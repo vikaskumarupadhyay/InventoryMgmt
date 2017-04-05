@@ -292,7 +292,7 @@ namespace WindowsFormsApplication1
             txtitemcode.Focus();
             txtcustomercode.TabStop = true;
             button1.TabStop = true;
-            txtdiscount.TabStop = false;
+            txttax.TabStop = false;
             string itemid = "";
             string quntity = "";
             string rate = "";
@@ -367,6 +367,7 @@ namespace WindowsFormsApplication1
                 double totalAmount = Convert.ToDouble(txttotalammount.Text);
                 totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
                 txttotalammount.Text = totalAmount.ToString();
+                txttotaltax.Text= totalAmount.ToString();
 
                 txtitemcode.Text = "I";
                 txtProductName.Text = "";
@@ -381,16 +382,13 @@ namespace WindowsFormsApplication1
                 //}
             }
 
-
-
-
-
         }
 
         private void salesorder_Load(object sender, EventArgs e)
         {
             discountamount.Visible = false;
             txttaxamount.Visible = false;
+            txttotaltax.Visible = false;
 
             crystalReportViewer1.Visible = false;
             tab();
@@ -442,7 +440,7 @@ namespace WindowsFormsApplication1
             {
                 //txtTexAmount.Text 
 
-                txtdiscount.Text = dr[0].ToString();
+                txttax.Text = dr[0].ToString();
                 textBox16.Text = dr[1].ToString();
             }
 
@@ -557,7 +555,7 @@ namespace WindowsFormsApplication1
             counter = 0;
             if (counter == 0)
             {
-                string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpdate.Text + "','" + txttotalammount.Text + "','" + txtdiscount.Text + "','" + txtdiscount.Text + "','"+discountamount.Text+"','"+txttaxamount.Text+"')";
+                string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpdate.Text + "','" + txttotalammount.Text + "','" + textBox20.Text+ "','"+discountamount.Text+"','"+txttax.Text+"','"+txttaxamount.Text+"','"+txttotaltax.Text+"')";
                 int insertrows = d.saveDetails(insertquery);
 
 
@@ -808,7 +806,7 @@ namespace WindowsFormsApplication1
             {
                 totalAmount += Convert.ToDouble(dr[4].ToString());
             }
-            string discountAmount = txtdiscount.Text;
+            string discountAmount = txttax.Text;
             //double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
             double amount = 0.0;
             if (double.TryParse(discountAmount, out amount))
@@ -935,7 +933,7 @@ namespace WindowsFormsApplication1
                 else
                 {
 
-                    string selectquery1 = "select i.ItemId,i.ItemName,ip.MrpPrice,iq.CurrentQuantity from ItemDetails i join ItemPriceDetail ip on i.ItemId=ip.ItemId join ItemQuantityDetail iq on ip.ItemId=iq.ItemId where i.ItemId='" + txtitemcode.Text + "'";
+                    string selectquery1 = "select i.ItemId,i.ItemName,ip.SalesPrice,iq.CurrentQuantity from ItemDetails i join ItemPriceDetail ip on i.ItemId=ip.ItemId join ItemQuantityDetail iq on ip.ItemId=iq.ItemId where i.ItemId='" + txtitemcode.Text + "'";
                     DataTable dt = d.getDetailByQuery(selectquery1);
                     if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
                     {
@@ -1232,16 +1230,30 @@ namespace WindowsFormsApplication1
 
         private void txttotalammount_TextChanged(object sender, EventArgs e)
         {
+            if (txttotalammount.Text == "")
+            {
+                txttotalammount.Text = "0";
+            }
             double d = 1;
             double total = Convert.ToDouble(txttotalammount.Text);
-            double g = Convert.ToDouble(txtdiscount.Text);
+            double g = Convert.ToDouble(txttax.Text);
             double tax = d + ((g / 100));
             double taxamount = total / tax;
             double totaltax = total - taxamount;
             txttaxamount.Text = totaltax.ToString();
+            //double dis = Convert.ToDouble(discountamount.Text);
+            //double withauttax = total  - dis;
+            //txttotaltax.Text= withauttax.ToString();
+
 
         }
 
+        private void ss(object sender, EventArgs e)
+        {
+
+        }
+
+       
       
         
 

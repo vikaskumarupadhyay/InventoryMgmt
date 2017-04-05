@@ -339,9 +339,15 @@ namespace WindowsFormsApplication1 {
             
             private global::System.Data.DataColumn columnExpr1;
             
+            private global::System.Data.DataColumn columnDiscount;
+            
             private global::System.Data.DataColumn columnDiscountamount;
             
+            private global::System.Data.DataColumn columnTax;
+            
             private global::System.Data.DataColumn columnTaxamount;
+            
+            private global::System.Data.DataColumn columnWithautTaxamount;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -618,6 +624,14 @@ namespace WindowsFormsApplication1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DiscountColumn {
+                get {
+                    return this.columnDiscount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn DiscountamountColumn {
                 get {
                     return this.columnDiscountamount;
@@ -626,9 +640,25 @@ namespace WindowsFormsApplication1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TaxColumn {
+                get {
+                    return this.columnTax;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn TaxamountColumn {
                 get {
                     return this.columnTaxamount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn WithautTaxamountColumn {
+                get {
+                    return this.columnWithautTaxamount;
                 }
             }
             
@@ -700,8 +730,11 @@ namespace WindowsFormsApplication1 {
                         string MrpPrice, 
                         System.DateTime date, 
                         decimal Expr1, 
-                        string Discountamount, 
-                        string Taxamount) {
+                        double Discount, 
+                        double Discountamount, 
+                        double Tax, 
+                        double Taxamount, 
+                        decimal WithautTaxamount) {
                 DataTable1Row rowDataTable1Row = ((DataTable1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Name,
@@ -734,8 +767,11 @@ namespace WindowsFormsApplication1 {
                         MrpPrice,
                         date,
                         Expr1,
+                        Discount,
                         Discountamount,
-                        Taxamount};
+                        Tax,
+                        Taxamount,
+                        WithautTaxamount};
                 rowDataTable1Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataTable1Row);
                 return rowDataTable1Row;
@@ -788,8 +824,11 @@ namespace WindowsFormsApplication1 {
                 this.columnMrpPrice = base.Columns["MrpPrice"];
                 this.columndate = base.Columns["date"];
                 this.columnExpr1 = base.Columns["Expr1"];
+                this.columnDiscount = base.Columns["Discount"];
                 this.columnDiscountamount = base.Columns["Discountamount"];
+                this.columnTax = base.Columns["Tax"];
                 this.columnTaxamount = base.Columns["Taxamount"];
+                this.columnWithautTaxamount = base.Columns["WithautTaxamount"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -855,10 +894,16 @@ namespace WindowsFormsApplication1 {
                 base.Columns.Add(this.columndate);
                 this.columnExpr1 = new global::System.Data.DataColumn("Expr1", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnExpr1);
-                this.columnDiscountamount = new global::System.Data.DataColumn("Discountamount", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnDiscount = new global::System.Data.DataColumn("Discount", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDiscount);
+                this.columnDiscountamount = new global::System.Data.DataColumn("Discountamount", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDiscountamount);
-                this.columnTaxamount = new global::System.Data.DataColumn("Taxamount", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnTax = new global::System.Data.DataColumn("Tax", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTax);
+                this.columnTaxamount = new global::System.Data.DataColumn("Taxamount", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTaxamount);
+                this.columnWithautTaxamount = new global::System.Data.DataColumn("WithautTaxamount", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnWithautTaxamount);
                 this.columnName.MaxLength = 1000;
                 this.columnAddress.MaxLength = 1000;
                 this.columnCity.MaxLength = 100;
@@ -1505,10 +1550,26 @@ namespace WindowsFormsApplication1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Discountamount {
+            public double Discount {
                 get {
                     try {
-                        return ((string)(this[this.tableDataTable1.DiscountamountColumn]));
+                        return ((double)(this[this.tableDataTable1.DiscountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Discount\' in table \'DataTable1\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.DiscountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double Discountamount {
+                get {
+                    try {
+                        return ((double)(this[this.tableDataTable1.DiscountamountColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Discountamount\' in table \'DataTable1\' is DBNull.", e);
@@ -1521,10 +1582,26 @@ namespace WindowsFormsApplication1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Taxamount {
+            public double Tax {
                 get {
                     try {
-                        return ((string)(this[this.tableDataTable1.TaxamountColumn]));
+                        return ((double)(this[this.tableDataTable1.TaxColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Tax\' in table \'DataTable1\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.TaxColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double Taxamount {
+                get {
+                    try {
+                        return ((double)(this[this.tableDataTable1.TaxamountColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Taxamount\' in table \'DataTable1\' is DBNull.", e);
@@ -1532,6 +1609,22 @@ namespace WindowsFormsApplication1 {
                 }
                 set {
                     this[this.tableDataTable1.TaxamountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal WithautTaxamount {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableDataTable1.WithautTaxamountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'WithautTaxamount\' in table \'DataTable1\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.WithautTaxamountColumn] = value;
                 }
             }
             
@@ -1897,6 +1990,18 @@ namespace WindowsFormsApplication1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDiscountNull() {
+                return this.IsNull(this.tableDataTable1.DiscountColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDiscountNull() {
+                this[this.tableDataTable1.DiscountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDiscountamountNull() {
                 return this.IsNull(this.tableDataTable1.DiscountamountColumn);
             }
@@ -1909,6 +2014,18 @@ namespace WindowsFormsApplication1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTaxNull() {
+                return this.IsNull(this.tableDataTable1.TaxColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTaxNull() {
+                this[this.tableDataTable1.TaxColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsTaxamountNull() {
                 return this.IsNull(this.tableDataTable1.TaxamountColumn);
             }
@@ -1917,6 +2034,18 @@ namespace WindowsFormsApplication1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTaxamountNull() {
                 this[this.tableDataTable1.TaxamountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsWithautTaxamountNull() {
+                return this.IsNull(this.tableDataTable1.WithautTaxamountColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetWithautTaxamountNull() {
+                this[this.tableDataTable1.WithautTaxamountColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2109,6 +2238,11 @@ namespace WindowsFormsApplication1.DataSet1TableAdapters {
             tableMapping.ColumnMappings.Add("MrpPrice", "MrpPrice");
             tableMapping.ColumnMappings.Add("date", "date");
             tableMapping.ColumnMappings.Add("Expr1", "Expr1");
+            tableMapping.ColumnMappings.Add("Discount", "Discount");
+            tableMapping.ColumnMappings.Add("Discountamount", "Discountamount");
+            tableMapping.ColumnMappings.Add("Tax", "Tax");
+            tableMapping.ColumnMappings.Add("Taxamount", "Taxamount");
+            tableMapping.ColumnMappings.Add("WithautTaxamount", "WithautTaxamount");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -2125,18 +2259,27 @@ namespace WindowsFormsApplication1.DataSet1TableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        CompnayDetails.Name, CompnayDetails.Address, CompnayDetails.City, CompnayDetails.State, CompnayDetails.Zip, CompnayDetails.Country, 
-                         CompnayDetails.Email, CompnayDetails.WebAddress, CompnayDetails.Phone, CompnayDetails.Mobile, CustomerDetails.CustName, 
-                         CustomerDetails.CustCompName, CustomerDetails.CustAddress, CustomerDetails.CustCity, CustomerDetails.CustState, CustomerDetails.CustZip, 
-                         CustomerDetails.CustCountry, CustomerDetails.CustEmail, CustomerDetails.CustWebAddress, CustomerDetails.CustPhone, CustomerDetails.CustMobile, 
-                         customerorderdescriptions.orderid, customerorderdescriptions.ItemId, customerorderdescriptions.price, customerorderdescriptions.quantity, 
-                         customerorderdescriptions.totalammount, ItemDetails.ItemName, ItemPriceDetail.MrpPrice, orderdetails.date, orderdetails.totalammount AS Expr1
-FROM            CompnayDetails CROSS JOIN
-                         ItemDetails INNER JOIN
-                         customerorderdescriptions ON ItemDetails.ItemId = customerorderdescriptions.ItemId INNER JOIN
-                         ItemPriceDetail ON ItemDetails.ItemId = ItemPriceDetail.ItemId INNER JOIN
-                         orderdetails ON customerorderdescriptions.orderid = orderdetails.orderid INNER JOIN
-                         CustomerDetails ON orderdetails.custid = CustomerDetails.custId";
+            this._commandCollection[0].CommandText = "SELECT        CompnayDetails.Name, CompnayDetails.Address, CompnayDetails.City, C" +
+                "ompnayDetails.State, CompnayDetails.Zip, CompnayDetails.Country, \r\n             " +
+                "            CompnayDetails.Email, CompnayDetails.WebAddress, CompnayDetails.Phon" +
+                "e, CompnayDetails.Mobile, CustomerDetails.CustName, \r\n                         C" +
+                "ustomerDetails.CustCompName, CustomerDetails.CustAddress, CustomerDetails.CustCi" +
+                "ty, CustomerDetails.CustState, CustomerDetails.CustZip, \r\n                      " +
+                "   CustomerDetails.CustCountry, CustomerDetails.CustEmail, CustomerDetails.CustW" +
+                "ebAddress, CustomerDetails.CustPhone, CustomerDetails.CustMobile, \r\n            " +
+                "             customerorderdescriptions.orderid, customerorderdescriptions.ItemId" +
+                ", customerorderdescriptions.price, customerorderdescriptions.quantity, \r\n       " +
+                "                  customerorderdescriptions.totalammount, ItemDetails.ItemName, " +
+                "ItemPriceDetail.MrpPrice, orderdetails.date, orderdetails.totalammount AS Expr1," +
+                " \r\n                         orderdetails.Discount, orderdetails.Discountamount, " +
+                "orderdetails.Tax, orderdetails.Taxamount, orderdetails.WithautTaxamount\r\nFROM   " +
+                "         CompnayDetails CROSS JOIN\r\n                         ItemDetails INNER J" +
+                "OIN\r\n                         customerorderdescriptions ON ItemDetails.ItemId = " +
+                "customerorderdescriptions.ItemId INNER JOIN\r\n                         ItemPriceD" +
+                "etail ON ItemDetails.ItemId = ItemPriceDetail.ItemId INNER JOIN\r\n               " +
+                "          orderdetails ON customerorderdescriptions.orderid = orderdetails.order" +
+                "id INNER JOIN\r\n                         CustomerDetails ON orderdetails.custid =" +
+                " CustomerDetails.custId";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
