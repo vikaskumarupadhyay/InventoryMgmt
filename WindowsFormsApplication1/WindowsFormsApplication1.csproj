@@ -103,6 +103,14 @@
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="DB_Connection\DB_Main.cs" />
+    <Compile Include="DeliveryPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DeliveryPage1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DeliveryPage.rpt</DependentUpon>
+    </Compile>
     <Compile Include="Display form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +168,33 @@
     </Compile>
     <Compile Include="PurchasSearch1.Designer.cs">
       <DependentUpon>PurchasSearch1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchesCrystalReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PurchesCrystalReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PurchesCrystalReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PurchesDelivery.cs">
+      <DependentUpon>PurchesDelivery.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PurchesDelivery.Designer.cs">
+      <DependentUpon>PurchesDelivery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchesDelivery2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PurchesDelivery2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PurchSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PurchSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="salessearch.cs">
       <SubType>Form</SubType>
@@ -253,6 +288,10 @@
     <EmbeddedResource Include="customerprint.resx">
       <DependentUpon>customerprint.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DeliveryPage.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DeliveryPage1.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Display form.resx">
       <DependentUpon>Display form.cs</DependentUpon>
     </EmbeddedResource>
@@ -283,6 +322,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PurchasSearch1.resx">
       <DependentUpon>PurchasSearch1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchesCrystalReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PurchesCrystalReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchesDelivery2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PurchesDelivery2.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="salessearch.resx">
       <DependentUpon>salessearch.cs</DependentUpon>
@@ -361,10 +408,33 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="PurchesDelivery.xsc">
+      <DependentUpon>PurchesDelivery.xsd</DependentUpon>
+    </None>
+    <None Include="PurchesDelivery.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PurchesDelivery1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PurchesDelivery.xss">
+      <DependentUpon>PurchesDelivery.xsd</DependentUpon>
+    </None>
+    <None Include="PurchSet.xsc">
+      <DependentUpon>PurchSet.xsd</DependentUpon>
+    </None>
+    <None Include="PurchSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PurchSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PurchSet.xss">
+      <DependentUpon>PurchSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database\Procedures.txt" />
     <Content Include="Database\SQL DB.txt" />
+    <Content Include="ExcelLibrary.dll" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />

@@ -34,7 +34,7 @@
             this.textBox22 = new System.Windows.Forms.TextBox();
             this.textBox15 = new System.Windows.Forms.TextBox();
             this.textBox21 = new System.Windows.Forms.TextBox();
-            this.txtgst = new System.Windows.Forms.TextBox();
+            this.txtDiscount = new System.Windows.Forms.TextBox();
             this.textBox19 = new System.Windows.Forms.TextBox();
             this.textBox18 = new System.Windows.Forms.TextBox();
             this.txtdis = new System.Windows.Forms.TextBox();
@@ -83,6 +83,7 @@
             this.txtvat = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.DeliveryReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -91,6 +92,9 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.butClose = new System.Windows.Forms.Button();
+            this.txtTaxAmount = new System.Windows.Forms.TextBox();
+            this.txtDisAmount = new System.Windows.Forms.TextBox();
+            this.txtWAmount = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -141,6 +145,7 @@
             this.txttotalAmount.TabStop = false;
             this.txttotalAmount.Text = "0";
             this.txttotalAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txttotalAmount.TextChanged += new System.EventHandler(this.txttotalAmount_TextChanged);
             // 
             // textBox22
             // 
@@ -184,19 +189,20 @@
             this.textBox21.Text = "%";
             this.textBox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtgst
+            // txtDiscount
             // 
-            this.txtgst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtgst.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtgst.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtgst.Location = new System.Drawing.Point(876, 562);
-            this.txtgst.Name = "txtgst";
-            this.txtgst.ReadOnly = true;
-            this.txtgst.Size = new System.Drawing.Size(45, 21);
-            this.txtgst.TabIndex = 31;
-            this.txtgst.TabStop = false;
-            this.txtgst.Text = "0";
-            this.txtgst.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDiscount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiscount.Location = new System.Drawing.Point(876, 562);
+            this.txtDiscount.Name = "txtDiscount";
+            this.txtDiscount.Size = new System.Drawing.Size(45, 21);
+            this.txtDiscount.TabIndex = 31;
+            this.txtDiscount.TabStop = false;
+            this.txtDiscount.Text = "0";
+            this.txtDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDiscount.TextChanged += new System.EventHandler(this.txtDiscount_TextChanged);
+            this.txtDiscount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiscount_KeyPress);
             // 
             // textBox19
             // 
@@ -210,6 +216,8 @@
             this.textBox19.TabIndex = 30;
             this.textBox19.TabStop = false;
             this.textBox19.Text = "Disc.";
+
+
             this.textBox19.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox18
@@ -741,6 +749,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.DeliveryReportViewer);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.butClose);
@@ -749,6 +758,17 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1172, 634);
             this.panel2.TabIndex = 40;
+            // 
+            // DeliveryReportViewer
+            // 
+            this.DeliveryReportViewer.ActiveViewIndex = -1;
+            this.DeliveryReportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DeliveryReportViewer.Cursor = System.Windows.Forms.Cursors.Default;
+            this.DeliveryReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DeliveryReportViewer.Location = new System.Drawing.Point(0, 0);
+            this.DeliveryReportViewer.Name = "DeliveryReportViewer";
+            this.DeliveryReportViewer.Size = new System.Drawing.Size(1172, 634);
+            this.DeliveryReportViewer.TabIndex = 7;
             // 
             // panel3
             // 
@@ -845,12 +865,36 @@
             this.butClose.UseVisualStyleBackColor = true;
             this.butClose.Click += new System.EventHandler(this.butClose_Click);
             // 
+            // txtTaxAmount
+            // 
+            this.txtTaxAmount.Location = new System.Drawing.Point(518, 590);
+            this.txtTaxAmount.Name = "txtTaxAmount";
+            this.txtTaxAmount.Size = new System.Drawing.Size(100, 20);
+            this.txtTaxAmount.TabIndex = 67;
+            // 
+            // txtDisAmount
+            // 
+            this.txtDisAmount.Location = new System.Drawing.Point(655, 589);
+            this.txtDisAmount.Name = "txtDisAmount";
+            this.txtDisAmount.Size = new System.Drawing.Size(100, 20);
+            this.txtDisAmount.TabIndex = 68;
+            // 
+            // txtWAmount
+            // 
+            this.txtWAmount.Location = new System.Drawing.Point(808, 590);
+            this.txtWAmount.Name = "txtWAmount";
+            this.txtWAmount.Size = new System.Drawing.Size(100, 20);
+            this.txtWAmount.TabIndex = 69;
+            // 
             // Form7
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1172, 634);
+            this.Controls.Add(this.txtWAmount);
+            this.Controls.Add(this.txtDisAmount);
+            this.Controls.Add(this.txtTaxAmount);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.txtvat);
@@ -861,7 +905,7 @@
             this.Controls.Add(this.button7);
             this.Controls.Add(this.textBox21);
             this.Controls.Add(this.btnSelectPurchaseOrder);
-            this.Controls.Add(this.txtgst);
+            this.Controls.Add(this.txtDiscount);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBox19);
@@ -938,7 +982,7 @@
         private System.Windows.Forms.TextBox textBox22;
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.TextBox textBox21;
-        private System.Windows.Forms.TextBox txtgst;
+        private System.Windows.Forms.TextBox txtDiscount;
         private System.Windows.Forms.TextBox textBox19;
         private System.Windows.Forms.TextBox textBox18;
         private System.Windows.Forms.TextBox txtdis;
@@ -955,8 +999,12 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.TextBox txtTaxAmount;
+        private System.Windows.Forms.TextBox txtDisAmount;
+        private System.Windows.Forms.TextBox txtWAmount;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer DeliveryReportViewer;
     }
 }
