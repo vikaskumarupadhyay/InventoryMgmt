@@ -679,8 +679,8 @@ namespace WindowsFormsApplication1
                             string txtQuantity = cellcollection[4].Value.ToString();
                             string txtAmount = cellcollection[5].Value.ToString();
                             string Orderid = id;
-                            string updatequery = "update orderdetails set totalammount='" + txtTotalAmmount.Text + "' where orderid='" + Orderid + "' ";
-                            int update = d.saveDetails(updatequery);
+                            //string updatequery = "update orderdetails set totalammount='" + txtTotalAmmount.Text + "' where orderid='" + Orderid + "' ";
+                            //int update = d.saveDetails(updatequery);
                             string query = "insert into customerorderdescriptions Values('" + Orderid + "','" + txtitemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
 
 
@@ -711,8 +711,8 @@ namespace WindowsFormsApplication1
                                     string txtQuanity = cellCollection[4].Value.ToString();
                                     string txtAmoun = cellCollection[5].Value.ToString();
                                     string OrderID1 = id;
-                                    string updatequery = "update orderdetails set totalammount='" + txtTotalAmmount.Text + "',,'" + txtwithauttaxamount.Text + "','" + txtTotalAmmount.Text + "','" + txtdiccount.Text + "','" + txttax.Text + "','" + txtdicountamount.Text + "','" + txttaxamount.Text + "' where orderid='" + OrderID1 + "' ";
-                                    int update = d.saveDetails(updatequery);
+                                   // string updatequery = "update orderdetails set totalammount='" + txtTotalAmmount.Text + "',,'" + txtwithauttaxamount.Text + "','" + txtTotalAmmount.Text + "','" + txtdiccount.Text + "','" + txttax.Text + "','" + txtdicountamount.Text + "','" + txttaxamount.Text + "' where orderid='" + OrderID1 + "' ";
+                                    //int update = d.saveDetails(updatequery);
                                     string Query = "insert into customerorderdescriptions Values('" + OrderID1 + "','" + txtItemCode + "','" + txtRate + "','" + txtQuanity + "','" + txtAmoun + "')";
                                     //MessageBox.Show(Query);
 
@@ -742,7 +742,7 @@ namespace WindowsFormsApplication1
                     }
                 }
             
-
+            
                 else
                 {
                     int id1 = Convert.ToInt32(id);
@@ -799,8 +799,8 @@ namespace WindowsFormsApplication1
                                     string txtQuanity = cellCollection[5].Value.ToString();
                                     string txtAmoun = cellCollection[6].Value.ToString();
                                     string OrderID1 = id;
-                                    string updatequery = "insert into orderdetails Values('"+txtcustomercode.Text+"','"+dtpDate.Text+"','" + txtTotalAmmount.Text + "','"+txtdiccount.Text+"','"+txtdicountamount.Text+"','"+txttax.Text+"','"+txttaxamount.Text+"','" + txtwithauttaxamount.Text + "')";
-                                    int update = d.saveDetails(updatequery);
+                                   // string updatequery = "insert into orderdetails Values('"+txtcustomercode.Text+"','"+dtpDate.Text+"','" + txtTotalAmmount.Text + "','"+txtdiccount.Text+"','"+txtdicountamount.Text+"','"+txttax.Text+"','"+txttaxamount.Text+"','" + txtwithauttaxamount.Text + "')";
+                                   // int update = d.saveDetails(updatequery);
                                     string Query = "insert into customerorderdescriptions Values('" + OrderID1 + "','" + txtItemCode + "','" + txtRate + "','" + txtQuanity + "','" + txtAmoun + "')";
                                     //MessageBox.Show(Query);
 
@@ -1829,6 +1829,8 @@ namespace WindowsFormsApplication1
                 txtwithauttaxamount.Text = s1.ToString();
             }
         }
+
+      
 
         }
 

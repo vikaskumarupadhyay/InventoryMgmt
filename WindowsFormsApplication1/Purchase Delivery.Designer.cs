@@ -216,8 +216,6 @@
             this.textBox19.TabIndex = 30;
             this.textBox19.TabStop = false;
             this.textBox19.Text = "Disc.";
-
-
             this.textBox19.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox18
@@ -769,6 +767,7 @@
             this.DeliveryReportViewer.Name = "DeliveryReportViewer";
             this.DeliveryReportViewer.Size = new System.Drawing.Size(1172, 634);
             this.DeliveryReportViewer.TabIndex = 7;
+           // this.DeliveryReportViewer.Load += new System.EventHandler(this.DeliveryReportViewer_Load);
             // 
             // panel3
             // 

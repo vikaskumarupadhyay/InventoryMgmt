@@ -31,7 +31,6 @@ E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Unit.reso
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
-E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.ChaquePayment.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.ChaqueForm.resources
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Company_New.resources
@@ -65,3 +64,4 @@ D:\Project\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
 D:\Project\WindowsFormsApplication1\bin\Debug\ExcelLibrary.dll
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
