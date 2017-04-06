@@ -1248,11 +1248,7 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void ss(object sender, EventArgs e)
-        {
-
-        }
-
+       
        
       
         
