@@ -91,6 +91,18 @@
       <DependentUpon>CrystalReport1.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CrystalReportsalesdelivary.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReportsalesdelivary.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReportsalesdelivary2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReportsalesdelivary2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="customerprint.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +208,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PurchSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="salesdelivaryDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>salesdelivaryDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="salessearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -284,6 +301,14 @@
     <EmbeddedResource Include="CrystalReport1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReportsalesdelivary.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReportsalesdelivary.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReportsalesdelivary2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReportsalesdelivary2.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="customerprint.resx">
       <DependentUpon>customerprint.cs</DependentUpon>
@@ -429,6 +454,17 @@
     </None>
     <None Include="PurchSet.xss">
       <DependentUpon>PurchSet.xsd</DependentUpon>
+    </None>
+    <None Include="salesdelivaryDataSet.xsc">
+      <DependentUpon>salesdelivaryDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="salesdelivaryDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>salesdelivaryDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="salesdelivaryDataSet.xss">
+      <DependentUpon>salesdelivaryDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
