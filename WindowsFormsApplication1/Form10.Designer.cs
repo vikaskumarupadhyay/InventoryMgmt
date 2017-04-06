@@ -727,7 +727,7 @@
             this.crystalReportViewer1.Name = "crystalReportViewer1";
             this.crystalReportViewer1.Size = new System.Drawing.Size(1172, 634);
             this.crystalReportViewer1.TabIndex = 8;
-            this.crystalReportViewer1.Load += new System.EventHandler(this.ss);
+            //this.crystalReportViewer1.Load += new System.EventHandler(this.ss);
             // 
             // panel3
             // 

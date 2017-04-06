@@ -124,34 +124,34 @@ namespace WindowsFormsApplication1
         }
         private void salessearch_Load(object sender, EventArgs e)
         {
-             int j = 5;
-            int h = 0;
-            string name = "";
-            string Address = "";
-            string Contactno = "";
-            string Email = "";
-            string openingbalance = "";
-            string currentbalance = "";
-            for (int a = 0; a < class2Collection.Count; a++)
-            {
+            // int j = 5;
+            //int h = 0;
+            //string name = "";
+            //string Address = "";
+            //string Contactno = "";
+            //string Email = "";
+            //string openingbalance = "";
+            //string currentbalance = "";
+            //for (int a = 0; a < class2Collection.Count; a++)
+            //{
 
-                s1 = class2Collection[a];
-                name = s1.name;
-                Address = s1.address;
-                Contactno = s1.mobileno;
-                Email = s1.Emailaddress;
-                openingbalance = s1.openingbalance;
-                currentbalance = s1.currentbalance;
-                h = 20 * a * j;
-                group(name, Address, Contactno, Email, openingbalance, currentbalance, h);
-            }
+            //    s1 = class2Collection[a];
+            //    name = s1.name;
+            //    Address = s1.address;
+            //    Contactno = s1.mobileno;
+            //    Email = s1.Emailaddress;
+            //    openingbalance = s1.openingbalance;
+            //    currentbalance = s1.currentbalance;
+            //    h = 20 * a * j;
+            //    group(name, Address, Contactno, Email, openingbalance, currentbalance, h);
+            //}
 
        
             string selectquery = " select od.orderid,od.custid,itd.ItemName,cod.quantity,cod.totalammount,od.date,sod.DeliveryDate,si.invoicedate from orderdetails  od  join customerorderdescriptions cod on od.orderid=cod.orderid join salesOrderDelivery sod on cod.orderid=sod.orderid join salesinvoice si on sod.orderid=si.orderid join ItemDetails itd on cod.ItemId=itd.ItemId";
              DataTable dt1 = d.getDetailByQuery(selectquery);
             List<string> sd = new List<string>();
-            DataColumnCollection d1 = dt1.Columns;     
-            for(int a=1;a<d1.Count;a++)
+            DataColumnCollection d1 = dt1.Columns;
+            for (int a = 0; a < d1.Count;a++ )
             {
                 DataColumn dc = new DataColumn();
                 string val = d1[a].ToString();
@@ -241,6 +241,8 @@ namespace WindowsFormsApplication1
             customerprint p = new customerprint(class2Collection);
             p.Show();
         }
+
+       
 
         }
     }
