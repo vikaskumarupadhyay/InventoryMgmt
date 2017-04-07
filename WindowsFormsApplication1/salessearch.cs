@@ -145,9 +145,9 @@ namespace WindowsFormsApplication1
             //    h = 20 * a * j;
             //    group(name, Address, Contactno, Email, openingbalance, currentbalance, h);
             //}
+             //select od.orderid,od.custid,itd.ItemName,cod.quantity,cod.totalammount,od.date,sod.DeliveryDate,si.invoicedate from orderdetails  od  join customerorderdescriptions cod on od.orderid=cod.orderid join salesOrderDelivery sod on cod.orderid=sod.orderid join salesinvoice si on sod.orderid=si.orderid join ItemDetails itd on cod.ItemId=itd.ItemId
 
-       
-            string selectquery = " select od.orderid,od.custid,itd.ItemName,cod.quantity,cod.totalammount,od.date,sod.DeliveryDate,si.invoicedate from orderdetails  od  join customerorderdescriptions cod on od.orderid=cod.orderid join salesOrderDelivery sod on cod.orderid=sod.orderid join salesinvoice si on sod.orderid=si.orderid join ItemDetails itd on cod.ItemId=itd.ItemId";
+            string selectquery = "SELECT dbo.CompnayDetails.Name as [Compnay Name], dbo.CompnayDetails.Address as[Address], dbo.CompnayDetails.City as[City], dbo.CompnayDetails.State as[State], dbo.CompnayDetails.Zip as[Zip], dbo.CompnayDetails.Country as[Country], dbo.CompnayDetails.Email as[Email], dbo.CompnayDetails.WebAddress as [Web Address], dbo.CompnayDetails.Phone as [Phone], dbo.CompnayDetails.Mobile as [Mobile], dbo.CompnayDetails.Fax as[Fax], dbo.CompnayDetails.PANNO as[PAN NO], dbo.CompnayDetails.VATNO as [VAT NO], dbo.CompnayDetails.CSTNO as [CST NO], dbo.CompnayDetails.ServiceTaxAmmount as[Service Tax Amount], dbo.CompnayDetails.ExciseTaxAmmount as [Exice Tax Amount], dbo.CompnayDetails.GSTTaxAmmount as[GST Tax Amount], dbo.CustomerDetails.CustName as[Customer Name], dbo.CustomerDetails.CustCompName as[Compnay Name],dbo.CustomerDetails.CustAddress as [Address], dbo.CustomerDetails.CustCity as[City], dbo.CustomerDetails.CustState as[State], dbo.CustomerDetails.CustZip as[Zip], dbo.CustomerDetails.CustCountry as [Country],dbo.CustomerDetails.CustEmail as[Email], dbo.CustomerDetails.CustWebAddress as[Web Address], dbo.CustomerDetails.CustPhone as[Phone], dbo.CustomerDetails.CustMobile as [Mobile],dbo.CustomerDetails.CustFax as [Fax], dbo.CustomerDetails.CustPanNo as [PAN NO], dbo.CustomerDetails.CustVatNo as [VAT NO], dbo.CustomerDetails.CustCstNo as [CST NO],dbo.CustomerDetails.CustServicetaxRegnNo as[Service Tax Regn NO], dbo.CustomerDetails.CustExciseRegnNo as [Exice Regn No], dbo.CustomerDetails.Gstregnno as[GST Regn No], dbo.customerorderdescriptions.ItemId as [Item Id],dbo.customerorderdescriptions.orderid as [Order Id], dbo.customerorderdescriptions.price as[Price], dbo.customerorderdescriptions.quantity as [Quantity], dbo.customerorderdescriptions.totalammount as[Totalamount], dbo.ItemDetails.ItemName as [Item Name], dbo.ItemPriceDetail.MrpPrice as[MRP Price], dbo.ItemPriceDetail.Margin as[Margin], dbo.orderdetails.totalammount AS Expr1, dbo.orderdetails.Discount as[Discount],dbo.orderdetails.Discountamount as[Discount Amount], dbo.orderdetails.Tax as[Tax], dbo.orderdetails.Taxamount as[Tax Amount], dbo.orderdetails.WithautTaxamount as[Withaut Tax amount], dbo.salesOrderDelivery.Delivaryid as [Delivary Id], dbo.salesOrderDelivery.DeliveryDate as [Delivary Date] FROM dbo.salesOrderDelivery INNER JOIN dbo.ItemDetails INNER JOIN dbo.customerorderdescriptions ON dbo.ItemDetails.ItemId = dbo.customerorderdescriptions.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId INNER JOIN dbo.orderdetails ON dbo.customerorderdescriptions.orderid = dbo.orderdetails.orderid INNER JOIN dbo.CustomerDetails ON dbo.orderdetails.custid = dbo.CustomerDetails.custId ON dbo.salesOrderDelivery.Orderid = dbo.orderdetails.orderid CROSS JOIN dbo.CompnayDetails";
              DataTable dt1 = d.getDetailByQuery(selectquery);
             List<string> sd = new List<string>();
             DataColumnCollection d1 = dt1.Columns;
@@ -165,55 +165,53 @@ namespace WindowsFormsApplication1
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             string s = comboBox1.SelectedValue.ToString();
-            if (s == "orderrid")
-            {
-                s = "od.orderid";
-                string selectquery = " select od.orderid,od.custid,itd.ItemName,cod.quantity,cod.totalammount,od.date,sod.DeliveryDate,si.invoicedate from orderdetails  od  join customerorderdescriptions cod on od.orderid=cod.orderid join salesOrderDelivery sod on cod.orderid=sod.orderid join salesinvoice si on sod.orderid=si.orderid join ItemDetails itd on cod.ItemId=itd.ItemId Where " + s + " like'" + textBox1.Text + "%' ";
+              //  s = "od.orderid";
+            string selectquery = "SELECT dbo.CompnayDetails.Name as [Compnay Name], dbo.CompnayDetails.Address as[Address], dbo.CompnayDetails.City as[City], dbo.CompnayDetails.State as[State], dbo.CompnayDetails.Zip as[Zip], dbo.CompnayDetails.Country as[Country], dbo.CompnayDetails.Email as[Email], dbo.CompnayDetails.WebAddress as [Web Address], dbo.CompnayDetails.Phone as [Phone], dbo.CompnayDetails.Mobile as [Mobile], dbo.CompnayDetails.Fax as[Fax], dbo.CompnayDetails.PANNO as[PAN NO], dbo.CompnayDetails.VATNO as [VAT NO], dbo.CompnayDetails.CSTNO as [CST NO], dbo.CompnayDetails.ServiceTaxAmmount as[Service Tax Amount], dbo.CompnayDetails.ExciseTaxAmmount as [Exice Tax Amount], dbo.CompnayDetails.GSTTaxAmmount as[GST Tax Amount], dbo.CustomerDetails.CustName as[Customer Name], dbo.CustomerDetails.CustCompName as[Compnay Name],dbo.CustomerDetails.CustAddress as [Address], dbo.CustomerDetails.CustCity as[City], dbo.CustomerDetails.CustState as[State], dbo.CustomerDetails.CustZip as[Zip], dbo.CustomerDetails.CustCountry as [Country],dbo.CustomerDetails.CustEmail as[Email], dbo.CustomerDetails.CustWebAddress as[Web Address], dbo.CustomerDetails.CustPhone as[Phone], dbo.CustomerDetails.CustMobile as [Mobile],dbo.CustomerDetails.CustFax as [Fax], dbo.CustomerDetails.CustPanNo as [PAN NO], dbo.CustomerDetails.CustVatNo as [VAT NO], dbo.CustomerDetails.CustCstNo as [CST NO],dbo.CustomerDetails.CustServicetaxRegnNo as[Service Tax Regn NO], dbo.CustomerDetails.CustExciseRegnNo as [Exice Regn No], dbo.CustomerDetails.Gstregnno as[GST Regn No], dbo.customerorderdescriptions.ItemId as [Item Id],dbo.customerorderdescriptions.orderid as [Order Id], dbo.customerorderdescriptions.price as[Price], dbo.customerorderdescriptions.quantity as [Quantity], dbo.customerorderdescriptions.totalammount as[Totalamount], dbo.ItemDetails.ItemName as [Item Name], dbo.ItemPriceDetail.MrpPrice as[MRP Price], dbo.ItemPriceDetail.Margin as[Margin], dbo.orderdetails.totalammount AS Expr1, dbo.orderdetails.Discount as[Discount],dbo.orderdetails.Discountamount as[Discount Amount], dbo.orderdetails.Tax as[Tax], dbo.orderdetails.Taxamount as[Tax Amount], dbo.orderdetails.WithautTaxamount as[Withaut Tax amount], dbo.salesOrderDelivery.Delivaryid as [Delivary Id], dbo.salesOrderDelivery.DeliveryDate as [Delivary Date] FROM dbo.salesOrderDelivery INNER JOIN dbo.ItemDetails INNER JOIN dbo.customerorderdescriptions ON dbo.ItemDetails.ItemId = dbo.customerorderdescriptions.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId INNER JOIN dbo.orderdetails ON dbo.customerorderdescriptions.orderid = dbo.orderdetails.orderid INNER JOIN dbo.CustomerDetails ON dbo.orderdetails.custid = dbo.CustomerDetails.custId ON dbo.salesOrderDelivery.Orderid = dbo.orderdetails.orderid CROSS JOIN dbo.CompnayDetails Where " + s + " like'" + textBox1.Text + "%' ";
                 DataTable dt = d.getDetailByQuery(selectquery);
-                dataGridView1.DataSource = dt;
-            }
-            else if (s == "custid")
-            {
-                s = "od.custid";
-                string selectquery = " select od.orderid,od.custid,itd.ItemName,cod.quantity,cod.totalammount,od.date,sod.DeliveryDate,si.invoicedate from orderdetails  od  join customerorderdescriptions cod on od.orderid=cod.orderid join salesOrderDelivery sod on cod.orderid=sod.orderid join salesinvoice si on sod.orderid=si.orderid join ItemDetails itd on cod.ItemId=itd.ItemId Where " + s + " like'" + textBox1.Text + "%' ";
-                DataTable dt = d.getDetailByQuery(selectquery);
-                dataGridView1.DataSource = dt;
-            }
-            else if (s == "ItemName")
-            {
-                s = "itd.ItemName";
-                string selectquery = " select od.orderid,od.custid,itd.ItemName,cod.quantity,cod.totalammount,od.date,sod.DeliveryDate,si.invoicedate from orderdetails  od  join customerorderdescriptions cod on od.orderid=cod.orderid join salesOrderDelivery sod on cod.orderid=sod.orderid join salesinvoice si on sod.orderid=si.orderid join ItemDetails itd on cod.ItemId=itd.ItemId Where " + s + " like'" + textBox1.Text + "%' ";
-                DataTable dt = d.getDetailByQuery(selectquery);
-                dataGridView1.DataSource = dt;
-            }
-            else if (s == "totalammount")
-            {
-                s = "cod.totalammount";
-                string selectquery = " select od.orderid,od.custid,itd.ItemName,cod.quantity,cod.totalammount,od.date,sod.DeliveryDate,si.invoicedate from orderdetails  od  join customerorderdescriptions cod on od.orderid=cod.orderid join salesOrderDelivery sod on cod.orderid=sod.orderid join salesinvoice si on sod.orderid=si.orderid join ItemDetails itd on cod.ItemId=itd.ItemId Where " + s + " like'" + textBox1.Text + "%' ";
-                DataTable dt = d.getDetailByQuery(selectquery);
-                dataGridView1.DataSource = dt;
-            }
-            else if (s == "DeliveryDate")
-            {
-                s = "sod.DeliveryDate";
-                string selectquery = " select od.orderid,od.custid,itd.ItemName,cod.quantity,cod.totalammount,od.date,sod.DeliveryDate,si.invoicedate from orderdetails  od  join customerorderdescriptions cod on od.orderid=cod.orderid join salesOrderDelivery sod on cod.orderid=sod.orderid join salesinvoice si on sod.orderid=si.orderid join ItemDetails itd on cod.ItemId=itd.ItemId Where " + s + " ='" + textBox1.Text + "' ";
-                DataTable dt = d.getDetailByQuery(selectquery);
-                dataGridView1.DataSource = dt;
-            }
-            else if (s == "date")
-            {
-                s = "od.date";
-                string selectquery = " select od.orderid,od.custid,itd.ItemName,cod.quantity,cod.totalammount,od.date,sod.DeliveryDate,si.invoicedate from orderdetails  od  join customerorderdescriptions cod on od.orderid=cod.orderid join salesOrderDelivery sod on cod.orderid=sod.orderid join salesinvoice si on sod.orderid=si.orderid join ItemDetails itd on cod.ItemId=itd.ItemId Where " + s + " ='" + textBox1.Text + "' ";
-                DataTable dt = d.getDetailByQuery(selectquery);
-                dataGridView1.DataSource = dt;
-            }
-            else if(s=="invoicedate")
-            {
-                s="si.invoicedate";
-                string selectquery = " select od.orderid,od.custid,itd.ItemName,cod.quantity,cod.totalammount,od.date,sod.DeliveryDate,si.invoicedate from orderdetails  od  join customerorderdescriptions cod on od.orderid=cod.orderid join salesOrderDelivery sod on cod.orderid=sod.orderid join salesinvoice si on sod.orderid=si.orderid join ItemDetails itd on cod.ItemId=itd.ItemId Where " + s + " ='" + textBox1.Text + "' ";
-                DataTable dt = d.getDetailByQuery(selectquery);
-                dataGridView1.DataSource = dt;
-            }
+               dataGridView1.DataSource = dt;
+            //}
+            //else if (s == "custid")
+            //{
+            //    s = "od.custid";
+            //    string selectquery = " select od.orderid,od.custid,itd.ItemName,cod.quantity,cod.totalammount,od.date,sod.DeliveryDate,si.invoicedate from orderdetails  od  join customerorderdescriptions cod on od.orderid=cod.orderid join salesOrderDelivery sod on cod.orderid=sod.orderid join salesinvoice si on sod.orderid=si.orderid join ItemDetails itd on cod.ItemId=itd.ItemId Where " + s + " like'" + textBox1.Text + "%' ";
+            //    DataTable dt = d.getDetailByQuery(selectquery);
+            //    dataGridView1.DataSource = dt;
+            //}
+            //else if (s == "ItemName")
+            //{
+            //    s = "itd.ItemName";
+            //    string selectquery = " select od.orderid,od.custid,itd.ItemName,cod.quantity,cod.totalammount,od.date,sod.DeliveryDate,si.invoicedate from orderdetails  od  join customerorderdescriptions cod on od.orderid=cod.orderid join salesOrderDelivery sod on cod.orderid=sod.orderid join salesinvoice si on sod.orderid=si.orderid join ItemDetails itd on cod.ItemId=itd.ItemId Where " + s + " like'" + textBox1.Text + "%' ";
+            //    DataTable dt = d.getDetailByQuery(selectquery);
+            //    dataGridView1.DataSource = dt;
+            //}
+            //else if (s == "totalammount")
+            //{
+            //    s = "cod.totalammount";
+            //    string selectquery = " select od.orderid,od.custid,itd.ItemName,cod.quantity,cod.totalammount,od.date,sod.DeliveryDate,si.invoicedate from orderdetails  od  join customerorderdescriptions cod on od.orderid=cod.orderid join salesOrderDelivery sod on cod.orderid=sod.orderid join salesinvoice si on sod.orderid=si.orderid join ItemDetails itd on cod.ItemId=itd.ItemId Where " + s + " like'" + textBox1.Text + "%' ";
+            //    DataTable dt = d.getDetailByQuery(selectquery);
+            //    dataGridView1.DataSource = dt;
+            //}
+            //else if (s == "DeliveryDate")
+            //{
+            //    s = "sod.DeliveryDate";
+            //    string selectquery = " select od.orderid,od.custid,itd.ItemName,cod.quantity,cod.totalammount,od.date,sod.DeliveryDate,si.invoicedate from orderdetails  od  join customerorderdescriptions cod on od.orderid=cod.orderid join salesOrderDelivery sod on cod.orderid=sod.orderid join salesinvoice si on sod.orderid=si.orderid join ItemDetails itd on cod.ItemId=itd.ItemId Where " + s + " ='" + textBox1.Text + "' ";
+            //    DataTable dt = d.getDetailByQuery(selectquery);
+            //    dataGridView1.DataSource = dt;
+            //}
+            //else if (s == "date")
+            //{
+            //    s = "od.date";
+            //    string selectquery = " select od.orderid,od.custid,itd.ItemName,cod.quantity,cod.totalammount,od.date,sod.DeliveryDate,si.invoicedate from orderdetails  od  join customerorderdescriptions cod on od.orderid=cod.orderid join salesOrderDelivery sod on cod.orderid=sod.orderid join salesinvoice si on sod.orderid=si.orderid join ItemDetails itd on cod.ItemId=itd.ItemId Where " + s + " ='" + textBox1.Text + "' ";
+            //    DataTable dt = d.getDetailByQuery(selectquery);
+            //    dataGridView1.DataSource = dt;
+            //}
+            //else if(s=="invoicedate")
+            //{
+            //    s="si.invoicedate";
+            //    string selectquery = " select od.orderid,od.custid,itd.ItemName,cod.quantity,cod.totalammount,od.date,sod.DeliveryDate,si.invoicedate from orderdetails  od  join customerorderdescriptions cod on od.orderid=cod.orderid join salesOrderDelivery sod on cod.orderid=sod.orderid join salesinvoice si on sod.orderid=si.orderid join ItemDetails itd on cod.ItemId=itd.ItemId Where " + s + " ='" + textBox1.Text + "' ";
+            //    DataTable dt = d.getDetailByQuery(selectquery);
+            //    dataGridView1.DataSource = dt;
+            //}
 
         }
 
