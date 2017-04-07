@@ -218,6 +218,8 @@ ALTER TABLE salesOrderDelivery add WithautTaxamount Money
 
 
 ALTER TABLE orderdetails add WithautTaxamount Money
+
+ALTER TABLE customerorderdescriptions add Discount_Amount float
  
 
 

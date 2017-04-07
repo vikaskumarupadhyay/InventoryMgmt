@@ -579,5 +579,14 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                dataGridView1.AllowUserToAddRows = true;
+                dataGridView1.Focus();
+            }
+        }
+
     }
 }
