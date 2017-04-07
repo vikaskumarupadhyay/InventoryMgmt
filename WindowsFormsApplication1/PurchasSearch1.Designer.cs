@@ -52,9 +52,9 @@
             // 
             this.comboPurchasesearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboPurchasesearch.FormattingEnabled = true;
-            this.comboPurchasesearch.Location = new System.Drawing.Point(45, 38);
+            this.comboPurchasesearch.Location = new System.Drawing.Point(39, 38);
             this.comboPurchasesearch.Name = "comboPurchasesearch";
-            this.comboPurchasesearch.Size = new System.Drawing.Size(144, 24);
+            this.comboPurchasesearch.Size = new System.Drawing.Size(212, 24);
             this.comboPurchasesearch.TabIndex = 1;
             // 
             // label1
@@ -88,7 +88,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(562, 38);
+            this.dateTimePicker1.Location = new System.Drawing.Point(539, 38);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(135, 20);
             this.dateTimePicker1.TabIndex = 5;
@@ -96,7 +96,7 @@
             // dateTimePicker2
             // 
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(933, 38);
+            this.dateTimePicker2.Location = new System.Drawing.Point(771, 40);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(117, 20);
             this.dateTimePicker2.TabIndex = 6;
@@ -115,7 +115,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1364, 462);
+            this.ClientSize = new System.Drawing.Size(1364, 510);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
