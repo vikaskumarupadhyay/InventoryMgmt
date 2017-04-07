@@ -727,6 +727,7 @@
             this.txtSearch.Size = new System.Drawing.Size(429, 23);
             this.txtSearch.TabIndex = 25;
             this.txtSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            //this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
             // 
             // button3
             // 
