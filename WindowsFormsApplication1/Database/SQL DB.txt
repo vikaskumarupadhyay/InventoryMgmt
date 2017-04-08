@@ -209,12 +209,6 @@ ALTER TABLE VendorOrderDetails ALTER COLUMN TotalPrice decimal(18,2)
 ALTER TABLE salesOrderDelivery add WithautTaxamount Money
 ALTER TABLE salesOrderDelivery add totalammount Money
 
-alter table salesOrderDelivery add Discount float
-alter table salesOrderDelivery add Discountamount float
-alter table salesOrderDelivery add Tax float
-alter table salesOrderDelivery add Taxamount float
-alter table salesOrderDelivery add totalamount float
-ALTER TABLE salesOrderDelivery add WithautTaxamount Money
 
 
 ALTER TABLE orderdetails add WithautTaxamount Money

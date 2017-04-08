@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
+using ExcelLibrary.SpreadSheet;
 
 namespace WindowsFormsApplication1
 {
@@ -147,7 +149,7 @@ namespace WindowsFormsApplication1
             //}
              //select od.orderid,od.custid,itd.ItemName,cod.quantity,cod.totalammount,od.date,sod.DeliveryDate,si.invoicedate from orderdetails  od  join customerorderdescriptions cod on od.orderid=cod.orderid join salesOrderDelivery sod on cod.orderid=sod.orderid join salesinvoice si on sod.orderid=si.orderid join ItemDetails itd on cod.ItemId=itd.ItemId
 
-            string selectquery = "SELECT dbo.CustomerDetails.custId as[Customer ID], dbo.CustomerDetails.CustName as[Customer Name], dbo.CustomerDetails.CustCompName as[Compnay Name],dbo.CustomerDetails.CustAddress as [Address], dbo.CustomerDetails.CustCity as[City], dbo.CustomerDetails.CustState as[State], dbo.CustomerDetails.CustZip as[Zip], dbo.CustomerDetails.CustCountry as [Country],dbo.CustomerDetails.CustEmail as[Email], dbo.CustomerDetails.CustWebAddress as[Web Address], dbo.CustomerDetails.CustPhone as[Phone], dbo.CustomerDetails.CustMobile as [Mobile],dbo.salesOrderDelivery.Delivaryid as [Invoice ID], dbo.salesOrderDelivery.DeliveryDate as [Invoice Date],dbo.customerorderdescriptions.orderid as [Order Ref. NO], dbo.customerorderdescriptions.ItemId as [Item ID],dbo.ItemDetails.ItemName as [Item Name],dbo.ItemDetails.ItemCompName as[Itme Compnay Name],dbo.ItemPriceDetail.MrpPrice as[MRP], dbo.customerorderdescriptions.price as[Selling Rate],dbo.customerorderdescriptions.quantity as [Quantity Billed],dbo.customerorderdescriptions.totalammount as[Gross Amount], dbo.orderdetails.Discount as[Discount Rate],((dbo.customerorderdescriptions.totalammount*dbo.orderdetails.Discount)/100) as [Discount Amount], dbo.orderdetails.totalammount AS [Net Amount], dbo.orderdetails.Tax as[Tax],((dbo.customerorderdescriptions.totalammount*+1+dbo.orderdetails.Tax)/100) as [Tax Amount], dbo.orderdetails.WithautTaxamount as[Withaut Tax amount]  FROM dbo.salesOrderDelivery INNER JOIN dbo.ItemDetails INNER JOIN dbo.customerorderdescriptions ON dbo.ItemDetails.ItemId = dbo.customerorderdescriptions.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId INNER JOIN dbo.orderdetails ON dbo.customerorderdescriptions.orderid = dbo.orderdetails.orderid INNER JOIN dbo.CustomerDetails ON dbo.orderdetails.custid = dbo.CustomerDetails.custId ON dbo.salesOrderDelivery.Orderid = dbo.orderdetails.orderid CROSS JOIN dbo.CompnayDetails ORDER BY Delivaryid ASC";
+            string selectquery = "SELECT dbo.CustomerDetails.custId as[Customer ID], dbo.CustomerDetails.CustName as[Customer Name], dbo.CustomerDetails.CustCompName as[Compnay Name],dbo.CustomerDetails.CustAddress as [Address], dbo.CustomerDetails.CustCity as[City], dbo.CustomerDetails.CustState as[State], dbo.CustomerDetails.CustZip as[Zip], dbo.CustomerDetails.CustCountry as [Country],dbo.CustomerDetails.CustEmail as[Email], dbo.CustomerDetails.CustWebAddress as[Web Address], dbo.CustomerDetails.CustPhone as[Phone], dbo.CustomerDetails.CustMobile as [Mobile],dbo.salesOrderDelivery.Delivaryid as [Invoice ID], dbo.salesOrderDelivery.DeliveryDate as [Invoice Date],dbo.customerorderdescriptions.orderid as [Order Ref. NO], dbo.customerorderdescriptions.ItemId as [Item ID],dbo.ItemDetails.ItemName as [Item Name],dbo.ItemDetails.ItemCompName as[Itme Compnay Name],dbo.ItemPriceDetail.MrpPrice as[MRP], dbo.customerorderdescriptions.price as[Selling Rate],dbo.customerorderdescriptions.quantity as [Quantity Billed],dbo.customerorderdescriptions.totalammount as[Gross Amount], dbo.orderdetails.Discount as[Discount Rate],((dbo.customerorderdescriptions.totalammount*dbo.orderdetails.Discount)/100) as [Discount Amount], dbo.orderdetails.Tax as[Tax], (dbo.customerorderdescriptions.totalammount)- ((dbo.customerorderdescriptions.totalammount)/(1+(dbo.orderdetails.Tax/100))) as [Tax Amount], dbo.orderdetails.totalammount AS [Net Amount (Including Tax)] FROM dbo.salesOrderDelivery INNER JOIN dbo.ItemDetails INNER JOIN dbo.customerorderdescriptions ON dbo.ItemDetails.ItemId = dbo.customerorderdescriptions.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId INNER JOIN dbo.orderdetails ON dbo.customerorderdescriptions.orderid = dbo.orderdetails.orderid INNER JOIN dbo.CustomerDetails ON dbo.orderdetails.custid = dbo.CustomerDetails.custId ON dbo.salesOrderDelivery.Orderid = dbo.orderdetails.orderid CROSS JOIN dbo.CompnayDetails ORDER BY Delivaryid ASC";
             string actualcolumn = "SELECT top 1 dbo.CustomerDetails.custId, dbo.CustomerDetails.CustName, dbo.CustomerDetails.CustCompName,dbo.CustomerDetails.CustAddress, dbo.CustomerDetails.CustCity, dbo.CustomerDetails.CustState, dbo.CustomerDetails.CustZip, dbo.CustomerDetails.CustCountry,dbo.CustomerDetails.CustEmail, dbo.CustomerDetails.CustWebAddress, dbo.CustomerDetails.CustPhone, dbo.CustomerDetails.CustMobile,dbo.CustomerDetails.CustFax, dbo.CustomerDetails.CustPanNo, dbo.CustomerDetails.CustVatNo, dbo.CustomerDetails.CustCstNo,dbo.CustomerDetails.CustServicetaxRegnNo, dbo.CustomerDetails.CustExciseRegnNo, dbo.CustomerDetails.Gstregnno, dbo.customerorderdescriptions.ItemId,dbo.customerorderdescriptions.orderid, dbo.customerorderdescriptions.price, dbo.customerorderdescriptions.quantity, dbo.customerorderdescriptions.totalammount, dbo.ItemDetails.ItemName, dbo.ItemPriceDetail.MrpPrice, dbo.ItemPriceDetail.Margin, dbo.orderdetails.totalammount AS Expr1, dbo.orderdetails.Discount,dbo.orderdetails.Discountamount, dbo.orderdetails.Tax, dbo.orderdetails.Taxamount, dbo.orderdetails.WithautTaxamount, dbo.salesOrderDelivery.Delivaryid, dbo.salesOrderDelivery.DeliveryDate FROM dbo.salesOrderDelivery INNER JOIN dbo.ItemDetails INNER JOIN dbo.customerorderdescriptions ON dbo.ItemDetails.ItemId = dbo.customerorderdescriptions.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId INNER JOIN dbo.orderdetails ON dbo.customerorderdescriptions.orderid = dbo.orderdetails.orderid INNER JOIN dbo.CustomerDetails ON dbo.orderdetails.custid = dbo.CustomerDetails.custId ON dbo.salesOrderDelivery.Orderid = dbo.orderdetails.orderid CROSS JOIN dbo.CompnayDetails";
              DataTable dt = d.getDetailByQuery(selectquery);
             // DataTable dt1 = d.getDetailByQuery(actualcolumn);
@@ -181,7 +183,8 @@ namespace WindowsFormsApplication1
         {
             string s = comboBox1.SelectedValue.ToString();
               //  s = "od.orderid";
-            string selectquery = "SELECT dbo.CustomerDetails.custId,dbo.CustomerDetails.CustName as[Customer Name], dbo.CustomerDetails.CustCompName as[Compnay Name],dbo.CustomerDetails.CustAddress as [Address], dbo.CustomerDetails.CustCity as[City], dbo.CustomerDetails.CustState as[State], dbo.CustomerDetails.CustZip as[Zip], dbo.CustomerDetails.CustCountry as [Country],dbo.CustomerDetails.CustEmail as[Email], dbo.CustomerDetails.CustWebAddress as[Web Address], dbo.CustomerDetails.CustPhone as[Phone], dbo.CustomerDetails.CustMobile as [Mobile],dbo.CustomerDetails.CustFax as [Fax], dbo.CustomerDetails.CustPanNo as [PAN NO], dbo.CustomerDetails.CustVatNo as [VAT NO], dbo.CustomerDetails.CustCstNo as [CST NO],dbo.CustomerDetails.CustServicetaxRegnNo as[Service Tax Regn NO], dbo.CustomerDetails.CustExciseRegnNo as [Exice Regn No], dbo.CustomerDetails.Gstregnno as[GST Regn No], dbo.customerorderdescriptions.ItemId as [Item Id],dbo.customerorderdescriptions.orderid as [Order Id], dbo.customerorderdescriptions.price as[Price], dbo.customerorderdescriptions.quantity as [Quantity], dbo.customerorderdescriptions.totalammount as[Totalamount], dbo.ItemDetails.ItemName as [Item Name], dbo.ItemPriceDetail.MrpPrice as[MRP Price], dbo.ItemPriceDetail.Margin as[Margin], dbo.orderdetails.totalammount AS Expr1, dbo.orderdetails.Discount as[Discount],dbo.orderdetails.Discountamount as[Discount Amount], dbo.orderdetails.Tax as[Tax], dbo.orderdetails.Taxamount as[Tax Amount], dbo.orderdetails.WithautTaxamount as[Withaut Tax amount], dbo.salesOrderDelivery.Delivaryid as [Delivary Id], dbo.salesOrderDelivery.DeliveryDate as [Delivary Date] FROM dbo.salesOrderDelivery INNER JOIN dbo.ItemDetails INNER JOIN dbo.customerorderdescriptions ON dbo.ItemDetails.ItemId = dbo.customerorderdescriptions.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId INNER JOIN dbo.orderdetails ON dbo.customerorderdescriptions.orderid = dbo.orderdetails.orderid INNER JOIN dbo.CustomerDetails ON dbo.orderdetails.custid = dbo.CustomerDetails.custId ON dbo.salesOrderDelivery.Orderid = dbo.orderdetails.orderid CROSS JOIN dbo.CompnayDetails Where " + s + " like'" + textBox1.Text + "%' ";
+           // string selectquery = "SELECT dbo.CustomerDetails.custId,dbo.CustomerDetails.CustName as[Customer Name], dbo.CustomerDetails.CustCompName as[Compnay Name],dbo.CustomerDetails.CustAddress as [Address], dbo.CustomerDetails.CustCity as[City], dbo.CustomerDetails.CustState as[State], dbo.CustomerDetails.CustZip as[Zip], dbo.CustomerDetails.CustCountry as [Country],dbo.CustomerDetails.CustEmail as[Email], dbo.CustomerDetails.CustWebAddress as[Web Address], dbo.CustomerDetails.CustPhone as[Phone], dbo.CustomerDetails.CustMobile as [Mobile],dbo.CustomerDetails.CustFax as [Fax], dbo.CustomerDetails.CustPanNo as [PAN NO], dbo.CustomerDetails.CustVatNo as [VAT NO], dbo.CustomerDetails.CustCstNo as [CST NO],dbo.CustomerDetails.CustServicetaxRegnNo as[Service Tax Regn NO], dbo.CustomerDetails.CustExciseRegnNo as [Exice Regn No], dbo.CustomerDetails.Gstregnno as[GST Regn No], dbo.customerorderdescriptions.ItemId as [Item Id],dbo.customerorderdescriptions.orderid as [Order Id], dbo.customerorderdescriptions.price as[Price], dbo.customerorderdescriptions.quantity as [Quantity], dbo.customerorderdescriptions.totalammount as[Totalamount], dbo.ItemDetails.ItemName as [Item Name], dbo.ItemPriceDetail.MrpPrice as[MRP Price], dbo.ItemPriceDetail.Margin as[Margin], dbo.orderdetails.totalammount AS Expr1, dbo.orderdetails.Discount as[Discount],dbo.orderdetails.Discountamount as[Discount Amount], dbo.orderdetails.Tax as[Tax], dbo.orderdetails.Taxamount as[Tax Amount], dbo.orderdetails.WithautTaxamount as[Withaut Tax amount], dbo.salesOrderDelivery.Delivaryid as [Delivary Id], dbo.salesOrderDelivery.DeliveryDate as [Delivary Date] FROM dbo.salesOrderDelivery INNER JOIN dbo.ItemDetails INNER JOIN dbo.customerorderdescriptions ON dbo.ItemDetails.ItemId = dbo.customerorderdescriptions.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId INNER JOIN dbo.orderdetails ON dbo.customerorderdescriptions.orderid = dbo.orderdetails.orderid INNER JOIN dbo.CustomerDetails ON dbo.orderdetails.custid = dbo.CustomerDetails.custId ON dbo.salesOrderDelivery.Orderid = dbo.orderdetails.orderid CROSS JOIN dbo.CompnayDetails Where " + s + " like'" + textBox1.Text + "%' ";
+            string selectquery = "SELECT dbo.CustomerDetails.custId as[Customer ID], dbo.CustomerDetails.CustName as[Customer Name], dbo.CustomerDetails.CustCompName as[Compnay Name],dbo.CustomerDetails.CustAddress as [Address], dbo.CustomerDetails.CustCity as[City], dbo.CustomerDetails.CustState as[State], dbo.CustomerDetails.CustZip as[Zip], dbo.CustomerDetails.CustCountry as [Country],dbo.CustomerDetails.CustEmail as[Email], dbo.CustomerDetails.CustWebAddress as[Web Address], dbo.CustomerDetails.CustPhone as[Phone], dbo.CustomerDetails.CustMobile as [Mobile],dbo.salesOrderDelivery.Delivaryid as [Invoice ID], dbo.salesOrderDelivery.DeliveryDate as [Invoice Date],dbo.customerorderdescriptions.orderid as [Order Ref. NO], dbo.customerorderdescriptions.ItemId as [Item ID],dbo.ItemDetails.ItemName as [Item Name],dbo.ItemDetails.ItemCompName as[Itme Compnay Name],dbo.ItemPriceDetail.MrpPrice as[MRP], dbo.customerorderdescriptions.price as[Selling Rate],dbo.customerorderdescriptions.quantity as [Quantity Billed],dbo.customerorderdescriptions.totalammount as[Gross Amount], dbo.orderdetails.Discount as[Discount Rate],((dbo.customerorderdescriptions.totalammount*dbo.orderdetails.Discount)/100) as [Discount Amount], dbo.orderdetails.totalammount AS [Net Amount], dbo.orderdetails.Tax as[Tax], (dbo.customerorderdescriptions.totalammount)- ((dbo.customerorderdescriptions.totalammount)/(1+(dbo.orderdetails.Tax/100))) as [Tax Amount] FROM dbo.salesOrderDelivery INNER JOIN dbo.ItemDetails INNER JOIN dbo.customerorderdescriptions ON dbo.ItemDetails.ItemId = dbo.customerorderdescriptions.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId INNER JOIN dbo.orderdetails ON dbo.customerorderdescriptions.orderid = dbo.orderdetails.orderid INNER JOIN dbo.CustomerDetails ON dbo.orderdetails.custid = dbo.CustomerDetails.custId ON dbo.salesOrderDelivery.Orderid = dbo.orderdetails.orderid CROSS JOIN dbo.CompnayDetails Where " + s + " like'" + textBox1.Text + "%'";
                 DataTable dt = d.getDetailByQuery(selectquery);
                dataGridView1.DataSource = dt;
               
@@ -263,6 +266,63 @@ namespace WindowsFormsApplication1
             //"select od.Orderid,od.venderId,itd.ItemName,vod.Quantity,vod.TotalPrice,od.OrderDate,cod.DeliveryDate,coi.InvoiceDate from VendorOrderDetails od join VendorOrderDesc vod on vod.Orderid=od.Orderid join CustomerOrderDelivery cod on cod.Orderid=vod.Orderid join CustomerOrderInvoice coi on coi.Orderid=vod.Orderid join ItemDetails itd on itd.ItemId=vod.ItemId where " + a + "= '" + txtsearch.Text + "'";
             DataTable dt = d.getDetailByQuery(selectQurry);
             dataGridView1.DataSource = dt;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.AllowUserToAddRows == true)
+            {
+                dataGridView1.AllowUserToAddRows = false;
+            }
+            string FileName = "";
+            SaveFileDialog openFileDialog1 = new SaveFileDialog();
+            //FolderBrowserDialog openFileDialog1 = new FolderBrowserDialog();
+            openFileDialog1.Filter = "xls files (*.xls)|*.xls|All files (*.*)|*.*";
+            openFileDialog1.FileName = "Vendor Details";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                FileName = openFileDialog1.FileName;
+
+            }
+            //DataGridViewColumnCollection column = dataGridView1.Columns;
+            int cout = 0;
+            int rowCoumt = 0;
+            // column1 = dc.Name.ToString();
+            string file = FileName;//+ ".xls"; //System.Configuration.ConfigurationManager.AppSettings["ExcelFilePath1"] + FolderName + "newdoc.xls";
+            Workbook workbook = new Workbook();
+            Worksheet worksheet = new Worksheet("First Sheet");
+
+            foreach (DataGridViewColumn dc in dataGridView1.Columns)
+            {
+
+                worksheet.Cells[rowCoumt, cout] = new Cell(dc.Name);
+                cout++;
+
+            }
+
+            //foreach (DataGridViewRow row in dataGridView1.Rows) { }
+            DataGridViewRowCollection rowcollection = dataGridView1.Rows;
+
+            int rowindex = 1;
+            //int countindex = 0;
+            for (int a = 0; a < rowcollection.Count; a++)
+            {
+                DataGridViewRow currentrow = rowcollection[a];
+                DataGridViewCellCollection cellcollecton = currentrow.Cells;
+                int countrow = 0;
+
+                for (int b = 0; b < currentrow.Cells.Count; b++)
+                {
+                    worksheet.Cells[rowindex, countrow] = new Cell(currentrow.Cells[b].Value.ToString());
+                    // countindex++;
+                    countrow++;
+                }
+                // name = cellcollecton[0].Value.ToString() + " , " + cellcollecton[1].Value.ToString() + " , " + cellcollecton[2].Value.ToString() + " , " + cellcollecton[3].Value.ToString() + " , " + cellcollecton[4].Value.ToString() + " , " + cellcollecton[5].Value.ToString() + "  , " + cellcollecton[6].Value.ToString() + " , " + cellcollecton[7].Value.ToString() + " , " + cellcollecton[8].Value.ToString() + " , " + cellcollecton[9].Value.ToString() + " , " + cellcollecton[10].Value.ToString() + " , " + cellcollecton[11].Value.ToString() + " , " + cellcollecton[12].Value.ToString() + ", " + cellcollecton[13].Value.ToString() + " , " + cellcollecton[14].Value.ToString() + " , " + cellcollecton[15].Value.ToString();
+                rowindex++;
+            }
+            workbook.Worksheets.Add(worksheet);
+            workbook.Save(file);
+            dataGridView1.AllowUserToAddRows = true;
         }
 
        
