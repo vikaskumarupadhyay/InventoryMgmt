@@ -623,6 +623,7 @@ namespace WindowsFormsApplication1
 
             if (txtRefNo.Text == "")
             {
+                string s = "0";
                 DataGridViewRowCollection call = gridsalesdelivary.Rows;
                 for (int c = 0; c < call.Count; c++)
                 {
@@ -713,7 +714,7 @@ namespace WindowsFormsApplication1
                                     string OrderID1 = id;
                                    // string updatequery = "update orderdetails set totalammount='" + txtTotalAmmount.Text + "',,'" + txtwithauttaxamount.Text + "','" + txtTotalAmmount.Text + "','" + txtdiccount.Text + "','" + txttax.Text + "','" + txtdicountamount.Text + "','" + txttaxamount.Text + "' where orderid='" + OrderID1 + "' ";
                                     //int update = d.saveDetails(updatequery);
-                                    string Query = "insert into customerorderdescriptions Values('" + OrderID1 + "','" + txtItemCode + "','" + txtRate + "','" + txtQuanity + "','" + txtAmoun + "')";
+                                    string Query = "insert into customerorderdescriptions Values('" + OrderID1 + "','" + txtItemCode + "','" + txtRate + "','" + txtQuanity + "','" + txtAmoun + "','"+s+"')";
                                     //MessageBox.Show(Query);
 
                                     sf1.Add(Query);
@@ -723,7 +724,7 @@ namespace WindowsFormsApplication1
                                 if (insertedRows4 > 0)
                                 {
                                     gridsalesdelivary.AllowUserToAddRows = true;
-                                    string salesdelivary = "Insert into salesOrderDelivery values('" + id + "','true','" + dtpDate.Text + "')";
+                                    string salesdelivary = "Insert into salesOrderDelivery values('" + id + "','true','" + dtpDate.Text + "','"+s+"')";
                                     int insert = d.saveDetails(salesdelivary);
                                     if (insert > 0)
                                     {
@@ -810,7 +811,7 @@ namespace WindowsFormsApplication1
                                 int insertedRows4 = d.saveDetails(sf1);
                                 if (insertedRows4 > 0)
                                 {
-                                    string salesdelivary = "Insert into salesOrderDelivery values('" + Orde + "','true','" + dtpDate.Text + "')";
+                                    string salesdelivary = "Insert into salesOrderDelivery values('" + Orde + "','true','" + dtpDate.Text + "','"+s+"')";
                                     int insert = d.saveDetails(salesdelivary);
                                     if (insert > 0)
                                     {
@@ -923,7 +924,7 @@ namespace WindowsFormsApplication1
                         int inserirow1 = d.saveDetails(show);
                         if (inserirow1 > 0)
                         {
-                            string insertquery2 = "insert into salesOrderDelivery values('" + txtRefNo.Text + "','true','" + dtpDate.Text + "')";
+                            string insertquery2 = "insert into salesOrderDelivery values('" + txtRefNo.Text + "','true','" + dtpDate.Text + "','"+txtRefNo.Text+"')";
                             int insert = d.saveDetails(insertquery2);
 
                             string insertquery1 = "update orderdetails set Discount='" + txtdiccount.Text + "',Discountamount='" + txtdicountamount.Text + "',Tax='" + txttax.Text + "',Taxamount='" + txttaxamount.Text + "',WithautTaxamount='"+txtwithauttaxamount.Text+"' where orderid='" + txtRefNo.Text + "'";
@@ -975,6 +976,7 @@ namespace WindowsFormsApplication1
                     int value = Convert.ToInt32(txtSrNo.Text);
                     int value1 = value + 1;
                     txtSrNo.Text = value1.ToString();
+            
 
                 }          
             
