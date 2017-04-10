@@ -671,6 +671,7 @@ namespace WindowsFormsApplication1
         {
             if (txtRef.Text == "")
             {
+                string Ref = "0";
                 dataGridView1.AllowUserToAddRows = false;
                 DataGridViewRowCollection call = dataGridView1.Rows;
                 for (int c = 0; c < call.Count; c++)
@@ -760,7 +761,8 @@ namespace WindowsFormsApplication1
                             int insertedRows2 = dbMainClass.saveDetails(sf1);
                             if (insertedRows2 > 0)
                             {
-                                string insertQurry = "insert into CustomerOrderDelivery Values('" + OrderID + "','true','" + txtdate.Value.ToString() + "')";
+                               
+                                string insertQurry = "insert into CustomerOrderDelivery Values('" + OrderID + "','true','" + txtdate.Value.ToString() + "','"+Ref+"')";
                                 int insertedRows3 = dbMainClass.saveDetails(insertQurry);
                                 if (insertedRows3 > 0)
                                 {
@@ -836,7 +838,7 @@ namespace WindowsFormsApplication1
                             int insertedRows4 = dbMainClass.saveDetails(sf1);
                             if (insertedRows4 > 0)
                             {
-                                string insertQurry = "insert into CustomerOrderDelivery Values('" + OrderID + "','true','" + txtdate.Value.ToString() + "')";
+                                string insertQurry = "insert into CustomerOrderDelivery Values('" + OrderID + "','true','" + txtdate.Value.ToString() + "','"+Ref+"')";
                                 int insertedRows5 = dbMainClass.saveDetails(insertQurry);
                                 if (insertedRows5 > 0)
                                 {
@@ -955,7 +957,7 @@ namespace WindowsFormsApplication1
                     int insertedRows1 = dbMainClass.saveDetails(sf1);
                     if (insertedRows1 > 0)
                     {
-                        string insertQurry = "insert into CustomerOrderDelivery Values('" + txtRef.Text + "','true','" + txtdate.Value.ToString() + "')";
+                        string insertQurry = "insert into CustomerOrderDelivery Values('" + txtRef.Text + "','true','" + txtdate.Value.ToString() + "','"+txtRef.Text+"')";
                         int insertedRows2 = dbMainClass.saveDetails(insertQurry);
                         if (insertedRows2 > 0)
                         {
