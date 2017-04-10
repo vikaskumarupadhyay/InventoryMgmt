@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using ExcelLibrary.SpreadSheet;
 
 namespace WindowsFormsApplication1
 {
@@ -34,8 +35,8 @@ namespace WindowsFormsApplication1
             }
             comboPurchasesearch.DataSource = ls;
             gridPurchaseSearch.DataSource = dt;*/
-            string selectqurry = "SELECT dbo.CustomerOrderDelivery.Deliveryid as[Deliveri ID], dbo.CustomerOrderDelivery.DeliveryDate as[Delivery Date],dbo.VendorDetails.vName as[Vendor Name], dbo.VendorDetails.vCompName as[Vendor Company Name], dbo.VendorDetails.vAddress as[Vendor Address], dbo.VendorDetails.vCity as[City], dbo.VendorDetails.vState as[State], dbo.VendorDetails.vZip as[Zip], dbo.VendorDetails.vCountry as[Country], dbo.VendorDetails.vEmail as[Email], dbo.VendorDetails.vWebAddress as[Web Address],dbo.VendorDetails.vPhone as[Phone], dbo.VendorDetails.vMobile as[Mobile], dbo.VendorDetails.vFax as[Fax], dbo.VendorDetails.vPanNo as[PAN NO], dbo.VendorDetails.vVatNo as[VAT NO], dbo.VendorDetails.vCstNo as[CST NO], dbo.VendorDetails.vServiceTaxRegnNo as[Service TaxRegn No], dbo.VendorDetails.vGSTRegnNo as[GST Regn No], dbo.VendorOrderDetails.TotalPrice as[Total Price], dbo.VendorOrderDetails.Discount as[Discount], dbo.VendorOrderDetails.Vat as[VAT], dbo.VendorOrderDetails.DisAmount as[Dis Amount], dbo.VendorOrderDetails.TextTaxAmmount as[TextTaxAmmount], dbo.VendorOrderDetails.WithoutTexAmount as[Without TexAmount], dbo.VendorOrderDesc.Orderid as[Order ID], dbo.VendorOrderDesc.ItemId as[Item ID], dbo.VendorOrderDesc.Price as[Price], dbo.VendorOrderDesc.Quantity as[Quantity], dbo.VendorOrderDesc.TotalPrice AS Expr1, dbo.ItemDetails.ItemName as[Item Name], dbo.ItemPriceDetail.MrpPrice as[Mrp Price], dbo.ItemPriceDetail.Margin as[Margin], dbo.VendorDetails.venderId as[Vendor ID] FROM  dbo.CustomerOrderDelivery INNER JOIN dbo.VendorOrderDetails ON dbo.CustomerOrderDelivery.Orderid = dbo.VendorOrderDetails.Orderid INNER JOIN dbo.VendorDetails ON dbo.VendorOrderDetails.venderId = dbo.VendorDetails.venderId INNER JOIN dbo.VendorOrderDesc ON dbo.VendorOrderDetails.Orderid = dbo.VendorOrderDesc.Orderid INNER JOIN dbo.ItemDetails ON dbo.VendorOrderDesc.ItemId = dbo.ItemDetails.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId";
-            string selectqurryForActualColumnName = "select top 1 dbo.CustomerOrderDelivery.Deliveryid, dbo.CustomerOrderDelivery.DeliveryDate,dbo.VendorDetails.vName, dbo.VendorDetails.vCompName, dbo.VendorDetails.vAddress, dbo.VendorDetails.vCity, dbo.VendorDetails.vState, dbo.VendorDetails.vZip, dbo.VendorDetails.vCountry, dbo.VendorDetails.vEmail, dbo.VendorDetails.vWebAddress,dbo.VendorDetails.vPhone, dbo.VendorDetails.vMobile, dbo.VendorDetails.vFax, dbo.VendorDetails.vPanNo, dbo.VendorDetails.vVatNo, dbo.VendorDetails.vCstNo, dbo.VendorDetails.vServiceTaxRegnNo, dbo.VendorDetails.vGSTRegnNo, dbo.VendorOrderDetails.TotalPrice, dbo.VendorOrderDetails.Discount, dbo.VendorOrderDetails.Vat, dbo.VendorOrderDetails.DisAmount, dbo.VendorOrderDetails.TextTaxAmmount, dbo.VendorOrderDetails.WithoutTexAmount, dbo.VendorOrderDesc.Orderid, dbo.VendorOrderDesc.ItemId, dbo.VendorOrderDesc.Price, dbo.VendorOrderDesc.Quantity, dbo.VendorOrderDesc.TotalPrice AS Expr1, dbo.ItemDetails.ItemName, dbo.ItemPriceDetail.MrpPrice, dbo.ItemPriceDetail.Margin, dbo.VendorDetails.venderId FROM  dbo.CustomerOrderDelivery INNER JOIN dbo.VendorOrderDetails ON dbo.CustomerOrderDelivery.Orderid = dbo.VendorOrderDetails.Orderid INNER JOIN dbo.VendorDetails ON dbo.VendorOrderDetails.venderId = dbo.VendorDetails.venderId INNER JOIN dbo.VendorOrderDesc ON dbo.VendorOrderDetails.Orderid = dbo.VendorOrderDesc.Orderid INNER JOIN dbo.ItemDetails ON dbo.VendorOrderDesc.ItemId = dbo.ItemDetails.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId";
+            string selectqurry = "SELECT dbo.VendorDetails.venderId as[Vendor ID],dbo.VendorDetails.vName as[Vendor Name], dbo.VendorDetails.vCompName as[Company Name], dbo.VendorDetails.vAddress as[Address], dbo.VendorDetails.vCity as[City], dbo.VendorDetails.vState as[State], dbo.VendorDetails.vZip as[Zip], dbo.VendorDetails.vCountry as[Country], dbo.VendorDetails.vEmail as[Email], dbo.VendorDetails.vWebAddress as[Web Address],dbo.VendorDetails.vPhone as[Phone], dbo.VendorDetails.vMobile as[Mobile],dbo.CustomerOrderDelivery.Deliveryid as[Invoice ID], dbo.CustomerOrderDelivery.DeliveryDate as[Invoice Date], dbo.CustomerOrderDelivery.RefNo as[Order Ref. NO], dbo.VendorOrderDesc.ItemId as[Item ID], dbo.ItemDetails.ItemName as[Item Name], dbo.ItemDetails.ItemCompName as[Company Name], dbo.ItemPriceDetail.MrpPrice as[MRP], dbo.VendorOrderDesc.Price as[Selling Rate], dbo.VendorOrderDesc.Quantity as[Quantity Billed], dbo.VendorOrderDesc.TotalPrice AS [Gross Amount], dbo.VendorOrderDetails.Discount as[Discount Rate],((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100) as [Discount Amount], dbo.VendorOrderDetails.Vat as[Tax], (dbo.VendorOrderDesc.TotalPrice)- ((dbo.VendorOrderDesc.TotalPrice)/(1+(dbo.VendorOrderDetails.Vat/100))) as [Tax Amount], dbo.VendorOrderDetails.TotalPrice as[Net Amount (Including Tax)] FROM  dbo.CustomerOrderDelivery INNER JOIN dbo.VendorOrderDetails ON dbo.CustomerOrderDelivery.Orderid = dbo.VendorOrderDetails.Orderid INNER JOIN dbo.VendorDetails ON dbo.VendorOrderDetails.venderId = dbo.VendorDetails.venderId INNER JOIN dbo.VendorOrderDesc ON dbo.VendorOrderDetails.Orderid = dbo.VendorOrderDesc.Orderid INNER JOIN dbo.ItemDetails ON dbo.VendorOrderDesc.ItemId = dbo.ItemDetails.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId ORDER BY Deliveryid ASC";
+            string selectqurryForActualColumnName = "select top 1 dbo.VendorDetails.venderId ,dbo.VendorDetails.vName , dbo.VendorDetails.vCompName, dbo.VendorDetails.vAddress, dbo.VendorDetails.vCity , dbo.VendorDetails.vState , dbo.VendorDetails.vZip, dbo.VendorDetails.vCountry , dbo.VendorDetails.vEmail , dbo.VendorDetails.vWebAddress ,dbo.VendorDetails.vPhone , dbo.VendorDetails.vMobile ,dbo.CustomerOrderDelivery.Deliveryid , dbo.CustomerOrderDelivery.DeliveryDate , dbo.CustomerOrderDelivery.RefNo, dbo.VendorOrderDesc.ItemId, dbo.ItemDetails.ItemName, dbo.ItemDetails.ItemCompName , dbo.ItemPriceDetail.MrpPrice , dbo.VendorOrderDesc.Price , dbo.VendorOrderDesc.Quantity, dbo.VendorOrderDesc.TotalPrice , dbo.VendorOrderDetails.Discount ,((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100) as [Discount Amount], dbo.VendorOrderDetails.Vat , (dbo.VendorOrderDesc.TotalPrice)- ((dbo.VendorOrderDesc.TotalPrice)/(1+(dbo.VendorOrderDetails.Vat/100))) as [Tax Amount] , dbo.VendorOrderDetails.TotalPrice  FROM  dbo.CustomerOrderDelivery INNER JOIN dbo.VendorOrderDetails ON dbo.CustomerOrderDelivery.Orderid = dbo.VendorOrderDetails.Orderid INNER JOIN dbo.VendorDetails ON dbo.VendorOrderDetails.venderId = dbo.VendorDetails.venderId INNER JOIN dbo.VendorOrderDesc ON dbo.VendorOrderDetails.Orderid = dbo.VendorOrderDesc.Orderid INNER JOIN dbo.ItemDetails ON dbo.VendorOrderDesc.ItemId = dbo.ItemDetails.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
             DataTable customDataTable = new DataTable();
@@ -44,7 +45,7 @@ namespace WindowsFormsApplication1
             //List<string> ls = new List<string>();
             DataColumnCollection d = dt.Columns;
             DataColumnCollection dataColumnForName = dtOnlyColumnName.Columns;
-            for (int a = 2; a < d.Count; a++)
+            for (int a = 0; a < d.Count; a++)
             {
                 //DataColumn dc = new DataColumn();
                 string b = d[a].ToString();
@@ -65,59 +66,101 @@ namespace WindowsFormsApplication1
         private void txtsearch_TextChanged(object sender, EventArgs e)
         {
             string s = comboPurchasesearch.SelectedValue.ToString();
-            if (s == "Orderid")
+            string selectQurry = "select dbo.VendorDetails.venderId ,dbo.VendorDetails.vName , dbo.VendorDetails.vCompName, dbo.VendorDetails.vAddress, dbo.VendorDetails.vCity , dbo.VendorDetails.vState , dbo.VendorDetails.vZip, dbo.VendorDetails.vCountry , dbo.VendorDetails.vEmail , dbo.VendorDetails.vWebAddress ,dbo.VendorDetails.vPhone , dbo.VendorDetails.vMobile ,dbo.CustomerOrderDelivery.Deliveryid , dbo.CustomerOrderDelivery.DeliveryDate , dbo.CustomerOrderDelivery.RefNo, dbo.VendorOrderDesc.ItemId, dbo.ItemDetails.ItemName, dbo.ItemDetails.ItemCompName , dbo.ItemPriceDetail.MrpPrice , dbo.VendorOrderDesc.Price , dbo.VendorOrderDesc.Quantity, dbo.VendorOrderDesc.TotalPrice , dbo.VendorOrderDetails.Discount ,((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100) as [Discount Amount], dbo.VendorOrderDetails.Vat , (dbo.VendorOrderDesc.TotalPrice)- ((dbo.VendorOrderDesc.TotalPrice)/(1+(dbo.VendorOrderDetails.Vat/100))) as [Tax Amount] , dbo.VendorOrderDetails.TotalPrice  FROM  dbo.CustomerOrderDelivery INNER JOIN dbo.VendorOrderDetails ON dbo.CustomerOrderDelivery.Orderid = dbo.VendorOrderDetails.Orderid INNER JOIN dbo.VendorDetails ON dbo.VendorOrderDetails.venderId = dbo.VendorDetails.venderId INNER JOIN dbo.VendorOrderDesc ON dbo.VendorOrderDetails.Orderid = dbo.VendorOrderDesc.Orderid INNER JOIN dbo.ItemDetails ON dbo.VendorOrderDesc.ItemId = dbo.ItemDetails.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId  where " + s + " like '" + txtsearch.Text + "%'";
+            DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
+            gridPurchaseSearch.DataSource = dt;
+          
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            DataGridViewRowCollection RowCollection = gridPurchaseSearch.Rows;
+            List<printclass> classCollection = new List<printclass>();
+            for (int a = 0; a < RowCollection.Count; a++)
             {
-                s = "od.Orderid";
-                get(s);
+
+                DataGridViewRow currentRow = RowCollection[a];
+                DataGridViewCellCollection cellCollection = currentRow.Cells;
+                printclass classObject = new printclass();
+                classObject.Name = cellCollection[1].Value.ToString();
+                classObject.Address = cellCollection[3].Value.ToString();
+                classObject.Phone = cellCollection[11].Value.ToString();
+                classObject.Email = cellCollection[8].Value.ToString();
+                classObject.OpningBalnce = cellCollection[20].Value.ToString();
+                classObject.CurrentBalnce = cellCollection[21].Value.ToString();
+                classCollection.Add(classObject);
             }
-            else if (s == "OrderDate")
+            VendorPrint vp = new VendorPrint(classCollection, 1);
+            vp.Show();
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (gridPurchaseSearch.AllowUserToAddRows == true)
             {
-                s = "od.OrderDate";
-                get1(s);
+                gridPurchaseSearch.AllowUserToAddRows = false;
+            }
+            string FileName = "";
+            SaveFileDialog openFileDialog1 = new SaveFileDialog();
+            //FolderBrowserDialog openFileDialog1 = new FolderBrowserDialog();
+            openFileDialog1.Filter = "xls files (*.xls)|*.xls|All files (*.*)|*.*";
+            openFileDialog1.FileName = "Vendor Details";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                FileName = openFileDialog1.FileName;
 
             }
-            else if (s == "DeliveryDate")
+            //DataGridViewColumnCollection column = dataGridView1.Columns;
+            int cout = 0;
+            int rowCoumt = 0;
+            // column1 = dc.Name.ToString();
+            string file = FileName;//+ ".xls"; //System.Configuration.ConfigurationManager.AppSettings["ExcelFilePath1"] + FolderName + "newdoc.xls";
+            Workbook workbook = new Workbook();
+            Worksheet worksheet = new Worksheet("First Sheet");
+
+            foreach (DataGridViewColumn dc in gridPurchaseSearch.Columns)
             {
-                s = "cod.DeliveryDate";
-                get1(s);
+
+                worksheet.Cells[rowCoumt, cout] = new Cell(dc.Name);
+                cout++;
+
             }
-            else if (s == "InvoiceDate")
+
+            //foreach (DataGridViewRow row in dataGridView1.Rows) { }
+            DataGridViewRowCollection rowcollection = gridPurchaseSearch.Rows;
+
+            int rowindex = 1;
+            //int countindex = 0;
+            for (int a = 0; a < rowcollection.Count; a++)
             {
-                s = "coi.InvoiceDate";
-                get1(s);
-                //string selectQurry = "select od.Orderid,od.venderId,itd.ItemName,vod.Quantity,vod.TotalPrice,od.OrderDate,cod.DeliveryDate,coi.InvoiceDate from VendorOrderDetails od join VendorOrderDesc vod on vod.Orderid=od.Orderid join CustomerOrderDelivery cod on cod.Orderid=vod.Orderid join CustomerOrderInvoice coi on coi.Orderid=vod.Orderid join ItemDetails itd on itd.ItemId=vod.ItemId where " + s + " = '" + txtsearch.Text + "'";
-                //DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
-                //gridPurchaseSearch.DataSource = dt;
+                DataGridViewRow currentrow = rowcollection[a];
+                DataGridViewCellCollection cellcollecton = currentrow.Cells;
+                int countrow = 0;
+
+                for (int b = 0; b < currentrow.Cells.Count; b++)
+                {
+                    worksheet.Cells[rowindex, countrow] = new Cell(currentrow.Cells[b].Value.ToString());
+                    // countindex++;
+                    countrow++;
+                }
+                // name = cellcollecton[0].Value.ToString() + " , " + cellcollecton[1].Value.ToString() + " , " + cellcollecton[2].Value.ToString() + " , " + cellcollecton[3].Value.ToString() + " , " + cellcollecton[4].Value.ToString() + " , " + cellcollecton[5].Value.ToString() + "  , " + cellcollecton[6].Value.ToString() + " , " + cellcollecton[7].Value.ToString() + " , " + cellcollecton[8].Value.ToString() + " , " + cellcollecton[9].Value.ToString() + " , " + cellcollecton[10].Value.ToString() + " , " + cellcollecton[11].Value.ToString() + " , " + cellcollecton[12].Value.ToString() + ", " + cellcollecton[13].Value.ToString() + " , " + cellcollecton[14].Value.ToString() + " , " + cellcollecton[15].Value.ToString();
+                rowindex++;
             }
-            else if (s == "TotalPrice")
-            {
-                s = "vod.TotalPrice";
-                get(s);
-            }
-            else
-            {
-                get(s);
-            }
-        }
-        private void get(string a)
-        {
-            string selectQurry = "SELECT dbo.CustomerOrderDelivery.Deliveryid as[Deliveri ID], dbo.CustomerOrderDelivery.DeliveryDate as[Delivery Date],dbo.VendorDetails.vName as[Vendor Name], dbo.VendorDetails.vCompName as[Vendor Company Name], dbo.VendorDetails.vAddress as[Vendor Address], dbo.VendorDetails.vCity as[City], dbo.VendorDetails.vState as[State], dbo.VendorDetails.vZip as[Zip], dbo.VendorDetails.vCountry as[Country], dbo.VendorDetails.vEmail as[Email], dbo.VendorDetails.vWebAddress as[Web Address],dbo.VendorDetails.vPhone as[Phone], dbo.VendorDetails.vMobile as[Mobile], dbo.VendorDetails.vFax as[Fax], dbo.VendorDetails.vPanNo as[PAN NO], dbo.VendorDetails.vVatNo as[VAT NO], dbo.VendorDetails.vCstNo as[CST NO], dbo.VendorDetails.vServiceTaxRegnNo as[Service TaxRegn No], dbo.VendorDetails.vGSTRegnNo as[GST Regn No], dbo.VendorOrderDetails.TotalPrice as[Total Price], dbo.VendorOrderDetails.Discount as[Discount], dbo.VendorOrderDetails.Vat as[VAT], dbo.VendorOrderDetails.DisAmount as[Dis Amount], dbo.VendorOrderDetails.TextTaxAmmount as[TextTaxAmmount], dbo.VendorOrderDetails.WithoutTexAmount as[Without TexAmount], dbo.VendorOrderDesc.Orderid as[Order ID], dbo.VendorOrderDesc.ItemId as[Item ID], dbo.VendorOrderDesc.Price as[Price], dbo.VendorOrderDesc.Quantity as[Quantity], dbo.VendorOrderDesc.TotalPrice AS Expr1, dbo.ItemDetails.ItemName as[Item Name], dbo.ItemPriceDetail.MrpPrice as[Mrp Price], dbo.ItemPriceDetail.Margin as[Margin], dbo.VendorDetails.venderId as[Vendor ID] FROM  dbo.CustomerOrderDelivery INNER JOIN dbo.VendorOrderDetails ON dbo.CustomerOrderDelivery.Orderid = dbo.VendorOrderDetails.Orderid INNER JOIN dbo.VendorDetails ON dbo.VendorOrderDetails.venderId = dbo.VendorDetails.venderId INNER JOIN dbo.VendorOrderDesc ON dbo.VendorOrderDetails.Orderid = dbo.VendorOrderDesc.Orderid INNER JOIN dbo.ItemDetails ON dbo.VendorOrderDesc.ItemId = dbo.ItemDetails.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId where " + a + " like '" + txtsearch.Text + "%'";
-                //"select od.Orderid,od.venderId,itd.ItemName,vod.Quantity,vod.TotalPrice,od.OrderDate,cod.DeliveryDate,coi.InvoiceDate from VendorOrderDetails od join VendorOrderDesc vod on vod.Orderid=od.Orderid join CustomerOrderDelivery cod on cod.Orderid=vod.Orderid join CustomerOrderInvoice coi on coi.Orderid=vod.Orderid join ItemDetails itd on itd.ItemId=vod.ItemId where " + a + " like '" + txtsearch.Text + "%'";
-            DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
-            gridPurchaseSearch.DataSource = dt;
-        }
-        private void get1(string a)
-        {
-            string selectQurry = "SELECT dbo.CustomerOrderDelivery.Deliveryid as[Deliveri ID], dbo.CustomerOrderDelivery.DeliveryDate as[Delivery Date],dbo.VendorDetails.vName as[Vendor Name], dbo.VendorDetails.vCompName as[Vendor Company Name], dbo.VendorDetails.vAddress as[Vendor Address], dbo.VendorDetails.vCity as[City], dbo.VendorDetails.vState as[State], dbo.VendorDetails.vZip as[Zip], dbo.VendorDetails.vCountry as[Country], dbo.VendorDetails.vEmail as[Email], dbo.VendorDetails.vWebAddress as[Web Address],dbo.VendorDetails.vPhone as[Phone], dbo.VendorDetails.vMobile as[Mobile], dbo.VendorDetails.vFax as[Fax], dbo.VendorDetails.vPanNo as[PAN NO], dbo.VendorDetails.vVatNo as[VAT NO], dbo.VendorDetails.vCstNo as[CST NO], dbo.VendorDetails.vServiceTaxRegnNo as[Service TaxRegn No], dbo.VendorDetails.vGSTRegnNo as[GST Regn No], dbo.VendorOrderDetails.TotalPrice as[Total Price], dbo.VendorOrderDetails.Discount as[Discount], dbo.VendorOrderDetails.Vat as[VAT], dbo.VendorOrderDetails.DisAmount as[Dis Amount], dbo.VendorOrderDetails.TextTaxAmmount as[TextTaxAmmount], dbo.VendorOrderDetails.WithoutTexAmount as[Without TexAmount], dbo.VendorOrderDesc.Orderid as[Order ID], dbo.VendorOrderDesc.ItemId as[Item ID], dbo.VendorOrderDesc.Price as[Price], dbo.VendorOrderDesc.Quantity as[Quantity], dbo.VendorOrderDesc.TotalPrice AS Expr1, dbo.ItemDetails.ItemName as[Item Name], dbo.ItemPriceDetail.MrpPrice as[Mrp Price], dbo.ItemPriceDetail.Margin as[Margin], dbo.VendorDetails.venderId as[Vendor ID] FROM  dbo.CustomerOrderDelivery INNER JOIN dbo.VendorOrderDetails ON dbo.CustomerOrderDelivery.Orderid = dbo.VendorOrderDetails.Orderid INNER JOIN dbo.VendorDetails ON dbo.VendorOrderDetails.venderId = dbo.VendorDetails.venderId INNER JOIN dbo.VendorOrderDesc ON dbo.VendorOrderDetails.Orderid = dbo.VendorOrderDesc.Orderid INNER JOIN dbo.ItemDetails ON dbo.VendorOrderDesc.ItemId = dbo.ItemDetails.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId where " + a + " like '" + txtsearch.Text + "%'";
-            //"select od.Orderid,od.venderId,itd.ItemName,vod.Quantity,vod.TotalPrice,od.OrderDate,cod.DeliveryDate,coi.InvoiceDate from VendorOrderDetails od join VendorOrderDesc vod on vod.Orderid=od.Orderid join CustomerOrderDelivery cod on cod.Orderid=vod.Orderid join CustomerOrderInvoice coi on coi.Orderid=vod.Orderid join ItemDetails itd on itd.ItemId=vod.ItemId where " + a + "= '" + txtsearch.Text + "'";
-            DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
-            gridPurchaseSearch.DataSource = dt;
+            workbook.Worksheets.Add(worksheet);
+            workbook.Save(file);
+            gridPurchaseSearch.AllowUserToAddRows = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             string s = comboPurchasesearch.SelectedValue.ToString();
-            string selectQurry = "SELECT dbo.CustomerOrderDelivery.Deliveryid as[Deliveri ID], dbo.CustomerOrderDelivery.DeliveryDate as[Delivery Date],dbo.VendorDetails.vName as[Vendor Name], dbo.VendorDetails.vCompName as[Vendor Company Name], dbo.VendorDetails.vAddress as[Vendor Address], dbo.VendorDetails.vCity as[City], dbo.VendorDetails.vState as[State], dbo.VendorDetails.vZip as[Zip], dbo.VendorDetails.vCountry as[Country], dbo.VendorDetails.vEmail as[Email], dbo.VendorDetails.vWebAddress as[Web Address],dbo.VendorDetails.vPhone as[Phone], dbo.VendorDetails.vMobile as[Mobile], dbo.VendorDetails.vFax as[Fax], dbo.VendorDetails.vPanNo as[PAN NO], dbo.VendorDetails.vVatNo as[VAT NO], dbo.VendorDetails.vCstNo as[CST NO], dbo.VendorDetails.vServiceTaxRegnNo as[Service TaxRegn No], dbo.VendorDetails.vGSTRegnNo as[GST Regn No], dbo.VendorOrderDetails.TotalPrice as[Total Price], dbo.VendorOrderDetails.Discount as[Discount], dbo.VendorOrderDetails.Vat as[VAT], dbo.VendorOrderDetails.DisAmount as[Dis Amount], dbo.VendorOrderDetails.TextTaxAmmount as[TextTaxAmmount], dbo.VendorOrderDetails.WithoutTexAmount as[Without TexAmount], dbo.VendorOrderDesc.Orderid as[Order ID], dbo.VendorOrderDesc.ItemId as[Item ID], dbo.VendorOrderDesc.Price as[Price], dbo.VendorOrderDesc.Quantity as[Quantity], dbo.VendorOrderDesc.TotalPrice AS Expr1, dbo.ItemDetails.ItemName as[Item Name], dbo.ItemPriceDetail.MrpPrice as[Mrp Price], dbo.ItemPriceDetail.Margin as[Margin], dbo.VendorDetails.venderId as[Vendor ID] FROM  dbo.CustomerOrderDelivery INNER JOIN dbo.VendorOrderDetails ON dbo.CustomerOrderDelivery.Orderid = dbo.VendorOrderDetails.Orderid INNER JOIN dbo.VendorDetails ON dbo.VendorOrderDetails.venderId = dbo.VendorDetails.venderId INNER JOIN dbo.VendorOrderDesc ON dbo.VendorOrderDetails.Orderid = dbo.VendorOrderDesc.Orderid INNER JOIN dbo.ItemDetails ON dbo.VendorOrderDesc.ItemId = dbo.ItemDetails.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId where DeliveryDate BETWEEN '" + dateTimePicker1.Text + "' AND '" + dateTimePicker2.Text + "'";
+            string selectQurry = "SELECT dbo.VendorDetails.venderId as[Vendor ID],dbo.VendorDetails.vName as[Vendor Name], dbo.VendorDetails.vCompName as[Company Name], dbo.VendorDetails.vAddress as[Address], dbo.VendorDetails.vCity as[City], dbo.VendorDetails.vState as[State], dbo.VendorDetails.vZip as[Zip], dbo.VendorDetails.vCountry as[Country], dbo.VendorDetails.vEmail as[Email], dbo.VendorDetails.vWebAddress as[Web Address],dbo.VendorDetails.vPhone as[Phone], dbo.VendorDetails.vMobile as[Mobile],dbo.CustomerOrderDelivery.Deliveryid as[Invoice ID], dbo.CustomerOrderDelivery.DeliveryDate as[Invoice Date], dbo.CustomerOrderDelivery.RefNo as[Order Ref. NO], dbo.VendorOrderDesc.ItemId as[Item ID], dbo.ItemDetails.ItemName as[Item Name], dbo.ItemDetails.ItemCompName as[Company Name], dbo.ItemPriceDetail.MrpPrice as[MRP], dbo.VendorOrderDesc.Price as[Selling Rate], dbo.VendorOrderDesc.Quantity as[Quantity Billed], dbo.VendorOrderDesc.TotalPrice AS [Gross Amount], dbo.VendorOrderDetails.Discount as[Discount Rate],((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100) as [Discount Amount], dbo.VendorOrderDetails.Vat as[Tax], (dbo.VendorOrderDesc.TotalPrice)- ((dbo.VendorOrderDesc.TotalPrice)/(1+(dbo.VendorOrderDetails.Vat/100))) as [Tax Amount], dbo.VendorOrderDetails.TotalPrice as[Net Amount (Including Tax)] FROM  dbo.CustomerOrderDelivery INNER JOIN dbo.VendorOrderDetails ON dbo.CustomerOrderDelivery.Orderid = dbo.VendorOrderDetails.Orderid INNER JOIN dbo.VendorDetails ON dbo.VendorOrderDetails.venderId = dbo.VendorDetails.venderId INNER JOIN dbo.VendorOrderDesc ON dbo.VendorOrderDetails.Orderid = dbo.VendorOrderDesc.Orderid INNER JOIN dbo.ItemDetails ON dbo.VendorOrderDesc.ItemId = dbo.ItemDetails.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId where DeliveryDate BETWEEN '" + dateTimePicker1.Text + "' AND '" + dateTimePicker2.Text + "'";
             //"select od.Orderid,od.venderId,itd.ItemName,vod.Quantity,vod.TotalPrice,od.OrderDate,cod.DeliveryDate,coi.InvoiceDate from VendorOrderDetails od join VendorOrderDesc vod on vod.Orderid=od.Orderid join CustomerOrderDelivery cod on cod.Orderid=vod.Orderid join CustomerOrderInvoice coi on coi.Orderid=vod.Orderid join ItemDetails itd on itd.ItemId=vod.ItemId where " + a + "= '" + txtsearch.Text + "'";
             DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
             gridPurchaseSearch.DataSource = dt;
