@@ -122,6 +122,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DeliveryPage.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Display form.cs">
       <SubType>Form</SubType>
