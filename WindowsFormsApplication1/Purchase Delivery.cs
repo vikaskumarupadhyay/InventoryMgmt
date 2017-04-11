@@ -31,6 +31,7 @@ namespace WindowsFormsApplication1
             txtQunty.ReadOnly = true;
             button4.Enabled = false;
             button3.Enabled = false;
+            txtDisAmount.Text = "0";
             txtdate.Value = DateTime.Now;
             string stlect = "select Deliveryid from CustomerOrderDelivery";
             DataTable dt = dbMainClass.getDetailByQuery(stlect);
