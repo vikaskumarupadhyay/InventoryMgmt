@@ -29,6 +29,7 @@ namespace WindowsFormsApplication1
             TOAmmount.Visible = false;
             DisAmmount.Visible = false;
             TextTaxAmmount.Visible = false;
+            DisAmmount.Text = "0";
             IndexTex1();
             btnAddItem.Enabled = false;
             txtRemoveItem.Enabled = false;
@@ -1205,6 +1206,7 @@ namespace WindowsFormsApplication1
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
+               
                 double totalAmount = 0.00;//Convert.ToDouble(txttotalAmount.Text);
                 foreach (DataRow dr in addToCartTable.Rows)
                 {
@@ -1236,6 +1238,19 @@ namespace WindowsFormsApplication1
             double taxamount = total / tax;
             double totaltax = total - taxamount;
            TextTaxAmmount.Text = totaltax.ToString();
+        }
+
+        private void DisAmmount_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void Distxt_TextChanged(object sender, EventArgs e)
+        {
+            if (txtDiscount.Text == "0")
+            {
+                DisAmmount.Text = "0";
+            }
         }
        
     }
