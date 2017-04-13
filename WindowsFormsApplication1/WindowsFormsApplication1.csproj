@@ -221,9 +221,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>salesdelivaryDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="salesordersearch.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="salesordersearch.cs" />
     <Compile Include="salesordersearch.Designer.cs">
       <DependentUpon>salesordersearch.cs</DependentUpon>
     </Compile>
