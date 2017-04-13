@@ -61,6 +61,23 @@ namespace WindowsFormsApplication1
             comboPurchasesearch.ValueMember = "ActualTableColumnName";
             comboPurchasesearch.DisplayMember = "AliasTableColumnName";
             gridPurchaseSearch.DataSource = dt;
+            //DataGridViewRowCollection RowCollection = gridPurchaseSearch.Rows;
+            double dis = 0;
+            double tax = 0;
+            Decimal gross = 0;
+            double wta = 0;
+          foreach(DataRow dr in dt.Rows )
+          {
+              string gross1 = dr[21].ToString();
+                gross = Convert.ToDecimal(gross1);
+                Decimal gros = gross;
+                gros = gros + gros;
+
+                TxtGrowsAmount.Text = gros.ToString();
+
+            }
+           
+
         }
 
         private void txtsearch_TextChanged(object sender, EventArgs e)
@@ -164,6 +181,11 @@ namespace WindowsFormsApplication1
             //"select od.Orderid,od.venderId,itd.ItemName,vod.Quantity,vod.TotalPrice,od.OrderDate,cod.DeliveryDate,coi.InvoiceDate from VendorOrderDetails od join VendorOrderDesc vod on vod.Orderid=od.Orderid join CustomerOrderDelivery cod on cod.Orderid=vod.Orderid join CustomerOrderInvoice coi on coi.Orderid=vod.Orderid join ItemDetails itd on itd.ItemId=vod.ItemId where " + a + "= '" + txtsearch.Text + "'";
             DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
             gridPurchaseSearch.DataSource = dt;
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
