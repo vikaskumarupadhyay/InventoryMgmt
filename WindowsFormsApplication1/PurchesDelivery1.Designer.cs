@@ -2517,12 +2517,12 @@ namespace WindowsFormsApplication1.PurchesDeliveryTableAdapters {
         ///Update Order Option
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        //public enum UpdateOrderOption {
+        public enum UpdateOrderOption {
             
-        //    InsertUpdateDelete = 0,
+            InsertUpdateDelete = 0,
             
-        //    UpdateInsertDelete = 1,
-        //}
+            UpdateInsertDelete = 1,
+        }
         
         /// <summary>
         ///Used to sort self-referenced table's rows

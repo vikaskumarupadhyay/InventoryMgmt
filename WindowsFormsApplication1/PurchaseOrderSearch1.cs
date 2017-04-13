@@ -164,7 +164,7 @@ namespace WindowsFormsApplication1
             double dis1 = 0;
             double tax;
             double tax1 = 0;
-            double gross;
+            double gross;   
             double wta;
             double wta1 = 0;
             double gross1 = 0;
