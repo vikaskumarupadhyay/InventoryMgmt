@@ -43,7 +43,7 @@ namespace WindowsFormsApplication1
             customDataTable.Columns.Add("ActualTableColumnName");
             customDataTable.Columns.Add("AliasTableColumnName");
             //List<string> ls = new List<string>();
-            DataColumnCollection d = dt.Columns;
+            DataColumnCollection d = dt.Columns;    
             DataColumnCollection dataColumnForName = dtOnlyColumnName.Columns;
             for (int a = 0; a < d.Count; a++)
             {
