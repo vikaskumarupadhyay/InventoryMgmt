@@ -221,6 +221,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>salesdelivaryDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="salesordersearch.cs" />
+    <Compile Include="salesordersearch.Designer.cs">
+      <DependentUpon>salesordersearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="salessearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -366,6 +370,9 @@
     <EmbeddedResource Include="PurchesDelivery2.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PurchesDelivery2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="salesordersearch.resx">
+      <DependentUpon>salesordersearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="salessearch.resx">
       <DependentUpon>salessearch.cs</DependentUpon>
