@@ -26,13 +26,13 @@ namespace WindowsFormsApplication1
         {
             if (F2 == null)
             {
-                 F2 = new frmVendorDetails(0);
-                 F2.MdiParent = this;
-                 F2.FormClosed += new FormClosedEventHandler(F2_FormClosed);
-                 F2.ControlBox = false;
-                 F2.Show();
-                 F2.WindowState = FormWindowState.Maximized;
-                 
+                F2 = new frmVendorDetails(0);
+                F2.MdiParent = this;
+                F2.FormClosed += new FormClosedEventHandler(F2_FormClosed);
+                F2.ControlBox = false;
+                F2.Show();
+                F2.WindowState = FormWindowState.Maximized;
+
             }
             else
             {
@@ -134,7 +134,7 @@ namespace WindowsFormsApplication1
             {
 
                 F7 = new Form7();
-                
+
                 F7.MdiParent = this;
                 F7.FormClosed += new FormClosedEventHandler(F7_FormClosed);
                 F7.ControlBox = false;
@@ -158,7 +158,7 @@ namespace WindowsFormsApplication1
             if (F8 == null)
             {
                 F8 = new Form8();
-                
+
                 F8.MdiParent = this;
                 F8.FormClosed += new FormClosedEventHandler(F8_FormClosed);
                 F8.ControlBox = false;
@@ -224,7 +224,7 @@ namespace WindowsFormsApplication1
             if (F12 == null)
             {
                 F12 = new salesinvoice();
-                
+
                 F12.MdiParent = this;
                 F12.FormClosed += new FormClosedEventHandler(F12_FormClosed);
                 F12.ControlBox = false;
@@ -248,7 +248,7 @@ namespace WindowsFormsApplication1
             if (F10 == null)
             {
                 F10 = new salesorder();
-                
+
                 F10.MdiParent = this;
                 F10.FormClosed += new FormClosedEventHandler(F10_FormClosed);
                 F10.ControlBox = false;
@@ -272,7 +272,7 @@ namespace WindowsFormsApplication1
             if (F11 == null)
             {
                 F11 = new salesdelivary();
-               
+
                 F11.MdiParent = this;
                 F11.FormClosed += new FormClosedEventHandler(F11_FormClosed);
                 F11.ControlBox = false;
@@ -297,7 +297,7 @@ namespace WindowsFormsApplication1
                 F5 = new Form5();
                 F5.Show();
                 F5.MdiParent = this;
-                F5.FormClosed +=new FormClosedEventHandler(F5_FormClosed);
+                F5.FormClosed += new FormClosedEventHandler(F5_FormClosed);
             }
             else
             {
@@ -307,8 +307,8 @@ namespace WindowsFormsApplication1
 
         private void salesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-           // salessearch f = new salessearch();
-           // f.Show();
+            // salessearch f = new salessearch();
+            // f.Show();
             //f.MdiParent = this;
         }
 
@@ -317,7 +317,7 @@ namespace WindowsFormsApplication1
             if (F3 == null)
             {
                 F3 = new Customer(1);
-                
+
                 F3.MdiParent = this;
                 F3.FormClosed += new FormClosedEventHandler(F3_FormClosed);
                 F3.ControlBox = false;
@@ -361,7 +361,7 @@ namespace WindowsFormsApplication1
             if (F2 == null)
             {
                 F2 = new frmVendorDetails(1);
-                
+
                 F2.MdiParent = this;
                 F2.FormClosed += new FormClosedEventHandler(F2_FormClosed);
                 F2.ControlBox = false;
@@ -382,7 +382,7 @@ namespace WindowsFormsApplication1
             if (F4 == null)
             {
                 F4 = new Item(1);
-                
+
                 F4.MdiParent = this;
                 F4.FormClosed += new FormClosedEventHandler(F4_FormClosed);
                 F4.ControlBox = false;
@@ -420,13 +420,13 @@ namespace WindowsFormsApplication1
             {
                 f1.Activate();
             }
-               
-                 //f1.ShowDialog();
-             
+
+            //f1.ShowDialog();
+
             //}
-           
-         
-            
+
+
+
         }
 
         void f1_FormClosed(object sender, FormClosedEventArgs e)
@@ -437,7 +437,7 @@ namespace WindowsFormsApplication1
 
         private void salesToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-           salessearch s = new salessearch();
+            salessearch s = new salessearch();
             s.Show();
         }
 
@@ -451,14 +451,36 @@ namespace WindowsFormsApplication1
 
         private void companyListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void salesorderSearchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            salesordersearch sh = new salesordersearch();
-            sh.Show();
+            //salesordersearch sh = new salesordersearch();
+            //sh.Show();
         }
+        PurchaseOrderSearch1 po;
+        private void purchesOrderSearchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (po == null)
+            {
+                po = new PurchaseOrderSearch1();
+                po.MdiParent = this;
+                po.FormClosed += new FormClosedEventHandler(po_FormClosed);
+                po.Show();
+            }
+            else
+            {
+                po.Activate();
+
+            }
+        }
+
+        void po_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            po = null;
+            //throw new NotImplementedException();
         }
     }
+}
 

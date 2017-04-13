@@ -64,5 +64,10 @@ E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Unit.reso
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+<<<<<<< HEAD
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.salesordersearch.resources
+=======
+D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+D:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.PurchaseOrderSearch1.resources
+>>>>>>> Ume-13-Apr-17_Part-3

@@ -56,8 +56,9 @@
             this.vendorListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.itemToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salesorderSearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.purchesOrderSearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -223,7 +224,8 @@
             this.vendorListToolStripMenuItem,
             this.customerToolStripMenuItem1,
             this.itemToolStripMenuItem1,
-            this.salesorderSearchToolStripMenuItem});
+            this.salesorderSearchToolStripMenuItem,
+            this.purchesOrderSearchToolStripMenuItem});
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
             this.searchToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.searchToolStripMenuItem.Text = "Explore";
@@ -231,53 +233,60 @@
             // purchaseToolStripMenuItem1
             // 
             this.purchaseToolStripMenuItem1.Name = "purchaseToolStripMenuItem1";
-            this.purchaseToolStripMenuItem1.Size = new System.Drawing.Size(165, 22);
+            this.purchaseToolStripMenuItem1.Size = new System.Drawing.Size(184, 22);
             this.purchaseToolStripMenuItem1.Text = "Purchase Search";
             this.purchaseToolStripMenuItem1.Click += new System.EventHandler(this.purchaseToolStripMenuItem1_Click);
             // 
             // salesToolStripMenuItem1
             // 
             this.salesToolStripMenuItem1.Name = "salesToolStripMenuItem1";
-            this.salesToolStripMenuItem1.Size = new System.Drawing.Size(165, 22);
+            this.salesToolStripMenuItem1.Size = new System.Drawing.Size(184, 22);
             this.salesToolStripMenuItem1.Text = "Sales Search";
             this.salesToolStripMenuItem1.Click += new System.EventHandler(this.salesToolStripMenuItem1_Click_1);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(162, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(181, 6);
             // 
             // reportsToolStripMenuItem
             // 
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.reportsToolStripMenuItem.Text = "Reports";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(162, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(181, 6);
             // 
             // vendorListToolStripMenuItem
             // 
             this.vendorListToolStripMenuItem.Name = "vendorListToolStripMenuItem";
-            this.vendorListToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.vendorListToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.vendorListToolStripMenuItem.Text = "Vendor List";
             this.vendorListToolStripMenuItem.Click += new System.EventHandler(this.vendorListToolStripMenuItem_Click);
             // 
             // customerToolStripMenuItem1
             // 
             this.customerToolStripMenuItem1.Name = "customerToolStripMenuItem1";
-            this.customerToolStripMenuItem1.Size = new System.Drawing.Size(165, 22);
+            this.customerToolStripMenuItem1.Size = new System.Drawing.Size(184, 22);
             this.customerToolStripMenuItem1.Text = "Customer List";
             this.customerToolStripMenuItem1.Click += new System.EventHandler(this.customerToolStripMenuItem1_Click);
             // 
             // itemToolStripMenuItem1
             // 
             this.itemToolStripMenuItem1.Name = "itemToolStripMenuItem1";
-            this.itemToolStripMenuItem1.Size = new System.Drawing.Size(165, 22);
+            this.itemToolStripMenuItem1.Size = new System.Drawing.Size(184, 22);
             this.itemToolStripMenuItem1.Text = "Item List";
             this.itemToolStripMenuItem1.Click += new System.EventHandler(this.itemToolStripMenuItem1_Click);
+            // 
+            // salesorderSearchToolStripMenuItem
+            // 
+            this.salesorderSearchToolStripMenuItem.Name = "salesorderSearchToolStripMenuItem";
+            this.salesorderSearchToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.salesorderSearchToolStripMenuItem.Text = "Salesorder search";
+            this.salesorderSearchToolStripMenuItem.Click += new System.EventHandler(this.salesorderSearchToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -285,12 +294,12 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
-            // salesorderSearchToolStripMenuItem
+            // purchesOrderSearchToolStripMenuItem
             // 
-            this.salesorderSearchToolStripMenuItem.Name = "salesorderSearchToolStripMenuItem";
-            this.salesorderSearchToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.salesorderSearchToolStripMenuItem.Text = "Salesorder search";
-            this.salesorderSearchToolStripMenuItem.Click += new System.EventHandler(this.salesorderSearchToolStripMenuItem_Click);
+            this.purchesOrderSearchToolStripMenuItem.Name = "purchesOrderSearchToolStripMenuItem";
+            this.purchesOrderSearchToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.purchesOrderSearchToolStripMenuItem.Text = "PurchesOrder Search";
+            this.purchesOrderSearchToolStripMenuItem.Click += new System.EventHandler(this.purchesOrderSearchToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -345,6 +354,7 @@
         private System.Windows.Forms.ToolStripMenuItem companyToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem salesorderSearchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem purchesOrderSearchToolStripMenuItem;
 
     }
 }
