@@ -124,8 +124,57 @@ namespace WindowsFormsApplication1
 
 
         }
+        public double getTotalAmounts()
+        {
+            double totalValue = 0.0;
+            double s;
+            for (int a = 0; a < dataGridView1.Rows.Count; a++)
+            {
+             s=Convert.ToDouble(dataGridView1.Rows[a].Cells[21].Value);
+             totalValue = totalValue + s;
+
+            }
+            return totalValue;
+        }
+        public double getdiscountamount()
+        {
+            double totalValue = 0.0;
+            double s;
+            for (int a = 0; a < dataGridView1.Rows.Count; a++)
+            {
+                s = Convert.ToDouble(dataGridView1.Rows[a].Cells[23].Value);
+                totalValue = totalValue + s;
+
+            }
+            return totalValue;
+        }
+        public double gettaxamount()
+        {
+            double totalValue = 0.0;
+            double s;
+            for (int a = 0; a < dataGridView1.Rows.Count; a++)
+            {
+                s = Convert.ToDouble(dataGridView1.Rows[a].Cells[24].Value);
+                totalValue = totalValue + s;
+
+            }
+            return totalValue;
+        }
+        public double getwithauttaxamount()
+        {
+            double totalValue = 0.0;
+            double s;
+            for (int a = 0; a < dataGridView1.Rows.Count; a++)
+            {
+                s = Convert.ToDouble(dataGridView1.Rows[a].Cells[25].Value);
+                totalValue = totalValue + s;
+
+            }
+            return totalValue;
+        }
         private void salessearch_Load(object sender, EventArgs e)
         {
+           
             // int j = 5;
             //int h = 0;
             //string name = "";
@@ -163,6 +212,7 @@ namespace WindowsFormsApplication1
              for (int a = 2; a < d1.Count; a++)
              {
                  //DataColumn dc = new DataColumn();
+                 
                  string b = d1[a].ToString();
                  string actualColumnName = dataColumnForName[a].ToString();
                  DataRow dr = customDataTable.NewRow();
@@ -176,9 +226,17 @@ namespace WindowsFormsApplication1
              comboBox1.ValueMember = "ActualTableColumnName";
              comboBox1.DisplayMember = "AliasTableColumnName";
             dataGridView1.DataSource = dt;
-           
-        }
+            double s = getTotalAmounts();
+            txtgrossamount.Text = s.ToString();
+            double disa = getdiscountamount();
+            txtdiscountamount.Text = disa.ToString();
+            double taxa = gettaxamount();
+            txttaxamount.Text = taxa.ToString();
+            double witha = getwithauttaxamount();
+            txtwithauttaxamoubnt.Text = witha.ToString();
 
+        }
+        
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             string s = comboBox1.SelectedValue.ToString();
@@ -324,6 +382,26 @@ namespace WindowsFormsApplication1
             workbook.Save(file);
             dataGridView1.AllowUserToAddRows = true;
         }
+
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            double sum = 0;
+            for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+            {
+                double d = 0;
+                Double.TryParse(dataGridView1.Rows[i].Cells[21].Value.ToString(), out d);
+                sum += d;
+            }
+           
+        }
+
+      
+     
+
+       
+
+       
+
 
        
 
