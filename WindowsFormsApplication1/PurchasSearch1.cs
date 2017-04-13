@@ -62,22 +62,30 @@ namespace WindowsFormsApplication1
             comboPurchasesearch.DisplayMember = "AliasTableColumnName";
             gridPurchaseSearch.DataSource = dt;
             //DataGridViewRowCollection RowCollection = gridPurchaseSearch.Rows;
-            double dis = 0;
-            double tax = 0;
-            Decimal gross = 0;
-            double wta = 0;
-          foreach(DataRow dr in dt.Rows )
-          {
-              string gross1 = dr[21].ToString();
-                gross = Convert.ToDecimal(gross1);
-                Decimal gros = gross;
-                gros = gros + gros;
-
-                TxtGrowsAmount.Text = gros.ToString();
-
+            double dis;
+            double dis1 = 0;
+            double tax;
+            double tax1 = 0;
+            double gross;
+            double wta;
+            double wta1 = 0;
+            double gross1 = 0;
+            for (int a = 0; a < gridPurchaseSearch.Rows.Count; a++)
+            {
+                gross = Convert.ToDouble(gridPurchaseSearch.Rows[a].Cells[21].Value);
+              gross1 = gross1+gross;
+              dis = Convert.ToDouble(gridPurchaseSearch.Rows[a].Cells[23].Value);
+              dis1 = dis1 + dis;
+              tax = Convert.ToDouble(gridPurchaseSearch.Rows[a].Cells[25].Value);
+              tax1 = tax1 + tax;
+              wta = Convert.ToDouble(gridPurchaseSearch.Rows[a].Cells[26].Value);
+              wta1 = wta1 + wta;
             }
-           
 
+            TxtGrowsAmount.Text = gross1.ToString();
+            TxtDisAmount.Text = dis1.ToString();
+            TxtTaxAmount.Text = tax1.ToString();
+            TxtWithodTaxAmount.Text = wta1.ToString();
         }
 
         private void txtsearch_TextChanged(object sender, EventArgs e)
