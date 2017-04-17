@@ -1256,6 +1256,7 @@ namespace WindowsFormsApplication1
                 DisAmmount.Text = "0";
             }
         }
+
        
     }
 }

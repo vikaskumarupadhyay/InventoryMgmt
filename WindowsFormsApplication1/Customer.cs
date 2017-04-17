@@ -28,7 +28,16 @@ namespace WindowsFormsApplication1
      
         private void Customer_Load(object sender, EventArgs e)
         {
+           
             comserchvalue.Focus();
+            string s = txtOPENINGBALANCE.Text;
+            int decimalCount = '.';
+            bool validDecimal = true;
+            if (validDecimal && decimalCount<1)
+            {
+                txtOPENINGBALANCE.Text = decimalCount.ToString();
+            }
+           
             if (value == 1)
             {
                 //panel2.Visible = true;
@@ -239,21 +248,30 @@ namespace WindowsFormsApplication1
 
         private void txtCustOpeningBal_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsNumber(e.KeyChar) || Char.IsPunctuation(e.KeyChar))
+           
+            //return moreThanOneDecimalChar;
+            string value1 = txtOPENINGBALANCE.Text;
+            bool moreThanOneDecimalChar = false;
+            int g = 0;
+            char h = '.';
+            for (int a = 0; a < value1.Length; a++)
+            {
+                if (value1[a] == '.')
+                {
+                    g++;
+                }                                                   
+            }
+            if (g== 1)
+            {
+                moreThanOneDecimalChar = true;
+            }
+            if (moreThanOneDecimalChar == false || e.KeyChar == '\b') 
             {
                 e.Handled = false;
             }
-            else
+            else if (Char.IsLetter(e.KeyChar) ||(moreThanOneDecimalChar&& e.KeyChar=='.') || Char.IsPunctuation(e.KeyChar) )
             {
-                if (e.KeyChar == '\b')
-                {
-                    e.Handled = false;
-                }
-                else
-                {
-                    e.Handled = true;
-                    MessageBox.Show("Plese enter numeric data!");
-                }
+                e.Handled = true;
             }
 
         }
@@ -424,15 +442,15 @@ namespace WindowsFormsApplication1
                 txtTXTPHONE.Text = cellCollection[10].Value.ToString();
                 txtMOBILE.Text = cellCollection[11].Value.ToString();
                 txtFAX.Text = cellCollection[12].Value.ToString();
-                txtDESCRIPTION.Text = cellCollection[13].Value.ToString();
-                txtOPENINGBALANCE.Text = cellCollection[14].Value.ToString();
-                txtCURRENTBALANCE.Text = cellCollection[15].Value.ToString();
-                txtPanno.Text = cellCollection[16].Value.ToString();
-                txttanno.Text = cellCollection[17].Value.ToString();
-                txtothers.Text = cellCollection[18].Value.ToString();
-                txtservicetaxno.Text = cellCollection[19].Value.ToString();
-                txtexiceragisterno.Text = cellCollection[20].Value.ToString();
-                txtgstragisterno.Text = cellCollection[21].Value.ToString();
+                txtPanno.Text = cellCollection[13].Value.ToString();
+                txttanno.Text = cellCollection[14].Value.ToString();
+                txtothers.Text = cellCollection[15].Value.ToString();
+                txtservicetaxno.Text = cellCollection[16].Value.ToString();
+                txtexiceragisterno.Text = cellCollection[17].Value.ToString();
+                txtgstragisterno.Text = cellCollection[18].Value.ToString();
+                txtDESCRIPTION.Text = cellCollection[19].Value.ToString();
+                txtOPENINGBALANCE.Text = cellCollection[20].Value.ToString();
+                txtCURRENTBALANCE.Text = cellCollection[21].Value.ToString();
             }
             catch (Exception ex)
             {
@@ -827,6 +845,7 @@ namespace WindowsFormsApplication1
 
         private void txtOPENINGBALANCE_Leave(object sender, EventArgs e)
         {
+           
             if (txtOPENINGBALANCE.Text == "")
             {
                 txtOPENINGBALANCE.Text= "0";
