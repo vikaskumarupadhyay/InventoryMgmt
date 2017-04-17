@@ -85,7 +85,7 @@ namespace WindowsFormsApplication1
                                         if (insertedRows > 0)
                                         {
                                             btnVenderList.Enabled = true;
-                                            MessageBox.Show("Details Saved Successfully");
+                                            MessageBox.Show("Details saved successfully");
                                             txtVenderName.Focus();
                                         }
                                         else
@@ -104,7 +104,9 @@ namespace WindowsFormsApplication1
                                         if (updatedRows > 0)
                                         {
                                             txtVenderName.Focus();
-                                            MessageBox.Show("Details Updated Successfully");
+                                            
+                                            MessageBox.Show("Details updated successfully!");
+                                            txtVenderOpeningBal.ReadOnly = false;
 
                                         }
                                         else
@@ -243,33 +245,35 @@ namespace WindowsFormsApplication1
         }
         private void Tabindex2()
         {
+            btnVenderList.Enabled = false;
             //txtVenderCode.TabStop = false;
-            //txtVenderName.TabStop = false;
-            //txtCompanyName.TabStop = false;
+            txtVenderName.TabStop = true;
+            txtCompanyName.TabStop = true;
             txtVenderAddress.TabStop = true;
             txtVenderCity.TabStop = true;
             txtVenderState.TabStop = true;
             txtVenderCountry.TabStop = true;
             txtVenderZip.TabStop = true;
-            //txtVenderEmailAddress.TabStop = false;
-            //txtVenderWebSite.TabStop = false;
+            txtVenderEmailAddress.TabStop = true;
+            txtVenderWebSite.TabStop = true;
             txtVenderPhone.TabStop = true;
             txtVenderMobile.TabStop = true;
             txtVenderFax.TabStop = true;
-            //txtVenderDesc.TabStop = false;
-            //txtSarvice.TabStop = false;
-            //txtExcise.TabStop = false;
-            //txtCstNo.TabStop = false;
-            //txtGst.TabStop = false;
+            txtVenderDesc.TabStop = true;
+            txtSarvice.TabStop = true;
+            txtExcise.TabStop = true;
+            txtCstNo.TabStop = true;
+            txtGst.TabStop = true;
 
             //txtVenderOpeningBal.TabStop = false;
             //txtVenderCurrentBal.TabStop = false;
-            //txtPanNo.TabStop = false;
-            //txtVatNo.TabStop = false;
+            txtPanNo.TabStop = true;
+            txtVatNo.TabStop = true;
             //dataGridView1.TabStop = false;
             btnVenderSave.TabStop = true;
             btnVenderClose.TabStop = true;
             btnVenderList.TabStop = true;
+
 
         }
         private void Tabindex1()
@@ -324,6 +328,7 @@ namespace WindowsFormsApplication1
                 else
                 {
                     e.Handled = true;
+                    MessageBox.Show("Plese enter numeric data!");
                 }
             }
 
@@ -473,6 +478,7 @@ namespace WindowsFormsApplication1
             button2.TabIndex = 7;
             button3.TabIndex = 8;
             //dataGridView1.TabIndex = 26;
+            Enabled2();
         }
 
         private void setDetails(DataGridViewCellCollection cellCollection)
@@ -533,6 +539,7 @@ namespace WindowsFormsApplication1
                             // Enabled1();
                             txtVenderAddress.Focus();
                             Tabindex2();
+                            
             }
         }
 
@@ -540,7 +547,6 @@ namespace WindowsFormsApplication1
         {
             panel1.Visible = false;
             Tabindex1();
-           
             txtVenderName.Focus();
         }
 
@@ -559,11 +565,13 @@ namespace WindowsFormsApplication1
                 setDetails(cellCollection);
                 panel1.Visible = false;
                 updateCounter = 1;
-                txtVenderAddress.Focus();
+                //txtVenderAddress.Focus();
+                txtVenderName.Focus();
+                txtVenderOpeningBal.ReadOnly = true;
                 Tabindex2();
                 //txtSearch.Text = "";
                 //comboBox1.SelectedIndex = 0;
-                Enabled1();
+                //Enabled1();
                
             }
             else
@@ -594,6 +602,7 @@ namespace WindowsFormsApplication1
                 else
                 {
                     e.Handled = true;
+                    MessageBox.Show("Plese enter numeric value!");
                 }
             }
         }
@@ -613,6 +622,7 @@ namespace WindowsFormsApplication1
                 else
                 {
                     e.Handled = true;
+                    MessageBox.Show("Plese enter numeric value!");
                 }
             }
         }
@@ -684,7 +694,7 @@ namespace WindowsFormsApplication1
             else
             {
                 txtVenderEmailAddress.Focus();
-                MessageBox.Show("Please Enter the Correct Email Address");
+                MessageBox.Show("Please enter valid email address!");
             }
         }
 
@@ -698,7 +708,7 @@ namespace WindowsFormsApplication1
             else
             {
                 txtVenderWebSite.Focus();
-                MessageBox.Show("Please Enter the Correct Web Site Address");
+                MessageBox.Show("Please enter valid web address!");
             }
         }
 
@@ -720,8 +730,10 @@ namespace WindowsFormsApplication1
                     updateCounter = 1;
                     txtSearch.Text = "";
                     comboBox1.SelectedIndex = 0;
-                    Enabled1();
-                    txtVenderAddress.Focus();
+                    //Enabled1();
+                    //txtVenderAddress.Focus();
+                    txtVenderOpeningBal.ReadOnly = true;
+                    txtVenderName.Focus();
                     Tabindex2();
                 }
             }
@@ -850,6 +862,56 @@ namespace WindowsFormsApplication1
                 button2.TabIndex = 7;
                 button3.TabIndex = 8;
                 //dataGridView1.TabIndex = 26;
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void txtVenderPhone_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtVenderFax_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    MessageBox.Show("Plese enter numeric value!");
+                }
+            }
+        }
+
+        private void txtVenderZip_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    MessageBox.Show("Plese enter numeric value!");
+                }
             }
         }
 

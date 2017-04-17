@@ -373,6 +373,7 @@
             this.txtFAX.Name = "txtFAX";
             this.txtFAX.Size = new System.Drawing.Size(252, 21);
             this.txtFAX.TabIndex = 24;
+            this.txtFAX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFAX_KeyPress);
             // 
             // label13
             // 
@@ -434,6 +435,7 @@
             this.txtZIP.Name = "txtZIP";
             this.txtZIP.Size = new System.Drawing.Size(307, 21);
             this.txtZIP.TabIndex = 18;
+            this.txtZIP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtZIP_KeyPress);
             // 
             // txtState
             // 
@@ -480,6 +482,7 @@
             // 
             this.txtCustCode.Location = new System.Drawing.Point(46, 38);
             this.txtCustCode.Name = "txtCustCode";
+            this.txtCustCode.ReadOnly = true;
             this.txtCustCode.Size = new System.Drawing.Size(104, 21);
             this.txtCustCode.TabIndex = 12;
             this.txtCustCode.TabStop = false;
@@ -788,6 +791,7 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.KeyPreview = true;
             this.Name = "Customer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

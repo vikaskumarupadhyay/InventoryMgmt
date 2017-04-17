@@ -137,6 +137,7 @@
             // cmbItemUnit
             // 
             this.cmbItemUnit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbItemUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbItemUnit.FormattingEnabled = true;
             this.cmbItemUnit.Location = new System.Drawing.Point(46, 188);
             this.cmbItemUnit.Name = "cmbItemUnit";
@@ -147,6 +148,7 @@
             // cmbItemItemGroup
             // 
             this.cmbItemItemGroup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbItemItemGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbItemItemGroup.FormattingEnabled = true;
             this.cmbItemItemGroup.Location = new System.Drawing.Point(46, 144);
             this.cmbItemItemGroup.Name = "cmbItemItemGroup";

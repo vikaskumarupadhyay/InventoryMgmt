@@ -144,7 +144,8 @@ namespace WindowsFormsApplication1
                                 {
                                     btnList.Enabled = true;
                                     txtName.Focus();
-                                    MessageBox.Show("Details Saved Successfully");
+                                    
+                                    MessageBox.Show("Details saved successfully!");
 
                                 }
                                 else
@@ -163,7 +164,8 @@ namespace WindowsFormsApplication1
                                 if (updatedRows > 0)
                                 {
                                     txtName.Focus();
-                                    MessageBox.Show("Details Updated Successfully");
+                                    txtOPENINGBALANCE.ReadOnly = false;
+                                    MessageBox.Show("Details updated successfully!");
                                 }
                                 else
                                 {
@@ -237,25 +239,22 @@ namespace WindowsFormsApplication1
 
         private void txtCustOpeningBal_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsDigit(e.KeyChar))
+            if (Char.IsNumber(e.KeyChar) || Char.IsPunctuation(e.KeyChar))
             {
                 e.Handled = false;
             }
-                else
-            {
-                if(e.KeyChar=='\b')
-                {
-                    e.Handled=false;
-                   
-                }
             else
             {
-                e.Handled = true;
-               
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    MessageBox.Show("Plese enter numeric data!");
+                }
             }
-               
-
-        }
 
         }
 
@@ -384,16 +383,28 @@ namespace WindowsFormsApplication1
         }
         private void tabindex1()
     {
-        txtAddress.Focus();
-         txtAddress.TabStop = true;
+        //txtAddress.Focus();
+            txtOPENINGBALANCE.ReadOnly = true;
+            txtName.Focus();
+            txtCompnyName.TabStop = true;
+            txtAddress.TabStop = true;
             txtCity.TabStop = true;
             txtState.TabStop = true;
             txtZIP.TabStop = true;
-        txtCustCountry.TabStop = true;
-         txtTXTPHONE.TabStop = true;
+            txtCustCountry.TabStop = true;
+            txtTXTPHONE.TabStop = true;
             txtMOBILE.TabStop = true;
             txtFAX.TabStop = true;
-         btnSave.TabStop = true;
+            txtPanno.TabStop = true;
+            txtothers.TabStop = true;
+            txtservicetaxno.TabStop = true;
+            txtgstragisterno.TabStop = true;
+            txtexiceragisterno.TabStop = true;
+            txtEMAILADDRESS.TabStop = true;
+            txtWEBSITE.TabStop = true;
+            txtDESCRIPTION.TabStop = true;
+            txttanno.TabStop = true;
+            btnSave.TabStop = true;
             btnClose.TabStop = true;
     }
         private void setDetails(DataGridViewCellCollection cellCollection)
@@ -442,7 +453,7 @@ namespace WindowsFormsApplication1
 
         private void txtCustPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsDigit(e.KeyChar))
+            if (Char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
             }
@@ -455,6 +466,7 @@ namespace WindowsFormsApplication1
                 else
                 {
                     e.Handled = true;
+                    MessageBox.Show("Plese enter numeric value!");
                 }
             }
         }
@@ -474,6 +486,7 @@ namespace WindowsFormsApplication1
                 else
                 {
                     e.Handled = true;
+                    MessageBox.Show("Please enter numeric data!");
                 }
             }
         }
@@ -542,25 +555,25 @@ namespace WindowsFormsApplication1
         }
         private void blank()
         {
-            txtName.Enabled = false;
-            txtCompnyName.Enabled = false;
+            txtName.Enabled = true;
+            txtCompnyName.Enabled = true;
             txtAddress.Enabled = true;
             txtCity.Enabled = true;
             txtState.Enabled = true;
             txtZIP.Enabled = true;
             txtCustCountry.Enabled = true;
-            txtPanno.Enabled = false;
-            txttanno.Enabled = false;
-            txtothers.Enabled = false;
-            txtDESCRIPTION.Enabled = false;
-            txtOPENINGBALANCE.Enabled = false;
-            txtWEBSITE.Enabled = false;
-            txtEMAILADDRESS.Enabled = false;
-            txtCustCode.Enabled = false;
-            txtCURRENTBALANCE.Enabled = false;
-            txtservicetaxno.Enabled = false;
-            txtexiceragisterno.Enabled = false;
-            txtgstragisterno.Enabled = false;
+            txtPanno.Enabled = true;
+            txttanno.Enabled = true;
+            txtothers.Enabled = true;
+            txtDESCRIPTION.Enabled = true;
+            txtOPENINGBALANCE.Enabled = true;
+            txtWEBSITE.Enabled = true;
+            txtEMAILADDRESS.Enabled = true;
+            txtCustCode.Enabled = true;
+            txtCURRENTBALANCE.Enabled = true;
+            txtservicetaxno.Enabled = true;
+            txtexiceragisterno.Enabled = true;
+            txtgstragisterno.Enabled = true;
             
         }
         private void blank1()
@@ -590,6 +603,7 @@ namespace WindowsFormsApplication1
 
         private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
+            btnList.Enabled = false;
             updateCounter = 1;
             int currentIndex = dataGridView1.CurrentRow.Index;
             DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex].Cells;
@@ -597,8 +611,8 @@ namespace WindowsFormsApplication1
             {
                 setDetails(cellcollection);
                 panel1.Visible = false;
-               
                 tabindex1();
+
             }
             else
             {
@@ -845,6 +859,46 @@ namespace WindowsFormsApplication1
         private void btnSave_KeyDown(object sender, KeyEventArgs e)
         {
             
+        }
+
+        private void txtZIP_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    MessageBox.Show("Plese enter numeric value!");
+                }
+            }
+        }
+
+        private void txtFAX_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    MessageBox.Show("Plese enter numeric value!");
+                }
+            }
         }
 
         
