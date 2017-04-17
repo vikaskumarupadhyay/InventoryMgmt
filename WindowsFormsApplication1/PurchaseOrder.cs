@@ -519,6 +519,7 @@ namespace WindowsFormsApplication1
             customDataTable.Columns.Add("AliasTableColumnName");
             DataColumnCollection d = dt.Columns;
             DataColumnCollection dataColumnForName = dtOnlyColumnName.Columns;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
             for (int a = 1; a < d.Count; a++)
             {
                 string b = d[a].ToString();
@@ -564,6 +565,7 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
+           
             txtsearch.Text = "";
             //string selectqurry = "select itm.ItemName,itm.ItemCompName,itm.ItemDesc,itm.groupid,itm.Unitid,ipd.purChasePrice,ipd.SalesPrice,ipd.MrpPrice,ipd.Margin,iqd.OpeningQuantity,iqd.CurrentQuantity from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid";
             //DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
@@ -580,6 +582,7 @@ namespace WindowsFormsApplication1
             customDataTable.Columns.Add("AliasTableColumnName");
             DataColumnCollection d = dt.Columns;
             DataColumnCollection dataColumnForName = dtOnlyColumnName.Columns;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             for (int a = 1; a < d.Count; a++)
             {
                 string b = d[a].ToString();
@@ -597,6 +600,7 @@ namespace WindowsFormsApplication1
             dataGridView1.DataSource = dt1;
             IndexTex();
             comboBox1.Focus();
+            
         }
         private void setDetails1(DataGridViewCellCollection cellCollection)
         {
@@ -684,7 +688,7 @@ namespace WindowsFormsApplication1
                             PurchesCrystalReportViewer.Visible = true;
 
                             panel2.Visible = true;
-                            string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345";
+                            string conntion = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=true;";
                             SqlConnection con = new SqlConnection(conntion);
                             string selectqurry = "select * from VwPurchesOrderDatils where OrderId='" + txtSrNo.Text + "'";
                             SqlCommand cmd = new SqlCommand(selectqurry, con);

@@ -245,7 +245,7 @@ namespace WindowsFormsApplication1
                     {
                         //btnList.Enabled = true;
                         txtItemProductName.Focus();
-                        MessageBox.Show("Details Saved Successfully");
+                        MessageBox.Show("Details Saved Successfully!");
 
                     }
                     else
@@ -270,7 +270,7 @@ namespace WindowsFormsApplication1
                 {
 
                     txtItemProductName.Focus();
-                    MessageBox.Show("Details Saved Successfully");
+                    MessageBox.Show("Details updated successfully!");
 
                 }
                 else
@@ -391,6 +391,7 @@ namespace WindowsFormsApplication1
                 tabindix1();
                 txtItemProductName.Focus();
                 btnItemList.Enabled = false;
+                txtItemOpeningQuant.ReadOnly = true;
             }
         }
         private string getId(string Table)
@@ -475,7 +476,7 @@ namespace WindowsFormsApplication1
             txtItemDesc.TabStop = true;
             txtItemMargin.TabStop = false;
             txtItemMrp.TabStop = true;
-            txtItemOpeningQuant.TabStop = true;
+            //txtItemOpeningQuant.TabStop = true;
             txtItemPrice.TabStop = true;
             txtItemRemaningQuant.TabStop = false;
             txtItemSalesPrice.TabStop = true;
@@ -565,7 +566,7 @@ namespace WindowsFormsApplication1
                     btnItemList.Enabled = false;
                     tabindix1();
                     txtItemProductName.Focus();
-                   
+                    txtItemOpeningQuant.ReadOnly = true;
                 }
             }
             

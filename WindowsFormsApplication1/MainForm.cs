@@ -456,8 +456,8 @@ namespace WindowsFormsApplication1
 
         private void salesorderSearchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //salesordersearch sh = new salesordersearch();
-            //sh.Show();
+            salesordersearch sh = new salesordersearch();
+            sh.Show();
         }
         PurchaseOrderSearch1 po;
         private void purchesOrderSearchToolStripMenuItem_Click(object sender, EventArgs e)

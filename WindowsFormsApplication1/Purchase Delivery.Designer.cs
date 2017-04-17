@@ -119,6 +119,11 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
@@ -767,7 +772,6 @@
             this.DeliveryReportViewer.Name = "DeliveryReportViewer";
             this.DeliveryReportViewer.Size = new System.Drawing.Size(1172, 634);
             this.DeliveryReportViewer.TabIndex = 7;
-           // this.DeliveryReportViewer.Load += new System.EventHandler(this.DeliveryReportViewer_Load);
             // 
             // panel3
             // 

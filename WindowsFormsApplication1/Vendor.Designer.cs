@@ -289,6 +289,7 @@
             this.txtVenderFax.Name = "txtVenderFax";
             this.txtVenderFax.Size = new System.Drawing.Size(252, 21);
             this.txtVenderFax.TabIndex = 12;
+            this.txtVenderFax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVenderFax_KeyPress);
             // 
             // label13
             // 
@@ -315,6 +316,7 @@
             this.txtVenderPhone.Name = "txtVenderPhone";
             this.txtVenderPhone.Size = new System.Drawing.Size(382, 21);
             this.txtVenderPhone.TabIndex = 10;
+            this.txtVenderPhone.TextChanged += new System.EventHandler(this.txtVenderPhone_TextChanged);
             this.txtVenderPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVenderPhone_KeyPress);
             // 
             // txtVenderWebSite
@@ -352,6 +354,7 @@
             this.txtVenderZip.Name = "txtVenderZip";
             this.txtVenderZip.Size = new System.Drawing.Size(307, 21);
             this.txtVenderZip.TabIndex = 6;
+            this.txtVenderZip.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVenderZip_KeyPress);
             // 
             // txtVenderState
             // 
@@ -727,7 +730,6 @@
             this.txtSearch.Size = new System.Drawing.Size(429, 23);
             this.txtSearch.TabIndex = 25;
             this.txtSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            //this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
             // 
             // button3
             // 
@@ -787,6 +789,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(1138, 454);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 26;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
             // 

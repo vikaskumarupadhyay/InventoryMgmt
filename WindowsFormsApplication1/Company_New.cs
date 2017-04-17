@@ -187,6 +187,7 @@ namespace WindowsFormsApplication1
 
    private void tabindex2()
    {
+       
        btnClose.TabIndex = 29;
        //txtCompnayCode.TabStop = false;
       txtwonername.TabStop = true;
@@ -235,7 +236,7 @@ namespace WindowsFormsApplication1
                     int insertrow = dbMainClass.saveDetails(insertquery);
                     if (insertrow > 0)
                     {
-                        MessageBox.Show("Details Save successfully");
+                        MessageBox.Show("Details save successfully!");
                     }
                     else
                     {
@@ -251,7 +252,7 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
-                    MessageBox.Show("Compnay Not Issu");
+                    MessageBox.Show("You can not create more than one company!");
                 }
             }
             if (updatecounter == 1)
@@ -264,7 +265,7 @@ namespace WindowsFormsApplication1
                         int updatequrry1 = dbMainClass.saveDetails(updateTax);
                         if (updatequrry1 > 0)
                         {
-                            MessageBox.Show("Details Updated Successfully");
+                            MessageBox.Show("Details updated successfully!");
                         }
                         else
                         {
@@ -340,6 +341,7 @@ namespace WindowsFormsApplication1
 
         private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
         {
+            
              int currentIndex = dataGridView1.CurrentRow.Index;
              if (e.KeyChar == (char)Keys.Enter)
              {
@@ -426,6 +428,7 @@ namespace WindowsFormsApplication1
 
         private void dataGridView1_KeyPress_1(object sender, KeyPressEventArgs e)
         {
+            btnList.Enabled = false;
              int currentIndex = dataGridView1.CurrentRow.Index;
              if (e.KeyChar == (char)Keys.Enter)
              {
@@ -585,6 +588,135 @@ namespace WindowsFormsApplication1
             {
                 dataGridView1.AllowUserToAddRows = true;
                 dataGridView1.Focus();
+            }
+        }
+
+        private void txtZip_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    MessageBox.Show("Plese enter numeric value!");
+                }
+            }
+        }
+
+        private void txtEmailAddress_Leave(object sender, EventArgs e)
+        {
+            string email = txtEmailAddress.Text;
+            if ((email.LastIndexOf("@") > -1) && (email.LastIndexOf(".") > -1) || string.IsNullOrEmpty(email))
+            {
+                //MessageBox.Show("Please Enter the Correct Email Address");
+            }
+            else
+            {
+                txtEmailAddress.Focus();
+                MessageBox.Show("Please enter the email address in correct format!");
+            }
+        }
+
+        private void txtWebSite_Leave(object sender, EventArgs e)
+        {
+            string WebSite = txtWebSite.Text;
+            if ((WebSite.LastIndexOf("www") > -1) && (WebSite.LastIndexOf(".") > -1) && (WebSite.LastIndexOf("http://") > -1) || string.IsNullOrEmpty(WebSite))
+            {
+                //MessageBox.Show("Please Enter the Correct Email Address");
+            }
+            else
+            {
+                txtWebSite.Focus();
+                MessageBox.Show("Please enter the web address in currect format!");
+            }
+        }
+
+        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    MessageBox.Show("Plese enter numeric value!");
+                }
+            }
+        }
+
+        private void txtMobile_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    MessageBox.Show("Plese enter numeric value!");
+                }
+            }
+        }
+
+        private void txtFax_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    MessageBox.Show("Plese enter numeric value!");
+
+                }
+            }
+        }
+
+        private void txtTexAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsNumber(e.KeyChar) || Char.IsPunctuation(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    MessageBox.Show("Please enter numeric value!");
+                }
             }
         }
 

@@ -507,10 +507,6 @@
             // 
             // gridPurchaseOrder
             // 
-            this.gridPurchaseOrder.AllowUserToDeleteRows = false;
-            this.gridPurchaseOrder.AllowUserToOrderColumns = true;
-            this.gridPurchaseOrder.AllowUserToResizeColumns = false;
-            this.gridPurchaseOrder.AllowUserToResizeRows = false;
             this.gridPurchaseOrder.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridPurchaseOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridPurchaseOrder.Dock = System.Windows.Forms.DockStyle.Fill;

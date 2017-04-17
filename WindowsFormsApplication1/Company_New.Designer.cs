@@ -156,6 +156,7 @@
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(252, 21);
             this.txtFax.TabIndex = 12;
+            this.txtFax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFax_KeyPress);
             // 
             // label13
             // 
@@ -172,6 +173,7 @@
             this.txtMobile.Name = "txtMobile";
             this.txtMobile.Size = new System.Drawing.Size(424, 21);
             this.txtMobile.TabIndex = 11;
+            this.txtMobile.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMobile_KeyPress);
             // 
             // txtPhone
             // 
@@ -179,6 +181,7 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(382, 21);
             this.txtPhone.TabIndex = 10;
+            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
             // txtWebSite
             // 
@@ -188,6 +191,7 @@
             this.txtWebSite.Name = "txtWebSite";
             this.txtWebSite.Size = new System.Drawing.Size(1070, 21);
             this.txtWebSite.TabIndex = 9;
+            this.txtWebSite.Leave += new System.EventHandler(this.txtWebSite_Leave);
             // 
             // txtEmailAddress
             // 
@@ -197,6 +201,7 @@
             this.txtEmailAddress.Name = "txtEmailAddress";
             this.txtEmailAddress.Size = new System.Drawing.Size(1070, 21);
             this.txtEmailAddress.TabIndex = 8;
+            this.txtEmailAddress.Leave += new System.EventHandler(this.txtEmailAddress_Leave);
             // 
             // txtCountry
             // 
@@ -213,6 +218,7 @@
             this.txtZip.Name = "txtZip";
             this.txtZip.Size = new System.Drawing.Size(307, 21);
             this.txtZip.TabIndex = 6;
+            this.txtZip.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtZip_KeyPress);
             // 
             // txtState
             // 
@@ -609,6 +615,7 @@
             // 
             // ComDetails
             // 
+            this.ComDetails.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ComDetails.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComDetails.FormattingEnabled = true;
             this.ComDetails.Location = new System.Drawing.Point(25, 42);
@@ -632,7 +639,7 @@
             this.txtSearch.Location = new System.Drawing.Point(687, 42);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(429, 23);
+            this.txtSearch.Size = new System.Drawing.Size(950, 23);
             this.txtSearch.TabIndex = 4;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged_1);
             this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
@@ -728,7 +735,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(684, 24);
+            this.label25.Location = new System.Drawing.Point(684, 19);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(107, 15);
             this.label25.TabIndex = 39;
@@ -737,7 +744,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(43, 24);
+            this.label18.Location = new System.Drawing.Point(43, 19);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(64, 15);
             this.label18.TabIndex = 38;
@@ -746,7 +753,7 @@
             // btnTex
             // 
             this.btnTex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTex.Location = new System.Drawing.Point(1083, 41);
+            this.btnTex.Location = new System.Drawing.Point(1084, 35);
             this.btnTex.Name = "btnTex";
             this.btnTex.Size = new System.Drawing.Size(32, 25);
             this.btnTex.TabIndex = 37;
@@ -758,7 +765,7 @@
             // 
             this.txtTexAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTexAmount.Location = new System.Drawing.Point(687, 42);
+            this.txtTexAmount.Location = new System.Drawing.Point(687, 37);
             this.txtTexAmount.Multiline = true;
             this.txtTexAmount.Name = "txtTexAmount";
             this.txtTexAmount.Size = new System.Drawing.Size(391, 23);
@@ -766,13 +773,15 @@
             this.txtTexAmount.Text = "0";
             this.txtTexAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtTexAmount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtTexAmount_MouseClick);
+            this.txtTexAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTexAmount_KeyPress);
             this.txtTexAmount.Leave += new System.EventHandler(this.txtTexAmount_Leave);
             // 
             // combComp
             // 
+            this.combComp.Cursor = System.Windows.Forms.Cursors.Hand;
             this.combComp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combComp.FormattingEnabled = true;
-            this.combComp.Location = new System.Drawing.Point(46, 42);
+            this.combComp.Location = new System.Drawing.Point(46, 37);
             this.combComp.Name = "combComp";
             this.combComp.Size = new System.Drawing.Size(635, 23);
             this.combComp.TabIndex = 35;
