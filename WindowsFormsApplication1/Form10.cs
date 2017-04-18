@@ -667,7 +667,7 @@ namespace WindowsFormsApplication1
         private void gridsalesorder_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            DataGridViewCellCollection Collection1 = dataGridView1.Rows[e.RowIndex].Cells;
+            DataGridViewCellCollection Collection1 = gridsalesorder.Rows[e.RowIndex].Cells;
             rowcollection1(Collection1);
             panel1.Visible = false;
         }
