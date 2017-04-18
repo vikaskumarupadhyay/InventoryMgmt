@@ -702,21 +702,28 @@ namespace WindowsFormsApplication1
 
         private void txtTexAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsNumber(e.KeyChar) || Char.IsPunctuation(e.KeyChar))
+            string value = txtTexAmount.Text;
+            bool moreThanOneDecimalChar = false;
+            int g = 0;
+            char h = '.';
+            for (int a = 0; a < value.Length; a++)
+            {
+                if (value[a] == '.')
+                {
+                    g++;
+                }
+            }
+            if (g == 1)
+            {
+                moreThanOneDecimalChar = true;
+            }
+            if (moreThanOneDecimalChar == false || e.KeyChar == '\b')
             {
                 e.Handled = false;
             }
-            else
+            else if (Char.IsLetter(e.KeyChar) || (moreThanOneDecimalChar && e.KeyChar == '.') || Char.IsPunctuation(e.KeyChar))
             {
-                if (e.KeyChar == '\b')
-                {
-                    e.Handled = false;
-                }
-                else
-                {
-                    e.Handled = true;
-                    MessageBox.Show("Please enter numeric value!");
-                }
+                e.Handled = true;
             }
         }
 

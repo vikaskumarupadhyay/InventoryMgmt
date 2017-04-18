@@ -74,6 +74,11 @@ namespace WindowsFormsApplication1
             ItemDetails = purChaseDetailObj.GetItemPriceAndNameDetaisInDataTable();
             setAutoCompleteMode(txtProductName, "ItemName", ItemDetails);
             setAddToCraftTable();
+            if (txtRef.Text == "")
+            {
+                addToCartTable.Columns.RemoveAt(6);
+                dataGridView1.DataSource = addToCartTable;
+            }
         }
         private void setVAlue()
         {
@@ -971,7 +976,7 @@ namespace WindowsFormsApplication1
                             {
                                 DeliveryReportViewer.Visible = true;
                                 panel2.Visible = true;
-                                string conntion = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=true";
+                                string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
                                 SqlConnection con = new SqlConnection(conntion);
                                 string selectqurry = "select * from purchesDelivery where Deliveryid='" + txtSrNo.Text + "'";
                                 SqlCommand cmd = new SqlCommand(selectqurry, con);
@@ -1152,6 +1157,9 @@ namespace WindowsFormsApplication1
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
+                addToCartTable.Columns.RemoveAt(6);
+                addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                addToCartTable.Columns.Add(new DataColumn("Amount"));
                 txtRef.ReadOnly = true;
                 string dilqurry = "select Orderid from CustomerOrderDelivery where Orderid ='" + txtRef.Text + "'";
                 DataTable dildt = dbMainClass.getDetailByQuery(dilqurry);
@@ -1276,25 +1284,69 @@ namespace WindowsFormsApplication1
 
         private void dataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
-            //string a = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-            //MessageBox.Show(a);
+           
         }
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            string a = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
-            string rate = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
-            int quantity = Convert.ToInt32(a);
-            int reta = Convert.ToInt32(rate);
-            int toteamount = quantity * reta;
-            dataGridView1.Rows[e.RowIndex].Cells[7].Value = toteamount.ToString();
-            string qun = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
-            int quanti = Convert.ToInt32(qun);
-            int vauequn =quantity- quanti;
-            int trea = reta * vauequn;
-            int tamunt = Convert.ToInt32(txttotalAmount.Text);
-            int tam = tamunt + trea;
-            txttotalAmount.Text = tam.ToString();
+            if (txtRef.Text == "")
+            {
+                string itemid = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+                string selectqurry = "select Ids.ItemName,Ids.ItemCompName,ipd.MrpPrice, ipd.SalesPrice from ItemDetails Ids  join ItemPriceDetail ipd on Ids.ItemId=ipd.ItemId  where Ids.ItemId='" + itemid + "'";
+                DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+                string rate = "";
+                foreach (DataRow dr in dt.Rows)
+                {
+                    dataGridView1.Rows[e.RowIndex].Cells[1].Value = dr[0].ToString();
+                    dataGridView1.Rows[e.RowIndex].Cells[2].Value = dr[1].ToString();
+                    dataGridView1.Rows[e.RowIndex].Cells[3].Value = dr[2].ToString();
+                    // gridPurchaseOrder.Rows[e.RowIndex].Cells[5].Value=dr[3].ToString();
+
+                    rate = dr[3].ToString();
+                }
+                if (dataGridView1.Rows[e.RowIndex].Cells[0].Value != null)
+                {
+                    int co = dataGridView1.CurrentRow.Index;
+                    DataGridViewRow selectedRow = dataGridView1.Rows[0];
+                    selectedRow.Selected = true;
+                    selectedRow.Cells[4].Selected = true;
+                    //gridPurchaseOrder.CurrentCell = gridPurchaseOrder[gridPurchaseOrder.CurrentCell.ColumnIndex + 2, gridPurchaseOrder.CurrentCell.RowIndex];
+                    //gridPurchaseOrder.Focus();
+                }
+                dataGridView1.Rows[e.RowIndex].Cells[4].Value = rate;
+                string quantity = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+                if (quantity == "")
+                {
+                    quantity = "0";
+                }
+                int q1 = Convert.ToInt32(quantity);
+                Double rate1 = Convert.ToDouble(rate);
+                Double price = rate1 * q1;
+                if (price.ToString() == "")
+                {
+                    price = 0;
+                }
+                dataGridView1.Rows[e.RowIndex].Cells[6].Value = price.ToString();
+                Double totalammount = Convert.ToDouble(txttotalAmount.Text);
+                Double toat = totalammount + price;
+                txttotalAmount.Text = toat.ToString();
+            }
+            if (txtRef.Text != "")
+            {
+                string a = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
+                string rate = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                int quantity = Convert.ToInt32(a);
+                int reta = Convert.ToInt32(rate);
+                int toteamount = quantity * reta;
+                dataGridView1.Rows[e.RowIndex].Cells[7].Value = toteamount.ToString();
+                string qun = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+                int quanti = Convert.ToInt32(qun);
+                int vauequn = quantity - quanti;
+                int trea = reta * vauequn;
+                int tamunt = Convert.ToInt32(txttotalAmount.Text);
+                int tam = tamunt + trea;
+                txttotalAmount.Text = tam.ToString();
+            }
 
         }
 
@@ -1868,6 +1920,11 @@ namespace WindowsFormsApplication1
             double taxamount = total / tax;
             double totaltax = total - taxamount;
             txtTaxAmount.Text = totaltax.ToString();
+        }
+
+        private void DeliveryReportViewer_Load(object sender, EventArgs e)
+        {
+
         }
 
       

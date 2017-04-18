@@ -313,29 +313,35 @@ namespace WindowsFormsApplication1
         {
             //MessageBox.Show(Char.GetNumericValue(e.KeyChar).ToString());
             //MessageBox.Show(e.KeyChar.);
-
-
-            if (Char.IsNumber(e.KeyChar) || Char.IsPunctuation(e.KeyChar))
+            string value = txtVenderOpeningBal.Text;
+            bool moreThanOneDecimalChar = false;
+            int g = 0;
+            char h = '.';
+            for (int a = 0; a < value.Length; a++)
+            {
+                if (value[a] == '.')
+                {
+                    g++;
+                }
+            }
+            if (g == 1)
+            {
+                moreThanOneDecimalChar = true;
+            }
+            if (moreThanOneDecimalChar == false || e.KeyChar == '\b')
             {
                 e.Handled = false;
             }
-            else
+            else if (Char.IsLetter(e.KeyChar) || (moreThanOneDecimalChar && e.KeyChar == '.') || Char.IsPunctuation(e.KeyChar))
             {
-                if (e.KeyChar == '\b')
-                {
-                    e.Handled = false;
-                }
-                else
-                {
-                    e.Handled = true;
-                    MessageBox.Show("Plese enter numeric data!");
-                }
+                e.Handled = true;
             }
 
         }
 
         private void txtVenderOpeningBal_TextChanged(object sender, EventArgs e)
         {
+
             if (txtVenderOpeningBal.Text == "")
             {
                 txtVenderCurrentBal.Text = "";
@@ -499,15 +505,16 @@ namespace WindowsFormsApplication1
                 txtVenderMobile.Text = cellCollection[11].Value.ToString();
                 txtVenderFax.Text = cellCollection[12].Value.ToString();
                 txtVenderDesc.Text = cellCollection[19].Value.ToString();
-                txtSarvice.Text = cellCollection[15].Value.ToString();
-                txtExcise.Text = cellCollection[16].Value.ToString();
-                txtCstNo.Text = cellCollection[17].Value.ToString();
+                txtSarvice.Text = cellCollection[16].Value.ToString();
+                txtExcise.Text = cellCollection[17].Value.ToString();
+                txtCstNo.Text = cellCollection[15].Value.ToString();
                 txtGst.Text = cellCollection[18].Value.ToString();
 
                 txtVenderOpeningBal.Text = cellCollection[20].Value.ToString();
                 txtVenderCurrentBal.Text = cellCollection[21].Value.ToString();
                 txtPanNo.Text = cellCollection[13].Value.ToString();
                 txtVatNo.Text = cellCollection[14].Value.ToString();
+
                // txtCstNo.Text = cellCollection[15].Value.ToString();
             }
             catch (Exception ex)
