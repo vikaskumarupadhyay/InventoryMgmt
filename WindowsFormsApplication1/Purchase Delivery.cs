@@ -1922,11 +1922,7 @@ namespace WindowsFormsApplication1
             txtTaxAmount.Text = totaltax.ToString();
         }
 
-        private void DeliveryReportViewer_Load(object sender, EventArgs e)
-        {
-
-        }
-
+      
       
        
       

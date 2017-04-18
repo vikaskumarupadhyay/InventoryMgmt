@@ -511,7 +511,7 @@ namespace WindowsFormsApplication1
 
         private void savebutton_Click(object sender, EventArgs e)
         {
-            panel2.Visible = true;
+            panel2.Visible = false;
             //if (id == "")
             //{
             //    id = "1";
@@ -585,13 +585,13 @@ namespace WindowsFormsApplication1
                 if (inserirow1 > 0)
                 {
                     MessageBox.Show("details save successfully");
-
+                    panel2.Visible = true;
                     DialogResult result = MessageBox.Show("this page is print", "Impotant questiuon", MessageBoxButtons.YesNo);
                     if (result == System.Windows.Forms.DialogResult.Yes)
                     {
                         crystalReportViewer1.Visible = true;
                         gridsalesorder.AllowUserToAddRows = false;
-                        string a = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=True";
+                        string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
                         SqlConnection con = new SqlConnection(a);
                         con.Open();
                         string selectquery = "select * from salesorderreport where orderid='" + txtsrno.Text + "'";
@@ -636,7 +636,10 @@ namespace WindowsFormsApplication1
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
+                butadditem.Enabled = true;
                 butadditem.Focus();
+              
+
             }
             if (char.IsDigit(e.KeyChar))
             {
@@ -667,9 +670,9 @@ namespace WindowsFormsApplication1
         private void gridsalesorder_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            DataGridViewCellCollection Collection1 = gridsalesorder.Rows[e.RowIndex].Cells;
+           DataGridViewCellCollection Collection1 =gridsalesorder.Rows[e.RowIndex].Cells;
             rowcollection1(Collection1);
-            panel1.Visible = false;
+           // panel1.Visible = false;
         }
 
         private void txtcustomercode_TextChanged(object sender, EventArgs e)
@@ -1029,6 +1032,7 @@ namespace WindowsFormsApplication1
         private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
             txtQuantity.TabStop = false;
+            txtQuantity.ReadOnly = false;
             txtsearchvalue.Text = "";
             panel2.Visible = false;
             if (counter == 0)
