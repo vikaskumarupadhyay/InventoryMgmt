@@ -521,7 +521,7 @@ namespace WindowsFormsApplication1
                             ConpanyName = dr1[0].ToString();
                             Mrp = dr1[1].ToString();
                         }
-                        addToCartTable.Columns.RemoveAt(6);
+                        //addToCartTable.Columns.RemoveAt(6);
                         DataRow dr = addToCartTable.NewRow();
                         dr[0] = txtItemCode.Text.Trim();
                         dr[1] = txtProductName.Text.Trim();
@@ -857,7 +857,7 @@ namespace WindowsFormsApplication1
                                     {
                                         DeliveryReportViewer.Visible = true;
                                         panel2.Visible = true;
-                                        string conntion = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=true";
+                                        string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
                                         SqlConnection con = new SqlConnection(conntion);
                                         string selectqurry = "select * from purchesDelivery where Deliveryid='" + txtSrNo.Text + "'";
                                         SqlCommand cmd = new SqlCommand(selectqurry, con);
