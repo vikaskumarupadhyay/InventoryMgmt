@@ -325,8 +325,8 @@ namespace WindowsFormsApplication1
             {
                 int q3 = 0;
                 itemid = dr3[0].ToString();
-                quntity = dr3[4].ToString();
-                rate = dr3[5].ToString();
+                quntity = dr3[5].ToString();
+                rate = dr3[4].ToString();
                 ammount = dr3[6].ToString();
 
                  if (itemid == txtItemCode.Text)
@@ -334,7 +334,7 @@ namespace WindowsFormsApplication1
                     int q1 = Convert.ToInt32(quntity);
                     int q2 = Convert.ToInt32(txtQuanity.Text);
                     q3 = q1 + q2;
-                    dr3[4] = q3.ToString();
+                    dr3[5] = q3.ToString();
                     Double rate1 = Convert.ToDouble(rate);
                     Double rate6 = rate1 * q2;
                     Double rate2 = Convert.ToDouble(ammount);
@@ -412,8 +412,8 @@ namespace WindowsFormsApplication1
                             dr[1] = txtProductName.Text.Trim();
                             dr[2] = ConpanyName.Trim();
                             dr[3] = Mrp.Trim();
-                            dr[4] = txtQuanity.Text.Trim();
-                            dr[5] = txtRate.Text.Trim();
+                            dr[4] = txtRate.Text.Trim();
+                            dr[5] = txtQuanity.Text.Trim();
                             dr[6] = txtAmount.Text.Trim();
                            
                             //dr[5] = txtAmount.Text.Trim();
@@ -448,8 +448,8 @@ namespace WindowsFormsApplication1
             addToCartTable.Columns.Add(new DataColumn("Product Name"));
             addToCartTable.Columns.Add(new DataColumn("Company Name"));
             addToCartTable.Columns.Add(new DataColumn("Mrp"));
-            addToCartTable.Columns.Add(new DataColumn("Quantity"));
             addToCartTable.Columns.Add(new DataColumn("Rate"));
+            addToCartTable.Columns.Add(new DataColumn("Quantity"));
             addToCartTable.Columns.Add(new DataColumn("Amount"));
            
             //addToCartTable.Columns.Add(new DataColumn("TexAmount"));
@@ -668,8 +668,8 @@ namespace WindowsFormsApplication1
                         DataGridViewRow currentRow = RowCollection[a];
                         DataGridViewCellCollection cellCollection = currentRow.Cells;
                         string txtItemCod = cellCollection[0].Value.ToString();
-                        string txtQuanit = cellCollection[4].Value.ToString();
-                        string txtRate  = cellCollection[5].Value.ToString();
+                        string txtQuanit = cellCollection[5].Value.ToString();
+                        string txtRate  = cellCollection[4].Value.ToString();
                         string txtAmoun = cellCollection[6].Value.ToString();
                         string OrderID = txtSrNo.Text;
                         string Query = "insert into VendorOrderDesc Values('" + OrderID + "','" + txtItemCod + "','" + txtRate + "','" + txtQuanit + "','" + txtAmoun + "')";
@@ -1183,8 +1183,8 @@ namespace WindowsFormsApplication1
                 //gridPurchaseOrder.CurrentCell = gridPurchaseOrder[gridPurchaseOrder.CurrentCell.ColumnIndex + 2, gridPurchaseOrder.CurrentCell.RowIndex];
                 //gridPurchaseOrder.Focus();
              }
-             gridPurchaseOrder.Rows[e.RowIndex].Cells[5].Value = rate;
-             string quantity = gridPurchaseOrder.Rows[e.RowIndex].Cells[4].Value.ToString();
+             gridPurchaseOrder.Rows[e.RowIndex].Cells[4].Value = rate;
+             string quantity = gridPurchaseOrder.Rows[e.RowIndex].Cells[5].Value.ToString();
              if (quantity == "")
              {
                  quantity = "0";
