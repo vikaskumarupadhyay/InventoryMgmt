@@ -1603,7 +1603,7 @@ namespace WindowsFormsApplication1
                 {
                     if (textVendercod.Text == "")
                     {
-                        textVendercod.Text = "I";
+                        textVendercod.Text = "V";
                     }
                     e.Handled = false;
                 }

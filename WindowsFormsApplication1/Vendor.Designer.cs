@@ -568,9 +568,9 @@
             this.txtVenderOpeningBal.Click += new System.EventHandler(this.txtVenderOpeningBal_Click);
             this.txtVenderOpeningBal.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtVenderOpeningBal_MouseClick);
             this.txtVenderOpeningBal.TextChanged += new System.EventHandler(this.txtVenderOpeningBal_TextChanged_1);
-            this.txtVenderOpeningBal.Enter += new System.EventHandler(this.txtVenderOpeningBal_Enter);
+            //this.txtVenderOpeningBal.Enter += new System.EventHandler(this.txtVenderOpeningBal_Enter);
             this.txtVenderOpeningBal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVenderOpeningBal_KeyPress);
-            this.txtVenderOpeningBal.Leave += new System.EventHandler(this.txtVenderOpeningBal_Leave);
+            //this.txtVenderOpeningBal.Leave += new System.EventHandler(this.txtVenderOpeningBal_Leave);
             // 
             // textBox14
             // 
