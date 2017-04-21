@@ -168,122 +168,126 @@ namespace WindowsFormsApplication1
 
         private void btnItemSave_Click(object sender, EventArgs e)
         {
+            Item_SaveDetails();
+        }
+        private void Item_SaveDetails()
+        {
             if (string.IsNullOrEmpty(txtItemProductName.Text))
             {
                 MessageBox.Show("please select your itemname");
             }
             else
             {
-                if(string.IsNullOrEmpty(txtItemCompName.Text))
+                if (string.IsNullOrEmpty(txtItemCompName.Text))
                 {
                     MessageBox.Show("please select your compnay name");
                 }
                 else
                 {
-                    if(string.IsNullOrEmpty(txtItemDesc.Text))
+                    if (string.IsNullOrEmpty(txtItemDesc.Text))
                     {
                         MessageBox.Show("please select your description");
                     }
                     else
                     {
-                        if(string.IsNullOrEmpty(cmbItemItemGroup.Text))
+                        if (string.IsNullOrEmpty(cmbItemItemGroup.Text))
                         {
                             MessageBox.Show("please select your item group");
                         }
                         else
                         {
-                            if(string.IsNullOrEmpty(cmbItemUnit.Text))
+                            if (string.IsNullOrEmpty(cmbItemUnit.Text))
                             {
                                 MessageBox.Show("plese select your unit");
                             }
                             else
                             {
-                                if(string.IsNullOrEmpty(txtItemPrice.Text))
+                                if (string.IsNullOrEmpty(txtItemPrice.Text))
                                 {
                                     MessageBox.Show("please select your itemprice");
                                 }
                                 else
                                 {
-                                    if(string.IsNullOrEmpty(txtItemSalesPrice.Text))
+                                    if (string.IsNullOrEmpty(txtItemSalesPrice.Text))
                                     {
                                         MessageBox.Show("please select your sales price");
-                                   }
+                                    }
                                     else
                                     {
-                                        if(string.IsNullOrEmpty(txtItemMrp.Text))
+                                        if (string.IsNullOrEmpty(txtItemMrp.Text))
                                         {
                                             MessageBox.Show("please select your mrp");
-                                    }
+                                        }
                                         else
                                         {
-                                            if(string.IsNullOrEmpty(txtItemMargin.Text))
+                                            if (string.IsNullOrEmpty(txtItemMargin.Text))
                                             {
                                                 MessageBox.Show("please select your margin");
                                             }
                                             else
                                             {
-                                                if(string.IsNullOrEmpty(txtItemOpeningQuant.Text))
+                                                if (string.IsNullOrEmpty(txtItemOpeningQuant.Text))
                                                 {
                                                     MessageBox.Show("please select your opening quantity");
                                                 }
-                                            
-            if (updatecounter == 0)
-            {
-                if (cmbItemItemGroup.SelectedIndex != 0 && cmbItemUnit.SelectedIndex != 0)
-                {
-                    string UnitId = UnitList[cmbItemUnit.SelectedIndex - 1];
-                    string GroupId = GroupList[cmbItemItemGroup.SelectedIndex - 1];
 
-                    string saveCommand1 = "insert into ItemDetails values ('" + txtItemProductCode.Text + "','" + txtItemProductName.Text + "','" + txtItemCompName.Text + "','" + txtItemDesc.Text + "','" + GroupId + "','" + UnitId + "')";
+                                                if (updatecounter == 0)
+                                                {
+                                                    if (cmbItemItemGroup.SelectedIndex != 0 && cmbItemUnit.SelectedIndex != 0)
+                                                    {
+                                                        string UnitId = UnitList[cmbItemUnit.SelectedIndex - 1];
+                                                        string GroupId = GroupList[cmbItemItemGroup.SelectedIndex - 1];
 
-                    string saveCommand2 = "insert into ItemPriceDetail values ('" + txtItemProductCode.Text + "','" + txtItemPrice.Text + "','" + txtItemSalesPrice.Text + "','" + txtItemMrp.Text + "','" + txtItemMargin.Text + "')";
+                                                        string saveCommand1 = "insert into ItemDetails values ('" + txtItemProductCode.Text + "','" + txtItemProductName.Text + "','" + txtItemCompName.Text + "','" + txtItemDesc.Text + "','" + GroupId + "','" + UnitId + "')";
 
-                    string saveCommand3 = "insert into ItemQuantityDetail values ('" + txtItemProductCode.Text + "','" + txtItemOpeningQuant.Text + "','" + txtItemRemaningQuant.Text + "')";
+                                                        string saveCommand2 = "insert into ItemPriceDetail values ('" + txtItemProductCode.Text + "','" + txtItemPrice.Text + "','" + txtItemSalesPrice.Text + "','" + txtItemMrp.Text + "','" + txtItemMargin.Text + "')";
 
-                    int insertedRows = dbMainClass.saveDetails(saveCommand1, saveCommand2, saveCommand3);
-                    if (insertedRows > 0)
-                    {
-                        //btnList.Enabled = true;
-                        txtItemProductName.Focus();
-                        MessageBox.Show("Details Saved Successfully!");
+                                                        string saveCommand3 = "insert into ItemQuantityDetail values ('" + txtItemProductCode.Text + "','" + txtItemOpeningQuant.Text + "','" + txtItemRemaningQuant.Text + "')";
 
-                    }
-                    else
-                    {
-                        MessageBox.Show("Details Not Saved Successfully");
-                    }
+                                                        int insertedRows = dbMainClass.saveDetails(saveCommand1, saveCommand2, saveCommand3);
+                                                        if (insertedRows > 0)
+                                                        {
+                                                            //btnList.Enabled = true;
+                                                            txtItemProductName.Focus();
+                                                            MessageBox.Show("Details Saved Successfully!");
 
-                }
-            }
-            else if (updatecounter == 1)
-            {
-                //string groupname = cmbItemItemGroup.Text;
+                                                        }
+                                                        else
+                                                        {
+                                                            MessageBox.Show("Details Not Saved Successfully");
+                                                        }
 
-                string saveCommand1 = "update ItemDetails set itemId='" + txtItemProductCode.Text + "',itemName='" + txtItemProductName.Text + "',itemCompName='" + txtItemCompName.Text + "',itemDesc='" + txtItemDesc.Text + "'where itemId='" + txtItemProductCode.Text + "'";
+                                                    }
+                                                }
+                                                else if (updatecounter == 1)
+                                                {
+                                                    //string groupname = cmbItemItemGroup.Text;
 
-                string saveCommand2 = "update ItemPriceDetail  set  purChasePrice='" + txtItemPrice.Text + "', SalesPrice='" + txtItemSalesPrice.Text + "', MrpPrice='" + txtItemMrp.Text + "',Margin='" + txtItemMargin.Text + "'where itemId='" + txtItemProductCode.Text + "'";
+                                                    string saveCommand1 = "update ItemDetails set itemId='" + txtItemProductCode.Text + "',itemName='" + txtItemProductName.Text + "',itemCompName='" + txtItemCompName.Text + "',itemDesc='" + txtItemDesc.Text + "'where itemId='" + txtItemProductCode.Text + "'";
 
-                string saveCommand3 = "update ItemQuantityDetail set OpeningQuantity='" + txtItemOpeningQuant.Text + "',CurrentQuantity='" + txtItemRemaningQuant.Text + "' where itemId='" + txtItemProductCode.Text + "'";
+                                                    string saveCommand2 = "update ItemPriceDetail  set  purChasePrice='" + txtItemPrice.Text + "', SalesPrice='" + txtItemSalesPrice.Text + "', MrpPrice='" + txtItemMrp.Text + "',Margin='" + txtItemMargin.Text + "'where itemId='" + txtItemProductCode.Text + "'";
 
-                int insertedRows = dbMainClass.saveDetails(saveCommand1, saveCommand2, saveCommand3);
-                if (insertedRows > 0)
-                {
+                                                    string saveCommand3 = "update ItemQuantityDetail set OpeningQuantity='" + txtItemOpeningQuant.Text + "',CurrentQuantity='" + txtItemRemaningQuant.Text + "' where itemId='" + txtItemProductCode.Text + "'";
 
-                    txtItemProductName.Focus();
-                    MessageBox.Show("Details updated successfully!");
+                                                    int insertedRows = dbMainClass.saveDetails(saveCommand1, saveCommand2, saveCommand3);
+                                                    if (insertedRows > 0)
+                                                    {
 
-                }
-                else
-                {
-                    MessageBox.Show("Details Not Saved Successfully");
-                }
-               
-            }
-            makeBlank();
-            string Id = dbMainClass.getUniqueID("ItemDetails");
-            txtItemProductCode.Text = Id;
-            btnItemList.Enabled = true;
-        }
+                                                        txtItemProductName.Focus();
+                                                        MessageBox.Show("Details updated successfully!");
+
+                                                    }
+                                                    else
+                                                    {
+                                                        MessageBox.Show("Details Not Saved Successfully");
+                                                    }
+
+                                                }
+                                                makeBlank();
+                                                string Id = dbMainClass.getUniqueID("ItemDetails");
+                                                txtItemProductCode.Text = Id;
+                                                btnItemList.Enabled = true;
+                                            }
                                         }
                                     }
                                 }
@@ -834,7 +838,14 @@ namespace WindowsFormsApplication1
 
         private void Item_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F2)
+
+            if (e.Control && e.KeyCode.ToString() == "S")
+            {
+
+                Item_SaveDetails();
+            }
+            
+            /*if (e.KeyCode == Keys.F2)
             {
                 txtSearch.Text = "";
                 searchCalmn.SelectedIndex = 0;
@@ -845,7 +856,7 @@ namespace WindowsFormsApplication1
                 dataGridView1.DataSource = dt;
                 tabindix();
                 searchCalmn.Focus();
-            }
+            }*/
         }
 
        

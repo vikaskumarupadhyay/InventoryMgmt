@@ -223,10 +223,14 @@ namespace WindowsFormsApplication1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            Comp_SaveDetails();   
+        }
+        public void Comp_SaveDetails()
+        {
             string taxId = "";
             if (combComp.SelectedIndex != 0)
             {
-              taxId =TexList[combComp.SelectedIndex - 1];
+                taxId = TexList[combComp.SelectedIndex - 1];
             }
             if (updatecounter == 0)
             {
@@ -257,40 +261,39 @@ namespace WindowsFormsApplication1
             }
             if (updatecounter == 1)
             {
-                string updatecommand = "update CompnayDetails set OnerName='" + txtwonername.Text + "', Name='" + txtCompnayName.Text + "',Address='" + txtCompnayAddress.Text + "',City='" + txtCity.Text + "',State='" + txtState.Text + "',Zip='" + txtZip.Text + "',Country='" + txtCountry.Text + "',Email='" + txtEmailAddress.Text + "',WebAddress='" + txtWebSite.Text + "',Phone='" + txtPhone.Text + "',Mobile='" + txtMobile.Text + "',Fax='" + txtFax.Text + "',PANNO='" + txtPanNo.Text + "',VATNO='" + txtVatNo.Text + "',CSTNO='" + txtCstNo.Text + "',ServiceTaxAmmount='" + txtSarvice.Text + "',ExciseTaxAmmount='" + txtExcise.Text + "',GSTTaxAmmount='" + txtGst.Text + "',Description='" + txtDescription.Text + "',RagistrationDate='" + dtpdate.Value.ToString() + "', TexId='"+taxId+"' where CompnayId='"+txtCompnayCode.Text+"' ";
-                    int updatequrry = dbMainClass.saveDetails(updatecommand);
-                    if (updatequrry > 0)
+                string updatecommand = "update CompnayDetails set OnerName='" + txtwonername.Text + "', Name='" + txtCompnayName.Text + "',Address='" + txtCompnayAddress.Text + "',City='" + txtCity.Text + "',State='" + txtState.Text + "',Zip='" + txtZip.Text + "',Country='" + txtCountry.Text + "',Email='" + txtEmailAddress.Text + "',WebAddress='" + txtWebSite.Text + "',Phone='" + txtPhone.Text + "',Mobile='" + txtMobile.Text + "',Fax='" + txtFax.Text + "',PANNO='" + txtPanNo.Text + "',VATNO='" + txtVatNo.Text + "',CSTNO='" + txtCstNo.Text + "',ServiceTaxAmmount='" + txtSarvice.Text + "',ExciseTaxAmmount='" + txtExcise.Text + "',GSTTaxAmmount='" + txtGst.Text + "',Description='" + txtDescription.Text + "',RagistrationDate='" + dtpdate.Value.ToString() + "', TexId='" + taxId + "' where CompnayId='" + txtCompnayCode.Text + "' ";
+                int updatequrry = dbMainClass.saveDetails(updatecommand);
+                if (updatequrry > 0)
+                {
+                    string updateTax = "update CompnayTex set TexAmount='" + txtTexAmount.Text + "' where TexId='" + taxId + "'";
+                    int updatequrry1 = dbMainClass.saveDetails(updateTax);
+                    if (updatequrry1 > 0)
                     {
-                        string updateTax = "update CompnayTex set TexAmount='" + txtTexAmount.Text + "' where TexId='" + taxId + "'";
-                        int updatequrry1 = dbMainClass.saveDetails(updateTax);
-                        if (updatequrry1 > 0)
-                        {
-                            MessageBox.Show("Details updated successfully!");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Details save not successfully");
-                        }
+                        MessageBox.Show("Details updated successfully!");
                     }
-                    string selectqury = "select max (CompnayId) from compnaydetails";
-                    DataTable dt1 = dbMainClass.getDetailByQuery(selectqury);
-                    string id = "";
-                    foreach (DataRow dr in dt1.Rows)
+                    else
                     {
-                        id = dr[0].ToString();
+                        MessageBox.Show("Details save not successfully");
                     }
-                        string id1 = id.Substring(0, 1);
-                        string id2 = id.Substring(1);
-                        int s = Convert.ToInt32(id2);
-                        int s1 = s + 1;
-                        string id3 = id1 + s1.ToString();
-                        txtCompnayCode.Text = id3;
                 }
-            btnList.Enabled =true;
+                string selectqury = "select max (CompnayId) from compnaydetails";
+                DataTable dt1 = dbMainClass.getDetailByQuery(selectqury);
+                string id = "";
+                foreach (DataRow dr in dt1.Rows)
+                {
+                    id = dr[0].ToString();
+                }
+                string id1 = id.Substring(0, 1);
+                string id2 = id.Substring(1);
+                int s = Convert.ToInt32(id2);
+                int s1 = s + 1;
+                string id3 = id1 + s1.ToString();
+                txtCompnayCode.Text = id3;
+            }
+            btnList.Enabled = true;
             makeblank();
             ComDetails.SelectedIndex = 0;
             txtwonername.Focus();
-            
         }
 
 
@@ -569,7 +572,12 @@ namespace WindowsFormsApplication1
 
         private void Company_New_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F2)
+            if (e.Control && e.KeyCode.ToString() == "S")
+            {
+
+                Comp_SaveDetails();
+            }
+            /*if (e.KeyCode == Keys.F2)
             {
                 txtSearch.Text = "";
                 ComDetails.TabIndex = 0;
@@ -579,7 +587,7 @@ namespace WindowsFormsApplication1
                 dataGridView1.DataSource = dt;
                 tabindex1();
                 // panel1.Visible = false;
-            }
+            }*/
         }
 
         private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)

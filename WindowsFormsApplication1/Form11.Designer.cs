@@ -117,6 +117,7 @@
             // 
             // gridsalesdelivary
             // 
+            this.gridsalesdelivary.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridsalesdelivary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridsalesdelivary.Location = new System.Drawing.Point(0, 3);
             this.gridsalesdelivary.Name = "gridsalesdelivary";
@@ -755,7 +756,6 @@
             this.crystalReportViewer2.Name = "crystalReportViewer2";
             this.crystalReportViewer2.Size = new System.Drawing.Size(1172, 634);
             this.crystalReportViewer2.TabIndex = 8;
-           // this.crystalReportViewer2.Load += new System.EventHandler(this.crystalReportViewer2_Load);
             // 
             // panel3
             // 
