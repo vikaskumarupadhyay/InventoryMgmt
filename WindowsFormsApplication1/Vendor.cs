@@ -316,7 +316,6 @@ namespace WindowsFormsApplication1
             string value = txtVenderOpeningBal.Text;
             bool moreThanOneDecimalChar = false;
             int g = 0;
-            char h = '.';
             for (int a = 0; a < value.Length; a++)
             {
                 if (value[a] == '.')
@@ -328,15 +327,16 @@ namespace WindowsFormsApplication1
             {
                 moreThanOneDecimalChar = true;
             }
-            if (moreThanOneDecimalChar == false || e.KeyChar == '\b')
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsLetter(e.KeyChar) || (moreThanOneDecimalChar && e.KeyChar == '.') || Char.IsPunctuation(e.KeyChar))
+           
+             if (Char.IsLetter(e.KeyChar) || (moreThanOneDecimalChar && e.KeyChar == '.') || Char.IsPunctuation(e.KeyChar))
             {
                 e.Handled = true;
             }
-
+            
+             else if (moreThanOneDecimalChar == false || e.KeyChar == '\b')
+             {
+                 e.Handled = false;
+             }
         }
 
         private void txtVenderOpeningBal_TextChanged(object sender, EventArgs e)
@@ -804,11 +804,13 @@ namespace WindowsFormsApplication1
            //FolderBrowserDialog openFileDialog1 = new FolderBrowserDialog();
             openFileDialog1.Filter = "xls files (*.xls)|*.xls|All files (*.*)|*.*";
             openFileDialog1.FileName = "Vendor Details";
+
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
-             {
-                 FileName = openFileDialog1.FileName;
-              
-              }
+            {
+                FileName = openFileDialog1.FileName;
+
+                // }
+
                 //DataGridViewColumnCollection column = dataGridView1.Columns;
                 int cout = 0;
                 int rowCoumt = 0;
@@ -845,9 +847,16 @@ namespace WindowsFormsApplication1
                     // name = cellcollecton[0].Value.ToString() + " , " + cellcollecton[1].Value.ToString() + " , " + cellcollecton[2].Value.ToString() + " , " + cellcollecton[3].Value.ToString() + " , " + cellcollecton[4].Value.ToString() + " , " + cellcollecton[5].Value.ToString() + "  , " + cellcollecton[6].Value.ToString() + " , " + cellcollecton[7].Value.ToString() + " , " + cellcollecton[8].Value.ToString() + " , " + cellcollecton[9].Value.ToString() + " , " + cellcollecton[10].Value.ToString() + " , " + cellcollecton[11].Value.ToString() + " , " + cellcollecton[12].Value.ToString() + ", " + cellcollecton[13].Value.ToString() + " , " + cellcollecton[14].Value.ToString() + " , " + cellcollecton[15].Value.ToString();
                     rowindex++;
                 }
+
                 workbook.Worksheets.Add(worksheet);
                 workbook.Save(file);
                 dataGridView1.AllowUserToAddRows = true;
+            }
+            else
+            {
+                dataGridView1.AllowUserToAddRows = true;
+            }
+               
         }
 
         private void frmVendorDetails_KeyDown(object sender, KeyEventArgs e)

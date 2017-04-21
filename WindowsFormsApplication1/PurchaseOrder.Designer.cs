@@ -518,6 +518,7 @@
             this.gridPurchaseOrder.TabIndex = 0;
             this.gridPurchaseOrder.TabStop = false;
             this.gridPurchaseOrder.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPurchaseOrder_CellEndEdit);
+            this.gridPurchaseOrder.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPurchaseOrder_CellLeave);
             this.gridPurchaseOrder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridPurchaseOrder_KeyPress);
             // 
             // textBox1
@@ -741,7 +742,6 @@
             this.PurchesCrystalReportViewer.Name = "PurchesCrystalReportViewer";
             this.PurchesCrystalReportViewer.Size = new System.Drawing.Size(1172, 637);
             this.PurchesCrystalReportViewer.TabIndex = 8;
-           // this.PurchesCrystalReportViewer.Load += new System.EventHandler(this.PurchesCrystalReportViewer_Load);
             // 
             // panel3
             // 
