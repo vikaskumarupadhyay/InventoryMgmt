@@ -248,33 +248,43 @@ namespace WindowsFormsApplication1
 
         private void txtCustOpeningBal_KeyPress(object sender, KeyPressEventArgs e)
         {
-           
-            //return moreThanOneDecimalChar;
-            string value1 = txtOPENINGBALANCE.Text;
-            bool moreThanOneDecimalChar = false;
-            int g = 0;
-            char h = '.';
-            for (int a = 0; a < value1.Length; a++)
-            {
-                if (value1[a] == '.')
-                {
-                    g++;
-                }                                                   
-            }
-            if (g== 1)
-            {
-                moreThanOneDecimalChar = true;
-            }
-            if (moreThanOneDecimalChar == false || e.KeyChar == '\b') 
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsLetter(e.KeyChar) ||(moreThanOneDecimalChar&& e.KeyChar=='.') || Char.IsPunctuation(e.KeyChar) )
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
             {
                 e.Handled = true;
             }
 
-        }
+            // only allow one decimal point
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
+                //return moreThanOneDecimalChar;
+                //string value1 = txtOPENINGBALANCE.Text;
+                //bool moreThanOneDecimalChar = false;
+                //int g = 0;
+                //char h = '.';
+                //for (int a = 0; a < value1.Length; a++)
+                //{
+                //    if (value1[a] == '.')
+                //    {
+                //        g++;
+                //    }
+                //}
+                //if (g == 1)
+                //{
+                //    moreThanOneDecimalChar = true;
+                //}
+            
+                //if (Char.IsLetter(e.KeyChar) || (moreThanOneDecimalChar && e.KeyChar == '.') || Char.IsPunctuation(e.KeyChar))
+                //{
+                //    e.Handled = true;
+                //}
+                //else if (moreThanOneDecimalChar == false || e.KeyChar == '\b')
+                //{
+                //    e.Handled = false;
+                //}
+            }
+        
 
         private void btnList_Click(object sender, EventArgs e)
         {
@@ -800,47 +810,52 @@ namespace WindowsFormsApplication1
             {
                 FileName = openFileDialog1.FileName;
 
-            }
-            //DataGridViewColumnCollection column = dataGridView1.Columns;
-            int cout = 0;
-            int rowCoumt = 0;
-            // column1 = dc.Name.ToString();
-            string file = FileName;//+ ".xls"; //System.Configuration.ConfigurationManager.AppSettings["ExcelFilePath1"] + FolderName + "newdoc.xls";
-            Workbook workbook = new Workbook();
-            Worksheet worksheet = new Worksheet("First Sheet");
 
-            foreach (DataGridViewColumn dc in dataGridView1.Columns)
-            {
+                //DataGridViewColumnCollection column = dataGridView1.Columns;
+                int cout = 0;
+                int rowCoumt = 0;
+                // column1 = dc.Name.ToString();
+                string file = FileName;//+ ".xls"; //System.Configuration.ConfigurationManager.AppSettings["ExcelFilePath1"] + FolderName + "newdoc.xls";
+                Workbook workbook = new Workbook();
+                Worksheet worksheet = new Worksheet("First Sheet");
 
-                worksheet.Cells[rowCoumt, cout] = new Cell(dc.Name);
-                cout++;
-
-            }
-
-            //foreach (DataGridViewRow row in dataGridView1.Rows) { }
-            DataGridViewRowCollection rowcollection = dataGridView1.Rows;
-
-            int rowindex = 1;
-            //int countindex = 0;
-            for (int a = 0; a < rowcollection.Count; a++)
-            {
-                DataGridViewRow currentrow = rowcollection[a];
-                DataGridViewCellCollection cellcollecton = currentrow.Cells;
-                int countrow = 0;
-
-                for (int b = 0; b < currentrow.Cells.Count; b++)
+                foreach (DataGridViewColumn dc in dataGridView1.Columns)
                 {
-                    worksheet.Cells[rowindex, countrow] = new Cell(currentrow.Cells[b].Value.ToString());
-                    // countindex++;
-                    countrow++;
+
+                    worksheet.Cells[rowCoumt, cout] = new Cell(dc.Name);
+                    cout++;
+
                 }
-                // name = cellcollecton[0].Value.ToString() + " , " + cellcollecton[1].Value.ToString() + " , " + cellcollecton[2].Value.ToString() + " , " + cellcollecton[3].Value.ToString() + " , " + cellcollecton[4].Value.ToString() + " , " + cellcollecton[5].Value.ToString() + "  , " + cellcollecton[6].Value.ToString() + " , " + cellcollecton[7].Value.ToString() + " , " + cellcollecton[8].Value.ToString() + " , " + cellcollecton[9].Value.ToString() + " , " + cellcollecton[10].Value.ToString() + " , " + cellcollecton[11].Value.ToString() + " , " + cellcollecton[12].Value.ToString() + ", " + cellcollecton[13].Value.ToString() + " , " + cellcollecton[14].Value.ToString() + " , " + cellcollecton[15].Value.ToString();
-                rowindex++;
+
+                //foreach (DataGridViewRow row in dataGridView1.Rows) { }
+                DataGridViewRowCollection rowcollection = dataGridView1.Rows;
+
+                int rowindex = 1;
+                //int countindex = 0;
+                for (int a = 0; a < rowcollection.Count; a++)
+                {
+                    DataGridViewRow currentrow = rowcollection[a];
+                    DataGridViewCellCollection cellcollecton = currentrow.Cells;
+                    int countrow = 0;
+
+                    for (int b = 0; b < currentrow.Cells.Count; b++)
+                    {
+                        worksheet.Cells[rowindex, countrow] = new Cell(currentrow.Cells[b].Value.ToString());
+                        // countindex++;
+                        countrow++;
+                    }
+                    // name = cellcollecton[0].Value.ToString() + " , " + cellcollecton[1].Value.ToString() + " , " + cellcollecton[2].Value.ToString() + " , " + cellcollecton[3].Value.ToString() + " , " + cellcollecton[4].Value.ToString() + " , " + cellcollecton[5].Value.ToString() + "  , " + cellcollecton[6].Value.ToString() + " , " + cellcollecton[7].Value.ToString() + " , " + cellcollecton[8].Value.ToString() + " , " + cellcollecton[9].Value.ToString() + " , " + cellcollecton[10].Value.ToString() + " , " + cellcollecton[11].Value.ToString() + " , " + cellcollecton[12].Value.ToString() + ", " + cellcollecton[13].Value.ToString() + " , " + cellcollecton[14].Value.ToString() + " , " + cellcollecton[15].Value.ToString();
+                    rowindex++;
+                }
+                workbook.Worksheets.Add(worksheet);
+                this.Close();
+                workbook.Save(file);
+                dataGridView1.AllowUserToAddRows = true;
             }
-            workbook.Worksheets.Add(worksheet);
-            this.Close();
-            workbook.Save(file);
-            dataGridView1.AllowUserToAddRows = true;
+            else
+            {
+                dataGridView1.AllowUserToAddRows = true;
+            }
         }
 
         private void txtOPENINGBALANCE_Leave(object sender, EventArgs e)

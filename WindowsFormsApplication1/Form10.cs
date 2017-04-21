@@ -16,6 +16,7 @@ namespace WindowsFormsApplication1
         public salesorder()
         {
             InitializeComponent();
+           
 
         }
         public int maxItemQuantity = 0;
@@ -386,11 +387,12 @@ namespace WindowsFormsApplication1
 
         private void salesorder_Load(object sender, EventArgs e)
         {
+           
             gridsalesorder.DataSource = addToCartTable;
             discountamount.Visible = false;
             txttaxamount.Visible = false;
             txttotaltax.Visible = false;
-
+           
             crystalReportViewer1.Visible = false;
             tab();
             discountamount.Text = "0";
@@ -444,6 +446,7 @@ namespace WindowsFormsApplication1
                 txttax.Text = dr[0].ToString();
                 textBox16.Text = dr[1].ToString();
             }
+           // gridsalesorder.Rows.Add();
 
         }
 
@@ -824,74 +827,74 @@ namespace WindowsFormsApplication1
 
         private void gridsalesorder_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (gridsalesorder.Rows.Count > 0)
-            {
-                button4.Enabled = true;
-            }
+            //if (gridsalesorder.Rows.Count > 0)
+            //{
+            //    button4.Enabled = true;
+            //}
 
-            if (e.KeyChar == (char)Keys.Escape)
-            {
-                txtitemcode.Enabled = true;
-                txtitemcode.Focus();
-                // txtitemcode.TabIndex = 1;
-                button2.Enabled = false;
+            //if (e.KeyChar == (char)Keys.Escape)
+            //{
+            //    txtitemcode.Enabled = true;
+            //    txtitemcode.Focus();
+            //    // txtitemcode.TabIndex = 1;
+            //    button2.Enabled = false;
 
-            }
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            {
-                //    if (this.gridsalesorder.Rows.Count > 0)
-                //    {
-                //        gridsalesorder.Rows.RemoveAt(this.gridsalesorder.SelectedRows[0].Index);
-                //    }
-                if (addToCartTable.Rows.Count > 0)
-                {
-                    int current = gridsalesorder.CurrentRow.Index;
-                    string Amount = gridsalesorder.Rows[current - 1].Cells[6].Value.ToString();
-                    double totalAmount = Convert.ToDouble(txttotalammount.Text);
-                    totalAmount -= Convert.ToDouble(Amount.Trim());
-                    txttotalammount.Text = totalAmount.ToString();
-                    int index = gridsalesorder.SelectedRows[0].Index;
-                    addToCartTable.Rows.RemoveAt(index - 1);
-                    //int index = gridsalesorder.CurrentCell.RowIndex;
-                    //addToCartTable.Rows.RemoveAt(0);
+            //}
+            //if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            //{
+            //    //    if (this.gridsalesorder.Rows.Count > 0)
+            //    //    {
+            //    //        gridsalesorder.Rows.RemoveAt(this.gridsalesorder.SelectedRows[0].Index);
+            //    //    }
+            //    if (addToCartTable.Rows.Count > 0)
+            //    {
+            //        int current = gridsalesorder.CurrentRow.Index;
+            //        string Amount = gridsalesorder.Rows[current - 1].Cells[6].Value.ToString();
+            //        double totalAmount = Convert.ToDouble(txttotalammount.Text);
+            //        totalAmount -= Convert.ToDouble(Amount.Trim());
+            //        txttotalammount.Text = totalAmount.ToString();
+            //        int index = gridsalesorder.SelectedRows[0].Index;
+            //        addToCartTable.Rows.RemoveAt(index - 1);
+            //        //int index = gridsalesorder.CurrentCell.RowIndex;
+            //        //addToCartTable.Rows.RemoveAt(0);
 
-                    gridsalesorder.DataSource = addToCartTable;
-
-
-                    if (addToCartTable.Rows.Count == 0)
-                    {
-                        txttotalammount.Text = "0.0";
-                        //txtdiscount.Text = "0.0";
-                    }
-
-                    if (gridsalesorder.Rows.Count > 0)
-                    {
-
-                        button4.Enabled = true;
-                        gridsalesorder.Rows[gridsalesorder.Rows.Count - 1].Selected = true;
-                    }
-                    if (gridsalesorder.Rows.Count == 0)
-                    {
-                        txtitemcode.Enabled = true;
-                        button2.Enabled = true;
-                        txtitemcode.Focus();
-                    }
-                    else
-                    {
-                        button4.Enabled = false;
-                    }
-                    txtQuantity.TabStop = false;
-                }
+            //        gridsalesorder.DataSource = addToCartTable;
 
 
-                button4.Enabled = false;
-                savebutton.TabStop = false;
-                button6.TabStop = false;
-                txtcustomercode.TabStop = true;
-                button1.TabStop = true;
-                button2.TabStop = true;
+            //        if (addToCartTable.Rows.Count == 0)
+            //        {
+            //            txttotalammount.Text = "0.0";
+            //            //txtdiscount.Text = "0.0";
+            //        }
 
-            }
+            //        if (gridsalesorder.Rows.Count > 0)
+            //        {
+
+            //            button4.Enabled = true;
+            //            gridsalesorder.Rows[gridsalesorder.Rows.Count - 1].Selected = true;
+            //        }
+            //        if (gridsalesorder.Rows.Count == 0)
+            //        {
+            //            txtitemcode.Enabled = true;
+            //            button2.Enabled = true;
+            //            txtitemcode.Focus();
+            //        }
+            //        else
+            //        {
+            //            button4.Enabled = false;
+            //        }
+            //        txtQuantity.TabStop = false;
+            //    }
+
+
+            //    button4.Enabled = false;
+            //    savebutton.TabStop = false;
+            //    button6.TabStop = false;
+            //    txtcustomercode.TabStop = true;
+            //    button1.TabStop = true;
+            //    button2.TabStop = true;
+
+            //}
         }
 
 
@@ -1126,6 +1129,8 @@ namespace WindowsFormsApplication1
 
         private void gridsalesorder_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+           //gridsalesorder.AllowUserToAddRows=false;
+            
             string itemid = gridsalesorder.Rows[e.RowIndex].Cells[0].Value.ToString();
             string selectqurry = "select Ids.ItemName,Ids.ItemCompName,ipd.MrpPrice, ipd.SalesPrice from ItemDetails Ids  join ItemPriceDetail ipd on Ids.ItemId=ipd.ItemId  where Ids.ItemId='" + itemid + "'";
             DataTable dt = d.getDetailByQuery(selectqurry);
@@ -1136,23 +1141,32 @@ namespace WindowsFormsApplication1
                 gridsalesorder.Rows[e.RowIndex].Cells[2].Value = dr[1].ToString();
                 gridsalesorder.Rows[e.RowIndex].Cells[3].Value = dr[2].ToString();
                 // gridPurchaseOrder.Rows[e.RowIndex].Cells[5].Value=dr[3].ToString();
-
                 rate = dr[3].ToString();
             }
             if (gridsalesorder.Rows[e.RowIndex].Cells[0].Value != null)
             {
-                int co = gridsalesorder.CurrentRow.Index;
-                DataGridViewRow selectedRow = gridsalesorder.Rows[0];
-                selectedRow.Selected = true;
-                selectedRow.Cells[4].Selected = true;
+               
+
+                //sint co = gridsalesorder.CurrentRow.Index;
+                //DataGridViewRow selectedRow = gridsalesorder.Rows[0];
+                //selectedRow.Selected = true;
+                //selectedRow.Cells[4].Selected = true;
                 //gridPurchaseOrder.CurrentCell = gridPurchaseOrder[gridPurchaseOrder.CurrentCell.ColumnIndex + 2, gridPurchaseOrder.CurrentCell.RowIndex];
                 //gridPurchaseOrder.Focus();
             }
-            gridsalesorder.Rows[e.RowIndex].Cells[4].Value = rate;
+            gridsalesorder.Rows[e.RowIndex].Cells[4].Value=rate;
+           
             string quantity = gridsalesorder.Rows[e.RowIndex].Cells[5].Value.ToString();
             if (quantity == "")
             {
+               
                 quantity = "0";
+                
+            }
+            rate = gridsalesorder.Rows[e.RowIndex].Cells[4].Value.ToString();
+            if (rate == "")
+            {
+                rate = "0";
             }
             int q1 = Convert.ToInt32(quantity);
             Double rate1 = Convert.ToDouble(rate);
@@ -1165,6 +1179,17 @@ namespace WindowsFormsApplication1
             Double totalammount = Convert.ToDouble(txttotalammount.Text);
             Double toat = totalammount + price;
             txttotalammount.Text = toat.ToString();
+
+            if (e.ColumnIndex == 0)
+            {
+                gridsalesorder.CurrentCell = gridsalesorder.Rows[0].Cells[5];
+                gridsalesorder.BeginEdit(true);
+            }
+            //var cellToFocus= gridsalesorder.Rows[0].Cells[5];
+            //cellToFocus.e()
+            //gridsalesorder.AllowUserToAddRows = true;
+           
+            
 
 
             //string id = gridsalesorder.Rows[e.RowIndex].Cells[0].Value.ToString();
@@ -1205,6 +1230,8 @@ namespace WindowsFormsApplication1
             //        //txtAmmount.Text = "0";
             //    }
             //}
+
+           
         }
 
 
@@ -1293,6 +1320,17 @@ namespace WindowsFormsApplication1
 
 
         }
+
+        private void gridsalesorder_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            string itemid =gridsalesorder.Rows[e.RowIndex].Cells[0].Value.ToString();
+            string quantity = gridsalesorder.Rows[e.RowIndex].Cells[5].Value.ToString();
+            if (itemid == "")
+            {
+            }
+        }
+
+       
 
        
        

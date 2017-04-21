@@ -116,18 +116,17 @@
             // 
             // gridsalesorder
             // 
-            this.gridsalesorder.AllowUserToDeleteRows = false;
             this.gridsalesorder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridsalesorder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridsalesorder.Location = new System.Drawing.Point(0, 0);
             this.gridsalesorder.Name = "gridsalesorder";
-            this.gridsalesorder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridsalesorder.Size = new System.Drawing.Size(1135, 316);
             this.gridsalesorder.StandardTab = true;
             this.gridsalesorder.TabIndex = 0;
             this.gridsalesorder.TabStop = false;
             this.gridsalesorder.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesorder_CellDoubleClick);
             this.gridsalesorder.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesorder_CellEndEdit);
+            this.gridsalesorder.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesorder_CellLeave);
             this.gridsalesorder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridsalesorder_KeyPress);
             // 
             // txttotalammount
