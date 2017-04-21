@@ -491,6 +491,7 @@ namespace WindowsFormsApplication1
 
         private void salesdelivary_Load(object sender, EventArgs e)
         {
+            //dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             gridsalesdelivary.DataSource = addToCartTable;
             txttaxamount.Visible = false;
             txtdicountamount.Visible = false;

@@ -433,7 +433,7 @@ namespace WindowsFormsApplication1
                             btnAddItem.Enabled = false;
                             //txtRemoveItem.Focus();
                             txtQuanity.TabStop = false;
-                            txtQuanity.Enabled = false;
+                            txtQuanity.ReadOnly = true;
                         //}
                     }
 
@@ -625,8 +625,11 @@ namespace WindowsFormsApplication1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            
-           /* DataGridViewRowCollection call = gridPurchaseOrder.Rows;
+            PO_SaveDetails();
+        }
+        private void PO_SaveDetails()
+        {
+            /* DataGridViewRowCollection call = gridPurchaseOrder.Rows;
             for (int c = 0; c < call.Count; c++)
             {
                 DataGridViewRow currentRow1 = call[c];
@@ -663,13 +666,13 @@ namespace WindowsFormsApplication1
                     DataGridViewRowCollection RowCollection = gridPurchaseOrder.Rows;
                     List<string> sf = new List<string>();
                     for (int a = 0; a < RowCollection.Count; a++)
-                      {
+                    {
 
                         DataGridViewRow currentRow = RowCollection[a];
                         DataGridViewCellCollection cellCollection = currentRow.Cells;
                         string txtItemCod = cellCollection[0].Value.ToString();
                         string txtQuanit = cellCollection[5].Value.ToString();
-                        string txtRate  = cellCollection[4].Value.ToString();
+                        string txtRate = cellCollection[4].Value.ToString();
                         string txtAmoun = cellCollection[6].Value.ToString();
                         string OrderID = txtSrNo.Text;
                         string Query = "insert into VendorOrderDesc Values('" + OrderID + "','" + txtItemCod + "','" + txtRate + "','" + txtQuanit + "','" + txtAmoun + "')";
@@ -688,7 +691,7 @@ namespace WindowsFormsApplication1
                             PurchesCrystalReportViewer.Visible = true;
 
                             panel2.Visible = true;
-                            string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
+                            string conntion = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=True;";
                             SqlConnection con = new SqlConnection(conntion);
                             string selectqurry = "select * from VwPurchesOrderDatils where OrderId='" + txtSrNo.Text + "'";
                             SqlCommand cmd = new SqlCommand(selectqurry, con);
@@ -721,7 +724,7 @@ namespace WindowsFormsApplication1
                     }
 
                 }
-               
+
             }
 
             makeBlank();
@@ -1255,6 +1258,16 @@ namespace WindowsFormsApplication1
             {
                 DisAmmount.Text = "0";
             }
+        }
+
+        private void Distxt_KeyDown(object sender, KeyEventArgs e)
+        {
+           
+        }
+
+        private void PurchaseOrder_KeyDown(object sender, KeyEventArgs e)
+        {
+            
         }
 
        

@@ -581,7 +581,7 @@
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Location = new System.Drawing.Point(12, 104);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1146, 473);
+            this.panel2.Size = new System.Drawing.Size(1146, 478);
             this.panel2.TabIndex = 12;
             // 
             // dataGridView1
@@ -591,7 +591,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1142, 469);
+            this.dataGridView1.Size = new System.Drawing.Size(1142, 474);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
@@ -639,7 +639,7 @@
             this.txtSearch.Location = new System.Drawing.Point(687, 42);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(950, 23);
+            this.txtSearch.Size = new System.Drawing.Size(429, 23);
             this.txtSearch.TabIndex = 4;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged_1);
             this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
@@ -656,7 +656,7 @@
             // btnPrint
             // 
             this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrint.Location = new System.Drawing.Point(251, 582);
+            this.btnPrint.Location = new System.Drawing.Point(251, 588);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(75, 28);
             this.btnPrint.TabIndex = 10;
@@ -666,18 +666,18 @@
             // btnExportToExcel
             // 
             this.btnExportToExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExportToExcel.Location = new System.Drawing.Point(332, 582);
+            this.btnExportToExcel.Location = new System.Drawing.Point(332, 588);
             this.btnExportToExcel.Name = "btnExportToExcel";
             this.btnExportToExcel.Size = new System.Drawing.Size(131, 28);
             this.btnExportToExcel.TabIndex = 9;
-            this.btnExportToExcel.Text = "Export To Excel";
+            this.btnExportToExcel.Text = "E&xport To Excel";
             this.btnExportToExcel.UseVisualStyleBackColor = true;
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
             // butClose
             // 
             this.butClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.butClose.Location = new System.Drawing.Point(469, 582);
+            this.butClose.Location = new System.Drawing.Point(469, 588);
             this.butClose.Name = "butClose";
             this.butClose.Size = new System.Drawing.Size(90, 28);
             this.butClose.TabIndex = 8;
@@ -688,22 +688,22 @@
             // butUpdate
             // 
             this.butUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.butUpdate.Location = new System.Drawing.Point(12, 582);
+            this.butUpdate.Location = new System.Drawing.Point(12, 588);
             this.butUpdate.Name = "butUpdate";
             this.butUpdate.Size = new System.Drawing.Size(90, 28);
             this.butUpdate.TabIndex = 7;
-            this.butUpdate.Text = "Update";
+            this.butUpdate.Text = "&Update";
             this.butUpdate.UseVisualStyleBackColor = true;
             this.butUpdate.Click += new System.EventHandler(this.butUpdate_Click_1);
             // 
             // butAddNewRecord
             // 
             this.butAddNewRecord.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.butAddNewRecord.Location = new System.Drawing.Point(108, 582);
+            this.butAddNewRecord.Location = new System.Drawing.Point(108, 588);
             this.butAddNewRecord.Name = "butAddNewRecord";
             this.butAddNewRecord.Size = new System.Drawing.Size(137, 28);
             this.butAddNewRecord.TabIndex = 6;
-            this.butAddNewRecord.Text = "Add New Record";
+            this.butAddNewRecord.Text = "&Add New Record";
             this.butAddNewRecord.UseVisualStyleBackColor = true;
             this.butAddNewRecord.Click += new System.EventHandler(this.butAddNewRecord_Click_1);
             // 

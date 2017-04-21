@@ -542,7 +542,7 @@
             this.txtVenderCurrentBal.Size = new System.Drawing.Size(395, 21);
             this.txtVenderCurrentBal.TabIndex = 21;
             this.txtVenderCurrentBal.TabStop = false;
-            this.txtVenderCurrentBal.Text = "0";
+            this.txtVenderCurrentBal.Text = "0.00";
             this.txtVenderCurrentBal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtVenderCurrentBal.TextChanged += new System.EventHandler(this.txtVenderCurrentBal_TextChanged);
             // 
@@ -563,7 +563,7 @@
             this.txtVenderOpeningBal.Name = "txtVenderOpeningBal";
             this.txtVenderOpeningBal.Size = new System.Drawing.Size(560, 21);
             this.txtVenderOpeningBal.TabIndex = 20;
-            this.txtVenderOpeningBal.Text = "0";
+            this.txtVenderOpeningBal.Text = "0.00";
             this.txtVenderOpeningBal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtVenderOpeningBal.Click += new System.EventHandler(this.txtVenderOpeningBal_Click);
             this.txtVenderOpeningBal.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtVenderOpeningBal_MouseClick);
@@ -654,17 +654,17 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(332, 582);
+            this.button2.Location = new System.Drawing.Point(332, 588);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(131, 28);
             this.button2.TabIndex = 31;
-            this.button2.Text = "Export To Excel";
+            this.button2.Text = "E&xport To Excel";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // butprint
             // 
-            this.butprint.Location = new System.Drawing.Point(251, 582);
+            this.butprint.Location = new System.Drawing.Point(251, 588);
             this.butprint.Name = "butprint";
             this.butprint.Size = new System.Drawing.Size(75, 28);
             this.butprint.TabIndex = 30;
@@ -730,11 +730,12 @@
             this.txtSearch.Size = new System.Drawing.Size(429, 23);
             this.txtSearch.TabIndex = 25;
             this.txtSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(469, 582);
+            this.button3.Location = new System.Drawing.Point(469, 588);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(90, 28);
             this.button3.TabIndex = 32;
@@ -745,22 +746,22 @@
             // btnUpdate
             // 
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(12, 582);
+            this.btnUpdate.Location = new System.Drawing.Point(12, 588);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(90, 28);
             this.btnUpdate.TabIndex = 28;
-            this.btnUpdate.Text = "Update";
+            this.btnUpdate.Text = "&Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(108, 582);
+            this.button1.Location = new System.Drawing.Point(108, 588);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(137, 28);
             this.button1.TabIndex = 29;
-            this.button1.Text = "Add New Records";
+            this.button1.Text = "&Add New Records";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -772,7 +773,7 @@
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Location = new System.Drawing.Point(12, 114);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1142, 458);
+            this.panel2.Size = new System.Drawing.Size(1142, 464);
             this.panel2.TabIndex = 0;
             // 
             // dataGridView1
@@ -786,7 +787,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1138, 454);
+            this.dataGridView1.Size = new System.Drawing.Size(1138, 460);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 26;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);

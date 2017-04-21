@@ -550,7 +550,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(131, 28);
             this.button2.TabIndex = 23;
-            this.button2.Text = "Export To Excel";
+            this.button2.Text = "E&xport To Excel";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -599,7 +599,7 @@
             this.txtSearch.Location = new System.Drawing.Point(687, 42);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(430, 24);
+            this.txtSearch.Size = new System.Drawing.Size(1136, 24);
             this.txtSearch.TabIndex = 3;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -641,7 +641,7 @@
             this.buttUpdate.Name = "buttUpdate";
             this.buttUpdate.Size = new System.Drawing.Size(90, 28);
             this.buttUpdate.TabIndex = 20;
-            this.buttUpdate.Text = "Update";
+            this.buttUpdate.Text = "&Update";
             this.buttUpdate.UseVisualStyleBackColor = true;
             this.buttUpdate.Click += new System.EventHandler(this.buttUpdate_Click);
             // 
@@ -652,7 +652,7 @@
             this.buttAddNewRecord.Name = "buttAddNewRecord";
             this.buttAddNewRecord.Size = new System.Drawing.Size(137, 28);
             this.buttAddNewRecord.TabIndex = 21;
-            this.buttAddNewRecord.Text = "Add New Record";
+            this.buttAddNewRecord.Text = "&Add New Record";
             this.buttAddNewRecord.UseVisualStyleBackColor = true;
             this.buttAddNewRecord.Click += new System.EventHandler(this.buttAddNewRecord_Click);
             // 

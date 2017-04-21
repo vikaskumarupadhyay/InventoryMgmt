@@ -116,6 +116,11 @@
             // 
             // gridsalesorder
             // 
+<<<<<<< HEAD
+=======
+            this.gridsalesorder.AllowUserToDeleteRows = false;
+            this.gridsalesorder.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+>>>>>>> cdd43e8d1e9040c75c86db523f1d4a5fe1d0e13e
             this.gridsalesorder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridsalesorder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridsalesorder.Location = new System.Drawing.Point(0, 0);

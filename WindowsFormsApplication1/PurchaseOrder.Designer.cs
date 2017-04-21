@@ -408,6 +408,7 @@
             // 
             this.txtQuanity.Location = new System.Drawing.Point(695, 35);
             this.txtQuanity.Name = "txtQuanity";
+            this.txtQuanity.ReadOnly = true;
             this.txtQuanity.Size = new System.Drawing.Size(169, 21);
             this.txtQuanity.TabIndex = 4;
             this.txtQuanity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -606,6 +607,7 @@
             this.Distxt.Text = "0";
             this.Distxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Distxt.TextChanged += new System.EventHandler(this.Distxt_TextChanged);
+            this.Distxt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Distxt_KeyDown);
             this.Distxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Distxt_KeyPress);
             // 
             // textBox19
@@ -741,7 +743,6 @@
             this.PurchesCrystalReportViewer.Name = "PurchesCrystalReportViewer";
             this.PurchesCrystalReportViewer.Size = new System.Drawing.Size(1172, 637);
             this.PurchesCrystalReportViewer.TabIndex = 8;
-           // this.PurchesCrystalReportViewer.Load += new System.EventHandler(this.PurchesCrystalReportViewer_Load);
             // 
             // panel3
             // 
@@ -893,6 +894,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Purchase Order";
             this.Load += new System.EventHandler(this.PurchaseOrder_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PurchaseOrder_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
