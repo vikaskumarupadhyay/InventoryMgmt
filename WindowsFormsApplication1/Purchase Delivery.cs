@@ -679,6 +679,10 @@ namespace WindowsFormsApplication1
         {
             if (txtRef.Text == "")
             {
+                if (txtDiscount.Text == "")
+                {
+                    txtDiscount.Text = "0";
+                }
                 string Ref = "0";
                 dataGridView1.AllowUserToAddRows = false;
                 DataGridViewRowCollection call = dataGridView1.Rows;
@@ -1425,7 +1429,7 @@ namespace WindowsFormsApplication1
                     button5.Focus();
                 }
             }
-            if (Char.IsLetterOrDigit(e.KeyChar))
+            if (Char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
             }
@@ -1593,7 +1597,7 @@ namespace WindowsFormsApplication1
             {
                 IndexTex3();
             }
-            if (Char.IsLetterOrDigit(e.KeyChar))
+            if (Char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
             }
@@ -1862,6 +1866,18 @@ namespace WindowsFormsApplication1
 
         private void txtDiscount_KeyPress(object sender, KeyPressEventArgs e)
         {
+            char ch = e.KeyChar;
+            if (ch == 46 && txtDiscount.Text.IndexOf('.') != -1)
+            {
+                e.Handled = true;
+                return;
+            }
+            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
+            //if (e.KeyChar == (char)Keys.Enter)
+            //{
             if (e.KeyChar == (char)Keys.Enter)
             {
 
@@ -1921,12 +1937,6 @@ namespace WindowsFormsApplication1
             double totaltax = total - taxamount;
             txtTaxAmount.Text = totaltax.ToString();
         }
-
-      
-      
-       
-      
-
     }
         
 }
