@@ -116,14 +116,12 @@
             // 
             // gridsalesorder
             // 
-
-
-            this.gridsalesorder.AllowUserToDeleteRows = false;
             this.gridsalesorder.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridsalesorder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridsalesorder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridsalesorder.Location = new System.Drawing.Point(0, 0);
             this.gridsalesorder.Name = "gridsalesorder";
+            this.gridsalesorder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridsalesorder.Size = new System.Drawing.Size(1135, 316);
             this.gridsalesorder.StandardTab = true;
             this.gridsalesorder.TabIndex = 0;
@@ -873,6 +871,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Sales Order";
             this.Load += new System.EventHandler(this.salesorder_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.salesorder_KeyDown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridsalesorder)).EndInit();
             this.groupBox3.ResumeLayout(false);

@@ -1317,6 +1317,21 @@ namespace WindowsFormsApplication1
 
         private void txtcustomercode_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
             if (e.KeyChar == (char)Keys.Enter)
             {
                 tab1();
@@ -1335,6 +1350,21 @@ namespace WindowsFormsApplication1
 
         private void txtItemCode_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
             if (e.KeyChar == (char)Keys.Escape)
             {
                 butRemoveItem.Focus();
