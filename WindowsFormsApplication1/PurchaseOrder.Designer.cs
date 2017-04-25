@@ -563,7 +563,7 @@
             this.textBox15.Size = new System.Drawing.Size(29, 21);
             this.textBox15.TabIndex = 59;
             this.textBox15.TabStop = false;
-            this.textBox15.Text = "Rs";
+            this.textBox15.Text = "₹";
             this.textBox15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox14
