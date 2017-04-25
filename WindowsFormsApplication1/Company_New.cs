@@ -484,7 +484,7 @@ namespace WindowsFormsApplication1
 
         private void txtTexAmount_MouseClick(object sender, MouseEventArgs e)
         {
-            if (txtTexAmount.Text =="0")
+            if (txtTexAmount.Text =="0.00")
             {
                 txtTexAmount.Text = "";
             }
@@ -492,10 +492,26 @@ namespace WindowsFormsApplication1
 
         private void txtTexAmount_Leave(object sender, EventArgs e)
         {
-            if (txtTexAmount.Text == "")
+            decimal x;
+            if (decimal.TryParse(txtTexAmount.Text, out x))
+            {
+                if (txtTexAmount.Text.IndexOf('.') != -1 && txtTexAmount.Text.Split('.')[1].Length > 2)
+                {
+                    MessageBox.Show("The maximum decimal points are 2!");
+                    txtTexAmount.Focus();
+                }
+                else txtTexAmount.Text = x.ToString("0.00");
+            }
+            else
+            {
+                txtTexAmount.Text = "0.00";
+                //MessageBox.Show("Data invalid!");
+                //txtVenderOpeningBal.Focus();
+            }
+            /*if (txtTexAmount.Text == "")
             {
                 txtTexAmount.Text = "0";
-            }
+            }*/
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -710,7 +726,18 @@ namespace WindowsFormsApplication1
 
         private void txtTexAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string value = txtTexAmount.Text;
+            char ch = e.KeyChar;
+            if (ch == 46 && txtTexAmount.Text.IndexOf('.') != -1)
+            {
+                e.Handled = true;
+                return;
+            }
+            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
+
+            /*string value = txtTexAmount.Text;
             bool moreThanOneDecimalChar = false;
             int g = 0;
             char h = '.';
@@ -732,7 +759,7 @@ namespace WindowsFormsApplication1
             else if (Char.IsLetter(e.KeyChar) || (moreThanOneDecimalChar && e.KeyChar == '.') || Char.IsPunctuation(e.KeyChar))
             {
                 e.Handled = true;
-            }
+            }*/
         }
 
     }

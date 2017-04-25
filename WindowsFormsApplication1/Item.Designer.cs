@@ -111,6 +111,7 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Item Details";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // btnItemUnit
             // 
@@ -280,19 +281,20 @@
             this.txtItemMargin.Size = new System.Drawing.Size(408, 21);
             this.txtItemMargin.TabIndex = 11;
             this.txtItemMargin.TabStop = false;
-            this.txtItemMargin.Text = "0";
+            this.txtItemMargin.Text = "0.00";
             this.txtItemMargin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox11
             // 
             this.textBox11.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox11.Location = new System.Drawing.Point(666, 87);
             this.textBox11.Name = "textBox11";
             this.textBox11.ReadOnly = true;
             this.textBox11.Size = new System.Drawing.Size(48, 21);
             this.textBox11.TabIndex = 10;
             this.textBox11.TabStop = false;
-            this.textBox11.Text = "Rs.";
+            this.textBox11.Text = "₹";
             this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label10
@@ -310,7 +312,7 @@
             this.txtItemMrp.Name = "txtItemMrp";
             this.txtItemMrp.Size = new System.Drawing.Size(560, 21);
             this.txtItemMrp.TabIndex = 14;
-            this.txtItemMrp.Text = "0";
+            this.txtItemMrp.Text = "0.00";
             this.txtItemMrp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtItemMrp.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtItemMrp_MouseClick);
             this.txtItemMrp.TextChanged += new System.EventHandler(this.txtItemMrp_TextChanged);
@@ -320,13 +322,14 @@
             // textBox9
             // 
             this.textBox9.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox9.Location = new System.Drawing.Point(46, 87);
             this.textBox9.Name = "textBox9";
             this.textBox9.ReadOnly = true;
             this.textBox9.Size = new System.Drawing.Size(48, 21);
             this.textBox9.TabIndex = 7;
             this.textBox9.TabStop = false;
-            this.textBox9.Text = "Rs.";
+            this.textBox9.Text = "₹";
             this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtItemSalesPrice
@@ -337,7 +340,7 @@
             this.txtItemSalesPrice.Name = "txtItemSalesPrice";
             this.txtItemSalesPrice.Size = new System.Drawing.Size(408, 21);
             this.txtItemSalesPrice.TabIndex = 13;
-            this.txtItemSalesPrice.Text = "0";
+            this.txtItemSalesPrice.Text = "0.00";
             this.txtItemSalesPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtItemSalesPrice.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtItemSalesPrice_MouseClick);
             this.txtItemSalesPrice.TextChanged += new System.EventHandler(this.txtItemSalesPrice_TextChanged);
@@ -347,13 +350,14 @@
             // textBox7
             // 
             this.textBox7.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox7.Location = new System.Drawing.Point(666, 44);
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(48, 21);
             this.textBox7.TabIndex = 5;
             this.textBox7.TabStop = false;
-            this.textBox7.Text = "Rs.";
+            this.textBox7.Text = "₹";
             this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtItemPrice
@@ -362,7 +366,7 @@
             this.txtItemPrice.Name = "txtItemPrice";
             this.txtItemPrice.Size = new System.Drawing.Size(560, 21);
             this.txtItemPrice.TabIndex = 12;
-            this.txtItemPrice.Text = "0";
+            this.txtItemPrice.Text = "0.00";
             this.txtItemPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtItemPrice.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtItemPrice_MouseClick);
             this.txtItemPrice.TextChanged += new System.EventHandler(this.txtItemPrice_TextChanged);
@@ -372,13 +376,14 @@
             // textBox5
             // 
             this.textBox5.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox5.Location = new System.Drawing.Point(46, 44);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(48, 21);
             this.textBox5.TabIndex = 3;
             this.textBox5.TabStop = false;
-            this.textBox5.Text = "Rs.";
+            this.textBox5.Text = "₹";
             this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label8
@@ -511,10 +516,9 @@
             this.panel1.Controls.Add(this.buttClose2);
             this.panel1.Controls.Add(this.buttUpdate);
             this.panel1.Controls.Add(this.buttAddNewRecord);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1172, 549);
+            this.panel1.Size = new System.Drawing.Size(657, 549);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -525,7 +529,7 @@
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Location = new System.Drawing.Point(12, 105);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1150, 386);
+            this.panel2.Size = new System.Drawing.Size(635, 386);
             this.panel2.TabIndex = 9;
             // 
             // dataGridView1
@@ -537,7 +541,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1146, 382);
+            this.dataGridView1.Size = new System.Drawing.Size(631, 382);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
@@ -565,7 +569,7 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(12, 25);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1150, 73);
+            this.groupBox4.Size = new System.Drawing.Size(635, 73);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Item Search";
@@ -599,7 +603,7 @@
             this.txtSearch.Location = new System.Drawing.Point(687, 42);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(1136, 24);
+            this.txtSearch.Size = new System.Drawing.Size(621, 24);
             this.txtSearch.TabIndex = 3;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 

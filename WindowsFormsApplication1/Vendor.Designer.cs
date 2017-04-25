@@ -554,7 +554,7 @@
             this.textBox16.Size = new System.Drawing.Size(48, 21);
             this.textBox16.TabIndex = 4;
             this.textBox16.TabStop = false;
-            this.textBox16.Text = "Rs.";
+            this.textBox16.Text = "₹";
             this.textBox16.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtVenderOpeningBal
@@ -580,7 +580,7 @@
             this.textBox14.Size = new System.Drawing.Size(49, 21);
             this.textBox14.TabIndex = 2;
             this.textBox14.TabStop = false;
-            this.textBox14.Text = "Rs.";
+            this.textBox14.Text = "₹";
             this.textBox14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label15

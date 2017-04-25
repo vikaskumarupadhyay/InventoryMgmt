@@ -31,7 +31,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtCURRENTBALANCE = new System.Windows.Forms.TextBox();
             this.textBox16 = new System.Windows.Forms.TextBox();
-            this.txtOPENINGBALANCE = new System.Windows.Forms.TextBox();
+            this.txtCustOpeningBal = new System.Windows.Forms.TextBox();
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -106,7 +106,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.txtCURRENTBALANCE);
             this.groupBox2.Controls.Add(this.textBox16);
-            this.groupBox2.Controls.Add(this.txtOPENINGBALANCE);
+            this.groupBox2.Controls.Add(this.txtCustOpeningBal);
             this.groupBox2.Controls.Add(this.textBox14);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.label14);
@@ -128,7 +128,7 @@
             this.txtCURRENTBALANCE.Size = new System.Drawing.Size(395, 21);
             this.txtCURRENTBALANCE.TabIndex = 5;
             this.txtCURRENTBALANCE.TabStop = false;
-            this.txtCURRENTBALANCE.Text = "0";
+            this.txtCURRENTBALANCE.Text = "0.00";
             this.txtCURRENTBALANCE.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtCURRENTBALANCE.Click += new System.EventHandler(this.txtCURRENTBALANCE_Click);
             // 
@@ -140,21 +140,21 @@
             this.textBox16.Size = new System.Drawing.Size(48, 21);
             this.textBox16.TabIndex = 4;
             this.textBox16.TabStop = false;
-            this.textBox16.Text = "Rs.";
+            this.textBox16.Text = "₹";
             this.textBox16.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtOPENINGBALANCE
+            // txtCustOpeningBal
             // 
-            this.txtOPENINGBALANCE.Location = new System.Drawing.Point(101, 37);
-            this.txtOPENINGBALANCE.Name = "txtOPENINGBALANCE";
-            this.txtOPENINGBALANCE.Size = new System.Drawing.Size(560, 21);
-            this.txtOPENINGBALANCE.TabIndex = 32;
-            this.txtOPENINGBALANCE.Text = "0";
-            this.txtOPENINGBALANCE.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtOPENINGBALANCE.Click += new System.EventHandler(this.txtOPENINGBALANCE_Click);
-            this.txtOPENINGBALANCE.TextChanged += new System.EventHandler(this.txtCustOpeningBal_TextChanged);
-            this.txtOPENINGBALANCE.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustOpeningBal_KeyPress);
-            this.txtOPENINGBALANCE.Leave += new System.EventHandler(this.txtOPENINGBALANCE_Leave);
+            this.txtCustOpeningBal.Location = new System.Drawing.Point(101, 37);
+            this.txtCustOpeningBal.Name = "txtCustOpeningBal";
+            this.txtCustOpeningBal.Size = new System.Drawing.Size(560, 21);
+            this.txtCustOpeningBal.TabIndex = 32;
+            this.txtCustOpeningBal.Text = "0.00";
+            this.txtCustOpeningBal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCustOpeningBal.Click += new System.EventHandler(this.txtCustOpeningBal_Click);
+            this.txtCustOpeningBal.TextChanged += new System.EventHandler(this.txtCustOpeningBal_TextChanged);
+            this.txtCustOpeningBal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustOpeningBal_KeyPress);
+            this.txtCustOpeningBal.Leave += new System.EventHandler(this.txtCustOpeningBal_Leave);
             // 
             // textBox14
             // 
@@ -164,7 +164,7 @@
             this.textBox14.Size = new System.Drawing.Size(49, 21);
             this.textBox14.TabIndex = 2;
             this.textBox14.TabStop = false;
-            this.textBox14.Text = "Rs.";
+            this.textBox14.Text = "₹";
             this.textBox14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label15
@@ -649,7 +649,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(332, 584);
+            this.button2.Location = new System.Drawing.Point(332, 588);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(131, 28);
             this.button2.TabIndex = 33;
@@ -660,7 +660,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(251, 584);
+            this.button1.Location = new System.Drawing.Point(251, 588);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 28);
             this.button1.TabIndex = 32;
@@ -710,7 +710,7 @@
             this.textBox1.Location = new System.Drawing.Point(687, 42);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(429, 22);
+            this.textBox1.Size = new System.Drawing.Size(429, 23);
             this.textBox1.TabIndex = 3;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -731,7 +731,7 @@
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Location = new System.Drawing.Point(12, 104);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1142, 474);
+            this.panel2.Size = new System.Drawing.Size(1142, 478);
             this.panel2.TabIndex = 8;
             // 
             // dataGridView1
@@ -741,7 +741,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1138, 470);
+            this.dataGridView1.Size = new System.Drawing.Size(1138, 474);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
@@ -750,7 +750,7 @@
             // butclose
             // 
             this.butclose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.butclose.Location = new System.Drawing.Point(469, 584);
+            this.butclose.Location = new System.Drawing.Point(469, 588);
             this.butclose.Name = "butclose";
             this.butclose.Size = new System.Drawing.Size(90, 28);
             this.butclose.TabIndex = 34;
@@ -761,7 +761,7 @@
             // butupdate
             // 
             this.butupdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.butupdate.Location = new System.Drawing.Point(12, 584);
+            this.butupdate.Location = new System.Drawing.Point(12, 588);
             this.butupdate.Name = "butupdate";
             this.butupdate.Size = new System.Drawing.Size(90, 28);
             this.butupdate.TabIndex = 30;
@@ -772,7 +772,7 @@
             // butaddrecord
             // 
             this.butaddrecord.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.butaddrecord.Location = new System.Drawing.Point(108, 584);
+            this.butaddrecord.Location = new System.Drawing.Point(108, 588);
             this.butaddrecord.Name = "butaddrecord";
             this.butaddrecord.Size = new System.Drawing.Size(137, 28);
             this.butaddrecord.TabIndex = 31;
@@ -816,7 +816,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtCURRENTBALANCE;
         private System.Windows.Forms.TextBox textBox16;
-        private System.Windows.Forms.TextBox txtOPENINGBALANCE;
+        private System.Windows.Forms.TextBox txtCustOpeningBal;
         private System.Windows.Forms.TextBox textBox14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
