@@ -677,6 +677,10 @@ namespace WindowsFormsApplication1
 
         private void button5_Click(object sender, EventArgs e)
         {
+            deliverysave();
+        }
+             private void deliverysave()
+             {
             if (txtRef.Text == "")
             {
                 if (txtDiscount.Text == "")
@@ -1936,6 +1940,19 @@ namespace WindowsFormsApplication1
             double taxamount = total / tax;
             double totaltax = total - taxamount;
             txtTaxAmount.Text = totaltax.ToString();
+        }
+
+        private void Form7_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode.ToString() == "S")
+            {
+                deliverysave();
+                //this.Close();
+            }
+            if (e.Alt && e.KeyCode.ToString() == "D")
+            {
+                txtDiscount.Focus();
+            }
         }
     }
         

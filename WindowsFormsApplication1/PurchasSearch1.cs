@@ -62,30 +62,7 @@ namespace WindowsFormsApplication1
             comboPurchasesearch.DisplayMember = "AliasTableColumnName";
             gridPurchaseSearch.DataSource = dt;
             //DataGridViewRowCollection RowCollection = gridPurchaseSearch.Rows;
-            double dis;
-            double dis1 = 0;
-            double tax;
-            double tax1 = 0;
-            double gross;
-            double wta;
-            double wta1 = 0;
-            double gross1 = 0;
-            for (int a = 0; a < gridPurchaseSearch.Rows.Count; a++)
-            {
-                gross = Convert.ToDouble(gridPurchaseSearch.Rows[a].Cells[21].Value);
-              gross1 = gross1+gross;
-              dis = Convert.ToDouble(gridPurchaseSearch.Rows[a].Cells[23].Value);
-              dis1 = dis1 + dis;
-              tax = Convert.ToDouble(gridPurchaseSearch.Rows[a].Cells[25].Value);
-              tax1 = tax1 + tax;
-              wta = Convert.ToDouble(gridPurchaseSearch.Rows[a].Cells[26].Value);
-              wta1 = wta1 + wta;
-            }
-
-            TxtGrowsAmount.Text = gross1.ToString();
-            TxtDisAmount.Text = dis1.ToString();
-            TxtTaxAmount.Text = tax1.ToString();
-            TxtWithodTaxAmount.Text = wta1.ToString();
+            commaind();
         }
 
         private void txtsearch_TextChanged(object sender, EventArgs e)
@@ -94,6 +71,7 @@ namespace WindowsFormsApplication1
             string selectQurry = "select dbo.VendorDetails.venderId ,dbo.VendorDetails.vName , dbo.VendorDetails.vCompName, dbo.VendorDetails.vAddress, dbo.VendorDetails.vCity , dbo.VendorDetails.vState , dbo.VendorDetails.vZip, dbo.VendorDetails.vCountry , dbo.VendorDetails.vEmail , dbo.VendorDetails.vWebAddress ,dbo.VendorDetails.vPhone , dbo.VendorDetails.vMobile ,dbo.CustomerOrderDelivery.Deliveryid , dbo.CustomerOrderDelivery.DeliveryDate , dbo.CustomerOrderDelivery.RefNo, dbo.VendorOrderDesc.ItemId, dbo.ItemDetails.ItemName, dbo.ItemDetails.ItemCompName , dbo.ItemPriceDetail.MrpPrice , dbo.VendorOrderDesc.Price , dbo.VendorOrderDesc.Quantity, dbo.VendorOrderDesc.TotalPrice , dbo.VendorOrderDetails.Discount ,((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100) as [Discount Amount], dbo.VendorOrderDetails.Vat , (dbo.VendorOrderDesc.TotalPrice)- ((dbo.VendorOrderDesc.TotalPrice)/(1+(dbo.VendorOrderDetails.Vat/100))) as [Tax Amount] , dbo.VendorOrderDetails.TotalPrice  FROM  dbo.CustomerOrderDelivery INNER JOIN dbo.VendorOrderDetails ON dbo.CustomerOrderDelivery.Orderid = dbo.VendorOrderDetails.Orderid INNER JOIN dbo.VendorDetails ON dbo.VendorOrderDetails.venderId = dbo.VendorDetails.venderId INNER JOIN dbo.VendorOrderDesc ON dbo.VendorOrderDetails.Orderid = dbo.VendorOrderDesc.Orderid INNER JOIN dbo.ItemDetails ON dbo.VendorOrderDesc.ItemId = dbo.ItemDetails.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId  where " + s + " like '" + txtsearch.Text + "%'";
             DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
             gridPurchaseSearch.DataSource = dt;
+            commaind();
           
         }
 
@@ -125,6 +103,33 @@ namespace WindowsFormsApplication1
 
         }
 
+        public void commaind()
+        {
+            double dis;
+            double dis1 = 0;
+            double tax;
+            double tax1 = 0;
+            double gross;
+            double wta;
+            double wta1 = 0;
+            double gross1 = 0;
+            for (int a = 0; a < gridPurchaseSearch.Rows.Count; a++)
+            {
+                gross = Convert.ToDouble(gridPurchaseSearch.Rows[a].Cells[21].Value);
+                gross1 = gross1 + gross;
+                dis = Convert.ToDouble(gridPurchaseSearch.Rows[a].Cells[23].Value);
+                dis1 = dis1 + dis;
+                tax = Convert.ToDouble(gridPurchaseSearch.Rows[a].Cells[25].Value);
+                tax1 = tax1 + tax;
+                wta = Convert.ToDouble(gridPurchaseSearch.Rows[a].Cells[26].Value);
+                wta1 = wta1 + wta;
+            }
+
+            TxtGrowsAmount.Text = gross1.ToString();
+            TxtDisAmount.Text = dis1.ToString();
+            TxtTaxAmount.Text = tax1.ToString();
+            TxtWithodTaxAmount.Text = wta1.ToString();
+        }
         private void button3_Click(object sender, EventArgs e)
         {
             if (gridPurchaseSearch.AllowUserToAddRows == true)
@@ -194,6 +199,7 @@ namespace WindowsFormsApplication1
             //"select od.Orderid,od.venderId,itd.ItemName,vod.Quantity,vod.TotalPrice,od.OrderDate,cod.DeliveryDate,coi.InvoiceDate from VendorOrderDetails od join VendorOrderDesc vod on vod.Orderid=od.Orderid join CustomerOrderDelivery cod on cod.Orderid=vod.Orderid join CustomerOrderInvoice coi on coi.Orderid=vod.Orderid join ItemDetails itd on itd.ItemId=vod.ItemId where " + a + "= '" + txtsearch.Text + "'";
             DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
             gridPurchaseSearch.DataSource = dt;
+            commaind();
         }
 
         private void label6_Click(object sender, EventArgs e)

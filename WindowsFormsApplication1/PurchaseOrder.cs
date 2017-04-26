@@ -1293,7 +1293,7 @@ namespace WindowsFormsApplication1
         {
             double d = 1;
             double total = Convert.ToDouble(txtTotalAmount.Text);
-            double g = Convert.ToDouble(txtDiscount.Text);
+            double g = Convert.ToDouble(Distxt.Text);
             double tax = d + ((g / 100));
             double taxamount = total / tax;
             double totaltax = total - taxamount;
@@ -1319,11 +1319,15 @@ namespace WindowsFormsApplication1
 
         private void PurchaseOrder_KeyDown(object sender, KeyEventArgs e)
         {
-            //if (e.Control && e.KeyCode.ToString() == "s")
-            //{
-            //    MessageBox.Show("kjhhggf");
-            //    this.Close();
-            //}
+            if (e.Control && e.KeyCode.ToString() == "S")
+            {
+                PO_SaveDetails();
+                //this.Close();
+            }
+            if (e.Alt && e.KeyCode.ToString() == "D")
+            {
+                Distxt.Focus();
+            }
         }
 
         private void gridPurchaseOrder_CellLeave(object sender, DataGridViewCellEventArgs e)
