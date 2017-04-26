@@ -740,10 +740,9 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.button1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Location = new System.Drawing.Point(0, 276);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1172, 634);
+            this.panel2.Size = new System.Drawing.Size(1172, 358);
             this.panel2.TabIndex = 53;
             // 
             // crystalReportViewer2
@@ -751,10 +750,9 @@
             this.crystalReportViewer2.ActiveViewIndex = -1;
             this.crystalReportViewer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.crystalReportViewer2.Location = new System.Drawing.Point(0, 0);
+            this.crystalReportViewer2.Location = new System.Drawing.Point(0, 418);
             this.crystalReportViewer2.Name = "crystalReportViewer2";
-            this.crystalReportViewer2.Size = new System.Drawing.Size(1172, 634);
+            this.crystalReportViewer2.Size = new System.Drawing.Size(1172, 216);
             this.crystalReportViewer2.TabIndex = 8;
             // 
             // panel3
@@ -894,10 +892,12 @@
             this.Controls.Add(this.txtcst);
             this.Controls.Add(this.textBox18);
             this.Controls.Add(this.textBox16);
+            this.KeyPreview = true;
             this.Name = "salesdelivary";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sales Delivery";
             this.Load += new System.EventHandler(this.salesdelivary_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.salesdelivary_KeyDown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridsalesdelivary)).EndInit();
             this.groupBox3.ResumeLayout(false);

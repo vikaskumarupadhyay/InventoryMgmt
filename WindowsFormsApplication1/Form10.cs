@@ -1536,8 +1536,11 @@ namespace WindowsFormsApplication1
            {
                cretenew();
            }
-          
-            
+
+           if (e.Alt && e.KeyCode.ToString()=="D")
+           {
+              textBox20.Focus();
+           }
         }
     }
 }

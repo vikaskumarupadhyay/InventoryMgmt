@@ -60,7 +60,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(1011, 493);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
-            //this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // label1
             // 
@@ -130,6 +129,8 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker2.TabIndex = 9;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
+           // this.dateTimePicker2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dateTimePicker2_MouseUp);
             // 
             // button3
             // 
@@ -200,7 +201,6 @@
             this.txtgrossamount.Name = "txtgrossamount";
             this.txtgrossamount.Size = new System.Drawing.Size(116, 20);
             this.txtgrossamount.TabIndex = 17;
-            //this.txtgrossamount.TextChanged += new System.EventHandler(this.txtgrossamount_TextChanged);
             // 
             // txttaxamount
             // 
