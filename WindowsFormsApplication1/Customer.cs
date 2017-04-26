@@ -30,12 +30,12 @@ namespace WindowsFormsApplication1
         {
            
             comserchvalue.Focus();
-            string s = txtOPENINGBALANCE.Text;
+            string s = txtCustOpeningBal.Text;
             int decimalCount = '.';
             bool validDecimal = true;
             if (validDecimal && decimalCount<1)
             {
-                txtOPENINGBALANCE.Text = decimalCount.ToString();
+                txtCustOpeningBal.Text = decimalCount.ToString();
             }
            
             if (value == 1)
@@ -153,7 +153,7 @@ namespace WindowsFormsApplication1
                     {
                         string saveCommand1 = "insert into CustomerDetails values ('" + txtCustCode.Text + "','" + txtName.Text + "','" + txtCompnyName.Text + "','" + txtAddress.Text + "','" + txtCity.Text + "','" + txtState.Text + "','" + txtZIP.Text + "','" + txtCustCountry.Text + "','" + txtEMAILADDRESS.Text + "','" + txtWEBSITE.Text + "','" + txtTXTPHONE.Text + "', '" + txtMOBILE.Text + "','" + txtFAX.Text + "','" + txtDESCRIPTION.Text + "','" + txtPanno.Text + "','" + txttanno.Text + "','" + txtothers.Text + "','" + txtservicetaxno.Text + "','" + txtexiceragisterno.Text + "','" + txtgstragisterno.Text + "')";
 
-                        string saveCommand2 = "insert into CustomerAccountDetails values ('" + txtCustCode.Text + "','" + txtCustCode.Text + "','" + txtOPENINGBALANCE.Text + "','" + txtCURRENTBALANCE.Text + "')";
+                        string saveCommand2 = "insert into CustomerAccountDetails values ('" + txtCustCode.Text + "','" + txtCustCode.Text + "','" + txtCustOpeningBal.Text + "','" + txtCURRENTBALANCE.Text + "')";
 
                         int insertedRows = dbMainClass.saveDetails(saveCommand1, saveCommand2);
                         if (insertedRows > 0)
@@ -174,14 +174,14 @@ namespace WindowsFormsApplication1
                     else if (updateCounter == 1)
                     {
                         string updateCommand1 = "update  CustomerDetails  set Custid='" + txtCustCode.Text + "', CustAddress='" + txtAddress.Text + "',CustPhone='" + txtTXTPHONE.Text + "', CustMobile='" + txtMOBILE.Text + "',CustPanNO='" + txtPanno.Text + "',CustVatNo='" + txttanno.Text + "',CustCstNo='" + txtothers.Text + "',CustServicetaxregnNo='" + txtservicetaxno.Text + "',CustExciseregnno='" + txtexiceragisterno.Text + "',Gstregnno='" + txtgstragisterno.Text + "', CustName='" + txtName.Text + "', CustCompName= '" + txtCompnyName.Text + "',CustCity='" + txtCity.Text + "',CustState='" + txtState.Text + "',CustZip='" + txtZIP.Text + "',CustCountry='" + txtCustCountry.Text + "',CustEmail='" + txtEMAILADDRESS.Text + "',CustWebAddress='" + txtWEBSITE.Text + "',CustFax='" + txtFAX.Text + "',CustDesc='" + txtDESCRIPTION.Text + "' where Custid='" + txtCustCode.Text + "'";
-                        string updateCommand2 = "update   CustomerAccountDetails set  CustOpeningBalance='" + txtOPENINGBALANCE.Text + "',CustCurrentBalance='" + txtCURRENTBALANCE.Text + "' where Custid='" + txtCustCode.Text + "'";
+                        string updateCommand2 = "update   CustomerAccountDetails set  CustOpeningBalance='" + txtCustOpeningBal.Text + "',CustCurrentBalance='" + txtCURRENTBALANCE.Text + "' where Custid='" + txtCustCode.Text + "'";
 
                         int updatedRows = dbMainClass.updateDetails(updateCommand1, updateCommand2);
                         if (updatedRows > 0)
                         {
-                            txtName.Focus();
-                            txtOPENINGBALANCE.ReadOnly = false;
                             MessageBox.Show("Details updated successfully!");
+                            txtName.Focus();
+                            txtCustOpeningBal.ReadOnly = false;
                         }
                         else
                         {
@@ -242,7 +242,7 @@ namespace WindowsFormsApplication1
             txtFAX.Text = "";
             txtDESCRIPTION.Text = "";
 
-            txtOPENINGBALANCE.Text = "0";
+            txtCustOpeningBal.Text = "0";
             txtCURRENTBALANCE.Text = "0";
             txtCustCode.Text = "";
             txtCustCode.Text = "";
@@ -252,7 +252,34 @@ namespace WindowsFormsApplication1
 
         private void txtCustOpeningBal_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            char ch = e.KeyChar;
+            if (ch == 46 && txtCustOpeningBal.Text.IndexOf('.') != -1)
+            {
+                e.Handled = true;
+                return;
+            }
+            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
+            //return moreThanOneDecimalChar;
+            /*string value1 = txtCustOpeningBal.Text;
+            bool moreThanOneDecimalChar = false;
+            int g = 0;
+            char h = '.';
+            for (int a = 0; a < value1.Length; a++)
+            {
+                if (value1[a] == '.')
+                {
+                    g++;
+                }                                                   
+            }
+            if (g== 1)
+            {
+                moreThanOneDecimalChar = true;
+            }
+            if (moreThanOneDecimalChar == false || e.KeyChar == '\b') 
+>>>>>>> commit for latest changes of sandeep
             {
                 e.Handled = true;
             }
@@ -261,6 +288,7 @@ namespace WindowsFormsApplication1
             if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
             {
                 e.Handled = true;
+<<<<<<< HEAD
             }
                 //return moreThanOneDecimalChar;
                 //string value1 = txtOPENINGBALANCE.Text;
@@ -289,6 +317,11 @@ namespace WindowsFormsApplication1
                 //}
             }
         
+=======
+            }*/
+
+        }
+
 
         private void btnList_Click(object sender, EventArgs e)
         {
@@ -318,7 +351,7 @@ namespace WindowsFormsApplication1
             txtMOBILE.TabStop = false;
             txtFAX.TabStop = false;
             txtDESCRIPTION.TabStop = false;
-            txtOPENINGBALANCE.TabStop = false;
+            txtCustOpeningBal.TabStop = false;
             txtCURRENTBALANCE.TabStop = false;
             txtPanno.TabStop = false;
             txttanno.TabStop = false;
@@ -356,7 +389,7 @@ namespace WindowsFormsApplication1
             txtMOBILE.TabStop = false;
             txtFAX.TabStop = false;
             txtDESCRIPTION.TabStop = false;
-            txtOPENINGBALANCE.TabStop = false;
+            txtCustOpeningBal.TabStop = false;
             txtCURRENTBALANCE.TabStop = false;
             txtPanno.TabStop = false;
             txttanno.TabStop = false;
@@ -400,7 +433,7 @@ namespace WindowsFormsApplication1
             txtMOBILE.TabStop = true;
             txtFAX.TabStop = true;
             txtDESCRIPTION.TabStop = true;
-            txtOPENINGBALANCE.TabStop = true;
+            txtCustOpeningBal.TabStop = true;
            // txtCURRENTBALANCE.TabStop = true;
             txtPanno.TabStop = true;
             txttanno.TabStop = true;
@@ -416,7 +449,7 @@ namespace WindowsFormsApplication1
         private void tabindex1()
     {
         //txtAddress.Focus();
-            txtOPENINGBALANCE.ReadOnly = true;
+            txtCustOpeningBal.ReadOnly = true;
             txtName.Focus();
             txtCompnyName.TabStop = true;
             txtAddress.TabStop = true;
@@ -463,7 +496,7 @@ namespace WindowsFormsApplication1
                 txtexiceragisterno.Text = cellCollection[17].Value.ToString();
                 txtgstragisterno.Text = cellCollection[18].Value.ToString();
                 txtDESCRIPTION.Text = cellCollection[19].Value.ToString();
-                txtOPENINGBALANCE.Text = cellCollection[20].Value.ToString();
+                txtCustOpeningBal.Text = cellCollection[20].Value.ToString();
                 txtCURRENTBALANCE.Text = cellCollection[21].Value.ToString();
             }
             catch (Exception ex)
@@ -525,13 +558,13 @@ namespace WindowsFormsApplication1
 
         private void txtCustOpeningBal_TextChanged(object sender, EventArgs e)
         {
-            if (txtOPENINGBALANCE.Text == "")
+            if (txtCustOpeningBal.Text == "")
             {
-                txtCURRENTBALANCE.Text = "0";
+                txtCURRENTBALANCE.Text = "0.00";
             }
             else
             {
-                string v = txtOPENINGBALANCE.Text;
+                string v = txtCustOpeningBal.Text;
                 txtCURRENTBALANCE.Text = v;
             }
         }
@@ -598,7 +631,7 @@ namespace WindowsFormsApplication1
             txttanno.Enabled = true;
             txtothers.Enabled = true;
             txtDESCRIPTION.Enabled = true;
-            txtOPENINGBALANCE.Enabled = true;
+            txtCustOpeningBal.Enabled = true;
             txtWEBSITE.Enabled = true;
             txtEMAILADDRESS.Enabled = true;
             txtCustCode.Enabled = true;
@@ -622,7 +655,7 @@ namespace WindowsFormsApplication1
             txttanno.Enabled = true;
             txtothers.Enabled = true;
             txtDESCRIPTION.Enabled = true;
-            txtOPENINGBALANCE.Enabled = true;
+            txtCustOpeningBal.Enabled = true;
             txtWEBSITE.Enabled = true;
             txtEMAILADDRESS.Enabled = true;
             txtTXTPHONE.Enabled = true;
@@ -688,7 +721,7 @@ namespace WindowsFormsApplication1
             txttanno.Text = "";
             txtothers.Text = "";
 
-            txtOPENINGBALANCE.Text = "0";
+            txtCustOpeningBal.Text = "0";
             txtCURRENTBALANCE.Text= "0";
             txtservicetaxno.Text = "";
             txtexiceragisterno.Text = "";
@@ -718,10 +751,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void txtOPENINGBALANCE_Click(object sender, EventArgs e)
-        {
-            txtOPENINGBALANCE.Text = string.Empty;
-        }
+        
 
         private void txtCURRENTBALANCE_Click(object sender, EventArgs e)
         {
@@ -862,21 +892,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void txtOPENINGBALANCE_Leave(object sender, EventArgs e)
-        {
-           
-            if (txtOPENINGBALANCE.Text == "")
-            {
-                txtOPENINGBALANCE.Text= "0";
-
-            }
-            else
-            {
-
-                string value = txtOPENINGBALANCE.Text;
-                txtCURRENTBALANCE.Text = value;
-            }
-        }
+        
 
         private void Customer_KeyDown(object sender, KeyEventArgs e)
         {
@@ -944,7 +960,42 @@ namespace WindowsFormsApplication1
             }
         }
 
-        
+        private void txtCustOpeningBal_Leave(object sender, EventArgs e)
+        {
+            decimal x;
+            if (decimal.TryParse(txtCustOpeningBal.Text, out x))
+            {
+                if (txtCustOpeningBal.Text.IndexOf('.') != -1 && txtCustOpeningBal.Text.Split('.')[1].Length > 2)
+                {
+                    MessageBox.Show("The maximum decimal points are 2!");
+                    txtCustOpeningBal.Focus();
+                }
+                else txtCustOpeningBal.Text = x.ToString("0.00");
+            }
+            else
+            {
+                txtCustOpeningBal.Text = "0.00";
+                //MessageBox.Show("Data invalid!");
+                //txtVenderOpeningBal.Focus();
+            }
+           
+           /* if (txtCustOpeningBal.Text == "")
+            {
+                txtCustOpeningBal.Text= "0";
+
+            }
+            else
+            {
+
+                string value = txtCustOpeningBal.Text;
+                txtCURRENTBALANCE.Text = value;
+            }*/
+        }
+
+        private void txtCustOpeningBal_Click(object sender, EventArgs e)
+        {
+            txtCustOpeningBal.Text = string.Empty;
+        }        
    
     }
 }

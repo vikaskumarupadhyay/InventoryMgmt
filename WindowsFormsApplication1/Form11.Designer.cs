@@ -108,6 +108,8 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.gridsalesdelivary);
             this.panel1.Location = new System.Drawing.Point(15, 238);
@@ -119,10 +121,11 @@
             // 
             this.gridsalesdelivary.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridsalesdelivary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridsalesdelivary.Location = new System.Drawing.Point(0, 3);
+            this.gridsalesdelivary.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridsalesdelivary.Location = new System.Drawing.Point(0, 0);
             this.gridsalesdelivary.Name = "gridsalesdelivary";
             this.gridsalesdelivary.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridsalesdelivary.Size = new System.Drawing.Size(1135, 313);
+            this.gridsalesdelivary.Size = new System.Drawing.Size(1135, 316);
             this.gridsalesdelivary.StandardTab = true;
             this.gridsalesdelivary.TabIndex = 0;
             this.gridsalesdelivary.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesdelivary_CellEndEdit);
@@ -537,7 +540,7 @@
             // butClose
             // 
             this.butClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.butClose.Location = new System.Drawing.Point(271, 588);
+            this.butClose.Location = new System.Drawing.Point(274, 588);
             this.butClose.Name = "butClose";
             this.butClose.Size = new System.Drawing.Size(90, 28);
             this.butClose.TabIndex = 42;
@@ -549,7 +552,7 @@
             // ButSelectPurchaseOrder
             // 
             this.ButSelectPurchaseOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButSelectPurchaseOrder.Location = new System.Drawing.Point(108, 589);
+            this.ButSelectPurchaseOrder.Location = new System.Drawing.Point(111, 588);
             this.ButSelectPurchaseOrder.Name = "ButSelectPurchaseOrder";
             this.ButSelectPurchaseOrder.Size = new System.Drawing.Size(157, 28);
             this.ButSelectPurchaseOrder.TabIndex = 41;
@@ -740,9 +743,9 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.button1);
-            this.panel2.Location = new System.Drawing.Point(0, 276);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1172, 358);
+            this.panel2.Size = new System.Drawing.Size(86, 634);
             this.panel2.TabIndex = 53;
             // 
             // crystalReportViewer2
@@ -750,9 +753,9 @@
             this.crystalReportViewer2.ActiveViewIndex = -1;
             this.crystalReportViewer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer2.Location = new System.Drawing.Point(0, 418);
+            this.crystalReportViewer2.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer2.Name = "crystalReportViewer2";
-            this.crystalReportViewer2.Size = new System.Drawing.Size(1172, 216);
+            this.crystalReportViewer2.Size = new System.Drawing.Size(68, 634);
             this.crystalReportViewer2.TabIndex = 8;
             // 
             // panel3
@@ -763,7 +766,7 @@
             this.panel3.Controls.Add(this.dataGridView2);
             this.panel3.Location = new System.Drawing.Point(12, 136);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1141, 445);
+            this.panel3.Size = new System.Drawing.Size(55, 445);
             this.panel3.TabIndex = 7;
             // 
             // dataGridView2
@@ -789,7 +792,7 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(12, 25);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1141, 73);
+            this.groupBox4.Size = new System.Drawing.Size(55, 73);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
@@ -801,7 +804,7 @@
             this.txtsearchvalue.Location = new System.Drawing.Point(687, 42);
             this.txtsearchvalue.Multiline = true;
             this.txtsearchvalue.Name = "txtsearchvalue";
-            this.txtsearchvalue.Size = new System.Drawing.Size(429, 23);
+            this.txtsearchvalue.Size = new System.Drawing.Size(0, 23);
             this.txtsearchvalue.TabIndex = 4;
             this.txtsearchvalue.TextChanged += new System.EventHandler(this.txtsearchvalue_TextChanged);
             // 
@@ -892,12 +895,10 @@
             this.Controls.Add(this.txtcst);
             this.Controls.Add(this.textBox18);
             this.Controls.Add(this.textBox16);
-            this.KeyPreview = true;
             this.Name = "salesdelivary";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sales Delivery";
             this.Load += new System.EventHandler(this.salesdelivary_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.salesdelivary_KeyDown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridsalesdelivary)).EndInit();
             this.groupBox3.ResumeLayout(false);

@@ -258,6 +258,7 @@
             // 
             this.txtCompnayCode.Location = new System.Drawing.Point(46, 38);
             this.txtCompnayCode.Name = "txtCompnayCode";
+            this.txtCompnayCode.ReadOnly = true;
             this.txtCompnayCode.Size = new System.Drawing.Size(100, 21);
             this.txtCompnayCode.TabIndex = 0;
             this.txtCompnayCode.TabStop = false;
@@ -770,7 +771,7 @@
             this.txtTexAmount.Name = "txtTexAmount";
             this.txtTexAmount.Size = new System.Drawing.Size(391, 23);
             this.txtTexAmount.TabIndex = 36;
-            this.txtTexAmount.Text = "0";
+            this.txtTexAmount.Text = "0.00";
             this.txtTexAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtTexAmount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtTexAmount_MouseClick);
             this.txtTexAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTexAmount_KeyPress);

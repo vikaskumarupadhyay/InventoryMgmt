@@ -272,10 +272,12 @@ namespace WindowsFormsApplication1
                                                     int insertedRows = dbMainClass.saveDetails(saveCommand1, saveCommand2, saveCommand3);
                                                     if (insertedRows > 0)
                                                     {
-
-                                                        txtItemProductName.Focus();
+                                                        
+                                                       
                                                         MessageBox.Show("Details updated successfully!");
-
+                                                        txtItemProductName.Focus();
+                                                        txtItemOpeningQuant.ReadOnly = false;
+                                                        
                                                     }
                                                     else
                                                     {
@@ -287,6 +289,7 @@ namespace WindowsFormsApplication1
                                                 string Id = dbMainClass.getUniqueID("ItemDetails");
                                                 txtItemProductCode.Text = Id;
                                                 btnItemList.Enabled = true;
+                                                
                                             }
                                         }
                                     }
@@ -307,10 +310,10 @@ namespace WindowsFormsApplication1
             txtItemDesc.Text = "";
             cmbItemItemGroup.Text = "Select A Group";
             cmbItemUnit.Text = "Select A Unit";
-            txtItemPrice.Text = "0";
-            txtItemSalesPrice.Text = "0";
-            txtItemMrp.Text = "0";
-            txtItemMargin.Text = "0";
+            txtItemPrice.Text = "0.00";
+            txtItemSalesPrice.Text = "0.00";
+            txtItemMrp.Text = "0.00";
+            txtItemMargin.Text = "0.00";
             txtItemOpeningQuant.Text = "0";
             txtItemRemaningQuant.Text = "0";
 
@@ -438,14 +441,30 @@ namespace WindowsFormsApplication1
 
         private void txtItemMrp_Leave(object sender, EventArgs e)
         {
+            decimal x;
+            if (decimal.TryParse(txtItemMrp.Text, out x))
+            {
+                if (txtItemMrp.Text.IndexOf('.') != -1 && txtItemMrp.Text.Split('.')[1].Length > 2)
+                {
+                    MessageBox.Show("The maximum decimal points are 2!");
+                    txtItemMrp.Focus();
+                }
+                else txtItemMrp.Text = x.ToString("0.00");
+            }
+            else
+            {
+                txtItemMrp.Text = "0.00";
+                //MessageBox.Show("Data invalid!");
+                //txtVenderOpeningBal.Focus();
+            }
             //if (txtItemPrice.Text == "")
             //{
             //    txtItemPrice.Text = "0";
             //}
-            if (txtItemMrp.Text == "")
+            /*if (txtItemMrp.Text == "")
             {
                 txtItemMrp.Text = "0";
-            }
+            }*/
             //int pPrice = Convert.ToInt32(txtItemPrice.Text);
             //int mrp = Convert.ToInt32(txtItemMrp.Text);
             //int totelmrp = mrp - pPrice;
@@ -495,7 +514,17 @@ namespace WindowsFormsApplication1
         }
         private void txtItemMrp_KeyPress(object sender, KeyPressEventArgs e)
         {
-           if (Char.IsNumber(e.KeyChar) || Char.IsPunctuation(e.KeyChar))
+            char ch = e.KeyChar;
+            if (ch == 46 && txtItemMrp.Text.IndexOf('.') != -1)
+            {
+                e.Handled = true;
+                return;
+            }
+            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
+           /*if (Char.IsNumber(e.KeyChar) || Char.IsPunctuation(e.KeyChar))
             {
                 e.Handled = false;
             }
@@ -510,7 +539,7 @@ namespace WindowsFormsApplication1
                 {
                     e.Handled = true;
                 }
-            }
+            }*/
            
             //if (txtItemMrp.Text == "")
             //{
@@ -656,7 +685,17 @@ namespace WindowsFormsApplication1
 
         private void txtItemSalesPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsNumber(e.KeyChar) || Char.IsPunctuation(e.KeyChar))
+            char ch = e.KeyChar;
+            if (ch == 46 && txtItemSalesPrice.Text.IndexOf('.') != -1)
+            {
+                e.Handled = true;
+                return;
+            }
+            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
+            /*if (Char.IsNumber(e.KeyChar) || Char.IsPunctuation(e.KeyChar))
             {
                 e.Handled = false;
             }
@@ -670,12 +709,23 @@ namespace WindowsFormsApplication1
                 {
                     e.Handled = true;
                 }
-            }
+            }*/
         }
 
         private void txtItemPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsNumber(e.KeyChar) || Char.IsPunctuation(e.KeyChar))
+            char ch = e.KeyChar;
+            if (ch == 46 && txtItemPrice.Text.IndexOf('.') != -1)
+            {
+                e.Handled = true;
+                return;
+            }
+            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
+
+            /*if (Char.IsNumber(e.KeyChar) || Char.IsPunctuation(e.KeyChar))
             {
                 e.Handled = false;
             }
@@ -689,50 +739,85 @@ namespace WindowsFormsApplication1
                 {
                     e.Handled = true;
                 }
-            }
+            }*/
         }
 
         private void txtItemPrice_Leave(object sender, EventArgs e)
         {
-            if (txtItemPrice.Text == "")
+            decimal x;
+            if (decimal.TryParse(txtItemPrice.Text, out x))
+            {
+                if (txtItemPrice.Text.IndexOf('.') != -1 && txtItemPrice.Text.Split('.')[1].Length > 2)
+                {
+                    MessageBox.Show("The maximum decimal points are 2!");
+                    txtItemPrice.Focus();
+                }
+                else txtItemPrice.Text = x.ToString("0.00");
+            }
+            else
+            {
+                txtItemPrice.Text = "0.00";
+                //MessageBox.Show("Data invalid!");
+                //txtVenderOpeningBal.Focus();
+            }
+            /*if (txtItemPrice.Text == "")
             {
                 txtItemPrice.Text = "0";
-            }
+            }*/
 
         }
 
         private void txtItemSalesPrice_Leave(object sender, EventArgs e)
         {
-            if (txtItemSalesPrice.Text == "")
+            decimal x;
+            if (decimal.TryParse(txtItemSalesPrice.Text, out x))
+            {
+                if (txtItemSalesPrice.Text.IndexOf('.') != -1 && txtItemSalesPrice.Text.Split('.')[1].Length > 2)
+                {
+                    MessageBox.Show("The maximum decimal points are 2!");
+                    txtItemSalesPrice.Focus();
+                }
+                else txtItemSalesPrice.Text = x.ToString("0.00");
+            }
+            else
+            {
+                txtItemSalesPrice.Text = "0.00";
+                //MessageBox.Show("Data invalid!");
+                //txtVenderOpeningBal.Focus();
+            }
+            /*if (txtItemSalesPrice.Text == "")
             {
                 txtItemSalesPrice.Text = "0";
-            }
+            }*/
         }
 
        
 
         private void txtItemPrice_MouseClick(object sender, MouseEventArgs e)
         {
-            if (txtItemPrice.Text == "0")
+            if (txtItemPrice.Text == "0.00")
             {
                 txtItemPrice.Text = "";
+                txtItemMargin.Text = "0.00";
             }
         }
 
         private void txtItemMrp_MouseClick(object sender, MouseEventArgs e)
         {
-            if (txtItemMrp.Text == "0")
+            if (txtItemMrp.Text == "0.00")
             {
                 txtItemMrp.Text = "";
+
             }
 
         }
 
         private void txtItemSalesPrice_MouseClick(object sender, MouseEventArgs e)
         {
-            if (txtItemSalesPrice.Text == "0")
+            if (txtItemSalesPrice.Text == "0.00")
             {
                 txtItemSalesPrice.Text = "";
+                txtItemMargin.Text = "0.00";
             }
 
         }
@@ -857,6 +942,11 @@ namespace WindowsFormsApplication1
                 tabindix();
                 searchCalmn.Focus();
             }*/
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
 
        
