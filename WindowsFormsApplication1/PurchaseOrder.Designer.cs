@@ -891,6 +891,7 @@
             this.Controls.Add(this.textBox16);
             this.Controls.Add(this.textBox18);
             this.Controls.Add(this.txtDiscount);
+            this.KeyPreview = true;
             this.Name = "PurchaseOrder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Purchase Order";
