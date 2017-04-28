@@ -42,9 +42,9 @@
             this.txttaxamount = new System.Windows.Forms.TextBox();
             this.txtwithauttaxamount = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnprint = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -87,11 +87,13 @@
             this.txtsearch.Multiline = true;
             this.txtsearch.Name = "txtsearch";
             this.txtsearch.Size = new System.Drawing.Size(250, 23);
-            this.txtsearch.TabIndex = 2;
+            this.txtsearch.TabIndex = 4;
             this.txtsearch.TextChanged += new System.EventHandler(this.txtsearch_TextChanged);
             // 
             // comsalesordersearch
             // 
+            this.comsalesordersearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comsalesordersearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comsalesordersearch.FormattingEnabled = true;
             this.comsalesordersearch.Location = new System.Drawing.Point(26, 39);
             this.comsalesordersearch.Name = "comsalesordersearch";
@@ -100,19 +102,21 @@
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker1.Location = new System.Drawing.Point(26, 39);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(256, 21);
-            this.dateTimePicker1.TabIndex = 4;
+            this.dateTimePicker1.TabIndex = 1;
             // 
             // dateTimePicker2
             // 
+            this.dateTimePicker2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker2.Location = new System.Drawing.Point(288, 39);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(256, 21);
-            this.dateTimePicker2.TabIndex = 5;
+            this.dateTimePicker2.TabIndex = 2;
             this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // button1
@@ -132,8 +136,10 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1222, 451);
-            this.dataGridView1.TabIndex = 7;
+            this.dataGridView1.StandardTab = true;
+            this.dataGridView1.TabIndex = 5;
             // 
             // btnclose
             // 
@@ -141,8 +147,8 @@
             this.btnclose.Location = new System.Drawing.Point(247, 589);
             this.btnclose.Name = "btnclose";
             this.btnclose.Size = new System.Drawing.Size(90, 28);
-            this.btnclose.TabIndex = 9;
-            this.btnclose.Text = "Close";
+            this.btnclose.TabIndex = 8;
+            this.btnclose.Text = "&Close";
             this.btnclose.UseVisualStyleBackColor = true;
             this.btnclose.Click += new System.EventHandler(this.btnclose_Click);
             // 
@@ -152,49 +158,61 @@
             this.btnexcel.Location = new System.Drawing.Point(12, 589);
             this.btnexcel.Name = "btnexcel";
             this.btnexcel.Size = new System.Drawing.Size(133, 28);
-            this.btnexcel.TabIndex = 10;
-            this.btnexcel.Text = "Export To Excel";
+            this.btnexcel.TabIndex = 6;
+            this.btnexcel.Text = "E&xport To Excel";
             this.btnexcel.UseVisualStyleBackColor = true;
             this.btnexcel.Click += new System.EventHandler(this.btnexcel_Click);
             // 
             // txtGrossAmount
             // 
             this.txtGrossAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtGrossAmount.BackColor = System.Drawing.Color.White;
             this.txtGrossAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGrossAmount.Location = new System.Drawing.Point(427, 555);
             this.txtGrossAmount.Name = "txtGrossAmount";
+            this.txtGrossAmount.ReadOnly = true;
             this.txtGrossAmount.Size = new System.Drawing.Size(107, 21);
             this.txtGrossAmount.TabIndex = 15;
+            this.txtGrossAmount.TabStop = false;
             this.txtGrossAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Txtdisamount
             // 
             this.Txtdisamount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Txtdisamount.BackColor = System.Drawing.Color.White;
             this.Txtdisamount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtdisamount.Location = new System.Drawing.Point(645, 555);
             this.Txtdisamount.Name = "Txtdisamount";
+            this.Txtdisamount.ReadOnly = true;
             this.Txtdisamount.Size = new System.Drawing.Size(107, 21);
             this.Txtdisamount.TabIndex = 16;
+            this.Txtdisamount.TabStop = false;
             this.Txtdisamount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txttaxamount
             // 
             this.txttaxamount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txttaxamount.BackColor = System.Drawing.Color.White;
             this.txttaxamount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txttaxamount.Location = new System.Drawing.Point(864, 555);
             this.txttaxamount.Name = "txttaxamount";
+            this.txttaxamount.ReadOnly = true;
             this.txttaxamount.Size = new System.Drawing.Size(107, 21);
             this.txttaxamount.TabIndex = 17;
+            this.txttaxamount.TabStop = false;
             this.txttaxamount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtwithauttaxamount
             // 
             this.txtwithauttaxamount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtwithauttaxamount.BackColor = System.Drawing.Color.White;
             this.txtwithauttaxamount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtwithauttaxamount.Location = new System.Drawing.Point(1131, 555);
             this.txtwithauttaxamount.Name = "txtwithauttaxamount";
+            this.txtwithauttaxamount.ReadOnly = true;
             this.txtwithauttaxamount.Size = new System.Drawing.Size(107, 21);
             this.txtwithauttaxamount.TabIndex = 18;
+            this.txtwithauttaxamount.TabStop = false;
             this.txtwithauttaxamount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox1
@@ -211,6 +229,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select Date";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(23, 21);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(36, 15);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "From";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(285, 21);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(21, 15);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "To";
+            // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -225,25 +261,7 @@
             this.groupBox2.Size = new System.Drawing.Size(658, 78);
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Purchase Order Details";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(285, 21);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(21, 15);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "To";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(23, 21);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(36, 15);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "From";
+            this.groupBox2.Text = "Sales Order Details";
             // 
             // panel1
             // 
@@ -251,6 +269,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(12, 96);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1226, 455);
@@ -262,7 +281,7 @@
             this.btnprint.Location = new System.Drawing.Point(151, 589);
             this.btnprint.Name = "btnprint";
             this.btnprint.Size = new System.Drawing.Size(90, 28);
-            this.btnprint.TabIndex = 22;
+            this.btnprint.TabIndex = 7;
             this.btnprint.Text = "Print";
             this.btnprint.UseVisualStyleBackColor = true;
             // 
@@ -275,6 +294,7 @@
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(31, 21);
             this.textBox2.TabIndex = 27;
+            this.textBox2.TabStop = false;
             this.textBox2.Text = "₹";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -287,6 +307,7 @@
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(85, 21);
             this.textBox1.TabIndex = 26;
+            this.textBox1.TabStop = false;
             this.textBox1.Text = "Gross Amount";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -299,6 +320,7 @@
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(31, 21);
             this.textBox4.TabIndex = 29;
+            this.textBox4.TabStop = false;
             this.textBox4.Text = "₹";
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -311,6 +333,7 @@
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(77, 21);
             this.textBox3.TabIndex = 28;
+            this.textBox3.TabStop = false;
             this.textBox3.Text = "Dis. Amount";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -323,6 +346,7 @@
             this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(31, 21);
             this.textBox7.TabIndex = 31;
+            this.textBox7.TabStop = false;
             this.textBox7.Text = "₹";
             this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -335,6 +359,7 @@
             this.textBox6.ReadOnly = true;
             this.textBox6.Size = new System.Drawing.Size(77, 21);
             this.textBox6.TabIndex = 30;
+            this.textBox6.TabStop = false;
             this.textBox6.Text = "Tax Amount";
             this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -347,6 +372,7 @@
             this.textBox9.ReadOnly = true;
             this.textBox9.Size = new System.Drawing.Size(31, 21);
             this.textBox9.TabIndex = 33;
+            this.textBox9.TabStop = false;
             this.textBox9.Text = "₹";
             this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -359,6 +385,7 @@
             this.textBox8.ReadOnly = true;
             this.textBox8.Size = new System.Drawing.Size(125, 21);
             this.textBox8.TabIndex = 32;
+            this.textBox8.TabStop = false;
             this.textBox8.Text = "Net Amount (Inc. Tax)";
             this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 

@@ -43,9 +43,9 @@
             this.txttaxamount = new System.Windows.Forms.TextBox();
             this.txtwithauttaxamoubnt = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -69,8 +69,10 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1222, 451);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.StandardTab = true;
+            this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
             // label1
@@ -109,19 +111,21 @@
             this.button1.Location = new System.Drawing.Point(247, 589);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(90, 28);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Close";
+            this.button1.TabIndex = 8;
+            this.button1.Text = "&Close";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // comboBox1
             // 
+            this.comboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(26, 39);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.comboBox1.Size = new System.Drawing.Size(361, 23);
-            this.comboBox1.TabIndex = 6;
+            this.comboBox1.TabIndex = 3;
             // 
             // button2
             // 
@@ -136,28 +140,22 @@
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker1.Location = new System.Drawing.Point(26, 39);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(256, 21);
-            this.dateTimePicker1.TabIndex = 8;
+            this.dateTimePicker1.TabIndex = 1;
             // 
             // dateTimePicker2
             // 
+            this.dateTimePicker2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker2.Location = new System.Drawing.Point(288, 39);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(256, 21);
-            this.dateTimePicker2.TabIndex = 9;
+            this.dateTimePicker2.TabIndex = 2;
             this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
-
-            //this.button3.Location = new System.Drawing.Point(908, 51);
-            //this.button3.Name = "button3";
-            //this.button3.Size = new System.Drawing.Size(75, 23);
-            //this.button3.TabIndex = 10;
-            //this.button3.Text = "Save";
-            //this.button3.UseVisualStyleBackColor = true;
-            //this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -165,49 +163,61 @@
             this.button4.Location = new System.Drawing.Point(12, 589);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(133, 28);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "Export to Excel";
+            this.button4.TabIndex = 6;
+            this.button4.Text = "E&xport to Excel";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // txtdiscountamount
             // 
             this.txtdiscountamount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtdiscountamount.BackColor = System.Drawing.Color.White;
             this.txtdiscountamount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtdiscountamount.Location = new System.Drawing.Point(645, 555);
             this.txtdiscountamount.Name = "txtdiscountamount";
+            this.txtdiscountamount.ReadOnly = true;
             this.txtdiscountamount.Size = new System.Drawing.Size(107, 21);
             this.txtdiscountamount.TabIndex = 16;
+            this.txtdiscountamount.TabStop = false;
             this.txtdiscountamount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtgrossamount
             // 
             this.txtgrossamount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtgrossamount.BackColor = System.Drawing.Color.White;
             this.txtgrossamount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtgrossamount.Location = new System.Drawing.Point(426, 555);
             this.txtgrossamount.Name = "txtgrossamount";
+            this.txtgrossamount.ReadOnly = true;
             this.txtgrossamount.Size = new System.Drawing.Size(107, 21);
             this.txtgrossamount.TabIndex = 17;
+            this.txtgrossamount.TabStop = false;
             this.txtgrossamount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txttaxamount
             // 
             this.txttaxamount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txttaxamount.BackColor = System.Drawing.Color.White;
             this.txttaxamount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txttaxamount.Location = new System.Drawing.Point(864, 555);
             this.txttaxamount.Name = "txttaxamount";
+            this.txttaxamount.ReadOnly = true;
             this.txttaxamount.Size = new System.Drawing.Size(107, 21);
             this.txttaxamount.TabIndex = 18;
+            this.txttaxamount.TabStop = false;
             this.txttaxamount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtwithauttaxamoubnt
             // 
             this.txtwithauttaxamoubnt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtwithauttaxamoubnt.BackColor = System.Drawing.Color.White;
             this.txtwithauttaxamoubnt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtwithauttaxamoubnt.Location = new System.Drawing.Point(1131, 555);
             this.txtwithauttaxamoubnt.Name = "txtwithauttaxamoubnt";
+            this.txtwithauttaxamoubnt.ReadOnly = true;
             this.txtwithauttaxamoubnt.Size = new System.Drawing.Size(107, 21);
             this.txtwithauttaxamoubnt.TabIndex = 19;
+            this.txtwithauttaxamoubnt.TabStop = false;
             this.txtwithauttaxamoubnt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox1
@@ -224,6 +234,24 @@
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select Date";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(285, 21);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(21, 15);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "To";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(23, 21);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(36, 15);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "From";
             // 
             // groupBox2
             // 
@@ -242,30 +270,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Sales Details";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(23, 21);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(36, 15);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "From";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(285, 21);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(21, 15);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "To";
-            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(12, 96);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1226, 455);
@@ -280,6 +291,7 @@
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(31, 21);
             this.textBox2.TabIndex = 29;
+            this.textBox2.TabStop = false;
             this.textBox2.Text = "₹";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -292,6 +304,7 @@
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(85, 21);
             this.textBox3.TabIndex = 28;
+            this.textBox3.TabStop = false;
             this.textBox3.Text = "Gross Amount";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -304,6 +317,7 @@
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(31, 21);
             this.textBox4.TabIndex = 31;
+            this.textBox4.TabStop = false;
             this.textBox4.Text = "₹";
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -316,6 +330,7 @@
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(77, 21);
             this.textBox5.TabIndex = 30;
+            this.textBox5.TabStop = false;
             this.textBox5.Text = "Dis. Amount";
             this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -328,6 +343,7 @@
             this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(31, 21);
             this.textBox7.TabIndex = 33;
+            this.textBox7.TabStop = false;
             this.textBox7.Text = "₹";
             this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -340,6 +356,7 @@
             this.textBox6.ReadOnly = true;
             this.textBox6.Size = new System.Drawing.Size(77, 21);
             this.textBox6.TabIndex = 32;
+            this.textBox6.TabStop = false;
             this.textBox6.Text = "Tax Amount";
             this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -352,6 +369,7 @@
             this.textBox9.ReadOnly = true;
             this.textBox9.Size = new System.Drawing.Size(31, 21);
             this.textBox9.TabIndex = 35;
+            this.textBox9.TabStop = false;
             this.textBox9.Text = "₹";
             this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -364,6 +382,7 @@
             this.textBox8.ReadOnly = true;
             this.textBox8.Size = new System.Drawing.Size(125, 21);
             this.textBox8.TabIndex = 34;
+            this.textBox8.TabStop = false;
             this.textBox8.Text = "Net Amount (Inc. Tax)";
             this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 

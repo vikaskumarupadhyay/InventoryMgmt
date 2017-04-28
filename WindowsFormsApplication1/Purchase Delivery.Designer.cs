@@ -756,6 +756,7 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.butClose);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1172, 634);
@@ -766,9 +767,10 @@
             this.DeliveryReportViewer.ActiveViewIndex = -1;
             this.DeliveryReportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.DeliveryReportViewer.Cursor = System.Windows.Forms.Cursors.Default;
+            this.DeliveryReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DeliveryReportViewer.Location = new System.Drawing.Point(0, 0);
             this.DeliveryReportViewer.Name = "DeliveryReportViewer";
-            this.DeliveryReportViewer.Size = new System.Drawing.Size(1169, 634);
+            this.DeliveryReportViewer.Size = new System.Drawing.Size(1172, 634);
             this.DeliveryReportViewer.TabIndex = 7;
             // 
             // panel3
@@ -832,7 +834,7 @@
             this.txtSearch.Location = new System.Drawing.Point(687, 42);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(1059, 23);
+            this.txtSearch.Size = new System.Drawing.Size(429, 23);
             this.txtSearch.TabIndex = 2;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged_1);
             // 

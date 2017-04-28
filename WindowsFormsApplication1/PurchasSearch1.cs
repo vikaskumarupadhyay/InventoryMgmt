@@ -45,7 +45,9 @@ namespace WindowsFormsApplication1
             }
             comboPurchasesearch.DataSource = ls;
             gridPurchaseSearch.DataSource = dt;*/
-            string selectqurry = "SELECT dbo.VendorDetails.venderId as[Vendor ID],dbo.VendorDetails.vName as[Vendor Name], dbo.VendorDetails.vCompName as[Company Name], dbo.VendorDetails.vAddress as[Address], dbo.VendorDetails.vCity as[City], dbo.VendorDetails.vState as[State], dbo.VendorDetails.vZip as[Zip], dbo.VendorDetails.vCountry as[Country], dbo.VendorDetails.vEmail as[Email], dbo.VendorDetails.vWebAddress as[Web Address],dbo.VendorDetails.vPhone as[Phone], dbo.VendorDetails.vMobile as[Mobile],dbo.CustomerOrderDelivery.Deliveryid as[Invoice ID], dbo.CustomerOrderDelivery.DeliveryDate as[Invoice Date], dbo.CustomerOrderDelivery.RefNo as[Order Ref. NO], dbo.VendorOrderDesc.ItemId as[Item ID], dbo.ItemDetails.ItemName as[Item Name], dbo.ItemDetails.ItemCompName as[Company Name], dbo.ItemPriceDetail.MrpPrice as[MRP], dbo.VendorOrderDesc.Price as[Selling Rate], dbo.VendorOrderDesc.Quantity as[Quantity Billed], dbo.VendorOrderDesc.TotalPrice AS [Gross Amount], dbo.VendorOrderDetails.Discount as[Discount Rate],((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100) as [Discount Amount], dbo.VendorOrderDetails.Vat as[Tax], (dbo.VendorOrderDesc.TotalPrice)- ((dbo.VendorOrderDesc.TotalPrice)/(1+(dbo.VendorOrderDetails.Vat/100))) as [Tax Amount], (dbo.VendorOrderDesc.TotalPrice)-((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100) as[Net Amount (Including Tax)] FROM  dbo.CustomerOrderDelivery INNER JOIN dbo.VendorOrderDetails ON dbo.CustomerOrderDelivery.Orderid = dbo.VendorOrderDetails.Orderid INNER JOIN dbo.VendorDetails ON dbo.VendorOrderDetails.venderId = dbo.VendorDetails.venderId INNER JOIN dbo.VendorOrderDesc ON dbo.VendorOrderDetails.Orderid = dbo.VendorOrderDesc.Orderid INNER JOIN dbo.ItemDetails ON dbo.VendorOrderDesc.ItemId = dbo.ItemDetails.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId ORDER BY Deliveryid ASC";
+
+            //string selectqurry = "SELECT dbo.CustomerOrderDelivery.Deliveryid as[Invoice ID], dbo.VendorDetails.venderId as[Vendor ID],dbo.VendorDetails.vName as[Vendor Name], dbo.VendorDetails.vCompName as[Company Name], dbo.VendorDetails.vAddress as[Address], dbo.VendorDetails.vCity as[City], dbo.VendorDetails.vState as[State], dbo.VendorDetails.vZip as[Zip], dbo.VendorDetails.vCountry as[Country], dbo.VendorDetails.vEmail as[Email], dbo.VendorDetails.vWebAddress as[Web Address],dbo.VendorDetails.vPhone as[Phone], dbo.VendorDetails.vMobile as[Mobile], dbo.CustomerOrderDelivery.DeliveryDate as[Invoice Date], dbo.CustomerOrderDelivery.RefNo as[Order Ref. NO], dbo.VendorOrderDesc.ItemId as[Item ID], dbo.ItemDetails.ItemName as[Item Name], dbo.ItemDetails.ItemCompName as[Company Name], dbo.ItemPriceDetail.MrpPrice as[MRP], dbo.VendorOrderDesc.Price as[Selling Rate], dbo.VendorOrderDesc.Quantity as[Quantity Billed], dbo.VendorOrderDesc.TotalPrice AS [Gross Amount], dbo.VendorOrderDetails.Discount as[Discount Rate],((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100) as [Discount Amount], dbo.VendorOrderDetails.Vat as[Tax], (dbo.VendorOrderDesc.TotalPrice)- ((dbo.VendorOrderDesc.TotalPrice)/(1+(dbo.VendorOrderDetails.Vat/100))) as [Tax Amount], dbo.VendorOrderDetails.TotalPrice as[Net Amount (Including Tax)] FROM  dbo.CustomerOrderDelivery INNER JOIN dbo.VendorOrderDetails ON dbo.CustomerOrderDelivery.Orderid = dbo.VendorOrderDetails.Orderid INNER JOIN dbo.VendorDetails ON dbo.VendorOrderDetails.venderId = dbo.VendorDetails.venderId INNER JOIN dbo.VendorOrderDesc ON dbo.VendorOrderDetails.Orderid = dbo.VendorOrderDesc.Orderid INNER JOIN dbo.ItemDetails ON dbo.VendorOrderDesc.ItemId = dbo.ItemDetails.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId ORDER BY Deliveryid ASC";
+            string selectqurry = "SELECT dbo.CustomerOrderDelivery.Deliveryid as[Invoice ID], dbo.CustomerOrderDelivery.RefNo as[Order Ref. NO], dbo.VendorDetails.venderId as[Vendor ID],dbo.VendorDetails.vName as[Vendor Name], dbo.VendorDetails.vCompName as[Vendor Company Name], dbo.VendorDetails.vAddress as[Vendor Address], dbo.CustomerOrderDelivery.DeliveryDate as[Invoice Date], dbo.VendorOrderDesc.ItemId as[Item ID], dbo.ItemDetails.ItemName as[Item Name], dbo.ItemDetails.ItemCompName as[Item Company Name], dbo.ItemPriceDetail.MrpPrice as[MRP], dbo.VendorOrderDesc.Price as[Selling Rate], dbo.VendorOrderDesc.Quantity as[Quantity Billed], dbo.VendorOrderDesc.TotalPrice AS [Gross Amount], dbo.VendorOrderDetails.Discount as[Discount Rate],((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100) as [Discount Amount], dbo.VendorOrderDetails.Vat as[Tax], (dbo.VendorOrderDesc.TotalPrice)- ((dbo.VendorOrderDesc.TotalPrice)/(1+(dbo.VendorOrderDetails.Vat/100))) as [Tax Amount], dbo.VendorOrderDetails.TotalPrice as[Net Amount (Including Tax)] FROM  dbo.CustomerOrderDelivery INNER JOIN dbo.VendorOrderDetails ON dbo.CustomerOrderDelivery.Orderid = dbo.VendorOrderDetails.Orderid INNER JOIN dbo.VendorDetails ON dbo.VendorOrderDetails.venderId = dbo.VendorDetails.venderId INNER JOIN dbo.VendorOrderDesc ON dbo.VendorOrderDetails.Orderid = dbo.VendorOrderDesc.Orderid INNER JOIN dbo.ItemDetails ON dbo.VendorOrderDesc.ItemId = dbo.ItemDetails.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId ORDER BY Deliveryid ASC";
             string selectqurryForActualColumnName = "select top 1 dbo.VendorDetails.venderId ,dbo.VendorDetails.vName , dbo.VendorDetails.vCompName, dbo.VendorDetails.vAddress, dbo.VendorDetails.vCity , dbo.VendorDetails.vState , dbo.VendorDetails.vZip, dbo.VendorDetails.vCountry , dbo.VendorDetails.vEmail , dbo.VendorDetails.vWebAddress ,dbo.VendorDetails.vPhone , dbo.VendorDetails.vMobile ,dbo.CustomerOrderDelivery.Deliveryid , dbo.CustomerOrderDelivery.DeliveryDate , dbo.CustomerOrderDelivery.RefNo, dbo.VendorOrderDesc.ItemId, dbo.ItemDetails.ItemName, dbo.ItemDetails.ItemCompName , dbo.ItemPriceDetail.MrpPrice , dbo.VendorOrderDesc.Price , dbo.VendorOrderDesc.Quantity, dbo.VendorOrderDesc.TotalPrice , dbo.VendorOrderDetails.Discount ,((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100) as [Discount Amount], dbo.VendorOrderDetails.Vat , (dbo.VendorOrderDesc.TotalPrice)- ((dbo.VendorOrderDesc.TotalPrice)/(1+(dbo.VendorOrderDetails.Vat/100))) as [Tax Amount] , dbo.VendorOrderDetails.TotalPrice  FROM  dbo.CustomerOrderDelivery INNER JOIN dbo.VendorOrderDetails ON dbo.CustomerOrderDelivery.Orderid = dbo.VendorOrderDetails.Orderid INNER JOIN dbo.VendorDetails ON dbo.VendorOrderDetails.venderId = dbo.VendorDetails.venderId INNER JOIN dbo.VendorOrderDesc ON dbo.VendorOrderDetails.Orderid = dbo.VendorOrderDesc.Orderid INNER JOIN dbo.ItemDetails ON dbo.VendorOrderDesc.ItemId = dbo.ItemDetails.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
@@ -73,6 +75,32 @@ namespace WindowsFormsApplication1
             gridPurchaseSearch.DataSource = dt;
             //DataGridViewRowCollection RowCollection = gridPurchaseSearch.Rows;
             commaind();
+ 
+            // duplicate code , commind is doing same task, 
+            //double dis;
+            //double dis1 = 0;
+            //double tax;
+            //double tax1 = 0;
+            //double gross;
+            //double wta;
+            //double wta1 = 0;
+            //double gross1 = 0;
+            //for (int a = 0; a < gridPurchaseSearch.Rows.Count; a++)
+            //{
+            //    gross = Convert.ToDouble(gridPurchaseSearch.Rows[a].Cells[13].Value);
+            //  gross1 = gross1+gross;
+            //  dis = Convert.ToDouble(gridPurchaseSearch.Rows[a].Cells[15].Value);
+            //  dis1 = dis1 + dis;
+            //  tax = Convert.ToDouble(gridPurchaseSearch.Rows[a].Cells[17].Value);
+            //  tax1 = tax1 + tax;
+            //  wta = Convert.ToDouble(gridPurchaseSearch.Rows[a].Cells[18].Value);
+            //  wta1 = wta1 + wta;
+            //}
+
+            //TxtGrowsAmount.Text = gross1.ToString();
+            //TxtDisAmount.Text = dis1.ToString();
+            //TxtTaxAmount.Text = tax1.ToString();
+            //TxtWithodTaxAmount.Text = wta1.ToString();
         }
 
         private void txtsearch_TextChanged(object sender, EventArgs e)

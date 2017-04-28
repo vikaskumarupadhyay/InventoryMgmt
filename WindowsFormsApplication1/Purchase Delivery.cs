@@ -865,7 +865,7 @@ namespace WindowsFormsApplication1
                                     {
                                         DeliveryReportViewer.Visible = true;
                                         panel2.Visible = true;
-                                        string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
+                                        string conntion = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=true;";
                                         SqlConnection con = new SqlConnection(conntion);
                                         string selectqurry = "select * from purchesDelivery where Deliveryid='" + txtSrNo.Text + "'";
                                         SqlCommand cmd = new SqlCommand(selectqurry, con);
@@ -984,7 +984,7 @@ namespace WindowsFormsApplication1
                             {
                                 DeliveryReportViewer.Visible = true;
                                 panel2.Visible = true;
-                                string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
+                                string conntion = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=true;";
                                 SqlConnection con = new SqlConnection(conntion);
                                 string selectqurry = "select * from purchesDelivery where Deliveryid='" + txtSrNo.Text + "'";
                                 SqlCommand cmd = new SqlCommand(selectqurry, con);
