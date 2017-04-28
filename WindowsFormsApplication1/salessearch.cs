@@ -174,6 +174,15 @@ namespace WindowsFormsApplication1
         }
         private void salessearch_Load(object sender, EventArgs e)
         {
+            string select = "select DeliveryDate from salesOrderDelivery where Delivaryid='"+11+"'";
+            DataTable dt2 = d.getDetailByQuery(select);
+            string num = "";
+            foreach(DataRow dr in dt2.Rows)
+            {
+                num = dr[0].ToString();
+            }
+            dateTimePicker1.Text = num;
+
             button2.Enabled = false;
             // int j = 5;
             //int h = 0;
@@ -407,6 +416,12 @@ namespace WindowsFormsApplication1
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
+            DateTime date = Convert.ToDateTime(dateTimePicker2.Text);
+            if (date > DateTime.Now.Date)
+            {
+                MessageBox.Show("plese select your correct date");
+                dateTimePicker2.Text = DateTime.Now.ToString();
+            }
             string s = comboBox1.SelectedValue.ToString();
 
             //string selectquery = "SELECT dbo.CustomerDetails.custId as[Customer ID], dbo.CustomerDetails.CustName as[Customer Name], dbo.CustomerDetails.CustCompName as[Compnay Name],dbo.CustomerDetails.CustAddress as [Address], dbo.CustomerDetails.CustCity as[City], dbo.CustomerDetails.CustState as[State], dbo.CustomerDetails.CustZip as[Zip], dbo.CustomerDetails.CustCountry as [Country],dbo.CustomerDetails.CustEmail as[Email], dbo.CustomerDetails.CustWebAddress as[Web Address], dbo.CustomerDetails.CustPhone as[Phone], dbo.CustomerDetails.CustMobile as [Mobile],dbo.salesOrderDelivery.Delivaryid as [Invoice ID], dbo.salesOrderDelivery.DeliveryDate as [Invoice Date],dbo.salesOrderDelivery.RefNo as [Order Ref. NO], dbo.customerorderdescriptions.ItemId as [Item ID],dbo.ItemDetails.ItemName as [Item Name],dbo.ItemDetails.ItemCompName as[Itme Compnay Name],dbo.ItemPriceDetail.MrpPrice as[MRP], dbo.customerorderdescriptions.price as[Selling Rate],dbo.customerorderdescriptions.quantity as [Quantity Billed],dbo.customerorderdescriptions.totalammount as[Gross Amount], dbo.orderdetails.Discount as[Discount Rate],((dbo.customerorderdescriptions.totalammount*dbo.orderdetails.Discount)/100) as [Discount Amount], dbo.orderdetails.totalammount AS [Net Amount], dbo.orderdetails.Tax as[Tax], (dbo.customerorderdescriptions.totalammount)- ((dbo.customerorderdescriptions.totalammount)/(1+(dbo.orderdetails.Tax/100))) as [Tax Amount] FROM dbo.salesOrderDelivery INNER JOIN dbo.ItemDetails INNER JOIN dbo.customerorderdescriptions ON dbo.ItemDetails.ItemId = dbo.customerorderdescriptions.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId INNER JOIN dbo.orderdetails ON dbo.customerorderdescriptions.orderid = dbo.orderdetails.orderid INNER JOIN dbo.CustomerDetails ON dbo.orderdetails.custid = dbo.CustomerDetails.custId ON dbo.salesOrderDelivery.Orderid = dbo.orderdetails.orderid CROSS JOIN dbo.CompnayDetails Where DeliveryDate BETWEEN '" + dateTimePicker1.Value.Date + "' AND '" + dateTimePicker2.Value.Date + "'";
