@@ -744,7 +744,7 @@ namespace WindowsFormsApplication1
         }
         private void makeBlank()
         {
-             txtVendorCode.Text = "V";
+            txtVendorCode.Text = "V";
             txtVendorName.Text = "";
             txtVendorAddress.Text = "";
             txtVendorCompanyName.Text = "";
@@ -755,6 +755,7 @@ namespace WindowsFormsApplication1
             Distxt.Text = "0";
             addToCartTable.Clear();
             gridPurchaseOrder.DataSource = "";
+            txtRemoveItem.Enabled = false;
 
         }
 

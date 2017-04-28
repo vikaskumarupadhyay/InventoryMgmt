@@ -743,9 +743,10 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.button1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(86, 634);
+            this.panel2.Size = new System.Drawing.Size(1172, 634);
             this.panel2.TabIndex = 53;
             // 
             // crystalReportViewer2
@@ -753,9 +754,10 @@
             this.crystalReportViewer2.ActiveViewIndex = -1;
             this.crystalReportViewer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystalReportViewer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer2.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer2.Name = "crystalReportViewer2";
-            this.crystalReportViewer2.Size = new System.Drawing.Size(68, 634);
+            this.crystalReportViewer2.Size = new System.Drawing.Size(1172, 634);
             this.crystalReportViewer2.TabIndex = 8;
             // 
             // panel3
@@ -766,7 +768,7 @@
             this.panel3.Controls.Add(this.dataGridView2);
             this.panel3.Location = new System.Drawing.Point(12, 136);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(55, 445);
+            this.panel3.Size = new System.Drawing.Size(1141, 445);
             this.panel3.TabIndex = 7;
             // 
             // dataGridView2
@@ -792,7 +794,7 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(12, 25);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(55, 73);
+            this.groupBox4.Size = new System.Drawing.Size(1141, 73);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
@@ -804,7 +806,7 @@
             this.txtsearchvalue.Location = new System.Drawing.Point(687, 42);
             this.txtsearchvalue.Multiline = true;
             this.txtsearchvalue.Name = "txtsearchvalue";
-            this.txtsearchvalue.Size = new System.Drawing.Size(0, 23);
+            this.txtsearchvalue.Size = new System.Drawing.Size(429, 23);
             this.txtsearchvalue.TabIndex = 4;
             this.txtsearchvalue.TextChanged += new System.EventHandler(this.txtsearchvalue_TextChanged);
             // 

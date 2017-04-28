@@ -828,7 +828,7 @@ namespace WindowsFormsApplication1
                                         {
                                             crystalReportViewer2.Visible = true;
                                             gridsalesdelivary.AllowUserToAddRows = false;
-                                            string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
+                                            string a = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=True";
                                             SqlConnection con = new SqlConnection(a);
                                             con.Open();
                                             string selectquery = "select * from salesorderdelivaryreport where Delivaryid='" + txtSrNo.Text + "'";
@@ -944,7 +944,7 @@ namespace WindowsFormsApplication1
                                 {
                                     crystalReportViewer2.Visible = true;
                                     gridsalesdelivary.AllowUserToAddRows = false;
-                                    string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
+                                    string a = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=True";
                                     SqlConnection con = new SqlConnection(a);
                                     con.Open();
                                     string selectquery = "select * from salesorderdelivaryreport where Delivaryid='" + txtSrNo.Text + "'";
