@@ -340,9 +340,11 @@ namespace WindowsFormsApplication1
             if (f13 == null)
             {
                 f13 = new PurchasSearch1();
-                f13.Show();
                 f13.MdiParent = this;
                 f13.FormClosed += new FormClosedEventHandler(f13_FormClosed);
+                f13.ControlBox = false;
+                f13.Show();
+                f13.WindowState = FormWindowState.Maximized;
             }
             else
             {
@@ -434,14 +436,28 @@ namespace WindowsFormsApplication1
             f1 = null;
             //throw new NotImplementedException();
         }
-
+        salessearch ss;
         private void salesToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            salessearch s = new salessearch();
-            s.Show();
+            if (ss == null)
+            {
+                ss = new salessearch();
+                ss.MdiParent = this;
+                ss.FormClosed += new FormClosedEventHandler(ss_FormClosed);
+                ss.ControlBox = false;
+                ss.Show();
+                ss.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                ss.Activate();
+            }
         }
 
-
+        void ss_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ss = null;
+        }
         public FormClosedEventHandler f2_FormClosed { get; set; }
 
         private void Form1_Load_1(object sender, EventArgs e)
@@ -453,11 +469,27 @@ namespace WindowsFormsApplication1
         {
 
         }
-
+        salesordersearch so;
         private void salesorderSearchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            salesordersearch sh = new salesordersearch();
-            sh.Show();
+            if (so == null)
+            {
+                so = new salesordersearch();
+                so.MdiParent = this;
+                so.FormClosed += new FormClosedEventHandler(so_FormClosed);
+                so.ControlBox = false;
+                so.Show();
+                so.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                so.Activate();
+
+            }
+        }
+        void so_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            so = null;
         }
         PurchaseOrderSearch1 po;
         private void purchesOrderSearchToolStripMenuItem_Click(object sender, EventArgs e)
@@ -467,7 +499,9 @@ namespace WindowsFormsApplication1
                 po = new PurchaseOrderSearch1();
                 po.MdiParent = this;
                 po.FormClosed += new FormClosedEventHandler(po_FormClosed);
+                po.ControlBox = false;
                 po.Show();
+                po.WindowState = FormWindowState.Maximized;
             }
             else
             {

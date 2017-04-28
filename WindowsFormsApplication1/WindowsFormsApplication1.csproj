@@ -192,12 +192,6 @@
     <Compile Include="PurchesCrystalReport.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="PurchesCrystalReport1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PurchesCrystalReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="PurchesDelivery.cs">
       <DependentUpon>PurchesDelivery.xsd</DependentUpon>
       <SubType>Component</SubType>

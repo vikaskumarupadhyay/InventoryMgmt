@@ -114,9 +114,10 @@ namespace WindowsFormsApplication1
                                 int updatedRows = dbMainClass.updateDetails(updateCommand1, updateCommand2);
                                 if (updatedRows > 0)
                                 {
-                                    txtVenderName.Focus();
+                                    
 
                                     MessageBox.Show("Details updated successfully!");
+                                    txtVenderName.Focus();
                                     txtVenderOpeningBal.ReadOnly = false;
 
                                 }
@@ -400,8 +401,9 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                MessageBox.Show("Data invalid!");
-                txtVenderOpeningBal.Focus();
+                txtVenderOpeningBal.Text = "0.00";
+                //MessageBox.Show("Data invalid!");
+                //txtVenderOpeningBal.Focus();
             }
             /*if (txtVenderOpeningBal.Text == "")
             {
