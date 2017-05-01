@@ -253,6 +253,7 @@
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Purchase Order Details";
+            //this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // panel1
             // 
@@ -361,7 +362,7 @@
             this.textBox9.TabIndex = 31;
             this.textBox9.Text = "₹";
             this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox9.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
+           // this.textBox9.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
             // 
             // PurchaseOrderSearch1
             // 
