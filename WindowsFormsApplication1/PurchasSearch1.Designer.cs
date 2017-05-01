@@ -43,9 +43,9 @@
             this.TxtWithodTaxAmount = new System.Windows.Forms.TextBox();
             this.TxtGrowsAmount = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -215,6 +215,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select Date";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(285, 21);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(21, 15);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "To";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(23, 21);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(36, 15);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "From";
+            // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -230,24 +248,7 @@
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Purchase Details";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(23, 21);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(36, 15);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "From";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(285, 21);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(21, 15);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "To";
+            //this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // panel1
             // 

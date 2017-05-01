@@ -595,7 +595,7 @@ namespace WindowsFormsApplication1
                         panel2.Visible = true;
                         crystalReportViewer1.Visible = true;
                         gridsalesorder.AllowUserToAddRows = false;
-                        string a = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=True";
+                        string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
                         SqlConnection con = new SqlConnection(a);
                         con.Open();
                         string selectquery = "select * from salesorderreport where orderid='" + txtsrno.Text + "'";
@@ -660,7 +660,7 @@ namespace WindowsFormsApplication1
 
 
 
-
+            
 
 
             //string qurry = "select CurrentQuantity from ItemQuantityDetail where ItemId='" + itid + "'";
@@ -951,7 +951,7 @@ namespace WindowsFormsApplication1
 
         private void gridsalesorder_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (gridsalesorder.Rows.Count > 0)
+            if (gridsalesorder.Rows.Count > 1)
             {
                 button4.Enabled = true;
             }
@@ -1542,6 +1542,8 @@ namespace WindowsFormsApplication1
               textBox20.Focus();
            }
         }
+
+       
     }
 }
 

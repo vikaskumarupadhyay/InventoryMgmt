@@ -292,7 +292,6 @@
             this.textBox2.Size = new System.Drawing.Size(31, 21);
             this.textBox2.TabIndex = 29;
             this.textBox2.TabStop = false;
-            this.textBox2.Text = "₹";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox3
