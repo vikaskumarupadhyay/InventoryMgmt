@@ -25,6 +25,8 @@ namespace WindowsFormsApplication1
         private void PurchaseOrder_Load(object sender, EventArgs e)
         {
 
+            txtdis.ReadOnly = true;
+          
             PurchesCrystalReportViewer.Visible = false;
             TOAmmount.Visible = false;
             DisAmmount.Visible = false;
@@ -85,8 +87,6 @@ namespace WindowsFormsApplication1
             //setAutoCompleteMode(txtVendorName, "Name", vendorDetails);
 
             gridPurchaseOrder.DataSource = addToCartTable;
-           
-
         }
 
         private void txtVendorCode_KeyPress(object sender, KeyPressEventArgs e)
@@ -444,6 +444,10 @@ namespace WindowsFormsApplication1
                             txtQuanity.ReadOnly = true;
                         //}
                     }
+                        if (gridPurchaseOrder.Rows.Count > 1)
+                        {
+                            txtdis.ReadOnly = false;
+                        }
 
                 }
         }
@@ -756,7 +760,7 @@ namespace WindowsFormsApplication1
             txtVendorMobile.Text = "";
             txtVendorFax.Text = "";
             txtTotalAmount.Text = "0.00";
-            Distxt.Text = "0";
+            txtdis.Text = "0";
             addToCartTable.Clear();
             gridPurchaseOrder.DataSource = "";
             txtRemoveItem.Enabled = false;
@@ -955,6 +959,15 @@ namespace WindowsFormsApplication1
                     {
                         gridPurchaseOrder.Rows[gridPurchaseOrder.Rows.Count - 1].Selected = true;
                     }
+                    if (gridPurchaseOrder.Rows.Count > 0)
+                    {
+                        txtdis.Text = "0";
+                        txtdis.ReadOnly = true;
+                    }
+                    if (gridPurchaseOrder.Rows.Count > 1)
+                    {
+                        txtdis.ReadOnly = false;
+                    }
                     else
                     {
                         //txtRemoveItem.Enabled = false;
@@ -969,19 +982,7 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void textBox16_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox18_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
+       
         private void txtItemCode_KeyPress(object sender, KeyPressEventArgs e)
         {
            
@@ -1251,10 +1252,10 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
-
+                    
                     //if(itemid=="I1")
                     //{
-                    MessageBox.Show("please enter the ");
+                    MessageBox.Show("please select your correct row ");
                     gridPurchaseOrder.Rows[e.RowIndex].Cells[0].Value = "";
                     //gridPurchaseOrder.Rows[0].Cells[2].Selected = true;
                   }
@@ -1264,7 +1265,7 @@ namespace WindowsFormsApplication1
         private void Distxt_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
-            if (ch == 46 && Distxt.Text.IndexOf('.') != -1)
+            if (ch == 46 && txtdis.Text.IndexOf('.') != -1)
             {
                 e.Handled = true;
                 return;
@@ -1281,7 +1282,7 @@ namespace WindowsFormsApplication1
                 {
                     totalAmount += Convert.ToDouble(dr[6].ToString());
                 }
-                string discountAmount = Distxt.Text;
+                string discountAmount = txtdis.Text;
                 //double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
                 double amount = 0.0;
                 if (double.TryParse(discountAmount, out amount))
@@ -1302,7 +1303,7 @@ namespace WindowsFormsApplication1
         {
             double d = 1;
             double total = Convert.ToDouble(txtTotalAmount.Text);
-            double g = Convert.ToDouble(Distxt.Text);
+            double g = Convert.ToDouble(txtdis.Text);
             double tax = d + ((g / 100));
             double taxamount = total / tax;
             double totaltax = total - taxamount;
@@ -1335,7 +1336,7 @@ namespace WindowsFormsApplication1
             }
             if (e.Alt && e.KeyCode.ToString() == "D")
             {
-                Distxt.Focus();
+                txtdis.Focus();
             }
         }
 

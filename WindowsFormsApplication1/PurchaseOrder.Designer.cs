@@ -75,7 +75,7 @@
             this.textBox15 = new System.Windows.Forms.TextBox();
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.textBox21 = new System.Windows.Forms.TextBox();
-            this.Distxt = new System.Windows.Forms.TextBox();
+            this.txtdis = new System.Windows.Forms.TextBox();
             this.textBox19 = new System.Windows.Forms.TextBox();
             this.textBox18 = new System.Windows.Forms.TextBox();
             this.txtDiscount = new System.Windows.Forms.TextBox();
@@ -610,22 +610,22 @@
             this.textBox21.Text = "%";
             this.textBox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // Distxt
+            // txtdis
             // 
-            this.Distxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Distxt.BackColor = System.Drawing.Color.White;
-            this.Distxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Distxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Distxt.Location = new System.Drawing.Point(885, 562);
-            this.Distxt.Name = "Distxt";
-            this.Distxt.Size = new System.Drawing.Size(39, 21);
-            this.Distxt.TabIndex = 56;
-            this.Distxt.TabStop = false;
-            this.Distxt.Text = "0";
-            this.Distxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Distxt.TextChanged += new System.EventHandler(this.Distxt_TextChanged);
-            this.Distxt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Distxt_KeyDown);
-            this.Distxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Distxt_KeyPress);
+            this.txtdis.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtdis.BackColor = System.Drawing.Color.White;
+            this.txtdis.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtdis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtdis.Location = new System.Drawing.Point(885, 562);
+            this.txtdis.Name = "txtdis";
+            this.txtdis.Size = new System.Drawing.Size(39, 21);
+            this.txtdis.TabIndex = 56;
+            this.txtdis.TabStop = false;
+            this.txtdis.Text = "0";
+            this.txtdis.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtdis.TextChanged += new System.EventHandler(this.Distxt_TextChanged);
+            this.txtdis.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Distxt_KeyDown);
+            this.txtdis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Distxt_KeyPress);
             // 
             // textBox19
             // 
@@ -654,7 +654,6 @@
             this.textBox18.TabStop = false;
             this.textBox18.Text = "%";
             this.textBox18.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox18.TextChanged += new System.EventHandler(this.textBox18_TextChanged);
             // 
             // txtDiscount
             // 
@@ -682,7 +681,6 @@
             this.textBox16.TabStop = false;
             this.textBox16.Text = "CST";
             this.textBox16.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox16.TextChanged += new System.EventHandler(this.textBox16_TextChanged);
             // 
             // btnSave
             // 
@@ -714,9 +712,10 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.buttBack);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(717, 637);
+            this.panel2.Size = new System.Drawing.Size(1172, 637);
             this.panel2.TabIndex = 65;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint_2);
             // 
@@ -725,9 +724,10 @@
             this.PurchesCrystalReportViewer.ActiveViewIndex = -1;
             this.PurchesCrystalReportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PurchesCrystalReportViewer.Cursor = System.Windows.Forms.Cursors.Default;
+            this.PurchesCrystalReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PurchesCrystalReportViewer.Location = new System.Drawing.Point(0, 0);
             this.PurchesCrystalReportViewer.Name = "PurchesCrystalReportViewer";
-            this.PurchesCrystalReportViewer.Size = new System.Drawing.Size(469, 637);
+            this.PurchesCrystalReportViewer.Size = new System.Drawing.Size(1172, 637);
             this.PurchesCrystalReportViewer.TabIndex = 8;
             // 
             // panel3
@@ -738,7 +738,7 @@
             this.panel3.Controls.Add(this.dataGridView1);
             this.panel3.Location = new System.Drawing.Point(12, 105);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(686, 476);
+            this.panel3.Size = new System.Drawing.Size(1141, 476);
             this.panel3.TabIndex = 7;
             // 
             // dataGridView1
@@ -774,7 +774,7 @@
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(682, 472);
+            this.dataGridView1.Size = new System.Drawing.Size(1137, 472);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
@@ -791,7 +791,7 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(12, 25);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(684, 73);
+            this.groupBox4.Size = new System.Drawing.Size(1139, 73);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
@@ -804,7 +804,7 @@
             this.txtsearch.Location = new System.Drawing.Point(687, 42);
             this.txtsearch.Multiline = true;
             this.txtsearch.Name = "txtsearch";
-            this.txtsearch.Size = new System.Drawing.Size(0, 23);
+            this.txtsearch.Size = new System.Drawing.Size(455, 23);
             this.txtsearch.TabIndex = 5;
             this.txtsearch.TextChanged += new System.EventHandler(this.txtsearch_TextChanged_1);
             // 
@@ -818,7 +818,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(656, 24);
             this.comboBox1.TabIndex = 2;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label16
             // 
@@ -937,7 +936,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.textBox21);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.Distxt);
+            this.Controls.Add(this.txtdis);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBox19);
             this.Controls.Add(this.textBox16);
@@ -1009,7 +1008,7 @@
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.TextBox textBox14;
         private System.Windows.Forms.TextBox textBox21;
-        private System.Windows.Forms.TextBox Distxt;
+        private System.Windows.Forms.TextBox txtdis;
         private System.Windows.Forms.TextBox textBox19;
         private System.Windows.Forms.TextBox textBox18;
         private System.Windows.Forms.TextBox txtDiscount;
