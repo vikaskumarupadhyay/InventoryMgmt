@@ -128,6 +128,10 @@ namespace WindowsFormsApplication1
                     }
                     e.Handled = false;
                 }
+                else if (e.KeyChar == 'V' &&  string.IsNullOrWhiteSpace( txtVendorCode.Text))
+                {
+                    e.Handled = false;
+                }
                 else
                 {
                     e.Handled = true;
@@ -1031,22 +1035,26 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
-                    if (e.KeyChar == '\b')
+                if (e.KeyChar == '\b')
+                {
+                    if (txtItemCode.Text == "")
                     {
-                        if (txtItemCode.Text == "")
-                        {
-                            txtItemCode.Text = "I";
-                        }
-                        e.Handled = false;
-                        txtAmount.Text = "";
-                        txtQuanity.Text = "";
-                        txtItemCode.Focus();
+                        txtItemCode.Text = "I";
+                    }
+                    e.Handled = false;
+                    txtAmount.Text = "";
+                    txtQuanity.Text = "";
+                    txtItemCode.Focus();
 
-                    }
-                    else
-                    {
-                        e.Handled = true;
-                    }
+                }
+                else if (e.KeyChar == 'I' && string.IsNullOrWhiteSpace(txtItemCode.Text))
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
                 }
             //}
         }

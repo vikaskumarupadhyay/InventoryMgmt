@@ -1677,7 +1677,7 @@ namespace WindowsFormsApplication1
 
         private void txtcustomercode_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsDigit(e.KeyChar))
+            if (Char.IsDigit(e.KeyChar) || (e.KeyChar == 'C' && string.IsNullOrWhiteSpace(txtcustomercode.Text)))
             {
                 e.Handled = false;
             }
@@ -1710,7 +1710,7 @@ namespace WindowsFormsApplication1
 
         private void txtItemCode_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsDigit(e.KeyChar))
+            if (Char.IsDigit(e.KeyChar) || (e.KeyChar == 'I' && string.IsNullOrWhiteSpace(txtItemCode.Text)))
             {
                 e.Handled = false;
             }

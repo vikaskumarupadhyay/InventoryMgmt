@@ -1451,6 +1451,11 @@ namespace WindowsFormsApplication1
                     txtItemCode.Focus();
 
                 }
+                else if (e.KeyChar == 'I' && string.IsNullOrWhiteSpace(txtItemCode.Text))
+                {
+                    e.Handled = false;
+                }
+
                 else
                 {
                     e.Handled = true;
@@ -1613,6 +1618,10 @@ namespace WindowsFormsApplication1
                     {
                         textVendercod.Text = "V";
                     }
+                    e.Handled = false;
+                }
+                else if (e.KeyChar == 'V' && string.IsNullOrWhiteSpace(textVendercod.Text))
+                {
                     e.Handled = false;
                 }
                 else
