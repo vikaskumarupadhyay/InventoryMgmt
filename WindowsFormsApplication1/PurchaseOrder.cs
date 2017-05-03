@@ -318,6 +318,7 @@ namespace WindowsFormsApplication1
         private void btnAddItem_Click(object sender, EventArgs e)
         {
             txtItemCode.Focus();
+            txtQuanity.ReadOnly = true;
             txtVendorCode.TabStop = true;
             button1.TabStop = true;
             txtDiscount.TabStop = false;
