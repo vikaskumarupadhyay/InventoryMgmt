@@ -134,11 +134,11 @@ namespace WindowsFormsApplication1
             {
                 s = "dbo.VendorOrderDetails." + s;
             }
-            else if (s == "venderId")
+            else if (s =="venderId")
             {
                 s = "dbo.VendorDetails." + s;
             }
-            else if (s == "ItemId")
+            else if (s =="ItemId")
             {
                 s = "dbo.VendorOrderDesc." + s;
             }
@@ -150,17 +150,29 @@ namespace WindowsFormsApplication1
             {
                 s = "cast((dbo.VendorOrderDesc.TotalPrice)- ((dbo.VendorOrderDesc.TotalPrice)/(1+(dbo.VendorOrderDetails.Vat/100)))as numeric(38,2))";
             }
-            else if (s == "Column3")
+            else if (s =="Column3")
             {
                 s = "cast((dbo.VendorOrderDesc.TotalPrice)-((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100)as numeric(38,2))";
             }
-            else if (s == "OrderDate")
+            else if (s =="OrderDate")
             {
                 s = "dbo.VendorOrderDetails." + s;
                 
             }
+            else if (s =="MrpPrice")
+            {
+                s = "cast(dbo.ItemPriceDetail.MrpPrice as numeric(38,2))";
+            }
+            else if (s =="Price")
+            {
+                s = "cast(dbo.VendorOrderDesc.Price as numeric(38,2))";
+            }
+            else if (s =="TotalPrice")
+            {
+                s = "cast(dbo.VendorOrderDesc.TotalPrice as numeric(38,2))";
+            }
 
-            string selectQurry = "SELECT dbo.VendorDetails.venderId as[Vendor ID],dbo.VendorDetails.vName as[Vendor Name], dbo.VendorDetails.vCompName as[Company Name], dbo.VendorDetails.vAddress as[Address], dbo.VendorDetails.vCity as[City], dbo.VendorDetails.vState as[State], dbo.VendorDetails.vZip as[Zip], dbo.VendorDetails.vCountry as[Country], dbo.VendorDetails.vEmail as[Email], dbo.VendorDetails.vWebAddress as[Web Address],dbo.VendorDetails.vPhone as[Phone], dbo.VendorDetails.vMobile as[Mobile], dbo.VendorOrderDetails.Orderid as[Invoice ID], dbo.VendorOrderDetails.OrderDate as[Invoice Date], dbo.VendorOrderDesc.ItemId as[Item ID], dbo.ItemDetails.ItemName as[Item Name], dbo.ItemDetails.ItemCompName as[Company Name], dbo.ItemPriceDetail.MrpPrice as[MRP], dbo.VendorOrderDesc.Price as[Selling Rate], dbo.VendorOrderDesc.Quantity as[Quantity Billed], dbo.VendorOrderDesc.TotalPrice AS [Gross Amount], dbo.VendorOrderDetails.Discount as[Discount Rate],cast((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100 as numeric(38,2)) as [Discount Amount], dbo.VendorOrderDetails.Vat as[Tax], cast((dbo.VendorOrderDesc.TotalPrice)- ((dbo.VendorOrderDesc.TotalPrice)/(1+(dbo.VendorOrderDetails.Vat/100)))as numeric(38,2)) as [Tax Amount],cast(( dbo.VendorOrderDesc.TotalPrice)-((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100)as numeric(38,2)) as[Net Amount (Including Tax)] FROM dbo.VendorDetails INNER JOIN dbo.VendorOrderDetails ON dbo.VendorDetails.venderId = dbo.VendorOrderDetails.venderId INNER JOIN dbo.VendorOrderDesc ON dbo.VendorOrderDetails.Orderid = dbo.VendorOrderDesc.Orderid INNER JOIN dbo.ItemDetails ON dbo.VendorOrderDesc.ItemId = dbo.ItemDetails.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId where " + s + " like '" + textBox5.Text + "%' and OrderDate BETWEEN '" + dateTimePicker1.Text + "' AND '" + dateTimePicker2.Text + "'";
+            string selectQurry = "SELECT dbo.VendorDetails.venderId as[Vendor ID],dbo.VendorDetails.vName as[Vendor Name], dbo.VendorDetails.vCompName as[Company Name], dbo.VendorDetails.vAddress as[Address], dbo.VendorDetails.vCity as[City], dbo.VendorDetails.vState as[State], dbo.VendorDetails.vZip as[Zip], dbo.VendorDetails.vCountry as[Country], dbo.VendorDetails.vEmail as[Email], dbo.VendorDetails.vWebAddress as[Web Address],dbo.VendorDetails.vPhone as[Phone], dbo.VendorDetails.vMobile as[Mobile], dbo.VendorOrderDetails.Orderid as[Invoice ID], dbo.VendorOrderDetails.OrderDate as[Invoice Date], dbo.VendorOrderDesc.ItemId as[Item ID], dbo.ItemDetails.ItemName as[Item Name], dbo.ItemDetails.ItemCompName as[Company Name], cast(dbo.ItemPriceDetail.MrpPrice as numeric(38,2)) as[MRP], cast(dbo.VendorOrderDesc.Price as numeric(38,2)) as[Selling Rate], dbo.VendorOrderDesc.Quantity as[Quantity Billed], cast(dbo.VendorOrderDesc.TotalPrice as numeric(38,2)) AS [Gross Amount], dbo.VendorOrderDetails.Discount as[Discount Rate],cast((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100 as numeric(38,2)) as [Discount Amount], dbo.VendorOrderDetails.Vat as[Tax], cast((dbo.VendorOrderDesc.TotalPrice)- ((dbo.VendorOrderDesc.TotalPrice)/(1+(dbo.VendorOrderDetails.Vat/100)))as numeric(38,2)) as [Tax Amount],cast(( dbo.VendorOrderDesc.TotalPrice)-((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100)as numeric(38,2)) as[Net Amount (Including Tax)] FROM dbo.VendorDetails INNER JOIN dbo.VendorOrderDetails ON dbo.VendorDetails.venderId = dbo.VendorOrderDetails.venderId INNER JOIN dbo.VendorOrderDesc ON dbo.VendorOrderDetails.Orderid = dbo.VendorOrderDesc.Orderid INNER JOIN dbo.ItemDetails ON dbo.VendorOrderDesc.ItemId = dbo.ItemDetails.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId where " + s + " like '" + textBox5.Text + "%' and OrderDate BETWEEN '" + dateTimePicker1.Text + "' AND '" + dateTimePicker2.Text + "'";
              DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
              dataGridView1.DataSource = dt;
         }
@@ -176,7 +188,7 @@ namespace WindowsFormsApplication1
             }
             dateTimePicker1.Text = date;
            btnPrint.Enabled = false;
-           string selectqurry = "SELECT dbo.VendorDetails.venderId as[Vendor ID],dbo.VendorDetails.vName as[Vendor Name], dbo.VendorDetails.vCompName as[Company Name], dbo.VendorDetails.vAddress as[Address], dbo.VendorDetails.vCity as[City], dbo.VendorDetails.vState as[State], dbo.VendorDetails.vZip as[Zip], dbo.VendorDetails.vCountry as[Country], dbo.VendorDetails.vEmail as[Email], dbo.VendorDetails.vWebAddress as[Web Address],dbo.VendorDetails.vPhone as[Phone], dbo.VendorDetails.vMobile as[Mobile], dbo.VendorOrderDetails.Orderid as[Invoice ID], dbo.VendorOrderDetails.OrderDate as[Invoice Date], dbo.VendorOrderDesc.ItemId as[Item ID], dbo.ItemDetails.ItemName as[Item Name], dbo.ItemDetails.ItemCompName as[Company Name], dbo.ItemPriceDetail.MrpPrice as[MRP], dbo.VendorOrderDesc.Price as[Selling Rate], dbo.VendorOrderDesc.Quantity as[Quantity Billed], dbo.VendorOrderDesc.TotalPrice AS [Gross Amount], dbo.VendorOrderDetails.Discount as[Discount Rate],cast((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100 as numeric(38,2)) as [Discount Amount], dbo.VendorOrderDetails.Vat as[Tax], cast((dbo.VendorOrderDesc.TotalPrice)- ((dbo.VendorOrderDesc.TotalPrice)/(1+(dbo.VendorOrderDetails.Vat/100 )))as numeric(38,2)) as [Tax Amount],cast(( dbo.VendorOrderDesc.TotalPrice )-((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100)as numeric(38,2)) as[Net Amount (Including Tax)] FROM dbo.VendorDetails INNER JOIN dbo.VendorOrderDetails ON dbo.VendorDetails.venderId = dbo.VendorOrderDetails.venderId INNER JOIN dbo.VendorOrderDesc ON dbo.VendorOrderDetails.Orderid = dbo.VendorOrderDesc.Orderid INNER JOIN dbo.ItemDetails ON dbo.VendorOrderDesc.ItemId = dbo.ItemDetails.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId";
+           string selectqurry = "SELECT dbo.VendorDetails.venderId as[Vendor ID],dbo.VendorDetails.vName as[Vendor Name], dbo.VendorDetails.vCompName as[Company Name], dbo.VendorDetails.vAddress as[Address], dbo.VendorDetails.vCity as[City], dbo.VendorDetails.vState as[State], dbo.VendorDetails.vZip as[Zip], dbo.VendorDetails.vCountry as[Country], dbo.VendorDetails.vEmail as[Email], dbo.VendorDetails.vWebAddress as[Web Address],dbo.VendorDetails.vPhone as[Phone], dbo.VendorDetails.vMobile as[Mobile], dbo.VendorOrderDetails.Orderid as[Invoice ID], dbo.VendorOrderDetails.OrderDate as[Invoice Date], dbo.VendorOrderDesc.ItemId as[Item ID], dbo.ItemDetails.ItemName as[Item Name], dbo.ItemDetails.ItemCompName as[Company Name], cast(dbo.ItemPriceDetail.MrpPrice as numeric(38,2)) as[MRP], cast(dbo.VendorOrderDesc.Price as numeric(38,2)) as[Selling Rate], dbo.VendorOrderDesc.Quantity as[Quantity Billed], cast(dbo.VendorOrderDesc.TotalPrice as numeric(38,2)) AS [Gross Amount], dbo.VendorOrderDetails.Discount as[Discount Rate],cast((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100 as numeric(38,2)) as [Discount Amount], dbo.VendorOrderDetails.Vat as[Tax], cast((dbo.VendorOrderDesc.TotalPrice)- ((dbo.VendorOrderDesc.TotalPrice)/(1+(dbo.VendorOrderDetails.Vat/100 )))as numeric(38,2)) as [Tax Amount],cast(( dbo.VendorOrderDesc.TotalPrice )-((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100)as numeric(38,2)) as[Net Amount (Including Tax)] FROM dbo.VendorDetails INNER JOIN dbo.VendorOrderDetails ON dbo.VendorDetails.venderId = dbo.VendorOrderDetails.venderId INNER JOIN dbo.VendorOrderDesc ON dbo.VendorOrderDetails.Orderid = dbo.VendorOrderDesc.Orderid INNER JOIN dbo.ItemDetails ON dbo.VendorOrderDesc.ItemId = dbo.ItemDetails.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId";
            string selectqurryForActualColumnName = "select top 1 dbo.VendorDetails.venderId ,dbo.VendorDetails.vName , dbo.VendorDetails.vCompName, dbo.VendorDetails.vAddress, dbo.VendorDetails.vCity , dbo.VendorDetails.vState , dbo.VendorDetails.vZip, dbo.VendorDetails.vCountry , dbo.VendorDetails.vEmail , dbo.VendorDetails.vWebAddress ,dbo.VendorDetails.vPhone , dbo.VendorDetails.vMobile ,dbo.VendorOrderDetails.Orderid , dbo.VendorOrderDetails.OrderDate , dbo.VendorOrderDesc.ItemId, dbo.ItemDetails.ItemName, dbo.ItemDetails.ItemCompName , dbo.ItemPriceDetail.MrpPrice , dbo.VendorOrderDesc.Price , dbo.VendorOrderDesc.Quantity, dbo.VendorOrderDesc.TotalPrice , dbo.VendorOrderDetails.Discount ,cast((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100 as numeric(38,2)), dbo.VendorOrderDetails.Vat , cast((dbo.VendorOrderDesc.TotalPrice)- ((dbo.VendorOrderDesc.TotalPrice)/(1+(dbo.VendorOrderDetails.Vat/100)))as numeric(38,2)),cast(( dbo.VendorOrderDesc.TotalPrice)-((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100)as numeric(38,2)) FROM dbo.VendorDetails INNER JOIN dbo.VendorOrderDetails ON dbo.VendorDetails.venderId = dbo.VendorOrderDetails.venderId INNER JOIN dbo.VendorOrderDesc ON dbo.VendorOrderDetails.Orderid = dbo.VendorOrderDesc.Orderid INNER JOIN dbo.ItemDetails ON dbo.VendorOrderDesc.ItemId = dbo.ItemDetails.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
@@ -213,7 +225,7 @@ namespace WindowsFormsApplication1
             double gross1 = 0;
             for (int a = 0; a < dataGridView1.Rows.Count; a++)
             {
-                gross = Convert.ToDouble(dataGridView1.Rows[a].Cells[21].Value);
+                gross = Convert.ToDouble(dataGridView1.Rows[a].Cells[20].Value);
                 gross1 = gross1 + gross;
                 dis = Convert.ToDouble(dataGridView1.Rows[a].Cells[22].Value);
                 dis1 = dis1 + dis;
@@ -246,6 +258,7 @@ namespace WindowsFormsApplication1
             dataGridView1.DataSource = dt;
         }
 
+     
        
 
        
