@@ -1597,7 +1597,7 @@ namespace WindowsFormsApplication1
                     totalAmount -= Convert.ToDouble(Amount.Trim());
                     txttotalAmount.Text = totalAmount.ToString();
                     int index = dataGridView1.SelectedRows[0].Index;
-                    addToCartTable.Rows.RemoveAt(index-1);
+                    //addToCartTable.Rows.RemoveAt(index-1);
 
                     dataGridView1.DataSource = addToCartTable;
                     if (addToCartTable.Rows.Count == 0)
