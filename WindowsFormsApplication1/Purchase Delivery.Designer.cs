@@ -295,7 +295,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(90, 33);
             this.button4.TabIndex = 16;
-            this.button4.Text = "Remove Item";
+            this.button4.Text = "&Remove Item";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             this.button4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.button4_KeyPress);
@@ -338,6 +338,7 @@
             // 
             this.txtQunty.Location = new System.Drawing.Point(696, 35);
             this.txtQunty.Name = "txtQunty";
+            this.txtQunty.ReadOnly = true;
             this.txtQunty.Size = new System.Drawing.Size(169, 21);
             this.txtQunty.TabIndex = 14;
             this.txtQunty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -395,6 +396,7 @@
             // 
             // txtItemCode
             // 
+            this.txtItemCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtItemCode.Location = new System.Drawing.Point(23, 35);
             this.txtItemCode.Name = "txtItemCode";
             this.txtItemCode.Size = new System.Drawing.Size(92, 21);
@@ -402,6 +404,7 @@
             this.txtItemCode.Text = "I";
             this.txtItemCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtItemCode.TextChanged += new System.EventHandler(this.txtItemCode_TextChanged);
+            this.txtItemCode.Enter += new System.EventHandler(this.txtItemCode_Enter);
             this.txtItemCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemCode_KeyPress);
             // 
             // label11
@@ -635,6 +638,7 @@
             // 
             // textVendercod
             // 
+            this.textVendercod.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textVendercod.Location = new System.Drawing.Point(23, 34);
             this.textVendercod.Name = "textVendercod";
             this.textVendercod.Size = new System.Drawing.Size(92, 21);
@@ -756,10 +760,9 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.butClose);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1172, 634);
+            this.panel2.Size = new System.Drawing.Size(59, 634);
             this.panel2.TabIndex = 40;
             // 
             // DeliveryReportViewer
@@ -767,10 +770,9 @@
             this.DeliveryReportViewer.ActiveViewIndex = -1;
             this.DeliveryReportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.DeliveryReportViewer.Cursor = System.Windows.Forms.Cursors.Default;
-            this.DeliveryReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DeliveryReportViewer.Location = new System.Drawing.Point(0, 0);
             this.DeliveryReportViewer.Name = "DeliveryReportViewer";
-            this.DeliveryReportViewer.Size = new System.Drawing.Size(1172, 634);
+            this.DeliveryReportViewer.Size = new System.Drawing.Size(50, 634);
             this.DeliveryReportViewer.TabIndex = 7;
             // 
             // panel3
@@ -781,7 +783,7 @@
             this.panel3.Controls.Add(this.dataGridView2);
             this.panel3.Location = new System.Drawing.Point(12, 105);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1142, 476);
+            this.panel3.Size = new System.Drawing.Size(29, 476);
             this.panel3.TabIndex = 6;
             // 
             // dataGridView2
@@ -791,7 +793,7 @@
             this.dataGridView2.Location = new System.Drawing.Point(0, 0);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(1138, 472);
+            this.dataGridView2.Size = new System.Drawing.Size(25, 472);
             this.dataGridView2.StandardTab = true;
             this.dataGridView2.TabIndex = 3;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
@@ -810,7 +812,7 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(12, 25);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1141, 73);
+            this.groupBox4.Size = new System.Drawing.Size(28, 73);
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
@@ -834,7 +836,7 @@
             this.txtSearch.Location = new System.Drawing.Point(687, 42);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(429, 23);
+            this.txtSearch.Size = new System.Drawing.Size(0, 23);
             this.txtSearch.TabIndex = 2;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged_1);
             // 

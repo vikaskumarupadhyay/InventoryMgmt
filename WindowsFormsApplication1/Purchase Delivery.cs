@@ -415,6 +415,7 @@ namespace WindowsFormsApplication1
         #region /////////// AddToList Clicked ///////////////
         private void button3_Click(object sender, EventArgs e)
         {
+            
             button4.Enabled = true;
             txtQunty.TabStop = false;
             txtQunty.Enabled = false;
@@ -499,7 +500,7 @@ namespace WindowsFormsApplication1
                                 totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
                                 txttotalAmount.Text = totalAmount.ToString();
                                 txtWAmount.Text = totalAmount.ToString();
-
+                                
                                 txtItemCode.Text = "I";
                                 txtProductName.Text = "";
                                 txtRate.Text = "";
@@ -543,7 +544,7 @@ namespace WindowsFormsApplication1
                         totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
                         txttotalAmount.Text = totalAmount.ToString();
                         txtWAmount.Text = totalAmount.ToString();
-
+                    
                         txtItemCode.Text = "I";
                         txtProductName.Text = "";
                         txtRate.Text = "";
@@ -638,7 +639,12 @@ namespace WindowsFormsApplication1
 
         private void button4_Click(object sender, EventArgs e)
         {
+            
+            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.Red;
+            //dataGridView1.Rows[0].DefaultCellStyle.Font = new Font(new FontFamily("Microsoft Sans Serif"), 9.00F, FontStyle.Strikeout);
+            //dataGridView1.DefaultCellStyle.Font = new DataGridViewSelectedRowCollection(new FontFamily("Microsoft Sans Serif"), 8.25F, FontStyle.Strikeout);
             dataGridView1.Focus();
+            
                 //if (addToCartTable.Rows.Count > 0)
                 //{
                     
@@ -1495,7 +1501,7 @@ namespace WindowsFormsApplication1
                     txtItemCode.Focus();
 
                 }
-                else if (e.KeyChar == 'I' && string.IsNullOrWhiteSpace(txtItemCode.Text))
+                else if ((e.KeyChar == 'I' || e.KeyChar == 'i') && string.IsNullOrWhiteSpace(txtItemCode.Text))
                 {
                     e.Handled = false;
                 }
@@ -1592,13 +1598,15 @@ namespace WindowsFormsApplication1
                    
 
                     int currentrow = dataGridView1.CurrentRow.Index;
-                    string Amount = dataGridView1.Rows[currentrow-1].Cells[4].Value.ToString();
+                    string Amount = dataGridView1.Rows[currentrow-1].Cells[6].Value.ToString();
                     double totalAmount = Convert.ToDouble(txttotalAmount.Text);
                     totalAmount -= Convert.ToDouble(Amount.Trim());
                     txttotalAmount.Text = totalAmount.ToString();
                     int index = dataGridView1.SelectedRows[0].Index;
-                    addToCartTable.Rows.RemoveAt(index-1);
-
+                    //addToCartTable.Rows.RemoveAt(index-1);
+                    
+                    dataGridView1.Rows[index - 1].DefaultCellStyle.Font = new Font(new FontFamily("Microsoft Sans Serif"),9.00F, FontStyle.Strikeout);
+                    dataGridView1.Rows[index - 1].DefaultCellStyle.ForeColor = Color.Red;
                     dataGridView1.DataSource = addToCartTable;
                     if (addToCartTable.Rows.Count == 0)
                     {
@@ -1632,6 +1640,8 @@ namespace WindowsFormsApplication1
             {
                 txtItemCode.Focus();
                 button4.Enabled = true;
+                dataGridView1.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
+
             }
         }
 
@@ -2017,6 +2027,11 @@ namespace WindowsFormsApplication1
             {
                 txtDiscount.Focus();
             }
+        }
+
+        private void txtItemCode_Enter(object sender, EventArgs e)
+        {
+            
         }
     }
         

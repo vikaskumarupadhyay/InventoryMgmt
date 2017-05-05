@@ -128,7 +128,7 @@ namespace WindowsFormsApplication1
                     }
                     e.Handled = false;
                 }
-                else if (e.KeyChar == 'V' &&  string.IsNullOrWhiteSpace( txtVendorCode.Text))
+                else if( (e.KeyChar == 'V' || e.KeyChar == 'v') && string.IsNullOrWhiteSpace(txtVendorCode.Text))
                 {
                     e.Handled = false;
                 }
@@ -361,6 +361,7 @@ namespace WindowsFormsApplication1
                     txtRate.Text = "";
                     txtQuanity.Text = "";
                     txtAmount.Text = "";
+                    //txtItemCode.Focus();
                     btnAddItem.Enabled = false;
                 }
             }
@@ -438,7 +439,7 @@ namespace WindowsFormsApplication1
                             txtRate.Text = "";
                             txtQuanity.Text = "";
                             txtAmount.Text = "";
-                            // txtItemCode.Focus();
+                            //txtItemCode.Focus();
                             btnAddItem.Enabled = false;
                             //txtRemoveItem.Focus();
                             txtQuanity.TabStop = false;
@@ -471,6 +472,7 @@ namespace WindowsFormsApplication1
 
         private void txtRemoveItem_Click(object sender, EventArgs e)
         {
+            gridPurchaseOrder.DefaultCellStyle.SelectionBackColor = Color.Red;
             gridPurchaseOrder.Focus();
             txtRemoveItem.Enabled = false;
            
@@ -944,8 +946,9 @@ namespace WindowsFormsApplication1
                     totalAmount -= Convert.ToDouble(Amount.Trim());
                     txtTotalAmount.Text = totalAmount.ToString();
                     int index = gridPurchaseOrder.SelectedRows[0].Index;
-                    addToCartTable.Rows.RemoveAt(index-1);
-
+                    //addToCartTable.Rows.RemoveAt(index-1);
+                    gridPurchaseOrder.Rows[index - 1].DefaultCellStyle.Font = new Font(new FontFamily("Microsoft Sans Serif"), 9.00F, FontStyle.Strikeout);
+                    gridPurchaseOrder.Rows[index - 1].DefaultCellStyle.ForeColor = Color.Red;
                     gridPurchaseOrder.DataSource = addToCartTable;
                     if (addToCartTable.Rows.Count == 0)
                     {
@@ -1049,7 +1052,7 @@ namespace WindowsFormsApplication1
                     txtItemCode.Focus();
 
                 }
-                else if (e.KeyChar == 'I' && string.IsNullOrWhiteSpace(txtItemCode.Text))
+                else if ((e.KeyChar == 'I' || e.KeyChar == 'i') && string.IsNullOrWhiteSpace(txtItemCode.Text))
                 {
                     e.Handled = false;
                 }
@@ -1081,6 +1084,7 @@ namespace WindowsFormsApplication1
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
+                
                 gridPurchaseOrder.Focus();
             }
             if (e.KeyChar == Convert.ToChar(Keys.Escape))

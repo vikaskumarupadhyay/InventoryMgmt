@@ -138,6 +138,7 @@
             // 
             // txtVendorCode
             // 
+            this.txtVendorCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtVendorCode.Location = new System.Drawing.Point(23, 34);
             this.txtVendorCode.Name = "txtVendorCode";
             this.txtVendorCode.Size = new System.Drawing.Size(92, 21);
@@ -474,6 +475,7 @@
             // 
             // txtItemCode
             // 
+            this.txtItemCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtItemCode.Location = new System.Drawing.Point(23, 35);
             this.txtItemCode.Name = "txtItemCode";
             this.txtItemCode.Size = new System.Drawing.Size(92, 21);
@@ -712,10 +714,9 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.buttBack);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1172, 637);
+            this.panel2.Size = new System.Drawing.Size(29, 637);
             this.panel2.TabIndex = 65;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint_2);
             // 
@@ -724,10 +725,9 @@
             this.PurchesCrystalReportViewer.ActiveViewIndex = -1;
             this.PurchesCrystalReportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PurchesCrystalReportViewer.Cursor = System.Windows.Forms.Cursors.Default;
-            this.PurchesCrystalReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PurchesCrystalReportViewer.Location = new System.Drawing.Point(0, 0);
             this.PurchesCrystalReportViewer.Name = "PurchesCrystalReportViewer";
-            this.PurchesCrystalReportViewer.Size = new System.Drawing.Size(1172, 637);
+            this.PurchesCrystalReportViewer.Size = new System.Drawing.Size(11, 637);
             this.PurchesCrystalReportViewer.TabIndex = 8;
             // 
             // panel3
@@ -738,7 +738,7 @@
             this.panel3.Controls.Add(this.dataGridView1);
             this.panel3.Location = new System.Drawing.Point(12, 105);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1141, 476);
+            this.panel3.Size = new System.Drawing.Size(0, 476);
             this.panel3.TabIndex = 7;
             // 
             // dataGridView1
@@ -774,7 +774,7 @@
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1137, 472);
+            this.dataGridView1.Size = new System.Drawing.Size(0, 476);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
@@ -791,7 +791,7 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(12, 25);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1139, 73);
+            this.groupBox4.Size = new System.Drawing.Size(0, 73);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
@@ -804,8 +804,7 @@
             this.txtsearch.Location = new System.Drawing.Point(687, 42);
             this.txtsearch.Multiline = true;
             this.txtsearch.Name = "txtsearch";
-
-            this.txtsearch.Size = new System.Drawing.Size(657, 23);
+            this.txtsearch.Size = new System.Drawing.Size(0, 23);
             this.txtsearch.TabIndex = 5;
             this.txtsearch.TextChanged += new System.EventHandler(this.txtsearch_TextChanged_1);
             // 
