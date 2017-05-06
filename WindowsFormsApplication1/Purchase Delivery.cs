@@ -1604,9 +1604,11 @@ namespace WindowsFormsApplication1
                     txttotalAmount.Text = totalAmount.ToString();
                     int index = dataGridView1.SelectedRows[0].Index;
                     //addToCartTable.Rows.RemoveAt(index-1);
+
                     
                     dataGridView1.Rows[index - 1].DefaultCellStyle.Font = new Font(new FontFamily("Microsoft Sans Serif"),9.00F, FontStyle.Strikeout);
                     dataGridView1.Rows[index - 1].DefaultCellStyle.ForeColor = Color.Red;
+
                     dataGridView1.DataSource = addToCartTable;
                     if (addToCartTable.Rows.Count == 0)
                     {
