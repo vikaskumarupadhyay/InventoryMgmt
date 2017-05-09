@@ -11,7 +11,7 @@ namespace WindowsFormsApplication1
 {
     public partial class salesorder : Form
     {
-
+        List<string> ls = new List<string>();
         DB_Main d = new DB_Main();
         public salesorder()
         {
@@ -368,7 +368,7 @@ namespace WindowsFormsApplication1
                 double totalAmount = Convert.ToDouble(txttotalammount.Text);
                 totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
                 txttotalammount.Text = totalAmount.ToString();
-                txttotaltax.Text= totalAmount.ToString();
+                txtwithautaxamount.Text= totalAmount.ToString();
 
                 txtitemcode.Text = "I";
                 txtProductName.Text = "";
@@ -395,7 +395,7 @@ namespace WindowsFormsApplication1
             gridsalesorder.DataSource = addToCartTable;
             discountamount.Visible = false;
             txttaxamount.Visible = false;
-            txttotaltax.Visible = false;
+            txtwithautaxamount.Visible = false;
            
             crystalReportViewer1.Visible = false;
             tab();
@@ -484,7 +484,7 @@ namespace WindowsFormsApplication1
 
         private void button4_Click(object sender, EventArgs e)
         {
-           
+            gridsalesorder.DefaultCellStyle.SelectionBackColor = Color.Red;
             button4.Enabled = false;
             gridsalesorder.Focus();
             gridsalesorder.TabIndex = 1;
@@ -569,7 +569,7 @@ namespace WindowsFormsApplication1
             counter = 0;
             if (counter == 0)
             {
-                string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpdate.Text + "','" + txttotalammount.Text + "','" + textBox20.Text+ "','"+discountamount.Text+"','"+txttax.Text+"','"+txttaxamount.Text+"','"+txttotaltax.Text+"')";
+                string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpdate.Text + "','" + txttotalammount.Text + "','" + textBox20.Text+ "','"+discountamount.Text+"','"+txttax.Text+"','"+txttaxamount.Text+"','"+txtwithautaxamount.Text+"')";
                 int insertrows = d.saveDetails(insertquery);
 
 
@@ -581,6 +581,10 @@ namespace WindowsFormsApplication1
                     DataGridViewRow currentrow = rowcollection[a];
                     DataGridViewCellCollection cellcollection = currentrow.Cells;
                     string txtitemcode = cellcollection[0].Value.ToString();
+                    if (ls.Contains(txtitemcode))
+                    {
+                        continue;
+                    }
                     string txtProductName = cellcollection[1].Value.ToString();
                     string Compnayname = cellcollection[2].Value.ToString();
                     string mrp = cellcollection[3].Value.ToString();
@@ -693,7 +697,7 @@ namespace WindowsFormsApplication1
             counter = 0;
             if (counter == 0)
             {
-                string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpdate.Text + "','" + txttotalammount.Text + "','" + textBox20.Text + "','" + discountamount.Text + "','" + txttax.Text + "','" + txttaxamount.Text + "','" + txttotaltax.Text + "')";
+                string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpdate.Text + "','" + txttotalammount.Text + "','" + textBox20.Text + "','" + discountamount.Text + "','" + txttax.Text + "','" + txttaxamount.Text + "','" + txtwithautaxamount.Text + "')";
                 int insertrows = d.saveDetails(insertquery);
 
 
@@ -705,6 +709,10 @@ namespace WindowsFormsApplication1
                     DataGridViewRow currentrow = rowcollection[a];
                     DataGridViewCellCollection cellcollection = currentrow.Cells;
                     string txtitemcode = cellcollection[0].Value.ToString();
+                    if (ls.Contains(txtitemcode))
+                    {
+                        continue;
+                    }
                     string txtProductName = cellcollection[1].Value.ToString();
                     string Compnayname = cellcollection[2].Value.ToString();
                     string mrp = cellcollection[3].Value.ToString();
@@ -988,7 +996,12 @@ namespace WindowsFormsApplication1
                     totalAmount -= Convert.ToDouble(Amount.Trim());
                     txttotalammount.Text = totalAmount.ToString();
                     int index = gridsalesorder.SelectedRows[0].Index;
-                    addToCartTable.Rows.RemoveAt(index - 1);
+                    //addToCartTable.Rows.RemoveAt(index - 1);
+                    gridsalesorder.Rows[index - 1].DefaultCellStyle.Font = new Font(new FontFamily("Microsoft Sans Serif"), 9.00F, FontStyle.Strikeout);
+                    gridsalesorder.Rows[index - 1].DefaultCellStyle.ForeColor = Color.Red;
+                    string itemId = gridsalesorder.Rows[index - 1].Cells[0].Value.ToString();// I44
+
+                    ls.Add(itemId);
                     //int index = gridsalesorder.CurrentCell.RowIndex;
                     //addToCartTable.Rows.RemoveAt(0);
 
@@ -1463,6 +1476,11 @@ namespace WindowsFormsApplication1
                 {
                     foreach (DataRow dr in addToCartTable.Rows)
                     {
+                        string itemid = dr[0].ToString();
+                        if (ls.Contains(itemid))
+                        {
+                            continue;
+                        }
                         totalAmount += Convert.ToDouble(dr[6].ToString());
                     }
                     double s1 = totalAmount;
@@ -1491,6 +1509,11 @@ namespace WindowsFormsApplication1
                 //discountamount.Text = disa.ToString();
                 foreach (DataRow dr in addToCartTable.Rows)
                 {
+                    string itemid = dr[0].ToString();
+                    if (ls.Contains(itemid))
+                    {
+                        continue;
+                    }
                     totalAmount += Convert.ToDouble(dr[6].ToString());
                 }
                 double s = totalAmount;
@@ -1503,6 +1526,7 @@ namespace WindowsFormsApplication1
                     double totaldiscount = Convert.ToDouble(discount);
                     totalAmount = totalAmount - ((totalAmount * totaldiscount) / 100);
                     txttotalammount.Text = totalAmount.ToString();
+                    txtwithautaxamount.Text = s.ToString();
                     double dis = s * totaldiscount / 100;
                     discountamount.Text = dis.ToString();
 
@@ -1558,6 +1582,7 @@ namespace WindowsFormsApplication1
            }
         }
 
+      
        
     }
 }
