@@ -91,7 +91,7 @@
             this.butback = new System.Windows.Forms.Button();
             this.discountamount = new System.Windows.Forms.TextBox();
             this.txttaxamount = new System.Windows.Forms.TextBox();
-            this.txttotaltax = new System.Windows.Forms.TextBox();
+            this.txtwithautaxamount = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridsalesorder)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -832,12 +832,12 @@
             this.txttaxamount.Size = new System.Drawing.Size(100, 20);
             this.txttaxamount.TabIndex = 62;
             // 
-            // txttotaltax
+            // txtwithautaxamount
             // 
-            this.txttotaltax.Location = new System.Drawing.Point(1028, 585);
-            this.txttotaltax.Name = "txttotaltax";
-            this.txttotaltax.Size = new System.Drawing.Size(100, 20);
-            this.txttotaltax.TabIndex = 63;
+            this.txtwithautaxamount.Location = new System.Drawing.Point(1028, 585);
+            this.txtwithautaxamount.Name = "txtwithautaxamount";
+            this.txtwithautaxamount.Size = new System.Drawing.Size(100, 20);
+            this.txtwithautaxamount.TabIndex = 63;
             // 
             // salesorder
             // 
@@ -845,7 +845,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1172, 634);
-            this.Controls.Add(this.txttotaltax);
+            this.Controls.Add(this.txtwithautaxamount);
             this.Controls.Add(this.txttaxamount);
             this.Controls.Add(this.discountamount);
             this.Controls.Add(this.panel2);
@@ -956,6 +956,6 @@
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
         private System.Windows.Forms.TextBox discountamount;
         private System.Windows.Forms.TextBox txttaxamount;
-        private System.Windows.Forms.TextBox txttotaltax;
+        private System.Windows.Forms.TextBox txtwithautaxamount;
     }
 }
