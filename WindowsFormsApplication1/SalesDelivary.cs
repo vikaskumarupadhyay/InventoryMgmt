@@ -12,6 +12,8 @@ namespace WindowsFormsApplication1
 {
     public partial class salesdelivary : Form
     {
+        List<string> ls = new List<string>();
+        int h;
         DB_Main d = new DB_Main();
         public salesdelivary()
         {
@@ -585,6 +587,7 @@ namespace WindowsFormsApplication1
 
         private void butRemoveItem_Click(object sender, EventArgs e)
         {
+            gridsalesdelivary.DefaultCellStyle.SelectionBackColor = Color.Red;
             butRemoveItem.Enabled = false;
             gridsalesdelivary.Focus();
             gridsalesdelivary.TabIndex = 1;
@@ -637,23 +640,26 @@ namespace WindowsFormsApplication1
 
         private void butSaveButton_Click(object sender, EventArgs e)
         {
-             
+              
             gridsalesdelivary.AllowUserToAddRows = false;
 
             if (txtRefNo.Text == "")
             {
                 string s = "0";
+                
                 DataGridViewRowCollection call = gridsalesdelivary.Rows;
+             
                 for (int c = 0; c < call.Count; c++)
                 {
                     DataGridViewRow currentRow1 = call[c];
                     DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
                     string itid = cellCollection1[0].Value.ToString();
+                    if (ls.Contains(itid)) 
+                    {
+                        continue;
+                    }
                     string que = cellCollection1[5].Value.ToString();
                     string quent = cellCollection1[6].Value.ToString();
-
-
-
                     string qurry = "select CurrentQuantity from ItemQuantityDetail where ItemId='" + itid + "'";
                     DataTable dt = d.getDetailByQuery(qurry);
                     string currid = "";
@@ -670,6 +676,7 @@ namespace WindowsFormsApplication1
                     string updateQurry = "update ItemQuantityDetail set CurrentQuantity='" + lastQuantity + "'where ItemId='" + itid + "'";
                     int insertedRows2 = d.saveDetails(updateQurry);
                 }
+                
 
                 string order = "select orderid from orderdetails ";
                 DataTable d1 = d.getDetailByQuery(order);
@@ -694,6 +701,10 @@ namespace WindowsFormsApplication1
                             DataGridViewRow currentrow = rowcollection[a];
                             DataGridViewCellCollection cellcollection = currentrow.Cells;
                             string txtitemcode = cellcollection[0].Value.ToString();
+                            if (ls.Contains(txtitemcode))
+                            {
+                                continue;
+                            }
                             // string txtProductName = cellcollection[1].Value.ToString();
                             string txtRate = cellcollection[2].Value.ToString();
                             string txtQuantity = cellcollection[4].Value.ToString();
@@ -727,6 +738,10 @@ namespace WindowsFormsApplication1
                                     DataGridViewRow currentRow = RowCollection2[a];
                                     DataGridViewCellCollection cellCollection = currentRow.Cells;
                                     string txtItemCode = cellCollection[0].Value.ToString();
+                                    if (ls.Contains(txtItemCode))
+                                    {
+                                        continue;
+                                    }
                                     string txtRate = cellCollection[2].Value.ToString();
                                     string txtQuanity = cellCollection[4].Value.ToString();
                                     string txtAmoun = cellCollection[5].Value.ToString();
@@ -761,6 +776,7 @@ namespace WindowsFormsApplication1
                         }
                     }
                 }
+                
             
             
                 else
@@ -780,6 +796,10 @@ namespace WindowsFormsApplication1
                             DataGridViewRow currentrow = rowcollection[a];
                             DataGridViewCellCollection cellcollection = currentrow.Cells;
                             string txtitemcode = cellcollection[0].Value.ToString();
+                            if (ls.Contains(txtitemcode))
+                            {
+                                continue;
+                            }
                             //string txtProductName = cellcollection[1].Value.ToString();
                             //string compnayname = cellcollection[2].Value.ToString();
                             //string mrp = cellcollection[3].Value.ToString();
@@ -815,6 +835,10 @@ namespace WindowsFormsApplication1
                                     DataGridViewRow currentRow = RowCollection2[a];
                                     DataGridViewCellCollection cellCollection = currentRow.Cells;
                                     string txtItemCode = cellCollection[0].Value.ToString();
+                                    if (ls.Contains(txtItemCode))
+                                    {
+                                        continue;
+                                    }
                                     string txtRate = cellCollection[4].Value.ToString();
                                     string txtQuanity = cellCollection[5].Value.ToString();
                                     string txtAmoun = cellCollection[6].Value.ToString();
@@ -841,7 +865,7 @@ namespace WindowsFormsApplication1
                                         {
                                             crystalReportViewer2.Visible = true;
                                             gridsalesdelivary.AllowUserToAddRows = false;
-                                            string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
+                                            string a = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=True";
                                             SqlConnection con = new SqlConnection(a);
                                             con.Open();
                                             string selectquery = "select * from salesorderdelivaryreport where Delivaryid='" + txtSrNo.Text + "'";
@@ -895,6 +919,10 @@ namespace WindowsFormsApplication1
                         DataGridViewRow currentRow1 = cal[c];
                         DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
                         string itid = cellCollection1[0].Value.ToString();
+                        if (ls.Contains(itid))
+                        {
+                            continue;
+                        }
                         string que = cellCollection1[5].Value.ToString();
                         string quent = cellCollection1[6].Value.ToString();
 
@@ -928,6 +956,10 @@ namespace WindowsFormsApplication1
                             DataGridViewRow currentrow = rowcollection[a];
                             DataGridViewCellCollection cellcollection = currentrow.Cells;
                             string txtitemcode = cellcollection[0].Value.ToString();
+                            if (ls.Contains(txtitemcode))
+                            {
+                                continue;
+                            }
                             // string txtproductname = cellcollection[1].Value.ToString();
                             string txtRate = cellcollection[4].Value.ToString();
                             string txtQuantity = cellcollection[6].Value.ToString();
@@ -1202,7 +1234,7 @@ namespace WindowsFormsApplication1
                                         {
                                             crystalReportViewer2.Visible = true;
                                             gridsalesdelivary.AllowUserToAddRows = false;
-                                            string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
+                                            string a = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=True";
                                             SqlConnection con = new SqlConnection(a);
                                             con.Open();
                                             string selectquery = "select * from salesorderdelivaryreport where Delivaryid='" + txtSrNo.Text + "'";
@@ -1656,6 +1688,7 @@ namespace WindowsFormsApplication1
             {
                 txtItemCode.Enabled= true;
                 txtItemCode.Focus();
+                gridsalesdelivary.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
                 txtItemCode.TabIndex = 1;
                 butSaveButton.TabStop = true;
                 ButSelectPurchaseOrder.TabStop = true;
@@ -1665,15 +1698,22 @@ namespace WindowsFormsApplication1
              {
                  if (addToCartTable.Rows.Count > 0)
                  {
+                     string val = "";
                      int currentrow = gridsalesdelivary.CurrentRow.Index;
                      string Amount = gridsalesdelivary.Rows[currentrow-1].Cells[6].Value.ToString();
                      double totalAmount = Convert.ToDouble(txtTotalAmmount.Text);
                      totalAmount -= Convert.ToDouble(Amount.Trim());
                      txtTotalAmmount.Text = totalAmount.ToString();
                      int index = gridsalesdelivary.SelectedRows[0].Index;
-                     addToCartTable.Rows.RemoveAt(index-1);
+                     //addToCartTable.Rows.RemoveAt(index-1);
+                     gridsalesdelivary.Rows[index - 1].DefaultCellStyle.Font = new Font(new FontFamily("Microsoft Sans Serif"), 9.00F, FontStyle.Strikeout);
+                     gridsalesdelivary.Rows[index - 1].DefaultCellStyle.ForeColor = Color.Red;
+                     string itemId= gridsalesdelivary.Rows[index - 1].Cells[0].Value.ToString();// I44
+                      
+                      ls.Add(itemId);
 
                      gridsalesdelivary.DataSource = addToCartTable;
+           
                      if (addToCartTable.Rows.Count == 0)
                      {
                          txtTotalAmmount.Text = "0.0";
@@ -1683,6 +1723,8 @@ namespace WindowsFormsApplication1
                      {
                          butRemoveItem.Enabled = true;
                          gridsalesdelivary.Rows[gridsalesdelivary.Rows.Count - 1].Selected = true;
+                      
+                       
                      }
                      if (gridsalesdelivary.Rows.Count == 0)
                      {
@@ -2328,6 +2370,7 @@ namespace WindowsFormsApplication1
             }
         }
 
+      
        
 
        
