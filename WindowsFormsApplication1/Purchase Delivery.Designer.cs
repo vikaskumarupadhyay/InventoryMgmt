@@ -174,7 +174,6 @@
             this.txttotalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txttotalAmount.Location = new System.Drawing.Point(1069, 562);
             this.txttotalAmount.Name = "txttotalAmount";
-            this.txttotalAmount.ReadOnly = true;
             this.txttotalAmount.Size = new System.Drawing.Size(83, 21);
             this.txttotalAmount.TabIndex = 35;
             this.txttotalAmount.TabStop = false;

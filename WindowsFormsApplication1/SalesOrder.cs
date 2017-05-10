@@ -1019,7 +1019,7 @@ namespace WindowsFormsApplication1
                         textBox20.Text = "0";
                         textBox20.ReadOnly = true;
                         button4.Enabled = true;
-                        gridsalesorder.Rows[gridsalesorder.Rows.Count - 1].Selected = true;
+                        gridsalesorder.Rows[gridsalesorder.Rows.Count - 1].Selected = false;
                     }
                     if (gridsalesorder.Rows.Count > 1)
                     {
