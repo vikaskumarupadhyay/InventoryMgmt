@@ -12,6 +12,7 @@ namespace WindowsFormsApplication1
 {
     public partial class PurchaseOrder : Form
     {
+        List<string> ls = new List<string>();
         public PurchaseOrder()
         {
             InitializeComponent();
@@ -28,7 +29,7 @@ namespace WindowsFormsApplication1
             txtdis.ReadOnly = true;
           
             PurchesCrystalReportViewer.Visible = false;
-            TOAmmount.Visible = false;
+            txtwithautaxamount.Visible = false;
             DisAmmount.Visible = false;
             TextTaxAmmount.Visible = false;
             DisAmmount.Text = "0";
@@ -355,7 +356,7 @@ namespace WindowsFormsApplication1
                     txtTotalAmount.Text = rate5.ToString();//rate3.ToString();
                    // MessageBox.Show("Please Enter the Quanity");
 
-                    TOAmmount.Text = rate5.ToString();
+                    txtwithautaxamount.Text = rate5.ToString();
                     txtItemCode.Text = "I";
                     txtProductName.Text = "";
                     txtRate.Text = "";
@@ -432,8 +433,9 @@ namespace WindowsFormsApplication1
                             double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
                             totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
                             txtTotalAmount.Text = totalAmount.ToString();
+                            txtwithautaxamount.Text = totalAmount.ToString();
 
-                            TOAmmount.Text = totalAmount.ToString();
+                            txtwithautaxamount.Text = totalAmount.ToString();
                             txtItemCode.Text = "I";
                             txtProductName.Text = "";
                             txtRate.Text = "";
@@ -680,7 +682,7 @@ namespace WindowsFormsApplication1
                 else
                 {
 
-                string insertqurry = "insert into VendorOrderDetails values('" + txtVendorCode.Text + "','" + dtpDate.Value.ToString() + "','" + txtTotalAmount.Text + "','" + txtDiscount.Text + "','" + VATNO.Text + "','" + DisAmmount.Text + "','" + TextTaxAmmount.Text + "','" + TOAmmount.Text + "')";
+                string insertqurry = "insert into VendorOrderDetails values('" + txtVendorCode.Text + "','" + dtpDate.Value.ToString() + "','" + txtTotalAmount.Text + "','" + txtDiscount.Text + "','" + VATNO.Text + "','" + DisAmmount.Text + "','" + TextTaxAmmount.Text + "','" + txtwithautaxamount.Text + "')";
 
                 int insertedRows = dbMainClass.saveDetails(insertqurry);
                 if (insertedRows > 0)
@@ -693,6 +695,10 @@ namespace WindowsFormsApplication1
                         DataGridViewRow currentRow = RowCollection[a];
                         DataGridViewCellCollection cellCollection = currentRow.Cells;
                         string txtItemCod = cellCollection[0].Value.ToString();
+                        if (ls.Contains(txtItemCod))
+                        {
+                            continue;
+                        }
                         string txtQuanit = cellCollection[5].Value.ToString();
                         string txtRate = cellCollection[4].Value.ToString();
                         string txtAmoun = cellCollection[6].Value.ToString();
@@ -713,7 +719,7 @@ namespace WindowsFormsApplication1
                             PurchesCrystalReportViewer.Visible = true;
 
                             panel2.Visible = true;
-                            string conntion = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=True;";
+                            string conntion = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True;";
                             SqlConnection con = new SqlConnection(conntion);
                             string selectqurry = "select * from VwPurchesOrderDatils where OrderId='" + txtSrNo.Text + "'";
                             SqlCommand cmd = new SqlCommand(selectqurry, con);
@@ -949,7 +955,10 @@ namespace WindowsFormsApplication1
                     //addToCartTable.Rows.RemoveAt(index-1);
                     gridPurchaseOrder.Rows[index - 1].DefaultCellStyle.Font = new Font(new FontFamily("Microsoft Sans Serif"), 9.00F, FontStyle.Strikeout);
                     gridPurchaseOrder.Rows[index - 1].DefaultCellStyle.ForeColor = Color.Red;
-                    gridPurchaseOrder.DataSource = addToCartTable;
+                    string itemId = gridPurchaseOrder.Rows[index - 1].Cells[0].Value.ToString();// I44
+
+                    ls.Add(itemId);
+                    //gridPurchaseOrder.DataSource = addToCartTable;
                     if (addToCartTable.Rows.Count == 0)
                     {
                         txtTotalAmount.Text = "0.0";
@@ -961,7 +970,7 @@ namespace WindowsFormsApplication1
                     }
                     if (gridPurchaseOrder.Rows.Count > 0)
                     {
-                        gridPurchaseOrder.Rows[gridPurchaseOrder.Rows.Count - 1].Selected = true;
+                        gridPurchaseOrder.Rows[gridPurchaseOrder.Rows.Count - 1].Selected = false;
                     }
                     if (gridPurchaseOrder.Rows.Count > 0)
                     {
@@ -1269,6 +1278,42 @@ namespace WindowsFormsApplication1
 
         private void Distxt_KeyPress(object sender, KeyPressEventArgs e)
         {
+            double totalAmount = 0.00;
+            if (Char.IsLetterOrDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    foreach (DataRow dr in addToCartTable.Rows)
+                    {
+                        string itemid = dr[0].ToString();
+                        if (ls.Contains(itemid))
+                        {
+                            continue;
+                        }
+                        totalAmount += Convert.ToDouble(dr[6].ToString());
+                    }
+                    double s1 = totalAmount;
+                    txtTotalAmount.Text = s1.ToString();
+                    txtDiscount.Text = "0";
+                    // double total = Convert.ToDouble(txttotalammount.Text);
+                    // double d = Convert.ToDouble(discountamount.Text);
+                    // double g = d + total;
+                    //txttotalammount.Text = g.ToString();
+                    //discountamount.Text = "";
+
+
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+
             char ch = e.KeyChar;
             if (ch == 46 && txtdis.Text.IndexOf('.') != -1)
             {
@@ -1282,21 +1327,28 @@ namespace WindowsFormsApplication1
             if (e.KeyChar == (char)Keys.Enter)
             {
                
-                double totalAmount = 0.00;//Convert.ToDouble(txttotalAmount.Text);
+                double totalAmount1 = 0.00;//Convert.ToDouble(txttotalAmount.Text);
                 foreach (DataRow dr in addToCartTable.Rows)
                 {
-                    totalAmount += Convert.ToDouble(dr[6].ToString());
+                    string itemid = dr[0].ToString();
+                    if (ls.Contains(itemid))
+                    {
+                        continue;
+                    }
+                    totalAmount1 += Convert.ToDouble(dr[6].ToString());
                 }
+                double s = totalAmount1;
                 string discountAmount = txtdis.Text;
                 //double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
                 double amount = 0.0;
                 if (double.TryParse(discountAmount, out amount))
                 {
                     double totalDiscount = Convert.ToDouble(discountAmount);
-                    totalAmount = totalAmount - ((totalAmount * totalDiscount) / 100);
-                    txtTotalAmount.Text = totalAmount.ToString();
+                    totalAmount1 = totalAmount1 - ((totalAmount1 * totalDiscount) / 100);
+                    txtTotalAmount.Text = totalAmount1.ToString();
+                    txtwithautaxamount.Text = s.ToString();
 
-                    double dis = totalAmount * totalDiscount / 100;
+                    double dis = totalAmount1 * totalDiscount / 100;
                     DisAmmount.Text = dis.ToString();
 
                    // DisAmmount.Text = totalDiscount.ToString();

@@ -519,7 +519,7 @@ namespace WindowsFormsApplication1
             gridsalesdelivary.DataSource = addToCartTable;
             txttaxamount.Visible = false;
             txtdicountamount.Visible = false;
-            txtwithauttaxamount.Visible = true;
+            txtwithauttaxamount.Visible = false;
             
             txtTotalAmmount.Text = "0";
             txtwithauttaxamount.Text = "0";
@@ -2284,11 +2284,17 @@ namespace WindowsFormsApplication1
                     {
                         foreach (DataRow dr in addToCartTable.Rows)
                         {
+                            string itemid = dr[0].ToString();
+                            if (ls.Contains(itemid))
+                            {
+                                continue;
+                            }
                             totalAmount += Convert.ToDouble(dr[6].ToString());
                         }
                         double s1 = totalAmount;
                         txtTotalAmmount.Text = s1.ToString();
                         txtdicountamount.Text = "0";
+                        txtwithauttaxamount.Text = s1.ToString();
                         // double total = Convert.ToDouble(txttotalammount.Text);
                         // double d = Convert.ToDouble(discountamount.Text);
                         // double g = d + total;
@@ -2311,11 +2317,17 @@ namespace WindowsFormsApplication1
                     {
                         foreach (DataRow dr in addToCartTable.Rows)
                         {
+                            string itemid = dr[0].ToString();
+                            if (ls.Contains(itemid))
+                            {
+                                continue;
+                            }
                             totalAmount += Convert.ToDouble(dr[7].ToString());
                         }
-                        double s1 = totalAmount;
-                        txtTotalAmmount.Text = s1.ToString();
+                        double s = totalAmount;
+                        txtTotalAmmount.Text = s.ToString();
                         txtdicountamount.Text = "0";
+                        txtwithauttaxamount.Text = s.ToString();
                         // double total = Convert.ToDouble(txttotalammount.Text);
                         // double d = Convert.ToDouble(discountamount.Text);
                         // double g = d + total;

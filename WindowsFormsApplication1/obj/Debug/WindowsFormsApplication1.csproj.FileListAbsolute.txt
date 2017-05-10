@@ -43,6 +43,7 @@ E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.ChaqueFor
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Company_New.resources
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.customerprint.resources
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Display_form.resources
+E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.MainForm.resources
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.salesorder.resources
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.salesdelivary.resources
@@ -69,4 +70,3 @@ E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Unit.reso
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
-E:\Project\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
