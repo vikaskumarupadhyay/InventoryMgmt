@@ -949,6 +949,32 @@ namespace WindowsFormsApplication1
 
         }
 
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtItemMargin_TextChanged(object sender, EventArgs e)
+        {
+
+            decimal x;
+            if (decimal.TryParse(txtItemMargin.Text, out x))
+            {
+                if (txtItemMargin.Text.IndexOf('.') != -1 && txtItemMargin.Text.Split('.')[1].Length > 2)
+                {
+                    MessageBox.Show("The maximum decimal points are 2!");
+                    txtItemPrice.Focus();
+                }
+                else txtItemMargin.Text = x.ToString("0.00");
+            }
+            else
+            {
+                txtItemMargin.Text = "0.00";
+                //MessageBox.Show("Data invalid!");
+                //txtVenderOpeningBal.Focus();
+            }
+        }
+
        
 
       
