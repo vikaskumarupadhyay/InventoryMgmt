@@ -28,7 +28,7 @@ namespace WindowsFormsApplication1
      
         private void Customer_Load(object sender, EventArgs e)
         {
-           
+             
             comserchvalue.Focus();
             string s = txtCustOpeningBal.Text;
             int decimalCount = '.';

@@ -130,8 +130,8 @@ namespace WindowsFormsApplication1
         private void button2_Click(object sender, EventArgs e)
         {
 
-            string selectquery1 = "select  itm.ItemId as [Item Id],itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
-            string actualcolumn = "select top 1  itm.ItemId, itm.ItemName,itm.ItemCompName ,itm.ItemDesc ,ig.groupName,iul.unitName ,ipd.purChasePrice ,ipd.SalesPrice ,ipd.MrpPrice ,ipd.Margin ,iqd.OpeningQuantity ,iqd.CurrentQuantity from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
+            string selectquery1 = "select  itm.ItemId as [Item Id],itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],cast(ipd.SalesPrice as numeric(38,2))as[Sales Price],cast(ipd.MrpPrice as numeric(38,2))as[Mrp Price] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
+            string actualcolumn = "select top 1  itm.ItemId, itm.ItemName,itm.ItemCompName ,itm.ItemDesc ,ig.groupName,iul.unitName ,ipd.purChasePrice ,cast(ipd.SalesPrice as numeric(38,2)) ,cast(ipd.MrpPrice as numeric(38,2)),ipd.Margin ,iqd.OpeningQuantity ,iqd.CurrentQuantity from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
             //DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             // string selectquery1="select it.ItemName as[Name],ip.Mrpprice as[MRP],iq.CurrentQuantity as[Current Quantity] from ItemDetails it join ItemPriceDetail ip on it.Itemid=ip.Itemid join ItemQuantityDetail iq on ip.ItemId=iq.Itemid";
             // string actualcolumn = "select it.ItemName ,ip.Mrpprice ,iq.CurrentQuantity  from ItemDetails it join ItemPriceDetail ip on it.Itemid=ip.Itemid join ItemQuantityDetail iq on ip.ItemId=iq.Itemid";
@@ -158,7 +158,7 @@ namespace WindowsFormsApplication1
             counter = 1;
 
             panel2.Visible = true;
-            string selectquery = "select  itm.ItemId as [Item Id],itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
+            string selectquery = "select  itm.ItemId as [Item Id],itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],cast(ipd.purChasePrice as numeric(38,2)) as [Purchase Price],cast(ipd.SalesPrice as numeric(38,2))as[Sales Price],cast(ipd.MrpPrice as numeric(38,2))as[Mrp Price],cast(ipd.Margin as numeric(38,2)) as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
 
             //string selectquery = "select i.Itemid as[Item Id],i.Itemname as [Name],ip.MrpPrice as[MRP],iq.CurrentQuantity as [Current Quantity] from itemdetails i join itempricedetail ip on i.itemid=ip.itemid join itemquantitydetail iq on ip.itemid=iq.itemid";
             DataTable dt = d.getDetailByQuery(selectquery);
@@ -178,7 +178,7 @@ namespace WindowsFormsApplication1
         {
             txtitemcode.Text = cell1[0].Value.ToString();
             txtProductName.Text = cell1[1].Value.ToString();
-            txtRate.Text = cell1[6].Value.ToString();
+            txtRate.Text = cell1[7].Value.ToString();
             //maxItemQuantity = Convert.ToInt32((cell1[3].Value.ToString()));
             txtAmount.Text = "";
 
@@ -234,7 +234,7 @@ namespace WindowsFormsApplication1
                             int que = maxItemQuantity;
                             quantity = Convert.ToInt32(txtQuantity.Text);
                             double rate = Convert.ToDouble(txtRate.Text);
-                            txtAmount.Text = (quantity * rate).ToString();
+                            txtAmount.Text = (quantity * rate).ToString("###0.00");
                         }
                 }
 
@@ -244,7 +244,7 @@ namespace WindowsFormsApplication1
                     int que = maxItemQuantity;
                     quantity = Convert.ToInt32(txtQuantity.Text);
                     double rate = Convert.ToDouble(txtRate.Text);
-                    txtAmount.Text = (quantity * rate).ToString();
+                    txtAmount.Text = (quantity * rate).ToString("###0.00");
                     //MessageBox.Show("Quantity is not available");
                     //txtQuantity.Text = "0";
                     //txtAmount.Text = "0";
@@ -317,7 +317,7 @@ namespace WindowsFormsApplication1
                     double rate3 = rate4 + rate2;
                     dr3[6] = rate6.ToString();
                     double rate5 = rate4 + rate2;
-                    txttotalammount.Text = rate5.ToString();//rate3.ToString();
+                    txttotalammount.Text = rate5.ToString("###0.00");//rate3.ToString();
                     // MessageBox.Show("Please Enter the Quanity");
                     txtitemcode.Text = "I";
                     txtProductName.Text = "";
@@ -343,7 +343,7 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                string selectq = "select ids.ItemCompName,ipd.MrpPrice from ItemPriceDetail ipd join ItemDetails ids on ipd.ItemId=ids.ItemId where ipd.ItemId='" + txtitemcode.Text + "'";
+                string selectq = "select ids.ItemCompName,cast(ipd.MrpPrice as numeric(38,2))from ItemPriceDetail ipd join ItemDetails ids on ipd.ItemId=ids.ItemId where ipd.ItemId='" + txtitemcode.Text + "'";
                 DataTable dta = d.getDetailByQuery(selectq);
                 string ConpanyName = "";
                 string Mrp = "";
@@ -367,7 +367,7 @@ namespace WindowsFormsApplication1
                 gridsalesorder.DataSource = addToCartTable;
                 double totalAmount = Convert.ToDouble(txttotalammount.Text);
                 totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
-                txttotalammount.Text = totalAmount.ToString();
+                txttotalammount.Text = totalAmount.ToString("###0.00");
                 txtwithautaxamount.Text= totalAmount.ToString();
 
                 txtitemcode.Text = "I";
@@ -609,7 +609,7 @@ namespace WindowsFormsApplication1
                         panel2.Visible = true;
                         crystalReportViewer1.Visible = true;
                         gridsalesorder.AllowUserToAddRows = false;
-                        string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
+                        string a = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=True";
                         SqlConnection con = new SqlConnection(a);
                         con.Open();
                         string selectquery = "select * from salesorderreport where orderid='" + txtsrno.Text + "'";
@@ -1019,7 +1019,7 @@ namespace WindowsFormsApplication1
                         textBox20.Text = "0";
                         textBox20.ReadOnly = true;
                         button4.Enabled = true;
-                        gridsalesorder.Rows[gridsalesorder.Rows.Count - 1].Selected = true;
+                        gridsalesorder.Rows[gridsalesorder.Rows.Count - 1].Selected = false;
                     }
                     if (gridsalesorder.Rows.Count > 1)
                     {
@@ -1120,7 +1120,7 @@ namespace WindowsFormsApplication1
                 else
                 {
 
-                    string selectquery1 = "select i.ItemId,i.ItemName,ip.SalesPrice,iq.CurrentQuantity from ItemDetails i join ItemPriceDetail ip on i.ItemId=ip.ItemId join ItemQuantityDetail iq on ip.ItemId=iq.ItemId where i.ItemId='" + txtitemcode.Text + "'";
+                    string selectquery1 = "select i.ItemId,i.ItemName,cast(ip.SalesPrice as numeric(38,2)),iq.CurrentQuantity from ItemDetails i join ItemPriceDetail ip on i.ItemId=ip.ItemId join ItemQuantityDetail iq on ip.ItemId=iq.ItemId where i.ItemId='" + txtitemcode.Text + "'";
                     DataTable dt = d.getDetailByQuery(selectquery1);
                     if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
                     {
@@ -1167,7 +1167,7 @@ namespace WindowsFormsApplication1
             }
 
 
-            string selectquery2 = "select i.ItemId,i.ItemName,ip.MrpPrice,iq.CurrentQuantity from ItemDetails i join ItemPriceDetail ip on i.ItemId=ip.ItemId join ItemQuantityDetail iq on ip.ItemId=iq.ItemId where i.ItemId='" + txtitemcode.Text + "'";
+            string selectquery2 = "select i.ItemId,i.ItemName,cast(ip.MrpPrice as numeric(38,2)),iq.CurrentQuantity from ItemDetails i join ItemPriceDetail ip on i.ItemId=ip.ItemId join ItemQuantityDetail iq on ip.ItemId=iq.ItemId where i.ItemId='" + txtitemcode.Text + "'";
             DataTable dt2 = d.getDetailByQuery(selectquery2);
             if (dt2.Rows.Count > 0)
             {
@@ -1233,6 +1233,9 @@ namespace WindowsFormsApplication1
                 rowcollection1(Collection1);
                 panel2.Visible = false;
                 tab2();
+                txtQuantity.Enabled = true;
+                txtQuantity.Focus();
+               
 
             }
             if (counter == 2)
@@ -1484,7 +1487,7 @@ namespace WindowsFormsApplication1
                         totalAmount += Convert.ToDouble(dr[6].ToString());
                     }
                     double s1 = totalAmount;
-                    txttotalammount.Text = s1.ToString();
+                    txttotalammount.Text = s1.ToString("###0.00");
                     discountamount.Text = "0";
                     // double total = Convert.ToDouble(txttotalammount.Text);
                     // double d = Convert.ToDouble(discountamount.Text);
@@ -1525,7 +1528,7 @@ namespace WindowsFormsApplication1
                 {
                     double totaldiscount = Convert.ToDouble(discount);
                     totalAmount = totalAmount - ((totalAmount * totaldiscount) / 100);
-                    txttotalammount.Text = totalAmount.ToString();
+                    txttotalammount.Text = totalAmount.ToString("###0.00");
                     txtwithautaxamount.Text = s.ToString();
                     double dis = s * totaldiscount / 100;
                     discountamount.Text = dis.ToString();
