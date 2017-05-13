@@ -27,7 +27,7 @@ namespace WindowsFormsApplication1
         {
             txtDiscount.ReadOnly = true;
             IndexTex1();
-            txtTaxAmount.Visible = false;
+            txtTaxAmount.Visible = false;          
             txtWAmount.Visible = false;
             txtDisAmount.Visible = false;
             txtQunty.ReadOnly = true;
@@ -55,7 +55,6 @@ namespace WindowsFormsApplication1
                 txtSrNo.Text = txt1.ToString();
             }
             panel2.Visible = false;
-            pnlPaymentDetail.Visible = false;
             string comQurry = "select TexId from CompnayDetails";
             DataTable dt2 = dbMainClass.getDetailByQuery(comQurry);
             string taxtid = "";
@@ -708,17 +707,10 @@ namespace WindowsFormsApplication1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            //deliverysave();
-
-            pnlPaymentDetail.Visible = true;
-            CmbPageName.SelectedIndex = 0;
-            CmbCompany.SelectedIndex = 0;
-            CmbCardType.SelectedIndex = 0;
-            //comboBox2.Text = "Delivery-Payment";
-
+            deliverysave();
         }
-        public void deliverysave()
-         {
+             private void deliverysave()
+             {
             if (txtRef.Text == "")
             {
                 if (txtDiscount.Text == "")
@@ -916,8 +908,6 @@ namespace WindowsFormsApplication1
                                 int insertedRows5 = dbMainClass.saveDetails(insertQurry);
                                 if (insertedRows5 > 0)
                                 {
-                                    string insertQurry1 = "insert into AllPaymentDetailes Values('" + txtInvoiceid.Text + "','" + CashAmount.Text + "','" + txtCreditAmount.Text + "','" + txtDebitBankName.Text + "','" + txtCardNumber.Text + "','" + CmbCardType.SelectedItem.ToString() + "','" + txtChequeAmount.Text + "','" + txtChequeBankName.Text + "','" + txtChequeNumber.Text + "','" + dateTimePicker1.Value.ToString() + "','" + txtEwalletAmount.Text + "','" + EWalletCompanyName.Text + "','" + txtTransactionNumber.Text + "','" + dateTimePicker2.Value.ToString() + "','" + txtCouponAmount.Text + "','" + CmbCompany.SelectedItem.ToString() + "','" + txtInvoiceAmount.Text + "','" + txtTotalAmount1.Text + "','" + txtBalance.Text + "','" + txtRturned.Text + "','" + txtNetAmount.Text + "')";
-                                    int insertedRows = dbMainClass.saveDetails(insertQurry1);
 
                                     MessageBox.Show("Details Saved Successfully");
                                     DialogResult result1 = MessageBox.Show("This Page Print", "Important Question", MessageBoxButtons.YesNo);
@@ -925,8 +915,12 @@ namespace WindowsFormsApplication1
                                     {
                                         DeliveryReportViewer.Visible = true;
                                         panel2.Visible = true;
+<<<<<<< HEAD
 
                                         string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
+=======
+                                        string conntion = "Data Source= NITU;Initial Catalog=SalesMaster;Integrated Security=true;";
+>>>>>>> 1b26f18c7df21103f6aa891d407e8b3664ef900f
                                         SqlConnection con = new SqlConnection(conntion);
                                         string selectqurry = "select * from purchesDelivery where Deliveryid='" + txtSrNo.Text + "'";
                                         SqlCommand cmd = new SqlCommand(selectqurry, con);
@@ -2254,153 +2248,7 @@ namespace WindowsFormsApplication1
 
         private void txtItemCode_Enter(object sender, EventArgs e)
         {
-
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            pnlPaymentDetail.Visible = false;
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
             
-            //string insertQurry = "insert into AllPaymentDetailes Values('" + txtInvoiceid.Text + "','" + CashAmount.Text + "','" + txtCreditAmount.Text + "','" + txtDebitBankName.Text + "','" + txtCardNumber.Text + "','" + CmbCardType.SelectedItem.ToString() + "','" + txtChequeAmount.Text + "','" + txtChequeBankName.Text + "','" + txtChequeNumber.Text + "','" + dateTimePicker1.Value.ToString() + "','" + txtEwalletAmount.Text + "','" + EWalletCompanyName.Text + "','" + txtTransactionNumber.Text + "','" + dateTimePicker2.Value.ToString() + "','" + txtCouponAmount.Text + "','" + CmbCompany.SelectedItem.ToString() + "','" + txtInvoiceAmount.Text + "','" + txtTotalAmount1.Text + "','" + txtBalance.Text + "','" + txtRturned.Text + "','" + txtNetAmount.Text + "')";
-            //int insertedRows = dbMainClass.saveDetails(insertQurry);
-            
-                deliverysave();
-                pnlPaymentDetail.Visible = false;
-                DeliveryReportViewer.Visible = true;
-        }
-
-        private void pnlPaymentDetail_Paint(object sender, PaintEventArgs e)
-        {
-            txtInvoiceid.Text = txtSrNo.Text;
-            txtInvoiceAmount.Text = txttotalAmount.Text+".00";
-        }
-
-        private void CashAmount_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void CashAmount_Leave(object sender, EventArgs e)
-        {
-            if (CashAmount.Text == "")
-            {
-                CashAmount.Text = "0.00";
-            }
-            if (CashAmount.Text != "0.00")
-            {
-                //CashAmount.Text = "";
-                string amount = CashAmount.Text + ".00";
-                //CashAmount.Text = amount;
-                txtTotalAmount1.Text = CashAmount.Text;
-            }
-        }
-
-        private void txtCreditAmount_Leave(object sender, EventArgs e)
-        {
-               if (txtCreditAmount.Text == "")
-            {
-                txtCreditAmount.Text = "0.00";
-            }
-               if (txtCreditAmount.Text != "0.00")
-               {
-                   string amount = txtCreditAmount.Text + ".00";
-                   txtCreditAmount.Text = amount;
-                   Double Amount = Convert.ToDouble(txtCreditAmount.Text);
-                   Double Amount1 = Convert.ToDouble(CashAmount.Text);
-                   Double amount2 = Amount + Amount1;
-                   string Amount2 = amount2.ToString();
-                   txtTotalAmount1.Text = Amount2 + ".00";
-               }
-        }
-
-        private void txtChequeAmount_Leave(object sender, EventArgs e)
-        {
-            if (txtChequeAmount.Text == "")
-            {
-                txtChequeAmount.Text = "0.00";
-            }
-            if (txtChequeAmount.Text != "0.00")
-            {
-                string amount = txtChequeAmount.Text + ".00";
-                txtChequeAmount.Text = amount;
-                //txtNetAmount.Text = amount;
-                Double Amount = Convert.ToDouble(txtCreditAmount.Text);
-                Double Amount1 = Convert.ToDouble(CashAmount.Text);
-                Double Amount3 = Convert.ToDouble(txtChequeAmount.Text);
-                Double amount2 = Amount + Amount1+Amount3;
-                string Amount2 = amount2.ToString();
-                txtTotalAmount1.Text = Amount2 + ".00";
-            }
-
-        }
-
-        private void txtEwalletAmount_Leave(object sender, EventArgs e)
-        {
-            if (txtEwalletAmount.Text == "")
-            {
-                txtEwalletAmount.Text = "0.00";
-            }
-            if (txtEwalletAmount.Text != "0.00")
-            {
-                string amount = txtEwalletAmount.Text + ".00";
-                txtEwalletAmount.Text = amount;
-                Double Amount = Convert.ToDouble(txtCreditAmount.Text);
-                Double Amount1 = Convert.ToDouble(CashAmount.Text);
-                Double Amount3 = Convert.ToDouble(txtChequeAmount.Text);
-                Double Amount4 = Convert.ToDouble(txtEwalletAmount.Text);
-                Double amount2 = Amount + Amount1 + Amount3+Amount4;
-                string Amount2 = amount2.ToString();
-                txtTotalAmount1.Text = Amount2 + ".00";
-            }
-        }
-
-        private void txtCouponAmount_Leave(object sender, EventArgs e)
-        {
-            if (txtCouponAmount.Text == "")
-            {
-                txtCouponAmount.Text = "0.00";
-            }
-            if (txtCouponAmount.Text != "0.00")
-            {
-                string amount = txtCouponAmount.Text + ".00";
-                //txtCouponAmount.Text = amount;
-                Double Amount = Convert.ToDouble(txtCreditAmount.Text);
-                Double Amount1 = Convert.ToDouble(CashAmount.Text);
-                Double Amount3 = Convert.ToDouble(txtChequeAmount.Text);
-                Double Amount4 = Convert.ToDouble(txtEwalletAmount.Text);
-                Double Amount5 = Convert.ToDouble(txtCouponAmount.Text);
-                Double amount2 = Amount + Amount1 + Amount3 + Amount4+Amount5;
-                string Amount2 = amount2.ToString();
-                txtTotalAmount1.Text = Amount2 + ".00";
-            }
-        }
-
-        private void txtTotalAmount1_TextChanged(object sender, EventArgs e)
-        {
-            txtNetAmount.Text = txtTotalAmount1.Text;
-            Double Amount = Convert.ToDouble(txtTotalAmount1.Text);
-            Double Amount1 = Convert.ToDouble(txtInvoiceAmount.Text);
-            Double Amount2 = Amount1 - Amount;
-            string Amount3 = Amount2.ToString();
-           txtBalance.Text = Amount2 + ".00";
-        }
-
-        private void CashAmount_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if (ch == 46 && CashAmount.Text.IndexOf('.') != -1)
-            {
-                e.Handled = true;
-                return;
-            }
-            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
-            {
-                e.Handled = true;
-            }
         }
     }
         
