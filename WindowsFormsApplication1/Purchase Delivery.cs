@@ -27,7 +27,7 @@ namespace WindowsFormsApplication1
         {
             txtDiscount.ReadOnly = true;
             IndexTex1();
-            txtTaxAmount.Visible = false;
+            txtTaxAmount.Visible = false;          
             txtWAmount.Visible = false;
             txtDisAmount.Visible = false;
             txtQunty.ReadOnly = true;
