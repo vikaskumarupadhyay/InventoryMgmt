@@ -517,9 +517,9 @@ namespace WindowsFormsApplication1
             txtdiccount.ReadOnly = true;
             //dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             gridsalesdelivary.DataSource = addToCartTable;
-            txttaxamount.Visible = false;
-            txtdicountamount.Visible = false;
-            txtwithauttaxamount.Visible = false;
+            txttaxamount.Visible = true;
+            txtdicountamount.Visible = true;
+            txtwithauttaxamount.Visible = true;
             
             txtTotalAmmount.Text = "0";
             txtwithauttaxamount.Text = "0";
@@ -877,6 +877,7 @@ namespace WindowsFormsApplication1
                                             string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
                                             SqlConnection con = new SqlConnection(a);
                                             con.Open();
+                                         
                                             string selectquery = "select * from salesorderdelivaryreport where Delivaryid='" + txtSrNo.Text + "'";
                                             SqlCommand cmd = new SqlCommand(selectquery, con);
                                             SqlDataAdapter sd = new SqlDataAdapter(cmd);
@@ -973,6 +974,8 @@ namespace WindowsFormsApplication1
                             string txtRate = cellcollection[4].Value.ToString();
                             string txtQuantity = cellcollection[6].Value.ToString();
                             string txtAmount = cellcollection[7].Value.ToString();
+                            //double amount = Convert.ToDouble(txtAmmount);
+                            //amount += Convert.ToInt32(txtAmmount);
                             string Orderid = txtRefNo.Text;
                             //string updatequery = "update orderdetails set totalammount='" + txtTotalAmmount.Text + "','" + txtwithauttaxamount.Text + "','" + txtTotalAmmount.Text + "','" + txtdiccount.Text + "','" + txttax.Text + "','" + txtdicountamount.Text + "','" + txttaxamount.Text + "' where orderid='" + Orderid + "' ";
                             //int update = d.saveDetails(updateque7ry);
@@ -1243,7 +1246,7 @@ namespace WindowsFormsApplication1
                                         {
                                             crystalReportViewer2.Visible = true;
                                             gridsalesdelivary.AllowUserToAddRows = false;
-                                            string a = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=True";
+                                            string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
                                             SqlConnection con = new SqlConnection(a);
                                             con.Open();
                                             string selectquery = "select * from salesorderdelivaryreport where Delivaryid='" + txtSrNo.Text + "'";
@@ -2246,6 +2249,7 @@ namespace WindowsFormsApplication1
                 {
                     txtRefNo.ReadOnly = false;
                     makeblank();
+                    addToCartTable.Columns.RemoveAt(7);
 
                     e.Handled = false;
                 }
@@ -2381,6 +2385,7 @@ namespace WindowsFormsApplication1
                         double dis = s * totaldiscount / 100;
                         txtdicountamount.Text = dis.ToString();
                     }
+                    butSaveButton.Focus();
                 }
 
 
@@ -2411,6 +2416,7 @@ namespace WindowsFormsApplication1
                             txtdicountamount.Text = dis.ToString();
 
                         }
+                        butSaveButton.Focus();
                     }
                 }
             }

@@ -1354,6 +1354,7 @@ namespace WindowsFormsApplication1
 
                    // DisAmmount.Text = totalDiscount.ToString();
                 }
+                btnSave.Focus();
             }
         }
 

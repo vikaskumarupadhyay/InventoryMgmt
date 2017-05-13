@@ -2141,6 +2141,7 @@ namespace WindowsFormsApplication1
                             double dis = totalAmount * totalDiscount / 100;
                             txtDisAmount.Text = dis.ToString();
                         }
+                        button5.Focus();
                     }
                 
                 if (txtRef.Text != "")
@@ -2168,6 +2169,7 @@ namespace WindowsFormsApplication1
                         double dis = totalAmount * totalDiscount / 100;
                         txtDisAmount.Text = dis.ToString();
                     }
+                    button5.Focus();
                 }
 
             }
