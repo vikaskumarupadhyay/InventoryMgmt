@@ -1,2 +1,0 @@
-Word V1 , raj , parle g , mumbai , varansi , up  , 76767 , india , raj@gmail.com , http://wwwgmail.com , 667 , 87675656 , 5656, 2 , 4 , 5 ,6 ,7 ,87 ,good ,2000 ,2000
-V2 , raj , dell , varansi , varansi , up  , 78667 , india , raj@gmail.com , http://wwwgmail.com , 7878 , 7876776 , 5656, 4 , 5 , 6 ,12 ,10 ,6 ,well ,2000 ,2000

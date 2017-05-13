@@ -262,64 +262,6 @@ namespace WindowsFormsApplication1
             {
                 e.Handled = true;
             }
-            //return moreThanOneDecimalChar;
-            /*string value1 = txtCustOpeningBal.Text;
-            bool moreThanOneDecimalChar = false;
-            int g = 0;
-            char h = '.';
-            for (int a = 0; a < value1.Length; a++)
-            {
-                if (value1[a] == '.')
-                {
-                    g++;
-                }                                                   
-            }
-            if (g== 1)
-            {
-                moreThanOneDecimalChar = true;
-            }
-            if (moreThanOneDecimalChar == false || e.KeyChar == '\b') 
->>>>>>> commit for latest changes of sandeep
-            {
-                e.Handled = true;
-            }
-
-            // only allow one decimal point
-            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
-            {
-                e.Handled = true;
-<<<<<<< HEAD
-            }
-                //return moreThanOneDecimalChar;
-                //string value1 = txtOPENINGBALANCE.Text;
-                //bool moreThanOneDecimalChar = false;
-                //int g = 0;
-                //char h = '.';
-                //for (int a = 0; a < value1.Length; a++)
-                //{
-                //    if (value1[a] == '.')
-                //    {
-                //        g++;
-                //    }
-                //}
-                //if (g == 1)
-                //{
-                //    moreThanOneDecimalChar = true;
-                //}
-            
-                //if (Char.IsLetter(e.KeyChar) || (moreThanOneDecimalChar && e.KeyChar == '.') || Char.IsPunctuation(e.KeyChar))
-                //{
-                //    e.Handled = true;
-                //}
-                //else if (moreThanOneDecimalChar == false || e.KeyChar == '\b')
-                //{
-                //    e.Handled = false;
-                //}
-            }
-        
-=======
-            }*/
-
         }
 
 
