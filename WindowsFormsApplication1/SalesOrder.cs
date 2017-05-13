@@ -609,7 +609,7 @@ namespace WindowsFormsApplication1
                         panel2.Visible = true;
                         crystalReportViewer1.Visible = true;
                         gridsalesorder.AllowUserToAddRows = false;
-                        string a = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=True";
+                        string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
                         SqlConnection con = new SqlConnection(a);
                         con.Open();
                         string selectquery = "select * from salesorderreport where orderid='" + txtsrno.Text + "'";
@@ -1534,6 +1534,7 @@ namespace WindowsFormsApplication1
                     discountamount.Text = dis.ToString();
 
                 }
+                savebutton.Focus();
 
 
             }

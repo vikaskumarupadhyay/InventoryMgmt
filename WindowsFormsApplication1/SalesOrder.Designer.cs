@@ -213,7 +213,7 @@
             this.textBox19.Size = new System.Drawing.Size(47, 21);
             this.textBox19.TabIndex = 51;
             this.textBox19.TabStop = false;
-            this.textBox19.Text = "GST";
+            this.textBox19.Text = "Dis";
             this.textBox19.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox18

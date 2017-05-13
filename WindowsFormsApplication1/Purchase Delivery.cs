@@ -11,6 +11,8 @@ namespace WindowsFormsApplication1
 {
     public partial class Form7 : Form
     {
+        List<string> ls = new List<string>();
+
         public int counter = 0;
         DB_Main dbMainClass = new DB_Main();
         DataTable vendorDetails = new DataTable();
@@ -150,7 +152,9 @@ namespace WindowsFormsApplication1
                         string ItemName = dr[0]["ItemName"].ToString();
                         string salesPrice = dr[0]["SalesPrice"].ToString();
                         string itemCode = dr[0]["ItemID"].ToString();
-                        txtRate.Text = salesPrice;
+                        double sales = Convert.ToDouble(salesPrice);
+                        txtRate.Text = sales.ToString("###0.00");
+
                         txtProductName.Text = ItemName;
 
                         txtItemCode.Text = itemCode;
@@ -302,8 +306,8 @@ namespace WindowsFormsApplication1
             txtSearch.Text = "";
             counter = 1;
             panel2.Visible = true;
-            string selectqurry = "select  itm.ItemId,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],ipd.purChasePrice as [Purchase Price],ipd.MrpPrice as[Mrp Price] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId where iqd.CurrentQuantity>0";
-            string selectqurryForActualColumnName = "select top 1  itm.ItemId, itm.ItemName,itm.ItemCompName ,itm.ItemDesc ,ig.groupName ,ipd.purChasePrice  ,ipd.MrpPrice  from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
+            string selectqurry = "select  itm.ItemId,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],cast(ipd.purChasePrice as numeric(38,2)) as [Purchase Price],cast(ipd.MrpPrice as numeric(38,2)) as[Mrp Price] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId where iqd.CurrentQuantity>0";
+            string selectqurryForActualColumnName = "select top 1  itm.ItemId, itm.ItemName,itm.ItemCompName ,itm.ItemDesc ,ig.groupName ,cast(ipd.purChasePrice as numeric(38,2)) ,cast(ipd.MrpPrice as numeric(38,2)) from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
             DataTable customDataTable = new DataTable();
@@ -324,7 +328,7 @@ namespace WindowsFormsApplication1
             comboBox1.DataSource = customDataTable;
             comboBox1.ValueMember = "ActualTableColumnName";
             comboBox1.DisplayMember = "AliasTableColumnName";
-            string select = "select  itm.ItemId,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId where iqd.CurrentQuantity>0";
+            string select = "select  itm.ItemId,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],cast(ipd.purChasePrice as numeric(38,2)) as [Purchase Price],cast(ipd.SalesPrice as numeric(38,2)) as[Sales Price],cast(ipd.MrpPrice as numeric(38,2)) as[Mrp Price],cast(ipd.Margin as numeric(38,2)) as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId where iqd.CurrentQuantity>0";
             DataTable dt1 = dbMainClass.getDetailByQuery(select);
             dataGridView2.DataSource = dt1;
             IndexTex();
@@ -405,7 +409,8 @@ namespace WindowsFormsApplication1
                 if (TotalQuantity > 0)
                 {
                     double RatePerPice = Convert.ToDouble(txtRate.Text.Trim());
-                    txtAmount.Text = (TotalQuantity * RatePerPice).ToString();
+                    txtAmount.Text = (TotalQuantity * RatePerPice).ToString("###0.00");
+
                 }
                 else
                 {
@@ -419,7 +424,8 @@ namespace WindowsFormsApplication1
 
             button4.Enabled = true;
             txtQunty.TabStop = false;
-            txtQunty.Enabled = false;
+            txtQunty.ReadOnly = true;
+
             if (txtRef.Text == "")
             {
 
@@ -427,11 +433,15 @@ namespace WindowsFormsApplication1
                 string quntity = "";
                 string rate = "";
                 string prise = "";
-                List<string> ls = new List<string>();
                 foreach (DataRow dr3 in addToCartTable.Rows)
                 {
                     int q3 = 0;
                     itemid = dr3[0].ToString();
+                      if (ls.Contains(itemid))
+                      {
+                          continue;
+                      }
+
                     quntity = dr3[5].ToString();
                     rate = dr3[4].ToString();
                     prise = dr3[6].ToString();
@@ -448,7 +458,8 @@ namespace WindowsFormsApplication1
                         dr3[6] = rate3.ToString();
                         Double rate4 = Convert.ToDouble(txttotalAmount.Text);
                         Double rate5 = rate4 + rate2;
-                        txttotalAmount.Text = rate5.ToString();//rate3.ToString();
+                        txttotalAmount.Text = rate5.ToString("###0.00");//rate3.ToString();
+
                         // MessageBox.Show("Please Enter the Quanity");
                         /* txtItemCode.Text = "I";
                          txtProductName.Text = "";
@@ -519,7 +530,8 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
-                    string selectq = "select ids.ItemCompName,ipd.MrpPrice from ItemPriceDetail ipd join ItemDetails ids on ipd.ItemId=ids.ItemId where ipd.ItemId='" + txtItemCode.Text + "'";
+                     string selectq = "select ids.ItemCompName,cast(ipd.MrpPrice as numeric(38,2)) from ItemPriceDetail ipd join ItemDetails ids on ipd.ItemId=ids.ItemId where ipd.ItemId='" + txtItemCode.Text + "'";
+
                     DataTable dta = dbMainClass.getDetailByQuery(selectq);
                     string ConpanyName = "";
                     string Mrp = "";
@@ -531,6 +543,11 @@ namespace WindowsFormsApplication1
                     //addToCartTable.Columns.RemoveAt(6);
                     DataRow dr = addToCartTable.NewRow();
                     dr[0] = txtItemCode.Text.Trim();
+                     if (ls.Contains(dr[0]))
+                          {
+  
+                         }
+
                     dr[1] = txtProductName.Text.Trim();
                     dr[2] = ConpanyName.Trim();
                     dr[3] = Mrp.Trim();
@@ -543,7 +560,7 @@ namespace WindowsFormsApplication1
                     dataGridView1.DataSource = addToCartTable;
                     double totalAmount = Convert.ToDouble(txttotalAmount.Text);
                     totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
-                    txttotalAmount.Text = totalAmount.ToString();
+                    txttotalAmount.Text = totalAmount.ToString("###0.00");
                     txtWAmount.Text = totalAmount.ToString();
 
                     txtItemCode.Text = "I";
@@ -553,7 +570,7 @@ namespace WindowsFormsApplication1
                     txtAmount.Text = "";
                     txtItemCode.Focus();
                     txtQunty.TabStop = false;
-                    txtQunty.Enabled = false;
+                    txtQunty.ReadOnly = true;
                     button3.Enabled = false;
                 }
                 if (dataGridView1.Rows.Count > 1)
@@ -577,7 +594,8 @@ namespace WindowsFormsApplication1
                     }
                     else
                     {
-                        string selectq = "select ids.ItemCompName,ipd.MrpPrice from ItemPriceDetail ipd join ItemDetails ids on ipd.ItemId=ids.ItemId where ipd.ItemId='" + txtItemCode.Text + "'";
+                        string selectq = "select ids.ItemCompName,cast(ipd.MrpPrice as numeric(38,2)) from ItemPriceDetail ipd join ItemDetails ids on ipd.ItemId=ids.ItemId where ipd.ItemId='" + txtItemCode.Text + "'";
+               
                         DataTable dta = dbMainClass.getDetailByQuery(selectq);
                         string ConpanyName = "";
                         string Mrp = "";
@@ -600,7 +618,8 @@ namespace WindowsFormsApplication1
                         dataGridView1.DataSource = addToCartTable;
                         double totalAmount = Convert.ToDouble(txttotalAmount.Text);
                         totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
-                        txttotalAmount.Text = totalAmount.ToString();
+                        txttotalAmount.Text = totalAmount.ToString("###0.00");
+
                         txtWAmount.Text = totalAmount.ToString();
 
                         txtItemCode.Text = "I";
@@ -610,7 +629,8 @@ namespace WindowsFormsApplication1
                         txtAmount.Text = "";
                         txtItemCode.Focus();
                         txtQunty.TabStop = false;
-                        txtQunty.Enabled = false;
+                        txtQunty.ReadOnly = true;
+
                         button3.Enabled = false;
                     }
                     if (dataGridView1.Rows.Count > 1)
@@ -723,6 +743,11 @@ namespace WindowsFormsApplication1
                     DataGridViewRow currentRow1 = call[c];
                     DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
                     string itid = cellCollection1[0].Value.ToString();
+                              if (ls.Contains(itid))
+                      {
+                          continue;
+                      }
+
                     string que = cellCollection1[5].Value.ToString();
                     //string quent = cellCollection1[4].Value.ToString();
 
@@ -768,6 +793,11 @@ namespace WindowsFormsApplication1
                             DataGridViewRow currentRow = RowCollection[a];
                             DataGridViewCellCollection cellCollection = currentRow.Cells;
                             string txtItemCod = cellCollection[0].Value.ToString();
+                             if (ls.Contains(txtItemCod))
+                              {
+                                  continue;
+                              }
+
                             string txtRate = cellCollection[4].Value.ToString();
                             string txtQuanit = cellCollection[5].Value.ToString();
                             string txtAmoun = cellCollection[6].Value.ToString();
@@ -845,6 +875,11 @@ namespace WindowsFormsApplication1
                             DataGridViewRow currentRow = RowCollection[a];
                             DataGridViewCellCollection cellCollection = currentRow.Cells;
                             string txtItemCod = cellCollection[0].Value.ToString();
+                            if (ls.Contains(txtItemCod))
+                              {
+                                  continue;
+                              }
+
                             string txtRate = cellCollection[4].Value.ToString();
                             string txtQuanit = cellCollection[5].Value.ToString();
                             string txtAmoun = cellCollection[6].Value.ToString();
@@ -868,6 +903,12 @@ namespace WindowsFormsApplication1
                                 DataGridViewRow currentRow = RowCollection2[a];
                                 DataGridViewCellCollection cellCollection = currentRow.Cells;
                                 string txtItemCode = cellCollection[0].Value.ToString();
+                                if (ls.Contains(txtItemCode))
+                                {
+                                    continue;
+                                }
+
+
                                 string txtRate = cellCollection[4].Value.ToString();
                                 string txtQuanity = cellCollection[5].Value.ToString();
                                 string txtAmoun = cellCollection[6].Value.ToString();
@@ -1972,23 +2013,36 @@ namespace WindowsFormsApplication1
 
                 if (txtRef.Text == "")
                 {
-                    double totalAmount = 0.00;//Convert.ToDouble(txttotalAmount.Text);
-                    foreach (DataRow dr in addToCartTable.Rows)
-                    {
-                        totalAmount += Convert.ToDouble(dr[6].ToString());
+
+                   
+                        double totalAmount = 0.00;//Convert.ToDouble(txttotalAmount.Text);
+                        foreach (DataRow dr in addToCartTable.Rows)
+                        {
+                            string itemid = dr[0].ToString();
+                            if (ls.Contains(itemid))
+                            {
+                                continue;
+                            }
+                            totalAmount += Convert.ToDouble(dr[6].ToString());
+                        }
+                        double s = totalAmount;
+                        string discountAmount = txtDiscount.Text;
+                        //double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
+                        double amount = 0.0;
+                        if (double.TryParse(discountAmount, out amount))
+                        {
+                            double totalDiscount = Convert.ToDouble(discountAmount);
+                            totalAmount = totalAmount - ((totalAmount * totalDiscount) / 100);
+                            txttotalAmount.Text = totalAmount.ToString("###0.00");
+                            txtWAmount.Text = s.ToString();
+                            double dis = totalAmount * totalDiscount / 100;
+                            txtDisAmount.Text = dis.ToString();
+                        }
+                        button5.Focus();
+
                     }
-                    string discountAmount = txtDiscount.Text;
-                    //double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
-                    double amount = 0.0;
-                    if (double.TryParse(discountAmount, out amount))
-                    {
-                        double totalDiscount = Convert.ToDouble(discountAmount);
-                        totalAmount = totalAmount - ((totalAmount * totalDiscount) / 100);
-                        txttotalAmount.Text = totalAmount.ToString();
-                        double dis = totalAmount * totalDiscount / 100;
-                        txtDisAmount.Text = dis.ToString();
-                    }
-                }
+                    
+                
                 if (txtRef.Text != "")
                 {
                     double totalAmount = 0.00;//Convert.ToDouble(txttotalAmount.Text);
@@ -2007,6 +2061,7 @@ namespace WindowsFormsApplication1
                         double dis = totalAmount * totalDiscount / 100;
                         txtDisAmount.Text = dis.ToString();
                     }
+                    button5.Focus();
                 }
 
             }
