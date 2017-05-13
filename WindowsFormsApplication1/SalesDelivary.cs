@@ -534,6 +534,7 @@ namespace WindowsFormsApplication1
             dtpDate.Value = DateTime.Now;
            // txtcustomercode.Text = "C";
             panel2.Visible = false;
+            pnlSalesPayment.Visible = false;
             Purchase.PurchaseDetails purChaseDetailObj = new Purchase.PurchaseDetails();
             vendorDetails = purChaseDetailObj.GetVendorDetaisInDataTable();
             ItemDetails = purChaseDetailObj.GetItemPriceAndNameDetaisInDataTable();
@@ -649,8 +650,18 @@ namespace WindowsFormsApplication1
 
         private void butSaveButton_Click(object sender, EventArgs e)
         {
-              
-            gridsalesdelivary.AllowUserToAddRows = false;
+            crystalReportViewer2.Visible = false;
+            panel2.Visible = false;
+           // createnewsave();
+            if (pnlSalesPayment.Visible == false)
+            {
+                pnlSalesPayment.Visible = true;
+            }
+            CmbPageName.SelectedIndex = 0;
+            CmbCompany.SelectedIndex = 0;
+            CmbCardType.SelectedIndex = 0;
+        } 
+          /*  gridsalesdelivary.AllowUserToAddRows = false;
 
             if (txtRefNo.Text == "")
             {
@@ -1036,9 +1047,9 @@ namespace WindowsFormsApplication1
                     int value = Convert.ToInt32(txtSrNo.Text);
                     int value1 = value + 1;
                     txtSrNo.Text = value1.ToString();
-            
+            */
 
-                }
+                //}
         public void createnewsave()
         {
             gridsalesdelivary.AllowUserToAddRows = false;
@@ -1236,6 +1247,8 @@ namespace WindowsFormsApplication1
                                     int insert = d.saveDetails(salesdelivary);
                                     if (insert > 0)
                                     {
+                                        string insertQurry = "insert into SalesPaymentDetailes Values('" + txtInvoiceid.Text + "','" + CashAmount.Text + "','" + txtCreditAmount.Text + "','" + txtDebitBankName.Text + "','" + txtCardNumber.Text + "','" + CmbCardType.SelectedItem.ToString() + "','" + txtChequeAmount.Text + "','" + txtChequeBankName.Text + "','" + txtChequeNumber.Text + "','" + dateTimePicker1.Value.ToString() + "','" + txtEwalletAmount.Text + "','" + EWalletCompanyName.Text + "','" + txtTransactionNumber.Text + "','" + dateTimePicker2.Value.ToString() + "','" + txtCouponAmount.Text + "','" + CmbCompany.SelectedItem.ToString() + "','" + txtInvoiceAmount.Text + "','" + txtTotalAmount1.Text + "','" + txtBalance.Text + "','" + txtRturned.Text + "','" + txtNetAmount.Text + "')";
+                                        int insertedRows = d.saveDetails(insertQurry);
                                         MessageBox.Show("details save successfully");
                                         panel2.Visible = true;
                                         DialogResult result = MessageBox.Show("this page is print", "Impotant questiuon", MessageBoxButtons.YesNo);
@@ -1432,7 +1445,8 @@ namespace WindowsFormsApplication1
 
         private void ButSelectPurchaseOrder_Click(object sender, EventArgs e)
         {
-
+            pnlSalesPayment.Visible = false;
+            crystalReportViewer2.Visible = false;
             string selectquery1 = "select  CustId,date,Totalammount from orderdetails";
             DataTable dt1 = d.getDetailByQuery(selectquery1);
             string val = " ";
@@ -2483,6 +2497,129 @@ namespace WindowsFormsApplication1
             {
                 txtdiccount.Focus();
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            pnlSalesPayment.Visible = false;
+            panel2.Visible = false;
+
+        }
+
+        private void pnlSalesPayment_Paint(object sender, PaintEventArgs e)
+        {
+            txtInvoiceid.Text = txtSrNo.Text;
+            txtInvoiceAmount.Text = txtTotalAmmount.Text + .00;
+        }
+
+        private void CashAmount_Leave(object sender, EventArgs e)
+        {
+            if (CashAmount.Text == "")
+            {
+                CashAmount.Text = "0.00";
+            }
+            if (CashAmount.Text != "0.00")
+            {
+                //CashAmount.Text = "";
+                string amount = CashAmount.Text + ".00";
+                //CashAmount.Text = amount;
+                txtTotalAmount1.Text = CashAmount.Text;
+            }
+        }
+
+        private void txtCreditAmount_Leave(object sender, EventArgs e)
+        {
+            if (txtCreditAmount.Text == "")
+            {
+                txtCreditAmount.Text = "0.00";
+            }
+            if (txtCreditAmount.Text != "0.00")
+            {
+                string amount = txtCreditAmount.Text + ".00";
+                txtCreditAmount.Text = amount;
+                Double Amount = Convert.ToDouble(txtCreditAmount.Text);
+                Double Amount1 = Convert.ToDouble(CashAmount.Text);
+                Double amount2 = Amount + Amount1;
+                string Amount2 = amount2.ToString();
+                txtTotalAmount1.Text = Amount2 + ".00";
+            }
+        }
+
+        private void txtChequeAmount_Leave(object sender, EventArgs e)
+        {
+            if (txtChequeAmount.Text == "")
+            {
+                txtChequeAmount.Text = "0.00";
+            }
+            if (txtChequeAmount.Text != "0.00")
+            {
+                string amount = txtChequeAmount.Text + ".00";
+                txtChequeAmount.Text = amount;
+                //txtNetAmount.Text = amount;
+                Double Amount = Convert.ToDouble(txtCreditAmount.Text);
+                Double Amount1 = Convert.ToDouble(CashAmount.Text);
+                Double Amount3 = Convert.ToDouble(txtChequeAmount.Text);
+                Double amount2 = Amount + Amount1 + Amount3;
+                string Amount2 = amount2.ToString();
+                txtTotalAmount1.Text = Amount2 + ".00";
+            }
+        }
+
+        private void txtEwalletAmount_Leave(object sender, EventArgs e)
+        {
+            if (txtEwalletAmount.Text == "")
+            {
+                txtEwalletAmount.Text = "0.00";
+            }
+            if (txtEwalletAmount.Text != "0.00")
+            {
+                string amount = txtEwalletAmount.Text + ".00";
+                txtEwalletAmount.Text = amount;
+                Double Amount = Convert.ToDouble(txtCreditAmount.Text);
+                Double Amount1 = Convert.ToDouble(CashAmount.Text);
+                Double Amount3 = Convert.ToDouble(txtChequeAmount.Text);
+                Double Amount4 = Convert.ToDouble(txtEwalletAmount.Text);
+                Double amount2 = Amount + Amount1 + Amount3 + Amount4;
+                string Amount2 = amount2.ToString();
+                txtTotalAmount1.Text = Amount2 + ".00";
+            }
+        }
+
+        private void txtCouponAmount_Leave(object sender, EventArgs e)
+        {
+            if (txtCouponAmount.Text == "")
+            {
+                txtCouponAmount.Text = "0.00";
+            }
+            if (txtCouponAmount.Text != "0.00")
+            {
+                string amount = txtCouponAmount.Text + ".00";
+                //txtCouponAmount.Text = amount;
+                Double Amount = Convert.ToDouble(txtCreditAmount.Text);
+                Double Amount1 = Convert.ToDouble(CashAmount.Text);
+                Double Amount3 = Convert.ToDouble(txtChequeAmount.Text);
+                Double Amount4 = Convert.ToDouble(txtEwalletAmount.Text);
+                Double Amount5 = Convert.ToDouble(txtCouponAmount.Text);
+                Double amount2 = Amount + Amount1 + Amount3 + Amount4 + Amount5;
+                string Amount2 = amount2.ToString();
+                txtTotalAmount1.Text = Amount2 + ".00";
+            }
+        }
+
+        private void txtTotalAmount1_TextChanged(object sender, EventArgs e)
+        {
+            txtNetAmount.Text = txtTotalAmount1.Text;
+            Double Amount = Convert.ToDouble(txtTotalAmount1.Text);
+            Double Amount1 = Convert.ToDouble(txtInvoiceAmount.Text);
+            Double Amount2 = Amount1 - Amount;
+            string Amount3 = Amount2.ToString();
+            txtBalance.Text = Amount2 + ".00";
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            createnewsave();
+            crystalReportViewer2.Visible = false;
         }
 
         }
