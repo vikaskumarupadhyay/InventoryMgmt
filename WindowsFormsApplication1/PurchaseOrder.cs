@@ -720,7 +720,7 @@ namespace WindowsFormsApplication1
                             PurchesCrystalReportViewer.Visible = true;
 
                             panel2.Visible = true;
-                            string conntion = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True;";
+                            string conntion = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=True;";
                             SqlConnection con = new SqlConnection(conntion);
                             string selectqurry = "select * from VwPurchesOrderDatils where OrderId='" + txtSrNo.Text + "'";
                             SqlCommand cmd = new SqlCommand(selectqurry, con);

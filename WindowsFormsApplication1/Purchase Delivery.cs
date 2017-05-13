@@ -420,7 +420,7 @@ namespace WindowsFormsApplication1
             
             button4.Enabled = true;
             txtQunty.TabStop = false;
-            txtQunty.Enabled = false;
+            txtQunty.ReadOnly = true;
             if (txtRef.Text == "")
             {
               
@@ -562,7 +562,7 @@ namespace WindowsFormsApplication1
                         txtAmount.Text = "";
                         txtItemCode.Focus();
                         txtQunty.TabStop = false;
-                        txtQunty.Enabled = false;
+                        txtQunty.ReadOnly=true;
                         button3.Enabled = false;
                     }
                     if (dataGridView1.Rows.Count > 1)
@@ -619,7 +619,7 @@ namespace WindowsFormsApplication1
                         txtAmount.Text = "";
                         txtItemCode.Focus();
                         txtQunty.TabStop = false;
-                        txtQunty.Enabled = false;
+                        txtQunty.ReadOnly = true;
                         button3.Enabled = false;
                     }
                     if (dataGridView1.Rows.Count > 1)
@@ -678,7 +678,7 @@ namespace WindowsFormsApplication1
                 //    else
                 //    {
                      button4.Enabled = false;
-                     txtQunty.Enabled = false;
+                     //txtQunty.Enabled = false;
                      txtQunty.TabStop = false;
                 //    }
                      
@@ -915,7 +915,7 @@ namespace WindowsFormsApplication1
                                     {
                                         DeliveryReportViewer.Visible = true;
                                         panel2.Visible = true;
-                                        string conntion = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=true;";
+                                        string conntion = "Data Source= NITU;Initial Catalog=SalesMaster;Integrated Security=true;";
                                         SqlConnection con = new SqlConnection(conntion);
                                         string selectqurry = "select * from purchesDelivery where Deliveryid='" + txtSrNo.Text + "'";
                                         SqlCommand cmd = new SqlCommand(selectqurry, con);
@@ -1042,7 +1042,7 @@ namespace WindowsFormsApplication1
                             {
                                 DeliveryReportViewer.Visible = true;
                                 panel2.Visible = true;
-                                string conntion = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=true;";
+                                string conntion = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=true;";
                                 SqlConnection con = new SqlConnection(conntion);
                                 string selectqurry = "select * from purchesDelivery where Deliveryid='" + txtSrNo.Text + "'";
                                 SqlCommand cmd = new SqlCommand(selectqurry, con);
