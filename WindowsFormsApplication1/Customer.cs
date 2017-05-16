@@ -72,10 +72,9 @@ namespace WindowsFormsApplication1
             //else if (value == 0)
             //{
             //    panel1.Visible = false;
-            //}
-            string selectQuery = "select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO]  ,CustServicetaxRegnNo AS [SERVICE TAX NO],CustExciseRegnNo AS [EXICE NO] ,Gstregnno AS [GST NO] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
-            string actualcolumn = "select  Custd.CustId  ,CustName  ,CustCompName  ,CustAddress ,CustCity , CustState  ,CustZip  ,CustCountry  ,CustEmail , CustWebAddress ,CustPhone  ,CustMobile  ,CustFax ,CustDesc ,Custad.CustOpeningBalance , Custad.CustCurrentBalance ,CustPanNo , CustVatNo ,CustCSTNo  ,CustServicetaxRegnNo  ,CustExciseRegnNo  ,Gstregnno  from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
-            DataTable dt = dbMainClass.getDetailByQuery(selectQuery);
+             string selectQuery = "select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO] ,CustServicetaxRegnNo AS [SERVICE TAX NO],CustExciseRegnNo AS [EXICE NO] ,Gstregnno AS [GST NO],CustDesc as [Description],CustOpeningBalance as[Opening Balance] ,CustCurrentBalance as[Current Balance] from  CustomerDetails Custd join CustomerAccountDetails Custad on Custd.CustID=Custad.CustID ";
+               string actualcolumn = "select top 1  Custd.CustId  ,CustName  ,CustCompName  ,CustAddress ,CustCity , CustState  ,CustZip  ,CustCountry  ,CustEmail , CustWebAddress ,CustPhone  ,CustMobile  ,CustFax,CustPanNo , CustVatNo ,CustCSTNo,CustServicetaxRegnNo  ,CustExciseRegnNo  ,Gstregnno,CustDesc,Custad.CustOpeningBalance,Custad.CustCurrentBalance from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
+   DataTable dt = dbMainClass.getDetailByQuery(selectQuery);
             DataTable onlycolumnname = dbMainClass.getDetailByQuery(actualcolumn);
             DataTable customtable = new DataTable();
             customtable.Columns.Add("Actualtablecolumname");
@@ -515,8 +514,8 @@ namespace WindowsFormsApplication1
         {
            string s= comserchvalue.SelectedValue.ToString();
           // string val = "Cust"+s;
-           string selectQuery = "select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Ballance],CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO]  ,CustServicetaxRegnNo AS [Service Tax Regn. No],CustExciseRegnNo AS [Excise Regn. No] ,GSTRegnNo AS [GST Regn. No] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID where " + s + " like '" + textBox1.Text + "%'";
-            DataTable dt = dbMainClass.getDetailByQuery(selectQuery);
+             string selectQuery = "select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO]  ,CustServicetaxRegnNo AS [SERVICE TAX NO],CustExciseRegnNo AS [EXICE NO] ,Gstregnno AS [GST NO],CustDesc as [Description],CustOpeningBalance as[Opening Balance] ,CustCurrentBalance as[Current Balance] from  CustomerDetails Custd join CustomerAccountDetails Custad on Custd.CustID=Custad.CustID where " + s + " like '" + textBox1.Text + "%'";
+  DataTable dt = dbMainClass.getDetailByQuery(selectQuery);
             dataGridView1.DataSource = dt;
 
         }

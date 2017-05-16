@@ -568,9 +568,7 @@
             this.txtVenderOpeningBal.Click += new System.EventHandler(this.txtVenderOpeningBal_Click);
             this.txtVenderOpeningBal.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtVenderOpeningBal_MouseClick);
             this.txtVenderOpeningBal.TextChanged += new System.EventHandler(this.txtVenderOpeningBal_TextChanged_1);
-            //this.txtVenderOpeningBal.Enter += new System.EventHandler(this.txtVenderOpeningBal_Enter);
             this.txtVenderOpeningBal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVenderOpeningBal_KeyPress);
-            //this.txtVenderOpeningBal.Leave += new System.EventHandler(this.txtVenderOpeningBal_Leave);
             // 
             // textBox14
             // 
@@ -710,7 +708,6 @@
             // 
             // comboBox1
             // 
-            this.comboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;

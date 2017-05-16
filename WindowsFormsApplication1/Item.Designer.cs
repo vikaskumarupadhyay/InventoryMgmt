@@ -137,7 +137,6 @@
             // 
             // cmbItemUnit
             // 
-            this.cmbItemUnit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmbItemUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbItemUnit.FormattingEnabled = true;
             this.cmbItemUnit.Location = new System.Drawing.Point(46, 188);
@@ -148,7 +147,6 @@
             // 
             // cmbItemItemGroup
             // 
-            this.cmbItemItemGroup.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmbItemItemGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbItemItemGroup.FormattingEnabled = true;
             this.cmbItemItemGroup.Location = new System.Drawing.Point(46, 144);
@@ -517,9 +515,10 @@
             this.panel1.Controls.Add(this.buttClose2);
             this.panel1.Controls.Add(this.buttUpdate);
             this.panel1.Controls.Add(this.buttAddNewRecord);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(150, 549);
+            this.panel1.Size = new System.Drawing.Size(1172, 549);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -532,7 +531,7 @@
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(12, 105);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(128, 386);
+            this.panel2.Size = new System.Drawing.Size(1150, 386);
             this.panel2.TabIndex = 9;
             // 
             // dataGridView1
@@ -544,7 +543,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(124, 382);
+            this.dataGridView1.Size = new System.Drawing.Size(1146, 382);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
@@ -572,7 +571,7 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(12, 25);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(128, 73);
+            this.groupBox4.Size = new System.Drawing.Size(1150, 73);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Item Search";
@@ -589,7 +588,6 @@
             // 
             // searchCalmn
             // 
-            this.searchCalmn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.searchCalmn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.searchCalmn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchCalmn.FormattingEnabled = true;
@@ -606,7 +604,7 @@
             this.txtSearch.Location = new System.Drawing.Point(687, 42);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(0, 23);
+            this.txtSearch.Size = new System.Drawing.Size(1022, 23);
             this.txtSearch.TabIndex = 3;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 

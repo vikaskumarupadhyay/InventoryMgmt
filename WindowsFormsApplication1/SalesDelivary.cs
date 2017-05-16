@@ -646,6 +646,7 @@ namespace WindowsFormsApplication1
             txtTotalAmmount.Text = "";
             addToCartTable.Clear();
             gridsalesdelivary.DataSource = "";
+            textBox20.Text = "";
         }
 
         private void butSaveButton_Click(object sender, EventArgs e)
@@ -2258,6 +2259,7 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyChar == '\b')
                 {
+                    addToCartTable.Columns.RemoveAt(7);
                     txtRefNo.ReadOnly = false;
                     makeblank();
 
