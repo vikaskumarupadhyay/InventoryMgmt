@@ -1249,37 +1249,40 @@ namespace WindowsFormsApplication1
                                     {
                                         string insertQurry = "insert into SalesPaymentDetailes Values('" + txtInvoiceid.Text + "','" + CashAmount.Text + "','" + txtCreditAmount.Text + "','" + txtDebitBankName.Text + "','" + txtCardNumber.Text + "','" + CmbCardType.SelectedItem.ToString() + "','" + txtChequeAmount.Text + "','" + txtChequeBankName.Text + "','" + txtChequeNumber.Text + "','" + dateTimePicker1.Value.ToString() + "','" + txtEwalletAmount.Text + "','" + EWalletCompanyName.Text + "','" + txtTransactionNumber.Text + "','" + dateTimePicker2.Value.ToString() + "','" + txtCouponAmount.Text + "','" + CmbCompany.SelectedItem.ToString() + "','" + txtInvoiceAmount.Text + "','" + txtTotalAmount1.Text + "','" + txtBalance.Text + "','" + txtRturned.Text + "','" + txtNetAmount.Text + "')";
                                         int insertedRows = d.saveDetails(insertQurry);
-                                        MessageBox.Show("details save successfully");
-                                        panel2.Visible = true;
-                                        DialogResult result = MessageBox.Show("this page is print", "Impotant questiuon", MessageBoxButtons.YesNo);
-                                        if (result == System.Windows.Forms.DialogResult.Yes)
+                                        if (insertedRows > 0)
                                         {
-                                            crystalReportViewer2.Visible = true;
-                                            gridsalesdelivary.AllowUserToAddRows = false;
-                                            string a = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=True";
-                                            SqlConnection con = new SqlConnection(a);
-                                            con.Open();
-                                            string selectquery = "select * from salesorderdelivaryreport where Delivaryid='" + txtSrNo.Text + "'";
-                                            SqlCommand cmd = new SqlCommand(selectquery, con);
-                                            SqlDataAdapter sd = new SqlDataAdapter(cmd);
-                                            DataSet1 ds = new DataSet1();
-                                            sd.Fill(ds, "compnaydetails");
+                                            MessageBox.Show("details save successfully");
+                                            panel2.Visible = true;
+                                            DialogResult result = MessageBox.Show("this page is print", "Impotant questiuon", MessageBoxButtons.YesNo);
+                                            if (result == System.Windows.Forms.DialogResult.Yes)
+                                            {
+                                                crystalReportViewer2.Visible = true;
+                                                gridsalesdelivary.AllowUserToAddRows = false;
+                                                string a = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=True";
+                                                SqlConnection con = new SqlConnection(a);
+                                                con.Open();
+                                                string selectquery = "select * from salesorderdelivaryreport where Delivaryid='" + txtSrNo.Text + "'";
+                                                SqlCommand cmd = new SqlCommand(selectquery, con);
+                                                SqlDataAdapter sd = new SqlDataAdapter(cmd);
+                                                DataSet1 ds = new DataSet1();
+                                                sd.Fill(ds, "compnaydetails");
 
-                                            //CrystalReport1 cr = new CrystalReport1();
-                                            // cr.ParameterFields.Add(textBox1.Text);
-                                            // cr.Load("C:\\Users\\dineshtiwari\\Documents\\Visual Studio 2010\\Projects\\report11\\report11\\CrystalReport1.rpt");
+                                                //CrystalReport1 cr = new CrystalReport1();
+                                                // cr.ParameterFields.Add(textBox1.Text);
+                                                // cr.Load("C:\\Users\\dineshtiwari\\Documents\\Visual Studio 2010\\Projects\\report11\\report11\\CrystalReport1.rpt");
 
-                                            CrystalReportsalesdelivary report1 = new CrystalReportsalesdelivary();
-                                            report1.SetDataSource(ds.Tables[1]);
+                                                CrystalReportsalesdelivary report1 = new CrystalReportsalesdelivary();
+                                                report1.SetDataSource(ds.Tables[1]);
 
-                                            crystalReportViewer2.ReportSource = report1;
-                                            crystalReportViewer2.Refresh();
-                                            con.Close();
-                                        }
-                                        if (result == System.Windows.Forms.DialogResult.No)
-                                        {
-                                            crystalReportViewer2.Visible = false;
-                                            panel2.Visible = false;
+                                                crystalReportViewer2.ReportSource = report1;
+                                                crystalReportViewer2.Refresh();
+                                                con.Close();
+                                            }
+                                            if (result == System.Windows.Forms.DialogResult.No)
+                                            {
+                                                crystalReportViewer2.Visible = false;
+                                                panel2.Visible = false;
+                                            }
                                         }
                                     }
                                     else
@@ -1366,36 +1369,42 @@ namespace WindowsFormsApplication1
 
                         if (insert > 0)
                         {
-                            panel2.Visible = true;
-                            DialogResult result = MessageBox.Show("this page is print", "Impotant questiuon", MessageBoxButtons.YesNo);
-                            if (result == System.Windows.Forms.DialogResult.Yes)
+                            string insertQurry = "insert into SalesPaymentDetailes Values('" + txtInvoiceid.Text + "','" + CashAmount.Text + "','" + txtCreditAmount.Text + "','" + txtDebitBankName.Text + "','" + txtCardNumber.Text + "','" + CmbCardType.SelectedItem.ToString() + "','" + txtChequeAmount.Text + "','" + txtChequeBankName.Text + "','" + txtChequeNumber.Text + "','" + dateTimePicker1.Value.ToString() + "','" + txtEwalletAmount.Text + "','" + EWalletCompanyName.Text + "','" + txtTransactionNumber.Text + "','" + dateTimePicker2.Value.ToString() + "','" + txtCouponAmount.Text + "','" + CmbCompany.SelectedItem.ToString() + "','" + txtInvoiceAmount.Text + "','" + txtTotalAmount1.Text + "','" + txtBalance.Text + "','" + txtRturned.Text + "','" + txtNetAmount.Text + "')";
+                            int insertedRows = d.saveDetails(insertQurry);
+                            if (insertedRows > 0)
                             {
-                                crystalReportViewer2.Visible = true;
-                                gridsalesdelivary.AllowUserToAddRows = false;
-                                string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
-                                SqlConnection con = new SqlConnection(a);
-                                con.Open();
-                                string selectquery = "select * from salesorderdelivaryreport where Delivaryid='" + txtSrNo.Text + "'";
-                                SqlCommand cmd = new SqlCommand(selectquery, con);
-                                SqlDataAdapter sd = new SqlDataAdapter(cmd);
-                                DataSet1 ds = new DataSet1();
-                                sd.Fill(ds, "compnaydetails");
+                                MessageBox.Show("details save  successfully");
+                                panel2.Visible = true;
+                                DialogResult result = MessageBox.Show("this page is print", "Impotant questiuon", MessageBoxButtons.YesNo);
+                                if (result == System.Windows.Forms.DialogResult.Yes)
+                                {
+                                    crystalReportViewer2.Visible = true;
+                                    gridsalesdelivary.AllowUserToAddRows = false;
+                                    string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
+                                    SqlConnection con = new SqlConnection(a);
+                                    con.Open();
+                                    string selectquery = "select * from salesorderdelivaryreport where Delivaryid='" + txtSrNo.Text + "'";
+                                    SqlCommand cmd = new SqlCommand(selectquery, con);
+                                    SqlDataAdapter sd = new SqlDataAdapter(cmd);
+                                    DataSet1 ds = new DataSet1();
+                                    sd.Fill(ds, "compnaydetails");
 
-                                //CrystalReport1 cr = new CrystalReport1();
-                                // cr.ParameterFields.Add(textBox1.Text);
-                                // cr.Load("C:\\Users\\dineshtiwari\\Documents\\Visual Studio 2010\\Projects\\report11\\report11\\CrystalReport1.rpt");
+                                    //CrystalReport1 cr = new CrystalReport1();
+                                    // cr.ParameterFields.Add(textBox1.Text);
+                                    // cr.Load("C:\\Users\\dineshtiwari\\Documents\\Visual Studio 2010\\Projects\\report11\\report11\\CrystalReport1.rpt");
 
-                                CrystalReportsalesdelivary2 report1 = new CrystalReportsalesdelivary2();
-                                report1.SetDataSource(ds.Tables[1]);
+                                    CrystalReportsalesdelivary2 report1 = new CrystalReportsalesdelivary2();
+                                    report1.SetDataSource(ds.Tables[1]);
 
-                                crystalReportViewer2.ReportSource = report1;
-                                crystalReportViewer2.Refresh();
-                                con.Close();
-                            }
-                            if (result == System.Windows.Forms.DialogResult.No)
-                            {
-                                crystalReportViewer2.Visible = false;
-                                panel2.Visible = false;
+                                    crystalReportViewer2.ReportSource = report1;
+                                    crystalReportViewer2.Refresh();
+                                    con.Close();
+                                }
+                                if (result == System.Windows.Forms.DialogResult.No)
+                                {
+                                    crystalReportViewer2.Visible = false;
+                                    panel2.Visible = false;
+                                }
                             }
                         }
                         else

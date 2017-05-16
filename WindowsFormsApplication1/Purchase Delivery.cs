@@ -919,37 +919,41 @@ namespace WindowsFormsApplication1
                                 int insertedRows5 = dbMainClass.saveDetails(insertQurry);
                                 if (insertedRows5 > 0)
                                 {
-
-                                    MessageBox.Show("Details Saved Successfully");
-                                    DialogResult result1 = MessageBox.Show("This Page Print", "Important Question", MessageBoxButtons.YesNo);
-                                    if (result1 == System.Windows.Forms.DialogResult.Yes)
+                                    string insertQurry1 = "insert into AllPaymentDetailes Values('" + txtInvoiceid.Text + "','" + CashAmount.Text + "','" + txtCreditAmount.Text + "','" + txtDebitBankName.Text + "','" + txtCardNumber.Text + "','" + CmbCardType.SelectedItem.ToString() + "','" + txtChequeAmount.Text + "','" + txtChequeBankName.Text + "','" + txtChequeNumber.Text + "','" + dateTimePicker1.Value.ToString() + "','" + txtEwalletAmount.Text + "','" + EWalletCompanyName.Text + "','" + txtTransactionNumber.Text + "','" + dateTimePicker2.Value.ToString() + "','" + txtCouponAmount.Text + "','" + CmbCompany.SelectedItem.ToString() + "','" + txtInvoiceAmount.Text + "','" + txtTotalAmount1.Text + "','" + txtBalance.Text + "','" + txtRturned.Text + "','" + txtNetAmount.Text + "')";
+                                    int insertedRows = dbMainClass.saveDetails(insertQurry1);
+                                    if (insertedRows > 0)
                                     {
-                                        DeliveryReportViewer.Visible = true;
-                                        panel2.Visible = true;
-                                        string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
-                                        SqlConnection con = new SqlConnection(conntion);
-                                        string selectqurry = "select * from purchesDelivery where Deliveryid='" + txtSrNo.Text + "'";
-                                        SqlCommand cmd = new SqlCommand(selectqurry, con);
-                                        SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                                        PurchesDelivery ds = new PurchesDelivery();
-                                        sda.Fill(ds, "purchesDelivery");
-                                        DeliveryPage cryRpt = new DeliveryPage();
-                                        //ReportDocument cryRpt = new ReportDocument();
-                                        //cryRpt.Load("C:\\Users\\Umesh\\Documents\\visual studio 2010\\Projects\\WindowsFormsApplication5\\WindowsFormsApplication5\\PurchesCrystalReport.rpt");
-                                        cryRpt.SetDataSource(ds.Tables[1]);
-                                        DeliveryReportViewer.ReportSource = cryRpt;
-                                        DeliveryReportViewer.Refresh();
+                                        MessageBox.Show("Details Saved Successfully");
+                                        DialogResult result1 = MessageBox.Show("This Page Print", "Important Question", MessageBoxButtons.YesNo);
+                                        if (result1 == System.Windows.Forms.DialogResult.Yes)
+                                        {
+                                            DeliveryReportViewer.Visible = true;
+                                            panel2.Visible = true;
+                                            string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
+                                            SqlConnection con = new SqlConnection(conntion);
+                                            string selectqurry = "select * from purchesDelivery where Deliveryid='" + txtSrNo.Text + "'";
+                                            SqlCommand cmd = new SqlCommand(selectqurry, con);
+                                            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                                            PurchesDelivery ds = new PurchesDelivery();
+                                            sda.Fill(ds, "purchesDelivery");
+                                            DeliveryPage cryRpt = new DeliveryPage();
+                                            //ReportDocument cryRpt = new ReportDocument();
+                                            //cryRpt.Load("C:\\Users\\Umesh\\Documents\\visual studio 2010\\Projects\\WindowsFormsApplication5\\WindowsFormsApplication5\\PurchesCrystalReport.rpt");
+                                            cryRpt.SetDataSource(ds.Tables[1]);
+                                            DeliveryReportViewer.ReportSource = cryRpt;
+                                            DeliveryReportViewer.Refresh();
+                                        }
+                                        if (result1 == System.Windows.Forms.DialogResult.No)
+                                        {
+                                            DeliveryReportViewer.Visible = false;
+                                            panel2.Visible = false;
+                                        }
+
+
+
+
+                                        dataGridView1.AllowUserToAddRows = true;
                                     }
-                                    if (result1 == System.Windows.Forms.DialogResult.No)
-                                    {
-                                        DeliveryReportViewer.Visible = false;
-                                        panel2.Visible = false;
-                                    }
-
-
-
-
-                                    dataGridView1.AllowUserToAddRows = true;
                                 }
                                 else
                                 {
@@ -1038,34 +1042,39 @@ namespace WindowsFormsApplication1
                             int insertedRows2 = dbMainClass.saveDetails(insertQurry);
                             if (insertedRows2 > 0)
                             {
-                                MessageBox.Show("Details Saved Successfully");
-                                txtRef.Text = "";
-                                DialogResult result1 = MessageBox.Show("This Page Print", "Important Question", MessageBoxButtons.YesNo);
-                                if (result1 == System.Windows.Forms.DialogResult.Yes)
+                                string insertQurry1 = "insert into AllPaymentDetailes Values('" + txtInvoiceid.Text + "','" + CashAmount.Text + "','" + txtCreditAmount.Text + "','" + txtDebitBankName.Text + "','" + txtCardNumber.Text + "','" + CmbCardType.SelectedItem.ToString() + "','" + txtChequeAmount.Text + "','" + txtChequeBankName.Text + "','" + txtChequeNumber.Text + "','" + dateTimePicker1.Value.ToString() + "','" + txtEwalletAmount.Text + "','" + EWalletCompanyName.Text + "','" + txtTransactionNumber.Text + "','" + dateTimePicker2.Value.ToString() + "','" + txtCouponAmount.Text + "','" + CmbCompany.SelectedItem.ToString() + "','" + txtInvoiceAmount.Text + "','" + txtTotalAmount1.Text + "','" + txtBalance.Text + "','" + txtRturned.Text + "','" + txtNetAmount.Text + "')";
+                                int insertedRows = dbMainClass.saveDetails(insertQurry1);
+                                if (insertedRows > 0)
                                 {
-                                    DeliveryReportViewer.Visible = true;
-                                    panel2.Visible = true;
-                                    string conntion = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=true;";
-                                    SqlConnection con = new SqlConnection(conntion);
-                                    string selectqurry = "select * from purchesDelivery where Deliveryid='" + txtSrNo.Text + "'";
-                                    SqlCommand cmd = new SqlCommand(selectqurry, con);
-                                    SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                                    PurchesDelivery ds = new PurchesDelivery();
-                                    sda.Fill(ds, "purchesDelivery");
-                                    PurchesDelivery2 cryRpt = new PurchesDelivery2();
-                                    //ReportDocument cryRpt = new ReportDocument();
-                                    //cryRpt.Load("C:\\Users\\Umesh\\Documents\\visual studio 2010\\Projects\\WindowsFormsApplication5\\WindowsFormsApplication5\\PurchesCrystalReport.rpt");
-                                    cryRpt.SetDataSource(ds.Tables[1]);
-                                    DeliveryReportViewer.ReportSource = cryRpt;
-                                    DeliveryReportViewer.Refresh();
-                                }
-                                if (result1 == System.Windows.Forms.DialogResult.No)
-                                {
-                                    DeliveryReportViewer.Visible = false;
-                                    panel2.Visible = false;
-                                }
+                                    MessageBox.Show("Details Saved Successfully");
+                                    txtRef.Text = "";
+                                    DialogResult result1 = MessageBox.Show("This Page Print", "Important Question", MessageBoxButtons.YesNo);
+                                    if (result1 == System.Windows.Forms.DialogResult.Yes)
+                                    {
+                                        DeliveryReportViewer.Visible = true;
+                                        panel2.Visible = true;
+                                        string conntion = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=true;";
+                                        SqlConnection con = new SqlConnection(conntion);
+                                        string selectqurry = "select * from purchesDelivery where Deliveryid='" + txtSrNo.Text + "'";
+                                        SqlCommand cmd = new SqlCommand(selectqurry, con);
+                                        SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                                        PurchesDelivery ds = new PurchesDelivery();
+                                        sda.Fill(ds, "purchesDelivery");
+                                        PurchesDelivery2 cryRpt = new PurchesDelivery2();
+                                        //ReportDocument cryRpt = new ReportDocument();
+                                        //cryRpt.Load("C:\\Users\\Umesh\\Documents\\visual studio 2010\\Projects\\WindowsFormsApplication5\\WindowsFormsApplication5\\PurchesCrystalReport.rpt");
+                                        cryRpt.SetDataSource(ds.Tables[1]);
+                                        DeliveryReportViewer.ReportSource = cryRpt;
+                                        DeliveryReportViewer.Refresh();
+                                    }
+                                    if (result1 == System.Windows.Forms.DialogResult.No)
+                                    {
+                                        DeliveryReportViewer.Visible = false;
+                                        panel2.Visible = false;
+                                    }
 
-                                dataGridView1.AllowUserToAddRows = true;
+                                    dataGridView1.AllowUserToAddRows = true;
+                                }
                             }
                             else
                             {
