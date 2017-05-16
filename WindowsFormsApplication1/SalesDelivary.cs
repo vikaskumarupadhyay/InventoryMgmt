@@ -2498,21 +2498,12 @@ namespace WindowsFormsApplication1
                 txtdiccount.Focus();
             }
         }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            pnlSalesPayment.Visible = false;
-            panel2.Visible = false;
-
-        }
-
-        private void pnlSalesPayment_Paint(object sender, PaintEventArgs e)
+        private void pnlSalesPayment_Paint_1(object sender, PaintEventArgs e)
         {
             txtInvoiceid.Text = txtSrNo.Text;
             txtInvoiceAmount.Text = txtTotalAmmount.Text + .00;
         }
-
-        private void CashAmount_Leave(object sender, EventArgs e)
+        private void CashAmount_Leave_1(object sender, EventArgs e)
         {
             if (CashAmount.Text == "")
             {
@@ -2527,7 +2518,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void txtCreditAmount_Leave(object sender, EventArgs e)
+        private void txtCreditAmount_Leave_1(object sender, EventArgs e)
         {
             if (txtCreditAmount.Text == "")
             {
@@ -2545,7 +2536,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void txtChequeAmount_Leave(object sender, EventArgs e)
+        private void txtChequeAmount_Leave_1(object sender, EventArgs e)
         {
             if (txtChequeAmount.Text == "")
             {
@@ -2565,7 +2556,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void txtEwalletAmount_Leave(object sender, EventArgs e)
+        private void txtEwalletAmount_Leave_1(object sender, EventArgs e)
         {
             if (txtEwalletAmount.Text == "")
             {
@@ -2585,7 +2576,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void txtCouponAmount_Leave(object sender, EventArgs e)
+        private void txtCouponAmount_Leave_1(object sender, EventArgs e)
         {
             if (txtCouponAmount.Text == "")
             {
@@ -2606,7 +2597,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void txtTotalAmount1_TextChanged(object sender, EventArgs e)
+        private void txtTotalAmount1_TextChanged_1(object sender, EventArgs e)
         {
             txtNetAmount.Text = txtTotalAmount1.Text;
             Double Amount = Convert.ToDouble(txtTotalAmount1.Text);
@@ -2616,10 +2607,16 @@ namespace WindowsFormsApplication1
             txtBalance.Text = Amount2 + ".00";
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnSave_Click_1(object sender, EventArgs e)
         {
             createnewsave();
             crystalReportViewer2.Visible = false;
+        }
+
+        private void btnClose_Click_1(object sender, EventArgs e)
+        {
+            pnlSalesPayment.Visible = false;
+            panel2.Visible = false;
         }
 
     }
