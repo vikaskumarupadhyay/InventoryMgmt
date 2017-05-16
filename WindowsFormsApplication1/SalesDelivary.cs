@@ -879,6 +879,11 @@ namespace WindowsFormsApplication1
                                   int insert = d.saveDetails(salesdelivary);
                                   if (insert > 0)
                                   {
+                                        string insertQurry = "insert into SalesPaymentDetailes Values('" + txtInvoiceid.Text + "','" + CashAmount.Text + "','" + txtCreditAmount.Text + "','" + txtDebitBankName.Text + "','" + txtCardNumber.Text + "','" + CmbCardType.SelectedItem.ToString() + "','" + txtChequeAmount.Text + "','" + txtChequeBankName.Text + "','" + txtChequeNumber.Text + "','" + dateTimePicker1.Value.ToString() + "','" + txtEwalletAmount.Text + "','" + EWalletCompanyName.Text + "','" + txtTransactionNumber.Text + "','" + dateTimePicker2.Value.ToString() + "','" + txtCouponAmount.Text + "','" + CmbCompany.SelectedItem.ToString() + "','" + txtInvoiceAmount.Text + "','" + txtTotalAmount1.Text + "','" + txtBalance.Text + "','" + txtRturned.Text + "','" + txtNetAmount.Text + "')";
+                                        int insertedRows = d.saveDetails(insertQurry);
+                                        if (insertedRows > 0)
+                                        {
+                                          
                                       MessageBox.Show("details save successfully");
                                       panel2.Visible = true;
                                       DialogResult result = MessageBox.Show("this page is print", "Impotant questiuon", MessageBoxButtons.YesNo);
@@ -912,6 +917,7 @@ namespace WindowsFormsApplication1
                                           panel2.Visible = false;
                                       }
                                   }
+                                 }
                                   else
                                   {
                                       MessageBox.Show("details save not successfully");
@@ -1004,6 +1010,12 @@ namespace WindowsFormsApplication1
 
                           if (insert > 0)
                           {
+                             string insertQurry = "insert into SalesPaymentDetailes Values('" + txtInvoiceid.Text + "','" + CashAmount.Text + "','" + txtCreditAmount.Text + "','" + txtDebitBankName.Text + "','" + txtCardNumber.Text + "','" + CmbCardType.SelectedItem.ToString() + "','" + txtChequeAmount.Text + "','" + txtChequeBankName.Text + "','" + txtChequeNumber.Text + "','" + dateTimePicker1.Value.ToString() + "','" + txtEwalletAmount.Text + "','" + EWalletCompanyName.Text + "','" + txtTransactionNumber.Text + "','" + dateTimePicker2.Value.ToString() + "','" + txtCouponAmount.Text + "','" + CmbCompany.SelectedItem.ToString() + "','" + txtInvoiceAmount.Text + "','" + txtTotalAmount1.Text + "','" + txtBalance.Text + "','" + txtRturned.Text + "','" + txtNetAmount.Text + "')";
+                                        int insertedRows = d.saveDetails(insertQurry);
+                                        if (insertedRows > 0)
+                                        {
+                                             MessageBox.Show("details save not successfully");
+                                          
                               panel2.Visible = true;
                               DialogResult result = MessageBox.Show("this page is print", "Impotant questiuon", MessageBoxButtons.YesNo);
                               if (result == System.Windows.Forms.DialogResult.Yes)
@@ -1036,6 +1048,7 @@ namespace WindowsFormsApplication1
                                   panel2.Visible = false;
                               }
                               }
+        }
                               else
                               {
                                   MessageBox.Show("details save not successfully");
@@ -1054,20 +1067,24 @@ namespace WindowsFormsApplication1
         public void createnewsave()
         {
             gridsalesdelivary.AllowUserToAddRows = false;
+
             if (txtRefNo.Text == "")
             {
                 string s = "0";
+
                 DataGridViewRowCollection call = gridsalesdelivary.Rows;
+
                 for (int c = 0; c < call.Count; c++)
                 {
                     DataGridViewRow currentRow1 = call[c];
                     DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
                     string itid = cellCollection1[0].Value.ToString();
+                    if (ls.Contains(itid))
+                    {
+                        continue;
+                    }
                     string que = cellCollection1[5].Value.ToString();
                     string quent = cellCollection1[6].Value.ToString();
-
-
-
                     string qurry = "select CurrentQuantity from ItemQuantityDetail where ItemId='" + itid + "'";
                     DataTable dt = d.getDetailByQuery(qurry);
                     string currid = "";
@@ -1084,6 +1101,7 @@ namespace WindowsFormsApplication1
                     string updateQurry = "update ItemQuantityDetail set CurrentQuantity='" + lastQuantity + "'where ItemId='" + itid + "'";
                     int insertedRows2 = d.saveDetails(updateQurry);
                 }
+
 
                 string order = "select orderid from orderdetails ";
                 DataTable d1 = d.getDetailByQuery(order);
@@ -1108,6 +1126,10 @@ namespace WindowsFormsApplication1
                             DataGridViewRow currentrow = rowcollection[a];
                             DataGridViewCellCollection cellcollection = currentrow.Cells;
                             string txtitemcode = cellcollection[0].Value.ToString();
+                            if (ls.Contains(txtitemcode))
+                            {
+                                continue;
+                            }
                             // string txtProductName = cellcollection[1].Value.ToString();
                             string txtRate = cellcollection[2].Value.ToString();
                             string txtQuantity = cellcollection[4].Value.ToString();
@@ -1141,6 +1163,10 @@ namespace WindowsFormsApplication1
                                     DataGridViewRow currentRow = RowCollection2[a];
                                     DataGridViewCellCollection cellCollection = currentRow.Cells;
                                     string txtItemCode = cellCollection[0].Value.ToString();
+                                    if (ls.Contains(txtItemCode))
+                                    {
+                                        continue;
+                                    }
                                     string txtRate = cellCollection[2].Value.ToString();
                                     string txtQuanity = cellCollection[4].Value.ToString();
                                     string txtAmoun = cellCollection[5].Value.ToString();
@@ -1177,6 +1203,7 @@ namespace WindowsFormsApplication1
                 }
 
 
+
                 else
                 {
                     int id1 = Convert.ToInt32(id);
@@ -1194,6 +1221,10 @@ namespace WindowsFormsApplication1
                             DataGridViewRow currentrow = rowcollection[a];
                             DataGridViewCellCollection cellcollection = currentrow.Cells;
                             string txtitemcode = cellcollection[0].Value.ToString();
+                            if (ls.Contains(txtitemcode))
+                            {
+                                continue;
+                            }
                             //string txtProductName = cellcollection[1].Value.ToString();
                             //string compnayname = cellcollection[2].Value.ToString();
                             //string mrp = cellcollection[3].Value.ToString();
@@ -1229,6 +1260,10 @@ namespace WindowsFormsApplication1
                                     DataGridViewRow currentRow = RowCollection2[a];
                                     DataGridViewCellCollection cellCollection = currentRow.Cells;
                                     string txtItemCode = cellCollection[0].Value.ToString();
+                                    if (ls.Contains(txtItemCode))
+                                    {
+                                        continue;
+                                    }
                                     string txtRate = cellCollection[4].Value.ToString();
                                     string txtQuanity = cellCollection[5].Value.ToString();
                                     string txtAmoun = cellCollection[6].Value.ToString();
@@ -1244,7 +1279,7 @@ namespace WindowsFormsApplication1
                                 int insertedRows4 = d.saveDetails(sf1);
                                 if (insertedRows4 > 0)
                                 {
-                                    string salesdelivary = "Insert into salesOrderDelivery values('" + Orde + "','true','" + dtpDate.Text + "','" + s + "')";
+                                    string salesdelivary = "Insert into salesOrderDelivery values('" + Orde + "','true','" + dtpDate.Text + "','"+s+"')";
                                     int insert = d.saveDetails(salesdelivary);
                                     if (insert > 0)
                                     {
@@ -1252,6 +1287,7 @@ namespace WindowsFormsApplication1
                                         int insertedRows = d.saveDetails(insertQurry);
                                         if (insertedRows > 0)
                                         {
+
                                             MessageBox.Show("details save successfully");
                                             panel2.Visible = true;
                                             DialogResult result = MessageBox.Show("this page is print", "Impotant questiuon", MessageBoxButtons.YesNo);
@@ -1259,9 +1295,8 @@ namespace WindowsFormsApplication1
                                             {
                                                 crystalReportViewer2.Visible = true;
                                                 gridsalesdelivary.AllowUserToAddRows = false;
-                                                string a = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=True";
-                                                SqlConnection con = new SqlConnection(a);
-                                                con.Open();
+                                                //string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
+                                                SqlConnection con = d.openConnection();//new SqlConnection(a);
                                                 string selectquery = "select * from salesorderdelivaryreport where Delivaryid='" + txtSrNo.Text + "'";
                                                 SqlCommand cmd = new SqlCommand(selectquery, con);
                                                 SqlDataAdapter sd = new SqlDataAdapter(cmd);
@@ -1314,6 +1349,10 @@ namespace WindowsFormsApplication1
                     DataGridViewRow currentRow1 = cal[c];
                     DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
                     string itid = cellCollection1[0].Value.ToString();
+                    if (ls.Contains(itid))
+                    {
+                        continue;
+                    }
                     string que = cellCollection1[5].Value.ToString();
                     string quent = cellCollection1[6].Value.ToString();
 
@@ -1347,6 +1386,10 @@ namespace WindowsFormsApplication1
                         DataGridViewRow currentrow = rowcollection[a];
                         DataGridViewCellCollection cellcollection = currentrow.Cells;
                         string txtitemcode = cellcollection[0].Value.ToString();
+                        if (ls.Contains(txtitemcode))
+                        {
+                            continue;
+                        }
                         // string txtproductname = cellcollection[1].Value.ToString();
                         string txtRate = cellcollection[4].Value.ToString();
                         string txtQuantity = cellcollection[6].Value.ToString();
@@ -1374,16 +1417,17 @@ namespace WindowsFormsApplication1
                             int insertedRows = d.saveDetails(insertQurry);
                             if (insertedRows > 0)
                             {
-                                MessageBox.Show("details save  successfully");
+                                MessageBox.Show("details save not successfully");
+
                                 panel2.Visible = true;
                                 DialogResult result = MessageBox.Show("this page is print", "Impotant questiuon", MessageBoxButtons.YesNo);
                                 if (result == System.Windows.Forms.DialogResult.Yes)
                                 {
                                     crystalReportViewer2.Visible = true;
                                     gridsalesdelivary.AllowUserToAddRows = false;
-                                    string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
-                                    SqlConnection con = new SqlConnection(a);
-                                    con.Open();
+                                   // string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
+                                    SqlConnection con = d.openConnection();//new SqlConnection(a);
+                                   // con.Open();
                                     string selectquery = "select * from salesorderdelivaryreport where Delivaryid='" + txtSrNo.Text + "'";
                                     SqlCommand cmd = new SqlCommand(selectquery, con);
                                     SqlDataAdapter sd = new SqlDataAdapter(cmd);
@@ -1420,7 +1464,6 @@ namespace WindowsFormsApplication1
             int value = Convert.ToInt32(txtSrNo.Text);
             int value1 = value + 1;
             txtSrNo.Text = value1.ToString();
-
         }
 
 
