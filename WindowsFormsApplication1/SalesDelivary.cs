@@ -42,7 +42,7 @@ namespace WindowsFormsApplication1
             textBox1.TabStop = false;
             txttax.TabStop = false;
             textBox3.TabStop = false;
-            
+
         }
         private void tab1()
         {
@@ -77,7 +77,7 @@ namespace WindowsFormsApplication1
             butcustomercode.TabStop = true;
             txtItemCode.TabStop = true;
             butitembutton.TabStop = true;
-           // txtQuantity.TabStop = false;
+            // txtQuantity.TabStop = false;
             butAddItem.TabStop = false;
             butRemoveItem.TabStop = true;
             butSaveButton.TabStop = false;
@@ -147,9 +147,9 @@ namespace WindowsFormsApplication1
 
             counter = 0;
             panel2.Visible = true;
-           // string selectquery = "select Custid, CustName,CustCompName,CustAddress,CustPhone,CustMobile,CustFax from customerdetails";
+            // string selectquery = "select Custid, CustName,CustCompName,CustAddress,CustPhone,CustMobile,CustFax from customerdetails";
             string selectquery = "select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Ballance],CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO]  ,CustServicetaxRegnNo AS [Service Tax Regn. No],CustExciseRegnNo AS [Excise Regn. No] ,GSTRegnNo AS [GST Regn. No] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
-            
+
             DataTable dt = d.getDetailByQuery(selectquery);
             dataGridView2.DataSource = dt;
             txtQuantity.TabStop = false;
@@ -178,7 +178,7 @@ namespace WindowsFormsApplication1
             txtItemCode.Text = cell1[0].Value.ToString();
             txtProductName.Text = cell1[1].Value.ToString();
             txtRate.Text = cell1[7].Value.ToString();
-           // maxquantity = Convert.ToInt32((cell1[3].Value.ToString()));
+            // maxquantity = Convert.ToInt32((cell1[3].Value.ToString()));
             txtQuantity.Text = "";
             txtAmmount.Text = "";
 
@@ -190,9 +190,9 @@ namespace WindowsFormsApplication1
             crystalReportViewer2.Visible = false;
             string selectquery1 = "select  itm.ItemId as [Item Id],itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],cast(ipd.SalesPrice as numeric(38,2)) as[Sales Price],cast(ipd.MrpPrice as numeric(38,2)) as[Mrp Price] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
             string actualcolumn = "select top 1  itm.ItemId, itm.ItemName,itm.ItemCompName ,itm.ItemDesc ,ig.groupName,iul.unitName ,cast(ipd.purChasePrice as numeric(38,2)) ,cast(ipd.SalesPrice as numeric(38,2)) ,cast(ipd.MrpPrice as numeric(38,2)),ipd.Margin ,iqd.OpeningQuantity ,iqd.CurrentQuantity from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
-           
+
             //string selectquery1 = "select it.ItemName,ip.Mrpprice,iq.CurrentQuantity from ItemDetails it join ItemPriceDetail ip on it.Itemid=ip.Itemid join ItemQuantityDetail iq on ip.ItemId=iq.Itemid";
-           // string actualcolumn = "select it.ItemName ,ip.Mrpprice ,iq.CurrentQuantity  from ItemDetails it join ItemPriceDetail ip on it.Itemid=ip.Itemid join ItemQuantityDetail iq on ip.ItemId=iq.Itemid";
+            // string actualcolumn = "select it.ItemName ,ip.Mrpprice ,iq.CurrentQuantity  from ItemDetails it join ItemPriceDetail ip on it.Itemid=ip.Itemid join ItemQuantityDetail iq on ip.ItemId=iq.Itemid";
             DataTable dt1 = d.getDetailByQuery(selectquery1);
             DataTable onlycolumn = d.getDetailByQuery(actualcolumn);
             DataTable custometable = new DataTable();
@@ -217,8 +217,8 @@ namespace WindowsFormsApplication1
             counter = 1;
             panel2.Visible = true;
             string selectquery = "select  itm.ItemId as [Item Id],itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],cast(ipd.purChasePrice as numeric(38,2)) as [Purchase Price],cast(ipd.SalesPrice as numeric(38,2)) as[Sales Price],cast(ipd.MrpPrice as numeric(38,2)) as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
-            
-           // string selectquery = "select i.Itemid,i.Itemname,ip.MrpPrice,iq.CurrentQuantity from itemdetails i join itempricedetail ip on i.itemid=ip.itemid join itemquantitydetail iq on ip.itemid=iq.itemid";
+
+            // string selectquery = "select i.Itemid,i.Itemname,ip.MrpPrice,iq.CurrentQuantity from itemdetails i join itempricedetail ip on i.itemid=ip.itemid join itemquantitydetail iq on ip.itemid=iq.itemid";
             DataTable dt = d.getDetailByQuery(selectquery);
             dataGridView2.DataSource = dt;
             txtQuantity.TabStop = false;
@@ -230,12 +230,12 @@ namespace WindowsFormsApplication1
             dataGridView2.TabIndex = 3;
             button1.TabIndex = 4;
             txtsearchvalue.Text = "";
-            
+
         }
 
         private void txtQuantity_TextChanged(object sender, EventArgs e)
         {
-           
+
             string select = "select CurrentQuantity from ItemQuantityDetail where itemid='" + txtItemCode.Text + "'";
             DataTable dt = d.getDetailByQuery(select);
             string s = "";
@@ -244,9 +244,9 @@ namespace WindowsFormsApplication1
                 s = dr[0].ToString();
 
             }
-            if (txtQuantity.Text=="")
+            if (txtQuantity.Text == "")
             {
-                txtQuantity.Text ="0";
+                txtQuantity.Text = "0";
             }
             if (s != "")
             {
@@ -323,7 +323,7 @@ namespace WindowsFormsApplication1
                     quntity = dr3[5].ToString();
                     rate = dr3[4].ToString();
                     prise = dr3[6].ToString();
-                    if (txtItemCode.Text==itemid)
+                    if (txtItemCode.Text == itemid)
                     {
                         int q1 = Convert.ToInt32(quntity);
                         int q2 = Convert.ToInt32(txtQuantity.Text);
@@ -345,23 +345,23 @@ namespace WindowsFormsApplication1
                          txtAmount.Text = "";
                          //addToCartTable.Columns.Add("Qtuhjh");*/
                         ls1.Add(itemid);
-                        
+
                     }
                 }
-                if (addToCartTable != null && addToCartTable.Rows != null && addToCartTable.Rows.Count > 0 && txtRefNo.Text=="")
+                if (addToCartTable != null && addToCartTable.Rows != null && addToCartTable.Rows.Count > 0 && txtRefNo.Text == "")
                 {
                     string itemid1 = "";
                     for (int c = 0; c < ls1.Count; c++)
                     {
                         itemid1 = ls1[c];
                     }
-                    if (txtItemCode.Text==itemid1)
+                    if (txtItemCode.Text == itemid1)
                     {
                         txtItemCode.Text = "I";
                         txtProductName.Text = "";
                         txtRate.Text = "";
                         txtQuantity.Text = "";
-                        txtAmmount.Text= "";
+                        txtAmmount.Text = "";
                     }
                     else
                     {
@@ -389,7 +389,7 @@ namespace WindowsFormsApplication1
                         double totalAmount = Convert.ToDouble(txtTotalAmmount.Text);
                         totalAmount += Convert.ToDouble(txtAmmount.Text);
                         txtTotalAmmount.Text = totalAmount.ToString("###0.00");
-                       // txtwithauttaxamount.Text = txtTotalAmmount.Text;
+                        // txtwithauttaxamount.Text = txtTotalAmmount.Text;
 
                         txtItemCode.Text = "I";
                         txtProductName.Text = "";
@@ -415,12 +415,12 @@ namespace WindowsFormsApplication1
                         ConpanyName = dr1[0].ToString();
                         Mrp = dr1[1].ToString();
                     }
-                   // addToCartTable.Columns.RemoveAt(6);
+                    // addToCartTable.Columns.RemoveAt(6);
                     DataRow dr = addToCartTable.NewRow();
                     dr[0] = txtItemCode.Text.Trim();
                     if (ls1.Contains(dr[0]))
                     {
-                        
+
                     }
                     dr[1] = txtProductName.Text.Trim();
                     dr[2] = ConpanyName.Trim();
@@ -452,7 +452,7 @@ namespace WindowsFormsApplication1
                 }
             }
 
-           else if (txtRefNo.Text != "")
+            else if (txtRefNo.Text != "")
             {
                 if (txtProductName.Text == "" && txtQuantity.Text == "")
                 {
@@ -486,7 +486,7 @@ namespace WindowsFormsApplication1
                         dr[7] = txtAmmount.Text.Trim();
                         addToCartTable.Rows.Add(dr);
 
-                        gridsalesdelivary.DataSource= addToCartTable;
+                        gridsalesdelivary.DataSource = addToCartTable;
                         double totalAmount = Convert.ToDouble(txtTotalAmmount.Text);
                         totalAmount += Convert.ToDouble(txtAmmount.Text.Trim());
                         txtTotalAmmount.Text = totalAmount.ToString("###0.00");
@@ -497,8 +497,8 @@ namespace WindowsFormsApplication1
                         txtQuantity.Text = "";
                         txtAmmount.Text = "";
                         txtItemCode.Focus();
-                      //  txtQuantity.TabStop= false;
-                       // txtQuantity.Enabled = false;
+                        //  txtQuantity.TabStop= false;
+                        // txtQuantity.Enabled = false;
                         butAddItem.Enabled = false;
                     }
                     if (gridsalesdelivary.Rows.Count > 1)
@@ -506,9 +506,9 @@ namespace WindowsFormsApplication1
                         txtdiccount.ReadOnly = false;
                     }
 
-               }
-           }
-           
+                }
+            }
+
         }
 
 
@@ -520,20 +520,21 @@ namespace WindowsFormsApplication1
             txttaxamount.Visible = false;
             txtdicountamount.Visible = false;
             txtwithauttaxamount.Visible = false;
-            
+
             txtTotalAmmount.Text = "0";
             txtwithauttaxamount.Text = "0";
-           // txtdiccount.ReadOnly = false;
+            // txtdiccount.ReadOnly = false;
             txttaxamount.Text = "0";
             txtdicountamount.Text = "0";
             tab();
             txtQuantity.ReadOnly = true;
             butRemoveItem.Enabled = false;
             butAddItem.Enabled = false;
-           // txtItemCode.Text = "I";
+            // txtItemCode.Text = "I";
             dtpDate.Value = DateTime.Now;
-           // txtcustomercode.Text = "C";
+            // txtcustomercode.Text = "C";
             panel2.Visible = false;
+            pnlSalesPayment.Visible = false;
             Purchase.PurchaseDetails purChaseDetailObj = new Purchase.PurchaseDetails();
             vendorDetails = purChaseDetailObj.GetVendorDetaisInDataTable();
             ItemDetails = purChaseDetailObj.GetItemPriceAndNameDetaisInDataTable();
@@ -574,13 +575,13 @@ namespace WindowsFormsApplication1
                 //txtTexAmount.Text 
 
                 txttax.Text = dr[0].ToString();
-                textBox1.Text= dr[1].ToString();
+                textBox1.Text = dr[1].ToString();
             }
 
             if (txtRefNo.Text == "")
             {
                 addToCartTable.Columns.RemoveAt(6);
-               gridsalesdelivary.DataSource = addToCartTable;
+                gridsalesdelivary.DataSource = addToCartTable;
             }
             //string select = "select VAT, CST,GST from CompnayDetails";
             //DataTable d1 = d.getDetailByQuery(select);
@@ -592,7 +593,7 @@ namespace WindowsFormsApplication1
             //}
 
         }
-       
+
 
         private void butRemoveItem_Click(object sender, EventArgs e)
         {
@@ -649,396 +650,406 @@ namespace WindowsFormsApplication1
 
         private void butSaveButton_Click(object sender, EventArgs e)
         {
-              
-            gridsalesdelivary.AllowUserToAddRows = false;
-
-            if (txtRefNo.Text == "")
+            crystalReportViewer2.Visible = false;
+            panel2.Visible = false;
+            // createnewsave();
+            if (pnlSalesPayment.Visible == false)
             {
-                string s = "0";
+                pnlSalesPayment.Visible = true;
+            }
+            CmbPageName.SelectedIndex = 0;
+            CmbCompany.SelectedIndex = 0;
+            CmbCardType.SelectedIndex = 0;
+        }
+        /*  gridsalesdelivary.AllowUserToAddRows = false;
+
+          if (txtRefNo.Text == "")
+          {
+              string s = "0";
                 
-                DataGridViewRowCollection call = gridsalesdelivary.Rows;
+              DataGridViewRowCollection call = gridsalesdelivary.Rows;
              
-                for (int c = 0; c < call.Count; c++)
-                {
-                    DataGridViewRow currentRow1 = call[c];
-                    DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
-                    string itid = cellCollection1[0].Value.ToString();
-                    if (ls.Contains(itid)) 
-                    {
-                        continue;
-                    }
-                    string que = cellCollection1[5].Value.ToString();
-                    string quent = cellCollection1[6].Value.ToString();
-                    string qurry = "select CurrentQuantity from ItemQuantityDetail where ItemId='" + itid + "'";
-                    DataTable dt = d.getDetailByQuery(qurry);
-                    string currid = "";
-                    foreach (DataRow dr in dt.Rows)
-                    {
-                        currid = dr["CurrentQuantity"].ToString();
-                    }
-                    int quent1 = Convert.ToInt32(que.ToString());
-                    // int curentQuntity = Convert.ToInt32(que);
-                    int cuentQuantity = Convert.ToInt32(currid);
-                    int lastQuantity =cuentQuantity-quent1;
-                    // int resivquenty = lastQuantity ;
-                    // string currid1 = resivquenty.ToString();
-                    string updateQurry = "update ItemQuantityDetail set CurrentQuantity='" + lastQuantity + "'where ItemId='" + itid + "'";
-                    int insertedRows2 = d.saveDetails(updateQurry);
-                }
+              for (int c = 0; c < call.Count; c++)
+              {
+                  DataGridViewRow currentRow1 = call[c];
+                  DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
+                  string itid = cellCollection1[0].Value.ToString();
+                  if (ls.Contains(itid)) 
+                  {
+                      continue;
+                  }
+                  string que = cellCollection1[5].Value.ToString();
+                  string quent = cellCollection1[6].Value.ToString();
+                  string qurry = "select CurrentQuantity from ItemQuantityDetail where ItemId='" + itid + "'";
+                  DataTable dt = d.getDetailByQuery(qurry);
+                  string currid = "";
+                  foreach (DataRow dr in dt.Rows)
+                  {
+                      currid = dr["CurrentQuantity"].ToString();
+                  }
+                  int quent1 = Convert.ToInt32(que.ToString());
+                  // int curentQuntity = Convert.ToInt32(que);
+                  int cuentQuantity = Convert.ToInt32(currid);
+                  int lastQuantity =cuentQuantity-quent1;
+                  // int resivquenty = lastQuantity ;
+                  // string currid1 = resivquenty.ToString();
+                  string updateQurry = "update ItemQuantityDetail set CurrentQuantity='" + lastQuantity + "'where ItemId='" + itid + "'";
+                  int insertedRows2 = d.saveDetails(updateQurry);
+              }
                 
 
-                string order = "select orderid from orderdetails ";
-                DataTable d1 = d.getDetailByQuery(order);
-                string id = "";
-                string id5 = "";
-                foreach (DataRow dr in d1.Rows)
-                {
-                    id = dr[0].ToString();
-                }
-                if (id == "")
-                {
-                    id = "1";
-                    string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpDate.Text + "','" + txtTotalAmmount.Text + "','" + txtdiccount.Text + "','" + txtdicountamount.Text+ "','" + txttax.Text + "','" + txttaxamount.Text + "','"+txtwithauttaxamount.Text+"')";
-                    int insertrows = d.saveDetails(insertquery);
-                    if (insertrows > 0)
-                    {
+              string order = "select orderid from orderdetails ";
+              DataTable d1 = d.getDetailByQuery(order);
+              string id = "";
+              string id5 = "";
+              foreach (DataRow dr in d1.Rows)
+              {
+                  id = dr[0].ToString();
+              }
+              if (id == "")
+              {
+                  id = "1";
+                  string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpDate.Text + "','" + txtTotalAmmount.Text + "','" + txtdiccount.Text + "','" + txtdicountamount.Text+ "','" + txttax.Text + "','" + txttaxamount.Text + "','"+txtwithauttaxamount.Text+"')";
+                  int insertrows = d.saveDetails(insertquery);
+                  if (insertrows > 0)
+                  {
 
-                        DataGridViewRowCollection rowcollection = gridsalesdelivary.Rows;
-                        List<string> show = new List<string>();
-                        for (int a = 0; a < rowcollection.Count; a++)
-                        {
-                            DataGridViewRow currentrow = rowcollection[a];
-                            DataGridViewCellCollection cellcollection = currentrow.Cells;
-                            string txtitemcode = cellcollection[0].Value.ToString();
-                            if (ls.Contains(txtitemcode))
-                            {
-                                continue;
-                            }
-                            // string txtProductName = cellcollection[1].Value.ToString();
-                            string txtRate = cellcollection[2].Value.ToString();
-                            string txtQuantity = cellcollection[4].Value.ToString();
-                            string txtAmount = cellcollection[5].Value.ToString();
-                            string Orderid = id;
-                            //string updatequery = "update orderdetails set totalammount='" + txtTotalAmmount.Text + "' where orderid='" + Orderid + "' ";
-                            //int update = d.saveDetails(updatequery);
-                            string query = "insert into customerorderdescriptions Values('" + Orderid + "','" + txtitemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
-
-
-                            // int insertrow = d.saveDetails(query);
-                            show.Add(query);
-                        }
-
-                        int inserirow1 = d.saveDetails(show);
-                        if (inserirow1 > 0)
-                        {
-
-                            if (id5 == "")
-                            {
-                                string deleteQurry = "delete customerorderdescriptions where Orderid='" + txtRefNo.Text + "'";
-                                DataTable dt = d.getDetailByQuery(deleteQurry);
-                                //dataGridView1.DataSource = "";
+                      DataGridViewRowCollection rowcollection = gridsalesdelivary.Rows;
+                      List<string> show = new List<string>();
+                      for (int a = 0; a < rowcollection.Count; a++)
+                      {
+                          DataGridViewRow currentrow = rowcollection[a];
+                          DataGridViewCellCollection cellcollection = currentrow.Cells;
+                          string txtitemcode = cellcollection[0].Value.ToString();
+                          if (ls.Contains(txtitemcode))
+                          {
+                              continue;
+                          }
+                          // string txtProductName = cellcollection[1].Value.ToString();
+                          string txtRate = cellcollection[2].Value.ToString();
+                          string txtQuantity = cellcollection[4].Value.ToString();
+                          string txtAmount = cellcollection[5].Value.ToString();
+                          string Orderid = id;
+                          //string updatequery = "update orderdetails set totalammount='" + txtTotalAmmount.Text + "' where orderid='" + Orderid + "' ";
+                          //int update = d.saveDetails(updatequery);
+                          string query = "insert into customerorderdescriptions Values('" + Orderid + "','" + txtitemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
 
 
-                                DataGridViewRowCollection RowCollection2 = gridsalesdelivary.Rows;
-                                List<string> sf1 = new List<string>();
-                                for (int a = 0; a < RowCollection2.Count; a++)
-                                {
+                          // int insertrow = d.saveDetails(query);
+                          show.Add(query);
+                      }
 
-                                    DataGridViewRow currentRow = RowCollection2[a];
-                                    DataGridViewCellCollection cellCollection = currentRow.Cells;
-                                    string txtItemCode = cellCollection[0].Value.ToString();
-                                    if (ls.Contains(txtItemCode))
-                                    {
-                                        continue;
-                                    }
-                                    string txtRate = cellCollection[2].Value.ToString();
-                                    string txtQuanity = cellCollection[4].Value.ToString();
-                                    string txtAmoun = cellCollection[5].Value.ToString();
-                                    string OrderID1 = id;
-                                   // string updatequery = "update orderdetails set totalammount='" + txtTotalAmmount.Text + "',,'" + txtwithauttaxamount.Text + "','" + txtTotalAmmount.Text + "','" + txtdiccount.Text + "','" + txttax.Text + "','" + txtdicountamount.Text + "','" + txttaxamount.Text + "' where orderid='" + OrderID1 + "' ";
-                                    //int update = d.saveDetails(updatequery);
-                                    string Query = "insert into customerorderdescriptions Values('" + OrderID1 + "','" + txtItemCode + "','" + txtRate + "','" + txtQuanity + "','" + txtAmoun + "','"+s+"')";
-                                    //MessageBox.Show(Query);
+                      int inserirow1 = d.saveDetails(show);
+                      if (inserirow1 > 0)
+                      {
 
-                                    sf1.Add(Query);
-
-                                }
-                                int insertedRows4 = d.saveDetails(sf1);
-                                if (insertedRows4 > 0)
-                                {
-                                    gridsalesdelivary.AllowUserToAddRows = true;
-                                    string salesdelivary = "Insert into salesOrderDelivery values('" + id + "','true','" + dtpDate.Text + "','"+s+"')";
-                                    int insert = d.saveDetails(salesdelivary);
-                                    if (insert > 0)
-                                    {
-                                        MessageBox.Show("details save successfully");
+                          if (id5 == "")
+                          {
+                              string deleteQurry = "delete customerorderdescriptions where Orderid='" + txtRefNo.Text + "'";
+                              DataTable dt = d.getDetailByQuery(deleteQurry);
+                              //dataGridView1.DataSource = "";
 
 
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("details save not successfully");
+                              DataGridViewRowCollection RowCollection2 = gridsalesdelivary.Rows;
+                              List<string> sf1 = new List<string>();
+                              for (int a = 0; a < RowCollection2.Count; a++)
+                              {
 
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+                                  DataGridViewRow currentRow = RowCollection2[a];
+                                  DataGridViewCellCollection cellCollection = currentRow.Cells;
+                                  string txtItemCode = cellCollection[0].Value.ToString();
+                                  if (ls.Contains(txtItemCode))
+                                  {
+                                      continue;
+                                  }
+                                  string txtRate = cellCollection[2].Value.ToString();
+                                  string txtQuanity = cellCollection[4].Value.ToString();
+                                  string txtAmoun = cellCollection[5].Value.ToString();
+                                  string OrderID1 = id;
+                                 // string updatequery = "update orderdetails set totalammount='" + txtTotalAmmount.Text + "',,'" + txtwithauttaxamount.Text + "','" + txtTotalAmmount.Text + "','" + txtdiccount.Text + "','" + txttax.Text + "','" + txtdicountamount.Text + "','" + txttaxamount.Text + "' where orderid='" + OrderID1 + "' ";
+                                  //int update = d.saveDetails(updatequery);
+                                  string Query = "insert into customerorderdescriptions Values('" + OrderID1 + "','" + txtItemCode + "','" + txtRate + "','" + txtQuanity + "','" + txtAmoun + "','"+s+"')";
+                                  //MessageBox.Show(Query);
+
+                                  sf1.Add(Query);
+
+                              }
+                              int insertedRows4 = d.saveDetails(sf1);
+                              if (insertedRows4 > 0)
+                              {
+                                  gridsalesdelivary.AllowUserToAddRows = true;
+                                  string salesdelivary = "Insert into salesOrderDelivery values('" + id + "','true','" + dtpDate.Text + "','"+s+"')";
+                                  int insert = d.saveDetails(salesdelivary);
+                                  if (insert > 0)
+                                  {
+                                      MessageBox.Show("details save successfully");
+
+
+                                  }
+                                  else
+                                  {
+                                      MessageBox.Show("details save not successfully");
+
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
                 
             
             
-                else
-                {
-                    int id1 = Convert.ToInt32(id);
-                    int id2 = id1 + 1;
-                    string Orde = id2.ToString();
-                    string insertquery1 = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpDate.Text + "','" + txtTotalAmmount.Text + "','" + txtdiccount.Text + "','" + txtdicountamount.Text + "','" + txttax.Text + "','" + txttaxamount.Text + "','"+txtwithauttaxamount.Text+"')";
-                    int insertrows1 = d.saveDetails(insertquery1);
-                    if (insertrows1 > 0)
-                    {
+              else
+              {
+                  int id1 = Convert.ToInt32(id);
+                  int id2 = id1 + 1;
+                  string Orde = id2.ToString();
+                  string insertquery1 = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpDate.Text + "','" + txtTotalAmmount.Text + "','" + txtdiccount.Text + "','" + txtdicountamount.Text + "','" + txttax.Text + "','" + txttaxamount.Text + "','"+txtwithauttaxamount.Text+"')";
+                  int insertrows1 = d.saveDetails(insertquery1);
+                  if (insertrows1 > 0)
+                  {
 
-                        DataGridViewRowCollection rowcollection = gridsalesdelivary.Rows;
-                        List<string> show = new List<string>();
-                        for (int a = 0; a < rowcollection.Count; a++)
-                        {
-                            DataGridViewRow currentrow = rowcollection[a];
-                            DataGridViewCellCollection cellcollection = currentrow.Cells;
-                            string txtitemcode = cellcollection[0].Value.ToString();
-                            if (ls.Contains(txtitemcode))
-                            {
-                                continue;
-                            }
-                            //string txtProductName = cellcollection[1].Value.ToString();
-                            //string compnayname = cellcollection[2].Value.ToString();
-                            //string mrp = cellcollection[3].Value.ToString();
-                            string txtRate = cellcollection[4].Value.ToString();
-                            string txtQuantity = cellcollection[5].Value.ToString();
-                            string txtAmount = cellcollection[6].Value.ToString();
-                            //string orderid = txtSrNo.Text;
-                            // string updatequery = "update orderdetails set totalammount='" + txtTotalAmmount.Text + "' where orderid='" + txtRefNo.Text + "' ";
-                            // int update = d.saveDetails(updatequery);
-                            string query = "insert into customerorderdescriptions Values('" + Orde + "','" + txtitemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
+                      DataGridViewRowCollection rowcollection = gridsalesdelivary.Rows;
+                      List<string> show = new List<string>();
+                      for (int a = 0; a < rowcollection.Count; a++)
+                      {
+                          DataGridViewRow currentrow = rowcollection[a];
+                          DataGridViewCellCollection cellcollection = currentrow.Cells;
+                          string txtitemcode = cellcollection[0].Value.ToString();
+                          if (ls.Contains(txtitemcode))
+                          {
+                              continue;
+                          }
+                          //string txtProductName = cellcollection[1].Value.ToString();
+                          //string compnayname = cellcollection[2].Value.ToString();
+                          //string mrp = cellcollection[3].Value.ToString();
+                          string txtRate = cellcollection[4].Value.ToString();
+                          string txtQuantity = cellcollection[5].Value.ToString();
+                          string txtAmount = cellcollection[6].Value.ToString();
+                          //string orderid = txtSrNo.Text;
+                          // string updatequery = "update orderdetails set totalammount='" + txtTotalAmmount.Text + "' where orderid='" + txtRefNo.Text + "' ";
+                          // int update = d.saveDetails(updatequery);
+                          string query = "insert into customerorderdescriptions Values('" + Orde + "','" + txtitemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
 
-                            //int insertrow = d.saveDetails(query);
+                          //int insertrow = d.saveDetails(query);
 
-                            show.Add(query);
-                        }
+                          show.Add(query);
+                      }
 
-                        int inserirow1 = d.saveDetails(show);
-                        if (inserirow1 > 0)
-                        {
+                      int inserirow1 = d.saveDetails(show);
+                      if (inserirow1 > 0)
+                      {
 
-                            if (id5 == "")
-                            {
-                                string deleteQurry = "delete customerorderdescriptions where Orderid='" + txtRefNo.Text + "'";
-                                DataTable dt = d.getDetailByQuery(deleteQurry);
-                                //dataGridView1.DataSource = "";
-
-
-                                DataGridViewRowCollection RowCollection2 = gridsalesdelivary.Rows;
-                                List<string> sf1 = new List<string>();
-                                for (int a = 0; a < RowCollection2.Count; a++)
-                                {
-
-                                    DataGridViewRow currentRow = RowCollection2[a];
-                                    DataGridViewCellCollection cellCollection = currentRow.Cells;
-                                    string txtItemCode = cellCollection[0].Value.ToString();
-                                    if (ls.Contains(txtItemCode))
-                                    {
-                                        continue;
-                                    }
-                                    string txtRate = cellCollection[4].Value.ToString();
-                                    string txtQuanity = cellCollection[5].Value.ToString();
-                                    string txtAmoun = cellCollection[6].Value.ToString();
-                                    string OrderID1 = id;
-                                   // string updatequery = "insert into orderdetails Values('"+txtcustomercode.Text+"','"+dtpDate.Text+"','" + txtTotalAmmount.Text + "','"+txtdiccount.Text+"','"+txtdicountamount.Text+"','"+txttax.Text+"','"+txttaxamount.Text+"','" + txtwithauttaxamount.Text + "')";
-                                   // int update = d.saveDetails(updatequery);
-                                    string Query = "insert into customerorderdescriptions Values('" + OrderID1 + "','" + txtItemCode + "','" + txtRate + "','" + txtQuanity + "','" + txtAmoun + "')";
-                                    //MessageBox.Show(Query);
-
-                                    sf1.Add(Query);
-
-                                }
-                                int insertedRows4 = d.saveDetails(sf1);
-                                if (insertedRows4 > 0)
-                                {
-                                    string salesdelivary = "Insert into salesOrderDelivery values('" + Orde + "','true','" + dtpDate.Text + "','"+s+"')";
-                                    int insert = d.saveDetails(salesdelivary);
-                                    if (insert > 0)
-                                    {
-                                        MessageBox.Show("details save successfully");
-                                        panel2.Visible = true;
-                                        DialogResult result = MessageBox.Show("this page is print", "Impotant questiuon", MessageBoxButtons.YesNo);
-                                        if (result == System.Windows.Forms.DialogResult.Yes)
-                                        {
-                                            crystalReportViewer2.Visible = true;
-                                            gridsalesdelivary.AllowUserToAddRows = false;
-                                            string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
-                                            SqlConnection con = new SqlConnection(a);
-                                            con.Open();
-                                            string selectquery = "select * from salesorderdelivaryreport where Delivaryid='" + txtSrNo.Text + "'";
-                                            SqlCommand cmd = new SqlCommand(selectquery, con);
-                                            SqlDataAdapter sd = new SqlDataAdapter(cmd);
-                                            DataSet1 ds = new DataSet1();
-                                            sd.Fill(ds, "compnaydetails");
-
-                                            //CrystalReport1 cr = new CrystalReport1();
-                                            // cr.ParameterFields.Add(textBox1.Text);
-                                            // cr.Load("C:\\Users\\dineshtiwari\\Documents\\Visual Studio 2010\\Projects\\report11\\report11\\CrystalReport1.rpt");
-
-                                            CrystalReportsalesdelivary report1 = new CrystalReportsalesdelivary();
-                                            report1.SetDataSource(ds.Tables[1]);
-
-                                            crystalReportViewer2.ReportSource = report1;
-                                            crystalReportViewer2.Refresh();
-                                            con.Close();
-                                        }
-                                        if (result == System.Windows.Forms.DialogResult.No)
-                                        {
-                                            crystalReportViewer2.Visible = false;
-                                            panel2.Visible = false;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("details save not successfully");
+                          if (id5 == "")
+                          {
+                              string deleteQurry = "delete customerorderdescriptions where Orderid='" + txtRefNo.Text + "'";
+                              DataTable dt = d.getDetailByQuery(deleteQurry);
+                              //dataGridView1.DataSource = "";
 
 
-                                    }
-                                }
+                              DataGridViewRowCollection RowCollection2 = gridsalesdelivary.Rows;
+                              List<string> sf1 = new List<string>();
+                              for (int a = 0; a < RowCollection2.Count; a++)
+                              {
 
-                            }
-                        }
-                    }
-                }
+                                  DataGridViewRow currentRow = RowCollection2[a];
+                                  DataGridViewCellCollection cellCollection = currentRow.Cells;
+                                  string txtItemCode = cellCollection[0].Value.ToString();
+                                  if (ls.Contains(txtItemCode))
+                                  {
+                                      continue;
+                                  }
+                                  string txtRate = cellCollection[4].Value.ToString();
+                                  string txtQuanity = cellCollection[5].Value.ToString();
+                                  string txtAmoun = cellCollection[6].Value.ToString();
+                                  string OrderID1 = id;
+                                 // string updatequery = "insert into orderdetails Values('"+txtcustomercode.Text+"','"+dtpDate.Text+"','" + txtTotalAmmount.Text + "','"+txtdiccount.Text+"','"+txtdicountamount.Text+"','"+txttax.Text+"','"+txttaxamount.Text+"','" + txtwithauttaxamount.Text + "')";
+                                 // int update = d.saveDetails(updatequery);
+                                  string Query = "insert into customerorderdescriptions Values('" + OrderID1 + "','" + txtItemCode + "','" + txtRate + "','" + txtQuanity + "','" + txtAmoun + "')";
+                                  //MessageBox.Show(Query);
+
+                                  sf1.Add(Query);
+
+                              }
+                              int insertedRows4 = d.saveDetails(sf1);
+                              if (insertedRows4 > 0)
+                              {
+                                  string salesdelivary = "Insert into salesOrderDelivery values('" + Orde + "','true','" + dtpDate.Text + "','"+s+"')";
+                                  int insert = d.saveDetails(salesdelivary);
+                                  if (insert > 0)
+                                  {
+                                      MessageBox.Show("details save successfully");
+                                      panel2.Visible = true;
+                                      DialogResult result = MessageBox.Show("this page is print", "Impotant questiuon", MessageBoxButtons.YesNo);
+                                      if (result == System.Windows.Forms.DialogResult.Yes)
+                                      {
+                                          crystalReportViewer2.Visible = true;
+                                          gridsalesdelivary.AllowUserToAddRows = false;
+                                          string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
+                                          SqlConnection con = new SqlConnection(a);
+                                          con.Open();
+                                          string selectquery = "select * from salesorderdelivaryreport where Delivaryid='" + txtSrNo.Text + "'";
+                                          SqlCommand cmd = new SqlCommand(selectquery, con);
+                                          SqlDataAdapter sd = new SqlDataAdapter(cmd);
+                                          DataSet1 ds = new DataSet1();
+                                          sd.Fill(ds, "compnaydetails");
+
+                                          //CrystalReport1 cr = new CrystalReport1();
+                                          // cr.ParameterFields.Add(textBox1.Text);
+                                          // cr.Load("C:\\Users\\dineshtiwari\\Documents\\Visual Studio 2010\\Projects\\report11\\report11\\CrystalReport1.rpt");
+
+                                          CrystalReportsalesdelivary report1 = new CrystalReportsalesdelivary();
+                                          report1.SetDataSource(ds.Tables[1]);
+
+                                          crystalReportViewer2.ReportSource = report1;
+                                          crystalReportViewer2.Refresh();
+                                          con.Close();
+                                      }
+                                      if (result == System.Windows.Forms.DialogResult.No)
+                                      {
+                                          crystalReportViewer2.Visible = false;
+                                          panel2.Visible = false;
+                                      }
+                                  }
+                                  else
+                                  {
+                                      MessageBox.Show("details save not successfully");
+
+
+                                  }
+                              }
+
+                          }
+                      }
+                  }
+              }
             
 
-                    makeblank();
+                  makeblank();
 
                 
-                }
+              }
 
 
-                if (txtRefNo.Text != "")
-                {
-                    DataGridViewRowCollection cal = gridsalesdelivary.Rows;
-                    for (int c = 0; c < cal.Count; c++)
-                    {
-                        DataGridViewRow currentRow1 = cal[c];
-                        DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
-                        string itid = cellCollection1[0].Value.ToString();
-                        if (ls.Contains(itid))
-                        {
-                            continue;
-                        }
-                        string que = cellCollection1[5].Value.ToString();
-                        string quent = cellCollection1[6].Value.ToString();
+              if (txtRefNo.Text != "")
+              {
+                  DataGridViewRowCollection cal = gridsalesdelivary.Rows;
+                  for (int c = 0; c < cal.Count; c++)
+                  {
+                      DataGridViewRow currentRow1 = cal[c];
+                      DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
+                      string itid = cellCollection1[0].Value.ToString();
+                      if (ls.Contains(itid))
+                      {
+                          continue;
+                      }
+                      string que = cellCollection1[5].Value.ToString();
+                      string quent = cellCollection1[6].Value.ToString();
 
 
 
-                        string qurry = "select CurrentQuantity from ItemQuantityDetail where ItemId='" + itid + "'";
-                        DataTable dt = d.getDetailByQuery(qurry);
-                        string currid = "";
-                        foreach (DataRow dr in dt.Rows)
-                        {
-                            currid = dr["CurrentQuantity"].ToString();
-                        }
-                        int quent1 = Convert.ToInt32(quent);
-                        // int curentQuntity = Convert.ToInt32(que);
-                        int cuentQuantity = Convert.ToInt32(currid);
-                        int lastQuantity = cuentQuantity - quent1;
-                        // int resivquenty = lastQuantity ;
-                        // string currid1 = resivquenty.ToString();
-                        string updateQurry = "update ItemQuantityDetail set CurrentQuantity='" + lastQuantity + "'where ItemId='" + itid + "'";
-                        int insertedRows2 = d.saveDetails(updateQurry);
-                    }
-                    string deletequrri1 = "delete customerorderdescriptions where OrderId='" + txtRefNo.Text + "'";
-                    DataTable dt1 = d.getDetailByQuery(deletequrri1);
-                    counter = 0;
-                    if (counter == 0)
-                    {
-                        DataGridViewRowCollection rowcollection = gridsalesdelivary.Rows;
-                        List<string> show = new List<string>();
-                        for (int a = 0; a < rowcollection.Count; a++)
-                        {
-                            DataGridViewRow currentrow = rowcollection[a];
-                            DataGridViewCellCollection cellcollection = currentrow.Cells;
-                            string txtitemcode = cellcollection[0].Value.ToString();
-                            if (ls.Contains(txtitemcode))
-                            {
-                                continue;
-                            }
-                            // string txtproductname = cellcollection[1].Value.ToString();
-                            string txtRate = cellcollection[4].Value.ToString();
-                            string txtQuantity = cellcollection[6].Value.ToString();
-                            string txtAmount = cellcollection[7].Value.ToString();
-                            string Orderid = txtRefNo.Text;
-                            //string updatequery = "update orderdetails set totalammount='" + txtTotalAmmount.Text + "','" + txtwithauttaxamount.Text + "','" + txtTotalAmmount.Text + "','" + txtdiccount.Text + "','" + txttax.Text + "','" + txtdicountamount.Text + "','" + txttaxamount.Text + "' where orderid='" + Orderid + "' ";
-                            //int update = d.saveDetails(updateque7ry);
-                            string query = "insert into customerorderdescriptions Values('" + Orderid + "','" + txtitemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
+                      string qurry = "select CurrentQuantity from ItemQuantityDetail where ItemId='" + itid + "'";
+                      DataTable dt = d.getDetailByQuery(qurry);
+                      string currid = "";
+                      foreach (DataRow dr in dt.Rows)
+                      {
+                          currid = dr["CurrentQuantity"].ToString();
+                      }
+                      int quent1 = Convert.ToInt32(quent);
+                      // int curentQuntity = Convert.ToInt32(que);
+                      int cuentQuantity = Convert.ToInt32(currid);
+                      int lastQuantity = cuentQuantity - quent1;
+                      // int resivquenty = lastQuantity ;
+                      // string currid1 = resivquenty.ToString();
+                      string updateQurry = "update ItemQuantityDetail set CurrentQuantity='" + lastQuantity + "'where ItemId='" + itid + "'";
+                      int insertedRows2 = d.saveDetails(updateQurry);
+                  }
+                  string deletequrri1 = "delete customerorderdescriptions where OrderId='" + txtRefNo.Text + "'";
+                  DataTable dt1 = d.getDetailByQuery(deletequrri1);
+                  counter = 0;
+                  if (counter == 0)
+                  {
+                      DataGridViewRowCollection rowcollection = gridsalesdelivary.Rows;
+                      List<string> show = new List<string>();
+                      for (int a = 0; a < rowcollection.Count; a++)
+                      {
+                          DataGridViewRow currentrow = rowcollection[a];
+                          DataGridViewCellCollection cellcollection = currentrow.Cells;
+                          string txtitemcode = cellcollection[0].Value.ToString();
+                          if (ls.Contains(txtitemcode))
+                          {
+                              continue;
+                          }
+                          // string txtproductname = cellcollection[1].Value.ToString();
+                          string txtRate = cellcollection[4].Value.ToString();
+                          string txtQuantity = cellcollection[6].Value.ToString();
+                          string txtAmount = cellcollection[7].Value.ToString();
+                          string Orderid = txtRefNo.Text;
+                          //string updatequery = "update orderdetails set totalammount='" + txtTotalAmmount.Text + "','" + txtwithauttaxamount.Text + "','" + txtTotalAmmount.Text + "','" + txtdiccount.Text + "','" + txttax.Text + "','" + txtdicountamount.Text + "','" + txttaxamount.Text + "' where orderid='" + Orderid + "' ";
+                          //int update = d.saveDetails(updateque7ry);
+                          string query = "insert into customerorderdescriptions Values('" + Orderid + "','" + txtitemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
 
-                            show.Add(query);
-                        }
+                          show.Add(query);
+                      }
 
-                        int inserirow1 = d.saveDetails(show);
-                        if (inserirow1 > 0)
-                        {
-                            string insertquery2 = "insert into salesOrderDelivery values('" + txtRefNo.Text + "','true','" + dtpDate.Text + "','"+txtRefNo.Text+"')";
-                            int insert = d.saveDetails(insertquery2);
+                      int inserirow1 = d.saveDetails(show);
+                      if (inserirow1 > 0)
+                      {
+                          string insertquery2 = "insert into salesOrderDelivery values('" + txtRefNo.Text + "','true','" + dtpDate.Text + "','"+txtRefNo.Text+"')";
+                          int insert = d.saveDetails(insertquery2);
 
-                            string insertquery1 = "update orderdetails set Discount='" + txtdiccount.Text + "',Discountamount='" + txtdicountamount.Text + "',Tax='" + txttax.Text + "',Taxamount='" + txttaxamount.Text + "',WithautTaxamount='"+txtwithauttaxamount.Text+"' where orderid='" + txtRefNo.Text + "'";
-                            int insertrows1 = d.saveDetails(insertquery1);
+                          string insertquery1 = "update orderdetails set Discount='" + txtdiccount.Text + "',Discountamount='" + txtdicountamount.Text + "',Tax='" + txttax.Text + "',Taxamount='" + txttaxamount.Text + "',WithautTaxamount='"+txtwithauttaxamount.Text+"' where orderid='" + txtRefNo.Text + "'";
+                          int insertrows1 = d.saveDetails(insertquery1);
 
-                            if (insert > 0)
-                            {
-                                panel2.Visible = true;
-                                DialogResult result = MessageBox.Show("this page is print", "Impotant questiuon", MessageBoxButtons.YesNo);
-                                if (result == System.Windows.Forms.DialogResult.Yes)
-                                {
-                                    crystalReportViewer2.Visible = true;
-                                    gridsalesdelivary.AllowUserToAddRows = false;
-                                    string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
-                                    SqlConnection con = new SqlConnection(a);
-                                    con.Open();
-                                    string selectquery = "select * from salesorderdelivaryreport where Delivaryid='" + txtSrNo.Text + "'";
-                                    SqlCommand cmd = new SqlCommand(selectquery, con);
-                                    SqlDataAdapter sd = new SqlDataAdapter(cmd);
-                                    DataSet1 ds = new DataSet1();
-                                    sd.Fill(ds, "compnaydetails");
+                          if (insert > 0)
+                          {
+                              panel2.Visible = true;
+                              DialogResult result = MessageBox.Show("this page is print", "Impotant questiuon", MessageBoxButtons.YesNo);
+                              if (result == System.Windows.Forms.DialogResult.Yes)
+                              {
+                                  crystalReportViewer2.Visible = true;
+                                  gridsalesdelivary.AllowUserToAddRows = false;
+                                  string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
+                                  SqlConnection con = new SqlConnection(a);
+                                  con.Open();
+                                  string selectquery = "select * from salesorderdelivaryreport where Delivaryid='" + txtSrNo.Text + "'";
+                                  SqlCommand cmd = new SqlCommand(selectquery, con);
+                                  SqlDataAdapter sd = new SqlDataAdapter(cmd);
+                                  DataSet1 ds = new DataSet1();
+                                  sd.Fill(ds, "compnaydetails");
 
-                                    //CrystalReport1 cr = new CrystalReport1();
-                                    // cr.ParameterFields.Add(textBox1.Text);
-                                    // cr.Load("C:\\Users\\dineshtiwari\\Documents\\Visual Studio 2010\\Projects\\report11\\report11\\CrystalReport1.rpt");
+                                  //CrystalReport1 cr = new CrystalReport1();
+                                  // cr.ParameterFields.Add(textBox1.Text);
+                                  // cr.Load("C:\\Users\\dineshtiwari\\Documents\\Visual Studio 2010\\Projects\\report11\\report11\\CrystalReport1.rpt");
 
-                                    CrystalReportsalesdelivary2 report1 = new CrystalReportsalesdelivary2();
-                                    report1.SetDataSource(ds.Tables[1]);
+                                  CrystalReportsalesdelivary2 report1 = new CrystalReportsalesdelivary2();
+                                  report1.SetDataSource(ds.Tables[1]);
 
-                                    crystalReportViewer2.ReportSource = report1;
-                                    crystalReportViewer2.Refresh();
-                                    con.Close();
-                                }
-                                if (result == System.Windows.Forms.DialogResult.No)
-                                {
-                                    crystalReportViewer2.Visible = false;
-                                    panel2.Visible = false;
-                                }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("details save not successfully");
-                                }
+                                  crystalReportViewer2.ReportSource = report1;
+                                  crystalReportViewer2.Refresh();
+                                  con.Close();
+                              }
+                              if (result == System.Windows.Forms.DialogResult.No)
+                              {
+                                  crystalReportViewer2.Visible = false;
+                                  panel2.Visible = false;
+                              }
+                              }
+                              else
+                              {
+                                  MessageBox.Show("details save not successfully");
+                              }
 
-                            }
-                        }
-                    }
-                    makeblank();
-                    int value = Convert.ToInt32(txtSrNo.Text);
-                    int value1 = value + 1;
-                    txtSrNo.Text = value1.ToString();
-            
+                          }
+                      }
+                  }
+                  makeblank();
+                  int value = Convert.ToInt32(txtSrNo.Text);
+                  int value1 = value + 1;
+                  txtSrNo.Text = value1.ToString();
+          */
 
-                }
+        //}
         public void createnewsave()
         {
             gridsalesdelivary.AllowUserToAddRows = false;
@@ -1236,6 +1247,8 @@ namespace WindowsFormsApplication1
                                     int insert = d.saveDetails(salesdelivary);
                                     if (insert > 0)
                                     {
+                                        string insertQurry = "insert into SalesPaymentDetailes Values('" + txtInvoiceid.Text + "','" + CashAmount.Text + "','" + txtCreditAmount.Text + "','" + txtDebitBankName.Text + "','" + txtCardNumber.Text + "','" + CmbCardType.SelectedItem.ToString() + "','" + txtChequeAmount.Text + "','" + txtChequeBankName.Text + "','" + txtChequeNumber.Text + "','" + dateTimePicker1.Value.ToString() + "','" + txtEwalletAmount.Text + "','" + EWalletCompanyName.Text + "','" + txtTransactionNumber.Text + "','" + dateTimePicker2.Value.ToString() + "','" + txtCouponAmount.Text + "','" + CmbCompany.SelectedItem.ToString() + "','" + txtInvoiceAmount.Text + "','" + txtTotalAmount1.Text + "','" + txtBalance.Text + "','" + txtRturned.Text + "','" + txtNetAmount.Text + "')";
+                                        int insertedRows = d.saveDetails(insertQurry);
                                         MessageBox.Show("details save successfully");
                                         panel2.Visible = true;
                                         DialogResult result = MessageBox.Show("this page is print", "Impotant questiuon", MessageBoxButtons.YesNo);
@@ -1397,16 +1410,16 @@ namespace WindowsFormsApplication1
             int value = Convert.ToInt32(txtSrNo.Text);
             int value1 = value + 1;
             txtSrNo.Text = value1.ToString();
-            
+
         }
-            
-     
+
+
         private void setAutoCompleteMode(TextBox txt, string ColumnName, DataTable dt)
         {
             if (dt != null && dt.Rows.Count > 0)
             {
                 AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
-               foreach(DataRow dr in dt.Rows)
+                foreach (DataRow dr in dt.Rows)
                 {
                     string value = dr[ColumnName].ToString();
                     collection.Add(value);
@@ -1432,7 +1445,8 @@ namespace WindowsFormsApplication1
 
         private void ButSelectPurchaseOrder_Click(object sender, EventArgs e)
         {
-
+            pnlSalesPayment.Visible = false;
+            crystalReportViewer2.Visible = false;
             string selectquery1 = "select  CustId,date,Totalammount from orderdetails";
             DataTable dt1 = d.getDetailByQuery(selectquery1);
             string val = " ";
@@ -1451,7 +1465,7 @@ namespace WindowsFormsApplication1
             comsearchvalue.Focus();
             txtcustomercode.TabStop = false;
             butcustomercode.TabStop = false;
-            
+
         }
 
         private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
@@ -1460,15 +1474,15 @@ namespace WindowsFormsApplication1
             {
                 butAddItem.Enabled = true;
                 butAddItem.Focus();
-               
+
             }
 
             if (char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
             }
-          
-          
+
+
             else
             {
                 if (e.KeyChar == '\b')
@@ -1523,7 +1537,7 @@ namespace WindowsFormsApplication1
 
         private void txtcustomercode_TextChanged(object sender, EventArgs e)
         {
-           // tab1();
+            // tab1();
             string selectquery = "select CustName,CustCompName,CustAddress,CustPhone,CustMobile,CustFax from CustomerDetails Where Custid='" + txtcustomercode.Text + "'";
             DataTable dt = d.getDetailByQuery(selectquery);
             if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
@@ -1537,17 +1551,17 @@ namespace WindowsFormsApplication1
                     txtMobile.Text = dr[4].ToString();
                     txtFax.Text = dr[5].ToString();
                 }
-                }
-                else
-                {
-                    txtCustomerName.Text = "";
-                    txtCompName.Text = "";
-                    txtAddress.Text = "";
-                    txtPhone.Text = "";
-                    txtMobile.Text = "";
-                    txtFax.Text = "";
-                }
             }
+            else
+            {
+                txtCustomerName.Text = "";
+                txtCompName.Text = "";
+                txtAddress.Text = "";
+                txtPhone.Text = "";
+                txtMobile.Text = "";
+                txtFax.Text = "";
+            }
+        }
 
         private void gridsalesdelivary_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -1654,7 +1668,7 @@ namespace WindowsFormsApplication1
                     else
                     {
                         MessageBox.Show("please select your correct row");
-                     gridsalesdelivary.Rows[e.RowIndex].Cells[0].Value = "";
+                        gridsalesdelivary.Rows[e.RowIndex].Cells[0].Value = "";
                     }
 
                 }
@@ -1694,10 +1708,10 @@ namespace WindowsFormsApplication1
             {
                 butRemoveItem.Enabled = true;
             }
-          
-             if (e.KeyChar == (char)Keys.Escape)
+
+            if (e.KeyChar == (char)Keys.Escape)
             {
-                txtItemCode.Enabled= true;
+                txtItemCode.Enabled = true;
                 txtItemCode.Focus();
                 gridsalesdelivary.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
                 txtItemCode.TabIndex = 1;
@@ -1705,9 +1719,9 @@ namespace WindowsFormsApplication1
                 ButSelectPurchaseOrder.TabStop = true;
                 butClose.TabStop = true;
             }
-             if (e.KeyChar == (char)Keys.Enter)
-             {
-                if(txtRefNo.Text=="")
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if (txtRefNo.Text == "")
                 {
                     if (addToCartTable.Rows.Count > 0)
                     {
@@ -1729,14 +1743,14 @@ namespace WindowsFormsApplication1
                         //addToCartTable.Rows.RemoveAt(index-1);
                         gridsalesdelivary.Rows[index - 1].DefaultCellStyle.Font = new Font(new FontFamily("Microsoft Sans Serif"), 9.00F, FontStyle.Strikeout);
                         gridsalesdelivary.Rows[index - 1].DefaultCellStyle.ForeColor = Color.Red;
-                      string itemId = gridsalesdelivary.Rows[index - 1].Cells[0].Value.ToString();// I44
+                        string itemId = gridsalesdelivary.Rows[index - 1].Cells[0].Value.ToString();// I44
 
                         ls.Add(itemId);
 
                         gridsalesdelivary.DataSource = addToCartTable;
                     }
-                 }
-                   if(txtRefNo.Text!="")
+                }
+                if (txtRefNo.Text != "")
                 {
                     if (addToCartTable.Rows.Count > 0)
                     {
@@ -1764,41 +1778,41 @@ namespace WindowsFormsApplication1
 
                         gridsalesdelivary.DataSource = addToCartTable;
                     }
-           
-                     if (addToCartTable.Rows.Count == 0)
-                     {
-                         txtTotalAmmount.Text = "0.0";
-                         txtcst.Text = "0.0";
-                     }
-                     if (gridsalesdelivary.Rows.Count > 0)
-                     {
-                         butRemoveItem.Enabled = true;
-                         gridsalesdelivary.Rows[gridsalesdelivary.Rows.Count - 1].Selected = true;
-                      
-                       
-                     }
-                     if (gridsalesdelivary.Rows.Count == 0)
-                     {
-                         txtItemCode.Enabled = true;
-                         txtItemCode.Focus();
-                     }
-                     if (gridsalesdelivary.Rows.Count > 0)
-                     {
-                         txtdiccount.Text = "0";
-                         txtdiccount.ReadOnly = true;
-                     }
-                     if (gridsalesdelivary.Rows.Count > 1)
-                     {
-                         txtdiccount.ReadOnly = false;
-                     }
-                     else
-                     {
-                         butRemoveItem.Enabled = false;
-                     }
-                     butRemoveItem.Enabled = false;
 
-                 }
-             }
+                    if (addToCartTable.Rows.Count == 0)
+                    {
+                        txtTotalAmmount.Text = "0.0";
+                        txtcst.Text = "0.0";
+                    }
+                    if (gridsalesdelivary.Rows.Count > 0)
+                    {
+                        butRemoveItem.Enabled = true;
+                        gridsalesdelivary.Rows[gridsalesdelivary.Rows.Count - 1].Selected = true;
+
+
+                    }
+                    if (gridsalesdelivary.Rows.Count == 0)
+                    {
+                        txtItemCode.Enabled = true;
+                        txtItemCode.Focus();
+                    }
+                    if (gridsalesdelivary.Rows.Count > 0)
+                    {
+                        txtdiccount.Text = "0";
+                        txtdiccount.ReadOnly = true;
+                    }
+                    if (gridsalesdelivary.Rows.Count > 1)
+                    {
+                        txtdiccount.ReadOnly = false;
+                    }
+                    else
+                    {
+                        butRemoveItem.Enabled = false;
+                    }
+                    butRemoveItem.Enabled = false;
+
+                }
+            }
         }
 
         private void txtcustomercode_KeyPress(object sender, KeyPressEventArgs e)
@@ -1985,7 +1999,7 @@ namespace WindowsFormsApplication1
                 txtRefNo.Text = val;
 
             }
-          
+
         }
 
         private void dataGridView2_KeyPress_1(object sender, KeyPressEventArgs e)
@@ -2044,7 +2058,7 @@ namespace WindowsFormsApplication1
                 butClose.TabStop = true;
                 txtcustomercode.TabStop = true;
                 butcustomercode.TabStop = true;
-               
+
             }
         }
 
@@ -2132,14 +2146,14 @@ namespace WindowsFormsApplication1
             {
                 addToCartTable.Columns.RemoveAt(6);
                 addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
-               addToCartTable.Columns.Add(new DataColumn("Amount"));
+                addToCartTable.Columns.Add(new DataColumn("Amount"));
                 txtRefNo.ReadOnly = true;
                 string selectquery2 = "select Orderid from salesOrderDelivery where Orderid='" + txtRefNo.Text + "'";
                 DataTable dt1 = d.getDetailByQuery(selectquery2);
                 if (dt1 != null && dt1.Rows != null && dt1.Rows.Count > 0)
                 {
                     MessageBox.Show("order details is completed");
-                   // txtRefNo.Text = "";
+                    // txtRefNo.Text = "";
                     //gridsalesdelivary.DataSource = "";
                 }
 
@@ -2171,19 +2185,19 @@ namespace WindowsFormsApplication1
                     butSaveButton.Visible = true;
                     string select = "select vo.orderid,vo.custid,vod.ItemId,vo.Discount from orderdetails vo join customerorderdescriptions vod on vod.Orderid=vo.Orderid where vo.Orderid ='" + txtRefNo.Text + "'";
                     DataTable dt = d.getDetailByQuery(select);
-                    string a="";
+                    string a = "";
                     if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
                     {
                         DataRow dr = dt.Rows[0];
                         a = dr[1].ToString();
 
                         string discount = dr[3].ToString();
-                       // txtcst.Text = discount;
-                    //}
+                        // txtcst.Text = discount;
+                        //}
                         string selectquery = "select  c.custId, c.CustName,c.CustCompName,c.CustAddress,c.CustPhone,c.CustMobile,c.CustFax from CustomerDetails c  where  c.custId='" + a + "'";
                         //DataTable dt2 = d.getDetailByQuery(selectquery);
                         SetVendor(selectquery);
-                   // "select it.itemid,iq.ItemName,it.price,it.quantity,it.totalammount from customerorderdescriptions it join ItemDetails iq on it.ItemId=iq.ItemId  where orderid='" + txtRefNo.Text + "'"
+                        // "select it.itemid,iq.ItemName,it.price,it.quantity,it.totalammount from customerorderdescriptions it join ItemDetails iq on it.ItemId=iq.ItemId  where orderid='" + txtRefNo.Text + "'"
                         string selectItem = "select cod.ItemId,ad.ItemName,ad.ItemCompName,cast(ipd.MrpPrice as numeric(38,2)),cast(cod.price as numeric(38,2)),cod.quantity,cast(cod.totalammount as numeric(38,2)) from orderdetails od join customerorderdescriptions cod on od.orderid=cod.orderid join ItemDetails ad on cod.ItemId=ad.ItemId join ItemPriceDetail ipd on ad.ItemId=ipd.ItemId where od.orderid='" + txtRefNo.Text + "'";
                         DataTable dt3 = d.getDetailByQuery(selectItem);
                         int totalrowcount = addToCartTable.Rows.Count;
@@ -2224,7 +2238,7 @@ namespace WindowsFormsApplication1
                             addToCartTable.Rows.Add(dr1);
 
                         }
-                       // gridsalesdelivary.DataSource = null;
+                        // gridsalesdelivary.DataSource = null;
                         gridsalesdelivary.DataSource = addToCartTable;
                         txtTotalAmmount.Text = totel.ToString("###0.00");
 
@@ -2234,7 +2248,7 @@ namespace WindowsFormsApplication1
                         txtdiccount.ReadOnly = false;
                     }
                 }
-        
+
             }
             if (Char.IsLetterOrDigit(e.KeyChar))
             {
@@ -2353,7 +2367,7 @@ namespace WindowsFormsApplication1
 
             if (e.KeyChar == (char)Keys.Enter)
             {
-               
+
                 if (txtRefNo.Text == "")
                 {
 
@@ -2384,45 +2398,45 @@ namespace WindowsFormsApplication1
                 }
 
 
-                    if (txtRefNo.Text != "")
+                if (txtRefNo.Text != "")
+                {
+
+                    foreach (DataRow dr in addToCartTable.Rows)
                     {
-
-                        foreach (DataRow dr in addToCartTable.Rows)
+                        string itemid = dr[0].ToString();
+                        if (ls.Contains(itemid))
                         {
-                            string itemid = dr[0].ToString();
-                            if (ls.Contains(itemid))
-                            {
-                                continue;
-                            }
-                            totalAmount += Convert.ToDouble(dr[7].ToString());
+                            continue;
                         }
-                       double s1 = totalAmount;
-                        string discount1 = txtdiccount.Text;
+                        totalAmount += Convert.ToDouble(dr[7].ToString());
+                    }
+                    double s1 = totalAmount;
+                    string discount1 = txtdiccount.Text;
 
-                        double amount1 = 0.0;
+                    double amount1 = 0.0;
 
-                        if (double.TryParse(discount1, out amount1))
-                        {
-                            double totaldiscount = Convert.ToDouble(discount1);
-                            totalAmount = totalAmount - ((totalAmount * totaldiscount) / 100);
-                            txtTotalAmmount.Text = totalAmount.ToString("###0.00");
-                            txtwithauttaxamount.Text = s1.ToString();
-                            double dis = s1 * totaldiscount / 100;
-                            txtdicountamount.Text = dis.ToString();
+                    if (double.TryParse(discount1, out amount1))
+                    {
+                        double totaldiscount = Convert.ToDouble(discount1);
+                        totalAmount = totalAmount - ((totalAmount * totaldiscount) / 100);
+                        txtTotalAmmount.Text = totalAmount.ToString("###0.00");
+                        txtwithauttaxamount.Text = s1.ToString();
+                        double dis = s1 * totaldiscount / 100;
+                        txtdicountamount.Text = dis.ToString();
 
-                        }
                     }
                 }
             }
+        }
 
-            
-           
-        
+
+
+
 
         private void txtTotalAmmount_TextChanged(object sender, EventArgs e)
         {
             double totalAmount = 0.00;
-           // txtTotalAmmount.Text = "0";
+            // txtTotalAmmount.Text = "0";
             if (txtTotalAmmount.Text == "")
             {
                 txtTotalAmmount.Text = "0";
@@ -2448,7 +2462,7 @@ namespace WindowsFormsApplication1
                 txtwithauttaxamount.Text = withauttax.ToString();
                 txtwithauttaxamount.Text = s.ToString();
             }
-            
+
 
             if (txtRefNo.Text != "")
             {
@@ -2466,8 +2480,8 @@ namespace WindowsFormsApplication1
                 txttaxamount.Text = totaltax1.ToString();
                 double dis2 = Convert.ToDouble(txtdiccount.Text);
                 double dis3 = s1 * dis2 / 100;
-                double withauttax1 = total1 - dis3 ;
-                  
+                double withauttax1 = total1 - dis3;
+
                 txtwithauttaxamount.Text = withauttax1.ToString();
                 txtwithauttaxamount.Text = s1.ToString();
             }
@@ -2485,9 +2499,132 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            pnlSalesPayment.Visible = false;
+            panel2.Visible = false;
+
         }
 
-      
+        private void pnlSalesPayment_Paint(object sender, PaintEventArgs e)
+        {
+            txtInvoiceid.Text = txtSrNo.Text;
+            txtInvoiceAmount.Text = txtTotalAmmount.Text + .00;
+        }
+
+        private void CashAmount_Leave(object sender, EventArgs e)
+        {
+            if (CashAmount.Text == "")
+            {
+                CashAmount.Text = "0.00";
+            }
+            if (CashAmount.Text != "0.00")
+            {
+                //CashAmount.Text = "";
+                string amount = CashAmount.Text + ".00";
+                //CashAmount.Text = amount;
+                txtTotalAmount1.Text = CashAmount.Text;
+            }
+        }
+
+        private void txtCreditAmount_Leave(object sender, EventArgs e)
+        {
+            if (txtCreditAmount.Text == "")
+            {
+                txtCreditAmount.Text = "0.00";
+            }
+            if (txtCreditAmount.Text != "0.00")
+            {
+                string amount = txtCreditAmount.Text + ".00";
+                txtCreditAmount.Text = amount;
+                Double Amount = Convert.ToDouble(txtCreditAmount.Text);
+                Double Amount1 = Convert.ToDouble(CashAmount.Text);
+                Double amount2 = Amount + Amount1;
+                string Amount2 = amount2.ToString();
+                txtTotalAmount1.Text = Amount2 + ".00";
+            }
+        }
+
+        private void txtChequeAmount_Leave(object sender, EventArgs e)
+        {
+            if (txtChequeAmount.Text == "")
+            {
+                txtChequeAmount.Text = "0.00";
+            }
+            if (txtChequeAmount.Text != "0.00")
+            {
+                string amount = txtChequeAmount.Text + ".00";
+                txtChequeAmount.Text = amount;
+                //txtNetAmount.Text = amount;
+                Double Amount = Convert.ToDouble(txtCreditAmount.Text);
+                Double Amount1 = Convert.ToDouble(CashAmount.Text);
+                Double Amount3 = Convert.ToDouble(txtChequeAmount.Text);
+                Double amount2 = Amount + Amount1 + Amount3;
+                string Amount2 = amount2.ToString();
+                txtTotalAmount1.Text = Amount2 + ".00";
+            }
+        }
+
+        private void txtEwalletAmount_Leave(object sender, EventArgs e)
+        {
+            if (txtEwalletAmount.Text == "")
+            {
+                txtEwalletAmount.Text = "0.00";
+            }
+            if (txtEwalletAmount.Text != "0.00")
+            {
+                string amount = txtEwalletAmount.Text + ".00";
+                txtEwalletAmount.Text = amount;
+                Double Amount = Convert.ToDouble(txtCreditAmount.Text);
+                Double Amount1 = Convert.ToDouble(CashAmount.Text);
+                Double Amount3 = Convert.ToDouble(txtChequeAmount.Text);
+                Double Amount4 = Convert.ToDouble(txtEwalletAmount.Text);
+                Double amount2 = Amount + Amount1 + Amount3 + Amount4;
+                string Amount2 = amount2.ToString();
+                txtTotalAmount1.Text = Amount2 + ".00";
+            }
+        }
+
+        private void txtCouponAmount_Leave(object sender, EventArgs e)
+        {
+            if (txtCouponAmount.Text == "")
+            {
+                txtCouponAmount.Text = "0.00";
+            }
+            if (txtCouponAmount.Text != "0.00")
+            {
+                string amount = txtCouponAmount.Text + ".00";
+                //txtCouponAmount.Text = amount;
+                Double Amount = Convert.ToDouble(txtCreditAmount.Text);
+                Double Amount1 = Convert.ToDouble(CashAmount.Text);
+                Double Amount3 = Convert.ToDouble(txtChequeAmount.Text);
+                Double Amount4 = Convert.ToDouble(txtEwalletAmount.Text);
+                Double Amount5 = Convert.ToDouble(txtCouponAmount.Text);
+                Double amount2 = Amount + Amount1 + Amount3 + Amount4 + Amount5;
+                string Amount2 = amount2.ToString();
+                txtTotalAmount1.Text = Amount2 + ".00";
+            }
+        }
+
+        private void txtTotalAmount1_TextChanged(object sender, EventArgs e)
+        {
+            txtNetAmount.Text = txtTotalAmount1.Text;
+            Double Amount = Convert.ToDouble(txtTotalAmount1.Text);
+            Double Amount1 = Convert.ToDouble(txtInvoiceAmount.Text);
+            Double Amount2 = Amount1 - Amount;
+            string Amount3 = Amount2.ToString();
+            txtBalance.Text = Amount2 + ".00";
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            createnewsave();
+            crystalReportViewer2.Visible = false;
+        }
+
     }
+
+
+}
 
 
