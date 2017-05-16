@@ -1482,8 +1482,16 @@ namespace WindowsFormsApplication1
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                butAddItem.Enabled = true;
-                butAddItem.Focus();
+                if (txtQuantity.Text == "0")
+                {
+                    MessageBox.Show("please select your correct quantity");
+                    butAddItem.Enabled = false;
+                }
+                if (txtQuantity.Text != "0")
+                {
+                    butAddItem.Enabled = true;
+                    butAddItem.Focus();
+                }
 
             }
 
