@@ -977,7 +977,6 @@
             this.txtInvoiceAmount.Name = "txtInvoiceAmount";
             this.txtInvoiceAmount.Size = new System.Drawing.Size(113, 23);
             this.txtInvoiceAmount.TabIndex = 1;
-            this.txtInvoiceAmount.Text = "0.00";
             this.txtInvoiceAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label21

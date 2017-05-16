@@ -926,7 +926,7 @@ namespace WindowsFormsApplication1
                                     {
                                         DeliveryReportViewer.Visible = true;
                                         panel2.Visible = true;
-                                        string conntion = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
+                                        string conntion = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=true;";
                                         SqlConnection con = new SqlConnection(conntion);
                                         string selectqurry = "select * from purchesDelivery where Deliveryid='" + txtSrNo.Text + "'";
                                         SqlCommand cmd = new SqlCommand(selectqurry, con);
@@ -2095,7 +2095,7 @@ namespace WindowsFormsApplication1
         private void pnlPaymentDetail_Paint(object sender, PaintEventArgs e)
         {
             txtInvoiceid.Text = txtSrNo.Text;
-            txtInvoiceAmount.Text = txttotalAmount.Text + ".00";
+            txtInvoiceAmount.Text = txttotalAmount.Text;
         }
 
         private void CashAmount_TextChanged(object sender, EventArgs e)
@@ -2181,11 +2181,11 @@ namespace WindowsFormsApplication1
         {
             if (txtCouponAmount.Text == "")
             {
-                txtCouponAmount.Text = "0.00";
+                txtCouponAmount.Text = "";
             }
             if (txtCouponAmount.Text != "0.00")
             {
-                string amount = txtCouponAmount.Text + ".00";
+                string amount = txtCouponAmount.Text;
                 //txtCouponAmount.Text = amount;
                 Double Amount = Convert.ToDouble(txtCreditAmount.Text);
                 Double Amount1 = Convert.ToDouble(CashAmount.Text);
@@ -2194,7 +2194,7 @@ namespace WindowsFormsApplication1
                 Double Amount5 = Convert.ToDouble(txtCouponAmount.Text);
                 Double amount2 = Amount + Amount1 + Amount3 + Amount4 + Amount5;
                 string Amount2 = amount2.ToString();
-                txtTotalAmount1.Text = Amount2 + ".00";
+                txtTotalAmount1.Text = Amount2.ToString();
             }
         }
 
@@ -2205,7 +2205,7 @@ namespace WindowsFormsApplication1
             Double Amount1 = Convert.ToDouble(txtInvoiceAmount.Text);
             Double Amount2 = Amount1 - Amount;
             string Amount3 = Amount2.ToString();
-            txtBalance.Text = Amount2 + ".00";
+            txtBalance.Text = Amount2.ToString();
         }
 
         private void CashAmount_KeyPress(object sender, KeyPressEventArgs e)
