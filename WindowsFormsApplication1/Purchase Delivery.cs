@@ -923,31 +923,15 @@ namespace WindowsFormsApplication1
                                     int insertedRows = dbMainClass.saveDetails(insertQurry1);
                                     if (insertedRows > 0)
                                     {
-<<<<<<< HEAD
-                                        DeliveryReportViewer.Visible = true;
-                                        panel2.Visible = true;
-                                        string conntion = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=true;";
-                                        SqlConnection con = new SqlConnection(conntion);
-                                        string selectqurry = "select * from purchesDelivery where Deliveryid='" + txtSrNo.Text + "'";
-                                        SqlCommand cmd = new SqlCommand(selectqurry, con);
-                                        SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                                        PurchesDelivery ds = new PurchesDelivery();
-                                        sda.Fill(ds, "purchesDelivery");
-                                        DeliveryPage cryRpt = new DeliveryPage();
-                                        //ReportDocument cryRpt = new ReportDocument();
-                                        //cryRpt.Load("C:\\Users\\Umesh\\Documents\\visual studio 2010\\Projects\\WindowsFormsApplication5\\WindowsFormsApplication5\\PurchesCrystalReport.rpt");
-                                        cryRpt.SetDataSource(ds.Tables[1]);
-                                        DeliveryReportViewer.ReportSource = cryRpt;
-                                        DeliveryReportViewer.Refresh();
-=======
+
                                         MessageBox.Show("Details Saved Successfully");
                                         DialogResult result1 = MessageBox.Show("This Page Print", "Important Question", MessageBoxButtons.YesNo);
                                         if (result1 == System.Windows.Forms.DialogResult.Yes)
                                         {
                                             DeliveryReportViewer.Visible = true;
                                             panel2.Visible = true;
-                                            string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
-                                            SqlConnection con = new SqlConnection(conntion);
+                                            //string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
+                                            SqlConnection con = dbMainClass.openConnection();//new SqlConnection(conntion);
                                             string selectqurry = "select * from purchesDelivery where Deliveryid='" + txtSrNo.Text + "'";
                                             SqlCommand cmd = new SqlCommand(selectqurry, con);
                                             SqlDataAdapter sda = new SqlDataAdapter(cmd);
@@ -970,7 +954,7 @@ namespace WindowsFormsApplication1
 
 
                                         dataGridView1.AllowUserToAddRows = true;
->>>>>>> 4ca456349fbf8b82a543cafb0d92813078a2a129
+
                                     }
                                 }
                                 else
@@ -1071,8 +1055,8 @@ namespace WindowsFormsApplication1
                                     {
                                         DeliveryReportViewer.Visible = true;
                                         panel2.Visible = true;
-                                        string conntion = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=true;";
-                                        SqlConnection con = new SqlConnection(conntion);
+                                        //string conntion = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=true;";
+                                        SqlConnection con = dbMainClass.openConnection(); //new SqlConnection(conntion);
                                         string selectqurry = "select * from purchesDelivery where Deliveryid='" + txtSrNo.Text + "'";
                                         SqlCommand cmd = new SqlCommand(selectqurry, con);
                                         SqlDataAdapter sda = new SqlDataAdapter(cmd);
