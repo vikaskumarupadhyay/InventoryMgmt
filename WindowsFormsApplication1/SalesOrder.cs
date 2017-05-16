@@ -240,12 +240,12 @@ namespace WindowsFormsApplication1
 
                 else if (quantity > g)
                 {
-
-                    int que = maxItemQuantity;
-                    quantity = Convert.ToInt32(txtQuantity.Text);
-                    double rate = Convert.ToDouble(txtRate.Text);
-                    txtAmount.Text = (quantity * rate).ToString("###0.00");
-                    //MessageBox.Show("Quantity is not available");
+                    //int que = maxItemQuantity;
+                    //quantity = Convert.ToInt32(txtQuantity.Text);
+                    //double rate = Convert.ToDouble(txtRate.Text);
+                    //txtAmount.Text = (quantity * rate).ToString("###0.00");
+                    MessageBox.Show("Quantity is not available");
+                    txtQuantity.Text = "0";
                     //txtQuantity.Text = "0";
                     //txtAmount.Text = "0";
                 }
@@ -781,8 +781,16 @@ namespace WindowsFormsApplication1
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                butadditem.Enabled = true;
-                butadditem.Focus();
+                if (txtQuantity.Text == "0")
+                {
+                    MessageBox.Show("please select your correct quantity");
+                    butadditem.Enabled = false;
+                }
+                if (txtQuantity.Text != "0")
+                {
+                    butadditem.Enabled = true;
+                    butadditem.Focus();
+                }
               
 
             }
