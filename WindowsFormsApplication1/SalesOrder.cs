@@ -290,7 +290,7 @@ namespace WindowsFormsApplication1
         }
         private void butadditem_Click(object sender, EventArgs e)
         {
-
+           
             txtitemcode.Focus();
             txtcustomercode.TabStop = true;
             button1.TabStop = true;
@@ -387,6 +387,7 @@ namespace WindowsFormsApplication1
             {
                 textBox20.ReadOnly = false;
             }
+            txtitemcode.Select(txtitemcode.Text.Length, 0);
 
         }
 
@@ -527,6 +528,7 @@ namespace WindowsFormsApplication1
 
         private void savebutton_Click(object sender, EventArgs e)
         {
+           
             panel2.Visible = false;
             //if (id == "")
             //{
@@ -651,9 +653,14 @@ namespace WindowsFormsApplication1
 
 
                 }
+                makeblank();
+                int id1 = Convert.ToInt32(txtsrno.Text);
+                id1 = id1 + 1;
+                txtsrno.Text = id1.ToString();
                 txtcustomercode.Focus();
 
             }
+            txtcustomercode.Select(txtcustomercode.Text.Length, 0);
         }
 
         public void cretenew()
