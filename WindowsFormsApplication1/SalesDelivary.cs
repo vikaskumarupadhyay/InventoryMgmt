@@ -1468,8 +1468,9 @@ namespace WindowsFormsApplication1
             }
             makeblank();
             int value = Convert.ToInt32(txtSrNo.Text);
-            int value1 = value + 1;
-            txtSrNo.Text = value1.ToString();
+            //int value1 = value + 1;
+            //txtSrNo.Text = value1.ToString();
+            txtSrNo.Text = (value + 1).ToString();
             txtcustomercode.Focus();
             txtcustomercode.Select(txtcustomercode.Text.Length, 0);
         }
