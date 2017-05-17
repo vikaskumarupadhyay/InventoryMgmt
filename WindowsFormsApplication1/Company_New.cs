@@ -75,14 +75,13 @@ namespace WindowsFormsApplication1
             }
           txtwonername.Focus();
           string selectCommandGroup = "select TexId,TexName,TexAmount,TexDescription from dbo.CompnayTex";
-          setItemGroupDetail(selectCommandGroup, combComp, "tex");
+          setItemGroupDetail(selectCommandGroup, combComp, "Tax");
             }
         private void setItemGroupDetail(string Query, ComboBox cmb, string Message)
         {
             //string selectCommand = "select groupID,GROUPNAME,GROUPDESC from dbo.ItemGroup";
             cmb.Items.Clear();
-            cmb.Items.Add("Select  " + Message);
-
+          cmb.Items.Add("Select  " + Message);
             dt = dbMainClass.getDataBoundToComboBox(Query);
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -93,7 +92,7 @@ namespace WindowsFormsApplication1
                 foreach (DataRow dr in dt.Rows)
                 {
                     cmb.Items.Add(dr[1].ToString().ToUpper());
-                    if (Message.ToLower() == "tex")
+                    if (Message.ToLower() == "Tax")
                     {
                         TexList.Add(dr[0].ToString());
                     }
@@ -473,13 +472,14 @@ namespace WindowsFormsApplication1
 
         private void combComp_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DB_Main.taxName = combComp.SelectedItem.ToString();
-            string selectName = "select TexAmount from CompnayTex where TexName='" + DB_Main.taxName + "'";
-            DataTable dt = dbMainClass.getDetailByQuery(selectName);
-            foreach (DataRow dr in dt.Rows)
-            {
-                txtTexAmount.Text = dr[0].ToString();
-            }
+               DB_Main.taxName = combComp.SelectedItem.ToString();
+                string selectName = "select TexAmount from CompnayTex where TexName='" + DB_Main.taxName + "'";
+                DataTable dt = dbMainClass.getDetailByQuery(selectName);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    txtTexAmount.Text = dr[0].ToString();
+                }
+           
         }
 
         private void txtTexAmount_MouseClick(object sender, MouseEventArgs e)
@@ -775,5 +775,25 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void combComp_DropDown(object sender, EventArgs e)
+        {
+            combComp.Items.RemoveAt(0);
+           
+        }
+
+        private void combComp_Leave(object sender, EventArgs e)
+        {
+            if (combComp.SelectedItem == null)
+            {
+                combComp.Items.Insert(0, "Select Tax");
+                combComp.SelectedIndex = 0;
+            }
+            else
+            {
+                DB_Main.taxName = combComp.SelectedItem.ToString();
+            }
+
+           // combComp.Items.Insert(0, "Select Tax");
+        }
     }
 }
