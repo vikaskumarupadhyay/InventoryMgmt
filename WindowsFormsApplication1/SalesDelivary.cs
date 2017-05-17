@@ -511,6 +511,8 @@ namespace WindowsFormsApplication1
 
         private void salesdelivary_Load(object sender, EventArgs e)
         {
+            txtcustomercode.Select(txtcustomercode.Text.Length, 0);
+            txtItemCode.Select(txtItemCode.Text.Length, 0);
             txtdiccount.ReadOnly = true;
             //dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             gridsalesdelivary.DataSource = addToCartTable;
@@ -1320,7 +1322,7 @@ namespace WindowsFormsApplication1
                                     }
                                     else
                                     {
-                                        MessageBox.Show("details save not successfully");
+                                       // MessageBox.Show("details save not successfully");
 
 
                                     }
@@ -1451,7 +1453,7 @@ namespace WindowsFormsApplication1
                         }
                         else
                         {
-                            MessageBox.Show("details save not successfully");
+                            //MessageBox.Show("details save not successfully");
                         }
 
                     }
@@ -1595,6 +1597,11 @@ namespace WindowsFormsApplication1
 
         private void txtcustomercode_TextChanged(object sender, EventArgs e)
         {
+            if (!txtcustomercode.Text.StartsWith("C"))
+            {
+                txtcustomercode.Text = string.Concat("C", txtcustomercode.Text);
+                txtcustomercode.Select(txtcustomercode.Text.Length, 0);
+            }
             // tab1();
             string selectquery = "select CustName,CustCompName,CustAddress,CustPhone,CustMobile,CustFax from CustomerDetails Where Custid='" + txtcustomercode.Text + "'";
             DataTable dt = d.getDetailByQuery(selectquery);
@@ -1734,6 +1741,11 @@ namespace WindowsFormsApplication1
         }
         private void txtItemCode_TextChanged(object sender, EventArgs e)
         {
+            if (!txtItemCode.Text.StartsWith("I"))
+            {
+                txtItemCode.Text = string.Concat("I", txtItemCode.Text);
+                txtItemCode.Select(txtItemCode.Text.Length, 0);
+            }
             //tab2();
             //string selectquery1 = "select i.ItemId,i.ItemName,ip.SalesPrice,iq.CurrentQuantity from ItemDetails i join ItemPriceDetail ip on i.ItemId=ip.ItemId join ItemQuantityDetail iq on ip.ItemId=iq.ItemId where i.ItemId='" + txtItemCode.Text + "'";
             //DataTable dt = d.getDetailByQuery(selectquery1);

@@ -392,6 +392,8 @@ namespace WindowsFormsApplication1
 
         private void salesorder_Load(object sender, EventArgs e)
         {
+            txtcustomercode.Select(txtcustomercode.Text.Length, 0);
+            txtitemcode.Select(txtitemcode.Text.Length, 0);
             textBox20.ReadOnly = true;
             gridsalesorder.DataSource = addToCartTable;
             discountamount.Visible = false;
@@ -644,7 +646,7 @@ namespace WindowsFormsApplication1
                     }
                     else
                     {
-                        MessageBox.Show("details save not successfully");
+                       // MessageBox.Show("details save not successfully");
                     }
 
 
@@ -842,8 +844,16 @@ namespace WindowsFormsApplication1
 
         private void txtcustomercode_TextChanged(object sender, EventArgs e)
         {
+            if (!txtcustomercode.Text.StartsWith("C"))
+            {
+                txtcustomercode.Text = string.Concat("C", txtcustomercode.Text);
+                txtcustomercode.Select(txtcustomercode.Text.Length, 0);
+            }
+
             // if (txtcustomercode.Text.Trim() != "" && txtcustomercode.Text.StartsWith("C"))
+
             // {
+
             // setvalue();
             ///}
             // tab1();
@@ -880,6 +890,13 @@ namespace WindowsFormsApplication1
 
         private void txtitemcode_TextChanged(object sender, EventArgs e)
         {
+            if (!txtitemcode.Text.StartsWith("I"))
+            {
+                txtitemcode.Text = string.Concat("I", txtitemcode.Text);
+                txtitemcode.Select(txtitemcode.Text.Length, 0);
+            }
+
+
             //int rate = Convert.ToInt32(txtRate.Text);
             //int que = Convert.ToInt32(txtQuantity.Text);
             //txtAmount.Text = (rate * que).ToString();
