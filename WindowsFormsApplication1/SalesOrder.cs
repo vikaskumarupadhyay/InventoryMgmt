@@ -654,6 +654,9 @@ namespace WindowsFormsApplication1
 
                 }
                 makeblank();
+                int id1 = Convert.ToInt32(txtsrno.Text);
+                id1 = id1 + 1;
+                txtsrno.Text = id1.ToString();
                 txtcustomercode.Focus();
 
             }

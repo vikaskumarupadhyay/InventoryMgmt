@@ -1337,6 +1337,9 @@ namespace WindowsFormsApplication1
 
 
                 makeblank();
+                int value1 = Convert.ToInt32(txtSrNo.Text);
+                int value2 = value1 + 1;
+                txtSrNo.Text = value2.ToString();
                 txtcustomercode.Focus();
                 txtcustomercode.Select(txtcustomercode.Text.Length, 0);
 
