@@ -25,9 +25,9 @@ namespace WindowsFormsApplication1
 
         private void PurchaseOrder_Load(object sender, EventArgs e)
         {
-
+            
+            txtVendorCode.Select(txtVendorCode.Text.Length, 0);
             txtdis.ReadOnly = true;
-          
             PurchesCrystalReportViewer.Visible = false;
             txtwithautaxamount.Visible = false;
             DisAmmount.Visible = false;
@@ -209,10 +209,16 @@ namespace WindowsFormsApplication1
 
         private void txtVendorCode_TextChanged(object sender, EventArgs e)
         {
+           if (!txtVendorCode.Text.StartsWith("V"))
+            {
+                txtVendorCode.Text = string.Concat("V", txtVendorCode.Text);
+                txtVendorCode.Select(txtVendorCode.Text.Length, 0);
+            }
 
             if (txtVendorCode.Text.Trim() != "" && txtVendorCode.Text.StartsWith("V"))
             {
                    setVAlue(); 
+
             }
         }
 
