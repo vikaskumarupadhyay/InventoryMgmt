@@ -646,7 +646,7 @@ namespace WindowsFormsApplication1
             txtRefNo.Text = "";
             txtTotalAmmount.Text = "";
             addToCartTable.Clear();
-            gridsalesdelivary.DataSource = "";
+           // gridsalesdelivary.DataSource = "";
             textBox20.Text = "";
         }
 
@@ -1324,6 +1324,7 @@ namespace WindowsFormsApplication1
                                     }
                                     else
                                     {
+                                        gridsalesdelivary.AllowUserToAddRows = true;
                                        // MessageBox.Show("details save not successfully");
 
 
@@ -1460,6 +1461,7 @@ namespace WindowsFormsApplication1
                         }
                         else
                         {
+                            gridsalesdelivary.AllowUserToAddRows = true;
                             //MessageBox.Show("details save not successfully");
                         }
 
@@ -1467,9 +1469,9 @@ namespace WindowsFormsApplication1
                 }
             }
             makeblank();
-            int value = Convert.ToInt32(txtSrNo.Text);
-            int value1 = value + 1;
-            txtSrNo.Text = value1.ToString();
+            int value4 = Convert.ToInt32(txtSrNo.Text);
+            int value3 = value4 + 1;
+            txtSrNo.Text = value3.ToString();
             txtcustomercode.Focus();
             txtcustomercode.Select(txtcustomercode.Text.Length, 0);
         }

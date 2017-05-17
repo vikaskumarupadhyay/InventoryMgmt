@@ -283,7 +283,7 @@ namespace WindowsFormsApplication1
             txtQuantity.Text = "";
             txtAmount.Text = "";
             //txtdiscount.Text = "";
-            gridsalesorder.DataSource = "";
+           // gridsalesorder.DataSource = "";
             txttotalammount.Text = "0";
             txtsearchvalue.Text = "";
             addToCartTable.Clear();
@@ -648,6 +648,7 @@ namespace WindowsFormsApplication1
                     }
                     else
                     {
+                        gridsalesorder.AllowUserToAddRows = true;
                        // MessageBox.Show("details save not successfully");
                     }
 
@@ -658,9 +659,11 @@ namespace WindowsFormsApplication1
                 id1 = id1 + 1;
                 txtsrno.Text = id1.ToString();
                 txtcustomercode.Focus();
+                
 
             }
             txtcustomercode.Select(txtcustomercode.Text.Length, 0);
+           
         }
 
         public void cretenew()
