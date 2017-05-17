@@ -267,8 +267,8 @@ namespace WindowsFormsApplication1
                 else if (quantity > g)
                 {
                     MessageBox.Show("Quantity is not available");
-                    txtQuantity.Text = "0";
-                    txtAmmount.Text = "0";
+                    //txtQuantity.Text = "0";
+                    //txtAmmount.Text = "0";
                 }
             }
             //if ((!string.IsNullOrEmpty(txtQuantity.Text)) && char.IsDigit(txtQuantity.Text, txtQuantity.Text.Length - 1) && (!string.IsNullOrEmpty(txtRate.Text)))
@@ -1931,6 +1931,14 @@ namespace WindowsFormsApplication1
 
         private void txtItemCode_KeyPress(object sender, KeyPressEventArgs e)
         {
+            string select = "select CurrentQuantity from ItemQuantityDetail where itemid='" + txtItemCode.Text + "'";
+            DataTable dt1 = d.getDetailByQuery(select);
+            string s = "";
+            foreach (DataRow dr in dt1.Rows)
+            {
+                s = dr[0].ToString();
+
+            }
             if (Char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
@@ -1959,6 +1967,8 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
+                    double quantity = Convert.ToDouble(s);
+                    //double s1=Convert.ToDouble(txtQuantity.Text);
                     string selectquery1 = "select i.ItemId,i.ItemName,cast(ip.SalesPrice as numeric(38,2)),iq.CurrentQuantity from ItemDetails i join ItemPriceDetail ip on i.ItemId=ip.ItemId join ItemQuantityDetail iq on ip.ItemId=iq.ItemId where i.ItemId='" + txtItemCode.Text + "'";
                     DataTable dt = d.getDetailByQuery(selectquery1);
                     if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
@@ -1968,13 +1978,22 @@ namespace WindowsFormsApplication1
                             txtProductName.Text = dr[1].ToString();
                             txtRate.Text = dr[2].ToString();
                             txtQuantity.Text = "1";
-                            double quantity = Convert.ToDouble(txtQuantity.Text);
+                            quantity = Convert.ToDouble(txtQuantity.Text);
                             double rate = Convert.ToDouble(txtRate.Text);
                             txtAmmount.Text = (quantity * rate).ToString("###0.00");
                             txtQuantity.ReadOnly = true;
                             butAddItem.Enabled = true;
-
+                          
                         }
+                        if (quantity > 0)
+                        {
+                            txtQuantity.Text = "";
+                            txtAmmount.Text = "";
+                        }
+                       
+                        
+                        
+                       
                     }
                     else
                     {
@@ -2005,11 +2024,11 @@ namespace WindowsFormsApplication1
                 }
             }
             string selectquery2 = "select i.ItemId,i.ItemName,cast(ip.MrpPrice as numeric(38,2)),iq.CurrentQuantity from ItemDetails i join ItemPriceDetail ip on i.ItemId=ip.ItemId join ItemQuantityDetail iq on ip.ItemId=iq.ItemId where i.ItemId='" + txtItemCode.Text + "'";
-            DataTable dt1 = d.getDetailByQuery(selectquery2);
+            DataTable dt2 = d.getDetailByQuery(selectquery2);
             if (dt1.Rows.Count > 0)
             {
             }
-            else if (e.KeyChar == (char)Keys.Enter && dt1.Rows != null && dt1 != null)
+            else if (e.KeyChar == (char)Keys.Enter && dt2.Rows != null && dt2 != null)
             {
                 txtItemCode.Focus();
                 MessageBox.Show("Please select your correct Customer Item id");
