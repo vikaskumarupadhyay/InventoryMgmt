@@ -787,7 +787,9 @@
             this.combComp.Name = "combComp";
             this.combComp.Size = new System.Drawing.Size(635, 23);
             this.combComp.TabIndex = 35;
+            this.combComp.DropDown += new System.EventHandler(this.combComp_DropDown);
             this.combComp.SelectedIndexChanged += new System.EventHandler(this.combComp_SelectedIndexChanged);
+            this.combComp.Leave += new System.EventHandler(this.combComp_Leave);
             // 
             // Company_New
             // 
