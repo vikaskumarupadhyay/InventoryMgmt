@@ -936,6 +936,14 @@ namespace WindowsFormsApplication1
         private void txtCustOpeningBal_Click(object sender, EventArgs e)
         {
             txtCustOpeningBal.Text = string.Empty;
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+            }
         }        
    
     }

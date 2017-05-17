@@ -588,6 +588,7 @@
             // 
             // searchCalmn
             // 
+            this.searchCalmn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.searchCalmn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.searchCalmn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchCalmn.FormattingEnabled = true;
@@ -604,9 +605,10 @@
             this.txtSearch.Location = new System.Drawing.Point(687, 42);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(1022, 23);
+            this.txtSearch.Size = new System.Drawing.Size(429, 23);
             this.txtSearch.TabIndex = 3;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
             // label14
             // 

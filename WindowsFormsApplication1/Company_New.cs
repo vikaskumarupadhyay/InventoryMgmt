@@ -134,7 +134,7 @@ namespace WindowsFormsApplication1
             txtGst.Text = "";
             txtDescription.Text = "";
             txtGst.Text = "";
-            combComp.Text = "Select tax";
+            combComp.Text = "Select Tax";
             txtTexAmount.Text = "0";
 
         }
@@ -765,6 +765,14 @@ namespace WindowsFormsApplication1
             {
                 e.Handled = true;
             }*/
+        }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+            }
         }
 
     }

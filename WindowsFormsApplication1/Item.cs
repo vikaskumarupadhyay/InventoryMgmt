@@ -975,6 +975,14 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
        
 
       
