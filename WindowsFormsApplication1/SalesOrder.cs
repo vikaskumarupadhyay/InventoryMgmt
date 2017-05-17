@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
 namespace WindowsFormsApplication1
 {
     public partial class salesorder : Form
@@ -609,9 +610,12 @@ namespace WindowsFormsApplication1
                         panel2.Visible = true;
                         crystalReportViewer1.Visible = true;
                         gridsalesorder.AllowUserToAddRows = false;
-                        string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
-                        SqlConnection con = new SqlConnection(a);
+                        // "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
+                        SqlConnection con = new SqlConnection();
+                        string a = ConfigurationManager.AppSettings["ConnectionString"];
+                        con.ConnectionString = a;
                         con.Open();
+                      
                         string selectquery = "select * from salesorderreport where orderid='" + txtsrno.Text + "'";
                         SqlCommand cmd = new SqlCommand(selectquery, con);
                         SqlDataAdapter sd = new SqlDataAdapter(cmd);
