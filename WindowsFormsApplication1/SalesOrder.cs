@@ -210,17 +210,16 @@ namespace WindowsFormsApplication1
 
             string select = "select CurrentQuantity from ItemQuantityDetail where itemid='" + txtitemcode.Text + "'";
             DataTable dt = d.getDetailByQuery(select);
-            string s = "";
+           string s = "";
             foreach (DataRow dr in dt.Rows)
             {
                 s = dr[0].ToString();
 
             }
-            if (txtQuantity.Text == "")
-            {
-                txtQuantity.Text = "0";
-            }
-            if (s != "")
+           
+           
+          
+            if (txtQuantity.Text != "")
             {
                 int g = Convert.ToInt32(s);
                 int quantity = Convert.ToInt32(txtQuantity.Text);
@@ -250,6 +249,7 @@ namespace WindowsFormsApplication1
                     //txtQuantity.Text = "0";
                     //txtAmount.Text = "0";
                 }
+               
             }
 
 
@@ -783,16 +783,16 @@ namespace WindowsFormsApplication1
 
         private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
         {
+          
             if (e.KeyChar == (char)Keys.Enter)
             {
-                if (txtQuantity.Text == "0")
+                if ((txtQuantity.Text == "") || (txtQuantity.Text == "0"))
                 {
                     MessageBox.Show("please select your correct quantity");
-                    butadditem.Enabled = false;
+                    txtQuantity.Focus();
                 }
-                if (txtQuantity.Text != "0")
+                else
                 {
-                    butadditem.Enabled = true;
                     butadditem.Focus();
                 }
               
@@ -806,12 +806,20 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyChar == '\b')
                 {
-                    txtAmount.Text = "";
-                    e.Handled = false;
+                    txtQuantity.Focus();
+                        txtAmount.Text = "";
+                        e.Handled = false;
+                    
                 }
                 else
                 {
                     e.Handled = true;
+                }
+                if (txtQuantity.Text == "")
+                {
+                    MessageBox.Show("please select your correct quantity");
+                    txtQuantity.Text = "";
+                    txtAmount.Text = "";
                 }
             }
         }
@@ -1143,7 +1151,10 @@ namespace WindowsFormsApplication1
                             //txtRate.Text = dr[3].ToString();
                             //txtQuantity.Text = dr[3].ToString();
                             // txtAmount.Text = dr[4].ToString();
-                            txtQuantity.Text = "";
+                            txtQuantity.Text = "1";
+                            double quantity = Convert.ToDouble(txtQuantity.Text);
+                            double rate = Convert.ToDouble(txtRate.Text);
+                            txtAmount.Text = (quantity * rate).ToString("###0.00");
                             txtQuantity.ReadOnly = false;
                             butadditem.Enabled = true;
                             //tab6();

@@ -244,11 +244,8 @@ namespace WindowsFormsApplication1
                 s = dr[0].ToString();
 
             }
-            if (txtQuantity.Text == "")
-            {
-                txtQuantity.Text = "0";
-            }
-            if (s != "")
+          
+            if (txtQuantity.Text != "")
             {
                 int g = Convert.ToInt32(s);
                 int quantity = Convert.ToInt32(txtQuantity.Text);
@@ -1525,16 +1522,16 @@ namespace WindowsFormsApplication1
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                if (txtQuantity.Text == "0")
+                if ((txtQuantity.Text == "") || (txtQuantity.Text == "0"))
                 {
                     MessageBox.Show("please select your correct quantity");
-                    butAddItem.Enabled = false;
+                    txtQuantity.Focus();
                 }
-                if (txtQuantity.Text != "0")
+                else
                 {
-                    butAddItem.Enabled = true;
                     butAddItem.Focus();
                 }
+              
 
             }
 
@@ -1947,6 +1944,10 @@ namespace WindowsFormsApplication1
                         {
                             txtProductName.Text = dr[1].ToString();
                             txtRate.Text = dr[2].ToString();
+                            txtQuantity.Text = "1";
+                            double quantity = Convert.ToDouble(txtQuantity.Text);
+                            double rate = Convert.ToDouble(txtRate.Text);
+                            txtAmmount.Text = (quantity * rate).ToString("###0.00");
                             txtQuantity.ReadOnly = true;
                             butAddItem.Enabled = true;
 
