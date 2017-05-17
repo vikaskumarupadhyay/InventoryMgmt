@@ -57,9 +57,10 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                int txt = Convert.ToInt32(id);
-                int txt1 = txt + 1;
-                txtSrNo.Text = txt1.ToString();
+                OrderID(id);
+                //int txt = Convert.ToInt32(id);
+                //int txt1 = txt + 1;
+                //txtSrNo.Text = txt1.ToString();
             }
             string comQurry = "select TexId from CompnayDetails";
             DataTable dt2 = dbMainClass.getDetailByQuery(comQurry);
@@ -89,7 +90,12 @@ namespace WindowsFormsApplication1
 
             gridPurchaseOrder.DataSource = addToCartTable;
         }
-
+        public void OrderID(String s)
+        {
+            int txt = Convert.ToInt32(s);
+            int txt1 = txt + 1;
+            txtSrNo.Text = txt1.ToString();
+        }   
         private void txtVendorCode_KeyPress(object sender, KeyPressEventArgs e)
         {
             string getId = "select venderId from VendorDetails where venderId='" + txtVendorCode.Text + "'";
@@ -742,9 +748,10 @@ namespace WindowsFormsApplication1
                             panel2.Visible = false;
                         }
                         gridPurchaseOrder.AllowUserToAddRows = true;
-                        int id2 = Convert.ToInt32(txtSrNo.Text);
-                        int id3 = id2 + 1;
-                        txtSrNo.Text = id3.ToString();
+                        //int id2 = Convert.ToInt32(txtSrNo.Text);
+                        //int id3 = id2 + 1;
+                        //txtSrNo.Text = id3.ToString();
+                        OrderID(txtSrNo.Text);
                     }
 
                     else
@@ -786,7 +793,7 @@ namespace WindowsFormsApplication1
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                if (txtQuanity.Text == "")
+                if ((txtQuanity.Text == "") || (txtQuanity.Text == "0"))
                 {
                     MessageBox.Show("Please Enter The Quanity");
                     txtQuanity.Focus();
@@ -850,21 +857,6 @@ namespace WindowsFormsApplication1
             panel2.Visible = false;
         }
 
-        private void panel2_Paint_1(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void txtsearch_TextChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
-        }
-
         private void btnAddItem_Leave(object sender, EventArgs e)
         {
            // btnAddItem.Enabled = false;
@@ -920,6 +912,7 @@ namespace WindowsFormsApplication1
         private void IndexTex2()
         {
             txtQuanity.Focus();
+            txtQuanity.SelectAll();
             txtItemCode.TabStop = true;
             button2.TabStop = true;
             txtDiscount.TabStop = false;
@@ -1021,8 +1014,20 @@ namespace WindowsFormsApplication1
                         string itemCode = txtItemCode.Text;
                          setitemVlue("ItemId", itemCode);
                         if (dt != null && dt.Rows.Count > 0)
-                        {                            
+                        {
                             txtQuanity.ReadOnly = false;
+                            txtQuanity.Text = "1";
+                            int que = Convert.ToInt32(txtQuanity.Text);
+                            string purchesprice = "select SalesPrice from ItemPriceDetail where ItemId ='" + txtItemCode.Text + "'";
+                            DataTable dt1 = dbMainClass.getDetailByQuery(purchesprice);
+                            string salep="";
+                            foreach (DataRow dr in dt1.Rows)
+                            {
+                                salep = dr[0].ToString();
+                            }
+                            Double Saleprice = Convert.ToDouble(salep);
+                            Double price = Saleprice * que;
+                            txtAmount.Text = price.ToString();
                             btnAddItem.Enabled = true;
                             txtQuanity.Enabled = true;
                             IndexTex2();
@@ -1058,6 +1063,7 @@ namespace WindowsFormsApplication1
                     }
                     e.Handled = false;
                     txtAmount.Text = "";
+                    txtRate.Text = "";
                     txtQuanity.Text = "";
                     txtItemCode.Focus();
 
@@ -1072,11 +1078,6 @@ namespace WindowsFormsApplication1
                 }
                 }
             //}
-        }
-
-        private void panel2_Paint_2(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void btnAddItem_KeyPress(object sender, KeyPressEventArgs e)
@@ -1367,12 +1368,6 @@ namespace WindowsFormsApplication1
             double totaltax = total - taxamount;
            TextTaxAmmount.Text = totaltax.ToString();
         }
-
-        private void DisAmmount_TextChanged(object sender, EventArgs e)
-        {
-           
-        }
-
         private void Distxt_TextChanged(object sender, EventArgs e)
         {
             if (txtDiscount.Text == "0")
@@ -1380,11 +1375,6 @@ namespace WindowsFormsApplication1
                 DisAmmount.Text = "0";
             }
         }
-        private void Distxt_KeyDown(object sender, KeyEventArgs e)
-        {
-           
-        }
-
         private void PurchaseOrder_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode.ToString() == "S")
@@ -1396,20 +1386,6 @@ namespace WindowsFormsApplication1
             {
                 txtdis.Focus();
             }
-        }
-
-        private void gridPurchaseOrder_CellLeave(object sender, DataGridViewCellEventArgs e)
-        {
-        //    string itemid = gridPurchaseOrder.Rows[e.RowIndex].Cells[0].Value.ToString();
-        //    string que = gridPurchaseOrder.Rows[e.RowIndex].Cells[5].Value.ToString();
-        //    if (itemid == "")
-        //    {
-        //        if (que == "")
-        //        {
-        //        }
-        //    }
-        //    //}
-        }
-       
+        }       
     }
 }

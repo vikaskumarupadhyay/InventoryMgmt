@@ -51,9 +51,10 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                int txt = Convert.ToInt32(id);
-                int txt1 = txt + 1;
-                txtSrNo.Text = txt1.ToString();
+                DeliveryID(id);
+                //int txt = Convert.ToInt32(id);
+                //int txt1 = txt + 1;
+                //txtSrNo.Text = txt1.ToString();
             }
             panel2.Visible = false;
             pnlPaymentDetail.Visible = false;
@@ -83,6 +84,12 @@ namespace WindowsFormsApplication1
                 addToCartTable.Columns.RemoveAt(6);
                 dataGridView1.DataSource = addToCartTable;
             }
+        }
+        public void DeliveryID(String s)
+        {
+            int txt = Convert.ToInt32(s);
+            int txt1 = txt + 1;
+            txtSrNo.Text = txt1.ToString();
         }
         private void setVAlue()
         {
@@ -836,6 +843,7 @@ namespace WindowsFormsApplication1
                                 if (insertedRows3 > 0)
                                 {
                                     MessageBox.Show("Details Saved Successfully");
+                                    DeliveryID(txtSrNo.Text);
                                     dataGridView1.AllowUserToAddRows = true;
                                 }
                                 else
@@ -925,6 +933,7 @@ namespace WindowsFormsApplication1
                                     {
 
                                         MessageBox.Show("Details Saved Successfully");
+                                        DeliveryID(txtSrNo.Text);
                                         DialogResult result1 = MessageBox.Show("This Page Print", "Important Question", MessageBoxButtons.YesNo);
                                         if (result1 == System.Windows.Forms.DialogResult.Yes)
                                         {
@@ -1049,6 +1058,7 @@ namespace WindowsFormsApplication1
                                 if (insertedRows > 0)
                                 {
                                     MessageBox.Show("Details Saved Successfully");
+                                    DeliveryID(txtSrNo.Text);
                                     txtRef.Text = "";
                                     DialogResult result1 = MessageBox.Show("This Page Print", "Important Question", MessageBoxButtons.YesNo);
                                     if (result1 == System.Windows.Forms.DialogResult.Yes)
@@ -1087,16 +1097,25 @@ namespace WindowsFormsApplication1
                 }
             }
             makeBlank();
-            int id = Convert.ToInt32(txtSrNo.Text);
-            int id1 = id + 1;
-            txtSrNo.Text = id1.ToString();
+            //int id = Convert.ToInt32(txtSrNo.Text);
+            //int id1 = id + 1;
+            //txtSrNo.Text = id1.ToString();
 
         }
         private void txtQunty_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                button3.Focus();
+                if ((txtQunty.Text == "") || (txtQunty.Text == "0"))
+                {
+                    MessageBox.Show("Please Enter The Quanity");
+                    txtQunty.Focus();
+                }
+                else
+                {
+                    button3.Focus();
+                }
+                
             }
             if (Char.IsDigit(e.KeyChar))
             {
@@ -1510,9 +1529,22 @@ namespace WindowsFormsApplication1
                     if (dt != null && dt.Rows.Count > 0)
                     {
                         txtQunty.ReadOnly = false;
+                        txtQunty.Text = "1";
+                        int que = Convert.ToInt32(txtQunty.Text);
+                        string purchesprice = "select SalesPrice from ItemPriceDetail where ItemId ='" + txtItemCode.Text + "'";
+                        DataTable dt1 = dbMainClass.getDetailByQuery(purchesprice);
+                        string salep = "";
+                        foreach (DataRow dr in dt1.Rows)
+                        {
+                            salep = dr[0].ToString();
+                        }
+                        Double Saleprice = Convert.ToDouble(salep);
+                        Double price = Saleprice * que;
+                        txtAmount.Text = price.ToString();
                         button3.Enabled = true;
                         txtQunty.Enabled = true;
                         txtQunty.Focus();
+                        txtQunty.SelectAll();
                         IndexTex2();
                         textVendercod.TabStop = true;
                         button1.TabStop = true;
@@ -1548,6 +1580,8 @@ namespace WindowsFormsApplication1
                     txtItemCode.Text = "I";
                     //}
                     e.Handled = false;
+                    txtProductName.Text = "";
+                    txtRate.Text = "";
                     txtAmount.Text = "";
                     txtQunty.Text = "";
                     txtItemCode.Focus();
