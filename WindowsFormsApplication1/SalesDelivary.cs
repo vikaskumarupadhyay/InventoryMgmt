@@ -264,12 +264,12 @@ namespace WindowsFormsApplication1
                     }
                 }
 
-                else if (quantity > g)
-                {
-                    MessageBox.Show("Quantity is not available");
-                    //txtQuantity.Text = "0";
-                    //txtAmmount.Text = "0";
-                }
+                //else if (quantity > g)
+                //{
+                //    MessageBox.Show("Quantity is not available");
+                //    //txtQuantity.Text = "0";
+                //    //txtAmmount.Text = "0";
+                //}
             }
             //if ((!string.IsNullOrEmpty(txtQuantity.Text)) && char.IsDigit(txtQuantity.Text, txtQuantity.Text.Length - 1) && (!string.IsNullOrEmpty(txtRate.Text)))
             //{
@@ -1965,50 +1965,49 @@ namespace WindowsFormsApplication1
                     MessageBox.Show("please enter the customercode");
                     txtcustomercode.Focus();
                 }
-                else
-                {
-                    double quantity = Convert.ToDouble(s);
-                    //double s1=Convert.ToDouble(txtQuantity.Text);
-                    string selectquery1 = "select i.ItemId,i.ItemName,cast(ip.SalesPrice as numeric(38,2)),iq.CurrentQuantity from ItemDetails i join ItemPriceDetail ip on i.ItemId=ip.ItemId join ItemQuantityDetail iq on ip.ItemId=iq.ItemId where i.ItemId='" + txtItemCode.Text + "'";
-                    DataTable dt = d.getDetailByQuery(selectquery1);
-                    if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
+                    double quanty=Convert.ToDouble(s);
+                    if (quanty < 0)
                     {
-                        foreach (DataRow dr in dt.Rows)
-                        {
-                            txtProductName.Text = dr[1].ToString();
-                            txtRate.Text = dr[2].ToString();
-                            txtQuantity.Text = "1";
-                            quantity = Convert.ToDouble(txtQuantity.Text);
-                            double rate = Convert.ToDouble(txtRate.Text);
-                            txtAmmount.Text = (quantity * rate).ToString("###0.00");
-                            txtQuantity.ReadOnly = true;
-                            butAddItem.Enabled = true;
-                          
-                        }
-                        if (quantity > 0)
-                        {
-                            txtQuantity.Text = "";
-                            txtAmmount.Text = "";
-                        }
-                       
-                        
-                        
-                       
+                        MessageBox.Show("quantity not available");
+                            txtQuantity.Text="";
+                       txtAmmount.Text="";
                     }
                     else
                     {
-                        txtProductName.Text = "";
-                        txtRate.Text = "";
-                        txtQuantity.ReadOnly = true;
-                        txtQuantity.Text = "";
-                        txtAmmount.Text = "";
-                        butAddItem.Enabled = false;
+                        double quantity = Convert.ToDouble(s);
+                        //double s1=Convert.ToDouble(txtQuantity.Text);
+                        string selectquery1 = "select i.ItemId,i.ItemName,cast(ip.SalesPrice as numeric(38,2)),iq.CurrentQuantity from ItemDetails i join ItemPriceDetail ip on i.ItemId=ip.ItemId join ItemQuantityDetail iq on ip.ItemId=iq.ItemId where i.ItemId='" + txtItemCode.Text + "'";
+                        DataTable dt = d.getDetailByQuery(selectquery1);
+                        if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
+                        {
+                            foreach (DataRow dr in dt.Rows)
+                            {
+                                txtProductName.Text = dr[1].ToString();
+                                txtRate.Text = dr[2].ToString();
+                                txtQuantity.Text = "1";
+                                quantity = Convert.ToDouble(txtQuantity.Text);
+                                double rate = Convert.ToDouble(txtRate.Text);
+                                txtAmmount.Text = (quantity * rate).ToString("###0.00");
+                                txtQuantity.ReadOnly = true;
+                                butAddItem.Enabled = true;
+
+                            }
+
+                        }
+                        else
+                        {
+                            txtProductName.Text = "";
+                            txtRate.Text = "";
+                            txtQuantity.ReadOnly = true;
+                            txtQuantity.Text = "";
+                            txtAmmount.Text = "";
+                            butAddItem.Enabled = false;
+
+                        }
+                        txtQuantity.ReadOnly = false;
+                        tab7();
 
                     }
-                    txtQuantity.ReadOnly = false;
-                    tab7();
-
-                }
             }
             if (e.KeyChar == (char)Keys.Escape)
             {
