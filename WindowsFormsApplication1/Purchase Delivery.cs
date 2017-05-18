@@ -90,12 +90,15 @@ namespace WindowsFormsApplication1
             int txt = Convert.ToInt32(s);
             int txt1 = txt + 1;
             txtSrNo.Text = txt1.ToString();
+        //test for merge
         }
+
         private void setVAlue()
         {
             if (vendorDetails.Rows.Count > 0)
             {
                 string vendorId = textVendercod.Text;
+
                 if (vendorId.Trim() != "" && vendorId != null)
                 {
                     DataRow[] dr = vendorDetails.Select("[Vender Id ]='" + vendorId + "'");
