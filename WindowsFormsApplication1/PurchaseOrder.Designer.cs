@@ -388,7 +388,7 @@
             this.btnAddItem.UseVisualStyleBackColor = true;
             this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             this.btnAddItem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnAddItem_KeyPress);
-            this.btnAddItem.Leave += new System.EventHandler(this.btnAddItem_Leave);
+           // this.btnAddItem.Leave += new System.EventHandler(this.btnAddItem_Leave);
             // 
             // txtAmount
             // 

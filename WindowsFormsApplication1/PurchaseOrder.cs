@@ -656,7 +656,15 @@ namespace WindowsFormsApplication1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+             if (gridPurchaseOrder.CurrentRow==null)
+            {
+                MessageBox.Show("Please Enter The Item");
+                txtItemCode.Focus();
+            }
+            else
+            {
             PO_SaveDetails();
+             }
         }
         private void PO_SaveDetails()
         {
@@ -685,88 +693,92 @@ namespace WindowsFormsApplication1
                 string updateQurry = "update ItemQuantityDetail set CurrentQuantity='" + id1 + "'where ItemId='" + itid + "'";
                 int insertedRows2 = dbMainClass.saveDetails(updateQurry);
             }*/
-            gridPurchaseOrder.AllowUserToAddRows = false;
-            counter = 0;
-            if (counter == 0)
-            {
-                if (txtDiscount.Text == "")
+           
+                gridPurchaseOrder.AllowUserToAddRows = false;
+                counter = 0;
+                if (counter == 0)
                 {
-                    txtDiscount.Text = "0";
-                }
-                else
-                {
-
-                string insertqurry = "insert into VendorOrderDetails values('" + txtVendorCode.Text + "','" + dtpDate.Value.ToString() + "','" + txtTotalAmount.Text + "','" + txtDiscount.Text + "','" + VATNO.Text + "','" + DisAmmount.Text + "','" + TextTaxAmmount.Text + "','" + txtwithautaxamount.Text + "')";
-
-                int insertedRows = dbMainClass.saveDetails(insertqurry);
-                if (insertedRows > 0)
-                {
-                    DataGridViewRowCollection RowCollection = gridPurchaseOrder.Rows;
-                    List<string> sf = new List<string>();
-                    for (int a = 0; a < RowCollection.Count; a++)
+                    if (txtDiscount.Text == "")
                     {
-
-                        DataGridViewRow currentRow = RowCollection[a];
-                        DataGridViewCellCollection cellCollection = currentRow.Cells;
-                        string txtItemCod = cellCollection[0].Value.ToString();
-                        if (ls.Contains(txtItemCod))
-                        {
-                            continue;
-                        }
-                        string txtQuanit = cellCollection[5].Value.ToString();
-                        string txtRate = cellCollection[4].Value.ToString();
-                        string txtAmoun = cellCollection[6].Value.ToString();
-                        string OrderID = txtSrNo.Text;
-                        string Query = "insert into VendorOrderDesc Values('" + OrderID + "','" + txtItemCod + "','" + txtRate + "','" + txtQuanit + "','" + txtAmoun + "')";
-                        //MessageBox.Show(Query);
-                        sf.Add(Query);
+                        txtDiscount.Text = "0";
                     }
-                    int insertedRows1 = dbMainClass.saveDetails(sf);
-
-                    if (insertedRows1 > 0)
-                    {
-                        MessageBox.Show("Details Saved Successfully");
-                        DialogResult result1 = MessageBox.Show("This Page Print", "Important Question", MessageBoxButtons.YesNo);
-                        if (result1 == System.Windows.Forms.DialogResult.Yes)
-                        {
-
-                            PurchesCrystalReportViewer.Visible = true;
-
-                            panel2.Visible = true;
-                            //string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
-                            SqlConnection con = dbMainClass.openConnection();//new SqlConnection(conntion);
-                            string selectqurry = "select * from VwPurchesOrderDatils where OrderId='" + txtSrNo.Text + "'";
-                            SqlCommand cmd = new SqlCommand(selectqurry, con);
-                            SqlDataAdapter sda = new SqlDataAdapter(cmd);
-
-                            PurchSet ds = new PurchSet();
-                            sda.Fill(ds, "VwPurchesOrderDatils");
-                            PurchesCrystalReport cryRpt = new PurchesCrystalReport();
-                            //ReportDocument cryRpt = new ReportDocument();
-                            //cryRpt.Load("C:\\Users\\Umesh\\Documents\\visual studio 2010\\Projects\\WindowsFormsApplication5\\WindowsFormsApplication5\\PurchesCrystalReport.rpt");
-                            cryRpt.SetDataSource(ds.Tables[1]);
-                            PurchesCrystalReportViewer.ReportSource = cryRpt;
-                            PurchesCrystalReportViewer.Refresh();
-                        }
-                        if (result1 == System.Windows.Forms.DialogResult.No)
-                        {
-                            PurchesCrystalReportViewer.Visible = false;
-
-                            panel2.Visible = false;
-                        }
-                        gridPurchaseOrder.AllowUserToAddRows = true;
-                        OrderID(txtSrNo.Text);
-
-                    }
-
                     else
                     {
-                        MessageBox.Show("Details Not Saved Successfully");
-                    }
-                }
-                }
 
-            }
+                        string insertqurry = "insert into VendorOrderDetails values('" + txtVendorCode.Text + "','" + dtpDate.Value.ToString() + "','" + txtTotalAmount.Text + "','" + txtDiscount.Text + "','" + VATNO.Text + "','" + DisAmmount.Text + "','" + TextTaxAmmount.Text + "','" + txtwithautaxamount.Text + "')";
+
+                        int insertedRows = dbMainClass.saveDetails(insertqurry);
+                        if (insertedRows > 0)
+                        {
+                            DataGridViewRowCollection RowCollection = gridPurchaseOrder.Rows;
+                            List<string> sf = new List<string>();
+                            for (int a = 0; a < RowCollection.Count; a++)
+                            {
+
+                                DataGridViewRow currentRow = RowCollection[a];
+                                DataGridViewCellCollection cellCollection = currentRow.Cells;
+                                string txtItemCod = cellCollection[0].Value.ToString();
+                                if (ls.Contains(txtItemCod))
+                                {
+                                    continue;
+                                }
+                                string txtQuanit = cellCollection[5].Value.ToString();
+                                string txtRate = cellCollection[4].Value.ToString();
+                                string txtAmoun = cellCollection[6].Value.ToString();
+                                string OrderID = txtSrNo.Text;
+                                string Query = "insert into VendorOrderDesc Values('" + OrderID + "','" + txtItemCod + "','" + txtRate + "','" + txtQuanit + "','" + txtAmoun + "')";
+                                //MessageBox.Show(Query);
+                                sf.Add(Query);
+                            }
+                            int insertedRows1 = dbMainClass.saveDetails(sf);
+
+                            if (insertedRows1 > 0)
+                            {
+                                MessageBox.Show("Details Saved Successfully");
+                               
+                                DialogResult result1 = MessageBox.Show("This Page Print", "Important Question", MessageBoxButtons.YesNo);
+                                if (result1 == System.Windows.Forms.DialogResult.Yes)
+                                {
+
+                                    PurchesCrystalReportViewer.Visible = true;
+
+                                    panel2.Visible = true;
+                                    //string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
+                                    SqlConnection con = dbMainClass.openConnection();//new SqlConnection(conntion);
+                                    string selectqurry = "select * from VwPurchesOrderDatils where OrderId='" + txtSrNo.Text + "'";
+                                    SqlCommand cmd = new SqlCommand(selectqurry, con);
+                                    SqlDataAdapter sda = new SqlDataAdapter(cmd);
+
+                                    PurchSet ds = new PurchSet();
+                                    sda.Fill(ds, "VwPurchesOrderDatils");
+                                    PurchesCrystalReport cryRpt = new PurchesCrystalReport();
+                                    //ReportDocument cryRpt = new ReportDocument();
+                                    //cryRpt.Load("C:\\Users\\Umesh\\Documents\\visual studio 2010\\Projects\\WindowsFormsApplication5\\WindowsFormsApplication5\\PurchesCrystalReport.rpt");
+                                    cryRpt.SetDataSource(ds.Tables[1]);
+                                    PurchesCrystalReportViewer.ReportSource = cryRpt;
+                                    PurchesCrystalReportViewer.Refresh();
+                                }
+                                if (result1 == System.Windows.Forms.DialogResult.No)
+                                {
+                                    PurchesCrystalReportViewer.Visible = false;
+
+                                    panel2.Visible = false;
+                                }
+                                gridPurchaseOrder.AllowUserToAddRows = true;
+                                //gridPurchaseOrder.DataSource = addToCartTable;
+                                OrderID(txtSrNo.Text);
+
+                            }
+
+                            else
+                            {
+                                MessageBox.Show("Details Not Saved Successfully");
+                            }
+                        }
+                    }
+
+                }
+            //}
 
             makeBlank();
             txtVendorCode.Focus(); 
@@ -784,7 +796,7 @@ namespace WindowsFormsApplication1
             txtTotalAmount.Text = "0.00";
             txtdis.Text = "0";
             addToCartTable.Clear();
-            gridPurchaseOrder.DataSource = "";
+           // gridPurchaseOrder.DataSource = "";
             txtRemoveItem.Enabled = false;
 
         }
@@ -862,26 +874,6 @@ namespace WindowsFormsApplication1
             panel2.Visible = false;
         }
 
-        private void panel2_Paint_1(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void txtsearch_TextChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
-        }
-
-        private void btnAddItem_Leave(object sender, EventArgs e)
-        {
-           // btnAddItem.Enabled = false;
-            //txtRemoveItem.Focus();
-        }
         private void IndexTex()
         {
             txtVendorCode.TabStop = false;
