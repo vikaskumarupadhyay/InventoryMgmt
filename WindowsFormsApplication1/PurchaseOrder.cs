@@ -348,7 +348,7 @@ namespace WindowsFormsApplication1
             {
                 int q3 = 0;
                 itemid = dr3[0].ToString();
-                if (ls.Contains(itemid)&&gridPurchaseOrder.Rows[counter].DefaultCellStyle.Font!=null)
+                if (ls.Contains(itemid) && gridPurchaseOrder.Rows[counter].DefaultCellStyle.Font!=null)
                 {
                     counter++;
                     continue;
@@ -665,7 +665,7 @@ namespace WindowsFormsApplication1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-             if (gridPurchaseOrder.CurrentRow==null)
+            if (gridPurchaseOrder.CurrentRow == null)
             {
                 MessageBox.Show("Please Enter The Item");
                 txtItemCode.Focus();
@@ -673,8 +673,12 @@ namespace WindowsFormsApplication1
             }
             else
             {
-            PO_SaveDetails();
-             }
+                if (ls.Count == gridPurchaseOrder.Rows.Count - 1)
+                {
+                    return;
+                }
+                PO_SaveDetails();
+            }
         }
         private void PO_SaveDetails()
         {
@@ -708,6 +712,8 @@ namespace WindowsFormsApplication1
                 counter = 0;
                 if (counter == 0)
                 {
+                    int count = 0;
+
                     if (txtDiscount.Text == "")
                     {
                         txtDiscount.Text = "0";
@@ -720,7 +726,7 @@ namespace WindowsFormsApplication1
                         int insertedRows = dbMainClass.saveDetails(insertqurry);
                         if (insertedRows > 0)
                         {
-                            DataGridViewRowCollection RowCollection = gridPurchaseOrder.Rows;
+                                                        DataGridViewRowCollection RowCollection = gridPurchaseOrder.Rows;
                             List<string> sf = new List<string>();
                             for (int a = 0; a < RowCollection.Count; a++)
                             {
@@ -728,10 +734,12 @@ namespace WindowsFormsApplication1
                                 DataGridViewRow currentRow = RowCollection[a];
                                 DataGridViewCellCollection cellCollection = currentRow.Cells;
                                 string txtItemCod = cellCollection[0].Value.ToString();
-                                if (ls.Contains(txtItemCod))
+                                if (ls.Contains(txtItemCod)&&gridPurchaseOrder.Rows[count].DefaultCellStyle.Font!=null)
                                 {
+                                    count++;
                                     continue;
                                 }
+                                
                                 string txtQuanit = cellCollection[5].Value.ToString();
                                 string txtRate = cellCollection[4].Value.ToString();
                                 string txtAmoun = cellCollection[6].Value.ToString();
@@ -740,6 +748,7 @@ namespace WindowsFormsApplication1
                                 //MessageBox.Show(Query);
                                 sf.Add(Query);
                             }
+                            count++;
                             int insertedRows1 = dbMainClass.saveDetails(sf);
 
                             if (insertedRows1 > 0)
@@ -987,7 +996,7 @@ namespace WindowsFormsApplication1
                             txtTotalAmount.Text = "0.0";
                             txtDiscount.Text = "0.0";
                         }
-                        if (gridPurchaseOrder.Rows.Count == 0)
+                        if(ls.Count==gridPurchaseOrder.Rows.Count-1)
                         {
                             txtItemCode.Focus();
                             txtItemCode.Select(txtItemCode.Text.Length, 0);
