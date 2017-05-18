@@ -550,6 +550,14 @@ namespace WindowsFormsApplication1
                // gridsalesorder.AllowUserToAddRows = true;
                 MessageBox.Show("please select your first item");
             }
+
+            if (ls.Count == gridsalesorder.Rows.Count - 1)
+            {
+                MessageBox.Show("please select your item id");
+                txtitemcode.Focus();
+                return;
+            }
+
             //if (id == "")
             //{
             //    id = "1";
@@ -606,10 +614,12 @@ namespace WindowsFormsApplication1
                     DataGridViewRow currentrow = rowcollection[a];
                     DataGridViewCellCollection cellcollection = currentrow.Cells;
                     string txtitemcode = cellcollection[0].Value.ToString();
-                    if (ls.Contains(txtitemcode))
+                    if (ls.Contains(txtitemcode) && gridsalesorder.Rows[counter].DefaultCellStyle.Font != null)
                     {
+                        counter++;
                         continue;
                     }
+                    counter++;
                     string txtProductName = cellcollection[1].Value.ToString();
                     string Compnayname = cellcollection[2].Value.ToString();
                     string mrp = cellcollection[3].Value.ToString();
@@ -621,7 +631,8 @@ namespace WindowsFormsApplication1
 
                     show.Add(query);
                 }
-
+                
+               
 
                 int inserirow1 = d.saveDetails(show);
                 if (inserirow1 > 0)
@@ -670,13 +681,14 @@ namespace WindowsFormsApplication1
                     else
                     {
                         gridsalesorder.AllowUserToAddRows = true;
-                       // MessageBox.Show("details save not successfully");
+                        
                     }
                     makeblank();
+                   
                     int id1 = Convert.ToInt32(txtsrno.Text);
                     id1 = id1 + 1;
                     txtsrno.Text = id1.ToString();
-                    txtcustomercode.Focus();
+                    txtitemcode.Focus();
                     ls.Clear();
 
 
@@ -685,7 +697,9 @@ namespace WindowsFormsApplication1
                 
 
             }
-           // MessageBox.Show("please select your first item id");
+          
+
+            //MessageBox.Show("please select your first item id");
             txtcustomercode.Select(txtcustomercode.Text.Length, 0);
             gridsalesorder.AllowUserToAddRows = true;
             txtcustomercode.Focus();
