@@ -816,7 +816,7 @@ namespace WindowsFormsApplication1
 
         private void txtQuanity_Leave(object sender, EventArgs e)
         {
-            
+             
         }
 
         private void txtQuanity_KeyPress(object sender, KeyPressEventArgs e)
