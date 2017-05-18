@@ -320,7 +320,7 @@ namespace WindowsFormsApplication1
                     quntity = dr3[5].ToString();
                     rate = dr3[4].ToString();
                     prise = dr3[6].ToString();
-                    if (txtItemCode.Text == itemid)
+                    if (itid == txtItemCode.Text)
                     {
                         int q1 = Convert.ToInt32(quntity);
                         int q2 = Convert.ToInt32(txtQuantity.Text);
@@ -341,7 +341,7 @@ namespace WindowsFormsApplication1
                          txtQunty.Text = "";
                          txtAmount.Text = "";
                          //addToCartTable.Columns.Add("Qtuhjh");*/
-                        ls1.Add(itemid);
+                       // ls1.Add(itemid);
 
                     }
                 }
