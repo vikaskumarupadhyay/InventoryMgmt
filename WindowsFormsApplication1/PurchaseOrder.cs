@@ -57,9 +57,8 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                int txt = Convert.ToInt32(id);
-                int txt1 = txt + 1;
-                txtSrNo.Text = txt1.ToString();
+                OrderID(id);
+
             }
             string comQurry = "select TexId from CompnayDetails";
             DataTable dt2 = dbMainClass.getDetailByQuery(comQurry);
@@ -89,6 +88,13 @@ namespace WindowsFormsApplication1
 
             gridPurchaseOrder.DataSource = addToCartTable;
         }
+
+                  public void OrderID(String s)
+          {
+              int txt = Convert.ToInt32(s);
+              int txt1 = txt + 1;
+              txtSrNo.Text = txt1.ToString();
+          }   
 
         private void txtVendorCode_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -749,9 +755,8 @@ namespace WindowsFormsApplication1
                             panel2.Visible = false;
                         }
                         gridPurchaseOrder.AllowUserToAddRows = true;
-                        int id2 = Convert.ToInt32(txtSrNo.Text);
-                        int id3 = id2 + 1;
-                        txtSrNo.Text = id3.ToString();
+                        OrderID(txtSrNo.Text);
+
                     }
 
                     else
@@ -793,7 +798,7 @@ namespace WindowsFormsApplication1
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                if (txtQuanity.Text == "")
+                 if ((txtQuanity.Text == "") || (txtQuanity.Text == "0"))
                 {
                     MessageBox.Show("Please Enter The Quanity");
                     txtQuanity.Focus();
@@ -927,6 +932,7 @@ namespace WindowsFormsApplication1
         private void IndexTex2()
         {
             txtQuanity.Focus();
+            txtQuanity.SelectAll();
             txtItemCode.TabStop = true;
             button2.TabStop = true;
             txtDiscount.TabStop = false;
@@ -1030,6 +1036,19 @@ namespace WindowsFormsApplication1
                         if (dt != null && dt.Rows.Count > 0)
                         {                            
                             txtQuanity.ReadOnly = false;
+                                                          txtQuanity.Text = "1";
+                              int que = Convert.ToInt32(txtQuanity.Text);
+                              string purchesprice = "select SalesPrice from ItemPriceDetail where ItemId ='" + txtItemCode.Text + "'";
+                              DataTable dt1 = dbMainClass.getDetailByQuery(purchesprice);
+                              string salep="";
+                              foreach (DataRow dr in dt1.Rows)
+                              {
+                                  salep = dr[0].ToString();
+                              }
+                              Double Saleprice = Convert.ToDouble(salep);
+                              Double price = Saleprice * que;
+                              txtAmount.Text = price.ToString();
+
                             btnAddItem.Enabled = true;
                             txtQuanity.Enabled = true;
                             IndexTex2();
@@ -1065,6 +1084,8 @@ namespace WindowsFormsApplication1
                     }
                     e.Handled = false;
                     txtAmount.Text = "";
+                    txtRate.Text = "";
+
                     txtQuanity.Text = "";
                     txtItemCode.Focus();
 
