@@ -244,10 +244,10 @@ namespace WindowsFormsApplication1
                     //quantity = Convert.ToInt32(txtQuantity.Text);
                     //double rate = Convert.ToDouble(txtRate.Text);
                     //txtAmount.Text = (quantity * rate).ToString("###0.00");
-                    MessageBox.Show("Quantity is not available");
-                   // txtQuantity.Text = "0";
+                  //  MessageBox.Show("Quantity is not available");
+                   // txtQuantity.Text = "";
                     //txtQuantity.Text = "0";
-                    //txtAmount.Text = "0";
+                   // txtAmount.Text = "";
                 }
                
             }
@@ -300,14 +300,17 @@ namespace WindowsFormsApplication1
             string itemid = "";
             string quntity = "";
             string rate = "";
+            int counter=0;
             foreach (DataRow dr3 in addToCartTable.Rows)
             {
                 int q3 = 0;
                 itemid = dr3[0].ToString();
-                if (ls.Contains(itemid))
+                if (ls.Contains(itemid) && gridsalesorder.Rows[counter].DefaultCellStyle.Font!=null)
                 {
+                    counter++;
                     continue;
                 }
+                counter++;
                 quntity = dr3[5].ToString();
                 rate = dr3[4].ToString();
 
@@ -333,6 +336,7 @@ namespace WindowsFormsApplication1
                     txtAmount.Text = "";
                     txtQuantity.ReadOnly = true;
                 }
+            
             }
 
 
@@ -390,12 +394,14 @@ namespace WindowsFormsApplication1
                 txtQuantity.TabStop = false;
                 txtQuantity.ReadOnly = true;
                 //}
+               // ls.Clear();
             }
             if (gridsalesorder.Rows.Count > 1)
             {
                 textBox20.ReadOnly = false;
             }
             txtitemcode.Select(txtitemcode.Text.Length, 0);
+           
 
         }
 
@@ -1191,9 +1197,10 @@ namespace WindowsFormsApplication1
             string select = "select CurrentQuantity from ItemQuantityDetail where itemid='" + txtitemcode.Text + "'";
             DataTable dt1 = d.getDetailByQuery(select);
             string s = "";
+           
             foreach (DataRow dr in dt1.Rows)
             {
-                s = dr[0].ToString();
+               s = dr[0].ToString();
 
             }
             if (Char.IsDigit(e.KeyChar))
@@ -1214,42 +1221,62 @@ namespace WindowsFormsApplication1
             txtQuantity.ReadOnly = true;
             if (e.KeyChar == (char)Keys.Enter)
             {
+                if (s == "")
+                {
+                    s = "0";
+                }
+                if (txtitemcode.Text == "")
+                {
+                    MessageBox.Show("please enter the itemcode");
+                    txtitemcode.Focus();
+                }
                 if (txtcustomercode.Text == "C")
                 {
                     MessageBox.Show("Please enter the customer code first!");
                     txtcustomercode.Focus();
 
                 }
+
+              
+                double quantity = Convert.ToDouble(s);
+               // double q = Convert.ToDouble(txtQuantity.Text + "");
+                if (quantity < 0)
+                {
+                    MessageBox.Show("quantity not available");
+                    txtQuantity.Text = "";
+                    txtAmount.Text = "";
+                }
                 else
                 {
-                    double quantity = Convert.ToDouble(s);
+                   
+                    
+                    //double qu=Convert.ToDouble(txtQuantity.Text);
                     string selectquery1 = "select i.ItemId,i.ItemName,cast(ip.SalesPrice as numeric(38,2)),iq.CurrentQuantity from ItemDetails i join ItemPriceDetail ip on i.ItemId=ip.ItemId join ItemQuantityDetail iq on ip.ItemId=iq.ItemId where i.ItemId='" + txtitemcode.Text + "'";
                     DataTable dt = d.getDetailByQuery(selectquery1);
                     if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
                     {
                         foreach (DataRow dr in dt.Rows)
                         {
-                           
+
                             txtProductName.Text = dr[1].ToString();
                             txtRate.Text = dr[2].ToString();
                             //txtRate.Text = dr[3].ToString();
                             //txtQuantity.Text = dr[3].ToString();
                             // txtAmount.Text = dr[4].ToString();
-                            txtQuantity.Text = "1";
-                             quantity = Convert.ToDouble(txtQuantity.Text);
-                            double rate = Convert.ToDouble(txtRate.Text);
-                            txtAmount.Text = (quantity * rate).ToString("###0.00");
-                            txtQuantity.ReadOnly = false;
-                            butadditem.Enabled = true;
-                            //tab6();
+                         
+                                txtQuantity.Text = "1";
+                                quantity = Convert.ToDouble(txtQuantity.Text);
+                                double rate = Convert.ToDouble(txtRate.Text);
+                                txtAmount.Text = (quantity * rate).ToString("###0.00");
+                                txtQuantity.ReadOnly = false;
+                                butadditem.Enabled = true;
+                                //tab6();
+                            }
                         }
-                        if (quantity > 0)
-                        {
-                            txtQuantity.Text = "";
-                            txtAmount.Text = "";
-                        }
+                       
                      
-                    }
+                    
+                   
                     else
                     {
                         txtProductName.Text = "";
