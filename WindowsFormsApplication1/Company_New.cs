@@ -777,23 +777,29 @@ namespace WindowsFormsApplication1
 
         private void combComp_DropDown(object sender, EventArgs e)
         {
-            combComp.Items.RemoveAt(0);
-           
+
+            if (combComp.Items[0].ToString() == "Select  Tax")
+            {
+                combComp.Items.RemoveAt(0);
+            }
+            //else if (combComp.Items[0].ToString() != "Select  Tax")
+            //{
+            //    combComp.Items.Insert(0,"Select  Tax");
+            //}
         }
 
         private void combComp_Leave(object sender, EventArgs e)
         {
-            if (combComp.SelectedItem == null)
+            if ((combComp.Items[0].ToString() != "Select  Tax")&&(combComp.SelectedItem == null))
             {
-                combComp.Items.Insert(0, "Select Tax");
+                combComp.Items.Insert(0, "Select  Tax");
                 combComp.SelectedIndex = 0;
             }
-            else
+            else if(combComp.SelectedItem != null)
             {
                 DB_Main.taxName = combComp.SelectedItem.ToString();
             }
-
-           // combComp.Items.Insert(0, "Select Tax");
         }
+
     }
 }

@@ -568,10 +568,9 @@
             this.panel1.Controls.Add(this.butUpdate);
             this.panel1.Controls.Add(this.butAddNewRecord);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1172, 634);
+            this.panel1.Size = new System.Drawing.Size(1172, 502);
             this.panel1.TabIndex = 32;
             // 
             // panel2
@@ -790,6 +789,7 @@
             this.combComp.DropDown += new System.EventHandler(this.combComp_DropDown);
             this.combComp.SelectedIndexChanged += new System.EventHandler(this.combComp_SelectedIndexChanged);
             this.combComp.Leave += new System.EventHandler(this.combComp_Leave);
+            //this.combComp.MouseLeave += new System.EventHandler(this.combComp_MouseLeave);
             // 
             // Company_New
             // 
