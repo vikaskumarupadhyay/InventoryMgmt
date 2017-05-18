@@ -109,6 +109,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.gridsalesorder);
+            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(15, 238);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1139, 320);
@@ -315,6 +316,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAmount.Location = new System.Drawing.Point(871, 35);
             this.txtAmount.Name = "txtAmount";
+            this.txtAmount.ReadOnly = true;
             this.txtAmount.Size = new System.Drawing.Size(48, 21);
             this.txtAmount.TabIndex = 10;
             this.txtAmount.TabStop = false;
@@ -359,6 +361,7 @@
             this.txtRate.TabIndex = 6;
             this.txtRate.TabStop = false;
             this.txtRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRate.MouseEnter += new System.EventHandler(this.txtRate_MouseEnter);
             // 
             // label12
             // 
@@ -712,10 +715,9 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.butback);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1172, 634);
+            this.panel2.Size = new System.Drawing.Size(78, 553);
             this.panel2.TabIndex = 60;
             // 
             // crystalReportViewer1
@@ -723,10 +725,9 @@
             this.crystalReportViewer1.ActiveViewIndex = -1;
             this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(1172, 634);
+            this.crystalReportViewer1.Size = new System.Drawing.Size(55, 415);
             this.crystalReportViewer1.TabIndex = 8;
             // 
             // panel3
@@ -735,10 +736,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel3.Controls.Add(this.dataGridView1);
+            this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel3.Location = new System.Drawing.Point(12, 105);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1141, 476);
+            this.panel3.Size = new System.Drawing.Size(47, 476);
             this.panel3.TabIndex = 7;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // dataGridView1
             // 
@@ -748,7 +751,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1137, 472);
+            this.dataGridView1.Size = new System.Drawing.Size(43, 472);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
@@ -765,7 +768,7 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(12, 25);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1141, 73);
+            this.groupBox4.Size = new System.Drawing.Size(47, 73);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
@@ -786,7 +789,7 @@
             this.txtsearchvalue.Location = new System.Drawing.Point(687, 42);
             this.txtsearchvalue.Multiline = true;
             this.txtsearchvalue.Name = "txtsearchvalue";
-            this.txtsearchvalue.Size = new System.Drawing.Size(782, 23);
+            this.txtsearchvalue.Size = new System.Drawing.Size(0, 23);
             this.txtsearchvalue.TabIndex = 3;
             this.txtsearchvalue.TextChanged += new System.EventHandler(this.txtsearchvalue_TextChanged_1);
             // 

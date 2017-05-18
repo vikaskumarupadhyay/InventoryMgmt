@@ -270,6 +270,8 @@ namespace WindowsFormsApplication1
 
         private void makeblank()
         {
+            txtitemcode.Enabled = true;
+            button2.Enabled = true;
             txtcustomercode.Text = "C";
             txtcustname.Text = "";
             txtcustcompname.Text = "";
@@ -325,6 +327,7 @@ namespace WindowsFormsApplication1
                     txtRate.Text = "";
                     txtQuantity.Text = "";
                     txtAmount.Text = "";
+                    txtQuantity.ReadOnly = true;
                 }
             }
 
@@ -339,6 +342,7 @@ namespace WindowsFormsApplication1
             // {
             if (txtAmount.Text == "")
             {
+                butadditem.Enabled = false;
                 // txtAmount.Text = "0";
                 // MessageBox.Show("Please Enter the Quanity");
             }
@@ -380,7 +384,7 @@ namespace WindowsFormsApplication1
                 butadditem.Enabled = false;
                 //txtRemoveItem.Focus();
                 txtQuantity.TabStop = false;
-                txtQuantity.Enabled = false;
+                txtQuantity.ReadOnly = true;
                 //}
             }
             if (gridsalesorder.Rows.Count > 1)
@@ -396,6 +400,7 @@ namespace WindowsFormsApplication1
             txtcustomercode.Select(txtcustomercode.Text.Length, 0);
             txtitemcode.Select(txtitemcode.Text.Length, 0);
             textBox20.ReadOnly = true;
+
             gridsalesorder.DataSource = addToCartTable;
             discountamount.Visible = false;
             txttaxamount.Visible = false;
@@ -477,9 +482,9 @@ namespace WindowsFormsApplication1
         }
         private void setAddToCraftTable()
         {
-            addToCartTable.Columns.Add(new DataColumn("ItemCode"));
-            addToCartTable.Columns.Add(new DataColumn("ProductName"));
-            addToCartTable.Columns.Add(new DataColumn("CompnayName"));
+            addToCartTable.Columns.Add(new DataColumn("Item Code"));
+            addToCartTable.Columns.Add(new DataColumn("Item Name"));
+            addToCartTable.Columns.Add(new DataColumn("Compnay Name"));
             addToCartTable.Columns.Add(new DataColumn("MRP"));
             addToCartTable.Columns.Add(new DataColumn("Rate"));
             addToCartTable.Columns.Add(new DataColumn("Quantity"));
@@ -640,6 +645,7 @@ namespace WindowsFormsApplication1
                         {
                             crystalReportViewer1.Visible = false;
                             panel2.Visible = false;
+                            
                         }
                         int id = Convert.ToInt32(txtsrno.Text);
                         id = id + 1;
@@ -1019,14 +1025,16 @@ namespace WindowsFormsApplication1
             if (gridsalesorder.Rows.Count > 1)
             {
                 button4.Enabled = true;
+                
             }
 
             if (e.KeyChar == (char)Keys.Escape)
             {
+                gridsalesorder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
                 txtitemcode.Enabled = true;
                 txtitemcode.Focus();
                 // txtitemcode.TabIndex = 1;
-                button2.Enabled = false;
+                button2.Enabled = true;
 
             }
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
@@ -1058,6 +1066,7 @@ namespace WindowsFormsApplication1
                     if (addToCartTable.Rows.Count == 0)
                     {
                         txttotalammount.Text = "0.0";
+                        
                         //txtdiscount.Text = "0.0";
                     }
 
@@ -1116,6 +1125,7 @@ namespace WindowsFormsApplication1
             }
             if (e.KeyChar == (char)Keys.Enter)
             {
+                txtitemcode.Select(txtitemcode.Text.Length, 0);
                 tab1();
             }
 
@@ -1155,7 +1165,7 @@ namespace WindowsFormsApplication1
                     e.Handled = true;
                 }
             }
-            txtQuantity.Enabled = false;
+            txtQuantity.ReadOnly = true;
             if (e.KeyChar == (char)Keys.Enter)
             {
                 if (txtcustomercode.Text == "C")
@@ -1197,6 +1207,7 @@ namespace WindowsFormsApplication1
                         butadditem.Enabled = false;
 
                     }
+           
                     txtQuantity.Enabled = true;
                     tab2();
 
@@ -1633,6 +1644,16 @@ namespace WindowsFormsApplication1
            {
               textBox20.Focus();
            }
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtRate_MouseEnter(object sender, EventArgs e)
+        {
+            
         }
 
       
