@@ -1400,6 +1400,7 @@ namespace WindowsFormsApplication1
             {
                
                 double totalAmount1 = 0.00;//Convert.ToDouble(txttotalAmount.Text);
+                double totalamount2 = 0.00;
                 foreach (DataRow dr in addToCartTable.Rows)
                 {
                     string itemid = dr[0].ToString();
@@ -1408,6 +1409,7 @@ namespace WindowsFormsApplication1
                         continue;
                     }
                     totalAmount1 += Convert.ToDouble(dr[6].ToString());
+                    totalamount2 += Convert.ToDouble(dr[6].ToString());
                 }
                 double s = totalAmount1;
                 string discountAmount = txtdis.Text;
@@ -1417,10 +1419,11 @@ namespace WindowsFormsApplication1
                 {
                     double totalDiscount = Convert.ToDouble(discountAmount);
                     totalAmount1 = totalAmount1 - ((totalAmount1 * totalDiscount) / 100);
+                    totalamount2  =  ((totalamount2  * totalDiscount) / 100);
                     txtTotalAmount.Text = totalAmount1.ToString("###0.00");
                     txtwithautaxamount.Text = s.ToString();
 
-                    double dis = totalAmount1 * totalDiscount / 100;
+                    double dis = totalamount2;//totalAmount1 * totalDiscount / 100;
                     DisAmmount.Text = dis.ToString();
 
                    // DisAmmount.Text = totalDiscount.ToString();
@@ -1436,7 +1439,7 @@ namespace WindowsFormsApplication1
             double tax = d + ((g / 100));
             double taxamount = total / tax;
             double totaltax = total - taxamount;
-           TextTaxAmmount.Text = totaltax.ToString();
+            TextTaxAmmount.Text = totaltax.ToString();
         }
 
         private void DisAmmount_TextChanged(object sender, EventArgs e)
