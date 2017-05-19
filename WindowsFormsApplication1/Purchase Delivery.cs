@@ -26,6 +26,8 @@ namespace WindowsFormsApplication1
 
         private void Form7_Load(object sender, EventArgs e)
         {
+            textVendercod.Select(textVendercod.Text.Length, 0);
+            txtItemCode.Select(txtItemCode.Text.Length, 0);
             txtDiscount.ReadOnly = true;
             IndexTex1();
             txtTaxAmount.Visible = false;
@@ -527,6 +529,7 @@ namespace WindowsFormsApplication1
                         txtQunty.Text = "";
                         txtAmount.Text = "";
                         txtItemCode.Focus();
+                        txtItemCode.Select(txtItemCode.Text.Length, 0);
                         button3.Enabled = false;
                     }
                     if (dataGridView1.Rows.Count > 1)
@@ -575,6 +578,7 @@ namespace WindowsFormsApplication1
                     txtQunty.Text = "";
                     txtAmount.Text = "";
                     txtItemCode.Focus();
+                    txtItemCode.Select(txtItemCode.Text.Length, 0);
                     txtQunty.TabStop = false;
                     txtQunty.ReadOnly = true;
                     button3.Enabled = false;
@@ -632,6 +636,7 @@ namespace WindowsFormsApplication1
                         txtQunty.Text = "";
                         txtAmount.Text = "";
                         txtItemCode.Focus();
+                        txtItemCode.Select(txtItemCode.Text.Length, 0);
                         txtQunty.TabStop = false;
                         txtQunty.ReadOnly = true;
                         button3.Enabled = false;
@@ -721,17 +726,41 @@ namespace WindowsFormsApplication1
 
         private void button5_Click(object sender, EventArgs e)
         {
+            if (textVendercod.Text == "V")
+            {
+                MessageBox.Show("Please Enter The Vendor Code");
+                textVendercod.Focus();
+                textVendercod.Select(textVendercod.Text.Length, 0);
+            }
+            else if (dataGridView1.CurrentRow == null)
+            {
+                MessageBox.Show("Please Enter The Item");
+                txtItemCode.Focus();
+                txtItemCode.Select(txtItemCode.Text.Length, 0);
+            }
+            else
+            {
+                dataGridView1.AllowUserToAddRows = false;
+                if (ls.Count == dataGridView1.Rows.Count - 1)
+                {
+                    MessageBox.Show("Please Enter The Item");
+                    return;
+                    dataGridView1.AllowUserToAddRows = true;
+                }
+                pnlPaymentDetail.Visible = true;
+                CmbPageName.SelectedIndex = 0;
+                CmbCompany.SelectedIndex = 0;
+                CmbCardType.SelectedIndex = 0;
+            }
             //deliverysave();
 
-            pnlPaymentDetail.Visible = true;
-            CmbPageName.SelectedIndex = 0;
-            CmbCompany.SelectedIndex = 0;
-            CmbCardType.SelectedIndex = 0;
+            
             //comboBox2.Text = "Delivery-Payment";
 
         }
         public void deliverysave()
         {
+            int count = 0;
             if (txtRef.Text == "")
             {
                 if (txtDiscount.Text == "")
@@ -795,10 +824,12 @@ namespace WindowsFormsApplication1
                             DataGridViewRow currentRow = RowCollection[a];
                             DataGridViewCellCollection cellCollection = currentRow.Cells;
                             string txtItemCod = cellCollection[0].Value.ToString();
-                            if (ls.Contains(txtItemCod))
+                            if (ls.Contains(txtItemCod) && dataGridView1.Rows[count].DefaultCellStyle.Font != null)
                             {
+                                count++;
                                 continue;
                             }
+                            count++;
                             string txtRate = cellCollection[4].Value.ToString();
                             string txtQuanit = cellCollection[5].Value.ToString();
                             string txtAmoun = cellCollection[6].Value.ToString();
@@ -822,10 +853,12 @@ namespace WindowsFormsApplication1
                                 DataGridViewRow currentRow = RowCollection1[a];
                                 DataGridViewCellCollection cellCollection = currentRow.Cells;
                                 string txtItemCode = cellCollection[0].Value.ToString();
-                                if (ls.Contains(txtItemCode))
+                                if (ls.Contains(txtItemCode) && dataGridView1.Rows[count].DefaultCellStyle.Font != null)
                                 {
+                                    count++;
                                     continue;
                                 }
+                                count++;
                                 string txtRate = cellCollection[4].Value.ToString();
                                 string txtQuanity = cellCollection[5].Value.ToString();
                                 string txtAmoun = cellCollection[6].Value.ToString();
@@ -853,6 +886,7 @@ namespace WindowsFormsApplication1
                                 else
                                 {
                                     MessageBox.Show("Details Not Saved Successfully");
+                                    dataGridView1.AllowUserToAddRows = true;
                                 }
                             }
                             //    MessageBox.Show("Details Saved Successfully");
@@ -882,10 +916,12 @@ namespace WindowsFormsApplication1
                             DataGridViewRow currentRow = RowCollection[a];
                             DataGridViewCellCollection cellCollection = currentRow.Cells;
                             string txtItemCod = cellCollection[0].Value.ToString();
-                            if (ls.Contains(txtItemCod))
-                            {
-                                continue;
-                            }
+                            if (ls.Contains(txtItemCod) && dataGridView1.Rows[count].DefaultCellStyle.Font != null)
+                                {
+                                    count++;
+                                    continue;
+                                }
+                            count++;
                             string txtRate = cellCollection[4].Value.ToString();
                             string txtQuanit = cellCollection[5].Value.ToString();
                             string txtAmoun = cellCollection[6].Value.ToString();
@@ -909,10 +945,12 @@ namespace WindowsFormsApplication1
                                 DataGridViewRow currentRow = RowCollection2[a];
                                 DataGridViewCellCollection cellCollection = currentRow.Cells;
                                 string txtItemCode = cellCollection[0].Value.ToString();
-                                if (ls.Contains(txtItemCode))
+                                if (ls.Contains(txtItemCode) && dataGridView1.Rows[count].DefaultCellStyle.Font != null)
                                 {
+                                    count++;
                                     continue;
                                 }
+                                count++;
                                 string txtRate = cellCollection[4].Value.ToString();
                                 string txtQuanity = cellCollection[5].Value.ToString();
                                 string txtAmoun = cellCollection[6].Value.ToString();
@@ -973,6 +1011,7 @@ namespace WindowsFormsApplication1
                                 else
                                 {
                                     MessageBox.Show("Details Not Saved Successfully");
+                                    dataGridView1.AllowUserToAddRows = true;
                                 }
                             }
                             //    MessageBox.Show("Details Saved Successfully");
@@ -1275,6 +1314,7 @@ namespace WindowsFormsApplication1
                     MessageBox.Show("This Order completed");
                     txtRef.Text = "";
                     textVendercod.Focus();
+                    textVendercod.Select(textVendercod.Text.Length, 0);
 
                 }
 
@@ -1595,6 +1635,7 @@ namespace WindowsFormsApplication1
                     txtAmount.Text = "";
                     txtQunty.Text = "";
                     txtItemCode.Focus();
+                    txtItemCode.Select(txtItemCode.Text.Length, 0);
 
                 }
                 else if ((e.KeyChar == 'I' || e.KeyChar == 'i') && string.IsNullOrWhiteSpace(txtItemCode.Text))
@@ -1644,6 +1685,7 @@ namespace WindowsFormsApplication1
         private void IndexTex3()
         {
             txtItemCode.Focus();
+            txtItemCode.Select(txtItemCode.Text.Length, 0);
             txtItemCode.TabStop = true;
             button2.TabStop = true;
             textVendercod.TabStop = false;
@@ -1713,6 +1755,7 @@ namespace WindowsFormsApplication1
                     if (dataGridView1.Rows.Count == 0)
                     {
                         txtItemCode.Focus();
+                        txtItemCode.Select(txtItemCode.Text.Length, 0);
                     }
                     if (dataGridView1.Rows.Count > 0)
                     {
@@ -1736,6 +1779,7 @@ namespace WindowsFormsApplication1
             if (e.KeyChar == Convert.ToChar(Keys.Escape))
             {
                 txtItemCode.Focus();
+                txtItemCode.Select(txtItemCode.Text.Length, 0);
                 button4.Enabled = true;
                 dataGridView1.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
 
@@ -2000,6 +2044,7 @@ namespace WindowsFormsApplication1
             if (e.KeyChar == Convert.ToChar(Keys.Escape))
             {
                 textVendercod.Focus();
+                textVendercod.Select(textVendercod.Text.Length, 0);
             }
         }
 
@@ -2009,6 +2054,7 @@ namespace WindowsFormsApplication1
             if (e.KeyChar == Convert.ToChar(Keys.Escape))
             {
                 textVendercod.Focus();
+                textVendercod.Select(textVendercod.Text.Length, 0);
             }
         }
 
@@ -2017,6 +2063,7 @@ namespace WindowsFormsApplication1
             if (e.KeyChar == Convert.ToChar(Keys.Escape))
             {
                 textVendercod.Focus();
+                textVendercod.Select(textVendercod.Text.Length, 0);
             }
         }
 
