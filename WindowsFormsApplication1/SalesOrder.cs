@@ -382,7 +382,7 @@ namespace WindowsFormsApplication1
                 totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
                 txttotalammount.Text = totalAmount.ToString("###0.00");
                 txtwithautaxamount.Text= totalAmount.ToString();
-
+                gridsalesorder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
                 txtitemcode.Text = "I";
                 txtProductName.Text = "";
                 txtRate.Text = "";
@@ -507,8 +507,8 @@ namespace WindowsFormsApplication1
             button4.Enabled = false;
             gridsalesorder.Focus();
             gridsalesorder.TabIndex = 1;
-            button2.Enabled = false;
-            txtitemcode.ReadOnly = true;
+            //button2.Enabled = false;
+            //txtitemcode.ReadOnly = true;
             //if (addToCartTable.Rows.Count > 0)
             //{
             //    string Amount = gridsalesorder.SelectedRows[0].Cells[4].Value.ToString();

@@ -120,6 +120,7 @@ namespace WindowsFormsApplication1
             }
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
+                txtItemCode.Select(txtItemCode.Text.Length, 0);
                 btnAddItem.Focus();
             }
             if (Char.IsDigit(e.KeyChar))
@@ -276,6 +277,11 @@ namespace WindowsFormsApplication1
 
         private void txtItemCode_TextChanged(object sender, EventArgs e)
        {
+           if (!txtItemCode.Text.StartsWith("I"))
+           {
+               txtItemCode.Text = string.Concat("I", txtItemCode.Text);
+               txtItemCode.Select(txtItemCode.Text.Length, 0);
+           }
            // string itemCode = txtItemCode.Text;
            // setitemVlue("ItemId", itemCode);
             //txtItemCode.Focus();
@@ -334,7 +340,6 @@ namespace WindowsFormsApplication1
         private void btnAddItem_Click(object sender, EventArgs e)
         {
             txtItemCode.Focus();
-            txtItemCode.Select(txtItemCode.Text.Length, 0);
             txtQuanity.ReadOnly = true;
             txtVendorCode.TabStop = true;
             button1.TabStop = true;
@@ -381,12 +386,14 @@ namespace WindowsFormsApplication1
 
                     txtwithautaxamount.Text = rate5.ToString();
                     txtItemCode.Text = "I";
+                    txtItemCode.Select(txtItemCode.Text.Length, 0);
                     txtProductName.Text = "";
                     txtRate.Text = "";
                     txtQuanity.Text = "";
                     txtAmount.Text = "";
                     //txtItemCode.Focus();
                     btnAddItem.Enabled = false;
+
                 }
             }
                 
@@ -459,6 +466,7 @@ namespace WindowsFormsApplication1
                             txtwithautaxamount.Text = totalAmount.ToString();
 
                             txtwithautaxamount.Text = totalAmount.ToString();
+                            gridPurchaseOrder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
                             txtItemCode.Text = "I";
                             txtProductName.Text = "";
                             txtRate.Text = "";
@@ -475,7 +483,7 @@ namespace WindowsFormsApplication1
                         {
                             txtdis.ReadOnly = false;
                         }
-
+                        txtItemCode.Select(txtItemCode.Text.Length, 0);
                 }
         }
         #endregion
@@ -1023,6 +1031,7 @@ namespace WindowsFormsApplication1
             }
              if (e.KeyChar == Convert.ToChar(Keys.Escape))
              {
+                 gridPurchaseOrder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
                  txtItemCode.Focus();
                  txtItemCode.Select(txtItemCode.Text.Length, 0);
                  txtRemoveItem.Enabled = true;
@@ -1134,7 +1143,7 @@ namespace WindowsFormsApplication1
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
                 txtItemCode.Focus();
-                txtItemCode.Select(txtItemCode.Text.Length, 0);
+                //txtItemCode.Select(txtItemCode.Text.Length, 0);
                 txtVendorCode.TabStop = false;
                 button1.TabStop = false;
                 txtDiscount.TabStop = false;
