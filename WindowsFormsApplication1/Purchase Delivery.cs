@@ -1728,31 +1728,43 @@ namespace WindowsFormsApplication1
 
         private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
         {
+            
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-
+               
                 if (addToCartTable.Rows.Count > 0)
                 {
-
-
+                    if (txttotalAmount.Text == "")
+                    {
+                        txttotalAmount.Text = "0";
+                    }
+                    int index = dataGridView1.SelectedRows[0].Index;
+                    string itemId = dataGridView1.Rows[index - 1].Cells[0].Value.ToString();
+                    if ((!ls.Contains(itemId)) || (dataGridView1.Rows[index - 1].DefaultCellStyle.Font == null))
+                    {
+                      
                     int currentrow = dataGridView1.CurrentRow.Index;
                     string Amount = dataGridView1.Rows[currentrow - 1].Cells[6].Value.ToString();
+                         if (Amount == "")
+                        {
+                            Amount = "0";
+                        }
                     double totalAmount = Convert.ToDouble(txttotalAmount.Text);
                     totalAmount -= Convert.ToDouble(Amount.Trim());
                     txttotalAmount.Text = totalAmount.ToString();
-                    int index = dataGridView1.SelectedRows[0].Index;
+                   // int index = dataGridView1.SelectedRows[0].Index;
                     //addToCartTable.Rows.RemoveAt(index-1);
 
                     dataGridView1.Rows[index - 1].DefaultCellStyle.Font = new Font(new FontFamily("Microsoft Sans Serif"), 9.00F, FontStyle.Strikeout);
                     dataGridView1.Rows[index - 1].DefaultCellStyle.ForeColor = Color.Red;
-
+                    ls.Add(itemId);
                     dataGridView1.DataSource = addToCartTable;
                     if (addToCartTable.Rows.Count == 0)
                     {
                         txttotalAmount.Text = "0.0";
                         txtdis.Text = "0.0";
                     }
-                    if (dataGridView1.Rows.Count == 0)
+                    if (ls.Count==dataGridView1.Rows.Count-1)
                     {
                         txtItemCode.Focus();
                         txtItemCode.Select(txtItemCode.Text.Length, 0);
@@ -1773,7 +1785,7 @@ namespace WindowsFormsApplication1
                     //else
                     //{
                     //    button4.Enabled = false;
-                    //}
+                   }
                 }
             }
             if (e.KeyChar == Convert.ToChar(Keys.Escape))
