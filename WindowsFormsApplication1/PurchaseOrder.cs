@@ -690,6 +690,8 @@ namespace WindowsFormsApplication1
                 if (ls.Count == gridPurchaseOrder.Rows.Count - 1)
                 {
                     MessageBox.Show("Please Enter The Item");
+                    txtItemCode.Focus();
+                    txtItemCode.Select(txtItemCode.Text.Length, 0);
                     return;
                 }
                 PO_SaveDetails();
