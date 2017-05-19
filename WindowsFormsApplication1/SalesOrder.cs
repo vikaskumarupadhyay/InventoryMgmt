@@ -548,10 +548,10 @@ namespace WindowsFormsApplication1
             if (gridsalesorder.Rows.Count ==1)
             {
                // gridsalesorder.AllowUserToAddRows = true;
-                MessageBox.Show("please select your first item");
+                MessageBox.Show("please select your customer id");
             }
 
-            if (ls.Count == gridsalesorder.Rows.Count - 1)
+           else if (ls.Count == gridsalesorder.Rows.Count - 1)
             {
                 MessageBox.Show("please select your item id");
                 txtitemcode.Focus();
@@ -602,8 +602,7 @@ namespace WindowsFormsApplication1
             counter = 0;
             if (counter == 0)
             {
-                string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpdate.Text + "','" + txttotalammount.Text + "','" + textBox20.Text+ "','"+discountamount.Text+"','"+txttax.Text+"','"+txttaxamount.Text+"','"+txtwithautaxamount.Text+"')";
-                int insertrows = d.saveDetails(insertquery);
+               
 
 
                 DataGridViewRowCollection rowcollection = gridsalesorder.Rows;
@@ -629,6 +628,9 @@ namespace WindowsFormsApplication1
                     string Orderid = txtsrno.Text;
                     string query = "insert into customerorderdescriptions Values('" + txtsrno.Text + "','" + txtitemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
 
+                    
+                    string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpdate.Text + "','" + txttotalammount.Text + "','" + textBox20.Text + "','" + discountamount.Text + "','" + txttax.Text + "','" + txttaxamount.Text + "','" + txtwithautaxamount.Text + "')";
+                    int insertrows = d.saveDetails(insertquery);
                     show.Add(query);
                 }
                 
@@ -1208,6 +1210,7 @@ namespace WindowsFormsApplication1
 
         private void txtitemcode_KeyPress(object sender, KeyPressEventArgs e)
         {
+           
             string select = "select CurrentQuantity from ItemQuantityDetail where itemid='" + txtitemcode.Text + "'";
             DataTable dt1 = d.getDetailByQuery(select);
             string s = "";
@@ -1239,17 +1242,13 @@ namespace WindowsFormsApplication1
                 {
                     s = "0";
                 }
-                if (txtitemcode.Text == "")
-                {
-                    MessageBox.Show("please enter the itemcode");
-                    txtitemcode.Focus();
-                }
-                if (txtcustomercode.Text == "C")
+                if (txtcustomercode.Text == "c")
                 {
                     MessageBox.Show("please enter the customercode");
                     txtcustomercode.Focus();
-
                 }
+               
+             
 
               
                 double quantity = Convert.ToDouble(s);
@@ -1306,6 +1305,13 @@ namespace WindowsFormsApplication1
                     tab2();
 
                 }
+                if (txtitemcode.Text == "I")
+                {
+                    MessageBox.Show("please enter the itemcode");
+                    txtQuantity.ReadOnly = false;
+                    txtitemcode.Focus();
+                }
+
             }
             if (e.KeyChar == (char)Keys.Escape)
             {
@@ -1326,12 +1332,20 @@ namespace WindowsFormsApplication1
             DataTable dt2 = d.getDetailByQuery(selectquery2);
             if (dt2.Rows.Count > 0)
             {
+
             }
-            else if (e.KeyChar == (char)Keys.Enter && dt2.Rows != null && dt2 != null)
+            else if(e.KeyChar == (char)Keys.Enter && dt2.Rows != null && dt2 != null&&txtcustomercode.Text=="C")
             {
-                txtitemcode.Focus();
-                MessageBox.Show("Please select your correct Itemid");
+                MessageBox.Show("please enter the customercode");
+                txtcustomercode.Focus();
+                //txtitemcode.Focus();
+                //MessageBox.Show("Please select your item id");
             }
+          
+            
+
+
+            
         }
 
 
@@ -1668,10 +1682,12 @@ namespace WindowsFormsApplication1
                 foreach (DataRow dr in addToCartTable.Rows)
                 {
                     string itemid = dr[0].ToString();
-                    if (ls.Contains(itemid))
+                    if (ls.Contains(itemid) && gridsalesorder.Rows[counter].DefaultCellStyle.Font != null)
                     {
+                        counter++;
                         continue;
                     }
+                    counter++;
                     totalAmount += Convert.ToDouble(dr[6].ToString());
                 }
                 double s = totalAmount;
