@@ -673,7 +673,13 @@ namespace WindowsFormsApplication1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (gridPurchaseOrder.CurrentRow == null)
+            if (txtVendorCode.Text == "V")
+            {
+                MessageBox.Show("Please Enter The Vendor Code");
+                txtVendorCode.Focus();
+                txtVendorCode.Select(txtVendorCode.Text.Length,0);
+            }
+           else if (gridPurchaseOrder.CurrentRow == null)
             {
                 MessageBox.Show("Please Enter The Item");
                 txtItemCode.Focus();
@@ -683,6 +689,7 @@ namespace WindowsFormsApplication1
             {
                 if (ls.Count == gridPurchaseOrder.Rows.Count - 1)
                 {
+                    MessageBox.Show("Please Enter The Item");
                     return;
                 }
                 PO_SaveDetails();
@@ -734,7 +741,7 @@ namespace WindowsFormsApplication1
                         int insertedRows = dbMainClass.saveDetails(insertqurry);
                         if (insertedRows > 0)
                         {
-                                                        DataGridViewRowCollection RowCollection = gridPurchaseOrder.Rows;
+                             DataGridViewRowCollection RowCollection = gridPurchaseOrder.Rows;
                             List<string> sf = new List<string>();
                             for (int a = 0; a < RowCollection.Count; a++)
                             {
@@ -1361,7 +1368,7 @@ namespace WindowsFormsApplication1
                     }
                     double s1 = totalAmount;
                     txtTotalAmount.Text = s1.ToString("###0.00");
-                    txtDiscount.Text = "0";
+                    txtdis.Text = "0";
                     // double total = Convert.ToDouble(txttotalammount.Text);
                     // double d = Convert.ToDouble(discountamount.Text);
                     // double g = d + total;
