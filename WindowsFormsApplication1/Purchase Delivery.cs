@@ -2164,9 +2164,18 @@ namespace WindowsFormsApplication1
                 if (txtRef.Text != "")
                 {
                     double totalAmount = 0.00;//Convert.ToDouble(txttotalAmount.Text);
+                    double totalAmount1 = 0.00;
                     foreach (DataRow dr in addToCartTable.Rows)
                     {
+                        string itemid = dr[0].ToString();
+                        if (ls.Contains(itemid) && dataGridView1.Rows[counter].DefaultCellStyle.Font != null)
+                        {
+                            counter++;
+                            continue;
+                        }
+                        counter++;
                         totalAmount += Convert.ToDouble(dr[7].ToString());
+                        totalAmount1 += Convert.ToDouble(dr[7].ToString());
                     }
                     string discountAmount = txtDiscount.Text;
                     //double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
@@ -2175,8 +2184,9 @@ namespace WindowsFormsApplication1
                     {
                         double totalDiscount = Convert.ToDouble(discountAmount);
                         totalAmount = totalAmount - ((totalAmount * totalDiscount) / 100);
+                        totalAmount1 =  ((totalAmount1 * totalDiscount) / 100);
                         txttotalAmount.Text = totalAmount.ToString();
-                        double dis = totalAmount * totalDiscount / 100;
+                        double dis = totalAmount1; //* totalDiscount / 100;
                         txtDisAmount.Text = dis.ToString();
                     }
                 }
