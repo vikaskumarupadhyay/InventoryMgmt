@@ -2103,6 +2103,41 @@ namespace WindowsFormsApplication1
 
         private void txtDiscount_KeyPress(object sender, KeyPressEventArgs e)
         {
+            double totalAmount3 = 0.00;
+            if (Char.IsLetterOrDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    foreach (DataRow dr in addToCartTable.Rows)
+                    {
+                        string itemid = dr[0].ToString();
+                        if (ls.Contains(itemid))
+                        {
+                            continue;
+                        }
+                        totalAmount3 += Convert.ToDouble(dr[6].ToString());
+                    }
+                    double s1 = totalAmount3;
+                    txttotalAmount.Text = s1.ToString("###0.00");
+                   // txtdis.Text = "0";
+                    // double total = Convert.ToDouble(txttotalammount.Text);
+                    // double d = Convert.ToDouble(discountamount.Text);
+                    // double g = d + total;
+                    //txttotalammount.Text = g.ToString();
+                    //discountamount.Text = "";
+
+
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
             char ch = e.KeyChar;
             if (ch == 46 && txtDiscount.Text.IndexOf('.') != -1)
             {
