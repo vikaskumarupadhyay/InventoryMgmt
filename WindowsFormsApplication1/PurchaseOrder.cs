@@ -1404,10 +1404,12 @@ namespace WindowsFormsApplication1
                 foreach (DataRow dr in addToCartTable.Rows)
                 {
                     string itemid = dr[0].ToString();
-                    if (ls.Contains(itemid))
+                    if (ls.Contains(itemid) && gridPurchaseOrder.Rows[counter].DefaultCellStyle.Font != null)
                     {
+                        counter++;
                         continue;
                     }
+                    counter++;
                     totalAmount1 += Convert.ToDouble(dr[6].ToString());
                     totalamount2 += Convert.ToDouble(dr[6].ToString());
                 }
