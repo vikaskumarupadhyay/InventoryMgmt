@@ -1410,7 +1410,7 @@ namespace WindowsFormsApplication1
                         continue;
                     }
                     counter++;
-                    totalAmount1 += Convert.ToDouble(dr[6].ToString());
+                    totalAmount1 += Convert.ToDouble(dr[6].ToString()); 
                     totalamount2 += Convert.ToDouble(dr[6].ToString());
                 }
                 double s = totalAmount1;

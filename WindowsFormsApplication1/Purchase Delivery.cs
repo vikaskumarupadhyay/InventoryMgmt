@@ -434,126 +434,101 @@ namespace WindowsFormsApplication1
         private void button3_Click(object sender, EventArgs e)
         {
 
-            button4.Enabled = true;
-            txtQunty.TabStop = false;
+            txtItemCode.Focus();
             txtQunty.ReadOnly = true;
-            if (txtRef.Text == "")
+            textVendercod.TabStop = true;
+            button1.TabStop = true;
+            txtDiscount.TabStop = false;
+            string itemid = "";
+            string quntity = "";
+            string rate = "";
+            string ammount = "";
+            int counter = 0;
+            foreach (DataRow dr3 in addToCartTable.Rows)
             {
-
-                string itemid = "";
-                string quntity = "";
-                string rate = "";
-                string prise = "";
-                int count = 0;
-                List<string> ls1 = new List<string>();
-                foreach (DataRow dr3 in addToCartTable.Rows)
+                int q3 = 0;
+                itemid = dr3[0].ToString();
+                if (ls.Contains(itemid) && dataGridView1.Rows[counter].DefaultCellStyle.Font != null)
                 {
-                    int q3 = 0;
-                    itemid = dr3[0].ToString();
-                    if (ls.Contains(itemid) && dataGridView1.Rows[count].DefaultCellStyle.Font != null)
-                    {
-                        count++;
-                        continue;
-
-                    }
-                    count++;
-                    quntity = dr3[5].ToString();
-                    rate = dr3[4].ToString();
-                    prise = dr3[6].ToString();
-                    if (txtItemCode.Text == itemid)
-                    {
-                        
-                        int q1 = Convert.ToInt32(quntity);
-                        int q2 = Convert.ToInt32(txtQunty.Text);
-                        q3 = q1 + q2;
-                        dr3[5] = q3.ToString();
-                        //dr3[4] = q3.ToString();
-                        Double rate1 = Convert.ToDouble(prise);
-                        Double rate2 = Convert.ToDouble(txtAmount.Text);
-                        Double rate3 = rate1 + rate2;
-                        dr3[6] = rate3.ToString();
-                        Double rate4 = Convert.ToDouble(txttotalAmount.Text);
-                        Double rate5 = rate4 + rate2;
-                        txttotalAmount.Text = rate5.ToString("###0.00");//rate3.ToString();
-                        // MessageBox.Show("Please Enter the Quanity");
-                        //txtItemCode.Text = "I";
-                        //txtItemCode.Select(txtItemCode.Text.Length, 0);
-                        // txtProductName.Text = "";
-                        // txtRate.Text = "";
-                        // txtQunty.Text = "";
-                        // txtAmount.Text = "";
-                         //addToCartTable.Columns.Add("Qtuhjh");*/
-                        ls.Add(itemid);
-                      
-                    }
-                   
+                    counter++;
+                    continue;
                 }
-                if (addToCartTable != null && addToCartTable.Rows != null && addToCartTable.Rows.Count > 0)
+                counter++;
+                quntity = dr3[5].ToString();
+                rate = dr3[4].ToString();
+                ammount = dr3[6].ToString();
+
+                if (itemid == txtItemCode.Text)
                 {
-                    string it = "";
-                    for (int c = 0; c < ls.Count; c++)
+                    if (quntity == "")
                     {
-                        it = ls[c];
+                        quntity = "0";
                     }
-                    if (txtItemCode.Text == it)
-                    {
-                        button3.Enabled = false;
-                        txtItemCode.Text = "I";
-                        txtProductName.Text = "";
-                        txtRate.Text = "";
-                        txtQunty.Text = "";
-                        txtAmount.Text = "";
-                        txtItemCode.Focus();
-                        txtItemCode.Select(txtItemCode.Text.Length, 0);
-                    }
-                    else
-                    {
-                        string selectq = "select ids.ItemCompName,cast(ipd.MrpPrice as numeric(38,2)) from ItemPriceDetail ipd join ItemDetails ids on ipd.ItemId=ids.ItemId where ipd.ItemId='" + txtItemCode.Text + "'";
-                        DataTable dta = dbMainClass.getDetailByQuery(selectq);
-                        string ConpanyName = "";
-                        string Mrp = "";
-                        foreach (DataRow dr1 in dta.Rows)
-                        {
-                            ConpanyName = dr1[0].ToString();
+                    int q1 = Convert.ToInt32(quntity);
+                    int q2 = Convert.ToInt32(txtQunty.Text);
+                    q3 = q1 + q2;
+                    dr3[5] = q3.ToString();
+                    Double rate1 = Convert.ToDouble(rate);
+                    Double rate6 = rate1 * q2;
+                    Double rate2 = Convert.ToDouble(ammount);
+                    Double rate7 = Convert.ToDouble(txtAmount.Text);
+                    Double rate3 = rate6 + rate2;
+                    dr3[6] = rate3.ToString();
+                    Double rate4 = Convert.ToDouble(txttotalAmount.Text);
+                    Double rate5 = rate4 + rate7;
+                    txttotalAmount.Text = rate5.ToString("###0.00");//rate3.ToString();
+                    // MessageBox.Show("Please Enter the Quanity");
 
-                            Mrp = dr1[1].ToString();
-                        }
-                        DataRow dr = addToCartTable.NewRow();
-                        dr[0] = txtItemCode.Text.Trim();
-                        dr[1] = txtProductName.Text.Trim();
-                        dr[2] = ConpanyName.Trim();
-                        dr[3] = Mrp.Trim();
-                        dr[5] = txtQunty.Text.Trim();
-                        dr[4] = txtRate.Text.Trim();
-                        dr[6] = txtAmount.Text.Trim();
+                    txtWAmount.Text = rate5.ToString();
+                    txtItemCode.Text = "I";
+                    txtItemCode.Select(txtItemCode.Text.Length, 0);
+                    txtProductName.Text = "";
+                    txtRate.Text = "";
+                    txtQunty.Text = "";
+                    txtAmount.Text = "";
+                    //txtItemCode.Focus();
+                    button3.Enabled = false;
 
-                        //dr[5] = txtAmount.Text.Trim();
-                        addToCartTable.Rows.Add(dr);
-                        dataGridView1.DataSource = addToCartTable;
-                        double totalAmount = Convert.ToDouble(txttotalAmount.Text);
-                        if (txtAmount.Text == "")
-                        {
-                            txtAmount.Text = "0";
-                        }
-                        totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
-                        txttotalAmount.Text = totalAmount.ToString("###0.00");
-                        txtWAmount.Text = totalAmount.ToString();
+                }
+            }
 
-                        txtItemCode.Text = "I";
-                        txtProductName.Text = "";
-                        txtRate.Text = "";
-                        txtQunty.Text = "";
-                        txtAmount.Text = "";
-                        txtItemCode.Focus();
-                        txtItemCode.Select(txtItemCode.Text.Length, 0);
-                        button3.Enabled = false;
-                    }
-                    if (dataGridView1.Rows.Count > 1)
-                    {
-                        txtDiscount.ReadOnly = false;
-                    }
-                    //}
 
+
+            //txtRemoveItem.Focus();
+
+            //string qurry = "select CurrentQuantity from ItemQuantityDetail where ItemId='" + txtItemCode.Text + "'";
+            //DataTable dt = dbMainClass.getDetailByQuery(qurry);
+            //string id = "";
+            //foreach (DataRow dr in dt.Rows)
+            //{
+            //    id = dr["CurrentQuantity"].ToString();
+            //}
+
+            //int curentQuntity = Convert.ToInt32(txtQuanity.Text);
+            //int cuentQuantity = Convert.ToInt32(id);
+            //if (cuentQuantity == 0)
+            //{
+            //    MessageBox.Show("now CurrentQuantity of deadt");
+            //    txtQuanity.Text = "";
+            //}
+            //else
+            //{
+            //    if (cuentQuantity < curentQuntity)
+            //    {
+            //        MessageBox.Show("now CurrentQuantity of deadt");
+            //    }
+            //    else
+            //    {
+            if (txtProductName.Text == "" && txtQunty.Text == "")
+            {
+                // MessageBox.Show("please enter the ");
+            }
+            else
+            {
+                if (txtAmount.Text == "")
+                {
+                    // txtAmount.Text = "0";
+                    MessageBox.Show("Please Enter the Quanity");
                 }
                 else
                 {
@@ -566,18 +541,15 @@ namespace WindowsFormsApplication1
                         ConpanyName = dr1[0].ToString();
                         Mrp = dr1[1].ToString();
                     }
-                    //addToCartTable.Columns.RemoveAt(6);
+
+                    button4.Enabled = true;
                     DataRow dr = addToCartTable.NewRow();
                     dr[0] = txtItemCode.Text.Trim();
-                    if (ls.Contains(dr[0]))
-                    {
-
-                    }
                     dr[1] = txtProductName.Text.Trim();
                     dr[2] = ConpanyName.Trim();
                     dr[3] = Mrp.Trim();
-                    dr[5] = txtQunty.Text.Trim();
                     dr[4] = txtRate.Text.Trim();
+                    dr[5] = txtQunty.Text.Trim();
                     dr[6] = txtAmount.Text.Trim();
 
                     //dr[5] = txtAmount.Text.Trim();
@@ -588,23 +560,28 @@ namespace WindowsFormsApplication1
                     txttotalAmount.Text = totalAmount.ToString("###0.00");
                     txtWAmount.Text = totalAmount.ToString();
 
+                    txtWAmount.Text = totalAmount.ToString();
+                    dataGridView1.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
                     txtItemCode.Text = "I";
                     txtProductName.Text = "";
                     txtRate.Text = "";
                     txtQunty.Text = "";
                     txtAmount.Text = "";
-                    txtItemCode.Focus();
-                    txtItemCode.Select(txtItemCode.Text.Length, 0);
+                    //txtItemCode.Focus();
+                    button3.Enabled = false;
+                    //txtRemoveItem.Focus();
                     txtQunty.TabStop = false;
                     txtQunty.ReadOnly = true;
-                    button3.Enabled = false;
                     //}
-                    if (dataGridView1.Rows.Count > 1)
-                    {
-                        txtDiscount.ReadOnly = false;
-                    }
                 }
+                if (dataGridView1.Rows.Count > 1)
+                {
+                    txtdis.ReadOnly = false;
+                }
+                txtItemCode.Select(txtItemCode.Text.Length, 0);
             }
+
+
 
             if (txtRef.Text != "")
             {
@@ -756,17 +733,20 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                dataGridView1.AllowUserToAddRows = false;
+             
                 if (ls.Count == dataGridView1.Rows.Count - 1)
                 {
                     MessageBox.Show("Please Enter The Item");
+
                     return;
-                    dataGridView1.AllowUserToAddRows = true;
                 }
-                pnlPaymentDetail.Visible = true;
-                CmbPageName.SelectedIndex = 0;
-                CmbCompany.SelectedIndex = 0;
-                CmbCardType.SelectedIndex = 0;
+                else
+                {
+                    pnlPaymentDetail.Visible = true;
+                    CmbPageName.SelectedIndex = 0;
+                    CmbCompany.SelectedIndex = 0;
+                    CmbCardType.SelectedIndex = 0;
+                }
             }
             //deliverysave();
 
@@ -776,7 +756,7 @@ namespace WindowsFormsApplication1
         }
         public void deliverysave()
         {
-            int count = 0;
+          
             if (txtRef.Text == "")
             {
                 if (txtDiscount.Text == "")
@@ -785,6 +765,7 @@ namespace WindowsFormsApplication1
                 }
                 string Ref = "0";
                 dataGridView1.AllowUserToAddRows = false;
+                int count = 0;
                 DataGridViewRowCollection call = dataGridView1.Rows;
                 for (int c = 0; c < call.Count; c++)
                 {
@@ -897,6 +878,7 @@ namespace WindowsFormsApplication1
                                 {
                                     MessageBox.Show("Details Saved Successfully");
                                     DeliveryID(txtSrNo.Text);
+                                    makeBlank();
                                     dataGridView1.AllowUserToAddRows = true;
                                 }
                                 else
@@ -949,38 +931,38 @@ namespace WindowsFormsApplication1
                         int insertedRows2 = dbMainClass.saveDetails(sf);
                         if (insertedRows2 > 0)
                         {
-                            string deleteQurry = "delete VendorOrderDesc where Orderid='" + OrderID + "'";
-                            DataTable dt = dbMainClass.getDetailByQuery(deleteQurry);
+                            //string deleteQurry = "delete VendorOrderDesc where Orderid='" + OrderID + "'";
+                            //DataTable dt = dbMainClass.getDetailByQuery(deleteQurry);
 
 
-                            DataGridViewRowCollection RowCollection2 = dataGridView1.Rows;
-                            List<string> sf1 = new List<string>();
-                            for (int a = 0; a < RowCollection.Count; a++)
-                            {
+                            //DataGridViewRowCollection RowCollection2 = dataGridView1.Rows;
+                            //List<string> sf1 = new List<string>();
+                            //for (int a = 0; a < RowCollection.Count; a++)
+                            //{
 
-                                DataGridViewRow currentRow = RowCollection2[a];
-                                DataGridViewCellCollection cellCollection = currentRow.Cells;
-                                string txtItemCode = cellCollection[0].Value.ToString();
-                                if (ls.Contains(txtItemCode) && dataGridView1.Rows[count].DefaultCellStyle.Font != null)
-                                {
-                                    count++;
-                                    continue;
-                                }
-                                count++;
-                                string txtRate = cellCollection[4].Value.ToString();
-                                string txtQuanity = cellCollection[5].Value.ToString();
-                                string txtAmoun = cellCollection[6].Value.ToString();
-                                // string OrderID = id4.ToString(); ;
+                            //    DataGridViewRow currentRow = RowCollection2[a];
+                            //    DataGridViewCellCollection cellCollection = currentRow.Cells;
+                            //    string txtItemCode = cellCollection[0].Value.ToString();
+                            //    if (ls.Contains(txtItemCode) && dataGridView1.Rows[count-1].DefaultCellStyle.Font != null)
+                            //    {
+                            //        count++;
+                            //        continue;
+                            //    }
+                            //    count++;
+                            //    string txtRate = cellCollection[4].Value.ToString();
+                            //    string txtQuanity = cellCollection[5].Value.ToString();
+                            //    string txtAmoun = cellCollection[6].Value.ToString();
+                            //    // string OrderID = id4.ToString(); ;
 
-                                string Query = "insert into VendorOrderDesc Values('" + OrderID + "','" + txtItemCode + "','" + txtRate + "','" + txtQuanity + "','" + txtAmoun + "')";
-                                //MessageBox.Show(Query);
+                            //    string Query = "insert into VendorOrderDesc Values('" + OrderID + "','" + txtItemCode + "','" + txtRate + "','" + txtQuanity + "','" + txtAmoun + "')";
+                            //    //MessageBox.Show(Query);
 
-                                sf1.Add(Query);
+                            //    sf1.Add(Query);
 
-                            }
-                            int insertedRows4 = dbMainClass.saveDetails(sf1);
-                            if (insertedRows4 > 0)
-                            {
+                            //}
+                            //int insertedRows4 = dbMainClass.saveDetails(sf1);
+                            //if (insertedRows4 > 0)
+                            //{
                                 string insertQurry = "insert into CustomerOrderDelivery Values('" + OrderID + "','true','" + txtdate.Value.ToString() + "','" + Ref + "')";
                                 int insertedRows5 = dbMainClass.saveDetails(insertQurry);
                                 if (insertedRows5 > 0)
@@ -992,6 +974,7 @@ namespace WindowsFormsApplication1
 
                                         MessageBox.Show("Details Saved Successfully");
                                         DeliveryID(txtSrNo.Text);
+                                        makeBlank();
                                         DialogResult result1 = MessageBox.Show("This Page Print", "Important Question", MessageBoxButtons.YesNo);
                                         if (result1 == System.Windows.Forms.DialogResult.Yes)
                                         {
@@ -999,7 +982,9 @@ namespace WindowsFormsApplication1
                                             panel2.Visible = true;
                                             //string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
                                             SqlConnection con = dbMainClass.openConnection();//new SqlConnection(conntion);
-                                            string selectqurry = "select * from purchesDelivery where Deliveryid='" + txtSrNo.Text + "'";
+                                            int id = Convert.ToInt32(txtSrNo.Text);
+                                            int id7 = id - 1;
+                                            string selectqurry = "select * from purchesDelivery where Deliveryid='" + id7 + "'";
                                             SqlCommand cmd = new SqlCommand(selectqurry, con);
                                             SqlDataAdapter sda = new SqlDataAdapter(cmd);
                                             PurchesDelivery ds = new PurchesDelivery();
@@ -1029,7 +1014,7 @@ namespace WindowsFormsApplication1
                                     MessageBox.Show("Details Not Saved Successfully");
                                     dataGridView1.AllowUserToAddRows = true;
                                 }
-                            }
+                           // }
                             //    MessageBox.Show("Details Saved Successfully");
                             //}
                             //else
@@ -1037,21 +1022,21 @@ namespace WindowsFormsApplication1
                             //    MessageBox.Show("Details Not Saved Successfully");
                             //}
                             //}
-                        }
+                      }
                     }
                 }
             }
-            else if (txtRef.Text != "")
+             if (txtRef.Text != "")
             {
                 string updateQurry1 = "update VendorOrderDetails set venderId='" + textVendercod.Text + "',TotalPrice='" + txttotalAmount.Text + "',Discount='" + txtDiscount.Text + "',DisAmount='" + txtDisAmount.Text + "',TextTaxAmmount='" + txtTaxAmount.Text + "' where Orderid='" + txtRef.Text + "'";
                 int insertedRows3 = dbMainClass.saveDetails(updateQurry1);
                 if (insertedRows3 > 0)
                 {
                     dataGridView1.AllowUserToAddRows = false;
-                    DataGridViewRowCollection call = dataGridView1.Rows;
-                    for (int c = 0; c < call.Count; c++)
+                    DataGridViewRowCollection call1 = dataGridView1.Rows;
+                    for (int c = 0; c < call1.Count; c++)
                     {
-                        DataGridViewRow currentRow1 = call[c];
+                        DataGridViewRow currentRow1 = call1[c];
                         DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
                         string itid = cellCollection1[0].Value.ToString();
                         string que = cellCollection1[5].Value.ToString();
@@ -1077,7 +1062,7 @@ namespace WindowsFormsApplication1
                         int insertedRows2 = dbMainClass.saveDetails(updateQurry);
                     }
                     string deleteQurry = "delete VendorOrderDesc where Orderid='" + txtRef.Text + "'";
-                    DataTable dt1 = dbMainClass.getDetailByQuery(deleteQurry);
+                    DataTable dt2 = dbMainClass.getDetailByQuery(deleteQurry);
                     //dataGridView1.DataSource = "";
 
 
@@ -1097,9 +1082,9 @@ namespace WindowsFormsApplication1
                             string txtRate = cellCollection[4].Value.ToString();
                             string txtQuanity = cellCollection[5].Value.ToString();
                             string txtAmoun = cellCollection[7].Value.ToString();
-                            string OrderID = txtRef.Text;
+                            string OrderID1 = txtRef.Text;
 
-                            string Query = "insert into VendorOrderDesc Values('" + OrderID + "','" + txtItemCode + "','" + txtRate + "','" + txtQuanity + "','" + txtAmoun + "')";
+                            string Query = "insert into VendorOrderDesc Values('" + OrderID1 + "','" + txtItemCode + "','" + txtRate + "','" + txtQuanity + "','" + txtAmoun + "')";
                             //MessageBox.Show(Query);
 
                             sf1.Add(Query);
@@ -1118,6 +1103,7 @@ namespace WindowsFormsApplication1
                                 {
                                     MessageBox.Show("Details Saved Successfully");
                                     DeliveryID(txtSrNo.Text);
+                                    makeBlank();
                                     txtRef.Text = "";
                                     DialogResult result1 = MessageBox.Show("This Page Print", "Important Question", MessageBoxButtons.YesNo);
                                     if (result1 == System.Windows.Forms.DialogResult.Yes)
@@ -1155,7 +1141,6 @@ namespace WindowsFormsApplication1
                     }
                 }
             }
-            makeBlank();
             //int id = Convert.ToInt32(txtSrNo.Text);
             //int id1 = id + 1;
             //txtSrNo.Text = id1.ToString();
@@ -2184,7 +2169,7 @@ namespace WindowsFormsApplication1
                     {
                         double totalDiscount = Convert.ToDouble(discountAmount);
                         totalAmount = totalAmount - ((totalAmount * totalDiscount) / 100);
-                        totalAmount1 =  ((totalAmount1 * totalDiscount) / 100);
+                        totalAmount1 = ((totalAmount1 * totalDiscount) / 100);
                         txttotalAmount.Text = totalAmount.ToString();
                         double dis = totalAmount1; //* totalDiscount / 100;
                         txtDisAmount.Text = dis.ToString();
@@ -2245,6 +2230,7 @@ namespace WindowsFormsApplication1
 
         private void pnlPaymentDetail_Paint(object sender, PaintEventArgs e)
         {
+            
             txtInvoiceid.Text = txtSrNo.Text;
             txtInvoiceAmount.Text = txttotalAmount.Text;
         }
