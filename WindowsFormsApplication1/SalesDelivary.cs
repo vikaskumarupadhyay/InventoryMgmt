@@ -652,37 +652,13 @@ namespace WindowsFormsApplication1
 
         private void butSaveButton_Click(object sender, EventArgs e)
         {
-            if (txtcustomercode.Text == "C")
+            crystalReportViewer2.Visible = false;
+            panel2.Visible = false;
+            // createnewsave();
+            if (pnlSalesPayment.Visible == false)
             {
-                MessageBox.Show("Please Enter The Customer Code");
-                txtcustomercode.Focus();
-                txtcustomercode.Select(txtcustomercode.Text.Length, 0);
+                pnlSalesPayment.Visible = true;
             }
-            else if (gridsalesdelivary.CurrentRow == null)
-            {
-                MessageBox.Show("Please Enter The Item");
-                txtItemCode.Focus();
-                txtItemCode.Select(txtItemCode.Text.Length, 0);
-            }
-            else
-            {
-                gridsalesdelivary.AllowUserToAddRows = false;
-                if (ls.Count == gridsalesdelivary.Rows.Count - 1)
-                {
-                    MessageBox.Show("Please Enter The Item");
-                    return;
-                    gridsalesdelivary.AllowUserToAddRows = true;
-                }
-               
-            }
-            //crystalReportViewer2.Visible = false;
-            //panel2.Visible = false;
-            //// createnewsave();
-            //if (pnlSalesPayment.Visible == false)
-            //{
-            //    pnlSalesPayment.Visible = true;
-            //}
-           // pnlSalesPayment.Visible = true;
             CmbPageName.SelectedIndex = 0;
             CmbCompany.SelectedIndex = 0;
             CmbCardType.SelectedIndex = 0;
@@ -1091,8 +1067,6 @@ namespace WindowsFormsApplication1
         //}
         public void createnewsave()
         {
-            //panel2.Visible = false;
-          
             gridsalesdelivary.AllowUserToAddRows = false;
 
             if (txtRefNo.Text == "")
@@ -1369,7 +1343,6 @@ namespace WindowsFormsApplication1
                 txtSrNo.Text = value2.ToString();
                 txtcustomercode.Focus();
                 txtcustomercode.Select(txtcustomercode.Text.Length, 0);
-               
 
 
             }
@@ -1501,7 +1474,6 @@ namespace WindowsFormsApplication1
             txtSrNo.Text = value3.ToString();
             txtcustomercode.Focus();
             txtcustomercode.Select(txtcustomercode.Text.Length, 0);
-           
         }
 
 
