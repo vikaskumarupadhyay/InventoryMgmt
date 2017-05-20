@@ -361,7 +361,7 @@
             this.txtRate.TabIndex = 6;
             this.txtRate.TabStop = false;
             this.txtRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtRate.MouseEnter += new System.EventHandler(this.txtRate_MouseEnter);
+            //this.txtRate.MouseEnter += new System.EventHandler(this.txtRate_MouseEnter);
             // 
             // label12
             // 
@@ -731,6 +731,7 @@
             this.crystalReportViewer1.Name = "crystalReportViewer1";
             this.crystalReportViewer1.Size = new System.Drawing.Size(1172, 634);
             this.crystalReportViewer1.TabIndex = 8;
+            //this.crystalReportViewer1.Load += new System.EventHandler(this.crystalReportViewer1_Load);
             // 
             // panel3
             // 
@@ -743,7 +744,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1141, 476);
             this.panel3.TabIndex = 7;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+           // this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // dataGridView1
             // 
