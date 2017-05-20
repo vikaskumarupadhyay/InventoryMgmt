@@ -382,7 +382,7 @@ namespace WindowsFormsApplication1
                 totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
                 txttotalammount.Text = totalAmount.ToString("###0.00");
                 txtwithautaxamount.Text= totalAmount.ToString();
-                gridsalesorder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
+
                 txtitemcode.Text = "I";
                 txtProductName.Text = "";
                 txtRate.Text = "";
@@ -507,8 +507,8 @@ namespace WindowsFormsApplication1
             button4.Enabled = false;
             gridsalesorder.Focus();
             gridsalesorder.TabIndex = 1;
-            //button2.Enabled = false;
-            //txtitemcode.ReadOnly = true;
+            button2.Enabled = false;
+            txtitemcode.Enabled = false;
             //if (addToCartTable.Rows.Count > 0)
             //{
             //    string Amount = gridsalesorder.SelectedRows[0].Cells[4].Value.ToString();
@@ -602,7 +602,8 @@ namespace WindowsFormsApplication1
             counter = 0;
             if (counter == 0)
             {
-               
+                string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpdate.Text + "','" + txttotalammount.Text + "','" + textBox20.Text+ "','"+discountamount.Text+"','"+txttax.Text+"','"+txttaxamount.Text+"','"+txtwithautaxamount.Text+"')";
+                int insertrows = d.saveDetails(insertquery);
 
 
                 DataGridViewRowCollection rowcollection = gridsalesorder.Rows;
@@ -628,9 +629,6 @@ namespace WindowsFormsApplication1
                     string Orderid = txtsrno.Text;
                     string query = "insert into customerorderdescriptions Values('" + txtsrno.Text + "','" + txtitemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
 
-                    
-                    string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpdate.Text + "','" + txttotalammount.Text + "','" + textBox20.Text + "','" + discountamount.Text + "','" + txttax.Text + "','" + txttaxamount.Text + "','" + txtwithautaxamount.Text + "')";
-                    int insertrows = d.saveDetails(insertquery);
                     show.Add(query);
                 }
                 
@@ -639,9 +637,9 @@ namespace WindowsFormsApplication1
                 int inserirow1 = d.saveDetails(show);
                 if (inserirow1 > 0)
                 {
-                    MessageBox.Show("Details saved successfully!");
+                    MessageBox.Show("details save successfully");
                    
-                    DialogResult result = MessageBox.Show("Do you need to print purchase order! ", "Impotant questiuon", MessageBoxButtons.YesNo);
+                    DialogResult result = MessageBox.Show("this page is print", "Impotant questiuon", MessageBoxButtons.YesNo);
                     if (result == System.Windows.Forms.DialogResult.Yes)
                     {
                         panel2.Visible = true;
@@ -788,9 +786,9 @@ namespace WindowsFormsApplication1
                 int inserirow1 = d.saveDetails(show);
                 if (inserirow1 > 0)
                 {
-                    MessageBox.Show("Details saved successfully!");
+                    MessageBox.Show("details save successfully");
                     panel2.Visible = true;
-                    DialogResult result = MessageBox.Show("Do you need to print this page!", "Impotant questiuon", MessageBoxButtons.YesNo);
+                    DialogResult result = MessageBox.Show("this page is print", "Impotant questiuon", MessageBoxButtons.YesNo);
                     if (result == System.Windows.Forms.DialogResult.Yes)
                     {
                         crystalReportViewer1.Visible = true;
@@ -826,7 +824,7 @@ namespace WindowsFormsApplication1
                     }
                     else
                     {
-                        MessageBox.Show("Details save not successfully");
+                        MessageBox.Show("details save not successfully");
                     }
 
 
@@ -843,7 +841,7 @@ namespace WindowsFormsApplication1
             {
                 if ((txtQuantity.Text == "") || (txtQuantity.Text == "0"))
                 {
-                    MessageBox.Show("Please enter valid quantity!");
+                    MessageBox.Show("please select your correct quantity");
                     txtQuantity.Focus();
                 }
                 else
@@ -872,7 +870,7 @@ namespace WindowsFormsApplication1
                 }
                 if (txtQuantity.Text == "")
                 {
-                    MessageBox.Show("Please enter valid quantity!");
+                    MessageBox.Show("please select your correct quantity");
                     txtQuantity.Text = "";
                     txtAmount.Text = "";
                 }
@@ -1068,7 +1066,7 @@ namespace WindowsFormsApplication1
             if (e.KeyChar == (char)Keys.Escape)
             {
                 gridsalesorder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
-                txtitemcode.ReadOnly = false;
+                txtitemcode.Enabled = true;
                 txtitemcode.Focus();
                 // txtitemcode.TabIndex = 1;
                 button2.Enabled = true;
@@ -1203,7 +1201,7 @@ namespace WindowsFormsApplication1
             else if (e.KeyChar == (char)Keys.Enter && dt.Rows != null && dt != null)
             {
                 txtcustomercode.Focus();
-                MessageBox.Show("Please enter currect customer code!");
+                MessageBox.Show("please select your correct customer code ");
             }
 
         }
@@ -1244,10 +1242,16 @@ namespace WindowsFormsApplication1
                 }
                 if (txtcustomercode.Text == "c")
                 {
-                    MessageBox.Show("Please enter the customer code first!");
+                    MessageBox.Show("please enter the customercode");
                     txtcustomercode.Focus();
                 }
-               
+                if (txtitemcode.Text == "")
+                {
+                    MessageBox.Show("please enter the itemcode");
+                    txtQuantity.Enabled=false;
+                    txtitemcode.Focus();
+                }
+
              
 
               
@@ -1305,13 +1309,6 @@ namespace WindowsFormsApplication1
                     tab2();
 
                 }
-                if (txtitemcode.Text == "I")
-                {
-                    MessageBox.Show("please enter the itemcode");
-                    txtQuantity.ReadOnly = false;
-                    txtitemcode.Focus();
-                }
-
             }
             if (e.KeyChar == (char)Keys.Escape)
             {
@@ -1336,7 +1333,6 @@ namespace WindowsFormsApplication1
             }
             else if(e.KeyChar == (char)Keys.Enter && dt2.Rows != null && dt2 != null&&txtcustomercode.Text=="C")
             {
-
                 MessageBox.Show("please enter the customercode");
                 txtcustomercode.Focus();
                 //txtitemcode.Focus();
@@ -1363,7 +1359,7 @@ namespace WindowsFormsApplication1
                 dataGridView1.DataSource = dt;
             }
             else if (counter == 1)
-            {   
+            {
                 string s = comsearchsalesvalue.SelectedValue.ToString();
                 // string val1 = s1;
                 string selectQurry = "select itm.ItemId as[Item Id],itm.ItemName as[Product Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId  where " + s + " like '" + txtsearchvalue.Text + "%'";
@@ -1551,7 +1547,7 @@ namespace WindowsFormsApplication1
                 {
                     gridsalesorder.Rows[e.RowIndex].Cells[5].Value = "0";
                     gridsalesorder.Rows[e.RowIndex].Cells[6].Value = "0";
-                    MessageBox.Show("Plese enter currect quantity!");
+                    MessageBox.Show("Plese select your correct Quantity");
                 }
                 else
                 {
