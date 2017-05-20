@@ -488,6 +488,7 @@ namespace WindowsFormsApplication1
                     txtAmount.Text = "";
                     //txtItemCode.Focus();
                     button3.Enabled = false;
+                    
 
                 }
             }
@@ -576,7 +577,7 @@ namespace WindowsFormsApplication1
                 }
                 if (dataGridView1.Rows.Count > 1)
                 {
-                    txtdis.ReadOnly = false;
+                    txtDiscount.ReadOnly = false;
                 }
                 txtItemCode.Select(txtItemCode.Text.Length, 0);
             }
