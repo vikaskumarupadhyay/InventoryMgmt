@@ -978,6 +978,7 @@
             this.txtInvoiceAmount.Size = new System.Drawing.Size(113, 23);
             this.txtInvoiceAmount.TabIndex = 1;
             this.txtInvoiceAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+           // this.txtInvoiceAmount.TextChanged += new System.EventHandler(this.txtInvoiceAmount_TextChanged);
             // 
             // label21
             // 
