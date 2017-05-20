@@ -1324,7 +1324,7 @@ namespace WindowsFormsApplication1
                 else
                 {
                     button5.Enabled = true;
-                    int totel1 = 0;
+                    decimal totel1 = 0;
                     string select = "select vo.Orderid,vo.venderId,vod.ItemId,vo.Discount from VendorOrderDesc vod join VendorOrderDetails vo on vod.Orderid=vo.Orderid where vo.Orderid ='" + txtRef.Text + "'";
                     DataTable dt = dbMainClass.getDetailByQuery(select);
                     //string dis = "";
@@ -1356,7 +1356,7 @@ namespace WindowsFormsApplication1
                             string txtAmoun = dr2[6].ToString();
                             string txtitemNmea = dr2[6].ToString();
                             //tot = txtitemNmea;
-                            int amt = Convert.ToInt32(txtitemNmea);
+                            decimal amt = Convert.ToDecimal(txtitemNmea);
                             totel1 = totel1 + amt;
                             dr2 = addToCartTable.NewRow();
                             dr2[0] = txtItemCode.Trim();

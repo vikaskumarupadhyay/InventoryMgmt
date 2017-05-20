@@ -25,7 +25,7 @@ namespace WindowsFormsApplication1
 
         private void PurchaseOrder_Load(object sender, EventArgs e)
         {
-
+            txtDiscount.ReadOnly = true;
             txtVendorCode.Select(txtVendorCode.Text.Length, 0);
             txtItemCode.Select(txtItemCode.Text.Length, 0);
             txtdis.ReadOnly = true;

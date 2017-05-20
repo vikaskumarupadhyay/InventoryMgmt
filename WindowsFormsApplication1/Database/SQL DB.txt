@@ -220,6 +220,12 @@ ALTER TABLE CustomerOrderDelivery add RefNo varchar(200)
 
 ALTER TABLE salesOrderDelivery add RefNo varchar(200)
 
+ALTER TABLE VendorOrderDesc ALTER COLUMN TotalPrice decimal(18,2)
+
+ALTER TABLE ItemPriceDetail ALTER COLUMN SalesPrice decimal(18,2)
+
+ALTER TABLE ItemPriceDetail ALTER COLUMN MrpPrice decimal(18,2)
+ALTER TABLE VendorOrderDesc ALTER COLUMN Price decimal(18,2)
  
 
 
