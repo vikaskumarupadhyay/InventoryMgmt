@@ -1651,8 +1651,10 @@ namespace WindowsFormsApplication1
                         string itemid = dr[0].ToString();
                         if (ls.Contains(itemid))
                         {
+                            //counter++;
                             continue;
                         }
+                       // counter++;
                         totalAmount += Convert.ToDouble(dr[6].ToString());
                     }
                     double s1 = totalAmount;
@@ -1705,9 +1707,11 @@ namespace WindowsFormsApplication1
                     discountamount.Text = dis.ToString();
 
                 }
+               
 
 
             }
+            
            
 
 
@@ -1756,16 +1760,7 @@ namespace WindowsFormsApplication1
            }
         }
 
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void txtRate_MouseEnter(object sender, EventArgs e)
-        {
-            
-        }
-
+      
       
        
     }
