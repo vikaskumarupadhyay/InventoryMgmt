@@ -1527,15 +1527,15 @@ namespace WindowsFormsApplication1
                 if (a != "")
                 {
                     int quantity = Convert.ToInt32(a);
-                    int reta = Convert.ToInt32(rate);
-                    int toteamount = quantity * reta;
+                    double reta = Convert.ToDouble(rate);
+                    double toteamount = quantity * reta;
                     dataGridView1.Rows[e.RowIndex].Cells[7].Value = toteamount.ToString();
                     string qun = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
                     int quanti = Convert.ToInt32(qun);
                     int vauequn = quantity - quanti;
-                    int trea = reta * vauequn;
-                    int tamunt = Convert.ToInt32(txttotalAmount.Text);
-                    int tam = tamunt + trea;
+                   double trea = reta * vauequn;
+                   double tamunt = Convert.ToDouble(txttotalAmount.Text);
+                    double tam = tamunt + trea;
                     txttotalAmount.Text = tam.ToString();
                 }
                 else
