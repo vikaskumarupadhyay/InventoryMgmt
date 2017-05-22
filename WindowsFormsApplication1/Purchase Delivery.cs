@@ -2559,6 +2559,24 @@ namespace WindowsFormsApplication1
                 e.Handled = true;
             }
         }
+
+        private void txtRturned_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBalance.Text == "")
+            {
+                txtBalance.Text = "0";
+            }
+            if (txtRturned.Text == "")
+            {
+                txtRturned.Text = "0";
+            }
+           // string sub=txtBalance.Text.Substring(0,1);
+            double bal = Convert.ToDouble(txtBalance.Text);
+            double ReturnAmount = Convert.ToDouble(txtRturned.Text);
+            double bal1 = bal + ReturnAmount; ;
+            txtBalance.Text = bal1.ToString();
+
+        }
        
        
     }
