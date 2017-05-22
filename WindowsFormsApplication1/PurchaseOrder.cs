@@ -1437,7 +1437,7 @@ namespace WindowsFormsApplication1
         {
             double d = 1;
             double total = Convert.ToDouble(txtTotalAmount.Text);
-            double g = Convert.ToDouble(txtdis.Text);
+            double g = Convert.ToDouble(txtDiscount.Text);
             double tax = d + ((g / 100));
             double taxamount = total / tax;
             double totaltax = total - taxamount;

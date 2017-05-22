@@ -249,9 +249,9 @@ namespace WindowsFormsApplication1
             {
                 txtItemCode.Text = cellCollection[0].Value.ToString();
                 txtProductName.Text = cellCollection[1].Value.ToString();
-                txtRate.Text = cellCollection[6].Value.ToString();
+                txtRate.Text = cellCollection[7].Value.ToString();
                 //txtAmount.Text = cellCollection[4].Value.ToString();
-                // txtQuanity.Text = cellCollection[4].Value.ToString();
+                txtQunty.Text = "1";//cellCollection[4].Value.ToString();
 
             }
             catch (Exception ex)
@@ -261,7 +261,7 @@ namespace WindowsFormsApplication1
 
         private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //txtSearch.Text = "";
+          /*  //txtSearch.Text = "";
             comboBox1.SelectedIndex = 0;
             if (counter == 0)
             {
@@ -280,6 +280,8 @@ namespace WindowsFormsApplication1
                 {
                     setDetails1(CellCollection);
                     txtQunty.ReadOnly = false;
+                    txtQunty.Focus();
+                    txtQunty.Select(txtQunty.Text.Length, 0);
                     button3.Enabled = true;
                 }
             }
@@ -310,7 +312,7 @@ namespace WindowsFormsApplication1
                     DataTable dt1 = dbMainClass.getDetailByQuery(selectqurry1);
                     dataGridView1.DataSource = dt1;
                 }
-            }
+            }*/
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -345,6 +347,7 @@ namespace WindowsFormsApplication1
             DataTable dt1 = dbMainClass.getDetailByQuery(select);
             dataGridView2.DataSource = dt1;
             IndexTex();
+           // txtAmount.Text = "";
 
         }
 
@@ -1437,7 +1440,7 @@ namespace WindowsFormsApplication1
             txtMobile.Text = "";
             txtFax.Text = "";
             txttotalAmount.Text = "0";
-            dataGridView1.DataSource = "";
+           // dataGridView1.DataSource = "";
             addToCartTable.Clear();
 
         }
@@ -2247,7 +2250,7 @@ namespace WindowsFormsApplication1
             }
             double d = 1;
             double total = Convert.ToDouble(txttotalAmount.Text);
-            double g = Convert.ToDouble(txtDiscount.Text);
+            double g = Convert.ToDouble(txtdis.Text);
             double tax = d + ((g / 100));
             double taxamount = total / tax;
             double totaltax = total - taxamount;
