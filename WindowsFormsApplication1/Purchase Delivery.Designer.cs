@@ -1575,6 +1575,7 @@
             this.txtCreditAmount.Text = "0.00";
             this.txtCreditAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtCreditAmount.TextChanged += new System.EventHandler(this.txtCreditAmount_TextChanged);
+            this.txtCreditAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCreditAmount_KeyPress);
             this.txtCreditAmount.Leave += new System.EventHandler(this.txtCreditAmount_Leave);
             // 
             // label37

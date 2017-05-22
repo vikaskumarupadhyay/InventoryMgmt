@@ -2451,13 +2451,13 @@ namespace WindowsFormsApplication1
             }
             if (txtCreditAmount.Text != "0.00")
             {
-                string amount = txtCreditAmount.Text + ".00";
+                string amount = txtCreditAmount.Text ;
                 txtCreditAmount.Text = amount;
                 Double Amount = Convert.ToDouble(txtCreditAmount.Text);
                 Double Amount1 = Convert.ToDouble(CashAmount.Text);
                 Double amount2 = Amount + Amount1;
                 string Amount2 = amount2.ToString();
-                txtTotalAmount1.Text = Amount2 + ".00";
+                txtTotalAmount1.Text = Amount2 ;
             }
         }
 
@@ -2469,7 +2469,7 @@ namespace WindowsFormsApplication1
             }
             if (txtChequeAmount.Text != "0.00")
             {
-                string amount = txtChequeAmount.Text + ".00";
+                string amount = txtChequeAmount.Text;
                 txtChequeAmount.Text = amount;
                 //txtNetAmount.Text = amount;
                 Double Amount = Convert.ToDouble(txtCreditAmount.Text);
@@ -2477,7 +2477,7 @@ namespace WindowsFormsApplication1
                 Double Amount3 = Convert.ToDouble(txtChequeAmount.Text);
                 Double amount2 = Amount + Amount1 + Amount3;
                 string Amount2 = amount2.ToString();
-                txtTotalAmount1.Text = Amount2 + ".00";
+                txtTotalAmount1.Text = Amount2;
             }
 
         }
@@ -2486,7 +2486,7 @@ namespace WindowsFormsApplication1
         {
             if (txtCouponAmount.Text == "")
             {
-                txtCouponAmount.Text = "";
+                txtCouponAmount.Text = "0.00";
             }
             if (txtCouponAmount.Text != "0.00")
             {
@@ -2511,7 +2511,7 @@ namespace WindowsFormsApplication1
             }
             if (txtEwalletAmount.Text != "0.00")
             {
-                string amount = txtEwalletAmount.Text + ".00";
+                string amount = txtEwalletAmount.Text ;
                 txtEwalletAmount.Text = amount;
                 Double Amount = Convert.ToDouble(txtCreditAmount.Text);
                 Double Amount1 = Convert.ToDouble(CashAmount.Text);
@@ -2519,7 +2519,7 @@ namespace WindowsFormsApplication1
                 Double Amount4 = Convert.ToDouble(txtEwalletAmount.Text);
                 Double amount2 = Amount + Amount1 + Amount3 + Amount4;
                 string Amount2 = amount2.ToString();
-                txtTotalAmount1.Text = Amount2 + ".00";
+                txtTotalAmount1.Text = Amount2 ;
             }
 
         }
@@ -2544,6 +2544,20 @@ namespace WindowsFormsApplication1
             txtNetAmount.Text = "0.00";
             
             
+        }
+
+        private void txtCreditAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (ch == 46 && txtCreditAmount.Text.IndexOf('.') != -1)
+            {
+                e.Handled = true;
+                return;
+            }
+            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
         }
        
        
