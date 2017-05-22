@@ -446,7 +446,8 @@ namespace WindowsFormsApplication1
         #region /////////// AddToList Clicked ///////////////
         private void button3_Click(object sender, EventArgs e)
         {
-
+            if(txtRef.Text=="")
+            {
             txtItemCode.Focus();
             txtQunty.ReadOnly = true;
             textVendercod.TabStop = true;
@@ -600,18 +601,107 @@ namespace WindowsFormsApplication1
             }
 
 
-
+        }
             if (txtRef.Text != "")
             {
+                txtItemCode.Focus();
+                txtQunty.ReadOnly = true;
+                textVendercod.TabStop = true;
+                button1.TabStop = true;
+                txtDiscount.TabStop = false;
+                string itemid = "";
+                string quntity = "";
+                string rate = "";
+                string ammount = "";
+                int counter = 0;
+                foreach (DataRow dr3 in addToCartTable.Rows)
+                {
+                    int q3 = 0;
+                    itemid = dr3[0].ToString();
+                    if (ls.Contains(itemid) && dataGridView1.Rows[counter].DefaultCellStyle.Font != null)
+                    {
+                        counter++;
+                        continue;
+                    }
+                    counter++;
+                    quntity = dr3[5].ToString();
+                    rate = dr3[4].ToString();
+                    ammount = dr3[7].ToString();
+
+                    if (itemid == txtItemCode.Text)
+                    {
+                        if (quntity == "")
+                        {
+                            quntity = "0";
+                        }
+                        int q1 = Convert.ToInt32(quntity);
+                        int q2 = Convert.ToInt32(txtQunty.Text);
+                        q3 = q1 + q2;
+                        dr3[5] = q3.ToString();
+                        dr3[6] = q3.ToString();
+                        Double rate1 = Convert.ToDouble(rate);
+                        Double rate6 = rate1 * q2;
+                        Double rate2 = Convert.ToDouble(ammount);
+                        Double rate7 = Convert.ToDouble(txtAmount.Text);
+                        Double rate3 = rate6 + rate2;
+                        dr3[7] = rate3.ToString();
+                        Double rate4 = Convert.ToDouble(txttotalAmount.Text);
+                        Double rate5 = rate4 + rate7;
+                        txttotalAmount.Text = rate5.ToString("###0.00");//rate3.ToString();
+                        // MessageBox.Show("Please Enter the Quanity");
+
+                        txtWAmount.Text = rate5.ToString();
+
+                        txtItemCode.Text = "I";
+                        txtItemCode.Select(txtItemCode.Text.Length, 0);
+                        txtProductName.Text = "";
+                        txtRate.Text = "";
+                        txtQunty.Text = "";
+                        txtAmount.Text = "";
+                        //txtItemCode.Focus();
+                        button3.Enabled = false;
+
+
+                    }
+                }
+
+
+
+                //txtRemoveItem.Focus();
+
+                //string qurry = "select CurrentQuantity from ItemQuantityDetail where ItemId='" + txtItemCode.Text + "'";
+                //DataTable dt = dbMainClass.getDetailByQuery(qurry);
+                //string id = "";
+                //foreach (DataRow dr in dt.Rows)
+                //{
+                //    id = dr["CurrentQuantity"].ToString();
+                //}
+
+                //int curentQuntity = Convert.ToInt32(txtQuanity.Text);
+                //int cuentQuantity = Convert.ToInt32(id);
+                //if (cuentQuantity == 0)
+                //{
+                //    MessageBox.Show("now CurrentQuantity of deadt");
+                //    txtQuanity.Text = "";
+                //}
+                //else
+                //{
+                //    if (cuentQuantity < curentQuntity)
+                //    {
+                //        MessageBox.Show("now CurrentQuantity of deadt");
+                //    }
+                //    else
+                //    {
                 if (txtProductName.Text == "" && txtQunty.Text == "")
                 {
-                    //MessageBox.Show("now CurrentQuantity of deadt");
+                    // MessageBox.Show("please enter the ");
                 }
                 else
                 {
                     if (txtAmount.Text == "")
                     {
-                        MessageBox.Show("please Enter Quantity");
+                        // txtAmount.Text = "0";
+                        MessageBox.Show("Please Enter the Quanity");
                     }
                     else
                     {
@@ -624,6 +714,8 @@ namespace WindowsFormsApplication1
                             ConpanyName = dr1[0].ToString();
                             Mrp = dr1[1].ToString();
                         }
+
+                        button4.Enabled = true;
                         DataRow dr = addToCartTable.NewRow();
                         dr[0] = txtItemCode.Text.Trim();
                         dr[1] = txtProductName.Text.Trim();
@@ -633,8 +725,9 @@ namespace WindowsFormsApplication1
                         dr[5] = txtQunty.Text.Trim();
                         dr[6] = txtQunty.Text.Trim();
                         dr[7] = txtAmount.Text.Trim();
-                        addToCartTable.Rows.Add(dr);
 
+                        //dr[5] = txtAmount.Text.Trim();
+                        addToCartTable.Rows.Add(dr);
                         dataGridView1.DataSource = addToCartTable;
                         var dgvcount = dataGridView1.Rows.Count;
                         dataGridView1.CurrentCell = dataGridView1.Rows[dgvcount - 2].Cells[0];
@@ -644,25 +737,30 @@ namespace WindowsFormsApplication1
                         txttotalAmount.Text = totalAmount.ToString("###0.00");
                         txtWAmount.Text = totalAmount.ToString();
 
+                        txtWAmount.Text = totalAmount.ToString();
+                        dataGridView1.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
                         txtItemCode.Text = "I";
                         txtProductName.Text = "";
                         txtRate.Text = "";
                         txtQunty.Text = "";
                         txtAmount.Text = "";
-                        txtItemCode.Focus();
-                        txtItemCode.Select(txtItemCode.Text.Length, 0);
+                        //txtItemCode.Focus();
+                        button3.Enabled = false;
+                        //txtRemoveItem.Focus();
                         txtQunty.TabStop = false;
                         txtQunty.ReadOnly = true;
-                        button3.Enabled = false;
+                        //}
                     }
                     if (dataGridView1.Rows.Count > 1)
                     {
                         txtDiscount.ReadOnly = false;
                     }
-
-
+                    txtItemCode.Select(txtItemCode.Text.Length, 0);
                 }
+
+
             }
+               
         }
         #endregion
 
