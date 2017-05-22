@@ -639,7 +639,7 @@ namespace WindowsFormsApplication1
                 int inserirow1 = d.saveDetails(show);
                 if (inserirow1 > 0)
                 {
-                    MessageBox.Show("Details saved successfully!");
+                    MessageBox.Show("Details saved successfully");
 
                     DialogResult result = MessageBox.Show("Do you need to print purchase order! ", "Impotant questiuon", MessageBoxButtons.YesNo);
                     if (result == System.Windows.Forms.DialogResult.Yes)
@@ -1761,6 +1761,8 @@ namespace WindowsFormsApplication1
                 textBox20.Focus();
             }
         }
+
+       
 
    
 

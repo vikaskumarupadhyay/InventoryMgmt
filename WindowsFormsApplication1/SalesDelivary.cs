@@ -2759,7 +2759,8 @@ namespace WindowsFormsApplication1
         private void btnSave_Click_1(object sender, EventArgs e)
         {
             createnewsave();
-            crystalReportViewer2.Visible = false;
+            pnlSalesPayment.Visible = false;
+            crystalReportViewer2.Visible = true;
         }
 
         private void btnClose_Click_1(object sender, EventArgs e)
