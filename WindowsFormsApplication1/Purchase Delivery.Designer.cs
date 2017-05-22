@@ -1283,6 +1283,7 @@
             this.txtRturned.TabIndex = 36;
             this.txtRturned.Text = "0.00";
             this.txtRturned.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRturned.TextChanged += new System.EventHandler(this.txtRturned_TextChanged);
             // 
             // txtBalance
             // 
