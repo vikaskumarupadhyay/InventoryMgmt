@@ -1416,10 +1416,10 @@ namespace WindowsFormsApplication1
                         string insertquery1 = "update orderdetails set Discount='" + txtdiccount.Text + "',Discountamount='" + txtdicountamount.Text + "',Tax='" + txttax.Text + "',Taxamount='" + txttaxamount.Text + "',WithautTaxamount='" + txtwithauttaxamount.Text + "' where orderid='" + txtRefNo.Text + "'";
                         int insertrows1 = d.saveDetails(insertquery1);
 
-                        if (insert > 0)
+                        if (insertrows1 > 0)
                         {
                             string insertQurry = "insert into SalesPaymentDetailes Values('" + txtInvoiceid.Text + "','" + CashAmount.Text + "','" + txtCreditAmount.Text + "','" + txtDebitBankName.Text + "','" + txtCardNumber.Text + "','" + CmbCardType.SelectedItem.ToString() + "','" + txtChequeAmount.Text + "','" + txtChequeBankName.Text + "','" + txtChequeNumber.Text + "','" + dateTimePicker1.Value.ToString() + "','" + txtEwalletAmount.Text + "','" + EWalletCompanyName.Text + "','" + txtTransactionNumber.Text + "','" + dateTimePicker2.Value.ToString() + "','" + txtCouponAmount.Text + "','" + CmbCompany.SelectedItem.ToString() + "','" + txtInvoiceAmount.Text + "','" + txtTotalAmount1.Text + "','" + txtBalance.Text + "','" + txtRturned.Text + "','" + txtNetAmount.Text + "')";
-                            int insertedRows = d.saveDetails(insertQurry);
+                            int insertedRows=d.saveDetails(insertQurry);
                             if (insertedRows > 0)
                             {
                                 MessageBox.Show("details save not successfully");
@@ -1693,7 +1693,7 @@ namespace WindowsFormsApplication1
             if (txtRefNo.Text != "")
             {
                 string id = gridsalesdelivary.Rows[e.RowIndex].Cells[0].Value.ToString();
-                string a1 = gridsalesdelivary.Rows[e.RowIndex].Cells[4].Value.ToString();
+                string a1 = gridsalesdelivary.Rows[e.RowIndex].Cells[6].Value.ToString();
                 // string newquantity = gridsalesdelivary.Rows[e.RowIndex].Cells[3].Value.ToString();
                 string select = "select CurrentQuantity from ItemQuantityDetail where itemid='" + id + "'";
                 DataTable dt = d.getDetailByQuery(select);
@@ -1706,32 +1706,36 @@ namespace WindowsFormsApplication1
                 if (s != "")
                 {
                     int g = Convert.ToInt32(s);
-                    int quantity = Convert.ToInt32(a1);
+                    double quantity = Convert.ToDouble(a1);
                     if (quantity < g)
                     {
-                        string a = gridsalesdelivary.Rows[e.RowIndex].Cells[4].Value.ToString();
-                        string rate = gridsalesdelivary.Rows[e.RowIndex].Cells[2].Value.ToString();
+                        string a = gridsalesdelivary.Rows[e.RowIndex].Cells[6].Value.ToString();
+                        string rate = gridsalesdelivary.Rows[e.RowIndex].Cells[4].Value.ToString();
                         quantity = Convert.ToInt32(a);
-                        int r = Convert.ToInt32(rate);
-                        int totalammount = quantity * r;
-                        gridsalesdelivary.Rows[e.RowIndex].Cells[5].Value = totalammount.ToString();
+                        double r = Convert.ToDouble(rate);
+                        double totalammount = quantity * r;
+                        gridsalesdelivary.Rows[e.RowIndex].Cells[7].Value = totalammount.ToString();
                         //string newquantity = gridsalesdelivary.Rows[e.RowIndex].Cells[3].Value.ToString();
-                        string rate1 = gridsalesdelivary.Rows[e.RowIndex].Cells[2].Value.ToString();
-                        int quantity1 = Convert.ToInt32(a);
-                        int finalquantity = Convert.ToInt32(rate1);
+                        string rate1 = gridsalesdelivary.Rows[e.RowIndex].Cells[4].Value.ToString();
+                        double quantity1 = Convert.ToDouble(a);
+                        double finalquantity = Convert.ToDouble(rate1);
                         finalquantity = quantity1 - quantity;
-                        int totalq = quantity1 * finalquantity;
-                        int totalammount1 = Convert.ToInt32(txtTotalAmmount.Text);
-                        int t = totalammount1 + totalq;
+                        double totalq = quantity1 * finalquantity;
+                        double totalammount1 = Convert.ToDouble(txtTotalAmmount.Text);
+                        double t = totalammount1 + totalq;
                         txtTotalAmmount.Text = totalammount.ToString();
 
                         double totalValues = 0.0;
+
                         foreach (DataGridViewRow row in gridsalesdelivary.Rows)
                         {
-                            string amountValue = row.Cells[row.Cells.Count - 1].Value.ToString();
-                            totalValues += Convert.ToDouble(amountValue);
+                            gridsalesdelivary.AllowUserToAddRows = false;
+                             string amountValue = row.Cells[row.Cells.Count-1].Value.ToString();
+                                totalValues += Convert.ToDouble(amountValue);
+                            
+                          
                         }
-                        txtTotalAmmount.Text = totalValues.ToString();
+                        txtTotalAmmount.Text = totalValues.ToString("###0.00");
                     }
                     else if (quantity > g)
                     {
@@ -1821,7 +1825,7 @@ namespace WindowsFormsApplication1
                             gridsalesdelivary.Rows[index - 1].DefaultCellStyle.Font = new Font(new FontFamily("Microsoft Sans Serif"), 9.00F, FontStyle.Strikeout);
                             gridsalesdelivary.Rows[index - 1].DefaultCellStyle.ForeColor = Color.Red;
 
-
+                              
                             ls.Add(itemId);
 
                             gridsalesdelivary.DataSource = addToCartTable;
