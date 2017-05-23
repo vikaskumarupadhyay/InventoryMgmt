@@ -1284,6 +1284,7 @@
             this.txtRturned.Text = "0.00";
             this.txtRturned.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtRturned.TextChanged += new System.EventHandler(this.txtRturned_TextChanged);
+            this.txtRturned.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRturned_KeyPress);
             // 
             // txtBalance
             // 

@@ -1238,7 +1238,9 @@ namespace WindowsFormsApplication1
                                         panel2.Visible = true;
                                         //string conntion = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=true;";
                                         SqlConnection con = dbMainClass.openConnection(); //new SqlConnection(conntion);
-                                        string selectqurry = "select * from purchesDelivery where Deliveryid='" + txtSrNo.Text + "'";
+                                        int id = Convert.ToInt32(txtSrNo.Text);
+                                        int id7 = id - 1;
+                                        string selectqurry = "select * from purchesDelivery where Deliveryid='" +id7 + "'";
                                         SqlCommand cmd = new SqlCommand(selectqurry, con);
                                         SqlDataAdapter sda = new SqlDataAdapter(cmd);
                                         PurchesDelivery ds = new PurchesDelivery();
@@ -1637,7 +1639,7 @@ namespace WindowsFormsApplication1
                    double trea = reta * vauequn;
                    double tamunt = Convert.ToDouble(txttotalAmount.Text);
                     double tam = tamunt + trea;
-                    txttotalAmount.Text = tam.ToString();
+                    txttotalAmount.Text = tam.ToString();//toteamount.ToString(); //tam.ToString();
                 }
                 else
                 {
@@ -2401,12 +2403,12 @@ namespace WindowsFormsApplication1
         {
             if (CashAmount.Text == "")
             {
-                CashAmount.Text = "0.00";
+                CashAmount.Text = "0";
             }
-            if (CashAmount.Text != "0.00")
+            if (CashAmount.Text != "0")
             {
                 //CashAmount.Text = "";
-                string amount = CashAmount.Text + ".00";
+                string amount = CashAmount.Text;
                 //CashAmount.Text = amount;
                 txtTotalAmount1.Text = CashAmount.Text;
             }
@@ -2545,9 +2547,9 @@ namespace WindowsFormsApplication1
         {
             if (txtCreditAmount.Text == "")
             {
-                txtCreditAmount.Text = "0.00";
+                txtCreditAmount.Text = "0";
             }
-            if (txtCreditAmount.Text != "0.00")
+            if (txtCreditAmount.Text != "0")
             {
                 string amount = txtCreditAmount.Text ;
                 txtCreditAmount.Text = amount;
@@ -2563,9 +2565,9 @@ namespace WindowsFormsApplication1
         {
             if (txtChequeAmount.Text == "")
             {
-                txtChequeAmount.Text = "0.00";
+                txtChequeAmount.Text = "0";
             }
-            if (txtChequeAmount.Text != "0.00")
+            if (txtChequeAmount.Text != "0")
             {
                 string amount = txtChequeAmount.Text;
                 txtChequeAmount.Text = amount;
@@ -2584,9 +2586,9 @@ namespace WindowsFormsApplication1
         {
             if (txtCouponAmount.Text == "")
             {
-                txtCouponAmount.Text = "0.00";
+                txtCouponAmount.Text = "0";
             }
-            if (txtCouponAmount.Text != "0.00")
+            if (txtCouponAmount.Text != "0")
             {
                 string amount = txtCouponAmount.Text;
                 //txtCouponAmount.Text = amount;
@@ -2605,9 +2607,9 @@ namespace WindowsFormsApplication1
         {
             if (txtEwalletAmount.Text == "")
             {
-                txtEwalletAmount.Text = "0.00";
+                txtEwalletAmount.Text = "0";
             }
-            if (txtEwalletAmount.Text != "0.00")
+            if (txtEwalletAmount.Text != "0")
             {
                 string amount = txtEwalletAmount.Text ;
                 txtEwalletAmount.Text = amount;
@@ -2671,8 +2673,13 @@ namespace WindowsFormsApplication1
            // string sub=txtBalance.Text.Substring(0,1);
             double bal = Convert.ToDouble(txtBalance.Text);
             double ReturnAmount = Convert.ToDouble(txtRturned.Text);
-            double bal1 = bal + ReturnAmount; ;
+            double bal1 =( bal + ReturnAmount);
             txtBalance.Text = bal1.ToString();
+
+        }
+
+        private void txtRturned_KeyPress(object sender, KeyPressEventArgs e)
+        {
 
         }
        
