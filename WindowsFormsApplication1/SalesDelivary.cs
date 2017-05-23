@@ -1287,7 +1287,7 @@ namespace WindowsFormsApplication1
 
                                             MessageBox.Show("details save successfully");
                                             panel2.Visible = true;
-                                            DialogResult result = MessageBox.Show("this page is print", "Impotant questiuon", MessageBoxButtons.YesNo);
+                                            DialogResult result = MessageBox.Show("Do you need to print Sales delivary", "Impotant questiuon", MessageBoxButtons.YesNo);
                                             if (result == System.Windows.Forms.DialogResult.Yes)
                                             {
                                                 crystalReportViewer2.Visible = true;
@@ -1413,7 +1413,7 @@ namespace WindowsFormsApplication1
                         string insertquery2 = "insert into salesOrderDelivery values('" + txtRefNo.Text + "','true','" + dtpDate.Text + "','" + txtRefNo.Text + "')";
                         int insert = d.saveDetails(insertquery2);
 
-                        string insertquery1 = "update orderdetails set Discount='" + txtdiccount.Text + "',Discountamount='" + txtdicountamount.Text + "',Tax='" + txttax.Text + "',Taxamount='" + txttaxamount.Text + "',WithautTaxamount='" + txtwithauttaxamount.Text + "' where orderid='" + txtRefNo.Text + "'";
+                        string insertquery1 = "update orderdetails set totalammount='"+txtTotalAmmount.Text+"', Discount='" + txtdiccount.Text + "',Discountamount='" + txtdicountamount.Text + "',Tax='" + txttax.Text + "',Taxamount='" + txttaxamount.Text + "',WithautTaxamount='" + txtwithauttaxamount.Text + "' where orderid='" + txtRefNo.Text + "'";
                         int insertrows1 = d.saveDetails(insertquery1);
 
                         if (insertrows1 > 0)
@@ -1422,10 +1422,10 @@ namespace WindowsFormsApplication1
                             int insertedRows=d.saveDetails(insertQurry);
                             if (insertedRows > 0)
                             {
-                                MessageBox.Show("details save not successfully");
+                                MessageBox.Show("details save successfully");
 
                                 panel2.Visible = true;
-                                DialogResult result = MessageBox.Show("this page is print", "Impotant questiuon", MessageBoxButtons.YesNo);
+                                DialogResult result = MessageBox.Show("Do you need to print Sales Delivary", "Impotant questiuon", MessageBoxButtons.YesNo);
                                 if (result == System.Windows.Forms.DialogResult.Yes)
                                 {
                                     crystalReportViewer2.Visible = true;
@@ -2561,6 +2561,7 @@ namespace WindowsFormsApplication1
                             counter++;
                             continue;
                         }
+                        totalAmount += Convert.ToDouble(dr[7].ToString());
                         counter++;
                     }
                     double s1 = totalAmount;
