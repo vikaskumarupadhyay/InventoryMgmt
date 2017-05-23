@@ -641,7 +641,7 @@ namespace WindowsFormsApplication1
                 {
                     MessageBox.Show("Details saved successfully");
 
-                    DialogResult result = MessageBox.Show("Do you need to print purchase order! ", "Impotant questiuon", MessageBoxButtons.YesNo);
+                    DialogResult result = MessageBox.Show("Do you need to print Sales order! ", "Impotant questiuon", MessageBoxButtons.YesNo);
                     if (result == System.Windows.Forms.DialogResult.Yes)
                     {
                         panel2.Visible = true;

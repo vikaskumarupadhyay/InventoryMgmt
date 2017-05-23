@@ -1920,6 +1920,8 @@ namespace WindowsFormsApplication1
             }
             if (e.KeyChar == Convert.ToChar(Keys.Escape))
             {
+                var dgvcount = dataGridView1.Rows.Count;
+                dataGridView1.CurrentCell = dataGridView1.Rows[dgvcount - 2].Cells[0];
                 txtItemCode.Focus();
                 txtItemCode.Select(txtItemCode.Text.Length, 0);
                 button4.Enabled = true;
@@ -2677,11 +2679,8 @@ namespace WindowsFormsApplication1
             txtBalance.Text = bal1.ToString();
 
         }
-
         private void txtRturned_KeyPress(object sender, KeyPressEventArgs e)
         {
-
-        }
        
        
     }
