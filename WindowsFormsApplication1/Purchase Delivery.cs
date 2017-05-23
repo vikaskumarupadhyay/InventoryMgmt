@@ -1429,6 +1429,7 @@ namespace WindowsFormsApplication1
 
         private void txtRef_KeyPress(object sender, KeyPressEventArgs e)
         {
+           
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
                 addToCartTable.Columns.RemoveAt(6);
@@ -2694,8 +2695,7 @@ namespace WindowsFormsApplication1
         }
         private void txtRturned_KeyPress(object sender, KeyPressEventArgs e)
         {
-<<<<<<< HEAD
-=======
+
             if (Char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
@@ -2714,7 +2714,6 @@ namespace WindowsFormsApplication1
                 }
             }
         }
->>>>>>> UmE-23-May-17
        
        
     }
