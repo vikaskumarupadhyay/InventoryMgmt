@@ -827,9 +827,10 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.butClose);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(971, 634);
+            this.panel2.Size = new System.Drawing.Size(1172, 634);
             this.panel2.TabIndex = 40;
             // 
             // DeliveryReportViewer
@@ -837,9 +838,10 @@
             this.DeliveryReportViewer.ActiveViewIndex = -1;
             this.DeliveryReportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.DeliveryReportViewer.Cursor = System.Windows.Forms.Cursors.Default;
+            this.DeliveryReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DeliveryReportViewer.Location = new System.Drawing.Point(0, 0);
             this.DeliveryReportViewer.Name = "DeliveryReportViewer";
-            this.DeliveryReportViewer.Size = new System.Drawing.Size(914, 634);
+            this.DeliveryReportViewer.Size = new System.Drawing.Size(1172, 634);
             this.DeliveryReportViewer.TabIndex = 7;
             // 
             // panel3
@@ -851,7 +853,7 @@
             this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel3.Location = new System.Drawing.Point(12, 105);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(941, 384);
+            this.panel3.Size = new System.Drawing.Size(1142, 384);
             this.panel3.TabIndex = 6;
             // 
             // dataGridView2
@@ -861,7 +863,7 @@
             this.dataGridView2.Location = new System.Drawing.Point(0, 0);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(937, 380);
+            this.dataGridView2.Size = new System.Drawing.Size(1138, 380);
             this.dataGridView2.StandardTab = true;
             this.dataGridView2.TabIndex = 3;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
@@ -880,7 +882,7 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(12, 25);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(940, 73);
+            this.groupBox4.Size = new System.Drawing.Size(1141, 73);
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
@@ -904,7 +906,7 @@
             this.txtSearch.Location = new System.Drawing.Point(687, 40);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(841, 26);
+            this.txtSearch.Size = new System.Drawing.Size(1042, 26);
             this.txtSearch.TabIndex = 2;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged_1);
             // 
@@ -967,9 +969,10 @@
             this.pnlPaymentDetail.Controls.Add(this.groupBox7);
             this.pnlPaymentDetail.Controls.Add(this.btnSave);
             this.pnlPaymentDetail.Controls.Add(this.groupBox8);
+            this.pnlPaymentDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlPaymentDetail.Location = new System.Drawing.Point(0, 0);
             this.pnlPaymentDetail.Name = "pnlPaymentDetail";
-            this.pnlPaymentDetail.Size = new System.Drawing.Size(842, 634);
+            this.pnlPaymentDetail.Size = new System.Drawing.Size(1172, 634);
             this.pnlPaymentDetail.TabIndex = 70;
             this.pnlPaymentDetail.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlPaymentDetail_Paint);
             // 
@@ -983,7 +986,7 @@
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.Location = new System.Drawing.Point(929, 38);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(0, 58);
+            this.groupBox5.Size = new System.Drawing.Size(330, 58);
             this.groupBox5.TabIndex = 9;
             this.groupBox5.TabStop = false;
             // 
@@ -1007,7 +1010,7 @@
             this.txtInvoiceAmount.Multiline = true;
             this.txtInvoiceAmount.Name = "txtInvoiceAmount";
             this.txtInvoiceAmount.ReadOnly = true;
-            this.txtInvoiceAmount.Size = new System.Drawing.Size(0, 23);
+            this.txtInvoiceAmount.Size = new System.Drawing.Size(324, 23);
             this.txtInvoiceAmount.TabIndex = 1;
             this.txtInvoiceAmount.TabStop = false;
             this.txtInvoiceAmount.Text = "0.00";
@@ -1152,7 +1155,7 @@
             this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox8.Location = new System.Drawing.Point(21, 93);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(803, 222);
+            this.groupBox8.Size = new System.Drawing.Size(1133, 222);
             this.groupBox8.TabIndex = 7;
             this.groupBox8.TabStop = false;
             // 
