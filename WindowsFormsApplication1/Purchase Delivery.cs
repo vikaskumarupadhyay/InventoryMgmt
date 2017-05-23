@@ -1193,7 +1193,8 @@ namespace WindowsFormsApplication1
                     counter = 0;
                     if (counter == 0)
                     {
-
+                        string updateQurry = "update VendorOrderDetails set WithoutTexAmount='" + txtWAmount.Text + "' where Orderid='"+txtRef.Text+"'";
+                        int inserted = dbMainClass.saveDetails(updateQurry);
 
                         DataGridViewRowCollection RowCollection = dataGridView1.Rows;
                         List<string> sf1 = new List<string>();
@@ -1204,7 +1205,7 @@ namespace WindowsFormsApplication1
                             DataGridViewCellCollection cellCollection = currentRow.Cells;
                             string txtItemCode = cellCollection[0].Value.ToString();
                             string txtRate = cellCollection[4].Value.ToString();
-                            string txtQuanity = cellCollection[5].Value.ToString();
+                            string txtQuanity = cellCollection[6].Value.ToString();
                             string txtAmoun = cellCollection[7].Value.ToString();
                             string OrderID1 = txtRef.Text;
 
@@ -1624,29 +1625,41 @@ namespace WindowsFormsApplication1
 
             if (txtRef.Text != "")
             {
+                int quantity=0;
+                string a =  dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
+                        string rate =  dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                        quantity = Convert.ToInt32(a);
+                        double r = Convert.ToDouble(rate);
+                        double totalammount = quantity * r;
+                        dataGridView1.Rows[e.RowIndex].Cells[7].Value = totalammount.ToString();
+                        //string newquantity = gridsalesdelivary.Rows[e.RowIndex].Cells[3].Value.ToString();
+                        string rate1 =  dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                        double quantity1 = Convert.ToDouble(a);
+                        double finalquantity = Convert.ToDouble(rate1);
+                        finalquantity = quantity1 - quantity;
+                        double totalq = quantity1 * finalquantity;
+                        double totalammount1 = Convert.ToDouble(txttotalAmount.Text);
+                        double t = totalammount1 + totalq;
+                        txttotalAmount.Text = totalammount.ToString();
 
-                string a = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
-                string rate = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
-                if (a != "")
-                {
-                    int quantity = Convert.ToInt32(a);
-                    double reta = Convert.ToDouble(rate);
-                    double toteamount = quantity * reta;
-                    dataGridView1.Rows[e.RowIndex].Cells[7].Value = toteamount.ToString();
-                    string qun = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
-                    int quanti = Convert.ToInt32(qun);
-                    int vauequn = quantity - quanti;
-                   double trea = reta * vauequn;
-                   double tamunt = Convert.ToDouble(txttotalAmount.Text);
-                    double tam = tamunt + trea;
-                    txttotalAmount.Text = tam.ToString();//toteamount.ToString(); //tam.ToString();
-                }
+                        double totalValues = 0.0;
+
+                        foreach (DataGridViewRow row in  dataGridView1.Rows)
+                        {
+                            dataGridView1.AllowUserToAddRows = false;
+                             string amountValue = row.Cells[row.Cells.Count-1].Value.ToString();
+                                totalValues += Convert.ToDouble(amountValue);
+                            
+                          
+                        }
+                        txttotalAmount.Text = totalValues.ToString("###0.00");
+                    }
                 else
                 {
                     MessageBox.Show("please select your correct row");
                     dataGridView1.Rows[e.RowIndex].Cells[0].Value = "";
                 }
-            }
+           // }
 
         }
 
@@ -2147,7 +2160,7 @@ namespace WindowsFormsApplication1
                     {
                         addToCartTable.Rows.RemoveAt(0);
                     }
-                    int totel1 = 0;
+                    double totel1 = 0;
                     for (int c = 0; c < dt2.Rows.Count; c++)
                     {
                         DataRow dr2 = dt2.Rows[c];
@@ -2160,7 +2173,7 @@ namespace WindowsFormsApplication1
                         string txtAmoun = dr2[6].ToString();
                         string txtitemNmea = dr2[6].ToString();
                         //tot = txtitemNmea;
-                        int amt = Convert.ToInt32(txtitemNmea);
+                        double amt = Convert.ToDouble(txtitemNmea);
                         totel1 = totel1 + amt;
                         dr2 = addToCartTable.NewRow();
                         dr2[0] = txtItemCode.Trim();
@@ -2246,7 +2259,7 @@ namespace WindowsFormsApplication1
                         {
                             continue;
                         }
-                        totalAmount3 += Convert.ToDouble(dr[6].ToString());
+                        totalAmount3 += Convert.ToDouble(dr[7].ToString());
                     }
                     double s1 = totalAmount3;
                     txttotalAmount.Text = s1.ToString("###0.00");
@@ -2673,14 +2686,30 @@ namespace WindowsFormsApplication1
            // string sub=txtBalance.Text.Substring(0,1);
             double bal = Convert.ToDouble(txtBalance.Text);
             double ReturnAmount = Convert.ToDouble(txtRturned.Text);
-            double bal1 =( bal + ReturnAmount);
+            double bal1 =bal + ReturnAmount;
             txtBalance.Text = bal1.ToString();
 
         }
 
         private void txtRturned_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    txtBalance.Text = "0";
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    //MessageBox.Show("Plese enter numeric value!");
+                }
+            }
         }
        
        
