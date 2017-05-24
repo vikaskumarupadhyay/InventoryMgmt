@@ -1355,7 +1355,7 @@ namespace WindowsFormsApplication1
         private void Distxt_KeyPress(object sender, KeyPressEventArgs e)
         {
             double totalAmount = 0.00;
-            if (Char.IsLetterOrDigit(e.KeyChar))
+            if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
                 e.Handled = false;
             }

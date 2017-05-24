@@ -1942,7 +1942,7 @@ namespace WindowsFormsApplication1
                         //{
                         //    button4.Enabled = false;
                     }
-                    if ((!ls.Contains(itemId)) || (dataGridView1.Rows[index - 1].DefaultCellStyle.Font != null))
+                   else if ((!ls.Contains(itemId)) || (dataGridView1.Rows[index - 1].DefaultCellStyle.Font != null))
                     {
                         MessageBox.Show("Item already deleted!");
                     }
@@ -2331,7 +2331,7 @@ namespace WindowsFormsApplication1
         private void txtDiscount_KeyPress(object sender, KeyPressEventArgs e)
         {
             double totalAmount3 = 0.00;
-            if (Char.IsLetterOrDigit(e.KeyChar))
+         if  ((char.IsDigit(e.KeyChar)  || e.KeyChar == '.'))
             {
                 e.Handled = false;
             }
