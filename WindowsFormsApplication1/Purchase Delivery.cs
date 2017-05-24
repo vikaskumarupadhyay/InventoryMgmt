@@ -2337,29 +2337,31 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                if (e.KeyChar =='\b')
+                if (e.KeyChar == '\b')
                 {
-                    counter = 0;
-                    foreach (DataRow dr in addToCartTable.Rows)
-                    {
-                        string itemid = dr[0].ToString();
-                        if (ls.Contains(itemid) && dataGridView1.Rows[counter].DefaultCellStyle.Font != null)
+               
+                        counter = 0;
+                        foreach (DataRow dr in addToCartTable.Rows)
                         {
+                            string itemid = dr[0].ToString();
+                            if (ls.Contains(itemid) && dataGridView1.Rows[counter].DefaultCellStyle.Font != null)
+                            {
+                                counter++;
+                                continue;
+                            }
                             counter++;
-                            continue;
-                        }
-                        counter++;
-                        if (txtRef.Text == "" || txtDiscount.Text=="")
-                        {
+                             if (txtRef.Text == "" || txtDiscount.Text == "")
+                            {
                             totalAmount3 += Convert.ToDouble(dr[6].ToString());
+                             }
+                             else if (txtRef.Text != "" || txtDiscount.Text == "")
+                             {
+                                totalAmount3 += Convert.ToDouble(dr[7].ToString());
+                             }
                         }
-                        if (txtRef.Text != "" || txtDiscount.Text == "")
-                        {
-                            totalAmount3 += Convert.ToDouble(dr[7].ToString());
-                        }
-                    }
-                    double s1 = totalAmount3;
-                    txttotalAmount.Text = s1.ToString("###0.00");
+                        double s1 = totalAmount3;
+                        txttotalAmount.Text = s1.ToString("###0.00");
+               // }
                    // txtdis.Text = "0";
                     // double total = Convert.ToDouble(txttotalammount.Text);
                     // double d = Convert.ToDouble(discountamount.Text);
@@ -2375,16 +2377,16 @@ namespace WindowsFormsApplication1
                     e.Handled = true;
                 }
             }
-            char ch = e.KeyChar;
-            if (ch == 46 && txtDiscount.Text.IndexOf('.') != -1)
-            {
-                e.Handled = true;
-                return;
-            }
-            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
-            {
-                e.Handled = true;
-            }
+            //char ch = e.KeyChar;
+            //if (ch == 46 && txtDiscount.Text.IndexOf('.') != -1)
+            //{
+            //    e.Handled = true;
+            //    return;
+            //}
+            //if (!char.IsDigit(ch) && ch != 8 && ch != 46)
+            //{
+            //    e.Handled = true;
+            //}
             //if (e.KeyChar == (char)Keys.Enter)
             //{
             if (e.KeyChar == (char)Keys.Enter)
