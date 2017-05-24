@@ -1887,7 +1887,7 @@ namespace WindowsFormsApplication1
             
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-               
+
                 if (addToCartTable.Rows.Count > 0)
                 {
                     if (txttotalAmount.Text == "")
@@ -1898,51 +1898,58 @@ namespace WindowsFormsApplication1
                     string itemId = dataGridView1.Rows[index - 1].Cells[0].Value.ToString();
                     if ((!ls.Contains(itemId)) || (dataGridView1.Rows[index - 1].DefaultCellStyle.Font == null))
                     {
-                      
-                    int currentrow = dataGridView1.CurrentRow.Index;
-                    string Amount = dataGridView1.Rows[currentrow - 1].Cells[6].Value.ToString();
-                         if (Amount == "")
+
+                        int currentrow = dataGridView1.CurrentRow.Index;
+                        string Amount = dataGridView1.Rows[currentrow - 1].Cells[6].Value.ToString();
+                        if (Amount == "")
                         {
                             Amount = "0";
                         }
-                    double totalAmount = Convert.ToDouble(txttotalAmount.Text);
-                    totalAmount -= Convert.ToDouble(Amount.Trim());
-                    txttotalAmount.Text = totalAmount.ToString();
-                   // int index = dataGridView1.SelectedRows[0].Index;
-                    //addToCartTable.Rows.RemoveAt(index-1);
+                        double totalAmount = Convert.ToDouble(txttotalAmount.Text);
+                        totalAmount -= Convert.ToDouble(Amount.Trim());
+                        txttotalAmount.Text = totalAmount.ToString();
+                        // int index = dataGridView1.SelectedRows[0].Index;
+                        //addToCartTable.Rows.RemoveAt(index-1);
 
-                    dataGridView1.Rows[index - 1].DefaultCellStyle.Font = new Font(new FontFamily("Microsoft Sans Serif"), 9.00F, FontStyle.Strikeout);
-                    dataGridView1.Rows[index - 1].DefaultCellStyle.ForeColor = Color.Red;
-                    ls.Add(itemId);
-                    dataGridView1.DataSource = addToCartTable;
-                    if (addToCartTable.Rows.Count == 0)
-                    {
-                        txttotalAmount.Text = "0.0";
-                        txtdis.Text = "0.0";
+                        dataGridView1.Rows[index - 1].DefaultCellStyle.Font = new Font(new FontFamily("Microsoft Sans Serif"), 9.00F, FontStyle.Strikeout);
+                        dataGridView1.Rows[index - 1].DefaultCellStyle.ForeColor = Color.Red;
+                        ls.Add(itemId);
+                        dataGridView1.DataSource = addToCartTable;
+                        if (addToCartTable.Rows.Count == 0)
+                        {
+                            txttotalAmount.Text = "0.0";
+                            txtdis.Text = "0.0";
+                        }
+                        if (ls.Count == dataGridView1.Rows.Count - 1)
+                        {
+                            txtItemCode.Focus();
+                            txtItemCode.Select(txtItemCode.Text.Length, 0);
+                        }
+                        if (dataGridView1.Rows.Count > 0)
+                        {
+                            dataGridView1.Rows[dataGridView1.Rows.Count - 1].Selected = true;
+                        }
+                        if (dataGridView1.Rows.Count > 0)
+                        {
+                            txtDiscount.Text = "0";
+                            txtDiscount.ReadOnly = true;
+                        }
+                        if (dataGridView1.Rows.Count > 1)
+                        {
+                            txtDiscount.ReadOnly = false;
+                        }
+                        //else
+                        //{
+                        //    button4.Enabled = false;
                     }
-                    if (ls.Count==dataGridView1.Rows.Count-1)
+                    if ((!ls.Contains(itemId)) || (dataGridView1.Rows[index - 1].DefaultCellStyle.Font != null))
                     {
-                        txtItemCode.Focus();
-                        txtItemCode.Select(txtItemCode.Text.Length, 0);
+                        MessageBox.Show("Item already deleted!");
                     }
-                    if (dataGridView1.Rows.Count > 0)
-                    {
-                        dataGridView1.Rows[dataGridView1.Rows.Count - 1].Selected = true;
-                    }
-                    if (dataGridView1.Rows.Count > 0)
-                    {
-                        txtDiscount.Text = "0";
-                        txtDiscount.ReadOnly = true;
-                    }
-                    if (dataGridView1.Rows.Count > 1)
-                    {
-                        txtDiscount.ReadOnly = false;
-                    }
-                    //else
-                    //{
-                    //    button4.Enabled = false;
-                   }
                 }
+                //int index1 = dataGridView1.SelectedRows[0].Index;
+                //string itemId1 = dataGridView1.Rows[index1 - 1].Cells[0].Value.ToString();
+               
             }
             if (e.KeyChar == Convert.ToChar(Keys.Escape))
             {
@@ -2259,6 +2266,7 @@ namespace WindowsFormsApplication1
 
         private void txtDiscount_TextChanged(object sender, EventArgs e)
         {
+            int counte = 0;
             if (txtRef.Text == "")
             {
                 double totalAmount = 0.00;//Convert.ToDouble(txttotalAmount.Text);
@@ -2266,12 +2274,12 @@ namespace WindowsFormsApplication1
                 foreach (DataRow dr in addToCartTable.Rows)
                 {
                     string itemid = dr[0].ToString();
-                    if (ls.Contains(itemid) && dataGridView1.Rows[counter].DefaultCellStyle.Font != null)
+                    if (ls.Contains(itemid) && dataGridView1.Rows[counte].DefaultCellStyle.Font != null)
                     {
-                        counter++;
+                        counte++;
                         continue;
                     }
-                    counter++;
+                    counte++;
                     totalAmount += Convert.ToDouble(dr[6].ToString());
                     totalAmount1 += Convert.ToDouble(dr[6].ToString());
                 }

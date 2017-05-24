@@ -1036,6 +1036,10 @@ namespace WindowsFormsApplication1
                             //txtRemoveItem.Enabled = false;
                         }
                     }
+                   else if ((!ls.Contains(itemId)) || (gridPurchaseOrder.Rows[index - 1].DefaultCellStyle.Font != null))
+                    {
+                        MessageBox.Show("Item already deleted!");
+                    }
                 }
             }
              if (e.KeyChar == Convert.ToChar(Keys.Escape))
