@@ -2643,8 +2643,15 @@ namespace WindowsFormsApplication1
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
                 addToCartTable.Columns.RemoveAt(6);
-                addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
-                addToCartTable.Columns.Add(new DataColumn("Amount"));
+                if (!addToCartTable.Columns.Contains("ResivQuantity"))
+                {
+                    addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                }
+
+                if (!addToCartTable.Columns.Contains("Amount"))
+                {
+                    addToCartTable.Columns.Add(new DataColumn("Amount"));
+                }
                 txtRefNo.ReadOnly = true;
                 string selectquery2 = "select Orderid from salesOrderDelivery where Orderid='" + txtRefNo.Text + "'";
                 DataTable dt1 = d.getDetailByQuery(selectquery2);
@@ -2757,7 +2764,7 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyChar == '\b')
                 {
-                    addToCartTable.Columns.RemoveAt(7);
+                 
                     txtRefNo.ReadOnly = false;
                     makeblank();
 
@@ -2774,154 +2781,92 @@ namespace WindowsFormsApplication1
 
         private void textBox20_KeyPress(object sender, KeyPressEventArgs e)
         {
-            double totalAmount = 0.00;
-            if (Char.IsLetterOrDigit(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                if (txtRefNo.Text == "")
-                {
-                    if (e.KeyChar == '\b')
-                    {
-                        foreach (DataRow dr in addToCartTable.Rows)
-                        {
-                            string itemid = dr[0].ToString();
-                            if (ls.Contains(itemid))
-                            {
-                                continue;
-                            }
-                            totalAmount += Convert.ToDouble(dr[6].ToString());
-                        }
-                        double s1 = totalAmount;
-                        txtTotalAmmount.Text = s1.ToString("###0.00");
-                        txtdicountamount.Text = "0";
-                        txtwithauttaxamount.Text = s1.ToString();
-                        // double total = Convert.ToDouble(txttotalammount.Text);
-                        // double d = Convert.ToDouble(discountamount.Text);
-                        // double g = d + total;
-                        //txttotalammount.Text = g.ToString();
-                        //discountamount.Text = "";
+            //double totalAmount = 0.00;
+            //if (Char.IsLetterOrDigit(e.KeyChar))
+            //{
+            //    e.Handled = false;
+            //}
+            //else
+            //{
+            //    if (txtRefNo.Text == "")
+            //    {
+            //        if (e.KeyChar == '\b')
+            //        {
+            //            foreach (DataRow dr in addToCartTable.Rows)
+            //            {
+            //                string itemid = dr[0].ToString();
+            //                if (ls.Contains(itemid))
+            //                {
+            //                    continue;
+            //                }
+            //                totalAmount += Convert.ToDouble(dr[6].ToString());
+            //            }
+            //            double s1 = totalAmount;
+            //            txtTotalAmmount.Text = s1.ToString("###0.00");
+            //            txtdicountamount.Text = "0";
+            //            txtwithauttaxamount.Text = s1.ToString();
+            //            // double total = Convert.ToDouble(txttotalammount.Text);
+            //            // double d = Convert.ToDouble(discountamount.Text);
+            //            // double g = d + total;
+            //            //txttotalammount.Text = g.ToString();
+            //            //discountamount.Text = "";
 
                       
 
-                        e.Handled = false;
-                    }
+            //            e.Handled = false;
+            //        }
 
-                    else
-                    {
-                        e.Handled = true;
-                    }
+            //        else
+            //        {
+            //            e.Handled = true;
+            //        }
 
-                }
-                if (txtRefNo.Text != "")
-                {
-                    if (e.KeyChar == '\b')
-                    {
-                        counter = 0;
-                        foreach (DataRow dr in addToCartTable.Rows)
-                        {
+            //    }
+            //    if (txtRefNo.Text != "")
+            //    {
+            //        if (e.KeyChar == '\b')
+            //        {
+            //            counter = 0;
+            //            foreach (DataRow dr in addToCartTable.Rows)
+            //            {
                            
-                            string itemid = dr[0].ToString();
-                          if (ls.Contains(itemid) && gridsalesdelivary.Rows[counter].DefaultCellStyle.Font != null)
-                            {
-                                counter++;
-                                continue;
-                            }
-                            totalAmount += Convert.ToDouble(dr[7].ToString());
-                            counter++;
-                        }
-                        double s = totalAmount;
-                        txtTotalAmmount.Text = s.ToString("###0.00");
-                        txtdicountamount.Text = "0";
-                        txtwithauttaxamount.Text = s.ToString();
-                        // double total = Convert.ToDouble(txttotalammount.Text);
-                        // double d = Convert.ToDouble(discountamount.Text);
-                        // double g = d + total;
-                        //txttotalammount.Text = g.ToString();
-                        //discountamount.Text = "";
+            //                string itemid = dr[0].ToString();
+            //              if (ls.Contains(itemid) && gridsalesdelivary.Rows[counter].DefaultCellStyle.Font != null)
+            //                {
+            //                    counter++;
+            //                    continue;
+            //                }
+            //                totalAmount += Convert.ToDouble(dr[7].ToString());
+            //                counter++;
+            //            }
+            //            double s = totalAmount;
+            //            txtTotalAmmount.Text = s.ToString("###0.00");
+            //            txtdicountamount.Text = "0";
+            //            txtwithauttaxamount.Text = s.ToString();
+            //            // double total = Convert.ToDouble(txttotalammount.Text);
+            //            // double d = Convert.ToDouble(discountamount.Text);
+            //            // double g = d + total;
+            //            //txttotalammount.Text = g.ToString();
+            //            //discountamount.Text = "";
 
 
-                        e.Handled = false;
-                    }
+            //            e.Handled = false;
+            //        }
 
-                    else
-                    {
-                        e.Handled = true;
-                    }
+            //        else
+            //        {
+            //            e.Handled = true;
+            //        }
 
-                }
-            }
-
-
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-
-                if (txtRefNo.Text == "")
-                {
-                    counter = 0;
-                    //discountamount.Text = disa.ToString();
-                    foreach (DataRow dr in addToCartTable.Rows)
-                    {
-                       
-                        string itemid = dr[0].ToString();
-                        if (ls.Contains(itemid) && gridsalesdelivary.Rows[counter].DefaultCellStyle.Font != null)
-                        {
-                            counter++;
-                            continue;
-                        }
-                        counter++;
-                        totalAmount += Convert.ToDouble(dr[6].ToString());
-                    }
-                    double s = totalAmount;
-                    string discount = txtdiccount.Text;
-
-                    double amount = 0.0;
-
-                    if (double.TryParse(discount, out amount))
-                    {
-                        double totaldiscount = Convert.ToDouble(discount);
-                        totalAmount = totalAmount - ((totalAmount * totaldiscount) / 100);
-                        txtTotalAmmount.Text = totalAmount.ToString("###0.00");
-                        txtwithauttaxamount.Text = s.ToString();
-                        double dis = s * totaldiscount / 100;
-                        txtdicountamount.Text = dis.ToString();
-                    }
-                }
+            //    }
+            //}
 
 
-                if (txtRefNo.Text != "")
-                {
-                    counter = 0;
-                    foreach (DataRow dr in addToCartTable.Rows)
-                    {
-                        string itemid = dr[0].ToString();
-                        if (ls.Contains(itemid) && gridsalesdelivary.Rows[counter].DefaultCellStyle.Font != null)
-                        {
-                            counter++;
-                            continue;
-                        }
-                        totalAmount += Convert.ToDouble(dr[7].ToString());
-                        counter++;
-                    }
-                    double s1 = totalAmount;
-                    string discount1 = txtdiccount.Text;
+            //if (e.KeyChar == (char)Keys.Enter)
+            //{
 
-                    double amount1 = 0.0;
-
-                    if (double.TryParse(discount1, out amount1))
-                    {
-                        double totaldiscount = Convert.ToDouble(discount1);
-                        totalAmount = totalAmount - ((totalAmount * totaldiscount) / 100);
-                        txtTotalAmmount.Text = totalAmount.ToString("###0.00");
-                        txtwithauttaxamount.Text = s1.ToString();
-                        double dis = s1 * totaldiscount / 100;
-                        txtdicountamount.Text = dis.ToString();
-
-                    }
-                }
-            }
+               
+            //}
         }
 
 
@@ -3115,8 +3060,74 @@ namespace WindowsFormsApplication1
             panel2.Visible = false;
         }
 
-       
+        private void txtdiccount_TextChanged(object sender, EventArgs e)
+        {
+            double totalAmount = 0.00;
+            if (txtRefNo.Text == "")
+            {
+                counter = 0;
+                //discountamount.Text = disa.ToString();
+                foreach (DataRow dr in addToCartTable.Rows)
+                {
 
+                    string itemid = dr[0].ToString();
+                    if (ls.Contains(itemid) && gridsalesdelivary.Rows[counter].DefaultCellStyle.Font != null)
+                    {
+                        counter++;
+                        continue;
+                    }
+                    counter++;
+                    totalAmount += Convert.ToDouble(dr[6].ToString());
+                }
+                double s = totalAmount;
+                string discount = txtdiccount.Text;
+
+                double amount = 0.0;
+
+                if (double.TryParse(discount, out amount))
+                {
+                    double totaldiscount = Convert.ToDouble(discount);
+                    totalAmount = totalAmount - ((totalAmount * totaldiscount) / 100);
+                    txtTotalAmmount.Text = totalAmount.ToString("###0.00");
+                    txtwithauttaxamount.Text = s.ToString();
+                    double dis = s * totaldiscount / 100;
+                    txtdicountamount.Text = dis.ToString();
+                }
+            }
+
+
+            if (txtRefNo.Text != "")
+            {
+                counter = 0;
+                foreach (DataRow dr in addToCartTable.Rows)
+                {
+                    string itemid = dr[0].ToString();
+                    if (ls.Contains(itemid) && gridsalesdelivary.Rows[counter].DefaultCellStyle.Font != null)
+                    {
+                        counter++;
+                        continue;
+                    }
+                    totalAmount += Convert.ToDouble(dr[7].ToString());
+                    counter++;
+                }
+                double s1 = totalAmount;
+                string discount1 = txtdiccount.Text;
+
+                double amount1 = 0.0;
+
+                if (double.TryParse(discount1, out amount1))
+                {
+                    double totaldiscount = Convert.ToDouble(discount1);
+                    totalAmount = totalAmount - ((totalAmount * totaldiscount) / 100);
+                    txtTotalAmmount.Text = totalAmount.ToString("###0.00");
+                    txtwithauttaxamount.Text = s1.ToString();
+                    double dis = s1 * totaldiscount / 100;
+                    txtdicountamount.Text = dis.ToString();
+
+                }
+            }
+
+        }
     }
 
 
