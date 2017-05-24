@@ -706,6 +706,7 @@
             this.txtdiccount.TabStop = false;
             this.txtdiccount.Text = "0";
             this.txtdiccount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtdiccount.TextChanged += new System.EventHandler(this.txtdiccount_TextChanged);
             this.txtdiccount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox20_KeyPress);
             // 
             // textBox21
@@ -838,6 +839,7 @@
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(0, 3);
             this.dataGridView2.Name = "dataGridView2";
