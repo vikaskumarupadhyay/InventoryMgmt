@@ -1363,13 +1363,16 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyChar == '\b')
                 {
+                    counter = 0;
                     foreach (DataRow dr in addToCartTable.Rows)
                     {
                         string itemid = dr[0].ToString();
-                        if (ls.Contains(itemid))
+                        if (ls.Contains(itemid) && dataGridView1.Rows[counter].DefaultCellStyle.Font != null)
                         {
+                            counter++;
                             continue;
                         }
+                        counter++;
                         totalAmount += Convert.ToDouble(dr[6].ToString());
                     }
                     double s1 = totalAmount;

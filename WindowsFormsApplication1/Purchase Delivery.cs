@@ -2337,20 +2337,23 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                if (e.KeyChar == '\b')
+                if (e.KeyChar =='\b')
                 {
+                    counter = 0;
                     foreach (DataRow dr in addToCartTable.Rows)
                     {
                         string itemid = dr[0].ToString();
-                        if (ls.Contains(itemid))
+                        if (ls.Contains(itemid) && dataGridView1.Rows[counter].DefaultCellStyle.Font != null)
                         {
+                            counter++;
                             continue;
                         }
-                        if (txtRef.Text == "")
+                        counter++;
+                        if (txtRef.Text == "" || txtDiscount.Text=="")
                         {
                             totalAmount3 += Convert.ToDouble(dr[6].ToString());
                         }
-                        if (txtRef.Text != "")
+                        if (txtRef.Text != "" || txtDiscount.Text == "")
                         {
                             totalAmount3 += Convert.ToDouble(dr[7].ToString());
                         }
