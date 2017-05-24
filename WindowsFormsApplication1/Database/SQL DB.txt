@@ -229,6 +229,8 @@ ALTER TABLE ItemPriceDetail ALTER COLUMN SalesPrice decimal(18,2)
 
 ALTER TABLE ItemPriceDetail ALTER COLUMN MrpPrice decimal(18,2)
 ALTER TABLE VendorOrderDesc ALTER COLUMN Price decimal(18,2)
+ALTER TABLE customerorderdescriptions ALTER COLUMN price decimal(18,2)
+ALTER TABLE customerorderdescriptions ALTER COLUMN totalammount decimal(18,2)
  
 
 
