@@ -2783,7 +2783,7 @@ namespace WindowsFormsApplication1
 
         private void textBox20_KeyPress(object sender, KeyPressEventArgs e)
         {
-            double totalAmount = 0.00;
+          
             if (Char.IsLetterOrDigit(e.KeyChar)||e.KeyChar=='.')
             {
                 e.Handled = false;
@@ -2792,15 +2792,19 @@ namespace WindowsFormsApplication1
             {
                 if (txtRefNo.Text == "")
                 {
+                    double totalAmount = 0.00;
+                    counter = 0;
                     if (e.KeyChar == '\b')
                     {
                         foreach (DataRow dr in addToCartTable.Rows)
                         {
                             string itemid = dr[0].ToString();
-                            if (ls.Contains(itemid))
+                            if (ls.Contains(itemid) && gridsalesdelivary.Rows[counter].DefaultCellStyle.Font != null)
                             {
+                                counter++;
                                 continue;
                             }
+                            counter++;
                             totalAmount += Convert.ToDouble(dr[6].ToString());
                         }
                         double s1 = totalAmount;
@@ -2826,6 +2830,8 @@ namespace WindowsFormsApplication1
                 }
                 if (txtRefNo.Text != "")
                 {
+                    double totalAmount = 0.00;
+                    counter = 0;
                     if (e.KeyChar == '\b')
                     {
                         counter = 0;
@@ -3085,17 +3091,14 @@ namespace WindowsFormsApplication1
                     }
                     counter++;
                     totalAmount += Convert.ToDouble(dr[6].ToString());
-                    if (txtdiccount.Text == "")
-                    {
-                        
-                    }
+                   
                 }
                 double s = totalAmount;
 
                 string discount = txtdiccount.Text;
 
 
-                double amount = 0.0;
+                double amount = 0;
                
 
                 if (double.TryParse(discount, out amount))
@@ -3113,7 +3116,7 @@ namespace WindowsFormsApplication1
             if (txtRefNo.Text != "")
             {
                 double totalAmount = 0.00;
-                double totalamount1 = 0.00;
+               
                 counter = 0;
                 foreach (DataRow dr in addToCartTable.Rows)
                 {
@@ -3130,7 +3133,7 @@ namespace WindowsFormsApplication1
                 string discount1 = txtdiccount.Text;
 
 
-                double amount1 = 0.0;
+                double amount1 =0;
 
                 if (double.TryParse(discount1, out amount1))
                 {
