@@ -249,8 +249,13 @@ namespace WindowsFormsApplication1
                 txtItemCode.Text = cellCollection[0].Value.ToString();
                 txtProductName.Text = cellCollection[1].Value.ToString();
                 txtRate.Text = cellCollection[7].Value.ToString();
-                //txtAmount.Text = cellCollection[4].Value.ToString();
-                txtQunty.Text = "1";//cellCollection[4].Value.ToString();
+                double rate = Convert.ToDouble(txtRate.Text);
+                // maxquantity = Convert.ToInt32((cell1[3].Value.ToString()));
+                txtQunty.Text = "1";
+                double quantuty = Convert.ToDouble(txtQunty.Text);
+                double amount = (rate * quantuty);
+               txtAmount.Text = amount.ToString();
+               //cellCollection[4].Value.ToString();
 
             }
             catch (Exception ex)
@@ -318,6 +323,7 @@ namespace WindowsFormsApplication1
         {
             DeliveryReportViewer.Visible = false;
             txtSearch.Text = "";
+           //txtAmount.Text = "0";
             counter = 1;
             panel2.Visible = true;
             string selectqurry = "select  itm.ItemId,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],cast(ipd.purChasePrice as numeric(38,2)) as [Purchase Price],cast(ipd.MrpPrice as numeric(38,2)) as[Mrp Price] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId where iqd.CurrentQuantity>0";
