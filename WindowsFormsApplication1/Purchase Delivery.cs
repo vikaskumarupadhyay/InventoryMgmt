@@ -2694,8 +2694,6 @@ namespace WindowsFormsApplication1
         }
         private void txtRturned_KeyPress(object sender, KeyPressEventArgs e)
         {
-<<<<<<< HEAD
-=======
             if (Char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
