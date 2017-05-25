@@ -737,7 +737,7 @@ namespace WindowsFormsApplication1
 
         private void butRemoveItem_Click(object sender, EventArgs e)
         {
-          
+            
             gridsalesdelivary.DefaultCellStyle.SelectionBackColor = Color.Red;
            
             butRemoveItem.Enabled = false;
