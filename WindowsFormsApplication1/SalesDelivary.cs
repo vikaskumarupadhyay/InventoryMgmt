@@ -1550,6 +1550,7 @@ namespace WindowsFormsApplication1
 
             if (txtRefNo.Text != "")
             {
+               
                 DataGridViewRowCollection cal = gridsalesdelivary.Rows;
                 for (int c = 0; c < cal.Count; c++)
                 {
@@ -1572,15 +1573,26 @@ namespace WindowsFormsApplication1
                     {
                         currid = dr["CurrentQuantity"].ToString();
                     }
+                    int currid1 = Convert.ToInt32(currid);
                     int quent1 = Convert.ToInt32(quent);
                     // int curentQuntity = Convert.ToInt32(que);
                     int cuentQuantity = Convert.ToInt32(currid);
-                    int lastQuantity = cuentQuantity - quent1;
-                    // int resivquenty = lastQuantity ;
-                    // string currid1 = resivquenty.ToString();
-                    string updateQurry = "update ItemQuantityDetail set CurrentQuantity='" + lastQuantity + "'where ItemId='" + itid + "'";
-                    int insertedRows2 = d.saveDetails(updateQurry);
+                    if (currid1 <= quent1)
+                    {
+                        MessageBox.Show("please enter valid quantity ");
+                        gridsalesdelivary.AllowUserToAddRows = true;
+                        return;
+                    }
+                    else
+                    {
+                        int lastQuantity = cuentQuantity - quent1;
+                        // int resivquenty = lastQuantity ;
+                        // string currid1 = resivquenty.ToString();
+                        string updateQurry = "update ItemQuantityDetail set CurrentQuantity='" + lastQuantity + "'where ItemId='" + itid + "'";
+                        int insertedRows2 = d.saveDetails(updateQurry);
+                    }
                 }
+                
                 string deletequrri1 = "delete customerorderdescriptions where OrderId='" + txtRefNo.Text + "'";
                 DataTable dt1 = d.getDetailByQuery(deletequrri1);
                 counter = 0;
@@ -1657,6 +1669,7 @@ namespace WindowsFormsApplication1
                                 }
                                 if (result == System.Windows.Forms.DialogResult.No)
                                 {
+                                    gridsalesdelivary.AllowUserToAddRows = true;
                                     crystalReportViewer2.Visible = false;
                                     panel2.Visible = false;
                                 }
@@ -1936,7 +1949,7 @@ namespace WindowsFormsApplication1
 
                         foreach (DataGridViewRow row in gridsalesdelivary.Rows)
                         {
-                            gridsalesdelivary.AllowUserToAddRows = false;
+                            gridsalesdelivary.AllowUserToAddRows =false;
                              string amountValue = row.Cells[row.Cells.Count-1].Value.ToString();
                                 totalValues += Convert.ToDouble(amountValue);
                             
@@ -1955,6 +1968,7 @@ namespace WindowsFormsApplication1
                         MessageBox.Show("please select your correct row");
                         gridsalesdelivary.Rows[e.RowIndex].Cells[0].Value = "";
                     }
+                    gridsalesdelivary.AllowUserToAddRows = true;
 
                 }
             }
@@ -2052,7 +2066,7 @@ namespace WindowsFormsApplication1
                     if (addToCartTable.Rows.Count > 0)
                     {
                         string val = "";
-
+                        gridsalesdelivary.AllowUserToAddRows = true;
                         int index = gridsalesdelivary.SelectedRows[0].Index;
                         string itemId = gridsalesdelivary.Rows[index - 1].Cells[0].Value.ToString();
                         if ((!ls.Contains(itemId)) || (gridsalesdelivary.Rows[index - 1].DefaultCellStyle.Font == null))
