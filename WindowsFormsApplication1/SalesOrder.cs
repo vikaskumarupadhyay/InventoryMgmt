@@ -1388,6 +1388,7 @@ namespace WindowsFormsApplication1
 
         private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
+            txtQuantity.Select(txtQuantity.Text.Length, 0);
             txtQuantity.TabStop = false;
             txtQuantity.ReadOnly = false;
             txtsearchvalue.Text = "";
@@ -1403,12 +1404,15 @@ namespace WindowsFormsApplication1
             }
             if (counter == 1)
             {
+                
                 DataGridViewCellCollection Collection1 = dataGridView1.Rows[e.RowIndex].Cells;
                 rowcollection1(Collection1);
                 panel2.Visible = false;
                 tab2();
-                txtQuantity.Enabled = true;
-                txtQuantity.Focus();
+                txtQuantity.Text = "1";
+                txtQuantity.ReadOnly= false;
+               // txtQuantity.Focus();
+                butadditem.Enabled = true;
 
 
             }
@@ -1447,10 +1451,14 @@ namespace WindowsFormsApplication1
                     }
                     if (counter == 1)
                     {
+                        txtQuantity.Select(txtQuantity.Text.Length, 0);
                         DataGridViewCellCollection Collection1 = dataGridView1.Rows[currentIndex - 1].Cells;
                         rowcollection1(Collection1);
                         panel2.Visible = false;
                         tab2();
+                        txtQuantity.Text = "1";
+                        txtQuantity.ReadOnly = false;
+                        butadditem.Enabled = true;
                     }
                     // tab5();
                 }
@@ -1642,19 +1650,23 @@ namespace WindowsFormsApplication1
 
         private void textBox20_KeyPress(object sender, KeyPressEventArgs e)
         {
-            double totalAmount = 0.00;
+           
             if (Char.IsLetterOrDigit(e.KeyChar))
             {
                 e.Handled = false;
             }
             else
             {
+                double totalAmount = 0.00;
                 if (e.KeyChar == '\b')
                 {
+                    counter = 0;
                     foreach (DataRow dr in addToCartTable.Rows)
                     {
+                        
+                      
                         string itemid = dr[0].ToString();
-                        if (ls.Contains(itemid))
+                        if (ls.Contains(itemid) && gridsalesorder.Rows[counter].DefaultCellStyle.Font != null)
                         {
                             counter++;
                             continue;
@@ -1679,48 +1691,6 @@ namespace WindowsFormsApplication1
                     e.Handled = true;
                 }
             }
-
-
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-
-
-                //discountamount.Text = disa.ToString();
-                foreach (DataRow dr in addToCartTable.Rows)
-                {
-                    if (txttotalammount.Text == "")
-                    {
-                        MessageBox.Show("please select uour item");
-                    }
-                    string itemid = dr[0].ToString();
-                    if (ls.Contains(itemid) && gridsalesorder.Rows[counter].DefaultCellStyle.Font != null)
-                    {
-                        counter++;
-                        continue;
-                    }
-                    counter++;
-                    totalAmount += Convert.ToDouble(dr[6].ToString());
-                }
-                double s = totalAmount;
-                string discount = textBox20.Text;
-
-                double amount = 0.0;
-
-                if (double.TryParse(discount, out amount))
-                {
-                    double totaldiscount = Convert.ToDouble(discount);
-                    totalAmount = totalAmount - ((totalAmount * totaldiscount) / 100);
-                    txttotalammount.Text = totalAmount.ToString("###0.00");
-                    txtwithautaxamount.Text = s.ToString();
-                    double dis = s * totaldiscount / 100;
-                    discountamount.Text = dis.ToString();
-
-                }
-
-
-            }
-
-
 
         }
 
@@ -1766,13 +1736,49 @@ namespace WindowsFormsApplication1
             }
         }
 
-       
+        private void textBox20_TextChanged(object sender, EventArgs e)
+        {
+           
 
-   
+            double totalAmount = 0.00;
+            counter = 0;
+                //discountamount.Text = disa.ToString();
+                foreach (DataRow dr in addToCartTable.Rows)
+                {
+                    
+                   
+                    string itemid = dr[0].ToString();
+                    if (ls.Contains(itemid) && gridsalesorder.Rows[counter].DefaultCellStyle.Font != null)
+                    {
+                        counter++;
+                        continue;
+                    }
+                    counter++;
+                    totalAmount += Convert.ToDouble(dr[6].ToString());
+                }
+                double s = totalAmount;
+                string discount = textBox20.Text;
 
+                double amount = 0.0;
+
+                if (double.TryParse(discount, out amount))
+                {
+                    double totaldiscount = Convert.ToDouble(discount);
+                    totalAmount = totalAmount - ((totalAmount * totaldiscount) / 100);
+                    txttotalammount.Text = totalAmount.ToString("###0.00");
+                    txtwithautaxamount.Text = s.ToString();
+                    double dis = s * totaldiscount / 100;
+                    discountamount.Text = dis.ToString();
+
+                }
+
+
+            }
+
+        }
 
     }
-}
+
 
 
 
