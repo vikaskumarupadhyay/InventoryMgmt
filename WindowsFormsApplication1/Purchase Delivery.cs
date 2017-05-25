@@ -1900,12 +1900,23 @@ namespace WindowsFormsApplication1
                     string itemId = dataGridView1.Rows[index - 1].Cells[0].Value.ToString();
                     if ((!ls.Contains(itemId)) || (dataGridView1.Rows[index - 1].DefaultCellStyle.Font == null))
                     {
-
+                        string Amount = "";
                         int currentrow = dataGridView1.CurrentRow.Index;
-                        string Amount = dataGridView1.Rows[currentrow - 1].Cells[6].Value.ToString();
-                        if (Amount == "")
+                        if (txtRef.Text == "")
                         {
-                            Amount = "0";
+                            Amount = dataGridView1.Rows[currentrow - 1].Cells[6].Value.ToString();
+                            if (Amount == "")
+                            {
+                                Amount = "0";
+                            }
+                        }
+                        else if (txtRef.Text != "")
+                        {
+                           Amount = dataGridView1.Rows[currentrow - 1].Cells[7].Value.ToString();
+                            if (Amount == "")
+                            {
+                                Amount = "0";
+                            }
                         }
                         double totalAmount = Convert.ToDouble(txttotalAmount.Text);
                         totalAmount -= Convert.ToDouble(Amount.Trim());
@@ -2300,6 +2311,7 @@ namespace WindowsFormsApplication1
             }
             if (txtRef.Text != "")
             {
+                counter = 0;
                 double totalAmount = 0.00;//Convert.ToDouble(txttotalAmount.Text);
                 double totalAmount1 = 0.00;
                 foreach (DataRow dr in addToCartTable.Rows)
