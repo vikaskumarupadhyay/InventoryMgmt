@@ -1388,7 +1388,7 @@ namespace WindowsFormsApplication1
 
         private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            txtQuantity.Select(txtQuantity.Text.Length, 0);
+        
             txtQuantity.TabStop = false;
             txtQuantity.ReadOnly = false;
             txtsearchvalue.Text = "";
@@ -1411,7 +1411,8 @@ namespace WindowsFormsApplication1
                 tab2();
                 txtQuantity.Text = "1";
                 txtQuantity.ReadOnly= false;
-               // txtQuantity.Focus();
+                txtQuantity.SelectionLength = txtQuantity.Text.Length;  
+                
                 butadditem.Enabled = true;
 
 
@@ -1434,6 +1435,7 @@ namespace WindowsFormsApplication1
 
         private void dataGridView1_KeyPress_1(object sender, KeyPressEventArgs e)
         {
+           
             int currentIndex = dataGridView1.CurrentRow.Index;
             if (e.KeyChar == (char)Keys.Enter)
             {
@@ -1451,16 +1453,17 @@ namespace WindowsFormsApplication1
                     }
                     if (counter == 1)
                     {
-                        txtQuantity.Select(txtQuantity.Text.Length, 0);
                         DataGridViewCellCollection Collection1 = dataGridView1.Rows[currentIndex - 1].Cells;
                         rowcollection1(Collection1);
                         panel2.Visible = false;
                         tab2();
                         txtQuantity.Text = "1";
                         txtQuantity.ReadOnly = false;
+
+                        txtQuantity.SelectionLength = txtQuantity.Text.Length; 
                         butadditem.Enabled = true;
                     }
-                    // tab5();
+                    
                 }
             }
         }
