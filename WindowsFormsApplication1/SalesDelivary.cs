@@ -252,9 +252,27 @@ namespace WindowsFormsApplication1
           
             if (txtQuantity.Text != "")
             {
+                string total = "";
+                string itemid = "";
+                foreach (DataRow dr3 in addToCartTable.Rows)
+                {
+                    itemid = dr3[0].ToString();
+                    if (itemid == txtItemCode.Text)
+                    {
+                        total = dr3[5].ToString();
+                    }
+                   
+                }
+                if (total == "")
+                {
+                    total = "0";
+                }
+                int it = Convert.ToInt32(total);
                 int g = Convert.ToInt32(s);
+
                 int quantity = Convert.ToInt32(txtQuantity.Text);
-                if (quantity < g)
+                int h = it + quantity;
+                if (h<=g)
                 {
                     //    MessageBox.Show("d");
 
@@ -267,14 +285,17 @@ namespace WindowsFormsApplication1
                         double rate = Convert.ToDouble(txtRate.Text);
                         txtAmmount.Text = (quantity * rate).ToString("###0.00");
                     }
+
+                }
+                else
+                {
+                        MessageBox.Show("Quantity is not available");
+                        txtQuantity.Text = "";
+                        txtAmmount.Text = "";
+                    
                 }
 
-                //else if (quantity > g)
-                //{
-                //    MessageBox.Show("Quantity is not available");
-                //    //txtQuantity.Text = "0";
-                //    //txtAmmount.Text = "0";
-                //}
+              
             }
             //if ((!string.IsNullOrEmpty(txtQuantity.Text)) && char.IsDigit(txtQuantity.Text, txtQuantity.Text.Length - 1) && (!string.IsNullOrEmpty(txtRate.Text)))
             //{
@@ -2199,8 +2220,12 @@ namespace WindowsFormsApplication1
                             //txtRate.Text = dr[3].ToString();
                             //txtQuantity.Text = dr[3].ToString();
                             // txtAmount.Text = dr[4].ToString();
-
+                            
                             txtQuantity.Text = "1";
+                            if (txtQuantity.Text == "")
+                            {
+                                txtQuantity.Text = "0";
+                            }
                             quantity = Convert.ToDouble(txtQuantity.Text);
                             double rate = Convert.ToDouble(txtRate.Text);
                             txtAmmount.Text = (quantity * rate).ToString("###0.00");
