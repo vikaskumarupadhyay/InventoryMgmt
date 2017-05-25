@@ -1781,7 +1781,7 @@ namespace WindowsFormsApplication1
                 {
                     //if (txtItemCode.Text == "")
                     //{
-                    txtItemCode.Text = "I";
+                   // txtItemCode.Text = "I";
                     //txtItemCode.Select(txtItemCode.Text.Length, 0);
                     //}
                     e.Handled = false;
