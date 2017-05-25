@@ -1436,9 +1436,11 @@ namespace WindowsFormsApplication1
 
         private void txtRef_KeyPress(object sender, KeyPressEventArgs e)
         {
-           
+       
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
+                button4.Enabled = true;
+                txtItemCode.Focus();
                 addToCartTable.Columns.RemoveAt(6);
                 if (!addToCartTable.Columns.Contains("ResivQuantity"))
                 {
@@ -1490,7 +1492,7 @@ namespace WindowsFormsApplication1
                         for (int c = 0; c < dt2.Rows.Count; c++)
                         {
                             DataRow dr2 = dt2.Rows[c];
-                            string txtItemCode = dr2[0].ToString();
+                            string tItemCode = dr2[0].ToString();
                             string txtitemNmae = dr2[1].ToString();
                             string CompanyName = dr2[2].ToString();
                             string MrpPrice = dr2[3].ToString();
@@ -1502,7 +1504,7 @@ namespace WindowsFormsApplication1
                             decimal amt = Convert.ToDecimal(txtitemNmea);
                             totel1 = totel1 + amt;
                             dr2 = addToCartTable.NewRow();
-                            dr2[0] = txtItemCode.Trim();
+                            dr2[0] = tItemCode.Trim();
                             dr2[1] = txtitemNmae.Trim();
                             dr2[2] = CompanyName.Trim();
                             dr2[3] = MrpPrice.Trim();
