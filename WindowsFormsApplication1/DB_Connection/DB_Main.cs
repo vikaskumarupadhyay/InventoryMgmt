@@ -285,9 +285,9 @@ using System.Configuration;
                 {
                     ProcedureName = ProcedureName + "UNIT";
                 }
-                else if (TableName.ToUpper().Contains("TEX"))
+                else if (TableName.ToUpper().Contains("TAX"))
                 {
-                    ProcedureName = ProcedureName + "TEX";
+                    ProcedureName = ProcedureName + "TAX";
                 }
             }
             return ProcedureName;

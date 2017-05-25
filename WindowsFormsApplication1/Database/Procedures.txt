@@ -110,14 +110,14 @@ END
 
 go
 
-create procedure GetUpdateCounterTEX
+create procedure GetUpdateCounterTAX
  as
 begin
 select top 1 (TexId)  from dbo.CompnayTex order by TexId desc 
 end
 go
-ALTER procedure [dbo].[GetUpdateCounterTEX] 
- as
+ALTER procedure [dbo].[GetUpdateCounterTAX] 
+as
 begin
 select top 1 (TexId)  from dbo.CompnayTex order by  Convert(int,SuBString( TexId,2,(len(TexId)-1))) desc 
 end

@@ -75,7 +75,7 @@ namespace WindowsFormsApplication1
             }
           txtwonername.Focus();
           string selectCommandGroup = "select TexId,TexName,TexAmount,TexDescription from dbo.CompnayTex";
-          setItemGroupDetail(selectCommandGroup, combComp, "Tax");
+          setItemGroupDetail(selectCommandGroup, combComp,"TAX");
             }
         private void setItemGroupDetail(string Query, ComboBox cmb, string Message)
         {
@@ -98,7 +98,7 @@ namespace WindowsFormsApplication1
                     }
                     else
                     {
-                        //GroupList.Add(dr[0].ToString());
+                        //TexList.Add(dr[0].ToString());
                     }
                 }
                 dt.Dispose();
@@ -133,7 +133,7 @@ namespace WindowsFormsApplication1
             txtGst.Text = "";
             txtDescription.Text = "";
             txtGst.Text = "";
-            combComp.Text = "Select Tax";
+            combComp.Text = "Select TAX";
             txtTexAmount.Text = "0";
 
         }
@@ -229,7 +229,7 @@ namespace WindowsFormsApplication1
             string taxId = "";
             if (combComp.SelectedIndex != 0)
             {
-                taxId = TexList[combComp.SelectedIndex - 1];
+                taxId = TexList[combComp.SelectedIndex-1];
             }
             if (updatecounter == 0)
             {

@@ -28,7 +28,7 @@ namespace WindowsFormsApplication1
 
         private void Tex_Load(object sender, EventArgs e)
         {
-            string ColumnID = dbMainClass.getUniqueID("TEX");
+            string ColumnID = dbMainClass.getUniqueID("TAX");
             txtTexId.Text = ColumnID;
         }
 
