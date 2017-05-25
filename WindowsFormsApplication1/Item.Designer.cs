@@ -590,11 +590,11 @@
             // 
             this.searchCalmn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.searchCalmn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.searchCalmn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchCalmn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchCalmn.FormattingEnabled = true;
             this.searchCalmn.Location = new System.Drawing.Point(25, 42);
             this.searchCalmn.Name = "searchCalmn";
-            this.searchCalmn.Size = new System.Drawing.Size(656, 24);
+            this.searchCalmn.Size = new System.Drawing.Size(656, 23);
             this.searchCalmn.TabIndex = 2;
             // 
             // txtSearch
