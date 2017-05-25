@@ -451,6 +451,8 @@ namespace WindowsFormsApplication1
         #region /////////// AddToList Clicked ///////////////
         private void button3_Click(object sender, EventArgs e)
         {
+            txtRef.Enabled = false;
+            btnSelectPurchaseOrder.Enabled = false;
             if(txtRef.Text=="")
             {
             txtItemCode.Focus();
@@ -2502,6 +2504,8 @@ namespace WindowsFormsApplication1
             deliverysave();
             pnlPaymentDetail.Visible = false;
             DeliveryReportViewer.Visible = true;
+            txtRef.Enabled = true;
+            btnSelectPurchaseOrder.Enabled = true;
         }
 
         private void pnlPaymentDetail_Paint(object sender, PaintEventArgs e)
