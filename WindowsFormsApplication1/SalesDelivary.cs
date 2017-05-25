@@ -816,40 +816,79 @@ namespace WindowsFormsApplication1
 
         private void butSaveButton_Click(object sender, EventArgs e)
         {
-            crystalReportViewer2.Visible = false;
-            panel2.Visible = false;
-            // createnewsave();
-            //if (pnlSalesPayment.Visible == false)
-            //{
-            //    pnlSalesPayment.Visible = true;
-            //}
-       
-            if (gridsalesdelivary.Rows.Count == 1)
+            if (txtRefNo.Text != "")
             {
-                // gridsalesorder.AllowUserToAddRows = true;
-                txtcustomercode.Focus();
-                MessageBox.Show("please select your customer id");
-            }
+                counter = 0;
+                DataGridViewRowCollection cal = gridsalesdelivary.Rows;
+                for (int c = 0; c < cal.Count-1; c++)
+                {
+                    DataGridViewRow currentRow1 = cal[c];
+                    DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
+                    string itid = cellCollection1[0].Value.ToString();
+                    if (ls.Contains(itid))
+                    {
+                        counter++;
+                        continue;
+                    }
+                    counter++;
+                    string que = cellCollection1[5].Value.ToString();
+                    string quent = cellCollection1[6].Value.ToString();
 
-            else if (ls.Count == gridsalesdelivary.Rows.Count - 1)
-            {
-                MessageBox.Show("please select your item id");
-                txtItemCode.Focus();
-                return;
-            }
-            else if (gridsalesdelivary.Rows.Count!=null)
-            {
-                pnlSalesPayment.Visible = true;
-            }
 
-          
-               // pnlSalesPayment.Visible = true;
-                CmbPageName.SelectedIndex = 0;
-                CmbCompany.SelectedIndex = 0;
-                CmbCardType.SelectedIndex = 0;
-           // }
-          
-           
+
+                    string qurry = "select CurrentQuantity from ItemQuantityDetail where ItemId='" + itid + "'";
+                    DataTable dt = d.getDetailByQuery(qurry);
+                    string currid = "";
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        currid = dr["CurrentQuantity"].ToString();
+                    }
+                    int currid1 = Convert.ToInt32(currid);
+                    int quent1 = Convert.ToInt32(quent);
+                    // int curentQuntity = Convert.ToInt32(que);
+                    int cuentQuantity = Convert.ToInt32(currid);
+                    if (currid1 <= quent1)
+                    {
+                        MessageBox.Show("please enter valid quantity ");
+                        gridsalesdelivary.AllowUserToAddRows = true;
+                        return;
+                    }
+                    crystalReportViewer2.Visible = false;
+                    panel2.Visible = false;
+                    // createnewsave();
+                    //if (pnlSalesPayment.Visible == false)
+                    //{
+                    //    pnlSalesPayment.Visible = true;
+                    //}
+
+                    if (gridsalesdelivary.Rows.Count == 1)
+                    {
+                        // gridsalesorder.AllowUserToAddRows = true;
+                        txtcustomercode.Focus();
+                        MessageBox.Show("please select your customer id");
+                    }
+
+                    else if (ls.Count == gridsalesdelivary.Rows.Count - 1)
+                    {
+                        MessageBox.Show("please select your item id");
+                        txtItemCode.Focus();
+                        return;
+                    }
+                    else if (gridsalesdelivary.Rows.Count != null)
+                    {
+                        pnlSalesPayment.Visible = true;
+                    }
+
+
+                    // pnlSalesPayment.Visible = true;
+                    CmbPageName.SelectedIndex = 0;
+                    CmbCompany.SelectedIndex = 0;
+                    CmbCardType.SelectedIndex = 0;
+                    // }
+
+
+                }
+            }
         }
         /*  gridsalesdelivary.AllowUserToAddRows = false;
 
@@ -1577,14 +1616,7 @@ namespace WindowsFormsApplication1
                     int quent1 = Convert.ToInt32(quent);
                     // int curentQuntity = Convert.ToInt32(que);
                     int cuentQuantity = Convert.ToInt32(currid);
-                    if (currid1 <= quent1)
-                    {
-                        MessageBox.Show("please enter valid quantity ");
-                        gridsalesdelivary.AllowUserToAddRows = true;
-                        return;
-                    }
-                    else
-                    {
+                   
                         int lastQuantity = cuentQuantity - quent1;
                         // int resivquenty = lastQuantity ;
                         // string currid1 = resivquenty.ToString();
@@ -1683,7 +1715,7 @@ namespace WindowsFormsApplication1
 
                     }
                 }
-            }
+           // }
             makeblank();
             int value4 = Convert.ToInt32(txtSrNo.Text);
             int value3 = value4 + 1;
