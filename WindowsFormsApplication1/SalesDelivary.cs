@@ -319,7 +319,7 @@ namespace WindowsFormsApplication1
                 List<string> ls1 = new List<string>();
                 foreach (DataRow dr3 in addToCartTable.Rows)
                 {
-                    counter = 0;
+                    //counter = 0;
                     int q3 = 0;
                     //itemid = dr3[0].ToString();
                     string itid = dr3[0].ToString();
@@ -737,10 +737,14 @@ namespace WindowsFormsApplication1
 
         private void butRemoveItem_Click(object sender, EventArgs e)
         {
+          
             gridsalesdelivary.DefaultCellStyle.SelectionBackColor = Color.Red;
+           
             butRemoveItem.Enabled = false;
+
+            gridsalesdelivary.TabIndex = 0;
             gridsalesdelivary.Focus();
-            gridsalesdelivary.TabIndex = 1;
+        
             txtItemCode.Enabled = true;
             butitembutton.Enabled = true;
             butSaveButton.TabStop = false;
@@ -2416,6 +2420,7 @@ namespace WindowsFormsApplication1
                         rowcollection1(Collection1);
                         panel2.Visible = false;
                         tab2();
+                        txtQuantity.ReadOnly = false;
                     }
                 }
                     if (counter == 2)
