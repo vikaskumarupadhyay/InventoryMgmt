@@ -357,6 +357,7 @@ namespace WindowsFormsApplication1
                          txtQuantity.Text = "";
                          txtAmmount.Text= "";
                          txtQuantity.ReadOnly = true;
+                         butAddItem.Enabled = false;
                          //addToCartTable.Columns.Add("Qtuhjh");
                        // ls1.Add(itemid);
 
@@ -395,6 +396,8 @@ namespace WindowsFormsApplication1
                         //dr[5] = txtAmount.Text.Trim();
                         addToCartTable.Rows.Add(dr);
                         gridsalesdelivary.DataSource = addToCartTable;
+                        var cdsds = gridsalesdelivary.Rows.Count;
+                        gridsalesdelivary.CurrentCell=gridsalesdelivary.Rows[cdsds - 2].Cells[0];
                         double totalAmount = Convert.ToDouble(txtTotalAmmount.Text);
                         totalAmount += Convert.ToDouble(txtAmmount.Text.Trim());
                         txtTotalAmmount.Text = totalAmount.ToString("###0.00");
@@ -405,6 +408,7 @@ namespace WindowsFormsApplication1
                         txtRate.Text = "";
                         txtQuantity.Text = "";
                         txtAmmount.Text = "";
+                        butAddItem.Enabled = false;
                         // }
                     }
                 }
@@ -463,6 +467,7 @@ namespace WindowsFormsApplication1
                         txtQuantity.Text = "";
                         txtAmmount.Text = "";
                         txtQuantity.ReadOnly = true;
+                        butAddItem.Enabled = false;
                         //addToCartTable.Columns.Add("Qtuhjh");
                         // ls1.Add(itemid);
 
@@ -501,6 +506,8 @@ namespace WindowsFormsApplication1
                         //dr[5] = txtAmount.Text.Trim();
                         addToCartTable.Rows.Add(dr);
                         gridsalesdelivary.DataSource = addToCartTable;
+                        var cdsds = gridsalesdelivary.Rows.Count;
+                        gridsalesdelivary.CurrentCell = gridsalesdelivary.Rows[cdsds - 2].Cells[0];
                         double totalAmount = Convert.ToDouble(txtTotalAmmount.Text);
                         totalAmount += Convert.ToDouble(txtAmmount.Text.Trim());
                         txtTotalAmmount.Text = totalAmount.ToString("###0.00");
@@ -511,6 +518,7 @@ namespace WindowsFormsApplication1
                         txtRate.Text = "";
                         txtQuantity.Text = "";
                         txtAmmount.Text = "";
+                        butAddItem.Enabled = false;
                         // }
                     }
                 }
@@ -572,6 +580,7 @@ namespace WindowsFormsApplication1
                             txtQuantity.Text = "";
                             txtAmmount.Text = "";
                             txtQuantity.ReadOnly = true;
+                            butAddItem.Enabled = false;
                             //addToCartTable.Columns.Add("Qtuhjh");
                             // ls1.Add(itemid);
 
@@ -610,6 +619,8 @@ namespace WindowsFormsApplication1
                                 addToCartTable.Rows.Add(dr);
 
                                 gridsalesdelivary.DataSource = addToCartTable;
+                                var cdsds = gridsalesdelivary.Rows.Count;
+                                gridsalesdelivary.CurrentCell = gridsalesdelivary.Rows[cdsds - 2].Cells[0];
                                 double totalAmount = Convert.ToDouble(txtTotalAmmount.Text);
                                 totalAmount += Convert.ToDouble(txtAmmount.Text.Trim());
                                 txtTotalAmmount.Text = totalAmount.ToString("###0.00");
@@ -730,7 +741,7 @@ namespace WindowsFormsApplication1
             butRemoveItem.Enabled = false;
             gridsalesdelivary.Focus();
             gridsalesdelivary.TabIndex = 1;
-            txtItemCode.Enabled = false;
+            txtItemCode.Enabled = true;
             butitembutton.Enabled = true;
             butSaveButton.TabStop = false;
             ButSelectPurchaseOrder.TabStop = false;
@@ -2004,7 +2015,8 @@ namespace WindowsFormsApplication1
                         if (ls.Count == gridsalesdelivary.Rows.Count - 1)
                         {
                             MessageBox.Show("Item already deleted");
-                            txtItemCode.Enabled= true;
+                            //txtItemCode.Enabled= true;
+                            gridsalesdelivary.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
                             txtItemCode.Focus();
                         }
                     }

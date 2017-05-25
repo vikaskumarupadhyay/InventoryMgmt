@@ -505,7 +505,7 @@
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(15, 238);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1139, 320);
+            this.panel1.Size = new System.Drawing.Size(1139, 337);
             this.panel1.TabIndex = 34;
             // 
             // gridPurchaseOrder
@@ -516,7 +516,7 @@
             this.gridPurchaseOrder.Location = new System.Drawing.Point(0, 0);
             this.gridPurchaseOrder.Name = "gridPurchaseOrder";
             this.gridPurchaseOrder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridPurchaseOrder.Size = new System.Drawing.Size(1135, 316);
+            this.gridPurchaseOrder.Size = new System.Drawing.Size(1135, 333);
             this.gridPurchaseOrder.StandardTab = true;
             this.gridPurchaseOrder.TabIndex = 0;
             this.gridPurchaseOrder.TabStop = false;
@@ -530,7 +530,7 @@
             this.txtTotalAmount.BackColor = System.Drawing.Color.White;
             this.txtTotalAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTotalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalAmount.Location = new System.Drawing.Point(1069, 562);
+            this.txtTotalAmount.Location = new System.Drawing.Point(1069, 577);
             this.txtTotalAmount.Name = "txtTotalAmount";
             this.txtTotalAmount.ReadOnly = true;
             this.txtTotalAmount.Size = new System.Drawing.Size(83, 21);
@@ -545,7 +545,7 @@
             this.textBox15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox15.Location = new System.Drawing.Point(1044, 562);
+            this.textBox15.Location = new System.Drawing.Point(1044, 577);
             this.textBox15.Name = "textBox15";
             this.textBox15.ReadOnly = true;
             this.textBox15.Size = new System.Drawing.Size(29, 21);
@@ -559,7 +559,7 @@
             this.textBox14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox14.Location = new System.Drawing.Point(955, 562);
+            this.textBox14.Location = new System.Drawing.Point(955, 577);
             this.textBox14.Name = "textBox14";
             this.textBox14.ReadOnly = true;
             this.textBox14.Size = new System.Drawing.Size(90, 21);
@@ -573,7 +573,7 @@
             this.textBox21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox21.Location = new System.Drawing.Point(923, 562);
+            this.textBox21.Location = new System.Drawing.Point(923, 577);
             this.textBox21.Name = "textBox21";
             this.textBox21.ReadOnly = true;
             this.textBox21.Size = new System.Drawing.Size(26, 21);
@@ -588,7 +588,7 @@
             this.txtdis.BackColor = System.Drawing.Color.White;
             this.txtdis.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtdis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtdis.Location = new System.Drawing.Point(885, 562);
+            this.txtdis.Location = new System.Drawing.Point(885, 577);
             this.txtdis.Name = "txtdis";
             this.txtdis.Size = new System.Drawing.Size(39, 21);
             this.txtdis.TabIndex = 56;
@@ -604,7 +604,7 @@
             this.textBox19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox19.Location = new System.Drawing.Point(839, 562);
+            this.textBox19.Location = new System.Drawing.Point(839, 577);
             this.textBox19.Name = "textBox19";
             this.textBox19.ReadOnly = true;
             this.textBox19.Size = new System.Drawing.Size(47, 21);
@@ -618,7 +618,7 @@
             this.textBox18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox18.Location = new System.Drawing.Point(807, 562);
+            this.textBox18.Location = new System.Drawing.Point(807, 577);
             this.textBox18.Name = "textBox18";
             this.textBox18.ReadOnly = true;
             this.textBox18.Size = new System.Drawing.Size(26, 21);
@@ -632,7 +632,7 @@
             this.txtDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDiscount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDiscount.Location = new System.Drawing.Point(769, 562);
+            this.txtDiscount.Location = new System.Drawing.Point(769, 577);
             this.txtDiscount.Name = "txtDiscount";
             this.txtDiscount.Size = new System.Drawing.Size(39, 21);
             this.txtDiscount.TabIndex = 53;
@@ -645,7 +645,7 @@
             this.textBox16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox16.Location = new System.Drawing.Point(723, 562);
+            this.textBox16.Location = new System.Drawing.Point(723, 577);
             this.textBox16.Name = "textBox16";
             this.textBox16.ReadOnly = true;
             this.textBox16.Size = new System.Drawing.Size(47, 21);
@@ -657,7 +657,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(15, 589);
+            this.btnSave.Location = new System.Drawing.Point(15, 601);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(90, 28);
             this.btnSave.TabIndex = 7;
@@ -669,7 +669,7 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(111, 589);
+            this.btnClose.Location = new System.Drawing.Point(111, 601);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(90, 28);
             this.btnClose.TabIndex = 8;
@@ -687,7 +687,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1172, 637);
+            this.panel2.Size = new System.Drawing.Size(1172, 634);
             this.panel2.TabIndex = 65;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint_2);
             // 
@@ -699,9 +699,8 @@
             this.PurchesCrystalReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PurchesCrystalReportViewer.Location = new System.Drawing.Point(0, 0);
             this.PurchesCrystalReportViewer.Name = "PurchesCrystalReportViewer";
-            this.PurchesCrystalReportViewer.Size = new System.Drawing.Size(1172, 637);
+            this.PurchesCrystalReportViewer.Size = new System.Drawing.Size(1172, 634);
             this.PurchesCrystalReportViewer.TabIndex = 8;
-            //this.PurchesCrystalReportViewer.Load += new System.EventHandler(this.PurchesCrystalReportViewer_Load);
             // 
             // panel3
             // 
@@ -801,14 +800,14 @@
             // 
             // TextTaxAmmount
             // 
-            this.TextTaxAmmount.Location = new System.Drawing.Point(475, 594);
+            this.TextTaxAmmount.Location = new System.Drawing.Point(515, 607);
             this.TextTaxAmmount.Name = "TextTaxAmmount";
             this.TextTaxAmmount.Size = new System.Drawing.Size(100, 20);
             this.TextTaxAmmount.TabIndex = 66;
             // 
             // DisAmmount
             // 
-            this.DisAmmount.Location = new System.Drawing.Point(593, 594);
+            this.DisAmmount.Location = new System.Drawing.Point(633, 607);
             this.DisAmmount.Name = "DisAmmount";
             this.DisAmmount.Size = new System.Drawing.Size(100, 20);
             this.DisAmmount.TabIndex = 67;
@@ -816,7 +815,7 @@
             // 
             // txtwithautaxamount
             // 
-            this.txtwithautaxamount.Location = new System.Drawing.Point(723, 597);
+            this.txtwithautaxamount.Location = new System.Drawing.Point(763, 610);
             this.txtwithautaxamount.Name = "txtwithautaxamount";
             this.txtwithautaxamount.Size = new System.Drawing.Size(100, 20);
             this.txtwithautaxamount.TabIndex = 68;
@@ -826,7 +825,7 @@
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(691, 562);
+            this.textBox1.Location = new System.Drawing.Point(691, 577);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(26, 21);
@@ -841,7 +840,7 @@
             this.VATNO.BackColor = System.Drawing.Color.White;
             this.VATNO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.VATNO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VATNO.Location = new System.Drawing.Point(653, 562);
+            this.VATNO.Location = new System.Drawing.Point(653, 577);
             this.VATNO.Name = "VATNO";
             this.VATNO.ReadOnly = true;
             this.VATNO.Size = new System.Drawing.Size(39, 21);
@@ -855,7 +854,7 @@
             this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(607, 562);
+            this.textBox3.Location = new System.Drawing.Point(607, 577);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(47, 21);
@@ -869,7 +868,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1172, 637);
+            this.ClientSize = new System.Drawing.Size(1172, 634);
             this.Controls.Add(this.txtwithautaxamount);
             this.Controls.Add(this.DisAmmount);
             this.Controls.Add(this.TextTaxAmmount);

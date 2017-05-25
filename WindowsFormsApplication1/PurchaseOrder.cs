@@ -460,6 +460,8 @@ namespace WindowsFormsApplication1
                             //dr[5] = txtAmount.Text.Trim();
                             addToCartTable.Rows.Add(dr);
                             gridPurchaseOrder.DataSource = addToCartTable;
+                            var dgvcount = gridPurchaseOrder.Rows.Count;
+                            gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[dgvcount - 2].Cells[0];
                             double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
                             totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
                             txtTotalAmount.Text = totalAmount.ToString("###0.00");
@@ -1044,6 +1046,8 @@ namespace WindowsFormsApplication1
             }
              if (e.KeyChar == Convert.ToChar(Keys.Escape))
              {
+                 var dgvcount = gridPurchaseOrder.Rows.Count;
+                 gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[dgvcount - 2].Cells[0];
                  gridPurchaseOrder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
                  txtItemCode.Focus();
                  txtItemCode.Select(txtItemCode.Text.Length, 0);

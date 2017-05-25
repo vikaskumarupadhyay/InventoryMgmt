@@ -378,6 +378,8 @@ namespace WindowsFormsApplication1
                 //dr[5] = txtAmount.Text.Trim();
                 addToCartTable.Rows.Add(dr);
                 gridsalesorder.DataSource = addToCartTable;
+                var dgvcount = gridsalesorder.Rows.Count;
+                gridsalesorder.CurrentCell = gridsalesorder.Rows[dgvcount - 2].Cells[0]; 
                 double totalAmount = Convert.ToDouble(txttotalammount.Text);
                 totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
                 txttotalammount.Text = totalAmount.ToString("###0.00");
@@ -1067,6 +1069,8 @@ namespace WindowsFormsApplication1
 
             if (e.KeyChar == (char)Keys.Escape)
             {
+                var dgvcount = gridsalesorder.Rows.Count;
+                gridsalesorder.CurrentCell = gridsalesorder.Rows[dgvcount - 2].Cells[0];
                 gridsalesorder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
                 txtitemcode.ReadOnly = false;
                 txtitemcode.Focus();
