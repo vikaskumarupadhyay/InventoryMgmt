@@ -1381,7 +1381,7 @@ namespace WindowsFormsApplication1
                     }
                     double s1 = totalAmount;
                     txtTotalAmount.Text = s1.ToString("###0.00");
-                    txtdis.Text = "0";
+                    //txtdis.Text = "0";
                     // double total = Convert.ToDouble(txttotalammount.Text);
                     // double d = Convert.ToDouble(discountamount.Text);
                     // double g = d + total;
@@ -1462,10 +1462,10 @@ namespace WindowsFormsApplication1
 
         private void Distxt_TextChanged(object sender, EventArgs e)
         {
-            if (txtDiscount.Text == "0")
-            {
-                DisAmmount.Text = "0";
-            }
+            //if (txtdis.Text == "")
+            //{
+            //    txtdis.Text = "0";
+            //}
             double totalAmount1 = 0.00;//Convert.ToDouble(txttotalAmount.Text);
             double totalamount2 = 0.00;
             counter = 0;
