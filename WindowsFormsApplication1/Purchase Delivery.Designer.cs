@@ -1499,7 +1499,7 @@
             this.txtChequeAmount.Name = "txtChequeAmount";
             this.txtChequeAmount.Size = new System.Drawing.Size(128, 21);
             this.txtChequeAmount.TabIndex = 11;
-            this.txtChequeAmount.Text = "0.00";
+            this.txtChequeAmount.Text = "0";
             this.txtChequeAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtChequeAmount.TextChanged += new System.EventHandler(this.txtChequeAmount_TextChanged);
             this.txtChequeAmount.Leave += new System.EventHandler(this.txtChequeAmount_Leave);
@@ -1578,7 +1578,6 @@
             this.txtCreditAmount.TabIndex = 3;
             this.txtCreditAmount.Text = "0.00";
             this.txtCreditAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            //this.txtCreditAmount.TabIndexChanged += new System.EventHandler(this.txtCreditAmount_TabIndexChanged);
             this.txtCreditAmount.TextChanged += new System.EventHandler(this.txtCreditAmount_TextChanged);
             this.txtCreditAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCreditAmount_KeyPress);
             this.txtCreditAmount.Leave += new System.EventHandler(this.txtCreditAmount_Leave);
