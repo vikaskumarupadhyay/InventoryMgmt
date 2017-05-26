@@ -2527,6 +2527,32 @@ namespace WindowsFormsApplication1
             IndexTex();
             txtInvoiceid.Text = txtSrNo.Text;
             txtInvoiceAmount.Text = txttotalAmount.Text;
+            allvisible();
+           
+        }
+        public void allvisible()
+        {
+            txtCardNumber.Visible = false;
+            txtDebitBankName.Visible = false;
+            CmbCardType.Visible = false;
+            txtChequeBankName.Visible = false;
+            txtChequeNumber.Visible = false;
+            // txtCompanyName.Visible = false;
+            CmbCompany.Visible = false;
+            dateTimePicker1.Visible = false;
+            txtTransactionNumber.Visible = false;
+            dateTimePicker2.Visible = false;
+            EWalletCompanyName.Visible = false;
+            label23.Visible = false;
+            label25.Visible = false;
+            label26.Visible = false;
+            label28.Visible = false;
+            label30.Visible = false;
+            label31.Visible = false;
+            label32.Visible = false;
+            label34.Visible = false;
+            label35.Visible = false;
+            label36.Visible = false;
         }
 
         private void CashAmount_TextChanged(object sender, EventArgs e)
@@ -2567,6 +2593,14 @@ namespace WindowsFormsApplication1
 
         private void txtCreditAmount_Leave(object sender, EventArgs e)
         {
+            if (txtCreditAmount.Text == "0.00")
+            {
+                credittext1();
+            }
+            else
+            {
+                credittext();
+            }
             decimal x;
             if (decimal.TryParse(txtCreditAmount.Text, out x))
             {
@@ -2587,6 +2621,14 @@ namespace WindowsFormsApplication1
 
         private void txtChequeAmount_Leave(object sender, EventArgs e)
         {
+            if (txtChequeAmount.Text == "0.00")
+            {
+                chequetxt1();
+            }
+            else
+            {
+                chequetxt();
+            }
             decimal x;
             if (decimal.TryParse(txtChequeAmount.Text, out x))
             {
@@ -2608,6 +2650,14 @@ namespace WindowsFormsApplication1
 
         private void txtEwalletAmount_Leave(object sender, EventArgs e)
         {
+            if (txtEwalletAmount.Text == "0.00")
+            {
+                Ewalled1();
+            }
+            else
+            {
+                Ewalled();
+            }
             decimal x;
             if (decimal.TryParse(txtChequeAmount.Text, out x))
             {
@@ -2629,6 +2679,16 @@ namespace WindowsFormsApplication1
 
         private void txtCouponAmount_Leave(object sender, EventArgs e)
         {
+            if (txtCouponAmount.Text == "0.00")
+            {
+                CmbCompany.Visible = false;
+                label23.Visible = false;
+            }
+            else
+            {
+                CmbCompany.Visible = true;
+                label23.Visible = true;
+            }
             decimal x;
             if (decimal.TryParse(txtCouponAmount.Text, out x))
             {
@@ -2679,8 +2739,13 @@ namespace WindowsFormsApplication1
             {
                 txtCreditAmount.Text = "0";
             }
+            if (txtCreditAmount.Text == "0")
+            {
+                credittext1();
+            }
             if (txtCreditAmount.Text != "0")
             {
+                credittext();
                 string amount = txtCreditAmount.Text ;
                 txtCreditAmount.Text = amount;
                 Double Amount = Convert.ToDouble(txtCreditAmount.Text);
@@ -2688,17 +2753,40 @@ namespace WindowsFormsApplication1
                 Double amount2 = Amount + Amount1;
                 string Amount2 = amount2.ToString();
                 txtTotalAmount1.Text = Amount2 ;
+               
             }
         }
-
+        public void credittext()
+        {
+            txtCardNumber.Visible = true;
+            txtDebitBankName.Visible = true;
+            CmbCardType.Visible = true;
+            label36.Visible = true;
+            label35.Visible = true;
+            label34.Visible = true;
+        }
+        public void credittext1()
+        {
+            label36.Visible = false;
+            label35.Visible = false;
+            label34.Visible = false;
+            txtCardNumber.Visible = false;
+            txtDebitBankName.Visible = false;
+            CmbCardType.Visible = false;
+        }
         private void txtChequeAmount_TextChanged(object sender, EventArgs e)
         {
             if (txtChequeAmount.Text == "")
             {
                 txtChequeAmount.Text = "0";
             }
+            if (txtChequeAmount.Text == "0")
+            {
+                chequetxt1();
+            }
             if (txtChequeAmount.Text != "0")
             {
+                chequetxt();
                 string amount = txtChequeAmount.Text;
                 txtChequeAmount.Text = amount;
                 //txtNetAmount.Text = amount;
@@ -2711,15 +2799,39 @@ namespace WindowsFormsApplication1
             }
 
         }
-
+        public void chequetxt()
+        {
+            txtChequeBankName.Visible = true;
+            txtChequeNumber.Visible = true;
+            dateTimePicker1.Visible = true;
+            label32.Visible = true;
+            label31.Visible = true;
+            label30.Visible = true;
+        }
+        public void chequetxt1()
+        {
+            label32.Visible = false;
+            label31.Visible = false;
+            label30.Visible = false;
+            txtChequeBankName.Visible = false;
+            txtChequeNumber.Visible = false;
+            dateTimePicker1.Visible = false;
+        }
         private void txtCouponAmount_TextChanged(object sender, EventArgs e)
         {
             if (txtCouponAmount.Text == "")
             {
                 txtCouponAmount.Text = "0";
             }
+            if (txtCouponAmount.Text == "0")
+            {
+                CmbCompany.Visible = false;
+                label23.Visible = false;
+            }
             if (txtCouponAmount.Text != "0")
             {
+                CmbCompany.Visible = true;
+                label23.Visible = true;
                 string amount = txtCouponAmount.Text;
                 //txtCouponAmount.Text = amount;
                 Double Amount = Convert.ToDouble(txtCreditAmount.Text);
@@ -2739,8 +2851,13 @@ namespace WindowsFormsApplication1
             {
                 txtEwalletAmount.Text = "0";
             }
-            if (txtEwalletAmount.Text != "0")
+            if (txtEwalletAmount.Text == "")
             {
+                Ewalled1();
+            }
+           else if (txtEwalletAmount.Text != "0")
+            {
+                Ewalled();
                 string amount = txtEwalletAmount.Text ;
                 txtEwalletAmount.Text = amount;
                 Double Amount = Convert.ToDouble(txtCreditAmount.Text);
@@ -2752,6 +2869,24 @@ namespace WindowsFormsApplication1
                 txtTotalAmount1.Text = Amount2 ;
             }
 
+        }
+        public void Ewalled()
+        {
+            txtTransactionNumber.Visible = true;
+            dateTimePicker2.Visible = true;
+            EWalletCompanyName.Visible = true;
+            label28.Visible = true;
+            label26.Visible = true;
+            label25.Visible = true;
+        }
+        public void Ewalled1()
+        {
+            label28.Visible = false;
+            label26.Visible = false;
+            label25.Visible = false;
+            txtTransactionNumber.Visible = false;
+            dateTimePicker2.Visible = false;
+            EWalletCompanyName.Visible = false;
         }
         private void BlankPaymentPage()
         {
@@ -2827,17 +2962,6 @@ namespace WindowsFormsApplication1
                     e.Handled = true;
                     //MessageBox.Show("Plese enter numeric value!");
                 }
-            }
-        }
-
-        private void txtCreditAmount_TabIndexChanged(object sender, EventArgs e)
-        {
-            if (txtChequeAmount.Text == "0.00")
-            {
-                txtChequeBankName.ReadOnly = true;
-                txtChequeNumber.ReadOnly = true;
-                txtChequeBankName.TabStop = true;
-                txtChequeNumber.TabStop = true;
             }
         }
        
