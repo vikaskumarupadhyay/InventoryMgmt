@@ -2062,6 +2062,7 @@ namespace WindowsFormsApplication1
 
         private void gridsalesdelivary_KeyPress(object sender, KeyPressEventArgs e)
         {
+           
             if (gridsalesdelivary.Rows.Count > 0)
             {
                 butRemoveItem.Enabled = true;
@@ -2079,7 +2080,10 @@ namespace WindowsFormsApplication1
             }
             if (e.KeyChar == (char)Keys.Enter)
             {
-                if (gridsalesdelivary.DefaultCellStyle.SelectionBackColor==Color.DodgerBlue)
+                Color backGroundColor=gridsalesdelivary.DefaultCellStyle.SelectionBackColor;
+
+
+                if (backGroundColor.Name == "DodgerBlue" || backGroundColor.Name =="Highlight")
                 {
                     MessageBox.Show("Please select your remove button");
                     return;
@@ -2123,7 +2127,10 @@ namespace WindowsFormsApplication1
                 }
                 if (txtRefNo.Text != "")
                 {
-                    if (gridsalesdelivary.DefaultCellStyle.SelectionBackColor == Color.DodgerBlue)
+                    Color backGroundColor1 = gridsalesdelivary.DefaultCellStyle.SelectionBackColor;
+
+
+                    if (backGroundColor1.Name == "DodgerBlue" || backGroundColor1.Name == "Highlight")
                     {
                         MessageBox.Show("Please select your remove button");
                         return;
@@ -3275,6 +3282,8 @@ namespace WindowsFormsApplication1
         {
 
         }
+
+        public Color Highlight { get; set; }
     }
 
 
