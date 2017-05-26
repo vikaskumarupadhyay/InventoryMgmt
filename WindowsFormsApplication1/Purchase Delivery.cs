@@ -1940,10 +1940,11 @@ namespace WindowsFormsApplication1
                             txtItemCode.Focus();
                             txtItemCode.Select(txtItemCode.Text.Length, 0);
                         }
-                        if (dataGridView1.Rows.Count > 0)
+                        if (dataGridView1.Rows.Count> 0)
                         {
-                            dataGridView1.Rows[dataGridView1.Rows.Count - 1].Selected = true;
+                            //dataGridView1.Rows[dataGridView1.Rows.Count - 1].Selected = true;
                         }
+                       
                         if (dataGridView1.Rows.Count > 0)
                         {
                             txtDiscount.Text = "0";

@@ -1028,7 +1028,7 @@ namespace WindowsFormsApplication1
                         }
                         if (gridPurchaseOrder.Rows.Count > 0)
                         {
-                            gridPurchaseOrder.Rows[gridPurchaseOrder.Rows.Count - 1].Selected = true;
+                           // gridPurchaseOrder.Rows[gridPurchaseOrder.Rows.Count - 1].Selected = true;
                         }
                         if (gridPurchaseOrder.Rows.Count > 0)
                         {
