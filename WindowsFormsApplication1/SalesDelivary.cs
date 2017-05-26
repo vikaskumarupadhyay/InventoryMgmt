@@ -249,7 +249,7 @@ namespace WindowsFormsApplication1
                 s = dr[0].ToString();
 
             }
-          
+
             if (txtQuantity.Text != "")
             {
                 string total = "";
@@ -261,7 +261,7 @@ namespace WindowsFormsApplication1
                     {
                         total = dr3[5].ToString();
                     }
-                   
+
                 }
                 if (total == "")
                 {
@@ -272,7 +272,7 @@ namespace WindowsFormsApplication1
 
                 int quantity = Convert.ToInt32(txtQuantity.Text);
                 int h = it + quantity;
-                if (h<=g)
+                if (h <= g)
                 {
                     //    MessageBox.Show("d");
 
@@ -289,13 +289,14 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
-                        MessageBox.Show("Quantity is not available");
-                        txtQuantity.Text = "";
-                        txtAmmount.Text = "";
-                    
+                    MessageBox.Show("Maximum Quantity is="+s);
+                    txtQuantity.Text = "0";
+                    txtQuantity.SelectionLength = txtQuantity.Text.Length;
+                    txtAmmount.Text = "0";
+
                 }
 
-              
+
             }
             //if ((!string.IsNullOrEmpty(txtQuantity.Text)) && char.IsDigit(txtQuantity.Text, txtQuantity.Text.Length - 1) && (!string.IsNullOrEmpty(txtRate.Text)))
             //{
@@ -322,6 +323,8 @@ namespace WindowsFormsApplication1
 
         private void butAddItem_Click(object sender, EventArgs e)
         {
+            txtRefNo.Enabled = false;
+            ButSelectPurchaseOrder.Enabled = false;
             txtItemCode.Focus();
             txtQuantity.ReadOnly=true;
             txtcustomercode.TabStop=true;
@@ -333,6 +336,7 @@ namespace WindowsFormsApplication1
                 string rate = "";
                 string prise = "";
             int counter = 0;
+          
             //txtQuantity.Enabled = false;
             if (txtRefNo.Text == "")
             {
@@ -1989,8 +1993,29 @@ namespace WindowsFormsApplication1
                     else if (quantity > g)
                     {
                         MessageBox.Show("Quantity is not available");
-                        gridsalesdelivary.Rows[e.RowIndex].Cells[4].Value = "0";
-                        //txtAmmount.Text = "0";
+                        gridsalesdelivary.Rows[e.RowIndex].Cells[6].Value = s.ToString();
+                        int g1 = Convert.ToInt32(s);
+                        double quantity1 = Convert.ToDouble(a1);
+                            string a = gridsalesdelivary.Rows[e.RowIndex].Cells[6].Value.ToString();
+                            string rate = gridsalesdelivary.Rows[e.RowIndex].Cells[4].Value.ToString();
+                            quantity = Convert.ToInt32(a);
+                            double r = Convert.ToDouble(rate);
+                            double totalammount = quantity * r;
+                            gridsalesdelivary.Rows[e.RowIndex].Cells[7].Value = totalammount.ToString();
+                            //string newquantity = gridsalesdelivary.Rows[e.RowIndex].Cells[3].Value.ToString();
+                            string rate1 = gridsalesdelivary.Rows[e.RowIndex].Cells[4].Value.ToString();
+                            double quantity2 = Convert.ToDouble(a);
+                            double finalquantity = Convert.ToDouble(rate1);
+                            finalquantity = quantity2 - quantity;
+                            double totalq = quantity2 * finalquantity;
+                            double totalammount1 = Convert.ToDouble(txtTotalAmmount.Text);
+                            double t = totalammount1 + totalq;
+                            txtTotalAmmount.Text = totalammount.ToString();
+
+                            double totalValues = 0.0;
+
+                            //txtAmmount.Text = "0";
+                        
                     }
                     else
                     {
@@ -2054,6 +2079,12 @@ namespace WindowsFormsApplication1
             }
             if (e.KeyChar == (char)Keys.Enter)
             {
+                if (gridsalesdelivary.DefaultCellStyle.SelectionBackColor==Color.DodgerBlue)
+                {
+                    MessageBox.Show("Please select your remove button");
+                    return;
+                }
+
                 if (txtRefNo.Text == "")
                 {
                     if (addToCartTable.Rows.Count > 0)
@@ -2092,6 +2123,11 @@ namespace WindowsFormsApplication1
                 }
                 if (txtRefNo.Text != "")
                 {
+                    if (gridsalesdelivary.DefaultCellStyle.SelectionBackColor == Color.DodgerBlue)
+                    {
+                        MessageBox.Show("Please select your remove button");
+                        return;
+                    }
                     if (addToCartTable.Rows.Count > 0)
                     {
                         string val = "";
@@ -2134,7 +2170,8 @@ namespace WindowsFormsApplication1
                         if (gridsalesdelivary.Rows.Count > 0)
                         {
                             butRemoveItem.Enabled = true;
-                            gridsalesdelivary.Rows[gridsalesdelivary.Rows.Count - 1].Selected = true;
+                            gridsalesdelivary.Rows[gridsalesdelivary.Rows.Count - 1].Selected = false;
+                           
 
 
                         }

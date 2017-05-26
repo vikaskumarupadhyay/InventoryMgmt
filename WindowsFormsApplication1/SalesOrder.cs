@@ -1080,10 +1080,11 @@ namespace WindowsFormsApplication1
             }
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                //    if (this.gridsalesorder.Rows.Count > 0)
-                //    {
-                //        gridsalesorder.Rows.RemoveAt(this.gridsalesorder.SelectedRows[0].Index);
-                //    }
+                if (gridsalesorder.DefaultCellStyle.SelectionBackColor == Color.DodgerBlue)
+                {
+                    MessageBox.Show("Please select your remove button");
+                    return;
+                }
 
                 if (addToCartTable.Rows.Count > 0)
                 {
@@ -1121,6 +1122,7 @@ namespace WindowsFormsApplication1
                             txtitemcode.Enabled = true;
                             txtitemcode.Focus();
                         }
+                      
                         if (gridsalesorder.Rows.Count == 1)
                         {
                             txtitemcode.Enabled = true;
@@ -1132,12 +1134,15 @@ namespace WindowsFormsApplication1
                             textBox20.Text = "0";
                             textBox20.ReadOnly = true;
                             button4.Enabled = true;
-                            gridsalesorder.Rows[gridsalesorder.Rows.Count - 1].Selected = false;
+                            gridsalesorder.Rows[gridsalesorder.Rows.Count-1].Selected = true;
+                            
                         }
                         if (gridsalesorder.Rows.Count > 1)
                         {
                             textBox20.ReadOnly = false;
+                           
                         }
+                       
 
                         if (gridsalesorder.Rows.Count == 0 && itemId == "")
                         {
@@ -1149,7 +1154,7 @@ namespace WindowsFormsApplication1
 
                         else
                         {
-
+                            
                             button4.Enabled = false;
                         }
                         txtQuantity.TabStop = false;
