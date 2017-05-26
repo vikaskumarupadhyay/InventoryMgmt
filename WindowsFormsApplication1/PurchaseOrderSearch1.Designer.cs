@@ -68,7 +68,6 @@
             this.SelectPOrder.Name = "SelectPOrder";
             this.SelectPOrder.Size = new System.Drawing.Size(361, 23);
             this.SelectPOrder.TabIndex = 0;
-            //this.SelectPOrder.SelectedIndexChanged += new System.EventHandler(this.SelectPOrder_SelectedIndexChanged);
             // 
             // dateTimePicker1
             // 
@@ -77,6 +76,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(256, 21);
             this.dateTimePicker1.TabIndex = 2;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // dateTimePicker2
             // 

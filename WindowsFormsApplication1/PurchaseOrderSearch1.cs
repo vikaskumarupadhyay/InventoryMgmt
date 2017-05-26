@@ -248,19 +248,29 @@ namespace WindowsFormsApplication1
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
+            dateSelect();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            dateSelect();
+        }
+        public void dateSelect()
+    {
             DateTime date = Convert.ToDateTime(dateTimePicker2.Text);
             if (date > DateTime.Now.Date)
             {
 
                 MessageBox.Show("please enter the currect date");
                 dateTimePicker2.Text = DateTime.Now.ToString();
-               
+
             }
-            string s = SelectPOrder.SelectedValue.ToString();
+            //string s = SelectPOrder.SelectedValue.ToString();
             string selectQurry = "SELECT dbo.VendorOrderDetails.Orderid as[Order ID],dbo.VendorDetails.venderId as[Vendor ID],dbo.VendorDetails.vName as[Vendor Name], dbo.VendorDetails.vCompName as[Company Name], dbo.VendorDetails.vAddress as[Address], dbo.VendorOrderDetails.OrderDate as[Order Date], dbo.VendorOrderDesc.ItemId as[Item ID], dbo.ItemDetails.ItemName as[Item Name], dbo.ItemDetails.ItemCompName as[Company Name], cast(dbo.ItemPriceDetail.MrpPrice as numeric(38,2)) as[MRP], cast(dbo.VendorOrderDesc.Price as numeric(38,2)) as[Selling Rate], dbo.VendorOrderDesc.Quantity as[Quantity Billed], cast(dbo.VendorOrderDesc.TotalPrice as numeric(38,2)) AS [Gross Amount], dbo.VendorOrderDetails.Discount as[Discount Rate],cast((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100 as numeric(38,2)) as [Discount Amount], dbo.VendorOrderDetails.Vat as[Tax], cast((dbo.VendorOrderDesc.TotalPrice)- ((dbo.VendorOrderDesc.TotalPrice)/(1+(dbo.VendorOrderDetails.Vat/100 )))as numeric(38,2)) as [Tax Amount],cast(( dbo.VendorOrderDesc.TotalPrice )-((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100)as numeric(38,2)) as[Net Amount (Including Tax)] FROM dbo.VendorDetails INNER JOIN dbo.VendorOrderDetails ON dbo.VendorDetails.venderId = dbo.VendorOrderDetails.venderId INNER JOIN dbo.VendorOrderDesc ON dbo.VendorOrderDetails.Orderid = dbo.VendorOrderDesc.Orderid INNER JOIN dbo.ItemDetails ON dbo.VendorOrderDesc.ItemId = dbo.ItemDetails.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId where OrderDate BETWEEN '" + dateTimePicker1.Text + "' AND '" + dateTimePicker2.Text + "'";
             //"select od.Orderid,od.venderId,itd.ItemName,vod.Quantity,vod.TotalPrice,od.OrderDate,cod.DeliveryDate,coi.InvoiceDate from VendorOrderDetails od join VendorOrderDesc vod on vod.Orderid=od.Orderid join CustomerOrderDelivery cod on cod.Orderid=vod.Orderid join CustomerOrderInvoice coi on coi.Orderid=vod.Orderid join ItemDetails itd on itd.ItemId=vod.ItemId where " + a + "= '" + txtsearch.Text + "'";
             DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
             dataGridView1.DataSource = dt;
+            setvalue();
         }
 
      
