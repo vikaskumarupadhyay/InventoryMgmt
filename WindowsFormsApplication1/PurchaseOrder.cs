@@ -658,7 +658,13 @@ namespace WindowsFormsApplication1
             {
                 txtItemCode.Text = cellCollection[0].Value.ToString();
                 txtProductName.Text = cellCollection[1].Value.ToString();
-                txtRate.Text = cellCollection[6].Value.ToString();
+                txtRate.Text = cellCollection[7].Value.ToString();
+                double rate = Convert.ToDouble(txtRate.Text);
+                // maxquantity = Convert.ToInt32((cell1[3].Value.ToString()));
+            txtQuanity.Text = "1";
+            double quantuty = Convert.ToDouble(txtQuanity.Text);
+                double amount = (rate * quantuty);
+                txtAmount.Text = amount.ToString();
                // txtAmount.Text = cellCollection[3].Value.ToString();
                 // txtQuanity.Text = cellCollection[4].Value.ToString();
 
