@@ -667,9 +667,6 @@ namespace WindowsFormsApplication1
                     }
 
                 }
-            
-        
-
 
         private void salesdelivary_Load(object sender, EventArgs e)
         {
