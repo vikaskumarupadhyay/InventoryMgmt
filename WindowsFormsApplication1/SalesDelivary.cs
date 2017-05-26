@@ -3236,6 +3236,11 @@ namespace WindowsFormsApplication1
             }
 
         }
+
+        private void txtInvoiceAmount_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 
