@@ -569,6 +569,7 @@
             this.txtVenderOpeningBal.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtVenderOpeningBal_MouseClick);
             this.txtVenderOpeningBal.TextChanged += new System.EventHandler(this.txtVenderOpeningBal_TextChanged_1);
             this.txtVenderOpeningBal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVenderOpeningBal_KeyPress);
+            this.txtVenderOpeningBal.Leave += new System.EventHandler(this.txtVenderOpeningBal_Leave);
             // 
             // textBox14
             // 
@@ -662,6 +663,7 @@
             // 
             // butprint
             // 
+            this.butprint.Enabled = false;
             this.butprint.Location = new System.Drawing.Point(251, 588);
             this.butprint.Name = "butprint";
             this.butprint.Size = new System.Drawing.Size(75, 28);

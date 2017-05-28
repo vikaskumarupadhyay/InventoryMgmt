@@ -274,7 +274,7 @@ namespace WindowsFormsApplication1
             //dataGridView1.DataSource = dt;
             panel2.TabStop = false;
             correcttabindexlist();
-            comserchvalue.Focus();
+            textBox1.Focus();
         }
         private void tabindex()
         {

@@ -1121,6 +1121,7 @@ namespace WindowsFormsApplication1
                         {
                             txtitemcode.Enabled = true;
                             txtitemcode.Focus();
+                            gridsalesorder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
                         }
                       
                         if (gridsalesorder.Rows.Count == 1)

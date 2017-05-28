@@ -514,7 +514,7 @@ namespace WindowsFormsApplication1
             DataTable dt = dbMainClass.getDetails("VENDORDETAILS");
             dataGridView1.DataSource = dt;
             Tabindex();
-            comboBox1.Focus();
+            txtSearch.Focus();
             panel2.TabStop = false;
             panel2.TabIndex = 26;
             btnUpdate.TabIndex = 4;
@@ -984,6 +984,27 @@ namespace WindowsFormsApplication1
             {
                 e.SuppressKeyPress = true;
             }
+        }
+
+        private void txtVenderOpeningBal_Leave(object sender, EventArgs e)
+        {
+            decimal x;
+            if (decimal.TryParse(txtVenderOpeningBal.Text, out x))
+            {
+                if (txtVenderOpeningBal.Text.IndexOf('.') != -1 && txtVenderOpeningBal.Text.Split('.')[1].Length > 2)
+                {
+                    MessageBox.Show("The maximum decimal points are 2!");
+                    txtVenderOpeningBal.Focus();
+                }
+                else txtVenderOpeningBal.Text = x.ToString("0.00");
+            }
+            else
+            {
+                txtVenderOpeningBal.Text = "0.00";
+                //MessageBox.Show("Data invalid!");
+                //txtVenderOpeningBal.Focus();
+            }
+           
         }
 
     }

@@ -139,7 +139,7 @@ namespace WindowsFormsApplication1
         }
         private void tabindex1()
         {
-            ComDetails.Focus();
+            txtSearch.Focus();
             txtSearch.TabIndex = 1;
             dataGridView1.TabIndex = 2;
             butUpdate.TabIndex = 3;

@@ -605,7 +605,7 @@
             this.txtSearch.Location = new System.Drawing.Point(687, 42);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(1066, 23);
+            this.txtSearch.Size = new System.Drawing.Size(429, 23);
             this.txtSearch.TabIndex = 3;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
@@ -621,6 +621,7 @@
             // 
             // butPrint
             // 
+            this.butPrint.Enabled = false;
             this.butPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.butPrint.Location = new System.Drawing.Point(253, 501);
             this.butPrint.Name = "butPrint";

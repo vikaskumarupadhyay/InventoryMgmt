@@ -25,6 +25,7 @@ namespace WindowsFormsApplication1
 
         private void PurchaseOrder_Load(object sender, EventArgs e)
         {
+
             txtDiscount.ReadOnly = true;
             txtVendorCode.Select(txtVendorCode.Text.Length, 0);
             txtItemCode.Select(txtItemCode.Text.Length, 0);
@@ -341,6 +342,7 @@ namespace WindowsFormsApplication1
         {
             txtItemCode.Focus();
             txtQuanity.ReadOnly = true;
+            txtQuanity.TabStop = false;
             txtVendorCode.TabStop = true;
             button1.TabStop = true;
             txtDiscount.TabStop = false;
@@ -649,7 +651,7 @@ namespace WindowsFormsApplication1
             DataTable dt1 = dbMainClass.getDetailByQuery(select);
             dataGridView1.DataSource = dt1;
             IndexTex();
-            comboBox1.Focus();
+            txtsearch.Focus();
             
         }
         private void setDetails1(DataGridViewCellCollection cellCollection)
@@ -1025,6 +1027,7 @@ namespace WindowsFormsApplication1
                         {
                             txtItemCode.Focus();
                             txtItemCode.Select(txtItemCode.Text.Length, 0);
+                            gridPurchaseOrder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
                         }
                         if (gridPurchaseOrder.Rows.Count > 0)
                         {
@@ -1190,6 +1193,7 @@ namespace WindowsFormsApplication1
         private void buttBack_Click_1(object sender, EventArgs e)
         {
             panel2.Visible = false;
+            
         }
 
         private void txtsearch_TextChanged_1(object sender, EventArgs e)
@@ -1468,6 +1472,7 @@ namespace WindowsFormsApplication1
 
         private void Distxt_TextChanged(object sender, EventArgs e)
         {
+
             //if (txtdis.Text == "")
             //{
             //    txtdis.Text = "0";
@@ -1535,6 +1540,45 @@ namespace WindowsFormsApplication1
         //        }
         //    }
         //    //}
+        }
+
+        private void PurchaseOrder_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void txtsearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtdis_Leave(object sender, EventArgs e)
+        {
+            /*decimal x;
+            if (decimal.TryParse(txtdis.Text, out x))
+            {
+                if (txtdis.Text.IndexOf('.') != -1 && txtdis.Text.Split('.')[1].Length > 2)
+                {
+                    MessageBox.Show("The maximum decimal points are 2!");
+                    txtdis.Focus();
+                }
+                else txtdis.Text = x.ToString("0.00");
+            }
+            else
+            {
+                txtdis.Text = "0.00";
+                //MessageBox.Show("Data invalid!");
+                //txtVenderOpeningBal.Focus();
+            }*/
+           
+        }
+
+        private void txtdis_Click(object sender, EventArgs e)
+        {
+            
         }
 
       

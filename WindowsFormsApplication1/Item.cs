@@ -329,7 +329,7 @@ namespace WindowsFormsApplication1
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             dataGridView1.DataSource = dt;
             tabindix();
-            searchCalmn.Focus();
+            txtSearch.Focus();
         }
 
         private void buttClose_Click(object sender, EventArgs e)

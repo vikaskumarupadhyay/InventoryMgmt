@@ -1938,6 +1938,7 @@ namespace WindowsFormsApplication1
                         if (ls.Count == dataGridView1.Rows.Count - 1)
                         {
                             txtItemCode.Focus();
+                            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
                             txtItemCode.Select(txtItemCode.Text.Length, 0);
                         }
                         if (dataGridView1.Rows.Count> 0)

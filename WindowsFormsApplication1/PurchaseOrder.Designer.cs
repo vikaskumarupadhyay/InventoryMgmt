@@ -411,6 +411,7 @@
             this.txtQuanity.ReadOnly = true;
             this.txtQuanity.Size = new System.Drawing.Size(169, 21);
             this.txtQuanity.TabIndex = 4;
+            this.txtQuanity.TabStop = false;
             this.txtQuanity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtQuanity.TextChanged += new System.EventHandler(this.txtQuanity_TextChanged);
             this.txtQuanity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuanity_KeyPress);
@@ -536,7 +537,7 @@
             this.txtTotalAmount.Size = new System.Drawing.Size(83, 21);
             this.txtTotalAmount.TabIndex = 60;
             this.txtTotalAmount.TabStop = false;
-            this.txtTotalAmount.Text = "0.0";
+            this.txtTotalAmount.Text = "0.00";
             this.txtTotalAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtTotalAmount.TextChanged += new System.EventHandler(this.txtTotalAmount_TextChanged);
             // 
@@ -590,14 +591,17 @@
             this.txtdis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtdis.Location = new System.Drawing.Point(885, 577);
             this.txtdis.Name = "txtdis";
+            this.txtdis.ReadOnly = true;
             this.txtdis.Size = new System.Drawing.Size(39, 21);
             this.txtdis.TabIndex = 56;
             this.txtdis.TabStop = false;
             this.txtdis.Text = "0";
             this.txtdis.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtdis.Click += new System.EventHandler(this.txtdis_Click);
             this.txtdis.TextChanged += new System.EventHandler(this.Distxt_TextChanged);
             this.txtdis.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Distxt_KeyDown);
             this.txtdis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Distxt_KeyPress);
+            this.txtdis.Leave += new System.EventHandler(this.txtdis_Leave);
             // 
             // textBox19
             // 
@@ -722,6 +726,7 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1139, 472);
             this.dataGridView1.StandardTab = true;
@@ -756,6 +761,7 @@
             this.txtsearch.Size = new System.Drawing.Size(429, 23);
             this.txtsearch.TabIndex = 5;
             this.txtsearch.TextChanged += new System.EventHandler(this.txtsearch_TextChanged_1);
+            this.txtsearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtsearch_KeyDown);
             // 
             // comboBox1
             // 
@@ -833,6 +839,7 @@
             this.textBox1.TabStop = false;
             this.textBox1.Text = "%";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox1.Visible = false;
             // 
             // VATNO
             // 
@@ -848,6 +855,7 @@
             this.VATNO.TabStop = false;
             this.VATNO.Text = "0";
             this.VATNO.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.VATNO.Visible = false;
             // 
             // textBox3
             // 
@@ -862,6 +870,7 @@
             this.textBox3.TabStop = false;
             this.textBox3.Text = "VAT";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox3.Visible = false;
             // 
             // PurchaseOrder
             // 
@@ -897,6 +906,7 @@
             this.Text = "Purchase Order";
             this.Load += new System.EventHandler(this.PurchaseOrder_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PurchaseOrder_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PurchaseOrder_KeyPress);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
