@@ -91,7 +91,7 @@
             this.lblsearchvalue = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.comsearchvalue = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.butback = new System.Windows.Forms.Button();
             this.txtdicountamount = new System.Windows.Forms.TextBox();
             this.txttaxamount = new System.Windows.Forms.TextBox();
             this.txtwithauttaxamount = new System.Windows.Forms.TextBox();
@@ -708,6 +708,7 @@
             this.txtdiccount.TabStop = false;
             this.txtdiccount.Text = "0";
             this.txtdiccount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtdiccount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtdiccount_MouseClick);
             this.txtdiccount.TextChanged += new System.EventHandler(this.txtdiccount_TextChanged);
             this.txtdiccount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox20_KeyPress);
             // 
@@ -810,7 +811,7 @@
             this.panel2.Controls.Add(this.crystalReportViewer2);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.groupBox4);
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.butback);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
@@ -908,16 +909,16 @@
             this.comsearchvalue.Size = new System.Drawing.Size(656, 23);
             this.comsearchvalue.TabIndex = 3;
             // 
-            // button1
+            // butback
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(12, 589);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 28);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Back";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.butback.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.butback.Location = new System.Drawing.Point(12, 589);
+            this.butback.Name = "butback";
+            this.butback.Size = new System.Drawing.Size(90, 28);
+            this.butback.TabIndex = 5;
+            this.butback.Text = "Back";
+            this.butback.UseVisualStyleBackColor = true;
+            this.butback.Click += new System.EventHandler(this.button1_Click);
             // 
             // txtdicountamount
             // 
@@ -1667,7 +1668,7 @@
         private System.Windows.Forms.TextBox txttax;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button butback;
         private System.Windows.Forms.TextBox txtsearchvalue;
         private System.Windows.Forms.ComboBox comsearchvalue;
         private System.Windows.Forms.Label label16;

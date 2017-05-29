@@ -37,7 +37,7 @@ namespace WindowsFormsApplication1
             butadditem.TabStop = false;
             button4.TabStop = false;
             savebutton.TabStop = false;
-            button6.TabStop = false;
+            butclose.TabStop = false;
             textBox1.TabStop = false;
             textBox2.TabStop = false;
             textBox3.TabStop = false;
@@ -67,7 +67,7 @@ namespace WindowsFormsApplication1
             button4.TabStop = true;
             // gridsalesorder.TabStop = true;
             savebutton.TabStop = false;
-            button6.TabStop = false;
+            butclose.TabStop = false;
             textBox1.TabStop = false;
             textBox2.TabStop = false;
             textBox3.TabStop = false;
@@ -292,10 +292,12 @@ namespace WindowsFormsApplication1
         }
         private void butadditem_Click(object sender, EventArgs e)
         {
-
+           
             txtitemcode.Focus();
             txtcustomercode.TabStop = true;
             button1.TabStop = true;
+            savebutton.TabStop = true;
+            butclose.TabStop = true;
             txttax.TabStop = false;
             string itemid = "";
             string quntity = "";
@@ -354,6 +356,13 @@ namespace WindowsFormsApplication1
                 // txtAmount.Text = "0";
                 // MessageBox.Show("Please Enter the Quanity");
             }
+            if (txtQuantity.Text == "0" || txtQuantity.Text == "")
+            {
+                MessageBox.Show("please select you quantity");
+                txtQuantity.Text = "1";
+                txtQuantity.SelectionLength = txtQuantity.Text.Length;
+                txtQuantity.Focus();
+            }
             else
             {
                 string selectq = "select ids.ItemCompName,cast(ipd.MrpPrice as numeric(38,2))from ItemPriceDetail ipd join ItemDetails ids on ipd.ItemId=ids.ItemId where ipd.ItemId='" + txtitemcode.Text + "'";
@@ -400,7 +409,7 @@ namespace WindowsFormsApplication1
             }
             if (gridsalesorder.Rows.Count > 1)
             {
-                textBox20.ReadOnly = false;
+                textBox20.ReadOnly = true;
             }
             txtitemcode.Select(txtitemcode.Text.Length, 0);
 
@@ -607,6 +616,8 @@ namespace WindowsFormsApplication1
 
 
 
+                string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpdate.Text + "','" + txttotalammount.Text + "','" + textBox20.Text + "','" + discountamount.Text + "','" + txttax.Text + "','" + txttaxamount.Text + "','" + txtwithautaxamount.Text + "')";
+                int insertrows = d.saveDetails(insertquery);
                 DataGridViewRowCollection rowcollection = gridsalesorder.Rows;
                 List<string> show = new List<string>();
                 for (int a = 0; a < rowcollection.Count; a++)
@@ -629,10 +640,6 @@ namespace WindowsFormsApplication1
                     string txtAmount = cellcollection[6].Value.ToString();
                     string Orderid = txtsrno.Text;
                     string query = "insert into customerorderdescriptions Values('" + txtsrno.Text + "','" + txtitemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
-
-
-                    string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpdate.Text + "','" + txttotalammount.Text + "','" + textBox20.Text + "','" + discountamount.Text + "','" + txttax.Text + "','" + txttaxamount.Text + "','" + txtwithautaxamount.Text + "')";
-                    int insertrows = d.saveDetails(insertquery);
                     show.Add(query);
                 }
 
@@ -863,6 +870,7 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyChar == '\b')
                 {
+                    butadditem.Enabled = true;
                     txtQuantity.Focus();
                     txtAmount.Text = "";
                     e.Handled = false;
@@ -1135,7 +1143,7 @@ namespace WindowsFormsApplication1
                             textBox20.Text = "0";
                             textBox20.ReadOnly = true;
                             button4.Enabled = true;
-                            gridsalesorder.Rows[gridsalesorder.Rows.Count-1].Selected = true;
+                           // gridsalesorder.Rows[gridsalesorder.Rows.Count-1].Selected = true;
                             
                         }
                         if (gridsalesorder.Rows.Count > 1)
@@ -1165,7 +1173,7 @@ namespace WindowsFormsApplication1
 
                 button4.Enabled = false;
                 savebutton.TabStop = false;
-                button6.TabStop = false;
+                butclose.TabStop = false;
                 txtcustomercode.TabStop = true;
                 button1.TabStop = true;
                 button2.TabStop = true;
@@ -1333,7 +1341,7 @@ namespace WindowsFormsApplication1
                 else
                 {
                     savebutton.Focus();
-                    button6.TabStop = true;
+                    butclose.TabStop = true;
                 }
             }
 
@@ -1389,6 +1397,14 @@ namespace WindowsFormsApplication1
 
         private void butback_Click_1(object sender, EventArgs e)
         {
+            if (txtcustomercode.Text == "C")
+            {
+                txtcustomercode.Focus();
+            }
+            else if(txtcustomercode.Text!="C")
+            {
+                txtitemcode.Focus();
+            }
             panel2.Visible = false;
         }
 
@@ -1667,7 +1683,7 @@ namespace WindowsFormsApplication1
             else
             {
                 double totalAmount = 0.00;
-                if (e.KeyChar == '\b')
+                if (e.KeyChar == '\b'||e.KeyChar=='.')
                 {
                     counter = 0;
                     foreach (DataRow dr in addToCartTable.Rows)
@@ -1747,8 +1763,8 @@ namespace WindowsFormsApplication1
 
         private void textBox20_TextChanged(object sender, EventArgs e)
         {
-           
 
+            textBox20.Select(textBox20.Text.Length, 0);
             double totalAmount = 0.00;
             counter = 0;
                 //discountamount.Text = disa.ToString();
@@ -1767,7 +1783,7 @@ namespace WindowsFormsApplication1
                 }
                 double s = totalAmount;
                 string discount = textBox20.Text;
-
+                
                 double amount = 0.0;
 
                 if (double.TryParse(discount, out amount))
@@ -1778,11 +1794,22 @@ namespace WindowsFormsApplication1
                     txtwithautaxamount.Text = s.ToString();
                     double dis = s * totaldiscount / 100;
                     discountamount.Text = dis.ToString();
+                    textBox20.Text = totaldiscount.ToString("###0.00");
 
                 }
 
 
             }
+
+        private void textBox20_MouseClick(object sender, MouseEventArgs e)
+        {
+            
+            textBox20.Text = "";
+            
+           
+        }
+
+     
 
         }
 

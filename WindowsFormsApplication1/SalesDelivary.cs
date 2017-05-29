@@ -161,7 +161,7 @@ namespace WindowsFormsApplication1
             comsearchvalue.TabIndex = 1;
             txtsearchvalue.TabIndex = 2;
             dataGridView2.TabIndex = 3;
-            button1.TabIndex = 4;
+            butback.TabIndex = 4;
 
         }
 
@@ -233,7 +233,7 @@ namespace WindowsFormsApplication1
             comsearchvalue.TabIndex = 1;
             txtsearchvalue.TabIndex = 2;
             dataGridView2.TabIndex = 3;
-            button1.TabIndex = 4;
+            butback.TabIndex = 4;
             txtsearchvalue.Text = "";
 
         }
@@ -394,9 +394,17 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
-                    if (txtAmmount.Text == "")
+                    //if (txtAmmount.Text == "")
+                    //{
+                    //    MessageBox.Show("please enter the quantity");
+                    //}
+                    if (txtQuantity.Text == "0" || txtQuantity.Text == "")
                     {
-                        MessageBox.Show("please enter the quantity");
+                        MessageBox.Show("please select you quantity");
+                        txtQuantity.Text = "1";
+                        txtQuantity.SelectionLength = txtQuantity.Text.Length;
+                        txtQuantity.Focus();
+                        txtQuantity.ReadOnly = false;
                     }
                     else
                     {
@@ -617,9 +625,17 @@ namespace WindowsFormsApplication1
                         }
                         else
                         {
-                            if (txtAmmount.Text == "")
+                            //if (txtAmmount.Text == "")
+                            //{
+                            //    MessageBox.Show("please Enter Quantity");
+                            //}
+                            if (txtQuantity.Text == "0" || txtQuantity.Text == "")
                             {
-                                MessageBox.Show("please Enter Quantity");
+                                MessageBox.Show("please select you quantity");
+                                txtQuantity.Text = "1";
+                                txtQuantity.SelectionLength = txtQuantity.Text.Length;
+                                txtQuantity.Focus();
+                                txtQuantity.ReadOnly = false;
                             }
                             else
                             {
@@ -1809,7 +1825,10 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyChar == '\b')
                 {
+                    txtQuantity.Focus();
+                    butAddItem.Enabled = true;
                     txtAmmount.Text = "";
+                    txtQuantity.Text = "";
                     e.Handled = false;
                 }
                 else
@@ -2414,6 +2433,14 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (txtQuantity.Text=="C")
+            {
+                txtcustomercode.Focus();
+            }
+            else if(txtQuantity.Text!="C")
+            {
+                txtItemCode.Focus();
+            }
             panel2.Visible = false;
         }
         private void SetVendor(string r)
@@ -3201,9 +3228,7 @@ namespace WindowsFormsApplication1
 
         private void txtdiccount_TextChanged(object sender, EventArgs e)
         {
-           
-
-
+            txtdiccount.Select(txtdiccount.Text.Length, 0);
             if (txtRefNo.Text == "")
             {
                 double totalAmount = 0.00;
@@ -3237,7 +3262,9 @@ namespace WindowsFormsApplication1
                     txtTotalAmmount.Text = totalAmount.ToString("###0.00");
                     txtwithauttaxamount.Text = s.ToString();
                     double dis = s * totaldiscount / 100;
-                    txtdicountamount.Text = dis.ToString();
+                    txtdicountamount.Text = dis.ToString("###0.00");
+                    txtdiccount.Text = totaldiscount.ToString("###0.00");
+
                 }
             }
 
@@ -3284,6 +3311,11 @@ namespace WindowsFormsApplication1
         }
 
         public Color Highlight { get; set; }
+
+        private void txtdiccount_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtdiccount.Text = "";
+        }
     }
 
 
