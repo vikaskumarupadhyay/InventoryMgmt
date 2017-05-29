@@ -74,7 +74,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
+            this.butclose = new System.Windows.Forms.Button();
             this.savebutton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -201,6 +201,7 @@
             this.textBox20.TabStop = false;
             this.textBox20.Text = "0";
             this.textBox20.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox20.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox20_MouseClick);
             this.textBox20.TextChanged += new System.EventHandler(this.textBox20_TextChanged);
             this.textBox20.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox20_KeyPress);
             // 
@@ -649,17 +650,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Customer Code";
             // 
-            // button6
+            // butclose
             // 
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(111, 601);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(90, 28);
-            this.button6.TabIndex = 50;
-            this.button6.Text = "Close";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            this.button6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.button6_KeyPress);
+            this.butclose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.butclose.Location = new System.Drawing.Point(111, 601);
+            this.butclose.Name = "butclose";
+            this.butclose.Size = new System.Drawing.Size(90, 28);
+            this.butclose.TabIndex = 50;
+            this.butclose.Text = "Close";
+            this.butclose.UseVisualStyleBackColor = true;
+            this.butclose.Click += new System.EventHandler(this.button6_Click);
+            this.butclose.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.button6_KeyPress);
             // 
             // savebutton
             // 
@@ -734,6 +735,7 @@
             this.crystalReportViewer1.Name = "crystalReportViewer1";
             this.crystalReportViewer1.Size = new System.Drawing.Size(1172, 634);
             this.crystalReportViewer1.TabIndex = 8;
+           // this.crystalReportViewer1.Load += new System.EventHandler(this.crystalReportViewer1_Load);
             // 
             // panel3
             // 
@@ -858,7 +860,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.butclose);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.savebutton);
             this.Controls.Add(this.txttotalammount);
@@ -945,7 +947,7 @@
         private System.Windows.Forms.TextBox textBox18;
         private System.Windows.Forms.TextBox txttax;
         private System.Windows.Forms.TextBox textBox16;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button butclose;
         private System.Windows.Forms.Button savebutton;
         private System.Windows.Forms.TextBox txtcustname;
         private System.Windows.Forms.TextBox textBox3;
