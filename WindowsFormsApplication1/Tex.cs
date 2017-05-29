@@ -12,12 +12,12 @@ namespace WindowsFormsApplication1
     public partial class Tex : Form
     {
         ComboBox item;
-      List<string> TexList;
+      List<string> Texlist;
         DataColumn dc = new DataColumn();
         public Tex(ComboBox item, List<string> TexList)
         {
             this.item = item;
-            this.TexList = TexList;
+            this.Texlist = TexList;
             InitializeComponent();
         }
         DB_Main dbMainClass = new DB_Main();
@@ -64,7 +64,7 @@ namespace WindowsFormsApplication1
                                 item.Items.Remove("Add New Tax");
                                 item.Items.Insert(0, "Select  Tax");
                             }
-                            TexList.Add(txtTexId.Text);
+                            Texlist.Add(txtTexId.Text);
                             item.Items.Add(txtTexName.Text);
 
                             item.SelectedIndex = item.Items.IndexOf(txtTexName.Text);

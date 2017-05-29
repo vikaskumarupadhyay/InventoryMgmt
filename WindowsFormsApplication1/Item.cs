@@ -617,10 +617,15 @@ namespace WindowsFormsApplication1
                 {
                     num1 = "0";
                 }
+            string discountAmount = txtItemSalesPrice.Text;
+            double amount = 0.0;
+            if (double.TryParse(discountAmount, out amount))
+            {
                 double pPrice = Convert.ToDouble(num);
                 double mrp = Convert.ToDouble(num1);
                 double totelmrp = mrp - pPrice;
                 txtItemMargin.Text = totelmrp.ToString();
+            }
 
         }
 
@@ -638,6 +643,10 @@ namespace WindowsFormsApplication1
                 {
                     value = "0";
                 }
+                  string discountAmount = txtItemPrice.Text;
+            double amount = 0.0;
+            if (double.TryParse(discountAmount, out amount))
+            {
                 double pPrice = Convert.ToDouble(value1);
                 double mrp = Convert.ToDouble(value);
               double totelmrp = mrp - pPrice;
@@ -657,6 +666,7 @@ namespace WindowsFormsApplication1
                 double mrp = Convert.ToDouble(value);
                 double totelmrp = mrp - pPrice;
                 txtItemMargin.Text = totelmrp.ToString();
+            }
             }
         }
 
@@ -685,17 +695,7 @@ namespace WindowsFormsApplication1
 
         private void txtItemSalesPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
-            char ch = e.KeyChar;
-            if (ch == 46 && txtItemSalesPrice.Text.IndexOf('.') != -1)
-            {
-                e.Handled = true;
-                return;
-            }
-            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
-            {
-                e.Handled = true;
-            }
-            /*if (Char.IsNumber(e.KeyChar) || Char.IsPunctuation(e.KeyChar))
+            if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
                 e.Handled = false;
             }
@@ -709,7 +709,7 @@ namespace WindowsFormsApplication1
                 {
                     e.Handled = true;
                 }
-            }*/
+            }
         }
 
         private void txtItemPrice_KeyPress(object sender, KeyPressEventArgs e)

@@ -133,7 +133,7 @@ namespace WindowsFormsApplication1
             txtGst.Text = "";
             txtDescription.Text = "";
             txtGst.Text = "";
-            combComp.Text = "Select TAX";
+            combComp.SelectedIndex = 0;
             txtTexAmount.Text = "0";
 
         }
@@ -229,7 +229,16 @@ namespace WindowsFormsApplication1
             string taxId = "";
             if (combComp.SelectedIndex != 0)
             {
-                taxId = TexList[combComp.SelectedIndex-1];
+                string name = combComp.SelectedItem.ToString();
+                //taxId = TexList[combComp.SelectedIndex-1];
+               string select=" select TexId from CompnayTex where TexName='"+name+"'";
+               DataTable dt1 = dbMainClass.getDetailByQuery(select);
+               foreach (DataRow dr in dt1.Rows)
+               {
+                   taxId = dr[0].ToString();
+               }
+
+
             }
             if (updatecounter == 0)
             {
