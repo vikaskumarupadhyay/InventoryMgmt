@@ -204,6 +204,7 @@
             this.textBox20.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox20_MouseClick);
             this.textBox20.TextChanged += new System.EventHandler(this.textBox20_TextChanged);
             this.textBox20.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox20_KeyPress);
+            this.textBox20.Leave += new System.EventHandler(this.textBox20_Leave);
             // 
             // textBox19
             // 
@@ -735,7 +736,6 @@
             this.crystalReportViewer1.Name = "crystalReportViewer1";
             this.crystalReportViewer1.Size = new System.Drawing.Size(1172, 634);
             this.crystalReportViewer1.TabIndex = 8;
-           // this.crystalReportViewer1.Load += new System.EventHandler(this.crystalReportViewer1_Load);
             // 
             // panel3
             // 

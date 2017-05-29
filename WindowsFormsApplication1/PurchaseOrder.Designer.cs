@@ -705,6 +705,7 @@
             this.PurchesCrystalReportViewer.Name = "PurchesCrystalReportViewer";
             this.PurchesCrystalReportViewer.Size = new System.Drawing.Size(1172, 634);
             this.PurchesCrystalReportViewer.TabIndex = 8;
+            //this.PurchesCrystalReportViewer.Load += new System.EventHandler(this.PurchesCrystalReportViewer_Load);
             // 
             // panel3
             // 
