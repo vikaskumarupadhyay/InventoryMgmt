@@ -594,7 +594,7 @@ namespace WindowsFormsApplication1
                             txttotalAmount.Text = totalAmount.ToString("###0.00");
                             txtWAmount.Text = totalAmount.ToString();
 
-                            txtWAmount.Text = totalAmount.ToString();
+                            txtWAmount.Text = totalAmount.ToString("###0.00");
                             dataGridView1.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
                             txtItemCode.Text = "I";
                             txtProductName.Text = "";
@@ -1748,7 +1748,7 @@ namespace WindowsFormsApplication1
                           }
                           Double Saleprice = Convert.ToDouble(salep);
                           Double price = Saleprice * que;
-                          txtAmount.Text = price.ToString();
+                          txtAmount.Text = price.ToString("###0.00");
 
 
                         button3.Enabled = true;
