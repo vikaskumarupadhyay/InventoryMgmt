@@ -1532,8 +1532,8 @@ namespace WindowsFormsApplication1
 
                 double dis = totalamount2;//totalAmount1 * totalDiscount / 100;
                 DisAmmount.Text = dis.ToString("###0.00");
-                txtdis.Text = totalDiscount.ToString("###0.00");
-                txtdis.Select(txtdis.Text.Length, 0);
+                //txtdis.Text = totalDiscount.ToString("###0.00");
+                //txtdis.Select(txtdis.Text.Length, 0);
 
                 // DisAmmount.Text = totalDiscount.ToString();
             }
@@ -1585,6 +1585,12 @@ namespace WindowsFormsApplication1
 
         private void txtdis_Leave(object sender, EventArgs e)
         {
+            if (txtdis.Text=="")
+            {
+                txtdis.Text = "0.00";
+            }
+            Double totalDiscount = Convert.ToDouble(txtdis.Text);
+            txtdis.Text = totalDiscount.ToString("###0.00");
             /*decimal x;
             if (decimal.TryParse(txtdis.Text, out x))
             {
@@ -1607,6 +1613,11 @@ namespace WindowsFormsApplication1
         private void txtdis_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void txtdis_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtdis.Text = "";
         }
 
        

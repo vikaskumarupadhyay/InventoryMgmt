@@ -598,6 +598,7 @@
             this.txtdis.Text = "0";
             this.txtdis.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtdis.Click += new System.EventHandler(this.txtdis_Click);
+            this.txtdis.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtdis_MouseClick);
             this.txtdis.TextChanged += new System.EventHandler(this.Distxt_TextChanged);
             this.txtdis.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Distxt_KeyDown);
             this.txtdis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Distxt_KeyPress);
@@ -688,9 +689,10 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.buttBack);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(113, 634);
+            this.panel2.Size = new System.Drawing.Size(1172, 634);
             this.panel2.TabIndex = 65;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint_2);
             // 
@@ -699,9 +701,10 @@
             this.PurchesCrystalReportViewer.ActiveViewIndex = -1;
             this.PurchesCrystalReportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PurchesCrystalReportViewer.Cursor = System.Windows.Forms.Cursors.Default;
+            this.PurchesCrystalReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PurchesCrystalReportViewer.Location = new System.Drawing.Point(0, 0);
             this.PurchesCrystalReportViewer.Name = "PurchesCrystalReportViewer";
-            this.PurchesCrystalReportViewer.Size = new System.Drawing.Size(78, 634);
+            this.PurchesCrystalReportViewer.Size = new System.Drawing.Size(1172, 634);
             this.PurchesCrystalReportViewer.TabIndex = 8;
             // 
             // panel3
@@ -713,7 +716,7 @@
             this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel3.Location = new System.Drawing.Point(12, 105);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(84, 476);
+            this.panel3.Size = new System.Drawing.Size(1143, 476);
             this.panel3.TabIndex = 7;
             // 
             // dataGridView1
@@ -726,7 +729,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(80, 472);
+            this.dataGridView1.Size = new System.Drawing.Size(1139, 472);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
@@ -743,7 +746,7 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(12, 25);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(84, 73);
+            this.groupBox4.Size = new System.Drawing.Size(1143, 73);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
@@ -756,7 +759,7 @@
             this.txtsearch.Location = new System.Drawing.Point(687, 42);
             this.txtsearch.Multiline = true;
             this.txtsearch.Name = "txtsearch";
-            this.txtsearch.Size = new System.Drawing.Size(0, 23);
+            this.txtsearch.Size = new System.Drawing.Size(1059, 23);
             this.txtsearch.TabIndex = 5;
             this.txtsearch.TextChanged += new System.EventHandler(this.txtsearch_TextChanged_1);
             this.txtsearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtsearch_KeyDown);

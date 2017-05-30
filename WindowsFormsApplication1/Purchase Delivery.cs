@@ -2540,7 +2540,8 @@ namespace WindowsFormsApplication1
         {
             IndexTex();
             txtInvoiceid.Text = txtSrNo.Text;
-            txtInvoiceAmount.Text = txttotalAmount.Text;
+            Double total = Convert.ToDouble(txttotalAmount.Text);
+            txtInvoiceAmount.Text = total.ToString("###0.00");
             allvisible();
            
         }
