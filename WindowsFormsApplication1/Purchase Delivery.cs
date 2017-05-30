@@ -2315,7 +2315,6 @@ namespace WindowsFormsApplication1
                 if (double.TryParse(discountAmount, out amount))
                 {
                     double totalDiscount = Convert.ToDouble(discountAmount);
-                    txtDiscount.Text = totalDiscount.ToString("###0.00");
                     totalAmount = totalAmount - ((totalAmount * totalDiscount) / 100);
                     totalAmount1 = ((totalAmount1 * totalDiscount) / 100);
                     txttotalAmount.Text = totalAmount.ToString();
@@ -2998,6 +2997,21 @@ namespace WindowsFormsApplication1
                     //MessageBox.Show("Plese enter numeric value!");
                 }
             }
+        }
+
+        private void txtDiscount_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtDiscount.Text = "";
+        }
+
+        private void txtDiscount_Leave(object sender, EventArgs e)
+        {
+            if (txtDiscount.Text == "")
+            {
+                txtDiscount.Text = "0.00";
+            }
+            Double totaldicount =Convert.ToDouble( txtDiscount.Text);
+            txtDiscount.Text = totaldicount.ToString("###0.00");
         }
 
        

@@ -199,7 +199,6 @@
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.TabStop = false;
-           // this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView1_CellBeginEdit);
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
             // 
@@ -270,10 +269,12 @@
             this.txtDiscount.Size = new System.Drawing.Size(45, 21);
             this.txtDiscount.TabIndex = 31;
             this.txtDiscount.TabStop = false;
-            this.txtDiscount.Text = "0";
+            this.txtDiscount.Text = "0.00";
             this.txtDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDiscount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtDiscount_MouseClick);
             this.txtDiscount.TextChanged += new System.EventHandler(this.txtDiscount_TextChanged);
             this.txtDiscount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiscount_KeyPress);
+            this.txtDiscount.Leave += new System.EventHandler(this.txtDiscount_Leave);
             // 
             // textBox19
             // 
@@ -591,7 +592,6 @@
             this.groupBox1.Size = new System.Drawing.Size(908, 161);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
-            ///this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // txtFax
             // 
