@@ -307,7 +307,7 @@ namespace WindowsFormsApplication1
         {
             if (txtQuantity.Text == "0" || txtQuantity.Text == "")
             {
-                MessageBox.Show("please select you quantity");
+                MessageBox.Show("Please enter valid quantity!");
                 txtQuantity.Text = "1";
                 txtQuantity.SelectionLength = txtQuantity.Text.Length;
                 txtQuantity.Focus();
@@ -316,6 +316,7 @@ namespace WindowsFormsApplication1
             else
             {
                 txtitemcode.Focus();
+                textBox20.Select(textBox20.Text.Length, 0);
                 txtcustomercode.TabStop = true;
                 button1.TabStop = true;
                 savebutton.TabStop = true;
@@ -353,12 +354,17 @@ namespace WindowsFormsApplication1
                         double rate5 = rate4 + rate2;
                         txttotalammount.Text = rate5.ToString("###0.00");//rate3.ToString();
                         // MessageBox.Show("Please Enter the Quanity");
+                        
                         txtitemcode.Text = "I";
+                        txtitemcode.Select(txtitemcode.Text.Length, 0);
                         txtProductName.Text = "";
                         txtRate.Text = "";
                         txtQuantity.Text = "";
                         txtAmount.Text = "";
+                        butadditem.Enabled = false;
                         txtQuantity.ReadOnly = true;
+                        
+
                     }
 
                 }
@@ -411,6 +417,7 @@ namespace WindowsFormsApplication1
                         txttotalammount.Text = totalAmount.ToString("###0.00");
                         txtwithautaxamount.Text = totalAmount.ToString();
                         gridsalesorder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
+                        
                         txtitemcode.Text = "I";
                         txtProductName.Text = "";
                         txtRate.Text = "";
@@ -419,8 +426,9 @@ namespace WindowsFormsApplication1
                         // txtItemCode.Focus();
                         butadditem.Enabled = false;
                         //txtRemoveItem.Focus();
-                        txtQuantity.TabStop = true;
+                        txtQuantity.TabStop = false;
                         txtQuantity.ReadOnly = true;
+                       
                         //}
                         // ls.Clear();
                     }
@@ -869,10 +877,13 @@ namespace WindowsFormsApplication1
 
             if (e.KeyChar == (char)Keys.Enter)
             {
-                if ((txtQuantity.Text == "") || (txtQuantity.Text == "0"))
+                if ((txtQuantity.Text == "0") || (txtQuantity.Text == ""))
                 {
                     MessageBox.Show("Please enter valid quantity!");
+                    txtQuantity.Text = "1";
+                    txtQuantity.SelectionLength = txtQuantity.Text.Length;
                     txtQuantity.Focus();
+                    butadditem.Enabled = true;
                 }
                 else
                 {
@@ -899,12 +910,12 @@ namespace WindowsFormsApplication1
                 {
                     e.Handled = true;
                 }
-                if (txtQuantity.Text == "")
+                /*if (txtQuantity.Text == "")
                 {
                     MessageBox.Show("Please enter valid quantity!");
                     txtQuantity.Text = "";
                     txtAmount.Text = "";
-                }
+                }*/
             }
         }
 
@@ -1269,6 +1280,7 @@ namespace WindowsFormsApplication1
                     txtRate.Text = "";
                     txtQuantity.Text = "";
                     txtAmount.Text = "";
+                    butadditem.Enabled = false;
                     e.Handled = false;
                 }
                 else
@@ -1349,11 +1361,11 @@ namespace WindowsFormsApplication1
                 }
                 if (txtitemcode.Text == "I")
                 {
-                    MessageBox.Show("please enter the itemcode");
-                    txtQuantity.ReadOnly = false;
+                    MessageBox.Show("Please enter valid itemcode!");
+                    txtQuantity.ReadOnly = true;
                     txtitemcode.Focus();
                 }
-
+               
             }
             if (e.KeyChar == (char)Keys.Escape)
             {
@@ -1726,7 +1738,7 @@ namespace WindowsFormsApplication1
                     }
                     double s1 = totalAmount;
                     txttotalammount.Text = s1.ToString("###0.00");
-                    discountamount.Text = "0";
+                    discountamount.Text = "0.00";
                     // double total = Convert.ToDouble(txttotalammount.Text);
                     // double d = Convert.ToDouble(discountamount.Text);
                     // double g = d + total;
@@ -1828,14 +1840,16 @@ namespace WindowsFormsApplication1
 
         private void textBox20_MouseClick(object sender, MouseEventArgs e)
         {
-            
-            textBox20.Text = "";
-            
+            if (textBox20.Text == "0.00")
+            {
+                textBox20.Text = "";
+            }
            
         }
 
         private void textBox20_Leave(object sender, EventArgs e)
         {
+           
             textBox20.Select(textBox20.Text.Length, 0);
             double totalAmount = 0.00;
             counter = 0;
@@ -1869,7 +1883,7 @@ namespace WindowsFormsApplication1
                  textBox20.Text = totaldiscount.ToString("###0.00");
 
             }
-
+           
             
         }
 

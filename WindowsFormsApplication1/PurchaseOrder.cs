@@ -343,6 +343,7 @@ namespace WindowsFormsApplication1
             if ((txtQuanity.Text == "") || (txtQuanity.Text == "0"))
             {
                 MessageBox.Show("Please Enter The Quanity");
+               
                 txtQuanity.Focus();
             }
             else
@@ -1107,8 +1108,8 @@ namespace WindowsFormsApplication1
                          setitemVlue("ItemId", itemCode);
                         if (dt != null && dt.Rows.Count > 0)
                         {                            
-                            txtQuanity.ReadOnly = false;
-                                                          txtQuanity.Text = "1";
+                              txtQuanity.ReadOnly = false;
+                              txtQuanity.Text = "1";
                               int que = Convert.ToInt32(txtQuanity.Text);
                               string purchesprice = "select SalesPrice from ItemPriceDetail where ItemId ='" + txtItemCode.Text + "'";
                               DataTable dt1 = dbMainClass.getDetailByQuery(purchesprice);
