@@ -1142,9 +1142,6 @@ namespace WindowsFormsApplication1
                                             panel2.Visible = false;
                                         }
 
-
-
-
                                         dataGridView1.AllowUserToAddRows = true;
 
                                     }
@@ -3014,6 +3011,8 @@ namespace WindowsFormsApplication1
             Double totaldicount =Convert.ToDouble( txtDiscount.Text);
             txtDiscount.Text = totaldicount.ToString("###0.00");
         }
+
+       
 
        
     }

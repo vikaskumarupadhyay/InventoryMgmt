@@ -214,10 +214,6 @@ ALTER TABLE VendorOrderDetails ALTER COLUMN WithoutTexAmount decimal(18,2)
 go
 ALTER TABLE VendorOrderDetails ALTER COLUMN TotalPrice decimal(18,2)
 go
-ALTER TABLE salesOrderDelivery add WithautTaxamount Money
-go
-ALTER TABLE salesOrderDelivery add totalammount Money
-go
 create table SalesPaymentDetailes(Id int identity primary key,Invoiceid int foreign key references salesOrderDelivery(Delivaryid),CashAmount decimal(18,2),CreditDebitAmount decimal(18,2),CreditDebitBankName varchar(200),CardNumber varchar(200),CardType varchar(200),ChequeAmonut decimal(18,2),ChequeBankName varchar(200),ChequeNumber varchar(200),ChequeDate date,EWalletAmount decimal(18,2),EWalletCompanyname varchar(200),TransactionNumber varchar(200),TransactionDate date,CoupanAmount decimal(18,2),CoupanCompanyname varchar(200),InvoiceAmount decimal(18,2),TotalAmount decimal(18,2),BalanceAmount decimal(18,2),ReturnAmount decimal(18,2),NetAmount decimal(18,2))
 go
 create table AllPaymentDetailes(Id int identity primary key,Invoiceid int foreign key references CustomerOrderDelivery(Deliveryid),CashAmount decimal(18,2),CreditDebitAmount decimal(18,2),CreditDebitBankName varchar(200),CardNumber varchar(200),CardType varchar(200),ChequeAmonut decimal(18,2),ChequeBankName varchar(200),ChequeNumber varchar(200),ChequeDate date,EWalletAmount decimal(18,2),EWalletCompanyname varchar(200),TransactionNumber varchar(200),TransactionDate date,CoupanAmount decimal(18,2),CoupanCompanyname varchar(200),InvoiceAmount decimal(18,2),TotalAmount decimal(18,2),BalanceAmount decimal(18,2),ReturnAmount decimal(18,2),NetAmount decimal(18,2))
@@ -225,11 +221,8 @@ go
 
 ALTER TABLE orderdetails add WithautTaxamount Money
 go
-ALTER TABLE customerorderdescriptions add Discount_Amount float
-
-go
 ALTER TABLE CustomerOrderDelivery add RefNo varchar(200)
-
+go
 ALTER TABLE salesOrderDelivery add RefNo varchar(200)
 go
 ALTER TABLE VendorOrderDesc ALTER COLUMN TotalPrice decimal(18,2)

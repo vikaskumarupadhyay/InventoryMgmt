@@ -833,7 +833,7 @@ namespace WindowsFormsApplication1
 
         private void butSaveButton_Click(object sender, EventArgs e)
         {
-            createnewsave();
+         
             if (txtRefNo.Text != "")
             {
                 counter = 0;
@@ -894,19 +894,20 @@ namespace WindowsFormsApplication1
                     }
                     else if (gridsalesdelivary.Rows.Count != null)
                     {
-                        pnlSalesPayment.Visible = true;
+                        pnlSalesPayment.Visible = false;
                     }
 
 
-                    // pnlSalesPayment.Visible = true;
-                    CmbPageName.SelectedIndex = 0;
-                    CmbCompany.SelectedIndex = 0;
-                    CmbCardType.SelectedIndex = 0;
+                  
                     // }
 
 
                 }
             }
+            pnlSalesPayment.Visible = true;
+            CmbPageName.SelectedIndex = 0;
+            CmbCompany.SelectedIndex = 0;
+            CmbCardType.SelectedIndex = 0;
         }
         /*  gridsalesdelivary.AllowUserToAddRows = false;
 
@@ -1454,6 +1455,7 @@ namespace WindowsFormsApplication1
                         }
                     }
                 }
+            
 
 
 
@@ -1571,6 +1573,7 @@ namespace WindowsFormsApplication1
                                                 crystalReportViewer2.ReportSource = report1;
                                                 crystalReportViewer2.Refresh();
                                                 con.Close();
+                                                return;
                                             }
                                             if (result == System.Windows.Forms.DialogResult.No)
                                             {
@@ -1592,7 +1595,7 @@ namespace WindowsFormsApplication1
                         }
                     }
                 }
-
+            }
 
                 //makeblank();
                 //int value1 = Convert.ToInt32(txtSrNo.Text);
@@ -1602,7 +1605,8 @@ namespace WindowsFormsApplication1
                 //txtcustomercode.Select(txtcustomercode.Text.Length, 0);
 
 
-            }
+            //}
+       
 
 
             if (txtRefNo.Text != "")
