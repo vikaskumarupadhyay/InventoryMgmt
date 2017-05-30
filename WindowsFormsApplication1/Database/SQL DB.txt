@@ -119,7 +119,6 @@ GO
 
 
 
-
 Create table payment(id int identity primary key,invoiceid int foreign key references  salesinvoice(invoiceid),totalammount Decimal,payammount decimal,Remainingammount decimal,paymentmode varchar(300),paymentdate datetime )
 go
 Create table vithautrefrancereceipt(id int identity primary key,CustId varchar(100) foreign key references CustomerDetails(custId),Totalammoun Float,Balanceammount Float,receiptdate datetime )

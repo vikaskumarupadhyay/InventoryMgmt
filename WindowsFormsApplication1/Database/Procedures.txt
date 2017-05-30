@@ -12,7 +12,7 @@ ALTER procedure [dbo].[GetUpdateCounterVender]
 begin
 select top 1 (VenderID)  from dbo.VendorDetails order by  Convert(int,SuBString( venderID,2,(len(venderID)-1))) desc 
 end
-
+go
 create procedure GetUpdateCounterCustomer
  as
 begin
