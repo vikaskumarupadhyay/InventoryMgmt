@@ -1142,9 +1142,6 @@ namespace WindowsFormsApplication1
                                             panel2.Visible = false;
                                         }
 
-
-
-
                                         dataGridView1.AllowUserToAddRows = true;
 
                                     }
@@ -3268,6 +3265,8 @@ namespace WindowsFormsApplication1
                 }
             }
         }
+
+       
 
        
     }

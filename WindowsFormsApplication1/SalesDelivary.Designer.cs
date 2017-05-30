@@ -711,6 +711,7 @@
             this.txtdiccount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtdiccount_MouseClick);
             this.txtdiccount.TextChanged += new System.EventHandler(this.txtdiccount_TextChanged);
             this.txtdiccount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox20_KeyPress);
+            this.txtdiccount.Leave += new System.EventHandler(this.txtdiccount_Leave);
             // 
             // textBox21
             // 
@@ -986,7 +987,6 @@
             this.txtInvoiceAmount.Size = new System.Drawing.Size(113, 23);
             this.txtInvoiceAmount.TabIndex = 1;
             this.txtInvoiceAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtInvoiceAmount.TextChanged += new System.EventHandler(this.txtInvoiceAmount_TextChanged);
             // 
             // label21
             // 

@@ -340,6 +340,14 @@ namespace WindowsFormsApplication1
             //txtQuantity.Enabled = false;
             if (txtRefNo.Text == "")
             {
+                
+                if (addToCartTable.Columns.Contains("ResivQuantity"))
+                {
+                   // addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                    addToCartTable.Columns.RemoveAt(6);
+                }
+
+              
               
                 List<string> ls1 = new List<string>();
                 foreach (DataRow dr3 in addToCartTable.Rows)
@@ -690,6 +698,7 @@ namespace WindowsFormsApplication1
 
         private void salesdelivary_Load(object sender, EventArgs e)
         {
+            txtSrNo.ReadOnly = true;
             txtcustomercode.Select(txtcustomercode.Text.Length, 0);
             txtItemCode.Select(txtItemCode.Text.Length, 0);
             txtdiccount.ReadOnly = true;
@@ -833,6 +842,7 @@ namespace WindowsFormsApplication1
 
         private void butSaveButton_Click(object sender, EventArgs e)
         {
+         
             if (txtRefNo.Text != "")
             {
                 counter = 0;
@@ -893,19 +903,20 @@ namespace WindowsFormsApplication1
                     }
                     else if (gridsalesdelivary.Rows.Count != null)
                     {
-                        pnlSalesPayment.Visible = true;
+                        pnlSalesPayment.Visible = false;
                     }
 
 
-                    // pnlSalesPayment.Visible = true;
-                    CmbPageName.SelectedIndex = 0;
-                    CmbCompany.SelectedIndex = 0;
-                    CmbCardType.SelectedIndex = 0;
+                  
                     // }
 
 
                 }
             }
+            pnlSalesPayment.Visible = true;
+            CmbPageName.SelectedIndex = 0;
+            CmbCompany.SelectedIndex = 0;
+            CmbCardType.SelectedIndex = 0;
         }
         /*  gridsalesdelivary.AllowUserToAddRows = false;
 
@@ -1453,6 +1464,7 @@ namespace WindowsFormsApplication1
                         }
                     }
                 }
+            
 
 
 
@@ -1570,6 +1582,7 @@ namespace WindowsFormsApplication1
                                                 crystalReportViewer2.ReportSource = report1;
                                                 crystalReportViewer2.Refresh();
                                                 con.Close();
+                                                return;
                                             }
                                             if (result == System.Windows.Forms.DialogResult.No)
                                             {
@@ -1591,7 +1604,7 @@ namespace WindowsFormsApplication1
                         }
                     }
                 }
-
+            }
 
                 //makeblank();
                 //int value1 = Convert.ToInt32(txtSrNo.Text);
@@ -1601,7 +1614,8 @@ namespace WindowsFormsApplication1
                 //txtcustomercode.Select(txtcustomercode.Text.Length, 0);
 
 
-            }
+            //}
+       
 
 
             if (txtRefNo.Text != "")
@@ -1911,55 +1925,55 @@ namespace WindowsFormsApplication1
 
         private void gridsalesdelivary_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (txtRefNo.Text == "")
-            {
-                string itemid = gridsalesdelivary.Rows[e.RowIndex].Cells[0].Value.ToString();
-                string selectqurry = "select Ids.ItemName,Ids.ItemCompName,ipd.MrpPrice, ipd.SalesPrice from ItemDetails Ids  join ItemPriceDetail ipd on Ids.ItemId=ipd.ItemId  where Ids.ItemId='" + itemid + "'";
-                DataTable dt = d.getDetailByQuery(selectqurry);
-                string rate = "";
-                foreach (DataRow dr in dt.Rows)
-                {
-                    gridsalesdelivary.Rows[e.RowIndex].Cells[1].Value = dr[0].ToString();
-                    gridsalesdelivary.Rows[e.RowIndex].Cells[2].Value = dr[1].ToString();
-                    gridsalesdelivary.Rows[e.RowIndex].Cells[3].Value = dr[2].ToString();
-                    // gridPurchaseOrder.Rows[e.RowIndex].Cells[5].Value=dr[3].ToString();
+            //if (txtRefNo.Text == "")
+            //{
+            //    string itemid = gridsalesdelivary.Rows[e.RowIndex].Cells[0].Value.ToString();
+            //    string selectqurry = "select Ids.ItemName,Ids.ItemCompName,ipd.MrpPrice, ipd.SalesPrice from ItemDetails Ids  join ItemPriceDetail ipd on Ids.ItemId=ipd.ItemId  where Ids.ItemId='" + itemid + "'";
+            //    DataTable dt = d.getDetailByQuery(selectqurry);
+            //    string rate = "";
+            //    foreach (DataRow dr in dt.Rows)
+            //    {
+            //        gridsalesdelivary.Rows[e.RowIndex].Cells[1].Value = dr[0].ToString();
+            //        gridsalesdelivary.Rows[e.RowIndex].Cells[2].Value = dr[1].ToString();
+            //        gridsalesdelivary.Rows[e.RowIndex].Cells[3].Value = dr[2].ToString();
+            //        // gridPurchaseOrder.Rows[e.RowIndex].Cells[5].Value=dr[3].ToString();
 
-                    rate = dr[3].ToString();
-                }
-                if (rate != "")
-                {
-                    if (gridsalesdelivary.Rows[e.RowIndex].Cells[0].Value != null)
-                    {
-                        int co = gridsalesdelivary.CurrentRow.Index;
-                        DataGridViewRow selectedRow = gridsalesdelivary.Rows[0];
-                        selectedRow.Selected = true;
-                        selectedRow.Cells[4].Selected = true;
-                        //gridPurchaseOrder.CurrentCell = gridPurchaseOrder[gridPurchaseOrder.CurrentCell.ColumnIndex + 2, gridPurchaseOrder.CurrentCell.RowIndex];
-                        //gridPurchaseOrder.Focus();
-                    }
-                    gridsalesdelivary.Rows[e.RowIndex].Cells[4].Value = rate;
-                    string quantity = gridsalesdelivary.Rows[e.RowIndex].Cells[5].Value.ToString();
-                    if (quantity == "")
-                    {
-                        quantity = "0";
-                    }
-                    int q1 = Convert.ToInt32(quantity);
-                    Double rate1 = Convert.ToDouble(rate);
-                    Double price = rate1 * q1;
-                    if (price.ToString() == "")
-                    {
-                        price = 0;
-                    }
-                    gridsalesdelivary.Rows[e.RowIndex].Cells[6].Value = price.ToString();
-                    Double totalammount = Convert.ToDouble(txtTotalAmmount.Text);
-                    Double toat = totalammount + price;
-                    txtTotalAmmount.Text = toat.ToString();
-                }
-                else
-                {
-                    MessageBox.Show("please select your correct row");
-                }
-            }
+            //        rate = dr[3].ToString();
+            //    }
+            //    if (rate != "")
+            //    {
+            //        if (gridsalesdelivary.Rows[e.RowIndex].Cells[0].Value != null)
+            //        {
+            //            int co = gridsalesdelivary.CurrentRow.Index;
+            //            DataGridViewRow selectedRow = gridsalesdelivary.Rows[0];
+            //            selectedRow.Selected = true;
+            //            selectedRow.Cells[4].Selected = true;
+            //            //gridPurchaseOrder.CurrentCell = gridPurchaseOrder[gridPurchaseOrder.CurrentCell.ColumnIndex + 2, gridPurchaseOrder.CurrentCell.RowIndex];
+            //            //gridPurchaseOrder.Focus();
+            //        }
+            //        gridsalesdelivary.Rows[e.RowIndex].Cells[4].Value = rate;
+            //        string quantity = gridsalesdelivary.Rows[e.RowIndex].Cells[5].Value.ToString();
+            //        if (quantity == "")
+            //        {
+            //            quantity = "0";
+            //        }
+            //        int q1 = Convert.ToInt32(quantity);
+            //        Double rate1 = Convert.ToDouble(rate);
+            //        Double price = rate1 * q1;
+            //        if (price.ToString() == "")
+            //        {
+            //            price = 0;
+            //        }
+            //        gridsalesdelivary.Rows[e.RowIndex].Cells[6].Value = price.ToString();
+            //        Double totalammount = Convert.ToDouble(txtTotalAmmount.Text);
+            //        Double toat = totalammount + price;
+            //        txtTotalAmmount.Text = toat.ToString();
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("please select your correct row");
+            //    }
+            //}
 
 
             if (txtRefNo.Text != "")
@@ -2001,11 +2015,11 @@ namespace WindowsFormsApplication1
 
                         foreach (DataGridViewRow row in gridsalesdelivary.Rows)
                         {
-                            gridsalesdelivary.AllowUserToAddRows =false;
-                             string amountValue = row.Cells[row.Cells.Count-1].Value.ToString();
-                                totalValues += Convert.ToDouble(amountValue);
-                            
-                          
+                            gridsalesdelivary.AllowUserToAddRows = false;
+                            string amountValue = row.Cells[row.Cells.Count - 1].Value.ToString();
+                            totalValues += Convert.ToDouble(amountValue);
+
+
                         }
                         txtTotalAmmount.Text = totalValues.ToString("###0.00");
                     }
@@ -2015,26 +2029,26 @@ namespace WindowsFormsApplication1
                         gridsalesdelivary.Rows[e.RowIndex].Cells[6].Value = s.ToString();
                         int g1 = Convert.ToInt32(s);
                         double quantity1 = Convert.ToDouble(a1);
-                            string a = gridsalesdelivary.Rows[e.RowIndex].Cells[6].Value.ToString();
-                            string rate = gridsalesdelivary.Rows[e.RowIndex].Cells[4].Value.ToString();
-                            quantity = Convert.ToInt32(a);
-                            double r = Convert.ToDouble(rate);
-                            double totalammount = quantity * r;
-                            gridsalesdelivary.Rows[e.RowIndex].Cells[7].Value = totalammount.ToString();
-                            //string newquantity = gridsalesdelivary.Rows[e.RowIndex].Cells[3].Value.ToString();
-                            string rate1 = gridsalesdelivary.Rows[e.RowIndex].Cells[4].Value.ToString();
-                            double quantity2 = Convert.ToDouble(a);
-                            double finalquantity = Convert.ToDouble(rate1);
-                            finalquantity = quantity2 - quantity;
-                            double totalq = quantity2 * finalquantity;
-                            double totalammount1 = Convert.ToDouble(txtTotalAmmount.Text);
-                            double t = totalammount1 + totalq;
-                            txtTotalAmmount.Text = totalammount.ToString();
+                        string a = gridsalesdelivary.Rows[e.RowIndex].Cells[6].Value.ToString();
+                        string rate = gridsalesdelivary.Rows[e.RowIndex].Cells[4].Value.ToString();
+                        quantity = Convert.ToInt32(a);
+                        double r = Convert.ToDouble(rate);
+                        double totalammount = quantity * r;
+                        gridsalesdelivary.Rows[e.RowIndex].Cells[7].Value = totalammount.ToString();
+                        //string newquantity = gridsalesdelivary.Rows[e.RowIndex].Cells[3].Value.ToString();
+                        string rate1 = gridsalesdelivary.Rows[e.RowIndex].Cells[4].Value.ToString();
+                        double quantity2 = Convert.ToDouble(a);
+                        double finalquantity = Convert.ToDouble(rate1);
+                        finalquantity = quantity2 - quantity;
+                        double totalq = quantity2 * finalquantity;
+                        double totalammount1 = Convert.ToDouble(txtTotalAmmount.Text);
+                        double t = totalammount1 + totalq;
+                        txtTotalAmmount.Text = totalammount.ToString();
 
-                            double totalValues = 0.0;
+                        double totalValues = 0.0;
 
-                            //txtAmmount.Text = "0";
-                        
+                        //txtAmmount.Text = "0";
+
                     }
                     else
                     {
@@ -2297,13 +2311,19 @@ namespace WindowsFormsApplication1
                     MessageBox.Show("Please enter the customer code first");
                     txtcustomercode.Focus();
                 }
-
+                if (txtItemCode.Text == "I")
+                {
+                    MessageBox.Show("please enter the itemcode");
+                    txtQuantity.ReadOnly = false;
+                    txtItemCode.Focus();
+                    return;
+                }
 
 
 
                 double quantity = Convert.ToDouble(s);
                 // double q = Convert.ToDouble(txtQuantity.Text + "");
-                if (quantity < 0)
+                if (quantity== 0)
                 {
                     MessageBox.Show("quantity not available");
                     txtQuantity.Text = "";
@@ -2359,12 +2379,7 @@ namespace WindowsFormsApplication1
                     tab2();
 
                 }
-                if (txtItemCode.Text == "I")
-                {
-                    MessageBox.Show("please enter the itemcode");
-                    txtQuantity.ReadOnly = false;
-                    txtItemCode.Focus();
-                }
+               
 
             }
             if (e.KeyChar == (char)Keys.Escape)
@@ -2801,20 +2816,22 @@ namespace WindowsFormsApplication1
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
                 addToCartTable.Columns.RemoveAt(6);
+               
                 if (!addToCartTable.Columns.Contains("ResivQuantity"))
                 {
                     addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
                 }
-
                 if (!addToCartTable.Columns.Contains("Amount"))
                 {
                     addToCartTable.Columns.Add(new DataColumn("Amount"));
                 }
+               
                 txtRefNo.ReadOnly = true;
                 string selectquery2 = "select Orderid from salesOrderDelivery where Orderid='" + txtRefNo.Text + "'";
                 DataTable dt1 = d.getDetailByQuery(selectquery2);
                 if (dt1 != null && dt1.Rows != null && dt1.Rows.Count > 0)
                 {
+                    
                     MessageBox.Show("order details is completed");
                     // txtRefNo.Text = "";
                     //gridsalesdelivary.DataSource = "";
@@ -2922,7 +2939,6 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyChar == '\b')
                 {
-                 
                     txtRefNo.ReadOnly = false;
                     makeblank();
 
@@ -3263,7 +3279,7 @@ namespace WindowsFormsApplication1
                     txtwithauttaxamount.Text = s.ToString();
                     double dis = s * totaldiscount / 100;
                     txtdicountamount.Text = dis.ToString("###0.00");
-                    txtdiccount.Text = totaldiscount.ToString("###0.00");
+                   // txtdiccount.Text = totaldiscount.ToString("###0.00");
 
                 }
             }
@@ -3305,16 +3321,94 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void txtInvoiceAmount_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+       
 
         public Color Highlight { get; set; }
 
         private void txtdiccount_MouseClick(object sender, MouseEventArgs e)
         {
             txtdiccount.Text = "";
+        }
+
+        private void txtdiccount_Leave(object sender, EventArgs e)
+        {
+            txtdiccount.Select(txtdiccount.Text.Length, 0);
+            if (txtRefNo.Text == "")
+            {
+                double totalAmount = 0.00;
+                counter = 0;
+                //discountamount.Text = disa.ToString();
+                foreach (DataRow dr in addToCartTable.Rows)
+                {
+
+                    string itemid = dr[0].ToString();
+                    if (ls.Contains(itemid) && gridsalesdelivary.Rows[counter].DefaultCellStyle.Font != null)
+                    {
+                        counter++;
+                        continue;
+                    }
+                    counter++;
+                    totalAmount += Convert.ToDouble(dr[6].ToString());
+
+                }
+                double s = totalAmount;
+
+                string discount = txtdiccount.Text;
+
+
+                double amount = 0;
+
+
+                if (double.TryParse(discount, out amount))
+                {
+                    double totaldiscount = Convert.ToDouble(discount);
+                    totalAmount = totalAmount - ((totalAmount * totaldiscount) / 100);
+                    txtTotalAmmount.Text = totalAmount.ToString("###0.00");
+                    txtwithauttaxamount.Text = s.ToString();
+                    double dis = s * totaldiscount / 100;
+                    txtdicountamount.Text = dis.ToString("###0.00");
+                     txtdiccount.Text = totaldiscount.ToString("###0.00");
+
+                }
+            }
+
+
+            if (txtRefNo.Text != "")
+            {
+                double totalAmount = 0.00;
+
+                counter = 0;
+                foreach (DataRow dr in addToCartTable.Rows)
+                {
+                    string itemid = dr[0].ToString();
+                    if (ls.Contains(itemid) && gridsalesdelivary.Rows[counter].DefaultCellStyle.Font != null)
+                    {
+                        counter++;
+                        continue;
+                    }
+                    totalAmount += Convert.ToDouble(dr[7].ToString());
+                    counter++;
+                }
+                double s1 = totalAmount;
+                string discount1 = txtdiccount.Text;
+
+
+                double amount1 = 0;
+
+                if (double.TryParse(discount1, out amount1))
+                {
+                    double totaldiscount = Convert.ToDouble(discount1);
+                    totalAmount = totalAmount - ((totalAmount * totaldiscount) / 100);
+                    txtTotalAmmount.Text = totalAmount.ToString("###0.00");
+                    txtwithauttaxamount.Text = s1.ToString();
+                    double dis = s1 * totaldiscount / 100;
+                    txtdicountamount.Text = dis.ToString();
+                    txtdiccount.Text = totalAmount.ToString("###0.00");
+
+                }
+            }
+
+
         }
     }
 

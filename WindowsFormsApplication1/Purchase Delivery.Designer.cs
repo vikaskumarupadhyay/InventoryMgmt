@@ -1050,7 +1050,9 @@
             this.txtInvoiceid.TabIndex = 1;
             this.txtInvoiceid.TabStop = false;
             this.txtInvoiceid.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtInvoiceid.TextChanged += new System.EventHandler(this.txtInvoiceid_TextChanged);
+
+           // this.txtInvoiceid.TextChanged += new System.EventHandler(this.txtInvoiceid_TextChanged);
+
             // 
             // label18
             // 
