@@ -482,8 +482,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Database\Delivary Refrence.txt" />
+    <Content Include="Database\DeliveryGridview.txt" />
     <Content Include="Database\Procedures.txt" />
+    <Content Include="Database\Salesorderdelivaryreport.txt" />
+    <Content Include="Database\Salesorderreport.txt" />
+    <Content Include="Database\salesserchdelivary.txt" />
     <Content Include="Database\SQL DB.txt" />
+    <Content Include="Database\VwPurchesOrderDatils.txt" />
     <Content Include="ExcelLibrary.dll" />
   </ItemGroup>
   <ItemGroup>

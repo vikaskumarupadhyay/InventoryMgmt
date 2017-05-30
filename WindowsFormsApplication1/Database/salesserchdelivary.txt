@@ -1,0 +1,211 @@
+USE [SalesMaster]
+GO
+
+/****** Object:  View [dbo].[searchsalesdelivary]    Script Date: 5/30/2017 10:51:05 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE VIEW [dbo].[searchsalesdelivary]
+AS
+SELECT        dbo.CompnayDetails.Name, dbo.CompnayDetails.Address, dbo.CompnayDetails.City, dbo.CompnayDetails.State, dbo.CompnayDetails.Zip, 
+                         dbo.CompnayDetails.Country, dbo.CompnayDetails.Email, dbo.CompnayDetails.WebAddress, dbo.CompnayDetails.Phone, dbo.CompnayDetails.Mobile, 
+                         dbo.CompnayDetails.Fax, dbo.CompnayDetails.PANNO, dbo.CompnayDetails.VATNO, dbo.CompnayDetails.CSTNO, dbo.CompnayDetails.ServiceTaxAmmount, 
+                         dbo.CompnayDetails.ExciseTaxAmmount, dbo.CompnayDetails.GSTTaxAmmount, dbo.CustomerDetails.CustName, dbo.CustomerDetails.CustCompName, 
+                         dbo.CustomerDetails.CustAddress, dbo.CustomerDetails.CustCity, dbo.CustomerDetails.CustState, dbo.CustomerDetails.CustZip, dbo.CustomerDetails.CustCountry, 
+                         dbo.CustomerDetails.CustEmail, dbo.CustomerDetails.CustWebAddress, dbo.CustomerDetails.CustPhone, dbo.CustomerDetails.CustMobile, 
+                         dbo.CustomerDetails.CustFax, dbo.CustomerDetails.CustPanNo, dbo.CustomerDetails.CustVatNo, dbo.CustomerDetails.CustCstNo, 
+                         dbo.CustomerDetails.CustServicetaxRegnNo, dbo.CustomerDetails.CustExciseRegnNo, dbo.CustomerDetails.Gstregnno, dbo.customerorderdescriptions.ItemId, 
+                         dbo.customerorderdescriptions.orderid, dbo.customerorderdescriptions.price, dbo.customerorderdescriptions.quantity, dbo.customerorderdescriptions.totalammount, 
+                         dbo.ItemDetails.ItemName, dbo.ItemPriceDetail.MrpPrice, dbo.ItemPriceDetail.Margin, dbo.orderdetails.totalammount AS Expr1, dbo.orderdetails.Discount, 
+                         dbo.orderdetails.Discountamount, dbo.orderdetails.Tax, dbo.orderdetails.Taxamount, dbo.orderdetails.WithautTaxamount, dbo.salesOrderDelivery.Delivaryid, 
+                         dbo.salesOrderDelivery.DeliveryDate, dbo.CustomerDetails.custId, dbo.ItemDetails.ItemCompName
+FROM            dbo.salesOrderDelivery INNER JOIN
+                         dbo.ItemDetails INNER JOIN
+                         dbo.customerorderdescriptions ON dbo.ItemDetails.ItemId = dbo.customerorderdescriptions.ItemId INNER JOIN
+                         dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId INNER JOIN
+                         dbo.orderdetails ON dbo.customerorderdescriptions.orderid = dbo.orderdetails.orderid INNER JOIN
+                         dbo.CustomerDetails ON dbo.orderdetails.custid = dbo.CustomerDetails.custId ON dbo.salesOrderDelivery.Orderid = dbo.orderdetails.orderid CROSS JOIN
+                         dbo.CompnayDetails
+
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane1', @value=N'[0E232FF0-B466-11cf-A24F-00AA00A3EFFF, 1.00]
+Begin DesignProperties = 
+   Begin PaneConfigurations = 
+      Begin PaneConfiguration = 0
+         NumPanes = 4
+         Configuration = "(H (1[52] 4[10] 2[21] 3) )"
+      End
+      Begin PaneConfiguration = 1
+         NumPanes = 3
+         Configuration = "(H (1 [50] 4 [25] 3))"
+      End
+      Begin PaneConfiguration = 2
+         NumPanes = 3
+         Configuration = "(H (1 [50] 2 [25] 3))"
+      End
+      Begin PaneConfiguration = 3
+         NumPanes = 3
+         Configuration = "(H (4 [30] 2 [40] 3))"
+      End
+      Begin PaneConfiguration = 4
+         NumPanes = 2
+         Configuration = "(H (1 [56] 3))"
+      End
+      Begin PaneConfiguration = 5
+         NumPanes = 2
+         Configuration = "(H (2 [66] 3))"
+      End
+      Begin PaneConfiguration = 6
+         NumPanes = 2
+         Configuration = "(H (4 [50] 3))"
+      End
+      Begin PaneConfiguration = 7
+         NumPanes = 1
+         Configuration = "(V (3))"
+      End
+      Begin PaneConfiguration = 8
+         NumPanes = 3
+         Configuration = "(H (1[56] 4[18] 2) )"
+      End
+      Begin PaneConfiguration = 9
+         NumPanes = 2
+         Configuration = "(H (1 [75] 4))"
+      End
+      Begin PaneConfiguration = 10
+         NumPanes = 2
+         Configuration = "(H (1[66] 2) )"
+      End
+      Begin PaneConfiguration = 11
+         NumPanes = 2
+         Configuration = "(H (4 [60] 2))"
+      End
+      Begin PaneConfiguration = 12
+         NumPanes = 1
+         Configuration = "(H (1) )"
+      End
+      Begin PaneConfiguration = 13
+         NumPanes = 1
+         Configuration = "(V (4))"
+      End
+      Begin PaneConfiguration = 14
+         NumPanes = 1
+         Configuration = "(V (2))"
+      End
+      ActivePaneConfig = 0
+   End
+   Begin DiagramPane = 
+      Begin Origin = 
+         Top = 0
+         Left = 0
+      End
+      Begin Tables = 
+         Begin Table = "salesOrderDelivery"
+            Begin Extent = 
+               Top = 138
+               Left = 475
+               Bottom = 267
+               Right = 645
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "ItemDetails"
+            Begin Extent = 
+               Top = 6
+               Left = 729
+               Bottom = 135
+               Right = 907
+            End
+            DisplayFlags = 280
+            TopColumn = 2
+         End
+         Begin Table = "customerorderdescriptions"
+            Begin Extent = 
+               Top = 6
+               Left = 521
+               Bottom = 135
+               Right = 691
+            End
+            DisplayFlags = 280
+            TopColumn = 2
+         End
+         Begin Table = "ItemPriceDetail"
+            Begin Extent = 
+               Top = 138
+               Left = 38
+               Bottom = 267
+               Right = 208
+            End
+            DisplayFlags = 280
+            TopColumn = 1
+         End
+         Begin Table = "orderdetails"
+            Begin Extent = 
+               Top = 138
+               Left = 246
+               Bottom = 267
+               Right = 437
+            End
+            DisplayFlags = 280
+            TopColumn = 5
+         End
+         Begin Table = "CustomerDetails"
+            Begin Extent = 
+               Top = 6
+               Left = 275
+               Bottom = 135
+               Right = 483
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "CompnayDetails"
+            Begin Extent = 
+               Top = 6
+               Left = 38
+               Bottom = 135
+               Rig' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'searchsalesdelivary'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane2', @value=N'ht = 237
+            End
+            DisplayFlags = 280
+            TopColumn = 19
+         End
+      End
+   End
+   Begin SQLPane = 
+   End
+   Begin DataPane = 
+      Begin ParameterDefaults = ""
+      End
+   End
+   Begin CriteriaPane = 
+      Begin ColumnWidths = 11
+         Column = 1440
+         Alias = 900
+         Table = 1170
+         Output = 720
+         Append = 1400
+         NewValue = 1170
+         SortType = 1350
+         SortOrder = 1410
+         GroupBy = 1350
+         Filter = 1350
+         Or = 1350
+         Or = 1350
+         Or = 1350
+      End
+   End
+End
+' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'searchsalesdelivary'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPaneCount', @value=2 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'searchsalesdelivary'
+GO
+
+

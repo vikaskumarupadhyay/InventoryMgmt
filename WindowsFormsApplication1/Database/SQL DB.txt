@@ -124,7 +124,7 @@ Create table payment(id int identity primary key,invoiceid int foreign key refer
 go
 Create table vithautrefrancereceipt(id int identity primary key,CustId varchar(100) foreign key references CustomerDetails(custId),Totalammoun Float,Balanceammount Float,receiptdate datetime )
 
-
+go
 
 alter table VendorDetails add vServiceTaxRegnNo varchar(100)
 go
@@ -150,12 +150,17 @@ Sp_rename 'VendorDetails.vOther','vCstNo'
 
 
 alter table CustomerDetails add ServicetaxregnNo varchar(200)
+go
 alter table CustomerDetails add Exciseregnno varchar (200)
-
+go
 alter table CustomerDetails add Gstregnno varchar (200)
+go
 alter table orderdetails add Discount float
+go
 alter table orderdetails add Discountamount float
+go
 alter table orderdetails add Tax float
+go
 alter table orderdetails add Taxamount float
 
 
@@ -175,25 +180,28 @@ alter table orderdetails add Taxamount float
  
 
 
- 
+  create table CompnayTex(TexId varchar(100) primary key,TexName varchar(200),TexAmount decimal ,TexDescription varchar(200))
+   go
  create table CompnayDetails(CompnayId varchar(200)  primary key,OnerName varchar(200),Name varchar(1000),Address varchar(1000),City varchar(100), State varchar(100),Zip varchar(100),Country varchar(50),Email varchar(250), WebAddress varchar(50),Phone varchar(15),Mobile varchar(15),Fax varchar(15),PANNO varchar(200),VATNO varchar(200),CSTNO varchar(200),ServiceTaxAmmount decimal,ExciseTaxAmmount decimal,GSTTaxAmmount decimal,Description varchar(500),VAT decimal,CST decimal,GST decimal,TexId varchar(100) foreign key references CompnayTex(TexId), Isactive bit,RagistrationDate datetime)
- 
- create table CompnayTex(TexId varchar(100) primary key,TexName varchar(200),TexAmount decimal ,TexDescription varchar(200))
- 
+
+
+ go
  alter table CompnayDetails Alter column ServiceTaxAmmount varchar(200)
-
+ go
 alter table CompnayDetails Alter column ExciseTaxAmmount varchar(200)
-
+go
 alter table CompnayDetails Alter column GSTTaxAmmount varchar(200)
-
+go
  ALTER TABLE CompnayDetails DROP COLUMN VAT
-
+ go
 ALTER TABLE CompnayDetails DROP COLUMN CST
-
+go
 ALTER TABLE CompnayDetails DROP COLUMN GST
-
+go
 ALTER TABLE CompnayTex ALTER COLUMN TexAmount decimal(18,2)
+go
 ALTER TABLE VendorAccountDetails ALTER COLUMN vOpeningBalance decimal(18,2)
+go
 ALTER TABLE VendorAccountDetails ALTER COLUMN vCurrentBalance decimal(18,2)
 
 Sp_rename 'VendorOrderDetails.CST','DisAmount'
@@ -205,31 +213,35 @@ go
 ALTER TABLE VendorOrderDetails ALTER COLUMN WithoutTexAmount decimal(18,2)
 go
 ALTER TABLE VendorOrderDetails ALTER COLUMN TotalPrice decimal(18,2)
-
+go
 ALTER TABLE salesOrderDelivery add WithautTaxamount Money
+go
 ALTER TABLE salesOrderDelivery add totalammount Money
-
+go
 create table SalesPaymentDetailes(Id int identity primary key,Invoiceid int foreign key references salesOrderDelivery(Delivaryid),CashAmount decimal(18,2),CreditDebitAmount decimal(18,2),CreditDebitBankName varchar(200),CardNumber varchar(200),CardType varchar(200),ChequeAmonut decimal(18,2),ChequeBankName varchar(200),ChequeNumber varchar(200),ChequeDate date,EWalletAmount decimal(18,2),EWalletCompanyname varchar(200),TransactionNumber varchar(200),TransactionDate date,CoupanAmount decimal(18,2),CoupanCompanyname varchar(200),InvoiceAmount decimal(18,2),TotalAmount decimal(18,2),BalanceAmount decimal(18,2),ReturnAmount decimal(18,2),NetAmount decimal(18,2))
-
+go
 create table AllPaymentDetailes(Id int identity primary key,Invoiceid int foreign key references CustomerOrderDelivery(Deliveryid),CashAmount decimal(18,2),CreditDebitAmount decimal(18,2),CreditDebitBankName varchar(200),CardNumber varchar(200),CardType varchar(200),ChequeAmonut decimal(18,2),ChequeBankName varchar(200),ChequeNumber varchar(200),ChequeDate date,EWalletAmount decimal(18,2),EWalletCompanyname varchar(200),TransactionNumber varchar(200),TransactionDate date,CoupanAmount decimal(18,2),CoupanCompanyname varchar(200),InvoiceAmount decimal(18,2),TotalAmount decimal(18,2),BalanceAmount decimal(18,2),ReturnAmount decimal(18,2),NetAmount decimal(18,2))
-
+go
 
 ALTER TABLE orderdetails add WithautTaxamount Money
-
+go
 ALTER TABLE customerorderdescriptions add Discount_Amount float
 
-
+go
 ALTER TABLE CustomerOrderDelivery add RefNo varchar(200)
 
 ALTER TABLE salesOrderDelivery add RefNo varchar(200)
-
+go
 ALTER TABLE VendorOrderDesc ALTER COLUMN TotalPrice decimal(18,2)
-
+go
 ALTER TABLE ItemPriceDetail ALTER COLUMN SalesPrice decimal(18,2)
-
+go
 ALTER TABLE ItemPriceDetail ALTER COLUMN MrpPrice decimal(18,2)
+go
 ALTER TABLE VendorOrderDesc ALTER COLUMN Price decimal(18,2)
+go
 ALTER TABLE customerorderdescriptions ALTER COLUMN price decimal(18,2)
+go
 ALTER TABLE customerorderdescriptions ALTER COLUMN totalammount decimal(18,2)
  
 
