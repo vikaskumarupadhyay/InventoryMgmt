@@ -833,6 +833,7 @@ namespace WindowsFormsApplication1
 
         private void butSaveButton_Click(object sender, EventArgs e)
         {
+            createnewsave();
             if (txtRefNo.Text != "")
             {
                 counter = 0;
@@ -3305,10 +3306,7 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void txtInvoiceAmount_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+       
 
         public Color Highlight { get; set; }
 
