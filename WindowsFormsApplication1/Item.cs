@@ -514,41 +514,25 @@ namespace WindowsFormsApplication1
         }
         private void txtItemMrp_KeyPress(object sender, KeyPressEventArgs e)
         {
-            char ch = e.KeyChar;
-            if (ch == 46 && txtItemMrp.Text.IndexOf('.') != -1)
+            if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                e.Handled = true;
-                return;
-            }
-            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
-            {
-                e.Handled = true;
-            }
-           /*if (Char.IsNumber(e.KeyChar) || Char.IsPunctuation(e.KeyChar))
-            {
-                e.Handled = false;
+                if (txtItemMrp.Text.IndexOf('.') != -1 && txtItemMrp.Text.Split('.')[1].Length == 2)
+                {
+                    //MessageBox.Show("The maximum decimal points are 2!");
+                    e.Handled = true;
+                }
             }
             else
             {
                 if (e.KeyChar == '\b')
                 {
-                    
                     e.Handled = false;
                 }
                 else
                 {
                     e.Handled = true;
                 }
-            }*/
-           
-            //if (txtItemMrp.Text == "")
-            //{
-            //    txtItemMrp.Text = "0";
-            //}
-            //int pPrice = Convert.ToInt32(txtItemPrice.Text);
-            //int mrp = Convert.ToInt32(txtItemMrp.Text);
-            //int totelmrp = mrp - pPrice;
-            //txtItemMargin.Text = totelmrp.ToString();
+            }
 
         }
 
@@ -697,7 +681,11 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                e.Handled = false;
+                if (txtItemSalesPrice.Text.IndexOf('.') != -1 && txtItemSalesPrice.Text.Split('.')[1].Length == 2)
+                {
+                    //MessageBox.Show("The maximum decimal points are 2!");
+                    e.Handled = true;
+                }
             }
             else
             {
@@ -714,20 +702,13 @@ namespace WindowsFormsApplication1
 
         private void txtItemPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
-            char ch = e.KeyChar;
-            if (ch == 46 && txtItemPrice.Text.IndexOf('.') != -1)
+            if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                e.Handled = true;
-                return;
-            }
-            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
-            {
-                e.Handled = true;
-            }
-
-            /*if (Char.IsNumber(e.KeyChar) || Char.IsPunctuation(e.KeyChar))
-            {
-                e.Handled = false;
+                if (txtItemPrice.Text.IndexOf('.') != -1 && txtItemPrice.Text.Split('.')[1].Length == 2)
+                {
+                    //MessageBox.Show("The maximum decimal points are 2!");
+                    e.Handled = true;
+                }
             }
             else
             {
@@ -739,52 +720,54 @@ namespace WindowsFormsApplication1
                 {
                     e.Handled = true;
                 }
-            }*/
+            }
         }
 
         private void txtItemPrice_Leave(object sender, EventArgs e)
         {
-            decimal x;
-            if (decimal.TryParse(txtItemPrice.Text, out x))
-            {
-                if (txtItemPrice.Text.IndexOf('.') != -1 && txtItemPrice.Text.Split('.')[1].Length > 2)
-                {
-                    MessageBox.Show("The maximum decimal points are 2!");
-                    txtItemPrice.Focus();
-                }
-                else txtItemPrice.Text = x.ToString("0.00");
-            }
-            else
-            {
-                txtItemPrice.Text = "0.00";
-                //MessageBox.Show("Data invalid!");
-                //txtVenderOpeningBal.Focus();
-            }
-            /*if (txtItemPrice.Text == "")
-            {
-                txtItemPrice.Text = "0";
-            }*/
+            //decimal x;
+            //if (decimal.TryParse(txtItemPrice.Text, out x))
+            //{
+            //    if (txtItemPrice.Text.IndexOf('.') != -1 && txtItemPrice.Text.Split('.')[1].Length > 2)
+            //    {
+            //        MessageBox.Show("The maximum decimal points are 2!");
+            //        txtItemPrice.Focus();
+            //    }
+            //    else txtItemPrice.Text = x.ToString("0.00");
+            //}
+            //else
+            //{
+            //    txtItemPrice.Text = "0.00";
+            //    //MessageBox.Show("Data invalid!");
+            //    //txtVenderOpeningBal.Focus();
+            //}
+            ///*if (txtItemPrice.Text == "")
+            //{
+            //    txtItemPrice.Text = "0";
+            //}*/
 
         }
 
         private void txtItemSalesPrice_Leave(object sender, EventArgs e)
         {
-            decimal x;
-            if (decimal.TryParse(txtItemSalesPrice.Text, out x))
-            {
-                if (txtItemSalesPrice.Text.IndexOf('.') != -1 && txtItemSalesPrice.Text.Split('.')[1].Length > 2)
-                {
-                    MessageBox.Show("The maximum decimal points are 2!");
-                    txtItemSalesPrice.Focus();
-                }
-                else txtItemSalesPrice.Text = x.ToString("0.00");
-            }
-            else
-            {
-                txtItemSalesPrice.Text = "0.00";
-                //MessageBox.Show("Data invalid!");
-                //txtVenderOpeningBal.Focus();
-            }
+            //decimal x;
+            //if (decimal.TryParse(txtItemSalesPrice.Text, out x))
+            //{
+            //    if (txtItemSalesPrice.Text.IndexOf('.') != -1 && txtItemSalesPrice.Text.Split('.')[1].Length > 2)
+            //    {
+            //        MessageBox.Show("The maximum decimal points are 2!");
+            //        txtItemSalesPrice.Focus();
+            //        Double d = Convert.ToDouble(txtItemSalesPrice.Text);
+            //        txtItemSalesPrice.Text = d.ToString("##0.00");
+            //    }
+            //    else txtItemSalesPrice.Text = x.ToString("0.00");
+            //}
+            //else
+            //{
+            //    txtItemSalesPrice.Text = "0.00";
+            //    //MessageBox.Show("Data invalid!");
+            //    //txtVenderOpeningBal.Focus();
+            //}
             /*if (txtItemSalesPrice.Text == "")
             {
                 txtItemSalesPrice.Text = "0";
@@ -957,22 +940,22 @@ namespace WindowsFormsApplication1
         private void txtItemMargin_TextChanged(object sender, EventArgs e)
         {
 
-            decimal x;
-            if (decimal.TryParse(txtItemMargin.Text, out x))
-            {
-                if (txtItemMargin.Text.IndexOf('.') != -1 && txtItemMargin.Text.Split('.')[1].Length > 2)
-                {
-                    MessageBox.Show("The maximum decimal points are 2!");
-                    txtItemPrice.Focus();
-                }
-                else txtItemMargin.Text = x.ToString("0.00");
-            }
-            else
-            {
-                txtItemMargin.Text = "0.00";
-                //MessageBox.Show("Data invalid!");
-                //txtVenderOpeningBal.Focus();
-            }
+            //decimal x;
+            //if (decimal.TryParse(txtItemMargin.Text, out x))
+            //{
+            //    if (txtItemMargin.Text.IndexOf('.') != -1 && txtItemMargin.Text.Split('.')[1].Length > 2)
+            //    {
+            //        MessageBox.Show("The maximum decimal points are 2!");
+            //        txtItemPrice.Focus();
+            //    }
+            //    else txtItemMargin.Text = x.ToString("0.00");
+            //}
+            //else
+            //{
+            //    txtItemMargin.Text = "0.00";
+            //    //MessageBox.Show("Data invalid!");
+            //    //txtVenderOpeningBal.Focus();
+            //}
         }
 
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
@@ -980,6 +963,29 @@ namespace WindowsFormsApplication1
             if (e.KeyCode == Keys.Enter)
             {
                 e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtItemMargin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
+            {
+                if (txtItemMargin.Text.IndexOf('.') != -1 && txtItemMargin.Text.Split('.')[1].Length == 2)
+                {
+                    //MessageBox.Show("The maximum decimal points are 2!");
+                    e.Handled = true;
+                }
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
             }
         }
 

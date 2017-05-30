@@ -282,6 +282,7 @@
             this.txtItemMargin.Text = "0.00";
             this.txtItemMargin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtItemMargin.TextChanged += new System.EventHandler(this.txtItemMargin_TextChanged);
+            this.txtItemMargin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemMargin_KeyPress);
             // 
             // textBox11
             // 

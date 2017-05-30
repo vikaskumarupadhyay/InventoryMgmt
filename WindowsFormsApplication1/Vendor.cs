@@ -328,40 +328,28 @@ namespace WindowsFormsApplication1
 
         private void txtVenderOpeningBal_KeyPress(object sender, KeyPressEventArgs e)
         {
-            char ch = e.KeyChar;
-            if (ch == 46 && txtVenderOpeningBal.Text.IndexOf('.') != -1)
+           if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                e.Handled = true;
-                return;
-            }
-            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
-            {
-                e.Handled = true;
-            }
-
-            //MessageBox.Show(Char.GetNumericValue(e.KeyChar).ToString());
-            //MessageBox.Show(e.KeyChar.);
-            /*string value = txtVenderOpeningBal.Text;
-            bool moreThanOneDecimalChar = false;
-            int g = 0;
-            for (int a = 0; a < value.Length; a++)
-            {
-                if (value[a] == '.')
+                if (txtVenderOpeningBal.Text.IndexOf('.') != -1 && txtVenderOpeningBal.Text.Split('.')[1].Length == 2)
                 {
-                    g++;
+                    //MessageBox.Show("The maximum decimal points are 2!");
+                    e.Handled = true;
                 }
             }
-            if (g == 1)
+            else
             {
-                moreThanOneDecimalChar = true;
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
             }
-           
-             if (Char.IsLetter(e.KeyChar) || (moreThanOneDecimalChar && e.KeyChar == '.') || Char.IsPunctuation(e.KeyChar))
-            {
-                e.Handled = true;
 
-        }
-
+        //}
+/*
         private void txtVenderOpeningBal_TextChanged(object sender, EventArgs e)
         {
 

@@ -540,6 +540,7 @@
             this.txtTotalAmount.Text = "0.00";
             this.txtTotalAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtTotalAmount.TextChanged += new System.EventHandler(this.txtTotalAmount_TextChanged);
+            this.txtTotalAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTotalAmount_KeyPress);
             // 
             // textBox15
             // 
@@ -811,6 +812,7 @@
             this.TextTaxAmmount.Name = "TextTaxAmmount";
             this.TextTaxAmmount.Size = new System.Drawing.Size(100, 20);
             this.TextTaxAmmount.TabIndex = 66;
+            this.TextTaxAmmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextTaxAmmount_KeyPress);
             // 
             // DisAmmount
             // 
@@ -819,6 +821,7 @@
             this.DisAmmount.Size = new System.Drawing.Size(100, 20);
             this.DisAmmount.TabIndex = 67;
             this.DisAmmount.TextChanged += new System.EventHandler(this.DisAmmount_TextChanged);
+            this.DisAmmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DisAmmount_KeyPress);
             // 
             // txtwithautaxamount
             // 
@@ -826,6 +829,7 @@
             this.txtwithautaxamount.Name = "txtwithautaxamount";
             this.txtwithautaxamount.Size = new System.Drawing.Size(100, 20);
             this.txtwithautaxamount.TabIndex = 68;
+            this.txtwithautaxamount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtwithautaxamount_KeyPress);
             // 
             // textBox1
             // 

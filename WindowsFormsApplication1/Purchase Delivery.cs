@@ -1168,6 +1168,7 @@ namespace WindowsFormsApplication1
             }
              if (txtRef.Text != "")
             {
+                int count = 0;
                 string updateQurry1 = "update VendorOrderDetails set venderId='" + textVendercod.Text + "',TotalPrice='" + txttotalAmount.Text + "',Discount='" + txtDiscount.Text + "',DisAmount='" + txtDisAmount.Text + "',TextTaxAmmount='" + txtTaxAmount.Text + "' where Orderid='" + txtRef.Text + "'";
                 int insertedRows3 = dbMainClass.saveDetails(updateQurry1);
                 if (insertedRows3 > 0)
@@ -1179,6 +1180,12 @@ namespace WindowsFormsApplication1
                         DataGridViewRow currentRow1 = call1[c];
                         DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
                         string itid = cellCollection1[0].Value.ToString();
+                        //if (ls.Contains(itid) && dataGridView1.Rows[count].DefaultCellStyle.Font != null)
+                        //{
+                        //    count++;
+                        //    continue;
+                        //}
+                        //count++;
                         string que = cellCollection1[5].Value.ToString();
                         string quent = cellCollection1[6].Value.ToString();
 
@@ -1220,6 +1227,12 @@ namespace WindowsFormsApplication1
                             DataGridViewRow currentRow = RowCollection[a];
                             DataGridViewCellCollection cellCollection = currentRow.Cells;
                             string txtItemCode = cellCollection[0].Value.ToString();
+                            if (ls.Contains(txtItemCode) && dataGridView1.Rows[count].DefaultCellStyle.Font != null)
+                            {
+                                count++;
+                                continue;
+                            }
+                            count++;
                             string txtRate = cellCollection[4].Value.ToString();
                             string txtQuanity = cellCollection[6].Value.ToString();
                             string txtAmoun = cellCollection[7].Value.ToString();
@@ -1231,6 +1244,7 @@ namespace WindowsFormsApplication1
                             sf1.Add(Query);
 
                         }
+                       
                         int insertedRows1 = dbMainClass.saveDetails(sf1);
                         if (insertedRows1 > 0)
                         {
@@ -1448,92 +1462,111 @@ namespace WindowsFormsApplication1
        
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                button4.Enabled = true;
-                txtItemCode.Focus();
-                addToCartTable.Columns.RemoveAt(6);
-                if (!addToCartTable.Columns.Contains("ResivQuantity"))
+                if (txtRef.Text == "")
                 {
-                    addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                    MessageBox.Show("please enter the Refence Number");
+                    txtRef.Focus();
                 }
-
-                if (!addToCartTable.Columns.Contains("Amount"))
-                {
-                    addToCartTable.Columns.Add(new DataColumn("Amount"));
-                }
-                txtRef.ReadOnly = true;
-                string dilqurry = "select Orderid from CustomerOrderDelivery where Orderid ='" + txtRef.Text + "'";
-                DataTable dildt = dbMainClass.getDetailByQuery(dilqurry);
-                if (dildt != null && dildt.Rows != null && dildt.Rows.Count > 0)
-                {
-                    //button5.Enabled = false;
-
-                    MessageBox.Show("This Order completed");
-                    txtRef.Text = "";
-                    textVendercod.Focus();
-                    textVendercod.Select(textVendercod.Text.Length, 0);
-
-                }
-
-
                 else
                 {
-                    button5.Enabled = true;
-                    decimal totel1 = 0;
-                    string select = "select vo.Orderid,vo.venderId,vod.ItemId,vo.Discount from VendorOrderDesc vod join VendorOrderDetails vo on vod.Orderid=vo.Orderid where vo.Orderid ='" + txtRef.Text + "'";
-                    DataTable dt = dbMainClass.getDetailByQuery(select);
-                    //string dis = "";
-                    if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
+                    string dilqurry1 = "select Orderid from VendorOrderDetails where Orderid ='" + txtRef.Text + "'";
+                    DataTable dildt2 = dbMainClass.getDetailByQuery(dilqurry1);
+                    if (dildt2 != null && dildt2.Rows != null)// && dildt2.Rows.Count > 0)
                     {
-                        DataRow dr = dt.Rows[0];
-                        string a = dr[1].ToString();
-                        string dis = dr[3].ToString();
-                        txtdis.Text = dis;
-                        string select1 = "select venderId,vName,vCompName,vAddress ,vPhone,vMobile,vFax from VendorDetails where venderId='" + a + "'";
-                        SetVendor(select1);
-                        string selectqurry1 = "select vodd.ItemId,td.ItemName,td.ItemCompName,ipq.MrpPrice, vodd.Quantity,vodd.Price,vodd.TotalPrice,vod.TotalPrice from VendorOrderDetails vod join VendorOrderDesc vodd on vod.Orderid=vodd.Orderid join ItemDetails td on td.ItemId=vodd.ItemId join ItemPriceDetail ipq on td.ItemId=ipq.ItemId where vod. Orderid ='" + txtRef.Text + "'";
-                        DataTable dt2 = dbMainClass.getDetailByQuery(selectqurry1);
-                        int totalRowCount = addToCartTable.Rows.Count;
-                        for (int rowCount = 0; rowCount < totalRowCount; rowCount++)
+                        MessageBox.Show("This Order Is Not Available");
+                    }
+                    else
+                    {
+                        button4.Enabled = true;
+                        txtItemCode.Focus();
+                        addToCartTable.Columns.RemoveAt(6);
+                        if (!addToCartTable.Columns.Contains("ResivQuantity"))
                         {
-                            addToCartTable.Rows.RemoveAt(0);
+                            addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
                         }
 
-                        for (int c = 0; c < dt2.Rows.Count; c++)
+                        if (!addToCartTable.Columns.Contains("Amount"))
                         {
-                            DataRow dr2 = dt2.Rows[c];
-                            string tItemCode = dr2[0].ToString();
-                            string txtitemNmae = dr2[1].ToString();
-                            string CompanyName = dr2[2].ToString();
-                            string MrpPrice = dr2[3].ToString();
-                            string txtRate = dr2[5].ToString();
-                            string txtQuanity = dr2[4].ToString();
-                            string txtAmoun = dr2[6].ToString();
-                            string txtitemNmea = dr2[6].ToString();
-                            //tot = txtitemNmea;
-                            decimal amt = Convert.ToDecimal(txtitemNmea);
-                            totel1 = totel1 + amt;
-                            dr2 = addToCartTable.NewRow();
-                            dr2[0] = tItemCode.Trim();
-                            dr2[1] = txtitemNmae.Trim();
-                            dr2[2] = CompanyName.Trim();
-                            dr2[3] = MrpPrice.Trim();
-                            dr2[4] = txtRate.Trim();
-                            dr2[5] = txtQuanity.Trim();
-                            dr2[6] = txtQuanity.Trim();
-                            dr2[7] = txtAmoun.Trim();
-                            // dr2[5] = textBox1.Text.Trim();
-                            addToCartTable.Rows.Add(dr2);
+                            addToCartTable.Columns.Add(new DataColumn("Amount"));
                         }
-                        dataGridView1.DataSource = addToCartTable;
-                        txttotalAmount.Text = totel1.ToString();
-                    }
-                    if (dataGridView1.Rows.Count > 0)
-                    {
-                        txtDiscount.ReadOnly = true;
-                    }
-                    if (dataGridView1.Rows.Count > 1)
-                    {
-                        txtDiscount.ReadOnly = false;
+                        txtRef.ReadOnly = true;
+                        string dilqurry = "select Orderid from CustomerOrderDelivery where Orderid ='" + txtRef.Text + "'";
+                        DataTable dildt = dbMainClass.getDetailByQuery(dilqurry);
+                        if (dildt != null && dildt.Rows != null && dildt.Rows.Count > 0)
+                        {
+                            //button5.Enabled = false;
+
+                            MessageBox.Show("This Order completed");
+                            //addToCartTable.Columns.RemoveAt(6);
+                            txtRef.Text = "";
+                            textVendercod.Focus();
+                            textVendercod.Select(textVendercod.Text.Length, 0);
+                            addToCartTable.Columns.RemoveAt(6);
+
+                        }
+
+
+                        else
+                        {
+                            button5.Enabled = true;
+                            decimal totel1 = 0;
+                            string select = "select vo.Orderid,vo.venderId,vod.ItemId,vo.Discount from VendorOrderDesc vod join VendorOrderDetails vo on vod.Orderid=vo.Orderid where vo.Orderid ='" + txtRef.Text + "'";
+                            DataTable dt = dbMainClass.getDetailByQuery(select);
+                            //string dis = "";
+                            if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
+                            {
+                                DataRow dr = dt.Rows[0];
+                                string a = dr[1].ToString();
+                                string dis = dr[3].ToString();
+                                txtdis.Text = dis;
+                                string select1 = "select venderId,vName,vCompName,vAddress ,vPhone,vMobile,vFax from VendorDetails where venderId='" + a + "'";
+                                SetVendor(select1);
+                                string selectqurry1 = "select vodd.ItemId,td.ItemName,td.ItemCompName,ipq.MrpPrice, vodd.Quantity,vodd.Price,vodd.TotalPrice,vod.TotalPrice from VendorOrderDetails vod join VendorOrderDesc vodd on vod.Orderid=vodd.Orderid join ItemDetails td on td.ItemId=vodd.ItemId join ItemPriceDetail ipq on td.ItemId=ipq.ItemId where vod. Orderid ='" + txtRef.Text + "'";
+                                DataTable dt2 = dbMainClass.getDetailByQuery(selectqurry1);
+                                int totalRowCount = addToCartTable.Rows.Count;
+                                for (int rowCount = 0; rowCount < totalRowCount; rowCount++)
+                                {
+                                    addToCartTable.Rows.RemoveAt(0);
+                                }
+
+                                for (int c = 0; c < dt2.Rows.Count; c++)
+                                {
+                                    DataRow dr2 = dt2.Rows[c];
+                                    string tItemCode = dr2[0].ToString();
+                                    string txtitemNmae = dr2[1].ToString();
+                                    string CompanyName = dr2[2].ToString();
+                                    string MrpPrice = dr2[3].ToString();
+                                    string txtRate = dr2[5].ToString();
+                                    string txtQuanity = dr2[4].ToString();
+                                    string txtAmoun = dr2[6].ToString();
+                                    string txtitemNmea = dr2[6].ToString();
+                                    //tot = txtitemNmea;
+                                    decimal amt = Convert.ToDecimal(txtitemNmea);
+                                    totel1 = totel1 + amt;
+                                    dr2 = addToCartTable.NewRow();
+                                    dr2[0] = tItemCode.Trim();
+                                    dr2[1] = txtitemNmae.Trim();
+                                    dr2[2] = CompanyName.Trim();
+                                    dr2[3] = MrpPrice.Trim();
+                                    dr2[4] = txtRate.Trim();
+                                    dr2[5] = txtQuanity.Trim();
+                                    dr2[6] = txtQuanity.Trim();
+                                    dr2[7] = txtAmoun.Trim();
+                                    // dr2[5] = textBox1.Text.Trim();
+                                    addToCartTable.Rows.Add(dr2);
+                                }
+                                dataGridView1.DataSource = addToCartTable;
+                                txttotalAmount.Text = totel1.ToString();
+                            }
+                            if (dataGridView1.Rows.Count > 0)
+                            {
+                                txtDiscount.ReadOnly = true;
+                            }
+                            if (dataGridView1.Rows.Count > 1)
+                            {
+                                txtDiscount.ReadOnly = false;
+                            }
+                        }
                     }
                 }
             }
@@ -1587,7 +1620,7 @@ namespace WindowsFormsApplication1
         }
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (txtRef.Text == "")
+           /* if (txtRef.Text == "")
             {
                 string itemid = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
                 string selectqurry = "select Ids.ItemName,Ids.ItemCompName,ipd.MrpPrice, ipd.SalesPrice from ItemDetails Ids  join ItemPriceDetail ipd on Ids.ItemId=ipd.ItemId  where Ids.ItemId='" + itemid + "'";
@@ -1636,7 +1669,7 @@ namespace WindowsFormsApplication1
                     MessageBox.Show("please select your correct row");
                 }
             }
-
+            */
             if (txtRef.Text != "")
             {
                 int quantity=0;
@@ -1655,7 +1688,6 @@ namespace WindowsFormsApplication1
                         double totalammount1 = Convert.ToDouble(txttotalAmount.Text);
                         double t = totalammount1 + totalq;
                         txttotalAmount.Text = totalammount.ToString("###0.00");
-
                         double totalValues = 0.0;
 
                         foreach (DataGridViewRow row in  dataGridView1.Rows)
@@ -1667,6 +1699,7 @@ namespace WindowsFormsApplication1
                           
                         }
                         txttotalAmount.Text = totalValues.ToString("###0.00");
+                        dataGridView1.AllowUserToAddRows = true;
                     }
                 else
                 {
@@ -1674,7 +1707,7 @@ namespace WindowsFormsApplication1
                     dataGridView1.Rows[e.RowIndex].Cells[0].Value = "";
                 }
            // }
-
+           
         }
 
         private void butClose_Click(object sender, EventArgs e)
@@ -2363,7 +2396,11 @@ namespace WindowsFormsApplication1
             double totalAmount3 = 0.00;
          if  ((char.IsDigit(e.KeyChar)  || e.KeyChar == '.'))
             {
-                e.Handled = false;
+                if (txtDiscount.Text.IndexOf('.') != -1 && txtDiscount.Text.Split('.')[1].Length == 2)
+                {
+                    //MessageBox.Show("The maximum decimal points are 2!");
+                    e.Handled = true;
+                }
             }
             else
             {
@@ -2731,14 +2768,18 @@ namespace WindowsFormsApplication1
             Double Amount1 = Convert.ToDouble(txtInvoiceAmount.Text);
             Double Amount2 = Amount1 - Amount;
             string Amount3 = Amount2.ToString();
-            txtBalance.Text = Amount2.ToString();
+            txtBalance.Text = Amount2.ToString("##0.00");
         }
 
         private void CashAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                e.Handled = false;
+                if (CashAmount.Text.IndexOf('.') != -1 && CashAmount.Text.Split('.')[1].Length == 2)
+                {
+                    //MessageBox.Show("The maximum decimal points are 2!");
+                    e.Handled = true;
+                }
             }
             else
             {
@@ -2771,8 +2812,8 @@ namespace WindowsFormsApplication1
                      Double Amount = Convert.ToDouble(txtCreditAmount.Text);
                      Double Amount1 = Convert.ToDouble(CashAmount.Text);
                      Double amount2 = Amount + Amount1;
-                     string Amount2 = amount2.ToString();
-                     txtTotalAmount1.Text = Amount2;
+                     //string Amount2 = amount2.ToString();
+                     txtTotalAmount1.Text = amount2.ToString("##0.00");
                  }
                
             }
@@ -2814,8 +2855,8 @@ namespace WindowsFormsApplication1
                      Double Amount1 = Convert.ToDouble(CashAmount.Text);
                      Double Amount3 = Convert.ToDouble(txtChequeAmount.Text);
                      Double amount2 = Amount + Amount1 + Amount3;
-                     string Amount2 = amount2.ToString();
-                     txtTotalAmount1.Text = Amount2;
+                     //string Amount2 = amount2.ToString();
+                     txtTotalAmount1.Text = amount2.ToString("##0.00");
                  }
             }
 
@@ -2861,7 +2902,7 @@ namespace WindowsFormsApplication1
                      Double Amount5 = Convert.ToDouble(txtCouponAmount.Text);
                      Double amount2 = Amount + Amount1 + Amount3 + Amount4 + Amount5;
                      string Amount2 = amount2.ToString();
-                     txtTotalAmount1.Text = Amount2.ToString();
+                     txtTotalAmount1.Text = amount2.ToString("##0.00");
                  }
             }
         }
@@ -2936,7 +2977,11 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                e.Handled = false;
+                if (txtCreditAmount.Text.IndexOf('.') != -1 && txtCreditAmount.Text.Split('.')[1].Length == 2)
+                {
+                    //MessageBox.Show("The maximum decimal points are 2!");
+                    e.Handled = true;
+                }
             }
             else
             {
@@ -2983,7 +3028,11 @@ namespace WindowsFormsApplication1
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
 
             {
-                e.Handled = false;
+                if (txtRturned.Text.IndexOf('.') != -1 && txtRturned.Text.Split('.')[1].Length == 2)
+                {
+                    //MessageBox.Show("The maximum decimal points are 2!");
+                    e.Handled = true;
+                }
             }
             else
             {
@@ -3013,6 +3062,211 @@ namespace WindowsFormsApplication1
             }
             Double totaldicount =Convert.ToDouble( txtDiscount.Text);
             txtDiscount.Text = totaldicount.ToString("###0.00");
+        }
+
+        private void txtInvoiceid_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtChequeAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
+            {
+                if (txtChequeAmount.Text.IndexOf('.') != -1 && txtChequeAmount.Text.Split('.')[1].Length == 2)
+                {
+                    //MessageBox.Show("The maximum decimal points are 2!");
+                    e.Handled = true;
+                }
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    txtBalance.Text = "0";
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    //MessageBox.Show("Plese enter numeric value!");
+                }
+            }
+        }
+
+        private void txtEwalletAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
+            {
+                if (txtEwalletAmount.Text.IndexOf('.') != -1 && txtEwalletAmount.Text.Split('.')[1].Length == 2)
+                {
+                    //MessageBox.Show("The maximum decimal points are 2!");
+                    e.Handled = true;
+                }
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    txtBalance.Text = "0";
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    //MessageBox.Show("Plese enter numeric value!");
+                }
+            }
+        }
+
+        private void txtCouponAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
+            {
+                if (txtCouponAmount.Text.IndexOf('.') != -1 && txtCouponAmount.Text.Split('.')[1].Length == 2)
+                {
+                    //MessageBox.Show("The maximum decimal points are 2!");
+                    e.Handled = true;
+                }
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    txtBalance.Text = "0";
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    //MessageBox.Show("Plese enter numeric value!");
+                }
+            }
+        }
+
+        private void txttotalAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
+            {
+                if (txttotalAmount.Text.IndexOf('.') != -1 && txttotalAmount.Text.Split('.')[1].Length == 2)
+                {
+                    //MessageBox.Show("The maximum decimal points are 2!");
+                    e.Handled = true;
+                }
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    txtBalance.Text = "0";
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    //MessageBox.Show("Plese enter numeric value!");
+                }
+            }
+        }
+
+        private void txtWAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
+            {
+                if (txtWAmount.Text.IndexOf('.') != -1 && txtWAmount.Text.Split('.')[1].Length == 2)
+                {
+                    //MessageBox.Show("The maximum decimal points are 2!");
+                    e.Handled = true;
+                }
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    txtBalance.Text = "0";
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    //MessageBox.Show("Plese enter numeric value!");
+                }
+            }
+        }
+
+        private void txtDisAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
+            {
+                if (txtDisAmount.Text.IndexOf('.') != -1 && txtDisAmount.Text.Split('.')[1].Length == 2)
+                {
+                    //MessageBox.Show("The maximum decimal points are 2!");
+                    e.Handled = true;
+                }
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    txtBalance.Text = "0";
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    //MessageBox.Show("Plese enter numeric value!");
+                }
+            }
+        }
+
+        private void txtTaxAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
+            {
+                if (txtTaxAmount.Text.IndexOf('.') != -1 && txtTaxAmount.Text.Split('.')[1].Length == 2)
+                {
+                    //MessageBox.Show("The maximum decimal points are 2!");
+                    e.Handled = true;
+                }
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    txtBalance.Text = "0";
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    //MessageBox.Show("Plese enter numeric value!");
+                }
+            }
+        }
+
+        private void txtBalance_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
+            {
+                if (txtBalance.Text.IndexOf('.') != -1 && txtBalance.Text.Split('.')[1].Length == 2)
+                {
+                    //MessageBox.Show("The maximum decimal points are 2!");
+                    e.Handled = true;
+                }
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    txtBalance.Text = "0";
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    //MessageBox.Show("Plese enter numeric value!");
+                }
+            }
         }
 
        
