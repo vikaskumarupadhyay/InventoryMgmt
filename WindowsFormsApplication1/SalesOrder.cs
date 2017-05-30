@@ -581,7 +581,6 @@ namespace WindowsFormsApplication1
 
         private void savebutton_Click(object sender, EventArgs e)
         {
-
             panel2.Visible = false;
             if (gridsalesorder.Rows.Count == 1)
             {
