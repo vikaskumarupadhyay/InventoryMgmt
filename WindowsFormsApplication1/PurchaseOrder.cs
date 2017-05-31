@@ -111,7 +111,7 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
-                    MessageBox.Show("Please Enter The Correct Vendor Id");
+                    MessageBox.Show("Entered vendor code is not valid. Please enter valid vendor code.","Information",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 }
 
             }
@@ -342,8 +342,12 @@ namespace WindowsFormsApplication1
         {
             if ((txtQuanity.Text == "") || (txtQuanity.Text == "0"))
             {
-                MessageBox.Show("Please Enter The Quanity");
-               
+                MessageBox.Show("Entered Quantity should not less than one.",
+    "Information",
+    MessageBoxButtons.OK,
+    MessageBoxIcon.Warning);
+               // MessageBox.Show("Entered Quantity should not less than one. Please enter valid quantity!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtQuanity.Text = "1";
                 txtQuanity.Focus();
             }
             else
@@ -694,13 +698,13 @@ namespace WindowsFormsApplication1
         {
             if (txtVendorCode.Text == "V")
             {
-                MessageBox.Show("Please Enter The Vendor Code");
+                MessageBox.Show("Please enter vendor code first.","Information",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 txtVendorCode.Focus();
                 txtVendorCode.Select(txtVendorCode.Text.Length,0);
             }
            else if (gridPurchaseOrder.CurrentRow == null)
             {
-                MessageBox.Show("Please Enter The Item");
+                MessageBox.Show("Please enter item code first.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtItemCode.Focus();
                 txtItemCode.Select(txtItemCode.Text.Length, 0);
             }
@@ -708,7 +712,7 @@ namespace WindowsFormsApplication1
             {
                 if (ls.Count == gridPurchaseOrder.Rows.Count - 1)
                 {
-                    MessageBox.Show("Please Enter The Item");
+                    MessageBox.Show("Please enter item code first.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtItemCode.Focus();
                     txtItemCode.Select(txtItemCode.Text.Length, 0);
                     return;
@@ -870,7 +874,11 @@ namespace WindowsFormsApplication1
             {
                  if ((txtQuanity.Text == "") || (txtQuanity.Text == "0"))
                 {
-                    MessageBox.Show("Please Enter The Quanity");
+                    MessageBox.Show("Entered Quantity should not less than one.",
+    "Information",
+    MessageBoxButtons.OK,
+    MessageBoxIcon.Warning);
+                    txtQuanity.Text = "1";
                     txtQuanity.Focus();
                 }
                 else
@@ -1051,6 +1059,8 @@ namespace WindowsFormsApplication1
                         }
                         if(ls.Count==gridPurchaseOrder.Rows.Count-1)
                         {
+                            btnSave.TabStop = false;
+                            btnClose.TabStop = false;
                             txtItemCode.Focus();
                             txtItemCode.Select(txtItemCode.Text.Length, 0);
                             gridPurchaseOrder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
@@ -1094,7 +1104,7 @@ namespace WindowsFormsApplication1
                 {
                     if (txtVendorCode.Text == "V")
                     {
-                        MessageBox.Show("Please Enter The Vendor Code");
+                        MessageBox.Show("Please enter vendor code first.","Information",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                         txtVendorCode.Focus();
                         txtItemCode.Text = "I";
                         txtProductName.Text = "";
@@ -1129,7 +1139,7 @@ namespace WindowsFormsApplication1
                         }
                         else
                         {
-                            MessageBox.Show("Please Enter the Correct Item Id");
+                            MessageBox.Show("Entered item code is not valid. Please enter valid item code.","Information",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                         }
                     }
                 }
@@ -1159,8 +1169,10 @@ namespace WindowsFormsApplication1
                     e.Handled = false;
                     txtAmount.Text = "";
                     txtRate.Text = "";
-
+                    txtProductName.Text = "";
                     txtQuanity.Text = "";
+                    txtQuanity.ReadOnly = true;
+                    btnAddItem.Enabled = false;
                     txtItemCode.Focus();
                     txtItemCode.Select(txtItemCode.Text.Length, 0);
 
@@ -1221,6 +1233,7 @@ namespace WindowsFormsApplication1
                 txtItemCode.Focus();
                 txtItemCode.Select(txtItemCode.Text.Length, 0);
             }
+
         }
 
         private void txtsearch_TextChanged_1(object sender, EventArgs e)

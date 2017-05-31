@@ -592,11 +592,11 @@ namespace WindowsFormsApplication1
 
         private void txtItemSalesPrice_TextChanged(object sender, EventArgs e)
         {
-            if (txtItemSalesPrice.Text.IndexOf('.') != -1 && txtItemSalesPrice.Text.Split('.')[1].Length == 2)
-            {
-                MessageBox.Show("The maximum decimal points are 2!");
-               // e.Handled = true;
-            }
+            //if (txtItemSalesPrice.Text.IndexOf('.') != -1 && txtItemSalesPrice.Text.Split('.')[1].Length == 2)
+            //{
+            //    MessageBox.Show("The maximum decimal points are 2!");
+            //   // e.Handled = true;
+            //}
             string num=txtItemPrice.Text;
             string num1=txtItemSalesPrice.Text;
             if (num == "")
@@ -621,11 +621,11 @@ namespace WindowsFormsApplication1
 
         private void txtItemPrice_TextChanged(object sender, EventArgs e)
         {
-            if (txtItemPrice.Text.IndexOf('.') != -1 && txtItemPrice.Text.Split('.')[1].Length >= 2)
-                {
-                    MessageBox.Show("The maximum decimal points are 2!");
-                    //e.Handled = true;
-                }
+            //if (txtItemPrice.Text.IndexOf('.') != -1 && txtItemPrice.Text.Split('.')[1].Length >= 2)
+            //    {
+            //        MessageBox.Show("The maximum decimal points are 2!");
+            //        //e.Handled = true;
+            //    }
             string value = txtItemSalesPrice.Text;
             string value1 = txtItemPrice.Text;
             if (value == "0")
@@ -750,49 +750,49 @@ namespace WindowsFormsApplication1
 
         private void txtItemPrice_Leave(object sender, EventArgs e)
         {
-            //decimal x;
-            //if (decimal.TryParse(txtItemPrice.Text, out x))
-            //{
-            //    if (txtItemPrice.Text.IndexOf('.') != -1 && txtItemPrice.Text.Split('.')[1].Length > 2)
-            //    {
-            //        MessageBox.Show("The maximum decimal points are 2!");
-            //        txtItemPrice.Focus();
-            //    }
-            //    else txtItemPrice.Text = x.ToString("0.00");
-            //}
-            //else
-            //{
-            //    txtItemPrice.Text = "0.00";
-            //    //MessageBox.Show("Data invalid!");
-            //    //txtVenderOpeningBal.Focus();
-            //}
-            ///*if (txtItemPrice.Text == "")
-            //{
-            //    txtItemPrice.Text = "0";
-            //}*/
+            decimal x;
+            if (decimal.TryParse(txtItemPrice.Text, out x))
+            {
+                if (txtItemPrice.Text.IndexOf('.') != -1 && txtItemPrice.Text.Split('.')[1].Length > 2)
+                {
+                    MessageBox.Show("The maximum decimal points are 2!");
+                    txtItemPrice.Focus();
+                }
+                else txtItemPrice.Text = x.ToString("0.00");
+            }
+            else
+            {
+                txtItemPrice.Text = "0.00";
+                //MessageBox.Show("Data invalid!");
+                //txtVenderOpeningBal.Focus();
+            }
+            /*if (txtItemPrice.Text == "")
+            {
+                txtItemPrice.Text = "0";
+            }*/
 
         }
 
         private void txtItemSalesPrice_Leave(object sender, EventArgs e)
         {
-            //decimal x;
-            //if (decimal.TryParse(txtItemSalesPrice.Text, out x))
-            //{
-            //    if (txtItemSalesPrice.Text.IndexOf('.') != -1 && txtItemSalesPrice.Text.Split('.')[1].Length > 2)
-            //    {
-            //        MessageBox.Show("The maximum decimal points are 2!");
-            //        txtItemSalesPrice.Focus();
-            //        Double d = Convert.ToDouble(txtItemSalesPrice.Text);
-            //        txtItemSalesPrice.Text = d.ToString("##0.00");
-            //    }
-            //    else txtItemSalesPrice.Text = x.ToString("0.00");
-            //}
-            //else
-            //{
-            //    txtItemSalesPrice.Text = "0.00";
-            //    //MessageBox.Show("Data invalid!");
-            //    //txtVenderOpeningBal.Focus();
-            //}
+            decimal x;
+            if (decimal.TryParse(txtItemSalesPrice.Text, out x))
+            {
+                if (txtItemSalesPrice.Text.IndexOf('.') != -1 && txtItemSalesPrice.Text.Split('.')[1].Length > 2)
+                {
+                    MessageBox.Show("The maximum decimal points are 2!");
+                    txtItemSalesPrice.Focus();
+                    Double d = Convert.ToDouble(txtItemSalesPrice.Text);
+                    txtItemSalesPrice.Text = d.ToString("##0.00");
+                }
+                else txtItemSalesPrice.Text = x.ToString("0.00");
+            }
+            else
+            {
+                txtItemSalesPrice.Text = "0.00";
+                //MessageBox.Show("Data invalid!");
+                //txtVenderOpeningBal.Focus();
+            }
             /*if (txtItemSalesPrice.Text == "")
             {
                 txtItemSalesPrice.Text = "0";
@@ -965,22 +965,22 @@ namespace WindowsFormsApplication1
         private void txtItemMargin_TextChanged(object sender, EventArgs e)
         {
 
-            //decimal x;
-            //if (decimal.TryParse(txtItemMargin.Text, out x))
-            //{
-            //    if (txtItemMargin.Text.IndexOf('.') != -1 && txtItemMargin.Text.Split('.')[1].Length > 2)
-            //    {
-            //        MessageBox.Show("The maximum decimal points are 2!");
-            //        txtItemPrice.Focus();
-            //    }
-            //    else txtItemMargin.Text = x.ToString("0.00");
-            //}
-            //else
-            //{
-            //    txtItemMargin.Text = "0.00";
-            //    //MessageBox.Show("Data invalid!");
-            //    //txtVenderOpeningBal.Focus();
-            //}
+            decimal x;
+            if (decimal.TryParse(txtItemMargin.Text, out x))
+            {
+                if (txtItemMargin.Text.IndexOf('.') != -1 && txtItemMargin.Text.Split('.')[1].Length > 2)
+                {
+                    //MessageBox.Show("The maximum decimal points are 2!");
+                    //txtItemPrice.Focus();
+                }
+                else txtItemMargin.Text = x.ToString("0.00");
+            }
+            else
+            {
+                txtItemMargin.Text = "0.00";
+                //MessageBox.Show("Data invalid!");
+                //txtVenderOpeningBal.Focus();
+            }
         }
 
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
