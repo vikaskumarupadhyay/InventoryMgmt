@@ -1000,6 +1000,15 @@ namespace WindowsFormsApplication1
 
         private void gridPurchaseOrder_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == Convert.ToChar(Keys.Escape))
+            {
+                var dgvcount = gridPurchaseOrder.Rows.Count;
+                gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[dgvcount - 2].Cells[0];
+                gridPurchaseOrder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
+                txtItemCode.Focus();
+                txtItemCode.Select(txtItemCode.Text.Length, 0);
+                txtRemoveItem.Enabled = true;
+            }
              if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
                 Color backGroundColor = gridPurchaseOrder.DefaultCellStyle.SelectionBackColor;
@@ -1038,7 +1047,7 @@ namespace WindowsFormsApplication1
                         if (addToCartTable.Rows.Count == 0)
                         {
                             txtTotalAmount.Text = "0.0";
-                            txtDiscount.Text = "0.0";
+                            //txtDiscount.Text = "0.0";
                         }
                         if(ls.Count==gridPurchaseOrder.Rows.Count-1)
                         {
@@ -1070,15 +1079,7 @@ namespace WindowsFormsApplication1
                     }
                 }
             }
-             if (e.KeyChar == Convert.ToChar(Keys.Escape))
-             {
-                 var dgvcount = gridPurchaseOrder.Rows.Count;
-                 gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[dgvcount - 2].Cells[0];
-                 gridPurchaseOrder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
-                 txtItemCode.Focus();
-                 txtItemCode.Select(txtItemCode.Text.Length, 0);
-                 txtRemoveItem.Enabled = true;
-             }
+            
 
         }
 
@@ -1621,7 +1622,14 @@ namespace WindowsFormsApplication1
 
         private void txtdis_MouseClick(object sender, MouseEventArgs e)
         {
-            txtdis.Text = "";
+            if (txtdis.Text == "0")
+            {
+                txtdis.Text = "";
+            }
+            else if (txtdis.Text != "0.00")
+            {
+
+            }
         }
 
         private void txtTotalAmount_KeyPress(object sender, KeyPressEventArgs e)
