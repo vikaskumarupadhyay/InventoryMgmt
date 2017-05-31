@@ -3048,7 +3048,13 @@ namespace WindowsFormsApplication1
 
         private void txtDiscount_MouseClick(object sender, MouseEventArgs e)
         {
-            txtDiscount.Text = "";
+            if(txtDiscount.Text=="0.00")
+            {
+              txtDiscount.Text = "";
+            }
+           else if (txtDiscount.Text != "0.00")
+            {
+            }
         }
 
         private void txtDiscount_Leave(object sender, EventArgs e)

@@ -482,9 +482,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database\Delivary Refrence.txt" />
     <Content Include="Database\DeliveryGridview.txt" />
     <Content Include="Database\Procedures.txt" />
+    <Content Include="Database\purchesDelivery.txt" />
     <Content Include="Database\Salesorderdelivaryreport.txt" />
     <Content Include="Database\Salesorderreport.txt" />
     <Content Include="Database\salesserchdelivary.txt" />

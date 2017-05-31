@@ -649,7 +649,7 @@ namespace WindowsFormsApplication1
                 double pPrice = Convert.ToDouble(value1);
                 double mrp = Convert.ToDouble(value);
                 double totelmrp = mrp - pPrice;
-                txtItemMargin.Text = totelmrp.ToString("##0.00");
+                txtItemMargin.Text = totelmrp.ToString("###0.00");
             }
             }
         }
@@ -681,11 +681,12 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                if (txtItemSalesPrice.Text.IndexOf('.') != -1 && txtItemSalesPrice.Text.Split('.')[1].Length == 2)
-                {
-                    //MessageBox.Show("The maximum decimal points are 2!");
-                    e.Handled = true;
-                }
+                //if (txtItemSalesPrice.Text.IndexOf('.') != -1 && txtItemSalesPrice.Text.Split('.')[1].Length == 2)
+                //{
+                //    //MessageBox.Show("The maximum decimal points are 2!");
+                //    e.Handled = true;
+                //}
+                e.Handled = false;
             }
             else
             {
@@ -704,11 +705,12 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                if (txtItemPrice.Text.IndexOf('.') != -1 && txtItemPrice.Text.Split('.')[1].Length == 2)
-                {
-                    //MessageBox.Show("The maximum decimal points are 2!");
-                    e.Handled = true;
-                }
+                //if (txtItemPrice.Text.IndexOf('.') != -1 && txtItemPrice.Text.Split('.')[1].Length == 2)
+                //{
+                //    //MessageBox.Show("The maximum decimal points are 2!");
+                //    e.Handled = true;
+                //}
+                e.Handled = false;
             }
             else
             {
@@ -970,11 +972,12 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                if (txtItemMargin.Text.IndexOf('.') != -1 && txtItemMargin.Text.Split('.')[1].Length == 2)
-                {
-                    //MessageBox.Show("The maximum decimal points are 2!");
-                    e.Handled = true;
-                }
+                //if (txtItemMargin.Text.IndexOf('.') != -1 && txtItemMargin.Text.Split('.')[1].Length == 2)
+                //{
+                //    //MessageBox.Show("The maximum decimal points are 2!");
+                //    e.Handled = true;
+                //}
+                e.Handled = false;
             }
             else
             {
