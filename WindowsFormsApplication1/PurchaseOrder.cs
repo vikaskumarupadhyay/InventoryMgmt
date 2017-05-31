@@ -1398,11 +1398,12 @@ namespace WindowsFormsApplication1
             double totalAmount = 0.00;
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                if (txtdis.Text.IndexOf('.') != -1 && txtdis.Text.Split('.')[1].Length == 2)
-                {
-                    //MessageBox.Show("The maximum decimal points are 2!");
-                    e.Handled = true;
-                }
+                //if (txtdis.Text.IndexOf('.') != -1 && txtdis.Text.Split('.')[1].Length == 2)
+                //{
+                //    MessageBox.Show("The maximum decimal points are 2!");
+                //    e.Handled = true;
+                //}
+                e.Handled = false;
             }
             else
             {

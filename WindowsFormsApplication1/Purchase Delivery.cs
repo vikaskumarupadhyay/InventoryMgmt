@@ -3025,11 +3025,12 @@ namespace WindowsFormsApplication1
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
 
             {
-                if (txtRturned.Text.IndexOf('.') != -1 && txtRturned.Text.Split('.')[1].Length == 2)
-                {
-                    //MessageBox.Show("The maximum decimal points are 2!");
-                    e.Handled = true;
-                }
+                //if (txtRturned.Text.IndexOf('.') != -1 && txtRturned.Text.Split('.')[1].Length == 2)
+                //{
+                //    //MessageBox.Show("The maximum decimal points are 2!");
+                //    e.Handled = true;
+                //}
+                e.Handled = false;
             }
             else
             {

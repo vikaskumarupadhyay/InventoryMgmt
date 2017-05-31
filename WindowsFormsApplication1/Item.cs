@@ -516,11 +516,12 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                if (txtItemMrp.Text.IndexOf('.') != -1 && txtItemMrp.Text.Split('.')[1].Length == 2)
-                {
-                    //MessageBox.Show("The maximum decimal points are 2!");
-                    e.Handled = true;
-                }
+                //if (txtItemMrp.Text.IndexOf('.') != -1 && txtItemMrp.Text.Split('.')[1].Length == 2)
+                //{
+                //    //MessageBox.Show("The maximum decimal points are 2!");
+                //    e.Handled = true;
+                //}
+                e.Handled = false;
             }
             else
             {
@@ -591,6 +592,11 @@ namespace WindowsFormsApplication1
 
         private void txtItemSalesPrice_TextChanged(object sender, EventArgs e)
         {
+            if (txtItemSalesPrice.Text.IndexOf('.') != -1 && txtItemSalesPrice.Text.Split('.')[1].Length == 2)
+            {
+                MessageBox.Show("The maximum decimal points are 2!");
+               // e.Handled = true;
+            }
             string num=txtItemPrice.Text;
             string num1=txtItemSalesPrice.Text;
             if (num == "")
@@ -615,6 +621,11 @@ namespace WindowsFormsApplication1
 
         private void txtItemPrice_TextChanged(object sender, EventArgs e)
         {
+            if (txtItemPrice.Text.IndexOf('.') != -1 && txtItemPrice.Text.Split('.')[1].Length >= 2)
+                {
+                    MessageBox.Show("The maximum decimal points are 2!");
+                    //e.Handled = true;
+                }
             string value = txtItemSalesPrice.Text;
             string value1 = txtItemPrice.Text;
             if (value == "0")
@@ -686,7 +697,7 @@ namespace WindowsFormsApplication1
                 //    //MessageBox.Show("The maximum decimal points are 2!");
                 //    e.Handled = true;
                 //}
-                e.Handled = false;
+               e.Handled = false;
             }
             else
             {
@@ -705,12 +716,12 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                //if (txtItemPrice.Text.IndexOf('.') != -1 && txtItemPrice.Text.Split('.')[1].Length == 2)
+                //if (txtItemPrice.Text.IndexOf('.') != -1 && txtItemPrice.Text.Split('.')[1].Length >= 2)
                 //{
-                //    //MessageBox.Show("The maximum decimal points are 2!");
-                //    e.Handled = true;
+                //    MessageBox.Show("The maximum decimal points are 2!");
+                //    //e.Handled = true;
                 //}
-                e.Handled = false;
+               e.Handled = false;
             }
             else
             {
@@ -723,6 +734,18 @@ namespace WindowsFormsApplication1
                     e.Handled = true;
                 }
             }
+            char ch = e.KeyChar;
+            if (ch == 46 && txtItemPrice.Text.IndexOf('.') != -1)
+            {
+                e.Handled = true;
+                return;
+            }
+            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
+
+
         }
 
         private void txtItemPrice_Leave(object sender, EventArgs e)
