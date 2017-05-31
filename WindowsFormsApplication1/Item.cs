@@ -649,7 +649,7 @@ namespace WindowsFormsApplication1
                 double pPrice = Convert.ToDouble(value1);
                 double mrp = Convert.ToDouble(value);
                 double totelmrp = mrp - pPrice;
-                txtItemMargin.Text = totelmrp.ToString();
+                txtItemMargin.Text = totelmrp.ToString("##0.00");
             }
             }
         }
