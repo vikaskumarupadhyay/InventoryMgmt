@@ -55,6 +55,9 @@
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.txtquantitybuiled = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -386,11 +389,37 @@
             this.textBox8.Text = "Net Amount (Inc. Tax)";
             this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(14, 555);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(76, 20);
+            this.textBox10.TabIndex = 36;
+            this.textBox10.Text = "QuantityBuiled";
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(96, 556);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(25, 20);
+            this.textBox11.TabIndex = 37;
+            this.textBox11.Text = "0";
+            // 
+            // txtquantitybuiled
+            // 
+            this.txtquantitybuiled.Location = new System.Drawing.Point(151, 555);
+            this.txtquantitybuiled.Name = "txtquantitybuiled";
+            this.txtquantitybuiled.Size = new System.Drawing.Size(100, 20);
+            this.txtquantitybuiled.TabIndex = 38;
+            // 
             // salessearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1256, 641);
+            this.Controls.Add(this.txtquantitybuiled);
+            this.Controls.Add(this.textBox11);
+            this.Controls.Add(this.textBox10);
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.textBox8);
             this.Controls.Add(this.textBox7);
@@ -454,5 +483,8 @@
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox txtquantitybuiled;
     }
 }
