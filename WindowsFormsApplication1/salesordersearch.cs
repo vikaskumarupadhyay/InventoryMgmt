@@ -277,6 +277,30 @@ namespace WindowsFormsApplication1
 
         }
 
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+            //DateTime date = Convert.ToDateTime(dateTimePicker2.Text);
+            //if (date > DateTime.Now.Date)
+            //{
+            //    MessageBox.Show("plese select your correct date");
+            //    dateTimePicker2.Text = DateTime.Now.ToString();
+            //}
+            ////string selectquery = "SELECT dbo.CustomerDetails.custId as[Customer ID], dbo.CustomerDetails.CustName as[Customer Name], dbo.CustomerDetails.CustCompName as[Compnay Name],dbo.CustomerDetails.CustAddress as [Address], dbo.CustomerDetails.CustCity as[City], dbo.CustomerDetails.CustState as[State], dbo.CustomerDetails.CustZip as[Zip], dbo.CustomerDetails.CustCountry as [Country],dbo.CustomerDetails.CustEmail as[Email], dbo.CustomerDetails.CustWebAddress as[Web Address], dbo.CustomerDetails.CustPhone as[Phone], dbo.CustomerDetails.CustMobile as [Mobile],dbo.customerorderdescriptions.orderid as [Order ID], dbo.orderdetails.date as [Order Date],dbo.customerorderdescriptions.ItemId as[Item ID],dbo.ItemDetails.ItemName as[Item Name],dbo.ItemDetails.ItemCompName as[Item Compnay Name],dbo.ItemPriceDetail.MrpPrice as[Mrp], dbo.customerorderdescriptions.price as[Selling Rate], dbo.customerorderdescriptions.quantity as [Quantity], dbo.customerorderdescriptions.totalammount as[Gross Amount], dbo.orderdetails.Discount as[Discount Rate],((dbo.customerorderdescriptions.totalammount*dbo.orderdetails.Discount)/100) as [Discount Amount], dbo.orderdetails.Tax as[Tax], (dbo.customerorderdescriptions.totalammount)- ((dbo.customerorderdescriptions.totalammount)/(1+(dbo.orderdetails.Tax/100))) as [Tax Amount], dbo.orderdetails.totalammount AS [Net Amount (Including Tax)] FROM dbo.CompnayDetails CROSS JOIN dbo.ItemDetails INNER JOIN dbo.customerorderdescriptions ON dbo.ItemDetails.ItemId = dbo.customerorderdescriptions.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId INNER JOIN dbo.orderdetails ON dbo.customerorderdescriptions.orderid = dbo.orderdetails.orderid INNER JOIN dbo.CustomerDetails ON dbo.orderdetails.custid = dbo.CustomerDetails.custId   where date BETWEEN '" + dateTimePicker1.Value.Date + "' AND '" + dateTimePicker2.Value.Date + "'";
+            //// string s = comsalesordersearch.SelectedValue.ToString();
+            //string selectquery = "SELECT dbo.customerorderdescriptions.orderid as [Order ID],dbo.CustomerDetails.custId as[Customer ID], dbo.CustomerDetails.CustName as[Customer Name], dbo.CustomerDetails.CustCompName as[Compnay Name], dbo.orderdetails.date as [Order Date],dbo.customerorderdescriptions.ItemId as[Item ID],dbo.ItemDetails.ItemName as[Item Name],dbo.ItemDetails.ItemCompName as[Item Compnay Name],dbo.ItemPriceDetail.MrpPrice as[MRP], dbo.customerorderdescriptions.price as[Selling Rate], dbo.customerorderdescriptions.quantity as [Quantity], dbo.customerorderdescriptions.totalammount as[Gross Amount], dbo.orderdetails.Discount as[Discount Rate],cast((dbo.customerorderdescriptions.totalammount*dbo.orderdetails.Discount)/100 as numeric(38,2)) as [Discount Amount], dbo.orderdetails.Tax as[Tax], cast((dbo.customerorderdescriptions.totalammount)- ((dbo.customerorderdescriptions.totalammount)/(1+(dbo.orderdetails.Tax/100)))as numeric(38,2)) as [Tax Amount], cast((dbo.customerorderdescriptions.totalammount)-((dbo.customerorderdescriptions.totalammount*dbo.orderdetails.Discount)/100)as numeric(38,2)) AS [Net Amount (Including Tax)] FROM dbo.CompnayDetails CROSS JOIN dbo.ItemDetails INNER JOIN dbo.customerorderdescriptions ON dbo.ItemDetails.ItemId = dbo.customerorderdescriptions.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId INNER JOIN dbo.orderdetails ON dbo.customerorderdescriptions.orderid = dbo.orderdetails.orderid INNER JOIN dbo.CustomerDetails ON dbo.orderdetails.custid = dbo.CustomerDetails.custId   where date BETWEEN '" + dateTimePicker1.Value.Date + "' AND '" + dateTimePicker2.Value.Date + "'";
+            //DataTable dt = d.getDetailByQuery(selectquery);
+            //dataGridView1.DataSource = dt;
+            //double s1 = getTotalAmounts();
+            //txtGrossAmount.Text = s1.ToString();
+            //double disa = getdiscountamount();
+            //Txtdisamount.Text = disa.ToString();
+            //double taxa = gettaxamount();
+            //txttaxamount.Text = taxa.ToString();
+            //double witha = getwithauttaxamount();
+            //txtwithauttaxamount.Text = witha.ToString();
+        }
+
 
     }
 }
