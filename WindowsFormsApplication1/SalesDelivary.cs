@@ -1872,6 +1872,7 @@ namespace WindowsFormsApplication1
             {
                 if ((txtQuantity.Text == "") || (txtQuantity.Text == "0"))
                 {
+                    txtQuantity.Text = "1";
                     MessageBox.Show("please select your correct quantity");
                     txtQuantity.Focus();
                 }

@@ -136,6 +136,19 @@ namespace WindowsFormsApplication1
             }
             return totalValue;
         }
+        public double getqtybuiled()
+        {
+            double totalValue = 0.0;
+            double s;
+            for (int a = 0; a < dataGridView1.Rows.Count; a++)
+            {
+                s = Convert.ToDouble(dataGridView1.Rows[a].Cells[11].Value);
+                totalValue = totalValue + s;
+
+            }
+            return totalValue;
+        }
+
         public double getdiscountamount()
         {
             double totalValue = 0.0;
@@ -244,6 +257,8 @@ namespace WindowsFormsApplication1
             txttaxamount.Text = taxa.ToString();
             double witha = getwithauttaxamount();
             txtwithauttaxamoubnt.Text = witha.ToString();
+            double qtybuiled = getqtybuiled();
+            txtquantitybuiled.Text = qtybuiled.ToString();
 
         }
 
@@ -516,5 +531,7 @@ namespace WindowsFormsApplication1
             dataGridView1.DataSource = dt;
 
         }
+
+     
     }
 }
