@@ -75,7 +75,7 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            dataGridView1.AllowUserToAddRows = true;
             // string selectquery1 = "select CustName as [Name],CustCompName as [Compnay Name],CustAddress as [Address],CustPhone as [Phone],Custmobile as [Mobole],CustFax as [Fax] from CustomerDetails";
             // string actualcolumn = "select CustName ,CustCompName ,CustAddress ,CustPhone ,Custmobile ,CustFax  from CustomerDetails";
             string selectquery1 = "select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Ballance],CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO]  ,CustServicetaxRegnNo AS [Service Tax Regn. No],CustExciseRegnNo AS [Excise Regn. No],Gstregnno AS[ Gst reg No]  from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
@@ -130,7 +130,7 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            dataGridView1.AllowUserToAddRows = true;
             string selectquery1 = "select  itm.ItemId as [Item Id],itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],cast(ipd.SalesPrice as numeric(38,2))as[Sales Price],cast(ipd.MrpPrice as numeric(38,2))as[Mrp Price] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
             string actualcolumn = "select top 1  itm.ItemId, itm.ItemName,itm.ItemCompName ,itm.ItemDesc ,ig.groupName,iul.unitName ,ipd.purChasePrice ,cast(ipd.SalesPrice as numeric(38,2)) ,cast(ipd.MrpPrice as numeric(38,2)),ipd.Margin ,iqd.OpeningQuantity ,iqd.CurrentQuantity from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
             //DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
@@ -313,6 +313,8 @@ namespace WindowsFormsApplication1
                 txtQuantity.Focus();
                 butadditem.Enabled = true;
             }
+
+
             else
             {
                 txtitemcode.Focus();
@@ -338,37 +340,51 @@ namespace WindowsFormsApplication1
                     counter++;
                     quntity = dr3[5].ToString();
                     rate = dr3[4].ToString();
-
-                    if (itemid == txtitemcode.Text)
+                    string select1 = "select ItemName from ItemDetails where ItemId='" + txtitemcode.Text + "'";
+                    DataTable data1 = d.getDetailByQuery(select1);
+                    string itemName = "";
+                    foreach (DataRow dr2 in data1.Rows)
                     {
-                        int q1 = Convert.ToInt32(quntity);
-                        int q2 = Convert.ToInt32(txtQuantity.Text);
-                        q3 = q1 + q2;
-                        dr3[5] = q3.ToString();
-                        double rate1 = Convert.ToDouble(rate);
-                        double rate6 = q3 * rate1;
-                        double rate2 = Convert.ToDouble(txtAmount.Text);
-                        double rate4 = Convert.ToDouble(txttotalammount.Text);
-                        double rate3 = rate4 + rate2;
-                        dr3[6] = rate6.ToString();
-                        double rate5 = rate4 + rate2;
-                        txttotalammount.Text = rate5.ToString("###0.00");//rate3.ToString();
-                        // MessageBox.Show("Please Enter the Quanity");
-                        
-                        txtitemcode.Text = "I";
-                        txtitemcode.Select(txtitemcode.Text.Length, 0);
-                        txtProductName.Text = "";
-                        txtRate.Text = "";
-                        txtQuantity.Text = "";
-                        txtAmount.Text = "";
-                        butadditem.Enabled = false;
-                        txtQuantity.ReadOnly = true;
-                        
+                        itemName = dr2[0].ToString();
+                    }
+                    if (itemName != txtProductName.Text)
+                    {
+                        MessageBox.Show("Please Select correct ItemCode");
+                        return;
+                    }
+                    else
+                    {
+                        if (itemid == txtitemcode.Text)
+                        {
+                            int q1 = Convert.ToInt32(quntity);
+                            int q2 = Convert.ToInt32(txtQuantity.Text);
+                            q3 = q1 + q2;
+                            dr3[5] = q3.ToString();
+                            double rate1 = Convert.ToDouble(rate);
+                            double rate6 = q3 * rate1;
+                            double rate2 = Convert.ToDouble(txtAmount.Text);
+                            double rate4 = Convert.ToDouble(txttotalammount.Text);
+                            double rate3 = rate4 + rate2;
+                            dr3[6] = rate6.ToString();
+                            double rate5 = rate4 + rate2;
+                            txttotalammount.Text = rate5.ToString("###0.00");//rate3.ToString();
+                            // MessageBox.Show("Please Enter the Quanity");
+
+                            txtitemcode.Text = "I";
+                            txtitemcode.Select(txtitemcode.Text.Length, 0);
+                            txtProductName.Text = "";
+                            txtRate.Text = "";
+                            txtQuantity.Text = "";
+                            txtAmount.Text = "";
+                            butadditem.Enabled = false;
+                            txtQuantity.ReadOnly = true;
+
+
+                        }
 
                     }
 
                 }
-
 
 
 
@@ -388,60 +404,75 @@ namespace WindowsFormsApplication1
 
                     else
                     {
-                        string selectq = "select ids.ItemCompName,cast(ipd.MrpPrice as numeric(38,2))from ItemPriceDetail ipd join ItemDetails ids on ipd.ItemId=ids.ItemId where ipd.ItemId='" + txtitemcode.Text + "'";
-                        DataTable dta = d.getDetailByQuery(selectq);
-                        string ConpanyName = "";
-                        string Mrp = "";
-                        foreach (DataRow dr1 in dta.Rows)
+                        string select1 = "select ItemName from ItemDetails where ItemId='" + txtitemcode.Text + "'";
+                        DataTable data1 = d.getDetailByQuery(select1);
+                        string itemName = "";
+                        foreach (DataRow dr2 in data1.Rows)
                         {
-                            ConpanyName = dr1[0].ToString();
-                            Mrp = dr1[1].ToString();
+                            itemName = dr2[0].ToString();
                         }
-                        button4.Enabled = true;
-                        DataRow dr = addToCartTable.NewRow();
-                        dr[0] = txtitemcode.Text.Trim();
-                        dr[1] = txtProductName.Text.Trim();
-                        dr[2] = ConpanyName.Trim();
-                        dr[3] = Mrp.Trim();
-                        dr[5] = txtQuantity.Text.Trim();
-                        dr[4] = txtRate.Text.Trim();
-                        dr[6] = txtAmount.Text.Trim();
+                        if (itemName != txtProductName.Text)
+                        {
+                            MessageBox.Show("Please Select correct ItemCode");
+                        }
+                        else
+                        {
+                            string selectq = "select ids.ItemCompName,cast(ipd.MrpPrice as numeric(38,2))from ItemPriceDetail ipd join ItemDetails ids on ipd.ItemId=ids.ItemId where ipd.ItemId='" + txtitemcode.Text + "'";
+                            DataTable dta = d.getDetailByQuery(selectq);
+                            string ConpanyName = "";
+                            string Mrp = "";
+                            foreach (DataRow dr1 in dta.Rows)
+                            {
+                                ConpanyName = dr1[0].ToString();
+                                Mrp = dr1[1].ToString();
+                            }
+                            button4.Enabled = true;
+                            DataRow dr = addToCartTable.NewRow();
+                            dr[0] = txtitemcode.Text.Trim();
+                            dr[1] = txtProductName.Text.Trim();
+                            dr[2] = ConpanyName.Trim();
+                            dr[3] = Mrp.Trim();
+                            dr[5] = txtQuantity.Text.Trim();
+                            dr[4] = txtRate.Text.Trim();
+                            dr[6] = txtAmount.Text.Trim();
 
-                        //dr[5] = txtAmount.Text.Trim();
-                        addToCartTable.Rows.Add(dr);
-                        gridsalesorder.DataSource = addToCartTable;
-                        var dgvcount = gridsalesorder.Rows.Count;
-                        gridsalesorder.CurrentCell = gridsalesorder.Rows[dgvcount - 2].Cells[0];
-                        double totalAmount = Convert.ToDouble(txttotalammount.Text);
-                        totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
-                        txttotalammount.Text = totalAmount.ToString("###0.00");
-                        txtwithautaxamount.Text = totalAmount.ToString();
-                        gridsalesorder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
-                        
-                        txtitemcode.Text = "I";
-                        txtProductName.Text = "";
-                        txtRate.Text = "";
-                        txtQuantity.Text = "";
-                        txtAmount.Text = "";
-                        // txtItemCode.Focus();
-                        butadditem.Enabled = false;
-                        //txtRemoveItem.Focus();
-                        txtQuantity.TabStop = false;
-                        txtQuantity.ReadOnly = true;
-                       
-                        //}
-                        // ls.Clear();
+                            //dr[5] = txtAmount.Text.Trim();
+                            addToCartTable.Rows.Add(dr);
+                            gridsalesorder.DataSource = addToCartTable;
+                            var dgvcount = gridsalesorder.Rows.Count;
+                            gridsalesorder.CurrentCell = gridsalesorder.Rows[dgvcount - 2].Cells[0];
+                            double totalAmount = Convert.ToDouble(txttotalammount.Text);
+                            totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
+                            txttotalammount.Text = totalAmount.ToString("###0.00");
+                            txtwithautaxamount.Text = totalAmount.ToString();
+                            gridsalesorder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
+
+                            txtitemcode.Text = "I";
+                            txtProductName.Text = "";
+                            txtRate.Text = "";
+                            txtQuantity.Text = "";
+                            txtAmount.Text = "";
+                            // txtItemCode.Focus();
+                            butadditem.Enabled = false;
+                            //txtRemoveItem.Focus();
+                            txtQuantity.TabStop = false;
+                            txtQuantity.ReadOnly = true;
+
+                            //}
+                            // ls.Clear();
+                        }
                     }
-                    if (gridsalesorder.Rows.Count > 1)
-                    {
-                        textBox20.ReadOnly = false;
+                        if (gridsalesorder.Rows.Count > 1)
+                        {
+                            textBox20.ReadOnly = false;
+                        }
+                        txtitemcode.Select(txtitemcode.Text.Length, 0);
+
+
                     }
-                    txtitemcode.Select(txtitemcode.Text.Length, 0);
-
-
                 }
             }
-        }
+        
 
         private void salesorder_Load(object sender, EventArgs e)
         {
@@ -1168,7 +1199,7 @@ namespace WindowsFormsApplication1
                         }
                         if (ls.Count == gridsalesorder.Rows.Count - 1)
                         {
-                            MessageBox.Show("item delate please select your item");
+                            //MessageBox.Show("item delate please select your item");
                             txtitemcode.Enabled = true;
                             txtitemcode.Focus();
                             gridsalesorder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
@@ -1203,6 +1234,7 @@ namespace WindowsFormsApplication1
                             txtitemcode.Focus();
                             return;
                         }
+                       
 
                         else
                         {
@@ -1210,6 +1242,10 @@ namespace WindowsFormsApplication1
                             button4.Enabled = false;
                         }
                         txtQuantity.TabStop = false;
+                    }
+                    else if ((!ls.Contains(itemId)) || (gridsalesorder.Rows[index - 1].DefaultCellStyle.Font != null))
+                    {
+                        MessageBox.Show("Item already deleted!");
                     }
                 }
 
@@ -1447,7 +1483,11 @@ namespace WindowsFormsApplication1
 
         private void butback_Click_1(object sender, EventArgs e)
         {
-            if (txtcustomercode.Text == "C")
+            if (txtProductName.Text != "")
+            {
+                txtQuantity.Focus();
+            }
+            else if (txtcustomercode.Text == "C")
             {
                 txtcustomercode.Focus();
             }
