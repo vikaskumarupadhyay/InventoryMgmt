@@ -75,7 +75,7 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            dataGridView1.AllowUserToAddRows = true;
             // string selectquery1 = "select CustName as [Name],CustCompName as [Compnay Name],CustAddress as [Address],CustPhone as [Phone],Custmobile as [Mobole],CustFax as [Fax] from CustomerDetails";
             // string actualcolumn = "select CustName ,CustCompName ,CustAddress ,CustPhone ,Custmobile ,CustFax  from CustomerDetails";
             string selectquery1 = "select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Ballance],CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO]  ,CustServicetaxRegnNo AS [Service Tax Regn. No],CustExciseRegnNo AS [Excise Regn. No],Gstregnno AS[ Gst reg No]  from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
@@ -130,7 +130,7 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            dataGridView1.AllowUserToAddRows = true;
             string selectquery1 = "select  itm.ItemId as [Item Id],itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],cast(ipd.SalesPrice as numeric(38,2))as[Sales Price],cast(ipd.MrpPrice as numeric(38,2))as[Mrp Price] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
             string actualcolumn = "select top 1  itm.ItemId, itm.ItemName,itm.ItemCompName ,itm.ItemDesc ,ig.groupName,iul.unitName ,ipd.purChasePrice ,cast(ipd.SalesPrice as numeric(38,2)) ,cast(ipd.MrpPrice as numeric(38,2)),ipd.Margin ,iqd.OpeningQuantity ,iqd.CurrentQuantity from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
             //DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
@@ -340,37 +340,51 @@ namespace WindowsFormsApplication1
                     counter++;
                     quntity = dr3[5].ToString();
                     rate = dr3[4].ToString();
-
-                    if (itemid == txtitemcode.Text)
+                    string select1 = "select ItemName from ItemDetails where ItemId='" + txtitemcode.Text + "'";
+                    DataTable data1 = d.getDetailByQuery(select1);
+                    string itemName = "";
+                    foreach (DataRow dr2 in data1.Rows)
                     {
-                        int q1 = Convert.ToInt32(quntity);
-                        int q2 = Convert.ToInt32(txtQuantity.Text);
-                        q3 = q1 + q2;
-                        dr3[5] = q3.ToString();
-                        double rate1 = Convert.ToDouble(rate);
-                        double rate6 = q3 * rate1;
-                        double rate2 = Convert.ToDouble(txtAmount.Text);
-                        double rate4 = Convert.ToDouble(txttotalammount.Text);
-                        double rate3 = rate4 + rate2;
-                        dr3[6] = rate6.ToString();
-                        double rate5 = rate4 + rate2;
-                        txttotalammount.Text = rate5.ToString("###0.00");//rate3.ToString();
-                        // MessageBox.Show("Please Enter the Quanity");
+                        itemName = dr2[0].ToString();
+                    }
+                    if (itemName != txtProductName.Text)
+                    {
+                        MessageBox.Show("Please Select correct ItemCode");
+                        return;
+                    }
+                    else
+                    {
+                        if (itemid == txtitemcode.Text)
+                        {
+                            int q1 = Convert.ToInt32(quntity);
+                            int q2 = Convert.ToInt32(txtQuantity.Text);
+                            q3 = q1 + q2;
+                            dr3[5] = q3.ToString();
+                            double rate1 = Convert.ToDouble(rate);
+                            double rate6 = q3 * rate1;
+                            double rate2 = Convert.ToDouble(txtAmount.Text);
+                            double rate4 = Convert.ToDouble(txttotalammount.Text);
+                            double rate3 = rate4 + rate2;
+                            dr3[6] = rate6.ToString();
+                            double rate5 = rate4 + rate2;
+                            txttotalammount.Text = rate5.ToString("###0.00");//rate3.ToString();
+                            // MessageBox.Show("Please Enter the Quanity");
 
-                        txtitemcode.Text = "I";
-                        txtitemcode.Select(txtitemcode.Text.Length, 0);
-                        txtProductName.Text = "";
-                        txtRate.Text = "";
-                        txtQuantity.Text = "";
-                        txtAmount.Text = "";
-                        butadditem.Enabled = false;
-                        txtQuantity.ReadOnly = true;
+                            txtitemcode.Text = "I";
+                            txtitemcode.Select(txtitemcode.Text.Length, 0);
+                            txtProductName.Text = "";
+                            txtRate.Text = "";
+                            txtQuantity.Text = "";
+                            txtAmount.Text = "";
+                            butadditem.Enabled = false;
+                            txtQuantity.ReadOnly = true;
 
+
+                        }
 
                     }
 
                 }
-
 
 
 
