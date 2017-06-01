@@ -108,6 +108,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(256, 21);
             this.dateTimePicker1.TabIndex = 1;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // dateTimePicker2
             // 
@@ -118,17 +119,6 @@
             this.dateTimePicker2.Size = new System.Drawing.Size(256, 21);
             this.dateTimePicker2.TabIndex = 2;
             this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
-            // 
-            // button1
-            // 
-            //this.button1.Location = new System.Drawing.Point(891, 40);
-            //this.button1.Name = "button1";
-            //this.button1.Size = new System.Drawing.Size(75, 23);
-            //this.button1.TabIndex = 6;
-            //this.button1.Text = "Save";
-            //this.button1.UseVisualStyleBackColor = true;
-            //this.button1.Click += new System.EventHandler(this.button1_Click);
-
             // 
             // dataGridView1
             // 
