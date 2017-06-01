@@ -336,7 +336,17 @@ namespace WindowsFormsApplication1
                 }
             }
         }
-
+        public string product(string ItemName)
+        {
+            string select1 = "select ItemName from ItemDetails where ItemId='" + ItemName + "'";
+            DataTable data1 = dbMainClass.getDetailByQuery(select1);
+            string itemName = "";
+            foreach (DataRow dr2 in data1.Rows)
+            {
+                itemName = dr2[0].ToString();
+            }
+            return itemName;
+        }
         #region /////////// AddToList Clicked ///////////////
         private void btnAddItem_Click(object sender, EventArgs e)
         {
@@ -363,6 +373,14 @@ namespace WindowsFormsApplication1
                 string rate = "";
                 string ammount = "";
                 int counter = 0;
+                string itemname1 = product(txtItemCode.Text);
+                if (itemname1 != txtProductName.Text)
+                {
+                    MessageBox.Show("Please Select correct ItemCode");
+                    return;
+                }
+                else
+                {
                 foreach (DataRow dr3 in addToCartTable.Rows)
                 {
                     int q3 = 0;
@@ -377,38 +395,40 @@ namespace WindowsFormsApplication1
                     rate = dr3[4].ToString();
                     ammount = dr3[6].ToString();
 
-                    if (itemid == txtItemCode.Text)
-                    {
-                        if (quntity == "")
-                        {
-                            quntity = "0";
+                    
+                            if (itemid == txtItemCode.Text)
+                            {
+                                if (quntity == "")
+                                {
+                                    quntity = "0";
+                                }
+                                int q1 = Convert.ToInt32(quntity);
+                                int q2 = Convert.ToInt32(txtQuanity.Text);
+                                q3 = q1 + q2;
+                                dr3[5] = q3.ToString();
+                                Double rate1 = Convert.ToDouble(rate);
+                                Double rate6 = rate1 * q2;
+                                Double rate2 = Convert.ToDouble(ammount);
+                                Double rate7 = Convert.ToDouble(txtAmount.Text);
+                                Double rate3 = rate6 + rate2;
+                                dr3[6] = rate3.ToString();
+                                Double rate4 = Convert.ToDouble(txtTotalAmount.Text);
+                                Double rate5 = rate4 + rate7;
+                                txtTotalAmount.Text = rate5.ToString("###0.00");//rate3.ToString();
+                                // MessageBox.Show("Please Enter the Quanity");
+
+                                txtwithautaxamount.Text = rate5.ToString();
+                                txtItemCode.Text = "I";
+                                txtItemCode.Select(txtItemCode.Text.Length, 0);
+                                txtProductName.Text = "";
+                                txtRate.Text = "";
+                                txtQuanity.Text = "";
+                                txtAmount.Text = "";
+                                //txtItemCode.Focus();
+                                btnAddItem.Enabled = false;
+
+                            }
                         }
-                        int q1 = Convert.ToInt32(quntity);
-                        int q2 = Convert.ToInt32(txtQuanity.Text);
-                        q3 = q1 + q2;
-                        dr3[5] = q3.ToString();
-                        Double rate1 = Convert.ToDouble(rate);
-                        Double rate6 = rate1 * q2;
-                        Double rate2 = Convert.ToDouble(ammount);
-                        Double rate7 = Convert.ToDouble(txtAmount.Text);
-                        Double rate3 = rate6 + rate2;
-                        dr3[6] = rate3.ToString();
-                        Double rate4 = Convert.ToDouble(txtTotalAmount.Text);
-                        Double rate5 = rate4 + rate7;
-                        txtTotalAmount.Text = rate5.ToString("###0.00");//rate3.ToString();
-                        // MessageBox.Show("Please Enter the Quanity");
-
-                        txtwithautaxamount.Text = rate5.ToString();
-                        txtItemCode.Text = "I";
-                        txtItemCode.Select(txtItemCode.Text.Length, 0);
-                        txtProductName.Text = "";
-                        txtRate.Text = "";
-                        txtQuanity.Text = "";
-                        txtAmount.Text = "";
-                        //txtItemCode.Focus();
-                        btnAddItem.Enabled = false;
-
-                    }
                 }
 
 
@@ -451,14 +471,8 @@ namespace WindowsFormsApplication1
                     }
                     else
                     {
-                        string select1 = "select ItemName from ItemDetails where ItemId='" + txtItemCode.Text + "'";
-                        DataTable data1 = dbMainClass.getDetailByQuery(select1);
-                        string itemName = "";
-                        foreach (DataRow dr2 in data1.Rows)
-                        {
-                            itemName = dr2[0].ToString();
-                        }
-                        if (itemName != txtProductName.Text)
+                        string itemname2 = product(txtItemCode.Text);
+                        if (itemname2 != txtProductName.Text)
                         {
                             MessageBox.Show("Please Select correct ItemCode");
                         }
@@ -565,7 +579,7 @@ namespace WindowsFormsApplication1
             //    }
             //}
         }
-
+      
         private void txtDiscount_TextChanged(object sender, EventArgs e)
         {
             //double totalAmount = 0.0;
