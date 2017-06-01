@@ -563,50 +563,64 @@ namespace WindowsFormsApplication1
                         }
                         else
                         {
-                            string selectq = "select ids.ItemCompName,cast(ipd.MrpPrice as numeric(38,2)) from ItemPriceDetail ipd join ItemDetails ids on ipd.ItemId=ids.ItemId where ipd.ItemId='" + txtItemCode.Text + "'";
-                            DataTable dta = dbMainClass.getDetailByQuery(selectq);
-                            string ConpanyName = "";
-                            string Mrp = "";
-                            foreach (DataRow dr1 in dta.Rows)
+                            string select1 = "select ItemName from ItemDetails where ItemId='" + txtItemCode.Text + "'";
+                            DataTable data1 = dbMainClass.getDetailByQuery(select1);
+                            string itemName = "";
+                            foreach (DataRow dr2 in data1.Rows)
                             {
-                                ConpanyName = dr1[0].ToString();
-                                Mrp = dr1[1].ToString();
+                                itemName = dr2[0].ToString();
                             }
+                            if (itemName != txtProductName.Text)
+                            {
+                                MessageBox.Show("Please Select correct ItemCode");
+                            }
+                            else
+                            {
+                                string selectq = "select ids.ItemCompName,cast(ipd.MrpPrice as numeric(38,2)) from ItemPriceDetail ipd join ItemDetails ids on ipd.ItemId=ids.ItemId where ipd.ItemId='" + txtItemCode.Text + "'";
+                                DataTable dta = dbMainClass.getDetailByQuery(selectq);
+                                string ConpanyName = "";
+                                string Mrp = "";
+                                foreach (DataRow dr1 in dta.Rows)
+                                {
+                                    ConpanyName = dr1[0].ToString();
+                                    Mrp = dr1[1].ToString();
+                                }
 
-                            button4.Enabled = true;
-                            DataRow dr = addToCartTable.NewRow();
-                            dr[0] = txtItemCode.Text.Trim();
-                            dr[1] = txtProductName.Text.Trim();
-                            dr[2] = ConpanyName.Trim();
-                            dr[3] = Mrp.Trim();
-                            dr[4] = txtRate.Text.Trim();
-                            dr[5] = txtQunty.Text.Trim();
-                            dr[6] = txtAmount.Text.Trim();
+                                button4.Enabled = true;
+                                DataRow dr = addToCartTable.NewRow();
+                                dr[0] = txtItemCode.Text.Trim();
+                                dr[1] = txtProductName.Text.Trim();
+                                dr[2] = ConpanyName.Trim();
+                                dr[3] = Mrp.Trim();
+                                dr[4] = txtRate.Text.Trim();
+                                dr[5] = txtQunty.Text.Trim();
+                                dr[6] = txtAmount.Text.Trim();
 
-                            //dr[5] = txtAmount.Text.Trim();
-                            addToCartTable.Rows.Add(dr);
-                            dataGridView1.DataSource = addToCartTable;
-                            var dgvcount = dataGridView1.Rows.Count;
-                            dataGridView1.CurrentCell = dataGridView1.Rows[dgvcount - 2].Cells[0];
-                            //dgv_Checks.CurrentCell = dgv_Checks.Rows[dgvcount - 1].Cells[0];
-                            double totalAmount = Convert.ToDouble(txttotalAmount.Text);
-                            totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
-                            txttotalAmount.Text = totalAmount.ToString("###0.00");
-                            txtWAmount.Text = totalAmount.ToString();
+                                //dr[5] = txtAmount.Text.Trim();
+                                addToCartTable.Rows.Add(dr);
+                                dataGridView1.DataSource = addToCartTable;
+                                var dgvcount = dataGridView1.Rows.Count;
+                                dataGridView1.CurrentCell = dataGridView1.Rows[dgvcount - 2].Cells[0];
+                                //dgv_Checks.CurrentCell = dgv_Checks.Rows[dgvcount - 1].Cells[0];
+                                double totalAmount = Convert.ToDouble(txttotalAmount.Text);
+                                totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
+                                txttotalAmount.Text = totalAmount.ToString("###0.00");
+                                txtWAmount.Text = totalAmount.ToString();
 
-                            txtWAmount.Text = totalAmount.ToString("###0.00");
-                            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
-                            txtItemCode.Text = "I";
-                            txtProductName.Text = "";
-                            txtRate.Text = "";
-                            txtQunty.Text = "";
-                            txtAmount.Text = "";
-                            //txtItemCode.Focus();
-                            button3.Enabled = false;
-                            //txtRemoveItem.Focus();
-                            txtQunty.TabStop = false;
-                            txtQunty.ReadOnly = true;
-                            //}
+                                txtWAmount.Text = totalAmount.ToString("###0.00");
+                                dataGridView1.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
+                                txtItemCode.Text = "I";
+                                txtProductName.Text = "";
+                                txtRate.Text = "";
+                                txtQunty.Text = "";
+                                txtAmount.Text = "";
+                                //txtItemCode.Focus();
+                                button3.Enabled = false;
+                                //txtRemoveItem.Focus();
+                                txtQunty.TabStop = false;
+                                txtQunty.ReadOnly = true;
+                                //}
+                            }
                         }
                         if (dataGridView1.Rows.Count > 1)
                         {
@@ -720,51 +734,65 @@ namespace WindowsFormsApplication1
                         }
                         else
                         {
-                            string selectq = "select ids.ItemCompName,cast(ipd.MrpPrice as numeric(38,2)) from ItemPriceDetail ipd join ItemDetails ids on ipd.ItemId=ids.ItemId where ipd.ItemId='" + txtItemCode.Text + "'";
-                            DataTable dta = dbMainClass.getDetailByQuery(selectq);
-                            string ConpanyName = "";
-                            string Mrp = "";
-                            foreach (DataRow dr1 in dta.Rows)
+                            string select1 = "select ItemName from ItemDetails where ItemId='" + txtItemCode.Text + "'";
+                            DataTable data1 = dbMainClass.getDetailByQuery(select1);
+                            string itemName = "";
+                            foreach (DataRow dr2 in data1.Rows)
                             {
-                                ConpanyName = dr1[0].ToString();
-                                Mrp = dr1[1].ToString();
+                                itemName = dr2[0].ToString();
                             }
+                            if (itemName != txtProductName.Text)
+                            {
+                                MessageBox.Show("Please Select correct ItemCode");
+                            }
+                            else
+                            {
+                                string selectq = "select ids.ItemCompName,cast(ipd.MrpPrice as numeric(38,2)) from ItemPriceDetail ipd join ItemDetails ids on ipd.ItemId=ids.ItemId where ipd.ItemId='" + txtItemCode.Text + "'";
+                                DataTable dta = dbMainClass.getDetailByQuery(selectq);
+                                string ConpanyName = "";
+                                string Mrp = "";
+                                foreach (DataRow dr1 in dta.Rows)
+                                {
+                                    ConpanyName = dr1[0].ToString();
+                                    Mrp = dr1[1].ToString();
+                                }
 
-                            button4.Enabled = true;
-                            DataRow dr = addToCartTable.NewRow();
-                            dr[0] = txtItemCode.Text.Trim();
-                            dr[1] = txtProductName.Text.Trim();
-                            dr[2] = ConpanyName.Trim();
-                            dr[3] = Mrp.Trim();
-                            dr[4] = txtRate.Text.Trim();
-                            dr[5] = txtQunty.Text.Trim();
-                            dr[6] = txtQunty.Text.Trim();
-                            dr[7] = txtAmount.Text.Trim();
+                                button4.Enabled = true;
+                                DataRow dr = addToCartTable.NewRow();
+                                dr[0] = txtItemCode.Text.Trim();
+                                dr[1] = txtProductName.Text.Trim();
+                                dr[2] = ConpanyName.Trim();
+                                dr[3] = Mrp.Trim();
+                                dr[4] = txtRate.Text.Trim();
+                                dr[5] = txtQunty.Text.Trim();
+                                dr[6] = txtQunty.Text.Trim();
+                                dr[7] = txtAmount.Text.Trim();
 
-                            //dr[5] = txtAmount.Text.Trim();
-                            addToCartTable.Rows.Add(dr);
-                            dataGridView1.DataSource = addToCartTable;
-                            var dgvcount = dataGridView1.Rows.Count;
-                            dataGridView1.CurrentCell = dataGridView1.Rows[dgvcount - 2].Cells[0];
-                            //dgv_Checks.CurrentCell = dgv_Checks.Rows[dgvcount - 1].Cells[0];
-                            double totalAmount = Convert.ToDouble(txttotalAmount.Text);
-                            totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
-                            txttotalAmount.Text = totalAmount.ToString("###0.00");
-                            txtWAmount.Text = totalAmount.ToString();
+                                //dr[5] = txtAmount.Text.Trim();
+                                addToCartTable.Rows.Add(dr);
+                                dataGridView1.DataSource = addToCartTable;
+                                var dgvcount = dataGridView1.Rows.Count;
+                                dataGridView1.CurrentCell = dataGridView1.Rows[dgvcount - 2].Cells[0];
+                                //dgv_Checks.CurrentCell = dgv_Checks.Rows[dgvcount - 1].Cells[0];
+                                double totalAmount = Convert.ToDouble(txttotalAmount.Text);
+                                totalAmount += Convert.ToDouble(txtAmount.Text.Trim());
+                                txttotalAmount.Text = totalAmount.ToString("###0.00");
+                                txtWAmount.Text = totalAmount.ToString();
 
-                            txtWAmount.Text = totalAmount.ToString();
-                            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
-                            txtItemCode.Text = "I";
-                            txtProductName.Text = "";
-                            txtRate.Text = "";
-                            txtQunty.Text = "";
-                            txtAmount.Text = "";
-                            //txtItemCode.Focus();
-                            button3.Enabled = false;
-                            //txtRemoveItem.Focus();
-                            txtQunty.TabStop = false;
-                            txtQunty.ReadOnly = true;
-                            //}
+                                txtWAmount.Text = totalAmount.ToString();
+                                dataGridView1.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
+                                txtItemCode.Text = "I";
+                                txtProductName.Text = "";
+                                txtRate.Text = "";
+                                txtQunty.Text = "";
+                                txtAmount.Text = "";
+                                //txtItemCode.Focus();
+                                button3.Enabled = false;
+                                //txtRemoveItem.Focus();
+                                txtQunty.TabStop = false;
+                                txtQunty.ReadOnly = true;
+                                //}
+                            }
                         }
                         if (dataGridView1.Rows.Count > 1)
                         {
