@@ -55,6 +55,7 @@
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtBildQuntity = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridPurchaseSearch)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -358,11 +359,19 @@
             this.textBox8.Text = "Net Amount (Inc. Tax)";
             this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // txtBildQuntity
+            // 
+            this.txtBildQuntity.Location = new System.Drawing.Point(194, 555);
+            this.txtBildQuntity.Name = "txtBildQuntity";
+            this.txtBildQuntity.Size = new System.Drawing.Size(100, 20);
+            this.txtBildQuntity.TabIndex = 1;
+            // 
             // PurchasSearch1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1256, 641);
+            this.Controls.Add(this.txtBildQuntity);
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.textBox8);
             this.Controls.Add(this.textBox7);
@@ -425,5 +434,6 @@
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtBildQuntity;
     }
 }

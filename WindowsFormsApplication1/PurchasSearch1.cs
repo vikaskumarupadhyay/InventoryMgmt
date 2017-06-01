@@ -192,8 +192,12 @@ namespace WindowsFormsApplication1
             double wta;
             double wta1 = 0;
             double gross1 = 0;
+            int quntity;
+            int quntity1 = 0;
             for (int a = 0; a < gridPurchaseSearch.Rows.Count; a++)
             {
+                quntity = Convert.ToInt32(gridPurchaseSearch.Rows[a].Cells[12].Value);
+                quntity1 = quntity1 + quntity;
                 gross = Convert.ToDouble(gridPurchaseSearch.Rows[a].Cells[13].Value);
                 gross1 = gross1 + gross;
                 dis = Convert.ToDouble(gridPurchaseSearch.Rows[a].Cells[15].Value);
@@ -208,6 +212,7 @@ namespace WindowsFormsApplication1
             TxtDisAmount.Text = dis1.ToString();
             TxtTaxAmount.Text = tax1.ToString();
             TxtWithodTaxAmount.Text = wta1.ToString();
+            txtBildQuntity.Text = quntity1.ToString();
         }
         private void button3_Click(object sender, EventArgs e)
         {

@@ -1367,8 +1367,13 @@ namespace WindowsFormsApplication1
                 //button3.Focus();
                   if ((txtQunty.Text == "") || (txtQunty.Text == "0"))
                   {
-                      MessageBox.Show("Please Enter The Quanity");
+                      MessageBox.Show("Entered Quantity should not less than one.",
+    "Information",
+    MessageBoxButtons.OK,
+    MessageBoxIcon.Warning);
+                      txtQunty.Text = "1";
                       txtQunty.Focus();
+                      txtQunty.SelectAll();
                   }
                   else
                   {
