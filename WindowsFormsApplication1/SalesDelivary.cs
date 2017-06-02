@@ -1905,6 +1905,17 @@ namespace WindowsFormsApplication1
             comsearchvalue.Focus();
             txtcustomercode.TabStop = false;
             butcustomercode.TabStop = false;
+          //  addToCartTable.Columns.RemoveAt(6);
+            if (!addToCartTable.Columns.Contains("ResivQuantity"))
+            {
+                addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+               // addToCartTable.Columns.RemoveAt(6);
+            }
+
+            if (!addToCartTable.Columns.Contains("Amount"))
+            {
+                addToCartTable.Columns.Add(new DataColumn("Amount"));
+            }
            
 
         }
@@ -2634,6 +2645,16 @@ namespace WindowsFormsApplication1
             if (counter == 2)
             {
                 panel2.Visible = false;
+                addToCartTable.Columns.RemoveAt(6);
+                if (!addToCartTable.Columns.Contains("ResivQuantity"))
+                {
+                    addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                }
+
+                if (!addToCartTable.Columns.Contains("Amount"))
+                {
+                    addToCartTable.Columns.Add(new DataColumn("Amount"));
+                }
                 DataGridViewCellCollection CellCollection = dataGridView2.Rows[e.RowIndex].Cells;
                 if (!string.IsNullOrEmpty(CellCollection[0].Value.ToString()))
                 {
@@ -2651,7 +2672,7 @@ namespace WindowsFormsApplication1
                     {
                         addToCartTable.Rows.RemoveAt(0);
                     }
-                    int totel1 = 0;
+                    double totel1 = 0;
                     for (int c = 0; c < dt2.Rows.Count; c++)
                     {
                         DataRow dr2 = dt2.Rows[c];
@@ -2664,7 +2685,12 @@ namespace WindowsFormsApplication1
                         string txtAmoun = dr2[6].ToString();
                         string txtitemNmea = dr2[6].ToString();
                         //tot = txtitemNmea;
-                        int amt = Convert.ToInt32(txtitemNmea);
+                        //if (txtitemNmae == "")
+                        //{
+                        //    txtitemNmae ="0";
+                        //}
+
+                        double amt = Convert.ToDouble(txtitemNmea);
                         totel1 = totel1 + amt;
                         dr2 = addToCartTable.NewRow();
                         dr2[0] = txtItemCode.Trim();
@@ -2674,7 +2700,7 @@ namespace WindowsFormsApplication1
                         dr2[4] = txtRate.Trim();
                         dr2[5] = txtQuanity.Trim();
                         dr2[6] = txtQuanity.Trim();
-                        dr2[6] = txtAmoun.Trim();
+                        dr2[7] = txtAmoun.Trim();
                         // dr2[5] = textBox1.Text.Trim();
                         addToCartTable.Rows.Add(dr2);
                     }
@@ -2772,6 +2798,7 @@ namespace WindowsFormsApplication1
                             if (!addToCartTable.Columns.Contains("ResivQuantity")) 
                             {
                                 addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                                addToCartTable.Columns.RemoveAt(6);
                             }
 
                             if (!addToCartTable.Columns.Contains("Amount"))
@@ -2796,7 +2823,7 @@ namespace WindowsFormsApplication1
                                 {
                                     addToCartTable.Rows.RemoveAt(0);
                                 }
-                                int totel1 = 0;
+                                double totel1 = 0;
                                 for (int c = 0; c < dt2.Rows.Count; c++)
                                 {
                                     DataRow dr2 = dt2.Rows[c];
@@ -2809,7 +2836,7 @@ namespace WindowsFormsApplication1
                                     string txtAmoun = dr2[6].ToString();
                                     string txtitemNmea = dr2[6].ToString();
                                     //tot = txtitemNmea;
-                                    int amt = Convert.ToInt32(txtitemNmea);
+                                    double amt = Convert.ToDouble(txtitemNmea);
                                     totel1 = totel1 + amt;
                                     dr2 = addToCartTable.NewRow();
                                     dr2[0] = txtItem.Trim();
