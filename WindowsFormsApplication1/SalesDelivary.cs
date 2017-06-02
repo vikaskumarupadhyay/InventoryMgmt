@@ -122,6 +122,7 @@ namespace WindowsFormsApplication1
         //}
         private void butcustomercode_Click(object sender, EventArgs e)
         {
+            dataGridView2.AllowUserToAddRows = true;
             crystalReportViewer2.Visible = false;
             //string selectquery1 = "select CustName,CustCompName,CustAddress,CustPhone,Custmobile,CustFax from CustomerDetails";
             //string actualcolumn = "select CustName ,CustCompName ,CustAddress ,CustPhone ,Custmobile ,CustFax  from CustomerDetails";
@@ -192,6 +193,7 @@ namespace WindowsFormsApplication1
 
         private void butitembutton_Click(object sender, EventArgs e)
         {
+            dataGridView2.AllowUserToAddRows = true;
             crystalReportViewer2.Visible = false;
             string selectquery1 = "select  itm.ItemId as [Item Id],itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],cast(ipd.SalesPrice as numeric(38,2)) as[Sales Price],cast(ipd.MrpPrice as numeric(38,2)) as[Mrp Price] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
             string actualcolumn = "select top 1  itm.ItemId, itm.ItemName,itm.ItemCompName ,itm.ItemDesc ,ig.groupName,iul.unitName ,cast(ipd.purChasePrice as numeric(38,2)) ,cast(ipd.SalesPrice as numeric(38,2)) ,cast(ipd.MrpPrice as numeric(38,2)),ipd.Margin ,iqd.OpeningQuantity ,iqd.CurrentQuantity from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
@@ -377,11 +379,21 @@ namespace WindowsFormsApplication1
                         MessageBox.Show("Please Select correct ItemCode");
                         return;
                     }
+                  
                     if (itid == txtItemCode.Text)
                     {
                         if (quntity == "")
                         {
                             quntity = "0";
+                        }
+                        else if (txtQuantity.Text == "0" || txtQuantity.Text == "")
+                        {
+                            MessageBox.Show("please select you quantity");
+                            txtQuantity.Text = "1";
+                            txtQuantity.SelectionLength = txtQuantity.Text.Length;
+                            txtQuantity.Focus();
+                            txtQuantity.ReadOnly = false;
+                            return;
                         }
                         int q1 = Convert.ToInt32(quntity);
                         int q2 = Convert.ToInt32(txtQuantity.Text);
@@ -766,7 +778,7 @@ namespace WindowsFormsApplication1
             txtwithauttaxamount.Text = "0";
             // txtdiccount.ReadOnly = false;
             txttaxamount.Text = "0";
-            txtdicountamount.Text = "0";
+            txtdicountamount.Text = "0.";
             tab();
             txtQuantity.ReadOnly = true;
             butRemoveItem.Enabled = false;
@@ -833,6 +845,7 @@ namespace WindowsFormsApplication1
             //    textBox20.Text = dr1[2].ToString();
             //}
             txtTotalAmmount.Text = "0.00";
+            txtdiccount.Text = "0.00";
         }
 
 
@@ -900,15 +913,10 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("please select your customer code");
                     txtcustomercode.Focus();
+                  
                 return;
             }
-           else if (txtProductName.Text == "")
-            {
-                MessageBox.Show("please select your item code");
-                txtItemCode.Focus();
-                return;
-
-            }
+          
            else if (txtProductName.Text!= "")
             {
                 MessageBox.Show("please select add item");
@@ -920,6 +928,7 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("please select your customer id");
                 txtcustomercode.Focus();
+                txtItemCode.Text = "I";
                 return;
             }
            
@@ -1906,8 +1915,10 @@ namespace WindowsFormsApplication1
             {
                 if ((txtQuantity.Text == "") || (txtQuantity.Text == "0"))
                 {
-                    txtQuantity.Text = "1";
+                   
                     MessageBox.Show("please select your correct quantity");
+                    txtQuantity.Text = "1";
+                    txtQuantity.Select(txtQuantity.Text.Length, 0);
                     txtQuantity.Focus();
                 }
                 else
@@ -2410,6 +2421,11 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyChar == '\b')
                 {
+                    txtProductName.Text = "";
+                    txtRate.Text = "";
+                    txtQuantity.Text = "";
+                    txtAmmount.Text = "";
+                    butAddItem.Enabled = false;
                     e.Handled = false;
                 }
                 else
@@ -2434,7 +2450,7 @@ namespace WindowsFormsApplication1
                 if (txtItemCode.Text == "I")
                 {
                     MessageBox.Show("please enter the itemcode");
-                    txtQuantity.ReadOnly = false;
+                    txtQuantity.ReadOnly = true;
                     txtItemCode.Focus();
                     return;
                 }
