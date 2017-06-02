@@ -2411,6 +2411,11 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyChar == '\b')
                 {
+                    txtProductName.Text = "";
+                    txtRate.Text = "";
+                    txtQuantity.Text = "";
+                    txtAmmount.Text = "";
+                    butAddItem.Enabled = false;
                     e.Handled = false;
                 }
                 else
