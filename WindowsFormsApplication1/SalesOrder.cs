@@ -621,13 +621,14 @@ namespace WindowsFormsApplication1
                 txtQuantity.Focus();
                 return;
             }
-           else if (gridsalesorder.Rows.Count==1&&txtcustomercode.Text=="C")
+           
+            else if (gridsalesorder.Rows.Count == 1 && txtcustomercode.Text == "C")
             {
                 MessageBox.Show("please select your customer id");
                 txtcustomercode.Focus();
             }
-          
-          
+
+
             else if (gridsalesorder.Rows.Count == 1 && txtitemcode.Text == "I")
             {
                 MessageBox.Show("please select your item id");
@@ -1323,6 +1324,7 @@ namespace WindowsFormsApplication1
 
         private void txtitemcode_KeyPress(object sender, KeyPressEventArgs e)
         {
+
            
             string select = "select CurrentQuantity from ItemQuantityDetail where itemid='" + txtitemcode.Text + "'";
             DataTable dt1 = d.getDetailByQuery(select);
@@ -1361,9 +1363,10 @@ namespace WindowsFormsApplication1
                 {
                     s = "0";
                 }
-               else if (txtcustomercode.Text == "C")
+                if (txtcustomercode.Text == "C")
                 {
                     MessageBox.Show("Please enter the customer code first");
+                    txtitemcode.Text = "I";
                     txtcustomercode.Focus();
                     return;
                 }
