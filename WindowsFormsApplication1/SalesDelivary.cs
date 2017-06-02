@@ -896,7 +896,13 @@ namespace WindowsFormsApplication1
 
         private void butSaveButton_Click(object sender, EventArgs e)
         {
-            if (txtProductName.Text == "")
+            if (txtcustomercode.Text == "C" && txtItemCode.Text == "I")
+            {
+                MessageBox.Show("please select your customer code");
+                    txtcustomercode.Focus();
+                return;
+            }
+           else if (txtProductName.Text == "")
             {
                 MessageBox.Show("please select your item code");
                 txtItemCode.Focus();
@@ -2421,6 +2427,7 @@ namespace WindowsFormsApplication1
                 if (txtcustomercode.Text == "C")
                 {
                     MessageBox.Show("Please enter the customer code first");
+                    txtItemCode.Text = "I";
                     txtcustomercode.Focus();
                     return;
                 }
