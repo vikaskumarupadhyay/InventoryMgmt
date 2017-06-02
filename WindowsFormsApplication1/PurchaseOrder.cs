@@ -35,6 +35,7 @@ namespace WindowsFormsApplication1
             DisAmmount.Visible = false;
             TextTaxAmmount.Visible = false;
             DisAmmount.Text = "0";
+            txtdis.Text = "0.00";
             IndexTex1();
             btnAddItem.Enabled = false;
             txtRemoveItem.Enabled = false;
@@ -350,6 +351,8 @@ namespace WindowsFormsApplication1
         #region /////////// AddToList Clicked ///////////////
         private void btnAddItem_Click(object sender, EventArgs e)
         {
+            btnSave.TabStop = true;
+            btnClose.TabStop = true;
             if ((txtQuanity.Text == "") || (txtQuanity.Text == "0"))
             {
                 MessageBox.Show("Entered Quantity should not less than one.",
@@ -724,7 +727,12 @@ namespace WindowsFormsApplication1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (txtVendorCode.Text == "V")
+           
+            if (txtProductName.Text != "")
+            {
+                txtQuanity.Focus();
+            }
+           else if (txtVendorCode.Text == "V")
             {
                 MessageBox.Show("Please enter vendor code first.","Information",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 txtVendorCode.Focus();
@@ -747,6 +755,8 @@ namespace WindowsFormsApplication1
                 }
                 PO_SaveDetails();
             }
+          
+
         }
         private void PO_SaveDetails()
         {
@@ -909,6 +919,7 @@ namespace WindowsFormsApplication1
                     txtQuanity.Text = "1";
                     txtQuanity.Focus();
                     txtQuanity.SelectAll();
+                    txtAmount.Text = "0.00";
                 }
                 else
                 {
@@ -1073,7 +1084,7 @@ namespace WindowsFormsApplication1
                         }
                         double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
                         totalAmount -= Convert.ToDouble(Amount.Trim());
-                        txtTotalAmount.Text = totalAmount.ToString();
+                        txtTotalAmount.Text = totalAmount.ToString("##0.00");
                         //int index = gridPurchaseOrder.SelectedRows[0].Index;
                         //addToCartTable.Rows.RemoveAt(index-1);
                         gridPurchaseOrder.Rows[index - 1].DefaultCellStyle.Font = new Font(new FontFamily("Microsoft Sans Serif"), 9.00F, FontStyle.Strikeout);
@@ -1084,7 +1095,7 @@ namespace WindowsFormsApplication1
                         //gridPurchaseOrder.DataSource = addToCartTable;
                         if (addToCartTable.Rows.Count == 0)
                         {
-                            txtTotalAmount.Text = "0.0";
+                            txtTotalAmount.Text = "0.00";
                             //txtDiscount.Text = "0.0";
                         }
                         if(ls.Count==gridPurchaseOrder.Rows.Count-1)
@@ -1101,7 +1112,7 @@ namespace WindowsFormsApplication1
                         }
                         if (gridPurchaseOrder.Rows.Count > 0)
                         {
-                            txtdis.Text = "0";
+                            txtdis.Text = "0.00";
                             txtdis.ReadOnly = true;
                         }
                         if (gridPurchaseOrder.Rows.Count > 1)
@@ -1166,6 +1177,8 @@ namespace WindowsFormsApplication1
                             btnAddItem.Enabled = true;
                             txtQuanity.Enabled = true;
                             IndexTex2();
+                            btnSave.TabStop = false;
+                            btnClose.TabStop = false;
                         }
                         else
                         {

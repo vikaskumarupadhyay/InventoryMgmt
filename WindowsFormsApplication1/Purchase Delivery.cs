@@ -37,6 +37,7 @@ namespace WindowsFormsApplication1
             button3.Enabled = false;
             txtdis.ReadOnly = true;
             txtDisAmount.Text = "0";
+            txttotalAmount.Text = "0.00";
             txtdate.Value = DateTime.Now;
             string stlect = "select Deliveryid from CustomerOrderDelivery";
             DataTable dt = dbMainClass.getDetailByQuery(stlect);
@@ -452,6 +453,8 @@ namespace WindowsFormsApplication1
         #region /////////// AddToList Clicked ///////////////
         private void button3_Click(object sender, EventArgs e)
         {
+            button5.TabStop = true;
+            button7.TabStop = true;
             if ((txtQunty.Text == "") || (txtQunty.Text == "0"))
             {
                 MessageBox.Show("Please Enter The Quanity");
@@ -912,7 +915,11 @@ namespace WindowsFormsApplication1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if (textVendercod.Text == "V")
+            if (txtProductName.Text != "")
+            {
+                txtQunty.Focus();
+            }
+          else  if (textVendercod.Text == "V")
             {
                 MessageBox.Show("Please Enter The Vendor Code");
                 textVendercod.Focus();
@@ -1856,6 +1863,8 @@ namespace WindowsFormsApplication1
                         IndexTex2();
                         textVendercod.TabStop = true;
                         button1.TabStop = true;
+                        button5.TabStop = false;
+                        button7.TabStop = false;
                     }
                     else
                     {
@@ -2027,7 +2036,7 @@ namespace WindowsFormsApplication1
                         }
                         double totalAmount = Convert.ToDouble(txttotalAmount.Text);
                         totalAmount -= Convert.ToDouble(Amount.Trim());
-                        txttotalAmount.Text = totalAmount.ToString();
+                        txttotalAmount.Text = totalAmount.ToString("##0.00");
                         // int index = dataGridView1.SelectedRows[0].Index;
                         //addToCartTable.Rows.RemoveAt(index-1);
 
@@ -2037,14 +2046,16 @@ namespace WindowsFormsApplication1
                         dataGridView1.DataSource = addToCartTable;
                         if (addToCartTable.Rows.Count == 0)
                         {
-                            txttotalAmount.Text = "0.0";
-                            txtdis.Text = "0.0";
+                            txttotalAmount.Text = "0.00";
+                            txtdis.Text = "0.00";
                         }
                         if (ls.Count == dataGridView1.Rows.Count - 1)
                         {
                             txtItemCode.Focus();
                             dataGridView1.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
                             txtItemCode.Select(txtItemCode.Text.Length, 0);
+                            //button7.TabStop = false;
+                            //button5.TabStop = false;
                         }
                         if (dataGridView1.Rows.Count> 0)
                         {
@@ -2053,12 +2064,14 @@ namespace WindowsFormsApplication1
                        
                         if (dataGridView1.Rows.Count > 0)
                         {
-                            txtDiscount.Text = "0";
+                            txtDiscount.Text = "0.00";
                             txtDiscount.ReadOnly = true;
                         }
                         if (dataGridView1.Rows.Count > 1)
                         {
                             txtDiscount.ReadOnly = false;
+                            //button7.TabStop = true;
+                            //button5.TabStop = true;
                         }
                         //else
                         //{
