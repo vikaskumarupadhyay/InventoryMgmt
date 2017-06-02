@@ -446,7 +446,7 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
-                    txtAmount.Text = "";
+                    txtAmount.Text = "0.00";
                 }
             }
         }
@@ -917,6 +917,7 @@ namespace WindowsFormsApplication1
         {
             if (txtProductName.Text != "")
             {
+                MessageBox.Show("Please Add Item");
                 txtQunty.Focus();
             }
           else  if (textVendercod.Text == "V")

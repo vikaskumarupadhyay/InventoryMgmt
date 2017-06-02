@@ -319,7 +319,7 @@ namespace WindowsFormsApplication1
 
         private void txtQuanity_TextChanged(object sender, EventArgs e)
         {
-
+           
             string QuantiTy = txtQuanity.Text;
             int result = 0;
             if (int.TryParse(QuantiTy, out result))
@@ -333,7 +333,7 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
-                    txtAmount.Text = "";
+                    txtAmount.Text = "0.00";
                 }
             }
         }
@@ -730,6 +730,7 @@ namespace WindowsFormsApplication1
            
             if (txtProductName.Text != "")
             {
+                MessageBox.Show("please add item");
                 txtQuanity.Focus();
             }
            else if (txtVendorCode.Text == "V")
@@ -919,7 +920,7 @@ namespace WindowsFormsApplication1
                     txtQuanity.Text = "1";
                     txtQuanity.Focus();
                     txtQuanity.SelectAll();
-                    txtAmount.Text = "0.00";
+                    //txtAmount.Text = "0.00";
                 }
                 else
                 {
