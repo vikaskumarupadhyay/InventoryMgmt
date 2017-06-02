@@ -379,11 +379,21 @@ namespace WindowsFormsApplication1
                         MessageBox.Show("Please Select correct ItemCode");
                         return;
                     }
+                  
                     if (itid == txtItemCode.Text)
                     {
                         if (quntity == "")
                         {
                             quntity = "0";
+                        }
+                        else if (txtQuantity.Text == "0" || txtQuantity.Text == "")
+                        {
+                            MessageBox.Show("please select you quantity");
+                            txtQuantity.Text = "1";
+                            txtQuantity.SelectionLength = txtQuantity.Text.Length;
+                            txtQuantity.Focus();
+                            txtQuantity.ReadOnly = false;
+                            return;
                         }
                         int q1 = Convert.ToInt32(quntity);
                         int q2 = Convert.ToInt32(txtQuantity.Text);
