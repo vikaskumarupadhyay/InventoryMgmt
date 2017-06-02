@@ -487,8 +487,9 @@ namespace WindowsFormsApplication1
 
             crystalReportViewer1.Visible = false;
             tab();
-            discountamount.Text = "0";
-            txttaxamount.Text = "0";
+            discountamount.Text = "0.00";
+            txttaxamount.Text = "0.00";
+            txttax.Text = "0.00";
             comsearchsalesvalue.Focus();
             button4.Enabled = false;
             butadditem.Enabled = false;
@@ -1345,7 +1346,7 @@ namespace WindowsFormsApplication1
                 {
                     s = "0";
                 }
-                if (txtcustomercode.Text == "c")
+                if (txtcustomercode.Text == "C")
                 {
                     MessageBox.Show("Please enter the customer code first!");
                     txtcustomercode.Focus();

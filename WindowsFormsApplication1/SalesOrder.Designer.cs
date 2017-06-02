@@ -143,7 +143,7 @@
             this.txttotalammount.Size = new System.Drawing.Size(83, 21);
             this.txttotalammount.TabIndex = 56;
             this.txttotalammount.TabStop = false;
-            this.txttotalammount.Text = "0";
+            this.txttotalammount.Text = "0.00";
             this.txttotalammount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txttotalammount.TextChanged += new System.EventHandler(this.txttotalammount_TextChanged);
             // 
@@ -244,7 +244,7 @@
             this.txttax.Size = new System.Drawing.Size(45, 21);
             this.txttax.TabIndex = 49;
             this.txttax.TabStop = false;
-            this.txttax.Text = "0";
+            this.txttax.Text = "0.00";
             this.txttax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txttax.TextChanged += new System.EventHandler(this.txtdiscount_TextChanged);
             // 
@@ -720,10 +720,9 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.butback);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1172, 634);
+            this.panel2.Size = new System.Drawing.Size(589, 634);
             this.panel2.TabIndex = 60;
             // 
             // crystalReportViewer1
@@ -731,10 +730,9 @@
             this.crystalReportViewer1.ActiveViewIndex = -1;
             this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(1172, 634);
+            this.crystalReportViewer1.Size = new System.Drawing.Size(58, 634);
             this.crystalReportViewer1.TabIndex = 8;
             // 
             // panel3
@@ -746,7 +744,7 @@
             this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel3.Location = new System.Drawing.Point(12, 105);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1141, 476);
+            this.panel3.Size = new System.Drawing.Size(558, 476);
             this.panel3.TabIndex = 7;
             // 
             // dataGridView1
@@ -757,7 +755,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1137, 472);
+            this.dataGridView1.Size = new System.Drawing.Size(554, 472);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
@@ -774,7 +772,7 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(12, 25);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1141, 73);
+            this.groupBox4.Size = new System.Drawing.Size(558, 73);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
@@ -795,7 +793,7 @@
             this.txtsearchvalue.Location = new System.Drawing.Point(687, 42);
             this.txtsearchvalue.Multiline = true;
             this.txtsearchvalue.Name = "txtsearchvalue";
-            this.txtsearchvalue.Size = new System.Drawing.Size(1067, 23);
+            this.txtsearchvalue.Size = new System.Drawing.Size(484, 23);
             this.txtsearchvalue.TabIndex = 3;
             this.txtsearchvalue.TextChanged += new System.EventHandler(this.txtsearchvalue_TextChanged_1);
             // 

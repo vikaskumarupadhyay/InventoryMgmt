@@ -56,6 +56,8 @@
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.txtBildQuntity = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridPurchaseSearch)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -167,7 +169,7 @@
             // 
             this.TxtTaxAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtTaxAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtTaxAmount.Location = new System.Drawing.Point(864, 555);
+            this.TxtTaxAmount.Location = new System.Drawing.Point(913, 555);
             this.TxtTaxAmount.Name = "TxtTaxAmount";
             this.TxtTaxAmount.Size = new System.Drawing.Size(107, 21);
             this.TxtTaxAmount.TabIndex = 15;
@@ -177,7 +179,7 @@
             // 
             this.TxtDisAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtDisAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtDisAmount.Location = new System.Drawing.Point(645, 555);
+            this.TxtDisAmount.Location = new System.Drawing.Point(746, 555);
             this.TxtDisAmount.Name = "TxtDisAmount";
             this.TxtDisAmount.Size = new System.Drawing.Size(107, 21);
             this.TxtDisAmount.TabIndex = 16;
@@ -197,7 +199,7 @@
             // 
             this.TxtGrowsAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtGrowsAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtGrowsAmount.Location = new System.Drawing.Point(426, 555);
+            this.TxtGrowsAmount.Location = new System.Drawing.Point(579, 555);
             this.TxtGrowsAmount.Name = "TxtGrowsAmount";
             this.TxtGrowsAmount.Size = new System.Drawing.Size(107, 21);
             this.TxtGrowsAmount.TabIndex = 18;
@@ -267,10 +269,10 @@
             // 
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(396, 555);
+            this.textBox2.Location = new System.Drawing.Point(556, 555);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(31, 21);
+            this.textBox2.Size = new System.Drawing.Size(24, 21);
             this.textBox2.TabIndex = 27;
             this.textBox2.Text = "₹";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -279,22 +281,22 @@
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(312, 555);
+            this.textBox1.Location = new System.Drawing.Point(525, 555);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(85, 21);
+            this.textBox1.Size = new System.Drawing.Size(32, 21);
             this.textBox1.TabIndex = 26;
-            this.textBox1.Text = "Gross Amount";
+            this.textBox1.Text = "G A";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox4
             // 
             this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(615, 555);
+            this.textBox4.Location = new System.Drawing.Point(723, 555);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(31, 21);
+            this.textBox4.Size = new System.Drawing.Size(24, 21);
             this.textBox4.TabIndex = 29;
             this.textBox4.Text = "₹";
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -303,22 +305,22 @@
             // 
             this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(539, 555);
+            this.textBox3.Location = new System.Drawing.Point(692, 555);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(77, 21);
+            this.textBox3.Size = new System.Drawing.Size(32, 21);
             this.textBox3.TabIndex = 28;
-            this.textBox3.Text = "Dis. Amount";
+            this.textBox3.Text = "D A";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox7
             // 
             this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(834, 555);
+            this.textBox7.Location = new System.Drawing.Point(890, 555);
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(31, 21);
+            this.textBox7.Size = new System.Drawing.Size(24, 21);
             this.textBox7.TabIndex = 31;
             this.textBox7.Text = "₹";
             this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -327,22 +329,22 @@
             // 
             this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(758, 555);
+            this.textBox6.Location = new System.Drawing.Point(859, 555);
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(77, 21);
+            this.textBox6.Size = new System.Drawing.Size(32, 21);
             this.textBox6.TabIndex = 30;
-            this.textBox6.Text = "Tax Amount";
+            this.textBox6.Text = "T A";
             this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox9
             // 
             this.textBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(1101, 555);
+            this.textBox9.Location = new System.Drawing.Point(1108, 555);
             this.textBox9.Name = "textBox9";
             this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(31, 21);
+            this.textBox9.Size = new System.Drawing.Size(24, 21);
             this.textBox9.TabIndex = 33;
             this.textBox9.Text = "₹";
             this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -351,26 +353,55 @@
             // 
             this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(977, 555);
+            this.textBox8.Location = new System.Drawing.Point(1026, 555);
             this.textBox8.Name = "textBox8";
             this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(125, 21);
+            this.textBox8.Size = new System.Drawing.Size(83, 21);
             this.textBox8.TabIndex = 32;
-            this.textBox8.Text = "Net Amount (Inc. Tax)";
+            this.textBox8.Text = "N A (Inc. Tax)";
             this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtBildQuntity
             // 
-            this.txtBildQuntity.Location = new System.Drawing.Point(194, 555);
+            this.txtBildQuntity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBildQuntity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBildQuntity.Location = new System.Drawing.Point(412, 555);
             this.txtBildQuntity.Name = "txtBildQuntity";
-            this.txtBildQuntity.Size = new System.Drawing.Size(100, 20);
+            this.txtBildQuntity.Size = new System.Drawing.Size(107, 21);
             this.txtBildQuntity.TabIndex = 1;
+            this.txtBildQuntity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox5.Location = new System.Drawing.Point(358, 555);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(32, 21);
+            this.textBox5.TabIndex = 34;
+            this.textBox5.Text = "Q B";
+            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox10
+            // 
+            this.textBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox10.Location = new System.Drawing.Point(389, 555);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.ReadOnly = true;
+            this.textBox10.Size = new System.Drawing.Size(24, 21);
+            this.textBox10.TabIndex = 35;
+            this.textBox10.Text = "₹";
+            this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // PurchasSearch1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1256, 641);
+            this.Controls.Add(this.textBox10);
+            this.Controls.Add(this.textBox5);
             this.Controls.Add(this.txtBildQuntity);
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.textBox8);
@@ -435,5 +466,7 @@
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.TextBox txtBildQuntity;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox10;
     }
 }
