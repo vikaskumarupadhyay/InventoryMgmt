@@ -900,15 +900,10 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("please select your customer code");
                     txtcustomercode.Focus();
+                  
                 return;
             }
-           else if (txtProductName.Text == "")
-            {
-                MessageBox.Show("please select your item code");
-                txtItemCode.Focus();
-                return;
-
-            }
+          
            else if (txtProductName.Text!= "")
             {
                 MessageBox.Show("please select add item");
@@ -920,6 +915,7 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("please select your customer id");
                 txtcustomercode.Focus();
+                txtItemCode.Text = "I";
                 return;
             }
            
@@ -1906,8 +1902,10 @@ namespace WindowsFormsApplication1
             {
                 if ((txtQuantity.Text == "") || (txtQuantity.Text == "0"))
                 {
-                    txtQuantity.Text = "1";
+                   
                     MessageBox.Show("please select your correct quantity");
+                    txtQuantity.Text = "1";
+                    txtQuantity.Select(txtQuantity.Text.Length, 0);
                     txtQuantity.Focus();
                 }
                 else
