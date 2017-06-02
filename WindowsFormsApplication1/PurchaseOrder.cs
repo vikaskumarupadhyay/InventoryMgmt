@@ -1050,16 +1050,8 @@ namespace WindowsFormsApplication1
 
         private void gridPurchaseOrder_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == Convert.ToChar(Keys.Escape))
-            {
-                var dgvcount = gridPurchaseOrder.Rows.Count;
-                gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[dgvcount - 2].Cells[0];
-                gridPurchaseOrder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
-                txtItemCode.Focus();
-                txtItemCode.Select(txtItemCode.Text.Length, 0);
-                txtRemoveItem.Enabled = true;
-            }
-             if (e.KeyChar == Convert.ToChar(Keys.Enter))
+
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
                 Color backGroundColor = gridPurchaseOrder.DefaultCellStyle.SelectionBackColor;
                 if (backGroundColor.Name == "DodgerBlue" || backGroundColor.Name == "Highlight")
@@ -1099,7 +1091,7 @@ namespace WindowsFormsApplication1
                             txtTotalAmount.Text = "0.00";
                             //txtDiscount.Text = "0.0";
                         }
-                        if(ls.Count==gridPurchaseOrder.Rows.Count-1)
+                        if (ls.Count == gridPurchaseOrder.Rows.Count - 1)
                         {
                             btnSave.TabStop = false;
                             btnClose.TabStop = false;
@@ -1109,7 +1101,7 @@ namespace WindowsFormsApplication1
                         }
                         if (gridPurchaseOrder.Rows.Count > 0)
                         {
-                           // gridPurchaseOrder.Rows[gridPurchaseOrder.Rows.Count - 1].Selected = true;
+                            // gridPurchaseOrder.Rows[gridPurchaseOrder.Rows.Count - 1].Selected = true;
                         }
                         if (gridPurchaseOrder.Rows.Count > 0)
                         {
@@ -1125,14 +1117,21 @@ namespace WindowsFormsApplication1
                             //txtRemoveItem.Enabled = false;
                         }
                     }
-                   else if ((!ls.Contains(itemId)) || (gridPurchaseOrder.Rows[index - 1].DefaultCellStyle.Font != null))
+                    else if ((!ls.Contains(itemId)) || (gridPurchaseOrder.Rows[index - 1].DefaultCellStyle.Font != null))
                     {
                         MessageBox.Show("Item already deleted!");
                     }
                 }
             }
-            
-
+            if (e.KeyChar == Convert.ToChar(Keys.Escape))
+            {
+                var dgvcount = gridPurchaseOrder.Rows.Count;
+                gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[dgvcount - 2].Cells[0];
+                gridPurchaseOrder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
+                txtItemCode.Focus();
+                txtItemCode.Select(txtItemCode.Text.Length, 0);
+                txtRemoveItem.Enabled = true;
+            }
         }
 
        

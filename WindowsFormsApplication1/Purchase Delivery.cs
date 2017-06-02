@@ -376,6 +376,16 @@ namespace WindowsFormsApplication1
             comboBox1.DataSource = ls;
             dataGridView2.DataSource = dt;
             IndexTex();
+            //addToCartTable.Columns.RemoveAt(6);
+            if (!addToCartTable.Columns.Contains("ResivQuantity"))
+            {
+                addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+            }
+
+            if (!addToCartTable.Columns.Contains("Amount"))
+            {
+                addToCartTable.Columns.Add(new DataColumn("Amount"));
+            }
 
         }
 
@@ -1545,14 +1555,14 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
-                    string dilqurry1 = "select Orderid from VendorOrderDetails where Orderid ='" + txtRef.Text + "'";
-                    DataTable dildt2 = dbMainClass.getDetailByQuery(dilqurry1);
-                    if (dildt2 != null && dildt2.Rows != null)// && dildt2.Rows.Count > 0)
-                    {
-                        MessageBox.Show("This Order Is Not Available");
-                    }
-                    else
-                    {
+                    //string dilqurry1 = "select Orderid from VendorOrderDetails where Orderid ='" + txtRef.Text + "'";
+                    //DataTable dildt2 = dbMainClass.getDetailByQuery(dilqurry1);
+                    //if (dildt2 != null && dildt2.Rows != null)// && dildt2.Rows.Count > 0)
+                    //{
+                    //    MessageBox.Show("This Order Is Not Available");
+                    //}
+                    //else
+                    //{
                         button4.Enabled = true;
                         txtItemCode.Focus();
                         addToCartTable.Columns.RemoveAt(6);
@@ -1573,6 +1583,15 @@ namespace WindowsFormsApplication1
                             //button5.Enabled = false;
 
                             MessageBox.Show("This Order completed");
+                            if (!addToCartTable.Columns.Contains("ResivQuantity"))
+                            {
+                                addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                            }
+
+                            if (!addToCartTable.Columns.Contains("Amount"))
+                            {
+                                addToCartTable.Columns.Add(new DataColumn("Amount"));
+                            }
                             //addToCartTable.Columns.RemoveAt(6);
                             txtRef.Text = "";
                             textVendercod.Focus();
@@ -1645,7 +1664,7 @@ namespace WindowsFormsApplication1
                         }
                     }
                 }
-            }
+            //}
 
             if (Char.IsLetterOrDigit(e.KeyChar))
             {
@@ -2009,88 +2028,88 @@ namespace WindowsFormsApplication1
             
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                Color backGroundColor = dataGridView1.DefaultCellStyle.SelectionBackColor;
-                if (backGroundColor.Name == "DodgerBlue" || backGroundColor.Name == "Highlight")
-                {
-                    MessageBox.Show("Please select  remove button");
-                    return;
-                }
-                if (addToCartTable.Rows.Count > 0)
-                {
-                    if (txttotalAmount.Text == "")
+                    Color backGroundColor = dataGridView1.DefaultCellStyle.SelectionBackColor;
+                    if (backGroundColor.Name == "DodgerBlue" || backGroundColor.Name == "Highlight")
                     {
-                        txttotalAmount.Text = "0";
+                        MessageBox.Show("Please select  remove button");
+                        return;
                     }
-                    int index = dataGridView1.SelectedRows[0].Index;
-                    string itemId = dataGridView1.Rows[index - 1].Cells[0].Value.ToString();
-                    if ((!ls.Contains(itemId)) || (dataGridView1.Rows[index - 1].DefaultCellStyle.Font == null))
+                    if (addToCartTable.Rows.Count > 0)
                     {
-                        string Amount = "";
-                        int currentrow = dataGridView1.CurrentRow.Index;
-                        if (txtRef.Text == "")
+                        if (txttotalAmount.Text == "")
                         {
-                            Amount = dataGridView1.Rows[currentrow - 1].Cells[6].Value.ToString();
-                            if (Amount == "")
-                            {
-                                Amount = "0";
-                            }
+                            txttotalAmount.Text = "0";
                         }
-                        else if (txtRef.Text != "")
+                        int index = dataGridView1.SelectedRows[0].Index;
+                        string itemId = dataGridView1.Rows[index - 1].Cells[0].Value.ToString();
+                        if ((!ls.Contains(itemId)) || (dataGridView1.Rows[index - 1].DefaultCellStyle.Font == null))
                         {
-                           Amount = dataGridView1.Rows[currentrow - 1].Cells[7].Value.ToString();
-                            if (Amount == "")
+                            string Amount = "";
+                            int currentrow = dataGridView1.CurrentRow.Index;
+                            if (txtRef.Text == "")
                             {
-                                Amount = "0";
+                                Amount = dataGridView1.Rows[currentrow - 1].Cells[6].Value.ToString();
+                                if (Amount == "")
+                                {
+                                    Amount = "0";
+                                }
                             }
-                        }
-                        double totalAmount = Convert.ToDouble(txttotalAmount.Text);
-                        totalAmount -= Convert.ToDouble(Amount.Trim());
-                        txttotalAmount.Text = totalAmount.ToString("##0.00");
-                        // int index = dataGridView1.SelectedRows[0].Index;
-                        //addToCartTable.Rows.RemoveAt(index-1);
+                            else if (txtRef.Text != "")
+                            {
+                                Amount = dataGridView1.Rows[currentrow - 1].Cells[7].Value.ToString();
+                                if (Amount == "")
+                                {
+                                    Amount = "0";
+                                }
+                            }
+                            double totalAmount = Convert.ToDouble(txttotalAmount.Text);
+                            totalAmount -= Convert.ToDouble(Amount.Trim());
+                            txttotalAmount.Text = totalAmount.ToString("##0.00");
+                            // int index = dataGridView1.SelectedRows[0].Index;
+                            //addToCartTable.Rows.RemoveAt(index-1);
 
-                        dataGridView1.Rows[index - 1].DefaultCellStyle.Font = new Font(new FontFamily("Microsoft Sans Serif"), 9.00F, FontStyle.Strikeout);
-                        dataGridView1.Rows[index - 1].DefaultCellStyle.ForeColor = Color.Red;
-                        ls.Add(itemId);
-                        dataGridView1.DataSource = addToCartTable;
-                        if (addToCartTable.Rows.Count == 0)
-                        {
-                            txttotalAmount.Text = "0.00";
-                            txtdis.Text = "0.00";
+                            dataGridView1.Rows[index - 1].DefaultCellStyle.Font = new Font(new FontFamily("Microsoft Sans Serif"), 9.00F, FontStyle.Strikeout);
+                            dataGridView1.Rows[index - 1].DefaultCellStyle.ForeColor = Color.Red;
+                            ls.Add(itemId);
+                            dataGridView1.DataSource = addToCartTable;
+                            if (addToCartTable.Rows.Count == 0)
+                            {
+                                txttotalAmount.Text = "0.00";
+                                txtdis.Text = "0.00";
+                            }
+                            if (ls.Count == dataGridView1.Rows.Count - 1)
+                            {
+                                txtItemCode.Focus();
+                                dataGridView1.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
+                                txtItemCode.Select(txtItemCode.Text.Length, 0);
+                                button7.TabStop = false;
+                                button5.TabStop = false;
+                            }
+                            if (dataGridView1.Rows.Count > 0)
+                            {
+                                //dataGridView1.Rows[dataGridView1.Rows.Count - 1].Selected = true;
+                            }
+
+                            if (dataGridView1.Rows.Count > 0)
+                            {
+                                txtDiscount.Text = "0.00";
+                                txtDiscount.ReadOnly = true;
+                            }
+                            if (dataGridView1.Rows.Count > 1)
+                            {
+                                txtDiscount.ReadOnly = false;
+                                //button7.TabStop = true;
+                                //button5.TabStop = true;
+                            }
+                            //else
+                            //{
+                            //    button4.Enabled = false;
                         }
-                        if (ls.Count == dataGridView1.Rows.Count - 1)
+                        else if ((!ls.Contains(itemId)) || (dataGridView1.Rows[index - 1].DefaultCellStyle.Font != null))
                         {
-                            txtItemCode.Focus();
-                            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
-                            txtItemCode.Select(txtItemCode.Text.Length, 0);
-                            button7.TabStop = false;
-                            button5.TabStop = false;
+                            MessageBox.Show("Item already deleted!");
                         }
-                        if (dataGridView1.Rows.Count> 0)
-                        {
-                            //dataGridView1.Rows[dataGridView1.Rows.Count - 1].Selected = true;
-                        }
-                       
-                        if (dataGridView1.Rows.Count > 0)
-                        {
-                            txtDiscount.Text = "0.00";
-                            txtDiscount.ReadOnly = true;
-                        }
-                        if (dataGridView1.Rows.Count > 1)
-                        {
-                            txtDiscount.ReadOnly = false;
-                            //button7.TabStop = true;
-                            //button5.TabStop = true;
-                        }
-                        //else
-                        //{
-                        //    button4.Enabled = false;
                     }
-                   else if ((!ls.Contains(itemId)) || (dataGridView1.Rows[index - 1].DefaultCellStyle.Font != null))
-                    {
-                        MessageBox.Show("Item already deleted!");
-                    }
-                }
                 //int index1 = dataGridView1.SelectedRows[0].Index;
                 //string itemId1 = dataGridView1.Rows[index1 - 1].Cells[0].Value.ToString();
                
@@ -2224,6 +2243,7 @@ namespace WindowsFormsApplication1
                         if (!addToCartTable.Columns.Contains("ResivQuantity"))
                         {
                             addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                            addToCartTable.Columns.RemoveAt(6);
                         }
 
                         if (!addToCartTable.Columns.Contains("Amount"))
@@ -2323,6 +2343,7 @@ namespace WindowsFormsApplication1
                 if (!addToCartTable.Columns.Contains("ResivQuantity"))
                 {
                     addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                    addToCartTable.Columns.RemoveAt(6);
                 }
 
                 if (!addToCartTable.Columns.Contains("Amount"))
