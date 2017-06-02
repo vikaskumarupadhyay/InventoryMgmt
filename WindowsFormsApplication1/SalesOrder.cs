@@ -476,6 +476,7 @@ namespace WindowsFormsApplication1
 
         private void salesorder_Load(object sender, EventArgs e)
         {
+           
             txtcustomercode.Select(txtcustomercode.Text.Length, 0);
             txtitemcode.Select(txtitemcode.Text.Length, 0);
             textBox20.ReadOnly = true;
@@ -487,9 +488,9 @@ namespace WindowsFormsApplication1
 
             crystalReportViewer1.Visible = false;
             tab();
-            discountamount.Text = "0.00";
+            discountamount.Text = "0";
             txttaxamount.Text = "0.00";
-            txttax.Text = "0.00";
+            
             comsearchsalesvalue.Focus();
             button4.Enabled = false;
             butadditem.Enabled = false;
@@ -540,7 +541,7 @@ namespace WindowsFormsApplication1
                 textBox16.Text = dr[1].ToString();
             }
             // gridsalesorder.Rows.Add();
-
+            txttotalammount.Text = "0.00";
         }
 
         private void setAutoCompleteMode(TextBox txt, string ColumnName, DataTable dt)
@@ -614,13 +615,28 @@ namespace WindowsFormsApplication1
         private void savebutton_Click(object sender, EventArgs e)
         {
             panel2.Visible = false;
-            if (gridsalesorder.Rows.Count == 1)
+            if (txtProductName.Text != "")
             {
-                // gridsalesorder.AllowUserToAddRows = true;
+                MessageBox.Show("please add item");
+                txtQuantity.Focus();
+                return;
+            }
+           
+            else if (gridsalesorder.Rows.Count == 1 && txtcustomercode.Text == "C")
+            {
                 MessageBox.Show("please select your customer id");
+                txtcustomercode.Focus();
             }
 
-            else if (ls.Count == gridsalesorder.Rows.Count - 1)
+
+            else if (gridsalesorder.Rows.Count == 1 && txtitemcode.Text == "I")
+            {
+                MessageBox.Show("please select your item id");
+                txtitemcode.Focus();
+                return;
+            }
+
+            else if (txtitemcode.Text == "" && txtcustomercode.Text == "")
             {
                 MessageBox.Show("please select your item id");
                 txtitemcode.Focus();
@@ -682,14 +698,14 @@ namespace WindowsFormsApplication1
 
                         DataGridViewRow currentrow = rowcollection[a];
                         DataGridViewCellCollection cellcollection = currentrow.Cells;
-                        string txtitemcode = cellcollection[0].Value.ToString();
-                        if (ls.Contains(txtitemcode) && gridsalesorder.Rows[counter].DefaultCellStyle.Font != null)
+                        string itemcode = cellcollection[0].Value.ToString();
+                        if (ls.Contains(itemcode) && gridsalesorder.Rows[counter].DefaultCellStyle.Font != null)
                         {
                             counter++;
                             continue;
                         }
                         counter++;
-                        string txtProductName = cellcollection[1].Value.ToString();
+                        string ProductName = cellcollection[1].Value.ToString();
                         string Compnayname = cellcollection[2].Value.ToString();
                         string mrp = cellcollection[3].Value.ToString();
                         string txtRate = cellcollection[4].Value.ToString();
@@ -697,7 +713,7 @@ namespace WindowsFormsApplication1
                         string txtAmount = cellcollection[6].Value.ToString();
                         string Orderid = txtsrno.Text;
                        
-                        string query = "insert into customerorderdescriptions Values('" + Orderid + "','" + txtitemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
+                        string query = "insert into customerorderdescriptions Values('" + Orderid + "','" + itemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
                         show.Add(query);
                     }
 
@@ -1309,6 +1325,7 @@ namespace WindowsFormsApplication1
         private void txtitemcode_KeyPress(object sender, KeyPressEventArgs e)
         {
 
+           
             string select = "select CurrentQuantity from ItemQuantityDetail where itemid='" + txtitemcode.Text + "'";
             DataTable dt1 = d.getDetailByQuery(select);
             string s = "";
@@ -1348,19 +1365,18 @@ namespace WindowsFormsApplication1
                 }
                 if (txtcustomercode.Text == "C")
                 {
-                    MessageBox.Show("Please enter the customer code first!");
+                    MessageBox.Show("Please enter the customer code first");
+                    txtitemcode.Text = "I";
                     txtcustomercode.Focus();
+                    return;
                 }
-                if (txtitemcode.Text == "I")
+               if (txtitemcode.Text == "I")
                 {
-                    MessageBox.Show("Please enter valid itemcode!");
+                    MessageBox.Show("Please enter valid itemcode");
                     txtQuantity.ReadOnly = true;
                     txtitemcode.Focus();
                     return;
                 }
-
-
-
                 double quantity = Convert.ToDouble(s);
                 // double q = Convert.ToDouble(txtQuantity.Text + "");
                if(quantity==0)
