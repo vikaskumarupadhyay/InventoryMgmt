@@ -455,13 +455,20 @@ namespace WindowsFormsApplication1
         {
             button5.TabStop = true;
             button7.TabStop = true;
-            if ((txtQunty.Text == "") || (txtQunty.Text == "0"))
-            {
-                MessageBox.Show("Please Enter The Quanity");
-                txtQunty.Focus();
-            }
+              if ((txtQunty.Text == "") || (txtQunty.Text == "0"))
+                  {
+                      MessageBox.Show("Entered Quantity should not less than one.",
+    "Information",
+    MessageBoxButtons.OK,
+    MessageBoxIcon.Warning);
+                      txtQunty.Text = "1";
+                      txtQunty.Focus();
+                      txtQunty.SelectAll();
+                  }
+                 
             else
             {
+                button3.Focus();
                 txtRef.Enabled = false;
                 btnSelectPurchaseOrder.Enabled = false;
                 if (txtRef.Text == "")
@@ -938,8 +945,9 @@ namespace WindowsFormsApplication1
                 if (ls.Count == dataGridView1.Rows.Count - 1)
                 {
                     MessageBox.Show("Please Enter The Item");
-
-                    return;
+                    txtItemCode.Focus();
+                    txtItemCode.Select(txtItemCode.Text.Length, 0);
+                    //return;//
                 }
                 else
                 {
@@ -1901,7 +1909,7 @@ namespace WindowsFormsApplication1
                     e.Handled = false;
                     txtProductName.Text = "";
                     txtRate.Text = "";
-
+                    txtQunty.ReadOnly = true;
                     txtAmount.Text = "";
                     txtQunty.Text = "";
                     txtItemCode.Focus();
@@ -2055,8 +2063,8 @@ namespace WindowsFormsApplication1
                             txtItemCode.Focus();
                             dataGridView1.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
                             txtItemCode.Select(txtItemCode.Text.Length, 0);
-                            //button7.TabStop = false;
-                            //button5.TabStop = false;
+                            button7.TabStop = false;
+                            button5.TabStop = false;
                         }
                         if (dataGridView1.Rows.Count> 0)
                         {
