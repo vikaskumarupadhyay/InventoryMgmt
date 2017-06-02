@@ -1019,7 +1019,6 @@
             this.txtInvoiceAmount.TabStop = false;
             this.txtInvoiceAmount.Text = "0.00";
             this.txtInvoiceAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-           // this.txtInvoiceAmount.TextChanged += new System.EventHandler(this.txtInvoiceAmount_TextChanged);
             // 
             // label21
             // 
@@ -1051,6 +1050,7 @@
             this.txtInvoiceid.TabIndex = 1;
             this.txtInvoiceid.TabStop = false;
             this.txtInvoiceid.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+           // this.txtInvoiceid.TextChanged += new System.EventHandler(this.txtInvoiceid_TextChanged_1);
             // 
             // label18
             // 
