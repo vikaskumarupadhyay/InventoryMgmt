@@ -1051,9 +1051,7 @@ namespace WindowsFormsApplication1
         private void gridPurchaseOrder_KeyPress(object sender, KeyPressEventArgs e)
         {
 
-<<<<<<< HEAD
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-=======
+
             if (e.KeyChar == Convert.ToChar(Keys.Escape))
             {
                 var dgvcount = gridPurchaseOrder.Rows.Count;
@@ -1064,7 +1062,7 @@ namespace WindowsFormsApplication1
                 txtRemoveItem.Enabled = true;
             }
              if (e.KeyChar == Convert.ToChar(Keys.Enter))
->>>>>>> 02-06-017part6
+
             {
                 int selectewIndex = gridPurchaseOrder.CurrentCell.RowIndex;
                 int selectewIndexActual = gridPurchaseOrder.SelectedRows[0].Index;
