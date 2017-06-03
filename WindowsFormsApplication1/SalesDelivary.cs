@@ -1024,12 +1024,14 @@ namespace WindowsFormsApplication1
                         }
 
                     }
+
+                  
                 }
-                pnlSalesPayment.Visible = true;
-                CmbPageName.SelectedIndex = 0;
-                CmbCompany.SelectedIndex = 0;
-                CmbCardType.SelectedIndex = 0;
             }
+            pnlSalesPayment.Visible = true;
+            CmbPageName.SelectedIndex = 0;
+            CmbCompany.SelectedIndex = 0;
+            CmbCardType.SelectedIndex = 0;
         }
         /*  gridsalesdelivary.AllowUserToAddRows = false;
 
@@ -1702,7 +1704,18 @@ namespace WindowsFormsApplication1
                                             {
                                                 crystalReportViewer2.Visible = false;
                                                 panel2.Visible = false;
+                                               // makeblank();
+                                                makeblank();
+                                                int value1 = Convert.ToInt32(txtSrNo.Text);
+                                                int value2 = value1 + 1;
+                                                txtSrNo.Text = value2.ToString();
+                                                txtcustomercode.Focus();
+                                                txtcustomercode.Select(txtcustomercode.Text.Length, 0);
+                                                gridsalesdelivary.AllowUserToAddRows = true;
+                                                butRemoveItem.Enabled = false;
+                                                return;
                                             }
+                                           
                                         }
                                     }
                                     else
@@ -1720,12 +1733,7 @@ namespace WindowsFormsApplication1
                 }
             }
 
-                //makeblank();
-                //int value1 = Convert.ToInt32(txtSrNo.Text);
-                //int value2 = value1 + 1;
-                //txtSrNo.Text = value2.ToString();
-                //txtcustomercode.Focus();
-                //txtcustomercode.Select(txtcustomercode.Text.Length, 0);
+           
 
 
             //}
@@ -1901,23 +1909,36 @@ namespace WindowsFormsApplication1
 
         private void ButSelectPurchaseOrder_Click(object sender, EventArgs e)
         {
+            counter = 2;
+            panel2.Visible = true;
             dataGridView2.AllowUserToAddRows = true;
             pnlSalesPayment.Visible = false;
             crystalReportViewer2.Visible = false;
-            string selectquery1 = "select  CustId,date,Totalammount from orderdetails";
-            DataTable dt1 = d.getDetailByQuery(selectquery1);
-            string val = " ";
-            List<string> sd = new List<string>();
-            foreach (DataColumn dr in dt1.Columns)
+            string selectqurry = "select  orderdetails.orderid as[Orderr ID],orderdetails.custid as [Customer ID], CustomerDetails.CustName as[Customer Name], CustomerDetails.CustAddress as[Customer Address],CustomerDetails.CustCompName as[Customer Compnay Name],orderdetails.date as [Date],(select Sum(customerorderdescriptions.quantity)as [Quantity] from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid) as[Bild Quanity],orderdetails.WithautTaxamount as[Withaut Tax Amount],orderdetails.Discount as [Discount],orderdetails.Discountamount as [Discount Amount],orderdetails.Tax,orderdetails.Taxamount as [Tax Amount],orderdetails.totalammount as[Total Amount] from orderdetails join CustomerDetails on CustomerDetails.custId=orderdetails.custid";
+            string selectqurryForActualColumnName = "select top 1 orderdetails.orderid ,orderdetails.custid , CustomerDetails.CustName, CustomerDetails.CustAddress ,CustomerDetails.CustCompName ,orderdetails.date ,(select Sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid) as [Builed Quantity],orderdetails.WithautTaxamount,orderdetails.Discount,orderdetails.Discountamount,orderdetails.Tax,orderdetails.Taxamount ,orderdetails.totalammount from orderdetails join CustomerDetails on CustomerDetails.custId=orderdetails.custid";
+            DataTable dt = d.getDetailByQuery(selectqurry);
+            DataTable dtOnlyColumnName = d.getDetailByQuery(selectqurryForActualColumnName);
+            DataTable customDataTable = new DataTable();
+            customDataTable.Columns.Add("ActualTableColumnName");
+            customDataTable.Columns.Add("AliasTableColumnName");
+            //List<string> ls = new List<string>();
+            DataColumnCollection d1 = dt.Columns;
+            DataColumnCollection dataColumnForName = dtOnlyColumnName.Columns;
+            for (int a = 0; a < d1.Count; a++)
             {
-                val = dr.ColumnName;
-                sd.Add(val);
+                //DataColumn dc = new DataColumn();
+                string b = d1[a].ToString();
+                string actualColumnName = dataColumnForName[a].ToString();
+                DataRow dr = customDataTable.NewRow();
+                dr["ActualTableColumnName"] = actualColumnName;
+                dr["AliasTableColumnName"] = b;
+                customDataTable.Rows.Add(dr);
+                //  ls.Add(b);
             }
-            comsearchvalue.DataSource = sd;
-            counter = 2;
-            panel2.Visible = true;
-            string selectquery = "select o.orderid, o.custid,o.date,o.totalammount,c.CustName,c.CustCompName from orderdetails o join CustomerDetails c on o.Custid=c.Custid";
-            DataTable dt = d.getDetailByQuery(selectquery);
+
+            comsearchvalue.DataSource = customDataTable;
+            comsearchvalue.ValueMember = "ActualTableColumnName";
+            comsearchvalue.DisplayMember = "AliasTableColumnName";
             dataGridView2.DataSource = dt;
             comsearchvalue.Focus();
             txtcustomercode.TabStop = false;
@@ -2606,7 +2627,7 @@ namespace WindowsFormsApplication1
             {
                 string s2 = comsearchvalue.SelectedValue.ToString();
                 string val2 = s2;
-                string selectQuery2 = "select Orderid,Custid,date,totalammount from Orderdetails where " + val2 + " like '" + txtsearchvalue.Text + "%'";
+                string selectQuery2 = "select  orderdetails.orderid as[Orderr ID],orderdetails.custid as [Customer ID], CustomerDetails.CustName as[Customer Name], CustomerDetails.CustAddress as[Customer Address],CustomerDetails.CustCompName as[Customer Compnay Name],orderdetails.date as [Date],(select Sum(customerorderdescriptions.quantity)as [Quantity] from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid) as[Bild Quanity],orderdetails.WithautTaxamount as[Withaut Tax Amount],orderdetails.Discount as [Discount],orderdetails.Discountamount as [Discount Amount],orderdetails.Tax,orderdetails.Taxamount as [Tax Amount],orderdetails.totalammount as[Total Amount] from orderdetails join CustomerDetails on CustomerDetails.custId=orderdetails.custid where " + val2 + " like '" + txtsearchvalue.Text + "%'";
                 DataTable dt2 = d.getDetailByQuery(selectQuery2);
                 dataGridView2.DataSource = dt2;
             }
@@ -2614,15 +2635,15 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (txtQuantity.Text=="C")
+            if (txtcustomercode.Text=="C")
             {
                 txtcustomercode.Focus();
             }
-            else if (txtQuantity.Text == "C")
+            else if (txtItemCode.Text == "I")
             {
                 txtItemCode.Focus();
             }
-            else if(txtQuantity.Text!="C")
+            else if(txtItemCode.Text!="I")
             {
                 txtQuantity.Focus();
             }
@@ -2999,9 +3020,9 @@ namespace WindowsFormsApplication1
 
         private void txtRefNo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            butRemoveItem.Enabled = true;
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
+                butRemoveItem.Enabled = true;
                 addToCartTable.Columns.RemoveAt(6);
                 if (!addToCartTable.Columns.Contains("ResivQuantity"))
                 {
@@ -3019,7 +3040,7 @@ namespace WindowsFormsApplication1
                 {
                     
                     MessageBox.Show("order details is completed");
-                    // txtRefNo.Text = "";
+                    butRemoveItem.Enabled = false;
                     //gridsalesdelivary.DataSource = "";
                 }
 
@@ -3135,6 +3156,7 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyChar == '\b')
                 {
+                    butRemoveItem.Enabled = false;
                     txtRefNo.ReadOnly = false;
                     makeblank();
 

@@ -642,7 +642,7 @@ namespace WindowsFormsApplication1
                 txtitemcode.Focus();
                 return;
             }
-            if (ls.Count == gridsalesorder.Rows.Count - 1)
+           else if (ls.Count == gridsalesorder.Rows.Count - 1)
             {
                 MessageBox.Show("Please Enter The Item");
                 txtitemcode.Focus();
