@@ -623,7 +623,7 @@
             this.ButSelectPurchaseOrder.Name = "ButSelectPurchaseOrder";
             this.ButSelectPurchaseOrder.Size = new System.Drawing.Size(157, 28);
             this.ButSelectPurchaseOrder.TabIndex = 41;
-            this.ButSelectPurchaseOrder.Text = "Select Purchase Order";
+            this.ButSelectPurchaseOrder.Text = "Select Sales Order";
             this.ButSelectPurchaseOrder.UseVisualStyleBackColor = true;
             this.ButSelectPurchaseOrder.Click += new System.EventHandler(this.ButSelectPurchaseOrder_Click);
             this.ButSelectPurchaseOrder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ButSelectPurchaseOrder_KeyPress);
@@ -987,7 +987,6 @@
             this.txtInvoiceAmount.Size = new System.Drawing.Size(113, 23);
             this.txtInvoiceAmount.TabIndex = 1;
             this.txtInvoiceAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-           // this.txtInvoiceAmount.TextChanged += new System.EventHandler(this.txtInvoiceAmount_TextChanged);
             // 
             // label21
             // 

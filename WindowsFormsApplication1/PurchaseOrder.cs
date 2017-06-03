@@ -1051,8 +1051,22 @@ namespace WindowsFormsApplication1
         private void gridPurchaseOrder_KeyPress(object sender, KeyPressEventArgs e)
         {
 
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+
+            if (e.KeyChar == Convert.ToChar(Keys.Escape))
             {
+                var dgvcount = gridPurchaseOrder.Rows.Count;
+                gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[dgvcount - 2].Cells[0];
+                gridPurchaseOrder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
+                txtItemCode.Focus();
+                txtItemCode.Select(txtItemCode.Text.Length, 0);
+                txtRemoveItem.Enabled = true;
+            }
+             if (e.KeyChar == Convert.ToChar(Keys.Enter))
+
+            {
+                int selectewIndex = gridPurchaseOrder.CurrentCell.RowIndex;
+                int selectewIndexActual = gridPurchaseOrder.SelectedRows[0].Index;
+
                 Color backGroundColor = gridPurchaseOrder.DefaultCellStyle.SelectionBackColor;
                 if (backGroundColor.Name == "DodgerBlue" || backGroundColor.Name == "Highlight")
                 {
