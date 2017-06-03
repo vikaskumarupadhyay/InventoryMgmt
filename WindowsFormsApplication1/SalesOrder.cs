@@ -61,7 +61,7 @@ namespace WindowsFormsApplication1
             txtitemcode.TabStop = true;
             button2.TabStop = true;
             txtcustomercode.TabStop = true;
-            txtQuantity.TabStop = false;
+            txtQuantity.TabStop = true;
             butadditem.TabStop = true;
 
             button4.TabStop = true;
@@ -110,7 +110,7 @@ namespace WindowsFormsApplication1
             dataGridView1.DataSource = dt;
             txtcustomercode.TabStop = false;
             button1.TabStop = false;
-            comsearchsalesvalue.Focus();
+            txtsearchvalue.Focus();
             comsearchsalesvalue.TabIndex = 1;
             txtsearchvalue.TabIndex = 2;
             dataGridView1.TabIndex = 3;
@@ -167,7 +167,7 @@ namespace WindowsFormsApplication1
             txtcustomercode.TabStop = false;
             button2.TabStop = false;
 
-            comsearchsalesvalue.Focus();
+            txtsearchvalue.Focus();
             comsearchsalesvalue.TabIndex = 1;
             txtsearchvalue.TabIndex = 2;
             dataGridView1.TabIndex = 3;
@@ -640,6 +640,13 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("please select your item id");
                 txtitemcode.Focus();
+                return;
+            }
+            if (ls.Count == gridsalesorder.Rows.Count - 1)
+            {
+                MessageBox.Show("Please Enter The Item");
+                txtitemcode.Focus();
+                txtitemcode.Select(txtitemcode.Text.Length, 0);
                 return;
             }
 
@@ -1396,6 +1403,7 @@ namespace WindowsFormsApplication1
                             txtQuantity.ReadOnly = false;
                             butadditem.Enabled = true;
                             //tab6();
+                            
                         }
                     }
 
@@ -1939,6 +1947,10 @@ namespace WindowsFormsApplication1
                 discountamount.Text = dis.ToString();
                  textBox20.Text = totaldiscount.ToString("###0.00");
 
+            }
+            if (textBox20.Text == "")
+            {
+                textBox20.Text = "0.00";
             }
            
             
