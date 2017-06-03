@@ -859,7 +859,7 @@ namespace WindowsFormsApplication1
                                 if (result1 == System.Windows.Forms.DialogResult.No)
                                 {
                                     PurchesCrystalReportViewer.Visible = false;
-
+                                    txtTotalAmount.Text = "0.00";
                                     panel2.Visible = false;
                                 }
                                 gridPurchaseOrder.AllowUserToAddRows = true;
@@ -897,7 +897,7 @@ namespace WindowsFormsApplication1
             txtTotalAmount.Text = "0.00";
             txtdis.Text = "0";
             addToCartTable.Clear();
-           // gridPurchaseOrder.DataSource = "";
+            txtTotalAmount.Text = "0.00";
             txtRemoveItem.Enabled = false;
 
         }
@@ -1034,12 +1034,20 @@ namespace WindowsFormsApplication1
         }
         private void IndexTex2()
         {
-            txtQuanity.Focus();
-            txtQuanity.SelectAll();
+            if (txtQuanity.Text != "")
+            {
+                txtQuanity.TabStop = true;
+                txtQuanity.Focus();
+                txtQuanity.SelectAll();
+            }
+            else
+            {
+                txtQuanity.TabStop = false;
+            }
             txtItemCode.TabStop = true;
             button2.TabStop = true;
             txtDiscount.TabStop = false;
-            txtQuanity.TabStop = true;
+           // txtQuanity.TabStop = true;
             btnAddItem.TabStop = true;
             txtRemoveItem.TabStop = true;
             btnSave.TabStop = true;
@@ -1284,7 +1292,12 @@ namespace WindowsFormsApplication1
             {
                 txtQuanity.Focus();
             }
-           else if (txtVendorCode.Text == "V")
+                else
+            {
+                // txtItemCode.Focus();
+                //txtItemCode.Select(txtItemCode.Text.Length, 0);
+            }
+           if (txtVendorCode.Text == "V")
             {
                 txtVendorCode.Focus();
                 txtVendorCode.Select(txtVendorCode.Text.Length, 0);
@@ -1294,7 +1307,7 @@ namespace WindowsFormsApplication1
                 txtItemCode.Focus();
                 txtItemCode.Select(txtItemCode.Text.Length, 0);
             }
-
+            IndexTex2();
         }
 
         private void txtsearch_TextChanged_1(object sender, EventArgs e)

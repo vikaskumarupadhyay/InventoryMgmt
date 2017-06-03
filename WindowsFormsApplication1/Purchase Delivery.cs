@@ -356,6 +356,7 @@ namespace WindowsFormsApplication1
             dataGridView2.DataSource = dt1;
             IndexTex();
             txtSearch.Focus();
+           
 
         }
 
@@ -364,18 +365,34 @@ namespace WindowsFormsApplication1
             counter = 2;
             DeliveryReportViewer.Visible = false;
             panel2.Visible = true;
-            string selectqurry = "select * from VendorOrderDetails";
+            string selectqurry = "select  VendorOrderDetails.Orderid as[Order Id],VendorOrderDetails.venderId as [Vendor Id], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],VendorOrderDetails.OrderDate as[Order Date],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Total Amount] from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId";
+            string selectqurryForActualColumnName = "select top 1 VendorOrderDetails.Orderid,VendorOrderDetails.venderId, VendorDetails.vName, VendorDetails.vAddress,VendorDetails.vCompName,VendorOrderDetails.OrderDate,(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount,VendorOrderDetails.Discount,VendorOrderDetails.DisAmount,VendorOrderDetails.vat,VendorOrderDetails.TextTaxAmmount,VendorOrderDetails.TotalPrice from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
-            List<string> ls = new List<string>();
+            DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
+            DataTable customDataTable = new DataTable();
+            customDataTable.Columns.Add("ActualTableColumnName");
+            customDataTable.Columns.Add("AliasTableColumnName");
+            //List<string> ls = new List<string>();
             DataColumnCollection d = dt.Columns;
-            for (int a = 1; a < d.Count; a++)
+            DataColumnCollection dataColumnForName = dtOnlyColumnName.Columns;
+            for (int a = 0; a < d.Count; a++)
             {
-                DataColumn dc = new DataColumn();
+                //DataColumn dc = new DataColumn();
                 string b = d[a].ToString();
-                ls.Add(b);
+                string actualColumnName = dataColumnForName[a].ToString();
+                DataRow dr = customDataTable.NewRow();
+                dr["ActualTableColumnName"] = actualColumnName;
+                dr["AliasTableColumnName"] = b;
+                customDataTable.Rows.Add(dr);
+                //  ls.Add(b);
             }
-            comboBox1.DataSource = ls;
+
+            comboBox1.DataSource = customDataTable;
+            comboBox1.ValueMember = "ActualTableColumnName";
+            comboBox1.DisplayMember = "AliasTableColumnName";
             dataGridView2.DataSource = dt;
+            //comboBox1.DataSource = ls;
+            //dataGridView2.DataSource = dt;
             IndexTex();
             //addToCartTable.Columns.RemoveAt(6);
             if (!addToCartTable.Columns.Contains("ResivQuantity"))
@@ -1556,11 +1573,12 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
-                    //string dilqurry1 = "select Orderid from VendorOrderDetails where Orderid ='" + txtRef.Text + "'";
+                    //string dilqurry1 = "select Orderid from VendorOrderDesc where Orderid ='" + txtRef.Text + "'";
                     //DataTable dildt2 = dbMainClass.getDetailByQuery(dilqurry1);
-                    //if (dildt2 != null && dildt2.Rows != null)// && dildt2.Rows.Count > 0)
+                    //if (dildt2 != null && dildt2.Rows != null && dildt2.Rows.Count<1)// && dildt2.Rows.Count > 0)
                     //{
                     //    MessageBox.Show("This Order Is Not Available");
+                    //    //return;
                     //}
                     //else
                     //{
@@ -1594,6 +1612,7 @@ namespace WindowsFormsApplication1
                             {
                                 addToCartTable.Columns.Add(new DataColumn("Amount"));
                             }
+                            button4.Enabled = false;
                             MessageBox.Show("This Order completed");
                             addToCartTable.Columns.RemoveAt(6);
                             if (!addToCartTable.Columns.Contains("ResivQuantity"))
@@ -1618,6 +1637,18 @@ namespace WindowsFormsApplication1
 
                         else
                         {
+                            addToCartTable.Columns.RemoveAt(6);
+                            if (!addToCartTable.Columns.Contains("ResivQuantity"))
+                            {
+                                addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                                addToCartTable.Columns.RemoveAt(6);
+
+                            }
+
+                            if (!addToCartTable.Columns.Contains("Amount"))
+                            {
+                                addToCartTable.Columns.Add(new DataColumn("Amount"));
+                            }
                             button5.Enabled = true;
                             decimal totel1 = 0;
                             string select = "select vo.Orderid,vo.venderId,vod.ItemId,vo.Discount from VendorOrderDesc vod join VendorOrderDetails vo on vod.Orderid=vo.Orderid where vo.Orderid ='" + txtRef.Text + "'";
@@ -1690,6 +1721,7 @@ namespace WindowsFormsApplication1
                 if (e.KeyChar == '\b')
                 {
                     txtRef.ReadOnly = false;
+                    button4.Enabled = false;
                     makeBlank();
 
                     e.Handled = false;
@@ -1838,6 +1870,7 @@ namespace WindowsFormsApplication1
                 txtItemCode.Focus();
                 txtItemCode.Select(txtItemCode.Text.Length, 0);
             }
+            IndexTex2();
         }
 
         private void button4_KeyPress(object sender, KeyPressEventArgs e)
@@ -2030,7 +2063,14 @@ namespace WindowsFormsApplication1
             txtItemCode.TabStop = true;
             button2.TabStop = true;
             txtdis.TabStop = false;
-            txtQunty.TabStop = true;
+            if (txtQunty.Text != "")
+            {
+                txtQunty.TabStop = true;
+            }
+            else
+            {
+                txtQunty.TabStop = false;
+            }
             button3.TabStop = true;
             button4.TabStop = true;
             panel2.TabStop = false;
@@ -2211,7 +2251,7 @@ namespace WindowsFormsApplication1
             else if (counter == 2)
             {
                 string t = comboBox1.SelectedValue.ToString();
-                string selectqurry = "select * from VendorOrderDetails where " + t + " like '" + txtSearch.Text + "%'";
+                string selectqurry = "select  VendorOrderDetails.Orderid as[Order Id],VendorOrderDetails.venderId as [Vendor Id], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],VendorOrderDetails.OrderDate as[Order Date],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Total Amount] from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId where " + t + " like '" + txtSearch.Text + "%'";
                 DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
                 dataGridView2.DataSource = dt;
             }
@@ -2680,6 +2720,7 @@ namespace WindowsFormsApplication1
         {
             pnlPaymentDetail.Visible = false;
             BlankPaymentPage();
+           
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -2706,27 +2747,27 @@ namespace WindowsFormsApplication1
         }
         public void allvisible()
         {
-            txtCardNumber.Visible = false;
-            txtDebitBankName.Visible = false;
-            CmbCardType.Visible = false;
-            txtChequeBankName.Visible = false;
-            txtChequeNumber.Visible = false;
+            txtCardNumber.ReadOnly = true;
+            txtDebitBankName.ReadOnly = true;
+            //CmbCardType.Visible = false;
+            txtChequeBankName.ReadOnly = true;
+            txtChequeNumber.ReadOnly = true;
             // txtCompanyName.Visible = false;
-            CmbCompany.Visible = false;
-            dateTimePicker1.Visible = false;
-            txtTransactionNumber.Visible = false;
-            dateTimePicker2.Visible = false;
-            EWalletCompanyName.Visible = false;
-            label23.Visible = false;
-            label25.Visible = false;
-            label26.Visible = false;
-            label28.Visible = false;
-            label30.Visible = false;
-            label31.Visible = false;
-            label32.Visible = false;
-            label34.Visible = false;
-            label35.Visible = false;
-            label36.Visible = false;
+            CmbCompany.Visible = true;
+            //dateTimePicker1.Visible = false;
+            txtTransactionNumber.ReadOnly = true;
+            //dateTimePicker2.Visible = false;
+            EWalletCompanyName.ReadOnly = true;
+            //label23.Visible = false;
+            //label25.Visible = false;
+            //label26.Visible = false;
+            //label28.Visible = false;
+            //label30.Visible = false;
+            //label31.Visible = false;
+            //label32.Visible = false;
+            //label34.Visible = false;
+            //label35.Visible = false;
+            //label36.Visible = false;
         }
 
         private void CashAmount_TextChanged(object sender, EventArgs e)
@@ -2773,7 +2814,7 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                credittext();
+               credittext();
             }
             decimal x;
             if (decimal.TryParse(txtCreditAmount.Text, out x))
@@ -2855,13 +2896,13 @@ namespace WindowsFormsApplication1
         {
             if (txtCouponAmount.Text == "0.00")
             {
-                CmbCompany.Visible = false;
-                label23.Visible = false;
+                //CmbCompany.Visible = false;
+               // label23.Visible = false;
             }
             else
             {
-                CmbCompany.Visible = true;
-                label23.Visible = true;
+                //CmbCompany.Visible = true;
+                //label23.Visible = true;
             }
             decimal x;
             if (decimal.TryParse(txtCouponAmount.Text, out x))
@@ -2897,11 +2938,11 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                if (CashAmount.Text.IndexOf('.') != -1 && CashAmount.Text.Split('.')[1].Length == 2)
-                {
+                //if (CashAmount.Text.IndexOf('.') != -1 && CashAmount.Text.Split('.')[1].Length == 2)
+                //{
                     //MessageBox.Show("The maximum decimal points are 2!");
-                    e.Handled = true;
-                }
+                e.Handled = false;
+                //}
             }
             else
             {
@@ -2942,21 +2983,13 @@ namespace WindowsFormsApplication1
         }
         public void credittext()
         {
-            txtCardNumber.Visible = true;
-            txtDebitBankName.Visible = true;
-            CmbCardType.Visible = true;
-            label36.Visible = true;
-            label35.Visible = true;
-            label34.Visible = true;
-        }
+            txtCardNumber.ReadOnly = false;
+            txtDebitBankName.ReadOnly = false;
+          }
         public void credittext1()
         {
-            label36.Visible = false;
-            label35.Visible = false;
-            label34.Visible = false;
-            txtCardNumber.Visible = false;
-            txtDebitBankName.Visible = false;
-            CmbCardType.Visible = false;
+            txtCardNumber.ReadOnly = true;
+            txtDebitBankName.ReadOnly = true;
         }
         private void txtChequeAmount_TextChanged(object sender, EventArgs e)
         {
@@ -2985,33 +3018,26 @@ namespace WindowsFormsApplication1
         }
         public void chequetxt()
         {
-            txtChequeBankName.Visible = true;
-            txtChequeNumber.Visible = true;
-            dateTimePicker1.Visible = true;
-            label32.Visible = true;
-            label31.Visible = true;
-            label30.Visible = true;
+            txtChequeBankName.ReadOnly = false;
+            txtChequeNumber.ReadOnly = false;
+          
         }
         public void chequetxt1()
         {
-            label32.Visible = false;
-            label31.Visible = false;
-            label30.Visible = false;
-            txtChequeBankName.Visible = false;
-            txtChequeNumber.Visible = false;
-            dateTimePicker1.Visible = false;
+            txtChequeBankName.ReadOnly = true;
+            txtChequeNumber.ReadOnly = true;
         }
         private void txtCouponAmount_TextChanged(object sender, EventArgs e)
         {
             if (txtCouponAmount.Text == "0")
             {
-                CmbCompany.Visible = false;
-                label23.Visible = false;
+                //CmbCompany.Visible = false;
+                //label23.Visible = false;
             }
             if (txtCouponAmount.Text != "0")
             {
-                CmbCompany.Visible = true;
-                label23.Visible = true;
+                //CmbCompany.Visible = true;
+                //label23.Visible = true;
                 string amount = txtCouponAmount.Text;
                 //txtCouponAmount.Text = amount;
                  double amount1 = 0.0;
@@ -3056,21 +3082,15 @@ namespace WindowsFormsApplication1
         }
         public void Ewalled()
         {
-            txtTransactionNumber.Visible = true;
-            dateTimePicker2.Visible = true;
-            EWalletCompanyName.Visible = true;
-            label28.Visible = true;
-            label26.Visible = true;
-            label25.Visible = true;
+            txtTransactionNumber.ReadOnly = false;
+            EWalletCompanyName.ReadOnly = false;
+
         }
         public void Ewalled1()
         {
-            label28.Visible = false;
-            label26.Visible = false;
-            label25.Visible = false;
-            txtTransactionNumber.Visible = false;
-            dateTimePicker2.Visible = false;
-            EWalletCompanyName.Visible = false;
+
+            txtTransactionNumber.ReadOnly = true;
+            EWalletCompanyName.ReadOnly = true;
         }
         private void BlankPaymentPage()
         {
@@ -3083,6 +3103,7 @@ namespace WindowsFormsApplication1
             txtChequeBankName.Text = "";
             txtChequeNumber.Text = "";
             txtWAmount.Text = "0.00";
+            txtEwalletAmount.Text = "0.00";
             EWalletCompanyName.Text = "";
             txtTransactionNumber.Text = "";
             txtCouponAmount.Text = "0.00";
@@ -3099,11 +3120,11 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                if (txtCreditAmount.Text.IndexOf('.') != -1 && txtCreditAmount.Text.Split('.')[1].Length == 2)
-                {
-                    //MessageBox.Show("The maximum decimal points are 2!");
-                    e.Handled = true;
-                }
+                //if (txtCreditAmount.Text.IndexOf('.') != -1 && txtCreditAmount.Text.Split('.')[1].Length == 2)
+                //{
+                //    //MessageBox.Show("The maximum decimal points are 2!");
+                e.Handled = false;
+                //}
             }
             else
             {
@@ -3202,11 +3223,11 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                if (txtChequeAmount.Text.IndexOf('.') != -1 && txtChequeAmount.Text.Split('.')[1].Length == 2)
-                {
-                    //MessageBox.Show("The maximum decimal points are 2!");
-                    e.Handled = true;
-                }
+                //if (txtChequeAmount.Text.IndexOf('.') != -1 && txtChequeAmount.Text.Split('.')[1].Length == 2)
+                //{
+                //    //MessageBox.Show("The maximum decimal points are 2!");
+                e.Handled = false;
+                //}
             }
             else
             {
@@ -3227,11 +3248,11 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                if (txtEwalletAmount.Text.IndexOf('.') != -1 && txtEwalletAmount.Text.Split('.')[1].Length == 2)
-                {
-                    //MessageBox.Show("The maximum decimal points are 2!");
-                    e.Handled = true;
-                }
+                //if (txtEwalletAmount.Text.IndexOf('.') != -1 && txtEwalletAmount.Text.Split('.')[1].Length == 2)
+                //{
+                //    //MessageBox.Show("The maximum decimal points are 2!");
+                e.Handled = false;
+                //}
             }
             else
             {
@@ -3252,11 +3273,11 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                if (txtCouponAmount.Text.IndexOf('.') != -1 && txtCouponAmount.Text.Split('.')[1].Length == 2)
-                {
-                    //MessageBox.Show("The maximum decimal points are 2!");
-                    e.Handled = true;
-                }
+            //    if (txtCouponAmount.Text.IndexOf('.') != -1 && txtCouponAmount.Text.Split('.')[1].Length == 2)
+            //    {
+            //        //MessageBox.Show("The maximum decimal points are 2!");
+                e.Handled = false;
+                //}
             }
             else
             {
@@ -3277,11 +3298,11 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                if (txttotalAmount.Text.IndexOf('.') != -1 && txttotalAmount.Text.Split('.')[1].Length == 2)
-                {
-                    //MessageBox.Show("The maximum decimal points are 2!");
-                    e.Handled = true;
-                }
+                //if (txttotalAmount.Text.IndexOf('.') != -1 && txttotalAmount.Text.Split('.')[1].Length == 2)
+                //{
+                //    //MessageBox.Show("The maximum decimal points are 2!");
+                e.Handled = false;
+                //}
             }
             else
             {
@@ -3302,11 +3323,11 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                if (txtWAmount.Text.IndexOf('.') != -1 && txtWAmount.Text.Split('.')[1].Length == 2)
-                {
-                    //MessageBox.Show("The maximum decimal points are 2!");
-                    e.Handled = true;
-                }
+                //if (txtWAmount.Text.IndexOf('.') != -1 && txtWAmount.Text.Split('.')[1].Length == 2)
+                //{
+                //    //MessageBox.Show("The maximum decimal points are 2!");
+                e.Handled = false;
+                //}
             }
             else
             {
@@ -3327,11 +3348,11 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                if (txtDisAmount.Text.IndexOf('.') != -1 && txtDisAmount.Text.Split('.')[1].Length == 2)
-                {
+                //if (txtDisAmount.Text.IndexOf('.') != -1 && txtDisAmount.Text.Split('.')[1].Length == 2)
+                //{
                     //MessageBox.Show("The maximum decimal points are 2!");
-                    e.Handled = true;
-                }
+                e.Handled = false;
+                //}
             }
             else
             {
@@ -3352,11 +3373,11 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                if (txtTaxAmount.Text.IndexOf('.') != -1 && txtTaxAmount.Text.Split('.')[1].Length == 2)
-                {
-                    //MessageBox.Show("The maximum decimal points are 2!");
-                    e.Handled = true;
-                }
+                //if (txtTaxAmount.Text.IndexOf('.') != -1 && txtTaxAmount.Text.Split('.')[1].Length == 2)
+                //{
+                //    //MessageBox.Show("The maximum decimal points are 2!");
+                e.Handled = false;
+                //}
             }
             else
             {
@@ -3377,11 +3398,11 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                if (txtBalance.Text.IndexOf('.') != -1 && txtBalance.Text.Split('.')[1].Length == 2)
-                {
+                //if (txtBalance.Text.IndexOf('.') != -1 && txtBalance.Text.Split('.')[1].Length == 2)
+                //{
                     //MessageBox.Show("The maximum decimal points are 2!");
-                    e.Handled = true;
-                }
+                e.Handled = false;
+                //}
             }
             else
             {

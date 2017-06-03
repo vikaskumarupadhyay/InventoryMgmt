@@ -66,7 +66,6 @@
             // 
             // gridPurchaseSearch
             // 
-            this.gridPurchaseSearch.AllowUserToAddRows = false;
             this.gridPurchaseSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridPurchaseSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridPurchaseSearch.Location = new System.Drawing.Point(0, 0);
