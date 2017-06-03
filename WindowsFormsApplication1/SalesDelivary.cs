@@ -61,7 +61,7 @@ namespace WindowsFormsApplication1
             butcustomercode.TabStop = true;
             txtItemCode.TabStop = true;
             butitembutton.TabStop = true;
-            txtQuantity.TabStop = false;
+            txtQuantity.TabStop = true;
             butAddItem.TabStop = true;
             butRemoveItem.TabStop = true;
             butSaveButton.TabStop = true;
@@ -158,7 +158,7 @@ namespace WindowsFormsApplication1
             txtQuantity.TabStop = false;
             txtcustomercode.TabStop = false;
             butcustomercode.TabStop = false;
-            comsearchvalue.Focus();
+            txtsearchvalue.Focus();
             comsearchvalue.TabIndex = 1;
             txtsearchvalue.TabIndex = 2;
             dataGridView2.TabIndex = 3;
@@ -231,7 +231,7 @@ namespace WindowsFormsApplication1
             txtQuantity.TabStop = false;
             txtcustomercode.TabStop = false;
             butcustomercode.TabStop = false;
-            comsearchvalue.Focus();
+            txtsearchvalue.Focus();
             comsearchvalue.TabIndex = 1;
             txtsearchvalue.TabIndex = 2;
             dataGridView2.TabIndex = 3;
@@ -490,6 +490,10 @@ namespace WindowsFormsApplication1
                             butAddItem.Enabled = false;
                             // }
                         }
+                        ButSelectPurchaseOrder.TabStop = true;
+                        butClose.TabStop = true;
+                        butSaveButton.TabStop = true;
+                        txtQuantity.TabStop = false;
                     }
                 }
                     if (gridsalesdelivary.Rows.Count > 1)
@@ -912,26 +916,33 @@ namespace WindowsFormsApplication1
             if (txtcustomercode.Text == "C" && txtItemCode.Text == "I")
             {
                 MessageBox.Show("please select your customer code");
-                    txtcustomercode.Focus();
-                  
+                txtcustomercode.Focus();
+
                 return;
             }
-          
-           else if (txtProductName.Text!= "")
+
+            else if (txtProductName.Text != "")
             {
                 MessageBox.Show("please select add item");
                 txtQuantity.Focus();
                 return;
-               
+
             }
-          else  if (gridsalesdelivary.Rows.Count == 1 && txtcustomercode.Text == "C")
+            else if (gridsalesdelivary.Rows.Count == 1 && txtcustomercode.Text == "C")
             {
                 MessageBox.Show("please select your customer id");
                 txtcustomercode.Focus();
                 txtItemCode.Text = "I";
                 return;
             }
-           
+            if (ls.Count == gridsalesdelivary.Rows.Count - 1)
+            {
+                MessageBox.Show("Please Enter The Item");
+                txtItemCode.Focus();
+                txtItemCode.Select(txtItemCode.Text.Length, 0);
+                return;
+            }
+
 
             else if (gridsalesdelivary.Rows.Count == 1 && txtItemCode.Text == "I")
             {
@@ -943,7 +954,7 @@ namespace WindowsFormsApplication1
             {
                 counter = 0;
                 DataGridViewRowCollection cal = gridsalesdelivary.Rows;
-                for (int c = 0; c < cal.Count-1; c++)
+                for (int c = 0; c < cal.Count - 1; c++)
                 {
                     DataGridViewRow currentRow1 = cal[c];
                     DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
@@ -1001,18 +1012,24 @@ namespace WindowsFormsApplication1
                     {
                         pnlSalesPayment.Visible = false;
                     }
+                    else
+                    {
 
+                        if (ls.Count == gridsalesdelivary.Rows.Count - 1)
+                        {
+                            MessageBox.Show("Please Enter The Item");
+                            txtItemCode.Focus();
+                            txtItemCode.Select(txtItemCode.Text.Length, 0);
+                            //return;//
+                        }
 
-                  
-                    // }
-
-
+                    }
                 }
+                pnlSalesPayment.Visible = true;
+                CmbPageName.SelectedIndex = 0;
+                CmbCompany.SelectedIndex = 0;
+                CmbCardType.SelectedIndex = 0;
             }
-            pnlSalesPayment.Visible = true;
-            CmbPageName.SelectedIndex = 0;
-            CmbCompany.SelectedIndex = 0;
-            CmbCardType.SelectedIndex = 0;
         }
         /*  gridsalesdelivary.AllowUserToAddRows = false;
 
@@ -2268,6 +2285,7 @@ namespace WindowsFormsApplication1
                                 //txtItemCode.Enabled= true;
                                 gridsalesdelivary.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
                                 txtItemCode.Focus();
+                                butRemoveItem.Enabled = false;
                                 // MessageBox.Show("Please select your remove button");
 
                             }
@@ -2340,8 +2358,6 @@ namespace WindowsFormsApplication1
                             {
                                 butRemoveItem.Enabled = true;
                                 gridsalesdelivary.Rows[gridsalesdelivary.Rows.Count - 1].Selected = false;
-
-
 
                             }
                             if (gridsalesdelivary.Rows.Count == 0)
@@ -2524,6 +2540,9 @@ namespace WindowsFormsApplication1
 
                     txtQuantity.Enabled = true;
                     tab2();
+                    butSaveButton.TabStop = false;
+                    ButSelectPurchaseOrder.TabStop = false;
+                    butClose.TabStop = false;
 
                 }
                
@@ -2599,9 +2618,13 @@ namespace WindowsFormsApplication1
             {
                 txtcustomercode.Focus();
             }
-            else if(txtQuantity.Text!="C")
+            else if (txtQuantity.Text == "C")
             {
                 txtItemCode.Focus();
+            }
+            else if(txtQuantity.Text!="C")
+            {
+                txtQuantity.Focus();
             }
             panel2.Visible = false;
         }
@@ -2649,6 +2672,7 @@ namespace WindowsFormsApplication1
                 if (!addToCartTable.Columns.Contains("ResivQuantity"))
                 {
                     addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                    addToCartTable.Columns.RemoveAt(6);
                 }
 
                 if (!addToCartTable.Columns.Contains("Amount"))
@@ -2979,7 +3003,6 @@ namespace WindowsFormsApplication1
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
                 addToCartTable.Columns.RemoveAt(6);
-               
                 if (!addToCartTable.Columns.Contains("ResivQuantity"))
                 {
                     addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
@@ -3025,6 +3048,16 @@ namespace WindowsFormsApplication1
 
                 else
                 {
+                    addToCartTable.Columns.RemoveAt(6);
+                    if (!addToCartTable.Columns.Contains("ResivQuantity"))
+                    {
+                        addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                        addToCartTable.Columns.RemoveAt(6);
+                    }
+                    if (!addToCartTable.Columns.Contains("Amount"))
+                    {
+                        addToCartTable.Columns.Add(new DataColumn("Amount"));
+                    }
                     butSaveButton.Visible = true;
                     string select = "select vo.orderid,vo.custid,vod.ItemId,vo.Discount from orderdetails vo join customerorderdescriptions vod on vod.Orderid=vo.Orderid where vo.Orderid ='" + txtRefNo.Text + "'";
                     DataTable dt = d.getDetailByQuery(select);
@@ -3490,7 +3523,10 @@ namespace WindowsFormsApplication1
 
         private void txtdiccount_MouseClick(object sender, MouseEventArgs e)
         {
-            txtdiccount.Text = "";
+            if (txtdiccount.Text == "0.00")
+            {
+                txtdiccount.Text = "";
+            }
         }
 
         private void txtdiccount_Leave(object sender, EventArgs e)
@@ -3533,6 +3569,10 @@ namespace WindowsFormsApplication1
                      txtdiccount.Text = totaldiscount.ToString("###0.00");
 
                 }
+                if (txtdiccount.Text == "")
+                {
+                    txtdiccount.Text = "0.00";
+                }
             }
 
 
@@ -3569,6 +3609,11 @@ namespace WindowsFormsApplication1
                     txtdiccount.Text = totalAmount.ToString("###0.00");
 
                 }
+                if (txtdiccount.Text == "")
+                {
+                    txtdiccount.Text = "0.00";
+                }
+
             }
 
 
