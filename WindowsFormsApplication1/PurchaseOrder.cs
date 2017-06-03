@@ -631,7 +631,7 @@ namespace WindowsFormsApplication1
             comboBox1.DisplayMember = "AliasTableColumnName";
             dataGridView1.DataSource = dt;
            IndexTex();
-           comboBox1.Focus();
+           txtsearch.Focus();
 
         }
 
@@ -1683,7 +1683,7 @@ namespace WindowsFormsApplication1
 
         private void txtdis_MouseClick(object sender, MouseEventArgs e)
         {
-            if (txtdis.Text == "0")
+            if (txtdis.Text == "0.00")
             {
                 txtdis.Text = "";
             }

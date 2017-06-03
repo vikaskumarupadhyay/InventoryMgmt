@@ -226,6 +226,7 @@ namespace WindowsFormsApplication1
             comboBox1.DisplayMember = "AliasTableColumnName";
             dataGridView2.DataSource = dt;
             IndexTex();
+            txtSearch.Focus();
         }
 
         private void setDetails(DataGridViewCellCollection cellCollection)
@@ -354,7 +355,7 @@ namespace WindowsFormsApplication1
             DataTable dt1 = dbMainClass.getDetailByQuery(select);
             dataGridView2.DataSource = dt1;
             IndexTex();
-           // txtAmount.Text = "";
+            txtSearch.Focus();
 
         }
 
@@ -1581,11 +1582,25 @@ namespace WindowsFormsApplication1
                         if (dildt != null && dildt.Rows != null && dildt.Rows.Count > 0)
                         {
                             //button5.Enabled = false;
-
-                            MessageBox.Show("This Order completed");
+                            addToCartTable.Columns.RemoveAt(6);
                             if (!addToCartTable.Columns.Contains("ResivQuantity"))
                             {
                                 addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                                addToCartTable.Columns.RemoveAt(6);
+
+                            }
+
+                            if (!addToCartTable.Columns.Contains("Amount"))
+                            {
+                                addToCartTable.Columns.Add(new DataColumn("Amount"));
+                            }
+                            MessageBox.Show("This Order completed");
+                            addToCartTable.Columns.RemoveAt(6);
+                            if (!addToCartTable.Columns.Contains("ResivQuantity"))
+                            {
+                                addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                                addToCartTable.Columns.RemoveAt(6);
+                               
                             }
 
                             if (!addToCartTable.Columns.Contains("Amount"))
