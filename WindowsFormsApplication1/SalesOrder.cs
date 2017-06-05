@@ -78,7 +78,7 @@ namespace WindowsFormsApplication1
             dataGridView1.AllowUserToAddRows = true;
             // string selectquery1 = "select CustName as [Name],CustCompName as [Compnay Name],CustAddress as [Address],CustPhone as [Phone],Custmobile as [Mobole],CustFax as [Fax] from CustomerDetails";
             // string actualcolumn = "select CustName ,CustCompName ,CustAddress ,CustPhone ,Custmobile ,CustFax  from CustomerDetails";
-            string selectquery1 = "select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Ballance],CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO]  ,CustServicetaxRegnNo AS [Service Tax Regn. No],CustExciseRegnNo AS [Excise Regn. No],Gstregnno AS[ Gst reg No]  from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
+            string selectquery1 = "select  Custd.CustId as [Customer ID] ,CustName AS [Customer Name] ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO]  ,CustServicetaxRegnNo AS [SERVICE TAX NO],CustExciseRegnNo AS [EXCISE NO],Gstregnno AS[GST NO],CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] ,Custad.CustCurrentBalance AS [Current Balance] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
             string actualcolumn = "select  Custd.CustId  ,CustName  ,CustCompName  ,CustAddress ,CustCity , CustState  ,CustZip  ,CustCountry  ,CustEmail , CustWebAddress ,CustPhone  ,CustMobile  ,CustFax ,CustDesc ,Custad.CustOpeningBalance , Custad.CustCurrentBalance ,CustPanNo , CustVatNo ,CustCSTNo  ,CustServicetaxRegnNo ,CustExciseRegnNo,Gstregnno   from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
             DataTable dt1 = d.getDetailByQuery(selectquery1);
             DataTable onlycolumn = d.getDetailByQuery(actualcolumn);
@@ -104,7 +104,7 @@ namespace WindowsFormsApplication1
             counter = 0;
             panel2.Visible = true;
             // string selectquery = "select Custid as [Customer Id], CustName as [Name],CustCompName as [Compnay Name],CustAddress as[Address],CustPhone as [Phone],CustMobile as [Mobile],CustFax as[Fax] from customerdetails";
-            string selectquery = "select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Ballance],CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO]  ,CustServicetaxRegnNo AS [Service Tax Regn. No],CustExciseRegnNo AS [Excise Regn. No],Gstregnno as[gst reg no] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
+            string selectquery = "select  Custd.CustId as [Customer ID] ,CustName AS [Customer Name] ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax,CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO]  ,CustServicetaxRegnNo AS [SERVICE TAX NO],CustExciseRegnNo AS [EXCISE NO],Gstregnno as[GST NO] ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Balance] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
 
             DataTable dt = d.getDetailByQuery(selectquery);
             dataGridView1.DataSource = dt;
@@ -143,6 +143,7 @@ namespace WindowsFormsApplication1
             custometable.Columns.Add("aliascolumnname");
             DataColumnCollection c = dt1.Columns;
             DataColumnCollection columnofname = onlycolumn.Columns;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             for (int a = 1; a < c.Count; a++)
             {
                 string s = c[a].ToString();
@@ -378,7 +379,7 @@ namespace WindowsFormsApplication1
                             txtAmount.Text = "";
                             butadditem.Enabled = false;
                             txtQuantity.ReadOnly = true;
-
+                            txtQuantity.TabStop = false;
 
                         }
 
@@ -1202,7 +1203,7 @@ namespace WindowsFormsApplication1
 
                         if (addToCartTable.Rows.Count == 0)
                         {
-                            txttotalammount.Text = "0.0";
+                            txttotalammount.Text = "0.00";
 
 
                             //txtdiscount.Text = "0.0";
@@ -1223,7 +1224,7 @@ namespace WindowsFormsApplication1
 
                         if (gridsalesorder.Rows.Count > 0)
                         {
-                            textBox20.Text = "0";
+                            textBox20.Text = "0.00";
                             textBox20.ReadOnly = true;
                             button4.Enabled = true;
                            // gridsalesorder.Rows[gridsalesorder.Rows.Count-1].Selected = true;
@@ -1953,6 +1954,11 @@ namespace WindowsFormsApplication1
                 textBox20.Text = "0.00";
             }
            
+            
+        }
+
+        private void gridsalesorder_Leave(object sender, EventArgs e)
+        {
             
         }
 

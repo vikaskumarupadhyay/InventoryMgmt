@@ -131,6 +131,7 @@
             this.gridsalesorder.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesorder_CellEndEdit);
             this.gridsalesorder.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesorder_CellLeave);
             this.gridsalesorder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridsalesorder_KeyPress);
+            this.gridsalesorder.Leave += new System.EventHandler(this.gridsalesorder_Leave);
             // 
             // txttotalammount
             // 
@@ -548,7 +549,6 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(24, 23);
             this.button1.TabIndex = 2;
-            this.button1.TabStop = false;
             this.button1.Text = "...";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -746,7 +746,7 @@
             this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel3.Location = new System.Drawing.Point(12, 105);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1141, 476);
+            this.panel3.Size = new System.Drawing.Size(1142, 478);
             this.panel3.TabIndex = 7;
             // 
             // dataGridView1
@@ -757,7 +757,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1137, 472);
+            this.dataGridView1.Size = new System.Drawing.Size(1138, 474);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
@@ -795,7 +795,7 @@
             this.txtsearchvalue.Location = new System.Drawing.Point(687, 42);
             this.txtsearchvalue.Multiline = true;
             this.txtsearchvalue.Name = "txtsearchvalue";
-            this.txtsearchvalue.Size = new System.Drawing.Size(1067, 23);
+            this.txtsearchvalue.Size = new System.Drawing.Size(429, 23);
             this.txtsearchvalue.TabIndex = 3;
             this.txtsearchvalue.TextChanged += new System.EventHandler(this.txtsearchvalue_TextChanged_1);
             // 
@@ -810,6 +810,7 @@
             // 
             // comsearchsalesvalue
             // 
+            this.comsearchsalesvalue.Cursor = System.Windows.Forms.Cursors.Hand;
             this.comsearchsalesvalue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comsearchsalesvalue.FormattingEnabled = true;
             this.comsearchsalesvalue.Location = new System.Drawing.Point(25, 42);
