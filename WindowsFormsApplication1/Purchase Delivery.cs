@@ -1384,8 +1384,26 @@ namespace WindowsFormsApplication1
                                     }
                                     if (result1 == System.Windows.Forms.DialogResult.No)
                                     {
+                                        
                                         DeliveryReportViewer.Visible = false;
                                         panel2.Visible = false;
+                                        addToCartTable.Columns.RemoveAt(6);
+                                        if (!addToCartTable.Columns.Contains("ResivQuantity"))
+                                        {
+                                            addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                                            addToCartTable.Columns.RemoveAt(6);
+                                        }
+
+                                        if (!addToCartTable.Columns.Contains("Amount"))
+                                        {
+                                            addToCartTable.Columns.RemoveAt(6);
+                                            addToCartTable.Columns.Add(new DataColumn("Amount"));
+                                        }
+                                        textVendercod.Focus();
+                                        textVendercod.Select(textVendercod.Text.Length, 0);
+                                        textVendercod.TabStop = true;
+                                        button1.TabStop = true;
+                                       
                                     }
 
                                     dataGridView1.AllowUserToAddRows = true;
@@ -1886,7 +1904,17 @@ namespace WindowsFormsApplication1
                 txtItemCode.Select(txtItemCode.Text.Length, 0);
                 IndexTex2();
             }
-           
+            addToCartTable.Columns.RemoveAt(6);
+            if (!addToCartTable.Columns.Contains("ResivQuantity"))
+            {
+                addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+            }
+
+            if (!addToCartTable.Columns.Contains("Amount"))
+            {
+                addToCartTable.Columns.RemoveAt(6);
+                addToCartTable.Columns.Add(new DataColumn("Amount"));
+            }
            
         }
 
