@@ -111,6 +111,12 @@ namespace WindowsFormsApplication1
             txtcustomercode.TabStop = false;
             button1.TabStop = false;
             txtsearchvalue.Focus();
+            txtcustomercode.TabStop = false;
+            button1.TabStop = false;
+            txtitemcode.TabStop = false;
+            button2.TabStop = false;
+            savebutton.TabStop = false;
+            butclose.TabStop = false;
             comsearchsalesvalue.TabIndex = 1;
             txtsearchvalue.TabIndex = 2;
             dataGridView1.TabIndex = 3;
@@ -166,8 +172,15 @@ namespace WindowsFormsApplication1
             dataGridView1.DataSource = dt;
             txtcustomercode.TabStop = false;
             button2.TabStop = false;
-
             txtsearchvalue.Focus();
+            txtcustomercode.TabStop = false;
+            button1.TabStop = false;
+            txtitemcode.TabStop = false;
+            button2.TabStop = false;
+            butadditem.TabStop = false;
+            button4.TabStop = false;
+            savebutton.TabStop = false;
+            butclose.TabStop = false;
             comsearchsalesvalue.TabIndex = 1;
             txtsearchvalue.TabIndex = 2;
             dataGridView1.TabIndex = 3;
@@ -1501,10 +1514,14 @@ namespace WindowsFormsApplication1
             else if (txtcustomercode.Text == "C")
             {
                 txtcustomercode.Focus();
+                button1.TabStop = true;
+                txtcustomercode.TabStop = true;
             }
             else if(txtcustomercode.Text!="C")
             {
                 txtitemcode.Focus();
+                button2.TabStop = true;
+                txtitemcode.TabStop = true;
             }
             panel2.Visible = false;
         }
