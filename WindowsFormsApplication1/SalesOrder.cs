@@ -313,7 +313,7 @@ namespace WindowsFormsApplication1
             txtAmount.Text = "";
             //txtdiscount.Text = "";
             // gridsalesorder.DataSource = "";
-            txttotalammount.Text = "0";
+            txttotalammount.Text = "0.00";
             txtsearchvalue.Text = "";
             addToCartTable.Clear();
         }
@@ -777,6 +777,7 @@ namespace WindowsFormsApplication1
                             {
                                 crystalReportViewer1.Visible = false;
                                 panel2.Visible = false;
+                                txttotalammount.Text = "0.00";
 
                             }
                             //int id = Convert.ToInt32(txtsrno.Text);
@@ -787,6 +788,7 @@ namespace WindowsFormsApplication1
                         else
                         {
                             gridsalesorder.AllowUserToAddRows = true;
+                            txttotalammount.Text = "0.00";
 
                         }
                         makeblank();
@@ -1200,7 +1202,7 @@ namespace WindowsFormsApplication1
                         string Amount = gridsalesorder.Rows[current - 1].Cells[6].Value.ToString();
                         double totalAmount = Convert.ToDouble(txttotalammount.Text);
                         totalAmount -= Convert.ToDouble(Amount.Trim());
-                        txttotalammount.Text = totalAmount.ToString();
+                        txttotalammount.Text = totalAmount.ToString("###0.00");
 
                         //addToCartTable.Rows.RemoveAt(index - 1);
                         gridsalesorder.Rows[index - 1].DefaultCellStyle.Font = new Font(new FontFamily("Microsoft Sans Serif"), 9.00F, FontStyle.Strikeout);
@@ -1851,7 +1853,7 @@ namespace WindowsFormsApplication1
             double tax = d + ((g / 100));
             double taxamount = total / tax;
             double totaltax = total - taxamount;
-            txttaxamount.Text = totaltax.ToString();
+            txttaxamount.Text = totaltax.ToString("###0.00");
             //double dis = Convert.ToDouble(discountamount.Text);
             //double withauttax = total  - dis;
             //txttotaltax.Text= withauttax.ToString();

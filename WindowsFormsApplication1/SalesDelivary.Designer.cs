@@ -813,6 +813,7 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.butback);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1172, 634);
@@ -823,9 +824,10 @@
             this.crystalReportViewer2.ActiveViewIndex = -1;
             this.crystalReportViewer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer2.Location = new System.Drawing.Point(0, 74);
+            this.crystalReportViewer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.crystalReportViewer2.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer2.Name = "crystalReportViewer2";
-            this.crystalReportViewer2.Size = new System.Drawing.Size(1172, 472);
+            this.crystalReportViewer2.Size = new System.Drawing.Size(1172, 634);
             this.crystalReportViewer2.TabIndex = 8;
             // 
             // panel3
@@ -948,9 +950,10 @@
             this.pnlSalesPayment.Controls.Add(this.groupBox7);
             this.pnlSalesPayment.Controls.Add(this.btnSave);
             this.pnlSalesPayment.Controls.Add(this.groupBox8);
-            this.pnlSalesPayment.Location = new System.Drawing.Point(0, 134);
+            this.pnlSalesPayment.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlSalesPayment.Location = new System.Drawing.Point(0, 0);
             this.pnlSalesPayment.Name = "pnlSalesPayment";
-            this.pnlSalesPayment.Size = new System.Drawing.Size(1172, 333);
+            this.pnlSalesPayment.Size = new System.Drawing.Size(1172, 634);
             this.pnlSalesPayment.TabIndex = 57;
             this.pnlSalesPayment.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSalesPayment_Paint_1);
             // 
@@ -971,8 +974,10 @@
             this.textBox27.Location = new System.Drawing.Point(103, 20);
             this.textBox27.Multiline = true;
             this.textBox27.Name = "textBox27";
+            this.textBox27.ReadOnly = true;
             this.textBox27.Size = new System.Drawing.Size(29, 23);
             this.textBox27.TabIndex = 41;
+            this.textBox27.TabStop = false;
             this.textBox27.Text = "₹";
             this.textBox27.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -981,8 +986,10 @@
             this.txtInvoiceAmount.Location = new System.Drawing.Point(131, 20);
             this.txtInvoiceAmount.Multiline = true;
             this.txtInvoiceAmount.Name = "txtInvoiceAmount";
+            this.txtInvoiceAmount.ReadOnly = true;
             this.txtInvoiceAmount.Size = new System.Drawing.Size(113, 23);
             this.txtInvoiceAmount.TabIndex = 1;
+            this.txtInvoiceAmount.TabStop = false;
             this.txtInvoiceAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label21
@@ -1010,8 +1017,10 @@
             this.txtInvoiceid.Location = new System.Drawing.Point(96, 20);
             this.txtInvoiceid.Multiline = true;
             this.txtInvoiceid.Name = "txtInvoiceid";
+            this.txtInvoiceid.ReadOnly = true;
             this.txtInvoiceid.Size = new System.Drawing.Size(185, 23);
             this.txtInvoiceid.TabIndex = 1;
+            this.txtInvoiceid.TabStop = false;
             this.txtInvoiceid.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label18
@@ -1119,7 +1128,7 @@
             this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox8.Location = new System.Drawing.Point(18, 79);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(955, 222);
+            this.groupBox8.Size = new System.Drawing.Size(955, 206);
             this.groupBox8.TabIndex = 13;
             this.groupBox8.TabStop = false;
             // 
@@ -1127,8 +1136,10 @@
             // 
             this.textBox26.Location = new System.Drawing.Point(9, 35);
             this.textBox26.Name = "textBox26";
+            this.textBox26.ReadOnly = true;
             this.textBox26.Size = new System.Drawing.Size(29, 21);
             this.textBox26.TabIndex = 47;
+            this.textBox26.TabStop = false;
             this.textBox26.Text = "₹";
             this.textBox26.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1136,8 +1147,10 @@
             // 
             this.textBox25.Location = new System.Drawing.Point(147, 35);
             this.textBox25.Name = "textBox25";
+            this.textBox25.ReadOnly = true;
             this.textBox25.Size = new System.Drawing.Size(29, 21);
             this.textBox25.TabIndex = 46;
+            this.textBox25.TabStop = false;
             this.textBox25.Text = "₹";
             this.textBox25.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1145,8 +1158,10 @@
             // 
             this.textBox24.Location = new System.Drawing.Point(313, 35);
             this.textBox24.Name = "textBox24";
+            this.textBox24.ReadOnly = true;
             this.textBox24.Size = new System.Drawing.Size(29, 21);
             this.textBox24.TabIndex = 45;
+            this.textBox24.TabStop = false;
             this.textBox24.Text = "₹";
             this.textBox24.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1154,8 +1169,10 @@
             // 
             this.textBox23.Location = new System.Drawing.Point(475, 35);
             this.textBox23.Name = "textBox23";
+            this.textBox23.ReadOnly = true;
             this.textBox23.Size = new System.Drawing.Size(29, 21);
             this.textBox23.TabIndex = 44;
+            this.textBox23.TabStop = false;
             this.textBox23.Text = "₹";
             this.textBox23.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1163,8 +1180,10 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(638, 35);
             this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(29, 21);
             this.textBox2.TabIndex = 43;
+            this.textBox2.TabStop = false;
             this.textBox2.Text = "₹";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1172,8 +1191,10 @@
             // 
             this.textBox4.Location = new System.Drawing.Point(792, 119);
             this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(29, 21);
             this.textBox4.TabIndex = 42;
+            this.textBox4.TabStop = false;
             this.textBox4.Text = "₹";
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1181,8 +1202,10 @@
             // 
             this.textBox20.Location = new System.Drawing.Point(792, 77);
             this.textBox20.Name = "textBox20";
+            this.textBox20.ReadOnly = true;
             this.textBox20.Size = new System.Drawing.Size(29, 21);
             this.textBox20.TabIndex = 41;
+            this.textBox20.TabStop = false;
             this.textBox20.Text = "₹";
             this.textBox20.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1190,8 +1213,10 @@
             // 
             this.textBox5.Location = new System.Drawing.Point(792, 35);
             this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(29, 21);
             this.textBox5.TabIndex = 40;
+            this.textBox5.TabStop = false;
             this.textBox5.Text = "₹";
             this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1199,8 +1224,10 @@
             // 
             this.textBox6.Location = new System.Drawing.Point(792, 161);
             this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
             this.textBox6.Size = new System.Drawing.Size(29, 21);
             this.textBox6.TabIndex = 39;
+            this.textBox6.TabStop = false;
             this.textBox6.Text = "₹";
             this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
