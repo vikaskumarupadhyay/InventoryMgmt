@@ -823,10 +823,9 @@
             this.crystalReportViewer2.ActiveViewIndex = -1;
             this.crystalReportViewer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.crystalReportViewer2.Location = new System.Drawing.Point(0, 0);
+            this.crystalReportViewer2.Location = new System.Drawing.Point(0, 74);
             this.crystalReportViewer2.Name = "crystalReportViewer2";
-            this.crystalReportViewer2.Size = new System.Drawing.Size(1172, 634);
+            this.crystalReportViewer2.Size = new System.Drawing.Size(1172, 472);
             this.crystalReportViewer2.TabIndex = 8;
             // 
             // panel3
@@ -949,10 +948,9 @@
             this.pnlSalesPayment.Controls.Add(this.groupBox7);
             this.pnlSalesPayment.Controls.Add(this.btnSave);
             this.pnlSalesPayment.Controls.Add(this.groupBox8);
-            this.pnlSalesPayment.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlSalesPayment.Location = new System.Drawing.Point(0, 0);
+            this.pnlSalesPayment.Location = new System.Drawing.Point(0, 134);
             this.pnlSalesPayment.Name = "pnlSalesPayment";
-            this.pnlSalesPayment.Size = new System.Drawing.Size(1172, 634);
+            this.pnlSalesPayment.Size = new System.Drawing.Size(1172, 333);
             this.pnlSalesPayment.TabIndex = 57;
             this.pnlSalesPayment.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSalesPayment_Paint_1);
             // 

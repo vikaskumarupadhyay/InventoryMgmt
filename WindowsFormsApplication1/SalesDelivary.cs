@@ -158,6 +158,13 @@ namespace WindowsFormsApplication1
             txtQuantity.TabStop = false;
             txtcustomercode.TabStop = false;
             butcustomercode.TabStop = false;
+            txtItemCode.TabStop = false;
+            butitembutton.TabStop = false;
+            butAddItem.TabStop = false;
+            butRemoveItem.TabStop = false;
+            butSaveButton.TabStop = false;
+            ButSelectPurchaseOrder.TabStop = false;
+            butClose.TabStop = false;
             txtsearchvalue.Focus();
             comsearchvalue.TabIndex = 1;
             txtsearchvalue.TabIndex = 2;
@@ -231,6 +238,13 @@ namespace WindowsFormsApplication1
             txtQuantity.TabStop = false;
             txtcustomercode.TabStop = false;
             butcustomercode.TabStop = false;
+            txtItemCode.TabStop = false;
+            butitembutton.TabStop = false;
+            butAddItem.TabStop = false;
+            butRemoveItem.TabStop = false;
+            butSaveButton.TabStop = false;
+            ButSelectPurchaseOrder.TabStop = false;
+            butClose.TabStop = false;
             txtsearchvalue.Focus();
             comsearchvalue.TabIndex = 1;
             txtsearchvalue.TabIndex = 2;
@@ -2638,10 +2652,14 @@ namespace WindowsFormsApplication1
             if (txtcustomercode.Text=="C")
             {
                 txtcustomercode.Focus();
+                butcustomercode.TabStop = true;
+                txtcustomercode.TabStop = true;
             }
             else if (txtItemCode.Text == "I")
             {
                 txtItemCode.Focus();
+                butitembutton.TabStop = true;
+                txtItemCode.TabStop = true;
             }
             else if(txtItemCode.Text!="I")
             {
