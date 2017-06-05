@@ -379,7 +379,9 @@ namespace WindowsFormsApplication1
                 string itemname1 = product(txtItemCode.Text);
                 if (itemname1 != txtProductName.Text)
                 {
-                    MessageBox.Show("Please Select correct ItemCode");
+                    MessageBox.Show("Your Item ID and Item Name do not match. Please press enter key!", "Information",
+    MessageBoxButtons.OK,
+    MessageBoxIcon.Warning);
                     return;
                 }
                 else
@@ -1047,13 +1049,11 @@ namespace WindowsFormsApplication1
             txtItemCode.TabStop = true;
             button2.TabStop = true;
             txtDiscount.TabStop = false;
-           // txtQuanity.TabStop = true;
             btnAddItem.TabStop = true;
             txtRemoveItem.TabStop = true;
-            //btnSave.TabStop = true;
-           // btnClose.TabStop = true;
             txtVendorCode.TabStop = true;
             button1.TabStop = true;
+           
         }
 
         private void gridPurchaseOrder_KeyPress(object sender, KeyPressEventArgs e)
@@ -1078,7 +1078,8 @@ namespace WindowsFormsApplication1
                 Color backGroundColor = gridPurchaseOrder.DefaultCellStyle.SelectionBackColor;
                 if (backGroundColor.Name == "DodgerBlue" || backGroundColor.Name == "Highlight")
                 {
-                    MessageBox.Show("Please select remove button");
+                    MessageBox.Show("Please click on 'Remove Button' to remove item!");
+                    txtRemoveItem.Focus();
                     return;
                 }
                 if (addToCartTable.Rows.Count > 0)
@@ -1291,6 +1292,13 @@ namespace WindowsFormsApplication1
             if (txtProductName.Text != "")
             {
                 txtQuanity.Focus();
+                txtQuanity.TabStop = true;
+                btnAddItem.TabStop = true;
+                txtRemoveItem.TabStop = true;
+                txtItemCode.TabStop = true;
+                txtVendorCode.TabStop = true;
+                button1.TabStop = true;
+                button2.TabStop = true;
             }
              
          else  if (txtVendorCode.Text == "V")

@@ -1637,7 +1637,7 @@ namespace WindowsFormsApplication1
                             {
                                 addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
                                 addToCartTable.Columns.RemoveAt(6);
-                               
+
                             }
 
                             if (!addToCartTable.Columns.Contains("Amount"))
@@ -1743,7 +1743,6 @@ namespace WindowsFormsApplication1
                     txtRef.ReadOnly = false;
                     button4.Enabled = false;
                     makeBlank();
-
                     e.Handled = false;
                 }
                 else
@@ -1890,6 +1889,13 @@ namespace WindowsFormsApplication1
             if (txtProductName.Text != "")
             {
                 txtQunty.Focus();
+                txtQunty.TabStop = true;
+                txtItemCode.TabStop = true;
+                textVendercod.TabStop = true;
+                button1.TabStop = true;
+                button2.TabStop = true;
+                button3.TabStop = true;
+                button4.TabStop = true;
             }
            else if (textVendercod.Text == "V")
             {
@@ -2105,21 +2111,32 @@ namespace WindowsFormsApplication1
         }
         private void IndexTex2()
         {
-            txtItemCode.TabStop = true;
-            button2.TabStop = true;
-            txtdis.TabStop = false;
+            //txtItemCode.TabStop = true;
+            //button2.TabStop = true;
+            //textVendercod.TabStop = true;
+            //button1.TabStop = true;
+            //txtdis.TabStop = false;
             if (txtQunty.Text != "")
             {
+                txtQunty.Focus();
                 txtQunty.TabStop = true;
+                txtQunty.SelectAll();
             }
             else
             {
                 txtQunty.TabStop = false;
             }
+            txtItemCode.TabStop = true;
+            button2.TabStop = true;
+            txtDiscount.TabStop = false;
             button3.TabStop = true;
             button4.TabStop = true;
-            panel2.TabStop = false;
-           // button5.TabStop = true;
+            textVendercod.TabStop = true;
+            button1.TabStop = true;
+           // button3.TabStop = true;
+           // button4.TabStop = true;
+           // panel2.TabStop = false;
+           //// button5.TabStop = true;
            // button7.TabStop = true;
         }
 

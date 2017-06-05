@@ -40,7 +40,7 @@ namespace WindowsFormsApplication1
             butclose.TabStop = false;
             textBox1.TabStop = false;
             textBox2.TabStop = false;
-            textBox3.TabStop = false;
+            //xtBox3.TabStop = false;
         }
 
         private void tab1()
@@ -70,7 +70,7 @@ namespace WindowsFormsApplication1
             butclose.TabStop = false;
             textBox1.TabStop = false;
             textBox2.TabStop = false;
-            textBox3.TabStop = false;
+            //xtBox3.TabStop = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -113,6 +113,7 @@ namespace WindowsFormsApplication1
             txtsearchvalue.Focus();
             txtcustomercode.TabStop = false;
             button1.TabStop = false;
+            txtQuantity.TabStop = false;
             txtitemcode.TabStop = false;
             button2.TabStop = false;
             savebutton.TabStop = false;
@@ -178,6 +179,7 @@ namespace WindowsFormsApplication1
             button1.TabStop = false;
             txtitemcode.TabStop = false;
             button2.TabStop = false;
+            txtQuantity.TabStop = false;
             butadditem.TabStop = false;
             button4.TabStop = false;
             savebutton.TabStop = false;
@@ -1510,25 +1512,56 @@ namespace WindowsFormsApplication1
 
         private void butback_Click_1(object sender, EventArgs e)
         {
+            panel2.Visible = false;
             if (txtProductName.Text != "")
             {
                 txtQuantity.Focus();
+                txtQuantity.TabStop = true;
+                txtcustomercode.TabStop = true;
+                button1.TabStop = true;
+                button2.TabStop = true;
+                butadditem.TabStop = true;
+                button4.TabStop = true;
+                txtitemcode.TabStop = true;
             }
             else if (txtcustomercode.Text == "C")
             {
                 txtcustomercode.Focus();
+                txtcustomercode.Select(txtcustomercode.Text.Length, 0);
                 button1.TabStop = true;
                 txtcustomercode.TabStop = true;
             }
             else if(txtcustomercode.Text!="C")
             {
                 txtitemcode.Focus();
-                button2.TabStop = true;
-                txtitemcode.TabStop = true;
+                txtitemcode.Select(txtitemcode.Text.Length, 0);
+                BackTabIndex();
+                //button2.TabStop = true;
+                //txtitemcode.TabStop = true;
             }
-            panel2.Visible = false;
+            
         }
+        private void BackTabIndex()
+        {
+            if (txtQuantity.Text != "")
+            {
+                txtQuantity.TabStop = true;
+                txtQuantity.Focus();
+                txtQuantity.SelectAll();
+            }
+            else
+            {
+                txtQuantity.TabStop = false;
+            }
+            txtitemcode.TabStop = true;
+            button2.TabStop = true; //Item List Button
+            textBox20.TabStop = false; //Discount Textbox
+            butadditem.TabStop = true;
+            button4.TabStop = true; //Remove Item Button
+            txtcustomercode.TabStop = true;
+            button1.TabStop = true; //Customer List Button
 
+        }
         private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
         

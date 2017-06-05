@@ -2263,22 +2263,48 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (txtcustomercode.Text=="C")
-            {
-                txtcustomercode.Focus();
-                butcustomercode.TabStop = true;
-                txtcustomercode.TabStop = true;
-                
-            }
-            else if (txtItemCode.Text == "I")
-            {
-                txtItemCode.Focus();
-                butitembutton.TabStop = true;
-                txtItemCode.TabStop = true;
-            }
-            else if(txtItemCode.Text!="I")
+            panel2.Visible = false;
+            crystalReportViewer2.Visible = false;
+            //if (txtcustomercode.Text == "C")
+            //{
+            //    txtcustomercode.Focus();
+            //    butcustomercode.TabStop = true;
+            //    txtcustomercode.TabStop = true;
+
+            //}
+            //else if (txtItemCode.Text == "I")
+            //{
+            //    txtItemCode.Focus();
+            //    butitembutton.TabStop = true;
+            //    txtItemCode.TabStop = true;
+            //}
+            //else if (txtItemCode.Text != "I")
+            //{
+            //    txtQuantity.Focus();
+            //}
+            if (txtProductName.Text != "")
             {
                 txtQuantity.Focus();
+                txtQuantity.TabStop = true;
+                txtItemCode.TabStop = true;
+                txtcustomercode.TabStop = true;
+                butcustomercode.TabStop = true;
+                butitembutton.TabStop = true;
+                butAddItem.TabStop = true;
+                butRemoveItem.TabStop = true;
+            }
+            else if (txtcustomercode.Text=="C")
+            {
+                txtcustomercode.Focus();
+                txtcustomercode.Select(txtcustomercode.Text.Length, 0);
+                butcustomercode.TabStop = true;
+                txtcustomercode.TabStop = true;
+            }
+            else if (txtcustomercode.Text!="C")
+            {
+                txtItemCode.Focus();
+                txtItemCode.Select(txtItemCode.Text.Length, 0);
+                IndexBackButton();
             }
             addToCartTable.Columns.RemoveAt(6);
             if (!addToCartTable.Columns.Contains("ResivQuantity"))
@@ -2292,7 +2318,27 @@ namespace WindowsFormsApplication1
                 addToCartTable.Columns.RemoveAt(6);
             }
            
-            panel2.Visible = false;
+            
+        }
+        private void IndexBackButton()
+        {
+            if (txtQuantity.Text!="")
+            {
+                txtQuantity.TabStop = true;
+                txtQuantity.Focus();
+                txtQuantity.SelectAll();
+            }
+            else
+            {
+                txtQuantity.TabStop = false;
+            }
+            txtItemCode.TabStop = true;
+            butitembutton.TabStop = true;
+            txtdiccount.TabStop = false;
+            butAddItem.TabStop = true;
+            butRemoveItem.TabStop = true;
+            txtcustomercode.TabStop = true;
+            butcustomercode.TabStop = true;
         }
         private void SetVendor(string r)
         {
