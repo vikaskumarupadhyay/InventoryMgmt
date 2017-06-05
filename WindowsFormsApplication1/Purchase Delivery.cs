@@ -2333,14 +2333,14 @@ namespace WindowsFormsApplication1
                             if (dildt != null && dildt.Rows != null && dildt.Rows.Count > 0)
                             {
                                 panel2.Visible = true;
-                               
+                                txtRef.Text = "";
+                                makeBlank();
+                                txtSearch.Focus();
                                 button4.Enabled = false;
                                 MessageBox.Show("This Order completed");
                                 return;
                                 
-                                txtRef.Text = "";
-                                makeBlank();
-                                txtSearch.Focus();
+                               
                             }
                             else
                             {
@@ -2436,7 +2436,7 @@ namespace WindowsFormsApplication1
             }
             if (counter == 2)
             {
-                panel2.Visible = false;
+               
                 addToCartTable.Columns.RemoveAt(6);
                 if (!addToCartTable.Columns.Contains("ResivQuantity"))
                 {
@@ -2458,17 +2458,20 @@ namespace WindowsFormsApplication1
                     DataTable dildt = dbMainClass.getDetailByQuery(dilqurry);
                     if (dildt != null && dildt.Rows != null && dildt.Rows.Count > 0)
                     {
-                        
-                        MessageBox.Show("This Order completed");
-                        
                         panel2.Visible = true;
                         txtRef.Text = "";
+                        button4.Enabled = false;
                         makeBlank();
                         txtSearch.Focus();
+                        MessageBox.Show("This Order completed");
+                        return;
+                        
+                       
                        
                     }
                     else
                     {
+                        panel2.Visible = false;
                         button4.Enabled = true;
                         button2.TabStop = true;
                         button4.TabStop = true;
