@@ -1631,6 +1631,8 @@ namespace WindowsFormsApplication1
                             textVendercod.Focus();
                             textVendercod.Select(textVendercod.Text.Length, 0);
                             addToCartTable.Columns.RemoveAt(6);
+                            textVendercod.TabStop = true;
+                            button1.TabStop = true;
 
                         }
 
@@ -1659,7 +1661,7 @@ namespace WindowsFormsApplication1
                                 DataRow dr = dt.Rows[0];
                                 string a = dr[1].ToString();
                                 string dis = dr[3].ToString();
-                                txtdis.Text = dis;
+                                //txtdis.Text = dis;
                                 string select1 = "select venderId,vName,vCompName,vAddress ,vPhone,vMobile,vFax from VendorDetails where venderId='" + a + "'";
                                 SetVendor(select1);
                                 string selectqurry1 = "select vodd.ItemId,td.ItemName,td.ItemCompName,ipq.MrpPrice, vodd.Quantity,vodd.Price,vodd.TotalPrice,vod.TotalPrice from VendorOrderDetails vod join VendorOrderDesc vodd on vod.Orderid=vodd.Orderid join ItemDetails td on td.ItemId=vodd.ItemId join ItemPriceDetail ipq on td.ItemId=ipq.ItemId where vod. Orderid ='" + txtRef.Text + "'";
@@ -1854,6 +1856,17 @@ namespace WindowsFormsApplication1
 
         private void butClose_Click(object sender, EventArgs e)
         {
+            addToCartTable.Columns.RemoveAt(6);
+            if (!addToCartTable.Columns.Contains("ResivQuantity"))
+            {
+                addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+            }
+
+            if (!addToCartTable.Columns.Contains("Amount"))
+            {
+                addToCartTable.Columns.RemoveAt(6);
+                addToCartTable.Columns.Add(new DataColumn("Amount"));
+            }
             panel2.Visible = false;
             DeliveryReportViewer.Visible = false;
             if (txtProductName.Text != "")
@@ -1873,17 +1886,7 @@ namespace WindowsFormsApplication1
                 txtItemCode.Select(txtItemCode.Text.Length, 0);
                 IndexTex2();
             }
-            addToCartTable.Columns.RemoveAt(6);
-            if (!addToCartTable.Columns.Contains("ResivQuantity"))
-            {
-                addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
-            }
-
-            if (!addToCartTable.Columns.Contains("Amount"))
-            {
-                addToCartTable.Columns.RemoveAt(6);
-                addToCartTable.Columns.Add(new DataColumn("Amount"));
-            }
+           
            
         }
 
@@ -2307,7 +2310,7 @@ namespace WindowsFormsApplication1
                 }
                 if (counter == 2)
                 {
-                        panel2.Visible = false;
+                        //panel2.Visible = false;
                         addToCartTable.Columns.RemoveAt(6);
                         if (!addToCartTable.Columns.Contains("ResivQuantity"))
                         {
@@ -2325,45 +2328,71 @@ namespace WindowsFormsApplication1
                             string s = CellCollection[0].Value.ToString();
                             string s1 = CellCollection[1].Value.ToString();
                             txtRef.Text = s;
-                            //MessageBox.Show(" "+s +" "+s1);
-                            string selectqurry = "select venderId,vName,vCompName,vAddress,vPhone,vMobile,vFax from VendorDetails where venderId='" + s1 + "'";
-                            SetVendor(selectqurry);
-                            string selectqurry1 = "select vodd.ItemId,td.ItemName,td.ItemCompName,ipq.MrpPrice, vodd.Quantity,vodd.Price,vodd.TotalPrice,vod.TotalPrice from VendorOrderDetails vod join VendorOrderDesc vodd on vod.Orderid=vodd.Orderid join ItemDetails td on td.ItemId=vodd.ItemId join ItemPriceDetail ipq on td.ItemId=ipq.ItemId where vod. Orderid ='" + s + "'";
-                            DataTable dt2 = dbMainClass.getDetailByQuery(selectqurry1);
-                            int totalRowCount = addToCartTable.Rows.Count;
-                            for (int rowCount = 0; rowCount < totalRowCount; rowCount++)
+                            string dilqurry = "select Orderid from CustomerOrderDelivery where Orderid ='" + s + "'";
+                            DataTable dildt = dbMainClass.getDetailByQuery(dilqurry);
+                            if (dildt != null && dildt.Rows != null && dildt.Rows.Count > 0)
                             {
-                                addToCartTable.Rows.RemoveAt(0);
+                                panel2.Visible = true;
+                               
+                                button4.Enabled = false;
+                                MessageBox.Show("This Order completed");
+                                return;
+                                
+                                txtRef.Text = "";
+                                makeBlank();
+                                txtSearch.Focus();
                             }
-                            double totel1 = 0;
-                            for (int c = 0; c < dt2.Rows.Count; c++)
+                            else
                             {
-                                DataRow dr2 = dt2.Rows[c];
-                                string txtItemCode = dr2[0].ToString();
-                                string txtitemNmae = dr2[1].ToString();
-                                string CompanyName = dr2[2].ToString();
-                                string MrpPrice = dr2[3].ToString();
-                                string txtRate = dr2[5].ToString();
-                                string txtQuanity = dr2[4].ToString();
-                                string txtAmoun = dr2[6].ToString();
-                                string txtitemNmea = dr2[6].ToString();
-                                //tot = txtitemNmea;
-                                double amt = Convert.ToDouble(txtitemNmea);
-                                totel1 = totel1 + amt;
-                                dr2 = addToCartTable.NewRow();
-                                dr2[0] = txtItemCode.Trim();
-                                dr2[1] = txtitemNmae.Trim();
-                                dr2[2] = CompanyName.Trim();
-                                dr2[3] = MrpPrice.Trim();
-                                dr2[4] = txtRate.Trim();
-                                dr2[5] = txtQuanity.Trim();
-                                dr2[6] = txtQuanity.Trim();
-                                dr2[7] = txtAmoun.Trim();
-                                // dr2[5] = textBox1.Text.Trim();
-                                addToCartTable.Rows.Add(dr2);
+                                panel2.Visible = false;
+                                button4.Enabled = true;
+                                button2.TabStop = true;
+                                button4.TabStop = true;
+                                button5.TabStop = true;
+                                button7.TabStop = true;
+                                btnSelectPurchaseOrder.Enabled = false;
+                                txtItemCode.TabStop = true;
+                                // button4.Enabled = true;
+                                txtItemCode.Focus();
+                                string selectqurry = "select venderId,vName,vCompName,vAddress,vPhone,vMobile,vFax from VendorDetails where venderId='" + s1 + "'";
+                                SetVendor(selectqurry);
+                                string selectqurry1 = "select vodd.ItemId,td.ItemName,td.ItemCompName,ipq.MrpPrice, vodd.Quantity,vodd.Price,vodd.TotalPrice,vod.TotalPrice from VendorOrderDetails vod join VendorOrderDesc vodd on vod.Orderid=vodd.Orderid join ItemDetails td on td.ItemId=vodd.ItemId join ItemPriceDetail ipq on td.ItemId=ipq.ItemId where vod. Orderid ='" + s + "'";
+                                DataTable dt2 = dbMainClass.getDetailByQuery(selectqurry1);
+                                int totalRowCount = addToCartTable.Rows.Count;
+                                for (int rowCount = 0; rowCount < totalRowCount; rowCount++)
+                                {
+                                    addToCartTable.Rows.RemoveAt(0);
+                                }
+                                double totel1 = 0;
+                                for (int c = 0; c < dt2.Rows.Count; c++)
+                                {
+                                    DataRow dr2 = dt2.Rows[c];
+                                    string txtItemCod = dr2[0].ToString();
+                                    string txtitemNmae = dr2[1].ToString();
+                                    string CompanyName = dr2[2].ToString();
+                                    string MrpPrice = dr2[3].ToString();
+                                    string txtRate = dr2[5].ToString();
+                                    string txtQuanity = dr2[4].ToString();
+                                    string txtAmoun = dr2[6].ToString();
+                                    string txtitemNmea = dr2[6].ToString();
+                                    //tot = txtitemNmea;
+                                    double amt = Convert.ToDouble(txtitemNmea);
+                                    totel1 = totel1 + amt;
+                                    dr2 = addToCartTable.NewRow();
+                                    dr2[0] = txtItemCod.Trim();
+                                    dr2[1] = txtitemNmae.Trim();
+                                    dr2[2] = CompanyName.Trim();
+                                    dr2[3] = MrpPrice.Trim();
+                                    dr2[4] = txtRate.Trim();
+                                    dr2[5] = txtQuanity.Trim();
+                                    dr2[6] = txtQuanity.Trim();
+                                    dr2[7] = txtAmoun.Trim();
+                                    // dr2[5] = textBox1.Text.Trim();
+                                    addToCartTable.Rows.Add(dr2);
+                                }
+                                dataGridView1.DataSource = addToCartTable;
+                                txttotalAmount.Text = totel1.ToString("###0.00");
                             }
-                            dataGridView1.DataSource = addToCartTable;
-                            txttotalAmount.Text = totel1.ToString("###0.00");
                         }
                     }
                 }
@@ -2425,47 +2454,71 @@ namespace WindowsFormsApplication1
                     string s = CellCollection[0].Value.ToString();
                     string s1 = CellCollection[1].Value.ToString();
                     txtRef.Text = s;
-                    //MessageBox.Show(" "+s +" "+s1);
-                    string selectqurry = "select venderId,vName,vCompName,vAddress,vPhone,vMobile,vFax from VendorDetails where venderId='" + s1 + "'";
-                    SetVendor(selectqurry);
-
-                    string selectqurry1 = "select vodd.ItemId,td.ItemName,td.ItemCompName,ipq.MrpPrice, vodd.Quantity,vodd.Price,vodd.TotalPrice,vod.TotalPrice from VendorOrderDetails vod join VendorOrderDesc vodd on vod.Orderid=vodd.Orderid join ItemDetails td on td.ItemId=vodd.ItemId join ItemPriceDetail ipq on td.ItemId=ipq.ItemId where vod. Orderid ='" + s + "'";
-                    DataTable dt2 = dbMainClass.getDetailByQuery(selectqurry1);
-                    int totalRowCount = addToCartTable.Rows.Count;
-                    for (int rowCount = 0; rowCount < totalRowCount; rowCount++)
+                    string dilqurry = "select Orderid from CustomerOrderDelivery where Orderid ='" + s + "'";
+                    DataTable dildt = dbMainClass.getDetailByQuery(dilqurry);
+                    if (dildt != null && dildt.Rows != null && dildt.Rows.Count > 0)
                     {
-                        addToCartTable.Rows.RemoveAt(0);
+                        
+                        MessageBox.Show("This Order completed");
+                        
+                        panel2.Visible = true;
+                        txtRef.Text = "";
+                        makeBlank();
+                        txtSearch.Focus();
+                       
                     }
-                    double totel1 = 0;
-                    for (int c = 0; c < dt2.Rows.Count; c++)
+                    else
                     {
-                        DataRow dr2 = dt2.Rows[c];
-                        string txtItemCode = dr2[0].ToString();
-                        string txtitemNmae = dr2[1].ToString();
-                        string CompanyName = dr2[2].ToString();
-                        string MrpPrice = dr2[3].ToString();
-                        string txtRate = dr2[5].ToString();
-                        string txtQuanity = dr2[4].ToString();
-                        string txtAmoun = dr2[6].ToString();
-                        string txtitemNmea = dr2[6].ToString();
-                        //tot = txtitemNmea;
-                        double amt = Convert.ToDouble(txtitemNmea);
-                        totel1 = totel1 + amt;
-                        dr2 = addToCartTable.NewRow();
-                        dr2[0] = txtItemCode.Trim();
-                        dr2[1] = txtitemNmae.Trim();
-                        dr2[2] = CompanyName.Trim();
-                        dr2[3] = MrpPrice.Trim();
-                        dr2[4] = txtRate.Trim();
-                        dr2[5] = txtQuanity.Trim();
-                        dr2[6] = txtQuanity.Trim();
-                        dr2[7] = txtAmoun.Trim();
-                        // dr2[5] = textBox1.Text.Trim();
-                        addToCartTable.Rows.Add(dr2);
-                    }
-                    dataGridView1.DataSource = addToCartTable;
-                    txttotalAmount.Text = totel1.ToString("###0.00");
+                        button4.Enabled = true;
+                        button2.TabStop = true;
+                        button4.TabStop = true;
+                        button5.TabStop = true;
+                        button7.TabStop = true;
+                        btnSelectPurchaseOrder.Enabled = false;
+                        txtItemCode.TabStop = true;
+                       // button4.Enabled = true;
+                        txtItemCode.Focus();
+                        string selectqurry = "select venderId,vName,vCompName,vAddress,vPhone,vMobile,vFax from VendorDetails where venderId='" + s1 + "'";
+                        SetVendor(selectqurry);
 
+                        string selectqurry1 = "select vodd.ItemId,td.ItemName,td.ItemCompName,ipq.MrpPrice, vodd.Quantity,vodd.Price,vodd.TotalPrice,vod.TotalPrice from VendorOrderDetails vod join VendorOrderDesc vodd on vod.Orderid=vodd.Orderid join ItemDetails td on td.ItemId=vodd.ItemId join ItemPriceDetail ipq on td.ItemId=ipq.ItemId where vod. Orderid ='" + s + "'";
+                        DataTable dt2 = dbMainClass.getDetailByQuery(selectqurry1);
+                        int totalRowCount = addToCartTable.Rows.Count;
+                        for (int rowCount = 0; rowCount < totalRowCount; rowCount++)
+                        {
+                            addToCartTable.Rows.RemoveAt(0);
+                        }
+                        double totel1 = 0;
+                        for (int c = 0; c < dt2.Rows.Count; c++)
+                        {
+                            DataRow dr2 = dt2.Rows[c];
+                            string txtItemCod = dr2[0].ToString();
+                            string txtitemNmae = dr2[1].ToString();
+                            string CompanyName = dr2[2].ToString();
+                            string MrpPrice = dr2[3].ToString();
+                            string txtRate = dr2[5].ToString();
+                            string txtQuanity = dr2[4].ToString();
+                            string txtAmoun = dr2[6].ToString();
+                            string txtitemNmea = dr2[6].ToString();
+                            //tot = txtitemNmea;
+                            double amt = Convert.ToDouble(txtitemNmea);
+                            totel1 = totel1 + amt;
+                            dr2 = addToCartTable.NewRow();
+                            dr2[0] = txtItemCod.Trim();
+                            dr2[1] = txtitemNmae.Trim();
+                            dr2[2] = CompanyName.Trim();
+                            dr2[3] = MrpPrice.Trim();
+                            dr2[4] = txtRate.Trim();
+                            dr2[5] = txtQuanity.Trim();
+                            dr2[6] = txtQuanity.Trim();
+                            dr2[7] = txtAmoun.Trim();
+                            // dr2[5] = textBox1.Text.Trim();
+                            addToCartTable.Rows.Add(dr2);
+                        }
+                        dataGridView1.DataSource = addToCartTable;
+                        txttotalAmount.Text = totel1.ToString("###0.00");
+
+                    }
                 }
             }
         }
