@@ -1050,8 +1050,8 @@ namespace WindowsFormsApplication1
            // txtQuanity.TabStop = true;
             btnAddItem.TabStop = true;
             txtRemoveItem.TabStop = true;
-            btnSave.TabStop = true;
-            btnClose.TabStop = true;
+            //btnSave.TabStop = true;
+           // btnClose.TabStop = true;
             txtVendorCode.TabStop = true;
             button1.TabStop = true;
         }
@@ -1292,22 +1292,21 @@ namespace WindowsFormsApplication1
             {
                 txtQuanity.Focus();
             }
-                else
-            {
-                // txtItemCode.Focus();
-                //txtItemCode.Select(txtItemCode.Text.Length, 0);
-            }
-           if (txtVendorCode.Text == "V")
+             
+         else  if (txtVendorCode.Text == "V")
             {
                 txtVendorCode.Focus();
                 txtVendorCode.Select(txtVendorCode.Text.Length, 0);
+                button1.TabStop = true;
+                txtVendorCode.TabStop = true;
             }
             else if (txtVendorCode.Text != "V")
             {
                 txtItemCode.Focus();
                 txtItemCode.Select(txtItemCode.Text.Length, 0);
+                IndexTex2();
             }
-            IndexTex2();
+           
         }
 
         private void txtsearch_TextChanged_1(object sender, EventArgs e)

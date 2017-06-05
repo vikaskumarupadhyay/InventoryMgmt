@@ -1864,13 +1864,27 @@ namespace WindowsFormsApplication1
             {
                 textVendercod.Focus();
                 textVendercod.Select(textVendercod.Text.Length, 0);
+                button1.TabStop = true;
+                textVendercod.TabStop = true;
             }
             else if (textVendercod.Text != "V")
             {
                 txtItemCode.Focus();
                 txtItemCode.Select(txtItemCode.Text.Length, 0);
+                IndexTex2();
             }
-            IndexTex2();
+            addToCartTable.Columns.RemoveAt(6);
+            if (!addToCartTable.Columns.Contains("ResivQuantity"))
+            {
+                addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+            }
+
+            if (!addToCartTable.Columns.Contains("Amount"))
+            {
+                addToCartTable.Columns.RemoveAt(6);
+                addToCartTable.Columns.Add(new DataColumn("Amount"));
+            }
+           
         }
 
         private void button4_KeyPress(object sender, KeyPressEventArgs e)
@@ -2074,8 +2088,8 @@ namespace WindowsFormsApplication1
             button3.TabStop = true;
             button4.TabStop = true;
             panel2.TabStop = false;
-            button5.TabStop = true;
-            button7.TabStop = true;
+           // button5.TabStop = true;
+           // button7.TabStop = true;
         }
 
         private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
@@ -2749,14 +2763,14 @@ namespace WindowsFormsApplication1
         {
             txtCardNumber.ReadOnly = true;
             txtDebitBankName.ReadOnly = true;
-            //CmbCardType.Visible = false;
+            CmbCardType.Enabled = false;
             txtChequeBankName.ReadOnly = true;
             txtChequeNumber.ReadOnly = true;
-            // txtCompanyName.Visible = false;
-            CmbCompany.Visible = true;
-            //dateTimePicker1.Visible = false;
+            txtCompanyName.ReadOnly = true;
+            CmbCompany.Enabled = false;
+            dateTimePicker1.Enabled = false;
             txtTransactionNumber.ReadOnly = true;
-            //dateTimePicker2.Visible = false;
+            dateTimePicker2.Enabled = false;
             EWalletCompanyName.ReadOnly = true;
             //label23.Visible = false;
             //label25.Visible = false;
@@ -2768,6 +2782,12 @@ namespace WindowsFormsApplication1
             //label34.Visible = false;
             //label35.Visible = false;
             //label36.Visible = false;
+            txtCardNumber.TabStop = true;
+            txtDebitBankName.TabStop = true;
+            txtChequeBankName.TabStop = true;
+            txtChequeNumber.TabStop = true;
+            txtTransactionNumber.TabStop = false;
+            EWalletCompanyName.TabStop = false;
         }
 
         private void CashAmount_TextChanged(object sender, EventArgs e)
@@ -2812,7 +2832,7 @@ namespace WindowsFormsApplication1
             {
                 credittext1();
             }
-            else
+            if (txtCreditAmount.Text != "0.00")
             {
                credittext();
             }
@@ -2836,30 +2856,30 @@ namespace WindowsFormsApplication1
 
         private void txtChequeAmount_Leave(object sender, EventArgs e)
         {
-            if (txtChequeAmount.Text == "0.00")
+           if (txtCreditAmount.Text == "0.00")
             {
-                chequetxt1();
+                credittext1();
             }
-            else
-            {
-                chequetxt();
-            }
-            decimal x;
-            if (decimal.TryParse(txtChequeAmount.Text, out x))
-            {
-                if (txtChequeAmount.Text.IndexOf('.') != -1 && txtChequeAmount.Text.Split('.')[1].Length > 2)
-                {
-                    MessageBox.Show("The maximum decimal points are 2!");
-                    txtChequeAmount.Focus();
-                }
-                else txtChequeAmount.Text = x.ToString("0.00");
-            }
-            else
-            {
-                txtChequeAmount.Text = "0.00";
-                //MessageBox.Show("Data invalid!");
-                //txtVenderOpeningBal.Focus();
-            }
+           if (txtCreditAmount.Text != "0.00")
+           {
+               credittext();
+               decimal x;
+               if (decimal.TryParse(txtChequeAmount.Text, out x))
+               {
+                   if (txtChequeAmount.Text.IndexOf('.') != -1 && txtChequeAmount.Text.Split('.')[1].Length > 2)
+                   {
+                       MessageBox.Show("The maximum decimal points are 2!");
+                       txtChequeAmount.Focus();
+                   }
+                   else txtChequeAmount.Text = x.ToString("0.00");
+               }
+               else
+               {
+                   txtChequeAmount.Text = "0.00";
+                   //MessageBox.Show("Data invalid!");
+                   //txtVenderOpeningBal.Focus();
+               }
+           }
             
         }
 
@@ -2960,11 +2980,11 @@ namespace WindowsFormsApplication1
 
         private void txtCreditAmount_TextChanged(object sender, EventArgs e)
         {
-            if (txtCreditAmount.Text == "0")
+            if (txtCreditAmount.Text == "0.00")
             {
                 credittext1();
             }
-            if (txtCreditAmount.Text != "0")
+            if (txtCreditAmount.Text != "0.00")
             {
                 credittext();
                 string amount = txtCreditAmount.Text ;
@@ -2985,19 +3005,25 @@ namespace WindowsFormsApplication1
         {
             txtCardNumber.ReadOnly = false;
             txtDebitBankName.ReadOnly = false;
+            CmbCardType.Enabled = true;
+            txtCardNumber.TabStop = true;
+            txtDebitBankName.TabStop = true;
           }
         public void credittext1()
         {
             txtCardNumber.ReadOnly = true;
             txtDebitBankName.ReadOnly = true;
+            CmbCardType.Enabled = false;
+            txtCardNumber.TabStop = false;
+            txtDebitBankName.TabStop = false;
         }
         private void txtChequeAmount_TextChanged(object sender, EventArgs e)
         {
-            if (txtChequeAmount.Text == "0")
+            if (txtChequeAmount.Text == "0.00")
             {
                 chequetxt1();
             }
-            if (txtChequeAmount.Text != "0")
+            if (txtChequeAmount.Text != "0.00")
             {
                 chequetxt();
                 string amount = txtChequeAmount.Text;
@@ -3020,23 +3046,29 @@ namespace WindowsFormsApplication1
         {
             txtChequeBankName.ReadOnly = false;
             txtChequeNumber.ReadOnly = false;
+            dataGridView1.Enabled = false;
+            txtChequeBankName.TabStop = false;
+            txtChequeNumber.TabStop = false;
           
         }
         public void chequetxt1()
         {
             txtChequeBankName.ReadOnly = true;
             txtChequeNumber.ReadOnly = true;
+            dataGridView1.Enabled = true;
+            txtChequeBankName.TabStop = true;
+            txtChequeNumber.TabStop = true;
         }
         private void txtCouponAmount_TextChanged(object sender, EventArgs e)
         {
-            if (txtCouponAmount.Text == "0")
+            if (txtCouponAmount.Text == "0.00")
             {
-                //CmbCompany.Visible = false;
+                CmbCompany.Enabled = true;
                 //label23.Visible = false;
             }
-            if (txtCouponAmount.Text != "0")
+            if (txtCouponAmount.Text != "0.00")
             {
-                //CmbCompany.Visible = true;
+                CmbCompany.Enabled = false;
                 //label23.Visible = true;
                 string amount = txtCouponAmount.Text;
                 //txtCouponAmount.Text = amount;
@@ -3084,6 +3116,9 @@ namespace WindowsFormsApplication1
         {
             txtTransactionNumber.ReadOnly = false;
             EWalletCompanyName.ReadOnly = false;
+            dataGridView2.Enabled = false;
+            txtTransactionNumber.TabStop = false;
+            EWalletCompanyName.TabStop= false;
 
         }
         public void Ewalled1()
@@ -3091,6 +3126,9 @@ namespace WindowsFormsApplication1
 
             txtTransactionNumber.ReadOnly = true;
             EWalletCompanyName.ReadOnly = true;
+            dataGridView2.Enabled = true;
+            txtTransactionNumber.TabStop = false;
+            EWalletCompanyName.TabStop = false;
         }
         private void BlankPaymentPage()
         {
