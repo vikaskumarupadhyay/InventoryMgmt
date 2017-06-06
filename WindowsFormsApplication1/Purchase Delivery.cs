@@ -1613,7 +1613,7 @@ namespace WindowsFormsApplication1
                 {
                     string dilqurry1 = "select Orderid from VendorOrderDesc where Orderid ='" + txtRef.Text + "'";
                     DataTable dildt2 = dbMainClass.getDetailByQuery(dilqurry1);
-                    if (dildt2.Rows.Count==0)//&& dildt2.Rows.Count>0)// && dildt2.Rows.Count > 0)
+                    if (dildt2.Rows.Count==0)
                     {
                         MessageBox.Show("This Order Is Not Available");
                         txtRef.Text = "";
