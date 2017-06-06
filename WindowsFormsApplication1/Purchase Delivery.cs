@@ -511,6 +511,7 @@ namespace WindowsFormsApplication1
                     string rate = "";
                     string ammount = "";
                     int counter = 0;
+                    int quntity1 = 0;
                     string itemname = product(txtItemCode.Text);
                     if (itemname != txtProductName.Text)
                     {
@@ -542,6 +543,11 @@ namespace WindowsFormsApplication1
                                         int q1 = Convert.ToInt32(quntity);
                                         int q2 = Convert.ToInt32(txtQunty.Text);
                                         q3 = q1 + q2;
+                                        quntity1 = quntity1 + q3;
+                                        int q4 = Convert.ToInt32(txtQuantityBild.Text);
+                                        int q5 = q4 - q1;
+                                        int q6 = quntity1 + q5;
+                                        txtQuantityBild.Text = q6.ToString();
                                         dr3[5] = q3.ToString();
                                         Double rate1 = Convert.ToDouble(rate);
                                         Double rate6 = rate1 * q2;
@@ -643,8 +649,10 @@ namespace WindowsFormsApplication1
                                 dr[4] = txtRate.Text.Trim();
                                 dr[5] = txtQunty.Text.Trim();
                                 dr[6] = txtAmount.Text.Trim();
-
-                                //dr[5] = txtAmount.Text.Trim();
+                                int q1 = Convert.ToInt32(txtQunty.Text.Trim());
+                                int q2 = Convert.ToInt32(txtQuantityBild.Text);
+                                int q3 = q1 + q2;
+                                txtQuantityBild.Text = q3.ToString();
                                 addToCartTable.Rows.Add(dr);
                                 dataGridView1.DataSource = addToCartTable;
                                 var dgvcount = dataGridView1.Rows.Count;
@@ -690,6 +698,7 @@ namespace WindowsFormsApplication1
                     string quntity = "";
                     string rate = "";
                     string ammount = "";
+                    int quntity1 = 0;
                     int counter = 0;
                     string itemname = product(txtItemCode.Text);
                     if (itemname != txtProductName.Text)
@@ -721,6 +730,11 @@ namespace WindowsFormsApplication1
                                         int q1 = Convert.ToInt32(quntity);
                                         int q2 = Convert.ToInt32(txtQunty.Text);
                                         q3 = q1 + q2;
+                                        quntity1 = quntity1 + q3;
+                                        int q4 = Convert.ToInt32(txtQuantityBild.Text);
+                                        int q5 = q4 - q1;
+                                        int q6 = quntity1 + q5;
+                                        txtQuantityBild.Text = q6.ToString();
                                         dr3[5] = q3.ToString();
                                         dr3[6] = q3.ToString();
                                         Double rate1 = Convert.ToDouble(rate);
@@ -824,8 +838,10 @@ namespace WindowsFormsApplication1
                                 dr[5] = txtQunty.Text.Trim();
                                 dr[6] = txtQunty.Text.Trim();
                                 dr[7] = txtAmount.Text.Trim();
-
-                                //dr[5] = txtAmount.Text.Trim();
+                                int q1 = Convert.ToInt32(txtQunty.Text.Trim());
+                                int q2 = Convert.ToInt32(txtQuantityBild.Text);
+                                int q3 = q1 + q2;
+                                txtQuantityBild.Text = q3.ToString();
                                 addToCartTable.Rows.Add(dr);
                                 dataGridView1.DataSource = addToCartTable;
                                 var dgvcount = dataGridView1.Rows.Count;
@@ -1689,7 +1705,7 @@ namespace WindowsFormsApplication1
                                 {
                                     addToCartTable.Rows.RemoveAt(0);
                                 }
-
+                                int quntity1 = 0;
                                 for (int c = 0; c < dt2.Rows.Count; c++)
                                 {
                                     DataRow dr2 = dt2.Rows[c];
@@ -1701,7 +1717,7 @@ namespace WindowsFormsApplication1
                                     string txtQuanity = dr2[4].ToString();
                                     string txtAmoun = dr2[6].ToString();
                                     string txtitemNmea = dr2[6].ToString();
-                                    //tot = txtitemNmea;
+                                    
                                     decimal amt = Convert.ToDecimal(txtitemNmea);
                                     totel1 = totel1 + amt;
                                     dr2 = addToCartTable.NewRow();
@@ -1713,7 +1729,9 @@ namespace WindowsFormsApplication1
                                     dr2[5] = txtQuanity.Trim();
                                     dr2[6] = txtQuanity.Trim();
                                     dr2[7] = txtAmoun.Trim();
-                                    // dr2[5] = textBox1.Text.Trim();
+                                    int q1 = Convert.ToInt32(txtQuanity.Trim());
+                                    quntity1 = quntity1 + q1;
+                                    txtQuantityBild.Text = quntity1.ToString();
                                     addToCartTable.Rows.Add(dr2);
                                 }
                                 dataGridView1.DataSource = addToCartTable;
@@ -1873,55 +1891,81 @@ namespace WindowsFormsApplication1
 
         private void butClose_Click(object sender, EventArgs e)
         {
-            addToCartTable.Columns.RemoveAt(6);
-            if (!addToCartTable.Columns.Contains("ResivQuantity"))
+            if (txtRef.Text == "")
             {
-                addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
-            }
+                panel2.Visible = false;
+                DeliveryReportViewer.Visible = false;
+                if (txtProductName.Text != "")
+                {
+                    txtQunty.Focus();
+                    txtQunty.TabStop = true;
+                    txtItemCode.TabStop = true;
+                    textVendercod.TabStop = true;
+                    button1.TabStop = true;
+                    button2.TabStop = true;
+                    button3.TabStop = true;
+                    button4.TabStop = true;
+                }
+                else if (textVendercod.Text == "V")
+                {
+                    textVendercod.Focus();
+                    textVendercod.Select(textVendercod.Text.Length, 0);
+                    button1.TabStop = true;
+                    textVendercod.TabStop = true;
+                    addToCartTable.Columns.RemoveAt(6);
+                    if (!addToCartTable.Columns.Contains("ResivQuantity"))
+                    {
+                        addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                        addToCartTable.Columns.RemoveAt(6);
+                    }
 
-            if (!addToCartTable.Columns.Contains("Amount"))
-            {
-                addToCartTable.Columns.RemoveAt(6);
-                addToCartTable.Columns.Add(new DataColumn("Amount"));
-            }
-            panel2.Visible = false;
-            DeliveryReportViewer.Visible = false;
-            if (txtProductName.Text != "")
-            {
-                txtQunty.Focus();
-                txtQunty.TabStop = true;
-                txtItemCode.TabStop = true;
-                textVendercod.TabStop = true;
-                button1.TabStop = true;
-                button2.TabStop = true;
-                button3.TabStop = true;
-                button4.TabStop = true;
-            }
-           else if (textVendercod.Text == "V")
-            {
-                textVendercod.Focus();
-                textVendercod.Select(textVendercod.Text.Length, 0);
-                button1.TabStop = true;
-                textVendercod.TabStop = true;
-            }
-            else if (textVendercod.Text != "V")
-            {
-                txtItemCode.Focus();
-                txtItemCode.Select(txtItemCode.Text.Length, 0);
-                IndexTex2();
-            }
-            addToCartTable.Columns.RemoveAt(6);
-            if (!addToCartTable.Columns.Contains("ResivQuantity"))
-            {
-                addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
-            }
+                    if (!addToCartTable.Columns.Contains("Amount"))
+                    {
+                        addToCartTable.Columns.RemoveAt(6);
+                        addToCartTable.Columns.Add(new DataColumn("Amount"));
+                    }
+                
+                }
+                else if (textVendercod.Text != "V")
+                {
+                    txtItemCode.Focus();
+                    txtItemCode.Select(txtItemCode.Text.Length, 0);
+                    IndexTex2();
 
-            if (!addToCartTable.Columns.Contains("Amount"))
-            {
-                addToCartTable.Columns.RemoveAt(6);
-                addToCartTable.Columns.Add(new DataColumn("Amount"));
+                }
+                
             }
-           
+            if (txtRef.Text != "")
+            {
+                panel2.Visible = false;
+                DeliveryReportViewer.Visible = false;
+              
+                if (txtProductName.Text != "")
+                {
+                    txtQunty.Focus();
+                    txtQunty.TabStop = true;
+                    txtItemCode.TabStop = true;
+                    textVendercod.TabStop = true;
+                    button1.TabStop = true;
+                    button2.TabStop = true;
+                    button3.TabStop = true;
+                    button4.TabStop = true;
+                }
+                else if (textVendercod.Text == "V")
+                {
+                    textVendercod.Focus();
+                    textVendercod.Select(textVendercod.Text.Length, 0);
+                    button1.TabStop = true;
+                    textVendercod.TabStop = true;
+                }
+                else if (textVendercod.Text != "V")
+                {
+                    txtItemCode.Focus();
+                    txtItemCode.Select(txtItemCode.Text.Length, 0);
+                    IndexTex2();
+                }
+
+            }
         }
 
         private void button4_KeyPress(object sender, KeyPressEventArgs e)
@@ -2166,6 +2210,10 @@ namespace WindowsFormsApplication1
                             if (txtRef.Text == "")
                             {
                                 Amount = dataGridView1.Rows[currentrow - 1].Cells[6].Value.ToString();
+                                string quantity = dataGridView1.Rows[currentrow - 1].Cells[5].Value.ToString();
+                                int q1 = Convert.ToInt32(txtQuantityBild.Text);
+                                q1 -= Convert.ToInt32(quantity.Trim());
+                                txtQuantityBild.Text = q1.ToString();
                                 if (Amount == "")
                                 {
                                     Amount = "0";
@@ -2174,6 +2222,10 @@ namespace WindowsFormsApplication1
                             else if (txtRef.Text != "")
                             {
                                 Amount = dataGridView1.Rows[currentrow - 1].Cells[7].Value.ToString();
+                                string quantity = dataGridView1.Rows[currentrow - 1].Cells[6].Value.ToString();
+                                int q1 = Convert.ToInt32(txtQuantityBild.Text);
+                                q1 -= Convert.ToInt32(quantity.Trim());
+                                txtQuantityBild.Text = q1.ToString();
                                 if (Amount == "")
                                 {
                                     Amount = "0";
@@ -2409,6 +2461,7 @@ namespace WindowsFormsApplication1
                                     addToCartTable.Rows.RemoveAt(0);
                                 }
                                 double totel1 = 0;
+                                int quntity1 = 0;
                                 for (int c = 0; c < dt2.Rows.Count; c++)
                                 {
                                     DataRow dr2 = dt2.Rows[c];
@@ -2432,7 +2485,9 @@ namespace WindowsFormsApplication1
                                     dr2[5] = txtQuanity.Trim();
                                     dr2[6] = txtQuanity.Trim();
                                     dr2[7] = txtAmoun.Trim();
-                                    // dr2[5] = textBox1.Text.Trim();
+                                    int q1 = Convert.ToInt32(txtQuanity.Trim());
+                                    quntity1 = quntity1 + q1;
+                                    txtQuantityBild.Text = quntity1.ToString();
                                     addToCartTable.Rows.Add(dr2);
                                 }
                                 dataGridView1.DataSource = addToCartTable;
@@ -2537,6 +2592,7 @@ namespace WindowsFormsApplication1
                             addToCartTable.Rows.RemoveAt(0);
                         }
                         double totel1 = 0;
+                        int quntity1 = 0;
                         for (int c = 0; c < dt2.Rows.Count; c++)
                         {
                             DataRow dr2 = dt2.Rows[c];
@@ -2560,7 +2616,9 @@ namespace WindowsFormsApplication1
                             dr2[5] = txtQuanity.Trim();
                             dr2[6] = txtQuanity.Trim();
                             dr2[7] = txtAmoun.Trim();
-                            // dr2[5] = textBox1.Text.Trim();
+                            int q1 = Convert.ToInt32(txtQuanity.Trim());
+                            quntity1 = quntity1 + q1;
+                            txtQuantityBild.Text = quntity1.ToString();
                             addToCartTable.Rows.Add(dr2);
                         }
                         dataGridView1.DataSource = addToCartTable;
@@ -3057,6 +3115,11 @@ namespace WindowsFormsApplication1
 
         private void CashAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (CashAmount.Text == "")
+            {
+                txttotalAmount.Text = "0.00";
+               // txtBalance.Text = "0.00";
+            }
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
                 //if (CashAmount.Text.IndexOf('.') != -1 && CashAmount.Text.Split('.')[1].Length == 2)
@@ -3081,9 +3144,10 @@ namespace WindowsFormsApplication1
 
         private void txtCreditAmount_TextChanged(object sender, EventArgs e)
         {
-            if (txtCreditAmount.Text == "0.00")
+            if (txtCreditAmount.Text == "0.00" && txtCreditAmount.Text =="")
             {
                 credittext1();
+                txtTotalAmount1.Text = "0.00";
             }
             if (txtCreditAmount.Text != "0.00")
             {

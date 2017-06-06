@@ -80,7 +80,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.txtvat = new System.Windows.Forms.TextBox();
+            this.txtQuantityBild = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.DeliveryReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -793,20 +793,20 @@
             this.textBox3.Text = "Quantity Billed";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtvat
+            // txtQuantityBild
             // 
-            this.txtvat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtvat.BackColor = System.Drawing.SystemColors.Control;
-            this.txtvat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtvat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtvat.Location = new System.Drawing.Point(1064, 577);
-            this.txtvat.Name = "txtvat";
-            this.txtvat.ReadOnly = true;
-            this.txtvat.Size = new System.Drawing.Size(64, 21);
-            this.txtvat.TabIndex = 65;
-            this.txtvat.TabStop = false;
-            this.txtvat.Text = "0";
-            this.txtvat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtQuantityBild.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtQuantityBild.BackColor = System.Drawing.SystemColors.Control;
+            this.txtQuantityBild.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtQuantityBild.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuantityBild.Location = new System.Drawing.Point(1064, 577);
+            this.txtQuantityBild.Name = "txtQuantityBild";
+            this.txtQuantityBild.ReadOnly = true;
+            this.txtQuantityBild.Size = new System.Drawing.Size(64, 21);
+            this.txtQuantityBild.TabIndex = 65;
+            this.txtQuantityBild.TabStop = false;
+            this.txtQuantityBild.Text = "0";
+            this.txtQuantityBild.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel2
             // 
@@ -1633,7 +1633,7 @@
             this.Controls.Add(this.txtTaxAmount);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.txtvat);
+            this.Controls.Add(this.txtQuantityBild);
             this.Controls.Add(this.txttotalAmount);
             this.Controls.Add(this.textBox22);
             this.Controls.Add(this.textBox15);
@@ -1734,7 +1734,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox txtvat;
+        private System.Windows.Forms.TextBox txtQuantityBild;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button butClose;
         private System.Windows.Forms.ComboBox comboBox1;

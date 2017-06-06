@@ -89,7 +89,7 @@
             this.TextTaxAmmount = new System.Windows.Forms.TextBox();
             this.DisAmmount = new System.Windows.Forms.TextBox();
             this.txtwithautaxamount = new System.Windows.Forms.TextBox();
-            this.VATNO = new System.Windows.Forms.TextBox();
+            this.txtQuantityBild = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -833,20 +833,20 @@
             this.txtwithautaxamount.TabIndex = 68;
             this.txtwithautaxamount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtwithautaxamount_KeyPress);
             // 
-            // VATNO
+            // txtQuantityBild
             // 
-            this.VATNO.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.VATNO.BackColor = System.Drawing.SystemColors.Control;
-            this.VATNO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.VATNO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VATNO.Location = new System.Drawing.Point(885, 577);
-            this.VATNO.Name = "VATNO";
-            this.VATNO.ReadOnly = true;
-            this.VATNO.Size = new System.Drawing.Size(64, 21);
-            this.VATNO.TabIndex = 62;
-            this.VATNO.TabStop = false;
-            this.VATNO.Text = "0";
-            this.VATNO.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtQuantityBild.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtQuantityBild.BackColor = System.Drawing.SystemColors.Control;
+            this.txtQuantityBild.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtQuantityBild.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuantityBild.Location = new System.Drawing.Point(885, 577);
+            this.txtQuantityBild.Name = "txtQuantityBild";
+            this.txtQuantityBild.ReadOnly = true;
+            this.txtQuantityBild.Size = new System.Drawing.Size(64, 21);
+            this.txtQuantityBild.TabIndex = 62;
+            this.txtQuantityBild.TabStop = false;
+            this.txtQuantityBild.Text = "0";
+            this.txtQuantityBild.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox3
             // 
@@ -873,7 +873,7 @@
             this.Controls.Add(this.TextTaxAmmount);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.VATNO);
+            this.Controls.Add(this.txtQuantityBild);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.txtTotalAmount);
             this.Controls.Add(this.btnSave);
@@ -978,7 +978,7 @@
         private System.Windows.Forms.TextBox DisAmmount;
         private System.Windows.Forms.TextBox txtwithautaxamount;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer PurchesCrystalReportViewer;
-        private System.Windows.Forms.TextBox VATNO;
+        private System.Windows.Forms.TextBox txtQuantityBild;
         private System.Windows.Forms.TextBox textBox3;
 
     }

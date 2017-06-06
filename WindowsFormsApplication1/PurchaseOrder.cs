@@ -375,6 +375,7 @@ namespace WindowsFormsApplication1
                 string quntity = "";
                 string rate = "";
                 string ammount = "";
+                int quntity1 = 0;
                 int counter = 0;
                 string itemname1 = product(txtItemCode.Text);
                 if (itemname1 != txtProductName.Text)
@@ -386,6 +387,7 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
+                  
                 foreach (DataRow dr3 in addToCartTable.Rows)
                 {
                     int q3 = 0;
@@ -410,6 +412,11 @@ namespace WindowsFormsApplication1
                                 int q1 = Convert.ToInt32(quntity);
                                 int q2 = Convert.ToInt32(txtQuanity.Text);
                                 q3 = q1 + q2;
+                                quntity1 = quntity1 + q3;
+                                int q4 = Convert.ToInt32(txtQuantityBild.Text);
+                                int q5 =  q4-q1;
+                                int q6 = quntity1 + q5;
+                                txtQuantityBild.Text = q6.ToString();
                                 dr3[5] = q3.ToString();
                                 Double rate1 = Convert.ToDouble(rate);
                                 Double rate6 = rate1 * q2;
@@ -502,7 +509,10 @@ namespace WindowsFormsApplication1
                             dr[4] = txtRate.Text.Trim();
                             dr[5] = txtQuanity.Text.Trim();
                             dr[6] = txtAmount.Text.Trim();
-
+                            int q1 = Convert.ToInt32(txtQuanity.Text.Trim());
+                            int q2 = Convert.ToInt32(txtQuantityBild.Text);
+                            int q3 = q1 + q2;
+                            txtQuantityBild.Text = q3.ToString();
                             //dr[5] = txtAmount.Text.Trim();
                             addToCartTable.Rows.Add(dr);
                             gridPurchaseOrder.DataSource = addToCartTable;
@@ -1094,6 +1104,11 @@ namespace WindowsFormsApplication1
                     {
                         int courentrow = gridPurchaseOrder.CurrentRow.Index;
                         string Amount = gridPurchaseOrder.Rows[courentrow - 1].Cells[6].Value.ToString();
+                        string quantity = gridPurchaseOrder.Rows[courentrow - 1].Cells[5].Value.ToString();
+                        int q1 = Convert.ToInt32(txtQuantityBild.Text);
+                        q1 -= Convert.ToInt32(quantity.Trim());
+                        txtQuantityBild.Text = q1.ToString();
+
                         if (Amount == "")
                         {
                             Amount = "0";
