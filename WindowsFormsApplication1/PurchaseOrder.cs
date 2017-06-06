@@ -909,6 +909,7 @@ namespace WindowsFormsApplication1
             txtTotalAmount.Text = "0.00";
             txtdis.Text = "0";
             addToCartTable.Clear();
+            txtQuantityBild.Text = "0";
             txtTotalAmount.Text = "0.00";
             txtRemoveItem.Enabled = false;
 

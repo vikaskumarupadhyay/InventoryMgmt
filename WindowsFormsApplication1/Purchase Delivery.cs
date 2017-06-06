@@ -1258,6 +1258,10 @@ namespace WindowsFormsApplication1
                                         {
                                             DeliveryReportViewer.Visible = false;
                                             panel2.Visible = false;
+                                            textVendercod.Focus();
+                                            textVendercod.Select(textVendercod.Text.Length, 0);
+                                            textVendercod.TabStop = true;
+                                            button1.TabStop = true;
                                         }
 
                                         dataGridView1.AllowUserToAddRows = true;
@@ -1607,15 +1611,21 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
-                    //string dilqurry1 = "select Orderid from VendorOrderDesc where Orderid ='" + txtRef.Text + "'";
-                    //DataTable dildt2 = dbMainClass.getDetailByQuery(dilqurry1);
-                    //if (dildt2 != null && dildt2.Rows != null && dildt2.Rows.Count<1)// && dildt2.Rows.Count > 0)
-                    //{
-                    //    MessageBox.Show("This Order Is Not Available");
-                    //    //return;
-                    //}
-                    //else
-                    //{
+                    string dilqurry1 = "select Orderid from VendorOrderDesc where Orderid ='" + txtRef.Text + "'";
+                    DataTable dildt2 = dbMainClass.getDetailByQuery(dilqurry1);
+                    if (dildt2.Rows.Count==0)//&& dildt2.Rows.Count>0)// && dildt2.Rows.Count > 0)
+                    {
+                        MessageBox.Show("This Order Is Not Available");
+                        txtRef.Text = "";
+                        textVendercod.Focus();
+                        textVendercod.Select(textVendercod.Text.Length, 0);
+                        button1.TabStop = true;
+                        textVendercod.TabStop = true;
+
+                        //return;
+                    }
+                    else
+                    {
                         button4.Enabled = true;
                         txtItemCode.Focus();
                         addToCartTable.Columns.RemoveAt(6);
@@ -1748,7 +1758,7 @@ namespace WindowsFormsApplication1
                         }
                     }
                 }
-            //}
+            }
 
             if (Char.IsLetterOrDigit(e.KeyChar))
             {
@@ -1778,7 +1788,8 @@ namespace WindowsFormsApplication1
             txtPhone.Text = "";
             txtMobile.Text = "";
             txtFax.Text = "";
-            txttotalAmount.Text = "0";
+            txttotalAmount.Text = "0.00";
+            txtQuantityBild.Text = "0";
            // dataGridView1.DataSource = "";
             addToCartTable.Clear();
 
