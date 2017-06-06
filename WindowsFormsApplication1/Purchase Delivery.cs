@@ -1942,6 +1942,13 @@ namespace WindowsFormsApplication1
                     txtItemCode.Focus();
                     txtItemCode.Select(txtItemCode.Text.Length, 0);
                     IndexTex2();
+                    if (dataGridView1.RowCount > 0)
+                    {
+                        IndexTex2();
+                        button5.TabStop = true;
+                        button7.TabStop = true;
+                    }
+
 
                 }
                 
