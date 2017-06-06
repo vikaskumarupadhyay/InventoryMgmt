@@ -443,7 +443,7 @@ namespace WindowsFormsApplication1
 
                     }
                     double qtybuiled = getquantitybuiled();
-                    txtqtybuiled.Text = qtybuiled.ToString("###0.00");
+                    txtqtybuiled.Text = qtybuiled.ToString();
                 }
                 if (txtProductName.Text == "" && txtQuantity.Text == "")
                 {
@@ -516,7 +516,7 @@ namespace WindowsFormsApplication1
                             // }
                         }
                         double qtybuiled = getquantitybuiled();
-                        txtqtybuiled.Text = qtybuiled.ToString("###0.00");
+                        txtqtybuiled.Text = qtybuiled.ToString();
                         ButSelectPurchaseOrder.TabStop = true;
                         butClose.TabStop = true;
                         butSaveButton.TabStop = true;
@@ -711,7 +711,7 @@ namespace WindowsFormsApplication1
 
                         }
                         double qtybuiled = getquantitybuiled1();
-                        txtqtybuiled.Text = qtybuiled.ToString("###0.00");
+                        txtqtybuiled.Text = qtybuiled.ToString();
                     }
                         if (txtProductName.Text == "" && txtQuantity.Text == "")
                         {
@@ -786,7 +786,7 @@ namespace WindowsFormsApplication1
                                     butAddItem.Enabled = false;
                                 }
                                 double qtybuiled = getquantitybuiled1();
-                                txtqtybuiled.Text = qtybuiled.ToString("###0.00");
+                                txtqtybuiled.Text = qtybuiled.ToString();
                             }
                             if (gridsalesdelivary.Rows.Count > 1)
                             {
@@ -801,7 +801,7 @@ namespace WindowsFormsApplication1
 
         private void salesdelivary_Load(object sender, EventArgs e)
         {
-            txtqtybuiled.Text = "0.00";
+           
             txtSrNo.ReadOnly = true;
             txtcustomercode.Select(txtcustomercode.Text.Length, 0);
             txtItemCode.Select(txtItemCode.Text.Length, 0);
@@ -1355,6 +1355,10 @@ namespace WindowsFormsApplication1
                                                 txtcustomercode.Select(txtcustomercode.Text.Length, 0);
                                                 gridsalesdelivary.AllowUserToAddRows = true;
                                                 butRemoveItem.Enabled = false;
+                                                txtcustomercode.TabStop = true;
+                                                butcustomercode.TabStop = true;
+                                                txtRefNo.Enabled = true;
+                                                ButSelectPurchaseOrder.Enabled = true;
                                                 return;
                                             }
                                            
@@ -1501,8 +1505,11 @@ namespace WindowsFormsApplication1
                                     crystalReportViewer2.Visible = false;
                                     panel2.Visible = false;
                                     txtcustomercode.Focus();
+                                    butRemoveItem.Enabled = false;
                                     txtcustomercode.TabStop = true;
                                     butcustomercode.TabStop = true;
+                                    txtRefNo.Enabled = true;
+                                    ButSelectPurchaseOrder.Enabled = true;
                                 }
                             }
                         }
@@ -1938,7 +1945,7 @@ namespace WindowsFormsApplication1
                             string qty = gridsalesdelivary.Rows[currentrow - 1].Cells[5].Value.ToString();
                             double qtybuiled = Convert.ToDouble(txtqtybuiled.Text);
                             qtybuiled -= Convert.ToDouble(qty.Trim());
-                            txtqtybuiled.Text = qtybuiled.ToString("###0.00");
+                            txtqtybuiled.Text = qtybuiled.ToString();
                             txtTotalAmmount.Text = totalAmount.ToString();
                             txtwithauttaxamount.Text = withauttax.ToString();
                             //addToCartTable.Rows.RemoveAt(index-1);
@@ -2006,7 +2013,7 @@ namespace WindowsFormsApplication1
                             string qty = gridsalesdelivary.Rows[currentrow - 1].Cells[6].Value.ToString();
                             double qtybuiled = Convert.ToDouble(txtqtybuiled.Text);
                             qtybuiled -= Convert.ToDouble(qty.Trim());
-                            txtqtybuiled.Text = qtybuiled.ToString("###0.00");
+                            txtqtybuiled.Text = qtybuiled.ToString();
                             txtTotalAmmount.Text = totalAmount.ToString("###0.00");
                             txtwithauttaxamount.Text = withauttax.ToString();
 
@@ -2462,9 +2469,9 @@ namespace WindowsFormsApplication1
 
                     }
                     double qty = getquantitybuiled1();
-                    txtqtybuiled.Text = qty.ToString("###0.00");
+                    txtqtybuiled.Text = qty.ToString();
                     gridsalesdelivary.DataSource = addToCartTable;
-                    txtTotalAmmount.Text = totel1.ToString("###0.00");
+                    txtTotalAmmount.Text = totel1.ToString();
                     
 
                 }
@@ -2788,6 +2795,18 @@ namespace WindowsFormsApplication1
                     butRemoveItem.Enabled = false;
                     //gridsalesdelivary.DataSource = "";
                 }
+                else
+                {
+                string selectquery3 = "select orderid from orderdetails where orderid ='" + txtRefNo.Text + "'";
+                DataTable dt5 = d.getDetailByQuery(selectquery3);
+                if (dt5.Rows.Count == 0)
+                {
+                    MessageBox.Show("the order is not available");
+                    addToCartTable.Columns.RemoveAt(6);
+                    txtRefNo.Text = "";
+                    txtcustomercode.Focus();
+                }
+
 
             //         else
                 //{
@@ -2825,6 +2844,7 @@ namespace WindowsFormsApplication1
                         addToCartTable.Columns.Add(new DataColumn("Amount"));
                     }
                     butSaveButton.Visible = true;
+
                     string select = "select vo.orderid,vo.custid,vod.ItemId,vo.Discount from orderdetails vo join customerorderdescriptions vod on vod.Orderid=vo.Orderid where vo.Orderid ='" + txtRefNo.Text + "'";
                     DataTable dt = d.getDetailByQuery(select);
                     string a = "";
@@ -2880,14 +2900,16 @@ namespace WindowsFormsApplication1
                             addToCartTable.Rows.Add(dr1);
 
                         }
+
                         // gridsalesdelivary.DataSource = null;
                         gridsalesdelivary.DataSource = addToCartTable;
                         txtTotalAmmount.Text = totel.ToString("###0.00");
                         txtwithauttaxamount.Text = totel.ToString("###0.00");
 
                     }
+                }
                     double qtybuiled = getquantitybuiled1();
-                   txtqtybuiled.Text = qtybuiled.ToString("###0.00");
+                   txtqtybuiled.Text = qtybuiled.ToString();
                     if (gridsalesdelivary.Rows.Count > 1)
                     {
                         txtdiccount.ReadOnly = false;
@@ -3759,6 +3781,8 @@ namespace WindowsFormsApplication1
                 }
             }
         }
+
+       
 
      
 
