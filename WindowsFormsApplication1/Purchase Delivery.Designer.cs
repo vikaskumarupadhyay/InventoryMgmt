@@ -977,9 +977,10 @@
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.Location = new System.Drawing.Point(920, 12);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(1310, 58);
+            this.groupBox5.Size = new System.Drawing.Size(416, 58);
             this.groupBox5.TabIndex = 9;
             this.groupBox5.TabStop = false;
+            this.groupBox5.Enter += new System.EventHandler(this.groupBox5_Enter);
             // 
             // textBox27
             // 
@@ -997,11 +998,11 @@
             // 
             this.txtInvoiceAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtInvoiceAmount.Location = new System.Drawing.Point(138, 18);
+            this.txtInvoiceAmount.Location = new System.Drawing.Point(138, 20);
             this.txtInvoiceAmount.Multiline = true;
             this.txtInvoiceAmount.Name = "txtInvoiceAmount";
             this.txtInvoiceAmount.ReadOnly = true;
-            this.txtInvoiceAmount.Size = new System.Drawing.Size(1304, 23);
+            this.txtInvoiceAmount.Size = new System.Drawing.Size(258, 23);
             this.txtInvoiceAmount.TabIndex = 1;
             this.txtInvoiceAmount.TabStop = false;
             this.txtInvoiceAmount.Text = "0.00";
@@ -1147,7 +1148,7 @@
             this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox8.Location = new System.Drawing.Point(12, 67);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(1315, 222);
+            this.groupBox8.Size = new System.Drawing.Size(1324, 222);
             this.groupBox8.TabIndex = 7;
             this.groupBox8.TabStop = false;
             // 
@@ -1164,7 +1165,7 @@
             // 
             // textBox25
             // 
-            this.textBox25.Location = new System.Drawing.Point(180, 35);
+            this.textBox25.Location = new System.Drawing.Point(225, 35);
             this.textBox25.Name = "textBox25";
             this.textBox25.ReadOnly = true;
             this.textBox25.Size = new System.Drawing.Size(29, 21);
@@ -1175,7 +1176,7 @@
             // 
             // textBox24
             // 
-            this.textBox24.Location = new System.Drawing.Point(346, 35);
+            this.textBox24.Location = new System.Drawing.Point(441, 35);
             this.textBox24.Name = "textBox24";
             this.textBox24.ReadOnly = true;
             this.textBox24.Size = new System.Drawing.Size(29, 21);
@@ -1186,7 +1187,7 @@
             // 
             // textBox23
             // 
-            this.textBox23.Location = new System.Drawing.Point(508, 35);
+            this.textBox23.Location = new System.Drawing.Point(657, 35);
             this.textBox23.Name = "textBox23";
             this.textBox23.ReadOnly = true;
             this.textBox23.Size = new System.Drawing.Size(29, 21);
@@ -1197,7 +1198,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(671, 35);
+            this.textBox2.Location = new System.Drawing.Point(873, 35);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(29, 21);
@@ -1208,7 +1209,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(825, 119);
+            this.textBox4.Location = new System.Drawing.Point(1089, 119);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(29, 21);
@@ -1219,7 +1220,7 @@
             // 
             // textBox20
             // 
-            this.textBox20.Location = new System.Drawing.Point(825, 77);
+            this.textBox20.Location = new System.Drawing.Point(1089, 77);
             this.textBox20.Name = "textBox20";
             this.textBox20.ReadOnly = true;
             this.textBox20.Size = new System.Drawing.Size(29, 21);
@@ -1230,7 +1231,7 @@
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(825, 35);
+            this.textBox5.Location = new System.Drawing.Point(1089, 35);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(29, 21);
@@ -1241,7 +1242,7 @@
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(825, 161);
+            this.textBox6.Location = new System.Drawing.Point(1089, 161);
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
             this.textBox6.Size = new System.Drawing.Size(29, 21);
@@ -1252,9 +1253,11 @@
             // 
             // txtNetAmount
             // 
-            this.txtNetAmount.Location = new System.Drawing.Point(853, 161);
+            this.txtNetAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNetAmount.Location = new System.Drawing.Point(1117, 161);
             this.txtNetAmount.Name = "txtNetAmount";
-            this.txtNetAmount.Size = new System.Drawing.Size(113, 21);
+            this.txtNetAmount.Size = new System.Drawing.Size(186, 21);
             this.txtNetAmount.TabIndex = 38;
             this.txtNetAmount.Text = "0.00";
             this.txtNetAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1262,7 +1265,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(822, 143);
+            this.label20.Location = new System.Drawing.Point(1086, 143);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(71, 15);
             this.label20.TabIndex = 37;
@@ -1270,9 +1273,11 @@
             // 
             // txtRturned
             // 
-            this.txtRturned.Location = new System.Drawing.Point(853, 119);
+            this.txtRturned.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRturned.Location = new System.Drawing.Point(1117, 119);
             this.txtRturned.Name = "txtRturned";
-            this.txtRturned.Size = new System.Drawing.Size(113, 21);
+            this.txtRturned.Size = new System.Drawing.Size(186, 21);
             this.txtRturned.TabIndex = 36;
             this.txtRturned.Text = "0.00";
             this.txtRturned.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1281,9 +1286,11 @@
             // 
             // txtBalance
             // 
-            this.txtBalance.Location = new System.Drawing.Point(853, 77);
+            this.txtBalance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBalance.Location = new System.Drawing.Point(1117, 77);
             this.txtBalance.Name = "txtBalance";
-            this.txtBalance.Size = new System.Drawing.Size(113, 21);
+            this.txtBalance.Size = new System.Drawing.Size(186, 21);
             this.txtBalance.TabIndex = 35;
             this.txtBalance.Text = "0.00";
             this.txtBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1291,9 +1298,11 @@
             // 
             // txtTotalAmount1
             // 
-            this.txtTotalAmount1.Location = new System.Drawing.Point(853, 35);
+            this.txtTotalAmount1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTotalAmount1.Location = new System.Drawing.Point(1117, 35);
             this.txtTotalAmount1.Name = "txtTotalAmount1";
-            this.txtTotalAmount1.Size = new System.Drawing.Size(113, 21);
+            this.txtTotalAmount1.Size = new System.Drawing.Size(186, 21);
             this.txtTotalAmount1.TabIndex = 34;
             this.txtTotalAmount1.Text = "0.00";
             this.txtTotalAmount1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1302,7 +1311,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(822, 101);
+            this.label27.Location = new System.Drawing.Point(1086, 101);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(58, 15);
             this.label27.TabIndex = 33;
@@ -1311,7 +1320,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(822, 59);
+            this.label19.Location = new System.Drawing.Point(1086, 59);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(52, 15);
             this.label19.TabIndex = 32;
@@ -1320,7 +1329,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(822, 17);
+            this.label22.Location = new System.Drawing.Point(1086, 17);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(79, 15);
             this.label22.TabIndex = 31;
@@ -1333,15 +1342,15 @@
             this.CmbCompany.Items.AddRange(new object[] {
             "Select Company",
             "Indian"});
-            this.CmbCompany.Location = new System.Drawing.Point(671, 77);
+            this.CmbCompany.Location = new System.Drawing.Point(873, 77);
             this.CmbCompany.Name = "CmbCompany";
-            this.CmbCompany.Size = new System.Drawing.Size(148, 23);
+            this.CmbCompany.Size = new System.Drawing.Size(210, 23);
             this.CmbCompany.TabIndex = 30;
             // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(668, 59);
+            this.label23.Location = new System.Drawing.Point(870, 59);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(96, 15);
             this.label23.TabIndex = 29;
@@ -1349,9 +1358,9 @@
             // 
             // txtCouponAmount
             // 
-            this.txtCouponAmount.Location = new System.Drawing.Point(699, 35);
+            this.txtCouponAmount.Location = new System.Drawing.Point(901, 35);
             this.txtCouponAmount.Name = "txtCouponAmount";
-            this.txtCouponAmount.Size = new System.Drawing.Size(120, 21);
+            this.txtCouponAmount.Size = new System.Drawing.Size(182, 21);
             this.txtCouponAmount.TabIndex = 27;
             this.txtCouponAmount.Text = "0.00";
             this.txtCouponAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1362,7 +1371,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(668, 17);
+            this.label24.Location = new System.Drawing.Point(870, 17);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(95, 15);
             this.label24.TabIndex = 26;
@@ -1372,15 +1381,15 @@
             // 
             this.dateTimePicker2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(508, 161);
+            this.dateTimePicker2.Location = new System.Drawing.Point(657, 161);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(157, 21);
+            this.dateTimePicker2.Size = new System.Drawing.Size(210, 21);
             this.dateTimePicker2.TabIndex = 25;
             // 
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(505, 143);
+            this.label25.Location = new System.Drawing.Point(654, 143);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(100, 15);
             this.label25.TabIndex = 24;
@@ -1388,15 +1397,15 @@
             // 
             // txtTransactionNumber
             // 
-            this.txtTransactionNumber.Location = new System.Drawing.Point(508, 119);
+            this.txtTransactionNumber.Location = new System.Drawing.Point(657, 119);
             this.txtTransactionNumber.Name = "txtTransactionNumber";
-            this.txtTransactionNumber.Size = new System.Drawing.Size(157, 21);
+            this.txtTransactionNumber.Size = new System.Drawing.Size(210, 21);
             this.txtTransactionNumber.TabIndex = 23;
             // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(505, 101);
+            this.label26.Location = new System.Drawing.Point(654, 101);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(119, 15);
             this.label26.TabIndex = 22;
@@ -1404,15 +1413,15 @@
             // 
             // EWalletCompanyName
             // 
-            this.EWalletCompanyName.Location = new System.Drawing.Point(508, 77);
+            this.EWalletCompanyName.Location = new System.Drawing.Point(657, 77);
             this.EWalletCompanyName.Name = "EWalletCompanyName";
-            this.EWalletCompanyName.Size = new System.Drawing.Size(157, 21);
+            this.EWalletCompanyName.Size = new System.Drawing.Size(210, 21);
             this.EWalletCompanyName.TabIndex = 21;
             // 
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(505, 59);
+            this.label28.Location = new System.Drawing.Point(654, 59);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(96, 15);
             this.label28.TabIndex = 20;
@@ -1420,9 +1429,9 @@
             // 
             // txtEwalletAmount
             // 
-            this.txtEwalletAmount.Location = new System.Drawing.Point(536, 35);
+            this.txtEwalletAmount.Location = new System.Drawing.Point(685, 35);
             this.txtEwalletAmount.Name = "txtEwalletAmount";
-            this.txtEwalletAmount.Size = new System.Drawing.Size(129, 21);
+            this.txtEwalletAmount.Size = new System.Drawing.Size(182, 21);
             this.txtEwalletAmount.TabIndex = 19;
             this.txtEwalletAmount.Text = "0.00";
             this.txtEwalletAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1433,7 +1442,7 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(505, 17);
+            this.label29.Location = new System.Drawing.Point(654, 17);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(98, 15);
             this.label29.TabIndex = 18;
@@ -1443,29 +1452,29 @@
             // 
             this.dateTimePicker1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(346, 161);
+            this.dateTimePicker1.Location = new System.Drawing.Point(441, 161);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(156, 21);
+            this.dateTimePicker1.Size = new System.Drawing.Size(210, 21);
             this.dateTimePicker1.TabIndex = 17;
             // 
             // txtChequeNumber
             // 
-            this.txtChequeNumber.Location = new System.Drawing.Point(346, 119);
+            this.txtChequeNumber.Location = new System.Drawing.Point(441, 119);
             this.txtChequeNumber.Name = "txtChequeNumber";
-            this.txtChequeNumber.Size = new System.Drawing.Size(156, 21);
+            this.txtChequeNumber.Size = new System.Drawing.Size(210, 21);
             this.txtChequeNumber.TabIndex = 16;
             // 
             // txtChequeBankName
             // 
-            this.txtChequeBankName.Location = new System.Drawing.Point(346, 77);
+            this.txtChequeBankName.Location = new System.Drawing.Point(441, 77);
             this.txtChequeBankName.Name = "txtChequeBankName";
-            this.txtChequeBankName.Size = new System.Drawing.Size(156, 21);
+            this.txtChequeBankName.Size = new System.Drawing.Size(210, 21);
             this.txtChequeBankName.TabIndex = 15;
             // 
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(343, 143);
+            this.label30.Location = new System.Drawing.Point(438, 143);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(79, 15);
             this.label30.TabIndex = 14;
@@ -1474,7 +1483,7 @@
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(343, 101);
+            this.label31.Location = new System.Drawing.Point(438, 101);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(98, 15);
             this.label31.TabIndex = 13;
@@ -1483,7 +1492,7 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(343, 59);
+            this.label32.Location = new System.Drawing.Point(438, 59);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(72, 15);
             this.label32.TabIndex = 12;
@@ -1491,9 +1500,9 @@
             // 
             // txtChequeAmount
             // 
-            this.txtChequeAmount.Location = new System.Drawing.Point(374, 35);
+            this.txtChequeAmount.Location = new System.Drawing.Point(469, 35);
             this.txtChequeAmount.Name = "txtChequeAmount";
-            this.txtChequeAmount.Size = new System.Drawing.Size(128, 21);
+            this.txtChequeAmount.Size = new System.Drawing.Size(182, 21);
             this.txtChequeAmount.TabIndex = 11;
             this.txtChequeAmount.Text = "0";
             this.txtChequeAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1504,7 +1513,7 @@
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(343, 17);
+            this.label33.Location = new System.Drawing.Point(438, 17);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(95, 15);
             this.label33.TabIndex = 10;
@@ -1521,15 +1530,15 @@
             "Rupey, ",
             "American Express",
             "Discover Card"});
-            this.CmbCardType.Location = new System.Drawing.Point(180, 161);
+            this.CmbCardType.Location = new System.Drawing.Point(225, 161);
             this.CmbCardType.Name = "CmbCardType";
-            this.CmbCardType.Size = new System.Drawing.Size(160, 23);
+            this.CmbCardType.Size = new System.Drawing.Size(210, 23);
             this.CmbCardType.TabIndex = 9;
             // 
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(177, 143);
+            this.label34.Location = new System.Drawing.Point(222, 143);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(62, 15);
             this.label34.TabIndex = 8;
@@ -1537,15 +1546,15 @@
             // 
             // txtCardNumber
             // 
-            this.txtCardNumber.Location = new System.Drawing.Point(180, 119);
+            this.txtCardNumber.Location = new System.Drawing.Point(225, 119);
             this.txtCardNumber.Name = "txtCardNumber";
-            this.txtCardNumber.Size = new System.Drawing.Size(160, 21);
+            this.txtCardNumber.Size = new System.Drawing.Size(210, 21);
             this.txtCardNumber.TabIndex = 7;
             // 
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(177, 101);
+            this.label35.Location = new System.Drawing.Point(222, 101);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(81, 15);
             this.label35.TabIndex = 6;
@@ -1554,7 +1563,7 @@
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(177, 59);
+            this.label36.Location = new System.Drawing.Point(222, 59);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(72, 15);
             this.label36.TabIndex = 5;
@@ -1562,16 +1571,16 @@
             // 
             // txtDebitBankName
             // 
-            this.txtDebitBankName.Location = new System.Drawing.Point(180, 77);
+            this.txtDebitBankName.Location = new System.Drawing.Point(225, 77);
             this.txtDebitBankName.Name = "txtDebitBankName";
-            this.txtDebitBankName.Size = new System.Drawing.Size(160, 21);
+            this.txtDebitBankName.Size = new System.Drawing.Size(210, 21);
             this.txtDebitBankName.TabIndex = 4;
             // 
             // txtCreditAmount
             // 
-            this.txtCreditAmount.Location = new System.Drawing.Point(208, 35);
+            this.txtCreditAmount.Location = new System.Drawing.Point(253, 35);
             this.txtCreditAmount.Name = "txtCreditAmount";
-            this.txtCreditAmount.Size = new System.Drawing.Size(132, 21);
+            this.txtCreditAmount.Size = new System.Drawing.Size(182, 21);
             this.txtCreditAmount.TabIndex = 3;
             this.txtCreditAmount.Text = "0.00";
             this.txtCreditAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1582,7 +1591,7 @@
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(177, 17);
+            this.label37.Location = new System.Drawing.Point(222, 17);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(106, 15);
             this.label37.TabIndex = 2;
@@ -1592,7 +1601,7 @@
             // 
             this.CashAmount.Location = new System.Drawing.Point(37, 35);
             this.CashAmount.Name = "CashAmount";
-            this.CashAmount.Size = new System.Drawing.Size(104, 21);
+            this.CashAmount.Size = new System.Drawing.Size(182, 21);
             this.CashAmount.TabIndex = 1;
             this.CashAmount.Text = "0.00";
             this.CashAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

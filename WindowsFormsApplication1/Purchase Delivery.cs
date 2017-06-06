@@ -555,7 +555,7 @@ namespace WindowsFormsApplication1
                                         // MessageBox.Show("Please Enter the Quanity");
 
                                         txtWAmount.Text = rate5.ToString();
-
+                                        
                                         txtItemCode.Text = "I";
                                         txtItemCode.Select(txtItemCode.Text.Length, 0);
                                         txtProductName.Text = "";
@@ -3556,6 +3556,11 @@ namespace WindowsFormsApplication1
                     //MessageBox.Show("Plese enter numeric value!");
                 }
             }
+        }
+
+        private void groupBox5_Enter(object sender, EventArgs e)
+        {
+
         }
 
        
