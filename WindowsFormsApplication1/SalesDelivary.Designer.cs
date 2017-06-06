@@ -71,7 +71,7 @@
             this.ButSelectPurchaseOrder = new System.Windows.Forms.Button();
             this.butSaveButton = new System.Windows.Forms.Button();
             this.textBox16 = new System.Windows.Forms.TextBox();
-            this.txtcst = new System.Windows.Forms.TextBox();
+            this.txtqtybuiled = new System.Windows.Forms.TextBox();
             this.textBox19 = new System.Windows.Forms.TextBox();
             this.txtdiccount = new System.Windows.Forms.TextBox();
             this.textBox21 = new System.Windows.Forms.TextBox();
@@ -653,19 +653,19 @@
             this.textBox16.Text = "Quantity Billed";
             this.textBox16.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtcst
+            // txtqtybuiled
             // 
-            this.txtcst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtcst.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtcst.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtcst.Location = new System.Drawing.Point(882, 577);
-            this.txtcst.Name = "txtcst";
-            this.txtcst.ReadOnly = true;
-            this.txtcst.Size = new System.Drawing.Size(64, 21);
-            this.txtcst.TabIndex = 42;
-            this.txtcst.TabStop = false;
-            this.txtcst.Text = "0";
-            this.txtcst.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtqtybuiled.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtqtybuiled.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtqtybuiled.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtqtybuiled.Location = new System.Drawing.Point(882, 577);
+            this.txtqtybuiled.Name = "txtqtybuiled";
+            this.txtqtybuiled.ReadOnly = true;
+            this.txtqtybuiled.Size = new System.Drawing.Size(64, 21);
+            this.txtqtybuiled.TabIndex = 42;
+            this.txtqtybuiled.TabStop = false;
+            this.txtqtybuiled.Text = "0";
+            this.txtqtybuiled.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox19
             // 
@@ -801,10 +801,9 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.butback);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1172, 634);
+            this.panel2.Size = new System.Drawing.Size(1172, 570);
             this.panel2.TabIndex = 53;
             // 
             // crystalReportViewer2
@@ -815,7 +814,7 @@
             this.crystalReportViewer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer2.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer2.Name = "crystalReportViewer2";
-            this.crystalReportViewer2.Size = new System.Drawing.Size(1172, 634);
+            this.crystalReportViewer2.Size = new System.Drawing.Size(1172, 570);
             this.crystalReportViewer2.TabIndex = 8;
             // 
             // panel3
@@ -1601,7 +1600,7 @@
             this.Controls.Add(this.txtdiccount);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBox19);
-            this.Controls.Add(this.txtcst);
+            this.Controls.Add(this.txtqtybuiled);
             this.Controls.Add(this.textBox16);
             this.Name = "salesdelivary";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1678,7 +1677,7 @@
         private System.Windows.Forms.Button ButSelectPurchaseOrder;
         private System.Windows.Forms.Button butSaveButton;
         private System.Windows.Forms.TextBox textBox16;
-        private System.Windows.Forms.TextBox txtcst;
+        private System.Windows.Forms.TextBox txtqtybuiled;
         private System.Windows.Forms.TextBox textBox19;
         private System.Windows.Forms.TextBox txtdiccount;
         private System.Windows.Forms.TextBox textBox21;
