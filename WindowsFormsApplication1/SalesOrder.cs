@@ -397,6 +397,9 @@ namespace WindowsFormsApplication1
                             txtQuantity.TabStop = false;
 
                         }
+                        double qtybuiled = getquantitybuiled();
+                        textBox2.Text = qtybuiled.ToString("###0.00");
+                      
 
                     }
 
@@ -483,6 +486,8 @@ namespace WindowsFormsApplication1
                             textBox20.ReadOnly = false;
                         }
                         txtitemcode.Select(txtitemcode.Text.Length, 0);
+                        double qtybuiled = getquantitybuiled();
+                        textBox2.Text = qtybuiled.ToString("###0.00");
 
 
                     }
@@ -558,6 +563,7 @@ namespace WindowsFormsApplication1
             }
             // gridsalesorder.Rows.Add();
             txttotalammount.Text = "0.00";
+           
         }
 
         private void setAutoCompleteMode(TextBox txt, string ColumnName, DataTable dt)
@@ -1204,6 +1210,10 @@ namespace WindowsFormsApplication1
                         string Amount = gridsalesorder.Rows[current - 1].Cells[6].Value.ToString();
                         double totalAmount = Convert.ToDouble(txttotalammount.Text);
                         totalAmount -= Convert.ToDouble(Amount.Trim());
+                        string qtybuiled = gridsalesorder.Rows[current - 1].Cells[5].Value.ToString();
+                        double qty = Convert.ToDouble(textBox2.Text);
+                        qty -= Convert.ToDouble(qtybuiled.Trim());
+                        textBox2.Text = qty.ToString("###0.00");
                         txttotalammount.Text = totalAmount.ToString("###0.00");
 
                         //addToCartTable.Rows.RemoveAt(index - 1);
@@ -2009,14 +2019,18 @@ namespace WindowsFormsApplication1
             
         }
 
-        private void gridsalesorder_Leave(object sender, EventArgs e)
+        public double getquantitybuiled()
         {
-            
+            double totalValue = 0.0;
+            double s;
+            for (int a = 0; a < gridsalesorder.Rows.Count; a++)
+            {
+                s = Convert.ToDouble(gridsalesorder.Rows[a].Cells[5].Value);
+                totalValue = totalValue + s;
+
+            }
+            return totalValue;
         }
-
-      
-     
-
      
 
         }

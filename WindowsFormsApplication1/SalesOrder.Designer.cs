@@ -130,7 +130,6 @@
             this.gridsalesorder.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesorder_CellEndEdit);
             this.gridsalesorder.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesorder_CellLeave);
             this.gridsalesorder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridsalesorder_KeyPress);
-            this.gridsalesorder.Leave += new System.EventHandler(this.gridsalesorder_Leave);
             // 
             // txttotalammount
             // 
@@ -719,7 +718,6 @@
             this.crystalReportViewer1.ActiveViewIndex = -1;
             this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
             this.crystalReportViewer1.Size = new System.Drawing.Size(1172, 634);
