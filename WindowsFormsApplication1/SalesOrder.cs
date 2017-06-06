@@ -398,7 +398,7 @@ namespace WindowsFormsApplication1
 
                         }
                         double qtybuiled = getquantitybuiled();
-                        textBox2.Text = qtybuiled.ToString("###0.00");
+                        textBox2.Text = qtybuiled.ToString();
                       
 
                     }
@@ -487,7 +487,7 @@ namespace WindowsFormsApplication1
                         }
                         txtitemcode.Select(txtitemcode.Text.Length, 0);
                         double qtybuiled = getquantitybuiled();
-                        textBox2.Text = qtybuiled.ToString("###0.00");
+                        textBox2.Text = qtybuiled.ToString();
 
 
                     }

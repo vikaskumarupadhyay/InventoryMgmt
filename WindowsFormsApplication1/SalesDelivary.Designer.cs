@@ -380,6 +380,7 @@
             this.txtRefNo.TabIndex = 9;
             this.txtRefNo.TabStop = false;
             this.txtRefNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+           // this.txtRefNo.TextChanged += new System.EventHandler(this.txtRefNo_TextChanged);
             this.txtRefNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRefNo_KeyPress);
             // 
             // label15
@@ -801,9 +802,9 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.butback);
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Location = new System.Drawing.Point(0, 144);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1172, 570);
+            this.panel2.Size = new System.Drawing.Size(1172, 496);
             this.panel2.TabIndex = 53;
             // 
             // crystalReportViewer2
@@ -811,10 +812,9 @@
             this.crystalReportViewer2.ActiveViewIndex = -1;
             this.crystalReportViewer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.crystalReportViewer2.Location = new System.Drawing.Point(0, 0);
+            this.crystalReportViewer2.Location = new System.Drawing.Point(0, 150);
             this.crystalReportViewer2.Name = "crystalReportViewer2";
-            this.crystalReportViewer2.Size = new System.Drawing.Size(1172, 570);
+            this.crystalReportViewer2.Size = new System.Drawing.Size(1172, 315);
             this.crystalReportViewer2.TabIndex = 8;
             // 
             // panel3
@@ -937,10 +937,9 @@
             this.pnlSalesPayment.Controls.Add(this.groupBox7);
             this.pnlSalesPayment.Controls.Add(this.btnSave);
             this.pnlSalesPayment.Controls.Add(this.groupBox8);
-            this.pnlSalesPayment.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlSalesPayment.Location = new System.Drawing.Point(0, 0);
+            this.pnlSalesPayment.Location = new System.Drawing.Point(0, 199);
             this.pnlSalesPayment.Name = "pnlSalesPayment";
-            this.pnlSalesPayment.Size = new System.Drawing.Size(1172, 634);
+            this.pnlSalesPayment.Size = new System.Drawing.Size(1172, 220);
             this.pnlSalesPayment.TabIndex = 57;
             this.pnlSalesPayment.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSalesPayment_Paint_1);
             // 
