@@ -1257,6 +1257,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNetAmount.Location = new System.Drawing.Point(1117, 161);
             this.txtNetAmount.Name = "txtNetAmount";
+            this.txtNetAmount.ReadOnly = true;
             this.txtNetAmount.Size = new System.Drawing.Size(186, 21);
             this.txtNetAmount.TabIndex = 38;
             this.txtNetAmount.Text = "0.00";
@@ -1290,6 +1291,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBalance.Location = new System.Drawing.Point(1117, 77);
             this.txtBalance.Name = "txtBalance";
+            this.txtBalance.ReadOnly = true;
             this.txtBalance.Size = new System.Drawing.Size(186, 21);
             this.txtBalance.TabIndex = 35;
             this.txtBalance.Text = "0.00";
@@ -1302,6 +1304,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTotalAmount1.Location = new System.Drawing.Point(1117, 35);
             this.txtTotalAmount1.Name = "txtTotalAmount1";
+            this.txtTotalAmount1.ReadOnly = true;
             this.txtTotalAmount1.Size = new System.Drawing.Size(186, 21);
             this.txtTotalAmount1.TabIndex = 34;
             this.txtTotalAmount1.Text = "0.00";
@@ -1504,7 +1507,7 @@
             this.txtChequeAmount.Name = "txtChequeAmount";
             this.txtChequeAmount.Size = new System.Drawing.Size(182, 21);
             this.txtChequeAmount.TabIndex = 11;
-            this.txtChequeAmount.Text = "0";
+            this.txtChequeAmount.Text = "0.00";
             this.txtChequeAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtChequeAmount.TextChanged += new System.EventHandler(this.txtChequeAmount_TextChanged);
             this.txtChequeAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtChequeAmount_KeyPress);
