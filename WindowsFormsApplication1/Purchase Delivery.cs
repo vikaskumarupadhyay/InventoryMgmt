@@ -365,8 +365,8 @@ namespace WindowsFormsApplication1
             counter = 2;
             DeliveryReportViewer.Visible = false;
             panel2.Visible = true;
-            string selectqurry = "select  VendorOrderDetails.Orderid as[Order Id],VendorOrderDetails.venderId as [Vendor Id], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],VendorOrderDetails.OrderDate as[Order Date],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Total Amount] from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId";
-            string selectqurryForActualColumnName = "select top 1 VendorOrderDetails.Orderid,VendorOrderDetails.venderId, VendorDetails.vName, VendorDetails.vAddress,VendorDetails.vCompName,VendorOrderDetails.OrderDate,(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount,VendorOrderDetails.Discount,VendorOrderDetails.DisAmount,VendorOrderDetails.vat,VendorOrderDetails.TextTaxAmmount,VendorOrderDetails.TotalPrice from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId";
+            string selectqurry = "select  VendorOrderDetails.Orderid as[Order Id],VendorOrderDetails.venderId as [Vendor Id], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],VendorOrderDetails.OrderDate as[Order Date],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Total Amount],(case when  exists ( select Orderid from CustomerOrderDelivery where Orderid = VendorOrderDetails.Orderid) then 'Delivered' else 'Panding'end) as [Order Status]  from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId ORDER BY VendorOrderDetails.Orderid ASC";
+            string selectqurryForActualColumnName = "select top 1 VendorOrderDetails.Orderid,VendorOrderDetails.venderId, VendorDetails.vName, VendorDetails.vAddress,VendorDetails.vCompName,VendorOrderDetails.OrderDate,(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount,VendorOrderDetails.Discount,VendorOrderDetails.DisAmount,VendorOrderDetails.vat,VendorOrderDetails.TextTaxAmmount,VendorOrderDetails.TotalPrice,(case when  exists ( select Orderid from CustomerOrderDelivery where Orderid = VendorOrderDetails.Orderid) then 'Delivered' else 'Panding'end) as [Order Status]  from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
             DataTable customDataTable = new DataTable();
@@ -1423,7 +1423,7 @@ namespace WindowsFormsApplication1
                                         textVendercod.Select(textVendercod.Text.Length, 0);
                                         textVendercod.TabStop = true;
                                         button1.TabStop = true;
-                                       
+                                        txtRef.ReadOnly = false;
                                     }
 
                                     dataGridView1.AllowUserToAddRows = true;
@@ -1617,9 +1617,9 @@ namespace WindowsFormsApplication1
                     {
                         MessageBox.Show("This Order Is Not Available");
                         txtRef.Text = "";
-                        textVendercod.Focus();
+                        txtRef.Focus();
                         textVendercod.Select(textVendercod.Text.Length, 0);
-                        button1.TabStop = true;
+                        //button1.TabStop = true;
                         textVendercod.TabStop = true;
 
                         //return;
@@ -1627,6 +1627,7 @@ namespace WindowsFormsApplication1
                     else
                     {
                         button4.Enabled = true;
+                     
                         txtItemCode.Focus();
                         IndexTex2();
                         addToCartTable.Columns.RemoveAt(6);
@@ -1639,7 +1640,7 @@ namespace WindowsFormsApplication1
                         {
                             addToCartTable.Columns.Add(new DataColumn("Amount"));
                         }
-                        txtRef.ReadOnly = true;
+                       
                         string dilqurry = "select Orderid from CustomerOrderDelivery where Orderid ='" + txtRef.Text + "'";
                         DataTable dildt = dbMainClass.getDetailByQuery(dilqurry);
                         if (dildt != null && dildt.Rows != null && dildt.Rows.Count > 0)
@@ -1652,14 +1653,14 @@ namespace WindowsFormsApplication1
                                 addToCartTable.Columns.RemoveAt(6);
 
                             }
-
                             if (!addToCartTable.Columns.Contains("Amount"))
                             {
+                                addToCartTable.Columns.RemoveAt(6);
                                 addToCartTable.Columns.Add(new DataColumn("Amount"));
                             }
                             button4.Enabled = false;
                             MessageBox.Show("This Order completed");
-                            addToCartTable.Columns.RemoveAt(6);
+                            //addToCartTable.Columns.RemoveAt(6);
                             if (!addToCartTable.Columns.Contains("Revised Quantity"))
                             {
                                 addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
@@ -1673,8 +1674,8 @@ namespace WindowsFormsApplication1
                             }
                             //addToCartTable.Columns.RemoveAt(6);
                             txtRef.Text = "";
-                            textVendercod.Focus();
-                            textVendercod.Select(textVendercod.Text.Length, 0);
+                            txtRef.Focus();
+                            //textVendercod.Select(textVendercod.Text.Length, 0);
                             addToCartTable.Columns.RemoveAt(6);
                             textVendercod.TabStop = true;
                             button1.TabStop = true;
@@ -1684,6 +1685,8 @@ namespace WindowsFormsApplication1
 
                         else
                         {
+                            btnSelectPurchaseOrder.Enabled = false;
+                            txtRef.ReadOnly = true;
                             addToCartTable.Columns.RemoveAt(6);
                             if (!addToCartTable.Columns.Contains("Revised Quantity"))
                             {
@@ -2406,7 +2409,7 @@ namespace WindowsFormsApplication1
             else if (counter == 2)
             {
                 string t = comboBox1.SelectedValue.ToString();
-                string selectqurry = "select  VendorOrderDetails.Orderid as[Order Id],VendorOrderDetails.venderId as [Vendor Id], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],VendorOrderDetails.OrderDate as[Order Date],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Total Amount] from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId where " + t + " like '" + txtSearch.Text + "%'";
+                string selectqurry = "select  VendorOrderDetails.Orderid as[Order Id],VendorOrderDetails.venderId as [Vendor Id], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],VendorOrderDetails.OrderDate as[Order Date],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Total Amount],(case when  exists ( select Orderid from CustomerOrderDelivery where Orderid = VendorOrderDetails.Orderid) then 'Delivered' else 'Panding'end) as [Order Status]  from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId where " + t + " like '" + txtSearch.Text + "%'";
                 DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
                 dataGridView2.DataSource = dt;
             }
