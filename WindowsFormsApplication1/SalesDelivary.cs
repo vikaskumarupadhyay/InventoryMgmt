@@ -351,6 +351,7 @@ namespace WindowsFormsApplication1
                 string quntity = "";
                 string rate = "";
                 string prise = "";
+                int quantity1 = 0;
             int counter = 0;
           
             //txtQuantity.Enabled = false;
@@ -422,6 +423,11 @@ namespace WindowsFormsApplication1
                         int q2 = Convert.ToInt32(txtQuantity.Text);
                         q3 = q1 + q2;
                         dr3[5] = q3.ToString();
+                        quantity1 = quantity1 + q3;
+                        int q4 = Convert.ToInt32(txtqtybuiled.Text);
+                        int q5 = q4 - q1;
+                        int q6 = quantity1 + q5;
+                        txtqtybuiled.Text= q6.ToString();
                         //dr3[4] = q3.ToString();
                         Double rate1 = Convert.ToDouble(prise);
                         Double rate2 = Convert.ToDouble(txtAmmount.Text);
@@ -442,8 +448,8 @@ namespace WindowsFormsApplication1
                        // ls1.Add(itemid);
 
                     }
-                    double qtybuiled = getquantitybuiled();
-                    txtqtybuiled.Text = qtybuiled.ToString();
+                    //le qtybuiled = getquantitybuiled();
+                    //txtqtybuiled.Text = qtybuiled.ToString();
                 }
                 if (txtProductName.Text == "" && txtQuantity.Text == "")
                 {
@@ -496,7 +502,10 @@ namespace WindowsFormsApplication1
                             dr[5] = txtQuantity.Text.Trim();
                             dr[4] = txtRate.Text.Trim();
                             dr[6] = txtAmmount.Text.Trim();
-
+                            int q1 = Convert.ToInt32(txtQuantity.Text.Trim());
+                            int q2 = Convert.ToInt32(txtqtybuiled.Text.Trim());
+                            int q3 = q1 + q2;
+                            txtqtybuiled.Text = q3.ToString();
                             //dr[5] = txtAmount.Text.Trim();
                             addToCartTable.Rows.Add(dr);
                             gridsalesdelivary.DataSource = addToCartTable;
@@ -515,8 +524,8 @@ namespace WindowsFormsApplication1
                             butAddItem.Enabled = false;
                             // }
                         }
-                        double qtybuiled = getquantitybuiled();
-                        txtqtybuiled.Text = qtybuiled.ToString();
+                        //double qtybuiled = getquantitybuiled();
+                        //txtqtybuiled.Text = qtybuiled.ToString();
                         ButSelectPurchaseOrder.TabStop = true;
                         butClose.TabStop = true;
                         butSaveButton.TabStop = true;
@@ -563,6 +572,11 @@ namespace WindowsFormsApplication1
                         int q2 = Convert.ToInt32(txtQuantity.Text);
                         q3 = q1 + q2;
                         dr3[5] = q3.ToString();
+                        quantity1 = quantity1 + q3;
+                        int q4 = Convert.ToInt32(txtqtybuiled.Text);
+                        int q5 = q4 - q1;
+                        int q6 = quantity1 + q5;
+                        txtqtybuiled.Text = q6.ToString();
                         //dr3[4] = q3.ToString();
                         Double rate1 = Convert.ToDouble(prise);
                         Double rate2 = Convert.ToDouble(txtAmmount.Text);
@@ -613,7 +627,10 @@ namespace WindowsFormsApplication1
                         dr[5] = txtQuantity.Text.Trim();
                         dr[4] = txtRate.Text.Trim();
                         dr[6] = txtAmmount.Text.Trim();
-
+                        int q1 = Convert.ToInt32(txtQuantity.Text.Trim());
+                        int q2 = Convert.ToInt32(txtqtybuiled.Text.Trim());
+                        int q3 = q1 + q2;
+                        txtqtybuiled.Text = q3.ToString();
                         //dr[5] = txtAmount.Text.Trim();
                         addToCartTable.Rows.Add(dr);
                         gridsalesdelivary.DataSource = addToCartTable;
@@ -632,8 +649,8 @@ namespace WindowsFormsApplication1
                         butAddItem.Enabled = false;
                         // }
                     }
-                    double qtybuiled = getquantitybuiled();
-                    txtqtybuiled.Text = qtybuiled.ToString();
+                    //double qtybuiled = getquantitybuiled();
+                    //txtqtybuiled.Text = qtybuiled.ToString();
                 }
                 if (gridsalesdelivary.Rows.Count > 1)
                 {
@@ -687,6 +704,11 @@ namespace WindowsFormsApplication1
                             int q1 = Convert.ToInt32(quntity);
                             int q2 = Convert.ToInt32(txtQuantity.Text);
                             q3 = q1 + q2;
+                            quantity1 = quantity1 + q3;
+                            int q4 = Convert.ToInt32(txtqtybuiled.Text);
+                            int q5 = q4 - q1;
+                            int q6 = quantity1 + q5;
+                            txtqtybuiled.Text = q6.ToString();
                             dr3[5] = q3.ToString();
                             dr3[6] = q3.ToString();
                             //dr3[4] = q3.ToString();
@@ -710,8 +732,8 @@ namespace WindowsFormsApplication1
                             // ls1.Add(itemid);
 
                         }
-                        double qtybuiled = getquantitybuiled1();
-                        txtqtybuiled.Text = qtybuiled.ToString();
+                        //double qtybuiled = getquantitybuiled1();
+                        //txtqtybuiled.Text = qtybuiled.ToString();
                     }
                         if (txtProductName.Text == "" && txtQuantity.Text == "")
                         {
@@ -765,6 +787,10 @@ namespace WindowsFormsApplication1
                                     dr[5] = txtQuantity.Text.Trim();
                                     dr[6] = txtQuantity.Text.Trim();
                                     dr[7] = txtAmmount.Text.Trim();
+                                    int q1 = Convert.ToInt32(txtQuantity.Text.Trim());
+                                    int q2 = Convert.ToInt32(txtqtybuiled.Text.Trim());
+                                    int q3 = q1 + q2;
+                                    txtqtybuiled.Text = q3.ToString();
                                     addToCartTable.Rows.Add(dr);
 
                                     gridsalesdelivary.DataSource = addToCartTable;
@@ -785,8 +811,8 @@ namespace WindowsFormsApplication1
                                     txtQuantity.Enabled = false;
                                     butAddItem.Enabled = false;
                                 }
-                                double qtybuiled = getquantitybuiled1();
-                                txtqtybuiled.Text = qtybuiled.ToString();
+                                //double qtybuiled = getquantitybuiled1();
+                                //txtqtybuiled.Text = qtybuiled.ToString();
                             }
                             if (gridsalesdelivary.Rows.Count > 1)
                             {
@@ -1568,10 +1594,10 @@ namespace WindowsFormsApplication1
             dataGridView2.AllowUserToAddRows = true;
             pnlSalesPayment.Visible = false;
             crystalReportViewer2.Visible = false;
-            string selectqurry = "select  orderdetails.orderid as[Orderr ID],orderdetails.custid as [Customer ID], CustomerDetails.CustName as[Customer Name], CustomerDetails.CustAddress as[Customer Address],CustomerDetails.CustCompName as[Customer Compnay Name],orderdetails.date as [Date],(select Sum(customerorderdescriptions.quantity)as [Quantity] from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid) as[Bild Quanity],orderdetails.WithautTaxamount as[Withaut Tax Amount],orderdetails.Discount as [Discount],orderdetails.Discountamount as [Discount Amount],orderdetails.Tax,orderdetails.Taxamount as [Tax Amount],orderdetails.totalammount as[Total Amount] from orderdetails join CustomerDetails on CustomerDetails.custId=orderdetails.custid";
+            string selectqurry = "select  payment.orderid as[Orderr ID],payment.custid as [Customer ID], CustomerDetails.CustName as[Customer Name], CustomerDetails.CustAddress as[Customer Address],CustomerDetails.CustCompName as[Customer Compnay Name],payment.date as [Date],(select Sum(customerorderdescriptions.quantity)as [Quantity] from customerorderdescriptions where customerorderdescriptions.orderid= payment.orderid) as[Bild Quanity],payment.WithautTaxamount as[Withaut Tax Amount],payment.Discount as [Discount],payment.Discountamount as [Discount Amount],payment.Tax,payment.Taxamount as [Tax Amount],payment.totalammount as[Total Amount],(case when exists  ( select orderid from salesOrderDelivery where Orderid=  payment.orderid)then 'Delivered'else 'Pending'end) as [Delivery Status]from orderdetails payment  join CustomerDetails on CustomerDetails.custId=payment.custid";
             //string selectqurry = "select  payment.orderid as[Orderr ID],payment.custid as [Customer ID], CustomerDetails.CustName as[Customer Name], CustomerDetails.CustAddress as[Customer Address],CustomerDetails.CustCompName as[Customer Compnay Name],payment.date as [Date],(select Sum(customerorderdescriptions.quantity)as [Quantity] from customerorderdescriptions where customerorderdescriptions.orderid= payment.orderid) as[Bild Quanity],payment.WithautTaxamount as[Withaut Tax Amount],payment.Discount as [Discount],payment.Discountamount as [Discount Amount],payment.Tax,payment.Taxamount as [Tax Amount],payment.totalammount as[Total Amount],(case when payment.orderid=sod.Orderid then 'Delivered' else 'Fully settled' end) as [Delivery Status] from orderdetails payment join CustomerDetails on CustomerDetails.custId=payment.custid join salesOrderDelivery sod on sod.Orderid=payment.orderid";
 
-            string selectqurryForActualColumnName = "select top 1 orderdetails.orderid ,orderdetails.custid , CustomerDetails.CustName, CustomerDetails.CustAddress ,CustomerDetails.CustCompName ,orderdetails.date ,(select Sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid) as [Builed Quantity],orderdetails.WithautTaxamount,orderdetails.Discount,orderdetails.Discountamount,orderdetails.Tax,orderdetails.Taxamount ,orderdetails.totalammount from orderdetails join CustomerDetails on CustomerDetails.custId=orderdetails.custid";
+            string selectqurryForActualColumnName = "select top 1 payment.orderid ,payment.custid, CustomerDetails.CustName, CustomerDetails.CustAddress,CustomerDetails.CustCompName,payment.date ,(select Sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid= payment.orderid),payment.WithautTaxamount,payment.Discount ,payment.Discountamount ,payment.Tax,payment.Taxamount,payment.totalammount,(case when exists  ( select orderid from salesOrderDelivery where Orderid=  payment.orderid)then 'Delivered'else 'Pending'end)from orderdetails payment  join CustomerDetails on CustomerDetails.custId=payment.custid";
             DataTable dt = d.getDetailByQuery(selectqurry);
             DataTable dtOnlyColumnName = d.getDetailByQuery(selectqurryForActualColumnName);
             DataTable customDataTable = new DataTable();
@@ -1948,7 +1974,7 @@ namespace WindowsFormsApplication1
                             double qtybuiled = Convert.ToDouble(txtqtybuiled.Text);
                             qtybuiled -= Convert.ToDouble(qty.Trim());
                             txtqtybuiled.Text = qtybuiled.ToString();
-                            txtTotalAmmount.Text = totalAmount.ToString();
+                            txtTotalAmmount.Text = totalAmount.ToString("###0.00");
                             txtwithauttaxamount.Text = withauttax.ToString();
                             //addToCartTable.Rows.RemoveAt(index-1);
                             gridsalesdelivary.Rows[index - 1].DefaultCellStyle.Font = new Font(new FontFamily("Microsoft Sans Serif"), 9.00F, FontStyle.Strikeout);
@@ -2782,18 +2808,7 @@ namespace WindowsFormsApplication1
 
             //}
         }
-        public double getquantitybuiled()
-        {
-            double totalValue = 0.0;
-            double s;
-            for (int a = 0; a <gridsalesdelivary.Rows.Count; a++)
-            {
-                s = Convert.ToDouble(gridsalesdelivary.Rows[a].Cells[5].Value);
-                totalValue = totalValue + s;
-
-            }
-            return totalValue;
-        }
+       
         public double getquantitybuiled1()
         {
             double totalValue = 0.0;
@@ -2845,28 +2860,8 @@ namespace WindowsFormsApplication1
                 }
 
 
-            //         else
-                //{
-                //    button5.Enabled = true;
-                //    int totel1 = 0;
-                //    string select = "select vo.Orderid,vo.venderId,vod.ItemId,vo.Discount from VendorOrderDesc vod join VendorOrderDetails vo on vod.Orderid=vo.Orderid where vo.Orderid ='" + txtRef.Text + "'";
-                //    DataTable dt = dbMainClass.getDetailByQuery(select);
-                //    //string dis = "";
-                //    if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
-                //    {
-                //        DataRow dr = dt.Rows[0];
-                //        string a = dr[1].ToString();
-                //        string dis = dr[3].ToString();
-                //        txtdis.Text = dis;
-                //        string select1 = "select venderId,vName,vCompName,vAddress ,vPhone,vMobile,vFax from VendorDetails where venderId='" + a + "'";
-                //        SetVendor(select1);
-                //        string selectqurry1 = "select vodd.ItemId,td.ItemName, vodd.Quantity,vodd.Price,vodd.TotalPrice,vod.TotalPrice from VendorOrderDetails vod join VendorOrderDesc vodd on vod.Orderid=vodd.Orderid join ItemDetails td on td.ItemId=vodd.ItemId where vod. Orderid ='" + txtRef.Text + "'";
-                //        DataTable dt2 = dbMainClass.getDetailByQuery(selectqurry1);
-                //        int totalRowCount = addToCartTable.Rows.Count;
-                //        for (int rowCount = 0; rowCount < totalRowCount; rowCount++)
-                //        {
-                //            addToCartTable.Rows.RemoveAt(0);
-                //        }
+ 
+         
 
                 else
                 {

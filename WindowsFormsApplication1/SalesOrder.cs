@@ -343,6 +343,7 @@ namespace WindowsFormsApplication1
                 string itemid = "";
                 string quntity = "";
                 string rate = "";
+                int quantity1 = 0;
                 int counter = 0;
                 foreach (DataRow dr3 in addToCartTable.Rows)
                 {
@@ -375,6 +376,12 @@ namespace WindowsFormsApplication1
                             int q1 = Convert.ToInt32(quntity);
                             int q2 = Convert.ToInt32(txtQuantity.Text);
                             q3 = q1 + q2;
+                            quantity1 = quantity1 + q3;
+                            int q4 = Convert.ToInt32(textBox2.Text);
+                            int q5 = Convert.ToInt32(textBox2.Text);
+                            int q6 = q5 - q1;
+                            quantity1 = quantity1 + q6;
+                            textBox2.Text = quantity1.ToString();
                             dr3[5] = q3.ToString();
                             double rate1 = Convert.ToDouble(rate);
                             double rate6 = q3 * rate1;
@@ -383,6 +390,7 @@ namespace WindowsFormsApplication1
                             double rate3 = rate4 + rate2;
                             dr3[6] = rate6.ToString();
                             double rate5 = rate4 + rate2;
+                            
                             txttotalammount.Text = rate5.ToString("###0.00");//rate3.ToString();
                             // MessageBox.Show("Please Enter the Quanity");
 
@@ -397,8 +405,8 @@ namespace WindowsFormsApplication1
                             txtQuantity.TabStop = false;
 
                         }
-                        double qtybuiled = getquantitybuiled();
-                        textBox2.Text = qtybuiled.ToString();
+                        //double qtybuiled = getquantitybuiled();
+                        //textBox2.Text = qtybuiled.ToString();
                       
 
                     }
@@ -454,7 +462,10 @@ namespace WindowsFormsApplication1
                             dr[5] = txtQuantity.Text.Trim();
                             dr[4] = txtRate.Text.Trim();
                             dr[6] = txtAmount.Text.Trim();
-
+                            int q1 = Convert.ToInt32(txtQuantity.Text.Trim());
+                            int q2 = Convert.ToInt32(textBox2.Text.Trim());
+                            int q3 = q1 + q2;
+                            textBox2.Text = q3.ToString();
                             //dr[5] = txtAmount.Text.Trim();
                             addToCartTable.Rows.Add(dr);
                             gridsalesorder.DataSource = addToCartTable;
@@ -480,14 +491,15 @@ namespace WindowsFormsApplication1
                             //}
                             // ls.Clear();
                         }
+                        //double qtybuiled = getquantitybuiled();
+                        //textBox2.Text = qtybuiled.ToString();
                     }
                         if (gridsalesorder.Rows.Count > 1)
                         {
                             textBox20.ReadOnly = false;
                         }
                         txtitemcode.Select(txtitemcode.Text.Length, 0);
-                        double qtybuiled = getquantitybuiled();
-                        textBox2.Text = qtybuiled.ToString();
+                       
 
 
                     }
@@ -786,6 +798,7 @@ namespace WindowsFormsApplication1
                                 crystalReportViewer1.Visible = false;
                                 panel2.Visible = false;
                                 txttotalammount.Text = "0.00";
+                               
 
                             }
                             //int id = Convert.ToInt32(txtsrno.Text);
@@ -797,6 +810,12 @@ namespace WindowsFormsApplication1
                         {
                             gridsalesorder.AllowUserToAddRows = true;
                             txttotalammount.Text = "0.00";
+                            txtitemcode.TabStop = false;
+                            button2.TabStop = false;
+                            butadditem.TabStop = false;
+                            button4.TabStop = false;
+                            savebutton.TabStop = false;
+                            butclose.TabStop = false;
 
                         }
                         makeblank();

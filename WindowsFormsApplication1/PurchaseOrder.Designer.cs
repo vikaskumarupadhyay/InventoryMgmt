@@ -708,6 +708,7 @@
             this.PurchesCrystalReportViewer.Name = "PurchesCrystalReportViewer";
             this.PurchesCrystalReportViewer.Size = new System.Drawing.Size(1172, 634);
             this.PurchesCrystalReportViewer.TabIndex = 8;
+            //this.PurchesCrystalReportViewer.Load += new System.EventHandler(this.PurchesCrystalReportViewer_Load);
             // 
             // panel3
             // 
@@ -736,7 +737,7 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
             this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress_1);
-            this.dataGridView1.Leave += new System.EventHandler(this.dataGridView1_Leave);
+            //this.dataGridView1.Leave += new System.EventHandler(this.dataGridView1_Leave);
             // 
             // groupBox4
             // 
