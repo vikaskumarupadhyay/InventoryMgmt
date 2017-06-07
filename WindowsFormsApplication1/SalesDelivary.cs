@@ -356,16 +356,16 @@ namespace WindowsFormsApplication1
             //txtQuantity.Enabled = false;
             if (txtRefNo.Text == "")
             {
-                if (!addToCartTable.Columns.Contains("ResivQuantity"))
-                {
-                    addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
-                     addToCartTable.Columns.RemoveAt(7);
-                }
+                //if (!addToCartTable.Columns.Contains("ResivQuantity"))
+                //{
+                //    addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                //     addToCartTable.Columns.RemoveAt(7);
+                //}
 
-                if (!addToCartTable.Columns.Contains("Amount"))
-                {
-                    addToCartTable.Columns.Add(new DataColumn("Amount"));
-                }
+                //if (!addToCartTable.Columns.Contains("Amount"))
+                //{
+                //    addToCartTable.Columns.Add(new DataColumn("Amount"));
+                //}
                 //if (addToCartTable.Columns.Contains("ResivQuantity"))
                 //{
                 //   // addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
@@ -1569,6 +1569,8 @@ namespace WindowsFormsApplication1
             pnlSalesPayment.Visible = false;
             crystalReportViewer2.Visible = false;
             string selectqurry = "select  orderdetails.orderid as[Orderr ID],orderdetails.custid as [Customer ID], CustomerDetails.CustName as[Customer Name], CustomerDetails.CustAddress as[Customer Address],CustomerDetails.CustCompName as[Customer Compnay Name],orderdetails.date as [Date],(select Sum(customerorderdescriptions.quantity)as [Quantity] from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid) as[Bild Quanity],orderdetails.WithautTaxamount as[Withaut Tax Amount],orderdetails.Discount as [Discount],orderdetails.Discountamount as [Discount Amount],orderdetails.Tax,orderdetails.Taxamount as [Tax Amount],orderdetails.totalammount as[Total Amount] from orderdetails join CustomerDetails on CustomerDetails.custId=orderdetails.custid";
+            //string selectqurry = "select  payment.orderid as[Orderr ID],payment.custid as [Customer ID], CustomerDetails.CustName as[Customer Name], CustomerDetails.CustAddress as[Customer Address],CustomerDetails.CustCompName as[Customer Compnay Name],payment.date as [Date],(select Sum(customerorderdescriptions.quantity)as [Quantity] from customerorderdescriptions where customerorderdescriptions.orderid= payment.orderid) as[Bild Quanity],payment.WithautTaxamount as[Withaut Tax Amount],payment.Discount as [Discount],payment.Discountamount as [Discount Amount],payment.Tax,payment.Taxamount as [Tax Amount],payment.totalammount as[Total Amount],(case when payment.orderid=sod.Orderid then 'Delivered' else 'Fully settled' end) as [Delivery Status] from orderdetails payment join CustomerDetails on CustomerDetails.custId=payment.custid join salesOrderDelivery sod on sod.Orderid=payment.orderid";
+
             string selectqurryForActualColumnName = "select top 1 orderdetails.orderid ,orderdetails.custid , CustomerDetails.CustName, CustomerDetails.CustAddress ,CustomerDetails.CustCompName ,orderdetails.date ,(select Sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid) as [Builed Quantity],orderdetails.WithautTaxamount,orderdetails.Discount,orderdetails.Discountamount,orderdetails.Tax,orderdetails.Taxamount ,orderdetails.totalammount from orderdetails join CustomerDetails on CustomerDetails.custId=orderdetails.custid";
             DataTable dt = d.getDetailByQuery(selectqurry);
             DataTable dtOnlyColumnName = d.getDetailByQuery(selectqurryForActualColumnName);
