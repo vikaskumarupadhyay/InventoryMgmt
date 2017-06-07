@@ -1213,7 +1213,7 @@ namespace WindowsFormsApplication1
                         string qtybuiled = gridsalesorder.Rows[current - 1].Cells[5].Value.ToString();
                         double qty = Convert.ToDouble(textBox2.Text);
                         qty -= Convert.ToDouble(qtybuiled.Trim());
-                        textBox2.Text = qty.ToString("###0.00");
+                        textBox2.Text = qty.ToString();
                         txttotalammount.Text = totalAmount.ToString("###0.00");
 
                         //addToCartTable.Rows.RemoveAt(index - 1);
@@ -1541,14 +1541,26 @@ namespace WindowsFormsApplication1
                 button1.TabStop = true;
                 txtcustomercode.TabStop = true;
             }
-            else if(txtcustomercode.Text!="C")
+          else if (ls.Count==gridsalesorder.Rows.Count-1)
             {
                 txtitemcode.Focus();
                 txtitemcode.Select(txtitemcode.Text.Length, 0);
                 BackTabIndex();
+            }
+
+            else if (txtcustomercode.Text != "C")
+            {
+                txtitemcode.Focus();
+                txtitemcode.Select(txtitemcode.Text.Length, 0);
+                BackTabIndex();
+                savebutton.TabStop = true;
+                butclose.TabStop = true;
+                //savebutton.TabStop = true;
+                //butclose.TabStop = true;
                 //button2.TabStop = true;
                 //txtitemcode.TabStop = true;
             }
+            
             
         }
         private void BackTabIndex()
