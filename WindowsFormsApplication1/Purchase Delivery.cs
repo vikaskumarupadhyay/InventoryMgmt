@@ -1959,7 +1959,7 @@ namespace WindowsFormsApplication1
                 {
                     txtItemCode.Focus();
                     txtItemCode.Select(txtItemCode.Text.Length, 0);
-                    IndexTex2();
+                    //IndexTex2();
                     if (dataGridView1.RowCount > 0)
                     {
                         IndexTex2();
@@ -1968,7 +1968,7 @@ namespace WindowsFormsApplication1
                     }
                     if (ls.Count == dataGridView1.Rows.Count - 1)
                     {
-                        IndexTex2();
+                        //IndexTex2();
                         button5.TabStop = false;
                         button7.TabStop = false;
                     }

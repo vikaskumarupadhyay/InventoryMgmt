@@ -1328,9 +1328,10 @@ namespace WindowsFormsApplication1
             {
                 txtItemCode.Focus();
                 txtItemCode.Select(txtItemCode.Text.Length, 0);
-                IndexTex2();
+               
                 if (gridPurchaseOrder.RowCount > 1)
                 {
+                    IndexTex2();
                     btnClose.TabStop = true;
                     btnSave.TabStop = true;
                 }
