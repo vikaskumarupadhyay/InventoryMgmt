@@ -1269,43 +1269,43 @@ namespace WindowsFormsApplication1
                         if (inserirow1 > 0)
                         {
 
-                            if (id5 == "")
-                            {
-                                counter = 0;
-                                string deleteQurry = "delete customerorderdescriptions where Orderid='" + txtRefNo.Text + "'";
-                                DataTable dt = d.getDetailByQuery(deleteQurry);
-                                //dataGridView1.DataSource = "";
+                            //if (id5 == "")
+                            //{
+                            //    counter = 0;
+                            //    string deleteQurry = "delete customerorderdescriptions where Orderid='" + txtRefNo.Text + "'";
+                            //    DataTable dt = d.getDetailByQuery(deleteQurry);
+                            //    //dataGridView1.DataSource = "";
 
 
-                                DataGridViewRowCollection RowCollection2 = gridsalesdelivary.Rows;
-                                List<string> sf1 = new List<string>();
-                                for (int a = 0; a < RowCollection2.Count; a++)
-                                {
+                            //    DataGridViewRowCollection RowCollection2 = gridsalesdelivary.Rows;
+                            //    List<string> sf1 = new List<string>();
+                            //    for (int a = 0; a < RowCollection2.Count; a++)
+                            //    {
                                     
-                                    DataGridViewRow currentRow = RowCollection2[a];
-                                    DataGridViewCellCollection cellCollection = currentRow.Cells;
-                                    string txtItemCode = cellCollection[0].Value.ToString();
-                                    if (ls.Contains(txtItemCode) && gridsalesdelivary.Rows[counter].DefaultCellStyle.Font != null)
-                                    {
-                                        counter++;
-                                        continue;
-                                    }
-                                    counter++;
-                                    string txtRate = cellCollection[4].Value.ToString();
-                                    string txtQuanity = cellCollection[5].Value.ToString();
-                                    string txtAmoun = cellCollection[6].Value.ToString();
-                                    string OrderID1 = id;
-                                    // string updatequery = "insert into orderdetails Values('"+txtcustomercode.Text+"','"+dtpDate.Text+"','" + txtTotalAmmount.Text + "','"+txtdiccount.Text+"','"+txtdicountamount.Text+"','"+txttax.Text+"','"+txttaxamount.Text+"','" + txtwithauttaxamount.Text + "')";
-                                    // int update = d.saveDetails(updatequery);
-                                    string Query = "insert into customerorderdescriptions Values('" + OrderID1 + "','" + txtItemCode + "','" + txtRate + "','" + txtQuanity + "','" + txtAmoun + "')";
-                                    //MessageBox.Show(Query);
+                            //        DataGridViewRow currentRow = RowCollection2[a];
+                            //        DataGridViewCellCollection cellCollection = currentRow.Cells;
+                            //        string txtItemCode = cellCollection[0].Value.ToString();
+                            //        if (ls.Contains(txtItemCode) && gridsalesdelivary.Rows[counter].DefaultCellStyle.Font != null)
+                            //        {
+                            //            counter++;
+                            //            continue;
+                            //        }
+                            //        counter++;
+                            //        string txtRate = cellCollection[4].Value.ToString();
+                            //        string txtQuanity = cellCollection[5].Value.ToString();
+                            //        string txtAmoun = cellCollection[6].Value.ToString();
+                            //        string OrderID1 = id;
+                            //        // string updatequery = "insert into orderdetails Values('"+txtcustomercode.Text+"','"+dtpDate.Text+"','" + txtTotalAmmount.Text + "','"+txtdiccount.Text+"','"+txtdicountamount.Text+"','"+txttax.Text+"','"+txttaxamount.Text+"','" + txtwithauttaxamount.Text + "')";
+                            //        // int update = d.saveDetails(updatequery);
+                            //        string Query = "insert into customerorderdescriptions Values('" + OrderID1 + "','" + txtItemCode + "','" + txtRate + "','" + txtQuanity + "','" + txtAmoun + "')";
+                            //        //MessageBox.Show(Query);
 
-                                    sf1.Add(Query);
+                            //        sf1.Add(Query);
 
-                                }
-                                int insertedRows4 = d.saveDetails(sf1);
-                                if (insertedRows4 > 0)
-                                {
+                            //    }
+                               // int insertedRows4 = d.saveDetails(sf1);
+                                //if (insertedRows4 > 0)
+                               // {
                                     string salesdelivary = "Insert into salesOrderDelivery values('" + Orde + "','true','" + dtpDate.Text + "','"+s+"')";
                                     int insert = d.saveDetails(salesdelivary);
                                     if (insert > 0)
@@ -1377,8 +1377,8 @@ namespace WindowsFormsApplication1
                             }
                         }
                     }
-                }
-            }
+             //   }
+           // }
 
            
 
@@ -2300,12 +2300,56 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+           
             if (txtcustomercode.Text=="C")
             {
                 txtcustomercode.Focus();
                 butcustomercode.TabStop = true;
                 txtcustomercode.TabStop = true;
-                
+                if (counter == 1)
+                {
+                    addToCartTable.Columns.RemoveAt(6);
+                    if (!addToCartTable.Columns.Contains("ResivQuantity"))
+                    {
+                        addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                        addToCartTable.Columns.RemoveAt(6);
+
+                    }
+                    if (!addToCartTable.Columns.Contains("Amount"))
+                    {
+                        addToCartTable.Columns.Add(new DataColumn("Amount"));
+                        addToCartTable.Columns.RemoveAt(6);
+                    }
+                }
+                if (counter == 2)
+                {
+                    addToCartTable.Columns.RemoveAt(6);
+                    if (!addToCartTable.Columns.Contains("ResivQuantity"))
+                    {
+                        addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                        addToCartTable.Columns.RemoveAt(6);
+
+                    }
+                    if (!addToCartTable.Columns.Contains("Amount"))
+                    {
+                        addToCartTable.Columns.Add(new DataColumn("Amount"));
+                        addToCartTable.Columns.RemoveAt(6);
+                    }
+                }
+            }
+           
+            else if (ls.Count == gridsalesdelivary.Rows.Count - 1)
+            {
+                txtItemCode.Focus();
+                butitembutton.TabStop = true;
+                txtItemCode.TabStop = true;
+                butRemoveItem.TabStop = true;
+                // butSaveButton.TabStop = true;
+                // butClose.TabStop = true;
+                // ButSelectPurchaseOrder.TabStop = true;
+                txtcustomercode.TabStop = true;
+                butcustomercode.TabStop = true;
             }
             else if (gridsalesdelivary.Rows.Count > 1 && txtItemCode.Text == "I")
             {
@@ -2319,29 +2363,20 @@ namespace WindowsFormsApplication1
                 txtcustomercode.TabStop = true;
                 butcustomercode.TabStop = true;
             }
+          
             else if (txtItemCode.Text == "I")
             {
                 txtItemCode.Focus();
                 butitembutton.TabStop = true;
                 txtItemCode.TabStop = true;
             }
+           
                
             else if(txtItemCode.Text!="I")
             {
                 txtQuantity.Focus();
             }
-           // addToCartTable.Columns.RemoveAt(6);
-            //if (!addToCartTable.Columns.Contains("ResivQuantity"))
-            //{
-            //    addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
-            //    addToCartTable.Columns.RemoveAt(7);
-               
-            //}
-            //if (!addToCartTable.Columns.Contains("Amount"))
-            //{
-            //    addToCartTable.Columns.Add(new DataColumn("Amount"));
-            //    addToCartTable.Columns.RemoveAt(6);
-            //}
+           
            
             panel2.Visible = false;
         }
