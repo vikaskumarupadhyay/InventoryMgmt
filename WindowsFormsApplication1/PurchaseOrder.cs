@@ -1334,6 +1334,11 @@ namespace WindowsFormsApplication1
                     btnClose.TabStop = true;
                     btnSave.TabStop = true;
                 }
+                if (ls.Count == dataGridView1.Rows.Count - 1)
+                {
+                    btnClose.TabStop = false;
+                    btnSave.TabStop = false;
+                }
             }
            
         }

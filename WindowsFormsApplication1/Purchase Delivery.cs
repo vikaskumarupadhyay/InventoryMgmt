@@ -1924,19 +1924,36 @@ namespace WindowsFormsApplication1
                     textVendercod.Select(textVendercod.Text.Length, 0);
                     button1.TabStop = true;
                     textVendercod.TabStop = true;
-                    addToCartTable.Columns.RemoveAt(6);
-                    if (!addToCartTable.Columns.Contains("Revised Quantity"))
+                    if (counter == 1 )
                     {
-                        addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
                         addToCartTable.Columns.RemoveAt(6);
-                    }
+                        if (!addToCartTable.Columns.Contains("Revised Quantity"))
+                        {
+                            addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
+                            addToCartTable.Columns.RemoveAt(6);
+                        }
 
-                    if (!addToCartTable.Columns.Contains("Amount"))
+                        if (!addToCartTable.Columns.Contains("Amount"))
+                        {
+                            //addToCartTable.Columns.RemoveAt(6);
+                            addToCartTable.Columns.Add(new DataColumn("Amount"));
+                        }
+                    }
+                     if (counter == 2)
                     {
                         addToCartTable.Columns.RemoveAt(6);
-                        addToCartTable.Columns.Add(new DataColumn("Amount"));
+                        if (!addToCartTable.Columns.Contains("Revised Quantity"))
+                        {
+                            addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
+                            addToCartTable.Columns.RemoveAt(6);
+                        }
+
+                        if (!addToCartTable.Columns.Contains("Amount"))
+                        {
+                            addToCartTable.Columns.RemoveAt(6);
+                            addToCartTable.Columns.Add(new DataColumn("Amount"));
+                        }
                     }
-                
                 }
                 else if (textVendercod.Text != "V")
                 {
@@ -1949,7 +1966,12 @@ namespace WindowsFormsApplication1
                         button5.TabStop = true;
                         button7.TabStop = true;
                     }
-
+                    if (ls.Count == dataGridView1.Rows.Count - 1)
+                    {
+                        IndexTex2();
+                        button5.TabStop = false;
+                        button7.TabStop = false;
+                    }
 
                 }
                 
