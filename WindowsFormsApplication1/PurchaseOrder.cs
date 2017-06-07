@@ -1849,10 +1849,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void dataGridView1_Leave(object sender, EventArgs e)
-        {
-            
-        }
+      
 
        
       
