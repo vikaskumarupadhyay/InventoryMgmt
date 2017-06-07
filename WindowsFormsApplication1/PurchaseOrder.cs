@@ -552,9 +552,9 @@ namespace WindowsFormsApplication1
         private void setAddToCraftTable()
         {
             addToCartTable.Columns.Add(new DataColumn("Item Code"));
-            addToCartTable.Columns.Add(new DataColumn("Product Name"));
+            addToCartTable.Columns.Add(new DataColumn("Item Name"));
             addToCartTable.Columns.Add(new DataColumn("Company Name"));
-            addToCartTable.Columns.Add(new DataColumn("Mrp"));
+            addToCartTable.Columns.Add(new DataColumn("MRP"));
             addToCartTable.Columns.Add(new DataColumn("Rate"));
             addToCartTable.Columns.Add(new DataColumn("Quantity"));
             addToCartTable.Columns.Add(new DataColumn("Amount"));
@@ -1329,6 +1329,11 @@ namespace WindowsFormsApplication1
                 txtItemCode.Focus();
                 txtItemCode.Select(txtItemCode.Text.Length, 0);
                 IndexTex2();
+                if (gridPurchaseOrder.RowCount > 1)
+                {
+                    btnClose.TabStop = true;
+                    btnSave.TabStop = true;
+                }
             }
            
         }

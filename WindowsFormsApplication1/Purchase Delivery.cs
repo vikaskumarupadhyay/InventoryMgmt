@@ -395,9 +395,9 @@ namespace WindowsFormsApplication1
             //dataGridView2.DataSource = dt;
             IndexTex();
             //addToCartTable.Columns.RemoveAt(6);
-            if (!addToCartTable.Columns.Contains("ResivQuantity"))
+            if (!addToCartTable.Columns.Contains("Revised Quantity"))
             {
-                addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
             }
 
             if (!addToCartTable.Columns.Contains("Amount"))
@@ -884,13 +884,13 @@ namespace WindowsFormsApplication1
         #region /////////// add Column to AddToCraft DataTable///////////////
         private void setAddToCraftTable()
         {
-            addToCartTable.Columns.Add(new DataColumn("ItemCode"));
-            addToCartTable.Columns.Add(new DataColumn("ProductName"));
+            addToCartTable.Columns.Add(new DataColumn("Item Code"));
+            addToCartTable.Columns.Add(new DataColumn("Item Name"));
             addToCartTable.Columns.Add(new DataColumn("Company Name"));
-            addToCartTable.Columns.Add(new DataColumn("Mrp"));
+            addToCartTable.Columns.Add(new DataColumn("MRP"));
             addToCartTable.Columns.Add(new DataColumn("Rate"));
             addToCartTable.Columns.Add(new DataColumn("Quantity"));
-            addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+            addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
             addToCartTable.Columns.Add(new DataColumn("Amount"));
         }
         #endregion
@@ -1408,9 +1408,9 @@ namespace WindowsFormsApplication1
                                         DeliveryReportViewer.Visible = false;
                                         panel2.Visible = false;
                                         addToCartTable.Columns.RemoveAt(6);
-                                        if (!addToCartTable.Columns.Contains("ResivQuantity"))
+                                        if (!addToCartTable.Columns.Contains("Revised Quantity"))
                                         {
-                                            addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                                            addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
                                             addToCartTable.Columns.RemoveAt(6);
                                         }
 
@@ -1628,10 +1628,11 @@ namespace WindowsFormsApplication1
                     {
                         button4.Enabled = true;
                         txtItemCode.Focus();
+                        IndexTex2();
                         addToCartTable.Columns.RemoveAt(6);
-                        if (!addToCartTable.Columns.Contains("ResivQuantity"))
+                        if (!addToCartTable.Columns.Contains("Revised Quantity"))
                         {
-                            addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                            addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
                         }
 
                         if (!addToCartTable.Columns.Contains("Amount"))
@@ -1645,9 +1646,9 @@ namespace WindowsFormsApplication1
                         {
                             //button5.Enabled = false;
                             addToCartTable.Columns.RemoveAt(6);
-                            if (!addToCartTable.Columns.Contains("ResivQuantity"))
+                            if (!addToCartTable.Columns.Contains("Revised Quantity"))
                             {
-                                addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                                addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
                                 addToCartTable.Columns.RemoveAt(6);
 
                             }
@@ -1659,9 +1660,9 @@ namespace WindowsFormsApplication1
                             button4.Enabled = false;
                             MessageBox.Show("This Order completed");
                             addToCartTable.Columns.RemoveAt(6);
-                            if (!addToCartTable.Columns.Contains("ResivQuantity"))
+                            if (!addToCartTable.Columns.Contains("Revised Quantity"))
                             {
-                                addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                                addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
                                 addToCartTable.Columns.RemoveAt(6);
 
                             }
@@ -1684,9 +1685,9 @@ namespace WindowsFormsApplication1
                         else
                         {
                             addToCartTable.Columns.RemoveAt(6);
-                            if (!addToCartTable.Columns.Contains("ResivQuantity"))
+                            if (!addToCartTable.Columns.Contains("Revised Quantity"))
                             {
-                                addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                                addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
                                 addToCartTable.Columns.RemoveAt(6);
 
                             }
@@ -1924,9 +1925,9 @@ namespace WindowsFormsApplication1
                     button1.TabStop = true;
                     textVendercod.TabStop = true;
                     addToCartTable.Columns.RemoveAt(6);
-                    if (!addToCartTable.Columns.Contains("ResivQuantity"))
+                    if (!addToCartTable.Columns.Contains("Revised Quantity"))
                     {
-                        addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                        addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
                         addToCartTable.Columns.RemoveAt(6);
                     }
 
@@ -2198,8 +2199,8 @@ namespace WindowsFormsApplication1
            // button3.TabStop = true;
            // button4.TabStop = true;
            // panel2.TabStop = false;
-           //// button5.TabStop = true;
-           // button7.TabStop = true;
+          button5.TabStop = true;
+          button7.TabStop = true;
         }
 
         private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
@@ -2427,9 +2428,9 @@ namespace WindowsFormsApplication1
                 {
                         //panel2.Visible = false;
                         addToCartTable.Columns.RemoveAt(6);
-                        if (!addToCartTable.Columns.Contains("ResivQuantity"))
+                        if (!addToCartTable.Columns.Contains("Revised Quantity"))
                         {
-                            addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                            addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
                             addToCartTable.Columns.RemoveAt(6);
                         }
 
@@ -2556,9 +2557,9 @@ namespace WindowsFormsApplication1
             {
                
                 addToCartTable.Columns.RemoveAt(6);
-                if (!addToCartTable.Columns.Contains("ResivQuantity"))
+                if (!addToCartTable.Columns.Contains("Revised Quantity"))
                 {
-                    addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+                    addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
                     addToCartTable.Columns.RemoveAt(6);
                 }
 
