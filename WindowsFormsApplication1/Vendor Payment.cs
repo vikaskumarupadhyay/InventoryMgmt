@@ -27,78 +27,104 @@ namespace WindowsFormsApplication1
 
         private void Form9_Load(object sender, EventArgs e)
         {
-            button1.Visible = false;
+            //button1.Visible = false;
             Purchase.PurchaseDetails purChaseDetailObj = new Purchase.PurchaseDetails();
             vendorDetails = purChaseDetailObj.GetVendorDetaisInDataTable();
-            panel2.Visible = false;
-            txtRefNo.Text = orderid9;
-            string select = "select Orderid from CustomerOrderInvoice where InvoiceId='" + orderid9 + "'";
-            DataTable dt = dbMainClass.getDetailByQuery(select);
-            string orderid="";
-            foreach (DataRow dr in dt.Rows)
+            /* panel2.Visible = false;
+             txtRefNo.Text = orderid9;
+             string select = "select Orderid from CustomerOrderInvoice where InvoiceId='" + orderid9 + "'";
+             DataTable dt = dbMainClass.getDetailByQuery(select);
+             string orderid="";
+             foreach (DataRow dr in dt.Rows)
+             {
+                 orderid = dr[0].ToString();
+             }
+             string select2="select venderId from VendorOrderDetails where Orderid='"+orderid+"'";
+             DataTable dt2 = dbMainClass.getDetailByQuery(select2);
+             string vendorid = "";
+             foreach (DataRow dr2 in dt2.Rows)
+             {
+                 vendorid = dr2[0].ToString();
+             }
+             string select1 = "select venderId,vName,vCompName,vAddress,vPhone,vMobile,vFax from VendorDetails where venderId='"+vendorid+"'";
+             DataTable dt1 = dbMainClass.getDetailByQuery(select1);
+             foreach (DataRow dr1 in dt1.Rows)
+             {
+                 txtvendorId.Text = dr1[0].ToString();
+                 txtVendorName.Text = dr1[1].ToString();
+                 txtCompanyName.Text = dr1[2].ToString();
+                 txtAddress.Text = dr1[3].ToString();
+                 txtPhone.Text = dr1[4].ToString();
+                 txtMobile.Text = dr1[5].ToString();
+                 txtFax.Text = dr1[6].ToString();
+             }
+             int totel = 0;
+             string selectqurry1 = "select vodd.ItemId,td.ItemName, vodd.Quantity,vodd.Price,vodd.TotalPrice from VendorOrderDetails vod join VendorOrderDesc vodd on vod.Orderid=vodd.Orderid join ItemDetails td on td.ItemId=vodd.ItemId where vod. Orderid='" + orderid + "'";
+             DataTable dt4 = dbMainClass.getDetailByQuery(selectqurry1);
+             int totalRowCount = addToCartTable.Rows.Count;
+             for (int rowCount = 0; rowCount < totalRowCount; rowCount++)
+             {
+                 addToCartTable.Rows.RemoveAt(0);
+             }
+
+             for (int d = 0; d < dt4.Rows.Count; d++)
+             {
+                 DataRow dr2 = dt4.Rows[d];
+                 string txtItemCode = dr2[0].ToString();
+                 string txtRate = dr2[1].ToString();
+                 string txtQuanity = dr2[2].ToString();
+                 string txtAmoun = dr2[3].ToString();
+                 string txtitemNmae = dr2[4].ToString();
+                 //totel = dr2[5].ToString();
+                 int amt = Convert.ToInt32(txtitemNmae);
+                 totel = totel + amt;
+             }
+             dataGridView1.DataSource = dt4;
+             txttotalAmount.Text = totel.ToString();*/
+            string selectqurry5 = "select 1d from AllPaymentDetailes";
+             DataTable dt5 = dbMainClass.getDetailByQuery(selectqurry5);
+             string id = "";
+             foreach (DataRow dr4 in dt5.Rows)
+             {
+                 id = dr4[0].ToString();
+             }
+             if (id == "")
+             {
+                 id = "1";
+                 txtSrNo.Text = id;
+             }
+             else
+             {
+                 int txt = Convert.ToInt32(id);
+                 int txt1 = txt + 1;
+                 txtSrNo.Text = txt1.ToString();
+             }
+            string selectqurry = "select  VendorOrderDetails.Orderid as[Order Id],VendorOrderDetails.venderId as [Vendor Id], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],VendorOrderDetails.OrderDate as[Order Date],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Total Amount],payment.TotalAmount as[Paid Amount] ,payment.BalanceAmount as[Balance Amount] from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid join AllPaymentDetailes payment on CustomerOrderDelivery.Deliveryid=payment.Invoiceid";
+            string selectqurryForActualColumnName = "select top 1 VendorOrderDetails.Orderid ,VendorOrderDetails.venderId , VendorDetails.vName ,VendorDetails.vCompName , VendorDetails.vAddress ,VendorOrderDetails.OrderDate ,(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount ,VendorOrderDetails.Discount ,VendorOrderDetails.DisAmount ,VendorOrderDetails.vat ,VendorOrderDetails.TextTaxAmmount ,VendorOrderDetails.TotalPrice ,payment.TotalAmount  ,payment.BalanceAmount  from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid join AllPaymentDetailes payment on CustomerOrderDelivery.Deliveryid=payment.Invoiceid";
+            DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+            DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
+            DataTable customDataTable = new DataTable();
+            customDataTable.Columns.Add("ActualTableColumnName");
+            customDataTable.Columns.Add("AliasTableColumnName");
+            //List<string> ls = new List<string>();
+            DataColumnCollection d = dt.Columns;
+            DataColumnCollection dataColumnForName = dtOnlyColumnName.Columns;
+            for (int a = 1; a < d.Count; a++)
             {
-                orderid = dr[0].ToString();
-            }
-            string select2="select venderId from VendorOrderDetails where Orderid='"+orderid+"'";
-            DataTable dt2 = dbMainClass.getDetailByQuery(select2);
-            string vendorid = "";
-            foreach (DataRow dr2 in dt2.Rows)
-            {
-                vendorid = dr2[0].ToString();
-            }
-            string select1 = "select venderId,vName,vCompName,vAddress,vPhone,vMobile,vFax from VendorDetails where venderId='"+vendorid+"'";
-            DataTable dt1 = dbMainClass.getDetailByQuery(select1);
-            foreach (DataRow dr1 in dt1.Rows)
-            {
-                txtvendorId.Text = dr1[0].ToString();
-                txtVendorName.Text = dr1[1].ToString();
-                txtCompanyName.Text = dr1[2].ToString();
-                txtAddress.Text = dr1[3].ToString();
-                txtPhone.Text = dr1[4].ToString();
-                txtMobile.Text = dr1[5].ToString();
-                txtFax.Text = dr1[6].ToString();
-            }
-            int totel = 0;
-            string selectqurry1 = "select vodd.ItemId,td.ItemName, vodd.Quantity,vodd.Price,vodd.TotalPrice from VendorOrderDetails vod join VendorOrderDesc vodd on vod.Orderid=vodd.Orderid join ItemDetails td on td.ItemId=vodd.ItemId where vod. Orderid='" + orderid + "'";
-            DataTable dt4 = dbMainClass.getDetailByQuery(selectqurry1);
-            int totalRowCount = addToCartTable.Rows.Count;
-            for (int rowCount = 0; rowCount < totalRowCount; rowCount++)
-            {
-                addToCartTable.Rows.RemoveAt(0);
+                //DataColumn dc = new DataColumn();
+                string b = d[a].ToString();
+                string actualColumnName=dataColumnForName[a].ToString();
+                DataRow dr = customDataTable.NewRow();
+                dr["ActualTableColumnName"] = actualColumnName;
+                dr["AliasTableColumnName"] = b;
+                customDataTable.Rows.Add(dr);
+                //  ls.Add(b);
             }
 
-            for (int d = 0; d < dt4.Rows.Count; d++)
-            {
-                DataRow dr2 = dt4.Rows[d];
-                string txtItemCode = dr2[0].ToString();
-                string txtRate = dr2[1].ToString();
-                string txtQuanity = dr2[2].ToString();
-                string txtAmoun = dr2[3].ToString();
-                string txtitemNmae = dr2[4].ToString();
-                //totel = dr2[5].ToString();
-                int amt = Convert.ToInt32(txtitemNmae);
-                totel = totel + amt;
-            }
-            dataGridView1.DataSource = dt4;
-            txttotalAmount.Text = totel.ToString();
-            string selectqurry5 = "select PaymentId from VendorPayment";
-            DataTable dt5 = dbMainClass.getDetailByQuery(selectqurry5);
-            string id = "";
-            foreach (DataRow dr4 in dt5.Rows)
-            {
-                id = dr4[0].ToString();
-            }
-            if (id == "")
-            {
-                id = "1";
-                txtSrNo.Text = id;
-            }
-            else
-            {
-                int txt = Convert.ToInt32(id);
-                int txt1 = txt + 1;
-                txtSrNo.Text = txt1.ToString();
-            }
+            comboBox1.DataSource = customDataTable;
+            comboBox1.ValueMember = "ActualTableColumnName";
+            comboBox1.DisplayMember = "AliasTableColumnName";
+            dataGridView2.DataSource = dt;
            
         }
         private void setVAlue()
@@ -164,8 +190,8 @@ namespace WindowsFormsApplication1
         {
 
             string s = comboBox1.SelectedValue.ToString();
-            string m = "v" + s;
-            string selectQurry = "select venderId,vName as NAME,vCompName as COMPANYNAME,vAddress as ADDRESS,vPhone as PHONE,vMobile as MOBILE,vFax as FAX from VendorDetails where " + m + " like '" + txtSearch.Text + "%'";
+            //string m = "v" + s;
+            string selectQurry = "select  VendorOrderDetails.Orderid as[Order Id],VendorOrderDetails.venderId as [Vendor Id], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],VendorOrderDetails.OrderDate as[Order Date],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Total Amount],payment.TotalAmount as[Paid Amount] ,payment.BalanceAmount as[Balance Amount] from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid join AllPaymentDetailes payment on CustomerOrderDelivery.Deliveryid=payment.Invoiceid where " + s + " like '" + txtSearch.Text + "%'";
             DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
             dataGridView2.DataSource = dt;
         }
@@ -173,25 +199,48 @@ namespace WindowsFormsApplication1
         private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            panel2.Visible = false;
+           // panel2.Visible = false;
             DataGridViewCellCollection call = dataGridView2.Rows[e.RowIndex].Cells;
             if (!string.IsNullOrEmpty(call[0].Value.ToString()))
             {
                 setDetails(call);
+                //int id = Convert.ToInt32(txtSrNo.Text);
+                //int id1 = id -1;
+               
+
+                string selectQurry = "select VendorOrderDetails.OrderDate as[Order Date],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Total Amount],payment.TotalAmount as[Paid Amount] ,payment.BalanceAmount as[Balance Amount] from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid join AllPaymentDetailes payment on CustomerOrderDelivery.Deliveryid=payment.Invoiceid where VendorOrderDetails.Orderid='" + txtRefNo.Text + "'";
+                DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
+                string balance="";
+                foreach (DataRow dr in dt.Rows)
+                {
+                    balance = dr[9].ToString();
+                }
+                if (balance == "0.00")
+                {
+                    panel2.Visible = true;
+                    MessageBox.Show("fully paid");
+                }
+                else
+                {
+                    panel2.Visible = false;
+                    dataGridView1.DataSource = dt;
+                }
             }
+            
         }
         private void setDetails(DataGridViewCellCollection cellCollection)
         {
             try
             {
-               txtvendorId.Text = cellCollection[0].Value.ToString();
-                txtVendorName.Text = cellCollection[1].Value.ToString();
-                txtCompanyName.Text = cellCollection[2].Value.ToString();
-                txtAddress.Text = cellCollection[3].Value.ToString();
-                txtPhone.Text = cellCollection[4].Value.ToString();
-                txtMobile.Text = cellCollection[5].Value.ToString();
-                txtFax.Text = cellCollection[6].Value.ToString();
-                txttotalAmount.Text = cellCollection[7].Value.ToString();
+               txtvendorId.Text = cellCollection[1].Value.ToString();
+                txtVendorName.Text = cellCollection[2].Value.ToString();
+                txtCompanyName.Text = cellCollection[3].Value.ToString();
+                txtAddress.Text = cellCollection[4].Value.ToString();
+               // txtPhone.Text = cellCollection[4].Value.ToString();
+               // txtMobile.Text = cellCollection[5].Value.ToString();
+                //txtFax.Text = cellCollection[6].Value.ToString();
+                txttotalAmount.Text = cellCollection[14].Value.ToString();
+                txtRefNo.Text = cellCollection[0].Value.ToString();
             }
             catch (Exception ex)
             {

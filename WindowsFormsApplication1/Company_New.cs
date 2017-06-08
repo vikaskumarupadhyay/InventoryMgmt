@@ -25,13 +25,13 @@ namespace WindowsFormsApplication1
         private void Compnay_Load(object sender, EventArgs e)
         {
             string selectqurry = "select cd.CompnayId as[Company ID], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.PANNO as[PAN NO],cd.VATNO as[VAT NO],cd.CSTNO as[CST NO],cd.ServiceTaxAmmount as[SERVICE TAX NO],cd.ExciseTaxAmmount as[EXCISE NO],cd.GSTTaxAmmount as[GST NO] from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId";
-            string selectqurryForActualColumnName = "select top 1 cd.CompnayId, cd.OnerName, cd.Name ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email,cd.WebAddress,cd.Phone,cd.Mobile,cd.Fax,cd.Description,cd.PANNO,cd.VATNO,cd.CSTNO,cd.ServiceTaxAmmount,cd.ExciseTaxAmmount,cd.GSTTaxAmmount,cd.Isactive,cd.RagistrationDate,ct.TexName,ct.TexAmount from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId";
+            string selectqurryForActualColumnName = "select top 1 cd.CompnayId, cd.OnerName, cd.Name ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email,cd.WebAddress,cd.Phone,cd.Mobile,cd.Fax,cd.PANNO,cd.VATNO,cd.CSTNO,cd.ServiceTaxAmmount,cd.ExciseTaxAmmount,cd.GSTTaxAmmount from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
             DataTable customDataTable = new DataTable();
             customDataTable.Columns.Add("ActualTableColumnName");
             customDataTable.Columns.Add("AliasTableColumnName");
-            List<string> ls = new List<string>();
+            //List<string> ls = new List<string>();
             DataColumnCollection d = dt.Columns;
             DataColumnCollection dataColumnForName = dtOnlyColumnName.Columns;
             for (int a = 1; a <d.Count; a++)
@@ -75,7 +75,7 @@ namespace WindowsFormsApplication1
             }
           txtwonername.Focus();
           string selectCommandGroup = "select TexId,TexName,TexAmount,TexDescription from dbo.CompnayTex";
-          setItemGroupDetail(selectCommandGroup, combComp,"TAX");
+          setItemGroupDetail(selectCommandGroup, combComp,"Tax");
             }
         private void setItemGroupDetail(string Query, ComboBox cmb, string Message)
         {
@@ -424,7 +424,7 @@ namespace WindowsFormsApplication1
         private void txtSearch_TextChanged_1(object sender, EventArgs e)
         {
             string s = ComDetails.SelectedValue.ToString();
-            string selectQuery1 = "select cd.CompnayId as[Company ID], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.Description,cd.PANNO as[PAN No],cd.VATNO as[VAT No],cd.CSTNO as[CST No],cd.ServiceTaxAmmount as[SERVICE TAX NO],cd.ExciseTaxAmmount as[EXCISE NO],cd.GSTTaxAmmount as[GST NO],cd.Isactive,cd.RagistrationDate as[Creation Date],ct.TexName as[Tax Name],ct.TexAmount as[Tax Ammount (%)] from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId where " + s + " like '" + txtSearch.Text + "%'";
+            string selectQuery1 = "select cd.CompnayId as[Company ID], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.PANNO as[PAN NO],cd.VATNO as[VAT NO],cd.CSTNO as[CST NO],cd.ServiceTaxAmmount as[SERVICE TAX NO],cd.ExciseTaxAmmount as[EXCISE NO],cd.GSTTaxAmmount as[GST NO] from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId where " + s + " like '" + txtSearch.Text + "%'";
 
             DataTable dt = dbMainClass.getDetailByQuery(selectQuery1);
             dataGridView1.DataSource = dt;
@@ -455,28 +455,16 @@ namespace WindowsFormsApplication1
              }    
         }
 
-        Tex t;
+       
         private void button1_Click(object sender, EventArgs e)
         {
-            if (t == null)
-            {
-                t = new Tex(this.combComp, TexList);
+                Tex t = new Tex(this.combComp, TexList);
                 t.Show();
-                t.FormClosed += new FormClosedEventHandler(t_FormClosed);
+               
                 // t.MdiParent = this;
                 dtpdate.TabStop = false;
                 btnSave.Focus();
-            }
-            else
-            {
-                t.Activate();
-            }
-        }
-
-        void t_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            t = null;
-            //throw new NotImplementedException();
+                return;
         }
 
         private void combComp_SelectedIndexChanged(object sender, EventArgs e)
