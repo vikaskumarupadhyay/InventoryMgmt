@@ -436,9 +436,10 @@
             this.panel2.Controls.Add(this.groupBox6);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.dataGridView2);
-            this.panel2.Location = new System.Drawing.Point(0, 3);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(917, 595);
+            this.panel2.Size = new System.Drawing.Size(1071, 606);
             this.panel2.TabIndex = 34;
             // 
             // groupBox6
@@ -450,7 +451,7 @@
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.Location = new System.Drawing.Point(15, 0);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(884, 79);
+            this.groupBox6.Size = new System.Drawing.Size(1044, 79);
             this.groupBox6.TabIndex = 6;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "groupBox6";
@@ -510,7 +511,7 @@
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(15, 86);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(884, 468);
+            this.dataGridView2.Size = new System.Drawing.Size(1044, 468);
             this.dataGridView2.TabIndex = 3;
             this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
             this.dataGridView2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView2_KeyPress);
@@ -595,7 +596,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(917, 606);
+            this.ClientSize = new System.Drawing.Size(1071, 606);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.button4);

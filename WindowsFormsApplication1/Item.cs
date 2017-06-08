@@ -112,17 +112,17 @@ namespace WindowsFormsApplication1
             //setID();
 
             string selectCommandGroup = "select groupID,GROUPNAME,GROUPDESC from dbo.ItemGroup";
-            setItemGroupDetail(selectCommandGroup, cmbItemItemGroup, "Group");
+            setItemGroupDetail(selectCommandGroup, cmbItemItemGroup, "group");
 
             string selectCommandUnit = "select unitID,unitName,unitDESC from dbo.ItemUnitList";
-            setItemGroupDetail(selectCommandUnit, cmbItemUnit, "Unit");
+            setItemGroupDetail(selectCommandUnit, cmbItemUnit, "unit");
         }
 
         private void setItemGroupDetail(string Query, ComboBox cmb, string Message)
         {
             //string selectCommand = "select groupID,GROUPNAME,GROUPDESC from dbo.ItemGroup";
             cmb.Items.Clear();
-            cmb.Items.Add("Select A " + Message);
+            cmb.Items.Add("Select a " + Message);
 
             dt = dbMainClass.getDataBoundToComboBox(Query);
             if (dt != null && dt.Rows.Count > 0)
