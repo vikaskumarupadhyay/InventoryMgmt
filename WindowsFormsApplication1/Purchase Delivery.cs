@@ -363,6 +363,7 @@ namespace WindowsFormsApplication1
         private void btnSelectPurchaseOrder_Click(object sender, EventArgs e)
         {
             counter = 2;
+            txtSearch.Text = "";
             DeliveryReportViewer.Visible = false;
             panel2.Visible = true;
             string selectqurry = "select  VendorOrderDetails.Orderid as[Order Id],VendorOrderDetails.venderId as [Vendor Id], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],VendorOrderDetails.OrderDate as[Order Date],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Total Amount],(case when  exists ( select Orderid from CustomerOrderDelivery where Orderid = VendorOrderDetails.Orderid) then 'Delivered' else 'Panding'end) as [Order Status]  from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId ORDER BY VendorOrderDetails.Orderid ASC";
