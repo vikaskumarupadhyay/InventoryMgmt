@@ -24,7 +24,7 @@ namespace WindowsFormsApplication1
 
         private void Compnay_Load(object sender, EventArgs e)
         {
-            string selectqurry = "select cd.CompnayId as[Company Id], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.PANNO as[PAN NO],cd.VATNO as[VAT NO],cd.CSTNO as[CST NO],cd.ServiceTaxAmmount as[SERVICE TAX NO],cd.ExciseTaxAmmount as[EXCISE NO],cd.GSTTaxAmmount as[GST NO] from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId";
+            string selectqurry = "select cd.CompnayId as[Company ID], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.PANNO as[PAN NO],cd.VATNO as[VAT NO],cd.CSTNO as[CST NO],cd.ServiceTaxAmmount as[SERVICE TAX NO],cd.ExciseTaxAmmount as[EXCISE NO],cd.GSTTaxAmmount as[GST NO] from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId";
             string selectqurryForActualColumnName = "select top 1 cd.CompnayId, cd.OnerName, cd.Name ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email,cd.WebAddress,cd.Phone,cd.Mobile,cd.Fax,cd.Description,cd.PANNO,cd.VATNO,cd.CSTNO,cd.ServiceTaxAmmount,cd.ExciseTaxAmmount,cd.GSTTaxAmmount,cd.Isactive,cd.RagistrationDate,ct.TexName,ct.TexAmount from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
@@ -310,7 +310,7 @@ namespace WindowsFormsApplication1
             txtSearch.Text = "";
             ComDetails.TabIndex = 0;
             panel1.Visible = true;
-            string selectQuery1 = "select cd.CompnayId as[Company Id], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.Description,cd.PANNO as[PAN No],cd.VATNO as[VAT No],cd.CSTNO as[CST No],cd.ServiceTaxAmmount as[Service Tax Ammount],cd.ExciseTaxAmmount as[Excise Tax Ammount],cd.GSTTaxAmmount as[GST Tax Ammount],cd.Isactive,cd.RagistrationDate as[Ragistrtion Date],ct.TexName as[Tax Name],ct.TexAmount as[Tax Ammount] from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId ";
+            string selectQuery1 = "select cd.CompnayId as [Company ID], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.PANNO as[PAN No],cd.VATNO as[VAT No],cd.CSTNO as[CST No],cd.ServiceTaxAmmount as[SERVICE TAX NO],cd.ExciseTaxAmmount as[EXCISE NO],cd.GSTTaxAmmount as[GST NO],cd.Description,ct.TexName as[Tax Name],ct.TexAmount as[Tax Ammount (%)],cd.RagistrationDate as[Creation Date],cd.Isactive as [Active] from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId ";
             DataTable dt = dbMainClass.getDetailByQuery(selectQuery1);
             dataGridView1.DataSource = dt;
             tabindex1();
@@ -334,15 +334,15 @@ namespace WindowsFormsApplication1
                 txtPhone.Text = cellcolection[10].Value.ToString();
                 txtMobile.Text = cellcolection[11].Value.ToString();
                 txtFax.Text = cellcolection[12].Value.ToString();
-                txtDescription.Text = cellcolection[13].Value.ToString();
-                txtPanNo.Text = cellcolection[14].Value.ToString();
-                txtVatNo.Text = cellcolection[15].Value.ToString();
-                txtCstNo.Text = cellcolection[16].Value.ToString();
-                txtSarvice.Text = cellcolection[17].Value.ToString();
-                txtExcise.Text = cellcolection[18].Value.ToString();
-                txtGst.Text = cellcolection[19].Value.ToString();
-                combComp.Text = cellcolection[22].Value.ToString();
-                txtTexAmount.Text = cellcolection[23].Value.ToString();
+                txtPanNo.Text = cellcolection[13].Value.ToString();
+                txtVatNo.Text = cellcolection[14].Value.ToString();
+                txtCstNo.Text = cellcolection[15].Value.ToString();
+                txtSarvice.Text = cellcolection[16].Value.ToString();
+                txtExcise.Text = cellcolection[17].Value.ToString();
+                txtGst.Text = cellcolection[18].Value.ToString();
+                txtDescription.Text = cellcolection[19].Value.ToString();
+                combComp.Text = cellcolection[20].Value.ToString();
+                txtTexAmount.Text = cellcolection[21].Value.ToString();
             }
             catch (Exception ex)
             {
@@ -424,7 +424,7 @@ namespace WindowsFormsApplication1
         private void txtSearch_TextChanged_1(object sender, EventArgs e)
         {
             string s = ComDetails.SelectedValue.ToString();
-            string selectQuery1 = "select cd.CompnayId as[Company Id], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.Description,cd.PANNO as[PAN No],cd.VATNO as[VAT No],cd.CSTNO as[CST No],cd.ServiceTaxAmmount as[Service Tax Ammount],cd.ExciseTaxAmmount as[Excise Tax Ammount],cd.GSTTaxAmmount as[GST Tax Ammount],cd.Isactive,cd.RagistrationDate as[Ragistrtion Date],ct.TexName as[Tax Name],ct.TexAmount as[Tax Ammount] from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId where " + s + " like '" + txtSearch.Text + "%'";
+            string selectQuery1 = "select cd.CompnayId as[Company ID], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.Description,cd.PANNO as[PAN No],cd.VATNO as[VAT No],cd.CSTNO as[CST No],cd.ServiceTaxAmmount as[SERVICE TAX NO],cd.ExciseTaxAmmount as[EXCISE NO],cd.GSTTaxAmmount as[GST NO],cd.Isactive,cd.RagistrationDate as[Creation Date],ct.TexName as[Tax Name],ct.TexAmount as[Tax Ammount (%)] from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId where " + s + " like '" + txtSearch.Text + "%'";
 
             DataTable dt = dbMainClass.getDetailByQuery(selectQuery1);
             dataGridView1.DataSource = dt;
