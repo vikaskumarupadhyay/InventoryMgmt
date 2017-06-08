@@ -232,18 +232,18 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(144, 20);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 15);
+            this.label2.Size = new System.Drawing.Size(68, 15);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Product Name";
+            this.label2.Text = "Item Name";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(43, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 15);
+            this.label1.Size = new System.Drawing.Size(46, 15);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Product Code";
+            this.label1.Text = "Item ID";
             // 
             // groupBox2
             // 

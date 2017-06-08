@@ -268,27 +268,27 @@
             this.label24.AutoSize = true;
             this.label24.Location = new System.Drawing.Point(861, 333);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(86, 15);
+            this.label24.Size = new System.Drawing.Size(52, 15);
             this.label24.TabIndex = 42;
-            this.label24.Text = "GST Regn. No";
+            this.label24.Text = "GST NO";
             // 
             // label23
             // 
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(431, 333);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(98, 15);
+            this.label23.Size = new System.Drawing.Size(74, 15);
             this.label23.TabIndex = 41;
-            this.label23.Text = "Excise Regn. No";
+            this.label23.Text = "EXCISE NO ";
             // 
             // label22
             // 
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(43, 333);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(125, 15);
+            this.label22.Size = new System.Drawing.Size(104, 15);
             this.label22.TabIndex = 40;
-            this.label22.Text = "Service Tax Regn. No";
+            this.label22.Text = "SERVICE TAX NO";
             // 
             // txtothers
             // 
@@ -323,27 +323,27 @@
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(861, 291);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(49, 15);
+            this.label20.Size = new System.Drawing.Size(51, 15);
             this.label20.TabIndex = 30;
-            this.label20.Text = "CST No";
+            this.label20.Text = "CST NO";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(431, 291);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(47, 15);
+            this.label19.Size = new System.Drawing.Size(49, 15);
             this.label19.TabIndex = 29;
-            this.label19.Text = "VAT No";
+            this.label19.Text = "VAT NO";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(43, 291);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(50, 15);
+            this.label18.Size = new System.Drawing.Size(52, 15);
             this.label18.TabIndex = 28;
-            this.label18.Text = "PAN No";
+            this.label18.Text = "PAN NO";
             // 
             // txtDESCRIPTION
             // 
@@ -592,9 +592,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(43, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 15);
+            this.label1.Size = new System.Drawing.Size(75, 15);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Customer Code";
+            this.label1.Text = "Customer ID";
             // 
             // btnSave
             // 
