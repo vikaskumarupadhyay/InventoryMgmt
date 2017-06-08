@@ -109,18 +109,18 @@ namespace WindowsFormsApplication1
         //    //}
         //    //dataGridView1.DataSource = dt4;
 
-        //    string selectquery4 = "select id from payment";
-        //    DataTable dt3 = d.getDetailByQuery(selectquery4);
-        //    string id = "";
-        //    foreach (DataRow dr in dt3.Rows)
-        //    {
-        //        id = dr[0].ToString();
-        //    }
-        //    if (id == "")
-        //    {
-        //        id = "1";
-        //        txtSrNo.Text = id;
-        //    }
+           string selectquery4 = "select id from payment";
+            DataTable dt3 = d.getDetailByQuery(selectquery4);
+            string id = "";
+            foreach (DataRow dr in dt3.Rows)
+            {
+                id = dr[0].ToString();
+            }
+            if (id == "")
+            {
+                id = "1";
+                txtSrNo.Text = id;
+            }
         //    else
         //    {
         //        int t = Convert.ToInt32(id);
@@ -204,9 +204,30 @@ namespace WindowsFormsApplication1
 
         private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            panel2.Visible = false;
+           // panel2.Visible = false;
             DataGridViewCellCollection cell = dataGridView2.Rows[e.RowIndex].Cells;
-            setdetails(cell);
+            if(!string.IsNullOrEmpty(cell[0].Value.ToString()))
+            {
+                setdetails(cell);
+                string selectquery = " select orderdetails.date as[Order Date],(select Sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid) as[Bild Quanity],orderdetails.WithautTaxamount as[Gross Amount],orderdetails.Discount as[Discount Rate],orderdetails.Discountamount as[Dicount Amount],orderdetails.Tax as[Tax],orderdetails.Taxamount as[Tax Amount],orderdetails.totalammount as[Total Amount],pay.TotalAmount as[Paid Amount],pay.BalanceAmount as [Balance Amount] from orderdetails join salesOrderDelivery on orderdetails.Orderid=salesOrderDelivery.Orderid join SalesPaymentDetailes pay on salesOrderDelivery.Delivaryid=pay.Invoiceid where orderdetails.orderid='"+txtRefNo.Text+"' ";
+                DataTable dt = d.getDetailByQuery(selectquery);
+                string balance = "";
+                foreach (DataRow dr in dt.Rows)
+                {
+                    balance = dr[9].ToString();
+                }
+                if (balance == "0.00")
+                {
+                    panel2.Visible = true;
+                    MessageBox.Show("Fully paid");
+                }
+                else
+                {
+                    panel2.Visible = false;
+                    dataGridView1.DataSource = dt;
+                }
+            
+            }
         }
         private void setdetails(DataGridViewCellCollection collection)
         {
