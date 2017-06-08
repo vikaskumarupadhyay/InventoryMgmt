@@ -276,7 +276,6 @@
             this.checkBox2.Text = "Payment without refrence to sales invoice";
             this.checkBox2.UseCompatibleTextRendering = true;
             this.checkBox2.UseVisualStyleBackColor = true;
-           // this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             this.checkBox2.Click += new System.EventHandler(this.checkBox2_Click);
             // 
             // checkBox1
@@ -528,9 +527,9 @@
             this.panel2.Controls.Add(this.combsearch);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Location = new System.Drawing.Point(5, 533);
+            this.panel2.Location = new System.Drawing.Point(5, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(734, 51);
+            this.panel2.Size = new System.Drawing.Size(1144, 581);
             this.panel2.TabIndex = 42;
             // 
             // dataGridView2
@@ -539,15 +538,15 @@
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(15, 126);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(693, 398);
+            this.dataGridView2.Size = new System.Drawing.Size(1126, 432);
             this.dataGridView2.TabIndex = 4;
             this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(203, 74);
+            this.textBox8.Location = new System.Drawing.Point(427, 71);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(129, 20);
+            this.textBox8.Size = new System.Drawing.Size(330, 20);
             this.textBox8.TabIndex = 3;
             this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
             // 
@@ -556,13 +555,13 @@
             this.combsearch.FormattingEnabled = true;
             this.combsearch.Location = new System.Drawing.Point(40, 73);
             this.combsearch.Name = "combsearch";
-            this.combsearch.Size = new System.Drawing.Size(121, 21);
+            this.combsearch.Size = new System.Drawing.Size(381, 21);
             this.combsearch.TabIndex = 2;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(230, 39);
+            this.label10.Location = new System.Drawing.Point(413, 56);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(39, 13);
             this.label10.TabIndex = 1;
@@ -571,17 +570,17 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(40, 32);
+            this.label8.Location = new System.Drawing.Point(43, 54);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(67, 13);
+            this.label8.Size = new System.Drawing.Size(74, 13);
             this.label8.TabIndex = 0;
-            this.label8.Text = "selectsearch";
+            this.label8.Text = "Select Search";
             // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(751, 587);
+            this.ClientSize = new System.Drawing.Size(1161, 587);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.button4);
