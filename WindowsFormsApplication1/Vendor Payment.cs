@@ -28,8 +28,8 @@ namespace WindowsFormsApplication1
         private void Form9_Load(object sender, EventArgs e)
         {
             //button1.Visible = false;
-            //Purchase.PurchaseDetails purChaseDetailObj = new Purchase.PurchaseDetails();
-            //vendorDetails = purChaseDetailObj.GetVendorDetaisInDataTable();
+            Purchase.PurchaseDetails purChaseDetailObj = new Purchase.PurchaseDetails();
+            vendorDetails = purChaseDetailObj.GetVendorDetaisInDataTable();
             /* panel2.Visible = false;
              txtRefNo.Text = orderid9;
              string select = "select Orderid from CustomerOrderInvoice where InvoiceId='" + orderid9 + "'";
@@ -99,17 +99,31 @@ namespace WindowsFormsApplication1
                  int txt1 = txt + 1;
                  txtSrNo.Text = txt1.ToString();
              }
-            string select = "select  VendorOrderDetails.Orderid as[Order Id],VendorOrderDetails.venderId as [Vendor Id], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],VendorOrderDetails.OrderDate as[Order Date],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Total Amount],payment.TotalAmount as[Paid Amount] ,payment.BalanceAmount as[Balance Amount] from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid join AllPaymentDetailes payment on CustomerOrderDelivery.Deliveryid=payment.Invoiceid";
-            DataTable dt=dbMainClass.getDetailByQuery(select);
-            List<string> ls = new List<string>();
+            string selectqurry = "select  VendorOrderDetails.Orderid as[Order Id],VendorOrderDetails.venderId as [Vendor Id], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],VendorOrderDetails.OrderDate as[Order Date],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Total Amount],payment.TotalAmount as[Paid Amount] ,payment.BalanceAmount as[Balance Amount] from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid join AllPaymentDetailes payment on CustomerOrderDelivery.Deliveryid=payment.Invoiceid";
+            string selectqurryForActualColumnName = "select top 1 VendorOrderDetails.Orderid ,VendorOrderDetails.venderId , VendorDetails.vName ,VendorDetails.vCompName , VendorDetails.vAddress ,VendorOrderDetails.OrderDate ,(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount ,VendorOrderDetails.Discount ,VendorOrderDetails.DisAmount ,VendorOrderDetails.vat ,VendorOrderDetails.TextTaxAmmount ,VendorOrderDetails.TotalPrice ,payment.TotalAmount  ,payment.BalanceAmount  from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid join AllPaymentDetailes payment on CustomerOrderDelivery.Deliveryid=payment.Invoiceid";
+            DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+            DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
+            DataTable customDataTable = new DataTable();
+            customDataTable.Columns.Add("ActualTableColumnName");
+            customDataTable.Columns.Add("AliasTableColumnName");
+            //List<string> ls = new List<string>();
             DataColumnCollection d = dt.Columns;
-            for (int a = 0; a < d.Count; a++)
+            DataColumnCollection dataColumnForName = dtOnlyColumnName.Columns;
+            for (int a = 1; a < d.Count; a++)
             {
-                DataColumn dc = new DataColumn();
+                //DataColumn dc = new DataColumn();
                 string b = d[a].ToString();
-                ls.Add(b);
+                string actualColumnName=dataColumnForName[a].ToString();
+                DataRow dr = customDataTable.NewRow();
+                dr["ActualTableColumnName"] = actualColumnName;
+                dr["AliasTableColumnName"] = b;
+                customDataTable.Rows.Add(dr);
+                //  ls.Add(b);
             }
-            comboBox1.DataSource = ls;
+
+            comboBox1.DataSource = customDataTable;
+            comboBox1.ValueMember = "ActualTableColumnName";
+            comboBox1.DisplayMember = "AliasTableColumnName";
             dataGridView2.DataSource = dt;
            
         }
@@ -176,8 +190,8 @@ namespace WindowsFormsApplication1
         {
 
             string s = comboBox1.SelectedValue.ToString();
-            string m = "v" + s;
-            string selectQurry = "select venderId,vName as NAME,vCompName as COMPANYNAME,vAddress as ADDRESS,vPhone as PHONE,vMobile as MOBILE,vFax as FAX from VendorDetails where " + m + " like '" + txtSearch.Text + "%'";
+            //string m = "v" + s;
+            string selectQurry = "select  VendorOrderDetails.Orderid as[Order Id],VendorOrderDetails.venderId as [Vendor Id], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],VendorOrderDetails.OrderDate as[Order Date],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Total Amount],payment.TotalAmount as[Paid Amount] ,payment.BalanceAmount as[Balance Amount] from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid join AllPaymentDetailes payment on CustomerOrderDelivery.Deliveryid=payment.Invoiceid where " + s + " like '" + txtSearch.Text + "%'";
             DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
             dataGridView2.DataSource = dt;
         }
@@ -185,12 +199,34 @@ namespace WindowsFormsApplication1
         private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            panel2.Visible = false;
+           // panel2.Visible = false;
             DataGridViewCellCollection call = dataGridView2.Rows[e.RowIndex].Cells;
             if (!string.IsNullOrEmpty(call[0].Value.ToString()))
             {
                 setDetails(call);
+                //int id = Convert.ToInt32(txtSrNo.Text);
+                //int id1 = id -1;
+               
+
+                string selectQurry = "select VendorOrderDetails.OrderDate as[Order Date],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Total Amount],payment.TotalAmount as[Paid Amount] ,payment.BalanceAmount as[Balance Amount] from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid join AllPaymentDetailes payment on CustomerOrderDelivery.Deliveryid=payment.Invoiceid where VendorOrderDetails.Orderid='" + txtRefNo.Text + "'";
+                DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
+                string balance="";
+                foreach (DataRow dr in dt.Rows)
+                {
+                    balance = dr[9].ToString();
+                }
+                if (balance == "0.00")
+                {
+                    panel2.Visible = true;
+                    MessageBox.Show("fully paid");
+                }
+                else
+                {
+                    panel2.Visible = false;
+                    dataGridView1.DataSource = dt;
+                }
             }
+            
         }
         private void setDetails(DataGridViewCellCollection cellCollection)
         {
