@@ -800,7 +800,7 @@ namespace WindowsFormsApplication1
                                     totalAmount += Convert.ToDouble(txtAmmount.Text.Trim());
                                     txtTotalAmmount.Text = totalAmount.ToString("###0.00");
                                     txtwithauttaxamount.Text = totalAmount.ToString("###0.00");
-
+                                    gridsalesdelivary.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
                                     txtItemCode.Text = "I";
                                     txtProductName.Text = "";
                                     txtRate.Text = "";
@@ -918,6 +918,7 @@ namespace WindowsFormsApplication1
             
             gridsalesdelivary.DefaultCellStyle.SelectionBackColor = Color.Red;
            
+            
             butRemoveItem.Enabled = false;
 
             gridsalesdelivary.TabIndex = 0;
@@ -2062,7 +2063,8 @@ namespace WindowsFormsApplication1
                             }
                             if (ls.Count == gridsalesdelivary.Rows.Count - 1)
                             {
-                                MessageBox.Show("Item already deleted");
+                                gridsalesdelivary.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
+                               // MessageBox.Show("Item already deleted");
                                 txtItemCode.Enabled = true;
                                 txtItemCode.Focus();
                             }
@@ -2320,10 +2322,27 @@ namespace WindowsFormsApplication1
             {
                 string s2 = comsearchvalue.SelectedValue.ToString();
                 string val2 = s2;
+                if (val2 == "Column1")
+                {
+                    
+                }
                 string selectQuery2 = "select  orderdetails.orderid as[Orderr ID],orderdetails.custid as [Customer ID], CustomerDetails.CustName as[Customer Name], CustomerDetails.CustAddress as[Customer Address],CustomerDetails.CustCompName as[Customer Compnay Name],orderdetails.date as [Date],(select Sum(customerorderdescriptions.quantity)as [Quantity] from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid) as[Bild Quanity],orderdetails.WithautTaxamount as[Withaut Tax Amount],orderdetails.Discount as [Discount],orderdetails.Discountamount as [Discount Amount],orderdetails.Tax,orderdetails.Taxamount as [Tax Amount],orderdetails.totalammount as[Total Amount] from orderdetails join CustomerDetails on CustomerDetails.custId=orderdetails.custid where " + val2 + " like '" + txtsearchvalue.Text + "%'";
                 DataTable dt2 = d.getDetailByQuery(selectQuery2);
                 dataGridView2.DataSource = dt2;
             }
+        }
+        public void salesedelivarytabindex()
+        {
+            CashAmount.Text = "0.00";
+            txtCreditAmount.Text = "0.00";
+            txtChequeAmount.Text = "0.00";
+            txtEwalletAmount.Text = "0.00";
+            txtCouponAmount.Text = "0.00";
+            txtTotalAmount1.Text = "0.00";
+            txtBalance.Text = "0.00";
+            txtRturned.Text = "0.00";
+            txtNetAmount.Text = "0.00";
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -2361,7 +2380,7 @@ namespace WindowsFormsApplication1
                     if (!addToCartTable.Columns.Contains("Amount"))
                     {
                         addToCartTable.Columns.Add(new DataColumn("Amount"));
-                       // addToCartTable.Columns.RemoveAt(6);
+                        addToCartTable.Columns.RemoveAt(6);
                     }
                 }
             }
@@ -3191,6 +3210,8 @@ namespace WindowsFormsApplication1
         {
             txtInvoiceid.Text = txtSrNo.Text;
             txtInvoiceAmount.Text = txtTotalAmmount.Text + .00;
+            txtBalance.Text = txtTotalAmmount.Text;
+
             
             //btnSave.TabStop = true;
             //btnClose.TabStop = true;
@@ -3348,9 +3369,11 @@ namespace WindowsFormsApplication1
 
         private void btnSave_Click_1(object sender, EventArgs e)
         {
+            salesedelivarytabindex();
             createnewsave();
             pnlSalesPayment.Visible = false;
             crystalReportViewer2.Visible = true;
+            
         }
 
         private void btnClose_Click_1(object sender, EventArgs e)
