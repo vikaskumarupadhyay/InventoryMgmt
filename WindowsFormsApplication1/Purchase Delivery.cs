@@ -2410,6 +2410,14 @@ namespace WindowsFormsApplication1
             else if (counter == 2)
             {
                 string t = comboBox1.SelectedValue.ToString();
+                if (t == "Bild Quanity")
+                {
+                    t = "(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid)";
+                }
+                else if (t == "Order Status")
+                {
+                    t = "(case when  exists ( select Orderid from CustomerOrderDelivery where Orderid = VendorOrderDetails.Orderid) then 'Delivered' else 'Panding'end)";
+                }
                 string selectqurry = "select  VendorOrderDetails.Orderid as[Order Id],VendorOrderDetails.venderId as [Vendor Id], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],VendorOrderDetails.OrderDate as[Order Date],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Total Amount],(case when  exists ( select Orderid from CustomerOrderDelivery where Orderid = VendorOrderDetails.Orderid) then 'Delivered' else 'Panding'end) as [Order Status]  from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId where " + t + " like '" + txtSearch.Text + "%'";
                 DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
                 dataGridView2.DataSource = dt;
@@ -3672,13 +3680,7 @@ namespace WindowsFormsApplication1
 
         }
 
-       
 
-       
-
-       
-
-       
     }
 
 }

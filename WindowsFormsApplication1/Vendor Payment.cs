@@ -11,8 +11,9 @@ namespace WindowsFormsApplication1
 {
     public partial class Form9 : Form
     {
-         DataTable addToCartTable = new DataTable();
+        DataTable addToCartTable = new DataTable();
         public string orderid9;
+        Double amount = 0;
         DB_Main dbMainClass = new DB_Main();
         DataTable vendorDetails = new DataTable();
         public Form9()
@@ -81,26 +82,27 @@ namespace WindowsFormsApplication1
              }
              dataGridView1.DataSource = dt4;
              txttotalAmount.Text = totel.ToString();*/
-            string selectqurry5 = "select 1d from AllPaymentDetailes";
-             DataTable dt5 = dbMainClass.getDetailByQuery(selectqurry5);
-             string id = "";
-             foreach (DataRow dr4 in dt5.Rows)
-             {
-                 id = dr4[0].ToString();
-             }
-             if (id == "")
-             {
-                 id = "1";
-                 txtSrNo.Text = id;
-             }
-             else
-             {
-                 int txt = Convert.ToInt32(id);
-                 int txt1 = txt + 1;
-                 txtSrNo.Text = txt1.ToString();
-             }
-            string selectqurry = "select  VendorOrderDetails.Orderid as[Order Id],VendorOrderDetails.venderId as [Vendor Id], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],VendorOrderDetails.OrderDate as[Order Date],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Total Amount],payment.TotalAmount as[Paid Amount] ,payment.BalanceAmount as[Balance Amount] from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid join AllPaymentDetailes payment on CustomerOrderDelivery.Deliveryid=payment.Invoiceid";
-            string selectqurryForActualColumnName = "select top 1 VendorOrderDetails.Orderid ,VendorOrderDetails.venderId , VendorDetails.vName ,VendorDetails.vCompName , VendorDetails.vAddress ,VendorOrderDetails.OrderDate ,(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount ,VendorOrderDetails.Discount ,VendorOrderDetails.DisAmount ,VendorOrderDetails.vat ,VendorOrderDetails.TextTaxAmmount ,VendorOrderDetails.TotalPrice ,payment.TotalAmount  ,payment.BalanceAmount  from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid join AllPaymentDetailes payment on CustomerOrderDelivery.Deliveryid=payment.Invoiceid";
+            pnlPayment.Visible = false;
+            string selectqurry5 = "select Id from AllPaymentDetailes";
+            DataTable dt5 = dbMainClass.getDetailByQuery(selectqurry5);
+            string id = "";
+            foreach (DataRow dr4 in dt5.Rows)
+            {
+                id = dr4[0].ToString();
+            }
+            if (id == "")
+            {
+                id = "1";
+                txtSrNo.Text = id;
+            }
+            else
+            {
+                int txt = Convert.ToInt32(id);
+                int txt1 = txt + 1;
+                txtSrNo.Text = txt1.ToString();
+            }
+            string selectqurry = "select  CustomerOrderDelivery.Deliveryid as[Order Id],VendorOrderDetails.venderId as [Vendor Id], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],CustomerOrderDelivery.DeliveryDate as[Order Date],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Total Amount],payment.TotalAmount as[Paid Amount] ,payment.BalanceAmount as[Balance Amount] from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid join AllPaymentDetailes payment on CustomerOrderDelivery.Deliveryid=payment.Invoiceid";
+            string selectqurryForActualColumnName = "select top 1 CustomerOrderDelivery.Deliveryid ,VendorOrderDetails.venderId , VendorDetails.vName ,VendorDetails.vCompName , VendorDetails.vAddress ,CustomerOrderDelivery.DeliveryDate ,(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount ,VendorOrderDetails.Discount ,VendorOrderDetails.DisAmount ,VendorOrderDetails.vat ,VendorOrderDetails.TextTaxAmmount ,VendorOrderDetails.TotalPrice ,payment.TotalAmount  ,payment.BalanceAmount  from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid join AllPaymentDetailes payment on CustomerOrderDelivery.Deliveryid=payment.Invoiceid";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
             DataTable customDataTable = new DataTable();
@@ -109,11 +111,11 @@ namespace WindowsFormsApplication1
             //List<string> ls = new List<string>();
             DataColumnCollection d = dt.Columns;
             DataColumnCollection dataColumnForName = dtOnlyColumnName.Columns;
-            for (int a = 1; a < d.Count; a++)
+            for (int a = 0; a < d.Count; a++)
             {
                 //DataColumn dc = new DataColumn();
                 string b = d[a].ToString();
-                string actualColumnName=dataColumnForName[a].ToString();
+                string actualColumnName = dataColumnForName[a].ToString();
                 DataRow dr = customDataTable.NewRow();
                 dr["ActualTableColumnName"] = actualColumnName;
                 dr["AliasTableColumnName"] = b;
@@ -125,7 +127,7 @@ namespace WindowsFormsApplication1
             comboBox1.ValueMember = "ActualTableColumnName";
             comboBox1.DisplayMember = "AliasTableColumnName";
             dataGridView2.DataSource = dt;
-           
+
         }
         private void setVAlue()
         {
@@ -190,8 +192,20 @@ namespace WindowsFormsApplication1
         {
 
             string s = comboBox1.SelectedValue.ToString();
+            if (s == "Bild Quanity")
+            {
+                s = "(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid)";
+            }
+            else if (s == "Orderid")
+            {
+                s = "VendorOrderDetails." + s + "";//.Orderid";
+            }
+            else if (s == "venderId")
+            {
+                s = "CustomerOrderDelivery." + s + "";
+            }
             //string m = "v" + s;
-            string selectQurry = "select  VendorOrderDetails.Orderid as[Order Id],VendorOrderDetails.venderId as [Vendor Id], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],VendorOrderDetails.OrderDate as[Order Date],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Total Amount],payment.TotalAmount as[Paid Amount] ,payment.BalanceAmount as[Balance Amount] from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid join AllPaymentDetailes payment on CustomerOrderDelivery.Deliveryid=payment.Invoiceid where " + s + " like '" + txtSearch.Text + "%'";
+            string selectQurry = "select  CustomerOrderDelivery.Deliveryid as[Order Id],VendorOrderDetails.venderId as [Vendor Id], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],CustomerOrderDelivery.DeliveryDate as[Order Date],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Total Amount],payment.TotalAmount as[Paid Amount] ,payment.BalanceAmount as[Balance Amount] from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid join AllPaymentDetailes payment on CustomerOrderDelivery.Deliveryid=payment.Invoiceid where " + s + " like '" + txtSearch.Text + "%'";
             DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
             dataGridView2.DataSource = dt;
         }
@@ -199,18 +213,18 @@ namespace WindowsFormsApplication1
         private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
-           // panel2.Visible = false;
+            // panel2.Visible = false;
             DataGridViewCellCollection call = dataGridView2.Rows[e.RowIndex].Cells;
             if (!string.IsNullOrEmpty(call[0].Value.ToString()))
             {
                 setDetails(call);
                 //int id = Convert.ToInt32(txtSrNo.Text);
                 //int id1 = id -1;
-               
 
-                string selectQurry = "select VendorOrderDetails.OrderDate as[Order Date],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Total Amount],payment.TotalAmount as[Paid Amount] ,payment.BalanceAmount as[Balance Amount] from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid join AllPaymentDetailes payment on CustomerOrderDelivery.Deliveryid=payment.Invoiceid where VendorOrderDetails.Orderid='" + txtRefNo.Text + "'";
+
+                string selectQurry = "select CustomerOrderDelivery.DeliveryDate as[Order Date],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Total Amount],payment.TotalAmount as[Paid Amount] ,payment.BalanceAmount as[Balance Amount] from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid join AllPaymentDetailes payment on CustomerOrderDelivery.Deliveryid=payment.Invoiceid where CustomerOrderDelivery.Deliveryid='" + txtRefNo.Text + "'";
                 DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
-                string balance="";
+                string balance = "";
                 foreach (DataRow dr in dt.Rows)
                 {
                     balance = dr[9].ToString();
@@ -224,23 +238,38 @@ namespace WindowsFormsApplication1
                 {
                     panel2.Visible = false;
                     dataGridView1.DataSource = dt;
+                    double d;
+                    double d1 = 0;
+                    DataGridViewRowCollection call1 = dataGridView1.Rows;
+                    for (int c = 0; c < call1.Count; c++)
+                    {
+                        DataGridViewRow currentRow1 = call1[c];
+                        DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
+                        d = Convert.ToDouble(cellCollection1[8].Value.ToString());
+                        d1 = d1 + d;
+                    }
+                    Double Amount1 = amount - d1;
+                    txttotalAmount.Text = Amount1.ToString("###0.00");
+                    txtInvoiceAmount.Text = Amount1.ToString("###0.00"); 
                 }
             }
-            
+
         }
         private void setDetails(DataGridViewCellCollection cellCollection)
         {
             try
             {
-               txtvendorId.Text = cellCollection[1].Value.ToString();
+                txtvendorId.Text = cellCollection[1].Value.ToString();
                 txtVendorName.Text = cellCollection[2].Value.ToString();
                 txtCompanyName.Text = cellCollection[3].Value.ToString();
                 txtAddress.Text = cellCollection[4].Value.ToString();
-               // txtPhone.Text = cellCollection[4].Value.ToString();
-               // txtMobile.Text = cellCollection[5].Value.ToString();
+                // txtPhone.Text = cellCollection[4].Value.ToString();
+                // txtMobile.Text = cellCollection[5].Value.ToString();
                 //txtFax.Text = cellCollection[6].Value.ToString();
-                txttotalAmount.Text = cellCollection[14].Value.ToString();
+               // txttotalAmount.Text = cellCollection[14].Value.ToString();
                 txtRefNo.Text = cellCollection[0].Value.ToString();
+                //txtInvoiceAmount.Text = cellCollection[14].Value.ToString();
+                amount = Convert.ToDouble(cellCollection[12].Value.ToString());
             }
             catch (Exception ex)
             {
@@ -259,11 +288,11 @@ namespace WindowsFormsApplication1
                 {
                     courntbal = dr[0].ToString();
                 }
-                txttotalAmount.Text = courntbal;
+               // txttotalAmount.Text = courntbal;
             }
         }
 
-     
+
         private void button4_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -271,7 +300,7 @@ namespace WindowsFormsApplication1
 
         private void buttSave_Click(object sender, EventArgs e)
         {
-            string ChaqueDate = varible.bankDate;
+            /* string ChaqueDate = varible.bankDate;
             string BankName = varible.bankname;
             string ChaqueNo = varible.chaqueNo;
             if (txtRefNo.Text == "")
@@ -298,7 +327,7 @@ namespace WindowsFormsApplication1
 
                 else if (ChaqueReado.Checked)
                 {
-                    string insertqurry = "insert into WithoutRefrencePament values('" + txtvendorId.Text + "','" + txttotalAmount.Text + "','" + txtPayAmount.Text + "','" + txtRemaning.Text + "','" + txtpayDate.Value.ToString() + "'";
+                   string insertqurry = "insert into WithoutRefrencePament values('" + txtvendorId.Text + "','" + txttotalAmount.Text + "','" + txtPayAmount.Text + "','" + txtRemaning.Text + "','" + txtpayDate.Value.ToString() + "'";
                     int insert1 = dbMainClass.saveDetails(insertqurry);
                     if (insert1 > 0)
                     {
@@ -370,12 +399,13 @@ namespace WindowsFormsApplication1
                     }
                 }
             }
-               
-                makeBlank();
-                makeBlank1();
-                int id = Convert.ToInt32(txtSrNo.Text);
-                int id1 = id + 1;
-                txtSrNo.Text = id1.ToString();
+               */
+            pnlPayment.Visible = true;
+            //makeBlank();
+            //makeBlank1();
+            //int id = Convert.ToInt32(txtSrNo.Text);
+            //int id1 = id + 1;
+            //txtSrNo.Text = id1.ToString();
         }
 
         private void txtPayAmount_TextChanged(object sender, EventArgs e)
@@ -390,7 +420,7 @@ namespace WindowsFormsApplication1
                     txtRemaning.Text = arrearAmount.ToString();
                 }
             }
-             if (ChaqueReado.Checked)
+            if (ChaqueReado.Checked)
             {
                 txtPayAmount.Text = varible.chaqueAmount;
                 int total = Convert.ToInt32(txttotalAmount.Text);
@@ -398,7 +428,7 @@ namespace WindowsFormsApplication1
                 int arrearAmount = total - payamount;
                 txtRemaning.Text = arrearAmount.ToString();
             }
-            
+
         }
         private void makeBlank()
         {
@@ -422,7 +452,7 @@ namespace WindowsFormsApplication1
         private void makeBlank1()
         {
             checkBox1.Checked = false;
-             checkBox2.Checked = false;
+            checkBox2.Checked = false;
         }
 
         private void txtPayAmount_KeyPress(object sender, KeyPressEventArgs e)
@@ -436,10 +466,10 @@ namespace WindowsFormsApplication1
                 if (e.KeyChar == '\b')
                 {
                     if (txtPayAmount.Text == "")
-                        {
-                       // txttotalAmount.Text
-                          txtRemaning.Text  = txttotalAmount.Text;
-                       }
+                    {
+                        // txttotalAmount.Text
+                        txtRemaning.Text = txttotalAmount.Text;
+                    }
                     if (txtPayAmount.Text == "0")
                     {
                         // txttotalAmount.Text
@@ -452,10 +482,10 @@ namespace WindowsFormsApplication1
                     e.Handled = true;
                 }
             }
-        //    int total = Convert.ToInt32(txttotalAmount.Text);
-        //    int payamount = Convert.ToInt32(txtPayAmount.Text);
-        //    int arrearAmount = total - payamount;
-        //    txtRemaning.Text = arrearAmount.ToString();
+            //    int total = Convert.ToInt32(txttotalAmount.Text);
+            //    int payamount = Convert.ToInt32(txtPayAmount.Text);
+            //    int arrearAmount = total - payamount;
+            //    txtRemaning.Text = arrearAmount.ToString();
 
         }
 
@@ -592,34 +622,34 @@ namespace WindowsFormsApplication1
             //    }
             //}
         }
-         private int vendid()
+        private int vendid()
         {
-             string selectqurry = "select vCurrentBalance from VendorAccountDetails where venderId='" + txtvendorId.Text + "'";
-                        DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
-                        string courntbal = "";
-                        foreach (DataRow dr in dt.Rows)
-                        {
-                            courntbal = dr[0].ToString();
-                        }
-                        int bal = Convert.ToInt32(courntbal);
-                        int bal1 = Convert.ToInt32(txtRemaning.Text);
-                        int bal2 = bal + bal1;
-             return bal2;
-         }
-         private int vendid1()
-         {
-             string selectqurry = "select vCurrentBalance from VendorAccountDetails where venderId='" + txtvendorId.Text + "'";
-             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
-             string courntbal = "";
-             foreach (DataRow dr in dt.Rows)
-             {
-                 courntbal = dr[0].ToString();
-             }
-             int bal = Convert.ToInt32(courntbal);
-             int bal1 = Convert.ToInt32(txtPayAmount.Text);
-             int bal2 = bal - bal1;
-             return bal2;
-         }
+            string selectqurry = "select vCurrentBalance from VendorAccountDetails where venderId='" + txtvendorId.Text + "'";
+            DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+            string courntbal = "";
+            foreach (DataRow dr in dt.Rows)
+            {
+                courntbal = dr[0].ToString();
+            }
+            int bal = Convert.ToInt32(courntbal);
+            int bal1 = Convert.ToInt32(txtRemaning.Text);
+            int bal2 = bal + bal1;
+            return bal2;
+        }
+        private int vendid1()
+        {
+            string selectqurry = "select vCurrentBalance from VendorAccountDetails where venderId='" + txtvendorId.Text + "'";
+            DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+            string courntbal = "";
+            foreach (DataRow dr in dt.Rows)
+            {
+                courntbal = dr[0].ToString();
+            }
+            int bal = Convert.ToInt32(courntbal);
+            int bal1 = Convert.ToInt32(txtPayAmount.Text);
+            int bal2 = bal - bal1;
+            return bal2;
+        }
 
         private void txtRefNo_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -719,10 +749,10 @@ namespace WindowsFormsApplication1
 
         private void ChaqueReado_Click(object sender, EventArgs e)
         {
-           // txtPayAmount.Text = "0";
+            // txtPayAmount.Text = "0";
             ChaquePayment ch = new ChaquePayment(txtPayAmount);
             ch.Show();
-            
+
         }
 
         private void checkBox2_Click(object sender, EventArgs e)
@@ -744,7 +774,7 @@ namespace WindowsFormsApplication1
             checkBox2.Checked = false;
             button1.Visible = false;
             txtSrNo.ReadOnly = false;
-            txtRefNo.ReadOnly =false;
+            txtRefNo.ReadOnly = false;
         }
 
         private void button2_Click_1(object sender, EventArgs e)
@@ -757,5 +787,587 @@ namespace WindowsFormsApplication1
 
         }
 
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            pnlPayment.Visible = false;
+            panel2.Visible = false;
+            
+            
+        }
+        public void allvisible()
+        {
+            txtCardNumber.ReadOnly = true;
+            txtDebitBankName.ReadOnly = true;
+            CmbCardType.Enabled = false;
+            txtChequeBankName.ReadOnly = true;
+            txtChequeNumber.ReadOnly = true;
+            txtCompanyName.ReadOnly = true;
+            CmbCompany.Enabled = false;
+            dateTimePicker1.Enabled = false;
+            txtTransactionNumber.ReadOnly = true;
+            dateTimePicker2.Enabled = false;
+            EWalletCompanyName.ReadOnly = true;
+            //label23.Visible = false;
+            //label25.Visible = false;
+            //label26.Visible = false;
+            //label28.Visible = false;
+            //label30.Visible = false;
+            //label31.Visible = false;
+            //label32.Visible = false;
+            //label34.Visible = false;
+            //label35.Visible = false;
+            //label36.Visible = false;
+            txtCardNumber.TabStop = true;
+            txtDebitBankName.TabStop = true;
+            txtChequeBankName.TabStop = true;
+            txtChequeNumber.TabStop = true;
+            txtTransactionNumber.TabStop = false;
+            EWalletCompanyName.TabStop = false;
+        }
+        private void pnlPayment_Paint(object sender, PaintEventArgs e)
+        {
+            txtInvoiceid.Text = txtRefNo.Text;
+            allvisible();
+           
+            CmbPageName.SelectedIndex = 0;
+            CmbCardType.SelectedIndex = 0;
+            CmbCompany.SelectedIndex = 0;
+        }
+
+        private void CashAmount_TextChanged(object sender, EventArgs e)
+        {
+            if (CashAmount.Text != "0")
+            {
+                //CashAmount.Text = "";
+                string amount = CashAmount.Text;
+                //CashAmount.Text = amount;
+                double amount1 = 0.0;
+                if (double.TryParse(amount, out amount1))
+                {
+                    txtTotalAmount1.Text = CashAmount.Text;
+                }
+            }
+        }
+
+        private void CashAmount_Leave(object sender, EventArgs e)
+        {
+            decimal x;
+            if (decimal.TryParse(CashAmount.Text, out x))
+            {
+                if (CashAmount.Text.IndexOf('.') != -1 && CashAmount.Text.Split('.')[1].Length > 2)
+                {
+                    MessageBox.Show("The maximum decimal points are 2!");
+                    CashAmount.Focus();
+                }
+                else CashAmount.Text = x.ToString("0.00");
+            }
+            else
+            {
+                CashAmount.Text = "0.00";
+                //MessageBox.Show("Data invalid!");
+                //txtVenderOpeningBal.Focus();
+            }
+        }
+
+        private void txtCreditAmount_Leave(object sender, EventArgs e)
+        {
+            if (txtCreditAmount.Text == "0.00")
+            {
+                credittext1();
+            }
+            if (txtCreditAmount.Text != "0.00")
+            {
+                credittext();
+            }
+            decimal x;
+            if (decimal.TryParse(txtCreditAmount.Text, out x))
+            {
+                if (txtCreditAmount.Text.IndexOf('.') != -1 && txtCreditAmount.Text.Split('.')[1].Length > 2)
+                {
+                    MessageBox.Show("The maximum decimal points are 2!");
+                    txtCreditAmount.Focus();
+                }
+                else txtCreditAmount.Text = x.ToString("0.00");
+            }
+            else
+            {
+                txtCreditAmount.Text = "0.00";
+                //MessageBox.Show("Data invalid!");
+                //txtVenderOpeningBal.Focus();
+            }
+        }
+
+        private void txtChequeAmount_Leave(object sender, EventArgs e)
+        {
+            if (txtCreditAmount.Text == "0.00")
+            {
+                credittext1();
+            }
+            if (txtCreditAmount.Text != "0.00")
+            {
+                credittext();
+                decimal x;
+                if (decimal.TryParse(txtChequeAmount.Text, out x))
+                {
+                    if (txtChequeAmount.Text.IndexOf('.') != -1 && txtChequeAmount.Text.Split('.')[1].Length > 2)
+                    {
+                        MessageBox.Show("The maximum decimal points are 2!");
+                        txtChequeAmount.Focus();
+                    }
+                    else txtChequeAmount.Text = x.ToString("0.00");
+                }
+                else
+                {
+                    txtChequeAmount.Text = "0.00";
+                    //MessageBox.Show("Data invalid!");
+                    //txtVenderOpeningBal.Focus();
+                }
+            }
+
+        }
+
+        private void txtEwalletAmount_Leave(object sender, EventArgs e)
+        {
+            if (txtEwalletAmount.Text == "0.00")
+            {
+                Ewalled1();
+            }
+            else
+            {
+                Ewalled();
+            }
+            decimal x;
+            if (decimal.TryParse(txtChequeAmount.Text, out x))
+            {
+                if (txtChequeAmount.Text.IndexOf('.') != -1 && txtChequeAmount.Text.Split('.')[1].Length > 2)
+                {
+                    MessageBox.Show("The maximum decimal points are 2!");
+                    txtChequeAmount.Focus();
+                }
+                else txtChequeAmount.Text = x.ToString("0.00");
+            }
+            else
+            {
+                txtChequeAmount.Text = "0.00";
+                //MessageBox.Show("Data invalid!");
+                //txtVenderOpeningBal.Focus();
+            }
+        }
+
+        private void txtCouponAmount_Leave(object sender, EventArgs e)
+        {
+            if (txtCouponAmount.Text == "0.00")
+            {
+                //CmbCompany.Visible = false;
+                // label23.Visible = false;
+            }
+            else
+            {
+                //CmbCompany.Visible = true;
+                //label23.Visible = true;
+            }
+            decimal x;
+            if (decimal.TryParse(txtCouponAmount.Text, out x))
+            {
+                if (txtCouponAmount.Text.IndexOf('.') != -1 && txtCouponAmount.Text.Split('.')[1].Length > 2)
+                {
+                    MessageBox.Show("The maximum decimal points are 2!");
+                    txtCouponAmount.Focus();
+                }
+                else txtCouponAmount.Text = x.ToString("0.00");
+            }
+            else
+            {
+                txtCouponAmount.Text = "0.00";
+                //MessageBox.Show("Data invalid!");
+                //txtVenderOpeningBal.Focus();
+            }
+        }
+
+        private void txtTotalAmount1_TextChanged(object sender, EventArgs e)
+        {
+            txtNetAmount.Text = txtTotalAmount1.Text;
+            Double Amount = Convert.ToDouble(txtTotalAmount1.Text);
+            Double Amount1 = Convert.ToDouble(txtInvoiceAmount.Text);
+            Double Amount2 = Amount1 - Amount;
+            string Amount3 = Amount2.ToString();
+            txtBalance.Text = Amount2.ToString("##0.00");
+        }
+
+        private void CashAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (CashAmount.Text == "")
+            {
+                txttotalAmount.Text = "0.00";
+                // txtBalance.Text = "0.00";
+            }
+            if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
+            {
+                //if (CashAmount.Text.IndexOf('.') != -1 && CashAmount.Text.Split('.')[1].Length == 2)
+                //{
+                //MessageBox.Show("The maximum decimal points are 2!");
+                e.Handled = false;
+                //}
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+        public void credittext()
+        {
+            txtCardNumber.ReadOnly = false;
+            txtDebitBankName.ReadOnly = false;
+            CmbCardType.Enabled = true;
+            txtCardNumber.TabStop = true;
+            txtDebitBankName.TabStop = true;
+        }
+        public void credittext1()
+        {
+            txtCardNumber.ReadOnly = true;
+            txtDebitBankName.ReadOnly = true;
+            CmbCardType.Enabled = false;
+            txtCardNumber.TabStop = false;
+            txtDebitBankName.TabStop = false;
+        }
+        private void txtCreditAmount_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCreditAmount.Text == "0.00" && txtCreditAmount.Text == "")
+            {
+                credittext1();
+                txtTotalAmount1.Text = "0.00";
+            }
+            if (txtCreditAmount.Text != "0.00")
+            {
+                credittext();
+                string amount = txtCreditAmount.Text;
+                double amount1 = 0.0;
+                if (double.TryParse(amount, out amount1))
+                {
+                    txtCreditAmount.Text = amount;
+                    Double Amount = Convert.ToDouble(txtCreditAmount.Text);
+                    Double Amount1 = Convert.ToDouble(CashAmount.Text);
+                    Double amount2 = Amount + Amount1;
+                    //string Amount2 = amount2.ToString();
+                    txtTotalAmount1.Text = amount2.ToString("##0.00");
+                }
+
+            }
+        }
+        public void chequetxt()
+        {
+            txtChequeBankName.ReadOnly = false;
+            txtChequeNumber.ReadOnly = false;
+            dataGridView1.Enabled = false;
+            txtChequeBankName.TabStop = false;
+            txtChequeNumber.TabStop = false;
+
+        }
+        public void chequetxt1()
+        {
+            txtChequeBankName.ReadOnly = true;
+            txtChequeNumber.ReadOnly = true;
+            dataGridView1.Enabled = true;
+            txtChequeBankName.TabStop = true;
+            txtChequeNumber.TabStop = true;
+        }
+        private void txtChequeAmount_TextChanged(object sender, EventArgs e)
+        {
+            if (txtChequeAmount.Text == "0.00")
+            {
+                chequetxt1();
+            }
+            if (txtChequeAmount.Text != "0.00")
+            {
+                chequetxt();
+                string amount = txtChequeAmount.Text;
+                double amount1 = 0.0;
+                if (double.TryParse(amount, out amount1))
+                {
+                    txtChequeAmount.Text = amount;
+                    //txtNetAmount.Text = amount;
+                    Double Amount = Convert.ToDouble(txtCreditAmount.Text);
+                    Double Amount1 = Convert.ToDouble(CashAmount.Text);
+                    Double Amount3 = Convert.ToDouble(txtChequeAmount.Text);
+                    Double amount2 = Amount + Amount1 + Amount3;
+                    //string Amount2 = amount2.ToString();
+                    txtTotalAmount1.Text = amount2.ToString("##0.00");
+                }
+            }
+        }
+
+        private void txtCouponAmount_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCouponAmount.Text == "0.00")
+            {
+                CmbCompany.Enabled = true;
+                //label23.Visible = false;
+            }
+            if (txtCouponAmount.Text != "0.00")
+            {
+                CmbCompany.Enabled = false;
+                //label23.Visible = true;
+                string amount = txtCouponAmount.Text;
+                //txtCouponAmount.Text = amount;
+                double amount1 = 0.0;
+                if (double.TryParse(amount, out amount1))
+                {
+                    Double Amount = Convert.ToDouble(txtCreditAmount.Text);
+                    Double Amount1 = Convert.ToDouble(CashAmount.Text);
+                    Double Amount3 = Convert.ToDouble(txtChequeAmount.Text);
+                    Double Amount4 = Convert.ToDouble(txtEwalletAmount.Text);
+                    Double Amount5 = Convert.ToDouble(txtCouponAmount.Text);
+                    Double amount2 = Amount + Amount1 + Amount3 + Amount4 + Amount5;
+                    string Amount2 = amount2.ToString();
+                    txtTotalAmount1.Text = amount2.ToString("##0.00");
+                }
+            }
+        }
+        public void Ewalled()
+        {
+            txtTransactionNumber.ReadOnly = false;
+            EWalletCompanyName.ReadOnly = false;
+            dataGridView2.Enabled = false;
+            txtTransactionNumber.TabStop = false;
+            EWalletCompanyName.TabStop = false;
+
+        }
+        public void Ewalled1()
+        {
+
+            txtTransactionNumber.ReadOnly = true;
+            EWalletCompanyName.ReadOnly = true;
+            dataGridView2.Enabled = true;
+            txtTransactionNumber.TabStop = false;
+            EWalletCompanyName.TabStop = false;
+        }
+        private void BlankPaymentPage()
+        {
+            CashAmount.Text = "0.00";
+            txtCreditAmount.Text = "0.00";
+            txtDebitBankName.Text = "";
+            txtCardNumber.Text = "";
+            CmbCardType.SelectedIndex = 0;
+            txtChequeAmount.Text = "0.00";
+            txtChequeBankName.Text = "";
+            txtChequeNumber.Text = "";
+           // txtWAmount.Text = "0.00";
+            txtEwalletAmount.Text = "0.00";
+            EWalletCompanyName.Text = "";
+            txtTransactionNumber.Text = "";
+            txtCouponAmount.Text = "0.00";
+            CmbCompany.SelectedIndex = 0;
+            txtTotalAmount1.Text = "0.00";
+            txtBalance.Text = "0.00";
+            txtRturned.Text = "0.00";
+            txtNetAmount.Text = "0.00";
+
+
+        }
+        private void txtEwalletAmount_TextChanged(object sender, EventArgs e)
+        {
+            if (txtEwalletAmount.Text == "")
+            {
+                Ewalled1();
+            }
+            else if (txtEwalletAmount.Text != "0")
+            {
+                Ewalled();
+                string amount = txtEwalletAmount.Text;
+                double amount1 = 0.0;
+                if (double.TryParse(amount, out amount1))
+                {
+                    txtEwalletAmount.Text = amount;
+                    Double Amount = Convert.ToDouble(txtCreditAmount.Text);
+                    Double Amount1 = Convert.ToDouble(CashAmount.Text);
+                    Double Amount3 = Convert.ToDouble(txtChequeAmount.Text);
+                    Double Amount4 = Convert.ToDouble(txtEwalletAmount.Text);
+                    Double amount2 = Amount + Amount1 + Amount3 + Amount4;
+                    string Amount2 = amount2.ToString();
+                    txtTotalAmount1.Text = Amount2;
+                }
+            }
+        }
+
+        private void txtCreditAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
+            {
+                //if (txtCreditAmount.Text.IndexOf('.') != -1 && txtCreditAmount.Text.Split('.')[1].Length == 2)
+                //{
+                //    //MessageBox.Show("The maximum decimal points are 2!");
+                e.Handled = false;
+                //}
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void txtRturned_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBalance.Text == "")
+            {
+                txtBalance.Text = "0";
+            }
+            if (txtRturned.Text == "")
+            {
+                txtRturned.Text = "0";
+            }
+            string sub = txtBalance.Text;
+            string return1 = txtRturned.Text;
+            double amount1 = 0.0;
+            if (double.TryParse(sub, out amount1))
+            {
+                double bal = Convert.ToDouble(txtBalance.Text);
+                if (double.TryParse(return1, out amount1))
+                {
+                    double ReturnAmount = Convert.ToDouble(txtRturned.Text);
+                    double bal1 = bal + ReturnAmount;
+                    txtBalance.Text = bal1.ToString();
+                }
+            }
+        }
+
+        private void txtRturned_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
+            {
+                //if (txtRturned.Text.IndexOf('.') != -1 && txtRturned.Text.Split('.')[1].Length == 2)
+                //{
+                //    //MessageBox.Show("The maximum decimal points are 2!");
+                //    e.Handled = true;
+                //}
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    txtBalance.Text = "0";
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    //MessageBox.Show("Plese enter numeric value!");
+                }
+            }
+        }
+
+        private void txtChequeAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
+            {
+                //if (txtChequeAmount.Text.IndexOf('.') != -1 && txtChequeAmount.Text.Split('.')[1].Length == 2)
+                //{
+                //    //MessageBox.Show("The maximum decimal points are 2!");
+                e.Handled = false;
+                //}
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    txtBalance.Text = "0";
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    //MessageBox.Show("Plese enter numeric value!");
+                }
+            }
+        }
+
+        private void txtEwalletAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
+            {
+                //if (txtEwalletAmount.Text.IndexOf('.') != -1 && txtEwalletAmount.Text.Split('.')[1].Length == 2)
+                //{
+                //    //MessageBox.Show("The maximum decimal points are 2!");
+                e.Handled = false;
+                //}
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    txtBalance.Text = "0";
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    //MessageBox.Show("Plese enter numeric value!");
+                }
+            }
+        }
+
+        private void txtCouponAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
+            {
+                //    if (txtCouponAmount.Text.IndexOf('.') != -1 && txtCouponAmount.Text.Split('.')[1].Length == 2)
+                //    {
+                //        //MessageBox.Show("The maximum decimal points are 2!");
+                e.Handled = false;
+                //}
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    txtBalance.Text = "0";
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    //MessageBox.Show("Plese enter numeric value!");
+                }
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            CmbCardType.SelectedIndex = 0;
+            CmbCompany.SelectedIndex = 0;
+            string insertQurry1 = "insert into AllPaymentDetailes Values('" + txtInvoiceid.Text + "','" + CashAmount.Text + "','" + txtCreditAmount.Text + "','" + txtDebitBankName.Text + "','" + txtCardNumber.Text + "','" + CmbCardType.SelectedItem.ToString() + "','" + txtChequeAmount.Text + "','" + txtChequeBankName.Text + "','" + txtChequeNumber.Text + "','" + dateTimePicker1.Value.ToString() + "','" + txtEwalletAmount.Text + "','" + EWalletCompanyName.Text + "','" + txtTransactionNumber.Text + "','" + dateTimePicker2.Value.ToString() + "','" + txtCouponAmount.Text + "','" + CmbCompany.SelectedItem.ToString() + "','" + txtInvoiceAmount.Text + "','" + txtTotalAmount1.Text + "','" + txtBalance.Text + "','" + txtRturned.Text + "','" + txtNetAmount.Text + "')";
+            int insertedRows = dbMainClass.saveDetails(insertQurry1);
+            if (insertedRows > 0)
+            {
+                MessageBox.Show("Details Saved Successfully");
+                BlankPaymentPage();
+            }
+            else
+            {
+                MessageBox.Show("Details Not Saved Successfully");
+            }
+
+        }
+
+        private void groupBox8_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
