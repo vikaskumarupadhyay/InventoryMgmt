@@ -237,6 +237,8 @@ go
 ALTER TABLE customerorderdescriptions ALTER COLUMN totalammount decimal(18,2)
 go
 ALTER TABLE ItemPriceDetail ALTER COLUMN purChasePrice decimal(18,2)
+go
+alter table AllPaymentDetailes add PaymentDate dateTime
  
 
 
