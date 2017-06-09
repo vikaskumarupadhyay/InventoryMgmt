@@ -253,8 +253,9 @@ namespace WindowsFormsApplication1
             DataGridViewCellCollection cell = dataGridView2.Rows[e.RowIndex].Cells;
             if(!string.IsNullOrEmpty(cell[0].Value.ToString()))
             {
+               
                 setdetails(cell);
-                string selectquery = " select DeliveryDate as[Delivery Date],(select Sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid) as[Bild Quanity],orderdetails.WithautTaxamount as[Gross Amount],orderdetails.Discount as[Discount Rate],orderdetails.Discountamount as[Dicount Amount],orderdetails.Tax as[Tax],orderdetails.Taxamount as[Tax Amount],orderdetails.totalammount as[Total Amount],pay.TotalAmount as[Paid Amount],pay.BalanceAmount as [Balance Amount] from orderdetails join salesOrderDelivery on orderdetails.Orderid=salesOrderDelivery.Orderid join SalesPaymentDetailes pay on salesOrderDelivery.Delivaryid=pay.Invoiceid where salesOrderDelivery.Delivaryid='" + txtRefNo.Text + "' ";
+                string selectquery = " select pay.ReceiptDate as[Receipt Date],(select Sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid) as[Bild Quanity],orderdetails.WithautTaxamount as[Gross Amount],orderdetails.Discount as[Discount Rate],orderdetails.Discountamount as[Dicount Amount],orderdetails.Tax as[Tax],orderdetails.Taxamount as[Tax Amount],orderdetails.totalammount as[Total Amount],pay.TotalAmount as[Paid Amount],pay.BalanceAmount as [Balance Amount] from orderdetails join salesOrderDelivery on orderdetails.Orderid=salesOrderDelivery.Orderid join SalesPaymentDetailes pay on salesOrderDelivery.Delivaryid=pay.Invoiceid where salesOrderDelivery.Delivaryid='" + txtRefNo.Text + "' ";
                 DataTable dt = d.getDetailByQuery(selectquery);
                 string balance = "";
                 foreach (DataRow dr in dt.Rows)
@@ -1167,7 +1168,8 @@ namespace WindowsFormsApplication1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string insertQurry = "insert into SalesPaymentDetailes Values('" + txtInvoiceid.Text + "','" + CashAmount.Text + "','" + txtCreditAmount.Text + "','" + txtDebitBankName.Text + "','" + txtCardNumber.Text + "','" + CmbCardType.SelectedItem.ToString() + "','" + txtChequeAmount.Text + "','" + txtChequeBankName.Text + "','" + txtChequeNumber.Text + "','" + dateTimePicker1.Value.ToString() + "','" + txtEwalletAmount.Text + "','" + EWalletCompanyName.Text + "','" + txtTransactionNumber.Text + "','" + dateTimePicker2.Value.ToString() + "','" + txtCouponAmount.Text + "','" + CmbCompany.SelectedItem.ToString() + "','" + txtInvoiceAmount.Text + "','" + txtTotalAmount1.Text + "','" + txtBalance.Text + "','" + txtRturned.Text + "','" + txtNetAmount.Text + "')";
+            DateTime f1 = DateTime.Now;
+            string insertQurry = "insert into SalesPaymentDetailes Values('" + txtInvoiceid.Text + "','" + CashAmount.Text + "','" + txtCreditAmount.Text + "','" + txtDebitBankName.Text + "','" + txtCardNumber.Text + "','" + CmbCardType.SelectedItem.ToString() + "','" + txtChequeAmount.Text + "','" + txtChequeBankName.Text + "','" + txtChequeNumber.Text + "','" + dateTimePicker1.Value.ToString() + "','" + txtEwalletAmount.Text + "','" + EWalletCompanyName.Text + "','" + txtTransactionNumber.Text + "','" + dateTimePicker2.Value.ToString() + "','" + txtCouponAmount.Text + "','" + CmbCompany.SelectedItem.ToString() + "','" + txtInvoiceAmount.Text + "','" + txtTotalAmount1.Text + "','" + txtBalance.Text + "','" + txtRturned.Text + "','" + txtNetAmount.Text + "','"+f1+"')";
             int insertedRows = d.saveDetails(insertQurry);
             if (insertedRows > 0)
             {
