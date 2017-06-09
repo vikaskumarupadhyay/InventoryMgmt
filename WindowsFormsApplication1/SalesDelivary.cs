@@ -3879,6 +3879,11 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void groupBox8_Enter(object sender, EventArgs e)
+        {
+
+        }
+
        
 
      
