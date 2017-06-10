@@ -30,6 +30,8 @@ namespace WindowsFormsApplication1
         }
         private void Form5_Load(object sender, EventArgs e)
         {
+            CmbCardType.SelectedIndex = 0;
+            CmbCompany.SelectedIndex = 0;
             pnlSalesPayment.Visible = false;
             string selectqurry = "select salesOrderDelivery.Delivaryid as[Delivary Id],orderdetails.custid as [Customer Id], CustomerDetails.CustName as[Customer Name],CustomerDetails.CustCompName as[Company Name], CustomerDetails.CustAddress as[Address],salesOrderDelivery.DeliveryDate as[Delivery Date],(select Sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid) as[Bild Quanity],orderdetails.WithautTaxamount as[Gross Amount],orderdetails.Discount as[Discount Rate],orderdetails.Discountamount as[Dicount Amount],orderdetails.Tax as[Tax],orderdetails.Taxamount as[Tax Amount],orderdetails.totalammount as[Total Amount],pay.TotalAmount as[Paid Amount],pay.BalanceAmount as [Balance Amount] from orderdetails join CustomerDetails on CustomerDetails.custId=orderdetails.custid join salesOrderDelivery on orderdetails.Orderid=salesOrderDelivery.Orderid join SalesPaymentDetailes pay on salesOrderDelivery.Delivaryid=pay.Invoiceid";
             string selectqurryForActualColumnName = "select top 1 salesOrderDelivery.Delivaryid,orderdetails.custid, CustomerDetails.CustName,CustomerDetails.CustCompName, CustomerDetails.CustAddress,DeliveryDate,(select Sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid),orderdetails.WithautTaxamount,orderdetails.Discount,orderdetails.Discountamount,orderdetails.Tax,orderdetails.Taxamount,orderdetails.totalammount,pay.TotalAmount ,pay.BalanceAmount  from orderdetails join CustomerDetails on CustomerDetails.custId=orderdetails.custid join salesOrderDelivery on orderdetails.Orderid=salesOrderDelivery.Orderid join SalesPaymentDetailes pay on salesOrderDelivery.Delivaryid=pay.Invoiceid";
@@ -720,11 +722,17 @@ namespace WindowsFormsApplication1
 
         private void pnlSalesPayment_Paint(object sender, PaintEventArgs e)
         {
-           
-            CmbCardType.SelectedIndex = 0;
-            CmbCompany.SelectedIndex = 0;
+
             txtInvoiceid.Text = txtRefNo.Text;
             txtInvoiceAmount.Text = txttotalammount.Text;
+            txtBalance.Text = txttotalammount.Text;
+            txtNetAmount.Text = txtTotalAmount1.Text;
+            Double Amount = Convert.ToDouble(txtTotalAmount1.Text);
+            Double Amount1 = Convert.ToDouble(txtInvoiceAmount.Text);
+            Double Amount2 = Amount1 - Amount;
+            string Amount3 = Amount2.ToString();
+            txtBalance.Text = Amount2.ToString("##0.00");
+          
            
         }
 
@@ -1176,11 +1184,14 @@ namespace WindowsFormsApplication1
 
                 MessageBox.Show("details save successfully");
                  salesedelivarytabindex();
+                 //pnlSalesPayment.Visible = true;
                 }
             else
                {
                     MessageBox.Show("details not save successfully");
               }
+            pnlSalesPayment.Visible = false;
+            panel2.Visible = true;
         }
 
         private void btnClose_Click(object sender, EventArgs e)

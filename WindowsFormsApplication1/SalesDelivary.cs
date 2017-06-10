@@ -3212,8 +3212,13 @@ namespace WindowsFormsApplication1
         {
             txtInvoiceid.Text = txtSrNo.Text;
             txtInvoiceAmount.Text = txtTotalAmmount.Text + .00;
-           // txtBalance.Text = txtTotalAmmount.Text;
-
+          txtBalance.Text = txtTotalAmmount.Text;
+          txtNetAmount.Text = txtTotalAmount1.Text;
+          Double Amount = Convert.ToDouble(txtTotalAmount1.Text);
+          Double Amount1 = Convert.ToDouble(txtInvoiceAmount.Text);
+          Double Amount2 = Amount1 - Amount;
+          string Amount3 = Amount2.ToString();
+          txtBalance.Text = Amount2.ToString("##0.00");
             
             //btnSave.TabStop = true;
             //btnClose.TabStop = true;
