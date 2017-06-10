@@ -592,9 +592,10 @@
             this.panel2.Controls.Add(this.combsearch);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Location = new System.Drawing.Point(5, 3);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1144, 582);
+            this.panel2.Size = new System.Drawing.Size(1161, 587);
             this.panel2.TabIndex = 42;
             // 
             // dataGridView2
@@ -649,9 +650,9 @@
             this.pnlSalesPayment.Controls.Add(this.groupBox8);
             this.pnlSalesPayment.Controls.Add(this.btnSave);
             this.pnlSalesPayment.Controls.Add(this.groupBox9);
-            this.pnlSalesPayment.Location = new System.Drawing.Point(-3, -30);
+            this.pnlSalesPayment.Location = new System.Drawing.Point(-3, -29);
             this.pnlSalesPayment.Name = "pnlSalesPayment";
-            this.pnlSalesPayment.Size = new System.Drawing.Size(1166, 654);
+            this.pnlSalesPayment.Size = new System.Drawing.Size(1166, 653);
             this.pnlSalesPayment.TabIndex = 59;
             this.pnlSalesPayment.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSalesPayment_Paint);
             // 
