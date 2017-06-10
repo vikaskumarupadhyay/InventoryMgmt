@@ -998,11 +998,11 @@
             // 
             this.txtInvoiceAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtInvoiceAmount.Location = new System.Drawing.Point(138, 20);
+            this.txtInvoiceAmount.Location = new System.Drawing.Point(131, 20);
             this.txtInvoiceAmount.Multiline = true;
             this.txtInvoiceAmount.Name = "txtInvoiceAmount";
             this.txtInvoiceAmount.ReadOnly = true;
-            this.txtInvoiceAmount.Size = new System.Drawing.Size(258, 23);
+            this.txtInvoiceAmount.Size = new System.Drawing.Size(264, 23);
             this.txtInvoiceAmount.TabIndex = 1;
             this.txtInvoiceAmount.TabStop = false;
             this.txtInvoiceAmount.Text = "0.00";
