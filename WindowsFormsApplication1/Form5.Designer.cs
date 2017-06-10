@@ -649,9 +649,9 @@
             this.pnlSalesPayment.Controls.Add(this.groupBox8);
             this.pnlSalesPayment.Controls.Add(this.btnSave);
             this.pnlSalesPayment.Controls.Add(this.groupBox9);
-            this.pnlSalesPayment.Location = new System.Drawing.Point(-3, -28);
+            this.pnlSalesPayment.Location = new System.Drawing.Point(-3, -30);
             this.pnlSalesPayment.Name = "pnlSalesPayment";
-            this.pnlSalesPayment.Size = new System.Drawing.Size(1166, 652);
+            this.pnlSalesPayment.Size = new System.Drawing.Size(1166, 654);
             this.pnlSalesPayment.TabIndex = 59;
             this.pnlSalesPayment.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSalesPayment_Paint);
             // 
