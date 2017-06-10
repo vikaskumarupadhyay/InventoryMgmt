@@ -31,8 +31,8 @@ namespace WindowsFormsApplication1
         private void Form5_Load(object sender, EventArgs e)
         {
             pnlSalesPayment.Visible = false;
-            string selectqurry = "select salesOrderDelivery.Delivaryid as[Delivary Id],orderdetails.custid as [Customer Id], CustomerDetails.CustName as[Customer Name],CustomerDetails.CustCompName as[Company Name], CustomerDetails.CustAddress as[Address],salesOrderDelivery.DeliveryDate as[Delivery Date],(select Sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid) as[Bild Quanity],orderdetails.WithautTaxamount as[Gross Amount],orderdetails.Discount as[Discount Rate],orderdetails.Discountamount as[Dicount Amount],orderdetails.Tax as[Tax],orderdetails.Taxamount as[Tax Amount],orderdetails.totalammount as[Total Amount],pay.TotalAmount as[Paid Amount],pay.BalanceAmount as [Balance Amount] from orderdetails join CustomerDetails on CustomerDetails.custId=orderdetails.custid join salesOrderDelivery on orderdetails.Orderid=salesOrderDelivery.Orderid join SalesPaymentDetailes pay on salesOrderDelivery.Delivaryid=pay.Invoiceid";
-            string selectqurryForActualColumnName = "select top 1 salesOrderDelivery.Delivaryid,orderdetails.custid, CustomerDetails.CustName,CustomerDetails.CustCompName, CustomerDetails.CustAddress,DeliveryDate,(select Sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid),orderdetails.WithautTaxamount,orderdetails.Discount,orderdetails.Discountamount,orderdetails.Tax,orderdetails.Taxamount,orderdetails.totalammount,pay.TotalAmount ,pay.BalanceAmount  from orderdetails join CustomerDetails on CustomerDetails.custId=orderdetails.custid join salesOrderDelivery on orderdetails.Orderid=salesOrderDelivery.Orderid join SalesPaymentDetailes pay on salesOrderDelivery.Delivaryid=pay.Invoiceid";
+            string selectqurry = "select salesOrderDelivery.Delivaryid as[Delivary Id],orderdetails.custid as [Customer Id], CustomerDetails.CustName as[Customer Name],CustomerDetails.CustCompName as[Company Name], CustomerDetails.CustAddress as[Address],salesOrderDelivery.DeliveryDate as[Delivery Date],(select Sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid) as[Bild Quanity],orderdetails.WithautTaxamount as[Gross Amount],orderdetails.Discount as[Discount Rate],orderdetails.Discountamount as[Dicount Amount],orderdetails.Tax as[Tax],orderdetails.Taxamount as[Tax Amount],orderdetails.totalammount as[Total Amount],p.Balance,p.[Paid Amount]  from orderdetails join CustomerDetails on CustomerDetails.custId=orderdetails.custid join salesOrderDelivery on orderdetails.Orderid=salesOrderDelivery.Orderid left join  (select Invoiceid, (MAX(InvoiceAmount) - sum(TotalAmount)) as Balance , sum(TotalAmount) as [Paid Amount] from SalesPaymentDetailes  join salesOrderDelivery on SalesPaymentDetailes.Invoiceid=salesOrderDelivery.Delivaryid  group by Invoiceid) p on salesOrderDelivery.Delivaryid=p.Invoiceid";
+            string selectqurryForActualColumnName = "select top 1 salesOrderDelivery.Delivaryid,orderdetails.custid, CustomerDetails.CustName,CustomerDetails.CustCompName, CustomerDetails.CustAddress,DeliveryDate,(select Sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid),orderdetails.WithautTaxamount,orderdetails.Discount,orderdetails.Discountamount,orderdetails.Tax,orderdetails.Taxamount,orderdetails.totalammount,p.Balance,p.[Paid Amount]  from orderdetails join CustomerDetails on CustomerDetails.custId=orderdetails.custid join salesOrderDelivery on orderdetails.Orderid=salesOrderDelivery.Orderid left join  (select Invoiceid, (MAX(InvoiceAmount) - sum(TotalAmount)) as Balance , sum(TotalAmount) as [Paid Amount] from SalesPaymentDetailes  join salesOrderDelivery on SalesPaymentDetailes.Invoiceid=salesOrderDelivery.Delivaryid  group by Invoiceid) p on salesOrderDelivery.Delivaryid=p.Invoiceid";
             DataTable dt = d.getDetailByQuery(selectqurry);
             DataTable dtOnlyColumnName = d.getDetailByQuery(selectqurryForActualColumnName);
             DataTable customDataTable = new DataTable();
@@ -311,7 +311,7 @@ namespace WindowsFormsApplication1
         private void textBox8_TextChanged(object sender, EventArgs e)
         {
             string s = combsearch.SelectedValue.ToString();
-           // string m = "c" + s;
+            // string m = "c" + s;
             if (s == "Column1")
             {
                 s = "(select Sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid)";
@@ -324,7 +324,17 @@ namespace WindowsFormsApplication1
             {
                 s = "orderdetails.custid";
             }
-            string selectquery = "select salesOrderDelivery.Delivaryid as[Delivary Id],orderdetails.custid as [Customer Id], CustomerDetails.CustName as[Customer Name],CustomerDetails.CustCompName as[Company Name], CustomerDetails.CustAddress as[Address],DeliveryDate as[Delivery Date],(select Sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid) as[Bild Quanity],orderdetails.WithautTaxamount as[Gross Amount],orderdetails.Discount as[Discount Rate],orderdetails.Discountamount as[Dicount Amount],orderdetails.Tax as[Tax],orderdetails.Taxamount as[Tax Amount],orderdetails.totalammount as[Total Amount],pay.TotalAmount as[Paid Amount],pay.BalanceAmount as [Balance Amount] from orderdetails join CustomerDetails on CustomerDetails.custId=orderdetails.custid join salesOrderDelivery on orderdetails.Orderid=salesOrderDelivery.Orderid join SalesPaymentDetailes pay on salesOrderDelivery.Delivaryid=pay.Invoiceid where " + s + " like '" + textBox8.Text + "%'";
+            else if (s == "Balance")
+            {
+                s = "p.Balance";
+            }
+            else if (s == "Paid Amount")
+            {
+                s = "p.[Paid Amount]";
+            }
+
+            string selectquery = "select salesOrderDelivery.Delivaryid as[Delivary Id],orderdetails.custid as [Customer Id], CustomerDetails.CustName as[Customer Name],CustomerDetails.CustCompName as[Company Name], CustomerDetails.CustAddress as[Address],salesOrderDelivery.DeliveryDate as[Delivery Date],(select Sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid) as[Bild Quanity],orderdetails.WithautTaxamount as[Gross Amount],orderdetails.Discount as[Discount Rate],orderdetails.Discountamount as[Dicount Amount],orderdetails.Tax as[Tax],orderdetails.Taxamount as[Tax Amount],orderdetails.totalammount as[Total Amount],p.Balance,p.[Paid Amount]  from orderdetails join CustomerDetails on CustomerDetails.custId=orderdetails.custid join salesOrderDelivery on orderdetails.Orderid=salesOrderDelivery.Orderid left join  (select Invoiceid, (MAX(InvoiceAmount) - sum(TotalAmount)) as Balance , sum(TotalAmount) as [Paid Amount] from SalesPaymentDetailes  join salesOrderDelivery on SalesPaymentDetailes.Invoiceid=salesOrderDelivery.Delivaryid  group by Invoiceid) p on salesOrderDelivery.Delivaryid=p.Invoiceid where " + s + " like '" + textBox8.Text + "%'";
+
             DataTable dt = d.getDetailByQuery(selectquery);
             dataGridView2.DataSource = dt;
         }
