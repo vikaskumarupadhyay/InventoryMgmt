@@ -231,8 +231,21 @@ namespace WindowsFormsApplication1
                 }
                 if (balance == "0.00")
                 {
-                    panel2.Visible = true;
-                    MessageBox.Show("fully paid");
+                    buttSave.Enabled = false;
+                    panel2.Visible = false;
+                    dataGridView1.DataSource = dt;
+                    double d;
+                    double d1 = 0;
+                    DataGridViewRowCollection call1 = dataGridView1.Rows;
+                    for (int c = 0; c < call1.Count; c++)
+                    {
+                        DataGridViewRow currentRow1 = call1[c];
+                        DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
+                        d = Convert.ToDouble(cellCollection1[8].Value.ToString());
+                        d1 = d1 + d;
+                    }
+                    Double Amount1 = amount - d1;
+                    txttotalAmount.Text = Amount1.ToString("###0.00");
                 }
                 else
                 {
@@ -250,7 +263,8 @@ namespace WindowsFormsApplication1
                     }
                     Double Amount1 = amount - d1;
                     txttotalAmount.Text = Amount1.ToString("###0.00");
-                    txtInvoiceAmount.Text = Amount1.ToString("###0.00"); 
+                   // txtInvoiceAmount.Text = Amount1.ToString("###0.00"); 
+                   // txtBalance.Text = Amount1.ToString("###0.00"); 
                 }
             }
 
@@ -268,7 +282,7 @@ namespace WindowsFormsApplication1
                 //txtFax.Text = cellCollection[6].Value.ToString();
                // txttotalAmount.Text = cellCollection[14].Value.ToString();
                 txtRefNo.Text = cellCollection[0].Value.ToString();
-                //txtInvoiceAmount.Text = cellCollection[14].Value.ToString();
+                txtInvoiceAmount.Text = cellCollection[12].Value.ToString();
                 amount = Convert.ToDouble(cellCollection[12].Value.ToString());
             }
             catch (Exception ex)
@@ -401,6 +415,7 @@ namespace WindowsFormsApplication1
             }
                */
             pnlPayment.Visible = true;
+            CashAmount.Focus();
             //makeBlank();
             //makeBlank1();
             //int id = Convert.ToInt32(txtSrNo.Text);
@@ -828,8 +843,16 @@ namespace WindowsFormsApplication1
         {
            
             txtInvoiceid.Text = txtRefNo.Text;
-            allvisible();
            
+            txtInvoiceAmount.Text = amount.ToString("###0.00");
+            txtBalance.Text = txttotalAmount.Text;
+            txtNetAmount.Text = txtTotalAmount1.Text;
+            Double Amount = Convert.ToDouble(txtTotalAmount1.Text);
+            Double Amount1 = Convert.ToDouble(txtBalance.Text);
+            Double Amount2 = Amount1 - Amount;
+            string Amount3 = Amount2.ToString();
+            txtBalance.Text = Amount2.ToString("##0.00");
+            allvisible();
             CmbPageName.SelectedIndex = 0;
             CmbCardType.SelectedIndex = 0;
             CmbCompany.SelectedIndex = 0;
@@ -846,6 +869,11 @@ namespace WindowsFormsApplication1
                 if (double.TryParse(amount, out amount1))
                 {
                     txtTotalAmount1.Text = CashAmount.Text;
+                    Double Amount = Convert.ToDouble(txtTotalAmount1.Text);
+                    Double Amount1 = Convert.ToDouble(txtBalance.Text);//(txtInvoiceAmount.Text);
+                    Double Amount2 = Amount1 - Amount;
+                    string Amount3 = Amount2.ToString();
+                    txtBalance.Text = Amount2.ToString("##0.00");
                 }
             }
         }
@@ -1350,8 +1378,7 @@ namespace WindowsFormsApplication1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            CmbCardType.SelectedIndex = 0;
-            CmbCompany.SelectedIndex = 0;
+            
             DateTime d = DateTime.Now;
             string insertQurry1 = "insert into AllPaymentDetailes Values('" + txtInvoiceid.Text + "','" + CashAmount.Text + "','" + txtCreditAmount.Text + "','" + txtDebitBankName.Text + "','" + txtCardNumber.Text + "','" + CmbCardType.SelectedItem.ToString() + "','" + txtChequeAmount.Text + "','" + txtChequeBankName.Text + "','" + txtChequeNumber.Text + "','" + dateTimePicker1.Value.ToString() + "','" + txtEwalletAmount.Text + "','" + EWalletCompanyName.Text + "','" + txtTransactionNumber.Text + "','" + dateTimePicker2.Value.ToString() + "','" + txtCouponAmount.Text + "','" + CmbCompany.SelectedItem.ToString() + "','" + txtInvoiceAmount.Text + "','" + txtTotalAmount1.Text + "','" + txtBalance.Text + "','" + txtRturned.Text + "','" + txtNetAmount.Text + "','"+d+"')";
             int insertedRows = dbMainClass.saveDetails(insertQurry1);
@@ -1359,6 +1386,8 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("Details Saved Successfully");
                 BlankPaymentPage();
+                pnlPayment.Visible = false;
+                panel2.Visible = true;
             }
             else
             {
