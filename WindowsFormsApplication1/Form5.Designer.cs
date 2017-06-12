@@ -451,7 +451,7 @@
             this.txtInvoiceAmount.Multiline = true;
             this.txtInvoiceAmount.Name = "txtInvoiceAmount";
             this.txtInvoiceAmount.ReadOnly = true;
-            this.txtInvoiceAmount.Size = new System.Drawing.Size(113, 23);
+            this.txtInvoiceAmount.Size = new System.Drawing.Size(129, 23);
             this.txtInvoiceAmount.TabIndex = 1;
             this.txtInvoiceAmount.TabStop = false;
             this.txtInvoiceAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
