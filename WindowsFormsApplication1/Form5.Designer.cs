@@ -120,14 +120,14 @@
             this.CashAmount = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
 
-            //this.textBox15 = new System.Windows.Forms.TextBox();
-            //this.textBox22 = new System.Windows.Forms.TextBox();
-            //this.label8 = new System.Windows.Forms.Label();
-            //this.label10 = new System.Windows.Forms.Label();
-            //this.combsearch = new System.Windows.Forms.ComboBox();
-            //this.textBox8 = new System.Windows.Forms.TextBox();
-            //this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            //this.panel2 = new System.Windows.Forms.Panel();
+            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.textBox22 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+           this.label10 = new System.Windows.Forms.Label();
+            this.combsearch = new System.Windows.Forms.ComboBox();
+           this.textBox8 = new System.Windows.Forms.TextBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
             //this.txttotalammount = new System.Windows.Forms.TextBox();
 
             this.panel1.SuspendLayout();
@@ -1401,9 +1401,9 @@
         //private System.Windows.Forms.TextBox textBox15;
         //private System.Windows.Forms.TextBox textBox22;
         //private System.Windows.Forms.Label label8;
-        //private System.Windows.Forms.Label label10;
+       // private System.Windows.Forms.Label label10;
         //private System.Windows.Forms.ComboBox combsearch;
-        //private System.Windows.Forms.TextBox textBox8;
+       // private System.Windows.Forms.TextBox textBox8;
         //private System.Windows.Forms.DataGridView dataGridView2;
         //private System.Windows.Forms.Panel panel2;
         //private System.Windows.Forms.TextBox txttotalammount;
