@@ -28,24 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.txtreamaining = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtpayammount = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.txttotalammount = new System.Windows.Forms.TextBox();
             this.textBox22 = new System.Windows.Forms.TextBox();
             this.textBox15 = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.radcheckbutton = new System.Windows.Forms.RadioButton();
-            this.radcashbutton = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtRefNo = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -135,11 +124,8 @@
             this.label37 = new System.Windows.Forms.Label();
             this.CashAmount = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
-            this.groupBox5.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -151,64 +137,11 @@
             this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.txtreamaining);
-            this.groupBox5.Controls.Add(this.label13);
-            this.groupBox5.Controls.Add(this.txtpayammount);
-            this.groupBox5.Controls.Add(this.label12);
-            this.groupBox5.Controls.Add(this.txttotalammount);
-            this.groupBox5.Controls.Add(this.textBox22);
-            this.groupBox5.Controls.Add(this.textBox15);
-            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(12, 412);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(491, 105);
-            this.groupBox5.TabIndex = 41;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = " ";
-            // 
-            // txtreamaining
-            // 
-            this.txtreamaining.Location = new System.Drawing.Point(174, 71);
-            this.txtreamaining.Name = "txtreamaining";
-            this.txtreamaining.Size = new System.Drawing.Size(108, 21);
-            this.txtreamaining.TabIndex = 56;
-            this.txtreamaining.Text = "0";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(174, 53);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(75, 15);
-            this.label13.TabIndex = 55;
-            this.label13.Text = "Reamaining";
-            // 
-            // txtpayammount
-            // 
-            this.txtpayammount.Location = new System.Drawing.Point(5, 67);
-            this.txtpayammount.Name = "txtpayammount";
-            this.txtpayammount.Size = new System.Drawing.Size(117, 21);
-            this.txtpayammount.TabIndex = 54;
-            this.txtpayammount.Text = "0";
-            this.txtpayammount.TextChanged += new System.EventHandler(this.txtpayammount_TextChanged);
-            this.txtpayammount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtpayammount_KeyPress);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 49);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(80, 15);
-            this.label12.TabIndex = 53;
-            this.label12.Text = "Payammount";
-            // 
             // txttotalammount
             // 
             this.txttotalammount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txttotalammount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttotalammount.Location = new System.Drawing.Point(235, 25);
+            this.txttotalammount.Location = new System.Drawing.Point(862, 435);
             this.txttotalammount.Name = "txttotalammount";
             this.txttotalammount.ReadOnly = true;
             this.txttotalammount.Size = new System.Drawing.Size(179, 21);
@@ -221,7 +154,7 @@
             // 
             this.textBox22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox22.Location = new System.Drawing.Point(194, 25);
+            this.textBox22.Location = new System.Drawing.Point(821, 435);
             this.textBox22.Name = "textBox22";
             this.textBox22.ReadOnly = true;
             this.textBox22.Size = new System.Drawing.Size(41, 21);
@@ -234,7 +167,7 @@
             // 
             this.textBox15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox15.Location = new System.Drawing.Point(82, 25);
+            this.textBox15.Location = new System.Drawing.Point(709, 435);
             this.textBox15.Name = "textBox15";
             this.textBox15.ReadOnly = true;
             this.textBox15.Size = new System.Drawing.Size(112, 21);
@@ -265,41 +198,6 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.radcheckbutton);
-            this.groupBox4.Controls.Add(this.radcashbutton);
-            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(509, 412);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(178, 64);
-            this.groupBox4.TabIndex = 36;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Payment Mode";
-            // 
-            // radcheckbutton
-            // 
-            this.radcheckbutton.AutoSize = true;
-            this.radcheckbutton.Location = new System.Drawing.Point(86, 25);
-            this.radcheckbutton.Name = "radcheckbutton";
-            this.radcheckbutton.Size = new System.Drawing.Size(68, 19);
-            this.radcheckbutton.TabIndex = 1;
-            this.radcheckbutton.TabStop = true;
-            this.radcheckbutton.Text = "Chaque";
-            this.radcheckbutton.UseVisualStyleBackColor = true;
-            this.radcheckbutton.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
-            // 
-            // radcashbutton
-            // 
-            this.radcashbutton.AutoSize = true;
-            this.radcashbutton.Location = new System.Drawing.Point(27, 25);
-            this.radcashbutton.Name = "radcashbutton";
-            this.radcashbutton.Size = new System.Drawing.Size(53, 19);
-            this.radcashbutton.TabIndex = 0;
-            this.radcashbutton.TabStop = true;
-            this.radcashbutton.Text = "Cash";
-            this.radcashbutton.UseVisualStyleBackColor = true;
-            // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -317,44 +215,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(703, 179);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.checkBox2);
-            this.groupBox3.Controls.Add(this.checkBox1);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(12, 168);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(708, 49);
-            this.groupBox3.TabIndex = 35;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Method of Payment";
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.checkBox2.Location = new System.Drawing.Point(331, 20);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(251, 20);
-            this.checkBox2.TabIndex = 3;
-            this.checkBox2.Text = "Payment without refrence to sales invoice";
-            this.checkBox2.UseCompatibleTextRendering = true;
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.Click += new System.EventHandler(this.checkBox2_Click);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.checkBox1.Location = new System.Drawing.Point(70, 20);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(234, 20);
-            this.checkBox1.TabIndex = 2;
-            this.checkBox1.Text = "Payment with refrence to sales invoice";
-            this.checkBox1.UseCompatibleTextRendering = true;
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.Click += new System.EventHandler(this.checkBox1_Click);
             // 
             // groupBox2
             // 
@@ -377,7 +237,6 @@
             this.txtRefNo.Name = "txtRefNo";
             this.txtRefNo.Size = new System.Drawing.Size(121, 21);
             this.txtRefNo.TabIndex = 15;
-            this.txtRefNo.TextChanged += new System.EventHandler(this.txtRefNo_TextChanged);
             this.txtRefNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRefNo_KeyPress);
             // 
             // label11
@@ -595,7 +454,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1161, 587);
+            this.panel2.Size = new System.Drawing.Size(1159, 600);
             this.panel2.TabIndex = 42;
             // 
             // dataGridView2
@@ -650,9 +509,10 @@
             this.pnlSalesPayment.Controls.Add(this.groupBox8);
             this.pnlSalesPayment.Controls.Add(this.btnSave);
             this.pnlSalesPayment.Controls.Add(this.groupBox9);
-            this.pnlSalesPayment.Location = new System.Drawing.Point(-3, -29);
+            this.pnlSalesPayment.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlSalesPayment.Location = new System.Drawing.Point(0, 0);
             this.pnlSalesPayment.Name = "pnlSalesPayment";
-            this.pnlSalesPayment.Size = new System.Drawing.Size(1166, 653);
+            this.pnlSalesPayment.Size = new System.Drawing.Size(1159, 600);
             this.pnlSalesPayment.TabIndex = 59;
             this.pnlSalesPayment.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSalesPayment_Paint);
             // 
@@ -1253,6 +1113,8 @@
             this.txtCreditAmount.TabIndex = 3;
             this.txtCreditAmount.Text = "0.00";
             this.txtCreditAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCreditAmount.TextChanged += new System.EventHandler(this.txtCreditAmount_TextChanged);
+            this.txtCreditAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCreditAmount_KeyPress);
             this.txtCreditAmount.Leave += new System.EventHandler(this.txtCreditAmount_Leave);
             // 
             // label37
@@ -1289,15 +1151,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1161, 587);
+            this.ClientSize = new System.Drawing.Size(1159, 600);
             this.Controls.Add(this.pnlSalesPayment);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.button4);
+            this.Controls.Add(this.txttotalammount);
+            this.Controls.Add(this.textBox22);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.textBox15);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
@@ -1306,14 +1168,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Receipt";
             this.Load += new System.EventHandler(this.Form5_Load);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -1330,23 +1186,19 @@
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox txttotalammount;
         private System.Windows.Forms.TextBox textBox22;
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtSrNo;
         private System.Windows.Forms.Label label14;
@@ -1374,12 +1226,6 @@
         private System.Windows.Forms.ComboBox combsearch;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtreamaining;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtpayammount;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.RadioButton radcheckbutton;
-        private System.Windows.Forms.RadioButton radcashbutton;
         private System.Windows.Forms.TextBox txtRefNo;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel pnlSalesPayment;
