@@ -406,24 +406,7 @@ namespace WindowsFormsApplication1
 
         private void txtpayammount_TextChanged(object sender, EventArgs e)
         {
-            if (radcashbutton.Checked)
-            {
-                if (txtpayammount.Text != "")
-                {
-                    double total = Convert.ToDouble(txttotalammount.Text);
-                    double payamount = Convert.ToDouble(txtpayammount.Text);
-                    double arrearAmount = total - payamount;
-                    txtreamaining.Text = arrearAmount.ToString();
-                }
-            }
-            if (radcheckbutton.Checked)
-            {
-                txtpayammount.Text= varible.chaqueAmount;
-                double total = Convert.ToDouble(txttotalammount.Text);
-                double payamount = Convert.ToDouble(txtpayammount.Text);
-                double arrearAmount = total - payamount;
-                txtreamaining.Text = arrearAmount.ToString();
-            }
+           
         }
         private void makeblank()
         {
@@ -438,16 +421,14 @@ namespace WindowsFormsApplication1
             addToCartTable.Clear();
             dataGridView1.DataSource = "";
             txttotalammount.Text = "0";
-            txtpayammount.Text="0";
-            txtreamaining.Clear();
+           
             txtRefNo.Text = "";
-            radcashbutton.Checked = false;
+            
             
         }
         private void makeblank1()
         {
-            radcheckbutton.Checked = false;
-            checkBox1.Checked = false;
+           
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -600,14 +581,13 @@ namespace WindowsFormsApplication1
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            ChaqueForm sh = new ChaqueForm(txtpayammount);
-            sh.Show();
+            
              
         }
 
         private void txtRefNo_TextChanged(object sender, EventArgs e)
         {
-            checkBox1.Checked = true;
+           
            
            
         }
@@ -706,7 +686,7 @@ namespace WindowsFormsApplication1
         private void checkBox2_Click(object sender, EventArgs e)
         {
             txtcustomerid.ReadOnly = false;
-            checkBox2.Checked = false;
+           
             button1.Visible = false;
             makeblank();
            
@@ -715,7 +695,7 @@ namespace WindowsFormsApplication1
         private void checkBox1_Click(object sender, EventArgs e)
         {
             txtcustomerid.ReadOnly = true;
-            checkBox1.Checked = false;
+         
             button1.Visible = true;
             txtSrNo.ReadOnly = true;
             txtRefNo.ReadOnly = true;
@@ -732,7 +712,7 @@ namespace WindowsFormsApplication1
                 if (e.KeyChar == '\b')
                 {
                     e.Handled = false;
-                    txtreamaining.Text = "0";
+                   
                 }
                 else
                 {

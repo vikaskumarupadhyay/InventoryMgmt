@@ -175,14 +175,30 @@ namespace WindowsFormsApplication1
             {
                 s = "(case when  exists ( select Orderid from CustomerOrderDelivery where Orderid = VendorOrderDetails.Orderid) then 'Delivered' else 'Panding'end) ";
             }
-            string selectQurry = "SELECT dbo.VendorOrderDetails.Orderid as[Purchase Order ID], dbo.VendorOrderDetails.OrderDate as[Order Date],dbo.VendorDetails.venderId as[Vendor ID],dbo.VendorDetails.vName as[Vendor Name], dbo.VendorDetails.vCompName as[Company Name], dbo.VendorDetails.vAddress as[Address], dbo.VendorOrderDesc.ItemId as[Item ID], dbo.ItemDetails.ItemName as[Item Name], dbo.ItemDetails.ItemCompName as[Item Company Name], cast(dbo.ItemPriceDetail.MrpPrice as numeric(38,2)) as[MRP], cast(dbo.VendorOrderDesc.Price as numeric(38,2)) as[Selling Rate], dbo.VendorOrderDesc.Quantity as[Quantity Billed], cast(dbo.VendorOrderDesc.TotalPrice as numeric(38,2)) AS [Gross Amount], dbo.VendorOrderDetails.Discount as[Discount Rate (In %)],cast((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100 as numeric(38,2)) as [Discount Amount], dbo.VendorOrderDetails.Vat as[Tax Rate (In %)], cast((dbo.VendorOrderDesc.TotalPrice)- ((dbo.VendorOrderDesc.TotalPrice)/(1+(dbo.VendorOrderDetails.Vat/100 )))as numeric(38,2)) as [Tax Amount],cast(( dbo.VendorOrderDesc.TotalPrice )-((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100)as numeric(38,2)) as[Net Amount (Including Tax)],(case when  exists ( select Orderid from CustomerOrderDelivery where Orderid = VendorOrderDetails.Orderid) then 'Delivered' else 'Panding'end) as [Order Status] FROM dbo.VendorDetails INNER JOIN dbo.VendorOrderDetails ON dbo.VendorDetails.venderId = dbo.VendorOrderDetails.venderId INNER JOIN dbo.VendorOrderDesc ON dbo.VendorOrderDetails.Orderid = dbo.VendorOrderDesc.Orderid INNER JOIN dbo.ItemDetails ON dbo.VendorOrderDesc.ItemId = dbo.ItemDetails.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId  Where " + s + " like'" + textBox5.Text + "%' and VendorOrderDetails.OrderDate  BETWEEN '" + dateTimePicker1.Text + "' AND '" + dateTimePicker2.Value.ToString() + "' order by dbo.VendorOrderDetails.Orderid";
+            string selectQurry = "SELECT dbo.VendorOrderDetails.Orderid as[Purchase Order ID], dbo.VendorOrderDetails.OrderDate as[Order Date],dbo.VendorDetails.venderId as[Vendor ID],dbo.VendorDetails.vName as[Vendor Name], dbo.VendorDetails.vCompName as[Company Name], dbo.VendorDetails.vAddress as[Address], dbo.VendorOrderDesc.ItemId as[Item ID], dbo.ItemDetails.ItemName as[Item Name], dbo.ItemDetails.ItemCompName as[Item Company Name], cast(dbo.ItemPriceDetail.MrpPrice as numeric(38,2)) as[MRP], cast(dbo.VendorOrderDesc.Price as numeric(38,2)) as[Selling Rate], dbo.VendorOrderDesc.Quantity as[Quantity Billed], cast(dbo.VendorOrderDesc.TotalPrice as numeric(38,2)) AS [Gross Amount], dbo.VendorOrderDetails.Discount as[Discount Rate (In %)],cast((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100 as numeric(38,2)) as [Discount Amount], dbo.VendorOrderDetails.Vat as[Tax Rate (In %)], cast((dbo.VendorOrderDesc.TotalPrice)- ((dbo.VendorOrderDesc.TotalPrice)/(1+(dbo.VendorOrderDetails.Vat/100 )))as numeric(38,2)) as [Tax Amount],cast(( dbo.VendorOrderDesc.TotalPrice )-((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100)as numeric(38,2)) as[Net Amount (Including Tax)],(case when  exists ( select Orderid from CustomerOrderDelivery where Orderid = VendorOrderDetails.Orderid) then 'Delivered' else 'Panding'end) as [Order Status] FROM dbo.VendorDetails INNER JOIN dbo.VendorOrderDetails ON dbo.VendorDetails.venderId = dbo.VendorOrderDetails.venderId INNER JOIN dbo.VendorOrderDesc ON dbo.VendorOrderDetails.Orderid = dbo.VendorOrderDesc.Orderid INNER JOIN dbo.ItemDetails ON dbo.VendorOrderDesc.ItemId = dbo.ItemDetails.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId  Where " + s + " like'" + txtSearch.Text + "%' and VendorOrderDetails.OrderDate  BETWEEN '" + dateTimePicker1.Text + "' AND '" + dateTimePicker2.Value.ToString() + "' order by dbo.VendorOrderDetails.Orderid";
              DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
              dataGridView1.DataSource = dt;
              setvalue();
         }
 
+        public void tabIndex()
+        {
+            panel1.TabIndex = 1;
+            groupBox2.TabIndex = 0;
+            groupBox1.TabIndex = 5;
+            dateTimePicker1.TabIndex = 6;
+            btnClose.TabIndex = 4;
+           BtnExportToExel .TabIndex = 3;
+            dateTimePicker2.TabIndex = 7;
+            SelectPOrder.TabIndex = 8;
+           // SelectPOrder.TabStop = false;
+            dataGridView1.TabIndex = 2;
+            txtSearch.TabIndex = 1;
+        }
         private void PurchaseOrderSearch1_Load(object sender, EventArgs e)  
         {
+            tabIndex();
+            txtSearch.Focus();
             string select = "select OrderDate from VendorOrderDetails where orderid='"+1+"'";
             DataTable dt3 = dbMainClass.getDetailByQuery(select);
             string date="";
@@ -274,8 +290,16 @@ namespace WindowsFormsApplication1
             dateTimePicker2.Text = DateTime.Now.ToString();
 
         }
+        DateTime date1 = Convert.ToDateTime(dateTimePicker1.Text);
+        if (date1 > DateTime.Now.Date)
+        {
+
+            MessageBox.Show("please enter the currect date");
+            dateTimePicker1.Text = DateTime.Now.ToString();
+
+        }
             //string s = SelectPOrder.SelectedValue.ToString();
-        string selectQurry = "SELECT dbo.VendorOrderDetails.Orderid as[Purchase Order ID], dbo.VendorOrderDetails.OrderDate as[Order Date],dbo.VendorDetails.venderId as[Vendor ID],dbo.VendorDetails.vName as[Vendor Name], dbo.VendorDetails.vCompName as[Company Name], dbo.VendorDetails.vAddress as[Address], dbo.VendorOrderDesc.ItemId as[Item ID], dbo.ItemDetails.ItemName as[Item Name], dbo.ItemDetails.ItemCompName as[Item Company Name], cast(dbo.ItemPriceDetail.MrpPrice as numeric(38,2)) as[MRP], cast(dbo.VendorOrderDesc.Price as numeric(38,2)) as[Selling Rate], dbo.VendorOrderDesc.Quantity as[Quantity Billed], cast(dbo.VendorOrderDesc.TotalPrice as numeric(38,2)) AS [Gross Amount], dbo.VendorOrderDetails.Discount as[Discount Rate (In %)],cast((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100 as numeric(38,2)) as [Discount Amount], dbo.VendorOrderDetails.Vat as[Tax Rate (In %)], cast((dbo.VendorOrderDesc.TotalPrice)- ((dbo.VendorOrderDesc.TotalPrice)/(1+(dbo.VendorOrderDetails.Vat/100 )))as numeric(38,2)) as [Tax Amount],cast(( dbo.VendorOrderDesc.TotalPrice )-((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100)as numeric(38,2)) as[Net Amount (Including Tax)] FROM dbo.VendorDetails INNER JOIN dbo.VendorOrderDetails ON dbo.VendorDetails.venderId = dbo.VendorOrderDetails.venderId INNER JOIN dbo.VendorOrderDesc ON dbo.VendorOrderDetails.Orderid = dbo.VendorOrderDesc.Orderid INNER JOIN dbo.ItemDetails ON dbo.VendorOrderDesc.ItemId = dbo.ItemDetails.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId where OrderDate BETWEEN '" + dateTimePicker1.Value.ToString() + "' AND '" + dateTimePicker2.Value.ToString() + "'";
+        string selectQurry = "SELECT dbo.VendorOrderDetails.Orderid as[Purchase Order ID], dbo.VendorOrderDetails.OrderDate as[Order Date],dbo.VendorDetails.venderId as[Vendor ID],dbo.VendorDetails.vName as[Vendor Name], dbo.VendorDetails.vCompName as[Company Name], dbo.VendorDetails.vAddress as[Address], dbo.VendorOrderDesc.ItemId as[Item ID], dbo.ItemDetails.ItemName as[Item Name], dbo.ItemDetails.ItemCompName as[Item Company Name], cast(dbo.ItemPriceDetail.MrpPrice as numeric(38,2)) as[MRP], cast(dbo.VendorOrderDesc.Price as numeric(38,2)) as[Selling Rate], dbo.VendorOrderDesc.Quantity as[Quantity Billed], cast(dbo.VendorOrderDesc.TotalPrice as numeric(38,2)) AS [Gross Amount], dbo.VendorOrderDetails.Discount as[Discount Rate (In %)],cast((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100 as numeric(38,2)) as [Discount Amount], dbo.VendorOrderDetails.Vat as[Tax Rate (In %)], cast((dbo.VendorOrderDesc.TotalPrice)- ((dbo.VendorOrderDesc.TotalPrice)/(1+(dbo.VendorOrderDetails.Vat/100 )))as numeric(38,2)) as [Tax Amount],cast(( dbo.VendorOrderDesc.TotalPrice )-((dbo.VendorOrderDesc.TotalPrice*dbo.VendorOrderDetails.Discount)/100)as numeric(38,2)) as[Net Amount (Including Tax)] ,(case when  exists ( select Orderid from CustomerOrderDelivery where Orderid = VendorOrderDetails.Orderid) then 'Delivered' else 'Panding'end) as [Order Status] FROM dbo.VendorDetails INNER JOIN dbo.VendorOrderDetails ON dbo.VendorDetails.venderId = dbo.VendorOrderDetails.venderId INNER JOIN dbo.VendorOrderDesc ON dbo.VendorOrderDetails.Orderid = dbo.VendorOrderDesc.Orderid INNER JOIN dbo.ItemDetails ON dbo.VendorOrderDesc.ItemId = dbo.ItemDetails.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId  where OrderDate BETWEEN '" + dateTimePicker1.Value.ToString() + "' AND '" + dateTimePicker2.Value.ToString() + "'";
             //"select od.Orderid,od.venderId,itd.ItemName,vod.Quantity,vod.TotalPrice,od.OrderDate,cod.DeliveryDate,coi.InvoiceDate from VendorOrderDetails od join VendorOrderDesc vod on vod.Orderid=od.Orderid join CustomerOrderDelivery cod on cod.Orderid=vod.Orderid join CustomerOrderInvoice coi on coi.Orderid=vod.Orderid join ItemDetails itd on itd.ItemId=vod.ItemId where " + a + "= '" + txtsearch.Text + "'";
             DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
             dataGridView1.DataSource = dt;
@@ -290,9 +314,5 @@ namespace WindowsFormsApplication1
             }
         }
 
-     
-       
-
-       
     }
 }

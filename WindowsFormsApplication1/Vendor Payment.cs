@@ -277,10 +277,10 @@ namespace WindowsFormsApplication1
         {
             try
             {
-                txtvendorId.Text = cellCollection[1].Value.ToString();
-                txtVendorName.Text = cellCollection[2].Value.ToString();
-                txtCompanyName.Text = cellCollection[3].Value.ToString();
-                txtAddress.Text = cellCollection[4].Value.ToString();
+                txtvendorId.Text = cellCollection[2].Value.ToString();
+                txtVendorName.Text = cellCollection[3].Value.ToString();
+                txtCompanyName.Text = cellCollection[4].Value.ToString();
+                txtAddress.Text = cellCollection[5].Value.ToString();
                 // txtPhone.Text = cellCollection[4].Value.ToString();
                 // txtMobile.Text = cellCollection[5].Value.ToString();
                 //txtFax.Text = cellCollection[6].Value.ToString();
@@ -299,13 +299,7 @@ namespace WindowsFormsApplication1
             if (txtvendorId.Text.Trim() != "" && txtvendorId.Text.StartsWith("V"))
             {
                 setVAlue();
-                string selectqurry = "select vCurrentBalance from VendorAccountDetails where venderId='" + txtvendorId.Text + "'";
-                DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
-                string courntbal = "";
-                foreach (DataRow dr in dt.Rows)
-                {
-                    courntbal = dr[0].ToString();
-                }
+
                // txttotalAmount.Text = courntbal;
             }
         }
@@ -847,7 +841,7 @@ namespace WindowsFormsApplication1
         {
            
             txtInvoiceid.Text = txtRefNo.Text;
-           
+
             txtInvoiceAmount.Text = amount.ToString("###0.00");
             txtBalance.Text = txttotalAmount.Text;
             txtNetAmount.Text = txtTotalAmount1.Text;
@@ -864,22 +858,21 @@ namespace WindowsFormsApplication1
 
         private void CashAmount_TextChanged(object sender, EventArgs e)
         {
-            if (CashAmount.Text != "0")
-            {
-                //CashAmount.Text = "";
-                string amount = CashAmount.Text;
-                //CashAmount.Text = amount;
-                double amount1 = 0.0;
-                if (double.TryParse(amount, out amount1))
-                {
-                    txtTotalAmount1.Text = CashAmount.Text;
-                    Double Amount = Convert.ToDouble(txtTotalAmount1.Text);
-                    Double Amount1 = Convert.ToDouble(txtBalance.Text);//(txtInvoiceAmount.Text);
-                    Double Amount2 = Amount1 - Amount;
-                    string Amount3 = Amount2.ToString();
-                    txtBalance.Text = Amount2.ToString("##0.00");
-                }
-            }
+            //if (CashAmount.Text != "0")
+            //{
+            //    //CashAmount.Text = "";
+            //    string amount = CashAmount.Text;
+            //    //CashAmount.Text = amount;
+            //    double amount1 = 0.0;
+            //    if (double.TryParse(amount, out amount1))
+            //    {
+                    
+            //        txtTotalAmount1.Text = CashAmount.Text;
+            //        //txtBalance.Text = amount2.ToString("##0.00");
+            //    }
+                
+            //}
+            txtTotalAmount1.Text = CashAmount.Text;
         }
 
         private void CashAmount_Leave(object sender, EventArgs e)
@@ -1019,9 +1012,20 @@ namespace WindowsFormsApplication1
 
         private void txtTotalAmount1_TextChanged(object sender, EventArgs e)
         {
+            if(txtTotalAmount1.Text=="")
+            {
+                txtTotalAmount1.Text="0.00";
+           }
+           //string netAmount = txtTotalAmount1.Text;
+           //Double Amount = Convert.ToDouble(netAmount);
+           // Double Amount1 = Convert.ToDouble(txttotalAmount.Text);
+           // Double Amount2 = Amount1 - Amount;
+           // string Amount3 = Amount2.ToString();
+           // txtNetAmount.Text = txtTotalAmount1.Text;
+           // txtBalance.Text = Amount2.ToString("##0.00");
             txtNetAmount.Text = txtTotalAmount1.Text;
             Double Amount = Convert.ToDouble(txtTotalAmount1.Text);
-            Double Amount1 = Convert.ToDouble(txtInvoiceAmount.Text);
+            Double Amount1 = Convert.ToDouble(txttotalAmount.Text);
             Double Amount2 = Amount1 - Amount;
             string Amount3 = Amount2.ToString();
             txtBalance.Text = Amount2.ToString("##0.00");
@@ -1029,11 +1033,7 @@ namespace WindowsFormsApplication1
 
         private void CashAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (CashAmount.Text == "")
-            {
-                txttotalAmount.Text = "0.00";
-                // txtBalance.Text = "0.00";
-            }
+           
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
                 //if (CashAmount.Text.IndexOf('.') != -1 && CashAmount.Text.Split('.')[1].Length == 2)
@@ -1046,7 +1046,11 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyChar == '\b')
                 {
-
+                    if (CashAmount.Text == "")
+                    {
+                        txttotalAmount.Text = "0.00";
+                        // txtBalance.Text = "0.00";
+                    }
                    
                     e.Handled = false;
                 }
@@ -1074,10 +1078,10 @@ namespace WindowsFormsApplication1
         }
         private void txtCreditAmount_TextChanged(object sender, EventArgs e)
         {
-            if (txtCreditAmount.Text == "0.00" && txtCreditAmount.Text == "")
+            if (txtCreditAmount.Text == "0.00" || txtCreditAmount.Text == "")
             {
                 credittext1();
-                txtTotalAmount1.Text = "0.00";
+                //txtTotalAmount1.Text = "0.00";
             }
             if (txtCreditAmount.Text != "0.00")
             {
@@ -1259,11 +1263,11 @@ namespace WindowsFormsApplication1
         {
             if (txtBalance.Text == "")
             {
-                txtBalance.Text = "0";
+                txtBalance.Text = "0.00";
             }
             if (txtRturned.Text == "")
             {
-                txtRturned.Text = "0";
+                txtRturned.Text = "0.00";
             }
             string sub = txtBalance.Text;
             string return1 = txtRturned.Text;
@@ -1383,22 +1387,41 @@ namespace WindowsFormsApplication1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            
+
+           
+          
             DateTime d = DateTime.Now;
             string insertQurry1 = "insert into AllPaymentDetailes Values('" + txtInvoiceid.Text + "','" + CashAmount.Text + "','" + txtCreditAmount.Text + "','" + txtDebitBankName.Text + "','" + txtCardNumber.Text + "','" + CmbCardType.SelectedItem.ToString() + "','" + txtChequeAmount.Text + "','" + txtChequeBankName.Text + "','" + txtChequeNumber.Text + "','" + dateTimePicker1.Value.ToString() + "','" + txtEwalletAmount.Text + "','" + EWalletCompanyName.Text + "','" + txtTransactionNumber.Text + "','" + dateTimePicker2.Value.ToString() + "','" + txtCouponAmount.Text + "','" + CmbCompany.SelectedItem.ToString() + "','" + txtInvoiceAmount.Text + "','" + txtTotalAmount1.Text + "','" + txtBalance.Text + "','" + txtRturned.Text + "','" + txtNetAmount.Text + "','"+d+"')";
             int insertedRows = dbMainClass.saveDetails(insertQurry1);
             if (insertedRows > 0)
             {
-                MessageBox.Show("Details Saved Successfully");
-                BlankPaymentPage();
-                pnlPayment.Visible = false;
-                panel2.Visible = true;
-            }
-            else
-            {
-                MessageBox.Show("Details Not Saved Successfully");
-            }
+                string qurry = "select vCurrentBalance from VendorAccountDetails where venderId='" + txtvendorId.Text + "'";
+                DataTable dt = dbMainClass.getDetailByQuery(qurry);
+                string balabce = "";
+                foreach (DataRow dr in dt.Rows)
+                {
+                    balabce = dr[0].ToString();
+                }
 
+                double bal = Convert.ToDouble(balabce.ToString());
+                double balan = Convert.ToDouble(txtTotalAmount1.Text);
+                double b = bal - balan;
+
+                string updateQ = "update VendorAccountDetails set vCurrentBalance='" + b + "'where venderId='" + txtvendorId.Text + "'";
+                int insertedRows3 = dbMainClass.saveDetails(updateQ);
+                if (insertedRows3 > 0)
+                {
+                    MessageBox.Show("Details Saved Successfully");
+                    BlankPaymentPage();
+                    pnlPayment.Visible = false;
+                    panel2.Visible = true;
+                }
+                else
+                {
+                    MessageBox.Show("Details Not Saved Successfully");
+                }
+            }
+   
         }
 
         private void groupBox8_Enter(object sender, EventArgs e)
