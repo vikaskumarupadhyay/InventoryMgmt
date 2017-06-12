@@ -267,18 +267,7 @@ namespace WindowsFormsApplication1
                 setdetails(cell);
                 string selectquery = " select pay.ReceiptDate as[Receipt Date],(select Sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid) as[Bild Quanity],orderdetails.WithautTaxamount as[Gross Amount],orderdetails.Discount as[Discount Rate],orderdetails.Discountamount as[Dicount Amount],orderdetails.Tax as[Tax],orderdetails.Taxamount as[Tax Amount],orderdetails.totalammount as[Total Amount],pay.TotalAmount as[Paid Amount],pay.BalanceAmount as [Balance Amount] from orderdetails join salesOrderDelivery on orderdetails.Orderid=salesOrderDelivery.Orderid join SalesPaymentDetailes pay on salesOrderDelivery.Delivaryid=pay.Invoiceid where salesOrderDelivery.Delivaryid='" + txtRefNo.Text + "' ";
                 DataTable dt = d.getDetailByQuery(selectquery);
-                string balance = "";
-                foreach (DataRow dr in dt.Rows)
-                {
-                    balance = dr[9].ToString();
-                }
-                if (balance == "0.00")
-                {
-                    panel2.Visible = true;
-                    MessageBox.Show("Fully paid");
-                }
-                else
-                {
+              
                     panel2.Visible = false;
                     dataGridView1.DataSource = dt;
                     double d2;
@@ -293,10 +282,23 @@ namespace WindowsFormsApplication1
                     }
                     Double Amount1 = amount - d1;
                     txttotalammount.Text = Amount1.ToString("###0.00");
+
+                    string balance = "";
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        balance = dr[9].ToString();
+                    }
+                    if (balance == "0.00")
+                    {
+                        button5.Enabled = false;
+                        // panel2.Visible = true;
+                        // MessageBox.Show("Fully paid");
+                    }
+              
                 }
             
             }
-        }
+       // }
         private void setdetails(DataGridViewCellCollection collection)
         {
             try
@@ -757,6 +759,16 @@ namespace WindowsFormsApplication1
 
         private void CashAmount_TextChanged(object sender, EventArgs e)
         {
+           // double cash = Convert.ToDouble(CashAmount.Text);
+           // double bal = Convert.ToDouble(txtBalance.Text);
+           // double b=bal-cash;
+            //txtBalance.Text = txttotalammount.Text;
+            //txtNetAmount.Text = txtTotalAmount1.Text;
+            //Double Amount = Convert.ToDouble(txtTotalAmount1.Text);
+            //Double Amount1 = Convert.ToDouble(txtBalance.Text);
+            //Double Amount2 = Amount1 - Amount;
+            //string Amount3 = Amount2.ToString();
+            //txtBalance.Text = Amount2.ToString("##0.00");
             if (CashAmount.Text != "0")
             {
                 //CashAmount.Text = "";
@@ -1196,6 +1208,20 @@ namespace WindowsFormsApplication1
         private void btnSave_Click(object sender, EventArgs e)
         {
             DateTime f1 = DateTime.Now;
+            string qurry = "select CustCurrentBalance from CustomerAccountDetails where CustId='" +txtcustomerid.Text+ "'";
+            DataTable dt = d.getDetailByQuery(qurry);
+            string balabce = "";
+            foreach (DataRow dr in dt.Rows)
+            {
+                balabce = dr[0].ToString();
+            }
+
+            double bal = Convert.ToDouble(balabce.ToString());
+            double balan = Convert.ToDouble(txtTotalAmount1.Text);
+            double b = bal - balan;
+
+            string updateQ = "update CustomerAccountDetails set CustCurrentBalance='" + b + "'where CustId='" +txtcustomerid.Text + "'";
+            int insertedRows2 = d.saveDetails(updateQ);
             string insertQurry = "insert into SalesPaymentDetailes Values('" + txtInvoiceid.Text + "','" + CashAmount.Text + "','" + txtCreditAmount.Text + "','" + txtDebitBankName.Text + "','" + txtCardNumber.Text + "','" + CmbCardType.SelectedItem.ToString() + "','" + txtChequeAmount.Text + "','" + txtChequeBankName.Text + "','" + txtChequeNumber.Text + "','" + dateTimePicker1.Value.ToString() + "','" + txtEwalletAmount.Text + "','" + EWalletCompanyName.Text + "','" + txtTransactionNumber.Text + "','" + dateTimePicker2.Value.ToString() + "','" + txtCouponAmount.Text + "','" + CmbCompany.SelectedItem.ToString() + "','" + txtInvoiceAmount.Text + "','" + txtTotalAmount1.Text + "','" + txtBalance.Text + "','" + txtRturned.Text + "','" + txtNetAmount.Text + "','"+f1+"')";
             int insertedRows = d.saveDetails(insertQurry);
             if (insertedRows > 0)

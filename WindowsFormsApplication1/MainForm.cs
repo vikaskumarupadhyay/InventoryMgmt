@@ -182,9 +182,11 @@ namespace WindowsFormsApplication1
             if (F9 == null)
             {
                 F9 = new Form9();
-                F9.Show();
                 F9.MdiParent = this;
                 F9.FormClosed += new FormClosedEventHandler(F9_FormClosed);
+                F9.ControlBox = false;
+                F9.Show();
+                F9.WindowState = FormWindowState.Maximized;
             }
             else
             {

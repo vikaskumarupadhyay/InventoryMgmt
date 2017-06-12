@@ -73,7 +73,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1222, 451);
+            this.dataGridView1.Size = new System.Drawing.Size(1222, 468);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
@@ -107,11 +107,12 @@
             this.textBox1.Size = new System.Drawing.Size(250, 23);
             this.textBox1.TabIndex = 4;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(247, 589);
+            this.button1.Location = new System.Drawing.Point(247, 605);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(90, 28);
             this.button1.TabIndex = 8;
@@ -133,7 +134,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(151, 589);
+            this.button2.Location = new System.Drawing.Point(151, 605);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(90, 28);
             this.button2.TabIndex = 7;
@@ -164,7 +165,7 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(12, 589);
+            this.button4.Location = new System.Drawing.Point(12, 605);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(133, 28);
             this.button4.TabIndex = 6;
@@ -175,53 +176,57 @@
             // txtdiscountamount
             // 
             this.txtdiscountamount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtdiscountamount.BackColor = System.Drawing.Color.White;
+            this.txtdiscountamount.BackColor = System.Drawing.SystemColors.Control;
             this.txtdiscountamount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtdiscountamount.Location = new System.Drawing.Point(746, 555);
+            this.txtdiscountamount.Location = new System.Drawing.Point(746, 571);
             this.txtdiscountamount.Name = "txtdiscountamount";
             this.txtdiscountamount.ReadOnly = true;
             this.txtdiscountamount.Size = new System.Drawing.Size(107, 21);
             this.txtdiscountamount.TabIndex = 16;
             this.txtdiscountamount.TabStop = false;
+            this.txtdiscountamount.Text = "0.00";
             this.txtdiscountamount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtgrossamount
             // 
             this.txtgrossamount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtgrossamount.BackColor = System.Drawing.Color.White;
+            this.txtgrossamount.BackColor = System.Drawing.SystemColors.Control;
             this.txtgrossamount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtgrossamount.Location = new System.Drawing.Point(579, 555);
+            this.txtgrossamount.Location = new System.Drawing.Point(579, 571);
             this.txtgrossamount.Name = "txtgrossamount";
             this.txtgrossamount.ReadOnly = true;
             this.txtgrossamount.Size = new System.Drawing.Size(107, 21);
             this.txtgrossamount.TabIndex = 17;
             this.txtgrossamount.TabStop = false;
+            this.txtgrossamount.Text = "0.00";
             this.txtgrossamount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txttaxamount
             // 
             this.txttaxamount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txttaxamount.BackColor = System.Drawing.Color.White;
+            this.txttaxamount.BackColor = System.Drawing.SystemColors.Control;
             this.txttaxamount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttaxamount.Location = new System.Drawing.Point(913, 555);
+            this.txttaxamount.Location = new System.Drawing.Point(913, 571);
             this.txttaxamount.Name = "txttaxamount";
             this.txttaxamount.ReadOnly = true;
             this.txttaxamount.Size = new System.Drawing.Size(107, 21);
             this.txttaxamount.TabIndex = 18;
             this.txttaxamount.TabStop = false;
+            this.txttaxamount.Text = "0.00";
             this.txttaxamount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtwithauttaxamoubnt
             // 
             this.txtwithauttaxamoubnt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtwithauttaxamoubnt.BackColor = System.Drawing.Color.White;
+            this.txtwithauttaxamoubnt.BackColor = System.Drawing.SystemColors.Control;
             this.txtwithauttaxamoubnt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtwithauttaxamoubnt.Location = new System.Drawing.Point(1131, 555);
+            this.txtwithauttaxamoubnt.Location = new System.Drawing.Point(1131, 571);
             this.txtwithauttaxamoubnt.Name = "txtwithauttaxamoubnt";
             this.txtwithauttaxamoubnt.ReadOnly = true;
             this.txtwithauttaxamoubnt.Size = new System.Drawing.Size(107, 21);
             this.txtwithauttaxamoubnt.TabIndex = 19;
             this.txtwithauttaxamoubnt.TabStop = false;
+            this.txtwithauttaxamoubnt.Text = "0.00";
             this.txtwithauttaxamoubnt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox1
@@ -283,26 +288,27 @@
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(12, 96);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1226, 455);
+            this.panel1.Size = new System.Drawing.Size(1226, 472);
             this.panel1.TabIndex = 22;
             // 
             // textBox2
             // 
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(556, 555);
+            this.textBox2.Location = new System.Drawing.Point(556, 571);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(24, 21);
             this.textBox2.TabIndex = 29;
             this.textBox2.TabStop = false;
+            this.textBox2.Text = "₹";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox3
             // 
             this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(525, 555);
+            this.textBox3.Location = new System.Drawing.Point(525, 571);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(32, 21);
@@ -315,7 +321,7 @@
             // 
             this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(723, 555);
+            this.textBox4.Location = new System.Drawing.Point(723, 571);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(24, 21);
@@ -328,7 +334,7 @@
             // 
             this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(692, 555);
+            this.textBox5.Location = new System.Drawing.Point(692, 571);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(32, 21);
@@ -341,7 +347,7 @@
             // 
             this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(890, 555);
+            this.textBox7.Location = new System.Drawing.Point(890, 571);
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(24, 21);
@@ -354,7 +360,7 @@
             // 
             this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(859, 555);
+            this.textBox6.Location = new System.Drawing.Point(859, 571);
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
             this.textBox6.Size = new System.Drawing.Size(32, 21);
@@ -367,7 +373,7 @@
             // 
             this.textBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(1108, 555);
+            this.textBox9.Location = new System.Drawing.Point(1108, 571);
             this.textBox9.Name = "textBox9";
             this.textBox9.ReadOnly = true;
             this.textBox9.Size = new System.Drawing.Size(24, 21);
@@ -380,7 +386,7 @@
             // 
             this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(1026, 555);
+            this.textBox8.Location = new System.Drawing.Point(1026, 571);
             this.textBox8.Name = "textBox8";
             this.textBox8.ReadOnly = true;
             this.textBox8.Size = new System.Drawing.Size(83, 21);
@@ -393,11 +399,12 @@
             // 
             this.textBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.Location = new System.Drawing.Point(358, 555);
+            this.textBox10.Location = new System.Drawing.Point(358, 571);
             this.textBox10.Name = "textBox10";
             this.textBox10.ReadOnly = true;
             this.textBox10.Size = new System.Drawing.Size(32, 21);
             this.textBox10.TabIndex = 36;
+            this.textBox10.TabStop = false;
             this.textBox10.Text = "Q B";
             this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -405,22 +412,27 @@
             // 
             this.textBox11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.Location = new System.Drawing.Point(389, 555);
+            this.textBox11.Location = new System.Drawing.Point(389, 571);
             this.textBox11.Name = "textBox11";
             this.textBox11.ReadOnly = true;
             this.textBox11.Size = new System.Drawing.Size(24, 21);
             this.textBox11.TabIndex = 37;
-            this.textBox11.Text = "0";
+            this.textBox11.TabStop = false;
+            this.textBox11.Text = "₹";
             this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtquantitybuiled
             // 
             this.txtquantitybuiled.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtquantitybuiled.BackColor = System.Drawing.SystemColors.Control;
             this.txtquantitybuiled.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtquantitybuiled.Location = new System.Drawing.Point(412, 555);
+            this.txtquantitybuiled.Location = new System.Drawing.Point(412, 571);
             this.txtquantitybuiled.Name = "txtquantitybuiled";
+            this.txtquantitybuiled.ReadOnly = true;
             this.txtquantitybuiled.Size = new System.Drawing.Size(107, 21);
             this.txtquantitybuiled.TabIndex = 38;
+            this.txtquantitybuiled.TabStop = false;
+            this.txtquantitybuiled.Text = "0.00";
             this.txtquantitybuiled.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // salessearch
