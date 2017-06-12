@@ -423,24 +423,6 @@ namespace WindowsFormsApplication1
 
         private void txtPayAmount_TextChanged(object sender, EventArgs e)
         {
-            if (radioBottCash.Checked)
-            {
-                if (txtPayAmount.Text != "")
-                {
-                    int total = Convert.ToInt32(txttotalAmount.Text);
-                    int payamount = Convert.ToInt32(txtPayAmount.Text);
-                    int arrearAmount = total - payamount;
-                    txtRemaning.Text = arrearAmount.ToString();
-                }
-            }
-            if (ChaqueReado.Checked)
-            {
-                txtPayAmount.Text = varible.chaqueAmount;
-                int total = Convert.ToInt32(txttotalAmount.Text);
-                int payamount = Convert.ToInt32(txtPayAmount.Text);
-                int arrearAmount = total - payamount;
-                txtRemaning.Text = arrearAmount.ToString();
-            }
 
         }
         private void makeBlank()
@@ -454,18 +436,13 @@ namespace WindowsFormsApplication1
             txtFax.Text = "";
             dataGridView1.DataSource = "";
             txttotalAmount.Text = "0";
-            txtRemaning.Text = "0";
-            txtPayAmount.Text = "0";
+           
             txtRefNo.Text = "";
-            radioBottCash.Checked = false;
-            ChaqueReado.Checked = false;
-            txtPayAmount.Clear();
-            txtRemaning.Clear();
+            
         }
         private void makeBlank1()
         {
-            checkBox1.Checked = false;
-            checkBox2.Checked = false;
+           
         }
 
         private void txtPayAmount_KeyPress(object sender, KeyPressEventArgs e)
@@ -478,16 +455,7 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyChar == '\b')
                 {
-                    if (txtPayAmount.Text == "")
-                    {
-                        // txttotalAmount.Text
-                        txtRemaning.Text = txttotalAmount.Text;
-                    }
-                    if (txtPayAmount.Text == "0")
-                    {
-                        // txttotalAmount.Text
-                        txtRemaning.Text = txttotalAmount.Text;
-                    }
+                   
                     e.Handled = false;
                 }
                 else
@@ -635,34 +603,34 @@ namespace WindowsFormsApplication1
             //    }
             //}
         }
-        private int vendid()
-        {
-            string selectqurry = "select vCurrentBalance from VendorAccountDetails where venderId='" + txtvendorId.Text + "'";
-            DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
-            string courntbal = "";
-            foreach (DataRow dr in dt.Rows)
-            {
-                courntbal = dr[0].ToString();
-            }
-            int bal = Convert.ToInt32(courntbal);
-            int bal1 = Convert.ToInt32(txtRemaning.Text);
-            int bal2 = bal + bal1;
-            return bal2;
-        }
-        private int vendid1()
-        {
-            string selectqurry = "select vCurrentBalance from VendorAccountDetails where venderId='" + txtvendorId.Text + "'";
-            DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
-            string courntbal = "";
-            foreach (DataRow dr in dt.Rows)
-            {
-                courntbal = dr[0].ToString();
-            }
-            int bal = Convert.ToInt32(courntbal);
-            int bal1 = Convert.ToInt32(txtPayAmount.Text);
-            int bal2 = bal - bal1;
-            return bal2;
-        }
+        //private int vendid()
+        //{
+        //    string selectqurry = "select vCurrentBalance from VendorAccountDetails where venderId='" + txtvendorId.Text + "'";
+        //    DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+        //    string courntbal = "";
+        //    foreach (DataRow dr in dt.Rows)
+        //    {
+        //        courntbal = dr[0].ToString();
+        //    }
+        //    int bal = Convert.ToInt32(courntbal);
+        //    //int bal1 = Convert.ToInt32(txtRemaning.Text);
+        //    //int bal2 = bal + bal1;
+        //    //return bal2;
+        //}
+        //private int vendid1()
+        //{
+        //    string selectqurry = "select vCurrentBalance from VendorAccountDetails where venderId='" + txtvendorId.Text + "'";
+        //    DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+        //    string courntbal = "";
+        //    foreach (DataRow dr in dt.Rows)
+        //    {
+        //        courntbal = dr[0].ToString();
+        //    }
+        //    int bal = Convert.ToInt32(courntbal);
+        //    //int bal1 = Convert.ToInt32(txtPayAmount.Text);
+        //    //int bal2 = bal - bal1;
+        //    //return bal2;
+        //}
 
         private void txtRefNo_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -681,7 +649,7 @@ namespace WindowsFormsApplication1
                 else
                 {
                     buttSave.Enabled = true;
-                    checkBox1.Checked = true;
+                    //checkBox1.Checked = true;
                     string select = "select Deliveryid from CustomerOrderInvoice where InvoiceId='" + txtRefNo.Text + "'";
                     DataTable dt = dbMainClass.getDetailByQuery(select);
                     string orderid = "";
@@ -762,29 +730,29 @@ namespace WindowsFormsApplication1
 
         private void ChaqueReado_Click(object sender, EventArgs e)
         {
-            // txtPayAmount.Text = "0";
-            ChaquePayment ch = new ChaquePayment(txtPayAmount);
-            ch.Show();
+            //// txtPayAmount.Text = "0";
+            //ChaquePayment ch = new ChaquePayment(txtPayAmount);
+            //ch.Show();
 
         }
 
         private void checkBox2_Click(object sender, EventArgs e)
         {
             txtvendorId.ReadOnly = false;
-            checkBox1.Checked = false;
+           // checkBox1.Checked = false;
             button1.Visible = true;
             txtSrNo.ReadOnly = true;
             txtRefNo.ReadOnly = true;
             makeBlank();
-            txtPayAmount.Text = "0";
-            txtRemaning.Text = "0";
+            //txtPayAmount.Text = "0";
+            //txtRemaning.Text = "0";
         }
 
         private void checkBox1_Click(object sender, EventArgs e)
         {
             txtvendorId.ReadOnly = true;
             makeBlank();
-            checkBox2.Checked = false;
+            //checkBox2.Checked = false;
             button1.Visible = false;
             txtSrNo.ReadOnly = false;
             txtRefNo.ReadOnly = false;
@@ -1081,7 +1049,7 @@ namespace WindowsFormsApplication1
             if (txtCreditAmount.Text == "0.00" || txtCreditAmount.Text == "")
             {
                 credittext1();
-                //txtTotalAmount1.Text = "0.00";
+                txtTotalAmount1.Text = CashAmount.Text;
             }
             if (txtCreditAmount.Text != "0.00")
             {
