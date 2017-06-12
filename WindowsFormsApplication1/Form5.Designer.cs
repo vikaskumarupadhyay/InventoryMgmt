@@ -28,6 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+<<<<<<< HEAD
+=======
+            this.txttotalammount = new System.Windows.Forms.TextBox();
+            this.textBox22 = new System.Windows.Forms.TextBox();
+            this.textBox15 = new System.Windows.Forms.TextBox();
+>>>>>>> 12-06-017
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -115,6 +121,7 @@
             this.label37 = new System.Windows.Forms.Label();
             this.CashAmount = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
+<<<<<<< HEAD
             this.textBox15 = new System.Windows.Forms.TextBox();
             this.textBox22 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -124,6 +131,8 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txttotalammount = new System.Windows.Forms.TextBox();
+=======
+>>>>>>> 12-06-017
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -137,6 +146,48 @@
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
+<<<<<<< HEAD
+=======
+            // txttotalammount
+            // 
+            this.txttotalammount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txttotalammount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttotalammount.Location = new System.Drawing.Point(862, 435);
+            this.txttotalammount.Name = "txttotalammount";
+            this.txttotalammount.ReadOnly = true;
+            this.txttotalammount.Size = new System.Drawing.Size(179, 21);
+            this.txttotalammount.TabIndex = 52;
+            this.txttotalammount.TabStop = false;
+            this.txttotalammount.Text = "0";
+            this.txttotalammount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox22
+            // 
+            this.textBox22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox22.Location = new System.Drawing.Point(821, 435);
+            this.textBox22.Name = "textBox22";
+            this.textBox22.ReadOnly = true;
+            this.textBox22.Size = new System.Drawing.Size(41, 21);
+            this.textBox22.TabIndex = 51;
+            this.textBox22.TabStop = false;
+            this.textBox22.Text = "Rs";
+            this.textBox22.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox15
+            // 
+            this.textBox15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox15.Location = new System.Drawing.Point(709, 435);
+            this.textBox15.Name = "textBox15";
+            this.textBox15.ReadOnly = true;
+            this.textBox15.Size = new System.Drawing.Size(112, 21);
+            this.textBox15.TabIndex = 50;
+            this.textBox15.TabStop = false;
+            this.textBox15.Text = "Total Amount";
+            this.textBox15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+>>>>>>> 12-06-017
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -198,7 +249,6 @@
             this.txtRefNo.Name = "txtRefNo";
             this.txtRefNo.Size = new System.Drawing.Size(121, 21);
             this.txtRefNo.TabIndex = 15;
-            this.txtRefNo.TextChanged += new System.EventHandler(this.txtRefNo_TextChanged);
             this.txtRefNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRefNo_KeyPress);
             // 
             // label11
@@ -406,6 +456,66 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Customer Code";
             // 
+<<<<<<< HEAD
+=======
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dataGridView2);
+            this.panel2.Controls.Add(this.textBox8);
+            this.panel2.Controls.Add(this.combsearch);
+            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1159, 600);
+            this.panel2.TabIndex = 42;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(15, 126);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(1126, 432);
+            this.dataGridView2.TabIndex = 4;
+            this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(427, 71);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(330, 20);
+            this.textBox8.TabIndex = 3;
+            this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
+            // 
+            // combsearch
+            // 
+            this.combsearch.FormattingEnabled = true;
+            this.combsearch.Location = new System.Drawing.Point(40, 73);
+            this.combsearch.Name = "combsearch";
+            this.combsearch.Size = new System.Drawing.Size(381, 21);
+            this.combsearch.TabIndex = 2;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(413, 56);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(39, 13);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "search";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(43, 54);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(74, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Select Search";
+            // 
+>>>>>>> 12-06-017
             // pnlSalesPayment
             // 
             this.pnlSalesPayment.Controls.Add(this.groupBox6);
@@ -417,7 +527,11 @@
             this.pnlSalesPayment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlSalesPayment.Location = new System.Drawing.Point(0, 0);
             this.pnlSalesPayment.Name = "pnlSalesPayment";
+<<<<<<< HEAD
             this.pnlSalesPayment.Size = new System.Drawing.Size(1161, 587);
+=======
+            this.pnlSalesPayment.Size = new System.Drawing.Size(1159, 600);
+>>>>>>> 12-06-017
             this.pnlSalesPayment.TabIndex = 59;
             this.pnlSalesPayment.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSalesPayment_Paint);
             // 
@@ -1018,6 +1132,8 @@
             this.txtCreditAmount.TabIndex = 3;
             this.txtCreditAmount.Text = "0.00";
             this.txtCreditAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCreditAmount.TextChanged += new System.EventHandler(this.txtCreditAmount_TextChanged);
+            this.txtCreditAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCreditAmount_KeyPress);
             this.txtCreditAmount.Leave += new System.EventHandler(this.txtCreditAmount_Leave);
             // 
             // label37
@@ -1150,7 +1266,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1161, 587);
+            this.ClientSize = new System.Drawing.Size(1159, 600);
             this.Controls.Add(this.pnlSalesPayment);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.button4);
@@ -1191,6 +1307,12 @@
 
         #endregion
 
+<<<<<<< HEAD
+=======
+        private System.Windows.Forms.TextBox txttotalammount;
+        private System.Windows.Forms.TextBox textBox22;
+        private System.Windows.Forms.TextBox textBox15;
+>>>>>>> 12-06-017
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Panel panel1;
@@ -1216,6 +1338,15 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+<<<<<<< HEAD
+=======
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.ComboBox combsearch;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label8;
+>>>>>>> 12-06-017
         private System.Windows.Forms.TextBox txtRefNo;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel pnlSalesPayment;

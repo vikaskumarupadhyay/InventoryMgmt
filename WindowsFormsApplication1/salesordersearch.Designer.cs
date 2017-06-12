@@ -90,7 +90,7 @@
             this.txtsearch.Multiline = true;
             this.txtsearch.Name = "txtsearch";
             this.txtsearch.Size = new System.Drawing.Size(250, 23);
-            this.txtsearch.TabIndex = 4;
+            this.txtsearch.TabIndex = 6;
             this.txtsearch.TextChanged += new System.EventHandler(this.txtsearch_TextChanged);
             this.txtsearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtsearch_KeyDown);
             // 
@@ -102,7 +102,7 @@
             this.comsalesordersearch.Location = new System.Drawing.Point(26, 39);
             this.comsalesordersearch.Name = "comsalesordersearch";
             this.comsalesordersearch.Size = new System.Drawing.Size(361, 23);
-            this.comsalesordersearch.TabIndex = 3;
+            this.comsalesordersearch.TabIndex = 5;
             // 
             // dateTimePicker1
             // 
@@ -111,7 +111,7 @@
             this.dateTimePicker1.Location = new System.Drawing.Point(26, 39);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(256, 21);
-            this.dateTimePicker1.TabIndex = 1;
+            this.dateTimePicker1.TabIndex = 2;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // dateTimePicker2
@@ -121,19 +121,18 @@
             this.dateTimePicker2.Location = new System.Drawing.Point(288, 39);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(256, 21);
-            this.dateTimePicker2.TabIndex = 2;
+            this.dateTimePicker2.TabIndex = 3;
             this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1222, 468);
+            this.dataGridView1.Size = new System.Drawing.Size(1222, 465);
             this.dataGridView1.StandardTab = true;
-            this.dataGridView1.TabIndex = 5;
+            this.dataGridView1.TabIndex = 8;
             // 
             // btnclose
             // 
@@ -141,7 +140,7 @@
             this.btnclose.Location = new System.Drawing.Point(247, 605);
             this.btnclose.Name = "btnclose";
             this.btnclose.Size = new System.Drawing.Size(90, 28);
-            this.btnclose.TabIndex = 8;
+            this.btnclose.TabIndex = 11;
             this.btnclose.Text = "&Close";
             this.btnclose.UseVisualStyleBackColor = true;
             this.btnclose.Click += new System.EventHandler(this.btnclose_Click);
@@ -152,7 +151,7 @@
             this.btnexcel.Location = new System.Drawing.Point(12, 605);
             this.btnexcel.Name = "btnexcel";
             this.btnexcel.Size = new System.Drawing.Size(133, 28);
-            this.btnexcel.TabIndex = 6;
+            this.btnexcel.TabIndex = 9;
             this.btnexcel.Text = "E&xport To Excel";
             this.btnexcel.UseVisualStyleBackColor = true;
             this.btnexcel.Click += new System.EventHandler(this.btnexcel_Click);
@@ -223,7 +222,7 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(562, 78);
-            this.groupBox1.TabIndex = 19;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select Date";
             // 
@@ -257,7 +256,7 @@
             this.groupBox2.Location = new System.Drawing.Point(580, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(658, 78);
-            this.groupBox2.TabIndex = 20;
+            this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Sales Order Details";
             // 
@@ -271,7 +270,7 @@
             this.panel1.Location = new System.Drawing.Point(12, 96);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1226, 472);
-            this.panel1.TabIndex = 21;
+            this.panel1.TabIndex = 7;
             // 
             // btnprint
             // 
@@ -279,7 +278,7 @@
             this.btnprint.Location = new System.Drawing.Point(151, 605);
             this.btnprint.Name = "btnprint";
             this.btnprint.Size = new System.Drawing.Size(90, 28);
-            this.btnprint.TabIndex = 7;
+            this.btnprint.TabIndex = 10;
             this.btnprint.Text = "Print";
             this.btnprint.UseVisualStyleBackColor = true;
             // 
