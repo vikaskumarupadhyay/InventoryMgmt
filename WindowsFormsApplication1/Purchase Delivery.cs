@@ -1224,6 +1224,20 @@ namespace WindowsFormsApplication1
                                 int insertedRows5 = dbMainClass.saveDetails(insertQurry);
                                 if (insertedRows5 > 0)
                                 {
+                                    string qurry = "select vCurrentBalance from VendorAccountDetails where venderId='" + textVendercod.Text + "'";
+                                    DataTable dt = dbMainClass.getDetailByQuery(qurry);
+                                    string balabce = "";
+                                    foreach (DataRow dr in dt.Rows)
+                                    {
+                                        balabce = dr[0].ToString();
+                                    }
+
+                                    double bal = Convert.ToDouble(balabce.ToString());
+                                    double balan = Convert.ToDouble(txtBalance.Text);
+                                    double b = bal + balan;
+
+                                    string updateQ = "update VendorAccountDetails set vCurrentBalance='" + b + "'where venderId='" + textVendercod.Text + "'";
+                                    int insertedRows3 = dbMainClass.saveDetails(updateQ);
                                     DateTime d = DateTime.Now;
                                     string insertQurry1 = "insert into AllPaymentDetailes Values('" + txtInvoiceid.Text + "','" + CashAmount.Text + "','" + txtCreditAmount.Text + "','" + txtDebitBankName.Text + "','" + txtCardNumber.Text + "','" + CmbCardType.SelectedItem.ToString() + "','" + txtChequeAmount.Text + "','" + txtChequeBankName.Text + "','" + txtChequeNumber.Text + "','" + dateTimePicker1.Value.ToString() + "','" + txtEwalletAmount.Text + "','" + EWalletCompanyName.Text + "','" + txtTransactionNumber.Text + "','" + dateTimePicker2.Value.ToString() + "','" + txtCouponAmount.Text + "','" + CmbCompany.SelectedItem.ToString() + "','" + txtInvoiceAmount.Text + "','" + txtTotalAmount1.Text + "','" + txtBalance.Text + "','" + txtRturned.Text + "','" + txtNetAmount.Text + "','"+d+"')";
                                     int insertedRows = dbMainClass.saveDetails(insertQurry1);

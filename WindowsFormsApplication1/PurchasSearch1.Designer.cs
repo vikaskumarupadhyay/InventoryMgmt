@@ -70,7 +70,10 @@
             this.gridPurchaseSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridPurchaseSearch.Location = new System.Drawing.Point(0, 0);
             this.gridPurchaseSearch.Name = "gridPurchaseSearch";
+            this.gridPurchaseSearch.ReadOnly = true;
+            this.gridPurchaseSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridPurchaseSearch.Size = new System.Drawing.Size(1222, 468);
+            this.gridPurchaseSearch.StandardTab = true;
             this.gridPurchaseSearch.TabIndex = 0;
             // 
             // comboPurchasesearch
