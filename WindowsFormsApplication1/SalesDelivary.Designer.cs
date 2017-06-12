@@ -1125,7 +1125,7 @@
             this.groupBox8.Size = new System.Drawing.Size(1324, 222);
             this.groupBox8.TabIndex = 13;
             this.groupBox8.TabStop = false;
-            this.groupBox8.Enter += new System.EventHandler(this.groupBox8_Enter);
+           // this.groupBox8.Enter += new System.EventHandler(this.groupBox8_Enter);
             // 
             // textBox26
             // 

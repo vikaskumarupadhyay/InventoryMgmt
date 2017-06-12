@@ -28,12 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-<<<<<<< HEAD
-=======
+
             this.txttotalammount = new System.Windows.Forms.TextBox();
             this.textBox22 = new System.Windows.Forms.TextBox();
             this.textBox15 = new System.Windows.Forms.TextBox();
->>>>>>> 12-06-017
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -121,18 +119,17 @@
             this.label37 = new System.Windows.Forms.Label();
             this.CashAmount = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
-<<<<<<< HEAD
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.textBox22 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.combsearch = new System.Windows.Forms.ComboBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.txttotalammount = new System.Windows.Forms.TextBox();
-=======
->>>>>>> 12-06-017
+
+            //this.textBox15 = new System.Windows.Forms.TextBox();
+            //this.textBox22 = new System.Windows.Forms.TextBox();
+            //this.label8 = new System.Windows.Forms.Label();
+            //this.label10 = new System.Windows.Forms.Label();
+            //this.combsearch = new System.Windows.Forms.ComboBox();
+            //this.textBox8 = new System.Windows.Forms.TextBox();
+            //this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            //this.panel2 = new System.Windows.Forms.Panel();
+            //this.txttotalammount = new System.Windows.Forms.TextBox();
+
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -146,8 +143,7 @@
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-<<<<<<< HEAD
-=======
+
             // txttotalammount
             // 
             this.txttotalammount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -187,7 +183,7 @@
             this.textBox15.Text = "Total Amount";
             this.textBox15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
->>>>>>> 12-06-017
+
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -456,8 +452,7 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Customer Code";
             // 
-<<<<<<< HEAD
-=======
+
             // panel2
             // 
             this.panel2.Controls.Add(this.dataGridView2);
@@ -515,7 +510,7 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Select Search";
             // 
->>>>>>> 12-06-017
+
             // pnlSalesPayment
             // 
             this.pnlSalesPayment.Controls.Add(this.groupBox6);
@@ -527,11 +522,8 @@
             this.pnlSalesPayment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlSalesPayment.Location = new System.Drawing.Point(0, 0);
             this.pnlSalesPayment.Name = "pnlSalesPayment";
-<<<<<<< HEAD
-            this.pnlSalesPayment.Size = new System.Drawing.Size(1161, 587);
-=======
+
             this.pnlSalesPayment.Size = new System.Drawing.Size(1159, 600);
->>>>>>> 12-06-017
             this.pnlSalesPayment.TabIndex = 59;
             this.pnlSalesPayment.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSalesPayment_Paint);
             // 
@@ -1307,12 +1299,11 @@
 
         #endregion
 
-<<<<<<< HEAD
-=======
+
         private System.Windows.Forms.TextBox txttotalammount;
         private System.Windows.Forms.TextBox textBox22;
         private System.Windows.Forms.TextBox textBox15;
->>>>>>> 12-06-017
+
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Panel panel1;
@@ -1338,15 +1329,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-<<<<<<< HEAD
-=======
+
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.ComboBox combsearch;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label8;
->>>>>>> 12-06-017
         private System.Windows.Forms.TextBox txtRefNo;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel pnlSalesPayment;
@@ -1409,15 +1398,15 @@
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.TextBox CashAmount;
         private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.TextBox textBox15;
-        private System.Windows.Forms.TextBox textBox22;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox combsearch;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox txttotalammount;
+        //private System.Windows.Forms.TextBox textBox15;
+        //private System.Windows.Forms.TextBox textBox22;
+        //private System.Windows.Forms.Label label8;
+        //private System.Windows.Forms.Label label10;
+        //private System.Windows.Forms.ComboBox combsearch;
+        //private System.Windows.Forms.TextBox textBox8;
+        //private System.Windows.Forms.DataGridView dataGridView2;
+        //private System.Windows.Forms.Panel panel2;
+        //private System.Windows.Forms.TextBox txttotalammount;
 
 
 
