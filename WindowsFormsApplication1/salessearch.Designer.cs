@@ -75,7 +75,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1222, 468);
             this.dataGridView1.StandardTab = true;
-            this.dataGridView1.TabIndex = 5;
+            this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
             // label1
@@ -105,7 +105,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBox1.Size = new System.Drawing.Size(250, 23);
-            this.textBox1.TabIndex = 4;
+            this.textBox1.TabIndex = 6;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
@@ -115,7 +115,7 @@
             this.button1.Location = new System.Drawing.Point(247, 605);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(90, 28);
-            this.button1.TabIndex = 8;
+            this.button1.TabIndex = 11;
             this.button1.Text = "&Close";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -129,7 +129,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.comboBox1.Size = new System.Drawing.Size(361, 23);
-            this.comboBox1.TabIndex = 3;
+            this.comboBox1.TabIndex = 5;
             // 
             // button2
             // 
@@ -137,7 +137,7 @@
             this.button2.Location = new System.Drawing.Point(151, 605);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(90, 28);
-            this.button2.TabIndex = 7;
+            this.button2.TabIndex = 10;
             this.button2.Text = "Print";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -149,7 +149,7 @@
             this.dateTimePicker1.Location = new System.Drawing.Point(26, 39);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(256, 21);
-            this.dateTimePicker1.TabIndex = 1;
+            this.dateTimePicker1.TabIndex = 2;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // dateTimePicker2
@@ -159,7 +159,7 @@
             this.dateTimePicker2.Location = new System.Drawing.Point(288, 39);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(256, 21);
-            this.dateTimePicker2.TabIndex = 2;
+            this.dateTimePicker2.TabIndex = 3;
             this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // button4
@@ -168,7 +168,7 @@
             this.button4.Location = new System.Drawing.Point(12, 605);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(133, 28);
-            this.button4.TabIndex = 6;
+            this.button4.TabIndex = 9;
             this.button4.Text = "E&xport to Excel";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -240,7 +240,7 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.groupBox1.Size = new System.Drawing.Size(562, 78);
-            this.groupBox1.TabIndex = 20;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select Date";
             // 
@@ -275,7 +275,7 @@
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.groupBox2.Size = new System.Drawing.Size(658, 78);
-            this.groupBox2.TabIndex = 21;
+            this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Sales Details";
             // 
@@ -289,7 +289,7 @@
             this.panel1.Location = new System.Drawing.Point(12, 96);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1226, 472);
-            this.panel1.TabIndex = 22;
+            this.panel1.TabIndex = 7;
             // 
             // textBox2
             // 

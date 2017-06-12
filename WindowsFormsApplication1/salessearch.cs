@@ -187,6 +187,7 @@ namespace WindowsFormsApplication1
         }
         private void salessearch_Load(object sender, EventArgs e)
         {
+            textBox1.Focus();
             dataGridView1.AllowUserToAddRows = true;
             string select = "select DeliveryDate from salesOrderDelivery where Delivaryid='"+1+"'";
             DataTable dt2 = d.getDetailByQuery(select);
@@ -525,11 +526,11 @@ namespace WindowsFormsApplication1
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            DateTime date = Convert.ToDateTime(dateTimePicker2.Text);
+            DateTime date = Convert.ToDateTime(dateTimePicker1.Text);
             if (date > DateTime.Now.Date)
             {
                 MessageBox.Show("plese select your correct date");
-                dateTimePicker2.Text = DateTime.Now.ToString();
+                dateTimePicker1.Text = DateTime.Now.ToString();
             }
             //string s = comboBox1.SelectedValue.ToString();
 
