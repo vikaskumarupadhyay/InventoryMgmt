@@ -1047,6 +1047,7 @@ namespace WindowsFormsApplication1
                 if (e.KeyChar == '\b')
                 {
 
+                   
                     e.Handled = false;
                 }
                 else
