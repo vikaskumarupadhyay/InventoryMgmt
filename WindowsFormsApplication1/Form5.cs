@@ -777,7 +777,13 @@ namespace WindowsFormsApplication1
                 double amount1 = 0.0;
                 if (double.TryParse(amount, out amount1))
                 {
-                    txtTotalAmount1.Text = CashAmount.Text;
+                   // txtTotalAmount1.Text = CashAmount.Text;
+                   double total = Convert.ToDouble(amount.ToString());
+                    double balanc = Convert.ToDouble(txtBalance.Text);
+                    double b = balanc+1;
+                    double c = balanc - total;
+                    txtBalance.Text = c.ToString();
+
                 }
             }
         }
@@ -816,8 +822,7 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyChar == '\b')
                 {
-                    txtTotalAmount1.Text = "0.00";
-                    txtNetAmount.Text = "0.00";
+                  
                     e.Handled = false;
                 }
                 else
