@@ -3412,9 +3412,10 @@ namespace WindowsFormsApplication1
             }
         }
          Double BalAmunt = 0;
+         Double bal2 = 0;
         private void txtRturned_TextChanged(object sender, EventArgs e)
         {
-           if (txtBalance.Text == "")
+            if (txtBalance.Text == "")
             {
                 txtBalance.Text = "0.00";
             }
@@ -3422,24 +3423,39 @@ namespace WindowsFormsApplication1
             {
                 txtRturned.Text = "0.00";
             }
+
             if (BalAmunt == 0)
             {
-                BalAmunt =Convert.ToDouble( txtBalance.Text);
+                BalAmunt = Convert.ToDouble(txtBalance.Text);
             }
-            string sub = BalAmunt.ToString();
-            string return1 = txtRturned.Text;
-            double amount1 = 0.0;
-            if (double.TryParse(sub, out amount1))
+            if (bal2 == 0)
             {
-                double bal = Convert.ToDouble(sub);
-                if (double.TryParse(return1, out amount1))
+                bal2 = Convert.ToDouble(txtBalance.Text) * -1;
+            }
+            Double return3 = Convert.ToDouble(txtRturned.Text);
+            if (bal2 < return3)
+            {
+                MessageBox.Show("please corrct Amount");
+                txtRturned.Focus();
+                txtRturned.SelectAll();
+                txtBalance.Text = BalAmunt.ToString("###0.00");
+            }
+            else
+            {
+                string sub = BalAmunt.ToString();
+                string return1 = txtRturned.Text;
+                double amount1 = 0.0;
+                if (double.TryParse(sub, out amount1))
                 {
-                    double ReturnAmount = Convert.ToDouble(txtRturned.Text);
-                    double bal1 = bal + ReturnAmount;
-                    txtBalance.Text = bal1.ToString();
+                    double bal = Convert.ToDouble(sub);
+                    if (double.TryParse(return1, out amount1))
+                    {
+                        double ReturnAmount = Convert.ToDouble(txtRturned.Text);
+                        double bal1 = bal + ReturnAmount;
+                        txtBalance.Text = bal1.ToString();
+                    }
                 }
             }
-
         }
         private void txtRturned_KeyPress(object sender, KeyPressEventArgs e)
         {
