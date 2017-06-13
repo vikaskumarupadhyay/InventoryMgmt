@@ -1125,7 +1125,6 @@
             this.groupBox8.Size = new System.Drawing.Size(1324, 222);
             this.groupBox8.TabIndex = 13;
             this.groupBox8.TabStop = false;
-           // this.groupBox8.Enter += new System.EventHandler(this.groupBox8_Enter);
             // 
             // textBox26
             // 
@@ -1565,6 +1564,8 @@
             this.txtCreditAmount.TabIndex = 3;
             this.txtCreditAmount.Text = "0.00";
             this.txtCreditAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCreditAmount.TextChanged += new System.EventHandler(this.txtCreditAmount_TextChanged_1);
+            this.txtCreditAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCreditAmount_KeyPress_1);
             this.txtCreditAmount.Leave += new System.EventHandler(this.txtCreditAmount_Leave_1);
             // 
             // label37
