@@ -297,9 +297,11 @@ namespace WindowsFormsApplication1
             if (F5 == null)
             {
                 F5 = new Form5();
-                F5.Show();
                 F5.MdiParent = this;
                 F5.FormClosed += new FormClosedEventHandler(F5_FormClosed);
+                F5.ControlBox = false;
+                F5.Show();
+                F5.WindowState = FormWindowState.Maximized;
             }
             else
             {

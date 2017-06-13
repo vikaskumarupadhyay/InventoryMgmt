@@ -266,7 +266,7 @@ namespace WindowsFormsApplication1
             {
                
                 setdetails(cell);
-                string selectquery = " select pay.ReceiptDate as[Receipt Date],(select Sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid) as[Bild Quanity],orderdetails.WithautTaxamount as[Gross Amount],orderdetails.Discount as[Discount Rate],orderdetails.Discountamount as[Dicount Amount],orderdetails.Tax as[Tax],orderdetails.Taxamount as[Tax Amount],orderdetails.totalammount as[Total Amount],pay.TotalAmount as[Paid Amount],pay.BalanceAmount as [Balance Amount] from orderdetails join salesOrderDelivery on orderdetails.Orderid=salesOrderDelivery.Orderid join SalesPaymentDetailes pay on salesOrderDelivery.Delivaryid=pay.Invoiceid where salesOrderDelivery.Delivaryid='" + txtRefNo.Text + "' ";
+                string selectquery = " select pay.ReceiptDate as[Invoice Date],(select Sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid) as[Quantity Billed],orderdetails.WithautTaxamount as[Gross Amount],orderdetails.Discount as[Discount Rate (In %)],orderdetails.Discountamount as[Dicount Amount],orderdetails.Tax as[Tax Rate (In %)],orderdetails.Taxamount as[Tax Amount],orderdetails.totalammount as[Invoice Amount],pay.TotalAmount as[Paid Amount],pay.BalanceAmount as [Balance Amount] from orderdetails join salesOrderDelivery on orderdetails.Orderid=salesOrderDelivery.Orderid join SalesPaymentDetailes pay on salesOrderDelivery.Delivaryid=pay.Invoiceid where salesOrderDelivery.Delivaryid='" + txtRefNo.Text + "' ";
                 DataTable dt = d.getDetailByQuery(selectquery);
               
                     panel2.Visible = false;
@@ -346,7 +346,7 @@ namespace WindowsFormsApplication1
                 s = "p.[Paid Amount]";
             }
 
-            string selectquery = "select salesOrderDelivery.Delivaryid as[Delivary Id],orderdetails.custid as [Customer Id], CustomerDetails.CustName as[Customer Name],CustomerDetails.CustCompName as[Company Name], CustomerDetails.CustAddress as[Address],salesOrderDelivery.DeliveryDate as[Delivery Date],(select Sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid) as[Bild Quanity],orderdetails.WithautTaxamount as[Gross Amount],orderdetails.Discount as[Discount Rate],orderdetails.Discountamount as[Dicount Amount],orderdetails.Tax as[Tax],orderdetails.Taxamount as[Tax Amount],orderdetails.totalammount as[Total Amount],p.Balance,p.[Paid Amount]  from orderdetails join CustomerDetails on CustomerDetails.custId=orderdetails.custid join salesOrderDelivery on orderdetails.Orderid=salesOrderDelivery.Orderid left join  (select Invoiceid, (MAX(InvoiceAmount) - sum(TotalAmount)) as Balance , sum(TotalAmount) as [Paid Amount] from SalesPaymentDetailes  join salesOrderDelivery on SalesPaymentDetailes.Invoiceid=salesOrderDelivery.Delivaryid  group by Invoiceid) p on salesOrderDelivery.Delivaryid=p.Invoiceid where " + s + " like '" + textBox8.Text + "%'";
+            string selectquery = "select salesOrderDelivery.Delivaryid as[Sales Invoice ID],salesOrderDelivery.DeliveryDate as[Delivery Date],orderdetails.custid as [Customer ID], CustomerDetails.CustName as[Customer Name],CustomerDetails.CustCompName as[Company Name], CustomerDetails.CustAddress as[Address],(select Sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid) as[Quantity Billed],orderdetails.WithautTaxamount as[Gross Amount],orderdetails.Discount as[Discount Rate (In %)],orderdetails.Discountamount as[Dicount Amount],orderdetails.Tax as[Tax Rate (In %)],orderdetails.Taxamount as[Tax Amount],orderdetails.totalammount as[Invoice Amount],p.[Paid Amount],p.Balance as [Balance Amount]  from orderdetails join CustomerDetails on CustomerDetails.custId=orderdetails.custid join salesOrderDelivery on orderdetails.Orderid=salesOrderDelivery.Orderid left join  (select Invoiceid, (MAX(InvoiceAmount) - sum(TotalAmount)) as Balance , sum(TotalAmount) as [Paid Amount] from SalesPaymentDetailes  join salesOrderDelivery on SalesPaymentDetailes.Invoiceid=salesOrderDelivery.Delivaryid  group by Invoiceid) p on salesOrderDelivery.Delivaryid=p.Invoiceid where " + s + " like '" + textBox8.Text + "%'";
 
             DataTable dt = d.getDetailByQuery(selectquery);
             dataGridView2.DataSource = dt;
@@ -1348,6 +1348,14 @@ namespace WindowsFormsApplication1
                 {
                     e.Handled = true;
                 }
+            }
+        }
+
+        private void textBox8_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
             }
         }
 
