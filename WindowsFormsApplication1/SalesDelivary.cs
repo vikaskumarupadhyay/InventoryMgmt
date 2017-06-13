@@ -15,6 +15,7 @@ namespace WindowsFormsApplication1
         double amount = 0;
         List<string> ls = new List<string>();
         int h;
+        double BalAmunt = 0;
         DB_Main d = new DB_Main();
         public salesdelivary()
         {
@@ -1104,11 +1105,49 @@ namespace WindowsFormsApplication1
             butClose.TabStop = false;
             CashAmount.Focus();
         }
+        public void add()
+        {
+            if (CashAmount.Text == "")
+            {
+                CashAmount.Text = "0";
+                CashAmount.SelectAll();
+            }
+            else if (txtCreditAmount.Text == "")
+            {
+                txtCreditAmount.Text = "0";
+                txtCreditAmount.SelectAll();
+            }
+            else if (txtChequeAmount.Text == "")
+            {
+                txtChequeAmount.Text = "0";
+                txtChequeAmount.SelectAll();
+            }
+            else if (txtEwalletAmount.Text == "")
+            {
+                txtEwalletAmount.Text = "0";
+                txtEwalletAmount.SelectAll();
+            }
+            else if (txtCouponAmount.Text == "")
+            {
+                txtCouponAmount.Text = "0";
+                txtCouponAmount.SelectAll();
+            }
+            else
+            {
+                double cr = Convert.ToDouble(txtCreditAmount.Text);
+                double cas = Convert.ToDouble(CashAmount.Text);
+                double chaq = Convert.ToDouble(txtChequeAmount.Text);
+                double ewelled = Convert.ToDouble(txtEwalletAmount.Text);
+                double coup = Convert.ToDouble(txtCouponAmount.Text);
+                double d = cr + cas + chaq + ewelled + coup;
+                txtTotalAmount1.Text = d.ToString();
+            }
+        }
       
         public void createnewsave()
         {
             gridsalesdelivary.AllowUserToAddRows = false;
-           
+          
 
             if (txtRefNo.Text == "")
             {
@@ -1363,6 +1402,7 @@ namespace WindowsFormsApplication1
                                             DialogResult result = MessageBox.Show("Do you need to print Sales delivary", "Impotant questiuon", MessageBoxButtons.YesNo);
                                             if (result == System.Windows.Forms.DialogResult.Yes)
                                             {
+                                             
                                                 crystalReportViewer2.Visible = true;
                                                 gridsalesdelivary.AllowUserToAddRows = false;
                                                 //string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
@@ -1383,6 +1423,7 @@ namespace WindowsFormsApplication1
                                                 crystalReportViewer2.ReportSource = report1;
                                                 crystalReportViewer2.Refresh();
                                                 con.Close();
+                                           //crystalReportViewer2.PrintReport(1, false, 0, 0);
                                                 return;
                                             }
                                             if (result == System.Windows.Forms.DialogResult.No)
@@ -3270,24 +3311,26 @@ namespace WindowsFormsApplication1
                 //MessageBox.Show("Data invalid!");
                 //txtVenderOpeningBal.Focus();
             }
+            add();
         }
 
         private void txtCreditAmount_Leave_1(object sender, EventArgs e)
         {
-            if (txtCreditAmount.Text == "")
-            {
-                txtCreditAmount.Text = "0.00";
-            }
-            if (txtCreditAmount.Text != "0.00")
-            {
-                string amount = txtCreditAmount.Text + ".00";
-                txtCreditAmount.Text = amount;
-                Double Amount = Convert.ToDouble(txtCreditAmount.Text);
-                Double Amount1 = Convert.ToDouble(CashAmount.Text);
-                Double amount2 = Amount + Amount1;
-                string Amount2 = amount2.ToString();
-                txtTotalAmount1.Text = Amount2 + ".00";
-            }
+            //if (txtCreditAmount.Text == "")
+            //{
+            //    txtCreditAmount.Text = "0.00";
+            //}
+            //if (txtCreditAmount.Text != "0.00")
+            //{
+            //    string amount = txtCreditAmount.Text + ".00";
+            //    txtCreditAmount.Text = amount;
+            //    Double Amount = Convert.ToDouble(txtCreditAmount.Text);
+            //    Double Amount1 = Convert.ToDouble(CashAmount.Text);
+            //    Double amount2 = Amount + Amount1;
+            //    string Amount2 = amount2.ToString();
+            //    txtTotalAmount1.Text = Amount2 + ".00";
+            //}
+            add();
         }
 
         private void txtChequeAmount_Leave_1(object sender, EventArgs e)
@@ -3315,6 +3358,7 @@ namespace WindowsFormsApplication1
                     //MessageBox.Show("Data invalid!");
                     //txtVenderOpeningBal.Focus();
                 }
+                add();
             }
         }
         public void Ewalled()
@@ -3361,6 +3405,7 @@ namespace WindowsFormsApplication1
                 //MessageBox.Show("Data invalid!");
                 //txtVenderOpeningBal.Focus();
             }
+            add();
         }
 
         private void txtCouponAmount_Leave_1(object sender, EventArgs e)
@@ -3391,6 +3436,7 @@ namespace WindowsFormsApplication1
                 //MessageBox.Show("Data invalid!");
                 //txtVenderOpeningBal.Focus();
             }
+            add();
         }
 
         private void txtTotalAmount1_TextChanged_1(object sender, EventArgs e)
@@ -3631,17 +3677,18 @@ namespace WindowsFormsApplication1
 
         private void CashAmount_TextChanged(object sender, EventArgs e)
         {
-            if (CashAmount.Text != "0")
-            {
-                //CashAmount.Text = "";
-                string amount = CashAmount.Text;
-                //CashAmount.Text = amount;
-                double amount1 = 0.0;
-                if (double.TryParse(amount, out amount1))
-                {
-                    txtTotalAmount1.Text = CashAmount.Text;
-                }
-            }
+            add();
+            //if (CashAmount.Text != "0")
+            //{
+            //    //CashAmount.Text = "";
+            //    string amount = CashAmount.Text;
+            //    //CashAmount.Text = amount;
+            //    double amount1 = 0.0;
+            //    if (double.TryParse(amount, out amount1))
+            //    {
+            //        txtTotalAmount1.Text = CashAmount.Text;
+            //    }
+            //}
         }
 
         private void CashAmount_KeyPress(object sender, KeyPressEventArgs e)
@@ -3658,7 +3705,7 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyChar == '\b')
                 {
-                    
+                    add();
                     e.Handled = false;
                 }
                 else
@@ -3702,27 +3749,28 @@ namespace WindowsFormsApplication1
         }
         private void txtChequeAmount_TextChanged(object sender, EventArgs e)
         {
-            if (txtChequeAmount.Text == "0.00")
-            {
-                chequetxt1();
-            }
-            if (txtChequeAmount.Text != "0.00")
-            {
-                chequetxt();
-                string amount = txtChequeAmount.Text;
-                double amount1 = 0.0;
-                if (double.TryParse(amount, out amount1))
-                {
-                    txtChequeAmount.Text = amount;
-                    //txtNetAmount.Text = amount;
-                    Double Amount = Convert.ToDouble(txtCreditAmount.Text);
-                    Double Amount1 = Convert.ToDouble(CashAmount.Text);
-                    Double Amount3 = Convert.ToDouble(txtChequeAmount.Text);
-                    Double amount2 = Amount + Amount1 + Amount3;
-                    //string Amount2 = amount2.ToString();
-                    txtTotalAmount1.Text = amount2.ToString("##0.00");
-                }
-            }
+            add();
+            //if (txtChequeAmount.Text == "0.00")
+            //{
+            //    chequetxt1();
+            //}
+            //if (txtChequeAmount.Text != "0.00")
+            //{
+            //    chequetxt();
+            //    string amount = txtChequeAmount.Text;
+            //    double amount1 = 0.0;
+            //    if (double.TryParse(amount, out amount1))
+            //    {
+            //        txtChequeAmount.Text = amount;
+            //        //txtNetAmount.Text = amount;
+            //        Double Amount = Convert.ToDouble(txtCreditAmount.Text);
+            //        Double Amount1 = Convert.ToDouble(CashAmount.Text);
+            //        Double Amount3 = Convert.ToDouble(txtChequeAmount.Text);
+            //        Double amount2 = Amount + Amount1 + Amount3;
+            //        //string Amount2 = amount2.ToString();
+            //        txtTotalAmount1.Text = amount2.ToString("##0.00");
+            //    }
+            //}
         }
 
         private void txtChequeAmount_KeyPress(object sender, KeyPressEventArgs e)
@@ -3739,7 +3787,7 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyChar == '\b')
                 {
-                    
+                    add();
                     e.Handled = false;
                 }
                 else
@@ -3752,27 +3800,28 @@ namespace WindowsFormsApplication1
 
         private void txtEwalletAmount_TextChanged(object sender, EventArgs e)
         {
-            if (txtEwalletAmount.Text == "")
-            {
-                Ewalled1();
-            }
-            else if (txtEwalletAmount.Text != "0")
-            {
-                Ewalled();
-                string amount = txtEwalletAmount.Text;
-                double amount1 = 0.0;
-                if (double.TryParse(amount, out amount1))
-                {
-                    txtEwalletAmount.Text = amount;
-                    Double Amount = Convert.ToDouble(txtCreditAmount.Text);
-                    Double Amount1 = Convert.ToDouble(CashAmount.Text);
-                    Double Amount3 = Convert.ToDouble(txtChequeAmount.Text);
-                    Double Amount4 = Convert.ToDouble(txtEwalletAmount.Text);
-                    Double amount2 = Amount + Amount1 + Amount3 + Amount4;
-                    string Amount2 = amount2.ToString();
-                    txtTotalAmount1.Text = Amount2;
-                }
-            }
+            //if (txtEwalletAmount.Text == "")
+            //{
+            //    Ewalled1();
+            //}
+            //else if (txtEwalletAmount.Text != "0")
+            //{
+            //    Ewalled();
+            //    string amount = txtEwalletAmount.Text;
+            //    double amount1 = 0.0;
+            //    if (double.TryParse(amount, out amount1))
+            //    {
+            //        txtEwalletAmount.Text = amount;
+            //        Double Amount = Convert.ToDouble(txtCreditAmount.Text);
+            //        Double Amount1 = Convert.ToDouble(CashAmount.Text);
+            //        Double Amount3 = Convert.ToDouble(txtChequeAmount.Text);
+            //        Double Amount4 = Convert.ToDouble(txtEwalletAmount.Text);
+            //        Double amount2 = Amount + Amount1 + Amount3 + Amount4;
+            //        string Amount2 = amount2.ToString();
+            //        txtTotalAmount1.Text = Amount2;
+            //    }
+            //}
+            add();
         }
 
         private void txtEwalletAmount_KeyPress(object sender, KeyPressEventArgs e)
@@ -3789,7 +3838,7 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyChar == '\b')
                 {
-                    
+                    add();
                     e.Handled = false;
                 }
                 else
@@ -3802,30 +3851,31 @@ namespace WindowsFormsApplication1
 
         private void txtCouponAmount_TextChanged(object sender, EventArgs e)
         {
-            if (txtCouponAmount.Text == "0.00")
-            {
-                CmbCompany.Enabled = true;
-                //label23.Visible = false;
-            }
-            if (txtCouponAmount.Text != "0.00")
-            {
-                CmbCompany.Enabled = false;
-                //label23.Visible = true;
-                string amount = txtCouponAmount.Text;
-                //txtCouponAmount.Text = amount;
-                double amount1 = 0.0;
-                if (double.TryParse(amount, out amount1))
-                {
-                    Double Amount = Convert.ToDouble(txtCreditAmount.Text);
-                    Double Amount1 = Convert.ToDouble(CashAmount.Text);
-                    Double Amount3 = Convert.ToDouble(txtChequeAmount.Text);
-                    Double Amount4 = Convert.ToDouble(txtEwalletAmount.Text);
-                    Double Amount5 = Convert.ToDouble(txtCouponAmount.Text);
-                    Double amount2 = Amount + Amount1 + Amount3 + Amount4 + Amount5;
-                    string Amount2 = amount2.ToString();
-                    txtTotalAmount1.Text = amount2.ToString("##0.00");
-                }
-            }
+            //if (txtCouponAmount.Text == "0.00")
+            //{
+            //    CmbCompany.Enabled = true;
+            //    //label23.Visible = false;
+            //}
+            //if (txtCouponAmount.Text != "0.00")
+            //{
+            //    CmbCompany.Enabled = false;
+            //    //label23.Visible = true;
+            //    string amount = txtCouponAmount.Text;
+            //    //txtCouponAmount.Text = amount;
+            //    double amount1 = 0.0;
+            //    if (double.TryParse(amount, out amount1))
+            //    {
+            //        Double Amount = Convert.ToDouble(txtCreditAmount.Text);
+            //        Double Amount1 = Convert.ToDouble(CashAmount.Text);
+            //        Double Amount3 = Convert.ToDouble(txtChequeAmount.Text);
+            //        Double Amount4 = Convert.ToDouble(txtEwalletAmount.Text);
+            //        Double Amount5 = Convert.ToDouble(txtCouponAmount.Text);
+            //        Double amount2 = Amount + Amount1 + Amount3 + Amount4 + Amount5;
+            //        string Amount2 = amount2.ToString();
+            //        txtTotalAmount1.Text = amount2.ToString("##0.00");
+            //    }
+            //}
+            add();
         }
 
         private void txtCouponAmount_KeyPress(object sender, KeyPressEventArgs e)
@@ -3843,6 +3893,7 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyChar == '\b')
                 {
+                    add();
                     e.Handled = false;
                 }
                 else
@@ -3880,26 +3931,46 @@ namespace WindowsFormsApplication1
 
         private void txtRturned_TextChanged(object sender, EventArgs e)
         {
+            
             if (txtBalance.Text == "")
             {
-                txtBalance.Text = "0";
+                txtBalance.Text = "0.00";
             }
             if (txtRturned.Text == "")
             {
-                txtRturned.Text = "0";
+                txtRturned.Text = "0.00";
             }
-            string sub = txtBalance.Text;
+            if (BalAmunt == 0)
+            {
+                BalAmunt = Convert.ToDouble(txtBalance.Text);
+            }
+
+             string sub = BalAmunt.ToString();
+             double sub1 = Convert.ToDouble(sub.ToString());
+            double s = Convert.ToDouble(sub.ToString());
+            s = s * -1;
             string return1 = txtRturned.Text;
             double amount1 = 0.0;
             if (double.TryParse(sub, out amount1))
             {
-                double bal = Convert.ToDouble(txtBalance.Text);
+                double bal = Convert.ToDouble(sub);
                 if (double.TryParse(return1, out amount1))
                 {
                     double ReturnAmount = Convert.ToDouble(txtRturned.Text);
-                    double bal1 = bal + ReturnAmount;
-                    txtBalance.Text = bal1.ToString();
+                    if (s > ReturnAmount)
+                    {
+                        double bal1 = bal + ReturnAmount;
+                        txtBalance.Text = bal1.ToString();
+                    }
+                    else if (ReturnAmount > s)
+                    {
+                        MessageBox.Show("please select your proper amount");
+                        txtRturned.SelectAll();
+                        txtBalance.Text = BalAmunt.ToString("###0.00");
+                        return;
+                    }
                 }
+                   
             }
         }
 
@@ -3978,6 +4049,37 @@ namespace WindowsFormsApplication1
                 }
             }
         }
+
+        private void txtCreditAmount_TextChanged_1(object sender, EventArgs e)
+        {
+            add();
+        }
+
+        private void txtCreditAmount_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
+            {
+                //if (CashAmount.Text.IndexOf('.') != -1 && CashAmount.Text.Split('.')[1].Length == 2)
+                //{
+                //MessageBox.Show("The maximum decimal points are 2!");
+                e.Handled = false;
+                //}
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    add();
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+
+      
 
       
 
