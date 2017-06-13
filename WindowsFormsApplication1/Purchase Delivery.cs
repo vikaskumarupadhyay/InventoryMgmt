@@ -3411,30 +3411,34 @@ namespace WindowsFormsApplication1
                 }
             }
         }
-
+         Double BalAmunt = 0;
         private void txtRturned_TextChanged(object sender, EventArgs e)
         {
-            if (txtBalance.Text == "")
+           if (txtBalance.Text == "")
             {
-                txtBalance.Text = "0";
+                txtBalance.Text = "0.00";
             }
             if (txtRturned.Text == "")
             {
-                txtRturned.Text = "0";
+                txtRturned.Text = "0.00";
             }
-            string sub = txtBalance.Text;
+            if (BalAmunt == 0)
+            {
+                BalAmunt =Convert.ToDouble( txtBalance.Text);
+            }
+            string sub = BalAmunt.ToString();
             string return1 = txtRturned.Text;
-             double amount1 = 0.0;
-             if (double.TryParse(sub, out amount1))
-             {
-                 double bal = Convert.ToDouble(txtBalance.Text);
-                 if (double.TryParse(return1, out amount1))
-                 {
-                     double ReturnAmount = Convert.ToDouble(txtRturned.Text);
-                     double bal1 = bal + ReturnAmount;
-                     txtBalance.Text = bal1.ToString();
-                 }
-             }
+            double amount1 = 0.0;
+            if (double.TryParse(sub, out amount1))
+            {
+                double bal = Convert.ToDouble(sub);
+                if (double.TryParse(return1, out amount1))
+                {
+                    double ReturnAmount = Convert.ToDouble(txtRturned.Text);
+                    double bal1 = bal + ReturnAmount;
+                    txtBalance.Text = bal1.ToString();
+                }
+            }
 
         }
         private void txtRturned_KeyPress(object sender, KeyPressEventArgs e)
