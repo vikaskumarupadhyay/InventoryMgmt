@@ -190,7 +190,7 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(111, 541);
+            this.button4.Location = new System.Drawing.Point(131, 541);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(90, 31);
             this.button4.TabIndex = 40;
@@ -203,9 +203,9 @@
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.Location = new System.Drawing.Point(15, 541);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(90, 31);
+            this.button5.Size = new System.Drawing.Size(110, 31);
             this.button5.TabIndex = 39;
-            this.button5.Text = "Save";
+            this.button5.Text = "Make Payment";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -467,10 +467,9 @@
             this.pnlSalesPayment.Controls.Add(this.groupBox8);
             this.pnlSalesPayment.Controls.Add(this.btnSave);
             this.pnlSalesPayment.Controls.Add(this.groupBox9);
-            this.pnlSalesPayment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlSalesPayment.Location = new System.Drawing.Point(0, 0);
             this.pnlSalesPayment.Name = "pnlSalesPayment";
-            this.pnlSalesPayment.Size = new System.Drawing.Size(1354, 634);
+            this.pnlSalesPayment.Size = new System.Drawing.Size(125, 634);
             this.pnlSalesPayment.TabIndex = 59;
             this.pnlSalesPayment.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSalesPayment_Paint);
             // 
@@ -1175,6 +1174,7 @@
             this.button2.TabIndex = 22;
             this.button2.Text = "Close";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // groupBox11
             // 
@@ -1216,6 +1216,7 @@
             this.dateTimePicker3.Name = "dateTimePicker3";
             this.dateTimePicker3.Size = new System.Drawing.Size(256, 21);
             this.dateTimePicker3.TabIndex = 6;
+            this.dateTimePicker3.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
             // 
             // dateTimePicker4
             // 
@@ -1225,6 +1226,7 @@
             this.dateTimePicker4.Name = "dateTimePicker4";
             this.dateTimePicker4.Size = new System.Drawing.Size(256, 21);
             this.dateTimePicker4.TabIndex = 5;
+            this.dateTimePicker4.ValueChanged += new System.EventHandler(this.dateTimePicker4_ValueChanged);
             // 
             // groupBox3
             // 
