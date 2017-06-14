@@ -172,7 +172,6 @@
             this.groupBox1.Size = new System.Drawing.Size(1090, 161);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // txtFax
             // 
@@ -397,16 +396,19 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1317, 328);
+            this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(111, 541);
+            this.button4.Location = new System.Drawing.Point(192, 541);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(90, 31);
+            this.button4.Size = new System.Drawing.Size(102, 31);
             this.button4.TabIndex = 32;
             this.button4.Text = "Back";
             this.button4.UseVisualStyleBackColor = true;
@@ -417,9 +419,9 @@
             this.buttSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttSave.Location = new System.Drawing.Point(15, 541);
             this.buttSave.Name = "buttSave";
-            this.buttSave.Size = new System.Drawing.Size(90, 31);
+            this.buttSave.Size = new System.Drawing.Size(156, 31);
             this.buttSave.TabIndex = 31;
-            this.buttSave.Text = "Save";
+            this.buttSave.Text = "Make Payment";
             this.buttSave.UseVisualStyleBackColor = true;
             this.buttSave.Click += new System.EventHandler(this.buttSave_Click);
             // 
@@ -474,7 +476,8 @@
             this.dateTimePicker3.Location = new System.Drawing.Point(288, 39);
             this.dateTimePicker3.Name = "dateTimePicker3";
             this.dateTimePicker3.Size = new System.Drawing.Size(256, 21);
-            this.dateTimePicker3.TabIndex = 6;
+            this.dateTimePicker3.TabIndex = 5;
+            this.dateTimePicker3.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
             // 
             // dateTimePicker4
             // 
@@ -483,7 +486,8 @@
             this.dateTimePicker4.Location = new System.Drawing.Point(26, 39);
             this.dateTimePicker4.Name = "dateTimePicker4";
             this.dateTimePicker4.Size = new System.Drawing.Size(256, 21);
-            this.dateTimePicker4.TabIndex = 5;
+            this.dateTimePicker4.TabIndex = 4;
+            this.dateTimePicker4.ValueChanged += new System.EventHandler(this.dateTimePicker4_ValueChanged);
             // 
             // panel3
             // 
@@ -504,8 +508,11 @@
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.Location = new System.Drawing.Point(0, 0);
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(1319, 475);
-            this.dataGridView2.TabIndex = 3;
+            this.dataGridView2.StandardTab = true;
+            this.dataGridView2.TabIndex = 2;
             this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
             this.dataGridView2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView2_KeyPress);
             // 
@@ -534,9 +541,10 @@
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(341, 23);
-            this.txtSearch.TabIndex = 2;
+            this.txtSearch.TabIndex = 0;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
+            this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // label8
             // 
@@ -557,7 +565,7 @@
             this.comboBox1.Location = new System.Drawing.Point(26, 39);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(361, 23);
-            this.comboBox1.TabIndex = 4;
+            this.comboBox1.TabIndex = 1;
             // 
             // label10
             // 
@@ -575,7 +583,7 @@
             this.button2.Location = new System.Drawing.Point(12, 576);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(90, 31);
-            this.button2.TabIndex = 5;
+            this.button2.TabIndex = 3;
             this.button2.Text = "Close";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
@@ -1201,7 +1209,6 @@
             this.groupBox8.Size = new System.Drawing.Size(448, 58);
             this.groupBox8.TabIndex = 8;
             this.groupBox8.TabStop = false;
-            this.groupBox8.Enter += new System.EventHandler(this.groupBox8_Enter);
             // 
             // txtInvoiceid
             // 
