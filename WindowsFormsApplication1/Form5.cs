@@ -93,6 +93,7 @@ namespace WindowsFormsApplication1
        public void tabi()
        {
            textBox8.Focus();
+
        }
         private void Form5_Load(object sender, EventArgs e)
         {

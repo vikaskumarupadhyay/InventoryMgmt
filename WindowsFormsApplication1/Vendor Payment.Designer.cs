@@ -406,7 +406,7 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(192, 541);
+            this.button4.Location = new System.Drawing.Point(177, 541);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(102, 31);
             this.button4.TabIndex = 32;
@@ -498,19 +498,20 @@
             this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel3.Location = new System.Drawing.Point(12, 93);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1323, 479);
+            this.panel3.Size = new System.Drawing.Size(1323, 477);
             this.panel3.TabIndex = 7;
             // 
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.Location = new System.Drawing.Point(0, 0);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(1319, 475);
+            this.dataGridView2.Size = new System.Drawing.Size(1319, 473);
             this.dataGridView2.StandardTab = true;
             this.dataGridView2.TabIndex = 2;
             this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
@@ -580,7 +581,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(12, 576);
+            this.button2.Location = new System.Drawing.Point(12, 574);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(90, 31);
             this.button2.TabIndex = 3;
@@ -793,6 +794,7 @@
             this.txtNetAmount.ReadOnly = true;
             this.txtNetAmount.Size = new System.Drawing.Size(182, 21);
             this.txtNetAmount.TabIndex = 38;
+            this.txtNetAmount.TabStop = false;
             this.txtNetAmount.Text = "0.00";
             this.txtNetAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -827,6 +829,7 @@
             this.txtBalance.ReadOnly = true;
             this.txtBalance.Size = new System.Drawing.Size(182, 21);
             this.txtBalance.TabIndex = 35;
+            this.txtBalance.TabStop = false;
             this.txtBalance.Text = "0.00";
             this.txtBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -839,6 +842,7 @@
             this.txtTotalAmount1.ReadOnly = true;
             this.txtTotalAmount1.Size = new System.Drawing.Size(182, 21);
             this.txtTotalAmount1.TabIndex = 34;
+            this.txtTotalAmount1.TabStop = false;
             this.txtTotalAmount1.Text = "0.00";
             this.txtTotalAmount1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtTotalAmount1.TextChanged += new System.EventHandler(this.txtTotalAmount1_TextChanged);

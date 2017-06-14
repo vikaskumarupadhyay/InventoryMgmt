@@ -427,6 +427,7 @@
             // 
             this.txtcustomerid.Location = new System.Drawing.Point(23, 34);
             this.txtcustomerid.Name = "txtcustomerid";
+            this.txtcustomerid.ReadOnly = true;
             this.txtcustomerid.Size = new System.Drawing.Size(92, 21);
             this.txtcustomerid.TabIndex = 3;
             this.txtcustomerid.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -453,7 +454,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 16);
+            this.label1.Location = new System.Drawing.Point(20, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 15);
             this.label1.TabIndex = 0;
@@ -552,7 +553,7 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(114, 304);
+            this.btnClose.Location = new System.Drawing.Point(108, 295);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(90, 31);
             this.btnClose.TabIndex = 17;
@@ -585,7 +586,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(18, 304);
+            this.btnSave.Location = new System.Drawing.Point(12, 295);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(90, 31);
             this.btnSave.TabIndex = 16;
@@ -752,8 +753,10 @@
             // 
             this.txtNetAmount.Location = new System.Drawing.Point(1117, 161);
             this.txtNetAmount.Name = "txtNetAmount";
+            this.txtNetAmount.ReadOnly = true;
             this.txtNetAmount.Size = new System.Drawing.Size(182, 21);
             this.txtNetAmount.TabIndex = 38;
+            this.txtNetAmount.TabStop = false;
             this.txtNetAmount.Text = "0.00";
             this.txtNetAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -781,8 +784,10 @@
             // 
             this.txtBalance.Location = new System.Drawing.Point(1117, 77);
             this.txtBalance.Name = "txtBalance";
+            this.txtBalance.ReadOnly = true;
             this.txtBalance.Size = new System.Drawing.Size(182, 21);
             this.txtBalance.TabIndex = 35;
+            this.txtBalance.TabStop = false;
             this.txtBalance.Text = "0.00";
             this.txtBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtBalance.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBalance_KeyPress);
@@ -791,8 +796,10 @@
             // 
             this.txtTotalAmount1.Location = new System.Drawing.Point(1117, 35);
             this.txtTotalAmount1.Name = "txtTotalAmount1";
+            this.txtTotalAmount1.ReadOnly = true;
             this.txtTotalAmount1.Size = new System.Drawing.Size(182, 21);
             this.txtTotalAmount1.TabIndex = 34;
+            this.txtTotalAmount1.TabStop = false;
             this.txtTotalAmount1.Text = "0.00";
             this.txtTotalAmount1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtTotalAmount1.TextChanged += new System.EventHandler(this.txtTotalAmount1_TextChanged);
@@ -1146,12 +1153,13 @@
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.Location = new System.Drawing.Point(0, 0);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(1319, 475);
+            this.dataGridView2.Size = new System.Drawing.Size(1319, 473);
             this.dataGridView2.StandardTab = true;
             this.dataGridView2.TabIndex = 2;
             this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
@@ -1252,7 +1260,7 @@
             this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel3.Location = new System.Drawing.Point(12, 93);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1323, 479);
+            this.panel3.Size = new System.Drawing.Size(1323, 477);
             this.panel3.TabIndex = 5;
             // 
             // Form5
