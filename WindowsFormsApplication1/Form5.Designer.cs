@@ -467,9 +467,10 @@
             this.pnlSalesPayment.Controls.Add(this.groupBox8);
             this.pnlSalesPayment.Controls.Add(this.btnSave);
             this.pnlSalesPayment.Controls.Add(this.groupBox9);
+            this.pnlSalesPayment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlSalesPayment.Location = new System.Drawing.Point(0, 0);
             this.pnlSalesPayment.Name = "pnlSalesPayment";
-            this.pnlSalesPayment.Size = new System.Drawing.Size(125, 634);
+            this.pnlSalesPayment.Size = new System.Drawing.Size(1354, 634);
             this.pnlSalesPayment.TabIndex = 59;
             this.pnlSalesPayment.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSalesPayment_Paint);
             // 
@@ -1130,7 +1131,7 @@
             this.combsearch.Location = new System.Drawing.Point(26, 39);
             this.combsearch.Name = "combsearch";
             this.combsearch.Size = new System.Drawing.Size(361, 23);
-            this.combsearch.TabIndex = 2;
+            this.combsearch.TabIndex = 24;
             // 
             // textBox8
             // 
@@ -1138,7 +1139,7 @@
             this.textBox8.Multiline = true;
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(341, 23);
-            this.textBox8.TabIndex = 3;
+            this.textBox8.TabIndex = 1;
             this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
             this.textBox8.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox8_KeyDown);
             // 
@@ -1149,8 +1150,10 @@
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.Location = new System.Drawing.Point(0, 0);
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(1319, 475);
-            this.dataGridView2.TabIndex = 4;
+            this.dataGridView2.StandardTab = true;
+            this.dataGridView2.TabIndex = 2;
             this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
             // 
             // panel2
@@ -1171,7 +1174,7 @@
             this.button2.Location = new System.Drawing.Point(12, 576);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(90, 31);
-            this.button2.TabIndex = 22;
+            this.button2.TabIndex = 20;
             this.button2.Text = "Close";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -1215,7 +1218,7 @@
             this.dateTimePicker3.Location = new System.Drawing.Point(288, 39);
             this.dateTimePicker3.Name = "dateTimePicker3";
             this.dateTimePicker3.Size = new System.Drawing.Size(256, 21);
-            this.dateTimePicker3.TabIndex = 6;
+            this.dateTimePicker3.TabIndex = 23;
             this.dateTimePicker3.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
             // 
             // dateTimePicker4
@@ -1225,7 +1228,7 @@
             this.dateTimePicker4.Location = new System.Drawing.Point(26, 39);
             this.dateTimePicker4.Name = "dateTimePicker4";
             this.dateTimePicker4.Size = new System.Drawing.Size(256, 21);
-            this.dateTimePicker4.TabIndex = 5;
+            this.dateTimePicker4.TabIndex = 22;
             this.dateTimePicker4.ValueChanged += new System.EventHandler(this.dateTimePicker4_ValueChanged);
             // 
             // groupBox3
@@ -1238,7 +1241,7 @@
             this.groupBox3.Location = new System.Drawing.Point(581, 9);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(753, 78);
-            this.groupBox3.TabIndex = 6;
+            this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "groupBox3";
             // 
