@@ -77,8 +77,8 @@
             this.textBox23 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox20 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox20 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.txtNetAmount = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -124,14 +124,14 @@
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
-            this.button2 = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -143,9 +143,9 @@
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox11.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // txttotalammount
@@ -467,10 +467,9 @@
             this.pnlSalesPayment.Controls.Add(this.groupBox8);
             this.pnlSalesPayment.Controls.Add(this.btnSave);
             this.pnlSalesPayment.Controls.Add(this.groupBox9);
-            this.pnlSalesPayment.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlSalesPayment.Location = new System.Drawing.Point(0, 0);
+            this.pnlSalesPayment.Location = new System.Drawing.Point(0, -23);
             this.pnlSalesPayment.Name = "pnlSalesPayment";
-            this.pnlSalesPayment.Size = new System.Drawing.Size(1354, 634);
+            this.pnlSalesPayment.Size = new System.Drawing.Size(1372, 657);
             this.pnlSalesPayment.TabIndex = 59;
             this.pnlSalesPayment.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSalesPayment_Paint);
             // 
@@ -715,17 +714,6 @@
             this.textBox4.Text = "₹";
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox20
-            // 
-            this.textBox20.Location = new System.Drawing.Point(1089, 77);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.ReadOnly = true;
-            this.textBox20.Size = new System.Drawing.Size(29, 21);
-            this.textBox20.TabIndex = 41;
-            this.textBox20.TabStop = false;
-            this.textBox20.Text = "₹";
-            this.textBox20.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // textBox5
             // 
             this.textBox5.Location = new System.Drawing.Point(1089, 35);
@@ -736,6 +724,17 @@
             this.textBox5.TabStop = false;
             this.textBox5.Text = "₹";
             this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox20
+            // 
+            this.textBox20.Location = new System.Drawing.Point(1089, 77);
+            this.textBox20.Name = "textBox20";
+            this.textBox20.ReadOnly = true;
+            this.textBox20.Size = new System.Drawing.Size(29, 21);
+            this.textBox20.TabIndex = 41;
+            this.textBox20.TabStop = false;
+            this.textBox20.Text = "₹";
+            this.textBox20.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox6
             // 
@@ -1161,35 +1160,20 @@
             this.panel2.Controls.Add(this.groupBox11);
             this.panel2.Controls.Add(this.groupBox3);
             this.panel2.Controls.Add(this.panel3);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Location = new System.Drawing.Point(-3, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1354, 634);
+            this.panel2.Size = new System.Drawing.Size(1357, 634);
             this.panel2.TabIndex = 42;
             // 
-            // panel3
+            // button2
             // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel3.Controls.Add(this.dataGridView2);
-            this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel3.Location = new System.Drawing.Point(12, 93);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1323, 479);
-            this.panel3.TabIndex = 5;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.textBox8);
-            this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.combsearch);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(581, 9);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(753, 78);
-            this.groupBox3.TabIndex = 6;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "groupBox3";
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(12, 576);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(90, 31);
+            this.button2.TabIndex = 22;
+            this.button2.Text = "Close";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // groupBox11
             // 
@@ -1241,15 +1225,29 @@
             this.dateTimePicker4.Size = new System.Drawing.Size(256, 21);
             this.dateTimePicker4.TabIndex = 5;
             // 
-            // button2
+            // groupBox3
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(12, 576);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(90, 31);
-            this.button2.TabIndex = 22;
-            this.button2.Text = "Close";
-            this.button2.UseVisualStyleBackColor = true;
+            this.groupBox3.Controls.Add(this.textBox8);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.combsearch);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(581, 9);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(753, 78);
+            this.groupBox3.TabIndex = 6;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "groupBox3";
+            // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.dataGridView2);
+            this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel3.Location = new System.Drawing.Point(12, 93);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1323, 479);
+            this.panel3.TabIndex = 5;
             // 
             // Form5
             // 
@@ -1285,11 +1283,11 @@
             this.groupBox9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

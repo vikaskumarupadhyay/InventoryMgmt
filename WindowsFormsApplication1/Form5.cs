@@ -751,7 +751,7 @@ namespace WindowsFormsApplication1
         {
             add();
             //double cr = Convert.ToDouble(txtCreditAmount.Text);
-            //double cas = Convert.ToDouble(CashAmount.Text);
+            //double cas = Convert.ToDouble(CashAmount.Text);ss
             //double chaq = Convert.ToDouble(txtChequeAmount.Text);
             //double ewelled = Convert.ToDouble(txtEwalletAmount.Text);
             //double d = cr + cas + chaq + ewelled;
