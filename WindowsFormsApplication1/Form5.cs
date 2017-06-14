@@ -66,8 +66,37 @@ namespace WindowsFormsApplication1
 
 
        }
+       public void loadtabindex()
+       {
+           panel1.TabStop = false;
+           txtcustomerid.TabStop = false;
+           button1.TabStop = false;
+           txtcustname.TabStop = false;
+           txtcustcompnayname.TabStop = false;
+           txtaddress.TabStop = false;
+           txtphone.TabStop = false;
+           txtmobile.TabStop = false;
+           txtfax.TabStop = false;
+           txtSrNo.TabStop = false;
+           dtpdate.TabStop = false;
+           txtRefNo.TabStop = false;
+           dataGridView1.TabStop = false;
+           button4.TabStop = false;
+           button5.TabStop = false;
+           textBox22.TabStop = false;
+           textBox15.TabStop = false;
+           txttotalammount.TabStop = false;
+           groupBox1.TabStop = false;
+           groupBox2.TabStop = false;
+          
+       }
+       public void tabi()
+       {
+           textBox8.Focus();
+       }
         private void Form5_Load(object sender, EventArgs e)
         {
+          
             string select = "select DeliveryDate from salesOrderDelivery where Delivaryid='" + 1 + "'";
             DataTable dt2 = d.getDetailByQuery(select);
             string num = "";
@@ -76,12 +105,13 @@ namespace WindowsFormsApplication1
                 num = dr[0].ToString();
             }
             dateTimePicker4.Text = num;
+            dataGridView2.ReadOnly = true;
             CmbCardType.SelectedIndex = 0;
             CmbCompany.SelectedIndex = 0;
             CmbPageName.SelectedIndex = 0;
             pnlSalesPayment.Visible = false;
 
-            pageloadsave();
+            
             button1.Enabled = false;
 
 
@@ -229,6 +259,11 @@ namespace WindowsFormsApplication1
         //            }
         //        }
         //    }
+            //textBox8.Focus();
+
+            loadtabindex();
+            pageloadsave();
+            tabi();
         }
         public void salesedelivarytabindex()
         {
@@ -725,6 +760,7 @@ namespace WindowsFormsApplication1
         }
         public void add()
         {
+           
             if (CashAmount.Text == "")
             {
                 CashAmount.Text = "0";
@@ -758,7 +794,7 @@ namespace WindowsFormsApplication1
                 double ewelled = Convert.ToDouble(txtEwalletAmount.Text);
                 double coup = Convert.ToDouble(txtCouponAmount.Text);
                 double d = cr + cas + chaq + ewelled+coup;
-                txtTotalAmount1.Text = d.ToString();
+                txtTotalAmount1.Text = d.ToString("###0.00");
             }
         }
         private void CashAmount_TextChanged(object sender, EventArgs e)
