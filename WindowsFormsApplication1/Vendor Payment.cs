@@ -28,9 +28,19 @@ namespace WindowsFormsApplication1
 
         private void Form9_Load(object sender, EventArgs e)
         {
+           // panel2.Visible = false;
+            button1.Enabled = false;
             //button1.Visible = false;
             Purchase.PurchaseDetails purChaseDetailObj = new Purchase.PurchaseDetails();
             vendorDetails = purChaseDetailObj.GetVendorDetaisInDataTable();
+            string select = "select DeliveryDate from CustomerOrderDelivery where Deliveryid='" + 1 + "'";
+            DataTable dt3 = dbMainClass.getDetailByQuery(select);
+            string date = "";
+            foreach (DataRow d4 in dt3.Rows)
+            {
+                date = d4[0].ToString();
+            }
+            dateTimePicker4.Text = date;
             /* panel2.Visible = false;
              txtRefNo.Text = orderid9;
              string select = "select Orderid from CustomerOrderInvoice where InvoiceId='" + orderid9 + "'";
@@ -101,6 +111,13 @@ namespace WindowsFormsApplication1
                 int txt1 = txt + 1;
                 txtSrNo.Text = txt1.ToString();
             }
+           
+            tabindex();
+            makePayment1();
+            tabindex1();
+        }
+        public void makePayment1()
+        {
             string selectqurry = "select CustomerOrderDelivery.Deliveryid as[Purchase Invoice ID],CustomerOrderDelivery.DeliveryDate as[Invoice Date],VendorOrderDetails.venderId as [Vendor ID], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Quantity Billed],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate (In %)],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax Rate (In %)],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Invoice Amount],p.[Paid Amount],p.Balance as [Balance Amount] from VendorOrderDetails join VendorDetails on VendorDetails.venderId =VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid left join  (select Invoiceid, (MAX(InvoiceAmount) - sum(TotalAmount)) as Balance , sum(TotalAmount) as [Paid Amount] from AllPaymentDetailes  join CustomerOrderDelivery on AllPaymentDetailes.Invoiceid=CustomerOrderDelivery.Deliveryid  group by Invoiceid) p on CustomerOrderDelivery.Deliveryid=p.Invoiceid";
             string selectqurryForActualColumnName = "select top 1 CustomerOrderDelivery.Deliveryid ,CustomerOrderDelivery.DeliveryDate, VendorOrderDetails.venderId, VendorDetails.vName ,VendorDetails.vCompName , VendorDetails.vAddress ,(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) ,VendorOrderDetails.WithoutTexAmount ,VendorOrderDetails.Discount ,VendorOrderDetails.DisAmount ,VendorOrderDetails.vat ,VendorOrderDetails.TextTaxAmmount ,VendorOrderDetails.TotalPrice ,p.[Paid Amount],p.Balance from VendorOrderDetails join VendorDetails on VendorDetails.venderId =VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid left join  (select Invoiceid, (MAX(InvoiceAmount) - sum(TotalAmount)) as Balance , sum(TotalAmount) as [Paid Amount] from AllPaymentDetailes  join CustomerOrderDelivery on AllPaymentDetailes.Invoiceid=CustomerOrderDelivery.Deliveryid  group by Invoiceid) p on CustomerOrderDelivery.Deliveryid=p.Invoiceid";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
@@ -128,6 +145,32 @@ namespace WindowsFormsApplication1
             comboBox1.DisplayMember = "AliasTableColumnName";
             dataGridView2.DataSource = dt;
 
+        }
+        public void tabindex()
+        {
+            txtvendorId.TabStop = false;
+            txtVendorName.TabStop = false;
+            txtAddress.TabStop = false;
+            txtPhone.TabStop = false;
+            txtFax.TabStop = false;
+            dataGridView1.TabStop = false;
+            txttotalAmount.TabStop = false;
+            btnSave.TabStop = false;
+            btnClose.TabStop = false;
+            panel1.TabStop = false;
+            groupBox10.TabStop = false;
+            groupBox11.TabStop = false;
+            txtCompanyName.TabStop = false;
+            txtMobile.TabStop = false;
+            txtRefNo.TabStop = false;
+            txtpayDate.TabStop = false;
+            buttSave.TabStop = false;
+            button4.TabStop = false;
+            button2.TabStop = false;
+        }
+        public void tabindex1()
+        {
+            txtSearch.Focus();
         }
         private void setVAlue()
         {
@@ -307,11 +350,12 @@ namespace WindowsFormsApplication1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            this.Close();
+            panel2.Visible = true;
         }
-
+        int counter = 0;
         private void buttSave_Click(object sender, EventArgs e)
         {
+            counter = 0;
             /* string ChaqueDate = varible.bankDate;
             string BankName = varible.bankname;
             string ChaqueNo = varible.chaqueNo;
@@ -414,6 +458,8 @@ namespace WindowsFormsApplication1
                */
             pnlPayment.Visible = true;
             CashAmount.Focus();
+            BlankPaymentPage1();
+            CashAmount.SelectAll();
             //makeBlank();
             //makeBlank1();
             //int id = Convert.ToInt32(txtSrNo.Text);
@@ -760,7 +806,7 @@ namespace WindowsFormsApplication1
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            panel2.Visible = false;
+            this.Close();
         }
 
         private void dataGridView2_KeyPress(object sender, KeyPressEventArgs e)
@@ -772,6 +818,7 @@ namespace WindowsFormsApplication1
         {
             pnlPayment.Visible = false;
             panel2.Visible = false;
+            //this.Close();
             
             
         }
@@ -822,6 +869,10 @@ namespace WindowsFormsApplication1
             CmbPageName.SelectedIndex = 0;
             CmbCardType.SelectedIndex = 0;
             CmbCompany.SelectedIndex = 0;
+            //if (counter == 0)
+            //{
+            //    BlankPaymentPage1();
+            //}
         }
 
         private void CashAmount_TextChanged(object sender, EventArgs e)
@@ -829,6 +880,7 @@ namespace WindowsFormsApplication1
             if (CashAmount.Text == "")
             {
                 CashAmount.Text = "0.00";
+                CashAmount.SelectAll();
                 value();
             }
             if (CashAmount.Text != "0.00")
@@ -1060,6 +1112,7 @@ namespace WindowsFormsApplication1
           else  if (txtCreditAmount.Text == "")
             {
                 txtCreditAmount.Text = "0.00";
+                txtCreditAmount.SelectAll();
                 value();
             }
            else if (txtCreditAmount.Text != "0.00")
@@ -1107,6 +1160,7 @@ namespace WindowsFormsApplication1
            else if (txtChequeAmount.Text == "")
             {
                 txtChequeAmount.Text = "0.00";
+                txtChequeAmount.SelectAll();
                 value();
             }
            else if (txtChequeAmount.Text != "0.00")
@@ -1139,6 +1193,7 @@ namespace WindowsFormsApplication1
            else if (txtCouponAmount.Text == "")
             {
                 txtCouponAmount.Text = "0.00";
+                txtChequeAmount.SelectAll();
                 value();
             }
             if (txtCouponAmount.Text != "0.00")
@@ -1203,6 +1258,29 @@ namespace WindowsFormsApplication1
 
 
         }
+        private void BlankPaymentPage1()
+        {
+            CashAmount.Text = "0.00";
+            txtCreditAmount.Text = "0.00";
+            txtDebitBankName.Text = "";
+            txtCardNumber.Text = "";
+            CmbCardType.SelectedIndex = 0;
+            txtChequeAmount.Text = "0.00";
+            txtChequeBankName.Text = "";
+            txtChequeNumber.Text = "";
+            // txtWAmount.Text = "0.00";
+            txtEwalletAmount.Text = "0.00";
+            EWalletCompanyName.Text = "";
+            txtTransactionNumber.Text = "";
+            txtCouponAmount.Text = "0.00";
+            CmbCompany.SelectedIndex = 0;
+            txtTotalAmount1.Text = "0.00";
+            //txtBalance.Text = "0.00";
+            txtRturned.Text = "0.00";
+            txtNetAmount.Text = "0.00";
+
+
+        }
         public void value()
         {
 
@@ -1212,7 +1290,7 @@ namespace WindowsFormsApplication1
             Double Amount3 = Convert.ToDouble(txtChequeAmount.Text);
             Double Amount4 = Convert.ToDouble(txtEwalletAmount.Text);
             Double amount2 = Amount + Amount1 + Amount3 + Amount4 + Amount5;
-            string Amount2 = amount2.ToString();
+            string Amount2 = amount2.ToString("###0.00");
             txtTotalAmount1.Text = Amount2;
         }
            
@@ -1225,6 +1303,7 @@ namespace WindowsFormsApplication1
           else  if (txtEwalletAmount.Text == "")
             {
                 txtEwalletAmount.Text = "0.00";
+                txtEwalletAmount.SelectAll();
                 value();
              }
             else if (txtEwalletAmount.Text != "0")
@@ -1446,6 +1525,7 @@ namespace WindowsFormsApplication1
                 if (insertedRows3 > 0)
                 {
                     MessageBox.Show("Details Saved Successfully");
+                    makePayment1();
                     BlankPaymentPage();
                     pnlPayment.Visible = false;
                     panel2.Visible = true;
@@ -1458,30 +1538,7 @@ namespace WindowsFormsApplication1
    
         }
 
-        private void groupBox8_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCreditAmount_KeyPress_1(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
-        private void txtCreditAmount_Leave_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCreditAmount_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
+       
 
         private void txtCreditAmount_TextChanged_1(object sender, EventArgs e)
         {
@@ -1499,6 +1556,45 @@ namespace WindowsFormsApplication1
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
+        {
+            setDate();
+        }
+        public void setDate()
+        {
+            DateTime date = Convert.ToDateTime(dateTimePicker2.Text);
+            if (date > DateTime.Now.Date)
+            {
+
+                MessageBox.Show("please enter the currect date");
+                dateTimePicker2.Text = DateTime.Now.ToString();
+
+            }
+            DateTime date1 = Convert.ToDateTime(dateTimePicker1.Text);
+            if (date1 > DateTime.Now.Date)
+            {
+
+                MessageBox.Show("please enter the currect date");
+                dateTimePicker1.Text = DateTime.Now.ToString();
+
+            }
+            //string s = comboPurchasesearch.SelectedValue.ToString();
+            string selectQurry = "select CustomerOrderDelivery.Deliveryid as[Purchase Invoice ID],CustomerOrderDelivery.DeliveryDate as[Invoice Date],VendorOrderDetails.venderId as [Vendor ID], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Quantity Billed],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate (In %)],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax Rate (In %)],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Invoice Amount],p.[Paid Amount],p.Balance as [Balance Amount] from VendorOrderDetails join VendorDetails on VendorDetails.venderId =VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid left join  (select Invoiceid, (MAX(InvoiceAmount) - sum(TotalAmount)) as Balance , sum(TotalAmount) as [Paid Amount] from AllPaymentDetailes  join CustomerOrderDelivery on AllPaymentDetailes.Invoiceid=CustomerOrderDelivery.Deliveryid  group by Invoiceid) p on CustomerOrderDelivery.Deliveryid=p.Invoiceid where DeliveryDate BETWEEN '" + dateTimePicker4.Value.ToString() + "' AND '" + dateTimePicker3.Value.ToString() + "'";
+            //"select od.Orderid,od.venderId,itd.ItemName,vod.Quantity,vod.TotalPrice,od.OrderDate,cod.DeliveryDate,coi.InvoiceDate from VendorOrderDetails od join VendorOrderDesc vod on vod.Orderid=od.Orderid join CustomerOrderDelivery cod on cod.Orderid=vod.Orderid join CustomerOrderInvoice coi on coi.Orderid=vod.Orderid join ItemDetails itd on itd.ItemId=vod.ItemId where " + a + "= '" + txtsearch.Text + "'";
+            DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
+            dataGridView2.DataSource = dt;
+        }
+             
+        private void dateTimePicker4_ValueChanged(object sender, EventArgs e)
+        {
+            setDate();
+        }
+
+        private void txtSearch_Leave(object sender, EventArgs e)
+        {
+            button2.TabStop = true;
         }
     }
 }
