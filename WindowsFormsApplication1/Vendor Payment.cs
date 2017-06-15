@@ -111,10 +111,9 @@ namespace WindowsFormsApplication1
                 int txt1 = txt + 1;
                 txtSrNo.Text = txt1.ToString();
             }
-           
-            tabindex();
+           tabindex();
             makePayment1();
-            tabindex1();
+            //tabindex1();
         }
         public void makePayment1()
         {
@@ -146,6 +145,18 @@ namespace WindowsFormsApplication1
             dataGridView2.DataSource = dt;
 
         }
+        public void Tabindex2()
+        {
+            dataGridView1.Focus();
+            panel1.TabStop = true;
+            dataGridView1.TabStop = true;
+            buttSave.TabStop = true;
+            button4.TabStop = true;
+            panel1.TabIndex = 0;
+            dataGridView1.TabIndex = 1;
+            buttSave.TabIndex = 2;
+            button4.TabIndex = 3;
+        }
         public void tabindex()
         {
             txtvendorId.TabStop = false;
@@ -167,10 +178,18 @@ namespace WindowsFormsApplication1
             buttSave.TabStop = false;
             button4.TabStop = false;
             button2.TabStop = false;
+            //groupBox1.TabStop = false;
+            comboBox1.Focus();
         }
         public void tabindex1()
         {
-            txtSearch.Focus();
+            
+            comboBox1.TabIndex = 0;
+            txtSearch.TabIndex = 1;
+            dataGridView2.TabIndex = 2;
+            button2.TabIndex = 3;
+            dateTimePicker4.TabIndex = 4;
+            dateTimePicker3.TabIndex = 5;
         }
         private void setVAlue()
         {
@@ -259,7 +278,7 @@ namespace WindowsFormsApplication1
 
         private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            Tabindex2();
             // panel2.Visible = false;
             DataGridViewCellCollection call = dataGridView2.Rows[e.RowIndex].Cells;
             if (!string.IsNullOrEmpty(call[0].Value.ToString()))
@@ -351,6 +370,7 @@ namespace WindowsFormsApplication1
         private void button4_Click(object sender, EventArgs e)
         {
             panel2.Visible = true;
+            txtSearch.Text = "";
         }
         int counter = 0;
         private void buttSave_Click(object sender, EventArgs e)
@@ -811,6 +831,64 @@ namespace WindowsFormsApplication1
 
         private void dataGridView2_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                Tabindex2();
+                DataGridViewCellCollection call = dataGridView2.SelectedRows[0].Cells;
+                if (!string.IsNullOrEmpty(call[0].Value.ToString()))
+                {
+                    setDetails(call);
+                    //int id = Convert.ToInt32(txtSrNo.Text);
+                    //int id1 = id -1;
+
+
+                    string selectQurry = "select payment.PaymentDate as[Invoice Date],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Quantity Billed],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate (In %)],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax Rate (In %)],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Invoice Amount],payment.TotalAmount as[Paid Amount] ,payment.BalanceAmount as[Balance Amount] from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid join AllPaymentDetailes payment on CustomerOrderDelivery.Deliveryid=payment.Invoiceid where CustomerOrderDelivery.Deliveryid='" + txtRefNo.Text + "'";
+                    DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
+                    string balance = "";
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        balance = dr[9].ToString();
+                    }
+                    if (balance == "0.00")
+                    {
+                        buttSave.Enabled = false;
+                        panel2.Visible = false;
+                        dataGridView1.DataSource = dt;
+                        double d;
+                        double d1 = 0;
+                        DataGridViewRowCollection call1 = dataGridView1.Rows;
+                        for (int c = 0; c < call1.Count; c++)
+                        {
+                            DataGridViewRow currentRow1 = call1[c];
+                            DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
+                            d = Convert.ToDouble(cellCollection1[8].Value.ToString());
+                            d1 = d1 + d;
+                        }
+                        Double Amount1 = amount - d1;
+                        txttotalAmount.Text = Amount1.ToString("###0.00");
+                    }
+                    else
+                    {
+                        panel2.Visible = false;
+                        dataGridView1.DataSource = dt;
+                        double d;
+                        double d1 = 0;
+                        DataGridViewRowCollection call1 = dataGridView1.Rows;
+                        for (int c = 0; c < call1.Count; c++)
+                        {
+                            DataGridViewRow currentRow1 = call1[c];
+                            DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
+                            d = Convert.ToDouble(cellCollection1[8].Value.ToString());
+                            d1 = d1 + d;
+                        }
+                        Double Amount1 = amount - d1;
+                        txttotalAmount.Text = Amount1.ToString("###0.00");
+                        // txtInvoiceAmount.Text = Amount1.ToString("###0.00"); 
+                        // txtBalance.Text = Amount1.ToString("###0.00"); 
+                    }
+                }
+
+            }
 
         }
 
@@ -1557,27 +1635,27 @@ namespace WindowsFormsApplication1
         {
 
         }
-
+      
         private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
         {
             setDate();
         }
         public void setDate()
         {
-            DateTime date = Convert.ToDateTime(dateTimePicker2.Text);
+            DateTime date = Convert.ToDateTime(dateTimePicker3.Text);
             if (date > DateTime.Now.Date)
             {
 
                 MessageBox.Show("please enter the currect date");
-                dateTimePicker2.Text = DateTime.Now.ToString();
+                dateTimePicker3.Text = DateTime.Now.ToString();
 
             }
-            DateTime date1 = Convert.ToDateTime(dateTimePicker1.Text);
+            DateTime date1 = Convert.ToDateTime(dateTimePicker4.Text);
             if (date1 > DateTime.Now.Date)
             {
 
                 MessageBox.Show("please enter the currect date");
-                dateTimePicker1.Text = DateTime.Now.ToString();
+                dateTimePicker4.Text = DateTime.Now.ToString();
 
             }
             //string s = comboPurchasesearch.SelectedValue.ToString();
@@ -1594,7 +1672,18 @@ namespace WindowsFormsApplication1
 
         private void txtSearch_Leave(object sender, EventArgs e)
         {
+           
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void comboBox1_Leave(object sender, EventArgs e)
+        {
             button2.TabStop = true;
         }
+
     }
 }
