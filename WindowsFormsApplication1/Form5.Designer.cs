@@ -132,6 +132,23 @@
             this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.pnlshowdetail = new System.Windows.Forms.Panel();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.lblComName = new System.Windows.Forms.Label();
+            this.lblCompanyName = new System.Windows.Forms.Label();
+            this.lblCouponAmount = new System.Windows.Forms.Label();
+            this.lblTransactionDate = new System.Windows.Forms.Label();
+            this.lblTransactionNumber = new System.Windows.Forms.Label();
+            this.lblEWalletAmount = new System.Windows.Forms.Label();
+            this.lblChequeDate = new System.Windows.Forms.Label();
+            this.lblChequeNumber = new System.Windows.Forms.Label();
+            this.lblBankName = new System.Windows.Forms.Label();
+            this.lblChequeAmount = new System.Windows.Forms.Label();
+            this.lblCardType = new System.Windows.Forms.Label();
+            this.lblCardNumber = new System.Windows.Forms.Label();
+            this.lblBaName = new System.Windows.Forms.Label();
+            this.lblCreditDebitCard = new System.Windows.Forms.Label();
+            this.lblCashAmount = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -146,6 +163,8 @@
             this.groupBox11.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.pnlshowdetail.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // txttotalammount
@@ -227,10 +246,12 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1317, 328);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
             // 
             // groupBox2
             // 
@@ -1266,11 +1287,181 @@
             this.panel3.Size = new System.Drawing.Size(1323, 477);
             this.panel3.TabIndex = 5;
             // 
+            // pnlshowdetail
+            // 
+            this.pnlshowdetail.Controls.Add(this.groupBox4);
+            this.pnlshowdetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlshowdetail.Location = new System.Drawing.Point(0, 0);
+            this.pnlshowdetail.Name = "pnlshowdetail";
+            this.pnlshowdetail.Size = new System.Drawing.Size(1354, 634);
+            this.pnlshowdetail.TabIndex = 60;
+            this.pnlshowdetail.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlshowdetail_Paint);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.lblComName);
+            this.groupBox4.Controls.Add(this.lblCompanyName);
+            this.groupBox4.Controls.Add(this.lblCouponAmount);
+            this.groupBox4.Controls.Add(this.lblTransactionDate);
+            this.groupBox4.Controls.Add(this.lblTransactionNumber);
+            this.groupBox4.Controls.Add(this.lblEWalletAmount);
+            this.groupBox4.Controls.Add(this.lblChequeDate);
+            this.groupBox4.Controls.Add(this.lblChequeNumber);
+            this.groupBox4.Controls.Add(this.lblBankName);
+            this.groupBox4.Controls.Add(this.lblChequeAmount);
+            this.groupBox4.Controls.Add(this.lblCardType);
+            this.groupBox4.Controls.Add(this.lblCardNumber);
+            this.groupBox4.Controls.Add(this.lblBaName);
+            this.groupBox4.Controls.Add(this.lblCreditDebitCard);
+            this.groupBox4.Controls.Add(this.lblCashAmount);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(14, 200);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(1321, 222);
+            this.groupBox4.TabIndex = 14;
+            this.groupBox4.TabStop = false;
+            // 
+            // lblComName
+            // 
+            this.lblComName.AutoSize = true;
+            this.lblComName.Location = new System.Drawing.Point(660, 61);
+            this.lblComName.Name = "lblComName";
+            this.lblComName.Size = new System.Drawing.Size(96, 15);
+            this.lblComName.TabIndex = 20;
+            this.lblComName.Text = "Company Name";
+            // 
+            // lblCompanyName
+            // 
+            this.lblCompanyName.AutoSize = true;
+            this.lblCompanyName.Location = new System.Drawing.Point(870, 59);
+            this.lblCompanyName.Name = "lblCompanyName";
+            this.lblCompanyName.Size = new System.Drawing.Size(96, 15);
+            this.lblCompanyName.TabIndex = 29;
+            this.lblCompanyName.Text = "Company Name";
+            // 
+            // lblCouponAmount
+            // 
+            this.lblCouponAmount.AutoSize = true;
+            this.lblCouponAmount.Location = new System.Drawing.Point(870, 17);
+            this.lblCouponAmount.Name = "lblCouponAmount";
+            this.lblCouponAmount.Size = new System.Drawing.Size(95, 15);
+            this.lblCouponAmount.TabIndex = 26;
+            this.lblCouponAmount.Text = "Coupon Amount";
+            // 
+            // lblTransactionDate
+            // 
+            this.lblTransactionDate.AutoSize = true;
+            this.lblTransactionDate.Location = new System.Drawing.Point(654, 143);
+            this.lblTransactionDate.Name = "lblTransactionDate";
+            this.lblTransactionDate.Size = new System.Drawing.Size(100, 15);
+            this.lblTransactionDate.TabIndex = 24;
+            this.lblTransactionDate.Text = "Transaction Date";
+            // 
+            // lblTransactionNumber
+            // 
+            this.lblTransactionNumber.AutoSize = true;
+            this.lblTransactionNumber.Location = new System.Drawing.Point(654, 101);
+            this.lblTransactionNumber.Name = "lblTransactionNumber";
+            this.lblTransactionNumber.Size = new System.Drawing.Size(119, 15);
+            this.lblTransactionNumber.TabIndex = 22;
+            this.lblTransactionNumber.Text = "Transaction Number";
+            // 
+            // lblEWalletAmount
+            // 
+            this.lblEWalletAmount.AutoSize = true;
+            this.lblEWalletAmount.Location = new System.Drawing.Point(654, 17);
+            this.lblEWalletAmount.Name = "lblEWalletAmount";
+            this.lblEWalletAmount.Size = new System.Drawing.Size(98, 15);
+            this.lblEWalletAmount.TabIndex = 18;
+            this.lblEWalletAmount.Text = "E-Wallet Amount";
+            // 
+            // lblChequeDate
+            // 
+            this.lblChequeDate.AutoSize = true;
+            this.lblChequeDate.Location = new System.Drawing.Point(438, 143);
+            this.lblChequeDate.Name = "lblChequeDate";
+            this.lblChequeDate.Size = new System.Drawing.Size(79, 15);
+            this.lblChequeDate.TabIndex = 14;
+            this.lblChequeDate.Text = "Cheque Date";
+            // 
+            // lblChequeNumber
+            // 
+            this.lblChequeNumber.AutoSize = true;
+            this.lblChequeNumber.Location = new System.Drawing.Point(438, 101);
+            this.lblChequeNumber.Name = "lblChequeNumber";
+            this.lblChequeNumber.Size = new System.Drawing.Size(98, 15);
+            this.lblChequeNumber.TabIndex = 13;
+            this.lblChequeNumber.Text = "Cheque Number";
+            // 
+            // lblBankName
+            // 
+            this.lblBankName.AutoSize = true;
+            this.lblBankName.Location = new System.Drawing.Point(438, 59);
+            this.lblBankName.Name = "lblBankName";
+            this.lblBankName.Size = new System.Drawing.Size(72, 15);
+            this.lblBankName.TabIndex = 12;
+            this.lblBankName.Text = "Bank Name";
+            // 
+            // lblChequeAmount
+            // 
+            this.lblChequeAmount.AutoSize = true;
+            this.lblChequeAmount.Location = new System.Drawing.Point(438, 17);
+            this.lblChequeAmount.Name = "lblChequeAmount";
+            this.lblChequeAmount.Size = new System.Drawing.Size(95, 15);
+            this.lblChequeAmount.TabIndex = 10;
+            this.lblChequeAmount.Text = "Cheque Amount";
+            // 
+            // lblCardType
+            // 
+            this.lblCardType.AutoSize = true;
+            this.lblCardType.Location = new System.Drawing.Point(222, 143);
+            this.lblCardType.Name = "lblCardType";
+            this.lblCardType.Size = new System.Drawing.Size(62, 15);
+            this.lblCardType.TabIndex = 8;
+            this.lblCardType.Text = "Card Type";
+            // 
+            // lblCardNumber
+            // 
+            this.lblCardNumber.AutoSize = true;
+            this.lblCardNumber.Location = new System.Drawing.Point(222, 101);
+            this.lblCardNumber.Name = "lblCardNumber";
+            this.lblCardNumber.Size = new System.Drawing.Size(81, 15);
+            this.lblCardNumber.TabIndex = 6;
+            this.lblCardNumber.Text = "Card Number";
+            // 
+            // lblBaName
+            // 
+            this.lblBaName.AutoSize = true;
+            this.lblBaName.Location = new System.Drawing.Point(222, 59);
+            this.lblBaName.Name = "lblBaName";
+            this.lblBaName.Size = new System.Drawing.Size(72, 15);
+            this.lblBaName.TabIndex = 5;
+            this.lblBaName.Text = "Bank Name";
+            // 
+            // lblCreditDebitCard
+            // 
+            this.lblCreditDebitCard.AutoSize = true;
+            this.lblCreditDebitCard.Location = new System.Drawing.Point(222, 17);
+            this.lblCreditDebitCard.Name = "lblCreditDebitCard";
+            this.lblCreditDebitCard.Size = new System.Drawing.Size(106, 15);
+            this.lblCreditDebitCard.TabIndex = 2;
+            this.lblCreditDebitCard.Text = "Credit / Debit Card";
+            // 
+            // lblCashAmount
+            // 
+            this.lblCashAmount.AutoSize = true;
+            this.lblCashAmount.Location = new System.Drawing.Point(6, 17);
+            this.lblCashAmount.Name = "lblCashAmount";
+            this.lblCashAmount.Size = new System.Drawing.Size(80, 15);
+            this.lblCashAmount.TabIndex = 0;
+            this.lblCashAmount.Text = "Cash Amount";
+            // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1354, 634);
+            this.Controls.Add(this.pnlshowdetail);
             this.Controls.Add(this.pnlSalesPayment);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.butback);
@@ -1306,6 +1497,9 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.pnlshowdetail.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1420,6 +1614,23 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker3;
         private System.Windows.Forms.DateTimePicker dateTimePicker4;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel pnlshowdetail;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label lblComName;
+        private System.Windows.Forms.Label lblCompanyName;
+        private System.Windows.Forms.Label lblCouponAmount;
+        private System.Windows.Forms.Label lblTransactionDate;
+        private System.Windows.Forms.Label lblTransactionNumber;
+        private System.Windows.Forms.Label lblEWalletAmount;
+        private System.Windows.Forms.Label lblChequeDate;
+        private System.Windows.Forms.Label lblChequeNumber;
+        private System.Windows.Forms.Label lblBankName;
+        private System.Windows.Forms.Label lblChequeAmount;
+        private System.Windows.Forms.Label lblCardType;
+        private System.Windows.Forms.Label lblCardNumber;
+        private System.Windows.Forms.Label lblBaName;
+        private System.Windows.Forms.Label lblCreditDebitCard;
+        private System.Windows.Forms.Label lblCashAmount;
         //private System.Windows.Forms.TextBox textBox15;
         //private System.Windows.Forms.TextBox textBox22;
         //private System.Windows.Forms.Label label8;
