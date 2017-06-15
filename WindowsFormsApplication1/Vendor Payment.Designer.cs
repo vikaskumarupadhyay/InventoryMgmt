@@ -344,6 +344,7 @@
             // 
             this.txtRefNo.Location = new System.Drawing.Point(69, 78);
             this.txtRefNo.Name = "txtRefNo";
+            this.txtRefNo.ReadOnly = true;
             this.txtRefNo.Size = new System.Drawing.Size(135, 21);
             this.txtRefNo.TabIndex = 14;
             this.txtRefNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -354,6 +355,7 @@
             // 
             this.txtSrNo.Location = new System.Drawing.Point(69, 21);
             this.txtSrNo.Name = "txtSrNo";
+            this.txtSrNo.ReadOnly = true;
             this.txtSrNo.Size = new System.Drawing.Size(135, 21);
             this.txtSrNo.TabIndex = 13;
             this.txtSrNo.TabStop = false;
@@ -409,7 +411,7 @@
             this.button4.Location = new System.Drawing.Point(177, 541);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(102, 31);
-            this.button4.TabIndex = 32;
+            this.button4.TabIndex = 11;
             this.button4.Text = "Back";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -447,7 +449,7 @@
             this.groupBox11.Location = new System.Drawing.Point(12, 9);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(562, 78);
-            this.groupBox11.TabIndex = 20;
+            this.groupBox11.TabIndex = 6;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Select Date";
             // 
@@ -476,7 +478,7 @@
             this.dateTimePicker3.Location = new System.Drawing.Point(288, 39);
             this.dateTimePicker3.Name = "dateTimePicker3";
             this.dateTimePicker3.Size = new System.Drawing.Size(256, 21);
-            this.dateTimePicker3.TabIndex = 5;
+            this.dateTimePicker3.TabIndex = 8;
             this.dateTimePicker3.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
             // 
             // dateTimePicker4
@@ -486,7 +488,7 @@
             this.dateTimePicker4.Location = new System.Drawing.Point(26, 39);
             this.dateTimePicker4.Name = "dateTimePicker4";
             this.dateTimePicker4.Size = new System.Drawing.Size(256, 21);
-            this.dateTimePicker4.TabIndex = 4;
+            this.dateTimePicker4.TabIndex = 7;
             this.dateTimePicker4.ValueChanged += new System.EventHandler(this.dateTimePicker4_ValueChanged);
             // 
             // panel3
@@ -499,12 +501,13 @@
             this.panel3.Location = new System.Drawing.Point(12, 93);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1323, 477);
-            this.panel3.TabIndex = 7;
+            this.panel3.TabIndex = 3;
             // 
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.Location = new System.Drawing.Point(0, 0);
@@ -513,7 +516,8 @@
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(1319, 473);
             this.dataGridView2.StandardTab = true;
-            this.dataGridView2.TabIndex = 2;
+            this.dataGridView2.TabIndex = 4;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
             this.dataGridView2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView2_KeyPress);
             // 
@@ -529,7 +533,7 @@
             this.groupBox6.Location = new System.Drawing.Point(581, 9);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(753, 78);
-            this.groupBox6.TabIndex = 6;
+            this.groupBox6.TabIndex = 0;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Purchase Details";
             // 
@@ -542,7 +546,7 @@
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(341, 23);
-            this.txtSearch.TabIndex = 0;
+            this.txtSearch.TabIndex = 2;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
@@ -567,6 +571,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(361, 23);
             this.comboBox1.TabIndex = 1;
+            this.comboBox1.Leave += new System.EventHandler(this.comboBox1_Leave);
             // 
             // label10
             // 
@@ -584,7 +589,7 @@
             this.button2.Location = new System.Drawing.Point(12, 574);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(90, 31);
-            this.button2.TabIndex = 3;
+            this.button2.TabIndex = 5;
             this.button2.Text = "Close";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
@@ -792,7 +797,7 @@
             this.txtNetAmount.Location = new System.Drawing.Point(1117, 161);
             this.txtNetAmount.Name = "txtNetAmount";
             this.txtNetAmount.ReadOnly = true;
-            this.txtNetAmount.Size = new System.Drawing.Size(182, 21);
+            this.txtNetAmount.Size = new System.Drawing.Size(1272, 21);
             this.txtNetAmount.TabIndex = 38;
             this.txtNetAmount.TabStop = false;
             this.txtNetAmount.Text = "0.00";
@@ -813,7 +818,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtRturned.Location = new System.Drawing.Point(1117, 119);
             this.txtRturned.Name = "txtRturned";
-            this.txtRturned.Size = new System.Drawing.Size(182, 21);
+            this.txtRturned.Size = new System.Drawing.Size(1272, 21);
             this.txtRturned.TabIndex = 36;
             this.txtRturned.Text = "0.00";
             this.txtRturned.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -827,7 +832,7 @@
             this.txtBalance.Location = new System.Drawing.Point(1117, 77);
             this.txtBalance.Name = "txtBalance";
             this.txtBalance.ReadOnly = true;
-            this.txtBalance.Size = new System.Drawing.Size(182, 21);
+            this.txtBalance.Size = new System.Drawing.Size(1272, 21);
             this.txtBalance.TabIndex = 35;
             this.txtBalance.TabStop = false;
             this.txtBalance.Text = "0.00";
@@ -840,7 +845,7 @@
             this.txtTotalAmount1.Location = new System.Drawing.Point(1117, 35);
             this.txtTotalAmount1.Name = "txtTotalAmount1";
             this.txtTotalAmount1.ReadOnly = true;
-            this.txtTotalAmount1.Size = new System.Drawing.Size(182, 21);
+            this.txtTotalAmount1.Size = new System.Drawing.Size(1272, 21);
             this.txtTotalAmount1.TabIndex = 34;
             this.txtTotalAmount1.TabStop = false;
             this.txtTotalAmount1.Text = "0.00";
@@ -1185,7 +1190,7 @@
             this.CmbPageName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbPageName.FormattingEnabled = true;
             this.CmbPageName.Items.AddRange(new object[] {
-            "Delivery-Payment"});
+            "               Purchase - Delivary - Payment"});
             this.CmbPageName.Location = new System.Drawing.Point(15, 20);
             this.CmbPageName.Name = "CmbPageName";
             this.CmbPageName.Size = new System.Drawing.Size(414, 23);
@@ -1244,7 +1249,7 @@
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox7.Location = new System.Drawing.Point(920, 12);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(413, 58);
+            this.groupBox7.Size = new System.Drawing.Size(1272, 58);
             this.groupBox7.TabIndex = 9;
             this.groupBox7.TabStop = false;
             // 
@@ -1268,7 +1273,7 @@
             this.txtInvoiceAmount.Multiline = true;
             this.txtInvoiceAmount.Name = "txtInvoiceAmount";
             this.txtInvoiceAmount.ReadOnly = true;
-            this.txtInvoiceAmount.Size = new System.Drawing.Size(260, 23);
+            this.txtInvoiceAmount.Size = new System.Drawing.Size(1266, 23);
             this.txtInvoiceAmount.TabIndex = 1;
             this.txtInvoiceAmount.TabStop = false;
             this.txtInvoiceAmount.Text = "0.00";
