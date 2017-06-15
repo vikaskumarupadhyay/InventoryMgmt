@@ -28,7 +28,7 @@ namespace WindowsFormsApplication1
 
         private void Form9_Load(object sender, EventArgs e)
         {
-           // panel2.Visible = false;
+            panel4.Visible = false;
             button1.Enabled = false;
             //button1.Visible = false;
             Purchase.PurchaseDetails purChaseDetailObj = new Purchase.PurchaseDetails();
@@ -264,7 +264,7 @@ namespace WindowsFormsApplication1
             }
             else if (s == "venderId")
             {
-                s = "CustomerOrderDelivery." + s + "";
+                s = "VendorOrderDetails." + s + "";
             }
             else if (s == "Paid Amount")
             {
@@ -315,6 +315,7 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
+                    buttSave.Enabled = true;
                     panel2.Visible = false;
                     dataGridView1.DataSource = dt;
                     double d;
@@ -869,6 +870,7 @@ namespace WindowsFormsApplication1
                     }
                     else
                     {
+                        buttSave.Enabled = true;
                         panel2.Visible = false;
                         dataGridView1.DataSource = dt;
                         double d;
@@ -1684,6 +1686,52 @@ namespace WindowsFormsApplication1
         {
             button2.TabStop = true;
         }
+
+        private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            panel4.Visible = true;
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+            string itid="";
+             DataGridViewRowCollection call = dataGridView1.Rows;
+             for (int c = 0; c < call.Count; c++)
+             {
+                 DataGridViewRow currentRow1 = call[c];
+                 DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
+                 itid = cellCollection1[0].Value.ToString();
+             }
+            DateTime d=Convert.ToDateTime(itid);
+            string selectQurry="select * from AllPaymentDetailes where PaymentDate ='"+d+"'";
+            DataTable dt=dbMainClass.getDetailByQuery(selectQurry);
+            foreach (DataRow dr in dt.Rows)
+            {
+                showCashAmount.Text = dr[2].ToString();
+                showCreditDebitCard.Text = dr[3].ToString();
+                creBankName.Text = dr[4].ToString();
+                creCardNumber.Text = dr[5].ToString();
+                creCardType.Text = dr[6].ToString();
+                showChequeAmount.Text = dr[7].ToString();
+                cheBankName.Text = dr[8].ToString();
+                chChequeNumber.Text = dr[9].ToString();
+                chChequeDate.Text = dr[10].ToString();
+                EWalletAmount.Text = dr[11].ToString();
+                EWalletCompanyName.Text = dr[12].ToString();
+                EWalleTransactionNumber.Text = dr[13].ToString();
+                DateTime ed = Convert.ToDateTime(dr[14].ToString());
+                EWalleTransactionDate.Text = ed.ToString(); ;
+                showCouponAmount.Text = dr[15].ToString();
+                coponCompanyName.Text = dr[16].ToString();
+            }
+        }
+
+      
 
     }
 }
