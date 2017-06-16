@@ -1693,7 +1693,7 @@ namespace WindowsFormsApplication1
             {
                 panel4.Visible = true;
                 int currentIndex = dataGridView1.CurrentRow.Index;
-                DataGridViewCellCollection call = dataGridView1.Rows[currentIndex-1].Cells;
+                DataGridViewCellCollection call = dataGridView1.SelectedRows[0].Cells;
                 string itid = "";
                 if (!string.IsNullOrEmpty(call[0].Value.ToString()))
                 {
