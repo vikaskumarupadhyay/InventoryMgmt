@@ -797,7 +797,7 @@
             this.txtNetAmount.Location = new System.Drawing.Point(1117, 161);
             this.txtNetAmount.Name = "txtNetAmount";
             this.txtNetAmount.ReadOnly = true;
-            this.txtNetAmount.Size = new System.Drawing.Size(1272, 21);
+            this.txtNetAmount.Size = new System.Drawing.Size(182, 21);
             this.txtNetAmount.TabIndex = 38;
             this.txtNetAmount.TabStop = false;
             this.txtNetAmount.Text = "0.00";
@@ -818,7 +818,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtRturned.Location = new System.Drawing.Point(1117, 119);
             this.txtRturned.Name = "txtRturned";
-            this.txtRturned.Size = new System.Drawing.Size(1272, 21);
+            this.txtRturned.Size = new System.Drawing.Size(182, 21);
             this.txtRturned.TabIndex = 36;
             this.txtRturned.Text = "0.00";
             this.txtRturned.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -832,7 +832,7 @@
             this.txtBalance.Location = new System.Drawing.Point(1117, 77);
             this.txtBalance.Name = "txtBalance";
             this.txtBalance.ReadOnly = true;
-            this.txtBalance.Size = new System.Drawing.Size(1272, 21);
+            this.txtBalance.Size = new System.Drawing.Size(182, 21);
             this.txtBalance.TabIndex = 35;
             this.txtBalance.TabStop = false;
             this.txtBalance.Text = "0.00";
@@ -845,7 +845,7 @@
             this.txtTotalAmount1.Location = new System.Drawing.Point(1117, 35);
             this.txtTotalAmount1.Name = "txtTotalAmount1";
             this.txtTotalAmount1.ReadOnly = true;
-            this.txtTotalAmount1.Size = new System.Drawing.Size(1272, 21);
+            this.txtTotalAmount1.Size = new System.Drawing.Size(182, 21);
             this.txtTotalAmount1.TabIndex = 34;
             this.txtTotalAmount1.TabStop = false;
             this.txtTotalAmount1.Text = "0.00";
@@ -1249,7 +1249,7 @@
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox7.Location = new System.Drawing.Point(920, 12);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(1272, 58);
+            this.groupBox7.Size = new System.Drawing.Size(413, 58);
             this.groupBox7.TabIndex = 9;
             this.groupBox7.TabStop = false;
             // 
@@ -1273,7 +1273,7 @@
             this.txtInvoiceAmount.Multiline = true;
             this.txtInvoiceAmount.Name = "txtInvoiceAmount";
             this.txtInvoiceAmount.ReadOnly = true;
-            this.txtInvoiceAmount.Size = new System.Drawing.Size(1266, 23);
+            this.txtInvoiceAmount.Size = new System.Drawing.Size(260, 23);
             this.txtInvoiceAmount.TabIndex = 1;
             this.txtInvoiceAmount.TabStop = false;
             this.txtInvoiceAmount.Text = "0.00";
