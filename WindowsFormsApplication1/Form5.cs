@@ -1573,19 +1573,30 @@ namespace WindowsFormsApplication1
                 }
                 txtbankname.Text = dr[4].ToString();
                 txtcardnomber.Text = dr[5].ToString();
-                if (txtchaque.Text!= "0.00")
-                {
-                    txtchaquedate.Text = dr[10].ToString();
-                }
                 txtchaque.Text = dr[7].ToString();
+                if (txtchaque.Text == "0.00")
+                {
+                    txtchaquedate.Text = null;
+                }
+                else
+                {
+                     txtchaquedate.Text = dr[10].ToString();
+                }
+              
                 txtchaqbankn.Text = dr[8].ToString();
                 txtchaqueno.Text = dr[9].ToString();
-                if (txtewamount.Text != "0.00")
-                {
-                    DateTime ed = Convert.ToDateTime(dr[14].ToString());
-                    txttransctiondate.Text= ed.ToString();
-                }
                 txtewamount.Text = dr[11].ToString();
+                if (txtewamount.Text == "0.00")
+                {
+
+                    txttransctiondate.Text = null;
+                }
+                else
+                {
+                   // DateTime ed = Convert.ToDateTime(dr[14].ToString());
+                    txttransctiondate.Text = dr[14].ToString();
+                }
+               
                 txtecompnayname.Text = dr[12].ToString();
                   txttransactionno.Text= dr[13].ToString();
                   if (txtcoupnamount.Text!= "0.00")
@@ -1618,19 +1629,30 @@ namespace WindowsFormsApplication1
                     }
                     txtbankname.Text = dr[4].ToString();
                     txtcardnomber.Text = dr[5].ToString();
-                    if (txtchaque.Text != "0.00")
+                    txtchaque.Text = dr[7].ToString();
+                    if (txtchaque.Text == "0.00")
+                    {
+                        txtchaquedate.Text = null;
+                    }
+                    else
                     {
                         txtchaquedate.Text = dr[10].ToString();
                     }
-                    txtchaque.Text = dr[7].ToString();
+
                     txtchaqbankn.Text = dr[8].ToString();
                     txtchaqueno.Text = dr[9].ToString();
-                    if (txtewamount.Text != "0.00")
-                    {
-                        DateTime ed = Convert.ToDateTime(dr[14].ToString());
-                        txttransctiondate.Text = ed.ToString();
-                    }
                     txtewamount.Text = dr[11].ToString();
+                    if (txtewamount.Text == "0.00")
+                    {
+
+                        txttransctiondate.Text = null;
+                    }
+                    else
+                    {
+                        // DateTime ed = Convert.ToDateTime(dr[14].ToString());
+                        txttransctiondate.Text = dr[14].ToString();
+                    }
+
                     txtecompnayname.Text = dr[12].ToString();
                     txttransactionno.Text = dr[13].ToString();
                     if (txtcoupnamount.Text != "0.00")
@@ -1638,6 +1660,7 @@ namespace WindowsFormsApplication1
                         txtconame.Text = dr[16].ToString();
                     }
                     txtcoupnamount.Text = dr[15].ToString();
+              
 
 
                 }
