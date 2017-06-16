@@ -1520,55 +1520,131 @@ namespace WindowsFormsApplication1
 
         private void pnlshowdetail_Paint(object sender, PaintEventArgs e)
         {
-            string itid = "";
-            DataGridViewRowCollection cel = dataGridView1.Rows;
-            for (int h = 0; h < cel.Count; h++)
-            {
-                DataGridViewRow curentntrow1 = cel[h];
-                DataGridViewCellCollection cellcolection1 = curentntrow1.Cells;
-                itid = cellcolection1[0].Value.ToString();
-            }
-            DateTime g = Convert.ToDateTime(itid);
-            string selectquery = "select * from SalesPaymentDetailes where ReceiptDate='" + g + "'";
-            DataTable dt = d.getDetailByQuery(selectquery);
-            foreach (DataRow dr in dt.Rows)
-            {
-                txtcashamount.Text = dr[2].ToString();
-                txtCreditAmount.Text = dr[3].ToString();
-                txtbankname.Text = dr[4].ToString();
-                txtCardNumber.Text = dr[5].ToString();
-                txtcardtype.Text = dr[5].ToString();
-                txtChequeAmount.Text = dr[6].ToString();
-                txtchaqbankn.Text= dr[7].ToString();
-                txtchaqueno.Text = dr[8].ToString();
-                txtchaquedate.Text = dr[9].ToString();
-                txtEwalletAmount.Text = dr[10].ToString();
-                txtecompnayname.Text= dr[11].ToString();
-                txttransactionno.Text = dr[12].ToString();
-                txttransctiondate.Text = dr[13].ToString();
-                txtCouponAmount.Text= dr[14].ToString();
-                txtconame.Text = dr[15].ToString();
+            //string itid = "";
+            //DataGridViewRowCollection cel = dataGridView1.Rows;
+            //for (int h = 0; h < cel.Count; h++)
+            //{
+            //    DataGridViewRow curentntrow1 = cel[h];
+            //    DataGridViewCellCollection cellcolection1 = curentntrow1.Cells;
+            //    itid = cellcolection1[0].Value.ToString();
+            //}
+            //DateTime g = Convert.ToDateTime(itid);
+            //string selectquery = "select * from SalesPaymentDetailes where ReceiptDate='" + g + "'";
+            //DataTable dt = d.getDetailByQuery(selectquery);
+            //foreach (DataRow dr in dt.Rows)
+            //{
+            //    txtcashamount.Text = dr[2].ToString();
+            //    txtCreditAmount.Text = dr[3].ToString();
+            //    txtbankname.Text = dr[4].ToString();
+            //    txtCardNumber.Text = dr[5].ToString();
+            //    txtcardtype.Text = dr[5].ToString();
+            //    txtChequeAmount.Text = dr[6].ToString();
+            //    txtchaqbankn.Text= dr[7].ToString();
+            //    txtchaqueno.Text = dr[8].ToString();
+            //    txtchaquedate.Text = dr[9].ToString();
+            //    txtEwalletAmount.Text = dr[10].ToString();
+            //    txtecompnayname.Text= dr[11].ToString();
+            //    txttransactionno.Text = dr[12].ToString();
+            //    txttransctiondate.Text = dr[13].ToString();
+            //    txtCouponAmount.Text= dr[14].ToString();
+            //    txtconame.Text = dr[15].ToString();
                
                
                 
-            }
+            //}
         }
 
 
         private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
             pnlshowdetail.Visible = true;
+            DataGridViewCellCollection call = dataGridView1.Rows[e.RowIndex].Cells;
+            string itid = call[0].Value.ToString();
+            DateTime paymentdate = Convert.ToDateTime(itid);
+            string selectQurry = "select * from SalesPaymentDetailes where ReceiptDate ='" + paymentdate + "'";
+            DataTable dt = d.getDetailByQuery(selectQurry);
+            foreach (DataRow dr in dt.Rows)
+            {
+                txtcashamount.Text= dr[2].ToString();
+                txtcredit.Text = dr[3].ToString();
+                if (txtcredit.Text != "0.00")
+                {
+                    txtcardtype.Text = dr[6].ToString();
+                }
+                txtbankname.Text = dr[4].ToString();
+                txtcardnomber.Text = dr[5].ToString();
+                if (txtchaque.Text!= "0.00")
+                {
+                    txtchaquedate.Text = dr[10].ToString();
+                }
+                txtchaque.Text = dr[7].ToString();
+                txtchaqbankn.Text = dr[8].ToString();
+                txtchaqueno.Text = dr[9].ToString();
+                if (txtewamount.Text != "0.00")
+                {
+                    DateTime ed = Convert.ToDateTime(dr[14].ToString());
+                    txttransctiondate.Text= ed.ToString();
+                }
+                txtewamount.Text = dr[11].ToString();
+                txtecompnayname.Text = dr[12].ToString();
+                  txttransactionno.Text= dr[13].ToString();
+                  if (txtcoupnamount.Text!= "0.00")
+                {
+                    txtconame.Text = dr[16].ToString();
+                }
+                  txtcoupnamount.Text = dr[15].ToString();
+              
+
+            }
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                pnlshowdetail.Visible = true;
+                DataGridViewCellCollection call = dataGridView1.SelectedRows[0].Cells;
+                string itid = call[0].Value.ToString();
+                DateTime paymentdate = Convert.ToDateTime(itid);
+                string selectQurry = "select * from SalesPaymentDetailes where ReceiptDate ='" + paymentdate + "'";
+                DataTable dt = d.getDetailByQuery(selectQurry);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    txtcashamount.Text = dr[2].ToString();
+                    txtcredit.Text = dr[3].ToString();
+                    if (txtcredit.Text != "0.00")
+                    {
+                        txtcardtype.Text = dr[6].ToString();
+                    }
+                    txtbankname.Text = dr[4].ToString();
+                    txtcardnomber.Text = dr[5].ToString();
+                    if (txtchaque.Text != "0.00")
+                    {
+                        txtchaquedate.Text = dr[10].ToString();
+                    }
+                    txtchaque.Text = dr[7].ToString();
+                    txtchaqbankn.Text = dr[8].ToString();
+                    txtchaqueno.Text = dr[9].ToString();
+                    if (txtewamount.Text != "0.00")
+                    {
+                        DateTime ed = Convert.ToDateTime(dr[14].ToString());
+                        txttransctiondate.Text = ed.ToString();
+                    }
+                    txtewamount.Text = dr[11].ToString();
+                    txtecompnayname.Text = dr[12].ToString();
+                    txttransactionno.Text = dr[13].ToString();
+                    if (txtcoupnamount.Text != "0.00")
+                    {
+                        txtconame.Text = dr[16].ToString();
+                    }
+                    txtcoupnamount.Text = dr[15].ToString();
 
+
+                }
+            }
         }
 
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
+       
 
        
     }
