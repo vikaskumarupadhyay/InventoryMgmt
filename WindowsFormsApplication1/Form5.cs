@@ -1533,21 +1533,25 @@ namespace WindowsFormsApplication1
             DataTable dt = d.getDetailByQuery(selectquery);
             foreach (DataRow dr in dt.Rows)
             {
-                lblCashAmount.Text = dr[2].ToString();
-                lblCreditDebitCard.Text = dr[3].ToString();
-                lblBaName.Text = dr[4].ToString();
-                lblCardNumber.Text = dr[5].ToString();
-                lblCardType.Text = dr[5].ToString();
-                lblChequeAmount.Text = dr[6].ToString();
-                lblBaName.Text = dr[7].ToString();
-                lblChequeNumber.Text = dr[8].ToString();
-                lblChequeDate.Text = dr[9].ToString();
-                lblEWalletAmount.Text = dr[10].ToString();
-                lblCompanyName.Text = dr[11].ToString();
-                lblTransactionNumber.Text = dr[12].ToString();
-                lblTransactionDate.Text = dr[13].ToString();
-                lblCouponAmount.Text = dr[14].ToString();
-                lblComName.Text = dr[15].ToString();
+                txtcashamount.Text = dr[2].ToString();
+                txtCreditAmount.Text = dr[3].ToString();
+                txtbankname.Text = dr[4].ToString();
+                txtCardNumber.Text = dr[5].ToString();
+                txtcardtype.Text = dr[5].ToString();
+                txtChequeAmount.Text = dr[6].ToString();
+                txtchaqbankn.Text= dr[7].ToString();
+                txtchaqueno.Text = dr[8].ToString();
+                txtchaquedate.Text = dr[9].ToString();
+                txtEwalletAmount.Text = dr[10].ToString();
+                txtecompnayname.Text= dr[11].ToString();
+                txttransactionno.Text = dr[12].ToString();
+                dtptransactiondate.Text = dr[13].ToString();
+                txtCouponAmount.Text= dr[14].ToString();
+                txtconame.Text = dr[15].ToString();
+                txttoamount.Text = dr[16].ToString();
+                txtbal.Text = dr[17].ToString();
+                txtreturned.Text = dr[18].ToString();
+                txtbal.Text = dr[19].ToString();
                
                 
             }
