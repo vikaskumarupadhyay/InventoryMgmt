@@ -1691,7 +1691,6 @@ namespace WindowsFormsApplication1
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                dataGridView1.AllowUserToAddRows = false;
                 panel4.Visible = true;
                 int currentIndex = dataGridView1.CurrentRow.Index;
                 DataGridViewCellCollection call = dataGridView1.Rows[currentIndex-1].Cells;
@@ -1757,19 +1756,30 @@ namespace WindowsFormsApplication1
                 }
                 creBankName.Text = dr[4].ToString();
                 creCardNumber.Text = dr[5].ToString();
-                if (showChequeAmount.Text != "0.00")
+                showChequeAmount.Text = dr[7].ToString();
+                if (showChequeAmount.Text == "0.00")
+                {
+                    chChequeDate.Text = null;
+                }
+                else
                 {
                     chChequeDate.Text = dr[10].ToString();
                 }
-                showChequeAmount.Text = dr[7].ToString();
+               
                 cheBankName.Text = dr[8].ToString();
                 chChequeNumber.Text = dr[9].ToString();
-                if (EWalletAmount.Text != "0.00")
+                EWalletAmount.Text = dr[11].ToString();
+                if (EWalletAmount.Text == "0.00")
+                {
+
+                    EWalleTransactionDate.Text = null;
+                }
+                else
                 {
                     DateTime ed = Convert.ToDateTime(dr[14].ToString());
                     EWalleTransactionDate.Text = ed.ToString();
                 }
-                EWalletAmount.Text = dr[11].ToString();
+              
                 EWalletCompanyName.Text = dr[12].ToString();
                 EWalleTransactionNumber.Text = dr[13].ToString();
                 if (showCouponAmount.Text != "0.00")
