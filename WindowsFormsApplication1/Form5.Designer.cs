@@ -134,6 +134,9 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.pnlshowdetail = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txttransctiondate = new System.Windows.Forms.TextBox();
+            this.txtchaquedate = new System.Windows.Forms.TextBox();
+            this.txtcardtype = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
@@ -166,9 +169,6 @@
             this.label53 = new System.Windows.Forms.Label();
             this.txtcashamount = new System.Windows.Forms.TextBox();
             this.label54 = new System.Windows.Forms.Label();
-            this.txtcardtype = new System.Windows.Forms.TextBox();
-            this.txtchaquedate = new System.Windows.Forms.TextBox();
-            this.txttransctiondate = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -272,6 +272,7 @@
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
+            this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
             // 
             // groupBox2
             // 
@@ -287,7 +288,6 @@
             this.groupBox2.Size = new System.Drawing.Size(225, 109);
             this.groupBox2.TabIndex = 37;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // txtRefNo
             // 
@@ -1220,7 +1220,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1354, 634);
             this.panel2.TabIndex = 42;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // button2
             // 
@@ -1322,28 +1321,18 @@
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.txttransctiondate);
+            this.groupBox4.Controls.Add(this.txtchaquedate);
+            this.groupBox4.Controls.Add(this.txtcardtype);
             this.groupBox4.Controls.Add(this.textBox1);
             this.groupBox4.Controls.Add(this.textBox3);
             this.groupBox4.Controls.Add(this.textBox7);
             this.groupBox4.Controls.Add(this.textBox8);
-
-            //this.groupBox4.Controls.Add(this.textBox10);
-            //this.groupBox4.Controls.Add(this.textBox11);
-            //this.groupBox4.Controls.Add(this.textBox12);
-            //this.groupBox4.Controls.Add(this.textBox13);
-            //this.groupBox4.Controls.Add(this.txtnamount);
-            //this.groupBox4.Controls.Add(this.label15);
-            //this.groupBox4.Controls.Add(this.txtreturned);
-            //this.groupBox4.Controls.Add(this.txtbal);
-            //this.groupBox4.Controls.Add(this.txttoamount);
-            //this.groupBox4.Controls.Add(this.label16);
-            //this.groupBox4.Controls.Add(this.label17);
-            //this.groupBox4.Controls.Add(this.label39);
+            this.groupBox4.Controls.Add(this.textBox9);
             this.groupBox4.Controls.Add(this.txtconame);
             this.groupBox4.Controls.Add(this.label40);
             this.groupBox4.Controls.Add(this.txtcoupnamount);
             this.groupBox4.Controls.Add(this.label41);
-            //this.groupBox4.Controls.Add(this.dtptransactiondate);
             this.groupBox4.Controls.Add(this.label42);
             this.groupBox4.Controls.Add(this.txttransactionno);
             this.groupBox4.Controls.Add(this.label43);
@@ -1351,7 +1340,6 @@
             this.groupBox4.Controls.Add(this.label44);
             this.groupBox4.Controls.Add(this.txtewamount);
             this.groupBox4.Controls.Add(this.label45);
-            this.groupBox4.Controls.Add(this.txtchaquedate);
             this.groupBox4.Controls.Add(this.txtchaqueno);
             this.groupBox4.Controls.Add(this.txtchaqbankn);
             this.groupBox4.Controls.Add(this.label46);
@@ -1359,7 +1347,6 @@
             this.groupBox4.Controls.Add(this.label48);
             this.groupBox4.Controls.Add(this.txtchaque);
             this.groupBox4.Controls.Add(this.label49);
-            this.groupBox4.Controls.Add(this.txtcardtype);
             this.groupBox4.Controls.Add(this.label50);
             this.groupBox4.Controls.Add(this.txtcardnomber);
             this.groupBox4.Controls.Add(this.label51);
@@ -1372,9 +1359,30 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(15, 9);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1324, 216);
+            this.groupBox4.Size = new System.Drawing.Size(1334, 216);
             this.groupBox4.TabIndex = 14;
             this.groupBox4.TabStop = false;
+            // 
+            // txttransctiondate
+            // 
+            this.txttransctiondate.Location = new System.Drawing.Point(657, 161);
+            this.txttransctiondate.Name = "txttransctiondate";
+            this.txttransctiondate.Size = new System.Drawing.Size(210, 21);
+            this.txttransctiondate.TabIndex = 50;
+            // 
+            // txtchaquedate
+            // 
+            this.txtchaquedate.Location = new System.Drawing.Point(441, 159);
+            this.txtchaquedate.Name = "txtchaquedate";
+            this.txtchaquedate.Size = new System.Drawing.Size(210, 21);
+            this.txtchaquedate.TabIndex = 49;
+            // 
+            // txtcardtype
+            // 
+            this.txtcardtype.Location = new System.Drawing.Point(213, 161);
+            this.txtcardtype.Name = "txtcardtype";
+            this.txtcardtype.Size = new System.Drawing.Size(220, 21);
+            this.txtcardtype.TabIndex = 48;
             // 
             // textBox1
             // 
@@ -1431,9 +1439,6 @@
             this.textBox9.Text = "₹";
             this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-
-            // 
-
             // txtconame
             // 
             this.txtconame.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1522,61 +1527,7 @@
             this.txtewamount.TabIndex = 19;
             this.txtewamount.Text = "0.00";
             this.txtewamount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            //
-            // groupBox4
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.Controls.Add(this.txttransctiondate);
-            this.groupBox4.Controls.Add(this.txtchaquedate);
-            this.groupBox4.Controls.Add(this.txtcardtype);
-            this.groupBox4.Controls.Add(this.textBox1);
-            this.groupBox4.Controls.Add(this.textBox3);
-            this.groupBox4.Controls.Add(this.textBox7);
-            this.groupBox4.Controls.Add(this.textBox8);
-            this.groupBox4.Controls.Add(this.textBox9);
-            this.groupBox4.Controls.Add(this.txtconame);
-            this.groupBox4.Controls.Add(this.label40);
-            this.groupBox4.Controls.Add(this.txtcoupnamount);
-            this.groupBox4.Controls.Add(this.label41);
-            this.groupBox4.Controls.Add(this.label42);
-            this.groupBox4.Controls.Add(this.txttransactionno);
-            this.groupBox4.Controls.Add(this.label43);
-            this.groupBox4.Controls.Add(this.txtecompnayname);
-            this.groupBox4.Controls.Add(this.label44);
-            this.groupBox4.Controls.Add(this.txtewamount);
-            this.groupBox4.Controls.Add(this.label45);
-            this.groupBox4.Controls.Add(this.txtchaqueno);
-            this.groupBox4.Controls.Add(this.txtchaqbankn);
-            this.groupBox4.Controls.Add(this.label46);
-            this.groupBox4.Controls.Add(this.label47);
-            this.groupBox4.Controls.Add(this.label48);
-            this.groupBox4.Controls.Add(this.txtchaque);
-            this.groupBox4.Controls.Add(this.label49);
-            this.groupBox4.Controls.Add(this.label50);
-            this.groupBox4.Controls.Add(this.txtcardnomber);
-            this.groupBox4.Controls.Add(this.label51);
-            this.groupBox4.Controls.Add(this.label52);
-            this.groupBox4.Controls.Add(this.txtbankname);
-            this.groupBox4.Controls.Add(this.txtcredit);
-            this.groupBox4.Controls.Add(this.label53);
-            this.groupBox4.Controls.Add(this.txtcashamount);
-            this.groupBox4.Controls.Add(this.label54);
-            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(15, 9);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1334, 216);
-            this.groupBox4.TabIndex = 14;
-            this.groupBox4.TabStop = false;
-            // 
-            // txtecompnayname
-            // 
-            this.txtecompnayname.Location = new System.Drawing.Point(657, 76);
-            this.txtecompnayname.Name = "txtecompnayname";
-            this.txtecompnayname.Size = new System.Drawing.Size(210, 21);
-            this.txtecompnayname.TabIndex = 21;
-            // 
-
             // label45
             // 
             this.label45.AutoSize = true;
@@ -1721,27 +1672,6 @@
             this.label54.Size = new System.Drawing.Size(80, 15);
             this.label54.TabIndex = 0;
             this.label54.Text = "Cash Amount";
-            // 
-            // txtcardtype
-            // 
-            this.txtcardtype.Location = new System.Drawing.Point(213, 161);
-            this.txtcardtype.Name = "txtcardtype";
-            this.txtcardtype.Size = new System.Drawing.Size(220, 21);
-            this.txtcardtype.TabIndex = 48;
-            // 
-            // txtchaquedate
-            // 
-            this.txtchaquedate.Location = new System.Drawing.Point(441, 159);
-            this.txtchaquedate.Name = "txtchaquedate";
-            this.txtchaquedate.Size = new System.Drawing.Size(210, 21);
-            this.txtchaquedate.TabIndex = 49;
-            // 
-            // txttransctiondate
-            // 
-            this.txttransctiondate.Location = new System.Drawing.Point(657, 161);
-            this.txttransctiondate.Name = "txttransctiondate";
-            this.txttransctiondate.Size = new System.Drawing.Size(210, 21);
-            this.txttransctiondate.TabIndex = 50;
             // 
             // Form5
             // 
