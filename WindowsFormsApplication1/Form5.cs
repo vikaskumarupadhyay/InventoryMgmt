@@ -1545,13 +1545,10 @@ namespace WindowsFormsApplication1
                 txtEwalletAmount.Text = dr[10].ToString();
                 txtecompnayname.Text= dr[11].ToString();
                 txttransactionno.Text = dr[12].ToString();
-                dtptransactiondate.Text = dr[13].ToString();
+                txttransctiondate.Text = dr[13].ToString();
                 txtCouponAmount.Text= dr[14].ToString();
                 txtconame.Text = dr[15].ToString();
-                txttoamount.Text = dr[16].ToString();
-                txtbal.Text = dr[17].ToString();
-                txtreturned.Text = dr[18].ToString();
-                txtbal.Text = dr[19].ToString();
+               
                
                 
             }
@@ -1561,6 +1558,16 @@ namespace WindowsFormsApplication1
         private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
             pnlshowdetail.Visible = true;
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
         }
 
        
