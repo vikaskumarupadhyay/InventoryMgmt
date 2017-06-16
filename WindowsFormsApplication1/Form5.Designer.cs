@@ -133,6 +133,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pnlshowdetail = new System.Windows.Forms.Panel();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
@@ -158,10 +159,9 @@
             this.label42 = new System.Windows.Forms.Label();
             this.txttransactionno = new System.Windows.Forms.TextBox();
             this.label43 = new System.Windows.Forms.Label();
+            this.txtecompnayname = new System.Windows.Forms.TextBox();
             this.label44 = new System.Windows.Forms.Label();
             this.txtewamount = new System.Windows.Forms.TextBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.txtecompnayname = new System.Windows.Forms.TextBox();
             this.label45 = new System.Windows.Forms.Label();
             this.txtchaquedate = new System.Windows.Forms.DateTimePicker();
             this.txtchaqueno = new System.Windows.Forms.TextBox();
@@ -299,6 +299,7 @@
             this.groupBox2.Size = new System.Drawing.Size(225, 109);
             this.groupBox2.TabIndex = 37;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // txtRefNo
             // 
@@ -1231,6 +1232,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1354, 634);
             this.panel2.TabIndex = 42;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // button2
             // 
@@ -1322,11 +1324,69 @@
             // pnlshowdetail
             // 
             this.pnlshowdetail.Controls.Add(this.groupBox4);
-            this.pnlshowdetail.Location = new System.Drawing.Point(-10, -23);
+            this.pnlshowdetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlshowdetail.Location = new System.Drawing.Point(0, 0);
             this.pnlshowdetail.Name = "pnlshowdetail";
-            this.pnlshowdetail.Size = new System.Drawing.Size(1364, 657);
-            this.pnlshowdetail.TabIndex = 60;
-            this.pnlshowdetail.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlshowdetail_Paint);
+            this.pnlshowdetail.Size = new System.Drawing.Size(1354, 634);
+            this.pnlshowdetail.TabIndex = 61;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.textBox1);
+            this.groupBox4.Controls.Add(this.textBox3);
+            this.groupBox4.Controls.Add(this.textBox7);
+            this.groupBox4.Controls.Add(this.textBox8);
+            this.groupBox4.Controls.Add(this.textBox9);
+            this.groupBox4.Controls.Add(this.textBox10);
+            this.groupBox4.Controls.Add(this.textBox11);
+            this.groupBox4.Controls.Add(this.textBox12);
+            this.groupBox4.Controls.Add(this.textBox13);
+            this.groupBox4.Controls.Add(this.txtnamount);
+            this.groupBox4.Controls.Add(this.label15);
+            this.groupBox4.Controls.Add(this.txtreturned);
+            this.groupBox4.Controls.Add(this.txtbal);
+            this.groupBox4.Controls.Add(this.txttoamount);
+            this.groupBox4.Controls.Add(this.label16);
+            this.groupBox4.Controls.Add(this.label17);
+            this.groupBox4.Controls.Add(this.label39);
+            this.groupBox4.Controls.Add(this.txtconame);
+            this.groupBox4.Controls.Add(this.label40);
+            this.groupBox4.Controls.Add(this.txtcoupnamount);
+            this.groupBox4.Controls.Add(this.label41);
+            this.groupBox4.Controls.Add(this.dtptransactiondate);
+            this.groupBox4.Controls.Add(this.label42);
+            this.groupBox4.Controls.Add(this.txttransactionno);
+            this.groupBox4.Controls.Add(this.label43);
+            this.groupBox4.Controls.Add(this.txtecompnayname);
+            this.groupBox4.Controls.Add(this.label44);
+            this.groupBox4.Controls.Add(this.txtewamount);
+            this.groupBox4.Controls.Add(this.label45);
+            this.groupBox4.Controls.Add(this.txtchaquedate);
+            this.groupBox4.Controls.Add(this.txtchaqueno);
+            this.groupBox4.Controls.Add(this.txtchaqbankn);
+            this.groupBox4.Controls.Add(this.label46);
+            this.groupBox4.Controls.Add(this.label47);
+            this.groupBox4.Controls.Add(this.label48);
+            this.groupBox4.Controls.Add(this.txtchaque);
+            this.groupBox4.Controls.Add(this.label49);
+            this.groupBox4.Controls.Add(this.txtcardtype);
+            this.groupBox4.Controls.Add(this.label50);
+            this.groupBox4.Controls.Add(this.txtcardnomber);
+            this.groupBox4.Controls.Add(this.label51);
+            this.groupBox4.Controls.Add(this.label52);
+            this.groupBox4.Controls.Add(this.txtbankname);
+            this.groupBox4.Controls.Add(this.txtcredit);
+            this.groupBox4.Controls.Add(this.label53);
+            this.groupBox4.Controls.Add(this.txtcashamount);
+            this.groupBox4.Controls.Add(this.label54);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(15, 9);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(1324, 216);
+            this.groupBox4.TabIndex = 14;
+            this.groupBox4.TabStop = false;
             // 
             // textBox1
             // 
@@ -1433,7 +1493,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtnamount.Location = new System.Drawing.Point(1117, 161);
             this.txtnamount.Name = "txtnamount";
-            this.txtnamount.Size = new System.Drawing.Size(190, 21);
+            this.txtnamount.Size = new System.Drawing.Size(1063, 21);
             this.txtnamount.TabIndex = 38;
             this.txtnamount.Text = "0.00";
             this.txtnamount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1455,7 +1515,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtreturned.Location = new System.Drawing.Point(1117, 119);
             this.txtreturned.Name = "txtreturned";
-            this.txtreturned.Size = new System.Drawing.Size(190, 21);
+            this.txtreturned.Size = new System.Drawing.Size(1063, 21);
             this.txtreturned.TabIndex = 36;
             this.txtreturned.Text = "0.00";
             this.txtreturned.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1466,7 +1526,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbal.Location = new System.Drawing.Point(1117, 76);
             this.txtbal.Name = "txtbal";
-            this.txtbal.Size = new System.Drawing.Size(190, 21);
+            this.txtbal.Size = new System.Drawing.Size(1063, 21);
             this.txtbal.TabIndex = 35;
             this.txtbal.Text = "0.00";
             this.txtbal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1477,7 +1537,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txttoamount.Location = new System.Drawing.Point(1117, 34);
             this.txttoamount.Name = "txttoamount";
-            this.txttoamount.Size = new System.Drawing.Size(192, 21);
+            this.txttoamount.Size = new System.Drawing.Size(1063, 21);
             this.txttoamount.TabIndex = 34;
             this.txttoamount.Text = "0.00";
             this.txttoamount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1587,6 +1647,13 @@
             this.label43.TabIndex = 22;
             this.label43.Text = "Transaction Number";
             // 
+            // txtecompnayname
+            // 
+            this.txtecompnayname.Location = new System.Drawing.Point(657, 76);
+            this.txtecompnayname.Name = "txtecompnayname";
+            this.txtecompnayname.Size = new System.Drawing.Size(210, 21);
+            this.txtecompnayname.TabIndex = 21;
+            // 
             // label44
             // 
             this.label44.AutoSize = true;
@@ -1604,71 +1671,6 @@
             this.txtewamount.TabIndex = 19;
             this.txtewamount.Text = "0.00";
             this.txtewamount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.Controls.Add(this.textBox1);
-            this.groupBox4.Controls.Add(this.textBox3);
-            this.groupBox4.Controls.Add(this.textBox7);
-            this.groupBox4.Controls.Add(this.textBox8);
-            this.groupBox4.Controls.Add(this.textBox9);
-            this.groupBox4.Controls.Add(this.textBox10);
-            this.groupBox4.Controls.Add(this.textBox11);
-            this.groupBox4.Controls.Add(this.textBox12);
-            this.groupBox4.Controls.Add(this.textBox13);
-            this.groupBox4.Controls.Add(this.txtnamount);
-            this.groupBox4.Controls.Add(this.label15);
-            this.groupBox4.Controls.Add(this.txtreturned);
-            this.groupBox4.Controls.Add(this.txtbal);
-            this.groupBox4.Controls.Add(this.txttoamount);
-            this.groupBox4.Controls.Add(this.label16);
-            this.groupBox4.Controls.Add(this.label17);
-            this.groupBox4.Controls.Add(this.label39);
-            this.groupBox4.Controls.Add(this.txtconame);
-            this.groupBox4.Controls.Add(this.label40);
-            this.groupBox4.Controls.Add(this.txtcoupnamount);
-            this.groupBox4.Controls.Add(this.label41);
-            this.groupBox4.Controls.Add(this.dtptransactiondate);
-            this.groupBox4.Controls.Add(this.label42);
-            this.groupBox4.Controls.Add(this.txttransactionno);
-            this.groupBox4.Controls.Add(this.label43);
-            this.groupBox4.Controls.Add(this.txtecompnayname);
-            this.groupBox4.Controls.Add(this.label44);
-            this.groupBox4.Controls.Add(this.txtewamount);
-            this.groupBox4.Controls.Add(this.label45);
-            this.groupBox4.Controls.Add(this.txtchaquedate);
-            this.groupBox4.Controls.Add(this.txtchaqueno);
-            this.groupBox4.Controls.Add(this.txtchaqbankn);
-            this.groupBox4.Controls.Add(this.label46);
-            this.groupBox4.Controls.Add(this.label47);
-            this.groupBox4.Controls.Add(this.label48);
-            this.groupBox4.Controls.Add(this.txtchaque);
-            this.groupBox4.Controls.Add(this.label49);
-            this.groupBox4.Controls.Add(this.txtcardtype);
-            this.groupBox4.Controls.Add(this.label50);
-            this.groupBox4.Controls.Add(this.txtcardnomber);
-            this.groupBox4.Controls.Add(this.label51);
-            this.groupBox4.Controls.Add(this.label52);
-            this.groupBox4.Controls.Add(this.txtbankname);
-            this.groupBox4.Controls.Add(this.txtcredit);
-            this.groupBox4.Controls.Add(this.label53);
-            this.groupBox4.Controls.Add(this.txtcashamount);
-            this.groupBox4.Controls.Add(this.label54);
-            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(15, 9);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1334, 216);
-            this.groupBox4.TabIndex = 14;
-            this.groupBox4.TabStop = false;
-            // 
-            // txtecompnayname
-            // 
-            this.txtecompnayname.Location = new System.Drawing.Point(657, 76);
-            this.txtecompnayname.Name = "txtecompnayname";
-            this.txtecompnayname.Size = new System.Drawing.Size(210, 21);
-            this.txtecompnayname.TabIndex = 21;
             // 
             // label45
             // 

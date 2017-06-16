@@ -1563,6 +1563,16 @@ namespace WindowsFormsApplication1
             pnlshowdetail.Visible = true;
         }
 
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
        
     }
        
