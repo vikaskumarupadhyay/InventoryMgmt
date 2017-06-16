@@ -1704,7 +1704,7 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1354, 634);
             this.panel4.TabIndex = 73;
-            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
+            //this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // Form9
             // 
