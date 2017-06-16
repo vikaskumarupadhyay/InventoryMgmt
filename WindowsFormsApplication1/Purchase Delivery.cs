@@ -2984,6 +2984,7 @@ namespace WindowsFormsApplication1
             txtInvoiceid.Text = txtSrNo.Text;
             Double total = Convert.ToDouble(txttotalAmount.Text);
             txtInvoiceAmount.Text = total.ToString("###0.00");
+            txtBalance.Text = total.ToString("###0.00");
             allvisible();
            
         }

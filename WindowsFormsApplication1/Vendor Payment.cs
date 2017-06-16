@@ -1699,42 +1699,53 @@ namespace WindowsFormsApplication1
                 {
                      itid = call[0].Value.ToString();
                 }
-                DateTime paymentdate = Convert.ToDateTime(itid);
-                string selectQurry = "select * from AllPaymentDetailes where PaymentDate ='" + paymentdate + "'";
-                DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
-                foreach (DataRow dr in dt.Rows)
+               DateTime paymentdate = Convert.ToDateTime(itid);
+            string selectQurry = "select * from AllPaymentDetailes where PaymentDate ='" + paymentdate + "'";
+            DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
+            foreach (DataRow dr in dt.Rows)
+            {
+                showCashAmount.Text = dr[2].ToString();
+                showCreditDebitCard.Text = dr[3].ToString();
+                if (showCreditDebitCard.Text != "0.00")
                 {
-                    showCashAmount.Text = dr[2].ToString();
-                    showCreditDebitCard.Text = dr[3].ToString();
-                    if (showCreditDebitCard.Text != "0.00")
-                    {
-                        creCardType.Text = dr[6].ToString();
-                    }
-                    creBankName.Text = dr[4].ToString();
-                    creCardNumber.Text = dr[5].ToString();
-                    if (showChequeAmount.Text != "0.00")
-                    {
-                        chChequeDate.Text = dr[10].ToString();
-                    }
-                    showChequeAmount.Text = dr[7].ToString();
-                    cheBankName.Text = dr[8].ToString();
-                    chChequeNumber.Text = dr[9].ToString();
-                    if (EWalletAmount.Text != "0.00")
-                    {
-                        DateTime ed = Convert.ToDateTime(dr[14].ToString());
-                        EWalleTransactionDate.Text = ed.ToString();
-                    }
-                    EWalletAmount.Text = dr[11].ToString();
-                    EWalletCompanyName.Text = dr[12].ToString();
-                    EWalleTransactionNumber.Text = dr[13].ToString();
-                    if (showCouponAmount.Text != "0.00")
-                    {
-                        coponCompanyName.Text = dr[16].ToString();
-                    }
-                    showCouponAmount.Text = dr[15].ToString();
-
+                    creCardType.Text = dr[6].ToString();
                 }
+                creBankName.Text = dr[4].ToString();
+                creCardNumber.Text = dr[5].ToString();
+                showChequeAmount.Text = dr[7].ToString();
+                if (showChequeAmount.Text == "0.00")
+                {
+                    chChequeDate.Text = null;
+                }
+                else
+                {
+                    chChequeDate.Text = dr[10].ToString();
+                }
+               
+                cheBankName.Text = dr[8].ToString();
+                chChequeNumber.Text = dr[9].ToString();
+                EWalletAmount.Text = dr[11].ToString();
+                if (EWalletAmount.Text == "0.00")
+                {
+
+                    EWalleTransactionDate.Text = null;
+                }
+                else
+                {
+                   // Date ed = Convert.ToDateTime(dr[14].ToString());
+                    EWalleTransactionDate.Text = dr[14].ToString();
+                }
+              
+                EWalletCompanyName.Text = dr[12].ToString();
+                EWalleTransactionNumber.Text = dr[13].ToString();
+                if (showCouponAmount.Text != "0.00")
+                {
+                    coponCompanyName.Text = dr[16].ToString();
+                }
+                showCouponAmount.Text = dr[15].ToString();
+
             }
+        }
 
         }
 
@@ -1776,8 +1787,8 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
-                    DateTime ed = Convert.ToDateTime(dr[14].ToString());
-                    EWalleTransactionDate.Text = ed.ToString();
+                   // Date ed = Convert.ToDateTime(dr[14].ToString());
+                    EWalleTransactionDate.Text = dr[14].ToString();
                 }
               
                 EWalletCompanyName.Text = dr[12].ToString();
