@@ -32,7 +32,7 @@ namespace WindowsFormsApplication1
         {
 
             string selectqurry = "select salesOrderDelivery.Delivaryid as[Sales Invoice ID],salesOrderDelivery.DeliveryDate as[Delivery Date],orderdetails.custid as [Customer ID], CustomerDetails.CustName as[Customer Name],CustomerDetails.CustCompName as[Company Name], CustomerDetails.CustAddress as[Address],(select Sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid) as[Quantity Billed],orderdetails.WithautTaxamount as[Gross Amount],orderdetails.Discount as[Discount Rate (In %)],orderdetails.Discountamount as[Dicount Amount],orderdetails.Tax as[Tax Rate (In %)],orderdetails.Taxamount as[Tax Amount],orderdetails.totalammount as[Invoice Amount],p.[Paid Amount],p.Balance as [Balance Amount]  from orderdetails join CustomerDetails on CustomerDetails.custId=orderdetails.custid join salesOrderDelivery on orderdetails.Orderid=salesOrderDelivery.Orderid left join  (select Invoiceid, (MAX(InvoiceAmount) - sum(TotalAmount)) as Balance , sum(TotalAmount) as [Paid Amount] from SalesPaymentDetailes  join salesOrderDelivery on SalesPaymentDetailes.Invoiceid=salesOrderDelivery.Delivaryid  group by Invoiceid) p on salesOrderDelivery.Delivaryid=p.Invoiceid";
-            string selectqurryForActualColumnName = "select top 1 salesOrderDelivery.Delivaryid,orderdetails.custid, CustomerDetails.CustName,CustomerDetails.CustCompName, CustomerDetails.CustAddress,DeliveryDate,(select Sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid),orderdetails.WithautTaxamount,orderdetails.Discount,orderdetails.Discountamount,orderdetails.Tax,orderdetails.Taxamount,orderdetails.totalammount,p.Balance,p.[Paid Amount]  from orderdetails join CustomerDetails on CustomerDetails.custId=orderdetails.custid join salesOrderDelivery on orderdetails.Orderid=salesOrderDelivery.Orderid left join  (select Invoiceid, (MAX(InvoiceAmount) - sum(TotalAmount)) as Balance , sum(TotalAmount) as [Paid Amount] from SalesPaymentDetailes  join salesOrderDelivery on SalesPaymentDetailes.Invoiceid=salesOrderDelivery.Delivaryid  group by Invoiceid) p on salesOrderDelivery.Delivaryid=p.Invoiceid";
+            string selectqurryForActualColumnName = "select top 1 salesOrderDelivery.Delivaryid,salesOrderDelivery.DeliveryDate,orderdetails.custid, CustomerDetails.CustName,CustomerDetails.CustCompName, CustomerDetails.CustAddress,(select Sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid),orderdetails.WithautTaxamount,orderdetails.Discount,orderdetails.Discountamount,orderdetails.Tax,orderdetails.Taxamount,orderdetails.totalammount,p.[Paid Amount],p.Balance from orderdetails join CustomerDetails on CustomerDetails.custId=orderdetails.custid join salesOrderDelivery on orderdetails.Orderid=salesOrderDelivery.Orderid left join  (select Invoiceid, (MAX(InvoiceAmount) - sum(TotalAmount)) as Balance , sum(TotalAmount) as [Paid Amount] from SalesPaymentDetailes  join salesOrderDelivery on SalesPaymentDetailes.Invoiceid=salesOrderDelivery.Delivaryid  group by Invoiceid) p on salesOrderDelivery.Delivaryid=p.Invoiceid";
             DataTable dt = d.getDetailByQuery(selectqurry);
             DataTable dtOnlyColumnName = d.getDetailByQuery(selectqurryForActualColumnName);
             DataTable customDataTable = new DataTable();
@@ -110,6 +110,7 @@ namespace WindowsFormsApplication1
             CmbCompany.SelectedIndex = 0;
             CmbPageName.SelectedIndex = 0;
             pnlSalesPayment.Visible = false;
+            pnlshowdetail.Visible = false;
             //dataGridView2.AllowUserToAddRows = true;
 
             button1.Enabled = false;
@@ -301,22 +302,19 @@ namespace WindowsFormsApplication1
         {
             panel2.Visible = true;
             txtsearch.Text = "";
-
+            loadtabindex();
+            pageloadsave();
+            tabi();
         }
-
-
-
         private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             // panel2.Visible = false;
             DataGridViewCellCollection cell = dataGridView2.Rows[e.RowIndex].Cells;
             if (!string.IsNullOrEmpty(cell[0].Value.ToString()))
             {
-
                 setdetails(cell);
                 string selectquery = " select pay.ReceiptDate as[Invoice Date],(select Sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid) as[Quantity Billed],orderdetails.WithautTaxamount as[Gross Amount],orderdetails.Discount as[Discount Rate (In %)],orderdetails.Discountamount as[Dicount Amount],orderdetails.Tax as[Tax Rate (In %)],orderdetails.Taxamount as[Tax Amount],orderdetails.totalammount as[Invoice Amount],pay.TotalAmount as[Paid Amount],pay.BalanceAmount as [Balance Amount] from orderdetails join salesOrderDelivery on orderdetails.Orderid=salesOrderDelivery.Orderid join SalesPaymentDetailes pay on salesOrderDelivery.Delivaryid=pay.Invoiceid where salesOrderDelivery.Delivaryid='" + txtRefNo.Text + "' ";
                 DataTable dt = d.getDetailByQuery(selectquery);
-
                 panel2.Visible = false;
                 dataGridView1.DataSource = dt;
                 double d2;
@@ -343,6 +341,11 @@ namespace WindowsFormsApplication1
                     // panel2.Visible = true;
                     // MessageBox.Show("Fully paid");
                 }
+                else
+                {
+                    butmakepayment.Enabled = true;
+                }
+              
                 dataGridView1.Focus();
                 butmakepayment.TabStop = true;
                 butback.TabStop = true;
@@ -398,6 +401,7 @@ namespace WindowsFormsApplication1
             {
                 s = "p.[Paid Amount]";
             }
+         
 
             string selectquery = "select salesOrderDelivery.Delivaryid as[Sales Invoice ID],salesOrderDelivery.DeliveryDate as[Delivery Date],orderdetails.custid as [Customer ID], CustomerDetails.CustName as[Customer Name],CustomerDetails.CustCompName as[Company Name], CustomerDetails.CustAddress as[Address],(select Sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid) as[Quantity Billed],orderdetails.WithautTaxamount as[Gross Amount],orderdetails.Discount as[Discount Rate (In %)],orderdetails.Discountamount as[Dicount Amount],orderdetails.Tax as[Tax Rate (In %)],orderdetails.Taxamount as[Tax Amount],orderdetails.totalammount as[Invoice Amount],p.[Paid Amount],p.Balance as [Balance Amount]  from orderdetails join CustomerDetails on CustomerDetails.custId=orderdetails.custid join salesOrderDelivery on orderdetails.Orderid=salesOrderDelivery.Orderid left join  (select Invoiceid, (MAX(InvoiceAmount) - sum(TotalAmount)) as Balance , sum(TotalAmount) as [Paid Amount] from SalesPaymentDetailes  join salesOrderDelivery on SalesPaymentDetailes.Invoiceid=salesOrderDelivery.Delivaryid  group by Invoiceid) p on salesOrderDelivery.Delivaryid=p.Invoiceid where " + s + " like '" + txtsearch.Text + "%'";
 
@@ -1499,6 +1503,10 @@ namespace WindowsFormsApplication1
                         // panel2.Visible = true;
                         // MessageBox.Show("Fully paid");
                     }
+                    else
+                    {
+                        butmakepayment.Enabled = true;
+                    }
                     dataGridView1.Focus();
                     butmakepayment.TabStop = true;
                     butback.TabStop = true;
@@ -1509,6 +1517,49 @@ namespace WindowsFormsApplication1
             }
 
         }
+
+        private void pnlshowdetail_Paint(object sender, PaintEventArgs e)
+        {
+            string itid = "";
+            DataGridViewRowCollection cel = dataGridView1.Rows;
+            for (int h = 0; h < cel.Count; h++)
+            {
+                DataGridViewRow curentntrow1 = cel[h];
+                DataGridViewCellCollection cellcolection1 = curentntrow1.Cells;
+                itid = cellcolection1[0].Value.ToString();
+            }
+            DateTime g = Convert.ToDateTime(itid);
+            string selectquery = "select * from SalesPaymentDetailes where ReceiptDate='" + g + "'";
+            DataTable dt = d.getDetailByQuery(selectquery);
+            foreach (DataRow dr in dt.Rows)
+            {
+                lblCashAmount.Text = dr[2].ToString();
+                lblCreditDebitCard.Text = dr[3].ToString();
+                lblBaName.Text = dr[4].ToString();
+                lblCardNumber.Text = dr[5].ToString();
+                lblCardType.Text = dr[5].ToString();
+                lblChequeAmount.Text = dr[6].ToString();
+                lblBaName.Text = dr[7].ToString();
+                lblChequeNumber.Text = dr[8].ToString();
+                lblChequeDate.Text = dr[9].ToString();
+                lblEWalletAmount.Text = dr[10].ToString();
+                lblCompanyName.Text = dr[11].ToString();
+                lblTransactionNumber.Text = dr[12].ToString();
+                lblTransactionDate.Text = dr[13].ToString();
+                lblCouponAmount.Text = dr[14].ToString();
+                lblComName.Text = dr[15].ToString();
+               
+                
+            }
+        }
+
+
+        private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            pnlshowdetail.Visible = true;
+        }
+
+       
     }
        
     }
