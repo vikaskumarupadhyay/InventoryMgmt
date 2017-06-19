@@ -131,6 +131,12 @@
       <DependentUpon>Display form.cs</DependentUpon>
     </Compile>
     <Compile Include="Entity\SalesMaster_Vendor.cs" />
+    <Compile Include="frmViewReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmViewReport.Designer.cs">
+      <DependentUpon>frmViewReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -328,6 +334,9 @@
     <EmbeddedResource Include="Display form.resx">
       <DependentUpon>Display form.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmViewReport.resx">
+      <DependentUpon>frmViewReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -427,6 +436,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="ClassDiagram1.cd" />
     <None Include="DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
