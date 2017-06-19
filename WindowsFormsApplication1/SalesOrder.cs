@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Configuration;
+using CrystalDecisions.CrystalReports.Engine;
 namespace WindowsFormsApplication1
 {
     public partial class salesorder : Form
@@ -770,29 +771,51 @@ namespace WindowsFormsApplication1
                         {
                             panel2.Visible = true;
                             crystalReportViewer1.Visible = true;
-                            gridsalesorder.AllowUserToAddRows = false;
-                            // "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
-                            SqlConnection con = new SqlConnection();
-                            string a = ConfigurationManager.AppSettings["ConnectionString"];
-                            con.ConnectionString = a;
-                            con.Open();
+                            //gridsalesorder.AllowUserToAddRows = false;
+                            //// "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
+                            //SqlConnection con = new SqlConnection();
+                            //string a = ConfigurationManager.AppSettings["ConnectionString"];
+                            //con.ConnectionString = a;
+                            //con.Open();
 
-                            string selectquery = "select * from salesorderreport where orderid='" + txtsrno.Text + "'";
-                            SqlCommand cmd = new SqlCommand(selectquery, con);
-                            SqlDataAdapter sd = new SqlDataAdapter(cmd);
-                            DataSet1 ds = new DataSet1();
-                            sd.Fill(ds, "compnaydetails");
+                            //string selectquery = "select * from salesorderreport where orderid='" + txtsrno.Text + "'";
+                            //SqlCommand cmd = new SqlCommand(selectquery, con);
+                            //SqlDataAdapter sd = new SqlDataAdapter(cmd);
+                            //DataSet1 ds = new DataSet1();
+                            //sd.Fill(ds, "compnaydetails");
 
-                            //CrystalReport1 cr = new CrystalReport1();
-                            // cr.ParameterFields.Add(textBox1.Text);
-                            // cr.Load("C:\\Users\\dineshtiwari\\Documents\\Visual Studio 2010\\Projects\\report11\\report11\\CrystalReport1.rpt");
+                            ////CrystalReport1 cr = new CrystalReport1();
+                            //// cr.ParameterFields.Add(textBox1.Text);
+                            //// cr.Load("C:\\Users\\dineshtiwari\\Documents\\Visual Studio 2010\\Projects\\report11\\report11\\CrystalReport1.rpt");
 
-                            CrystalReport1 report1 = new CrystalReport1();
-                            report1.SetDataSource(ds.Tables[1]);
+                            //CrystalReport1 report1 = new CrystalReport1();
+                            //report1.SetDataSource(ds.Tables[1]);
 
-                            crystalReportViewer1.ReportSource = report1;
-                            crystalReportViewer1.Refresh();
-                            con.Close();
+                            //crystalReportViewer1.ReportSource = report1;
+                            //crystalReportViewer1.Refresh();
+                            //con.Close();
+
+                            ReportDocument crReportDocument;
+                            crReportDocument = new ReportDocument();
+                            frmViewReport View = new frmViewReport();
+                            crReportDocument.Load(Application.StartupPath + "/Report/CrystalReport1.rpt");
+                            //string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
+                            SqlConnection con = d.openConnection();//new SqlConnection(conntion);
+                            string selectqurry = "select * from salesorderreport where orderid='" + txtsrno.Text + "'";
+                            SqlCommand cmd = new SqlCommand(selectqurry, con);
+                            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+
+                            PurchSet ds = new PurchSet();
+                            sda.Fill(ds, "compnaydetails");
+                            crReportDocument.SetDataSource(ds.Tables[1]);
+                            //Start Preview                          
+                            View.CrViewer.ReportSource = crReportDocument;
+                            View.CrViewer.Refresh();
+                            //View.Show();
+                            //End Preview
+
+                            //Start Print
+                            crReportDocument.PrintToPrinter(1, false, 0, 0);
                             if (result == System.Windows.Forms.DialogResult.No)
                             {
                                 crystalReportViewer1.Visible = false;
