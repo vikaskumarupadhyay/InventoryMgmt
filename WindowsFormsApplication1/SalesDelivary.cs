@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace WindowsFormsApplication1
 {
@@ -1403,25 +1404,42 @@ namespace WindowsFormsApplication1
                                             if (result == System.Windows.Forms.DialogResult.Yes)
                                             {
                                              
-                                                crystalReportViewer2.Visible = true;
+                                                crystalReportViewer2.Visible = false;
                                                 gridsalesdelivary.AllowUserToAddRows = false;
                                                 //string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
-                                                SqlConnection con = d.openConnection();//new SqlConnection(a);
-                                                string selectquery = "select * from salesorderdelivaryreport where Delivaryid='" + txtSrNo.Text + "'";
-                                                SqlCommand cmd = new SqlCommand(selectquery, con);
-                                                SqlDataAdapter sd = new SqlDataAdapter(cmd);
-                                                DataSet1 ds = new DataSet1();
-                                                sd.Fill(ds, "compnaydetails");
+                                                //SqlConnection con = d.openConnection();//new SqlConnection(a);
+                                                //string selectquery = "select * from salesorderdelivaryreport where Delivaryid='" + txtSrNo.Text + "'";
+                                                //SqlCommand cmd = new SqlCommand(selectquery, con);
+                                                //SqlDataAdapter sd = new SqlDataAdapter(cmd);
+                                                //DataSet1 ds = new DataSet1();
+                                                //sd.Fill(ds, "compnaydetails");
 
-                                                //CrystalReport1 cr = new CrystalReport1();
-                                                // cr.ParameterFields.Add(textBox1.Text);
-                                                // cr.Load("C:\\Users\\dineshtiwari\\Documents\\Visual Studio 2010\\Projects\\report11\\report11\\CrystalReport1.rpt");
+                                                ////CrystalReport1 cr = new CrystalReport1();
+                                                //// cr.ParameterFields.Add(textBox1.Text);
+                                                //// cr.Load("C:\\Users\\dineshtiwari\\Documents\\Visual Studio 2010\\Projects\\report11\\report11\\CrystalReport1.rpt");
 
-                                                CrystalReportsalesdelivary report1 = new CrystalReportsalesdelivary();
-                                                report1.SetDataSource(ds.Tables[1]);
+                                                //CrystalReportsalesdelivary report1 = new CrystalReportsalesdelivary();
+                                                //report1.SetDataSource(ds.Tables[1]);
 
-                                                crystalReportViewer2.ReportSource = report1;
-                                                crystalReportViewer2.Refresh();
+                                                //crystalReportViewer2.ReportSource = report1;
+                                                //crystalReportViewer2.Refresh();
+                                                //con.Close();
+                                                ReportDocument crReportDocument;
+                                                crReportDocument = new ReportDocument();
+                                                frmViewReport View = new frmViewReport();
+                                                crReportDocument.Load(Application.StartupPath + "//Report//CrystalReportsalesdelivary.rpt");
+                                                //string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
+                                                SqlConnection con = d.openConnection();//new SqlConnection(conntion);
+                                                string selectqurry = "select * from salesorderdelivaryreport where Delivaryid='" + txtSrNo.Text + "'";
+                                                SqlCommand cmd = new SqlCommand(selectqurry, con);
+                                                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+
+                                                PurchSet ds = new PurchSet();
+                                                sda.Fill(ds, "compnaydetails");
+                                                crReportDocument.SetDataSource(ds.Tables[1]);
+                                                //Start Preview                          
+                                                View.CrViewer.ReportSource = crReportDocument;
+                                                View.CrViewer.Refresh();
                                                 con.Close();
                                            //crystalReportViewer2.PrintReport(1, false, 0, 0);
                                                 return;
@@ -1576,26 +1594,44 @@ namespace WindowsFormsApplication1
                                 DialogResult result = MessageBox.Show("Do you need to print Sales Delivary", "Impotant questiuon", MessageBoxButtons.YesNo);
                                 if (result == System.Windows.Forms.DialogResult.Yes)
                                 {
-                                    crystalReportViewer2.Visible = true;
+                                    crystalReportViewer2.Visible = false;
                                     gridsalesdelivary.AllowUserToAddRows = false;
-                                   // string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
-                                    SqlConnection con = d.openConnection();//new SqlConnection(a);
-                                   // con.Open();
-                                    string selectquery = "select * from salesorderdelivaryreport where Delivaryid='" + txtSrNo.Text + "'";
-                                    SqlCommand cmd = new SqlCommand(selectquery, con);
-                                    SqlDataAdapter sd = new SqlDataAdapter(cmd);
-                                    DataSet1 ds = new DataSet1();
-                                    sd.Fill(ds, "compnaydetails");
+                                   //// string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
+                                   // SqlConnection con = d.openConnection();//new SqlConnection(a);
+                                   //// con.Open();
+                                   // string selectquery = "select * from salesorderdelivaryreport where Delivaryid='" + txtSrNo.Text + "'";
+                                   // SqlCommand cmd = new SqlCommand(selectquery, con);
+                                   // SqlDataAdapter sd = new SqlDataAdapter(cmd);
+                                   // DataSet1 ds = new DataSet1();
+                                   // sd.Fill(ds, "compnaydetails");
 
-                                    //CrystalReport1 cr = new CrystalReport1();
-                                    // cr.ParameterFields.Add(textBox1.Text);
-                                    // cr.Load("C:\\Users\\dineshtiwari\\Documents\\Visual Studio 2010\\Projects\\report11\\report11\\CrystalReport1.rpt");
+                                   // //CrystalReport1 cr = new CrystalReport1();
+                                   // // cr.ParameterFields.Add(textBox1.Text);
+                                   // // cr.Load("C:\\Users\\dineshtiwari\\Documents\\Visual Studio 2010\\Projects\\report11\\report11\\CrystalReport1.rpt");
 
-                                    CrystalReportsalesdelivary2 report1 = new CrystalReportsalesdelivary2();
-                                    report1.SetDataSource(ds.Tables[1]);
+                                   // CrystalReportsalesdelivary2 report1 = new CrystalReportsalesdelivary2();
+                                   // report1.SetDataSource(ds.Tables[1]);
 
-                                    crystalReportViewer2.ReportSource = report1;
-                                    crystalReportViewer2.Refresh();
+                                   // crystalReportViewer2.ReportSource = report1;
+                                   // crystalReportViewer2.Refresh();
+                                   // con.Close();
+
+                                    ReportDocument crReportDocument;
+                                    crReportDocument = new ReportDocument();
+                                    frmViewReport View = new frmViewReport();
+                                    crReportDocument.Load(Application.StartupPath + "//Report//CrystalReportsalesdelivary2.rpt");
+                                    //string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
+                                    SqlConnection con = d.openConnection();//new SqlConnection(conntion);
+                                    string selectqurry = "select * from salesorderdelivaryreport where Delivaryid='" + txtSrNo.Text + "'";
+                                    SqlCommand cmd = new SqlCommand(selectqurry, con);
+                                    SqlDataAdapter sda = new SqlDataAdapter(cmd);
+
+                                    PurchSet ds = new PurchSet();
+                                    sda.Fill(ds, "compnaydetails");
+                                    crReportDocument.SetDataSource(ds.Tables[1]);
+                                    //Start Preview                          
+                                    View.CrViewer.ReportSource = crReportDocument;
+                                    View.CrViewer.Refresh();
                                     con.Close();
                                 }
                                 if (result == System.Windows.Forms.DialogResult.No)
@@ -4078,6 +4114,8 @@ namespace WindowsFormsApplication1
                 }
             }
         }
+
+       
 
       
 
