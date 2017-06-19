@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using CrystalDecisions.CrystalReports.Engine;
+
 
 namespace WindowsFormsApplication1
 {
@@ -853,6 +855,10 @@ namespace WindowsFormsApplication1
                                     PurchesCrystalReportViewer.Visible = true;
 
                                     panel2.Visible = true;
+                                    ReportDocument crReportDocument;
+                                    crReportDocument = new ReportDocument();
+                                    frmViewReport View = new frmViewReport();
+                                    crReportDocument.Load(Application.StartupPath + "//Report//PurchesCrystalReport.rpt");
                                     //string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
                                     SqlConnection con = dbMainClass.openConnection();//new SqlConnection(conntion);
                                     string selectqurry = "select * from VwPurchesOrderDatils where OrderId='" + txtSrNo.Text + "'";
@@ -861,12 +867,24 @@ namespace WindowsFormsApplication1
 
                                     PurchSet ds = new PurchSet();
                                     sda.Fill(ds, "VwPurchesOrderDatils");
-                                    PurchesCrystalReport cryRpt = new PurchesCrystalReport();
-                                    //ReportDocument cryRpt = new ReportDocument();
-                                    //cryRpt.Load("C:\\Users\\Umesh\\Documents\\visual studio 2010\\Projects\\WindowsFormsApplication5\\WindowsFormsApplication5\\PurchesCrystalReport.rpt");
-                                    cryRpt.SetDataSource(ds.Tables[1]);
-                                    PurchesCrystalReportViewer.ReportSource = cryRpt;
-                                    PurchesCrystalReportViewer.Refresh();
+                                    crReportDocument.SetDataSource(ds.Tables[1]);
+                                    //Start Preview                          
+                                    View.CrViewer.ReportSource = crReportDocument;
+                                    View.CrViewer.Refresh();
+                                    //View.Show();
+                                    //End Preview
+
+                                    //Start Print
+                                   crReportDocument.PrintToPrinter(1, false, 0, 0);
+                                    //End  Print
+
+                                    //PurchesCrystalReport cryRpt = new PurchesCrystalReport();
+                                    ////ReportDocument cryRpt = new ReportDocument();
+                                    ////cryRpt.Load("C:\\Users\\Umesh\\Documents\\visual studio 2010\\Projects\\WindowsFormsApplication5\\WindowsFormsApplication5\\PurchesCrystalReport.rpt");
+                                    //cryRpt.SetDataSource(ds.Tables[1]);
+                                    //PurchesCrystalReportViewer.ReportSource = cryRpt;
+                                    //PurchesCrystalReportViewer.Refresh();
+
                                 }
                                 if (result1 == System.Windows.Forms.DialogResult.No)
                                 {
