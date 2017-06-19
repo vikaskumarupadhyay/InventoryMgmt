@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using CrystalDecisions.CrystalReports.Engine;
 namespace WindowsFormsApplication1
 {
     public partial class Form7 : Form
@@ -1252,23 +1253,32 @@ namespace WindowsFormsApplication1
                                         DialogResult result1 = MessageBox.Show("This Page Print", "Important Question", MessageBoxButtons.YesNo);
                                         if (result1 == System.Windows.Forms.DialogResult.Yes)
                                         {
-                                            DeliveryReportViewer.Visible = true;
+                                            DeliveryReportViewer.Visible = false;
                                             panel2.Visible = true;
                                             //string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
                                             SqlConnection con = dbMainClass.openConnection();//new SqlConnection(conntion);
                                             int id = Convert.ToInt32(txtSrNo.Text);
                                             int id7 = id - 1;
+                                            ReportDocument crReportDocument;
+                                            crReportDocument = new ReportDocument();
+                                            frmViewReport View = new frmViewReport();
+                                            crReportDocument.Load(Application.StartupPath + "//Report//DeliveryPage.rpt");
                                             string selectqurry = "select * from purchesDelivery where Deliveryid='" + id7 + "'";
                                             SqlCommand cmd = new SqlCommand(selectqurry, con);
                                             SqlDataAdapter sda = new SqlDataAdapter(cmd);
                                             PurchesDelivery ds = new PurchesDelivery();
                                             sda.Fill(ds, "purchesDelivery");
-                                            DeliveryPage cryRpt = new DeliveryPage();
+                                            crReportDocument.SetDataSource(ds.Tables[1]);
+                                            //Start Preview                          
+                                            View.CrViewer.ReportSource = crReportDocument;
+                                            View.CrViewer.Refresh();
+                                            crReportDocument.PrintToPrinter(1, false, 0, 0);
+                                           // DeliveryPage cryRpt = new DeliveryPage();
                                             //ReportDocument cryRpt = new ReportDocument();
                                             //cryRpt.Load("C:\\Users\\Umesh\\Documents\\visual studio 2010\\Projects\\WindowsFormsApplication5\\WindowsFormsApplication5\\PurchesCrystalReport.rpt");
-                                            cryRpt.SetDataSource(ds.Tables[1]);
-                                            DeliveryReportViewer.ReportSource = cryRpt;
-                                            DeliveryReportViewer.Refresh();
+                                            //cryRpt.SetDataSource(ds.Tables[1]);
+                                            //DeliveryReportViewer.ReportSource = cryRpt;
+                                            //DeliveryReportViewer.Refresh();
                                         }
                                         if (result1 == System.Windows.Forms.DialogResult.No)
                                         {
@@ -1401,8 +1411,12 @@ namespace WindowsFormsApplication1
                                     DialogResult result1 = MessageBox.Show("This Page Print", "Important Question", MessageBoxButtons.YesNo);
                                     if (result1 == System.Windows.Forms.DialogResult.Yes)
                                     {
-                                        DeliveryReportViewer.Visible = true;
+                                        DeliveryReportViewer.Visible = false;
                                         panel2.Visible = true;
+                                        ReportDocument crReportDocument;
+                                        crReportDocument = new ReportDocument();
+                                        frmViewReport View = new frmViewReport();
+                                        crReportDocument.Load(Application.StartupPath + "//Report//PurchesDelivery2.rpt");
                                         //string conntion = "Data Source=NITU;Initial Catalog=SalesMaster;Integrated Security=true;";
                                         SqlConnection con = dbMainClass.openConnection(); //new SqlConnection(conntion);
                                         int id = Convert.ToInt32(txtSrNo.Text);
@@ -1412,12 +1426,17 @@ namespace WindowsFormsApplication1
                                         SqlDataAdapter sda = new SqlDataAdapter(cmd);
                                         PurchesDelivery ds = new PurchesDelivery();
                                         sda.Fill(ds, "purchesDelivery");
-                                        PurchesDelivery2 cryRpt = new PurchesDelivery2();
+                                        crReportDocument.SetDataSource(ds.Tables[1]);
+                                        //Start Preview                          
+                                        View.CrViewer.ReportSource = crReportDocument;
+                                        View.CrViewer.Refresh();
+                                        crReportDocument.PrintToPrinter(1, false, 0, 0);
+                                        //PurchesDelivery2 cryRpt = new PurchesDelivery2();
                                         //ReportDocument cryRpt = new ReportDocument();
                                         //cryRpt.Load("C:\\Users\\Umesh\\Documents\\visual studio 2010\\Projects\\WindowsFormsApplication5\\WindowsFormsApplication5\\PurchesCrystalReport.rpt");
-                                        cryRpt.SetDataSource(ds.Tables[1]);
-                                        DeliveryReportViewer.ReportSource = cryRpt;
-                                        DeliveryReportViewer.Refresh();
+                                        //cryRpt.SetDataSource(ds.Tables[1]);
+                                        //DeliveryReportViewer.ReportSource = cryRpt;
+                                        //DeliveryReportViewer.Refresh();
                                     }
                                     if (result1 == System.Windows.Forms.DialogResult.No)
                                     {
