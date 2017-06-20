@@ -1359,7 +1359,7 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(15, 9);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1334, 216);
+            this.groupBox4.Size = new System.Drawing.Size(1339, 216);
             this.groupBox4.TabIndex = 14;
             this.groupBox4.TabStop = false;
             // 

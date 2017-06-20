@@ -939,7 +939,6 @@
             this.pnlSalesPayment.Controls.Add(this.groupBox7);
             this.pnlSalesPayment.Controls.Add(this.btnSave);
             this.pnlSalesPayment.Controls.Add(this.groupBox8);
-            this.pnlSalesPayment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlSalesPayment.Location = new System.Drawing.Point(0, 0);
             this.pnlSalesPayment.Name = "pnlSalesPayment";
             this.pnlSalesPayment.Size = new System.Drawing.Size(1354, 634);
@@ -1232,8 +1231,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNetAmount.Location = new System.Drawing.Point(1117, 161);
             this.txtNetAmount.Name = "txtNetAmount";
+            this.txtNetAmount.ReadOnly = true;
             this.txtNetAmount.Size = new System.Drawing.Size(180, 21);
             this.txtNetAmount.TabIndex = 38;
+            this.txtNetAmount.TabStop = false;
             this.txtNetAmount.Text = "0.00";
             this.txtNetAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1267,8 +1268,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBalance.Location = new System.Drawing.Point(1117, 76);
             this.txtBalance.Name = "txtBalance";
+            this.txtBalance.ReadOnly = true;
             this.txtBalance.Size = new System.Drawing.Size(180, 21);
             this.txtBalance.TabIndex = 35;
+            this.txtBalance.TabStop = false;
             this.txtBalance.Text = "0.00";
             this.txtBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtBalance.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBalance_KeyPress);
@@ -1279,8 +1282,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTotalAmount1.Location = new System.Drawing.Point(1117, 34);
             this.txtTotalAmount1.Name = "txtTotalAmount1";
+            this.txtTotalAmount1.ReadOnly = true;
             this.txtTotalAmount1.Size = new System.Drawing.Size(182, 21);
             this.txtTotalAmount1.TabIndex = 34;
+            this.txtTotalAmount1.TabStop = false;
             this.txtTotalAmount1.Text = "0.00";
             this.txtTotalAmount1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtTotalAmount1.TextChanged += new System.EventHandler(this.txtTotalAmount1_TextChanged_1);

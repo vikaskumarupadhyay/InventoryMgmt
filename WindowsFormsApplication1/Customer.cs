@@ -160,7 +160,7 @@ namespace WindowsFormsApplication1
                             btnList.Enabled = true;
                             txtName.Focus();
 
-                            MessageBox.Show("Details saved successfully!");
+                            MessageBox.Show("Details saved successfully");
 
                         }
                         else
@@ -178,7 +178,7 @@ namespace WindowsFormsApplication1
                         int updatedRows = dbMainClass.updateDetails(updateCommand1, updateCommand2);
                         if (updatedRows > 0)
                         {
-                            MessageBox.Show("Details updated successfully!");
+                            MessageBox.Show("Details updated successfully");
                             txtName.Focus();
                             txtCustOpeningBal.ReadOnly = false;
                         }
@@ -944,7 +944,9 @@ namespace WindowsFormsApplication1
             {
                 e.SuppressKeyPress = true;
             }
-        }        
+        }
+
+             
    
     }
 }

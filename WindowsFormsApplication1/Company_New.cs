@@ -248,7 +248,7 @@ namespace WindowsFormsApplication1
                     int insertrow = dbMainClass.saveDetails(insertquery);
                     if (insertrow > 0)
                     {
-                        MessageBox.Show("Details save successfully!");
+                        MessageBox.Show("Details save successfully");
                     }
                     else
                     {
@@ -277,7 +277,7 @@ namespace WindowsFormsApplication1
                     int updatequrry1 = dbMainClass.saveDetails(updateTax);
                     if (updatequrry1 > 0)
                     {
-                        MessageBox.Show("Details updated successfully!");
+                        MessageBox.Show("Details updated successfully");
                     }
                     else
                     {
