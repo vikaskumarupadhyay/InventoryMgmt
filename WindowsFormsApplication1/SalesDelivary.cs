@@ -973,6 +973,7 @@ namespace WindowsFormsApplication1
             addToCartTable.Clear();
            // gridsalesdelivary.DataSource = "";
             textBox20.Text = "";
+            txtqtybuiled.Text = "0";
         }
 
         private void butSaveButton_Click(object sender, EventArgs e)
