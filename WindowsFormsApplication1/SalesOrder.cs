@@ -300,6 +300,7 @@ namespace WindowsFormsApplication1
 
         private void makeblank()
         {
+            textBox2.Text = "0";
             txtitemcode.Enabled = true;
             button2.Enabled = true;
             txtcustomercode.Text = "C";
@@ -319,6 +320,7 @@ namespace WindowsFormsApplication1
             txttotalammount.Text = "0.00";
             txtsearchvalue.Text = "";
             addToCartTable.Clear();
+            
         }
         private void butadditem_Click(object sender, EventArgs e)
         {
@@ -813,6 +815,14 @@ namespace WindowsFormsApplication1
                             View.CrViewer.Refresh();
                             View.Show();
                             panel2.Visible = false;
+                            gridsalesorder.AllowUserToAddRows = true;
+                            txttotalammount.Text = "0.00";
+                            txtitemcode.TabStop = false;
+                            button2.TabStop = false;
+                            butadditem.TabStop = false;
+                            button4.TabStop = false;
+                            savebutton.TabStop = false;
+                            butclose.TabStop = false;
                             //End Preview
 
                             //Start Print
