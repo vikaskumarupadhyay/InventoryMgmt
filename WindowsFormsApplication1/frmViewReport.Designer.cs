@@ -39,14 +39,14 @@
             this.CrViewer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CrViewer.Location = new System.Drawing.Point(0, 0);
             this.CrViewer.Name = "CrViewer";
-            this.CrViewer.Size = new System.Drawing.Size(770, 424);
+            this.CrViewer.Size = new System.Drawing.Size(802, 425);
             this.CrViewer.TabIndex = 0;
             // 
             // frmViewReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(770, 424);
+            this.ClientSize = new System.Drawing.Size(802, 425);
             this.Controls.Add(this.CrViewer);
             this.Name = "frmViewReport";
             this.Text = "View Report";

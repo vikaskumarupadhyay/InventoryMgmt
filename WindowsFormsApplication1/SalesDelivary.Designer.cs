@@ -811,11 +811,13 @@
             // 
             this.crystalReportViewer2.ActiveViewIndex = -1;
             this.crystalReportViewer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystalReportViewer2.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer2.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer2.Name = "crystalReportViewer2";
             this.crystalReportViewer2.Size = new System.Drawing.Size(1354, 634);
             this.crystalReportViewer2.TabIndex = 8;
+            this.crystalReportViewer2.Visible = false;
             // 
             // panel3
             // 
@@ -982,7 +984,6 @@
             this.txtInvoiceAmount.TabIndex = 1;
             this.txtInvoiceAmount.TabStop = false;
             this.txtInvoiceAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtInvoiceAmount.TextChanged += new System.EventHandler(this.txtInvoiceAmount_TextChanged);
             // 
             // label21
             // 

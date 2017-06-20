@@ -1440,8 +1440,10 @@ namespace WindowsFormsApplication1
                                                 //Start Preview                          
                                                 View.CrViewer.ReportSource = crReportDocument;
                                                 View.CrViewer.Refresh();
+                                                //View.Show();
+                                                //crystalReportViewer2.PrintReport(1, false, 0, 0);
                                                 con.Close();
-                                           //crystalReportViewer2.PrintReport(1, false, 0, 0);
+                              
                                                 return;
                                             }
                                             if (result == System.Windows.Forms.DialogResult.No)

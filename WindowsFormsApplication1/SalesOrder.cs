@@ -798,7 +798,7 @@ namespace WindowsFormsApplication1
                             ReportDocument crReportDocument;
                             crReportDocument = new ReportDocument();
                             frmViewReport View = new frmViewReport();
-                            crReportDocument.Load(Application.StartupPath + "/Report/CrystalReport1.rpt");
+                            crReportDocument.Load(Application.StartupPath + "//Report//CrystalReport1.rpt");
                             //string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
                             SqlConnection con = d.openConnection();//new SqlConnection(conntion);
                             string selectqurry = "select * from salesorderreport where orderid='" + txtsrno.Text + "'";

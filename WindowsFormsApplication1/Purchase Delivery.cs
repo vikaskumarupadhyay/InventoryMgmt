@@ -1272,6 +1272,7 @@ namespace WindowsFormsApplication1
                                             //Start Preview                          
                                             View.CrViewer.ReportSource = crReportDocument;
                                             View.CrViewer.Refresh();
+                                            //View.Show();
                                             crReportDocument.PrintToPrinter(1, false, 0, 0);
                                            // DeliveryPage cryRpt = new DeliveryPage();
                                             //ReportDocument cryRpt = new ReportDocument();
@@ -1430,7 +1431,8 @@ namespace WindowsFormsApplication1
                                         //Start Preview                          
                                         View.CrViewer.ReportSource = crReportDocument;
                                         View.CrViewer.Refresh();
-                                        crReportDocument.PrintToPrinter(1, false, 0, 0);
+                                        View.Show();
+                                        //crReportDocument.PrintToPrinter(1, false, 0, 0);
                                         //PurchesDelivery2 cryRpt = new PurchesDelivery2();
                                         //ReportDocument cryRpt = new ReportDocument();
                                         //cryRpt.Load("C:\\Users\\Umesh\\Documents\\visual studio 2010\\Projects\\WindowsFormsApplication5\\WindowsFormsApplication5\\PurchesCrystalReport.rpt");
