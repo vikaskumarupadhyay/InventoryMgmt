@@ -40,7 +40,7 @@
             this.txttax = new System.Windows.Forms.TextBox();
             this.textBox16 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.butremove = new System.Windows.Forms.Button();
             this.butadditem = new System.Windows.Forms.Button();
             this.txtAmount = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -267,7 +267,7 @@
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.button4);
+            this.groupBox3.Controls.Add(this.butremove);
             this.groupBox3.Controls.Add(this.butadditem);
             this.groupBox3.Controls.Add(this.txtAmount);
             this.groupBox3.Controls.Add(this.label14);
@@ -287,18 +287,18 @@
             this.groupBox3.TabIndex = 38;
             this.groupBox3.TabStop = false;
             // 
-            // button4
+            // butremove
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(1033, 22);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(90, 33);
-            this.button4.TabIndex = 18;
-            this.button4.TabStop = false;
-            this.button4.Text = "Remove Item";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            this.button4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.button4_KeyPress);
+            this.butremove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.butremove.Location = new System.Drawing.Point(1033, 22);
+            this.butremove.Name = "butremove";
+            this.butremove.Size = new System.Drawing.Size(90, 33);
+            this.butremove.TabIndex = 18;
+            this.butremove.TabStop = false;
+            this.butremove.Text = "Remove Item";
+            this.butremove.UseVisualStyleBackColor = true;
+            this.butremove.Click += new System.EventHandler(this.button4_Click);
+            this.butremove.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.button4_KeyPress);
             // 
             // butadditem
             // 
@@ -891,7 +891,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView gridsalesorder;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button butremove;
         private System.Windows.Forms.Button butadditem;
         private System.Windows.Forms.TextBox txtAmount;
         private System.Windows.Forms.Label label14;

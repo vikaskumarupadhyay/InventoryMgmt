@@ -981,7 +981,7 @@
             this.groupBox5.Size = new System.Drawing.Size(416, 58);
             this.groupBox5.TabIndex = 9;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Enter += new System.EventHandler(this.groupBox5_Enter);
+            //this.groupBox5.Enter += new System.EventHandler(this.groupBox5_Enter);
             // 
             // textBox27
             // 
@@ -1039,6 +1039,7 @@
             this.txtInvoiceid.TabIndex = 1;
             this.txtInvoiceid.TabStop = false;
             this.txtInvoiceid.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+           // this.txtInvoiceid.TextChanged += new System.EventHandler(this.txtInvoiceid_TextChanged_1);
             // 
             // label18
             // 

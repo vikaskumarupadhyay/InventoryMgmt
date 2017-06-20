@@ -1280,6 +1280,8 @@ namespace WindowsFormsApplication1
                                             textVendercod.Select(textVendercod.Text.Length, 0);
                                             textVendercod.TabStop = true;
                                             button1.TabStop = true;
+                                            button4.Enabled = false;
+                                            
                                            // crReportDocument.PrintToPrinter(1, false, 0, 0);
 
                                            // DeliveryPage cryRpt = new DeliveryPage();
@@ -1297,6 +1299,7 @@ namespace WindowsFormsApplication1
                                             textVendercod.Select(textVendercod.Text.Length, 0);
                                             textVendercod.TabStop = true;
                                             button1.TabStop = true;
+                                            button4.Enabled = false;
                                         }
 
                                         dataGridView1.AllowUserToAddRows = true;
@@ -1459,6 +1462,7 @@ namespace WindowsFormsApplication1
                                         textVendercod.TabStop = true;
                                         button1.TabStop = true;
                                         txtRef.ReadOnly = false;
+                                        button4.Enabled = false;
 
                                         //crReportDocument.PrintToPrinter(1, false, 0, 0);
                                         //PurchesDelivery2 cryRpt = new PurchesDelivery2();
@@ -1490,6 +1494,7 @@ namespace WindowsFormsApplication1
                                         textVendercod.TabStop = true;
                                         button1.TabStop = true;
                                         txtRef.ReadOnly = false;
+                                        button4.Enabled = false;
                                     }
 
                                     dataGridView1.AllowUserToAddRows = true;
@@ -3807,10 +3812,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void groupBox5_Enter(object sender, EventArgs e)
-        {
-
-        }
+       
 
 
     }

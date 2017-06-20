@@ -1652,6 +1652,7 @@ namespace WindowsFormsApplication1
                                     View.CrViewer.ReportSource = crReportDocument;
                                     View.CrViewer.Refresh();
                                     View.Show();
+                                  
                                     //End Preview
 
                                     //Start Print
@@ -1660,6 +1661,18 @@ namespace WindowsFormsApplication1
                                     gridsalesdelivary.AllowUserToAddRows = true;
                                     crystalReportViewer2.Visible = false;
                                     panel2.Visible = false;
+                                    addToCartTable.Columns.RemoveAt(6);
+                                    if (!addToCartTable.Columns.Contains("Revised Quantity"))
+                                    {
+                                        addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
+                                        addToCartTable.Columns.RemoveAt(6);
+                                    }
+
+                                    if (!addToCartTable.Columns.Contains("Amount"))
+                                    {
+                                        addToCartTable.Columns.RemoveAt(6);
+                                        addToCartTable.Columns.Add(new DataColumn("Amount"));
+                                    }
                                     txtcustomercode.Focus();
                                     butRemoveItem.Enabled = false;
                                     txtcustomercode.TabStop = true;
@@ -1674,6 +1687,18 @@ namespace WindowsFormsApplication1
                                     gridsalesdelivary.AllowUserToAddRows = true;
                                     crystalReportViewer2.Visible = false;
                                     panel2.Visible = false;
+                                    addToCartTable.Columns.RemoveAt(6);
+                                    if (!addToCartTable.Columns.Contains("Revised Quantity"))
+                                    {
+                                        addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
+                                        addToCartTable.Columns.RemoveAt(6);
+                                    }
+
+                                    if (!addToCartTable.Columns.Contains("Amount"))
+                                    {
+                                        addToCartTable.Columns.RemoveAt(6);
+                                        addToCartTable.Columns.Add(new DataColumn("Amount"));
+                                    }
                                     txtcustomercode.Focus();
                                     butRemoveItem.Enabled = false;
                                     txtcustomercode.TabStop = true;
@@ -3408,11 +3433,11 @@ namespace WindowsFormsApplication1
         {
             if (txtCreditAmount.Text == "0.00")
             {
-                credittext1();
+               // credittext1();
             }
             if (txtCreditAmount.Text != "0.00")
             {
-                credittext();
+               // credittext();
                 decimal x;
                 if (decimal.TryParse(txtChequeAmount.Text, out x))
                 {
@@ -3432,33 +3457,33 @@ namespace WindowsFormsApplication1
                 add();
             }
         }
-        public void Ewalled()
-        {
-            txtTransactionNumber.ReadOnly = false;
-            EWalletCompanyName.ReadOnly = false;
-            dataGridView2.Enabled = false;
-            txtTransactionNumber.TabStop = false;
-            EWalletCompanyName.TabStop = false;
+        //public void Ewalled()
+        //{
+        //    txtTransactionNumber.ReadOnly = false;
+        //    EWalletCompanyName.ReadOnly = false;
+        //    dataGridView2.Enabled = false;
+        //    txtTransactionNumber.TabStop = false;
+        //    EWalletCompanyName.TabStop = false;
 
-        }
-        public void Ewalled1()
-        {
+        //}
+        //public void Ewalled1()
+        //{
 
-            txtTransactionNumber.ReadOnly = true;
-            EWalletCompanyName.ReadOnly = true;
-            dataGridView2.Enabled = true;
-            txtTransactionNumber.TabStop = false;
-            EWalletCompanyName.TabStop = false;
-        }
+        //    txtTransactionNumber.ReadOnly = true;
+        //    EWalletCompanyName.ReadOnly = true;
+        //    dataGridView2.Enabled = true;
+        //    txtTransactionNumber.TabStop = false;
+        //    EWalletCompanyName.TabStop = false;
+        //}
         private void txtEwalletAmount_Leave_1(object sender, EventArgs e)
         {
             if (txtEwalletAmount.Text == "0.00")
             {
-                Ewalled1();
+               // Ewalled1();
             }
             else
             {
-                Ewalled();
+               // Ewalled();
             }
             decimal x;
             if (decimal.TryParse(txtChequeAmount.Text, out x))
@@ -3785,39 +3810,39 @@ namespace WindowsFormsApplication1
                 }
             }
         }
-        public void credittext()
-        {
-            txtCardNumber.ReadOnly = false;
-            txtDebitBankName.ReadOnly = false;
-            CmbCardType.Enabled = true;
-            txtCardNumber.TabStop = true;
-            txtDebitBankName.TabStop = true;
-        }
-        public void credittext1()
-        {
-            txtCardNumber.ReadOnly = true;
-            txtDebitBankName.ReadOnly = true;
-            CmbCardType.Enabled = false;
-            txtCardNumber.TabStop = false;
-            txtDebitBankName.TabStop = false;
-        }
-        public void chequetxt()
-        {
-            txtChequeBankName.ReadOnly = false;
-            txtChequeNumber.ReadOnly = false;
-            dataGridView2.Enabled = false;
-            txtChequeBankName.TabStop = false;
-            txtChequeNumber.TabStop = false;
+        //public void credittext()
+        //{
+        //    txtCardNumber.ReadOnly = false;
+        //    txtDebitBankName.ReadOnly = false;
+        //    CmbCardType.Enabled = true;
+        //    txtCardNumber.TabStop = true;
+        //    txtDebitBankName.TabStop = true;
+        //}
+        //public void credittext1()
+        //{
+        //    txtCardNumber.ReadOnly = true;
+        //    txtDebitBankName.ReadOnly = true;
+        //    CmbCardType.Enabled = true;
+        //    txtCardNumber.TabStop = true;
+        //    txtDebitBankName.TabStop = true;
+        //}
+        //public void chequetxt()
+        //{
+        //    txtChequeBankName.ReadOnly = false;
+        //    txtChequeNumber.ReadOnly = false;
+        //    dataGridView2.Enabled = false;
+        //    txtChequeBankName.TabStop = false;
+        //    txtChequeNumber.TabStop = false;
 
-        }
-        public void chequetxt1()
-        {
-            txtChequeBankName.ReadOnly = true;
-            txtChequeNumber.ReadOnly = true;
-            dataGridView2.Enabled = true;
-            txtChequeBankName.TabStop = true;
-            txtChequeNumber.TabStop = true;
-        }
+        //}
+        //public void chequetxt1()
+        //{
+        //    txtChequeBankName.ReadOnly = true;
+        //    txtChequeNumber.ReadOnly = true;
+        //    dataGridView2.Enabled = true;
+        //    txtChequeBankName.TabStop = true;
+        //    txtChequeNumber.TabStop = true;
+        //}
         private void txtChequeAmount_TextChanged(object sender, EventArgs e)
         {
             add();
@@ -4076,12 +4101,12 @@ namespace WindowsFormsApplication1
         {
             if (txtCreditAmount.Text == "0.00" && txtCreditAmount.Text == "")
             {
-                credittext1();
+               // credittext1();
                 txtTotalAmount1.Text = "0.00";
             }
             if (txtCreditAmount.Text != "0.00")
             {
-                credittext();
+                //credittext();
                 string amount = txtCreditAmount.Text;
                 double amount1 = 0.0;
                 if (double.TryParse(amount, out amount1))

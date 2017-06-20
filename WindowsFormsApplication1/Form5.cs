@@ -347,9 +347,9 @@ namespace WindowsFormsApplication1
                 }
               
                 dataGridView1.Focus();
-                butmakepayment.TabStop = true;
-                butback.TabStop = true;
-                dataGridView1.TabStop = true;
+                //butmakepayment.TabStop = true;
+                //butback.TabStop = true;
+                //dataGridView1.TabStop = true;
 
 
             }
@@ -896,22 +896,22 @@ namespace WindowsFormsApplication1
             //}
         }
 
-        public void credittext()
-        {
-            txtCardNumber.ReadOnly = false;
-            txtDebitBankName.ReadOnly = false;
-            CmbCardType.Enabled = true;
-            txtCardNumber.TabStop = true;
-            txtDebitBankName.TabStop = true;
-        }
-        public void credittext1()
-        {
-            txtCardNumber.ReadOnly = true;
-            txtDebitBankName.ReadOnly = true;
-            CmbCardType.Enabled = false;
-            txtCardNumber.TabStop = false;
-            txtDebitBankName.TabStop = false;
-        }
+        //public void credittext()
+        //{
+        //    txtCardNumber.ReadOnly = false;
+        //    txtDebitBankName.ReadOnly = false;
+        //    CmbCardType.Enabled = true;
+        //    txtCardNumber.TabStop = true;
+        //    txtDebitBankName.TabStop = true;
+        //}
+        //public void credittext1()
+        //{
+        //    txtCardNumber.ReadOnly = true;
+        //    txtDebitBankName.ReadOnly = true;
+        //    CmbCardType.Enabled = false;
+        //    txtCardNumber.TabStop = false;
+        //    txtDebitBankName.TabStop = false;
+        //}
 
         private void txtChequeAmount_TextChanged(object sender, EventArgs e)
         {
@@ -961,12 +961,12 @@ namespace WindowsFormsApplication1
         {
             if (txtCreditAmount.Text == "0.00")
             {
-                credittext1();
+               // credittext1();
                 txtChequeAmount.Text = "0.00";
             }
             if (txtCreditAmount.Text != "0.00")
             {
-                credittext();
+               // credittext();
                 decimal x;
                 if (decimal.TryParse(txtChequeAmount.Text, out x))
                 {
@@ -1039,34 +1039,34 @@ namespace WindowsFormsApplication1
             //}
 
         }
-        public void Ewalled()
-        {
-            txtTransactionNumber.ReadOnly = false;
-            EWalletCompanyName.ReadOnly = false;
-            dataGridView2.Enabled = false;
-            txtTransactionNumber.TabStop = false;
-            EWalletCompanyName.TabStop = false;
+        //public void Ewalled()
+        //{
+        //    txtTransactionNumber.ReadOnly = false;
+        //    EWalletCompanyName.ReadOnly = false;
+        //    dataGridView2.Enabled = false;
+        //    txtTransactionNumber.TabStop = false;
+        //    EWalletCompanyName.TabStop = false;
 
-        }
-        public void Ewalled1()
-        {
+        //}
+        //public void Ewalled1()
+        //{
 
-            txtTransactionNumber.ReadOnly = true;
-            EWalletCompanyName.ReadOnly = true;
-            dataGridView2.Enabled = true;
-            txtTransactionNumber.TabStop = false;
-            EWalletCompanyName.TabStop = false;
-        }
+        //    txtTransactionNumber.ReadOnly = true;
+        //    EWalletCompanyName.ReadOnly = true;
+        //    dataGridView2.Enabled = true;
+        //    txtTransactionNumber.TabStop = false;
+        //    EWalletCompanyName.TabStop = false;
+        //}
         private void txtEwalletAmount_Leave(object sender, EventArgs e)
         {
             if (txtEwalletAmount.Text == "0.00")
             {
-                Ewalled1();
+                //Ewalled1();
                 //  txtEwalletAmount.Text = "0.00";
             }
             else
             {
-                Ewalled();
+               // Ewalled();
                 //txtEwalletAmount.Text = "0.00";
             }
             decimal x;
@@ -1508,9 +1508,9 @@ namespace WindowsFormsApplication1
                         butmakepayment.Enabled = true;
                     }
                     dataGridView1.Focus();
-                    butmakepayment.TabStop = true;
-                    butback.TabStop = true;
-                    dataGridView1.TabStop = true;
+                    //butmakepayment.TabStop = true;
+                    //butback.TabStop = true;
+                    //dataGridView1.TabStop = true;
 
 
                 }
@@ -1667,6 +1667,7 @@ namespace WindowsFormsApplication1
             }
         }
 
+      
        
 
        

@@ -36,7 +36,7 @@ namespace WindowsFormsApplication1
             txtitemcode.TabStop = false;
             txtQuantity.TabStop = false;
             butadditem.TabStop = false;
-            button4.TabStop = false;
+            butremove.TabStop = false;
             savebutton.TabStop = false;
             butclose.TabStop = false;
             textBox1.TabStop = false;
@@ -65,7 +65,7 @@ namespace WindowsFormsApplication1
             txtQuantity.TabStop = true;
             butadditem.TabStop = true;
 
-            button4.TabStop = true;
+            butremove.TabStop = true;
             // gridsalesorder.TabStop = true;
             savebutton.TabStop = false;
             butclose.TabStop = false;
@@ -182,7 +182,7 @@ namespace WindowsFormsApplication1
             button2.TabStop = false;
             txtQuantity.TabStop = false;
             butadditem.TabStop = false;
-            button4.TabStop = false;
+            butremove.TabStop = false;
             savebutton.TabStop = false;
             butclose.TabStop = false;
             comsearchsalesvalue.TabIndex = 1;
@@ -456,7 +456,7 @@ namespace WindowsFormsApplication1
                                 ConpanyName = dr1[0].ToString();
                                 Mrp = dr1[1].ToString();
                             }
-                            button4.Enabled = true;
+                            butremove.Enabled = true;
                             DataRow dr = addToCartTable.NewRow();
                             dr[0] = txtitemcode.Text.Trim();
                             dr[1] = txtProductName.Text.Trim();
@@ -528,7 +528,7 @@ namespace WindowsFormsApplication1
             txttaxamount.Text = "0.00";
             
             comsearchsalesvalue.Focus();
-            button4.Enabled = false;
+            butremove.Enabled = false;
             butadditem.Enabled = false;
             dtpdate.Value = DateTime.Today;
             // txtcustomercode.Text = "C";
@@ -612,7 +612,7 @@ namespace WindowsFormsApplication1
         private void button4_Click(object sender, EventArgs e)
         {
             gridsalesorder.DefaultCellStyle.SelectionBackColor = Color.Red;
-            button4.Enabled = false;
+            butremove.Enabled = false;
             gridsalesorder.Focus();
             gridsalesorder.TabIndex = 1;
             //button2.Enabled = false;
@@ -820,9 +820,10 @@ namespace WindowsFormsApplication1
                             txtitemcode.TabStop = false;
                             button2.TabStop = false;
                             butadditem.TabStop = false;
-                            button4.TabStop = false;
+                            butremove.TabStop = false;
                             savebutton.TabStop = false;
                             butclose.TabStop = false;
+                            butremove.Enabled = false;
                             //End Preview
 
                             //Start Print
@@ -847,7 +848,7 @@ namespace WindowsFormsApplication1
                             txtitemcode.TabStop = false;
                             button2.TabStop = false;
                             butadditem.TabStop = false;
-                            button4.TabStop = false;
+                            butremove.TabStop = false;
                             savebutton.TabStop = false;
                             butclose.TabStop = false;
 
@@ -1219,7 +1220,7 @@ namespace WindowsFormsApplication1
         {
             if (gridsalesorder.Rows.Count > 1)
             {
-                button4.Enabled = true;
+                butremove.Enabled = true;
 
             }
 
@@ -1306,7 +1307,7 @@ namespace WindowsFormsApplication1
                         {
                             textBox20.Text = "0.00";
                             textBox20.ReadOnly = true;
-                            button4.Enabled = true;
+                            butremove.Enabled = true;
                            // gridsalesorder.Rows[gridsalesorder.Rows.Count-1].Selected = true;
                             
                         }
@@ -1330,7 +1331,7 @@ namespace WindowsFormsApplication1
                         else
                         {
                             
-                            button4.Enabled = false;
+                            butremove.Enabled = false;
                         }
                         txtQuantity.TabStop = false;
                     }
@@ -1341,7 +1342,7 @@ namespace WindowsFormsApplication1
                 }
 
 
-                button4.Enabled = false;
+                butremove.Enabled = false;
                 savebutton.TabStop = false;
                 butclose.TabStop = false;
                 txtcustomercode.TabStop = true;
@@ -1513,7 +1514,7 @@ namespace WindowsFormsApplication1
             {
                 if (gridsalesorder.Rows.Count > 0)
                 {
-                    button4.Focus();
+                    butremove.Focus();
                 }
 
                 else
@@ -1584,7 +1585,7 @@ namespace WindowsFormsApplication1
                 button1.TabStop = true;
                 button2.TabStop = true;
                 butadditem.TabStop = true;
-                button4.TabStop = true;
+                butremove.TabStop = true;
                 txtitemcode.TabStop = true;
             }
             else if (txtcustomercode.Text == "C")
@@ -1632,7 +1633,7 @@ namespace WindowsFormsApplication1
             button2.TabStop = true; //Item List Button
             textBox20.TabStop = false; //Discount Textbox
             butadditem.TabStop = true;
-            button4.TabStop = true; //Remove Item Button
+            butremove.TabStop = true; //Remove Item Button
             txtcustomercode.TabStop = true;
             button1.TabStop = true; //Customer List Button
 
