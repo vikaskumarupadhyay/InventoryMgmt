@@ -626,6 +626,7 @@
             this.CmbPageName.Name = "CmbPageName";
             this.CmbPageName.Size = new System.Drawing.Size(414, 23);
             this.CmbPageName.TabIndex = 1;
+            this.CmbPageName.TabStop = false;
             // 
             // btnSave
             // 
