@@ -3034,7 +3034,7 @@ namespace WindowsFormsApplication1
             Double total = Convert.ToDouble(txttotalAmount.Text);
             txtInvoiceAmount.Text = total.ToString("###0.00");
             //txtBalance.Text = total.ToString("###0.00");
-            allvisible();
+            //allvisible();
            
         }
         public void allvisible()
@@ -3118,11 +3118,11 @@ namespace WindowsFormsApplication1
         {
             if (txtCreditAmount.Text == "0.00")
             {
-                credittext1();
+                //credittext1();
             }
             if (txtCreditAmount.Text != "0.00")
             {
-               credittext();
+               //credittext();
             }
             decimal x;
             if (decimal.TryParse(txtCreditAmount.Text, out x))
@@ -3146,11 +3146,11 @@ namespace WindowsFormsApplication1
         {
            if (txtCreditAmount.Text == "0.00")
             {
-                credittext1();
+                //credittext1();
             }
            if (txtCreditAmount.Text != "0.00")
            {
-               credittext();
+               //credittext();
                decimal x;
                if (decimal.TryParse(txtChequeAmount.Text, out x))
                {
@@ -3175,11 +3175,11 @@ namespace WindowsFormsApplication1
         {
             if (txtEwalletAmount.Text == "0.00")
             {
-                Ewalled1();
+                //Ewalled1();
             }
             else
             {
-                Ewalled();
+                //Ewalled();
             }
             decimal x;
             if (decimal.TryParse(txtChequeAmount.Text, out x))
@@ -3271,7 +3271,7 @@ namespace WindowsFormsApplication1
         {
             if (txtCreditAmount.Text == "0.00")
             {
-                credittext1();
+                //credittext1();
 
             }
             else if (txtCreditAmount.Text == "")
@@ -3282,7 +3282,7 @@ namespace WindowsFormsApplication1
             }
             else if (txtCreditAmount.Text != "0.00")
             {
-                credittext();
+                //credittext();
                 value();
 
                 //string amount = txtCreditAmount.Text;
@@ -3319,7 +3319,7 @@ namespace WindowsFormsApplication1
         {
             if (txtChequeAmount.Text == "0.00")
             {
-                chequetxt1();
+                //chequetxt1();
             }
             else if (txtChequeAmount.Text == "")
             {
@@ -3329,7 +3329,7 @@ namespace WindowsFormsApplication1
             }
             else if (txtChequeAmount.Text != "0.00")
             {
-                chequetxt();
+                //chequetxt();
                 value();
                 //string amount = txtChequeAmount.Text;
                 //double amount1 = 0.0;
@@ -3379,7 +3379,7 @@ namespace WindowsFormsApplication1
         {
             if (txtCouponAmount.Text == "0.00")
             {
-                CmbCompany.Enabled = true;
+               // CmbCompany.Enabled = true;
                 //label23.Visible = false;
             }
             else if (txtCouponAmount.Text == "")
@@ -3390,7 +3390,7 @@ namespace WindowsFormsApplication1
             }
             if (txtCouponAmount.Text != "0.00")
             {
-                CmbCompany.Enabled = false;
+                //CmbCompany.Enabled = false;
                 //label23.Visible = true;
                 value();
                 //string amount = txtCouponAmount.Text;
@@ -3414,7 +3414,7 @@ namespace WindowsFormsApplication1
         {
             if (txtEwalletAmount.Text == "0")
             {
-                Ewalled1();
+                //Ewalled1();
             }
             else if (txtEwalletAmount.Text == "")
             {
@@ -3424,7 +3424,7 @@ namespace WindowsFormsApplication1
             }
             else if (txtEwalletAmount.Text != "0")
             {
-                Ewalled();
+                //Ewalled();
                 value();
                 //string amount = txtEwalletAmount.Text;
                 //double amount1 = 0.0;
