@@ -1399,13 +1399,13 @@ namespace WindowsFormsApplication1
                                         {
 
                                             MessageBox.Show("details save successfully");
-                                            panel2.Visible = true;
+                                           // panel2.Visible = true;
                                             DialogResult result = MessageBox.Show("Do you need to print Sales delivary", "Impotant questiuon", MessageBoxButtons.YesNo);
                                             if (result == System.Windows.Forms.DialogResult.Yes)
                                             {
                                              
-                                                crystalReportViewer2.Visible = false;
-                                                gridsalesdelivary.AllowUserToAddRows = false;
+                                               // crystalReportViewer2.Visible = false;
+                                               // gridsalesdelivary.AllowUserToAddRows = false;
                                                 //string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
                                                 //SqlConnection con = d.openConnection();//new SqlConnection(a);
                                                 //string selectquery = "select * from salesorderdelivaryreport where Delivaryid='" + txtSrNo.Text + "'";
@@ -1434,14 +1434,30 @@ namespace WindowsFormsApplication1
                                                 SqlCommand cmd = new SqlCommand(selectqurry, con);
                                                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
 
-                                                PurchSet ds = new PurchSet();
+                                                DataSet1 ds = new DataSet1();
                                                 sda.Fill(ds, "compnaydetails");
                                                 crReportDocument.SetDataSource(ds.Tables[1]);
                                                 //Start Preview                          
                                                 View.CrViewer.ReportSource = crReportDocument;
                                                 View.CrViewer.Refresh();
-                                                //View.Show();
+                                                View.Show();
                                                 //crystalReportViewer2.PrintReport(1, false, 0, 0);
+                                                crystalReportViewer2.Visible = false;
+                                                panel2.Visible = false;
+                                                // makeblank();
+                                                makeblank();
+                                                int value1 = Convert.ToInt32(txtSrNo.Text);
+                                                int value2 = value1 + 1;
+                                                txtSrNo.Text = value2.ToString();
+                                                txtcustomercode.Focus();
+                                                txtcustomercode.Select(txtcustomercode.Text.Length, 0);
+                                                gridsalesdelivary.AllowUserToAddRows = true;
+                                                butRemoveItem.Enabled = false;
+                                                txtcustomercode.TabStop = true;
+                                                butcustomercode.TabStop = true;
+                                                txtRefNo.Enabled = true;
+                                                ButSelectPurchaseOrder.Enabled = true;
+                                                
                                                 con.Close();
                               
                                                 return;
@@ -1592,12 +1608,12 @@ namespace WindowsFormsApplication1
                             {
                                 MessageBox.Show("details save successfully");
 
-                                panel2.Visible = true;
+                               // panel2.Visible = true;
                                 DialogResult result = MessageBox.Show("Do you need to print Sales Delivary", "Impotant questiuon", MessageBoxButtons.YesNo);
                                 if (result == System.Windows.Forms.DialogResult.Yes)
                                 {
-                                    crystalReportViewer2.Visible = false;
-                                    gridsalesdelivary.AllowUserToAddRows = false;
+                                   // crystalReportViewer2.Visible = false;
+                                   // gridsalesdelivary.AllowUserToAddRows = false;
                                    //// string a = "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
                                    // SqlConnection con = d.openConnection();//new SqlConnection(a);
                                    //// con.Open();
@@ -1628,13 +1644,29 @@ namespace WindowsFormsApplication1
                                     SqlCommand cmd = new SqlCommand(selectqurry, con);
                                     SqlDataAdapter sda = new SqlDataAdapter(cmd);
 
-                                    PurchSet ds = new PurchSet();
+                                    DataSet1 ds = new DataSet1();
                                     sda.Fill(ds, "compnaydetails");
                                     crReportDocument.SetDataSource(ds.Tables[1]);
                                     //Start Preview                          
                                     View.CrViewer.ReportSource = crReportDocument;
                                     View.CrViewer.Refresh();
+                                    View.Show();
+                                    //End Preview
+
+                                    //Start Print
+                                    // crReportDocument.PrintToPrinter(1, false, 0, 0);
+
+                                    gridsalesdelivary.AllowUserToAddRows = true;
+                                    crystalReportViewer2.Visible = false;
+                                    panel2.Visible = false;
+                                    txtcustomercode.Focus();
+                                    butRemoveItem.Enabled = false;
+                                    txtcustomercode.TabStop = true;
+                                    butcustomercode.TabStop = true;
+                                    txtRefNo.Enabled = true;
+                                    ButSelectPurchaseOrder.Enabled = true;
                                     con.Close();
+
                                 }
                                 if (result == System.Windows.Forms.DialogResult.No)
                                 {
