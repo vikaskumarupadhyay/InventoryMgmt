@@ -805,17 +805,18 @@ namespace WindowsFormsApplication1
                             SqlCommand cmd = new SqlCommand(selectqurry, con);
                             SqlDataAdapter sda = new SqlDataAdapter(cmd);
 
-                            PurchSet ds = new PurchSet();
+                            DataSet1 ds = new DataSet1();
                             sda.Fill(ds, "compnaydetails");
                             crReportDocument.SetDataSource(ds.Tables[1]);
                             //Start Preview                          
                             View.CrViewer.ReportSource = crReportDocument;
                             View.CrViewer.Refresh();
-                            //View.Show();
+                            View.Show();
+                            panel2.Visible = false;
                             //End Preview
 
                             //Start Print
-                            crReportDocument.PrintToPrinter(1, false, 0, 0);
+                           // crReportDocument.PrintToPrinter(1, false, 0, 0);
                             if (result == System.Windows.Forms.DialogResult.No)
                             {
                                 crystalReportViewer1.Visible = false;
