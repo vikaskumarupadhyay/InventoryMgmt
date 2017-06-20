@@ -798,24 +798,25 @@ namespace WindowsFormsApplication1
                             ReportDocument crReportDocument;
                             crReportDocument = new ReportDocument();
                             frmViewReport View = new frmViewReport();
-                            crReportDocument.Load(Application.StartupPath + "/Report/CrystalReport1.rpt");
+                            crReportDocument.Load(Application.StartupPath + "//Report//CrystalReport1.rpt");
                             //string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
                             SqlConnection con = d.openConnection();//new SqlConnection(conntion);
                             string selectqurry = "select * from salesorderreport where orderid='" + txtsrno.Text + "'";
                             SqlCommand cmd = new SqlCommand(selectqurry, con);
                             SqlDataAdapter sda = new SqlDataAdapter(cmd);
 
-                            PurchSet ds = new PurchSet();
+                            DataSet1 ds = new DataSet1();
                             sda.Fill(ds, "compnaydetails");
                             crReportDocument.SetDataSource(ds.Tables[1]);
                             //Start Preview                          
                             View.CrViewer.ReportSource = crReportDocument;
                             View.CrViewer.Refresh();
-                            //View.Show();
+                            View.Show();
+                            panel2.Visible = false;
                             //End Preview
 
                             //Start Print
-                            crReportDocument.PrintToPrinter(1, false, 0, 0);
+                           // crReportDocument.PrintToPrinter(1, false, 0, 0);
                             if (result == System.Windows.Forms.DialogResult.No)
                             {
                                 crystalReportViewer1.Visible = false;

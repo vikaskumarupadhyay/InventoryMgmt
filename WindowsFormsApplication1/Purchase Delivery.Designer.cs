@@ -830,6 +830,7 @@
             this.DeliveryReportViewer.Name = "DeliveryReportViewer";
             this.DeliveryReportViewer.Size = new System.Drawing.Size(1354, 634);
             this.DeliveryReportViewer.TabIndex = 7;
+            this.DeliveryReportViewer.Visible = false;
             // 
             // panel3
             // 
