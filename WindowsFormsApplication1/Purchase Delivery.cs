@@ -1253,8 +1253,8 @@ namespace WindowsFormsApplication1
                                         DialogResult result1 = MessageBox.Show("This Page Print", "Important Question", MessageBoxButtons.YesNo);
                                         if (result1 == System.Windows.Forms.DialogResult.Yes)
                                         {
-                                            DeliveryReportViewer.Visible = false;
-                                            panel2.Visible = true;
+                                            //DeliveryReportViewer.Visible = false;
+                                           // panel2.Visible = true;
                                             //string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
                                             SqlConnection con = dbMainClass.openConnection();//new SqlConnection(conntion);
                                             int id = Convert.ToInt32(txtSrNo.Text);
@@ -1272,7 +1272,14 @@ namespace WindowsFormsApplication1
                                             //Start Preview                          
                                             View.CrViewer.ReportSource = crReportDocument;
                                             View.CrViewer.Refresh();
-                                            crReportDocument.PrintToPrinter(1, false, 0, 0);
+                                           // View.Show();
+                                            DeliveryReportViewer.Visible = false;
+                                            panel2.Visible = false;
+                                            textVendercod.Focus();
+                                            textVendercod.Select(textVendercod.Text.Length, 0);
+                                            textVendercod.TabStop = true;
+                                            button1.TabStop = true;
+                                           // crReportDocument.PrintToPrinter(1, false, 0, 0);
                                            // DeliveryPage cryRpt = new DeliveryPage();
                                             //ReportDocument cryRpt = new ReportDocument();
                                             //cryRpt.Load("C:\\Users\\Umesh\\Documents\\visual studio 2010\\Projects\\WindowsFormsApplication5\\WindowsFormsApplication5\\PurchesCrystalReport.rpt");
@@ -1411,8 +1418,8 @@ namespace WindowsFormsApplication1
                                     DialogResult result1 = MessageBox.Show("This Page Print", "Important Question", MessageBoxButtons.YesNo);
                                     if (result1 == System.Windows.Forms.DialogResult.Yes)
                                     {
-                                        DeliveryReportViewer.Visible = false;
-                                        panel2.Visible = true;
+                                        //DeliveryReportViewer.Visible = false;
+                                       // panel2.Visible = true;
                                         ReportDocument crReportDocument;
                                         crReportDocument = new ReportDocument();
                                         frmViewReport View = new frmViewReport();
@@ -1430,7 +1437,27 @@ namespace WindowsFormsApplication1
                                         //Start Preview                          
                                         View.CrViewer.ReportSource = crReportDocument;
                                         View.CrViewer.Refresh();
-                                        crReportDocument.PrintToPrinter(1, false, 0, 0);
+                                        //View.Show();
+                                        DeliveryReportViewer.Visible = false;
+                                        panel2.Visible = false;
+                                        addToCartTable.Columns.RemoveAt(6);
+                                        if (!addToCartTable.Columns.Contains("Revised Quantity"))
+                                        {
+                                            addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
+                                            addToCartTable.Columns.RemoveAt(6);
+                                        }
+
+                                        if (!addToCartTable.Columns.Contains("Amount"))
+                                        {
+                                            addToCartTable.Columns.RemoveAt(6);
+                                            addToCartTable.Columns.Add(new DataColumn("Amount"));
+                                        }
+                                        textVendercod.Focus();
+                                        textVendercod.Select(textVendercod.Text.Length, 0);
+                                        textVendercod.TabStop = true;
+                                        button1.TabStop = true;
+                                        txtRef.ReadOnly = false;
+                                        //crReportDocument.PrintToPrinter(1, false, 0, 0);
                                         //PurchesDelivery2 cryRpt = new PurchesDelivery2();
                                         //ReportDocument cryRpt = new ReportDocument();
                                         //cryRpt.Load("C:\\Users\\Umesh\\Documents\\visual studio 2010\\Projects\\WindowsFormsApplication5\\WindowsFormsApplication5\\PurchesCrystalReport.rpt");

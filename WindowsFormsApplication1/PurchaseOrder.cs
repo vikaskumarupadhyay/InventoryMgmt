@@ -852,9 +852,9 @@ namespace WindowsFormsApplication1
                                 if (result1 == System.Windows.Forms.DialogResult.Yes)
                                 {
 
-                                    PurchesCrystalReportViewer.Visible = true;
+                                    //PurchesCrystalReportViewer.Visible = true;
 
-                                    panel2.Visible = true;
+                                   // panel2.Visible = true;
                                     ReportDocument crReportDocument;
                                     crReportDocument = new ReportDocument();
                                     frmViewReport View = new frmViewReport();
@@ -871,11 +871,13 @@ namespace WindowsFormsApplication1
                                     //Start Preview                          
                                     View.CrViewer.ReportSource = crReportDocument;
                                     View.CrViewer.Refresh();
-                                    //View.Show();
+                                    View.Show();
                                     //End Preview
-
+                                    PurchesCrystalReportViewer.Visible = false;
+                                    txtTotalAmount.Text = "0.00";
+                                    panel2.Visible = false;
                                     //Start Print
-                                   crReportDocument.PrintToPrinter(1, false, 0, 0);
+                                  // crReportDocument.PrintToPrinter(1, false, 0, 0);
                                     //End  Print
 
                                     //PurchesCrystalReport cryRpt = new PurchesCrystalReport();
