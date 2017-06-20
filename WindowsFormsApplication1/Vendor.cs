@@ -333,7 +333,7 @@ namespace WindowsFormsApplication1
                 if (txtVenderOpeningBal.Text.IndexOf('.') != -1 && txtVenderOpeningBal.Text.Split('.')[1].Length == 2)
                 {
                     //MessageBox.Show("The maximum decimal points are 2!");
-                    e.Handled = true;
+                    //e.Handled = true;
                 }
             }
             else

@@ -1273,7 +1273,7 @@ namespace WindowsFormsApplication1
                                             View.CrViewer.ReportSource = crReportDocument;
                                             View.CrViewer.Refresh();
 
-                                           // View.Show();
+                                           View.Show();
                                             DeliveryReportViewer.Visible = false;
                                             panel2.Visible = false;
                                             textVendercod.Focus();
@@ -1439,7 +1439,7 @@ namespace WindowsFormsApplication1
                                         //Start Preview                          
                                         View.CrViewer.ReportSource = crReportDocument;
                                         View.CrViewer.Refresh();
-                                        //View.Show();
+                                        View.Show();
                                         DeliveryReportViewer.Visible = false;
                                         panel2.Visible = false;
                                         addToCartTable.Columns.RemoveAt(6);
@@ -3033,7 +3033,7 @@ namespace WindowsFormsApplication1
             txtInvoiceid.Text = txtSrNo.Text;
             Double total = Convert.ToDouble(txttotalAmount.Text);
             txtInvoiceAmount.Text = total.ToString("###0.00");
-            txtBalance.Text = total.ToString("###0.00");
+            //txtBalance.Text = total.ToString("###0.00");
             allvisible();
            
         }
@@ -3238,7 +3238,7 @@ namespace WindowsFormsApplication1
             Double Amount = Convert.ToDouble(txtTotalAmount1.Text);
             Double Amount1 = Convert.ToDouble(txtInvoiceAmount.Text);
             Double Amount2 = Amount1 - Amount;
-            string Amount3 = Amount2.ToString();
+            //string Amount3 = Amount2.ToString();
             txtBalance.Text = Amount2.ToString("###0.00");
         }
 

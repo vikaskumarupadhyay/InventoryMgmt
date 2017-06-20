@@ -871,7 +871,7 @@ namespace WindowsFormsApplication1
                                     //Start Preview                          
                                     View.CrViewer.ReportSource = crReportDocument;
                                     View.CrViewer.Refresh();
-                                    //View.Show();
+                                    View.Show();
                                     //End Preview
                                     PurchesCrystalReportViewer.Visible = false;
                                     txtTotalAmount.Text = "0.00";

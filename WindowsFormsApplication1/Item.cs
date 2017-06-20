@@ -249,7 +249,7 @@ namespace WindowsFormsApplication1
                                                         {
                                                             //btnList.Enabled = true;
                                                             txtItemProductName.Focus();
-                                                            MessageBox.Show("Details Saved Successfully!");
+                                                            MessageBox.Show("Details Saved Successfully");
 
                                                         }
                                                         else
