@@ -871,11 +871,15 @@ namespace WindowsFormsApplication1
                                     //Start Preview                          
                                     View.CrViewer.ReportSource = crReportDocument;
                                     View.CrViewer.Refresh();
-                                    View.Show();
+                                    //View.Show();
                                     //End Preview
                                     PurchesCrystalReportViewer.Visible = false;
                                     txtTotalAmount.Text = "0.00";
                                     panel2.Visible = false;
+                                    txtItemCode.TabStop = false;
+                                    button2.TabStop = false;
+                                    btnSave.TabStop = false;
+                                    btnClose.TabStop = false;
                                     //Start Print
                                   // crReportDocument.PrintToPrinter(1, false, 0, 0);
                                     //End  Print

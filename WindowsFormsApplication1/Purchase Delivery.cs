@@ -1272,7 +1272,7 @@ namespace WindowsFormsApplication1
                                             //Start Preview                          
                                             View.CrViewer.ReportSource = crReportDocument;
                                             View.CrViewer.Refresh();
-<<<<<<< HEAD
+
                                            // View.Show();
                                             DeliveryReportViewer.Visible = false;
                                             panel2.Visible = false;
@@ -1281,10 +1281,7 @@ namespace WindowsFormsApplication1
                                             textVendercod.TabStop = true;
                                             button1.TabStop = true;
                                            // crReportDocument.PrintToPrinter(1, false, 0, 0);
-=======
-                                            //View.Show();
-                                            crReportDocument.PrintToPrinter(1, false, 0, 0);
->>>>>>> 6c0f495e6d735e2750a1dea0bd4f867c79502e36
+
                                            // DeliveryPage cryRpt = new DeliveryPage();
                                             //ReportDocument cryRpt = new ReportDocument();
                                             //cryRpt.Load("C:\\Users\\Umesh\\Documents\\visual studio 2010\\Projects\\WindowsFormsApplication5\\WindowsFormsApplication5\\PurchesCrystalReport.rpt");
@@ -1442,7 +1439,6 @@ namespace WindowsFormsApplication1
                                         //Start Preview                          
                                         View.CrViewer.ReportSource = crReportDocument;
                                         View.CrViewer.Refresh();
-<<<<<<< HEAD
                                         //View.Show();
                                         DeliveryReportViewer.Visible = false;
                                         panel2.Visible = false;
@@ -1463,9 +1459,7 @@ namespace WindowsFormsApplication1
                                         textVendercod.TabStop = true;
                                         button1.TabStop = true;
                                         txtRef.ReadOnly = false;
-=======
-                                        View.Show();
->>>>>>> 6c0f495e6d735e2750a1dea0bd4f867c79502e36
+
                                         //crReportDocument.PrintToPrinter(1, false, 0, 0);
                                         //PurchesDelivery2 cryRpt = new PurchesDelivery2();
                                         //ReportDocument cryRpt = new ReportDocument();
