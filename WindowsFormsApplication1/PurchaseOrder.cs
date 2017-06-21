@@ -1874,6 +1874,11 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void PurchesCrystalReportViewer_Load(object sender, EventArgs e)
+        {
+
+        }
+
       
 
        

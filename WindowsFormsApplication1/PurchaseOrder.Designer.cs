@@ -77,10 +77,10 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.PurchesCrystalReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.PurchesCrystalReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.txtsearch = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -695,17 +695,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1186, 634);
             this.panel2.TabIndex = 65;
-            //this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint_2);
-            // 
-            // PurchesCrystalReportViewer
-            // 
-            this.PurchesCrystalReportViewer.ActiveViewIndex = -1;
-            this.PurchesCrystalReportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PurchesCrystalReportViewer.Cursor = System.Windows.Forms.Cursors.Default;
-            this.PurchesCrystalReportViewer.Location = new System.Drawing.Point(207, -13);
-            this.PurchesCrystalReportViewer.Name = "PurchesCrystalReportViewer";
-            this.PurchesCrystalReportViewer.Size = new System.Drawing.Size(117, 49);
-            this.PurchesCrystalReportViewer.TabIndex = 8;
             // 
             // panel3
             // 
@@ -751,6 +740,17 @@
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
+            // 
+            // PurchesCrystalReportViewer
+            // 
+            this.PurchesCrystalReportViewer.ActiveViewIndex = -1;
+            this.PurchesCrystalReportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PurchesCrystalReportViewer.Cursor = System.Windows.Forms.Cursors.Default;
+            this.PurchesCrystalReportViewer.Location = new System.Drawing.Point(207, -13);
+            this.PurchesCrystalReportViewer.Name = "PurchesCrystalReportViewer";
+            this.PurchesCrystalReportViewer.Size = new System.Drawing.Size(117, 49);
+            this.PurchesCrystalReportViewer.TabIndex = 8;
+            this.PurchesCrystalReportViewer.Load += new System.EventHandler(this.PurchesCrystalReportViewer_Load);
             // 
             // txtsearch
             // 
