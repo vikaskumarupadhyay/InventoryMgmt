@@ -434,6 +434,7 @@
             this.txtItemOpeningQuant.TextChanged += new System.EventHandler(this.txtItemOpeningQuant_TextChanged);
             this.txtItemOpeningQuant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemOpeningQuant_KeyPress);
             this.txtItemOpeningQuant.Leave += new System.EventHandler(this.txtItemOpeningQuant_Leave);
+            //this.txtItemOpeningQuant.MouseCaptureChanged += new System.EventHandler(this.txtItemOpeningQuant_MouseCaptureChanged);
             // 
             // txtItemRemaningQuant
             // 
@@ -547,6 +548,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(1146, 382);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 4;
+            //this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
             // 
