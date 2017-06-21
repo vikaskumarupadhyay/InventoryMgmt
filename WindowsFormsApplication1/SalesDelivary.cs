@@ -1746,13 +1746,13 @@ namespace WindowsFormsApplication1
         }
         private void setAddToCraftTable()
         {
-            addToCartTable.Columns.Add(new DataColumn("ItemCode"));
-            addToCartTable.Columns.Add(new DataColumn("ProductName"));
-            addToCartTable.Columns.Add(new DataColumn("CompnayName"));
+            addToCartTable.Columns.Add(new DataColumn("Item Code"));
+            addToCartTable.Columns.Add(new DataColumn("Product Name"));
+            addToCartTable.Columns.Add(new DataColumn("Compnay Name"));
             addToCartTable.Columns.Add(new DataColumn("MRP"));
             addToCartTable.Columns.Add(new DataColumn("Rate"));
             addToCartTable.Columns.Add(new DataColumn("Quantity"));
-            addToCartTable.Columns.Add(new DataColumn("DelivaryQuantity"));
+            addToCartTable.Columns.Add(new DataColumn("Delivary Quantity"));
             addToCartTable.Columns.Add(new DataColumn("Amount"));
         }
 
