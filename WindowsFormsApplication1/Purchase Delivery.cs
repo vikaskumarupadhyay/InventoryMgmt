@@ -1005,8 +1005,8 @@ namespace WindowsFormsApplication1
                 }
             }
             //deliverysave();
-
-            
+            txtBalance.Text = txttotalAmount.Text;
+            txtRturned.ReadOnly = true;
             //comboBox2.Text = "Delivery-Payment";
 
         }
@@ -1953,6 +1953,7 @@ namespace WindowsFormsApplication1
                         double totalammount1 = Convert.ToDouble(txttotalAmount.Text);
                         double t = totalammount1 + totalq;
                         txttotalAmount.Text = totalammount.ToString("###0.00");
+                        txtWAmount.Text = totalammount.ToString("###0.00");
                         double totalValues = 0.0;
 
                         foreach (DataGridViewRow row in  dataGridView1.Rows)
@@ -1964,15 +1965,28 @@ namespace WindowsFormsApplication1
                           
                         }
                         txttotalAmount.Text = totalValues.ToString("###0.00");
-                        dataGridView1.AllowUserToAddRows = true;
+                        //dataGridView1.AllowUserToAddRows = true;
                     }
                 else
                 {
                     MessageBox.Show("please select your correct row");
                     dataGridView1.Rows[e.RowIndex].Cells[0].Value = "";
                 }
-           // }
-           
+            DataGridViewRowCollection RowCollection = dataGridView1.Rows;
+            int quntity1 = 0;
+            for (int a = 0; a < RowCollection.Count; a++)
+            {
+
+                DataGridViewRow currentRow = RowCollection[a];
+                DataGridViewCellCollection cellCollection = currentRow.Cells;
+
+                int q1 = Convert.ToInt32(cellCollection[6].Value.ToString());
+                quntity1 = quntity1 + q1;
+                txtQuantityBild.Text = quntity1.ToString();
+
+
+            }
+            dataGridView1.AllowUserToAddRows = true;
         }
 
         private void butClose_Click(object sender, EventArgs e)
@@ -3024,12 +3038,13 @@ namespace WindowsFormsApplication1
 
             //string insertQurry = "insert into AllPaymentDetailes Values('" + txtInvoiceid.Text + "','" + CashAmount.Text + "','" + txtCreditAmount.Text + "','" + txtDebitBankName.Text + "','" + txtCardNumber.Text + "','" + CmbCardType.SelectedItem.ToString() + "','" + txtChequeAmount.Text + "','" + txtChequeBankName.Text + "','" + txtChequeNumber.Text + "','" + dateTimePicker1.Value.ToString() + "','" + txtEwalletAmount.Text + "','" + EWalletCompanyName.Text + "','" + txtTransactionNumber.Text + "','" + dateTimePicker2.Value.ToString() + "','" + txtCouponAmount.Text + "','" + CmbCompany.SelectedItem.ToString() + "','" + txtInvoiceAmount.Text + "','" + txtTotalAmount1.Text + "','" + txtBalance.Text + "','" + txtRturned.Text + "','" + txtNetAmount.Text + "')";
             //int insertedRows = dbMainClass.saveDetails(insertQurry);
-
+            txtBalance.Text = "0.00";
             deliverysave();
             pnlPaymentDetail.Visible = false;
             DeliveryReportViewer.Visible = true;
             txtRef.Enabled = true;
             btnSelectPurchaseOrder.Enabled = true;
+           
         }
 
         private void pnlPaymentDetail_Paint(object sender, PaintEventArgs e)
@@ -3100,6 +3115,12 @@ namespace WindowsFormsApplication1
 
         private void CashAmount_Leave(object sender, EventArgs e)
         {
+            Double amount2 = Convert.ToDouble(txtTotalAmount1.Text);
+            Double tot = Convert.ToDouble(txtInvoiceAmount.Text);
+            if (tot < amount2)
+            {
+                txtRturned.ReadOnly = false;
+            }
             decimal x;
             if (decimal.TryParse(CashAmount.Text, out x))
             {
@@ -3121,6 +3142,12 @@ namespace WindowsFormsApplication1
 
         private void txtCreditAmount_Leave(object sender, EventArgs e)
         {
+            Double amount2 = Convert.ToDouble(txtTotalAmount1.Text);
+            Double tot = Convert.ToDouble(txtInvoiceAmount.Text);
+            if (tot < amount2)
+            {
+                txtRturned.ReadOnly = false;
+            }
             if (txtCreditAmount.Text == "0.00")
             {
                 //credittext1();
@@ -3149,6 +3176,12 @@ namespace WindowsFormsApplication1
 
         private void txtChequeAmount_Leave(object sender, EventArgs e)
         {
+            Double amount2 = Convert.ToDouble(txtTotalAmount1.Text);
+            Double tot = Convert.ToDouble(txtInvoiceAmount.Text);
+            if (tot < amount2)
+            {
+                txtRturned.ReadOnly = false;
+            }
            if (txtCreditAmount.Text == "0.00")
             {
                 //credittext1();
@@ -3178,6 +3211,12 @@ namespace WindowsFormsApplication1
 
         private void txtEwalletAmount_Leave(object sender, EventArgs e)
         {
+            Double amount2 = Convert.ToDouble(txtTotalAmount1.Text);
+            Double tot = Convert.ToDouble(txtInvoiceAmount.Text);
+            if (tot < amount2)
+            {
+                txtRturned.ReadOnly = false;
+            }
             if (txtEwalletAmount.Text == "0.00")
             {
                 //Ewalled1();
@@ -3207,6 +3246,12 @@ namespace WindowsFormsApplication1
 
         private void txtCouponAmount_Leave(object sender, EventArgs e)
         {
+            Double amount2 = Convert.ToDouble(txtTotalAmount1.Text);
+            Double tot = Convert.ToDouble(txtInvoiceAmount.Text);
+            if (tot < amount2)
+            {
+                txtRturned.ReadOnly = false;
+            }
             if (txtCouponAmount.Text == "0.00")
             {
                 //CmbCompany.Visible = false;
@@ -3243,8 +3288,12 @@ namespace WindowsFormsApplication1
             Double Amount = Convert.ToDouble(txtTotalAmount1.Text);
             Double Amount1 = Convert.ToDouble(txtInvoiceAmount.Text);
             Double Amount2 = Amount1 - Amount;
-            //string Amount3 = Amount2.ToString();
+            string Amount3 = Amount2.ToString();
             txtBalance.Text = Amount2.ToString("###0.00");
+            //if (Amount1 > Amount)
+            //{
+            //    txtRturned.ReadOnly = false;
+            //}
         }
 
         private void CashAmount_KeyPress(object sender, KeyPressEventArgs e)
@@ -3362,6 +3411,7 @@ namespace WindowsFormsApplication1
             Double amount2 = Amount + Amount1 + Amount3 + Amount4 + Amount5;
             string Amount2 = amount2.ToString("###0.00");
             txtTotalAmount1.Text = Amount2;
+            
         }
         public void chequetxt()
         {
@@ -3576,6 +3626,7 @@ namespace WindowsFormsApplication1
                 if (e.KeyChar == '\b')
                 {
                     txtBalance.Text = "0";
+                    txtRturned.SelectAll();
                     e.Handled = false;
                 }
                 else
@@ -3810,6 +3861,11 @@ namespace WindowsFormsApplication1
                     //MessageBox.Show("Plese enter numeric value!");
                 }
             }
+        }
+
+        private void txtRturned_MouseClick(object sender, MouseEventArgs e)
+        {
+            
         }
 
        

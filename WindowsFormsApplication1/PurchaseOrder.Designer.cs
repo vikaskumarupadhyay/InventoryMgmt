@@ -516,6 +516,7 @@
             this.gridPurchaseOrder.Location = new System.Drawing.Point(0, 0);
             this.gridPurchaseOrder.MultiSelect = false;
             this.gridPurchaseOrder.Name = "gridPurchaseOrder";
+            this.gridPurchaseOrder.ReadOnly = true;
             this.gridPurchaseOrder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridPurchaseOrder.Size = new System.Drawing.Size(1149, 333);
             this.gridPurchaseOrder.StandardTab = true;

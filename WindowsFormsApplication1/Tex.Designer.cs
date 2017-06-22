@@ -94,6 +94,7 @@
             this.txtTexId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTexId.Location = new System.Drawing.Point(25, 46);
             this.txtTexId.Name = "txtTexId";
+            this.txtTexId.ReadOnly = true;
             this.txtTexId.Size = new System.Drawing.Size(99, 22);
             this.txtTexId.TabIndex = 4;
             this.txtTexId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

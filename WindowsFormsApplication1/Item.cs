@@ -190,15 +190,17 @@ namespace WindowsFormsApplication1
                     }
                     else
                     {
-                        if (string.IsNullOrEmpty(cmbItemItemGroup.Text))
+                        if (cmbItemItemGroup.Text == "Select a group")
                         {
                             MessageBox.Show("please select your item group");
+                            cmbItemItemGroup.Focus();
                         }
                         else
                         {
-                            if (string.IsNullOrEmpty(cmbItemUnit.Text))
+                            if (cmbItemUnit.Text=="Select a unit")
                             {
                                 MessageBox.Show("plese select your unit");
+                                cmbItemUnit.Focus();
                             }
                             else
                             {
@@ -255,6 +257,7 @@ namespace WindowsFormsApplication1
                                                         else
                                                         {
                                                             MessageBox.Show("Details Not Saved Successfully");
+                                                            txtItemProductName.Focus();
                                                         }
 
                                                     }
@@ -282,6 +285,7 @@ namespace WindowsFormsApplication1
                                                     else
                                                     {
                                                         MessageBox.Show("Details Not Saved Successfully");
+                                                        txtItemProductName.Focus();
                                                     }
 
                                                 }
@@ -299,7 +303,7 @@ namespace WindowsFormsApplication1
                     }
                 }
             }
-            txtItemProductName.Focus();
+            
         }
         private void makeBlank()
         {

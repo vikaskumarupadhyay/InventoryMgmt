@@ -540,10 +540,10 @@ namespace WindowsFormsApplication1
                             //}
                         }
                     }
-                    if (gridPurchaseOrder.Rows.Count > 1)
-                    {
-                        txtdis.ReadOnly = false;
-                    }
+                    //if (gridPurchaseOrder.Rows.Count > 1)
+                    //{
+                    //    txtdis.ReadOnly = false;
+                    //}
                     txtItemCode.Select(txtItemCode.Text.Length, 0);
                 }
             }
