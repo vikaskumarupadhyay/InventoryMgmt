@@ -2076,7 +2076,7 @@ namespace WindowsFormsApplication1
                         txtwithauttaxamount.Text= WRate.ToString("###0.00");
                         int q1 = Convert.ToInt32(cellCollection[6].Value.ToString());
                         quntity1 = quntity1 + q1;
-                        textBox20.Text = quntity1.ToString();
+                        txtqtybuiled.Text= quntity1.ToString();
 
 
                     }
@@ -2744,6 +2744,8 @@ namespace WindowsFormsApplication1
 
                     }
                     doubletabindex();
+                    ButSelectPurchaseOrder.Enabled = false;
+                    txtdiccount.ReadOnly = false;
                     butRemoveItem.Enabled = true;
                     double qty = getquantitybuiled1();
                     txtqtybuiled.Text = qty.ToString();
