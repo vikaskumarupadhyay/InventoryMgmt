@@ -688,7 +688,6 @@
             this.txtdiccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtdiccount.Location = new System.Drawing.Point(901, 577);
             this.txtdiccount.Name = "txtdiccount";
-            this.txtdiccount.ReadOnly = true;
             this.txtdiccount.Size = new System.Drawing.Size(45, 21);
             this.txtdiccount.TabIndex = 45;
             this.txtdiccount.TabStop = false;
@@ -939,6 +938,7 @@
             this.pnlSalesPayment.Controls.Add(this.groupBox7);
             this.pnlSalesPayment.Controls.Add(this.btnSave);
             this.pnlSalesPayment.Controls.Add(this.groupBox8);
+            this.pnlSalesPayment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlSalesPayment.Location = new System.Drawing.Point(0, 0);
             this.pnlSalesPayment.Name = "pnlSalesPayment";
             this.pnlSalesPayment.Size = new System.Drawing.Size(1354, 634);

@@ -1106,6 +1106,7 @@ namespace WindowsFormsApplication1
             ButSelectPurchaseOrder.TabStop = false;
             butClose.TabStop = false;
             CashAmount.Focus();
+            txtBalance.Text = txtTotalAmmount.Text;
         }
         public void add()
         {
@@ -2010,7 +2011,8 @@ namespace WindowsFormsApplication1
                         double totalq = quantity1 * finalquantity;
                         double totalammount1 = Convert.ToDouble(txtTotalAmmount.Text);
                         double t = totalammount1 + totalq;
-                        txtTotalAmmount.Text = totalammount.ToString();
+                        txtTotalAmmount.Text = totalammount.ToString("###0.00");
+                        txtwithauttaxamount.Text = totalammount.ToString("###0.00");
 
                         double totalValues = 0.0;
 
@@ -2045,6 +2047,7 @@ namespace WindowsFormsApplication1
                         double totalammount1 = Convert.ToDouble(txtTotalAmmount.Text);
                         double t = totalammount1 + totalq;
                         txtTotalAmmount.Text = totalammount.ToString();
+                        txtwithauttaxamount.Text = totalammount.ToString();
 
                         double totalValues = 0.0;
 
@@ -2055,6 +2058,20 @@ namespace WindowsFormsApplication1
                     {
                         MessageBox.Show("please select your correct row");
                         gridsalesdelivary.Rows[e.RowIndex].Cells[0].Value = "";
+                    }
+                    DataGridViewRowCollection RowCollection = gridsalesdelivary.Rows;
+                    int quntity1 = 0;
+                    for (int a = 0; a < RowCollection.Count; a++)
+                    {
+
+                        DataGridViewRow currentRow = RowCollection[a];
+                        DataGridViewCellCollection cellCollection = currentRow.Cells;
+
+                        int q1 = Convert.ToInt32(cellCollection[6].Value.ToString());
+                        quntity1 = quntity1 + q1;
+                       txtqtybuiled.Text = quntity1.ToString();
+
+
                     }
                     gridsalesdelivary.AllowUserToAddRows = true;
 
@@ -2672,7 +2689,7 @@ namespace WindowsFormsApplication1
                         txtcustomercode.TabStop = true;
                         butcustomercode.TabStop = true;
                         txtcustomercode.Select(txtcustomercode.Text.Length, 0);
-                        addToCartTable.Columns.RemoveAt(6);
+                       // addToCartTable.Columns.RemoveAt(6);
                         return;
 
                     }
@@ -3377,14 +3394,8 @@ namespace WindowsFormsApplication1
         private void pnlSalesPayment_Paint_1(object sender, PaintEventArgs e)
         {
             txtInvoiceid.Text = txtSrNo.Text;
-            txtInvoiceAmount.Text = txtTotalAmmount.Text + .00;
-          txtBalance.Text = txtTotalAmmount.Text;
-          txtNetAmount.Text = txtTotalAmount1.Text;
-          Double Amount = Convert.ToDouble(txtTotalAmount1.Text);
-          Double Amount1 = Convert.ToDouble(txtInvoiceAmount.Text);
-          Double Amount2 = Amount1 - Amount;
-          string Amount3 = Amount2.ToString();
-          txtBalance.Text = Amount2.ToString("##0.00");
+            Double total = Convert.ToDouble(txtTotalAmmount.Text);
+            txtInvoiceAmount.Text = total.ToString("###0.00");
             
             //btnSave.TabStop = true;
             //btnClose.TabStop = true;
@@ -4024,49 +4035,57 @@ namespace WindowsFormsApplication1
                 }
             }
         }
-
+        Double bal2 = 0;
         private void txtRturned_TextChanged(object sender, EventArgs e)
         {
-            
+
             if (txtBalance.Text == "")
             {
                 txtBalance.Text = "0.00";
             }
+            if (txtRturned.Text == "0")
+            {
+                txtRturned.Text = "0";
+                txtRturned.SelectAll();
+                return;
+            }
             if (txtRturned.Text == "")
             {
                 txtRturned.Text = "0.00";
+               // txtRturned.SelectAll();
             }
-            if (BalAmunt == 0)
+
+            if (BalAmunt==0)
             {
                 BalAmunt = Convert.ToDouble(txtBalance.Text);
             }
-
-             string sub = BalAmunt.ToString();
-             double sub1 = Convert.ToDouble(sub.ToString());
-            double s = Convert.ToDouble(sub.ToString());
-            s = s * -1;
-            string return1 = txtRturned.Text;
-            double amount1 = 0.0;
-            if (double.TryParse(sub, out amount1))
+            if (bal2 == 0)
             {
-                double bal = Convert.ToDouble(sub);
-                if (double.TryParse(return1, out amount1))
+                bal2 = Convert.ToDouble(txtBalance.Text) * -1;
+            }
+            Double return3 = Convert.ToDouble(txtRturned.Text);
+            if (bal2 < return3)
+            {
+                MessageBox.Show("please corrct Amount");
+                txtRturned.Focus();
+                txtRturned.SelectAll();
+                txtBalance.Text = BalAmunt.ToString("###0.00");
+            }
+            else
+            {
+                string sub = BalAmunt.ToString();
+                string return1 = txtRturned.Text;
+                double amount1 = 0.0;
+                if (double.TryParse(sub, out amount1))
                 {
-                    double ReturnAmount = Convert.ToDouble(txtRturned.Text);
-                    if (s > ReturnAmount)
+                    double bal = Convert.ToDouble(sub);
+                    if (double.TryParse(return1, out amount1))
                     {
+                        double ReturnAmount = Convert.ToDouble(txtRturned.Text);
                         double bal1 = bal + ReturnAmount;
-                        txtBalance.Text = bal1.ToString();
-                    }
-                    else if (ReturnAmount > s)
-                    {
-                        MessageBox.Show("please select your proper amount");
-                        txtRturned.SelectAll();
-                        txtBalance.Text = BalAmunt.ToString("###0.00");
-                        return;
+                        txtBalance.Text = bal1.ToString("###0.00");
                     }
                 }
-                   
             }
         }
 
@@ -4086,7 +4105,7 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyChar == '\b')
                 {
-                    txtBalance.Text = "0";
+                    //txtBalance.Text = "0.00";
                     e.Handled = false;
                 }
                 else
