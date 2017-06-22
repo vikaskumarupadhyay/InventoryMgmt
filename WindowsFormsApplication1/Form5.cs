@@ -1668,6 +1668,13 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void butba_Click(object sender, EventArgs e)
+        {
+            pnlshowdetail.Visible = false;
+            pnlSalesPayment.Visible = false;
+            panel2.Visible = false;
+        }
+
       
        
 
