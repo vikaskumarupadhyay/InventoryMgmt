@@ -1007,6 +1007,7 @@ namespace WindowsFormsApplication1
             //deliverysave();
             txtBalance.Text = txttotalAmount.Text;
             txtRturned.ReadOnly = true;
+            txtDiscount.ReadOnly = true;
             //comboBox2.Text = "Delivery-Payment";
 
         }
@@ -1953,7 +1954,7 @@ namespace WindowsFormsApplication1
                         double totalammount1 = Convert.ToDouble(txttotalAmount.Text);
                         double t = totalammount1 + totalq;
                         txttotalAmount.Text = totalammount.ToString("###0.00");
-                        txtWAmount.Text = totalammount.ToString("###0.00");
+                        //txtWAmount.Text = totalammount.ToString("###0.00");
                         double totalValues = 0.0;
 
                         foreach (DataGridViewRow row in  dataGridView1.Rows)
@@ -1974,12 +1975,15 @@ namespace WindowsFormsApplication1
                 }
             DataGridViewRowCollection RowCollection = dataGridView1.Rows;
             int quntity1 = 0;
+            Double WRate = 0;
             for (int a = 0; a < RowCollection.Count; a++)
             {
 
                 DataGridViewRow currentRow = RowCollection[a];
                 DataGridViewCellCollection cellCollection = currentRow.Cells;
-
+                Double wrate = Convert.ToDouble(cellCollection[7].Value.ToString());
+                WRate = WRate + wrate;
+                txtWAmount.Text=WRate.ToString("###0.00");
                 int q1 = Convert.ToInt32(cellCollection[6].Value.ToString());
                 quntity1 = quntity1 + q1;
                 txtQuantityBild.Text = quntity1.ToString();
@@ -2377,11 +2381,15 @@ namespace WindowsFormsApplication1
                             }
                             if (ls.Count == dataGridView1.Rows.Count - 1)
                             {
+                               
                                 txtItemCode.Focus();
                                 dataGridView1.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
                                 txtItemCode.Select(txtItemCode.Text.Length, 0);
                                 button7.TabStop = false;
                                 button5.TabStop = false;
+                                txtdis.ReadOnly = true;
+                                txtDiscount.ReadOnly = true;
+
                             }
                             if (dataGridView1.Rows.Count > 0)
                             {
@@ -2395,7 +2403,7 @@ namespace WindowsFormsApplication1
                             }
                             if (dataGridView1.Rows.Count > 1)
                             {
-                                txtDiscount.ReadOnly = false;
+                                //txtDiscount.ReadOnly = false;
                                 //button7.TabStop = true;
                                 //button5.TabStop = true;
                             }
@@ -2728,6 +2736,7 @@ namespace WindowsFormsApplication1
                         {
                             addToCartTable.Rows.RemoveAt(0);
                         }
+                        txtDiscount.ReadOnly = false;
                         double totel1 = 0;
                         int quntity1 = 0;
                         for (int c = 0; c < dt2.Rows.Count; c++)
