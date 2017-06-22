@@ -820,6 +820,7 @@ namespace WindowsFormsApplication1
                             if (gridsalesdelivary.Rows.Count > 1)
                             {
                                 txtdiccount.ReadOnly = false;
+                                ButSelectPurchaseOrder.Enabled = true;
                             }
                             txtItemCode.Select(txtItemCode.Text.Length, 0);
 
@@ -1287,6 +1288,7 @@ namespace WindowsFormsApplication1
                                         MessageBox.Show("details save not successfully");
 
                                     }
+                                   
                                 }
                             }
                         }
@@ -1494,6 +1496,7 @@ namespace WindowsFormsApplication1
 
 
                                     }
+                                    salesedelivarytabindex();
                                 }
 
                             }
@@ -1720,6 +1723,7 @@ namespace WindowsFormsApplication1
                 }
            // }
             makeblank();
+            salesedelivarytabindex();
             int value4 = Convert.ToInt32(txtSrNo.Text);
             int value3 = value4 + 1;
             txtSrNo.Text = value3.ToString();
@@ -2059,6 +2063,7 @@ namespace WindowsFormsApplication1
                         MessageBox.Show("please select your correct row");
                         gridsalesdelivary.Rows[e.RowIndex].Cells[0].Value = "";
                     }
+                    double WRate = 0;
                     DataGridViewRowCollection RowCollection = gridsalesdelivary.Rows;
                     int quntity1 = 0;
                     for (int a = 0; a < RowCollection.Count; a++)
@@ -2066,10 +2071,12 @@ namespace WindowsFormsApplication1
 
                         DataGridViewRow currentRow = RowCollection[a];
                         DataGridViewCellCollection cellCollection = currentRow.Cells;
-
+                        Double wrate = Convert.ToDouble(cellCollection[7].Value.ToString());
+                        WRate = WRate + wrate;
+                        txtwithauttaxamount.Text= WRate.ToString("###0.00");
                         int q1 = Convert.ToInt32(cellCollection[6].Value.ToString());
                         quntity1 = quntity1 + q1;
-                       txtqtybuiled.Text = quntity1.ToString();
+                        textBox20.Text = quntity1.ToString();
 
 
                     }
@@ -2181,6 +2188,7 @@ namespace WindowsFormsApplication1
                                 txtItemCode.Focus();
                                 butRemoveItem.Enabled = false;
                                 // MessageBox.Show("Please select your remove button");
+                                txtdiccount.ReadOnly= true;
 
                             }
                            
@@ -2272,6 +2280,7 @@ namespace WindowsFormsApplication1
                             }
                             if (gridsalesdelivary.Rows.Count > 1)
                             {
+                                ButSelectPurchaseOrder.Enabled = false;
                                 txtdiccount.ReadOnly = false;
                             }
 
@@ -2734,6 +2743,8 @@ namespace WindowsFormsApplication1
                         txtItemCode.Focus();
 
                     }
+                    doubletabindex();
+                    butRemoveItem.Enabled = true;
                     double qty = getquantitybuiled1();
                     txtqtybuiled.Text = qty.ToString();
                     gridsalesdelivary.DataSource = addToCartTable;
@@ -2859,6 +2870,7 @@ namespace WindowsFormsApplication1
                                 txtItemCode.Focus();
 
                             }
+                            doubletabindex();
                             double qty = getquantitybuiled1();
                             txtqtybuiled.Text = qty.ToString();
                             gridsalesdelivary.DataSource = addToCartTable;
@@ -2871,8 +2883,19 @@ namespace WindowsFormsApplication1
                     }
                 
                 }
-            
-        
+
+        public void doubletabindex()
+        {
+            butRemoveItem.Enabled = true;
+            txtcustomercode.TabStop = true;
+            butcustomercode.TabStop = true;
+            txtItemCode.TabStop = true;
+            butitembutton.TabStop = true;
+            butRemoveItem.TabStop = true;
+            butSaveButton.TabStop = true;
+            ButSelectPurchaseOrder.TabStop = true;
+            butClose.TabStop = true;
+        }
 
         private void butSaveButton_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -4193,15 +4216,6 @@ namespace WindowsFormsApplication1
                 }
             }
         }
-
-       
-
-      
-
-      
-
-       
-
      
 
        
