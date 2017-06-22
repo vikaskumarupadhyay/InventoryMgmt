@@ -2834,7 +2834,7 @@ namespace WindowsFormsApplication1
                     txttotalAmount.Text = totalAmount.ToString();
                     double dis = totalAmount1; //* totalDiscount / 100;
                     txtDisAmount.Text = dis.ToString("###0.00");
-                    txtDiscount.Select(txtDiscount.Text.Length, 0);
+                    //txtDiscount.Select(txtDiscount.Text.Length, 0);
                 }
             }
             if (txtRef.Text != "")
@@ -2865,8 +2865,8 @@ namespace WindowsFormsApplication1
                     txttotalAmount.Text = totalAmount.ToString("###0.00");
                     double dis = totalAmount1; //* totalDiscount / 100;
                     txtDisAmount.Text = dis.ToString("###0.00");
-                    txtDiscount.Text = totalDiscount.ToString("###0.00");
-                    txtDiscount.Select(txtDiscount.Text.Length, 0);
+                    //txtDiscount.Text = totalDiscount.ToString("###0.00");
+                    //txtDiscount.Select(txtDiscount.Text.Length, 0);
                 }
             }
 
@@ -2876,19 +2876,19 @@ namespace WindowsFormsApplication1
         {
             double totalAmount3 = 0.00;
          if  ((char.IsDigit(e.KeyChar)  || e.KeyChar == '.'))
-            {
-                if (txtDiscount.Text.IndexOf('.') != -1 && txtDiscount.Text.Split('.')[1].Length == 2)
-                {
-                    //MessageBox.Show("The maximum decimal points are 2!");
-                    e.Handled = true;
-                }
+         {
+             if (txtDiscount.Text.IndexOf('.') != -1 && txtDiscount.Text.Split('.')[1].Length == 2)
+             {
+                 //MessageBox.Show("The maximum decimal points are 2!");
+                 //e.Handled = true;
+             }
             }
             else
             {
                 if (e.KeyChar == '\b')
                 {
                
-                        counter = 0;
+                      int  counter = 0;
                         foreach (DataRow dr in addToCartTable.Rows)
                         {
                             string itemid = dr[0].ToString();
