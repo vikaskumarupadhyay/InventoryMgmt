@@ -293,6 +293,7 @@
             // 
             this.txtRefNo.Location = new System.Drawing.Point(69, 78);
             this.txtRefNo.Name = "txtRefNo";
+            this.txtRefNo.ReadOnly = true;
             this.txtRefNo.Size = new System.Drawing.Size(135, 21);
             this.txtRefNo.TabIndex = 15;
             this.txtRefNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -311,6 +312,7 @@
             // 
             this.txtSrNo.Location = new System.Drawing.Point(69, 21);
             this.txtSrNo.Name = "txtSrNo";
+            this.txtSrNo.ReadOnly = true;
             this.txtSrNo.Size = new System.Drawing.Size(135, 21);
             this.txtSrNo.TabIndex = 13;
             this.txtSrNo.TabStop = false;
