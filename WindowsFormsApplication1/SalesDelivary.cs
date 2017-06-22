@@ -3587,6 +3587,8 @@ namespace WindowsFormsApplication1
             createnewsave();
             pnlSalesPayment.Visible = false;
             crystalReportViewer2.Visible = true;
+            txtdiccount.ReadOnly = true;
+            txtdiccount.Text = "0.00";
             
         }
 
@@ -3794,16 +3796,9 @@ namespace WindowsFormsApplication1
                     txtwithauttaxamount.Text = s1.ToString();
                     double dis = s1 * totaldiscount / 100;
                     txtdicountamount.Text = dis.ToString();
-                    txtdiccount.Text = totalAmount.ToString("###0.00");
 
                 }
-                if (txtdiccount.Text == "")
-                {
-                    txtdiccount.Text = "0.00";
-                }
-
             }
-
 
         }
 
