@@ -40,7 +40,7 @@ namespace WindowsFormsApplication1
             savebutton.TabStop = false;
             butclose.TabStop = false;
             textBox1.TabStop = false;
-            textBox2.TabStop = false;
+            txtquantitybuiled.TabStop = false;
             //xtBox3.TabStop = false;
         }
 
@@ -70,7 +70,7 @@ namespace WindowsFormsApplication1
             savebutton.TabStop = false;
             butclose.TabStop = false;
             textBox1.TabStop = false;
-            textBox2.TabStop = false;
+            txtquantitybuiled.TabStop = false;
             //xtBox3.TabStop = false;
         }
 
@@ -300,7 +300,7 @@ namespace WindowsFormsApplication1
 
         private void makeblank()
         {
-            textBox2.Text = "0";
+            txtquantitybuiled.Text = "0";
             txtitemcode.Enabled = true;
             button2.Enabled = true;
             txtcustomercode.Text = "C";
@@ -380,11 +380,11 @@ namespace WindowsFormsApplication1
                             int q2 = Convert.ToInt32(txtQuantity.Text);
                             q3 = q1 + q2;
                             quantity1 = quantity1 + q3;
-                            int q4 = Convert.ToInt32(textBox2.Text);
-                            int q5 = Convert.ToInt32(textBox2.Text);
+                            int q4 = Convert.ToInt32(txtquantitybuiled.Text);
+                            int q5 = Convert.ToInt32(txtquantitybuiled.Text);
                             int q6 = q5 - q1;
                             quantity1 = quantity1 + q6;
-                            textBox2.Text = quantity1.ToString();
+                            txtquantitybuiled.Text = quantity1.ToString();
                             dr3[5] = q3.ToString();
                             double rate1 = Convert.ToDouble(rate);
                             double rate6 = q3 * rate1;
@@ -466,9 +466,9 @@ namespace WindowsFormsApplication1
                             dr[4] = txtRate.Text.Trim();
                             dr[6] = txtAmount.Text.Trim();
                             int q1 = Convert.ToInt32(txtQuantity.Text.Trim());
-                            int q2 = Convert.ToInt32(textBox2.Text.Trim());
+                            int q2 = Convert.ToInt32(txtquantitybuiled.Text.Trim());
                             int q3 = q1 + q2;
-                            textBox2.Text = q3.ToString();
+                            txtquantitybuiled.Text = q3.ToString();
                             //dr[5] = txtAmount.Text.Trim();
                             addToCartTable.Rows.Add(dr);
                             gridsalesorder.DataSource = addToCartTable;
@@ -497,10 +497,7 @@ namespace WindowsFormsApplication1
                         //double qtybuiled = getquantitybuiled();
                         //textBox2.Text = qtybuiled.ToString();
                     }
-                        if (gridsalesorder.Rows.Count > 1)
-                        {
-                            textBox20.ReadOnly = false;
-                        }
+                       
                         txtitemcode.Select(txtitemcode.Text.Length, 0);
                        
 
@@ -768,7 +765,7 @@ namespace WindowsFormsApplication1
                     {
                         MessageBox.Show("Details saved successfully");
 
-                        DialogResult result = MessageBox.Show("Do you need to print Sales order! ", "Impotant questiuon", MessageBoxButtons.YesNo);
+                        DialogResult result = MessageBox.Show("Do you need to print Sales order", "Impotant questiuon", MessageBoxButtons.YesNo);
                         if (result == System.Windows.Forms.DialogResult.Yes)
                         {
                             panel2.Visible = true;
@@ -1237,121 +1234,128 @@ namespace WindowsFormsApplication1
             }
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                if (gridsalesorder.DefaultCellStyle.SelectionBackColor == Color.DodgerBlue)
+
+
+                int selectewIndex = gridsalesorder.CurrentCell.RowIndex;
+                int selectewIndexActual = gridsalesorder.SelectedRows[0].Index;
+
+                Color backGroundColor = gridsalesorder.DefaultCellStyle.SelectionBackColor;
+                if (backGroundColor.Name == "DodgerBlue" || backGroundColor.Name == "Highlight")
                 {
-                    MessageBox.Show("Please select your remove button");
+                    MessageBox.Show("Please click on 'Remove Button' to remove item!");
+                    butremove.Focus();
                     return;
                 }
-                //int r = gridsalesorder.Rows.Count;
-                //int it1 = r-1;
-                //int ind = gridsalesorder.SelectedRows[0].Index;
-                //string it= gridsalesorder.Rows[ind].Cells[0].Value.ToString();
-                //int s = Convert.ToInt32(it);
-                //s = it1;
-               
-                //if (addToCartTable.Rows.Count != 0 && it == "")
-                //{
-                //    MessageBox.Show("please select your correct row");
-                //    return;
-                //}
-               if (addToCartTable.Rows.Count>0)
-                {
-                    int index = gridsalesorder.SelectedRows[0].Index;
-                    string itemId = gridsalesorder.Rows[index - 1].Cells[0].Value.ToString();
-                    if ((!ls.Contains(itemId)) || (gridsalesorder.Rows[index - 1].DefaultCellStyle.Font == null))
-                    {
-                        int current = gridsalesorder.CurrentRow.Index;
-                        string Amount = gridsalesorder.Rows[current - 1].Cells[6].Value.ToString();
-                        double totalAmount = Convert.ToDouble(txttotalammount.Text);
-                        totalAmount -= Convert.ToDouble(Amount.Trim());
-                        string qtybuiled = gridsalesorder.Rows[current - 1].Cells[5].Value.ToString();
-                        double qty = Convert.ToDouble(textBox2.Text);
-                        qty -= Convert.ToDouble(qtybuiled.Trim());
-                        textBox2.Text = qty.ToString();
-                        txttotalammount.Text = totalAmount.ToString("###0.00");
-
-                        //addToCartTable.Rows.RemoveAt(index - 1);
-                        gridsalesorder.Rows[index - 1].DefaultCellStyle.Font = new Font(new FontFamily("Microsoft Sans Serif"), 9.00F, FontStyle.Strikeout);
-                        gridsalesorder.Rows[index - 1].DefaultCellStyle.ForeColor = Color.Red;
-                        // I44
-
-                        ls.Add(itemId);
-                        //int index = gridsalesorder.CurrentCell.RowIndex;
-                        //addToCartTable.Rows.RemoveAt(0);
-                        gridsalesorder.DataSource = addToCartTable;
-
-
-
-                        if (addToCartTable.Rows.Count == 0)
-                        {
-                            txttotalammount.Text = "0.00";
-
-
-                            //txtdiscount.Text = "0.0";
-                        }
-                        if (ls.Count == gridsalesorder.Rows.Count - 1)
-                        {
-                            //MessageBox.Show("item delate please select your item");
-                            txtitemcode.Enabled = true;
-                            txtitemcode.Focus();
-                            gridsalesorder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
-                        }
                       
-                        if (gridsalesorder.Rows.Count == 1)
+                        if (addToCartTable.Rows.Count > 0)
                         {
-                            txtitemcode.Enabled = true;
-                            txtitemcode.Focus();
+                            if (txttotalammount.Text == "")
+                            {
+                                txttotalammount.Text = "0";
+                            }
+                            int index = gridsalesorder.SelectedRows[0].Index;
+                            string itemId = gridsalesorder.Rows[index - 1].Cells[0].Value.ToString();
+                            if ((!ls.Contains(itemId)) || (gridsalesorder.Rows[index - 1].DefaultCellStyle.Font == null))
+                            {
+                                int courentrow = gridsalesorder.CurrentRow.Index;
+                                string Amount = gridsalesorder.Rows[courentrow - 1].Cells[6].Value.ToString();
+                                string quantity = gridsalesorder.Rows[courentrow - 1].Cells[5].Value.ToString();
+                                int q1 = Convert.ToInt32(txtquantitybuiled.Text);
+                                q1 -= Convert.ToInt32(quantity.Trim());
+                                txtquantitybuiled.Text = q1.ToString();
+
+                                if (Amount == "")
+                                {
+                                    Amount = "0";
+                                }
+                                double totalAmount = Convert.ToDouble(txttotalammount.Text);
+                                totalAmount -= Convert.ToDouble(Amount.Trim());
+                                txttotalammount.Text= totalAmount.ToString("##0.00");
+                                //int index = gridPurchaseOrder.SelectedRows[0].Index;
+                                //addToCartTable.Rows.RemoveAt(index-1);
+                                gridsalesorder.Rows[index - 1].DefaultCellStyle.Font = new Font(new FontFamily("Microsoft Sans Serif"), 9.00F, FontStyle.Strikeout);
+                                gridsalesorder.Rows[index - 1].DefaultCellStyle.ForeColor = Color.Red;
+                                //string itemId = gridPurchaseOrder.Rows[index - 1].Cells[0].Value.ToString();// I44
+
+                                ls.Add(itemId);
+                                //int index = gridsalesorder.CurrentCell.RowIndex;
+                                //addToCartTable.Rows.RemoveAt(0);
+                                gridsalesorder.DataSource = addToCartTable;
+
+
+
+                                if (addToCartTable.Rows.Count == 0)
+                                {
+                                    txttotalammount.Text = "0.00";
+
+
+                                    //txtdiscount.Text = "0.0";
+                                }
+                                if (ls.Count == gridsalesorder.Rows.Count - 1)
+                                {
+                                    //MessageBox.Show("item delate please select your item");
+                                    txtitemcode.Enabled = true;
+                                    txtitemcode.Focus();
+                                    gridsalesorder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
+                                }
+
+                                if (gridsalesorder.Rows.Count == 1)
+                                {
+                                    txtitemcode.Enabled = true;
+                                    txtitemcode.Focus();
+                                }
+
+                                if (gridsalesorder.Rows.Count > 0)
+                                {
+                                    textBox20.Text = "0.00";
+                                    textBox20.ReadOnly = true;
+                                    butremove.Enabled = true;
+                                    // gridsalesorder.Rows[gridsalesorder.Rows.Count-1].Selected = true;
+
+                                }
+                                if (gridsalesorder.Rows.Count > 1)
+                                {
+                                    textBox20.ReadOnly = false;
+
+                                }
+
+
+                                if (gridsalesorder.Rows.Count == 0 && itemId == "")
+                                {
+                                    txtitemcode.Enabled = true;
+                                    button2.Enabled = true;
+
+                                    txtitemcode.Focus();
+                                    return;
+                                }
+
+
+                                else
+                                {
+
+                                    butremove.Enabled = false;
+                                }
+                                txtQuantity.TabStop = false;
+                            }
+                            else if ((!ls.Contains(itemId)) || (gridsalesorder.Rows[index - 1].DefaultCellStyle.Font != null))
+                            {
+                                MessageBox.Show("Item already deleted!");
+                            }
                         }
 
-                        if (gridsalesorder.Rows.Count > 0)
-                        {
-                            textBox20.Text = "0.00";
-                            textBox20.ReadOnly = true;
-                            butremove.Enabled = true;
-                           // gridsalesorder.Rows[gridsalesorder.Rows.Count-1].Selected = true;
-                            
-                        }
-                        if (gridsalesorder.Rows.Count > 1)
-                        {
-                            textBox20.ReadOnly = false;
-                           
-                        }
-                       
 
-                        if (gridsalesorder.Rows.Count == 0 && itemId == "")
-                        {
-                            txtitemcode.Enabled = true;
-                            button2.Enabled = true;
+                        butremove.Enabled = false;
+                        savebutton.TabStop = false;
+                        butclose.TabStop = false;
+                        txtcustomercode.TabStop = true;
+                        button1.TabStop = true;
+                        button2.TabStop = true;
 
-                            txtitemcode.Focus();
-                            return;
-                        }
-                       
 
-                        else
-                        {
-                            
-                            butremove.Enabled = false;
-                        }
-                        txtQuantity.TabStop = false;
-                    }
-                    else if ((!ls.Contains(itemId)) || (gridsalesorder.Rows[index - 1].DefaultCellStyle.Font != null))
-                    {
-                        MessageBox.Show("Item already deleted!");
                     }
                 }
-
-
-                butremove.Enabled = false;
-                savebutton.TabStop = false;
-                butclose.TabStop = false;
-                txtcustomercode.TabStop = true;
-                button1.TabStop = true;
-                button2.TabStop = true;
-
-
-            }
-        }
+            
+        
         //}
 
 
