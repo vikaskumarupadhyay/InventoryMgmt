@@ -28,6 +28,7 @@ namespace WindowsFormsApplication1
 
         private void Form9_Load(object sender, EventArgs e)
         {
+            txtRturned.ReadOnly = true;
             panel4.Visible = false;
             button1.Enabled = false;
             //button1.Visible = false;
@@ -984,6 +985,12 @@ namespace WindowsFormsApplication1
 
         private void CashAmount_Leave(object sender, EventArgs e)
         {
+            Double amount2 = Convert.ToDouble(txtTotalAmount1.Text);
+            Double tot = Convert.ToDouble(txtBalance.Text);
+            if (tot < amount2)
+            {
+                txtRturned.ReadOnly = false;
+            }
             decimal x;
             if (decimal.TryParse(CashAmount.Text, out x))
             {
@@ -1004,6 +1011,12 @@ namespace WindowsFormsApplication1
 
         private void txtCreditAmount_Leave(object sender, EventArgs e)
         {
+            Double amount2 = Convert.ToDouble(txtTotalAmount1.Text);
+            Double tot = Convert.ToDouble(txtBalance.Text);
+            if (tot < amount2)
+            {
+                txtRturned.ReadOnly = false;
+            }
             if (txtCreditAmount.Text == "0.00")
             {
                // credittext1();
@@ -1032,6 +1045,12 @@ namespace WindowsFormsApplication1
 
         private void txtChequeAmount_Leave(object sender, EventArgs e)
         {
+            Double amount2 = Convert.ToDouble(txtTotalAmount1.Text);
+            Double tot = Convert.ToDouble(txtBalance.Text);
+            if (tot < amount2)
+            {
+                txtRturned.ReadOnly = false;
+            }
             if (txtCreditAmount.Text == "0.00")
             {
                 //credittext1();
@@ -1062,6 +1081,12 @@ namespace WindowsFormsApplication1
 
         private void txtEwalletAmount_Leave(object sender, EventArgs e)
         {
+            Double amount2 = Convert.ToDouble(txtTotalAmount1.Text);
+            Double tot = Convert.ToDouble(txtBalance.Text);
+            if (tot < amount2)
+            {
+                txtRturned.ReadOnly = false;
+            }
             if (txtEwalletAmount.Text == "0.00")
             {
                 //Ewalled1();
@@ -1090,6 +1115,12 @@ namespace WindowsFormsApplication1
 
         private void txtCouponAmount_Leave(object sender, EventArgs e)
         {
+            Double amount2 = Convert.ToDouble(txtTotalAmount1.Text);
+            Double tot = Convert.ToDouble(txtBalance.Text);
+            if (tot < amount2)
+            {
+                txtRturned.ReadOnly = false;
+            }
             if (txtCouponAmount.Text == "0.00")
             {
                 //CmbCompany.Visible = false;

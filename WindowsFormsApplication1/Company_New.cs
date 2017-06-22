@@ -278,28 +278,31 @@ namespace WindowsFormsApplication1
                     if (updatequrry1 > 0)
                     {
                         MessageBox.Show("Details updated successfully");
+                        makeblank();
+                        string selectqury = "select max (CompnayId) from compnaydetails";
+                        DataTable dt1 = dbMainClass.getDetailByQuery(selectqury);
+                        string id = "";
+                        foreach (DataRow dr in dt1.Rows)
+                        {
+                            id = dr[0].ToString();
+                        }
+                        string id1 = id.Substring(0, 1);
+                        string id2 = id.Substring(1);
+                        int s = Convert.ToInt32(id2);
+                        int s1 = s + 1;
+                        string id3 = id1 + s1.ToString();
+                        txtCompnayCode.Text = id3;
+
                     }
                     else
                     {
                         MessageBox.Show("Details save not successfully");
+                        makeblank();
                     }
                 }
-                string selectqury = "select max (CompnayId) from compnaydetails";
-                DataTable dt1 = dbMainClass.getDetailByQuery(selectqury);
-                string id = "";
-                foreach (DataRow dr in dt1.Rows)
-                {
-                    id = dr[0].ToString();
-                }
-                string id1 = id.Substring(0, 1);
-                string id2 = id.Substring(1);
-                int s = Convert.ToInt32(id2);
-                int s1 = s + 1;
-                string id3 = id1 + s1.ToString();
-                txtCompnayCode.Text = id3;
+               
             }
             btnList.Enabled = true;
-            makeblank();
             ComDetails.SelectedIndex = 0;
             txtwonername.Focus();
         }
