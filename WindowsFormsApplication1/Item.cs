@@ -312,8 +312,8 @@ namespace WindowsFormsApplication1
             txtItemProductName.Text = "";
             txtItemCompName.Text = "";
             txtItemDesc.Text = "";
-            cmbItemItemGroup.Text = "Select a group";
-            cmbItemUnit.Text = "Select a unit";
+            cmbItemItemGroup.SelectedIndex = 0;
+            cmbItemUnit.SelectedIndex = 0;
             txtItemPrice.Text = "0.00";
             txtItemSalesPrice.Text = "0.00";
             txtItemMrp.Text = "0.00";

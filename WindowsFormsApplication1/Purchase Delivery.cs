@@ -31,7 +31,7 @@ namespace WindowsFormsApplication1
             txtDiscount.ReadOnly = true;
             IndexTex1();
             txtTaxAmount.Visible = false;
-//txtWAmount.Visible = false;
+            txtWAmount.Visible = false;
             txtDisAmount.Visible = false;
             txtQunty.ReadOnly = true;
             button4.Enabled = false;
@@ -1007,7 +1007,7 @@ namespace WindowsFormsApplication1
             //deliverysave();
             txtBalance.Text = txttotalAmount.Text;
             txtRturned.ReadOnly = true;
-            txtDiscount.ReadOnly = true;
+           
             //comboBox2.Text = "Delivery-Payment";
 
         }
@@ -1858,6 +1858,7 @@ namespace WindowsFormsApplication1
         }
         private void makeBlank()
         {
+            txtDiscount.Text = "0.00";
             textVendercod.Text = "V";
             txtVendorName.Text = "";
             txtAddress.Text = "";
@@ -3064,6 +3065,7 @@ namespace WindowsFormsApplication1
             //int insertedRows = dbMainClass.saveDetails(insertQurry);
             txtBalance.Text = "0.00";
             deliverysave();
+            txtDiscount.ReadOnly = true;
             pnlPaymentDetail.Visible = false;
             DeliveryReportViewer.Visible = true;
             txtRef.Enabled = true;
