@@ -1288,6 +1288,7 @@ namespace WindowsFormsApplication1
                                         MessageBox.Show("details save not successfully");
 
                                     }
+                                    salesedelivarytabindex();
                                    
                                 }
                             }
@@ -1472,6 +1473,7 @@ namespace WindowsFormsApplication1
                                                 panel2.Visible = false;
                                                // makeblank();
                                                 makeblank();
+                                                salesedelivarytabindex();
                                                 int value1 = Convert.ToInt32(txtSrNo.Text);
                                                 int value2 = value1 + 1;
                                                 txtSrNo.Text = value2.ToString();
@@ -1496,7 +1498,7 @@ namespace WindowsFormsApplication1
 
 
                                     }
-                                    salesedelivarytabindex();
+                                    
                                 }
 
                             }
@@ -1984,8 +1986,17 @@ namespace WindowsFormsApplication1
 
             if (txtRefNo.Text != "")
             {
+                string a = gridsalesdelivary.Rows[e.RowIndex].Cells[6].Value.ToString();
+                if (a == "")
+                {
+                    string quntity = gridsalesdelivary.Rows[e.RowIndex].Cells[5].Value.ToString();
+                    a = quntity;
+
+                }
+                gridsalesdelivary.Rows[e.RowIndex].Cells[6].Value = a;
                 string id = gridsalesdelivary.Rows[e.RowIndex].Cells[0].Value.ToString();
                 string a1 = gridsalesdelivary.Rows[e.RowIndex].Cells[6].Value.ToString();
+              
                 // string newquantity = gridsalesdelivary.Rows[e.RowIndex].Cells[3].Value.ToString();
                 string select = "select CurrentQuantity from ItemQuantityDetail where itemid='" + id + "'";
                 DataTable dt = d.getDetailByQuery(select);
@@ -2001,7 +2012,8 @@ namespace WindowsFormsApplication1
                     double quantity = Convert.ToDouble(a1);
                     if (quantity < g)
                     {
-                        string a = gridsalesdelivary.Rows[e.RowIndex].Cells[6].Value.ToString();
+                         a = gridsalesdelivary.Rows[e.RowIndex].Cells[6].Value.ToString();
+                        
                         string rate = gridsalesdelivary.Rows[e.RowIndex].Cells[4].Value.ToString();
                         quantity = Convert.ToInt32(a);
                         double r = Convert.ToDouble(rate);
@@ -2036,7 +2048,7 @@ namespace WindowsFormsApplication1
                         gridsalesdelivary.Rows[e.RowIndex].Cells[6].Value = s.ToString();
                         int g1 = Convert.ToInt32(s);
                         double quantity1 = Convert.ToDouble(a1);
-                        string a = gridsalesdelivary.Rows[e.RowIndex].Cells[6].Value.ToString();
+                         a = gridsalesdelivary.Rows[e.RowIndex].Cells[6].Value.ToString();
                         string rate = gridsalesdelivary.Rows[e.RowIndex].Cells[4].Value.ToString();
                         quantity = Convert.ToInt32(a);
                         double r = Convert.ToDouble(rate);
@@ -2066,10 +2078,10 @@ namespace WindowsFormsApplication1
                     double WRate = 0;
                     DataGridViewRowCollection RowCollection = gridsalesdelivary.Rows;
                     int quntity1 = 0;
-                    for (int a = 0; a < RowCollection.Count; a++)
+                    for (int b = 0; b < RowCollection.Count; b++)
                     {
 
-                        DataGridViewRow currentRow = RowCollection[a];
+                        DataGridViewRow currentRow = RowCollection[b];
                         DataGridViewCellCollection cellCollection = currentRow.Cells;
                         Double wrate = Convert.ToDouble(cellCollection[7].Value.ToString());
                         WRate = WRate + wrate;
@@ -3763,6 +3775,8 @@ namespace WindowsFormsApplication1
                 {
                     txtdiccount.Text = "0.00";
                 }
+                Double totaldicount = Convert.ToDouble(txtdiccount.Text);
+                txtdiccount.Text = totaldicount.ToString("###0.00");
             }
 
 
@@ -3795,9 +3809,15 @@ namespace WindowsFormsApplication1
                     txtTotalAmmount.Text = totalAmount.ToString("###0.00");
                     txtwithauttaxamount.Text = s1.ToString();
                     double dis = s1 * totaldiscount / 100;
-                    txtdicountamount.Text = dis.ToString();
+                    txtdicountamount.Text = dis.ToString("###0.00");
 
                 }
+                if (txtdiccount.Text == "")
+                {
+                    txtdiccount.Text = "0.00";
+                }
+                Double totaldicount = Convert.ToDouble(txtdiccount.Text);
+                txtdiccount.Text= totaldicount.ToString("###0.00");
             }
 
         }
