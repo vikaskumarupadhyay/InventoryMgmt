@@ -106,7 +106,7 @@ namespace WindowsFormsApplication1
             else if (dt != null && dt.Rows.Count == 0)
             {
                 cmb.Items.Clear();
-                cmb.Items.Add("Add New " + Message);
+                cmb.Items.Add("Select a " + Message);
             }
             cmb.SelectedIndex = 0;
         }
