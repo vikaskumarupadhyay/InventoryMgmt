@@ -31,7 +31,7 @@ namespace WindowsFormsApplication1
             txtDiscount.ReadOnly = true;
             IndexTex1();
             txtTaxAmount.Visible = false;
-            txtWAmount.Visible = false;
+//txtWAmount.Visible = false;
             txtDisAmount.Visible = false;
             txtQunty.ReadOnly = true;
             button4.Enabled = false;
@@ -1821,7 +1821,8 @@ namespace WindowsFormsApplication1
                                     addToCartTable.Rows.Add(dr2);
                                 }
                                 dataGridView1.DataSource = addToCartTable;
-                                txttotalAmount.Text = totel1.ToString();
+                                txttotalAmount.Text = totel1.ToString("###0.00");
+                                txtWAmount.Text = totel1.ToString("###0.00");
                             }
                             if (dataGridView1.Rows.Count > 0)
                             {
@@ -1938,41 +1939,49 @@ namespace WindowsFormsApplication1
             */
             if (txtRef.Text != "")
             {
-                int quantity=0;
-                string a =  dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
-                        string rate =  dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
-                        quantity = Convert.ToInt32(a);
-                        double r = Convert.ToDouble(rate);
-                        double totalammount = quantity * r;
-                        dataGridView1.Rows[e.RowIndex].Cells[7].Value = totalammount.ToString();
-                        //string newquantity = gridsalesdelivary.Rows[e.RowIndex].Cells[3].Value.ToString();
-                        string rate1 =  dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
-                        double quantity1 = Convert.ToDouble(a);
-                        double finalquantity = Convert.ToDouble(rate1);
-                        finalquantity = quantity1 - quantity;
-                        double totalq = quantity1 * finalquantity;
-                        double totalammount1 = Convert.ToDouble(txttotalAmount.Text);
-                        double t = totalammount1 + totalq;
-                        txttotalAmount.Text = totalammount.ToString("###0.00");
-                        //txtWAmount.Text = totalammount.ToString("###0.00");
-                        double totalValues = 0.0;
-
-                        foreach (DataGridViewRow row in  dataGridView1.Rows)
-                        {
-                            dataGridView1.AllowUserToAddRows = false;
-                             string amountValue = row.Cells[row.Cells.Count-1].Value.ToString();
-                                totalValues += Convert.ToDouble(amountValue);
-                            
-                          
-                        }
-                        txttotalAmount.Text = totalValues.ToString("###0.00");
-                        //dataGridView1.AllowUserToAddRows = true;
-                    }
-                else
+                int quantity = 0;
+                string a = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
+                if (a == "")
                 {
-                    MessageBox.Show("please select your correct row");
-                    dataGridView1.Rows[e.RowIndex].Cells[0].Value = "";
+                    string quntity = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+                    a = quntity;
+                    
                 }
+                dataGridView1.Rows[e.RowIndex].Cells[6].Value = a;
+                    //string revQuantity = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
+                    string rate = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                    quantity = Convert.ToInt32(a);
+                    double r = Convert.ToDouble(rate);
+                    double totalammount = quantity * r;
+                    dataGridView1.Rows[e.RowIndex].Cells[7].Value = totalammount.ToString();
+                    //string newquantity = gridsalesdelivary.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    string rate1 = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                    double quantity1 = Convert.ToDouble(a);
+                    double finalquantity = Convert.ToDouble(rate1);
+                    finalquantity = quantity1 - quantity;
+                    double totalq = quantity1 * finalquantity;
+                    double totalammount1 = Convert.ToDouble(txttotalAmount.Text);
+                    double t = totalammount1 + totalq;
+                    txttotalAmount.Text = totalammount.ToString("###0.00");
+                    //txtWAmount.Text = totalammount.ToString("###0.00");
+                    double totalValues = 0.0;
+
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        dataGridView1.AllowUserToAddRows = false;
+                        string amountValue = row.Cells[row.Cells.Count - 1].Value.ToString();
+                        totalValues += Convert.ToDouble(amountValue);
+
+
+                    }
+                    txttotalAmount.Text = totalValues.ToString("###0.00");
+                    //dataGridView1.AllowUserToAddRows = true;
+                }
+            else
+            {
+                MessageBox.Show("please select your correct row");
+                dataGridView1.Rows[e.RowIndex].Cells[0].Value = "";
+            }
             DataGridViewRowCollection RowCollection = dataGridView1.Rows;
             int quntity1 = 0;
             Double WRate = 0;
@@ -1984,6 +1993,12 @@ namespace WindowsFormsApplication1
                 Double wrate = Convert.ToDouble(cellCollection[7].Value.ToString());
                 WRate = WRate + wrate;
                 txtWAmount.Text=WRate.ToString("###0.00");
+                //string currquntity = cellCollection[6].Value.ToString();
+                //if (currquntity == "")
+                //{
+                //    string quntity = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+                //    currquntity = quntity;
+                //}
                 int q1 = Convert.ToInt32(cellCollection[6].Value.ToString());
                 quntity1 = quntity1 + q1;
                 txtQuantityBild.Text = quntity1.ToString();
