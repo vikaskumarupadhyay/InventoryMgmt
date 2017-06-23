@@ -1106,8 +1106,11 @@ namespace WindowsFormsApplication1
             butSaveButton.TabStop = false;
             ButSelectPurchaseOrder.TabStop = false;
             butClose.TabStop = false;
+            salesedelivarytabindex();
             CashAmount.Focus();
             txtBalance.Text = txtTotalAmmount.Text;
+            
+
         }
         public void add()
         {
@@ -1462,7 +1465,7 @@ namespace WindowsFormsApplication1
                                                 butcustomercode.TabStop = true;
                                                 txtRefNo.Enabled = true;
                                                 ButSelectPurchaseOrder.Enabled = true;
-                                                
+                                                salesedelivarytabindex();
                                                 con.Close();
                               
                                                 return;
@@ -1685,6 +1688,7 @@ namespace WindowsFormsApplication1
                                     butcustomercode.TabStop = true;
                                     txtRefNo.Enabled = true;
                                     ButSelectPurchaseOrder.Enabled = true;
+                                    salesedelivarytabindex();
                                     con.Close();
 
                                 }
@@ -3611,6 +3615,7 @@ namespace WindowsFormsApplication1
                 txtcustomercode.Focus();
                 butcustomercode.TabStop = true;
                 txtcustomercode.TabStop = true;
+               // salesedelivarytabindex();
 
             }
             else if (gridsalesdelivary.Rows.Count > 1 && txtItemCode.Text == "I")
