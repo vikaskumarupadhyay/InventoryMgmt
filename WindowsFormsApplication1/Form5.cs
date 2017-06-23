@@ -1254,9 +1254,16 @@ namespace WindowsFormsApplication1
             {
                 txtBalance.Text = "0.00";
             }
+            if (txtRturned.Text == "0")
+            {
+                txtRturned.Text = "0";
+                txtRturned.SelectAll();
+                return;
+            }
             if (txtRturned.Text == "")
             {
                 txtRturned.Text = "0.00";
+                // txtRturned.SelectAll();
             }
 
             if (BalAmunt == 0)
