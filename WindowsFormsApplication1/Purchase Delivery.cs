@@ -1006,7 +1006,7 @@ namespace WindowsFormsApplication1
             }
             //deliverysave();
             txtBalance.Text = txttotalAmount.Text;
-            txtRturned.ReadOnly = true;
+            //txtRturned.ReadOnly = true;
            
             //comboBox2.Text = "Delivery-Payment";
 

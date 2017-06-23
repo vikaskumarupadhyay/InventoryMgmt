@@ -28,7 +28,7 @@ namespace WindowsFormsApplication1
 
         private void Form9_Load(object sender, EventArgs e)
         {
-            txtRturned.ReadOnly = true;
+            
             panel4.Visible = false;
             button1.Enabled = false;
             //button1.Visible = false;
