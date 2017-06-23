@@ -298,11 +298,12 @@ namespace WindowsFormsApplication1
                     else
                     {
                         MessageBox.Show("Details save not successfully");
-                        makeblank();
+                        
                     }
                 }
                
             }
+            makeblank();
             btnList.Enabled = true;
             ComDetails.SelectedIndex = 0;
             txtwonername.Focus();
