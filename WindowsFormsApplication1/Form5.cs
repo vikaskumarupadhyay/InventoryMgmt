@@ -1515,6 +1515,10 @@ namespace WindowsFormsApplication1
 
 
                 }
+                butmakepayment.TabStop = true;
+                butback.TabStop = true;
+                dataGridView1.TabStop = true;
+                dataGridView1.Focus();
             }
 
         }
@@ -1608,6 +1612,10 @@ namespace WindowsFormsApplication1
               
 
             }
+            butmakepayment.TabStop = true;
+            butback.TabStop = true;
+            dataGridView1.TabStop = true;
+            dataGridView1.Focus();
         }
 
         private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
@@ -1666,6 +1674,17 @@ namespace WindowsFormsApplication1
 
                 }
             }
+        }
+
+        private void butba_Click(object sender, EventArgs e)
+        {
+            pnlshowdetail.Visible = false;
+            pnlSalesPayment.Visible = false;
+            panel2.Visible = false;
+            butmakepayment.TabStop = true;
+            butback.TabStop = true;
+            dataGridView1.TabStop = true;
+            dataGridView1.Focus();
         }
 
       
