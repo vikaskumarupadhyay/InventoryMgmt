@@ -249,18 +249,19 @@ namespace WindowsFormsApplication1
                     if (insertrow > 0)
                     {
                         MessageBox.Show("Details save successfully");
+                        string id = txtCompnayCode.Text;
+                        string id1 = id.Substring(0, 1);
+                        string id2 = id.Substring(1);
+                        int s = Convert.ToInt32(id2);
+                        int s1 = s + 1;
+                        string id3 = id1 + s1.ToString();
+                        txtCompnayCode.Text = id3;
                     }
                     else
                     {
                         MessageBox.Show("Details Not Save successfully");
                     }
-                    string id = txtCompnayCode.Text;
-                    string id1 = id.Substring(0, 1);
-                    string id2 = id.Substring(1);
-                    int s = Convert.ToInt32(id2);
-                    int s1 = s + 1;
-                    string id3 = id1 + s1.ToString();
-                    txtCompnayCode.Text = id3;
+                   
                 }
                 else
                 {
