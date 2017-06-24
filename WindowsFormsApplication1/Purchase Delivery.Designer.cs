@@ -873,7 +873,7 @@
             this.groupBox4.Size = new System.Drawing.Size(1323, 73);
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "groupBox4";
+            this.groupBox4.Text = "Search";
             // 
             // comboBox1
             // 
@@ -901,22 +901,23 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(684, 23);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(51, 16);
+            this.label16.Size = new System.Drawing.Size(72, 15);
             this.label16.TabIndex = 2;
-            this.label16.Text = "Search";
+            this.label16.Text = "Search Text";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(22, 23);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(89, 16);
+            this.label17.Size = new System.Drawing.Size(71, 15);
             this.label17.TabIndex = 3;
-            this.label17.Text = "SelectSearch";
+            this.label17.Text = "Select Field";
+            this.label17.Click += new System.EventHandler(this.label17_Click);
             // 
             // butClose
             // 

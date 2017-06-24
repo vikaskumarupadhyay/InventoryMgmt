@@ -363,6 +363,11 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void Txtdisamount_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }

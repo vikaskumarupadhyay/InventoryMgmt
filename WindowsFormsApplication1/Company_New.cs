@@ -803,5 +803,15 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

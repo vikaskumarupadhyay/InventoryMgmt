@@ -946,6 +946,11 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void txtMOBILE_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
              
    
     }

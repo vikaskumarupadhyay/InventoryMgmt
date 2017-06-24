@@ -3894,6 +3894,11 @@ namespace WindowsFormsApplication1
             
         }
 
+        private void label17_Click(object sender, EventArgs e)
+        {
+
+        }
+
        
 
 
