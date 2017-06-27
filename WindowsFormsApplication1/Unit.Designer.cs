@@ -42,9 +42,9 @@
             // 
             // btnUnitClose
             // 
-            this.btnUnitClose.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUnitClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUnitClose.Location = new System.Drawing.Point(144, 188);
-            this.btnUnitClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnUnitClose.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btnUnitClose.Name = "btnUnitClose";
             this.btnUnitClose.Size = new System.Drawing.Size(120, 31);
             this.btnUnitClose.TabIndex = 5;
@@ -54,9 +54,9 @@
             // 
             // btnUnitSave
             // 
-            this.btnUnitSave.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUnitSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUnitSave.Location = new System.Drawing.Point(16, 188);
-            this.btnUnitSave.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnUnitSave.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btnUnitSave.Name = "btnUnitSave";
             this.btnUnitSave.Size = new System.Drawing.Size(120, 31);
             this.btnUnitSave.TabIndex = 4;
@@ -72,12 +72,12 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(16, 15);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.groupBox1.Size = new System.Drawing.Size(632, 167);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.groupBox1.Size = new System.Drawing.Size(631, 167);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Item Unit Details";
@@ -85,7 +85,7 @@
             // txtUnitDesc
             // 
             this.txtUnitDesc.Location = new System.Drawing.Point(35, 95);
-            this.txtUnitDesc.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtUnitDesc.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.txtUnitDesc.Multiline = true;
             this.txtUnitDesc.Name = "txtUnitDesc";
             this.txtUnitDesc.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -95,7 +95,7 @@
             // txtUnitName
             // 
             this.txtUnitName.Location = new System.Drawing.Point(175, 50);
-            this.txtUnitName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtUnitName.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.txtUnitName.Name = "txtUnitName";
             this.txtUnitName.Size = new System.Drawing.Size(415, 22);
             this.txtUnitName.TabIndex = 4;
@@ -103,7 +103,7 @@
             // txtUnitId
             // 
             this.txtUnitId.Location = new System.Drawing.Point(35, 50);
-            this.txtUnitId.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtUnitId.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.txtUnitId.Name = "txtUnitId";
             this.txtUnitId.ReadOnly = true;
             this.txtUnitId.Size = new System.Drawing.Size(132, 22);
@@ -115,19 +115,19 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(31, 75);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 14);
+            this.label3.Size = new System.Drawing.Size(76, 16);
             this.label3.TabIndex = 2;
             this.label3.Text = "Description";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(172, 30);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(171, 30);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 14);
+            this.label2.Size = new System.Drawing.Size(71, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "Unit Name";
             // 
@@ -135,9 +135,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(31, 30);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 14);
+            this.label1.Size = new System.Drawing.Size(47, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Unit ID";
             // 
@@ -150,7 +150,7 @@
             this.Controls.Add(this.btnUnitSave);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.Name = "Unit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Unit Details";

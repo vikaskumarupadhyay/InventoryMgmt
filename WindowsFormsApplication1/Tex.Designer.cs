@@ -104,6 +104,7 @@
             this.txtTexId.ReadOnly = true;
             this.txtTexId.Size = new System.Drawing.Size(131, 22);
             this.txtTexId.TabIndex = 4;
+            this.txtTexId.TabStop = false;
             this.txtTexId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label4

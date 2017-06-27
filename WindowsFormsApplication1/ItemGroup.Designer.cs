@@ -48,7 +48,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(16, 13);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox1.Name = "groupBox1";
@@ -93,7 +93,7 @@
             this.label3.Location = new System.Drawing.Point(31, 75);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 14);
+            this.label3.Size = new System.Drawing.Size(76, 16);
             this.label3.TabIndex = 2;
             this.label3.Text = "Description";
             // 
@@ -103,7 +103,7 @@
             this.label2.Location = new System.Drawing.Point(172, 30);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 14);
+            this.label2.Size = new System.Drawing.Size(85, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "Group Name";
             // 
@@ -113,13 +113,13 @@
             this.label1.Location = new System.Drawing.Point(31, 30);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 14);
+            this.label1.Size = new System.Drawing.Size(61, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Group ID";
             // 
             // btnSave
             // 
-            this.btnSave.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Location = new System.Drawing.Point(16, 186);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnSave.Name = "btnSave";
@@ -131,7 +131,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Location = new System.Drawing.Point(144, 186);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnClose.Name = "btnClose";
