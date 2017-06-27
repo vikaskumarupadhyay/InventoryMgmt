@@ -240,9 +240,15 @@ ALTER TABLE ItemPriceDetail ALTER COLUMN purChasePrice decimal(18,2)
 go
 
 alter table AllPaymentDetailes add PaymentDate dateTime
-
+go
 alter table SalesPaymentDetailes add ReceiptDate datetime
+go
+create table ItemTaxDetail(ItemId varchar(100) foreign  key references ItemDetails(ItemId),HSN int,CGST decimal(18,2),SGST decimal(18,2),IGST decimal(18,2),CESS decimal(18,2))
+go
+ALTER TABLE ItemDetails add BarCode varchar(200)
+go
 
+ALTER TABLE ItemPriceDetail ALTER COLUMN Margin decimal(18,2)
  
 
 

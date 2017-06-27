@@ -133,10 +133,10 @@ using System.Configuration;
             return insertedRows;
         }
 
-              
 
 
-        public int saveDetails(string InsertQuery1, string InsertQuery2, string InsertQuery3)
+
+        public int saveDetails(string InsertQuery1, string InsertQuery2, string InsertQuery3, string InsertQuery4)
         {
             int insertedRows = 0;
             SqlTransaction trans = null;
@@ -165,16 +165,21 @@ using System.Configuration;
                             insertedRows = cmd.ExecuteNonQuery();
                             if (insertedRows > 0)
                             {
-                                trans.Commit();
+                                cmd = new SqlCommand(InsertQuery4, con, trans);
+                                insertedRows = cmd.ExecuteNonQuery();
+                                if (insertedRows > 0)
+                                {
+                                    trans.Commit();
+                                }
+                                else
+                                {
+                                    trans.Rollback();
+                                }
                             }
-                            else 
+                            else
                             {
                                 trans.Rollback();
                             }
-                        }
-                        else
-                        {
-                            trans.Rollback();
                         }
                     }
 

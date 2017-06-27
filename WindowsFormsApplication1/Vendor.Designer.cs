@@ -201,7 +201,7 @@
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(51, 341);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(110, 14);
+            this.label22.Size = new System.Drawing.Size(111, 14);
             this.label22.TabIndex = 34;
             this.label22.Text = "SERVICE TAX NO";
             // 
@@ -247,7 +247,7 @@
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(467, 299);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(52, 14);
+            this.label20.Size = new System.Drawing.Size(53, 14);
             this.label20.TabIndex = 29;
             this.label20.Text = "VAT NO";
             // 
@@ -296,7 +296,7 @@
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(883, 257);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(28, 14);
+            this.label13.Size = new System.Drawing.Size(29, 14);
             this.label13.TabIndex = 24;
             this.label13.Text = "Fax";
             // 
@@ -430,7 +430,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(51, 215);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(237, 14);
+            this.label10.Size = new System.Drawing.Size(238, 14);
             this.label10.TabIndex = 9;
             this.label10.Text = "Web Site (http://www.example.com)";
             // 
@@ -502,7 +502,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(189, 20);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 14);
+            this.label2.Size = new System.Drawing.Size(92, 14);
             this.label2.TabIndex = 1;
             this.label2.Text = "Vendor Name";
             // 
@@ -511,7 +511,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(51, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 14);
+            this.label1.Size = new System.Drawing.Size(70, 14);
             this.label1.TabIndex = 0;
             this.label1.Text = "Vendor ID";
             // 
@@ -696,7 +696,7 @@
             this.label18.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.Location = new System.Drawing.Point(700, 26);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(66, 14);
+            this.label18.Size = new System.Drawing.Size(68, 14);
             this.label18.TabIndex = 7;
             this.label18.Text = "Type Text";
             // 

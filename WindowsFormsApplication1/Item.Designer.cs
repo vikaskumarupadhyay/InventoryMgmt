@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBarCode = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.btnItemUnit = new System.Windows.Forms.Button();
             this.btnItemGroup = new System.Windows.Forms.Button();
@@ -67,15 +67,15 @@
             this.btnItemClose = new System.Windows.Forms.Button();
             this.btnItemList = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtCess = new System.Windows.Forms.TextBox();
+            this.txtIgst = new System.Windows.Forms.TextBox();
+            this.txtSgst = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtCgst = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.txtHsn = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -106,7 +106,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtBarCode);
             this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.btnItemUnit);
             this.groupBox1.Controls.Add(this.btnItemGroup);
@@ -131,15 +131,15 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Item Details";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // textBox1
+            // txtBarCode
             // 
-            this.textBox1.Location = new System.Drawing.Point(185, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(141, 22);
-            this.textBox1.TabIndex = 11;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtBarCode.Location = new System.Drawing.Point(185, 40);
+            this.txtBarCode.Name = "txtBarCode";
+            this.txtBarCode.Size = new System.Drawing.Size(141, 22);
+            this.txtBarCode.TabIndex = 1;
+            this.txtBarCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtBarCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBarCode_KeyPress);
             // 
             // label15
             // 
@@ -184,7 +184,6 @@
             this.cmbItemUnit.Name = "cmbItemUnit";
             this.cmbItemUnit.Size = new System.Drawing.Size(389, 24);
             this.cmbItemUnit.TabIndex = 7;
-            this.cmbItemUnit.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // cmbItemItemGroup
             // 
@@ -320,7 +319,7 @@
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(1335, 117);
-            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Price Details";
             // 
@@ -371,7 +370,7 @@
             this.txtItemMrp.Margin = new System.Windows.Forms.Padding(4);
             this.txtItemMrp.Name = "txtItemMrp";
             this.txtItemMrp.Size = new System.Drawing.Size(589, 22);
-            this.txtItemMrp.TabIndex = 14;
+            this.txtItemMrp.TabIndex = 19;
             this.txtItemMrp.Text = "0.00";
             this.txtItemMrp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtItemMrp.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtItemMrp_MouseClick);
@@ -393,7 +392,6 @@
             this.textBox9.TabStop = false;
             this.textBox9.Text = "₹";
             this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox9.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
             // 
             // txtItemSalesPrice
             // 
@@ -403,7 +401,7 @@
             this.txtItemSalesPrice.Margin = new System.Windows.Forms.Padding(4);
             this.txtItemSalesPrice.Name = "txtItemSalesPrice";
             this.txtItemSalesPrice.Size = new System.Drawing.Size(526, 22);
-            this.txtItemSalesPrice.TabIndex = 13;
+            this.txtItemSalesPrice.TabIndex = 18;
             this.txtItemSalesPrice.Text = "0.00";
             this.txtItemSalesPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtItemSalesPrice.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtItemSalesPrice_MouseClick);
@@ -432,7 +430,7 @@
             this.txtItemPrice.Margin = new System.Windows.Forms.Padding(4);
             this.txtItemPrice.Name = "txtItemPrice";
             this.txtItemPrice.Size = new System.Drawing.Size(589, 22);
-            this.txtItemPrice.TabIndex = 12;
+            this.txtItemPrice.TabIndex = 17;
             this.txtItemPrice.Text = "0.00";
             this.txtItemPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtItemPrice.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtItemPrice_MouseClick);
@@ -501,7 +499,7 @@
             this.txtItemOpeningQuant.Margin = new System.Windows.Forms.Padding(4);
             this.txtItemOpeningQuant.Name = "txtItemOpeningQuant";
             this.txtItemOpeningQuant.Size = new System.Drawing.Size(651, 22);
-            this.txtItemOpeningQuant.TabIndex = 16;
+            this.txtItemOpeningQuant.TabIndex = 21;
             this.txtItemOpeningQuant.Text = "0";
             this.txtItemOpeningQuant.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtItemOpeningQuant.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtItemOpeningQuant_MouseClick);
@@ -537,7 +535,7 @@
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(1335, 74);
-            this.groupBox3.TabIndex = 15;
+            this.groupBox3.TabIndex = 20;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Quantity Details";
             // 
@@ -558,7 +556,7 @@
             this.btnItemSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnItemSave.Name = "btnItemSave";
             this.btnItemSave.Size = new System.Drawing.Size(120, 31);
-            this.btnItemSave.TabIndex = 17;
+            this.btnItemSave.TabIndex = 22;
             this.btnItemSave.Text = "Save";
             this.btnItemSave.UseVisualStyleBackColor = true;
             this.btnItemSave.Click += new System.EventHandler(this.btnItemSave_Click);
@@ -570,7 +568,7 @@
             this.btnItemClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnItemClose.Name = "btnItemClose";
             this.btnItemClose.Size = new System.Drawing.Size(120, 31);
-            this.btnItemClose.TabIndex = 18;
+            this.btnItemClose.TabIndex = 24;
             this.btnItemClose.Text = "&Close";
             this.btnItemClose.UseVisualStyleBackColor = true;
             this.btnItemClose.Click += new System.EventHandler(this.btnItemClose_Click);
@@ -583,55 +581,61 @@
             this.btnItemList.Margin = new System.Windows.Forms.Padding(4);
             this.btnItemList.Name = "btnItemList";
             this.btnItemList.Size = new System.Drawing.Size(88, 31);
-            this.btnItemList.TabIndex = 19;
+            this.btnItemList.TabIndex = 23;
             this.btnItemList.Text = "&List";
             this.btnItemList.UseVisualStyleBackColor = true;
             this.btnItemList.Click += new System.EventHandler(this.btnItemList_Click);
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.textBox6);
-            this.groupBox5.Controls.Add(this.textBox4);
-            this.groupBox5.Controls.Add(this.textBox3);
+            this.groupBox5.Controls.Add(this.txtCess);
+            this.groupBox5.Controls.Add(this.txtIgst);
+            this.groupBox5.Controls.Add(this.txtSgst);
             this.groupBox5.Controls.Add(this.label19);
             this.groupBox5.Controls.Add(this.label18);
             this.groupBox5.Controls.Add(this.label17);
-            this.groupBox5.Controls.Add(this.textBox2);
+            this.groupBox5.Controls.Add(this.txtCgst);
             this.groupBox5.Controls.Add(this.label16);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.Location = new System.Drawing.Point(321, 294);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(1028, 68);
-            this.groupBox5.TabIndex = 21;
+            this.groupBox5.TabIndex = 11;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Tax Details";
             // 
-            // textBox6
+            // txtCess
             // 
-            this.textBox6.Location = new System.Drawing.Point(766, 37);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(226, 22);
-            this.textBox6.TabIndex = 7;
-            this.textBox6.Text = "0.00";
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCess.Location = new System.Drawing.Point(766, 37);
+            this.txtCess.Name = "txtCess";
+            this.txtCess.Size = new System.Drawing.Size(226, 22);
+            this.txtCess.TabIndex = 15;
+            this.txtCess.Text = "0.00";
+            this.txtCess.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCess.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCess_KeyPress);
+            this.txtCess.Leave += new System.EventHandler(this.txtCess_Leave);
             // 
-            // textBox4
+            // txtIgst
             // 
-            this.textBox4.Location = new System.Drawing.Point(528, 37);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(232, 22);
-            this.textBox4.TabIndex = 6;
-            this.textBox4.Text = "0.00";
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtIgst.Location = new System.Drawing.Point(528, 37);
+            this.txtIgst.Name = "txtIgst";
+            this.txtIgst.Size = new System.Drawing.Size(232, 22);
+            this.txtIgst.TabIndex = 14;
+            this.txtIgst.Text = "0.00";
+            this.txtIgst.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtIgst.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIgst_KeyPress);
+            this.txtIgst.Leave += new System.EventHandler(this.txtIgst_Leave);
             // 
-            // textBox3
+            // txtSgst
             // 
-            this.textBox3.Location = new System.Drawing.Point(290, 37);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(232, 22);
-            this.textBox3.TabIndex = 5;
-            this.textBox3.Text = "0.00";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSgst.Location = new System.Drawing.Point(290, 37);
+            this.txtSgst.Name = "txtSgst";
+            this.txtSgst.Size = new System.Drawing.Size(232, 22);
+            this.txtSgst.TabIndex = 13;
+            this.txtSgst.Text = "0.00";
+            this.txtSgst.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSgst.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSgst_KeyPress);
+            this.txtSgst.Leave += new System.EventHandler(this.txtSgst_Leave);
             // 
             // label19
             // 
@@ -660,14 +664,16 @@
             this.label17.TabIndex = 2;
             this.label17.Text = "CGST (%)";
             // 
-            // textBox2
+            // txtCgst
             // 
-            this.textBox2.Location = new System.Drawing.Point(52, 37);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(232, 22);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.Text = "0.00";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCgst.Location = new System.Drawing.Point(52, 37);
+            this.txtCgst.Name = "txtCgst";
+            this.txtCgst.Size = new System.Drawing.Size(232, 22);
+            this.txtCgst.TabIndex = 12;
+            this.txtCgst.Text = "0.00";
+            this.txtCgst.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCgst.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCgst_KeyPress);
+            this.txtCgst.Leave += new System.EventHandler(this.txtCgst_Leave);
             // 
             // label16
             // 
@@ -678,14 +684,16 @@
             this.label16.TabIndex = 0;
             this.label16.Text = "CESS (%)";
             // 
-            // textBox10
+            // txtHsn
             // 
-            this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.Location = new System.Drawing.Point(52, 37);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(230, 22);
-            this.textBox10.TabIndex = 0;
-            this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtHsn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHsn.Location = new System.Drawing.Point(52, 37);
+            this.txtHsn.MaxLength = 8;
+            this.txtHsn.Name = "txtHsn";
+            this.txtHsn.Size = new System.Drawing.Size(230, 22);
+            this.txtHsn.TabIndex = 10;
+            this.txtHsn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtHsn.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHsn_KeyPress);
             // 
             // label21
             // 
@@ -700,12 +708,12 @@
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.label21);
-            this.groupBox6.Controls.Add(this.textBox10);
+            this.groupBox6.Controls.Add(this.txtHsn);
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.Location = new System.Drawing.Point(14, 294);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(301, 68);
-            this.groupBox6.TabIndex = 23;
+            this.groupBox6.TabIndex = 9;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "HSN Details";
             // 
@@ -751,6 +759,8 @@
             this.dataGridView1.Size = new System.Drawing.Size(1323, 474);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 4;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
+            this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress_1);
             // 
             // button2
             // 
@@ -762,6 +772,7 @@
             this.button2.TabIndex = 23;
             this.button2.Text = "E&xport To Excel";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // groupBox4
             // 
@@ -816,6 +827,8 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(592, 24);
             this.txtSearch.TabIndex = 3;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged_1);
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown_1);
             // 
             // label14
             // 
@@ -839,6 +852,7 @@
             this.butPrint.TabIndex = 22;
             this.butPrint.Text = "Print";
             this.butPrint.UseVisualStyleBackColor = true;
+            this.butPrint.Click += new System.EventHandler(this.butPrint_Click_1);
             // 
             // buttClose2
             // 
@@ -850,6 +864,7 @@
             this.buttClose2.TabIndex = 24;
             this.buttClose2.Text = "&Back";
             this.buttClose2.UseVisualStyleBackColor = true;
+            this.buttClose2.Click += new System.EventHandler(this.buttClose2_Click);
             // 
             // buttUpdate
             // 
@@ -861,6 +876,7 @@
             this.buttUpdate.TabIndex = 20;
             this.buttUpdate.Text = "&Update";
             this.buttUpdate.UseVisualStyleBackColor = true;
+            this.buttUpdate.Click += new System.EventHandler(this.buttUpdate_Click_1);
             // 
             // buttAddNewRecord
             // 
@@ -872,6 +888,7 @@
             this.buttAddNewRecord.TabIndex = 21;
             this.buttAddNewRecord.Text = "&Add New Record";
             this.buttAddNewRecord.UseVisualStyleBackColor = true;
+            this.buttAddNewRecord.Click += new System.EventHandler(this.buttAddNewRecord_Click_1);
             // 
             // Item
             // 
@@ -952,18 +969,18 @@
         private System.Windows.Forms.Button btnItemClose;
         private System.Windows.Forms.Button btnItemList;
         public System.Windows.Forms.ComboBox cmbItemItemGroup;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBarCode;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtCess;
+        private System.Windows.Forms.TextBox txtIgst;
+        private System.Windows.Forms.TextBox txtSgst;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtCgst;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox txtHsn;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Panel panel1;
