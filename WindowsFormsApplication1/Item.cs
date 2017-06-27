@@ -48,6 +48,12 @@ namespace WindowsFormsApplication1
             btnItemSave.TabStop = false;
             btnItemClose.TabStop = false;
             btnItemList.TabStop = false;
+            txtBarCode.TabStop = false;
+            txtHsn.TabStop = false;
+            txtCgst.TabStop = false;
+            txtCess.TabStop = false;
+            txtIgst.TabStop = false;
+            txtSgst.TabStop = false;
         }
         private void Item_Load(object sender, EventArgs e)
         {
@@ -55,6 +61,7 @@ namespace WindowsFormsApplication1
             {
             panel1.Visible = true;
             tabindex2();
+            //txtBarCode.Focus();
             panel2.TabStop = false;
            // panel2.TabIndex = 26;
                searchCalmn.Focus();
@@ -74,8 +81,8 @@ namespace WindowsFormsApplication1
             //{
             //    panel1.Visible = false;
             //}
-                      string selectqurry = "select  itm.ItemId as[Item ID],itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
-  string selectqurryForActualColumnName = "select top 1  itm.ItemId, itm.ItemName,itm.ItemCompName ,itm.ItemDesc ,ig.groupName,iul.unitName ,ipd.purChasePrice ,ipd.SalesPrice ,ipd.MrpPrice ,ipd.Margin ,iqd.OpeningQuantity ,iqd.CurrentQuantity from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
+            string selectqurry = "select  itm.ItemId as[Item ID],itm.BarCode,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],idt.HSN as[HSN(%)],idt.CGST as[CGST(%)],idt.SGST as[SGST(%)],idt.IGST as[IGST(%)],idt.CESS as[CESS(%)],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId join ItemTaxDetail idt on itm.ItemId=idt.ItemId";
+            string selectqurryForActualColumnName = "select top 1 itm.ItemId ,itm.BarCode,itm.ItemName ,itm.ItemCompName ,itm.ItemDesc,ig.groupName ,iul.unitName ,idt.HSN ,idt.CGST ,idt.SGST ,idt.IGST ,idt.CESS ,ipd.purChasePrice ,ipd.SalesPrice ,ipd.MrpPrice ,ipd.Margin ,iqd.OpeningQuantity ,iqd.CurrentQuantity  from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId join ItemTaxDetail idt on itm.ItemId=idt.ItemId";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
             DataTable customDataTable = new DataTable();
@@ -147,11 +154,6 @@ namespace WindowsFormsApplication1
                 cmb.Items.Add("Select a " + Message);
             }
             cmb.SelectedIndex = 0;
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void btnItemGroup_Click(object sender, EventArgs e)
@@ -240,24 +242,26 @@ namespace WindowsFormsApplication1
                                                         string UnitId = UnitList[cmbItemUnit.SelectedIndex - 1];
                                                         string GroupId = GroupList[cmbItemItemGroup.SelectedIndex - 1];
 
-                                                        string saveCommand1 = "insert into ItemDetails values ('" + txtItemProductCode.Text + "','" + txtItemProductName.Text + "','" + txtItemCompName.Text + "','" + txtItemDesc.Text + "','" + GroupId + "','" + UnitId + "')";
+                                                        string saveCommand1 = "insert into ItemDetails values ('" + txtItemProductCode.Text + "','" + txtItemProductName.Text + "','" + txtItemCompName.Text + "','" + txtItemDesc.Text + "','" + GroupId + "','" + UnitId + "','"+txtBarCode.Text+"')";
 
                                                         string saveCommand2 = "insert into ItemPriceDetail values ('" + txtItemProductCode.Text + "','" + txtItemPrice.Text + "','" + txtItemSalesPrice.Text + "','" + txtItemMrp.Text + "','" + txtItemMargin.Text + "')";
 
                                                         string saveCommand3 = "insert into ItemQuantityDetail values ('" + txtItemProductCode.Text + "','" + txtItemOpeningQuant.Text + "','" + txtItemRemaningQuant.Text + "')";
 
-                                                        int insertedRows = dbMainClass.saveDetails(saveCommand1, saveCommand2, saveCommand3);
+                                                        string saveCommand4 = "insert into ItemTaxDetail values ('" + txtItemProductCode.Text + "','" + txtHsn.Text + "','" + txtCgst.Text + "','" + txtSgst.Text + "','" + txtIgst.Text + "','" + txtCess.Text + "')";
+
+                                                        int insertedRows = dbMainClass.saveDetails(saveCommand1, saveCommand2, saveCommand3, saveCommand4);
                                                         if (insertedRows > 0)
                                                         {
                                                             //btnList.Enabled = true;
-                                                            txtItemProductName.Focus();
+                                                            txtBarCode.Focus();
                                                             MessageBox.Show("Details Saved Successfully");
 
                                                         }
                                                         else
                                                         {
                                                             MessageBox.Show("Details Not Saved Successfully");
-                                                            txtItemProductName.Focus();
+                                                            txtBarCode.Focus();
                                                         }
 
                                                     }
@@ -266,26 +270,28 @@ namespace WindowsFormsApplication1
                                                 {
                                                     //string groupname = cmbItemItemGroup.Text;
 
-                                                    string saveCommand1 = "update ItemDetails set itemId='" + txtItemProductCode.Text + "',itemName='" + txtItemProductName.Text + "',itemCompName='" + txtItemCompName.Text + "',itemDesc='" + txtItemDesc.Text + "'where itemId='" + txtItemProductCode.Text + "'";
+                                                    string saveCommand1 = "update ItemDetails set itemId='" + txtItemProductCode.Text + "',itemName='" + txtItemProductName.Text + "',itemCompName='" + txtItemCompName.Text + "',itemDesc='" + txtItemDesc.Text + "',BarCode='"+txtBarCode.Text+"' where itemId='" + txtItemProductCode.Text + "'";
 
                                                     string saveCommand2 = "update ItemPriceDetail  set  purChasePrice='" + txtItemPrice.Text + "', SalesPrice='" + txtItemSalesPrice.Text + "', MrpPrice='" + txtItemMrp.Text + "',Margin='" + txtItemMargin.Text + "'where itemId='" + txtItemProductCode.Text + "'";
 
                                                     string saveCommand3 = "update ItemQuantityDetail set OpeningQuantity='" + txtItemOpeningQuant.Text + "',CurrentQuantity='" + txtItemRemaningQuant.Text + "' where itemId='" + txtItemProductCode.Text + "'";
 
-                                                    int insertedRows = dbMainClass.saveDetails(saveCommand1, saveCommand2, saveCommand3);
+                                                    string saveCommand4 = "update ItemTaxDetail set HSN='" +txtHsn.Text + "',CGST='" + txtCgst.Text + "',SGST='"+txtSgst.Text+"',IGST='"+txtIgst.Text+"',CESS='"+txtCess.Text+"' where itemId='" + txtItemProductCode.Text + "'";
+
+                                                    int insertedRows = dbMainClass.saveDetails(saveCommand1, saveCommand2, saveCommand3, saveCommand4);
                                                     if (insertedRows > 0)
                                                     {
                                                         
                                                        
                                                         MessageBox.Show("Details updated successfully!");
-                                                        txtItemProductName.Focus();
+                                                        txtBarCode.Focus();
                                                         txtItemOpeningQuant.ReadOnly = false;
                                                         
                                                     }
                                                     else
                                                     {
                                                         MessageBox.Show("Details Not Saved Successfully");
-                                                        txtItemProductName.Focus();
+                                                        txtBarCode.Focus();
                                                     }
 
                                                 }
@@ -320,6 +326,12 @@ namespace WindowsFormsApplication1
             txtItemMargin.Text = "0.00";
             txtItemOpeningQuant.Text = "0";
             txtItemRemaningQuant.Text = "0";
+            txtBarCode.Text = "";
+            txtCess.Text = "0.00";
+            txtCgst.Text = "0.00";
+            txtHsn.Text = "";
+            txtIgst.Text = "0.00";
+            txtSgst.Text = "0.00";
 
         }
 
@@ -329,80 +341,38 @@ namespace WindowsFormsApplication1
             searchCalmn.SelectedIndex = 0;
             panel1.Visible = true;
             //SqlConnection con = dbMainClass.openConnection();
-            string selectqurry = "select  itm.ItemId as[Item ID],itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
+            string selectqurry = "select  itm.ItemId as[Item ID],itm.BarCode,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],idt.HSN as[HSN(%)],idt.CGST as[CGST(%)],idt.SGST as[SGST(%)],idt.IGST as[IGST(%)],idt.CESS as[CESS(%)],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId join ItemTaxDetail idt on itm.ItemId=idt.ItemId";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             dataGridView1.DataSource = dt;
             tabindix();
             txtSearch.Focus();
-        }
-
-        private void buttClose_Click(object sender, EventArgs e)
-        {
-            
-            panel1.Visible = false;
-            tabindix1();
-            txtItemProductName.Focus();
-        }
-
-        private void buttAddNewRecord_Click(object sender, EventArgs e)
-        {
-            panel1.Visible = false;
-            tabindix1();
-            txtItemProductName.Focus();
-        }
-
-        private void buttUpdate_Click(object sender, EventArgs e)
-        {
-            int currentIndex = dataGridView1.CurrentRow.Index;
-            DataGridViewCellCollection cellCollection = dataGridView1.Rows[currentIndex].Cells;
-            if (!string.IsNullOrEmpty(cellCollection[0].Value.ToString()))
-            {
-                setDetails(cellCollection);
-                panel1.Visible = false;
-                updatecounter = 1;
-                tabindix1();
-                txtItemProductName.Focus();
-                btnItemList.Enabled = false;
-            }
-
         }
         private void setDetails(DataGridViewCellCollection cellCollection)
         {
             try
             {
                 txtItemProductCode.Text = cellCollection[0].Value.ToString();
-                txtItemProductName.Text = cellCollection[1].Value.ToString();
-                txtItemCompName.Text = cellCollection[2].Value.ToString();
-                txtItemDesc.Text = cellCollection[3].Value.ToString();
-                cmbItemItemGroup.Text = cellCollection[4].Value.ToString();
-                cmbItemUnit.Text = cellCollection[5].Value.ToString();
-                txtItemPrice.Text = cellCollection[6].Value.ToString();
-                txtItemSalesPrice.Text = cellCollection[7].Value.ToString();
-                txtItemMrp.Text = cellCollection[8].Value.ToString();
-                txtItemMargin.Text = cellCollection[9].Value.ToString();
-                txtItemOpeningQuant.Text = cellCollection[10].Value.ToString();
-                txtItemRemaningQuant.Text = cellCollection[11].Value.ToString();
+                txtBarCode.Text = cellCollection[1].Value.ToString();
+                txtItemProductName.Text = cellCollection[2].Value.ToString();
+                txtItemCompName.Text = cellCollection[3].Value.ToString();
+                txtItemDesc.Text = cellCollection[4].Value.ToString();
+                cmbItemItemGroup.Text = cellCollection[5].Value.ToString();
+                cmbItemUnit.Text = cellCollection[6].Value.ToString();
+                txtHsn.Text = cellCollection[7].Value.ToString();
+                txtCgst.Text = cellCollection[8].Value.ToString();
+                txtSgst.Text = cellCollection[9].Value.ToString();
+                txtIgst.Text = cellCollection[10].Value.ToString();
+                txtCess.Text = cellCollection[11].Value.ToString();
+                txtItemPrice.Text = cellCollection[12].Value.ToString();
+                txtItemSalesPrice.Text = cellCollection[13].Value.ToString();
+                txtItemMrp.Text = cellCollection[14].Value.ToString();
+                txtItemMargin.Text = cellCollection[15].Value.ToString();
+                txtItemOpeningQuant.Text = cellCollection[16].Value.ToString();
+                txtItemRemaningQuant.Text = cellCollection[17].Value.ToString();
             }
             catch (Exception ex)
             {
 
-            }
-        }
-
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-          
-            int currentIndex = dataGridView1.CurrentRow.Index;
-            DataGridViewCellCollection cellCollection = dataGridView1.Rows[currentIndex].Cells;
-            if (!string.IsNullOrEmpty(cellCollection[0].Value.ToString()))
-            {
-                setDetails(cellCollection);
-                panel1.Visible = false;
-                updatecounter = 1;
-                tabindix1();
-                txtItemProductName.Focus();
-                btnItemList.Enabled = false;
-                txtItemOpeningQuant.ReadOnly = true;
             }
         }
         private string getId(string Table)
@@ -494,10 +464,16 @@ namespace WindowsFormsApplication1
             btnItemUnit.TabStop = false;
             btnItemSave.TabStop = false;
             btnItemClose.TabStop = false;
+            txtBarCode.TabStop = false;
+            txtHsn.TabStop = false;
+            txtCgst.TabStop = false;
+            txtCess.TabStop = false;
+            txtIgst.TabStop = false;
+            txtSgst.TabStop = false;
         }
         private void tabindix1()
         {
-            txtItemProductCode.TabStop = true;
+            txtItemProductCode.TabStop = false;
             txtItemProductName.TabStop = true;
             txtItemCompName.TabStop = true;
             txtItemDesc.TabStop = true;
@@ -515,6 +491,12 @@ namespace WindowsFormsApplication1
             btnItemUnit.TabStop = true;
             btnItemSave.TabStop = true;
             btnItemClose.TabStop = true;
+            txtBarCode.TabStop = true;
+            txtHsn.TabStop = true;
+            txtCgst.TabStop = true;
+            txtCess.TabStop = true;
+            txtIgst.TabStop = true;
+            txtSgst.TabStop = true;
         }
         private void txtItemMrp_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -558,42 +540,10 @@ namespace WindowsFormsApplication1
             //txtItemMargin.Text = totelmrp.ToString();
 
         }
-
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            string s = searchCalmn.SelectedValue.ToString();
-            string selectQurry = "select itm.ItemId as[Item ID],itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId  where " + s + " like '" + txtSearch.Text + "%'";
-            DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
-            dataGridView1.DataSource = dt;
-        }
-
         private void btnItemClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            int currentIndex = dataGridView1.CurrentRow.Index;
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                if (dataGridView1.SelectedRows != null && dataGridView1.SelectedRows.Count > 0)
-                {
-                    //    if (dataGridView1.RowCount == currentIndex - 1)
-                    //        currentIndex = currentIndex - 1;
-                    DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex - 1].Cells;
-                    setDetails(cellcollection);
-                    panel1.Visible = false;
-                    updatecounter = 1;
-                    btnItemList.Enabled = false;
-                    tabindix1();
-                    txtItemProductName.Focus();
-                    txtItemOpeningQuant.ReadOnly = true;
-                }
-            }
-            
-        }
-
         private void txtItemSalesPrice_TextChanged(object sender, EventArgs e)
         {
             //if (txtItemSalesPrice.Text.IndexOf('.') != -1 && txtItemSalesPrice.Text.Split('.')[1].Length == 2)
@@ -668,30 +618,6 @@ namespace WindowsFormsApplication1
             }
             }
         }
-
-        private void butPrint_Click(object sender, EventArgs e)
-        {
-            DataGridViewRowCollection RowCollection = dataGridView1.Rows;
-            List<printclass> classCollection = new List<printclass>();
-            for (int a = 0; a < RowCollection.Count; a++)
-            {
-
-                DataGridViewRow currentRow = RowCollection[a];
-                DataGridViewCellCollection cellCollection = currentRow.Cells;
-                printclass classObject = new printclass();
-                classObject.Name = cellCollection[1].Value.ToString();
-                classObject.Address = cellCollection[2].Value.ToString();
-                classObject.Phone = cellCollection[6].Value.ToString();
-                classObject.Email = cellCollection[7].Value.ToString();
-                classObject.OpningBalnce = cellCollection[8].Value.ToString();
-                classObject.CurrentBalnce = cellCollection[10].Value.ToString();
-                classObject.mrp = cellCollection[11].Value.ToString();
-                classCollection.Add(classObject);
-            }
-            VendorPrint vp = new VendorPrint(classCollection,2);
-            vp.Show();
-        }
-
         private void txtItemSalesPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
@@ -878,6 +804,75 @@ namespace WindowsFormsApplication1
         int num = 0;
         private void button2_Click(object sender, EventArgs e)
         {
+           
+            
+            /*if (e.KeyCode == Keys.F2)
+            {
+                txtSearch.Text = "";
+                searchCalmn.SelectedIndex = 0;
+                panel1.Visible = true;
+                //SqlConnection con = dbMainClass.openConnection();
+                string selectqurry = "select  itm.ItemId as[Item Id],itm.ItemName as[Product Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
+                DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+                dataGridView1.DataSource = dt;
+                tabindix();
+                searchCalmn.Focus();
+            }*/
+        }
+
+        private void txtItemMargin_TextChanged(object sender, EventArgs e)
+        {
+
+            decimal x;
+            if (decimal.TryParse(txtItemMargin.Text, out x))
+            {
+                if (txtItemMargin.Text.IndexOf('.') != -1 && txtItemMargin.Text.Split('.')[1].Length > 2)
+                {
+                    //MessageBox.Show("The maximum decimal points are 2!");
+                    //txtItemPrice.Focus();
+                }
+                else txtItemMargin.Text = x.ToString("0.00");
+            }
+            else
+            {
+                txtItemMargin.Text = "0.00";
+                //MessageBox.Show("Data invalid!");
+                //txtVenderOpeningBal.Focus();
+            }
+        }
+
+        private void txtItemMargin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
+            {
+                //if (txtItemMargin.Text.IndexOf('.') != -1 && txtItemMargin.Text.Split('.')[1].Length == 2)
+                //{
+                //    //MessageBox.Show("The maximum decimal points are 2!");
+                //    e.Handled = true;
+                //}
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+        private void buttClose2_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+            tabindix1();
+            txtBarCode.Focus();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
             if (dataGridView1.AllowUserToAddRows == true)
             {
                 dataGridView1.AllowUserToAddRows = false;
@@ -941,53 +936,99 @@ namespace WindowsFormsApplication1
 
                 Item_SaveDetails();
             }
-            
-            /*if (e.KeyCode == Keys.F2)
+        }
+
+        private void butPrint_Click_1(object sender, EventArgs e)
+        {
+            DataGridViewRowCollection RowCollection = dataGridView1.Rows;
+            List<printclass> classCollection = new List<printclass>();
+            for (int a = 0; a < RowCollection.Count; a++)
             {
-                txtSearch.Text = "";
-                searchCalmn.SelectedIndex = 0;
-                panel1.Visible = true;
-                //SqlConnection con = dbMainClass.openConnection();
-                string selectqurry = "select  itm.ItemId as[Item Id],itm.ItemName as[Product Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
-                DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
-                dataGridView1.DataSource = dt;
-                tabindix();
-                searchCalmn.Focus();
-            }*/
+
+                DataGridViewRow currentRow = RowCollection[a];
+                DataGridViewCellCollection cellCollection = currentRow.Cells;
+                printclass classObject = new printclass();
+                classObject.Name = cellCollection[1].Value.ToString();
+                classObject.Address = cellCollection[2].Value.ToString();
+                classObject.Phone = cellCollection[6].Value.ToString();
+                classObject.Email = cellCollection[7].Value.ToString();
+                classObject.OpningBalnce = cellCollection[8].Value.ToString();
+                classObject.CurrentBalnce = cellCollection[10].Value.ToString();
+                classObject.mrp = cellCollection[11].Value.ToString();
+                classCollection.Add(classObject);
+            }
+            VendorPrint vp = new VendorPrint(classCollection, 2);
+            vp.Show();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void buttAddNewRecord_Click_1(object sender, EventArgs e)
         {
-
+            panel1.Visible = false;
+            tabindix1();
+            txtBarCode.Focus();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void buttUpdate_Click_1(object sender, EventArgs e)
         {
-
-        }
-
-        private void txtItemMargin_TextChanged(object sender, EventArgs e)
-        {
-
-            decimal x;
-            if (decimal.TryParse(txtItemMargin.Text, out x))
+            int currentIndex = dataGridView1.CurrentRow.Index;
+            DataGridViewCellCollection cellCollection = dataGridView1.Rows[currentIndex].Cells;
+            if (!string.IsNullOrEmpty(cellCollection[0].Value.ToString()))
             {
-                if (txtItemMargin.Text.IndexOf('.') != -1 && txtItemMargin.Text.Split('.')[1].Length > 2)
+                setDetails(cellCollection);
+                panel1.Visible = false;
+                updatecounter = 1;
+                tabindix1();
+                txtBarCode.Focus();
+                btnItemList.Enabled = false;
+            }
+        }
+
+        private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            int currentIndex = dataGridView1.CurrentRow.Index;
+            DataGridViewCellCollection cellCollection = dataGridView1.Rows[currentIndex].Cells;
+            if (!string.IsNullOrEmpty(cellCollection[0].Value.ToString()))
+            {
+                setDetails(cellCollection);
+                panel1.Visible = false;
+                updatecounter = 1;
+                tabindix1();
+                txtBarCode.Focus();
+                btnItemList.Enabled = false;
+                txtItemOpeningQuant.ReadOnly = true;
+            }
+        }
+
+        private void dataGridView1_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            int currentIndex = dataGridView1.CurrentRow.Index;
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if (dataGridView1.SelectedRows != null && dataGridView1.SelectedRows.Count > 0)
                 {
-                    //MessageBox.Show("The maximum decimal points are 2!");
-                    //txtItemPrice.Focus();
+                    //    if (dataGridView1.RowCount == currentIndex - 1)
+                    //        currentIndex = currentIndex - 1;
+                    DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex - 1].Cells;
+                    setDetails(cellcollection);
+                    panel1.Visible = false;
+                    updatecounter = 1;
+                    btnItemList.Enabled = false;
+                    tabindix1();
+                    txtBarCode.Focus();
+                    txtItemOpeningQuant.ReadOnly = true;
                 }
-                else txtItemMargin.Text = x.ToString("0.00");
-            }
-            else
-            {
-                txtItemMargin.Text = "0.00";
-                //MessageBox.Show("Data invalid!");
-                //txtVenderOpeningBal.Focus();
             }
         }
 
-        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        private void txtSearch_TextChanged_1(object sender, EventArgs e)
+        {
+            string s = searchCalmn.SelectedValue.ToString();
+            string selectQurry = "select  itm.ItemId as[Item ID],itm.BarCode,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],idt.HSN as[HSN(%)],idt.CGST as[CGST(%)],idt.SGST as[SGST(%)],idt.IGST as[IGST(%)],idt.CESS as[CESS(%)],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId join ItemTaxDetail idt on itm.ItemId=idt.ItemId  where " + s + " like '" + txtSearch.Text + "%'";
+            DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
+            dataGridView1.DataSource = dt;
+        }
+
+        private void txtSearch_KeyDown_1(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -995,15 +1036,170 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void txtItemMargin_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtHsn_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    MessageBox.Show("Plese enter numeric value!");
+                }
+            }
+        }
+
+        private void txtCgst_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                //if (txtItemMargin.Text.IndexOf('.') != -1 && txtItemMargin.Text.Split('.')[1].Length == 2)
+                //if (txtItemPrice.Text.IndexOf('.') != -1 && txtItemPrice.Text.Split('.')[1].Length >= 2)
                 //{
-                //    //MessageBox.Show("The maximum decimal points are 2!");
-                //    e.Handled = true;
+                //    MessageBox.Show("The maximum decimal points are 2!");
+                //    //e.Handled = true;
                 //}
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+            char ch = e.KeyChar;
+            if (ch == 46 && txtItemPrice.Text.IndexOf('.') != -1)
+            {
+                e.Handled = true;
+                return;
+            }
+            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
+
+        }
+
+        private void txtSgst_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
+            {
+                //if (txtItemPrice.Text.IndexOf('.') != -1 && txtItemPrice.Text.Split('.')[1].Length >= 2)
+                //{
+                //    MessageBox.Show("The maximum decimal points are 2!");
+                //    //e.Handled = true;
+                //}
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+            char ch = e.KeyChar;
+            if (ch == 46 && txtItemPrice.Text.IndexOf('.') != -1)
+            {
+                e.Handled = true;
+                return;
+            }
+            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
+
+        }
+
+        private void txtIgst_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
+            {
+                //if (txtItemPrice.Text.IndexOf('.') != -1 && txtItemPrice.Text.Split('.')[1].Length >= 2)
+                //{
+                //    MessageBox.Show("The maximum decimal points are 2!");
+                //    //e.Handled = true;
+                //}
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+            char ch = e.KeyChar;
+            if (ch == 46 && txtItemPrice.Text.IndexOf('.') != -1)
+            {
+                e.Handled = true;
+                return;
+            }
+            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
+
+        }
+
+        private void txtCess_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
+            {
+                //if (txtItemPrice.Text.IndexOf('.') != -1 && txtItemPrice.Text.Split('.')[1].Length >= 2)
+                //{
+                //    MessageBox.Show("The maximum decimal points are 2!");
+                //    //e.Handled = true;
+                //}
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+            char ch = e.KeyChar;
+            if (ch == 46 && txtItemPrice.Text.IndexOf('.') != -1)
+            {
+                e.Handled = true;
+                return;
+            }
+            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
+
+        }
+
+        private void txtBarCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsLetterOrDigit(e.KeyChar))
+            {
                 e.Handled = false;
             }
             else
@@ -1019,12 +1215,105 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void textBox9_TextChanged(object sender, EventArgs e)
+        private void txtCgst_Leave(object sender, EventArgs e)
         {
+            decimal x;
+            if (decimal.TryParse(txtCgst.Text, out x))
+            {
+                if (txtCgst.Text.IndexOf('.') != -1 && txtCgst.Text.Split('.')[1].Length > 2)
+                {
+                    MessageBox.Show("The maximum decimal points are 2!");
+                    txtCgst.Focus();
+                }
+                else txtCgst.Text = x.ToString("0.00");
+            }
+            else
+            {
+                txtCgst.Text = "0.00";
+                //MessageBox.Show("Data invalid!");
+                //txtVenderOpeningBal.Focus();
+            }
+            /*if (txtItemPrice.Text == "")
+            {
+                txtItemPrice.Text = "0";
+            }*/
 
         }
 
-      
+        private void txtSgst_Leave(object sender, EventArgs e)
+        {
+            decimal x;
+            if (decimal.TryParse(txtSgst.Text, out x))
+            {
+                if (txtSgst.Text.IndexOf('.') != -1 && txtSgst.Text.Split('.')[1].Length > 2)
+                {
+                    MessageBox.Show("The maximum decimal points are 2!");
+                    txtSgst.Focus();
+                }
+                else txtSgst.Text = x.ToString("0.00");
+            }
+            else
+            {
+                txtSgst.Text = "0.00";
+                //MessageBox.Show("Data invalid!");
+                //txtVenderOpeningBal.Focus();
+            }
+            /*if (txtItemPrice.Text == "")
+            {
+                txtItemPrice.Text = "0";
+            }*/
+
+        }
+
+        private void txtIgst_Leave(object sender, EventArgs e)
+        {
+            decimal x;
+            if (decimal.TryParse(txtIgst.Text, out x))
+            {
+                if (txtIgst.Text.IndexOf('.') != -1 && txtIgst.Text.Split('.')[1].Length > 2)
+                {
+                    MessageBox.Show("The maximum decimal points are 2!");
+                    txtIgst.Focus();
+                }
+                else txtIgst.Text = x.ToString("0.00");
+            }
+            else
+            {
+                txtIgst.Text = "0.00";
+                //MessageBox.Show("Data invalid!");
+                //txtVenderOpeningBal.Focus();
+            }
+            /*if (txtItemPrice.Text == "")
+            {
+                txtItemPrice.Text = "0";
+            }*/
+
+        }
+
+        private void txtCess_Leave(object sender, EventArgs e)
+        {
+            decimal x;
+            if (decimal.TryParse(txtCess.Text, out x))
+            {
+                if (txtCess.Text.IndexOf('.') != -1 && txtCess.Text.Split('.')[1].Length > 2)
+                {
+                    MessageBox.Show("The maximum decimal points are 2!");
+                    txtCess.Focus();
+                }
+                else txtCess.Text = x.ToString("0.00");
+            }
+            else
+            {
+                txtCess.Text = "0.00";
+                //MessageBox.Show("Data invalid!");
+                //txtVenderOpeningBal.Focus();
+            }
+            /*if (txtItemPrice.Text == "")
+            {
+                txtItemPrice.Text = "0";
+            }*/
+
+        }
     }
 
 }

@@ -503,7 +503,6 @@
             this.label7.Size = new System.Drawing.Size(27, 16);
             this.label7.TabIndex = 6;
             this.label7.Text = "Zip";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label6
             // 
@@ -570,9 +569,10 @@
             this.panel1.Controls.Add(this.butUpdate);
             this.panel1.Controls.Add(this.butAddNewRecord);
             this.panel1.Controls.Add(this.label3);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(30, 683);
+            this.panel1.Size = new System.Drawing.Size(1362, 683);
             this.panel1.TabIndex = 32;
             // 
             // panel2
@@ -584,7 +584,7 @@
             this.panel2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(16, 112);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(0, 514);
+            this.panel2.Size = new System.Drawing.Size(1332, 514);
             this.panel2.TabIndex = 12;
             // 
             // dataGridView1
@@ -594,7 +594,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(0, 514);
+            this.dataGridView1.Size = new System.Drawing.Size(1328, 510);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
@@ -611,7 +611,7 @@
             this.groupBox3.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(16, 27);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(0, 79);
+            this.groupBox3.Size = new System.Drawing.Size(1332, 79);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Company Search";
@@ -644,7 +644,7 @@
             this.txtSearch.Location = new System.Drawing.Point(703, 46);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(0, 22);
+            this.txtSearch.Size = new System.Drawing.Size(1326, 22);
             this.txtSearch.TabIndex = 4;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged_1);
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
@@ -656,10 +656,9 @@
             this.label15.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(699, 26);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(74, 16);
+            this.label15.Size = new System.Drawing.Size(76, 16);
             this.label15.TabIndex = 3;
             this.label15.Text = "Type Text";
-            this.label15.Click += new System.EventHandler(this.label15_Click);
             // 
             // btnPrint
             // 
