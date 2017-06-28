@@ -599,7 +599,7 @@ namespace WindowsFormsApplication1
         {
             addToCartTable.Columns.Add(new DataColumn("Item Code"));
             addToCartTable.Columns.Add(new DataColumn("Item Name"));
-            addToCartTable.Columns.Add(new DataColumn("HSN Code"));
+            addToCartTable.Columns.Add(new DataColumn("HSN"));
             addToCartTable.Columns.Add(new DataColumn("MRP"));
             addToCartTable.Columns.Add(new DataColumn("Rate"));
             addToCartTable.Columns.Add(new DataColumn("Quantity"));
