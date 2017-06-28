@@ -599,11 +599,19 @@ namespace WindowsFormsApplication1
         {
             addToCartTable.Columns.Add(new DataColumn("Item Code"));
             addToCartTable.Columns.Add(new DataColumn("Item Name"));
-            addToCartTable.Columns.Add(new DataColumn("Compnay Name"));
+            addToCartTable.Columns.Add(new DataColumn("HSN Code"));
             addToCartTable.Columns.Add(new DataColumn("MRP"));
             addToCartTable.Columns.Add(new DataColumn("Rate"));
             addToCartTable.Columns.Add(new DataColumn("Quantity"));
-            addToCartTable.Columns.Add(new DataColumn("Amount"));
+            addToCartTable.Columns.Add(new DataColumn("Total"));
+            addToCartTable.Columns.Add(new DataColumn("Discount"));
+            addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
+            addToCartTable.Columns.Add(new DataColumn("CGST (%)"));
+            addToCartTable.Columns.Add(new DataColumn("SGST (%)"));
+            addToCartTable.Columns.Add(new DataColumn("IGST (%)"));
+            addToCartTable.Columns.Add(new DataColumn("CESS (%)"));
+            addToCartTable.Columns.Add(new DataColumn("Total Ammount"));
+          
         }
 
         private void button4_Click(object sender, EventArgs e)
