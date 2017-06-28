@@ -337,15 +337,17 @@ namespace WindowsFormsApplication1
 
         private void btnItemList_Click(object sender, EventArgs e)
         {
+            
             txtSearch.Text = "";
             searchCalmn.SelectedIndex = 0;
             panel1.Visible = true;
             //SqlConnection con = dbMainClass.openConnection();
-            string selectqurry = "select  itm.ItemId as[Item ID],itm.BarCode,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],idt.HSN as[HSN(%)],idt.CGST as[CGST(%)],idt.SGST as[SGST(%)],idt.IGST as[IGST(%)],idt.CESS as[CESS(%)],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId join ItemTaxDetail idt on itm.ItemId=idt.ItemId";
+            string selectqurry = "select  itm.ItemId as[Item ID],itm.BarCode as[Barcode],itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],idt.HSN as[HSN(%)],idt.CGST as[CGST(%)],idt.SGST as[SGST(%)],idt.IGST as[IGST(%)],idt.CESS as[CESS(%)],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId join ItemTaxDetail idt on itm.ItemId=idt.ItemId";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             dataGridView1.DataSource = dt;
             tabindix();
             txtSearch.Focus();
+           
         }
         private void setDetails(DataGridViewCellCollection cellCollection)
         {
@@ -771,53 +773,78 @@ namespace WindowsFormsApplication1
 
         private void txtItemOpeningQuant_Leave(object sender, EventArgs e)
         {
-            if (txtItemOpeningQuant.Text =="")
+            decimal x;
+            if (decimal.TryParse(txtItemOpeningQuant.Text, out x))
             {
-                txtItemOpeningQuant.Text = "0";
-            }
-
-            string txt = txtItemOpeningQuant.Text;
-            txtItemRemaningQuant.Text = txt;
-        }
-
-        private void txtItemOpeningQuant_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (Char.IsNumber(e.KeyChar))
-            {
-                e.Handled = false;
+                if (txtItemOpeningQuant.Text.IndexOf('.') != -1 && txtItemOpeningQuant.Text.Split('.')[1].Length > 2)
+                {
+                    MessageBox.Show("The maximum decimal points are 2!");
+                    txtItemOpeningQuant.Focus();
+                }
+                else txtItemOpeningQuant.Text = x.ToString("0.00");
             }
             else
             {
-                
-                if (e.KeyChar == '\b')
-                {
-                    //txtItemRemaningQuant.Text = "0";
-                    e.Handled = false;
-                   
-                }
-                else
-                {
-                    e.Handled = true;
-                }
+                txtItemOpeningQuant.Text = "0.00";
+                //MessageBox.Show("Data invalid!");
+                //txtVenderOpeningBal.Focus();
             }
-        }
-        int num = 0;
-        private void button2_Click(object sender, EventArgs e)
-        {
+
+            /* if (txtCustOpeningBal.Text == "")
+             {
+                 txtCustOpeningBal.Text= "0";
+
+             }
+         }
+
+         private void txtItemOpeningQuant_KeyPress(object sender, KeyPressEventArgs e)
+         {
+             if (Char.IsNumber(e.KeyChar))
+             {
+                 e.Handled = false;
+             }
+             else
+             {
+                
+                 if (e.KeyChar == '\b')
+                 {
+                     //txtItemRemaningQuant.Text = "0";
+                     e.Handled = false;
+                   
+                 }
+                 else
+                 {
+                     e.Handled = true;
+                 }
+             }
+             char ch = e.KeyChar;
+             if (ch == 46 &&txtItemOpeningQuant.Text.IndexOf('.') != -1)
+             {
+                 e.Handled = true;
+                 return;
+             }
+             if (!char.IsDigit(ch) && ch != 8 && ch != 46)
+             {
+                 e.Handled = true;
+             }
+         }
+         int num = 0;
+         private void button2_Click(object sender, EventArgs e)
+         {
            
             
-            /*if (e.KeyCode == Keys.F2)
-            {
-                txtSearch.Text = "";
-                searchCalmn.SelectedIndex = 0;
-                panel1.Visible = true;
-                //SqlConnection con = dbMainClass.openConnection();
-                string selectqurry = "select  itm.ItemId as[Item Id],itm.ItemName as[Product Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
-                DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
-                dataGridView1.DataSource = dt;
-                tabindix();
-                searchCalmn.Focus();
-            }*/
+             /*if (e.KeyCode == Keys.F2)
+             {
+                 txtSearch.Text = "";
+                 searchCalmn.SelectedIndex = 0;
+                 panel1.Visible = true;
+                 //SqlConnection con = dbMainClass.openConnection();
+                 string selectqurry = "select  itm.ItemId as[Item Id],itm.ItemName as[Product Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId";
+                 DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+                 dataGridView1.DataSource = dt;
+                 tabindix();
+                 searchCalmn.Focus();
+             }*/
         }
 
         private void txtItemMargin_TextChanged(object sender, EventArgs e)
@@ -1058,6 +1085,7 @@ namespace WindowsFormsApplication1
 
         private void txtCgst_KeyPress(object sender, KeyPressEventArgs e)
         {
+           
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
                 //if (txtItemPrice.Text.IndexOf('.') != -1 && txtItemPrice.Text.Split('.')[1].Length >= 2)
@@ -1079,12 +1107,12 @@ namespace WindowsFormsApplication1
                 }
             }
             char ch = e.KeyChar;
-            if (ch == 46 && txtItemPrice.Text.IndexOf('.') != -1)
+            if (ch == 46 && txtCgst.Text.IndexOf('.') != -1)
             {
                 e.Handled = true;
                 return;
             }
-            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
             {
                 e.Handled = true;
             }
@@ -1093,6 +1121,7 @@ namespace WindowsFormsApplication1
 
         private void txtSgst_KeyPress(object sender, KeyPressEventArgs e)
         {
+          
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
                 //if (txtItemPrice.Text.IndexOf('.') != -1 && txtItemPrice.Text.Split('.')[1].Length >= 2)
@@ -1114,12 +1143,12 @@ namespace WindowsFormsApplication1
                 }
             }
             char ch = e.KeyChar;
-            if (ch == 46 && txtItemPrice.Text.IndexOf('.') != -1)
+            if (ch == 46 && txtSgst.Text.IndexOf('.') != -1)
             {
                 e.Handled = true;
                 return;
             }
-            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
             {
                 e.Handled = true;
             }
@@ -1128,6 +1157,7 @@ namespace WindowsFormsApplication1
 
         private void txtIgst_KeyPress(object sender, KeyPressEventArgs e)
         {
+          
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
                 //if (txtItemPrice.Text.IndexOf('.') != -1 && txtItemPrice.Text.Split('.')[1].Length >= 2)
@@ -1149,7 +1179,7 @@ namespace WindowsFormsApplication1
                 }
             }
             char ch = e.KeyChar;
-            if (ch == 46 && txtItemPrice.Text.IndexOf('.') != -1)
+            if (ch == 46 && txtIgst.Text.IndexOf('.') != -1)
             {
                 e.Handled = true;
                 return;
@@ -1158,6 +1188,7 @@ namespace WindowsFormsApplication1
             {
                 e.Handled = true;
             }
+           
 
         }
 
@@ -1184,7 +1215,7 @@ namespace WindowsFormsApplication1
                 }
             }
             char ch = e.KeyChar;
-            if (ch == 46 && txtItemPrice.Text.IndexOf('.') != -1)
+            if (ch == 46 &&txtCess.Text.IndexOf('.') != -1)
             {
                 e.Handled = true;
                 return;
@@ -1223,7 +1254,7 @@ namespace WindowsFormsApplication1
                 if (txtCgst.Text.IndexOf('.') != -1 && txtCgst.Text.Split('.')[1].Length > 2)
                 {
                     MessageBox.Show("The maximum decimal points are 2!");
-                    txtCgst.Focus();
+                    txtSgst.Focus();
                 }
                 else txtCgst.Text = x.ToString("0.00");
             }
@@ -1313,6 +1344,20 @@ namespace WindowsFormsApplication1
                 txtItemPrice.Text = "0";
             }*/
 
+        }
+
+        private void txtItemOpeningQuant_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (ch == 46 &&txtItemOpeningQuant.Text.IndexOf('.') != -1)
+            {
+                e.Handled = true;
+                return;
+            }
+            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
         }
     }
 
