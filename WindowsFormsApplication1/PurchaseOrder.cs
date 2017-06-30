@@ -67,12 +67,12 @@ namespace WindowsFormsApplication1
             }
             string comQurry = "select TexId from CompnayDetails";
             DataTable dt2 = dbMainClass.getDetailByQuery(comQurry);
-             string taxtid="";
+            string taxtid = "";
             foreach (DataRow dr in dt2.Rows)
             {
-               
 
-               taxtid = dr[0].ToString();
+
+                taxtid = dr[0].ToString();
             }
             string selectName = "select TexAmount,TexName from CompnayTex where TexId='" + taxtid + "'"; //TexName='" + DB_Main.taxName + "'";
             DataTable dt1 = dbMainClass.getDetailByQuery(selectName);
@@ -94,12 +94,12 @@ namespace WindowsFormsApplication1
             gridPurchaseOrder.DataSource = addToCartTable;
         }
 
-                  public void OrderID(String s)
-          {
-              int txt = Convert.ToInt32(s);
-              int txt1 = txt + 1;
-              txtSrNo.Text = txt1.ToString();
-          }   
+        public void OrderID(String s)
+        {
+            int txt = Convert.ToInt32(s);
+            int txt1 = txt + 1;
+            txtSrNo.Text = txt1.ToString();
+        }
 
         private void txtVendorCode_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -114,7 +114,7 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
-                    MessageBox.Show("Entered vendor code is not valid. Please enter valid vendor code.","Information",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    MessageBox.Show("Entered vendor code is not valid. Please enter valid vendor code.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
             }
@@ -141,7 +141,7 @@ namespace WindowsFormsApplication1
                     }
                     e.Handled = false;
                 }
-                else if( (e.KeyChar == 'V' || e.KeyChar == 'v') && string.IsNullOrWhiteSpace(txtVendorCode.Text))
+                else if ((e.KeyChar == 'V' || e.KeyChar == 'v') && string.IsNullOrWhiteSpace(txtVendorCode.Text))
                 {
                     e.Handled = false;
                 }
@@ -150,7 +150,7 @@ namespace WindowsFormsApplication1
                     e.Handled = true;
                 }
             }
-                 
+
         }
 
         private void txtVendorCode_KeyUp(object sender, KeyEventArgs e)
@@ -164,36 +164,36 @@ namespace WindowsFormsApplication1
                 string vendorId = txtVendorCode.Text;
                 if (vendorId.Trim() != "" && vendorId != null)
                 {
-                    
-                            DataRow[] dr = vendorDetails.Select("[Vender Id ]='" + vendorId + "'");
-                            if (dr != null && dr.Length > 0)
-                            {
-                                //venderId, , vCompName, vAddress, vCity, vState, vZip, vCountry, vEmail, vWebAddress, vPhone, vMobile, vFax, vDesc
-                                string vendorName = dr[0]["Name"].ToString();
-                                string vendorAddress = dr[0]["Address"].ToString();
-                                string vendorCompName = dr[0]["Compnay Name"].ToString();
-                                string vendorPhone = dr[0]["Phone"].ToString();
-                                string vendorMobile = dr[0]["Mobile"].ToString();
-                                string vendorFax = dr[0]["Fax"].ToString();
 
-                                txtVendorName.Text = vendorName;
-                                txtVendorAddress.Text = vendorAddress;
-                                txtVendorCompanyName.Text = vendorCompName;
-                                txtVendorPhone.Text = vendorPhone;
-                                txtVendorMobile.Text = vendorMobile;
-                                txtVendorFax.Text = vendorFax;
-                            }
-                            else
-                            {
-                                txtVendorName.Text = "";
-                                txtVendorAddress.Text = "";
-                                txtVendorCompanyName.Text = "";
-                                txtVendorPhone.Text = "";
-                                txtVendorMobile.Text = "";
-                                txtVendorFax.Text = "";
-                            }
-                        }
-                
+                    DataRow[] dr = vendorDetails.Select("[Vender Id ]='" + vendorId + "'");
+                    if (dr != null && dr.Length > 0)
+                    {
+                        //venderId, , vCompName, vAddress, vCity, vState, vZip, vCountry, vEmail, vWebAddress, vPhone, vMobile, vFax, vDesc
+                        string vendorName = dr[0]["Name"].ToString();
+                        string vendorAddress = dr[0]["Address"].ToString();
+                        string vendorCompName = dr[0]["Compnay Name"].ToString();
+                        string vendorPhone = dr[0]["Phone"].ToString();
+                        string vendorMobile = dr[0]["Mobile"].ToString();
+                        string vendorFax = dr[0]["Fax"].ToString();
+
+                        txtVendorName.Text = vendorName;
+                        txtVendorAddress.Text = vendorAddress;
+                        txtVendorCompanyName.Text = vendorCompName;
+                        txtVendorPhone.Text = vendorPhone;
+                        txtVendorMobile.Text = vendorMobile;
+                        txtVendorFax.Text = vendorFax;
+                    }
+                    else
+                    {
+                        txtVendorName.Text = "";
+                        txtVendorAddress.Text = "";
+                        txtVendorCompanyName.Text = "";
+                        txtVendorPhone.Text = "";
+                        txtVendorMobile.Text = "";
+                        txtVendorFax.Text = "";
+                    }
+                }
+
             }
         }
 
@@ -230,7 +230,7 @@ namespace WindowsFormsApplication1
 
             if (txtVendorCode.Text.Trim() != "" && txtVendorCode.Text.StartsWith("V"))
             {
-                   setVAlue(); 
+                setVAlue();
 
             }
         }
@@ -280,16 +280,16 @@ namespace WindowsFormsApplication1
         }
 
         private void txtItemCode_TextChanged(object sender, EventArgs e)
-       {
-           if (!txtItemCode.Text.StartsWith("I"))
-           {
-               txtItemCode.Text = string.Concat("I", txtItemCode.Text);
-               txtItemCode.Select(txtItemCode.Text.Length, 0);
-           }
-           // string itemCode = txtItemCode.Text;
-           // setitemVlue("ItemId", itemCode);
+        {
+            if (!txtItemCode.Text.StartsWith("I"))
+            {
+                txtItemCode.Text = string.Concat("I", txtItemCode.Text);
+                txtItemCode.Select(txtItemCode.Text.Length, 0);
+            }
+            // string itemCode = txtItemCode.Text;
+            // setitemVlue("ItemId", itemCode);
             //txtItemCode.Focus();
-           
+
         }
 
         private void txtProductName_TextChanged(object sender, EventArgs e)
@@ -306,7 +306,7 @@ namespace WindowsFormsApplication1
 
         private void txtProductName_KeyPress(object sender, KeyPressEventArgs e)
         {
-          
+
 
         }
 
@@ -321,7 +321,7 @@ namespace WindowsFormsApplication1
 
         private void txtQuanity_TextChanged(object sender, EventArgs e)
         {
-           
+
             string QuantiTy = txtQuanity.Text;
             int result = 0;
             if (int.TryParse(QuantiTy, out result))
@@ -361,7 +361,7 @@ namespace WindowsFormsApplication1
     "Information",
     MessageBoxButtons.OK,
     MessageBoxIcon.Warning);
-               // MessageBox.Show("Entered Quantity should not less than one. Please enter valid quantity!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // MessageBox.Show("Entered Quantity should not less than one. Please enter valid quantity!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtQuanity.Text = "1";
                 txtQuanity.Focus();
             }
@@ -389,60 +389,60 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
-                  
-                foreach (DataRow dr3 in addToCartTable.Rows)
-                {
-                    int q3 = 0;
-                    itemid = dr3[0].ToString();
-                    if (ls.Contains(itemid) && gridPurchaseOrder.Rows[counter].DefaultCellStyle.Font != null)
+
+                    foreach (DataRow dr3 in addToCartTable.Rows)
                     {
-                        counter++;
-                        continue;
-                    }
-                    counter++;
-                    quntity = dr3[5].ToString();
-                    rate = dr3[4].ToString();
-                    ammount = dr3[6].ToString();
-
-                    
-                            if (itemid == txtItemCode.Text)
-                            {
-                                if (quntity == "")
-                                {
-                                    quntity = "0";
-                                }
-                                int q1 = Convert.ToInt32(quntity);
-                                int q2 = Convert.ToInt32(txtQuanity.Text);
-                                q3 = q1 + q2;
-                                quntity1 = quntity1 + q3;
-                                int q4 = Convert.ToInt32(txtQuantityBild.Text);
-                                int q5 =  q4-q1;
-                                int q6 = quntity1 + q5;
-                                txtQuantityBild.Text = q6.ToString();
-                                dr3[5] = q3.ToString();
-                                Double rate1 = Convert.ToDouble(rate);
-                                Double rate6 = rate1 * q2;
-                                Double rate2 = Convert.ToDouble(ammount);
-                                Double rate7 = Convert.ToDouble(txtAmount.Text);
-                                Double rate3 = rate6 + rate2;
-                                dr3[6] = rate3.ToString();
-                                Double rate4 = Convert.ToDouble(txtTotalAmount.Text);
-                                Double rate5 = rate4 + rate7;
-                                txtTotalAmount.Text = rate5.ToString("###0.00");//rate3.ToString();
-                                // MessageBox.Show("Please Enter the Quanity");
-
-                                txtwithautaxamount.Text = rate5.ToString();
-                                txtItemCode.Text = "I";
-                                txtItemCode.Select(txtItemCode.Text.Length, 0);
-                                txtProductName.Text = "";
-                                txtRate.Text = "";
-                                txtQuanity.Text = "";
-                                txtAmount.Text = "";
-                                //txtItemCode.Focus();
-                                btnAddItem.Enabled = false;
-
-                            }
+                        int q3 = 0;
+                        itemid = dr3[0].ToString();
+                        if (ls.Contains(itemid) && gridPurchaseOrder.Rows[counter].DefaultCellStyle.Font != null)
+                        {
+                            counter++;
+                            continue;
                         }
+                        counter++;
+                        quntity = dr3[5].ToString();
+                        rate = dr3[4].ToString();
+                        ammount = dr3[6].ToString();
+
+
+                        if (itemid == txtItemCode.Text)
+                        {
+                            if (quntity == "")
+                            {
+                                quntity = "0";
+                            }
+                            int q1 = Convert.ToInt32(quntity);
+                            int q2 = Convert.ToInt32(txtQuanity.Text);
+                            q3 = q1 + q2;
+                            quntity1 = quntity1 + q3;
+                            int q4 = Convert.ToInt32(txtQuantityBild.Text);
+                            int q5 = q4 - q1;
+                            int q6 = quntity1 + q5;
+                            txtQuantityBild.Text = q6.ToString();
+                            dr3[5] = q3.ToString();
+                            Double rate1 = Convert.ToDouble(rate);
+                            Double rate6 = rate1 * q2;
+                            Double rate2 = Convert.ToDouble(ammount);
+                            Double rate7 = Convert.ToDouble(txtAmount.Text);
+                            Double rate3 = rate6 + rate2;
+                            dr3[6] = rate3.ToString();
+                            Double rate4 = Convert.ToDouble(txtTotalAmount.Text);
+                            Double rate5 = rate4 + rate7;
+                            txtTotalAmount.Text = rate5.ToString("###0.00");//rate3.ToString();
+                            // MessageBox.Show("Please Enter the Quanity");
+
+                            txtwithautaxamount.Text = rate5.ToString();
+                            txtItemCode.Text = "I";
+                            txtItemCode.Select(txtItemCode.Text.Length, 0);
+                            txtProductName.Text = "";
+                            txtRate.Text = "";
+                            txtQuanity.Text = "";
+                            txtAmount.Text = "";
+                            //txtItemCode.Focus();
+                            btnAddItem.Enabled = false;
+
+                        }
+                    }
                 }
 
 
@@ -560,7 +560,7 @@ namespace WindowsFormsApplication1
             addToCartTable.Columns.Add(new DataColumn("Rate"));
             addToCartTable.Columns.Add(new DataColumn("Quantity"));
             addToCartTable.Columns.Add(new DataColumn("Amount"));
-           
+
             //addToCartTable.Columns.Add(new DataColumn("TexAmount"));
         }
         #endregion
@@ -570,7 +570,7 @@ namespace WindowsFormsApplication1
             gridPurchaseOrder.DefaultCellStyle.SelectionBackColor = Color.Red;
             gridPurchaseOrder.Focus();
             txtRemoveItem.Enabled = false;
-           
+
             //if (addToCartTable.Rows.Count > 0)
             //{
             //    string Amount = gridPurchaseOrder.SelectedRows[0].Cells[4].Value.ToString();
@@ -596,7 +596,7 @@ namespace WindowsFormsApplication1
             //    }
             //}
         }
-      
+
         private void txtDiscount_TextChanged(object sender, EventArgs e)
         {
             //double totalAmount = 0.0;
@@ -618,7 +618,7 @@ namespace WindowsFormsApplication1
         private void button1_Click(object sender, EventArgs e)
         {
             txtsearch.Text = "";
-            counter = 0; 
+            counter = 0;
             panel2.Visible = true;
             string selectqurry = "select vd.venderId as [Vender ID ],vd.vName AS [Vendor Name],vd.vCompName AS [Company Name] ,vd.vAddress AS Address,vd.vCity AS City,vd. vState AS State ,vd.vZip AS Zip ,vd.vCountry AS Country ,vd.vEmail AS[E-Mail Address],vd. vWebAddress AS[Web Address],vd.vPhone AS Phone ,vd.vMobile AS Mobile ,vd.vFax AS Fax ,vd.vPanNo as[PAN NO],vd.vVatNo as [VAT NO],vd.vCstNo as[CST NO],vd.vServiceTaxRegnNo as [SERVICE TAX NO],vd.vExciseRegnNo as [EXCISE NO],vd.vGSTRegnNo as[GST NO],vd.vDesc AS Description,vad.vOpeningBalance AS [Opening Balance] , vad.vCurrentBalance AS [Current Balance] from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID";
             string selectqurryForActualColumnName = "select top 1 vd.venderId ,vd.vName  ,vd.vCompName  ,vd.vAddress ,vd.vCity,vd. vState  ,vd.vZip  ,vd.vCountry  ,vd.vEmail ,vd. vWebAddress ,vd.vPhone  ,vd.vMobile ,vd.vFax ,vd.vPanNo ,vd.vVatNo ,vd.vCstNo,vd.vServiceTaxRegnNo ,vd.vExciseRegnNo ,vd.vGSTRegnNo ,vd.vDesc,vad.vOpeningBalance, vad.vCurrentBalance  from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID";
@@ -644,8 +644,8 @@ namespace WindowsFormsApplication1
             comboBox1.ValueMember = "ActualTableColumnName";
             comboBox1.DisplayMember = "AliasTableColumnName";
             dataGridView1.DataSource = dt;
-           IndexTex();
-           txtsearch.Focus();
+            IndexTex();
+            txtsearch.Focus();
 
         }
 
@@ -675,12 +675,12 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
-           
+
             txtsearch.Text = "";
             //string selectqurry = "select itm.ItemName,itm.ItemCompName,itm.ItemDesc,itm.groupid,itm.Unitid,ipd.purChasePrice,ipd.SalesPrice,ipd.MrpPrice,ipd.Margin,iqd.OpeningQuantity,iqd.CurrentQuantity from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid";
             //DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             //List<string> ls = new List<string>();
-            
+
             counter = 1;
             panel2.Visible = true;
             string selectqurry = "select  itm.ItemId as [Item ID],itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],cast(ipd.purChasePrice as numeric(38,2)) as [Purchase Price],cast(ipd.MrpPrice as numeric(38,2)) as[MRP] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId where iqd.CurrentQuantity>0";
@@ -710,7 +710,7 @@ namespace WindowsFormsApplication1
             dataGridView1.DataSource = dt1;
             IndexTex();
             txtsearch.Focus();
-            
+
         }
         private void setDetails1(DataGridViewCellCollection cellCollection)
         {
@@ -721,11 +721,11 @@ namespace WindowsFormsApplication1
                 txtRate.Text = cellCollection[7].Value.ToString();
                 double rate = Convert.ToDouble(txtRate.Text);
                 // maxquantity = Convert.ToInt32((cell1[3].Value.ToString()));
-            txtQuanity.Text = "1";
-            double quantuty = Convert.ToDouble(txtQuanity.Text);
+                txtQuanity.Text = "1";
+                double quantuty = Convert.ToDouble(txtQuanity.Text);
                 double amount = (rate * quantuty);
                 txtAmount.Text = amount.ToString();
-               // txtAmount.Text = cellCollection[3].Value.ToString();
+                // txtAmount.Text = cellCollection[3].Value.ToString();
                 // txtQuanity.Text = cellCollection[4].Value.ToString();
 
             }
@@ -733,7 +733,7 @@ namespace WindowsFormsApplication1
             {
             }
         }
-        
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -741,19 +741,19 @@ namespace WindowsFormsApplication1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-           
+
             if (txtProductName.Text != "")
             {
                 MessageBox.Show("please add item");
                 txtQuanity.Focus();
             }
-           else if (txtVendorCode.Text == "V")
+            else if (txtVendorCode.Text == "V")
             {
-                MessageBox.Show("Please enter vendor code first.","Information",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter vendor code first.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtVendorCode.Focus();
-                txtVendorCode.Select(txtVendorCode.Text.Length,0);
+                txtVendorCode.Select(txtVendorCode.Text.Length, 0);
             }
-           else if (gridPurchaseOrder.CurrentRow == null)
+            else if (gridPurchaseOrder.CurrentRow == null)
             {
                 MessageBox.Show("Please enter item code first.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtItemCode.Focus();
@@ -770,7 +770,7 @@ namespace WindowsFormsApplication1
                 }
                 PO_SaveDetails();
             }
-          
+
 
         }
         private void PO_SaveDetails()
@@ -800,123 +800,123 @@ namespace WindowsFormsApplication1
                 string updateQurry = "update ItemQuantityDetail set CurrentQuantity='" + id1 + "'where ItemId='" + itid + "'";
                 int insertedRows2 = dbMainClass.saveDetails(updateQurry);
             }*/
-           
-                gridPurchaseOrder.AllowUserToAddRows = false;
-                counter = 0;
-                if (counter == 0)
-                {
-                    int count = 0;
 
-                    if (txtDiscount.Text == "")
+            gridPurchaseOrder.AllowUserToAddRows = false;
+            counter = 0;
+            if (counter == 0)
+            {
+                int count = 0;
+
+                if (txtDiscount.Text == "")
+                {
+                    txtDiscount.Text = "0";
+                }
+                else
+                {
+
+                    string insertqurry = "insert into VendorOrderDetails values('" + txtVendorCode.Text + "','" + dtpDate.Value.ToString() + "','" + txtTotalAmount.Text + "','" + txtdis.Text + "','" + txtDiscount.Text + "','" + DisAmmount.Text + "','" + TextTaxAmmount.Text + "','" + txtwithautaxamount.Text + "')";
+
+                    //int insertedRows = dbMainClass.saveDetails(insertqurry);
+                    //if (insertedRows > 0)
+                    //{
+                    DataGridViewRowCollection RowCollection = gridPurchaseOrder.Rows;
+                    List<string> sf = new List<string>();
+                    for (int a = 0; a < RowCollection.Count; a++)
                     {
-                        txtDiscount.Text = "0";
+
+                        DataGridViewRow currentRow = RowCollection[a];
+                        DataGridViewCellCollection cellCollection = currentRow.Cells;
+                        string txtItemCod = cellCollection[0].Value.ToString();
+                        if (ls.Contains(txtItemCod) && gridPurchaseOrder.Rows[count].DefaultCellStyle.Font != null)
+                        {
+                            count++;
+                            continue;
+                        }
+
+                        string txtQuanit = cellCollection[5].Value.ToString();
+                        string txtRate = cellCollection[4].Value.ToString();
+                        string txtAmoun = cellCollection[6].Value.ToString();
+                        string OrderID = txtSrNo.Text;
+                        string Query = "insert into VendorOrderDesc Values('" + OrderID + "','" + txtItemCod + "','" + txtRate + "','" + txtQuanit + "','" + txtAmoun + "')";
+                        //MessageBox.Show(Query);
+                        sf.Add(Query);
                     }
+                    count++;
+                    int insertedRows1 = dbMainClass.saveDetails(insertqurry, sf);
+
+                    if (insertedRows1 > 0)
+                    {
+                        MessageBox.Show("Details Saved Successfully");
+
+                        DialogResult result1 = MessageBox.Show("This Page Print", "Important Question", MessageBoxButtons.YesNo);
+                        if (result1 == System.Windows.Forms.DialogResult.Yes)
+                        {
+
+                            //PurchesCrystalReportViewer.Visible = true;
+
+                            // panel2.Visible = true;
+                            ReportDocument crReportDocument;
+                            crReportDocument = new ReportDocument();
+                            frmViewReport View = new frmViewReport();
+                            crReportDocument.Load(Application.StartupPath + "//Report//PurchesCrystalReport.rpt");
+                            //string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
+                            SqlConnection con = dbMainClass.openConnection();//new SqlConnection(conntion);
+                            string selectqurry = "select * from VwPurchesOrderDatils where OrderId='" + txtSrNo.Text + "'";
+                            SqlCommand cmd = new SqlCommand(selectqurry, con);
+                            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+
+                            PurchSet ds = new PurchSet();
+                            sda.Fill(ds, "VwPurchesOrderDatils");
+                            crReportDocument.SetDataSource(ds.Tables[1]);
+                            //Start Preview                          
+                            View.CrViewer.ReportSource = crReportDocument;
+                            View.CrViewer.Refresh();
+                            View.Show();
+                            //End Preview
+                            PurchesCrystalReportViewer.Visible = false;
+                            txtTotalAmount.Text = "0.00";
+                            panel2.Visible = false;
+                            txtItemCode.TabStop = false;
+                            button2.TabStop = false;
+                            btnSave.TabStop = false;
+                            btnClose.TabStop = false;
+                            //Start Print
+                            // crReportDocument.PrintToPrinter(1, false, 0, 0);
+                            //End  Print
+
+                            //PurchesCrystalReport cryRpt = new PurchesCrystalReport();
+                            ////ReportDocument cryRpt = new ReportDocument();
+                            ////cryRpt.Load("C:\\Users\\Umesh\\Documents\\visual studio 2010\\Projects\\WindowsFormsApplication5\\WindowsFormsApplication5\\PurchesCrystalReport.rpt");
+                            //cryRpt.SetDataSource(ds.Tables[1]);
+                            //PurchesCrystalReportViewer.ReportSource = cryRpt;
+                            //PurchesCrystalReportViewer.Refresh();
+
+                        }
+                        if (result1 == System.Windows.Forms.DialogResult.No)
+                        {
+                            PurchesCrystalReportViewer.Visible = false;
+                            txtTotalAmount.Text = "0.00";
+                            panel2.Visible = false;
+                        }
+                        gridPurchaseOrder.AllowUserToAddRows = true;
+                        //gridPurchaseOrder.DataSource = addToCartTable;
+                        OrderID(txtSrNo.Text);
+                        makeBlank();
+
+                    }
+
                     else
                     {
-
-                        string insertqurry = "insert into VendorOrderDetails values('" + txtVendorCode.Text + "','" + dtpDate.Value.ToString() + "','" + txtTotalAmount.Text + "','" + txtdis.Text + "','" + txtDiscount.Text + "','" + DisAmmount.Text + "','" + TextTaxAmmount.Text + "','" + txtwithautaxamount.Text + "')";
-
-                        int insertedRows = dbMainClass.saveDetails(insertqurry);
-                        if (insertedRows > 0)
-                        {
-                             DataGridViewRowCollection RowCollection = gridPurchaseOrder.Rows;
-                            List<string> sf = new List<string>();
-                            for (int a = 0; a < RowCollection.Count; a++)
-                            {
-
-                                DataGridViewRow currentRow = RowCollection[a];
-                                DataGridViewCellCollection cellCollection = currentRow.Cells;
-                                string txtItemCod = cellCollection[0].Value.ToString();
-                                if (ls.Contains(txtItemCod)&&gridPurchaseOrder.Rows[count].DefaultCellStyle.Font!=null)
-                                {
-                                    count++;
-                                    continue;
-                                }
-                                
-                                string txtQuanit = cellCollection[5].Value.ToString();
-                                string txtRate = cellCollection[4].Value.ToString();
-                                string txtAmoun = cellCollection[6].Value.ToString();
-                                string OrderID = txtSrNo.Text;
-                                string Query = "insert into VendorOrderDesc Values('" + OrderID + "','" + txtItemCod + "','" + txtRate + "','" + txtQuanit + "','" + txtAmoun + "')";
-                                //MessageBox.Show(Query);
-                                sf.Add(Query);
-                            }
-                            count++;
-                            int insertedRows1 = dbMainClass.saveDetails(sf);
-
-                            if (insertedRows1 > 0)
-                            {
-                                MessageBox.Show("Details Saved Successfully");
-                               
-                                DialogResult result1 = MessageBox.Show("This Page Print", "Important Question", MessageBoxButtons.YesNo);
-                                if (result1 == System.Windows.Forms.DialogResult.Yes)
-                                {
-
-                                    //PurchesCrystalReportViewer.Visible = true;
-
-                                   // panel2.Visible = true;
-                                    ReportDocument crReportDocument;
-                                    crReportDocument = new ReportDocument();
-                                    frmViewReport View = new frmViewReport();
-                                    crReportDocument.Load(Application.StartupPath + "//Report//PurchesCrystalReport.rpt");
-                                    //string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
-                                    SqlConnection con = dbMainClass.openConnection();//new SqlConnection(conntion);
-                                    string selectqurry = "select * from VwPurchesOrderDatils where OrderId='" + txtSrNo.Text + "'";
-                                    SqlCommand cmd = new SqlCommand(selectqurry, con);
-                                    SqlDataAdapter sda = new SqlDataAdapter(cmd);
-
-                                    PurchSet ds = new PurchSet();
-                                    sda.Fill(ds, "VwPurchesOrderDatils");
-                                    crReportDocument.SetDataSource(ds.Tables[1]);
-                                    //Start Preview                          
-                                    View.CrViewer.ReportSource = crReportDocument;
-                                    View.CrViewer.Refresh();
-                                    View.Show();
-                                    //End Preview
-                                    PurchesCrystalReportViewer.Visible = false;
-                                    txtTotalAmount.Text = "0.00";
-                                    panel2.Visible = false;
-                                    txtItemCode.TabStop = false;
-                                    button2.TabStop = false;
-                                    btnSave.TabStop = false;
-                                    btnClose.TabStop = false;
-                                    //Start Print
-                                  // crReportDocument.PrintToPrinter(1, false, 0, 0);
-                                    //End  Print
-
-                                    //PurchesCrystalReport cryRpt = new PurchesCrystalReport();
-                                    ////ReportDocument cryRpt = new ReportDocument();
-                                    ////cryRpt.Load("C:\\Users\\Umesh\\Documents\\visual studio 2010\\Projects\\WindowsFormsApplication5\\WindowsFormsApplication5\\PurchesCrystalReport.rpt");
-                                    //cryRpt.SetDataSource(ds.Tables[1]);
-                                    //PurchesCrystalReportViewer.ReportSource = cryRpt;
-                                    //PurchesCrystalReportViewer.Refresh();
-
-                                }
-                                if (result1 == System.Windows.Forms.DialogResult.No)
-                                {
-                                    PurchesCrystalReportViewer.Visible = false;
-                                    txtTotalAmount.Text = "0.00";
-                                    panel2.Visible = false;
-                                }
-                                gridPurchaseOrder.AllowUserToAddRows = true;
-                                //gridPurchaseOrder.DataSource = addToCartTable;
-                                OrderID(txtSrNo.Text);
-                                makeBlank();
-
-                            }
-                              
-                            else
-                            {
-                                MessageBox.Show("Details Not Saved Successfully");
-                                gridPurchaseOrder.AllowUserToAddRows = true;
-                            }
-                        }
+                        MessageBox.Show("Details Not Saved Successfully");
+                        gridPurchaseOrder.AllowUserToAddRows = true;
                     }
-
                 }
+            }
+
+            //}
             //}
 
-           
+
             txtVendorCode.Focus();
             txtVendorCode.Select(txtVendorCode.Text.Length, 0);
 
@@ -941,14 +941,14 @@ namespace WindowsFormsApplication1
 
         private void txtQuanity_Leave(object sender, EventArgs e)
         {
-             
+
         }
 
         private void txtQuanity_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                 if ((txtQuanity.Text == "") || (txtQuanity.Text == "0"))
+                if ((txtQuanity.Text == "") || (txtQuanity.Text == "0"))
                 {
                     MessageBox.Show("Entered Quantity should not less than one.",
     "Information",
@@ -980,7 +980,7 @@ namespace WindowsFormsApplication1
                     e.Handled = true;
                 }
             }
-          
+
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -1015,9 +1015,9 @@ namespace WindowsFormsApplication1
 
         private void buttBack_Click(object sender, EventArgs e)
         {
-            
+
             panel2.Visible = false;
-           
+
 
         }
 
@@ -1046,14 +1046,14 @@ namespace WindowsFormsApplication1
             txtItemCode.Select(txtItemCode.Text.Length, 0);
             txtItemCode.TabStop = true;
             button2.TabStop = true;
-           txtVendorCode.TabStop = false;
-           button1.TabStop = false;
+            txtVendorCode.TabStop = false;
+            button1.TabStop = false;
             txtVendorCode.TabStop = true;
             button1.TabStop = true;
         }
         private void IndexTex1()
         {
-           // txtVendorCode.TabStop = false;
+            // txtVendorCode.TabStop = false;
             //button1.TabStop = false;
             txtItemCode.TabStop = false;
             button2.TabStop = false;
@@ -1088,7 +1088,7 @@ namespace WindowsFormsApplication1
             txtRemoveItem.TabStop = true;
             txtVendorCode.TabStop = true;
             button1.TabStop = true;
-           
+
         }
 
         private void gridPurchaseOrder_KeyPress(object sender, KeyPressEventArgs e)
@@ -1104,8 +1104,7 @@ namespace WindowsFormsApplication1
                 txtItemCode.Select(txtItemCode.Text.Length, 0);
                 txtRemoveItem.Enabled = true;
             }
-             if (e.KeyChar == Convert.ToChar(Keys.Enter))
-
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
                 int selectewIndex = gridPurchaseOrder.CurrentCell.RowIndex;
                 int selectewIndexActual = gridPurchaseOrder.SelectedRows[0].Index;
@@ -1113,9 +1112,11 @@ namespace WindowsFormsApplication1
                 Color backGroundColor = gridPurchaseOrder.DefaultCellStyle.SelectionBackColor;
                 if (backGroundColor.Name == "DodgerBlue" || backGroundColor.Name == "Highlight")
                 {
+
                     MessageBox.Show("Please click on 'Remove Button' to remove item!");
                     txtRemoveItem.Focus();
                     return;
+
                 }
                 if (addToCartTable.Rows.Count > 0)
                 {
@@ -1186,6 +1187,7 @@ namespace WindowsFormsApplication1
                     }
                 }
             }
+            //}
             if (e.KeyChar == Convert.ToChar(Keys.Escape))
             {
                 var dgvcount = gridPurchaseOrder.Rows.Count;
@@ -1197,75 +1199,75 @@ namespace WindowsFormsApplication1
             }
         }
 
-       
+
         private void txtItemCode_KeyPress(object sender, KeyPressEventArgs e)
         {
-           
 
-                string getId = "select ItemId from ItemDetails where ItemId ='" + txtItemCode.Text + "'";
-                DataTable dt = dbMainClass.getDetailByQuery(getId);
-                if (e.KeyChar == (Char)Keys.Enter)
-                {
-                    if (txtVendorCode.Text == "V")
-                    {
-                        MessageBox.Show("Please enter vendor code first.","Information",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                        txtVendorCode.Focus();
-                        txtItemCode.Text = "I";
-                        txtProductName.Text = "";
-                        txtRate.Text = "";
-                        txtQuanity.Text = "";
-                        txtAmount.Text = "";
-                        btnAddItem.Enabled = false;
-                    }
-                    else
-                    {
-                        string itemCode = txtItemCode.Text;
-                         setitemVlue("ItemId", itemCode);
-                        if (dt != null && dt.Rows.Count > 0)
-                        {                            
-                              txtQuanity.ReadOnly = false;
-                              txtQuanity.Text = "1";
-                              int que = Convert.ToInt32(txtQuanity.Text);
-                              string purchesprice = "select SalesPrice from ItemPriceDetail where ItemId ='" + txtItemCode.Text + "'";
-                              DataTable dt1 = dbMainClass.getDetailByQuery(purchesprice);
-                              string salep="";
-                              foreach (DataRow dr in dt1.Rows)
-                              {
-                                  salep = dr[0].ToString();
-                              }
-                              Double Saleprice = Convert.ToDouble(salep);
-                              Double price = Saleprice * que;
-                              txtAmount.Text = price.ToString("###0.00");
 
-                            btnAddItem.Enabled = true;
-                            txtQuanity.Enabled = true;
-                            IndexTex2();
-                            btnSave.TabStop = false;
-                            btnClose.TabStop = false;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Entered item code is not valid. Please enter valid item code.","Information",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                        }
-                    }
-                }
-                if (e.KeyChar == Convert.ToChar(Keys.Escape))
+            string getId = "select ItemId from ItemDetails where ItemId ='" + txtItemCode.Text + "'";
+            DataTable dt = dbMainClass.getDetailByQuery(getId);
+            if (e.KeyChar == (Char)Keys.Enter)
+            {
+                if (txtVendorCode.Text == "V")
                 {
-                    if (gridPurchaseOrder.Rows != null && gridPurchaseOrder.RowCount > 0)
-                    {
-                        txtRemoveItem.Focus();
-                    }
-                    else
-                    {
-                        btnSave.Focus();
-                    }
-                }
-                if (Char.IsDigit(e.KeyChar))
-                {
-                    e.Handled = false;
+                    MessageBox.Show("Please enter vendor code first.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtVendorCode.Focus();
+                    txtItemCode.Text = "I";
+                    txtProductName.Text = "";
+                    txtRate.Text = "";
+                    txtQuanity.Text = "";
+                    txtAmount.Text = "";
+                    btnAddItem.Enabled = false;
                 }
                 else
                 {
+                    string itemCode = txtItemCode.Text;
+                    setitemVlue("ItemId", itemCode);
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        txtQuanity.ReadOnly = false;
+                        txtQuanity.Text = "1";
+                        int que = Convert.ToInt32(txtQuanity.Text);
+                        string purchesprice = "select SalesPrice from ItemPriceDetail where ItemId ='" + txtItemCode.Text + "'";
+                        DataTable dt1 = dbMainClass.getDetailByQuery(purchesprice);
+                        string salep = "";
+                        foreach (DataRow dr in dt1.Rows)
+                        {
+                            salep = dr[0].ToString();
+                        }
+                        Double Saleprice = Convert.ToDouble(salep);
+                        Double price = Saleprice * que;
+                        txtAmount.Text = price.ToString("###0.00");
+
+                        btnAddItem.Enabled = true;
+                        txtQuanity.Enabled = true;
+                        IndexTex2();
+                        btnSave.TabStop = false;
+                        btnClose.TabStop = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Entered item code is not valid. Please enter valid item code.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+            if (e.KeyChar == Convert.ToChar(Keys.Escape))
+            {
+                if (gridPurchaseOrder.Rows != null && gridPurchaseOrder.RowCount > 0)
+                {
+                    txtRemoveItem.Focus();
+                }
+                else
+                {
+                    btnSave.Focus();
+                }
+            }
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
                 if (e.KeyChar == '\b')
                 {
                     if (txtItemCode.Text == "")
@@ -1291,7 +1293,7 @@ namespace WindowsFormsApplication1
                 {
                     e.Handled = true;
                 }
-                }
+            }
             //}
         }
 
@@ -1316,7 +1318,7 @@ namespace WindowsFormsApplication1
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                
+
                 gridPurchaseOrder.Focus();
             }
             if (e.KeyChar == Convert.ToChar(Keys.Escape))
@@ -1340,8 +1342,8 @@ namespace WindowsFormsApplication1
                 button1.TabStop = true;
                 button2.TabStop = true;
             }
-             
-         else  if (txtVendorCode.Text == "V")
+
+            else if (txtVendorCode.Text == "V")
             {
                 txtVendorCode.Focus();
                 txtVendorCode.Select(txtVendorCode.Text.Length, 0);
@@ -1352,7 +1354,7 @@ namespace WindowsFormsApplication1
             {
                 txtItemCode.Focus();
                 txtItemCode.Select(txtItemCode.Text.Length, 0);
-               
+
                 if (gridPurchaseOrder.RowCount > 1)
                 {
                     IndexTex2();
@@ -1365,7 +1367,7 @@ namespace WindowsFormsApplication1
                     btnSave.TabStop = false;
                 }
             }
-           
+
         }
 
         private void txtsearch_TextChanged_1(object sender, EventArgs e)
@@ -1397,7 +1399,7 @@ namespace WindowsFormsApplication1
                 if (counter == 0)
                 {
                     panel2.Visible = false;
-                    DataGridViewCellCollection CellCollection = dataGridView1.Rows[currentIndex-1].Cells;
+                    DataGridViewCellCollection CellCollection = dataGridView1.Rows[currentIndex - 1].Cells;
                     if (!string.IsNullOrEmpty(CellCollection[0].Value.ToString()))
                     {
                         setDetails(CellCollection);
@@ -1442,100 +1444,49 @@ namespace WindowsFormsApplication1
         {
             //txtsearch.Text = "";
             comboBox1.SelectedIndex = 0;
-           
-                if (counter == 0)
+
+            if (counter == 0)
+            {
+                panel2.Visible = false;
+                DataGridViewCellCollection CellCollection = dataGridView1.SelectedRows[0].Cells;
+                if (!string.IsNullOrEmpty(CellCollection[0].Value.ToString()))
                 {
-                    panel2.Visible = false;
-                    DataGridViewCellCollection CellCollection = dataGridView1.SelectedRows[0].Cells;
-                    if (!string.IsNullOrEmpty(CellCollection[0].Value.ToString()))
-                    {
-                        setDetails(CellCollection);
-                        IndexTex3();
-                    }
+                    setDetails(CellCollection);
+                    IndexTex3();
                 }
-                else if (counter == 1)
+            }
+            else if (counter == 1)
+            {
+                panel2.Visible = false;
+                DataGridViewCellCollection CellCollection = dataGridView1.SelectedRows[0].Cells;
+                if (!string.IsNullOrEmpty(CellCollection[0].Value.ToString()))
                 {
-                    panel2.Visible = false;
-                    DataGridViewCellCollection CellCollection = dataGridView1.SelectedRows[0].Cells;
-                    if (!string.IsNullOrEmpty(CellCollection[0].Value.ToString()))
-                    {
-                        setDetails1(CellCollection);
-                        txtQuanity.ReadOnly = false;
-                        btnAddItem.Enabled = true;
-                        txtQuanity.Enabled = true;
-                        IndexTex2();
-                    }
+                    setDetails1(CellCollection);
+                    txtQuanity.ReadOnly = false;
+                    btnAddItem.Enabled = true;
+                    txtQuanity.Enabled = true;
+                    IndexTex2();
                 }
+            }
         }
 
         private void gridPurchaseOrder_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-          /*  string itemid = gridPurchaseOrder.Rows[e.RowIndex].Cells[0].Value.ToString();
-            string item = "";
-            string selectQurry = "select ItemId from ItemDetails";
-            DataTable dt1 = dbMainClass.getDetailByQuery(selectQurry);
-            foreach(DataRow dr1 in dt1.Rows)
+            try
             {
-                item = dr1[0].ToString();
-                if (item == itemid)
+                if (e.ColumnIndex == 5)
                 {
-                    break;
-                }
 
+                    if (gridPurchaseOrder.CurrentCell.ColumnIndex == 5)
+                    {
+                        gridPurchaseOrder.CurrentCell = gridPurchaseOrder.CurrentRow.Cells[0];
+                    }
+                }
             }
-                if (item == itemid)
-                {
-
-
-                    string selectqurry = "select Ids.ItemName,Ids.ItemCompName,ipd.MrpPrice, ipd.SalesPrice from ItemDetails Ids  join ItemPriceDetail ipd on Ids.ItemId=ipd.ItemId  where Ids.ItemId='" + itemid + "'";
-                    DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
-                    string rate = "";
-                    foreach (DataRow dr in dt.Rows)
-                    {
-                        gridPurchaseOrder.Rows[e.RowIndex].Cells[1].Value = dr[0].ToString();
-                        gridPurchaseOrder.Rows[e.RowIndex].Cells[2].Value = dr[1].ToString();
-                        gridPurchaseOrder.Rows[e.RowIndex].Cells[3].Value = dr[2].ToString();
-                        // gridPurchaseOrder.Rows[e.RowIndex].Cells[5].Value=dr[3].ToString();
-
-                        rate = dr[3].ToString();
-                    }
-                    if (gridPurchaseOrder.Rows[e.RowIndex].Cells[0].Value != null)
-                    {
-                        int co = gridPurchaseOrder.CurrentRow.Index;
-                        DataGridViewRow selectedRow = gridPurchaseOrder.Rows[0];
-                        selectedRow.Selected = true;
-                        selectedRow.Cells[4].Selected = true;
-                        //gridPurchaseOrder.CurrentCell = gridPurchaseOrder[gridPurchaseOrder.CurrentCell.ColumnIndex + 2, gridPurchaseOrder.CurrentCell.RowIndex];
-                        //gridPurchaseOrder.Focus();
-                    }
-                    gridPurchaseOrder.Rows[e.RowIndex].Cells[4].Value = rate;
-                    string quantity = gridPurchaseOrder.Rows[e.RowIndex].Cells[5].Value.ToString();
-                    if (quantity == "")
-                    {
-                        quantity = "0";
-                    }
-                    int q1 = Convert.ToInt32(quantity);
-                    Double rate1 = Convert.ToDouble(rate);
-                    Double price = rate1 * q1;
-                    if (price.ToString() == "")
-                    {
-                        price = 0;
-                    }
-                    gridPurchaseOrder.Rows[e.RowIndex].Cells[6].Value = price.ToString();
-                        Double totalammount = Convert.ToDouble(txtTotalAmount.Text);
-                    Double toat = totalammount + price;
-                    txtTotalAmount.Text = toat.ToString("###0.00");
-                }
-                else
-                {
-                    
-                    //if(itemid=="I1")
-                    //{
-                    MessageBox.Show("please select your correct row ");
-                    gridPurchaseOrder.Rows[e.RowIndex].Cells[0].Value = "";
-                    //gridPurchaseOrder.Rows[0].Cells[2].Selected = true;
-                  }
-            //}*/
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
 
         private void Distxt_KeyPress(object sender, KeyPressEventArgs e)
@@ -1596,7 +1547,7 @@ namespace WindowsFormsApplication1
             //}
             if (e.KeyChar == (char)Keys.Enter)
             {
-               
+
                 //double totalAmount1 = 0.00;//Convert.ToDouble(txttotalAmount.Text);
                 //double totalamount2 = 0.00;
                 //foreach (DataRow dr in addToCartTable.Rows)
@@ -1644,7 +1595,7 @@ namespace WindowsFormsApplication1
 
         private void DisAmmount_TextChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void Distxt_TextChanged(object sender, EventArgs e)
@@ -1692,7 +1643,7 @@ namespace WindowsFormsApplication1
         }
         private void Distxt_KeyDown(object sender, KeyEventArgs e)
         {
-           
+
         }
 
         private void PurchaseOrder_KeyDown(object sender, KeyEventArgs e)
@@ -1710,20 +1661,20 @@ namespace WindowsFormsApplication1
 
         private void gridPurchaseOrder_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
-        //    string itemid = gridPurchaseOrder.Rows[e.RowIndex].Cells[0].Value.ToString();
-        //    string que = gridPurchaseOrder.Rows[e.RowIndex].Cells[5].Value.ToString();
-        //    if (itemid == "")
-        //    {
-        //        if (que == "")
-        //        {
-        //        }
-        //    }
-        //    //}
+            //    string itemid = gridPurchaseOrder.Rows[e.RowIndex].Cells[0].Value.ToString();
+            //    string que = gridPurchaseOrder.Rows[e.RowIndex].Cells[5].Value.ToString();
+            //    if (itemid == "")
+            //    {
+            //        if (que == "")
+            //        {
+            //        }
+            //    }
+            //    //}
         }
 
         private void PurchaseOrder_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+
         }
 
         private void txtsearch_KeyDown(object sender, KeyEventArgs e)
@@ -1736,7 +1687,7 @@ namespace WindowsFormsApplication1
 
         private void txtdis_Leave(object sender, EventArgs e)
         {
-            if (txtdis.Text=="")
+            if (txtdis.Text == "")
             {
                 txtdis.Text = "0.00";
             }
@@ -1758,12 +1709,12 @@ namespace WindowsFormsApplication1
                 //MessageBox.Show("Data invalid!");
                 //txtVenderOpeningBal.Focus();
             }*/
-           
+
         }
 
         private void txtdis_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void txtdis_MouseClick(object sender, MouseEventArgs e)
@@ -1879,11 +1830,104 @@ namespace WindowsFormsApplication1
 
         }
 
-      
+        private void gridPurchaseOrder_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    if (gridPurchaseOrder.CurrentCell.ColumnIndex == 5)
+                    {
+                        gridPurchaseOrder.CurrentCell = gridPurchaseOrder.CurrentRow.Cells[0];
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
 
-       
-      
-      
-       
+        private void gridPurchaseOrder_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    string itemid = gridPurchaseOrder.Rows[0].Cells[0].Value.ToString();
+                    string item = "";
+                    string selectQurry = "select ItemId from ItemDetails";
+                    DataTable dt1 = dbMainClass.getDetailByQuery(selectQurry);
+                    foreach (DataRow dr1 in dt1.Rows)
+                    {
+                        item = dr1[0].ToString();
+                        if (item == itemid)
+                        {
+                            break;
+                        }
+
+                    }
+                    if (item == itemid)
+                    {
+
+
+                        string selectqurry = "select Ids.ItemName,Ids.ItemCompName,ipd.MrpPrice, ipd.SalesPrice from ItemDetails Ids  join ItemPriceDetail ipd on Ids.ItemId=ipd.ItemId  where Ids.ItemId='" + itemid + "'";
+                        DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+                        string rate = "";
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            gridPurchaseOrder.Rows[0].Cells[1].Value = dr[0].ToString();
+                            gridPurchaseOrder.Rows[0].Cells[2].Value = dr[1].ToString();
+                            gridPurchaseOrder.Rows[0].Cells[3].Value = dr[2].ToString();
+                            gridPurchaseOrder.Rows[0].Cells[4].Value = dr[3].ToString();
+
+                            rate = dr[3].ToString();
+                        }
+                        if (gridPurchaseOrder.Rows[0].Cells[0].Value != null)
+                        {
+                            int co = gridPurchaseOrder.CurrentRow.Index;
+                            DataGridViewRow selectedRow = gridPurchaseOrder.Rows[0];
+                            selectedRow.Selected = true;
+                            selectedRow.Cells[4].Selected = true;
+                            // gridPurchaseOrder.CurrentCell = gridPurchaseOrder.CurrentRow.Cells[5];//[gridPurchaseOrder.CurrentCell.ColumnIndex + 2, gridPurchaseOrder.CurrentCell.RowIndex];
+                            //gridPurchaseOrder.Focus();
+                        }
+                        gridPurchaseOrder.Rows[0].Cells[4].Value = rate;
+                        string quantity = gridPurchaseOrder.Rows[0].Cells[5].Value.ToString();
+                        if (quantity == "")
+                        {
+                            quantity = "0";
+                        }
+                        int q1 = Convert.ToInt32(quantity);
+                        Double rate1 = Convert.ToDouble(rate);
+                        Double price = rate1 * q1;
+                        if (price.ToString() == "")
+                        {
+                            price = 0;
+                        }
+                        gridPurchaseOrder.Rows[0].Cells[6].Value = price.ToString();
+                        Double totalammount = Convert.ToDouble(txtTotalAmount.Text);
+                        Double toat = totalammount + price;
+                        txtTotalAmount.Text = toat.ToString("###0.00");
+                        gridPurchaseOrder.CurrentCell = gridPurchaseOrder.CurrentRow.Cells[5];
+                    }
+                    else
+                    {
+
+                        if (itemid == "I1")
+                        {
+                            MessageBox.Show("please select your correct row ");
+                            gridPurchaseOrder.Rows[0].Cells[0].Value = "";
+                            gridPurchaseOrder.Rows[0].Cells[2].Selected = true;
+                        }
+                    }
+                 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
     }
 }

@@ -77,10 +77,10 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.PurchesCrystalReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.PurchesCrystalReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.txtsearch = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -516,15 +516,15 @@
             this.gridPurchaseOrder.Location = new System.Drawing.Point(0, 0);
             this.gridPurchaseOrder.MultiSelect = false;
             this.gridPurchaseOrder.Name = "gridPurchaseOrder";
-            this.gridPurchaseOrder.ReadOnly = true;
-            this.gridPurchaseOrder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridPurchaseOrder.Size = new System.Drawing.Size(1149, 333);
             this.gridPurchaseOrder.StandardTab = true;
             this.gridPurchaseOrder.TabIndex = 0;
             this.gridPurchaseOrder.TabStop = false;
             this.gridPurchaseOrder.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPurchaseOrder_CellEndEdit);
             this.gridPurchaseOrder.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPurchaseOrder_CellLeave);
+            this.gridPurchaseOrder.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridPurchaseOrder_KeyDown);
             this.gridPurchaseOrder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridPurchaseOrder_KeyPress);
+            this.gridPurchaseOrder.KeyUp += new System.Windows.Forms.KeyEventHandler(this.gridPurchaseOrder_KeyUp);
             // 
             // txtTotalAmount
             // 
@@ -698,6 +698,18 @@
             this.panel2.Size = new System.Drawing.Size(1186, 634);
             this.panel2.TabIndex = 65;
             // 
+            // PurchesCrystalReportViewer
+            // 
+            this.PurchesCrystalReportViewer.ActiveViewIndex = -1;
+            this.PurchesCrystalReportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PurchesCrystalReportViewer.Cursor = System.Windows.Forms.Cursors.Default;
+            this.PurchesCrystalReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PurchesCrystalReportViewer.Location = new System.Drawing.Point(0, 0);
+            this.PurchesCrystalReportViewer.Name = "PurchesCrystalReportViewer";
+            this.PurchesCrystalReportViewer.Size = new System.Drawing.Size(1186, 634);
+            this.PurchesCrystalReportViewer.TabIndex = 8;
+            this.PurchesCrystalReportViewer.Load += new System.EventHandler(this.PurchesCrystalReportViewer_Load);
+            // 
             // panel3
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -741,18 +753,6 @@
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Search";
-            // 
-            // PurchesCrystalReportViewer
-            // 
-            this.PurchesCrystalReportViewer.ActiveViewIndex = -1;
-            this.PurchesCrystalReportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PurchesCrystalReportViewer.Cursor = System.Windows.Forms.Cursors.Default;
-            this.PurchesCrystalReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PurchesCrystalReportViewer.Location = new System.Drawing.Point(0, 0);
-            this.PurchesCrystalReportViewer.Name = "PurchesCrystalReportViewer";
-            this.PurchesCrystalReportViewer.Size = new System.Drawing.Size(1186, 634);
-            this.PurchesCrystalReportViewer.TabIndex = 8;
-            this.PurchesCrystalReportViewer.Load += new System.EventHandler(this.PurchesCrystalReportViewer_Load);
             // 
             // txtsearch
             // 

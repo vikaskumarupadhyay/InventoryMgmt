@@ -9,6 +9,7 @@ using System.Configuration;
 
     class DB_Main
     {
+        public int save = 0;
         public static string taxName;
 
         public int saveDetails(string InsertQuery)
@@ -133,7 +134,56 @@ using System.Configuration;
             return insertedRows;
         }
 
-              
+          public int saveDetails( string InsertQuery1, List<string> insertquerycollection)
+        {
+            int insertrows = 0;
+            SqlTransaction trans = null;
+            try
+            {
+                
+                SqlConnection con = openConnection();
+                trans = con.BeginTransaction();
+
+                bool success = true;
+                if (con.State == ConnectionState.Open)
+                {
+                    SqlCommand cmd = new SqlCommand(InsertQuery1, con, trans);
+                    insertrows = cmd.ExecuteNonQuery();
+                    if (insertrows < 1)
+                    {
+                        trans.Rollback();
+                    }
+                    else
+                    {
+                        foreach (string sqlquery in insertquerycollection)
+                        {
+                            cmd = new SqlCommand(sqlquery, con, trans);
+                            insertrows = cmd.ExecuteNonQuery();
+                            if (insertrows < 1)
+                            {
+                                success = false;
+                                break;
+                            }
+                        }
+                        if (success)
+                        {
+                            trans.Commit();
+                        }
+                        else
+                        {
+                            trans.Rollback();
+                        }
+                    }
+                }
+                closeConnection(con);
+            }
+            catch (Exception ex)
+            {
+                trans.Rollback();
+                save = 1;
+            }
+            return insertrows;
+        }     
 
 
         public int saveDetails(string InsertQuery1, string InsertQuery2, string InsertQuery3)
