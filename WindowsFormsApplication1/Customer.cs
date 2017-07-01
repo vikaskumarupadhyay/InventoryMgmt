@@ -28,7 +28,7 @@ namespace WindowsFormsApplication1
      
         private void Customer_Load(object sender, EventArgs e)
         {
-             
+            comstate.SelectedIndex = 0;
             comserchvalue.Focus();
             string s = txtCustOpeningBal.Text;
             int decimalCount = '.';
@@ -72,8 +72,8 @@ namespace WindowsFormsApplication1
             //else if (value == 0)
             //{
             //    panel1.Visible = false;
-             string selectQuery = "select  Custd.CustId as [Customer ID] ,CustName AS [Customer Name] ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO] ,CustServicetaxRegnNo AS [SERVICE TAX NO],CustExciseRegnNo AS [EXICE NO] ,Gstregnno AS [GST NO],CustDesc as [Description],CustOpeningBalance as[Opening Balance] ,CustCurrentBalance as[Current Balance] from  CustomerDetails Custd join CustomerAccountDetails Custad on Custd.CustID=Custad.CustID ";
-               string actualcolumn = "select top 1  Custd.CustId  ,CustName  ,CustCompName  ,CustAddress ,CustCity , CustState  ,CustZip  ,CustCountry  ,CustEmail , CustWebAddress ,CustPhone  ,CustMobile  ,CustFax,CustPanNo , CustVatNo ,CustCSTNo,CustServicetaxRegnNo  ,CustExciseRegnNo  ,Gstregnno,CustDesc,Custad.CustOpeningBalance,Custad.CustCurrentBalance from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
+             string selectQuery = "select  Custd.CustId as [Customer ID] ,CustName AS [Customer Name] ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustDesc as [Description],CustOpeningBalance as[Opening Balance] ,CustCurrentBalance as[Current Balance] from  CustomerDetails Custd join CustomerAccountDetails Custad on Custd.CustID=Custad.CustID ";
+               string actualcolumn = "select top 1  Custd.CustId  ,CustName  ,CustCompName  ,CustAddress ,CustCity , CustState  ,CustZip  ,CustCountry  ,CustEmail , CustWebAddress ,CustPhone  ,CustMobile  ,CustFax,CustPanNo , CustVatNo,CustDesc,Custad.CustOpeningBalance,Custad.CustCurrentBalance from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
    DataTable dt = dbMainClass.getDetailByQuery(selectQuery);
             DataTable onlycolumnname = dbMainClass.getDetailByQuery(actualcolumn);
             DataTable customtable = new DataTable();
@@ -150,7 +150,7 @@ namespace WindowsFormsApplication1
                 {
                     if (updateCounter == 0)
                     {
-                        string saveCommand1 = "insert into CustomerDetails values ('" + txtCustCode.Text + "','" + txtName.Text + "','" + txtCompnyName.Text + "','" + txtAddress.Text + "','" + txtCity.Text + "','" + txtState.Text + "','" + txtZIP.Text + "','" + txtCustCountry.Text + "','" + txtEMAILADDRESS.Text + "','" + txtWEBSITE.Text + "','" + txtTXTPHONE.Text + "', '" + txtMOBILE.Text + "','" + txtFAX.Text + "','" + txtDESCRIPTION.Text + "','" + txtPanno.Text + "','" + txttanno.Text + "','" + txtothers.Text + "','" + txtservicetaxno.Text + "','" + txtexiceragisterno.Text + "','" + txtgstragisterno.Text + "')";
+                        string saveCommand1 = "insert into CustomerDetails values ('" + txtCustCode.Text + "','" + txtName.Text + "','" + txtCompnyName.Text + "','" + txtAddress.Text + "','" + txtCity.Text + "','" +comstate.SelectedItem.ToString() + "','" + txtZIP.Text + "','" + txtCustCountry.Text + "','" + txtEMAILADDRESS.Text + "','" + txtWEBSITE.Text + "','" + txtTXTPHONE.Text + "', '" + txtMOBILE.Text + "','" + txtFAX.Text + "','" + txtDESCRIPTION.Text + "','" + txtPanno.Text + "','" + txttanno.Text + "')";
 
                         string saveCommand2 = "insert into CustomerAccountDetails values ('" + txtCustCode.Text + "','" + txtCustCode.Text + "','" + txtCustOpeningBal.Text + "','" + txtCURRENTBALANCE.Text + "')";
 
@@ -172,7 +172,7 @@ namespace WindowsFormsApplication1
 
                     else if (updateCounter == 1)
                     {
-                        string updateCommand1 = "update  CustomerDetails  set Custid='" + txtCustCode.Text + "', CustAddress='" + txtAddress.Text + "',CustPhone='" + txtTXTPHONE.Text + "', CustMobile='" + txtMOBILE.Text + "',CustPanNO='" + txtPanno.Text + "',CustVatNo='" + txttanno.Text + "',CustCstNo='" + txtothers.Text + "',CustServicetaxregnNo='" + txtservicetaxno.Text + "',CustExciseregnno='" + txtexiceragisterno.Text + "',Gstregnno='" + txtgstragisterno.Text + "', CustName='" + txtName.Text + "', CustCompName= '" + txtCompnyName.Text + "',CustCity='" + txtCity.Text + "',CustState='" + txtState.Text + "',CustZip='" + txtZIP.Text + "',CustCountry='" + txtCustCountry.Text + "',CustEmail='" + txtEMAILADDRESS.Text + "',CustWebAddress='" + txtWEBSITE.Text + "',CustFax='" + txtFAX.Text + "',CustDesc='" + txtDESCRIPTION.Text + "' where Custid='" + txtCustCode.Text + "'";
+                        string updateCommand1 = "update  CustomerDetails  set Custid='" + txtCustCode.Text + "', CustAddress='" + txtAddress.Text + "',CustPhone='" + txtTXTPHONE.Text + "', CustMobile='" + txtMOBILE.Text + "',CustPanNO='" + txtPanno.Text + "',CustVatNo='" + txttanno.Text + "', CustName='" + txtName.Text + "', CustCompName= '" + txtCompnyName.Text + "',CustCity='" + txtCity.Text + "',CustState='" +comstate.SelectedItem.ToString() + "',CustZip='" + txtZIP.Text + "',CustCountry='" + txtCustCountry.Text + "',CustEmail='" + txtEMAILADDRESS.Text + "',CustWebAddress='" + txtWEBSITE.Text + "',CustFax='" + txtFAX.Text + "',CustDesc='" + txtDESCRIPTION.Text + "' where Custid='" + txtCustCode.Text + "'";
                         string updateCommand2 = "update   CustomerAccountDetails set  CustOpeningBalance='" + txtCustOpeningBal.Text + "',CustCurrentBalance='" + txtCURRENTBALANCE.Text + "' where Custid='" + txtCustCode.Text + "'";
 
                         int updatedRows = dbMainClass.updateDetails(updateCommand1, updateCommand2);
@@ -231,7 +231,7 @@ namespace WindowsFormsApplication1
             txtCompnyName.Text = "";
             txtAddress.Text = "";
             txtCity.Text = "";
-            txtState.Text = "";
+            comstate.Text = "";
             txtCustCountry.Text = "";
             txtZIP.Text = "";
             txtEMAILADDRESS.Text = "";
@@ -268,7 +268,7 @@ namespace WindowsFormsApplication1
         {
             tabindex();
             panel1.Visible = true;
-            string selectQuery = "select Custd.CustId as [Customer ID] ,CustName AS [Customer Name] ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO],CustServicetaxRegnNo AS [SERVICE TAX NO],CustExciseRegnNo AS [EXICE NO] ,Gstregnno AS [GST NO],CustDesc as [Description],CustOpeningBalance as[Opening Balance] ,CustCurrentBalance as[Current Balance] from  CustomerDetails Custd join CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
+            string selectQuery = "select Custd.CustId as [Customer ID] ,CustName AS [Customer Name] ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustDesc as [Description],CustOpeningBalance as[Opening Balance] ,CustCurrentBalance as[Current Balance] from  CustomerDetails Custd join CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
             DataTable dt = dbMainClass.getDetailByQuery(selectQuery);
             dataGridView1.DataSource = dt;
             //dataGridView1.DataSource = dt;
@@ -283,7 +283,7 @@ namespace WindowsFormsApplication1
             txtCompnyName.TabStop = false;
             txtAddress.TabStop = false;
             txtCity.TabStop = false;
-            txtState.TabStop = false;
+            comstate.TabStop = false;
             txtZIP.TabStop = false;
             txtCustCountry.TabStop = false;
             txtEMAILADDRESS.TabStop = false;
@@ -296,14 +296,12 @@ namespace WindowsFormsApplication1
             txtCURRENTBALANCE.TabStop = false;
             txtPanno.TabStop = false;
             txttanno.TabStop = false;
-            txtothers.TabStop = false;
+           
             btnSave.TabStop = false;
             btnClose.TabStop = false;
             btnList.TabStop = false;
             
-            txtservicetaxno.TabStop = false;
-            txtexiceragisterno.TabStop = false;
-            txtgstragisterno.TabStop = false;
+           
             button1.TabStop = true;
             butaddrecord.TabStop = true;
             butupdate.TabStop = true;
@@ -321,7 +319,7 @@ namespace WindowsFormsApplication1
             txtCompnyName.TabStop = false;
             txtAddress.TabStop = false;
             txtCity.TabStop = false;
-            txtState.TabStop = false;
+            comstate.TabStop = false;
             txtZIP.TabStop = false;
             txtCustCountry.TabStop = false;
             txtEMAILADDRESS.TabStop = false;
@@ -334,14 +332,12 @@ namespace WindowsFormsApplication1
             txtCURRENTBALANCE.TabStop = false;
             txtPanno.TabStop = false;
             txttanno.TabStop = false;
-            txtothers.TabStop = false;
+           
             btnSave.TabStop = false;
             btnClose.TabStop = false;
             btnList.TabStop = false;
 
-            txtservicetaxno.TabStop = false;
-            txtexiceragisterno.TabStop = false;
-            txtgstragisterno.TabStop = false;
+          
           
 
         }
@@ -365,7 +361,7 @@ namespace WindowsFormsApplication1
             txtCompnyName.TabStop = true;
             txtAddress.TabStop = true;
             txtCity.TabStop = true;
-            txtState.TabStop = true;
+            comstate.TabStop = true;
             txtZIP.TabStop = true;
             txtCustCountry.TabStop = true;
             txtEMAILADDRESS.TabStop = true;
@@ -378,14 +374,12 @@ namespace WindowsFormsApplication1
            // txtCURRENTBALANCE.TabStop = true;
             txtPanno.TabStop = true;
             txttanno.TabStop = true;
-            txtothers.TabStop = true;
+           
             btnSave.TabStop = true;
             btnClose.TabStop = true;
             btnList.TabStop = true;
             // dataGridView1.TabStop = false;
-            txtservicetaxno.TabStop = true;
-            txtexiceragisterno.TabStop = true;
-            txtgstragisterno.TabStop = true;
+           
         }
         private void tabindex1()
     {
@@ -395,17 +389,14 @@ namespace WindowsFormsApplication1
             txtCompnyName.TabStop = true;
             txtAddress.TabStop = true;
             txtCity.TabStop = true;
-            txtState.TabStop = true;
+            comstate.TabStop = true;
             txtZIP.TabStop = true;
             txtCustCountry.TabStop = true;
             txtTXTPHONE.TabStop = true;
             txtMOBILE.TabStop = true;
             txtFAX.TabStop = true;
             txtPanno.TabStop = true;
-            txtothers.TabStop = true;
-            txtservicetaxno.TabStop = true;
-            txtgstragisterno.TabStop = true;
-            txtexiceragisterno.TabStop = true;
+           
             txtEMAILADDRESS.TabStop = true;
             txtWEBSITE.TabStop = true;
             txtDESCRIPTION.TabStop = true;
@@ -422,7 +413,7 @@ namespace WindowsFormsApplication1
                 txtCompnyName.Text = cellCollection[2].Value.ToString();
                 txtAddress.Text = cellCollection[3].Value.ToString();
                 txtCity.Text = cellCollection[4].Value.ToString();
-                txtState.Text = cellCollection[5].Value.ToString();
+                comstate.Text = cellCollection[5].Value.ToString();
                 txtZIP.Text = cellCollection[6].Value.ToString();
                 txtCustCountry.Text = cellCollection[7].Value.ToString();
                 txtEMAILADDRESS.Text = cellCollection[8].Value.ToString();
@@ -432,10 +423,7 @@ namespace WindowsFormsApplication1
                 txtFAX.Text = cellCollection[12].Value.ToString();
                 txtPanno.Text = cellCollection[13].Value.ToString();
                 txttanno.Text = cellCollection[14].Value.ToString();
-                txtothers.Text = cellCollection[15].Value.ToString();
-                txtservicetaxno.Text = cellCollection[16].Value.ToString();
-                txtexiceragisterno.Text = cellCollection[17].Value.ToString();
-                txtgstragisterno.Text = cellCollection[18].Value.ToString();
+               
                 txtDESCRIPTION.Text = cellCollection[19].Value.ToString();
                 txtCustOpeningBal.Text = cellCollection[20].Value.ToString();
                 txtCURRENTBALANCE.Text = cellCollection[21].Value.ToString();
@@ -514,7 +502,7 @@ namespace WindowsFormsApplication1
         {
            string s= comserchvalue.SelectedValue.ToString();
           // string val = "Cust"+s;
-             string selectQuery = "select  Custd.CustId as [Customer ID] ,CustName AS [Customer Name] ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO]  ,CustServicetaxRegnNo AS [SERVICE TAX NO],CustExciseRegnNo AS [EXICE NO] ,Gstregnno AS [GST NO],CustDesc as [Description],CustOpeningBalance as[Opening Balance] ,CustCurrentBalance as[Current Balance] from  CustomerDetails Custd join CustomerAccountDetails Custad on Custd.CustID=Custad.CustID where " + s + " like '" + textBox1.Text + "%'";
+             string selectQuery = "select  Custd.CustId as [Customer ID] ,CustName AS [Customer Name] ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustDesc as [Description],CustOpeningBalance as[Opening Balance] ,CustCurrentBalance as[Current Balance] from  CustomerDetails Custd join CustomerAccountDetails Custad on Custd.CustID=Custad.CustID where " + s + " like '" + textBox1.Text + "%'";
   DataTable dt = dbMainClass.getDetailByQuery(selectQuery);
             dataGridView1.DataSource = dt;
 
@@ -565,21 +553,19 @@ namespace WindowsFormsApplication1
             txtCompnyName.Enabled = true;
             txtAddress.Enabled = true;
             txtCity.Enabled = true;
-            txtState.Enabled = true;
+            comstate.Enabled = true;
             txtZIP.Enabled = true;
             txtCustCountry.Enabled = true;
             txtPanno.Enabled = true;
             txttanno.Enabled = true;
-            txtothers.Enabled = true;
+            
             txtDESCRIPTION.Enabled = true;
             txtCustOpeningBal.Enabled = true;
             txtWEBSITE.Enabled = true;
             txtEMAILADDRESS.Enabled = true;
             txtCustCode.Enabled = true;
             txtCURRENTBALANCE.Enabled = true;
-            txtservicetaxno.Enabled = true;
-            txtexiceragisterno.Enabled = true;
-            txtgstragisterno.Enabled = true;
+          
             
         }
         private void blank1()
@@ -589,12 +575,12 @@ namespace WindowsFormsApplication1
             txtCompnyName.Enabled = true;
             txtAddress.Enabled = true;
             txtCity.Enabled = true;
-            txtState.Enabled = true;
+            comstate.Enabled = true;
             txtZIP.Enabled = true;
             txtCustCountry.Enabled = true;
             txtPanno.Enabled = true;
             txttanno.Enabled = true;
-            txtothers.Enabled = true;
+          
             txtDESCRIPTION.Enabled = true;
             txtCustOpeningBal.Enabled = true;
             txtWEBSITE.Enabled = true;
@@ -602,9 +588,7 @@ namespace WindowsFormsApplication1
             txtTXTPHONE.Enabled = true;
             txtMOBILE.Enabled = true;
             txtFAX.Enabled = true;
-            txtservicetaxno.Enabled = true;
-            txtexiceragisterno.Enabled = true;
-            txtgstragisterno.Enabled = true;
+          
         }
 
         private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
@@ -649,7 +633,7 @@ namespace WindowsFormsApplication1
             txtCompnyName.Text = "";
             txtAddress.Text = "";
             txtCity.Text = "";
-            txtState.Text = "";
+            comstate.Text = "";
             txtCustCountry.Text = "";
             txtZIP.Text = "";
             txtEMAILADDRESS.Text = "";
@@ -660,13 +644,11 @@ namespace WindowsFormsApplication1
             txtDESCRIPTION.Text= "";
             txtPanno.Text = "";
             txttanno.Text = "";
-            txtothers.Text = "";
+           
 
             txtCustOpeningBal.Text = "0";
             txtCURRENTBALANCE.Text= "0";
-            txtservicetaxno.Text = "";
-            txtexiceragisterno.Text = "";
-            txtgstragisterno.Text = "";
+           
 
             txtCustCode.Text = "";
             txtCustCode.Text= "";
