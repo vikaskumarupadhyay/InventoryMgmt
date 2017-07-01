@@ -249,7 +249,19 @@ ALTER TABLE ItemDetails add BarCode varchar(200)
 go
 
 ALTER TABLE ItemPriceDetail ALTER COLUMN Margin decimal(18,2)
- 
+ go
+ALTER TABLE VendorDetails DROP COLUMN vVatNo
+go
+ALTER TABLE VendorDetails DROP COLUMN vCstNo
+go
+ALTER TABLE VendorDetails DROP COLUMN vServiceTaxRegnNo
+go
+ALTER TABLE VendorDetails DROP COLUMN vExciseRegnNo
+go
+ALTER TABLE VendorDetails DROP COLUMN vGSTRegnNo
+go
+alter table VendorDetails add vGSTNo varchar(200)
+
 
 
 

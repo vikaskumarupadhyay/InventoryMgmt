@@ -30,15 +30,7 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtGst = new System.Windows.Forms.TextBox();
-            this.txtExcise = new System.Windows.Forms.TextBox();
-            this.txtSarvice = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.txtCstNo = new System.Windows.Forms.TextBox();
-            this.txtVatNo = new System.Windows.Forms.TextBox();
             this.txtPanNo = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.txtVenderDesc = new System.Windows.Forms.TextBox();
@@ -51,7 +43,6 @@
             this.txtVenderEmailAddress = new System.Windows.Forms.TextBox();
             this.txtVenderCountry = new System.Windows.Forms.TextBox();
             this.txtVenderZip = new System.Windows.Forms.TextBox();
-            this.txtVenderState = new System.Windows.Forms.TextBox();
             this.txtVenderCity = new System.Windows.Forms.TextBox();
             this.txtVenderAddress = new System.Windows.Forms.TextBox();
             this.txtCompanyName = new System.Windows.Forms.TextBox();
@@ -79,41 +70,35 @@
             this.btnVenderSave = new System.Windows.Forms.Button();
             this.btnVenderClose = new System.Windows.Forms.Button();
             this.btnVenderList = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.butprint = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.cmbState = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.butprint = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.cmbState);
             this.groupBox1.Controls.Add(this.txtGst);
-            this.groupBox1.Controls.Add(this.txtExcise);
-            this.groupBox1.Controls.Add(this.txtSarvice);
-            this.groupBox1.Controls.Add(this.label24);
-            this.groupBox1.Controls.Add(this.label23);
-            this.groupBox1.Controls.Add(this.label22);
-            this.groupBox1.Controls.Add(this.txtCstNo);
-            this.groupBox1.Controls.Add(this.txtVatNo);
             this.groupBox1.Controls.Add(this.txtPanNo);
-            this.groupBox1.Controls.Add(this.label21);
             this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.label19);
             this.groupBox1.Controls.Add(this.txtVenderDesc);
@@ -126,7 +111,6 @@
             this.groupBox1.Controls.Add(this.txtVenderEmailAddress);
             this.groupBox1.Controls.Add(this.txtVenderCountry);
             this.groupBox1.Controls.Add(this.txtVenderZip);
-            this.groupBox1.Controls.Add(this.txtVenderState);
             this.groupBox1.Controls.Add(this.txtVenderCity);
             this.groupBox1.Controls.Add(this.txtVenderAddress);
             this.groupBox1.Controls.Add(this.txtCompanyName);
@@ -154,74 +138,11 @@
             // 
             // txtGst
             // 
-            this.txtGst.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtGst.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtGst.Location = new System.Drawing.Point(886, 358);
+            this.txtGst.Location = new System.Drawing.Point(470, 316);
             this.txtGst.Name = "txtGst";
-            this.txtGst.Size = new System.Drawing.Size(406, 22);
-            this.txtGst.TabIndex = 18;
-            // 
-            // txtExcise
-            // 
-            this.txtExcise.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtExcise.Location = new System.Drawing.Point(470, 358);
-            this.txtExcise.Name = "txtExcise";
-            this.txtExcise.Size = new System.Drawing.Size(410, 22);
-            this.txtExcise.TabIndex = 17;
-            // 
-            // txtSarvice
-            // 
-            this.txtSarvice.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSarvice.Location = new System.Drawing.Point(54, 358);
-            this.txtSarvice.Name = "txtSarvice";
-            this.txtSarvice.Size = new System.Drawing.Size(410, 22);
-            this.txtSarvice.TabIndex = 16;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(883, 341);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(54, 14);
-            this.label24.TabIndex = 36;
-            this.label24.Text = "GST NO";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(467, 341);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(80, 14);
-            this.label23.TabIndex = 35;
-            this.label23.Text = "EXCISE NO ";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(51, 341);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(111, 14);
-            this.label22.TabIndex = 34;
-            this.label22.Text = "SERVICE TAX NO";
-            // 
-            // txtCstNo
-            // 
-            this.txtCstNo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCstNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCstNo.Location = new System.Drawing.Point(886, 316);
-            this.txtCstNo.Name = "txtCstNo";
-            this.txtCstNo.Size = new System.Drawing.Size(406, 22);
-            this.txtCstNo.TabIndex = 15;
-            // 
-            // txtVatNo
-            // 
-            this.txtVatNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtVatNo.Location = new System.Drawing.Point(470, 316);
-            this.txtVatNo.Name = "txtVatNo";
-            this.txtVatNo.Size = new System.Drawing.Size(410, 22);
-            this.txtVatNo.TabIndex = 14;
+            this.txtGst.Size = new System.Drawing.Size(410, 22);
+            this.txtGst.TabIndex = 14;
             // 
             // txtPanNo
             // 
@@ -233,23 +154,14 @@
             this.txtPanNo.TabIndex = 13;
             this.txtPanNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPanNo_KeyPress);
             // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(883, 299);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(54, 14);
-            this.label21.TabIndex = 30;
-            this.label21.Text = "CST NO";
-            // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(467, 299);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(53, 14);
+            this.label20.Size = new System.Drawing.Size(54, 14);
             this.label20.TabIndex = 29;
-            this.label20.Text = "VAT NO";
+            this.label20.Text = "GST NO";
             // 
             // label19
             // 
@@ -355,13 +267,6 @@
             this.txtVenderZip.Size = new System.Drawing.Size(307, 22);
             this.txtVenderZip.TabIndex = 6;
             this.txtVenderZip.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVenderZip_KeyPress);
-            // 
-            // txtVenderState
-            // 
-            this.txtVenderState.Location = new System.Drawing.Point(367, 148);
-            this.txtVenderState.Name = "txtVenderState";
-            this.txtVenderState.Size = new System.Drawing.Size(307, 22);
-            this.txtVenderState.TabIndex = 5;
             // 
             // txtVenderCity
             // 
@@ -635,137 +540,51 @@
             this.btnVenderList.UseVisualStyleBackColor = true;
             this.btnVenderList.Click += new System.EventHandler(this.btnVenderList_Click);
             // 
-            // panel1
+            // cmbState
             // 
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.butprint);
-            this.panel1.Controls.Add(this.groupBox3);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.btnUpdate);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1362, 683);
-            this.panel1.TabIndex = 7;
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(401, 633);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(153, 31);
-            this.button2.TabIndex = 31;
-            this.button2.Text = "E&xport To Excel";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
-            // butprint
-            // 
-            this.butprint.Enabled = false;
-            this.butprint.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.butprint.Location = new System.Drawing.Point(308, 633);
-            this.butprint.Name = "butprint";
-            this.butprint.Size = new System.Drawing.Size(87, 31);
-            this.butprint.TabIndex = 30;
-            this.butprint.Text = "Print";
-            this.butprint.UseVisualStyleBackColor = true;
-            this.butprint.Click += new System.EventHandler(this.butprint_Click);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Controls.Add(this.label17);
-            this.groupBox3.Controls.Add(this.comboBox1);
-            this.groupBox3.Controls.Add(this.txtSearch);
-            this.groupBox3.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(16, 27);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1320, 79);
-            this.groupBox3.TabIndex = 23;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Vendor Search";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(700, 26);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(68, 14);
-            this.label18.TabIndex = 7;
-            this.label18.Text = "Type Text";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(30, 26);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(78, 14);
-            this.label17.TabIndex = 5;
-            this.label17.Text = "Select Field";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(33, 46);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(664, 22);
-            this.comboBox1.TabIndex = 24;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(703, 46);
-            this.txtSearch.Multiline = true;
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(586, 22);
-            this.txtSearch.TabIndex = 25;
-            this.txtSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(560, 633);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(105, 31);
-            this.button3.TabIndex = 32;
-            this.button3.Text = "&Back";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(16, 633);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(120, 31);
-            this.btnUpdate.TabIndex = 28;
-            this.btnUpdate.Text = "&Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(142, 633);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(160, 31);
-            this.button1.TabIndex = 29;
-            this.button1.Text = "&Add New Records";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.cmbState.FormattingEnabled = true;
+            this.cmbState.Items.AddRange(new object[] {
+            "Select State",
+            "Andaman and Nicobar Islands",
+            "Andhra Pradesh",
+            "Arunachal Pradesh",
+            "Assam",
+            "Bihar",
+            "Chandigarh",
+            "Chhattisgarh",
+            "Dadra and Nagar Haveli",
+            "Daman and Diu",
+            "Delhi – National Capital Territory",
+            "Goa",
+            "Gujarat",
+            "Haryana",
+            "Himachal Pradesh",
+            "Jammu & Kashmir",
+            "Jharkhand",
+            "Karnataka",
+            "Kerala",
+            "Lakshadweep",
+            "Madhya Pradesh",
+            "Maharashtra",
+            "Manipur",
+            "Meghalaya",
+            "Mizoram",
+            "Nagaland",
+            "Odisha (Orissa)",
+            "Puducherry (Pondicherry)",
+            "Punjab",
+            "Rajasthan",
+            "Sikkim",
+            "Tamil Nadu",
+            "Telangana",
+            "Tripura",
+            "Uttar Pradesh",
+            "Uttarakhand",
+            "West Bengal"});
+            this.cmbState.Location = new System.Drawing.Point(367, 148);
+            this.cmbState.Name = "cmbState";
+            this.cmbState.Size = new System.Drawing.Size(307, 22);
+            this.cmbState.TabIndex = 5;
             // 
             // panel2
             // 
@@ -797,6 +616,138 @@
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(142, 633);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(160, 31);
+            this.button1.TabIndex = 29;
+            this.button1.Text = "&Add New Records";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Location = new System.Drawing.Point(16, 633);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(120, 31);
+            this.btnUpdate.TabIndex = 28;
+            this.btnUpdate.Text = "&Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(560, 633);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(105, 31);
+            this.button3.TabIndex = 32;
+            this.button3.Text = "&Back";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.label18);
+            this.groupBox3.Controls.Add(this.label17);
+            this.groupBox3.Controls.Add(this.comboBox1);
+            this.groupBox3.Controls.Add(this.txtSearch);
+            this.groupBox3.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(16, 27);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(1320, 79);
+            this.groupBox3.TabIndex = 23;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Vendor Search";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearch.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(703, 46);
+            this.txtSearch.Multiline = true;
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(1303, 22);
+            this.txtSearch.TabIndex = 25;
+            this.txtSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(33, 46);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(664, 22);
+            this.comboBox1.TabIndex = 24;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(30, 26);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(78, 14);
+            this.label17.TabIndex = 5;
+            this.label17.Text = "Select Field";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(700, 26);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(68, 14);
+            this.label18.TabIndex = 7;
+            this.label18.Text = "Type Text";
+            // 
+            // butprint
+            // 
+            this.butprint.Enabled = false;
+            this.butprint.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.butprint.Location = new System.Drawing.Point(308, 633);
+            this.butprint.Name = "butprint";
+            this.butprint.Size = new System.Drawing.Size(87, 31);
+            this.butprint.TabIndex = 30;
+            this.butprint.Text = "Print";
+            this.butprint.UseVisualStyleBackColor = true;
+            this.butprint.Click += new System.EventHandler(this.butprint_Click);
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(401, 633);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(153, 31);
+            this.button2.TabIndex = 31;
+            this.button2.Text = "E&xport To Excel";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.butprint);
+            this.panel1.Controls.Add(this.groupBox3);
+            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.btnUpdate);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1362, 683);
+            this.panel1.TabIndex = 7;
+            // 
             // frmVendorDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -819,11 +770,11 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -841,7 +792,6 @@
         private System.Windows.Forms.TextBox txtVenderEmailAddress;
         private System.Windows.Forms.TextBox txtVenderCountry;
         private System.Windows.Forms.TextBox txtVenderZip;
-        private System.Windows.Forms.TextBox txtVenderState;
         private System.Windows.Forms.TextBox txtVenderCity;
         private System.Windows.Forms.TextBox txtVenderAddress;
         private System.Windows.Forms.TextBox txtCompanyName;
@@ -869,30 +819,23 @@
         private System.Windows.Forms.Button btnVenderSave;
         private System.Windows.Forms.Button btnVenderClose;
         private System.Windows.Forms.Button btnVenderList;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox txtCstNo;
-        private System.Windows.Forms.TextBox txtVatNo;
+        private System.Windows.Forms.TextBox txtGst;
         private System.Windows.Forms.TextBox txtPanNo;
-        private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox txtGst;
-        private System.Windows.Forms.TextBox txtExcise;
-        private System.Windows.Forms.TextBox txtSarvice;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.ComboBox cmbState;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button butprint;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel panel1;
     }
 }

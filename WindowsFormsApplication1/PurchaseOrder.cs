@@ -492,14 +492,24 @@ namespace WindowsFormsApplication1
                         }
                         else
                         {
-                            string selectq = "select ids.ItemCompName,cast(ipd.MrpPrice as numeric(38,2)) from ItemPriceDetail ipd join ItemDetails ids on ipd.ItemId=ids.ItemId where ipd.ItemId='" + txtItemCode.Text + "'";
+                            string selectq = "select ids.ItemCompName,cast(ipd.MrpPrice as numeric(38,2)),itd.HSN,itd.CGST,itd.SGST,itd.IGST,itd.CESS from ItemPriceDetail ipd join ItemDetails ids on ipd.ItemId=ids.ItemId join ItemTaxDetail itd on ipd.ItemId=itd.ItemId where ipd.ItemId='" + txtItemCode.Text + "'";
                             DataTable dta = dbMainClass.getDetailByQuery(selectq);
                             string ConpanyName = "";
                             string Mrp = "";
+                            string Hsn = "";
+                            string Cgst = "";
+                            string Sgst = "";
+                            string Igst= "";
+                            string Cess = "";
                             foreach (DataRow dr1 in dta.Rows)
                             {
                                 ConpanyName = dr1[0].ToString();
                                 Mrp = dr1[1].ToString();
+                                Hsn = dr1[2].ToString();
+                                Cgst = dr1[3].ToString();
+                                Sgst = dr1[4].ToString();
+                                Igst = dr1[5].ToString();
+                                Cess = dr1[6].ToString();
                             }
 
                             txtRemoveItem.Enabled = true;
@@ -511,6 +521,11 @@ namespace WindowsFormsApplication1
                             dr[4] = txtRate.Text.Trim();
                             dr[5] = txtQuanity.Text.Trim();
                             dr[6] = txtAmount.Text.Trim();
+                            dr[7] = Hsn.Trim();
+                            dr[8] = Cgst.Trim();
+                            dr[9] = Sgst.Trim();
+                            dr[10] = Igst.Trim(); ;
+                            dr[11]=Cess.Trim();
                             int q1 = Convert.ToInt32(txtQuanity.Text.Trim());
                             int q2 = Convert.ToInt32(txtQuantityBild.Text);
                             int q3 = q1 + q2;
@@ -560,6 +575,11 @@ namespace WindowsFormsApplication1
             addToCartTable.Columns.Add(new DataColumn("Rate"));
             addToCartTable.Columns.Add(new DataColumn("Quantity"));
             addToCartTable.Columns.Add(new DataColumn("Amount"));
+            addToCartTable.Columns.Add(new DataColumn("HSN(%)"));
+            addToCartTable.Columns.Add(new DataColumn("CGST(%)"));
+            addToCartTable.Columns.Add(new DataColumn("SGST(%)"));
+            addToCartTable.Columns.Add(new DataColumn("IGST(%)"));
+            addToCartTable.Columns.Add(new DataColumn("CESS(%)"));
 
             //addToCartTable.Columns.Add(new DataColumn("TexAmount"));
         }
