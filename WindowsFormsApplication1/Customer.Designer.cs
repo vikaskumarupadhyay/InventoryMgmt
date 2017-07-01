@@ -36,16 +36,8 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtgstragisterno = new System.Windows.Forms.TextBox();
-            this.txtexiceragisterno = new System.Windows.Forms.TextBox();
-            this.txtservicetaxno = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.txtothers = new System.Windows.Forms.TextBox();
             this.txttanno = new System.Windows.Forms.TextBox();
             this.txtPanno = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.txtDESCRIPTION = new System.Windows.Forms.TextBox();
@@ -58,7 +50,6 @@
             this.txtEMAILADDRESS = new System.Windows.Forms.TextBox();
             this.txtCustCountry = new System.Windows.Forms.TextBox();
             this.txtZIP = new System.Windows.Forms.TextBox();
-            this.txtState = new System.Windows.Forms.TextBox();
             this.txtCity = new System.Windows.Forms.TextBox();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.txtCompnyName = new System.Windows.Forms.TextBox();
@@ -92,6 +83,7 @@
             this.butclose = new System.Windows.Forms.Button();
             this.butupdate = new System.Windows.Forms.Button();
             this.butaddrecord = new System.Windows.Forms.Button();
+            this.comstate = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -197,16 +189,9 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.txtgstragisterno);
-            this.groupBox1.Controls.Add(this.txtexiceragisterno);
-            this.groupBox1.Controls.Add(this.txtservicetaxno);
-            this.groupBox1.Controls.Add(this.label24);
-            this.groupBox1.Controls.Add(this.label23);
-            this.groupBox1.Controls.Add(this.label22);
-            this.groupBox1.Controls.Add(this.txtothers);
+            this.groupBox1.Controls.Add(this.comstate);
             this.groupBox1.Controls.Add(this.txttanno);
             this.groupBox1.Controls.Add(this.txtPanno);
-            this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.label19);
             this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.txtDESCRIPTION);
@@ -219,7 +204,6 @@
             this.groupBox1.Controls.Add(this.txtEMAILADDRESS);
             this.groupBox1.Controls.Add(this.txtCustCountry);
             this.groupBox1.Controls.Add(this.txtZIP);
-            this.groupBox1.Controls.Add(this.txtState);
             this.groupBox1.Controls.Add(this.txtCity);
             this.groupBox1.Controls.Add(this.txtAddress);
             this.groupBox1.Controls.Add(this.txtCompnyName);
@@ -247,76 +231,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer Details";
             // 
-            // txtgstragisterno
-            // 
-            this.txtgstragisterno.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtgstragisterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtgstragisterno.Location = new System.Drawing.Point(890, 355);
-            this.txtgstragisterno.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtgstragisterno.Name = "txtgstragisterno";
-            this.txtgstragisterno.Size = new System.Drawing.Size(406, 22);
-            this.txtgstragisterno.TabIndex = 30;
-            // 
-            // txtexiceragisterno
-            // 
-            this.txtexiceragisterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtexiceragisterno.Location = new System.Drawing.Point(472, 355);
-            this.txtexiceragisterno.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtexiceragisterno.Name = "txtexiceragisterno";
-            this.txtexiceragisterno.Size = new System.Drawing.Size(410, 22);
-            this.txtexiceragisterno.TabIndex = 29;
-            // 
-            // txtservicetaxno
-            // 
-            this.txtservicetaxno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtservicetaxno.Location = new System.Drawing.Point(54, 355);
-            this.txtservicetaxno.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtservicetaxno.Name = "txtservicetaxno";
-            this.txtservicetaxno.Size = new System.Drawing.Size(410, 22);
-            this.txtservicetaxno.TabIndex = 28;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(887, 338);
-            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(54, 14);
-            this.label24.TabIndex = 42;
-            this.label24.Text = "GST NO";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(469, 338);
-            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(80, 14);
-            this.label23.TabIndex = 41;
-            this.label23.Text = "EXCISE NO ";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(51, 338);
-            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(110, 14);
-            this.label22.TabIndex = 40;
-            this.label22.Text = "SERVICE TAX NO";
-            // 
-            // txtothers
-            // 
-            this.txtothers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtothers.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtothers.Location = new System.Drawing.Point(890, 313);
-            this.txtothers.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtothers.Name = "txtothers";
-            this.txtothers.Size = new System.Drawing.Size(406, 22);
-            this.txtothers.TabIndex = 27;
-            // 
             // txttanno
             // 
             this.txttanno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
@@ -337,25 +251,15 @@
             this.txtPanno.TabIndex = 25;
             this.txtPanno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPanno_KeyPress);
             // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(887, 296);
-            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(54, 14);
-            this.label20.TabIndex = 30;
-            this.label20.Text = "CST NO";
-            // 
             // label19
             // 
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(469, 296);
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(52, 14);
+            this.label19.Size = new System.Drawing.Size(54, 14);
             this.label19.TabIndex = 29;
-            this.label19.Text = "VAT NO";
+            this.label19.Text = "GST NO";
             // 
             // label18
             // 
@@ -406,7 +310,7 @@
             this.label13.Location = new System.Drawing.Point(887, 254);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(28, 14);
+            this.label13.Size = new System.Drawing.Size(29, 14);
             this.label13.TabIndex = 24;
             this.label13.Text = "Fax";
             // 
@@ -469,14 +373,6 @@
             this.txtZIP.Size = new System.Drawing.Size(307, 22);
             this.txtZIP.TabIndex = 18;
             this.txtZIP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtZIP_KeyPress);
-            // 
-            // txtState
-            // 
-            this.txtState.Location = new System.Drawing.Point(369, 145);
-            this.txtState.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtState.Name = "txtState";
-            this.txtState.Size = new System.Drawing.Size(307, 22);
-            this.txtState.TabIndex = 17;
             // 
             // txtCity
             // 
@@ -554,7 +450,7 @@
             this.label10.Location = new System.Drawing.Point(51, 212);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(237, 14);
+            this.label10.Size = new System.Drawing.Size(238, 14);
             this.label10.TabIndex = 9;
             this.label10.Text = "Web Site (http://www.example.com)";
             // 
@@ -785,7 +681,7 @@
             this.label17.Location = new System.Drawing.Point(702, 26);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(66, 14);
+            this.label17.Size = new System.Drawing.Size(68, 14);
             this.label17.TabIndex = 4;
             this.label17.Text = "Type Text";
             // 
@@ -852,6 +748,52 @@
             this.butaddrecord.UseVisualStyleBackColor = true;
             this.butaddrecord.Click += new System.EventHandler(this.butaddrecord_Click);
             // 
+            // comstate
+            // 
+            this.comstate.FormattingEnabled = true;
+            this.comstate.Items.AddRange(new object[] {
+            "Select State",
+            "Andaman and Nicobar Islands",
+            "Andhra Pradesh",
+            "Arunachal Pradesh",
+            "Assam",
+            "Bihar",
+            "Chandigarh",
+            "Chhattisgarh",
+            "Dadra and Nagar Haveli",
+            "Daman and Diu",
+            "Delhi – National Capital Territory",
+            "Goa",
+            "Gujarat",
+            "Haryana",
+            "Himachal Pradesh",
+            "Jammu & Kashmir",
+            "Jharkhand",
+            "Karnataka",
+            "Kerala",
+            "Lakshadweep",
+            "Madhya Pradesh",
+            "Maharashtra",
+            "Manipur",
+            "Meghalaya",
+            "Mizoram",
+            "Nagaland",
+            "Odisha (Orissa)",
+            "Puducherry (Pondicherry)",
+            "Punjab",
+            "Rajasthan",
+            "Sikkim",
+            "Tamil Nadu",
+            "Telangana",
+            "Tripura",
+            "Uttar Pradesh",
+            "Uttarakhand",
+            "West Bengal"});
+            this.comstate.Location = new System.Drawing.Point(369, 146);
+            this.comstate.Name = "comstate";
+            this.comstate.Size = new System.Drawing.Size(308, 22);
+            this.comstate.TabIndex = 17;
+            // 
             // Customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
@@ -905,7 +847,6 @@
         private System.Windows.Forms.TextBox txtEMAILADDRESS;
         private System.Windows.Forms.TextBox txtCustCountry;
         private System.Windows.Forms.TextBox txtZIP;
-        private System.Windows.Forms.TextBox txtState;
         private System.Windows.Forms.TextBox txtCity;
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.TextBox txtCompnyName;
@@ -935,21 +876,14 @@
         private System.Windows.Forms.Button butclose;
         private System.Windows.Forms.Button butupdate;
         private System.Windows.Forms.Button butaddrecord;
-        private System.Windows.Forms.TextBox txtothers;
         private System.Windows.Forms.TextBox txttanno;
         private System.Windows.Forms.TextBox txtPanno;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox txtgstragisterno;
-        private System.Windows.Forms.TextBox txtexiceragisterno;
-        private System.Windows.Forms.TextBox txtservicetaxno;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox comstate;
     }
 }
