@@ -88,7 +88,8 @@ namespace WindowsFormsApplication1
 
                             if (updateCounter == 0)
                             {
-                                string saveCommand1 = "insert into VendorDetails values ('" + txtVenderCode.Text + "','" + txtVenderName.Text + "','" + txtCompanyName.Text + "','" + txtVenderAddress.Text + "','" + txtVenderCity.Text + "','" + txtVenderState.Text + "','" + txtVenderZip.Text + "','" + txtVenderCountry.Text + "','" + txtVenderEmailAddress.Text + "','" + txtVenderWebSite.Text + "','" + txtVenderPhone.Text + "', '" + txtVenderMobile.Text + "','" + txtVenderFax.Text + "','" + txtVenderDesc.Text + "','" + txtPanNo.Text + "','" + txtVatNo.Text + "','" + txtCstNo.Text + "','" + txtSarvice.Text + "','" + txtExcise.Text + "','" + txtGst.Text + "')";
+
+                                string saveCommand1 = "insert into VendorDetails values ('" + txtVenderCode.Text + "','" + txtVenderName.Text + "','" + txtCompanyName.Text + "','" + txtVenderAddress.Text + "','" + txtVenderCity.Text + "','" + cmbState.SelectedItem.ToString() + "','" + txtVenderZip.Text + "','" + txtVenderCountry.Text + "','" + txtVenderEmailAddress.Text + "','" + txtVenderWebSite.Text + "','" + txtVenderPhone.Text + "', '" + txtVenderMobile.Text + "','" + txtVenderFax.Text + "','" + txtVenderDesc.Text + "','" + txtPanNo.Text + "','" + txtGst.Text + "')";
 
                                 string saveCommand2 = "insert into VendorAccountDetails values ('" + txtVenderCode.Text + "','" + txtVenderCode.Text + "','" + txtVenderOpeningBal.Text + "','" + txtVenderCurrentBal.Text + "')";
 
@@ -108,7 +109,7 @@ namespace WindowsFormsApplication1
 
                             else if (updateCounter == 1)
                             {
-                                string updateCommand1 = "update  VendorDetails  set  vName='" + txtVenderName.Text + "', vCompName= '" + txtCompanyName.Text + "',vAddress='" + txtVenderAddress.Text + "',vCity='" + txtVenderCity.Text + "',vState='" + txtVenderState.Text + "',vZip='" + txtVenderZip.Text + "',vCountry='" + txtVenderCountry.Text + "',vEmail='" + txtVenderEmailAddress.Text + "',vWebAddress='" + txtVenderWebSite.Text + "',vPhone='" + txtVenderPhone.Text + "', vMobile='" + txtVenderMobile.Text + "',vFax='" + txtVenderFax.Text + "',vPanNo='" + txtPanNo.Text + "',vVatNo='" + txtVatNo.Text + "',vDesc='" + txtVenderDesc.Text + "',vCstNo='" + txtCstNo.Text + "',vServiceTaxRegnNo='" + txtSarvice.Text + "',vExciseRegnNo='" + txtExcise.Text + "',vGSTRegnNo='" + txtGst.Text + "'  where venderid='" + txtVenderCode.Text + "'";
+                                string updateCommand1 = "update  VendorDetails  set  vName='" + txtVenderName.Text + "', vCompName= '" + txtCompanyName.Text + "',vAddress='" + txtVenderAddress.Text + "',vCity='" + txtVenderCity.Text + "',vState='" + cmbState.SelectedItem.ToString() + "',vZip='" + txtVenderZip.Text + "',vCountry='" + txtVenderCountry.Text + "',vEmail='" + txtVenderEmailAddress.Text + "',vWebAddress='" + txtVenderWebSite.Text + "',vPhone='" + txtVenderPhone.Text + "', vMobile='" + txtVenderMobile.Text + "',vFax='" + txtVenderFax.Text + "',vPanNo='" + txtPanNo.Text + "',vGSTNo='" + txtGst.Text + "',vDesc='" + txtVenderDesc.Text + "'  where venderid='" + txtVenderCode.Text + "'";
                                 string updateCommand2 = "update   VendorAccountDetails set vOpeningBalance='" + txtVenderOpeningBal.Text + "',vCurrentBalance='" + txtVenderCurrentBal.Text + "' where venderId='" + txtVenderCode.Text + "'";
 
                                 int updatedRows = dbMainClass.updateDetails(updateCommand1, updateCommand2);
@@ -157,7 +158,7 @@ namespace WindowsFormsApplication1
             txtCompanyName.Text = "";
             txtVenderAddress.Text = "";
             txtVenderCity.Text = "";
-            txtVenderState.Text = "";
+            cmbState.SelectedIndex = 0;
             txtVenderCountry.Text = "";
             txtVenderZip.Text = "";
             txtVenderEmailAddress.Text = "";
@@ -166,20 +167,16 @@ namespace WindowsFormsApplication1
             txtVenderMobile.Text = "";
             txtVenderFax.Text = "";
             txtVenderDesc.Text = "";
-            txtCstNo.Text = "";
-            txtExcise.Text = "";
-            txtGst.Text = "";
-            txtSarvice.Text = "";
+           
 
             txtVenderOpeningBal.Text = "0";
             txtVenderCurrentBal.Text = "0";
 
             txtVenderCode.Text = "";
             txtVenderCode.Text = "";
-            txtVatNo.Text = "";
+            txtGst.Text = "";
             txtPanNo.Text = "";
-            txtCstNo.Text = "";
-
+           
         }
         #endregion
 
@@ -197,16 +194,16 @@ namespace WindowsFormsApplication1
             txtVenderOpeningBal.Enabled = false;
             txtCompanyName.Enabled = false;
             txtPanNo.Enabled = false;
-            txtVatNo.Enabled = false;
-            txtCstNo.Enabled = false;
+            txtGst.Enabled = false;
+           // txtCstNo.Enabled = false;
             //txtVenderState.Enabled = false;
             txtVenderWebSite.Enabled = false;
            // txtVenderZip.Enabled = false;
             txtVenderEmailAddress.Enabled = false;
             btnVenderList.Enabled = false;
-            txtSarvice.Enabled = false;
-            txtExcise.Enabled = false;
-            txtGst.Enabled = false;
+            //txtSarvice.Enabled = false;
+            //txtExcise.Enabled = false;
+            //txtGst.Enabled = false;
         }
         private void Enabled2()
         {
@@ -218,16 +215,16 @@ namespace WindowsFormsApplication1
             txtVenderOpeningBal.Enabled = true;
             txtCompanyName.Enabled = true;
             txtPanNo.Enabled = true;
-            txtVatNo.Enabled = true;
-            txtCstNo.Enabled = true;
-            txtVenderState.Enabled = true;
+            txtGst.Enabled = true;
+            //txtCstNo.Enabled = true;
+            cmbState.Enabled = true;
             txtVenderWebSite.Enabled = true;
             txtVenderZip.Enabled = true;
             txtVenderEmailAddress.Enabled = true;
             btnVenderList.Enabled = true;
-            txtSarvice.Enabled = true;
-            txtExcise.Enabled = true;
-            txtGst.Enabled = true;
+            //txtSarvice.Enabled = true;
+           // txtExcise.Enabled = true;
+            //txtGst.Enabled = true;
         }
         private void Tabindex()
         {
@@ -236,7 +233,7 @@ namespace WindowsFormsApplication1
             txtCompanyName.TabStop = false;
             txtVenderAddress.TabStop = false;
             txtVenderCity.TabStop = false;
-            txtVenderState.TabStop = false;
+            cmbState.TabStop = false;
             txtVenderCountry.TabStop = false;
             txtVenderZip.TabStop = false;
             txtVenderEmailAddress.TabStop = false;
@@ -245,15 +242,11 @@ namespace WindowsFormsApplication1
             txtVenderMobile.TabStop = false;
             txtVenderFax.TabStop = false;
             txtVenderDesc.TabStop = false;
-            txtSarvice.TabStop = false;
-            txtExcise.TabStop = false;
-            txtCstNo.TabStop = false;
-            txtGst.TabStop = false;
-
+          
             txtVenderOpeningBal.TabStop = false;
             txtVenderCurrentBal.TabStop = false;
             txtPanNo.TabStop = false;
-            txtVatNo.TabStop = false;
+            txtGst.TabStop = false;
             //dataGridView1.TabStop = false;
             btnVenderSave.TabStop = false;
             btnVenderClose.TabStop = false;
@@ -268,7 +261,7 @@ namespace WindowsFormsApplication1
             txtCompanyName.TabStop = true;
             txtVenderAddress.TabStop = true;
             txtVenderCity.TabStop = true;
-            txtVenderState.TabStop = true;
+            cmbState.TabStop = true;
             txtVenderCountry.TabStop = true;
             txtVenderZip.TabStop = true;
             txtVenderEmailAddress.TabStop = true;
@@ -277,15 +270,12 @@ namespace WindowsFormsApplication1
             txtVenderMobile.TabStop = true;
             txtVenderFax.TabStop = true;
             txtVenderDesc.TabStop = true;
-            txtSarvice.TabStop = true;
-            txtExcise.TabStop = true;
-            txtCstNo.TabStop = true;
-            txtGst.TabStop = true;
+            
 
             //txtVenderOpeningBal.TabStop = false;
             //txtVenderCurrentBal.TabStop = false;
             txtPanNo.TabStop = true;
-            txtVatNo.TabStop = true;
+            txtGst.TabStop = true;
             //dataGridView1.TabStop = false;
             btnVenderSave.TabStop = true;
             btnVenderClose.TabStop = true;
@@ -300,7 +290,7 @@ namespace WindowsFormsApplication1
             txtCompanyName.TabStop = true;
             txtVenderAddress.TabStop = true;
             txtVenderCity.TabStop = true;
-            txtVenderState.TabStop = true;
+            cmbState.TabStop = true;
             txtVenderCountry.TabStop = true;
             txtVenderZip.TabStop = true;
             txtVenderEmailAddress.TabStop = true;
@@ -309,15 +299,12 @@ namespace WindowsFormsApplication1
             txtVenderMobile.TabStop = true;
             txtVenderFax.TabStop = true;
             txtVenderDesc.TabStop = true;
-            txtSarvice.TabStop = true;
-            txtExcise.TabStop = true;
-            txtCstNo.TabStop = true;
-            txtGst.TabStop = true;
+           
 
             txtVenderOpeningBal.TabStop = true;
             txtVenderCurrentBal.TabStop = false;
             txtPanNo.TabStop = true;
-            txtVatNo.TabStop = true;
+            txtGst.TabStop = true;
             //dataGridView1.TabStop = false;
             btnVenderSave.TabStop = true;
             btnVenderClose.TabStop = true;
@@ -408,6 +395,7 @@ namespace WindowsFormsApplication1
 
         private void frmVendorDetails_Load(object sender, EventArgs e)
         {
+            cmbState.SelectedIndex = 0;
             if (counter == 1)
             {
                 //panel2.Visible = true;
@@ -431,8 +419,8 @@ namespace WindowsFormsApplication1
                 //panel2.Visible = false;
                 panel1.Visible = false;
             }
-                   string selectqurry = "select vd.venderId as [Vendor ID ],vd.vName AS [Vendor Name] ,vd.vCompName AS [Company Name] ,vd.vAddress AS Address,vd.vCity AS City,vd. vState AS State ,vd.vZip AS Zip ,vd.vCountry AS Country ,vd.vEmail AS[E-Mail ],vd. vWebAddress AS[Web Address],vd.vPhone AS Phone ,vd.vMobile AS Mobile ,vd.vFax AS Fax ,vd.vPanNo as[PAN NO],vd.vVatNo as [VAT NO],vd.vCstNo as[CST NO],vd.vServiceTaxRegnNo as [SERVICE TAX NO],vd.vExciseRegnNo as [EXCISE NO],vd.vGSTRegnNo as[GST NO],vd.vDesc AS [Description],vad.vOpeningBalance AS [Opening Balance] , vad.vCurrentBalance AS [Current Balance] from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID";
-                string selectqurryForActualColumnName = "select top 1 vd.venderId ,vd.vName  ,vd.vCompName  ,vd.vAddress ,vd.vCity,vd. vState  ,vd.vZip  ,vd.vCountry  ,vd.vEmail ,vd. vWebAddress ,vd.vPhone  ,vd.vMobile ,vd.vFax ,vd.vPanNo ,vd.vVatNo ,vd.vCstNo,vd.vServiceTaxRegnNo ,vd.vExciseRegnNo ,vd.vGSTRegnNo ,vd.vDesc,vad.vOpeningBalance, vad.vCurrentBalance  from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID";
+            string selectqurry = "select vd.venderId as [Vendor ID ],vd.vName AS [Vendor Name] ,vd.vCompName AS [Company Name] ,vd.vAddress AS Address,vd.vCity AS City,vd. vState AS State ,vd.vZip AS Zip ,vd.vCountry AS Country ,vd.vEmail AS[E-Mail ],vd. vWebAddress AS[Web Address],vd.vPhone AS Phone ,vd.vMobile AS Mobile ,vd.vFax AS Fax ,vd.vPanNo as[PAN NO],vd.vGSTNo as [GST NO],vd.vDesc AS [Description],vad.vOpeningBalance AS [Opening Balance] , vad.vCurrentBalance AS [Current Balance] from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID";
+                string selectqurryForActualColumnName = "select top 1 vd.venderId ,vd.vName  ,vd.vCompName  ,vd.vAddress ,vd.vCity,vd. vState  ,vd.vZip  ,vd.vCountry  ,vd.vEmail ,vd. vWebAddress ,vd.vPhone  ,vd.vMobile ,vd.vFax ,vd.vPanNo ,vd.vGSTNo ,vd.vDesc,vad.vOpeningBalance, vad.vCurrentBalance  from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
             DataTable customDataTable = new DataTable();
@@ -523,7 +511,7 @@ namespace WindowsFormsApplication1
                 txtCompanyName.Text = cellCollection[2].Value.ToString();
                 txtVenderAddress.Text = cellCollection[3].Value.ToString();
                 txtVenderCity.Text = cellCollection[4].Value.ToString();
-                txtVenderState.Text = cellCollection[5].Value.ToString();
+                cmbState.Text = cellCollection[5].Value.ToString();
                 txtVenderCountry.Text = cellCollection[7].Value.ToString();
                 txtVenderZip.Text = cellCollection[6].Value.ToString();
                 txtVenderEmailAddress.Text = cellCollection[8].Value.ToString();
@@ -531,16 +519,16 @@ namespace WindowsFormsApplication1
                 txtVenderPhone.Text = cellCollection[10].Value.ToString();
                 txtVenderMobile.Text = cellCollection[11].Value.ToString();
                 txtVenderFax.Text = cellCollection[12].Value.ToString();
-                txtVenderDesc.Text = cellCollection[19].Value.ToString();
-                txtSarvice.Text = cellCollection[16].Value.ToString();
-                txtExcise.Text = cellCollection[17].Value.ToString();
-                txtCstNo.Text = cellCollection[15].Value.ToString();
-                txtGst.Text = cellCollection[18].Value.ToString();
+                txtVenderDesc.Text = cellCollection[15].Value.ToString();
+                //txtSarvice.Text = cellCollection[16].Value.ToString();
+                //txtExcise.Text = cellCollection[17].Value.ToString();
+                //txtCstNo.Text = cellCollection[15].Value.ToString();
+                //txtGst.Text = cellCollection[18].Value.ToString();
 
-                txtVenderOpeningBal.Text = cellCollection[20].Value.ToString();
-                txtVenderCurrentBal.Text = cellCollection[21].Value.ToString();
+                txtVenderOpeningBal.Text = cellCollection[16].Value.ToString();
+                txtVenderCurrentBal.Text = cellCollection[17].Value.ToString();
                 txtPanNo.Text = cellCollection[13].Value.ToString();
-                txtVatNo.Text = cellCollection[14].Value.ToString();
+                txtGst.Text = cellCollection[14].Value.ToString();
 
                // txtCstNo.Text = cellCollection[15].Value.ToString();
             }
@@ -667,7 +655,7 @@ namespace WindowsFormsApplication1
         {
             string s = comboBox1.SelectedValue.ToString();
             //string m = "v" + s;
-            string selectQurry = "select vd.venderId as [Vendor ID ],vd.vName AS [Vendor Name] ,vd.vCompName AS [Company Name] ,vd.vAddress AS Address,vd.vCity AS City,vd. vState AS State ,vd.vZip AS Zip ,vd.vCountry AS Country ,vd.vEmail AS[E-Mail ],vd. vWebAddress AS[Web Address],vd.vPhone AS Phone ,vd.vMobile AS Mobile ,vd.vFax AS Fax ,vd.vPanNo as[PAN NO],vd.vVatNo as [VAT NO],vd.vCstNo as[CST NO],vd.vServiceTaxRegnNo as [SERVICE TAX NO],vd.vExciseRegnNo as [EXCISE NO],vd.vGSTRegnNo as[GST NO],vd.vDesc AS Description,vad.vOpeningBalance AS [Opening Balance] , vad.vCurrentBalance AS [Current Balance] from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID where " + s + " like '" + txtSearch.Text + "%'";
+            string selectQurry = "select vd.venderId as [Vendor ID ],vd.vName AS [Vendor Name] ,vd.vCompName AS [Company Name] ,vd.vAddress AS Address,vd.vCity AS City,vd. vState AS State ,vd.vZip AS Zip ,vd.vCountry AS Country ,vd.vEmail AS[E-Mail ],vd. vWebAddress AS[Web Address],vd.vPhone AS Phone ,vd.vMobile AS Mobile ,vd.vFax AS Fax ,vd.vPanNo as[PAN NO],vd.vGSTNo as [GST NO],vd.vDesc AS Description,vad.vOpeningBalance AS [Opening Balance] , vad.vCurrentBalance AS [Current Balance] from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID where " + s + " like '" + txtSearch.Text + "%'";
             DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
             dataGridView1.DataSource = dt;
         }
