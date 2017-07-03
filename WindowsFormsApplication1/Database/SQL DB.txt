@@ -271,7 +271,18 @@ go
 ALTER TABLE VendorDetails DROP COLUMN vGSTRegnNo
 go
 alter table VendorDetails add vGSTNo varchar(200)
-
+go
+ALTER TABLE CompnayDetails DROP COLUMN VatNo
+go
+ALTER TABLE CompnayDetails DROP COLUMN CstNo
+go
+ALTER TABLE CompnayDetails DROP COLUMN ServiceTaxRegnNo
+go
+ALTER TABLE CompnayDetails DROP COLUMN ExciseRegnNo
+go
+ALTER TABLE CompnayDetails DROP COLUMN GSTRegnNo
+go
+alter table CompnayDetails add GSTNo varchar(200)
 
 
 
