@@ -24,8 +24,8 @@ namespace WindowsFormsApplication1
 
         private void Compnay_Load(object sender, EventArgs e)
         {
-            string selectqurry = "select cd.CompnayId as[Company ID], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.PANNO as[PAN NO],cd.GSTNO as[GST NO]from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId";
-            string selectqurryForActualColumnName = "select top 1 cd.CompnayId, cd.OnerName, cd.Name ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email,cd.WebAddress,cd.Phone,cd.Mobile,cd.Fax,cd.PANNO,cd.GSTNO from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId";
+            string selectqurry = "select cd.CompnayId as[Company ID], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.PANNO as[PAN NO],cd.GSTNO as[GST NO]from CompnayDetails cd";
+            string selectqurryForActualColumnName = "select top 1 cd.CompnayId, cd.OnerName, cd.Name ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email,cd.WebAddress,cd.Phone,cd.Mobile,cd.Fax,cd.PANNO,cd.GSTNO from CompnayDetails cd";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
             DataTable customDataTable = new DataTable();
@@ -232,7 +232,7 @@ namespace WindowsFormsApplication1
             {
                 if (txtCompnayCode.Text == "C1")
                 {
-                    string insertquery = "insert into CompnayDetails Values ('" + txtCompnayCode.Text + "','" + txtwonername.Text + "','" + txtCompnayName.Text + "','" + txtCompnayAddress.Text + "','" + txtCity.Text + "','" + cmbState.SelectedItem.ToString() + "','" + txtZip.Text + "','" + txtCountry.Text + "','" + txtEmailAddress.Text + "','" + txtWebSite.Text + "','" + txtPhone.Text + "','" + txtMobile.Text + "','" + txtFax.Text + "','" + txtPanNo.Text + "','" + txtGst.Text + "','" + txtDescription.Text + "','" + taxId + "','" + true + "','" + dtpdate.Value.ToString() + "')";
+                    string insertquery = "insert into CompnayDetails Values ('" + txtCompnayCode.Text + "','" + txtwonername.Text + "','" + txtCompnayName.Text + "','" + txtCompnayAddress.Text + "','" + txtCity.Text + "','" + cmbState.SelectedItem.ToString() + "','" + txtZip.Text + "','" + txtCountry.Text + "','" + txtEmailAddress.Text + "','" + txtWebSite.Text + "','" + txtPhone.Text + "','" + txtMobile.Text + "','" + txtFax.Text + "','" + txtPanNo.Text + "','" + txtGst.Text + "','" + txtDescription.Text + "','" + true + "','" + dtpdate.Value.ToString() + "')";
                     int insertrow = dbMainClass.saveDetails(insertquery);
                     if (insertrow > 0)
                     {
@@ -258,14 +258,14 @@ namespace WindowsFormsApplication1
             }
             if (updatecounter == 1)
             {
-                string updatecommand = "update CompnayDetails set OnerName='" + txtwonername.Text + "', Name='" + txtCompnayName.Text + "',Address='" + txtCompnayAddress.Text + "',City='" + txtCity.Text + "',State='" + cmbState.SelectedItem.ToString()+ "',Zip='" + txtZip.Text + "',Country='" + txtCountry.Text + "',Email='" + txtEmailAddress.Text + "',WebAddress='" + txtWebSite.Text + "',Phone='" + txtPhone.Text + "',Mobile='" + txtMobile.Text + "',Fax='" + txtFax.Text + "',PANNO='" + txtPanNo.Text + "',GSTNO='" + txtGst.Text + "',Description='" + txtDescription.Text + "',RagistrationDate='" + dtpdate.Value.ToString() + "', TexId='" + taxId + "' where CompnayId='" + txtCompnayCode.Text + "' ";
+                string updatecommand = "update CompnayDetails set OnerName='" + txtwonername.Text + "', Name='" + txtCompnayName.Text + "',Address='" + txtCompnayAddress.Text + "',City='" + txtCity.Text + "',State='" + cmbState.SelectedItem.ToString()+ "',Zip='" + txtZip.Text + "',Country='" + txtCountry.Text + "',Email='" + txtEmailAddress.Text + "',WebAddress='" + txtWebSite.Text + "',Phone='" + txtPhone.Text + "',Mobile='" + txtMobile.Text + "',Fax='" + txtFax.Text + "',PANNO='" + txtPanNo.Text + "',GSTNO='" + txtGst.Text + "',Description='" + txtDescription.Text + "',RagistrationDate='" + dtpdate.Value.ToString() + "' where CompnayId='" + txtCompnayCode.Text + "' ";
                 int updatequrry = dbMainClass.saveDetails(updatecommand);
                 if (updatequrry > 0)
                 {
-                    string updateTax = "update CompnayTex set TexAmount='" + txtTexAmount.Text + "' where TexId='" + taxId + "'";
-                    int updatequrry1 = dbMainClass.saveDetails(updateTax);
-                    if (updatequrry1 > 0)
-                    {
+                    //string updateTax = "update CompnayTex set TexAmount='" + txtTexAmount.Text + "' where TexId='" + taxId + "'";
+                    //int updatequrry1 = dbMainClass.saveDetails(updateTax);
+                    //if (updatequrry1 > 0)
+                    //{
                         MessageBox.Show("Details updated successfully");
                         makeblank();
                         string selectqury = "select max (CompnayId) from compnaydetails";
@@ -288,7 +288,7 @@ namespace WindowsFormsApplication1
                         MessageBox.Show("Details save not successfully");
                         
                     }
-                }
+               // }
                
             }
             makeblank();
@@ -303,7 +303,7 @@ namespace WindowsFormsApplication1
             txtSearch.Text = "";
             ComDetails.TabIndex = 0;
             panel1.Visible = true;
-            string selectQuery1 = "select cd.CompnayId as [Company ID], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.PANNO as[PAN No],cd.GSTNO as[GST No],cd.Description,ct.TexName as[Tax Name],ct.TexAmount as[Tax Ammount (%)],cd.RagistrationDate as[Creation Date],cd.Isactive as [Active] from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId ";
+            string selectQuery1 = "select cd.CompnayId as [Company ID], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.PANNO as[PAN No],cd.GSTNO as[GST No],cd.Description,cd.RagistrationDate as[Creation Date],cd.Isactive as [Active] from CompnayDetails cd ";
             DataTable dt = dbMainClass.getDetailByQuery(selectQuery1);
             dataGridView1.DataSource = dt;
             tabindex1();
@@ -330,8 +330,8 @@ namespace WindowsFormsApplication1
                 txtPanNo.Text = cellcolection[13].Value.ToString();
                 txtGst.Text = cellcolection[14].Value.ToString();
                 txtDescription.Text = cellcolection[15].Value.ToString();
-                combComp.Text = cellcolection[16].Value.ToString();
-                txtTexAmount.Text = cellcolection[17].Value.ToString();
+                //combComp.Text = cellcolection[16].Value.ToString();
+                //txtTexAmount.Text = cellcolection[17].Value.ToString();
             }
             catch (Exception ex)
             {
@@ -413,8 +413,7 @@ namespace WindowsFormsApplication1
         private void txtSearch_TextChanged_1(object sender, EventArgs e)
         {
             string s = ComDetails.SelectedValue.ToString();
-            string selectQuery1 = "select cd.CompnayId as[Company ID], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.PANNO as[PAN NO],cd.GSTNO as[GST NO] from CompnayDetails cd join CompnayTex ct on ct.TexId=cd.TexId where " + s + " like '" + txtSearch.Text + "%'";
-
+            string selectQuery1 = "select cd.CompnayId as[Company ID], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.PANNO as[PAN NO],cd.GSTNO as[GST NO] from CompnayDetails cd  where " + s + " like '" + txtSearch.Text + "%'";
             DataTable dt = dbMainClass.getDetailByQuery(selectQuery1);
             dataGridView1.DataSource = dt;
         }

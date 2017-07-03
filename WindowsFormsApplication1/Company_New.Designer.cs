@@ -155,6 +155,7 @@
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tax Type";
+            this.groupBox2.Visible = false;
             // 
             // label25
             // 
