@@ -592,6 +592,7 @@ namespace WindowsFormsApplication1
         {
             gridPurchaseOrder.DefaultCellStyle.SelectionBackColor = Color.Red;
             gridPurchaseOrder.Focus();
+            gridPurchaseOrder.SelectionMode =DataGridViewSelectionMode.FullRowSelect;
             txtRemoveItem.Enabled = false;
 
             //if (addToCartTable.Rows.Count > 0)
@@ -1135,7 +1136,7 @@ namespace WindowsFormsApplication1
             //    if (e.ColumnIndex == 1)
             //    {
 
-<<<<<<< HEAD
+
             if (e.KeyChar == Convert.ToChar(Keys.Escape))
             {
                 var dgvcount = gridPurchaseOrder.Rows.Count;
@@ -1147,128 +1148,131 @@ namespace WindowsFormsApplication1
             }
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
+
                 int selectewIndex = gridPurchaseOrder.CurrentCell.RowIndex;
                 int selectewIndexActual = gridPurchaseOrder.SelectedRows[0].Index;
 
                 Color backGroundColor = gridPurchaseOrder.DefaultCellStyle.SelectionBackColor;
                 if (backGroundColor.Name == "DodgerBlue" || backGroundColor.Name == "Highlight")
                 {
-=======
-            //        if (gridPurchaseOrder.CurrentCell.ColumnIndex == 1)
-            //        {
-            //            gridPurchaseOrder.CurrentCell = gridPurchaseOrder.CurrentRow.Cells[0];
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message.ToString());
-            //}
-            #region commented code 
-            //if (e.KeyChar == Convert.ToChar(Keys.Escape))
-            //{
-            //    var dgvcount = gridPurchaseOrder.Rows.Count;
-            //    gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[dgvcount - 2].Cells[0];
-            //    gridPurchaseOrder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
-            //    txtItemCode.Focus();
-            //    txtItemCode.Select(txtItemCode.Text.Length, 0);
-            //    txtRemoveItem.Enabled = true;
-            //}
-            //if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            //{
-            //    int selectewIndex = gridPurchaseOrder.CurrentCell.RowIndex;
-            //    int selectewIndexActual = gridPurchaseOrder.SelectedRows[0].Index;
 
-            //    Color backGroundColor = gridPurchaseOrder.DefaultCellStyle.SelectionBackColor;
-            //    if (backGroundColor.Name == "DodgerBlue" || backGroundColor.Name == "Highlight")
-            //    {
->>>>>>> fc5b1bdfa08ff8eb38114cc33efef6801ad5c8e6
+                    //        if (gridPurchaseOrder.CurrentCell.ColumnIndex == 1)
+                    //        {
+                    //            gridPurchaseOrder.CurrentCell = gridPurchaseOrder.CurrentRow.Cells[0];
+                    //        }
+                    //    }
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    MessageBox.Show(ex.Message.ToString());
+                    //}
+                    #region commented code
+                    //if (e.KeyChar == Convert.ToChar(Keys.Escape))
+                    //{
+                    //    var dgvcount = gridPurchaseOrder.Rows.Count;
+                    //    gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[dgvcount - 2].Cells[0];
+                    //    gridPurchaseOrder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
+                    //    txtItemCode.Focus();
+                    //    txtItemCode.Select(txtItemCode.Text.Length, 0);
+                    //    txtRemoveItem.Enabled = true;
+                    //}
+                    //if (e.KeyChar == Convert.ToChar(Keys.Enter))
+                    //{
+                    //    int selectewIndex = gridPurchaseOrder.CurrentCell.RowIndex;
+                    //    int selectewIndexActual = gridPurchaseOrder.SelectedRows[0].Index;
 
-            //        MessageBox.Show("Please click on 'Remove Button' to remove item!");
-            //        txtRemoveItem.Focus();
-            //        return;
+                    //    Color backGroundColor = gridPurchaseOrder.DefaultCellStyle.SelectionBackColor;
+                    //    if (backGroundColor.Name == "DodgerBlue" || backGroundColor.Name == "Highlight")
+                    //    {
 
-            //    }
-            //    if (addToCartTable.Rows.Count > 0)
-            //    {
-            //        if (txtTotalAmount.Text == "")
-            //        {
-            //            txtTotalAmount.Text = "0";
-            //        }
-            //        int index = gridPurchaseOrder.SelectedRows[0].Index;
-            //        string itemId = gridPurchaseOrder.Rows[index - 1].Cells[0].Value.ToString();
-            //        if ((!ls.Contains(itemId)) || (gridPurchaseOrder.Rows[index - 1].DefaultCellStyle.Font == null))
-            //        {
-            //            int courentrow = gridPurchaseOrder.CurrentRow.Index;
-            //            string Amount = gridPurchaseOrder.Rows[courentrow - 1].Cells[6].Value.ToString();
-            //            string quantity = gridPurchaseOrder.Rows[courentrow - 1].Cells[5].Value.ToString();
-            //            int q1 = Convert.ToInt32(txtQuantityBild.Text);
-            //            q1 -= Convert.ToInt32(quantity.Trim());
-            //            txtQuantityBild.Text = q1.ToString();
 
-            //            if (Amount == "")
-            //            {
-            //                Amount = "0";
-            //            }
-            //            double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
-            //            totalAmount -= Convert.ToDouble(Amount.Trim());
-            //            txtTotalAmount.Text = totalAmount.ToString("##0.00");
-            //            //int index = gridPurchaseOrder.SelectedRows[0].Index;
-            //            //addToCartTable.Rows.RemoveAt(index-1);
-            //            gridPurchaseOrder.Rows[index - 1].DefaultCellStyle.Font = new Font(new FontFamily("Microsoft Sans Serif"), 9.00F, FontStyle.Strikeout);
-            //            gridPurchaseOrder.Rows[index - 1].DefaultCellStyle.ForeColor = Color.Red;
-            //            //string itemId = gridPurchaseOrder.Rows[index - 1].Cells[0].Value.ToString();// I44
+                    //        MessageBox.Show("Please click on 'Remove Button' to remove item!");
+                    //        txtRemoveItem.Focus();
+                    //        return;
 
-            //            ls.Add(itemId);
-            //            //gridPurchaseOrder.DataSource = addToCartTable;
-            //            if (addToCartTable.Rows.Count == 0)
-            //            {
-            //                txtTotalAmount.Text = "0.00";
-            //                //txtDiscount.Text = "0.0";
-            //            }
-            //            if (ls.Count == gridPurchaseOrder.Rows.Count - 1)
-            //            {
-            //                btnSave.TabStop = false;
-            //                btnClose.TabStop = false;
-            //                txtItemCode.Focus();
-            //                txtItemCode.Select(txtItemCode.Text.Length, 0);
-            //                gridPurchaseOrder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
-            //            }
-            //            if (gridPurchaseOrder.Rows.Count > 0)
-            //            {
-            //                // gridPurchaseOrder.Rows[gridPurchaseOrder.Rows.Count - 1].Selected = true;
-            //            }
-            //            if (gridPurchaseOrder.Rows.Count > 0)
-            //            {
-            //                txtdis.Text = "0.00";
-            //                txtdis.ReadOnly = true;
-            //            }
-            //            if (gridPurchaseOrder.Rows.Count > 1)
-            //            {
-            //                txtdis.ReadOnly = false;
-            //            }
-            //            else
-            //            {
-            //                //txtRemoveItem.Enabled = false;
-            //            }
-            //        }
-            //        else if ((!ls.Contains(itemId)) || (gridPurchaseOrder.Rows[index - 1].DefaultCellStyle.Font != null))
-            //        {
-            //            MessageBox.Show("Item already deleted!");
-            //        }
-            //    }
-            //}
-            ////}
-            //if (e.KeyChar == Convert.ToChar(Keys.Escape))
-            //{
-            //    var dgvcount = gridPurchaseOrder.Rows.Count;
-            //    gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[dgvcount - 2].Cells[0];
-            //    gridPurchaseOrder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
-            //    txtItemCode.Focus();
-            //    txtItemCode.Select(txtItemCode.Text.Length, 0);
-            //    txtRemoveItem.Enabled = true;
-            //}
-            #endregion
+                    //    }
+                    //    if (addToCartTable.Rows.Count > 0)
+                    //    {
+                    //        if (txtTotalAmount.Text == "")
+                    //        {
+                    //            txtTotalAmount.Text = "0";
+                    //        }
+                    //        int index = gridPurchaseOrder.SelectedRows[0].Index;
+                    //        string itemId = gridPurchaseOrder.Rows[index - 1].Cells[0].Value.ToString();
+                    //        if ((!ls.Contains(itemId)) || (gridPurchaseOrder.Rows[index - 1].DefaultCellStyle.Font == null))
+                    //        {
+                    //            int courentrow = gridPurchaseOrder.CurrentRow.Index;
+                    //            string Amount = gridPurchaseOrder.Rows[courentrow - 1].Cells[6].Value.ToString();
+                    //            string quantity = gridPurchaseOrder.Rows[courentrow - 1].Cells[5].Value.ToString();
+                    //            int q1 = Convert.ToInt32(txtQuantityBild.Text);
+                    //            q1 -= Convert.ToInt32(quantity.Trim());
+                    //            txtQuantityBild.Text = q1.ToString();
+
+                    //            if (Amount == "")
+                    //            {
+                    //                Amount = "0";
+                    //            }
+                    //            double totalAmount = Convert.ToDouble(txtTotalAmount.Text);
+                    //            totalAmount -= Convert.ToDouble(Amount.Trim());
+                    //            txtTotalAmount.Text = totalAmount.ToString("##0.00");
+                    //            //int index = gridPurchaseOrder.SelectedRows[0].Index;
+                    //            //addToCartTable.Rows.RemoveAt(index-1);
+                    //            gridPurchaseOrder.Rows[index - 1].DefaultCellStyle.Font = new Font(new FontFamily("Microsoft Sans Serif"), 9.00F, FontStyle.Strikeout);
+                    //            gridPurchaseOrder.Rows[index - 1].DefaultCellStyle.ForeColor = Color.Red;
+                    //            //string itemId = gridPurchaseOrder.Rows[index - 1].Cells[0].Value.ToString();// I44
+
+                    //            ls.Add(itemId);
+                    //            //gridPurchaseOrder.DataSource = addToCartTable;
+                    //            if (addToCartTable.Rows.Count == 0)
+                    //            {
+                    //                txtTotalAmount.Text = "0.00";
+                    //                //txtDiscount.Text = "0.0";
+                    //            }
+                    //            if (ls.Count == gridPurchaseOrder.Rows.Count - 1)
+                    //            {
+                    //                btnSave.TabStop = false;
+                    //                btnClose.TabStop = false;
+                    //                txtItemCode.Focus();
+                    //                txtItemCode.Select(txtItemCode.Text.Length, 0);
+                    //                gridPurchaseOrder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
+                    //            }
+                    //            if (gridPurchaseOrder.Rows.Count > 0)
+                    //            {
+                    //                // gridPurchaseOrder.Rows[gridPurchaseOrder.Rows.Count - 1].Selected = true;
+                    //            }
+                    //            if (gridPurchaseOrder.Rows.Count > 0)
+                    //            {
+                    //                txtdis.Text = "0.00";
+                    //                txtdis.ReadOnly = true;
+                    //            }
+                    //            if (gridPurchaseOrder.Rows.Count > 1)
+                    //            {
+                    //                txtdis.ReadOnly = false;
+                    //            }
+                    //            else
+                    //            {
+                    //                //txtRemoveItem.Enabled = false;
+                    //            }
+                    //        }
+                    //        else if ((!ls.Contains(itemId)) || (gridPurchaseOrder.Rows[index - 1].DefaultCellStyle.Font != null))
+                    //        {
+                    //            MessageBox.Show("Item already deleted!");
+                    //        }
+                    //    }
+                    //}
+                    ////}
+                    //if (e.KeyChar == Convert.ToChar(Keys.Escape))
+                    //{
+                    //    var dgvcount = gridPurchaseOrder.Rows.Count;
+                    //    gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[dgvcount - 2].Cells[0];
+                    //    gridPurchaseOrder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
+                    //    txtItemCode.Focus();
+                    //    txtItemCode.Select(txtItemCode.Text.Length, 0);
+                    //    txtRemoveItem.Enabled = true;
+                    //}
+                    #endregion
+                }
+            }
         }
 
 
@@ -1915,12 +1919,10 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-<<<<<<< HEAD
-                    string itemid = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index-1].Cells[0].Value.ToString();
-=======
+
                     
                     string itemid = gridPurchaseOrder.Rows[ gridPurchaseOrder.CurrentRow.Index-1].Cells[0].Value.ToString();
->>>>>>> fc5b1bdfa08ff8eb38114cc33efef6801ad5c8e6
+
                     string item = "";
                     string selectQurry = "select ItemId from ItemDetails";
                     DataTable dt1 = dbMainClass.getDetailByQuery(selectQurry);
@@ -1967,8 +1969,12 @@ namespace WindowsFormsApplication1
                         Double totalammount = Convert.ToDouble(txtTotalAmount.Text);
                         Double toat = totalammount + price;
                         txtTotalAmount.Text = toat.ToString("###0.00");
-                        gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[5];
 
+                        gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[5];
+                        if (q1 != 0)
+                        {
+                            gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index + 1].Cells[0];
+                        }
                         //if (gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[0].Value != null)
                         //{
                         //    int co = gridPurchaseOrder.CurrentRow.Index;
