@@ -518,12 +518,12 @@ namespace WindowsFormsApplication1
                             DataRow dr = addToCartTable.NewRow();
                             dr[0] = txtItemCode.Text.Trim();
                             dr[1] = txtProductName.Text.Trim();
-                            dr[2] = ConpanyName.Trim();
-                            dr[3] = Mrp.Trim();
-                            dr[4] = txtRate.Text.Trim();
-                            dr[5] = txtQuanity.Text.Trim();
-                            dr[6] = txtAmount.Text.Trim();
-                            dr[7] = Hsn.Trim();
+                            dr[2] = Hsn.Trim();
+                            dr[3] = txtRate.Text.Trim();
+                            dr[4] = txtQuanity.Text.Trim();
+                            dr[5] = txtAmount.Text.Trim();
+                            dr[6] = 
+                            //dr[7] = Hsn.Trim();
                             dr[8] = Cgst.Trim();
                             dr[9] = Sgst.Trim();
                             dr[10] = Igst.Trim(); ;
@@ -572,16 +572,17 @@ namespace WindowsFormsApplication1
         {
             addToCartTable.Columns.Add(new DataColumn("Item Code"));
             addToCartTable.Columns.Add(new DataColumn("Item Name"));
-            addToCartTable.Columns.Add(new DataColumn("Company Name"));
-            addToCartTable.Columns.Add(new DataColumn("MRP"));
+            addToCartTable.Columns.Add(new DataColumn("HSN"));
             addToCartTable.Columns.Add(new DataColumn("Rate"));
             addToCartTable.Columns.Add(new DataColumn("Quantity"));
-            addToCartTable.Columns.Add(new DataColumn("Amount"));
-            addToCartTable.Columns.Add(new DataColumn("HSN(%)"));
-            addToCartTable.Columns.Add(new DataColumn("CGST(%)"));
-            addToCartTable.Columns.Add(new DataColumn("SGST(%)"));
-            addToCartTable.Columns.Add(new DataColumn("IGST(%)"));
-            addToCartTable.Columns.Add(new DataColumn("CESS(%)"));
+            addToCartTable.Columns.Add(new DataColumn("Total"));
+            addToCartTable.Columns.Add(new DataColumn("Discount"));
+            addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
+            addToCartTable.Columns.Add(new DataColumn("CGST (%)"));
+            addToCartTable.Columns.Add(new DataColumn("SGST (%)"));
+            addToCartTable.Columns.Add(new DataColumn("IGST (%)"));
+            addToCartTable.Columns.Add(new DataColumn("CESS (%)"));
+            addToCartTable.Columns.Add(new DataColumn("Total Ammount"));
 
             //addToCartTable.Columns.Add(new DataColumn("TexAmount"));
         }
@@ -642,8 +643,8 @@ namespace WindowsFormsApplication1
             txtsearch.Text = "";
             counter = 0;
             panel2.Visible = true;
-            string selectqurry = "select vd.venderId as [Vender ID ],vd.vName AS [Vendor Name],vd.vCompName AS [Company Name] ,vd.vAddress AS Address,vd.vCity AS City,vd. vState AS State ,vd.vZip AS Zip ,vd.vCountry AS Country ,vd.vEmail AS[E-Mail Address],vd. vWebAddress AS[Web Address],vd.vPhone AS Phone ,vd.vMobile AS Mobile ,vd.vFax AS Fax ,vd.vPanNo as[PAN NO],vd.vVatNo as [VAT NO],vd.vCstNo as[CST NO],vd.vServiceTaxRegnNo as [SERVICE TAX NO],vd.vExciseRegnNo as [EXCISE NO],vd.vGSTRegnNo as[GST NO],vd.vDesc AS Description,vad.vOpeningBalance AS [Opening Balance] , vad.vCurrentBalance AS [Current Balance] from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID";
-            string selectqurryForActualColumnName = "select top 1 vd.venderId ,vd.vName  ,vd.vCompName  ,vd.vAddress ,vd.vCity,vd. vState  ,vd.vZip  ,vd.vCountry  ,vd.vEmail ,vd. vWebAddress ,vd.vPhone  ,vd.vMobile ,vd.vFax ,vd.vPanNo ,vd.vVatNo ,vd.vCstNo,vd.vServiceTaxRegnNo ,vd.vExciseRegnNo ,vd.vGSTRegnNo ,vd.vDesc,vad.vOpeningBalance, vad.vCurrentBalance  from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID";
+            string selectqurry = "select vd.venderId as [Vendor ID ],vd.vName AS [Vendor Name] ,vd.vCompName AS [Company Name] ,vd.vAddress AS Address,vd.vCity AS City,vd. vState AS State ,vd.vZip AS Zip ,vd.vCountry AS Country ,vd.vEmail AS[E-Mail ],vd. vWebAddress AS[Web Address],vd.vPhone AS Phone ,vd.vMobile AS Mobile ,vd.vFax AS Fax ,vd.vPanNo as[PAN NO],vd.vGSTNo as [GST NO],vd.vDesc AS [Description],vad.vOpeningBalance AS [Opening Balance] , vad.vCurrentBalance AS [Current Balance] from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID";
+            string selectqurryForActualColumnName = "select top 1 vd.venderId ,vd.vName  ,vd.vCompName  ,vd.vAddress ,vd.vCity,vd. vState  ,vd.vZip  ,vd.vCountry  ,vd.vEmail ,vd. vWebAddress ,vd.vPhone  ,vd.vMobile ,vd.vFax ,vd.vPanNo ,vd.vGSTNo ,vd.vDesc,vad.vOpeningBalance, vad.vCurrentBalance  from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
             DataTable customDataTable = new DataTable();
@@ -1134,6 +1135,25 @@ namespace WindowsFormsApplication1
             //    if (e.ColumnIndex == 1)
             //    {
 
+<<<<<<< HEAD
+            if (e.KeyChar == Convert.ToChar(Keys.Escape))
+            {
+                var dgvcount = gridPurchaseOrder.Rows.Count;
+                gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[dgvcount - 2].Cells[0];
+                gridPurchaseOrder.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
+                txtItemCode.Focus();
+                txtItemCode.Select(txtItemCode.Text.Length, 0);
+                txtRemoveItem.Enabled = true;
+            }
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                int selectewIndex = gridPurchaseOrder.CurrentCell.RowIndex;
+                int selectewIndexActual = gridPurchaseOrder.SelectedRows[0].Index;
+
+                Color backGroundColor = gridPurchaseOrder.DefaultCellStyle.SelectionBackColor;
+                if (backGroundColor.Name == "DodgerBlue" || backGroundColor.Name == "Highlight")
+                {
+=======
             //        if (gridPurchaseOrder.CurrentCell.ColumnIndex == 1)
             //        {
             //            gridPurchaseOrder.CurrentCell = gridPurchaseOrder.CurrentRow.Cells[0];
@@ -1162,6 +1182,7 @@ namespace WindowsFormsApplication1
             //    Color backGroundColor = gridPurchaseOrder.DefaultCellStyle.SelectionBackColor;
             //    if (backGroundColor.Name == "DodgerBlue" || backGroundColor.Name == "Highlight")
             //    {
+>>>>>>> fc5b1bdfa08ff8eb38114cc33efef6801ad5c8e6
 
             //        MessageBox.Show("Please click on 'Remove Button' to remove item!");
             //        txtRemoveItem.Focus();
@@ -1427,7 +1448,7 @@ namespace WindowsFormsApplication1
             {
                 string s = comboBox1.SelectedValue.ToString();
                 //string m = "v" + s;
-                string selectQurry = "select vd.venderId as [Vender Id ],vd.vName AS Name ,vd.vCompName AS [Company Name] ,vd.vAddress AS Address,vd.vCity AS City,vd. vState AS State ,vd.vZip AS Zip ,vd.vCountry AS Country ,vd.vEmail AS[E-Mail ],vd. vWebAddress AS[Web Address],vd.vPhone AS Phone ,vd.vMobile AS Mobile ,vd.vFax AS Fax ,vd.vPanNo as[PAN No],vd.vVatNo as [VAT No],vd.vCstNo as[CST No],vd.vServiceTaxRegnNo as [Service Tax Regn.No],vd.vExciseRegnNo as [Excise Regn.No],vd.vGSTRegnNo as[GST Regn.No],vd.vDesc AS Description,vad.vOpeningBalance AS [Opening Balance] , vad.vCurrentBalance AS [Current Balance] from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID where " + s + " like '" + txtsearch.Text + "%'";
+                string selectQurry = "select vd.venderId as [Vendor ID ],vd.vName AS [Vendor Name] ,vd.vCompName AS [Company Name] ,vd.vAddress AS Address,vd.vCity AS City,vd. vState AS State ,vd.vZip AS Zip ,vd.vCountry AS Country ,vd.vEmail AS[E-Mail ],vd. vWebAddress AS[Web Address],vd.vPhone AS Phone ,vd.vMobile AS Mobile ,vd.vFax AS Fax ,vd.vPanNo as[PAN NO],vd.vGSTNo as [GST NO],vd.vDesc AS [Description],vad.vOpeningBalance AS [Opening Balance] , vad.vCurrentBalance AS [Current Balance] from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID where " + s + " like '" + txtsearch.Text + "%'";
                 DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
                 dataGridView1.DataSource = dt;
             }
@@ -1894,8 +1915,12 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyCode == Keys.Enter)
                 {
+<<<<<<< HEAD
+                    string itemid = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index-1].Cells[0].Value.ToString();
+=======
                     
                     string itemid = gridPurchaseOrder.Rows[ gridPurchaseOrder.CurrentRow.Index-1].Cells[0].Value.ToString();
+>>>>>>> fc5b1bdfa08ff8eb38114cc33efef6801ad5c8e6
                     string item = "";
                     string selectQurry = "select ItemId from ItemDetails";
                     DataTable dt1 = dbMainClass.getDetailByQuery(selectQurry);

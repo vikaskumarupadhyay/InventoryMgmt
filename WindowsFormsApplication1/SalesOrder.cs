@@ -79,8 +79,8 @@ namespace WindowsFormsApplication1
             dataGridView1.AllowUserToAddRows = true;
             // string selectquery1 = "select CustName as [Name],CustCompName as [Compnay Name],CustAddress as [Address],CustPhone as [Phone],Custmobile as [Mobole],CustFax as [Fax] from CustomerDetails";
             // string actualcolumn = "select CustName ,CustCompName ,CustAddress ,CustPhone ,Custmobile ,CustFax  from CustomerDetails";
-            string selectquery1 = "select  Custd.CustId as [Customer ID] ,CustName AS [Customer Name] ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO]  ,CustServicetaxRegnNo AS [SERVICE TAX NO],CustExciseRegnNo AS [EXCISE NO],Gstregnno AS[GST NO],CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] ,Custad.CustCurrentBalance AS [Current Balance] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
-            string actualcolumn = "select  Custd.CustId  ,CustName  ,CustCompName  ,CustAddress ,CustCity , CustState  ,CustZip  ,CustCountry  ,CustEmail , CustWebAddress ,CustPhone  ,CustMobile  ,CustFax ,CustDesc ,Custad.CustOpeningBalance , Custad.CustCurrentBalance ,CustPanNo , CustVatNo ,CustCSTNo  ,CustServicetaxRegnNo ,CustExciseRegnNo,Gstregnno   from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
+            string selectquery1 = "select  Custd.CustId as [Customer ID] ,CustName AS [Customer Name] ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] ,Custad.CustCurrentBalance AS [Current Balance] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
+            string actualcolumn = "select  Custd.CustId  ,CustName  ,CustCompName  ,CustAddress ,CustCity , CustState  ,CustZip  ,CustCountry  ,CustEmail , CustWebAddress ,CustPhone  ,CustMobile  ,CustFax ,CustDesc ,Custad.CustOpeningBalance , Custad.CustCurrentBalance ,CustPanNo , CustVatNo   from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
             DataTable dt1 = d.getDetailByQuery(selectquery1);
             DataTable onlycolumn = d.getDetailByQuery(actualcolumn);
             DataTable custometable = new DataTable();
@@ -105,7 +105,7 @@ namespace WindowsFormsApplication1
             counter = 0;
             panel2.Visible = true;
             // string selectquery = "select Custid as [Customer Id], CustName as [Name],CustCompName as [Compnay Name],CustAddress as[Address],CustPhone as [Phone],CustMobile as [Mobile],CustFax as[Fax] from customerdetails";
-            string selectquery = "select  Custd.CustId as [Customer ID] ,CustName AS [Customer Name] ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax,CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO]  ,CustServicetaxRegnNo AS [SERVICE TAX NO],CustExciseRegnNo AS [EXCISE NO],Gstregnno as[GST NO] ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Balance] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
+            string selectquery = "select  Custd.CustId as [Customer ID] ,CustName AS [Customer Name] ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax,CustPanNo AS [PAN NO], CustVatNo AS [VAT NO] ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Balance] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
 
             DataTable dt = d.getDetailByQuery(selectquery);
             dataGridView1.DataSource = dt;
@@ -1575,7 +1575,7 @@ namespace WindowsFormsApplication1
             {
                 string s = comsearchsalesvalue.SelectedValue.ToString();
                 // string val = s;
-                string selectQuery = "select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Ballance],CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO]  ,CustServicetaxRegnNo AS [Service Tax Regn. No],CustExciseRegnNo AS [Excise Regn. No] ,GSTRegnNo AS [GST Regn. No] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID where " + s + " like '" + txtsearchvalue.Text + "%'";
+                string selectQuery = "select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Ballance],CustPanNo AS [PAN NO], CustVatNo AS [VAT NO] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID where " + s + " like '" + txtsearchvalue.Text + "%'";
 
                 // string selectQuery = "select Custid as [Customer Id], CustName as Name,CustCompName as[Compnay Name],CustAddress as [Address],CustPhone as[Phone],Custmobile as[Mobile],CustFax as[Fax] from CustomerDetails where " + s + " like '" + txtsearchvalue.Text + "%'";
                 DataTable dt = d.getDetailByQuery(selectQuery);
@@ -1770,175 +1770,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void gridsalesorder_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                if (e.ColumnIndex == 5)
-                {
-
-                    if (gridsalesorder.CurrentCell.ColumnIndex == 5)
-                    {
-                        gridsalesorder.CurrentCell = gridsalesorder.CurrentRow.Cells[0];
-                        return;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-
-            //gridsalesorder.AllowUserToAddRows=false;
-            //txtitemcode.Text = "I";
-            //string itemid = gridsalesorder.Rows[e.RowIndex].Cells[0].Value.ToString();
-            //string item = "";
-            //string selectQurry = "select ItemId from ItemDetails";
-            //DataTable dt1 = d.getDetailByQuery(selectQurry);
-            //foreach (DataRow dr1 in dt1.Rows)
-            //{
-            //    item = dr1[0].ToString();
-            //    if (item == itemid)
-            //    {
-            //        break;
-            //    }
-
-            //}
-            //if (item == itemid)
-            //{
-
-            //    string selectqurry = "select Ids.ItemName,Ids.ItemCompName,ipd.MrpPrice, ipd.SalesPrice from ItemDetails Ids  join ItemPriceDetail ipd on Ids.ItemId=ipd.ItemId  where Ids.ItemId='" + itemid + "'";
-            //    DataTable dt = d.getDetailByQuery(selectqurry);
-            //    string rate = "";
-            //    foreach (DataRow dr in dt.Rows)
-            //    {
-            //        gridsalesorder.Rows[e.RowIndex].Cells[1].Value = dr[0].ToString();
-            //        gridsalesorder.Rows[e.RowIndex].Cells[2].Value = dr[1].ToString();
-            //        gridsalesorder.Rows[e.RowIndex].Cells[3].Value = dr[2].ToString();
-            //        // gridPurchaseOrder.Rows[e.RowIndex].Cells[5].Value=dr[3].ToString();
-            //        rate = dr[3].ToString();
-            //    }
-            //    if (gridsalesorder.Rows[e.RowIndex].Cells[0].Value != null)
-            //    {
-
-
-            //        int co = gridsalesorder.CurrentRow.Index;
-            //        DataGridViewRow selectedRow = gridsalesorder.Rows[0];
-            //        selectedRow.Selected = true;
-            //        selectedRow.Cells[4].Selected = true;
-            //        //gridPurchaseOrder.CurrentCell = gridPurchaseOrder[gridPurchaseOrder.CurrentCell.ColumnIndex + 2, gridPurchaseOrder.CurrentCell.RowIndex];
-            //        //gridPurchaseOrder.Focus();
-            //    }
-            //    gridsalesorder.Rows[e.RowIndex].Cells[4].Value = rate;
-
-            //    string quantity = gridsalesorder.Rows[e.RowIndex].Cells[5].Value.ToString();
-            //    if (quantity == "")
-            //    {
-
-            //        quantity = "0";
-
-
-            //        //}
-            //        //rate = gridsalesorder.Rows[e.RowIndex].Cells[4].Value.ToString();
-            //        //if (rate == "")
-            //        //{
-            //        //    rate = "0";
-            //    }
-            //    string selly = "select CurrentQuantity from ItemQuantityDetail where ItemId='" + item + "'";
-            //    DataTable dt3 = d.getDetailByQuery(selly);
-            //    int quntity = 0;
-            //    foreach (DataRow dr3 in dt3.Rows)
-            //    {
-            //        quntity = Convert.ToInt32(dr3[0].ToString());
-            //    }
-            //    int que = Convert.ToInt32(quantity);
-            //    if (quntity <= que)
-            //    {
-            //        gridsalesorder.Rows[e.RowIndex].Cells[5].Value = "0";
-            //        gridsalesorder.Rows[e.RowIndex].Cells[6].Value = "0";
-            //        MessageBox.Show("Plese enter currect quantity!");
-            //    }
-            //    else
-            //    {
-            //        int q1 = Convert.ToInt32(quantity);
-            //        Double rate1 = Convert.ToDouble(rate);
-            //        Double price = rate1 * q1;
-            //        if (price.ToString() == "")
-            //        {
-            //            price = 0;
-            //        }
-            //        gridsalesorder.Rows[e.RowIndex].Cells[6].Value = price.ToString();
-            //        Double totalammount = Convert.ToDouble(txttotalammount.Text);
-            //        Double toat = totalammount + price;
-            //        txttotalammount.Text = toat.ToString();
-            //    }
-            //}
-            //else
-            //{
-
-            //    //if(itemid=="I1")
-            //    //{
-            //    MessageBox.Show("please select your correct row");
-            //    gridsalesorder.Rows[e.RowIndex].Cells[0].Value = "";
-            //    //gridPurchaseOrder.Rows[0].Cells[2].Selected = true;
-            //}
-            //}
-
-            // if (e.ColumnIndex == 0)
-            //  {
-            // gridsalesorder.CurrentCell = gridsalesorder.Rows[0].Cells[5];
-            // gridsalesorder.BeginEdit(true);
-            //}
-            //var cellToFocus= gridsalesorder.Rows[0].Cells[5];
-            //cellToFocus.e()
-            //gridsalesorder.AllowUserToAddRows = true;
-
-
-
-
-            //string id = gridsalesorder.Rows[e.RowIndex].Cells[0].Value.ToString();
-            //string a1 = gridsalesorder.Rows[e.RowIndex].Cells[4].Value.ToString();
-            //// string newquantity = gridsalesdelivary.Rows[e.RowIndex].Cells[3].Value.ToString();
-            //string select = "select CurrentQuantity from ItemQuantityDetail where itemid='" + id + "'";
-            //DataTable dt = d.getDetailByQuery(select);
-            //string s = "";
-            //foreach (DataRow dr in dt.Rows)
-            //{
-            //    s = dr[0].ToString();
-
-            //}
-            //if (s != "")
-            //{
-            //    int g = Convert.ToInt32(s);
-            //    int quantity = Convert.ToInt32(a1);
-            //    if (quantity < g)
-            //    {
-            //        string a = gridsalesorder.Rows[e.RowIndex].Cells[3].Value.ToString();
-            //        string rate = gridsalesorder.Rows[e.RowIndex].Cells[2].Value.ToString();
-            //        quantity = Convert.ToInt32(a);
-            //        int r = Convert.ToInt32(rate);
-            //        int totalammount = quantity * r;
-            //        gridsalesorder.Rows[e.RowIndex].Cells[4].Value = totalammount.ToString();
-            //        string newquantity = gridsalesorder.Rows[e.RowIndex].Cells[3].Value.ToString();
-            //        int quantity1 = Convert.ToInt32(newquantity);
-            //        int finalquantity = quantity1 - quantity;
-            //        int totalq = r * finalquantity;
-            //        int totalammount1 = Convert.ToInt32(txttotalammount.Text);
-            //        int t = totalammount1 - totalq;
-            //        txttotalammount.Text = t.ToString();
-            //    }
-            //    else if (quantity > g)
-            //    {
-            //        MessageBox.Show("Quantity is not available");
-            //        gridsalesorder.Rows[e.RowIndex].Cells[4].Value = "0";
-            //        //txtAmmount.Text = "0";
-            //    }
-            //}
-
-
-            //   }
-        }
-
+      
 
 
         private void textBox20_KeyPress(object sender, KeyPressEventArgs e)
