@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtDis = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.txtBarCode = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.btnItemUnit = new System.Windows.Forms.Button();
@@ -106,6 +108,8 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.txtDis);
+            this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.txtBarCode);
             this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.btnItemUnit);
@@ -131,6 +135,26 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Item Details";
+            // 
+            // txtDis
+            // 
+            this.txtDis.Location = new System.Drawing.Point(600, 181);
+            this.txtDis.Name = "txtDis";
+            this.txtDis.Size = new System.Drawing.Size(258, 23);
+            this.txtDis.TabIndex = 12;
+            this.txtDis.Text = "0.00";
+            this.txtDis.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDis_KeyPress);
+            this.txtDis.Leave += new System.EventHandler(this.txtDis_Leave);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(597, 158);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(78, 16);
+            this.label20.TabIndex = 11;
+            this.label20.Text = "Discount(%)";
             // 
             // txtBarCode
             // 
@@ -822,7 +846,7 @@
             this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(979, 24);
+            this.txtSearch.Size = new System.Drawing.Size(1216, 24);
             this.txtSearch.TabIndex = 3;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged_1);
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown_1);
@@ -993,5 +1017,7 @@
         private System.Windows.Forms.Button buttClose2;
         private System.Windows.Forms.Button buttUpdate;
         private System.Windows.Forms.Button buttAddNewRecord;
+        private System.Windows.Forms.TextBox txtDis;
+        private System.Windows.Forms.Label label20;
     }
 }
