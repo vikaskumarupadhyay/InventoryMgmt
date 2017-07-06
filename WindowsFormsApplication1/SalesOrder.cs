@@ -2161,7 +2161,7 @@ namespace WindowsFormsApplication1
                     if (item == itemid)
                     {
 
-                        string selectqurry = "select Ids.ItemName,itd.HSN, ipd.SalesPrice,itd.CGST,itd.SGST,itd.IGST,itd.CESS from ItemDetails Ids  join ItemPriceDetail ipd on Ids.ItemId=ipd.ItemId join ItemTaxDetail itd on ipd.ItemId=itd.ItemId";
+                        string selectqurry = "select Ids.ItemName,itd.HSN, ipd.SalesPrice,itd.Discount,itd.CGST,itd.SGST,itd.IGST,itd.CESS from ItemDetails Ids  join ItemPriceDetail ipd on Ids.ItemId=ipd.ItemId join ItemTaxDetail itd on ipd.ItemId=itd.ItemId";
                       // string selectqurry = "select Ids.ItemName,Ids.ItemCompName,ipd.SalesPrice from ItemDetails Ids  join ItemPriceDetail ipd on Ids.ItemId=ipd.ItemId  where Ids.ItemId='" + itemid + "'";
                         DataTable dt = d.getDetailByQuery(selectqurry);
                         string rate = "";
@@ -2170,10 +2170,11 @@ namespace WindowsFormsApplication1
                             gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[1].Value = dr[0].ToString();
                             gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[2].Value = dr[1].ToString();
                             gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[3].Value = dr[2].ToString();
-                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[8].Value = dr[3].ToString();
-                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[9].Value = dr[4].ToString();
-                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[10].Value = dr[5].ToString();
-                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[11].Value = dr[6].ToString();
+                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[6].Value = dr[3].ToString();
+                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[8].Value = dr[4].ToString();
+                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[9].Value = dr[5].ToString();
+                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[10].Value = dr[6].ToString();
+                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[11].Value = dr[7].ToString();
 
                             rate = dr[2].ToString();
                         }
