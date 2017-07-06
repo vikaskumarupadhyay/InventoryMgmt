@@ -1961,7 +1961,7 @@ namespace WindowsFormsApplication1
                         string quantity = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[4].Value.ToString();
                         if (quantity == "")
                         {
-                            quantity = "0";
+                            quantity = "1";
                         }
                         int q1 = Convert.ToInt32(quantity);
                         Double rate1 = Convert.ToDouble(rate);
@@ -1970,13 +1970,14 @@ namespace WindowsFormsApplication1
                         {
                             price = 0;
                         }
+                        gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[4].Value = q1;
                         gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[5].Value = price.ToString();
                         Double totalammount = Convert.ToDouble(txtTotalAmount.Text);
                         Double toat = totalammount + price;
                         txtTotalAmount.Text = toat.ToString("###0.00");
 
                         gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[4];
-                        if (q1 != 0)
+                        if (q1 != 1)
                         {
                             gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index + 1].Cells[0];
                         }
