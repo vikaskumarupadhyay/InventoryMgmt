@@ -81,8 +81,8 @@ namespace WindowsFormsApplication1
             //{
             //    panel1.Visible = false;
             //}
-            string selectqurry = "select  itm.ItemId as[Item ID],itm.BarCode,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],idt.HSN as[HSN(%)],idt.CGST as[CGST(%)],idt.SGST as[SGST(%)],idt.IGST as[IGST(%)],idt.CESS as[CESS(%)],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId join ItemTaxDetail idt on itm.ItemId=idt.ItemId";
-            string selectqurryForActualColumnName = "select top 1 itm.ItemId ,itm.BarCode,itm.ItemName ,itm.ItemCompName ,itm.ItemDesc,ig.groupName ,iul.unitName ,idt.HSN ,idt.CGST ,idt.SGST ,idt.IGST ,idt.CESS ,ipd.purChasePrice ,ipd.SalesPrice ,ipd.MrpPrice ,ipd.Margin ,iqd.OpeningQuantity ,iqd.CurrentQuantity  from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId join ItemTaxDetail idt on itm.ItemId=idt.ItemId";
+            string selectqurry = "select  itm.ItemId as[Item ID],itm.BarCode,itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],idt.HSN as[HSN(%)],idt.CGST as[CGST(%)],idt.SGST as[SGST(%)],idt.IGST as[IGST(%)],idt.CESS as[CESS(%)],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity],idt.Discount as[Discount] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId join ItemTaxDetail idt on itm.ItemId=idt.ItemId";
+            string selectqurryForActualColumnName = "select top 1 itm.ItemId ,itm.BarCode,itm.ItemName ,itm.ItemCompName ,itm.ItemDesc,ig.groupName ,iul.unitName ,idt.HSN ,idt.CGST ,idt.SGST ,idt.IGST ,idt.CESS ,ipd.purChasePrice ,ipd.SalesPrice ,ipd.MrpPrice ,ipd.Margin ,iqd.OpeningQuantity ,iqd.CurrentQuantity,idt.Discount  from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId join ItemTaxDetail idt on itm.ItemId=idt.ItemId";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
             DataTable customDataTable = new DataTable();
@@ -248,7 +248,7 @@ namespace WindowsFormsApplication1
 
                                                         string saveCommand3 = "insert into ItemQuantityDetail values ('" + txtItemProductCode.Text + "','" + txtItemOpeningQuant.Text + "','" + txtItemRemaningQuant.Text + "')";
 
-                                                        string saveCommand4 = "insert into ItemTaxDetail values ('" + txtItemProductCode.Text + "','" + txtHsn.Text + "','" + txtCgst.Text + "','" + txtSgst.Text + "','" + txtIgst.Text + "','" + txtCess.Text + "')";
+                                                        string saveCommand4 = "insert into ItemTaxDetail values ('" + txtItemProductCode.Text + "','" + txtHsn.Text + "','" + txtCgst.Text + "','" + txtSgst.Text + "','" + txtIgst.Text + "','" + txtCess.Text + "','"+txtDis.Text+"')";
 
                                                         int insertedRows = dbMainClass.saveDetails(saveCommand1, saveCommand2, saveCommand3, saveCommand4);
                                                         if (insertedRows > 0)
@@ -276,7 +276,7 @@ namespace WindowsFormsApplication1
 
                                                     string saveCommand3 = "update ItemQuantityDetail set OpeningQuantity='" + txtItemOpeningQuant.Text + "',CurrentQuantity='" + txtItemRemaningQuant.Text + "' where itemId='" + txtItemProductCode.Text + "'";
 
-                                                    string saveCommand4 = "update ItemTaxDetail set HSN='" +txtHsn.Text + "',CGST='" + txtCgst.Text + "',SGST='"+txtSgst.Text+"',IGST='"+txtIgst.Text+"',CESS='"+txtCess.Text+"' where itemId='" + txtItemProductCode.Text + "'";
+                                                    string saveCommand4 = "update ItemTaxDetail set HSN='" +txtHsn.Text + "',CGST='" + txtCgst.Text + "',SGST='"+txtSgst.Text+"',IGST='"+txtIgst.Text+"',CESS='"+txtCess.Text+"',Discount='"+txtDis.Text+"' where itemId='" + txtItemProductCode.Text + "'";
 
                                                     int insertedRows = dbMainClass.saveDetails(saveCommand1, saveCommand2, saveCommand3, saveCommand4);
                                                     if (insertedRows > 0)
@@ -332,6 +332,7 @@ namespace WindowsFormsApplication1
             txtHsn.Text = "";
             txtIgst.Text = "0.00";
             txtSgst.Text = "0.00";
+            txtDis.Text = "0.00";
 
         }
 
@@ -342,7 +343,7 @@ namespace WindowsFormsApplication1
             searchCalmn.SelectedIndex = 0;
             panel1.Visible = true;
             //SqlConnection con = dbMainClass.openConnection();
-            string selectqurry = "select  itm.ItemId as[Item ID],itm.BarCode as[Barcode],itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],idt.HSN as[HSN(%)],idt.CGST as[CGST(%)],idt.SGST as[SGST(%)],idt.IGST as[IGST(%)],idt.CESS as[CESS(%)],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId join ItemTaxDetail idt on itm.ItemId=idt.ItemId";
+            string selectqurry = "select  itm.ItemId as[Item ID],itm.BarCode as[Barcode],itm.ItemName as[Item Name],itm.ItemCompName as [Company Name],itm.ItemDesc as [Item Description],ig.groupName as [Group Name],iul.unitName as [Unit Name],idt.HSN as[HSN(%)],idt.CGST as[CGST(%)],idt.SGST as[SGST(%)],idt.IGST as[IGST(%)],idt.CESS as[CESS(%)],ipd.purChasePrice as [Purchase Price],ipd.SalesPrice as[Sales Price],ipd.MrpPrice as[Mrp Price],ipd.Margin as[Margin],iqd.OpeningQuantity as [Opening Quantity],iqd.CurrentQuantity as[Current Quantity],idt.Discount as[Discount] from ItemDetails itm join ItemPriceDetail ipd on itm.itemid=ipd.itemid join ItemQuantityDetail iqd on ipd.itemid=iqd.itemid join ItemGroup ig on itm.groupid=ig.groupID join ItemUnitList iul on itm.Unitid=iul.UnitId join ItemTaxDetail idt on itm.ItemId=idt.ItemId";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             dataGridView1.DataSource = dt;
             tabindix();
@@ -371,6 +372,7 @@ namespace WindowsFormsApplication1
                 txtItemMargin.Text = cellCollection[15].Value.ToString();
                 txtItemOpeningQuant.Text = cellCollection[16].Value.ToString();
                 txtItemRemaningQuant.Text = cellCollection[17].Value.ToString();
+                txtDis.Text = cellCollection[18].Value.ToString();
             }
             catch (Exception ex)
             {
@@ -1358,6 +1360,67 @@ namespace WindowsFormsApplication1
             {
                 e.Handled = true;
             }
+        }
+
+        private void txtDis_Leave(object sender, EventArgs e)
+        {
+            decimal x;
+            if (decimal.TryParse(txtDis.Text, out x))
+            {
+                if (txtDis.Text.IndexOf('.') != -1 && txtDis.Text.Split('.')[1].Length > 2)
+                {
+                    MessageBox.Show("The maximum decimal points are 2!");
+                    txtDis.Focus();
+                }
+                else txtDis.Text = x.ToString("0.00");
+            }
+            else
+            {
+                txtDis.Text = "0.00";
+                //MessageBox.Show("Data invalid!");
+                //txtVenderOpeningBal.Focus();
+            }
+            /*if (txtItemPrice.Text == "")
+            {
+                txtItemPrice.Text = "0";
+            }*/
+
+        }
+
+        private void txtDis_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
+            {
+                //if (txtItemPrice.Text.IndexOf('.') != -1 && txtItemPrice.Text.Split('.')[1].Length >= 2)
+                //{
+                //    MessageBox.Show("The maximum decimal points are 2!");
+                //    //e.Handled = true;
+                //}
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+            char ch = e.KeyChar;
+            if (ch == 46 && txtDis.Text.IndexOf('.') != -1)
+            {
+                e.Handled = true;
+                return;
+            }
+            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
+
         }
     }
 

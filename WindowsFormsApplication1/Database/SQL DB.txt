@@ -283,6 +283,8 @@ go
 ALTER TABLE CompnayDetails DROP COLUMN GSTRegnNo
 go
 alter table CompnayDetails add GSTNo varchar(200)
+go
+alter table ItemTaxDetail add Discount decimal(18,2)
 
 
 
