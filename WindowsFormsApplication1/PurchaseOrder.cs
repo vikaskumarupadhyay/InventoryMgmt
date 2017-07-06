@@ -402,9 +402,9 @@ namespace WindowsFormsApplication1
                             continue;
                         }
                         counter++;
-                        quntity = dr3[5].ToString();
-                        rate = dr3[4].ToString();
-                        ammount = dr3[6].ToString();
+                        quntity = dr3[4].ToString();
+                        rate = dr3[3].ToString();
+                        ammount = dr3[5].ToString();
 
 
                         if (itemid == txtItemCode.Text)
