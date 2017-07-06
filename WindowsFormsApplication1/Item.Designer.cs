@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtDis = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.txtBarCode = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.btnItemUnit = new System.Windows.Forms.Button();
@@ -91,8 +93,6 @@
             this.buttClose2 = new System.Windows.Forms.Button();
             this.buttUpdate = new System.Windows.Forms.Button();
             this.buttAddNewRecord = new System.Windows.Forms.Button();
-            this.label20 = new System.Windows.Forms.Label();
-            this.txtDis = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -135,6 +135,26 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Item Details";
+            // 
+            // txtDis
+            // 
+            this.txtDis.Location = new System.Drawing.Point(600, 181);
+            this.txtDis.Name = "txtDis";
+            this.txtDis.Size = new System.Drawing.Size(258, 23);
+            this.txtDis.TabIndex = 12;
+            this.txtDis.Text = "0.00";
+            this.txtDis.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDis_KeyPress);
+            this.txtDis.Leave += new System.EventHandler(this.txtDis_Leave);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(597, 158);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(78, 16);
+            this.label20.TabIndex = 11;
+            this.label20.Text = "Discount(%)";
             // 
             // txtBarCode
             // 
@@ -729,10 +749,11 @@
             this.panel1.Controls.Add(this.buttClose2);
             this.panel1.Controls.Add(this.buttUpdate);
             this.panel1.Controls.Add(this.buttAddNewRecord);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(146, 634);
+            this.panel1.Size = new System.Drawing.Size(1362, 634);
             this.panel1.TabIndex = 24;
             // 
             // panel2
@@ -745,7 +766,7 @@
             this.panel2.Location = new System.Drawing.Point(16, 102);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(113, 468);
+            this.panel2.Size = new System.Drawing.Size(1329, 468);
             this.panel2.TabIndex = 9;
             // 
             // dataGridView1
@@ -757,7 +778,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(109, 464);
+            this.dataGridView1.Size = new System.Drawing.Size(1325, 464);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
@@ -789,7 +810,7 @@
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.groupBox4.Size = new System.Drawing.Size(113, 79);
+            this.groupBox4.Size = new System.Drawing.Size(1329, 79);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Item Search";
@@ -825,7 +846,7 @@
             this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(0, 24);
+            this.txtSearch.Size = new System.Drawing.Size(1216, 24);
             this.txtSearch.TabIndex = 3;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged_1);
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown_1);
@@ -889,26 +910,6 @@
             this.buttAddNewRecord.Text = "&Add New Record";
             this.buttAddNewRecord.UseVisualStyleBackColor = true;
             this.buttAddNewRecord.Click += new System.EventHandler(this.buttAddNewRecord_Click_1);
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(597, 158);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(78, 16);
-            this.label20.TabIndex = 11;
-            this.label20.Text = "Discount(%)";
-            // 
-            // txtDis
-            // 
-            this.txtDis.Location = new System.Drawing.Point(600, 181);
-            this.txtDis.Name = "txtDis";
-            this.txtDis.Size = new System.Drawing.Size(258, 23);
-            this.txtDis.TabIndex = 12;
-            this.txtDis.Text = "0.00";
-            this.txtDis.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtDis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDis_KeyPress);
-            this.txtDis.Leave += new System.EventHandler(this.txtDis_Leave);
             // 
             // Item
             // 
