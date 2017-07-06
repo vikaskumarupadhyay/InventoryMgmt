@@ -575,7 +575,7 @@ namespace WindowsFormsApplication1
             addToCartTable.Columns.Add(new DataColumn("HSN"));
             addToCartTable.Columns.Add(new DataColumn("Rate"));
             addToCartTable.Columns.Add(new DataColumn("Quantity"));
-            addToCartTable.Columns.Add(new DataColumn("Total"));
+            //addToCartTable.Columns.Add(new DataColumn("Total"));
             addToCartTable.Columns.Add(new DataColumn("Discount"));
             addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
             addToCartTable.Columns.Add(new DataColumn("CGST (%)"));
@@ -1947,11 +1947,11 @@ namespace WindowsFormsApplication1
                             gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[1].Value = dr[0].ToString();
                             gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[2].Value = dr[1].ToString();
                             gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[3].Value = dr[2].ToString();
-                            gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[8].Value = dr[3].ToString();
-                            gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[9].Value = dr[4].ToString();
-                            gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[10].Value = dr[5].ToString();
-                            gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[11].Value = dr[6].ToString();
-                            gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[6].Value = dr[7].ToString();
+                            gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[7].Value = dr[3].ToString();
+                            gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[8].Value = dr[4].ToString();
+                            gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[9].Value = dr[5].ToString();
+                            gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[10].Value = dr[6].ToString();
+                            gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[5].Value = dr[7].ToString();
                            
 
                             rate = dr[2].ToString();
@@ -1970,10 +1970,25 @@ namespace WindowsFormsApplication1
                         {
                             price = 0;
                         }
+                      
+                        double total = Convert.ToDouble(price.ToString());
+                        double g = Convert.ToDouble(gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[5].Value.ToString());
+                        double di = price * g / 100;
+                        price = price - di;
                         gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[4].Value = q1;
-                        gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[5].Value = price.ToString();
+                        gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[6].Value = price.ToString();
+                        Double gst = Convert.ToDouble(gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[8].Value.ToString());
+                        Double cgst = Convert.ToDouble(gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[7].Value.ToString());
+                        Double taxv = Convert.ToDouble(gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[6].Value.ToString());
+                        Double css=Convert.ToDouble(gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[10].Value.ToString());
+                        Double gcgst = cgst + gst;
+                        double g1 = taxv * gcgst / 100;
+                        taxv = taxv + g1;
+                        Double g2 = taxv * css / 100;
+                        taxv = taxv + g2;
+                        gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[11].Value = taxv.ToString("###0.00");
                         Double totalammount = Convert.ToDouble(txtTotalAmount.Text);
-                        Double toat = totalammount + price;
+                        Double toat = totalammount + taxv;
                         txtTotalAmount.Text = toat.ToString("###0.00");
 
                         gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[4];
