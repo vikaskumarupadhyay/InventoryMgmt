@@ -189,12 +189,12 @@
             this.gridsalesdelivary.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridsalesdelivary.Location = new System.Drawing.Point(0, 0);
             this.gridsalesdelivary.Name = "gridsalesdelivary";
-            this.gridsalesdelivary.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridsalesdelivary.Size = new System.Drawing.Size(1317, 333);
             this.gridsalesdelivary.StandardTab = true;
             this.gridsalesdelivary.TabIndex = 0;
             this.gridsalesdelivary.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesdelivary_CellEndEdit);
             this.gridsalesdelivary.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridsalesdelivary_KeyPress);
+            this.gridsalesdelivary.KeyUp += new System.Windows.Forms.KeyEventHandler(this.gridsalesdelivary_KeyUp);
             // 
             // groupBox3
             // 
@@ -799,10 +799,9 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.butback);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1354, 634);
+            this.panel2.Size = new System.Drawing.Size(454, 634);
             this.panel2.TabIndex = 53;
             // 
             // panel3
@@ -815,7 +814,7 @@
             this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel3.Location = new System.Drawing.Point(12, 105);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1324, 469);
+            this.panel3.Size = new System.Drawing.Size(424, 469);
             this.panel3.TabIndex = 7;
             // 
             // crystalReportViewer2
@@ -837,7 +836,7 @@
             this.dataGridView2.Location = new System.Drawing.Point(0, 0);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(1320, 465);
+            this.dataGridView2.Size = new System.Drawing.Size(420, 465);
             this.dataGridView2.StandardTab = true;
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick_1);
@@ -854,7 +853,7 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(12, 25);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1323, 73);
+            this.groupBox4.Size = new System.Drawing.Size(423, 73);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
@@ -866,7 +865,7 @@
             this.txtsearchvalue.Location = new System.Drawing.Point(687, 42);
             this.txtsearchvalue.Multiline = true;
             this.txtsearchvalue.Name = "txtsearchvalue";
-            this.txtsearchvalue.Size = new System.Drawing.Size(611, 23);
+            this.txtsearchvalue.Size = new System.Drawing.Size(0, 23);
             this.txtsearchvalue.TabIndex = 4;
             this.txtsearchvalue.TextChanged += new System.EventHandler(this.txtsearchvalue_TextChanged);
             // 
@@ -937,10 +936,9 @@
             this.pnlSalesPayment.Controls.Add(this.groupBox7);
             this.pnlSalesPayment.Controls.Add(this.btnSave);
             this.pnlSalesPayment.Controls.Add(this.groupBox8);
-            this.pnlSalesPayment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlSalesPayment.Location = new System.Drawing.Point(0, 0);
             this.pnlSalesPayment.Name = "pnlSalesPayment";
-            this.pnlSalesPayment.Size = new System.Drawing.Size(1354, 634);
+            this.pnlSalesPayment.Size = new System.Drawing.Size(390, 634);
             this.pnlSalesPayment.TabIndex = 57;
             this.pnlSalesPayment.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSalesPayment_Paint_1);
             // 
@@ -954,7 +952,7 @@
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.Location = new System.Drawing.Point(920, 12);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(416, 58);
+            this.groupBox5.Size = new System.Drawing.Size(0, 58);
             this.groupBox5.TabIndex = 15;
             this.groupBox5.TabStop = false;
             // 
@@ -978,7 +976,7 @@
             this.txtInvoiceAmount.Multiline = true;
             this.txtInvoiceAmount.Name = "txtInvoiceAmount";
             this.txtInvoiceAmount.ReadOnly = true;
-            this.txtInvoiceAmount.Size = new System.Drawing.Size(264, 23);
+            this.txtInvoiceAmount.Size = new System.Drawing.Size(0, 23);
             this.txtInvoiceAmount.TabIndex = 1;
             this.txtInvoiceAmount.TabStop = false;
             this.txtInvoiceAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1122,7 +1120,7 @@
             this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox8.Location = new System.Drawing.Point(12, 67);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(1324, 222);
+            this.groupBox8.Size = new System.Drawing.Size(360, 222);
             this.groupBox8.TabIndex = 13;
             this.groupBox8.TabStop = false;
             // 
@@ -1232,7 +1230,7 @@
             this.txtNetAmount.Location = new System.Drawing.Point(1117, 161);
             this.txtNetAmount.Name = "txtNetAmount";
             this.txtNetAmount.ReadOnly = true;
-            this.txtNetAmount.Size = new System.Drawing.Size(180, 21);
+            this.txtNetAmount.Size = new System.Drawing.Size(0, 21);
             this.txtNetAmount.TabIndex = 38;
             this.txtNetAmount.TabStop = false;
             this.txtNetAmount.Text = "0.00";
@@ -1255,7 +1253,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtRturned.Location = new System.Drawing.Point(1117, 119);
             this.txtRturned.Name = "txtRturned";
-            this.txtRturned.Size = new System.Drawing.Size(180, 21);
+            this.txtRturned.Size = new System.Drawing.Size(0, 21);
             this.txtRturned.TabIndex = 36;
             this.txtRturned.Text = "0.00";
             this.txtRturned.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1269,7 +1267,7 @@
             this.txtBalance.Location = new System.Drawing.Point(1117, 76);
             this.txtBalance.Name = "txtBalance";
             this.txtBalance.ReadOnly = true;
-            this.txtBalance.Size = new System.Drawing.Size(180, 21);
+            this.txtBalance.Size = new System.Drawing.Size(0, 21);
             this.txtBalance.TabIndex = 35;
             this.txtBalance.TabStop = false;
             this.txtBalance.Text = "0.00";
@@ -1283,7 +1281,7 @@
             this.txtTotalAmount1.Location = new System.Drawing.Point(1117, 34);
             this.txtTotalAmount1.Name = "txtTotalAmount1";
             this.txtTotalAmount1.ReadOnly = true;
-            this.txtTotalAmount1.Size = new System.Drawing.Size(182, 21);
+            this.txtTotalAmount1.Size = new System.Drawing.Size(0, 21);
             this.txtTotalAmount1.TabIndex = 34;
             this.txtTotalAmount1.TabStop = false;
             this.txtTotalAmount1.Text = "0.00";
