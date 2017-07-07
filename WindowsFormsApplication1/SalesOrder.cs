@@ -1992,7 +1992,7 @@ namespace WindowsFormsApplication1
                     if (item == itemid)
                     {
 
-                        string selectqurry = "select Ids.ItemName,itd.HSN, ipd.SalesPrice,itd.Discount,itd.CGST,itd.SGST,itd.IGST,itd.CESS from ItemDetails Ids  join ItemPriceDetail ipd on Ids.ItemId=ipd.ItemId join ItemTaxDetail itd on ipd.ItemId=itd.ItemId";
+                        string selectqurry = "select Ids.ItemName,itd.HSN, ipd.SalesPrice,itd.Discount,itd.CGST,itd.SGST,itd.IGST,itd.CESS from ItemDetails Ids  join ItemPriceDetail ipd on Ids.ItemId=ipd.ItemId join ItemTaxDetail itd on ipd.ItemId=itd.ItemId where Ids.ItemId='" + itemid + "'";
                       // string selectqurry = "select Ids.ItemName,Ids.ItemCompName,ipd.SalesPrice from ItemDetails Ids  join ItemPriceDetail ipd on Ids.ItemId=ipd.ItemId  where Ids.ItemId='" + itemid + "'";
                         DataTable dt = d.getDetailByQuery(selectqurry);
                         string rate = "";
@@ -2042,10 +2042,18 @@ namespace WindowsFormsApplication1
                         double g3 = ces;
                         double g4 = price * g3 / 100;
                         double g5 = g2 + g4;
+                       // double g6 = 0;
+                        //if(g6==0)
+                        //{
+                        //    g6 += g5;
+                        //}
+
+                        //double g7 = g6;
                         gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[4].Value = q1;
                         gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[6].Value = price.ToString();
                         gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[11].Value = g5.ToString();
-                        Double totalammount = Convert.ToDouble(txttotalammount.Text);
+
+                        Double totalammount = 0;
                         Double toat = totalammount + g5;
                         txttotalammount.Text = toat.ToString("###0.00");
                         gridsalesorder.CurrentCell = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[4];
