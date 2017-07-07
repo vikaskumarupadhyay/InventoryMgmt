@@ -1961,7 +1961,7 @@ namespace WindowsFormsApplication1
                         string quantity = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[4].Value.ToString();
                         if (quantity == "")
                         {
-                            quantity = "1";
+                            quantity = "0";
                         }
                         int q1 = Convert.ToInt32(quantity);
                         Double rate1 = Convert.ToDouble(rate);
@@ -1976,7 +1976,7 @@ namespace WindowsFormsApplication1
                         double di = price * g / 100;
                         price = price - di;
                         gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[4].Value = q1;
-                        gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[6].Value = price.ToString();
+                        gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[6].Value = price.ToString("###0.00");
                         Double gst = Convert.ToDouble(gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[8].Value.ToString());
                         Double cgst = Convert.ToDouble(gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[7].Value.ToString());
                         Double taxv = Convert.ToDouble(gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[6].Value.ToString());
@@ -1987,12 +1987,12 @@ namespace WindowsFormsApplication1
                         Double g2 = taxv * css / 100;
                         taxv = taxv + g2;
                         gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[11].Value = taxv.ToString("###0.00");
+                        Double rat = Convert.ToDouble(gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[11].Value.ToString());
                         Double totalammount = Convert.ToDouble(txtTotalAmount.Text);
                         Double toat = totalammount + taxv;
                         txtTotalAmount.Text = toat.ToString("###0.00");
-
                         gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[4];
-                        if (q1 != 1)
+                        if (q1 != 0)
                         {
                             gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index + 1].Cells[0];
                         }
