@@ -838,6 +838,10 @@ namespace WindowsFormsApplication1
                 else
                 {
 
+                    if(txtwithautaxamount.Text=="")
+                    {
+                        txtwithautaxamount.Text = "0.00";
+                    }
                     string insertqurry = "insert into VendorOrderDetails values('" + txtVendorCode.Text + "','" + dtpDate.Value.ToString() + "','" + txtTotalAmount.Text + "','" + txtdis.Text + "','" + txtDiscount.Text + "','" + DisAmmount.Text + "','" + TextTaxAmmount.Text + "','" + txtwithautaxamount.Text + "')";
 
                     //int insertedRows = dbMainClass.saveDetails(insertqurry);
@@ -857,16 +861,16 @@ namespace WindowsFormsApplication1
                             continue;
                         }
 
-                        string txtQuanit = cellCollection[5].Value.ToString();
-                        string txtRate = cellCollection[4].Value.ToString();
-                        string txtAmoun = cellCollection[6].Value.ToString();
+                        string txtQuanit = cellCollection[4].Value.ToString();
+                        string txtRate = cellCollection[3].Value.ToString();
+                        string txtAmoun = cellCollection[11].Value.ToString();
                         string OrderID = txtSrNo.Text;
                         string Query = "insert into VendorOrderDesc Values('" + OrderID + "','" + txtItemCod + "','" + txtRate + "','" + txtQuanit + "','" + txtAmoun + "')";
                         //MessageBox.Show(Query);
                         sf.Add(Query);
                     }
                     count++;
-                    int insertedRows1 = dbMainClass.saveDetails(insertqurry, sf);
+                    int insertedRows1 = dbMainClass.saveDetails(insertqurry,sf);
 
                     if (insertedRows1 > 0)
                     {
@@ -897,7 +901,7 @@ namespace WindowsFormsApplication1
                             View.CrViewer.Refresh();
                             View.Show();
                             //End Preview
-                            PurchesCrystalReportViewer.Visible = false;
+                           // PurchesCrystalReportViewer.Visible = false;
                             txtTotalAmount.Text = "0.00";
                             panel2.Visible = false;
                             txtItemCode.TabStop = false;
@@ -951,7 +955,7 @@ namespace WindowsFormsApplication1
                 }
             }
 
-           //}
+          //}
             //}
 
 

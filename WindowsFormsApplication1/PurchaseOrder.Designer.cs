@@ -621,6 +621,7 @@
             this.gridPurchaseOrder.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridPurchaseOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridPurchaseOrder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridPurchaseOrder.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.gridPurchaseOrder.Location = new System.Drawing.Point(0, 0);
             this.gridPurchaseOrder.MultiSelect = false;
             this.gridPurchaseOrder.Name = "gridPurchaseOrder";
