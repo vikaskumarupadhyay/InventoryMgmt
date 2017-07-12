@@ -552,6 +552,7 @@ namespace WindowsFormsApplication1
             ItemDetails = purChaseDetailObj.GetItemPriceAndNameDetaisInDataTable();
             setAutoCompleteMode(txtProductName, "ItemName", ItemDetails);
             setAddToCraftTable();
+            
             string selectquery = "select orderid from orderdetails";
             DataTable dt3 = d.getDetailByQuery(selectquery);
             string id = "";
@@ -591,7 +592,7 @@ namespace WindowsFormsApplication1
             }
             // gridsalesorder.Rows.Add();
             txttotalammount.Text = "0.00";
-
+           
         }
 
         private void setAutoCompleteMode(TextBox txt, string ColumnName, DataTable dt)
@@ -2029,6 +2030,7 @@ namespace WindowsFormsApplication1
 
                             rate = dr[2].ToString();
                         }
+                        
                         if (compnayid != customerid)
                         {
                             gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[7].Value = "0.00";
@@ -2037,6 +2039,7 @@ namespace WindowsFormsApplication1
                             string quantity = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[4].Value.ToString();
                             string discount = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[5].Value.ToString();
                             double igst = Convert.ToDouble(gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[9].Value.ToString());
+                            double ces = Convert.ToDouble(gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[10].Value.ToString());
                             if (quantity == "")
                             {
                                 quantity = "0";
@@ -2057,16 +2060,20 @@ namespace WindowsFormsApplication1
                             double dis = Convert.ToDouble(discount);
                             double di = price * dis / 100;
                             price = price - di;
+                            double g2 = ces;
+                            double g3 = price * g2 / 100;
                             double g6 = igst;
                             double g7 = price * g6 / 100;
-                            double g8 = g7+price;
+                            double g8 = g7+price+g3;
 
                             gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[6].Value = price.ToString("###0.00");
                             gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[11].Value = g8.ToString("###0.00");
                             Double rat = Convert.ToDouble(gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[11].Value.ToString());
-                            Double totalammount = Convert.ToDouble(txttotalammount.Text);
-                            Double toat = totalammount + g8;
-                            txttotalammount.Text = toat.ToString("###0.00");
+                            Double totalammount = GetTotalAmountOfAllITem();
+                            //Double totalammount = Convert.ToDouble(txttotalammount.Text);
+                        
+                            //Double toat = totalammount + g8;
+                            txttotalammount.Text = totalammount.ToString("###0.00");
                             gridsalesorder.CurrentCell = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[4];
 
                             if (q1 != 0)
@@ -2084,6 +2091,7 @@ namespace WindowsFormsApplication1
                             double cs = Convert.ToDouble(gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[7].Value.ToString());
                             double gs = Convert.ToDouble(gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[8].Value.ToString());
                             double igst = Convert.ToDouble(gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[9].Value.ToString());
+                            double ces1 = Convert.ToDouble(gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[10].Value.ToString());
                             
                             if (quantity == "")
                             {
@@ -2111,13 +2119,20 @@ namespace WindowsFormsApplication1
                             double g3 = gs;
                             double g4 = price * g3 / 100;
                             double g5 = g2 + g4;
+                            double g6 = ces1;
+                            double g7 = price * g6 / 100;
+                            double g8 = price + g1 + g4+g7;
                           
                             gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[6].Value = price.ToString("###0.00");
-                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[11].Value = g5.ToString("###0.00");
+                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[11].Value = g8.ToString("###0.00");
+                             Double totalammount =GetTotalAmountOfAllITem();
+
                             Double rat = Convert.ToDouble(gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[11].Value.ToString());
-                            Double totalammount = Convert.ToDouble(txttotalammount.Text);
-                            Double toat = totalammount + g5;
-                            txttotalammount.Text = toat.ToString("###0.00");
+                            
+                            
+                            //Double totalammount = Convert.ToDouble(txttotalammount.Text);
+                            //Double toat = totalammount + g8;
+                            txttotalammount.Text = totalammount.ToString("###0.00");
                             gridsalesorder.CurrentCell = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[4];
 
                             if (q1 != 0)
@@ -2174,6 +2189,20 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show(ex.Message.ToString());
             }
+        }
+
+        private double GetTotalAmountOfAllITem()
+        {
+            double totalAmount = 0.0;
+            foreach (DataGridViewRow gridViewRow in gridsalesorder.Rows)
+            {
+                if (!string.IsNullOrWhiteSpace( gridViewRow.Cells[0].Value.ToString()))
+                {
+                    Double totalAmountForEachItem = Convert.ToDouble(gridViewRow.Cells[gridViewRow.Cells.Count - 1].Value);
+                    totalAmount += totalAmountForEachItem;
+                }
+            }
+            return totalAmount;
         }
     }
 }
