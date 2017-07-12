@@ -119,6 +119,7 @@
             this.gridsalesorder.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridsalesorder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridsalesorder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridsalesorder.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
             this.gridsalesorder.Location = new System.Drawing.Point(0, 0);
             this.gridsalesorder.Name = "gridsalesorder";
             this.gridsalesorder.Size = new System.Drawing.Size(1135, 333);
@@ -706,10 +707,9 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.butback);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1172, 634);
+            this.panel2.Size = new System.Drawing.Size(917, 634);
             this.panel2.TabIndex = 60;
             // 
             // crystalReportViewer1
@@ -731,7 +731,7 @@
             this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel3.Location = new System.Drawing.Point(12, 105);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1142, 478);
+            this.panel3.Size = new System.Drawing.Size(887, 478);
             this.panel3.TabIndex = 7;
             // 
             // dataGridView1
@@ -742,7 +742,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1138, 474);
+            this.dataGridView1.Size = new System.Drawing.Size(883, 474);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
@@ -759,7 +759,7 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(12, 25);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1141, 73);
+            this.groupBox4.Size = new System.Drawing.Size(886, 73);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
@@ -780,7 +780,7 @@
             this.txtsearchvalue.Location = new System.Drawing.Point(687, 42);
             this.txtsearchvalue.Multiline = true;
             this.txtsearchvalue.Name = "txtsearchvalue";
-            this.txtsearchvalue.Size = new System.Drawing.Size(553, 23);
+            this.txtsearchvalue.Size = new System.Drawing.Size(215, 23);
             this.txtsearchvalue.TabIndex = 3;
             this.txtsearchvalue.TextChanged += new System.EventHandler(this.txtsearchvalue_TextChanged_1);
             // 
