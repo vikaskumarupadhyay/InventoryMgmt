@@ -24,6 +24,7 @@ namespace WindowsFormsApplication1
         DataTable vendorDetails = new DataTable();
         DataTable ItemDetails = new DataTable();
         DataTable addToCartTable = new DataTable();
+        private DataGridViewEditMode EditOnKeystroke;
 
         private void PurchaseOrder_Load(object sender, EventArgs e)
         {
@@ -521,13 +522,13 @@ namespace WindowsFormsApplication1
                             dr[2] = Hsn.Trim();
                             dr[3] = txtRate.Text.Trim();
                             dr[4] = txtQuanity.Text.Trim();
-                            dr[5] = txtAmount.Text.Trim();
-                            dr[6] = 
+                            dr[5] =
+                            dr[6] = txtAmount.Text.Trim();
                             //dr[7] = Hsn.Trim();
-                            dr[8] = Cgst.Trim();
-                            dr[9] = Sgst.Trim();
-                            dr[10] = Igst.Trim(); ;
-                            dr[11]=Cess.Trim();
+                            dr[7] = Cgst.Trim();
+                            dr[8] = Sgst.Trim();
+                            dr[9] = Igst.Trim(); ;
+                            dr[10]=Cess.Trim();
                             int q1 = Convert.ToInt32(txtQuanity.Text.Trim());
                             int q2 = Convert.ToInt32(txtQuantityBild.Text);
                             int q3 = q1 + q2;
@@ -1904,7 +1905,7 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-
+                   
                     if (gridPurchaseOrder.CurrentCell.ColumnIndex == 1)
                     {
                         gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[0];
@@ -1923,8 +1924,22 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyCode == Keys.Enter)
                 {
+                   string company= "select state from CompnayDetails";
+                   DataTable dt3=dbMainClass.getDetailByQuery(company);
+                   string companystate = "";
+                   foreach (DataRow dr in dt3.Rows)
+                   {
+                       companystate = dr[0].ToString();
+                   }
+                   string vendorState = "select vState from VendorDetails where venderId='" + txtVendorCode.Text + "'";
+                   DataTable dt2 = dbMainClass.getDetailByQuery(vendorState);
+                   string vendorstate = "";
+                    foreach(DataRow dr2 in dt2.Rows)
+                    {
+                        vendorstate = dr2[0].ToString();
+                    }
+                   
 
-                    
                     string itemid = gridPurchaseOrder.Rows[ gridPurchaseOrder.CurrentRow.Index-1].Cells[0].Value.ToString();
 
                     string item = "";
@@ -1941,75 +1956,96 @@ namespace WindowsFormsApplication1
                     }
                     if (item == itemid)
                     {
-
+                       
 
                         string selectqurry = "select Ids.ItemName,itd.HSN, ipd.SalesPrice,itd.CGST,itd.SGST,itd.IGST,itd.CESS,itd.Discount from ItemDetails Ids  join ItemPriceDetail ipd on Ids.ItemId=ipd.ItemId join ItemTaxDetail itd on ipd.ItemId=itd.ItemId  where Ids.ItemId='" + itemid + "'";
                         DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
                         string rate = "";
+                        string gst3 = "";
+                        string gst4 = "";
+                        string igst1 = "";
                         foreach (DataRow dr in dt.Rows)
                         {
+                          gst3=  dr[3].ToString();
+                         gst4=  dr[4].ToString();
+                         igst1 = dr[5].ToString();
+                            if (companystate != vendorstate)
+                            {
+                                gst3 = "0.00";
+                                gst4 = "0.00";
+                            }
+                            if (companystate == vendorstate)
+                            {
+                                igst1 = "0.00";
+                            }
                             gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[1].Value = dr[0].ToString();
                             gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[2].Value = dr[1].ToString();
                             gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[3].Value = dr[2].ToString();
-                            gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[7].Value = dr[3].ToString();
-                            gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[8].Value = dr[4].ToString();
-                            gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[9].Value = dr[5].ToString();
+                            gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[7].Value = gst3.ToString();
+                            gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[8].Value = gst4.ToString();
+                            gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[9].Value = igst1.ToString();
                             gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[10].Value = dr[6].ToString();
                             gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[5].Value = dr[7].ToString();
-                           
+
 
                             rate = dr[2].ToString();
                         }
-                        
-                        gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[3].Value = rate;
-                        string quantity = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[4].Value.ToString();
-                        if (quantity == "")
-                        {
-                            quantity = "0";
-                        }
-                        int q1 = Convert.ToInt32(quantity);
-                        Double rate1 = Convert.ToDouble(rate);
-                        Double price = rate1 * q1;
-                        if (price.ToString() == "")
-                        {
-                            price = 0;
-                        }
-                      
-                        double total = Convert.ToDouble(price.ToString());
-                        double g = Convert.ToDouble(gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[5].Value.ToString());
-                        double di = price * g / 100;
-                        price = price - di;
-                        gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[4].Value = q1;
-                        gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[6].Value = price.ToString("###0.00");
-                        Double gst = Convert.ToDouble(gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[8].Value.ToString());
-                        Double cgst = Convert.ToDouble(gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[7].Value.ToString());
-                        Double taxv = Convert.ToDouble(gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[6].Value.ToString());
-                        Double css=Convert.ToDouble(gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[10].Value.ToString());
-                        Double gcgst = cgst + gst;
-                        double g1 = taxv * gcgst / 100;
-                        taxv = taxv + g1;
-                        Double g2 = taxv * css / 100;
-                        taxv = taxv + g2;
-                        gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[11].Value = taxv.ToString("###0.00");
-                        Double rat = Convert.ToDouble(gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[11].Value.ToString());
-                        Double totalammount = Convert.ToDouble(txtTotalAmount.Text);
-                        Double toat = totalammount + taxv;
-                        txtTotalAmount.Text = toat.ToString("###0.00");
-                        gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[4];
-                        if (q1 != 0)
-                        {
-                            gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index + 1].Cells[0];
-                        }
-                        //if (gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[0].Value != null)
-                        //{
-                        //    int co = gridPurchaseOrder.CurrentRow.Index;
-                        //    DataGridViewRow selectedRow = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1];
-                        //    selectedRow.Selected = true;
-                        //    selectedRow.Cells[4].Selected = true;
-                        //    // gridPurchaseOrder.CurrentCell = gridPurchaseOrder.CurrentRow.Cells[5];//[gridPurchaseOrder.CurrentCell.ColumnIndex + 2, gridPurchaseOrder.CurrentCell.RowIndex];
-                        //    //gridPurchaseOrder.Focus();
-                        //}
+                       
+                            gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[3].Value = rate;
+                            string quantity = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[4].Value.ToString();
+                            if (quantity == "")
+                            {
+                                quantity = "0";
+                            }
+                            int q1 = Convert.ToInt32(quantity);
+                            Double rate1 = Convert.ToDouble(rate);
+                            Double price = rate1 * q1;
+                            if (price.ToString() == "")
+                            {
+                                price = 0;
+                            }
 
+                            double total = Convert.ToDouble(price.ToString());
+                            double g = Convert.ToDouble(gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[5].Value.ToString());
+                            double di = price * g / 100;
+                            price = price - di;
+                            gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[4].Value = q1;
+                            gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[6].Value = price.ToString("###0.00");
+                            Double gst = Convert.ToDouble(gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[8].Value.ToString());
+                            Double cgst = Convert.ToDouble(gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[7].Value.ToString());
+                            Double taxv = Convert.ToDouble(gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[6].Value.ToString());
+                            Double igst = Convert.ToDouble(gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[9].Value.ToString());
+                            Double csst = Convert.ToDouble(gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[10].Value.ToString());
+                            double g2 = taxv * gst / 100;
+                            taxv = taxv + g2;
+                            double g1 = taxv * cgst / 100;
+                            taxv = taxv + g1;
+                            Double g3 = taxv * igst / 100;
+                            taxv = taxv + g3;
+                            Double csst1 = taxv * csst / 100;
+                            taxv = taxv + csst1;
+                            gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[11].Value = taxv.ToString("###0.00");
+                            Double rat = Convert.ToDouble(gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[11].Value.ToString());
+                            //Double totalammount = Convert.ToDouble(txtTotalAmount.Text);
+                            Double toat = setAmount();
+                            txtTotalAmount.Text = toat.ToString("###0.00");
+                            gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[4];
+                           
+                            if (q1 != 0)
+                            {
+                                gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index + 1].Cells[0];
+                            }
+                            //if (gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[0].Value != null)
+                            //{
+                            //    int co = gridPurchaseOrder.CurrentRow.Index;
+                            //    DataGridViewRow selectedRow = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1];
+                            //    selectedRow.Selected = true;
+                            //    selectedRow.Cells[4].Selected = true;
+                            //    // gridPurchaseOrder.CurrentCell = gridPurchaseOrder.CurrentRow.Cells[5];//[gridPurchaseOrder.CurrentCell.ColumnIndex + 2, gridPurchaseOrder.CurrentCell.RowIndex];
+                            //    //gridPurchaseOrder.Focus();
+                            //}
+
+                        //}
                     }
                     else
                     {
@@ -2023,11 +2059,26 @@ namespace WindowsFormsApplication1
                     }
                  
                 }
+              
             }
+          
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
             }
+        }
+        public Double setAmount()
+        {
+            Double amount = 0.00;
+            foreach (DataGridViewRow row in gridPurchaseOrder.Rows)
+            {
+                if (!string.IsNullOrWhiteSpace(row.Cells[0].Value.ToString()))
+                {
+                    string addamount = row.Cells[row.Cells.Count - 1].Value.ToString();
+                    amount += Convert.ToDouble(addamount.ToString());
+                }
+            }
+            return amount;
         }
     }
 }
