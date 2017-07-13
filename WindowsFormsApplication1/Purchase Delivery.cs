@@ -86,7 +86,7 @@ namespace WindowsFormsApplication1
             setAddToCraftTable();
             if (txtRef.Text == "")
             {
-                addToCartTable.Columns.RemoveAt(6);
+                addToCartTable.Columns.RemoveAt(5);
                 dataGridView1.DataSource = addToCartTable;
             }
         }
@@ -402,9 +402,9 @@ namespace WindowsFormsApplication1
                 addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
             }
 
-            if (!addToCartTable.Columns.Contains("Amount"))
+            if (!addToCartTable.Columns.Contains("Taxable Value"))
             {
-                addToCartTable.Columns.Add(new DataColumn("Amount"));
+                addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
             }
 
         }
@@ -888,12 +888,18 @@ namespace WindowsFormsApplication1
         {
             addToCartTable.Columns.Add(new DataColumn("Item Code"));
             addToCartTable.Columns.Add(new DataColumn("Item Name"));
-            addToCartTable.Columns.Add(new DataColumn("Company Name"));
-            addToCartTable.Columns.Add(new DataColumn("MRP"));
+            addToCartTable.Columns.Add(new DataColumn("HSN"));
             addToCartTable.Columns.Add(new DataColumn("Rate"));
             addToCartTable.Columns.Add(new DataColumn("Quantity"));
             addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
-            addToCartTable.Columns.Add(new DataColumn("Amount"));
+            addToCartTable.Columns.Add(new DataColumn("Discount"));
+            addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
+            addToCartTable.Columns.Add(new DataColumn("CGST (%)"));
+            addToCartTable.Columns.Add(new DataColumn("SGST (%)"));
+            addToCartTable.Columns.Add(new DataColumn("IGST (%)"));
+            addToCartTable.Columns.Add(new DataColumn("CESS (%)"));
+            addToCartTable.Columns.Add(new DataColumn("Total Ammount"));
+
         }
         #endregion
 
@@ -1033,7 +1039,7 @@ namespace WindowsFormsApplication1
                     {
                         continue;
                     }
-                    string que = cellCollection1[5].Value.ToString();
+                    string que = cellCollection1[4].Value.ToString();
                     //string quent = cellCollection1[4].Value.ToString();
 
 
@@ -1085,8 +1091,8 @@ namespace WindowsFormsApplication1
                             }
                             count++;
                             string txtRate = cellCollection[4].Value.ToString();
-                            string txtQuanit = cellCollection[5].Value.ToString();
-                            string txtAmoun = cellCollection[6].Value.ToString();
+                            string txtQuanit = cellCollection[3].Value.ToString();
+                            string txtAmoun = cellCollection[11].Value.ToString();
 
                             string Query = "insert into VendorOrderDesc Values('" + OrderID + "','" + txtItemCod + "','" + txtRate + "','" + txtQuanit + "','" + txtAmoun + "')";
                             //MessageBox.Show(Query);
@@ -1114,8 +1120,8 @@ namespace WindowsFormsApplication1
                                 }
                                 count++;
                                 string txtRate = cellCollection[4].Value.ToString();
-                                string txtQuanity = cellCollection[5].Value.ToString();
-                                string txtAmoun = cellCollection[6].Value.ToString();
+                                string txtQuanity = cellCollection[3].Value.ToString();
+                                string txtAmoun = cellCollection[11].Value.ToString();
                                 //string OrderID1 = OrderID;
 
                                 string Query = "insert into VendorOrderDesc Values('" + OrderID + "','" + txtItemCode + "','" + txtRate + "','" + txtQuanity + "','" + txtAmoun + "')";
@@ -1160,6 +1166,10 @@ namespace WindowsFormsApplication1
                     int id3 = Convert.ToInt32(id2);
                     int id4 = id3 + 1;
                     OrderID = id4.ToString();
+                    if (txtWAmount.Text == "")
+                    {
+                        txtWAmount.Text = "0.00";
+                    }
                     string insertqurry1 = "insert into VendorOrderDetails values('" + textVendercod.Text + "','" + txtdate.Value.ToString() + "','" + txttotalAmount.Text + "','" +txtDiscount.Text +"','" + txtdis.Text + "','" + txtDisAmount.Text + "','" + txtTaxAmount.Text + "','" + txtWAmount.Text + "')";
 
                     int insertedRows1 = dbMainClass.saveDetails(insertqurry1);
@@ -1179,9 +1189,9 @@ namespace WindowsFormsApplication1
                                     continue;
                                 }
                             count++;
-                            string txtRate = cellCollection[4].Value.ToString();
-                            string txtQuanit = cellCollection[5].Value.ToString();
-                            string txtAmoun = cellCollection[6].Value.ToString();
+                            string txtRate = cellCollection[3].Value.ToString();
+                            string txtQuanit = cellCollection[4].Value.ToString();
+                            string txtAmoun = cellCollection[11].Value.ToString();
 
                             string Query = "insert into VendorOrderDesc Values('" + OrderID + "','" + txtItemCod + "','" + txtRate + "','" + txtQuanit + "','" + txtAmoun + "')";
                             //MessageBox.Show(Query);
@@ -1446,17 +1456,17 @@ namespace WindowsFormsApplication1
                                         View.Show();
                                         DeliveryReportViewer.Visible = false;
                                         panel2.Visible = false;
-                                        addToCartTable.Columns.RemoveAt(6);
+                                        addToCartTable.Columns.RemoveAt(5);
                                         if (!addToCartTable.Columns.Contains("Revised Quantity"))
                                         {
                                             addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
-                                            addToCartTable.Columns.RemoveAt(6);
+                                            addToCartTable.Columns.RemoveAt(5);
                                         }
 
-                                        if (!addToCartTable.Columns.Contains("Amount"))
+                                        if (!addToCartTable.Columns.Contains("Taxable Value"))
                                         {
-                                            addToCartTable.Columns.RemoveAt(6);
-                                            addToCartTable.Columns.Add(new DataColumn("Amount"));
+                                            addToCartTable.Columns.RemoveAt(5);
+                                            addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
                                         }
                                         textVendercod.Focus();
                                         textVendercod.Select(textVendercod.Text.Length, 0);
@@ -1478,17 +1488,17 @@ namespace WindowsFormsApplication1
                                         
                                         DeliveryReportViewer.Visible = false;
                                         panel2.Visible = false;
-                                        addToCartTable.Columns.RemoveAt(6);
+                                        addToCartTable.Columns.RemoveAt(5);
                                         if (!addToCartTable.Columns.Contains("Revised Quantity"))
                                         {
                                             addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
-                                            addToCartTable.Columns.RemoveAt(6);
+                                            addToCartTable.Columns.RemoveAt(5);
                                         }
 
-                                        if (!addToCartTable.Columns.Contains("Amount"))
+                                        if (!addToCartTable.Columns.Contains("Taxable Value"))
                                         {
-                                            addToCartTable.Columns.RemoveAt(6);
-                                            addToCartTable.Columns.Add(new DataColumn("Amount"));
+                                            addToCartTable.Columns.RemoveAt(5);
+                                            addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
                                         }
                                         textVendercod.Focus();
                                         textVendercod.Select(textVendercod.Text.Length, 0);
@@ -1702,15 +1712,15 @@ namespace WindowsFormsApplication1
                      
                         txtItemCode.Focus();
                         IndexTex2();
-                        addToCartTable.Columns.RemoveAt(6);
+                        addToCartTable.Columns.RemoveAt(5);
                         if (!addToCartTable.Columns.Contains("Revised Quantity"))
                         {
                             addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
                         }
 
-                        if (!addToCartTable.Columns.Contains("Amount"))
+                        if (!addToCartTable.Columns.Contains("Taxable Value"))
                         {
-                            addToCartTable.Columns.Add(new DataColumn("Amount"));
+                            addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
                         }
                        
                         string dilqurry = "select Orderid from CustomerOrderDelivery where Orderid ='" + txtRef.Text + "'";
@@ -1718,17 +1728,17 @@ namespace WindowsFormsApplication1
                         if (dildt != null && dildt.Rows != null && dildt.Rows.Count > 0)
                         {
                             //button5.Enabled = false;
-                            addToCartTable.Columns.RemoveAt(6);
+                            addToCartTable.Columns.RemoveAt(5);
                             if (!addToCartTable.Columns.Contains("Revised Quantity"))
                             {
                                 addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
-                                addToCartTable.Columns.RemoveAt(6);
+                                addToCartTable.Columns.RemoveAt(5);
 
                             }
-                            if (!addToCartTable.Columns.Contains("Amount"))
+                            if (!addToCartTable.Columns.Contains("Taxable Value"))
                             {
-                                addToCartTable.Columns.RemoveAt(6);
-                                addToCartTable.Columns.Add(new DataColumn("Amount"));
+                                addToCartTable.Columns.RemoveAt(5);
+                                addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
                             }
                             button4.Enabled = false;
                             MessageBox.Show("This Order completed");
@@ -1736,19 +1746,19 @@ namespace WindowsFormsApplication1
                             if (!addToCartTable.Columns.Contains("Revised Quantity"))
                             {
                                 addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
-                                addToCartTable.Columns.RemoveAt(6);
+                                addToCartTable.Columns.RemoveAt(5);
 
                             }
 
-                            if (!addToCartTable.Columns.Contains("Amount"))
+                            if (!addToCartTable.Columns.Contains("Taxable Value"))
                             {
-                                addToCartTable.Columns.Add(new DataColumn("Amount"));
+                                addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
                             }
                             //addToCartTable.Columns.RemoveAt(6);
                             txtRef.Text = "";
                             txtRef.Focus();
                             //textVendercod.Select(textVendercod.Text.Length, 0);
-                            addToCartTable.Columns.RemoveAt(6);
+                            addToCartTable.Columns.RemoveAt(5);
                             textVendercod.TabStop = true;
                             button1.TabStop = true;
 
@@ -1759,17 +1769,17 @@ namespace WindowsFormsApplication1
                         {
                             btnSelectPurchaseOrder.Enabled = false;
                             txtRef.ReadOnly = true;
-                            addToCartTable.Columns.RemoveAt(6);
+                            addToCartTable.Columns.RemoveAt(5);
                             if (!addToCartTable.Columns.Contains("Revised Quantity"))
                             {
                                 addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
-                                addToCartTable.Columns.RemoveAt(6);
+                                addToCartTable.Columns.RemoveAt(5);
 
                             }
 
-                            if (!addToCartTable.Columns.Contains("Amount"))
+                            if (!addToCartTable.Columns.Contains("Taxable Value"))
                             {
-                                addToCartTable.Columns.Add(new DataColumn("Amount"));
+                                addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
                             }
                             button5.Enabled = true;
                             decimal totel1 = 0;
@@ -1938,7 +1948,7 @@ namespace WindowsFormsApplication1
                 }
             }
             */
-            if (txtRef.Text != "")
+          /*  if (txtRef.Text != "")
             {
                 int quantity = 0;
                 string a = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
@@ -2007,8 +2017,21 @@ namespace WindowsFormsApplication1
 
             }
             dataGridView1.AllowUserToAddRows = true;
+           */
         }
-
+        public Double setAmount()
+        {
+            Double amount = 0.00;
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (!string.IsNullOrWhiteSpace(row.Cells[0].Value.ToString()))
+                {
+                    string addamount = row.Cells[row.Cells.Count - 1].Value.ToString();
+                    amount += Convert.ToDouble(addamount.ToString());
+                }
+            }
+            return amount;
+        }
         private void butClose_Click(object sender, EventArgs e)
         {
             if (txtRef.Text == "")
@@ -2034,32 +2057,32 @@ namespace WindowsFormsApplication1
                     textVendercod.TabStop = true;
                     if (counter == 1 )
                     {
-                        addToCartTable.Columns.RemoveAt(6);
+                        addToCartTable.Columns.RemoveAt(5);
                         if (!addToCartTable.Columns.Contains("Revised Quantity"))
                         {
                             addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
-                            addToCartTable.Columns.RemoveAt(6);
+                            addToCartTable.Columns.RemoveAt(5);
                         }
 
-                        if (!addToCartTable.Columns.Contains("Amount"))
+                        if (!addToCartTable.Columns.Contains("Taxable Value"))
                         {
                             //addToCartTable.Columns.RemoveAt(6);
-                            addToCartTable.Columns.Add(new DataColumn("Amount"));
+                            addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
                         }
                     }
                      if (counter == 2)
                     {
-                        addToCartTable.Columns.RemoveAt(6);
+                        addToCartTable.Columns.RemoveAt(5);
                         if (!addToCartTable.Columns.Contains("Revised Quantity"))
                         {
                             addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
-                            addToCartTable.Columns.RemoveAt(6);
+                            addToCartTable.Columns.RemoveAt(5);
                         }
 
-                        if (!addToCartTable.Columns.Contains("Amount"))
+                        if (!addToCartTable.Columns.Contains("Taxable Value"))
                         {
-                            addToCartTable.Columns.RemoveAt(6);
-                            addToCartTable.Columns.Add(new DataColumn("Amount"));
+                            addToCartTable.Columns.RemoveAt(5);
+                            addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
                         }
                     }
                 }
@@ -2569,16 +2592,16 @@ namespace WindowsFormsApplication1
                 if (counter == 2)
                 {
                         //panel2.Visible = false;
-                        addToCartTable.Columns.RemoveAt(6);
+                        addToCartTable.Columns.RemoveAt(5);
                         if (!addToCartTable.Columns.Contains("Revised Quantity"))
                         {
                             addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
-                            addToCartTable.Columns.RemoveAt(6);
+                            addToCartTable.Columns.RemoveAt(5);
                         }
 
-                        if (!addToCartTable.Columns.Contains("Amount"))
+                        if (!addToCartTable.Columns.Contains("Taxable Value"))
                         {
-                            addToCartTable.Columns.Add(new DataColumn("Amount"));
+                            addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
                         }
                         DataGridViewCellCollection CellCollection = dataGridView2.Rows[currentIndex - 1].Cells;
                         if (!string.IsNullOrEmpty(CellCollection[0].Value.ToString()))
@@ -2698,16 +2721,16 @@ namespace WindowsFormsApplication1
             if (counter == 2)
             {
                
-                addToCartTable.Columns.RemoveAt(6);
+                addToCartTable.Columns.RemoveAt(5);
                 if (!addToCartTable.Columns.Contains("Revised Quantity"))
                 {
                     addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
-                    addToCartTable.Columns.RemoveAt(6);
+                    addToCartTable.Columns.RemoveAt(5);
                 }
 
-                if (!addToCartTable.Columns.Contains("Amount"))
+                if (!addToCartTable.Columns.Contains("Taxable Value"))
                 {
-                    addToCartTable.Columns.Add(new DataColumn("Amount"));
+                    addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
                 }
                 DataGridViewCellCollection CellCollection = dataGridView2.Rows[e.RowIndex].Cells;
                 if (!string.IsNullOrEmpty(CellCollection[0].Value.ToString()))
@@ -3897,6 +3920,177 @@ namespace WindowsFormsApplication1
         private void label17_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    string company = "select state from CompnayDetails";
+                    DataTable dt3 = dbMainClass.getDetailByQuery(company);
+                    string companystate = "";
+                    foreach (DataRow dr in dt3.Rows)
+                    {
+                        companystate = dr[0].ToString();
+                    }
+                    string vendorState = "select vState from VendorDetails where venderId='" +textVendercod.Text + "'";
+                    DataTable dt2 = dbMainClass.getDetailByQuery(vendorState);
+                    string vendorstate = "";
+                    foreach (DataRow dr2 in dt2.Rows)
+                    {
+                        vendorstate = dr2[0].ToString();
+                    }
+
+
+                    string itemid = dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[0].Value.ToString();
+
+                    string item = "";
+                    string selectQurry = "select ItemId from ItemDetails";
+                    DataTable dt1 = dbMainClass.getDetailByQuery(selectQurry);
+                    foreach (DataRow dr1 in dt1.Rows)
+                    {
+                        item = dr1[0].ToString();
+                        if (item == itemid)
+                        {
+                            break;
+                        }
+
+                    }
+                    if (item == itemid)
+                    {
+
+
+                        string selectqurry = "select Ids.ItemName,itd.HSN, ipd.SalesPrice,itd.CGST,itd.SGST,itd.IGST,itd.CESS,itd.Discount from ItemDetails Ids  join ItemPriceDetail ipd on Ids.ItemId=ipd.ItemId join ItemTaxDetail itd on ipd.ItemId=itd.ItemId  where Ids.ItemId='" + itemid + "'";
+                        DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+                        string rate = "";
+                        string gst3 = "";
+                        string gst4 = "";
+                        string igst1 = "";
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            gst3 = dr[3].ToString();
+                            gst4 = dr[4].ToString();
+                            igst1 = dr[5].ToString();
+                            if (companystate != vendorstate)
+                            {
+                                gst3 = "0.00";
+                                gst4 = "0.00";
+                            }
+                            if (companystate == vendorstate)
+                            {
+                                igst1 = "0.00";
+                            }
+                            dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[1].Value = dr[0].ToString();
+                            dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[2].Value = dr[1].ToString();
+                            dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[3].Value = dr[2].ToString();
+                            dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[7].Value = gst3.ToString();
+                            dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[8].Value = gst4.ToString();
+                            dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[9].Value = igst1.ToString();
+                            dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[10].Value = dr[6].ToString();
+                            dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[5].Value = dr[7].ToString();
+
+
+                            rate = dr[2].ToString();
+                        }
+
+                        dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[3].Value = rate;
+                        string quantity = dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[4].Value.ToString();
+                        if (quantity == "")
+                        {
+                            quantity = "0";
+                        }
+                        int q1 = Convert.ToInt32(quantity);
+                        Double rate1 = Convert.ToDouble(rate);
+                        Double price = rate1 * q1;
+                        if (price.ToString() == "")
+                        {
+                            price = 0;
+                        }
+
+                        double total = Convert.ToDouble(price.ToString());
+                        double g = Convert.ToDouble(dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[5].Value.ToString());
+                        double di = price * g / 100;
+                        price = price - di;
+                        dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[4].Value = q1;
+                        dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[6].Value = price.ToString("###0.00");
+                        Double gst = Convert.ToDouble(dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[8].Value.ToString());
+                        Double cgst = Convert.ToDouble(dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[7].Value.ToString());
+                        Double taxv = Convert.ToDouble(dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[6].Value.ToString());
+                        Double igst = Convert.ToDouble(dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[9].Value.ToString());
+                        Double csst = Convert.ToDouble(dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[10].Value.ToString());
+                        double g2 = taxv * gst / 100;
+                        taxv = taxv + g2;
+                        double g1 = taxv * cgst / 100;
+                        taxv = taxv + g1;
+                        Double g3 = taxv * igst / 100;
+                        taxv = taxv + g3;
+                        Double csst1 = taxv * csst / 100;
+                        taxv = taxv + csst1;
+                        dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[11].Value = taxv.ToString("###0.00");
+                        Double rat = Convert.ToDouble(dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[11].Value.ToString());
+                        Double totalammount = Convert.ToDouble(txttotalAmount.Text);
+                        Double toat = setAmount();
+                        txttotalAmount.Text = toat.ToString("###0.00");
+                        dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[4];
+
+                        if (q1 != 0)
+                        {
+                            dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.CurrentRow.Index + 1].Cells[0];
+                        }
+
+
+                        //if (gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[0].Value != null)
+                        //{
+                        //    int co = gridPurchaseOrder.CurrentRow.Index;
+                        //    DataGridViewRow selectedRow = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1];
+                        //    selectedRow.Selected = true;
+                        //    selectedRow.Cells[4].Selected = true;
+                        //    // gridPurchaseOrder.CurrentCell = gridPurchaseOrder.CurrentRow.Cells[5];//[gridPurchaseOrder.CurrentCell.ColumnIndex + 2, gridPurchaseOrder.CurrentCell.RowIndex];
+                        //    //gridPurchaseOrder.Focus();
+                        //}
+
+                        //}
+                    }
+                    else
+                    {
+
+                        if (itemid == "I1")
+                        {
+                            MessageBox.Show("please select your correct row ");
+                            dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[0].Value = "";
+                            dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[2].Selected = true;
+                        }
+                    }
+
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+
+                    if (dataGridView1.CurrentCell.ColumnIndex == 1)
+                    {
+                        dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[0];
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
 
        

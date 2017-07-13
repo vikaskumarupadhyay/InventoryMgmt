@@ -621,7 +621,7 @@
             this.gridPurchaseOrder.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridPurchaseOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridPurchaseOrder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridPurchaseOrder.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.gridPurchaseOrder.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
             this.gridPurchaseOrder.Location = new System.Drawing.Point(0, 0);
             this.gridPurchaseOrder.MultiSelect = false;
             this.gridPurchaseOrder.Name = "gridPurchaseOrder";
@@ -853,7 +853,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1186, 634);
+            this.ClientSize = new System.Drawing.Size(1186, 643);
             this.Controls.Add(this.txtwithautaxamount);
             this.Controls.Add(this.DisAmmount);
             this.Controls.Add(this.TextTaxAmmount);
