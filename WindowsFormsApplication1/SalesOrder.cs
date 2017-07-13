@@ -2048,7 +2048,6 @@ namespace WindowsFormsApplication1
                             {
                                 discount = "0";
                             }
-
                             int q1 = Convert.ToInt32(quantity);
 
                             Double rate1 = Convert.ToDouble(rate);
@@ -2137,7 +2136,7 @@ namespace WindowsFormsApplication1
 
                             if (q1 != 0)
                             {
-                                gridsalesorder.CurrentCell = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index + 1].Cells[0];
+                              gridsalesorder.CurrentCell = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index + 1 ].Cells[0];
 
                             }
                             //if (gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[0].Value != null)
@@ -2196,7 +2195,7 @@ namespace WindowsFormsApplication1
             double totalAmount = 0.0;
             foreach (DataGridViewRow gridViewRow in gridsalesorder.Rows)
             {
-                if (!string.IsNullOrWhiteSpace( gridViewRow.Cells[0].Value.ToString()))
+                if (gridViewRow.Cells[0].Value!=null&&!string.IsNullOrWhiteSpace(gridViewRow.Cells[0].Value.ToString()))
                 {
                     Double totalAmountForEachItem = Convert.ToDouble(gridViewRow.Cells[gridViewRow.Cells.Count - 1].Value);
                     totalAmount += totalAmountForEachItem;
