@@ -4020,13 +4020,13 @@ namespace WindowsFormsApplication1
                         Double taxv = Convert.ToDouble(dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[6].Value.ToString());
                         Double igst = Convert.ToDouble(dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[9].Value.ToString());
                         Double csst = Convert.ToDouble(dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[10].Value.ToString());
-                        double g2 = taxv * gst / 100;
+                        double g2 = price * gst / 100;
                         taxv = taxv + g2;
-                        double g1 = taxv * cgst / 100;
+                        double g1 = price * cgst / 100;
                         taxv = taxv + g1;
-                        Double g3 = taxv * igst / 100;
+                        Double g3 = price * igst / 100;
                         taxv = taxv + g3;
-                        Double csst1 = taxv * csst / 100;
+                        Double csst1 = price * csst / 100;
                         taxv = taxv + csst1;
                         dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[11].Value = taxv.ToString("###0.00");
                         Double rat = Convert.ToDouble(dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[11].Value.ToString());
