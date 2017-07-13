@@ -3095,48 +3095,48 @@ namespace WindowsFormsApplication1
 
                          txtItemCode.Focus();
                          IndexTex2();
-                         addToCartTable.Columns.RemoveAt(6);
-                         if (!addToCartTable.Columns.Contains("Revised Quantity"))
-                         {
-                             addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
-                         }
+                         //addToCartTable.Columns.RemoveAt(6);
+                         //if (!addToCartTable.Columns.Contains("Revised Quantity"))
+                         //{
+                         //    addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
+                         //}
 
-                         if (!addToCartTable.Columns.Contains("Amount"))
-                         {
-                             addToCartTable.Columns.Add(new DataColumn("Amount"));
-                         }
+                         //if (!addToCartTable.Columns.Contains("Amount"))
+                         //{
+                         //    addToCartTable.Columns.Add(new DataColumn("Amount"));
+                         //}
 
                          string selectquery2 = "select Orderid from salesOrderDelivery where Orderid='" + txtRefNo.Text + "'";
                          DataTable dt1 = d.getDetailByQuery(selectquery2);
                          if (dt1 != null && dt1.Rows != null && dt1.Rows.Count > 0)
                          {
                              //button5.Enabled = false;
-                             addToCartTable.Columns.RemoveAt(6);
-                             if (!addToCartTable.Columns.Contains("Revised Quantity"))
-                             {
-                                 addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
-                                 addToCartTable.Columns.RemoveAt(6);
+                             //addToCartTable.Columns.RemoveAt(6);
+                             //if (!addToCartTable.Columns.Contains("Revised Quantity"))
+                             //{
+                             //    addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
+                             //    addToCartTable.Columns.RemoveAt(6);
 
-                             }
-                             if (!addToCartTable.Columns.Contains("Amount"))
-                             {
-                                 addToCartTable.Columns.RemoveAt(6);
-                                 addToCartTable.Columns.Add(new DataColumn("Amount"));
-                             }
+                             //}
+                             //if (!addToCartTable.Columns.Contains("Amount"))
+                             //{
+                             //    addToCartTable.Columns.RemoveAt(6);
+                             //    addToCartTable.Columns.Add(new DataColumn("Amount"));
+                             //}
                              butRemoveItem.Enabled = false;
                              MessageBox.Show("This Order completed");
                              //addToCartTable.Columns.RemoveAt(6);
-                             if (!addToCartTable.Columns.Contains("Revised Quantity"))
-                             {
-                                 addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
-                                 addToCartTable.Columns.RemoveAt(6);
+                             //if (!addToCartTable.Columns.Contains("Revised Quantity"))
+                             //{
+                             //    addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
+                             //    addToCartTable.Columns.RemoveAt(6);
 
-                             }
+                             //}
 
-                             if (!addToCartTable.Columns.Contains("Amount"))
-                             {
-                                 addToCartTable.Columns.Add(new DataColumn("Amount"));
-                             }
+                             //if (!addToCartTable.Columns.Contains("Amount"))
+                             //{
+                             //    addToCartTable.Columns.Add(new DataColumn("Amount"));
+                             //}
                              //addToCartTable.Columns.RemoveAt(6);
                              txtRefNo.Text = "";
                              txtRefNo.Focus();
@@ -3149,20 +3149,20 @@ namespace WindowsFormsApplication1
 
                          else
                          {
-                             ButSelectPurchaseOrder.Enabled= false;
+                             ButSelectPurchaseOrder.Enabled = false;
                              txtRefNo.ReadOnly = true;
-                             addToCartTable.Columns.RemoveAt(6);
-                             if (!addToCartTable.Columns.Contains("Revised Quantity"))
-                             {
-                                 addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
-                                 addToCartTable.Columns.RemoveAt(6);
+                             //addToCartTable.Columns.RemoveAt(6);
+                             //if (!addToCartTable.Columns.Contains("Revised Quantity"))
+                             //{
+                             //    addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
+                             //    addToCartTable.Columns.RemoveAt(6);
 
-                             }
+                             //}
 
-                             if (!addToCartTable.Columns.Contains("Amount"))
-                             {
-                                 addToCartTable.Columns.Add(new DataColumn("Amount"));
-                             }
+                             //if (!addToCartTable.Columns.Contains("Amount"))
+                             //{
+                             //    addToCartTable.Columns.Add(new DataColumn("Amount"));
+                             //}
 
 
                              butSaveButton.Visible = true;
@@ -3182,13 +3182,15 @@ namespace WindowsFormsApplication1
                                  //DataTable dt2 = d.getDetailByQuery(selectquery);
                                  SetVendor(selectquery);
                                  // "select it.itemid,iq.ItemName,it.price,it.quantity,it.totalammount from customerorderdescriptions it join ItemDetails iq on it.ItemId=iq.ItemId  where orderid='" + txtRefNo.Text + "'"
-                                 string selectItem = "select cod.ItemId,ad.ItemName,ad.ItemCompName,cast(ipd.MrpPrice as numeric(38,2)),cast(cod.price as numeric(38,2)),cod.quantity,cast(cod.totalammount as numeric(38,2)) from orderdetails od join customerorderdescriptions cod on od.orderid=cod.orderid join ItemDetails ad on cod.ItemId=ad.ItemId join ItemPriceDetail ipd on ad.ItemId=ipd.ItemId where od.orderid='" + txtRefNo.Text + "'";
+                                 string selectItem = "select cod.ItemId,ad.ItemName,itd.HSN,cast(cod.price as numeric(38,2)),cod.quantity,cast((cod.price*cod.quantity)-(cod.price*cod.quantity*itd.Discount/100)as numeric(38,2)),itd.Discount,itd.CGST,itd.SGST,itd.IGST,itd.CESS,cod.totalammount from orderdetails od join customerorderdescriptions cod on od.orderid=cod.orderid join ItemDetails ad on cod.ItemId=ad.ItemId join ItemPriceDetail ipd on ad.ItemId=ipd.ItemId join ItemTaxDetail itd on ipd.ItemId=itd.ItemId where od.orderid='" + txtRefNo.Text + "'";
                                  DataTable dt3 = d.getDetailByQuery(selectItem);
-                                 int totalrowcount = addToCartTable.Rows.Count;
-                                 for (int rowcount = 0; rowcount < totalrowcount; rowcount++)
-                                 {
-                                     addToCartTable.Rows.RemoveAt(0);
-                                 }
+                              
+                        
+                                 //int totalrowcount = addToCartTable.Rows.Count;
+                                 //for (int rowcount = 0; rowcount < totalrowcount; rowcount++)
+                                 //{
+                                 //    addToCartTable.Rows.RemoveAt(0);
+                                 //}
 
                                  double totel = 0;
 
@@ -3200,32 +3202,39 @@ namespace WindowsFormsApplication1
                                      {
                                          continue;
                                      }
+                             
+                                     string itemcod = dr1[0].ToString();
                                      string productname = dr1[1].ToString();
-                                     string compnayname = dr1[2].ToString();
-                                     string mrp = dr1[3].ToString();
-                                     string rate = dr1[4].ToString();
-                                     string quantity = dr1[5].ToString();
-                                     string quantity1 = dr1[5].ToString();
-                                     string ammount = dr1[6].ToString();
-                                     //string ammount1 = dr1[5].ToString();
-                                     double amt = Convert.ToDouble(ammount);
-                                     totel = totel + amt;
+                                     string hsn = dr1[2].ToString();
+                                     string rate = dr1[3].ToString();
+                                     string quantity = dr1[4].ToString();
+                                     string taxablevalue = dr1[5].ToString();
+                                     string discoun = dr1[6].ToString();
+                                     string cgst = dr1[7].ToString();
+                                     string sgst=dr1[8].ToString();
+                                     string igst=dr1[9].ToString();
+                                     string cess = dr1[10].ToString();
+                                     string totalamout = dr1[11].ToString();
                                      dr1 = addToCartTable.NewRow();
-                                     dr1[0] = itemcode.Trim();
+                                     dr1[0] = itemcod.Trim();
                                      dr1[1] = productname.Trim();
-                                     dr1[2] = compnayname.Trim();
-                                     dr1[3] = mrp.Trim();
-                                     dr1[4] = rate.Trim();
-                                     dr1[5] = quantity.Trim();
-                                     dr1[6] = quantity.Trim();
-                                     dr1[7] = ammount.Trim();
-                                     addToCartTable.Rows.Add(dr1);
+                                     dr1[2] = hsn.Trim();
+                                     dr1[3] = rate.Trim();
+                                     dr1[4] = quantity.Trim();
+                                     dr1[5] = taxablevalue.Trim();
+                                     dr1[6] = discoun.Trim();
+                                     dr1[7] = cgst.Trim();
+                                     dr1[8] = sgst.Trim();
+                                     dr1[9] = igst.Trim();
+                                     dr1[10] = cess.Trim();
+                                     dr1[11] = totalamout.Trim();
 
+                                    
                                  }
 
-                                 // gridsalesdelivary.DataSource = null;
+                                  gridsalesdelivary.DataSource = null;
                                  gridsalesdelivary.DataSource = addToCartTable;
-                                 txtTotalAmmount.Text = totel.ToString("###0.00");
+                                txtTotalAmmount.Text = totel.ToString("###0.00");
                                  txtwithauttaxamount.Text = totel.ToString("###0.00");
 
                              }
@@ -3260,6 +3269,8 @@ namespace WindowsFormsApplication1
                      }
                  }
              }
+
+
          }
 
 
@@ -4343,7 +4354,7 @@ namespace WindowsFormsApplication1
 
                             if (q1 != 0)
                             {
-                                gridsalesdelivary.CurrentCell = gridsalesdelivary.Rows[gridsalesdelivary.CurrentRow.Index + 1].Cells[0];
+                                gridsalesdelivary.CurrentCell = gridsalesdelivary.Rows[gridsalesdelivary.RowCount- 1].Cells[0];
 
                             }
                         }
@@ -4399,7 +4410,7 @@ namespace WindowsFormsApplication1
 
                             if (q1 != 0)
                             {
-                                gridsalesdelivary.CurrentCell = gridsalesdelivary.Rows[gridsalesdelivary.CurrentRow.Index + 1].Cells[0];
+                                gridsalesdelivary.CurrentCell = gridsalesdelivary.Rows[gridsalesdelivary.RowCount - 1].Cells[0];
 
                             }
                             //if (gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[0].Value != null)
@@ -4439,7 +4450,7 @@ namespace WindowsFormsApplication1
             double totalAmount = 0.0;
             foreach (DataGridViewRow gridViewRow in gridsalesdelivary.Rows)
             {
-                if (!string.IsNullOrWhiteSpace(gridViewRow.Cells[0].Value.ToString()))
+                if (gridViewRow.Cells[0].Value != null && !string.IsNullOrWhiteSpace(gridViewRow.Cells[0].Value.ToString()))
                 {
                     Double totalAmountForEachItem = Convert.ToDouble(gridViewRow.Cells[gridViewRow.Cells.Count - 1].Value);
                     totalAmount += totalAmountForEachItem;
