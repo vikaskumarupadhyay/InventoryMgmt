@@ -1355,7 +1355,7 @@ namespace WindowsFormsApplication1
                         //}
                         //count++;
                         string que = cellCollection1[5].Value.ToString();
-                        string quent = cellCollection1[6].Value.ToString();
+                        string quent = cellCollection1[4].Value.ToString();
 
 
 
@@ -1401,9 +1401,9 @@ namespace WindowsFormsApplication1
                                 continue;
                             }
                             count++;
-                            string txtRate = cellCollection[4].Value.ToString();
-                            string txtQuanity = cellCollection[6].Value.ToString();
-                            string txtAmoun = cellCollection[7].Value.ToString();
+                            string txtRate = cellCollection[3].Value.ToString();
+                            string txtQuanity = cellCollection[4].Value.ToString();
+                            string txtAmoun = cellCollection[11].Value.ToString();
                             string OrderID1 = txtRef.Text;
 
                             string Query = "insert into VendorOrderDesc Values('" + OrderID1 + "','" + txtItemCode + "','" + txtRate + "','" + txtQuanity + "','" + txtAmoun + "')";
@@ -1456,18 +1456,18 @@ namespace WindowsFormsApplication1
                                         View.Show();
                                         DeliveryReportViewer.Visible = false;
                                         panel2.Visible = false;
-                                        addToCartTable.Columns.RemoveAt(5);
-                                        if (!addToCartTable.Columns.Contains("Revised Quantity"))
-                                        {
-                                            addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
-                                            addToCartTable.Columns.RemoveAt(5);
-                                        }
+                                        //addToCartTable.Columns.RemoveAt(5);
+                                        //if (!addToCartTable.Columns.Contains("Revised Quantity"))
+                                        //{
+                                        //    addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
+                                        //    addToCartTable.Columns.RemoveAt(5);
+                                        //}
 
-                                        if (!addToCartTable.Columns.Contains("Taxable Value"))
-                                        {
-                                            addToCartTable.Columns.RemoveAt(5);
-                                            addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
-                                        }
+                                        //if (!addToCartTable.Columns.Contains("Taxable Value"))
+                                        //{
+                                        //    addToCartTable.Columns.RemoveAt(5);
+                                        //    addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
+                                        //}
                                         textVendercod.Focus();
                                         textVendercod.Select(textVendercod.Text.Length, 0);
                                         textVendercod.TabStop = true;

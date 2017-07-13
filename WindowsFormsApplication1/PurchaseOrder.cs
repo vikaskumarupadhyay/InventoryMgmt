@@ -937,7 +937,7 @@ namespace WindowsFormsApplication1
                         }
                         if (result1 == System.Windows.Forms.DialogResult.No)
                         {
-                            PurchesCrystalReportViewer.Visible = false;
+                            //PurchesCrystalReportViewer.Visible = false;
                             txtTotalAmount.Text = "0.00";
                             panel2.Visible = false;
                         }
