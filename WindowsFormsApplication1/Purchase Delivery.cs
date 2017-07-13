@@ -86,7 +86,7 @@ namespace WindowsFormsApplication1
             setAddToCraftTable();
             if (txtRef.Text == "")
             {
-                addToCartTable.Columns.RemoveAt(5);
+               // addToCartTable.Columns.RemoveAt(5);
                 dataGridView1.DataSource = addToCartTable;
             }
         }
@@ -396,16 +396,16 @@ namespace WindowsFormsApplication1
             //comboBox1.DataSource = ls;
             //dataGridView2.DataSource = dt;
             IndexTex();
-            //addToCartTable.Columns.RemoveAt(6);
-            if (!addToCartTable.Columns.Contains("Revised Quantity"))
-            {
-                addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
-            }
+            ////addToCartTable.Columns.RemoveAt(6);
+            //if (!addToCartTable.Columns.Contains("Revised Quantity"))
+            //{
+            //    addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
+            //}
 
-            if (!addToCartTable.Columns.Contains("Taxable Value"))
-            {
-                addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
-            }
+            //if (!addToCartTable.Columns.Contains("Taxable Value"))
+            //{
+            //    addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
+            //}
 
         }
 
@@ -891,7 +891,7 @@ namespace WindowsFormsApplication1
             addToCartTable.Columns.Add(new DataColumn("HSN"));
             addToCartTable.Columns.Add(new DataColumn("Rate"));
             addToCartTable.Columns.Add(new DataColumn("Quantity"));
-            addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
+            //addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
             addToCartTable.Columns.Add(new DataColumn("Discount"));
             addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
             addToCartTable.Columns.Add(new DataColumn("CGST (%)"));
@@ -1488,18 +1488,18 @@ namespace WindowsFormsApplication1
                                         
                                         DeliveryReportViewer.Visible = false;
                                         panel2.Visible = false;
-                                        addToCartTable.Columns.RemoveAt(5);
-                                        if (!addToCartTable.Columns.Contains("Revised Quantity"))
-                                        {
-                                            addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
-                                            addToCartTable.Columns.RemoveAt(5);
-                                        }
+                                        //addToCartTable.Columns.RemoveAt(5);
+                                        //if (!addToCartTable.Columns.Contains("Revised Quantity"))
+                                        //{
+                                        //    addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
+                                        //    addToCartTable.Columns.RemoveAt(5);
+                                        //}
 
-                                        if (!addToCartTable.Columns.Contains("Taxable Value"))
-                                        {
-                                            addToCartTable.Columns.RemoveAt(5);
-                                            addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
-                                        }
+                                        //if (!addToCartTable.Columns.Contains("Taxable Value"))
+                                        //{
+                                        //    addToCartTable.Columns.RemoveAt(5);
+                                        //    addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
+                                        //}
                                         textVendercod.Focus();
                                         textVendercod.Select(textVendercod.Text.Length, 0);
                                         textVendercod.TabStop = true;
@@ -1712,48 +1712,48 @@ namespace WindowsFormsApplication1
                      
                         txtItemCode.Focus();
                         IndexTex2();
-                        addToCartTable.Columns.RemoveAt(5);
-                        if (!addToCartTable.Columns.Contains("Revised Quantity"))
-                        {
-                            addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
-                        }
+                        //addToCartTable.Columns.RemoveAt(5);
+                        //if (!addToCartTable.Columns.Contains("Revised Quantity"))
+                        //{
+                        //    addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
+                        //}
 
-                        if (!addToCartTable.Columns.Contains("Taxable Value"))
-                        {
-                            addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
-                        }
+                        //if (!addToCartTable.Columns.Contains("Taxable Value"))
+                        //{
+                        //    addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
+                        //}
                        
                         string dilqurry = "select Orderid from CustomerOrderDelivery where Orderid ='" + txtRef.Text + "'";
                         DataTable dildt = dbMainClass.getDetailByQuery(dilqurry);
                         if (dildt != null && dildt.Rows != null && dildt.Rows.Count > 0)
                         {
                             //button5.Enabled = false;
-                            addToCartTable.Columns.RemoveAt(5);
-                            if (!addToCartTable.Columns.Contains("Revised Quantity"))
-                            {
-                                addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
-                                addToCartTable.Columns.RemoveAt(5);
+                            //addToCartTable.Columns.RemoveAt(5);
+                            //if (!addToCartTable.Columns.Contains("Revised Quantity"))
+                            //{
+                            //    addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
+                            //    addToCartTable.Columns.RemoveAt(5);
 
-                            }
-                            if (!addToCartTable.Columns.Contains("Taxable Value"))
-                            {
-                                addToCartTable.Columns.RemoveAt(5);
-                                addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
-                            }
+                            //}
+                            //if (!addToCartTable.Columns.Contains("Taxable Value"))
+                            //{
+                            //    addToCartTable.Columns.RemoveAt(5);
+                            //    addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
+                            //}
                             button4.Enabled = false;
                             MessageBox.Show("This Order completed");
-                            //addToCartTable.Columns.RemoveAt(6);
-                            if (!addToCartTable.Columns.Contains("Revised Quantity"))
-                            {
-                                addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
-                                addToCartTable.Columns.RemoveAt(5);
+                            ////addToCartTable.Columns.RemoveAt(6);
+                            //if (!addToCartTable.Columns.Contains("Revised Quantity"))
+                            //{
+                            //    addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
+                            //    addToCartTable.Columns.RemoveAt(5);
 
-                            }
+                            //}
 
-                            if (!addToCartTable.Columns.Contains("Taxable Value"))
-                            {
-                                addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
-                            }
+                            //if (!addToCartTable.Columns.Contains("Taxable Value"))
+                            //{
+                            //    addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
+                            //}
                             //addToCartTable.Columns.RemoveAt(6);
                             txtRef.Text = "";
                             txtRef.Focus();
@@ -1769,18 +1769,18 @@ namespace WindowsFormsApplication1
                         {
                             btnSelectPurchaseOrder.Enabled = false;
                             txtRef.ReadOnly = true;
-                            addToCartTable.Columns.RemoveAt(5);
-                            if (!addToCartTable.Columns.Contains("Revised Quantity"))
-                            {
-                                addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
-                                addToCartTable.Columns.RemoveAt(5);
+                            //addToCartTable.Columns.RemoveAt(5);
+                            //if (!addToCartTable.Columns.Contains("Revised Quantity"))
+                            //{
+                            //    addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
+                            //    addToCartTable.Columns.RemoveAt(5);
 
-                            }
+                            //}
 
-                            if (!addToCartTable.Columns.Contains("Taxable Value"))
-                            {
-                                addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
-                            }
+                            //if (!addToCartTable.Columns.Contains("Taxable Value"))
+                            //{
+                            //    addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
+                            //}
                             button5.Enabled = true;
                             decimal totel1 = 0;
                             string select = "select vo.Orderid,vo.venderId,vod.ItemId,vo.Discount from VendorOrderDesc vod join VendorOrderDetails vo on vod.Orderid=vo.Orderid where vo.Orderid ='" + txtRef.Text + "'";
@@ -1794,7 +1794,7 @@ namespace WindowsFormsApplication1
                                 //txtdis.Text = dis;
                                 string select1 = "select venderId,vName,vCompName,vAddress ,vPhone,vMobile,vFax from VendorDetails where venderId='" + a + "'";
                                 SetVendor(select1);
-                                string selectqurry1 = "select vodd.ItemId,td.ItemName,td.ItemCompName,ipq.MrpPrice, vodd.Quantity,vodd.Price,vodd.TotalPrice,vod.TotalPrice from VendorOrderDetails vod join VendorOrderDesc vodd on vod.Orderid=vodd.Orderid join ItemDetails td on td.ItemId=vodd.ItemId join ItemPriceDetail ipq on td.ItemId=ipq.ItemId where vod. Orderid ='" + txtRef.Text + "'";
+                                string selectqurry1 = "select vodd.ItemId,td.ItemName,itd.HSN,vodd.Price, vodd.Quantity,itd.Discount,cast((vodd.Quantity*vodd.Price)-(vodd.Quantity*vodd.Price*itd.Discount/100) as numeric(18, 2)) as[Taxable Value],itd.CGST,itd.SGST,itd.IGST,itd.CESS,vodd.TotalPrice,vod.TotalPrice from VendorOrderDetails vod join VendorOrderDesc vodd on vod.Orderid=vodd.Orderid join ItemDetails td on td.ItemId=vodd.ItemId join ItemPriceDetail ipq on td.ItemId=ipq.ItemId join ItemTaxDetail itd on ipq.ItemId=itd.ItemId where vod. Orderid ='" + txtRef.Text + "'";
                                 DataTable dt2 = dbMainClass.getDetailByQuery(selectqurry1);
                                 int totalRowCount = addToCartTable.Rows.Count;
                                 for (int rowCount = 0; rowCount < totalRowCount; rowCount++)
@@ -1807,24 +1807,32 @@ namespace WindowsFormsApplication1
                                     DataRow dr2 = dt2.Rows[c];
                                     string tItemCode = dr2[0].ToString();
                                     string txtitemNmae = dr2[1].ToString();
-                                    string CompanyName = dr2[2].ToString();
-                                    string MrpPrice = dr2[3].ToString();
-                                    string txtRate = dr2[5].ToString();
+                                    string txthsn = dr2[2].ToString();
+                                    string txtRate = dr2[3].ToString();
                                     string txtQuanity = dr2[4].ToString();
-                                    string txtAmoun = dr2[6].ToString();
-                                    string txtitemNmea = dr2[6].ToString();
-                                    
+                                    string txtdiscount = dr2[5].ToString();
+                                    string taxablevalue = dr2[6].ToString();
+                                    string txtcgst = dr2[7].ToString();
+                                    string txtsgst = dr2[8].ToString();
+                                    string txtigst = dr2[9].ToString();
+                                    string txtcess = dr2[10].ToString();
+                                    string txtitemNmea = dr2[11].ToString();
                                     decimal amt = Convert.ToDecimal(txtitemNmea);
                                     totel1 = totel1 + amt;
                                     dr2 = addToCartTable.NewRow();
                                     dr2[0] = tItemCode.Trim();
                                     dr2[1] = txtitemNmae.Trim();
-                                    dr2[2] = CompanyName.Trim();
-                                    dr2[3] = MrpPrice.Trim();
-                                    dr2[4] = txtRate.Trim();
-                                    dr2[5] = txtQuanity.Trim();
-                                    dr2[6] = txtQuanity.Trim();
-                                    dr2[7] = txtAmoun.Trim();
+                                    dr2[2] = txthsn.Trim();
+                                    dr2[3] = txtRate.Trim();
+                                    dr2[4] = txtQuanity.Trim();
+                                  // dr2[5] = txtQuanity.Trim();
+                                    dr2[5] = txtdiscount.Trim();
+                                    dr2[6] = taxablevalue.Trim();
+                                    dr2[7] = txtcgst.Trim();
+                                    dr2[8] = txtsgst.Trim();
+                                    dr2[9] = txtigst.Trim();
+                                    dr2[10] = txtcess.Trim();
+                                    dr2[11] = txtitemNmea.Trim();
                                     int q1 = Convert.ToInt32(txtQuanity.Trim());
                                     quntity1 = quntity1 + q1;
                                     txtQuantityBild.Text = quntity1.ToString();
@@ -2266,12 +2274,6 @@ namespace WindowsFormsApplication1
                 }
             }
         }
-
-        private void dataGridView2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
         private void button3_Leave(object sender, EventArgs e)
         {
             // button3.Enabled = false;
@@ -2475,12 +2477,6 @@ namespace WindowsFormsApplication1
 
             }
         }
-
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void textVendercod_KeyPress(object sender, KeyPressEventArgs e)
         {
             string getId = "select venderId from VendorDetails where venderId='" + textVendercod.Text + "'";
@@ -2686,11 +2682,7 @@ namespace WindowsFormsApplication1
                     }
                 }
             }
-        private void dataGridView2_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
+  
         private void dataGridView2_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
             txtSearch.Text = "";
@@ -3073,12 +3065,6 @@ namespace WindowsFormsApplication1
                 txtDiscount.Focus();
             }
         }
-
-        private void txtItemCode_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             pnlPaymentDetail.Visible = false;
@@ -3711,12 +3697,6 @@ namespace WindowsFormsApplication1
             Double totaldicount =Convert.ToDouble( txtDiscount.Text);
             txtDiscount.Text = totaldicount.ToString("###0.00");
         }
-
-        private void txtInvoiceid_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void txtChequeAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
@@ -3916,17 +3896,6 @@ namespace WindowsFormsApplication1
                 }
             }
         }
-
-        private void txtRturned_MouseClick(object sender, MouseEventArgs e)
-        {
-            
-        }
-
-        private void label17_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void dataGridView1_KeyUp(object sender, KeyEventArgs e)
         {
             try
@@ -3967,7 +3936,7 @@ namespace WindowsFormsApplication1
                     {
 
 
-                        string selectqurry = "select Ids.ItemName,itd.HSN, ipd.SalesPrice,itd.CGST,itd.SGST,itd.IGST,itd.CESS,itd.Discount from ItemDetails Ids  join ItemPriceDetail ipd on Ids.ItemId=ipd.ItemId join ItemTaxDetail itd on ipd.ItemId=itd.ItemId  where Ids.ItemId='" + itemid + "'";
+                        string selectqurry = "select Ids.ItemName,itd.HSN, ipd.purChasePrice,itd.CGST,itd.SGST,itd.IGST,itd.CESS,itd.Discount from ItemDetails Ids  join ItemPriceDetail ipd on Ids.ItemId=ipd.ItemId join ItemTaxDetail itd on ipd.ItemId=itd.ItemId  where Ids.ItemId='" + itemid + "'";
                         DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
                         string rate = "";
                         string gst3 = "";

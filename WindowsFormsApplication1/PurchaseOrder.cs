@@ -845,9 +845,9 @@ namespace WindowsFormsApplication1
                     }
                     string insertqurry = "insert into VendorOrderDetails values('" + txtVendorCode.Text + "','" + dtpDate.Value.ToString() + "','" + txtTotalAmount.Text + "','" + txtdis.Text + "','" + txtDiscount.Text + "','" + DisAmmount.Text + "','" + TextTaxAmmount.Text + "','" + txtwithautaxamount.Text + "')";
 
-                    //int insertedRows = dbMainClass.saveDetails(insertqurry);
-                    //if (insertedRows > 0)
-                    //{
+                    int insertedRows = dbMainClass.saveDetails(insertqurry);
+                    if (insertedRows > 0)
+                    {
                     DataGridViewRowCollection RowCollection = gridPurchaseOrder.Rows;
                     List<string> sf = new List<string>();
                     for (int a = 0; a < RowCollection.Count; a++)
@@ -871,7 +871,7 @@ namespace WindowsFormsApplication1
                         sf.Add(Query);
                     }
                     count++;
-                    int insertedRows1 = dbMainClass.saveDetails(insertqurry,sf);
+                    int insertedRows1 = dbMainClass.saveDetails(sf);
 
                     if (insertedRows1 > 0)
                     {
@@ -956,7 +956,7 @@ namespace WindowsFormsApplication1
                 }
             }
 
-          //}
+          }
             //}
 
 
@@ -1956,9 +1956,9 @@ namespace WindowsFormsApplication1
                     }
                     if (item == itemid)
                     {
-                       
 
-                        string selectqurry = "select Ids.ItemName,itd.HSN, ipd.SalesPrice,itd.CGST,itd.SGST,itd.IGST,itd.CESS,itd.Discount from ItemDetails Ids  join ItemPriceDetail ipd on Ids.ItemId=ipd.ItemId join ItemTaxDetail itd on ipd.ItemId=itd.ItemId  where Ids.ItemId='" + itemid + "'";
+
+                        string selectqurry = "select Ids.ItemName,itd.HSN, ipd.purChasePrice,itd.CGST,itd.SGST,itd.IGST,itd.CESS,itd.Discount from ItemDetails Ids  join ItemPriceDetail ipd on Ids.ItemId=ipd.ItemId join ItemTaxDetail itd on ipd.ItemId=itd.ItemId  where Ids.ItemId='" + itemid + "'";
                         DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
                         string rate = "";
                         string gst3 = "";
