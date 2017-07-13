@@ -2022,12 +2022,17 @@ namespace WindowsFormsApplication1
         public Double setAmount()
         {
             Double amount = 0.00;
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            DataGridViewRowCollection RowCollection = dataGridView1.Rows;
+            for (int a = 0; a < RowCollection.Count - 1; a++)
             {
-                if (!string.IsNullOrWhiteSpace(row.Cells[0].Value.ToString()))
+
+                DataGridViewRow currentRow = RowCollection[a];
+                DataGridViewCellCollection cellCollection = currentRow.Cells;
+                if (!string.IsNullOrWhiteSpace(cellCollection[11].Value.ToString()))
                 {
-                    string addamount = row.Cells[row.Cells.Count - 1].Value.ToString();
-                    amount += Convert.ToDouble(addamount.ToString());
+                    string addamount = cellCollection[11].Value.ToString();
+                    Double amount1 = Convert.ToDouble(addamount.ToString());
+                    amount = amount + amount1;
                 }
             }
             return amount;
