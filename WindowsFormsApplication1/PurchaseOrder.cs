@@ -923,7 +923,7 @@ namespace WindowsFormsApplication1
                                 }
                                 gridPurchaseOrder.AllowUserToAddRows = true;
                                 //gridPurchaseOrder.DataSource = addToCartTable;
-                                OrderID(txtSrNo.Text);
+                                //OrderID(txtSrNo.Text);
                                 makeBlank();
 
                             //PurchesCrystalReport cryRpt = new PurchesCrystalReport();
@@ -1665,13 +1665,13 @@ namespace WindowsFormsApplication1
 
         private void txtTotalAmount_TextChanged(object sender, EventArgs e)
         {
-            double d = 1;
-            double total = Convert.ToDouble(txtTotalAmount.Text);
-            double g = Convert.ToDouble(txtDiscount.Text);
-            double tax = d + ((g / 100));
-            double taxamount = total / tax;
-            double totaltax = total - taxamount;
-            TextTaxAmmount.Text = totaltax.ToString("###0.00");
+            //double d = 1;
+            //double total = Convert.ToDouble(txtTotalAmount.Text);
+            //double g = Convert.ToDouble(txtDiscount.Text);
+            //double tax = d + ((g / 100));
+            //double taxamount = total / tax;
+            //double totaltax = total - taxamount;
+            //TextTaxAmmount.Text = totaltax.ToString("###0.00");
         }
 
         private void DisAmmount_TextChanged(object sender, EventArgs e)
@@ -2002,14 +2002,16 @@ namespace WindowsFormsApplication1
                             Double price = rate1 * q1;
                             if (price.ToString() == "")
                             {
-                                price = 0;
+                                price = 0.00;
                             }
 
                             double total = Convert.ToDouble(price.ToString());
                             double g = Convert.ToDouble(gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[5].Value.ToString());
-                            double di = price * g / 100;
+                            gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[4].Value = q1.ToString();
+                             double di = price * g / 100;
+                             Double discontA = setDisAmount();
+                           DisAmmount.Text = discontA.ToString("###0.00"); 
                             price = price - di;
-                            gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[4].Value = q1;
                             gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[6].Value = price.ToString("###0.00");
                             Double gst = Convert.ToDouble(gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[8].Value.ToString());
                             Double cgst = Convert.ToDouble(gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[7].Value.ToString());
@@ -2018,16 +2020,23 @@ namespace WindowsFormsApplication1
                             Double csst = Convert.ToDouble(gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[10].Value.ToString());
                             double g2 = price * gst / 100;
                             taxv = taxv + g2;
+                            //Double taxgst = TaxAmount(8, prices1);
                             double g1 = price * cgst / 100;
                             taxv = taxv + g1;
+                           // Double taxcgst = TaxAmount(7, prices1);
                             Double g3 = price * igst / 100;
                             taxv = taxv + g3;
+                            //Double taxigst = TaxAmount(9, prices1);
                             Double csst1 = price * csst / 100;
                             taxv = taxv + csst1;
+                            //Double taxcess = TaxAmount(10, prices1);
+                            Double TotalTax = TaxAmount(); //taxgst + taxcgst + taxigst + taxcess;
+                            TextTaxAmmount.Text = TotalTax.ToString("###0.00");
                             gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[11].Value = taxv.ToString("###0.00");
                             Double rat = Convert.ToDouble(gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[11].Value.ToString());
-                            //Double totalammount = Convert.ToDouble(txtTotalAmount.Text);
-                            Double toat = setAmount();
+                            Double withtotalammount = WithTaxAmount();
+                            txtwithautaxamount.Text = withtotalammount.ToString("###0.00");
+                            Double toat = setAmount(11);
                             txtTotalAmount.Text = toat.ToString("###0.00");
                             gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[4];
                            
@@ -2067,7 +2076,92 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.Message.ToString());
             }
         }
-        public Double setAmount()
+        public Double TaxAmount()
+        {
+            Double amount = 0.00;
+            DataGridViewRowCollection RowCollection = gridPurchaseOrder.Rows;
+            for (int a = 0; a < RowCollection.Count - 1; a++)
+            {
+
+                DataGridViewRow currentRow = RowCollection[a];
+                DataGridViewCellCollection cellCollection = currentRow.Cells;
+                if (!string.IsNullOrWhiteSpace(cellCollection[6].Value.ToString()))
+                {
+                    Double price = Convert.ToDouble(cellCollection[6].Value.ToString());
+                    string addamount = cellCollection[8].Value.ToString();
+                    string addamount1 = cellCollection[7].Value.ToString();
+                    string addamount2 = cellCollection[9].Value.ToString();
+                    string addamount3 = cellCollection[10].Value.ToString();
+                    Double amount1 = Convert.ToDouble(addamount.ToString());
+                    Double price1 = price * amount1 / 100;
+                    Double amount2 = Convert.ToDouble(addamount1.ToString());
+                    Double price2 = price * amount2 / 100;
+                    Double amount3 = Convert.ToDouble(addamount2.ToString());
+                    Double price3 = price * amount3 / 100;
+                    string price7 = price3.ToString("###0.00");
+                    Double price8 = Convert.ToDouble(price7);
+                    Double amount4 = Convert.ToDouble(addamount3.ToString());
+                    Double price4 = price * amount4 / 100;
+                    Double price5 = price1 + price2 + price8 + price4;
+                    amount = amount + price5;
+                }
+
+            }
+            return amount;
+        }
+
+        public Double setDisAmount()
+        {
+            Double disamount = 0.00;
+            DataGridViewRowCollection RowCollection = gridPurchaseOrder.Rows;
+            for (int a = 0; a < RowCollection.Count - 1; a++)
+            {
+
+                DataGridViewRow currentRow = RowCollection[a];
+                DataGridViewCellCollection cellCollection = currentRow.Cells;
+                if (!string.IsNullOrWhiteSpace(cellCollection[5].Value.ToString()))
+                {
+                    string addamount = cellCollection[5].Value.ToString();
+                    string addamount1 = cellCollection[3].Value.ToString();
+                    string addamount2 = cellCollection[4].Value.ToString();
+                    if (addamount2 != "")
+                    {
+                        Double amount1 = Convert.ToDouble(addamount.ToString());
+                        double amount2 = Convert.ToDouble(addamount1.ToString());
+                        double amount3 = Convert.ToDouble(addamount2.ToString());
+                        double rate = amount2 * amount3;
+                        double rate1 = rate * amount1 / 100;
+                        disamount = disamount + rate1;
+                    }
+                }
+
+
+            }
+            return disamount;
+        }
+        public Double WithTaxAmount()
+        {
+            Double amount = 0.00;
+            DataGridViewRowCollection RowCollection = gridPurchaseOrder.Rows;
+            for (int a = 0; a < RowCollection.Count - 1; a++)
+            {
+
+                DataGridViewRow currentRow = RowCollection[a];
+                DataGridViewCellCollection cellCollection = currentRow.Cells;
+                if (!string.IsNullOrWhiteSpace(cellCollection[4].Value.ToString()))
+                {
+                    string addamount = cellCollection[4].Value.ToString();
+                    string addamount1 = cellCollection[3].Value.ToString();
+                    Double amount1 = Convert.ToDouble(addamount.ToString());
+                    Double amount2 = Convert.ToDouble(addamount1.ToString());
+                    Double Amount = amount2 * amount1;
+                    amount = amount + Amount;
+                }
+
+            }
+            return amount;
+        }
+        public Double setAmount(int value)
         {
             Double amount = 0.00;
             DataGridViewRowCollection RowCollection = gridPurchaseOrder.Rows;
@@ -2076,9 +2170,9 @@ namespace WindowsFormsApplication1
 
                 DataGridViewRow currentRow = RowCollection[a];
                 DataGridViewCellCollection cellCollection = currentRow.Cells;
-                if (!string.IsNullOrWhiteSpace(cellCollection[11].Value.ToString()))
+                if (!string.IsNullOrWhiteSpace(cellCollection[value].Value.ToString()))
                 {
-                    string addamount = cellCollection[11].Value.ToString();
+                    string addamount = cellCollection[value].Value.ToString();
                Double amount1=Convert.ToDouble(addamount.ToString());
                amount = amount + amount1;
                 }
