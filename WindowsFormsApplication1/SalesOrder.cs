@@ -46,9 +46,9 @@ namespace WindowsFormsApplication1
 
         private void tab1()
         {
-            txtitemcode.Focus();
-            button2.TabStop = true;
-            txtitemcode.TabStop = true;
+            gridsalesorder.Focus();
+            //button2.TabStop = true;
+            //txtitemcode.TabStop = true;
             txtcustomercode.TabStop = true;
             button1.TabStop = true;
 
@@ -580,7 +580,7 @@ namespace WindowsFormsApplication1
 
                 taxtid = dr[0].ToString();
             }
-            string selectName = "select TexAmount,TexName from CompnayTex where TexId='" + taxtid + "'"; //TexName='" + DB_Main.taxName + "'";
+            string selectName = "select CGST,SGST,IGST,CESS from ItemTaxDetail where TexId='" + taxtid + "'"; //TexName='" + DB_Main.taxName + "'";
             DataTable dt1 = d.getDetailByQuery(selectName);
             //textBox16.Text = DB_Main.taxName;
             foreach (DataRow dr in dt1.Rows)
@@ -1408,7 +1408,7 @@ namespace WindowsFormsApplication1
             }
             if (e.KeyChar == (char)Keys.Enter)
             {
-                txtitemcode.Select(txtitemcode.Text.Length, 0);
+               // txtitemcode.Select(txtitemcode.Text.Length, 0);
                 tab1();
             }
 
@@ -2073,6 +2073,11 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyCode == Keys.Enter)
                 {
+                    string itemid = gridsalesorder.Rows[0].Cells[0].Value.ToString();
+                    if (itemid == "")
+                    {
+                        return;
+                    }
                     string compnay = "select State from CompnayDetails";
                     DataTable dt2 = d.getDetailByQuery(compnay);
                     string compnayid = "";
@@ -2087,7 +2092,7 @@ namespace WindowsFormsApplication1
                      {
                          customerid = dr1[0].ToString();
                      }
-                    string itemid = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[0].Value.ToString();
+                    itemid = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[0].Value.ToString();
                     string item = "";
                     string selectQurry = "select ItemId from ItemDetails";
                     DataTable dt1 = d.getDetailByQuery(selectQurry);
