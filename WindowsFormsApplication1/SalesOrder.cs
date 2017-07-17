@@ -2278,6 +2278,8 @@ namespace WindowsFormsApplication1
                             gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[0].Value = "";
                             gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[2].Selected = true;
                         }
+                       
+                      
                     }
 
                 }
