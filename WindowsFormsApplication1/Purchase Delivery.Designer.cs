@@ -474,7 +474,6 @@
             this.txtItemCode.Text = "I";
             this.txtItemCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtItemCode.TextChanged += new System.EventHandler(this.txtItemCode_TextChanged);
-            //this.txtItemCode.Enter += new System.EventHandler(this.txtItemCode_Enter);
             this.txtItemCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemCode_KeyPress);
             // 
             // label11
@@ -855,8 +854,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(1320, 465);
             this.dataGridView2.StandardTab = true;
             this.dataGridView2.TabIndex = 3;
-           // this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
-           // this.dataGridView2.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentDoubleClick);
             this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick_1);
             this.dataGridView2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView2_KeyPress_1);
             // 
@@ -918,7 +915,6 @@
             this.label17.Size = new System.Drawing.Size(71, 15);
             this.label17.TabIndex = 3;
             this.label17.Text = "Select Field";
-            //this.label17.Click += new System.EventHandler(this.label17_Click);
             // 
             // butClose
             // 
@@ -1285,7 +1281,6 @@
             this.txtRturned.TabIndex = 36;
             this.txtRturned.Text = "0.00";
             this.txtRturned.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-           // this.txtRturned.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtRturned_MouseClick);
             this.txtRturned.TextChanged += new System.EventHandler(this.txtRturned_TextChanged);
             this.txtRturned.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRturned_KeyPress);
             // 

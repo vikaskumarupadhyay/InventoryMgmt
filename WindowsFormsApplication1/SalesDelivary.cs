@@ -3048,6 +3048,7 @@ namespace WindowsFormsApplication1
                                  DataTable dt4 = d.getDetailByQuery(selectItem);
 
 
+
                                  int totalrowcount = addToCartTable.Rows.Count;
                                  for (int rowcount = 0; rowcount < totalrowcount; rowcount++)
                                  {
