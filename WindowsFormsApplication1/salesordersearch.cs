@@ -23,7 +23,7 @@ namespace WindowsFormsApplication1
             double s;
             for (int a = 0; a < dataGridView1.Rows.Count; a++)
             {
-                s = Convert.ToDouble(dataGridView1.Rows[a].Cells[11].Value);
+                s = Convert.ToDouble(dataGridView1.Rows[a].Cells[12].Value);
                 totalValue = totalValue + s;
 
             }
@@ -35,7 +35,7 @@ namespace WindowsFormsApplication1
             double s;
             for (int a = 0; a < dataGridView1.Rows.Count; a++)
             {
-                s = Convert.ToDouble(dataGridView1.Rows[a].Cells[10].Value);
+                s = Convert.ToDouble(dataGridView1.Rows[a].Cells[11].Value);
                 totalValue = totalValue + s;
 
             }
@@ -47,9 +47,8 @@ namespace WindowsFormsApplication1
             double s;
             for (int a = 0; a < dataGridView1.Rows.Count; a++)
             {
-                s = Convert.ToDouble(dataGridView1.Rows[a].Cells[13].Value);
+                s = Convert.ToDouble(dataGridView1.Rows[a].Cells[14].Value);
                 totalValue = totalValue + s;
-
             }
             return totalValue;
         }

@@ -4416,6 +4416,13 @@ namespace WindowsFormsApplication1
 
                     else
                     {
+                        if (item != itemid)
+                        {
+
+                            MessageBox.Show("please select your correct itemid");
+                            gridsalesdelivary.CurrentCell = gridsalesdelivary.Rows[gridsalesdelivary.CurrentRow.Index - 1].Cells[0];
+
+                        }
 
                         if (itemid == "I1")
                         {

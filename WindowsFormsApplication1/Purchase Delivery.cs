@@ -4098,6 +4098,13 @@ namespace WindowsFormsApplication1
                         else
                         {
 
+                            if (item != itemid)
+                            {
+
+                                MessageBox.Show("please select your correct itemid");
+                                dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[0];
+
+                            }
                             if (itemid != item)
                             {
                                 MessageBox.Show("please select your correct row ");
