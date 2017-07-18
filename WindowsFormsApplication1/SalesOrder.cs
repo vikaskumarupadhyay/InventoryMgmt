@@ -2094,10 +2094,12 @@ namespace WindowsFormsApplication1
                      }
                     itemid = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[0].Value.ToString();
                     string item = "";
-                    string selectQurry = "select ItemId from ItemDetails";
+                    string selectQurry = "select ItemId from ItemDetails where ItemId='ItemId'";
                     DataTable dt1 = d.getDetailByQuery(selectQurry);
+                  
                     foreach (DataRow dr1 in dt1.Rows)
                     {
+                       
                         item = dr1[0].ToString();
                         if (item == itemid)
                         {
@@ -2271,7 +2273,13 @@ namespace WindowsFormsApplication1
 
                     else
                     {
-
+                        if (item!= itemid)
+                        {
+                           
+                            MessageBox.Show("please select your correct itemid");
+                            gridsalesorder.CurrentCell = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[0];
+                            
+                        }
                         if (itemid == "I1")
                         {
                             MessageBox.Show("please select your correct row ");

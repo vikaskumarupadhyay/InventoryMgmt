@@ -2066,7 +2066,13 @@ namespace WindowsFormsApplication1
                         }
                         else
                         {
+                            if (item != itemid)
+                            {
 
+                                MessageBox.Show("please select your correct itemid");
+                                gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[0];
+
+                            }
                             if (itemid == item)
                             {
                                 MessageBox.Show("please select your correct row ");
