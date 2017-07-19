@@ -118,8 +118,8 @@ namespace WindowsFormsApplication1
         }
         public void makePayment1()
         {
-            string selectqurry = "select CustomerOrderDelivery.Deliveryid as[Purchase Invoice ID],CustomerOrderDelivery.DeliveryDate as[Invoice Date],VendorOrderDetails.venderId as [Vendor ID], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Quantity Billed],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate (In %)],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax Rate (In %)],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Invoice Amount],p.[Paid Amount],p.Balance as [Balance Amount] from VendorOrderDetails join VendorDetails on VendorDetails.venderId =VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid left join  (select Invoiceid, (MAX(InvoiceAmount) - sum(TotalAmount)) as Balance , sum(TotalAmount) as [Paid Amount] from AllPaymentDetailes  join CustomerOrderDelivery on AllPaymentDetailes.Invoiceid=CustomerOrderDelivery.Deliveryid  group by Invoiceid) p on CustomerOrderDelivery.Deliveryid=p.Invoiceid";
-            string selectqurryForActualColumnName = "select top 1 CustomerOrderDelivery.Deliveryid ,CustomerOrderDelivery.DeliveryDate, VendorOrderDetails.venderId, VendorDetails.vName ,VendorDetails.vCompName , VendorDetails.vAddress ,(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) ,VendorOrderDetails.WithoutTexAmount ,VendorOrderDetails.Discount ,VendorOrderDetails.DisAmount ,VendorOrderDetails.vat ,VendorOrderDetails.TextTaxAmmount ,VendorOrderDetails.TotalPrice ,p.[Paid Amount],p.Balance from VendorOrderDetails join VendorDetails on VendorDetails.venderId =VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid left join  (select Invoiceid, (MAX(InvoiceAmount) - sum(TotalAmount)) as Balance , sum(TotalAmount) as [Paid Amount] from AllPaymentDetailes  join CustomerOrderDelivery on AllPaymentDetailes.Invoiceid=CustomerOrderDelivery.Deliveryid  group by Invoiceid) p on CustomerOrderDelivery.Deliveryid=p.Invoiceid";
+            string selectqurry = "SELECT cod.Deliveryid as[Purchase Invoice ID], payment.PaymentDate as[payment date],vd.venderId as[Vendor ID],vd.vName as[Vendor Name],vd.vCompName as[Company Name], vd.vAddress as[Address],vode.Quantity as [Quantity Billed],cast((vode.Price)* (vode.Quantity) as numeric(38,2)) AS [Gross Amount], itd.Discount as[Discount Rate (In %)],cast((vode.Price)* (vode.Quantity)*(itd.Discount/100) as numeric(38,2)) as [Discount Amount],cast((((vode.Price)* (vode.Quantity))-(vode.Price)* (vode.Quantity)*(itd.Discount/100))as numeric(38,2)) as [Taxable Value],(case when vd.vState  != (select state from CompnayDetails) then '0.00'else CGST end) as CGST,(case when vd.vState != (select state from CompnayDetails) then '0.0'else SGST end) as SGST,(case when vd.vState = (select state from CompnayDetails) then '0.00'else itd.IGST end) as IGST,itd.CESS, cast((vode.TotalPrice) - ((vode.TotalPrice *vod.Discount) / 100) as numeric(38, 2)) AS[Net Amount (Including Tax)] ,p.InvoiceAmount as [Invoice Amount] ,p.[Paid Amount] ,p.Balance as[Balance Amount],(case when p.Balance > 0 then 'Delivered' else 'Fully settled' end) as [Delivery Status] FROM CustomerOrderDelivery cod INNER JOIN VendorOrderDetails vod ON cod.Orderid = vod.orderid INNER JOIN VendorDetails vd ON vod.venderId = vd.venderId INNER JOIN VendorOrderDesc vode ON vod.orderid = vode.Orderid  INNER JOIN ItemDetails id ON vode.ItemId = id.ItemId  INNER JOIN ItemPriceDetail ipd ON id.ItemId = ipd.ItemId join ItemTaxDetail itd on itd.ItemId = ipd.ItemId left join  (select Invoiceid, MAX(InvoiceAmount) as InvoiceAmount, (MAX(InvoiceAmount) - sum(TotalAmount)) as Balance, sum(TotalAmount) as [Paid Amount] from AllPaymentDetailes  join CustomerOrderDelivery on AllPaymentDetailes.Invoiceid = CustomerOrderDelivery.Deliveryid group by Invoiceid) p on cod.Deliveryid = p.Invoiceid join AllPaymentDetailes payment on cod.Deliveryid=payment.Invoiceid";
+            string selectqurryForActualColumnName = "SELECT top 1 cod.Deliveryid,payment.PaymentDate,vd.venderId,vd.vName,vd.vCompName, vd.vAddress,vode.Quantity ,cast((vode.Price)* (vode.Quantity) as numeric(38,2)), itd.Discount,cast((vode.Price)* (vode.Quantity)*(itd.Discount/100) as numeric(38,2)),cast((((vode.Price)* (vode.Quantity))-(vode.Price)* (vode.Quantity)*(itd.Discount/100))as numeric(38,2)),(case when vd.vState  != (select state from CompnayDetails) then '0.00'else CGST end),(case when vd.vState != (select state from CompnayDetails) then '0.0'else SGST end),(case when vd.vState = (select state from CompnayDetails) then '0.00'else itd.IGST end),itd.CESS, cast((vode.TotalPrice) - ((vode.TotalPrice *vod.Discount) / 100) as numeric(38, 2)),p.InvoiceAmount ,p.[Paid Amount] ,p.Balance,(case when p.Balance > 0 then 'Delivered' else 'Fully settled' end)FROM CustomerOrderDelivery cod INNER JOIN VendorOrderDetails vod ON cod.Orderid = vod.orderid INNER JOIN VendorDetails vd ON vod.venderId = vd.venderId INNER JOIN VendorOrderDesc vode ON vod.orderid = vode.Orderid  INNER JOIN ItemDetails id ON vode.ItemId = id.ItemId  INNER JOIN ItemPriceDetail ipd ON id.ItemId = ipd.ItemId join ItemTaxDetail itd on itd.ItemId = ipd.ItemId left join  (select Invoiceid, MAX(InvoiceAmount) as InvoiceAmount, (MAX(InvoiceAmount) - sum(TotalAmount)) as Balance, sum(TotalAmount) as [Paid Amount] from AllPaymentDetailes  join CustomerOrderDelivery on AllPaymentDetailes.Invoiceid = CustomerOrderDelivery.Deliveryid group by Invoiceid) p on cod.Deliveryid = p.Invoiceid join AllPaymentDetailes payment on cod.Deliveryid=payment.Invoiceid";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
             DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
             DataTable customDataTable = new DataTable();
@@ -271,8 +271,24 @@ namespace WindowsFormsApplication1
             {
                 s = "p.[Paid Amount] ";
             }
+            else if (s == "Column3")
+            {
+                s = "cast((((vode.Price)* (vode.Quantity))-(vode.Price)* (vode.Quantity)*(itd.Discount/100))as numeric(38,2))";
+            }
+            else if (s == "Column4")
+            {
+                s = "(case when vd.vState  != (select state from CompnayDetails) then '0.00'else CGST end)";
+            }
+            else if (s == "Column5")
+            {
+                s = "(case when vd.vState != (select state from CompnayDetails) then '0.0'else SGST end)";
+            }
+            else if (s == "Column6")
+            {
+                s = "(case when vd.vState = (select state from CompnayDetails) then '0.00'else itd.IGST end)";
+            }
             //string m = "v" + s;
-            string selectQurry = "select CustomerOrderDelivery.Deliveryid as[Purchase Invoice ID],CustomerOrderDelivery.DeliveryDate as[Invoice Date],VendorOrderDetails.venderId as [Vendor ID], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Quantity Billed],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate (In %)],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax Rate (In %)],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Invoice Amount],p.[Paid Amount],p.Balance as [Balance Amount] from VendorOrderDetails join VendorDetails on VendorDetails.venderId =VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid left join  (select Invoiceid, (MAX(InvoiceAmount) - sum(TotalAmount)) as Balance , sum(TotalAmount) as [Paid Amount] from AllPaymentDetailes  join CustomerOrderDelivery on AllPaymentDetailes.Invoiceid=CustomerOrderDelivery.Deliveryid  group by Invoiceid) p on CustomerOrderDelivery.Deliveryid=p.Invoiceid where " + s + " like '" + txtSearch.Text + "%'";
+            string selectQurry = "SELECT cod.Deliveryid as[Purchase Invoice ID], payment.PaymentDate as[payment date],vd.venderId as[Vendor ID],vd.vName as[Vendor Name],vd.vCompName as[Company Name], vd.vAddress as[Address],vode.Quantity as [Quantity Billed],cast((vode.Price)* (vode.Quantity) as numeric(38,2)) AS [Gross Amount], itd.Discount as[Discount Rate (In %)],cast((vode.Price)* (vode.Quantity)*(itd.Discount/100) as numeric(38,2)) as [Discount Amount],cast((((vode.Price)* (vode.Quantity))-(vode.Price)* (vode.Quantity)*(itd.Discount/100))as numeric(38,2)) as [Taxable Value],(case when vd.vState  != (select state from CompnayDetails) then '0.00'else CGST end) as CGST,(case when vd.vState != (select state from CompnayDetails) then '0.0'else SGST end) as SGST,(case when vd.vState = (select state from CompnayDetails) then '0.00'else itd.IGST end) as IGST,itd.CESS, cast((vode.TotalPrice) - ((vode.TotalPrice *vod.Discount) / 100) as numeric(38, 2)) AS[Net Amount (Including Tax)] ,p.InvoiceAmount as [Invoice Amount] ,p.[Paid Amount] ,p.Balance as[Balance Amount],(case when p.Balance > 0 then 'Delivered' else 'Fully settled' end) as [Delivery Status] FROM CustomerOrderDelivery cod INNER JOIN VendorOrderDetails vod ON cod.Orderid = vod.orderid INNER JOIN VendorDetails vd ON vod.venderId = vd.venderId INNER JOIN VendorOrderDesc vode ON vod.orderid = vode.Orderid  INNER JOIN ItemDetails id ON vode.ItemId = id.ItemId  INNER JOIN ItemPriceDetail ipd ON id.ItemId = ipd.ItemId join ItemTaxDetail itd on itd.ItemId = ipd.ItemId left join  (select Invoiceid, MAX(InvoiceAmount) as InvoiceAmount, (MAX(InvoiceAmount) - sum(TotalAmount)) as Balance, sum(TotalAmount) as [Paid Amount] from AllPaymentDetailes  join CustomerOrderDelivery on AllPaymentDetailes.Invoiceid = CustomerOrderDelivery.Deliveryid group by Invoiceid) p on cod.Deliveryid = p.Invoiceid join AllPaymentDetailes payment on cod.Deliveryid=payment.Invoiceid where " + s + " like '" + txtSearch.Text + "%'";
             DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
             dataGridView2.DataSource = dt;
         }
@@ -289,7 +305,7 @@ namespace WindowsFormsApplication1
                 //int id1 = id -1;
 
 
-                string selectQurry = "select payment.PaymentDate as[Invoice Date],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Quantity Billed],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate (In %)],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax Rate (In %)],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Invoice Amount],payment.TotalAmount as[Paid Amount] ,payment.BalanceAmount as[Balance Amount] from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid join AllPaymentDetailes payment on CustomerOrderDelivery.Deliveryid=payment.Invoiceid where CustomerOrderDelivery.Deliveryid='" + txtRefNo.Text + "'";
+                string selectQurry = "SELECT cod.Deliveryid as[Purchase Invoice ID],payment.PaymentDate as[Payment date],vd.venderId as[Vendor ID],vd.vName as[Vendor Name],vd.vCompName as[Company Name], vd.vAddress as[Address],vode.Quantity as [Quantity Billed],cast((vode.Price)* (vode.Quantity) as numeric(38,2)) AS [Gross Amount], itd.Discount as[Discount Rate (In %)],cast((vode.Price)* (vode.Quantity)*(itd.Discount/100) as numeric(38,2)) as [Discount Amount],cast((((vode.Price)* (vode.Quantity))-(vode.Price)* (vode.Quantity)*(itd.Discount/100))as numeric(38,2)) as [Taxable Value],(case when vd.vState  != (select state from CompnayDetails) then '0.00'else CGST end) as CGST,(case when vd.vState != (select state from CompnayDetails) then '0.0'else SGST end) as SGST,(case when vd.vState = (select state from CompnayDetails) then '0.00'else itd.IGST end) as IGST,itd.CESS, cast((vode.TotalPrice) - ((vode.TotalPrice *vod.Discount) / 100) as numeric(38, 2)) AS[Net Amount (Including Tax)] ,p.InvoiceAmount as [Invoice Amount] ,p.[Paid Amount] ,p.Balance as[Balance Amount],(case when p.Balance > 0 then 'Delivered' else 'Fully settled' end) as [Delivery Status] FROM CustomerOrderDelivery cod INNER JOIN VendorOrderDetails vod ON cod.Orderid = vod.orderid INNER JOIN VendorDetails vd ON vod.venderId = vd.venderId INNER JOIN VendorOrderDesc vode ON vod.orderid = vode.Orderid  INNER JOIN ItemDetails id ON vode.ItemId = id.ItemId  INNER JOIN ItemPriceDetail ipd ON id.ItemId = ipd.ItemId join ItemTaxDetail itd on itd.ItemId = ipd.ItemId left join  (select Invoiceid, MAX(InvoiceAmount) as InvoiceAmount, (MAX(InvoiceAmount) - sum(TotalAmount)) as Balance, sum(TotalAmount) as [Paid Amount] from AllPaymentDetailes  join CustomerOrderDelivery on AllPaymentDetailes.Invoiceid = CustomerOrderDelivery.Deliveryid group by Invoiceid) p on cod.Deliveryid = p.Invoiceid join AllPaymentDetailes payment on cod.Deliveryid=payment.Invoiceid where cod.Deliveryid='" + txtRefNo.Text + "'";
                 DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
                 string balance = "";
                 foreach (DataRow dr in dt.Rows)
@@ -329,7 +345,7 @@ namespace WindowsFormsApplication1
                         d = Convert.ToDouble(cellCollection1[8].Value.ToString());
                         d1 = d1 + d;
                     }
-                    Double Amount1 = amount - d1;
+                    Double Amount1 = amount;
                     txttotalAmount.Text = Amount1.ToString("###0.00");
                    // txtInvoiceAmount.Text = Amount1.ToString("###0.00"); 
                    // txtBalance.Text = Amount1.ToString("###0.00"); 
@@ -341,6 +357,7 @@ namespace WindowsFormsApplication1
         {
             try
             {
+                txtRefNo.Text = cellCollection[0].Value.ToString();
                 txtvendorId.Text = cellCollection[2].Value.ToString();
                 txtVendorName.Text = cellCollection[3].Value.ToString();
                 txtCompanyName.Text = cellCollection[4].Value.ToString();
@@ -349,9 +366,9 @@ namespace WindowsFormsApplication1
                 // txtMobile.Text = cellCollection[5].Value.ToString();
                 //txtFax.Text = cellCollection[6].Value.ToString();
                // txttotalAmount.Text = cellCollection[14].Value.ToString();
-                txtRefNo.Text = cellCollection[0].Value.ToString();
-                txtInvoiceAmount.Text = cellCollection[12].Value.ToString();
-                amount = Convert.ToDouble(cellCollection[12].Value.ToString());
+               
+                txtInvoiceAmount.Text = cellCollection[18].Value.ToString();
+                amount = Convert.ToDouble(cellCollection[18].Value.ToString());
             }
             catch (Exception ex)
             {
@@ -844,7 +861,7 @@ namespace WindowsFormsApplication1
                     //int id1 = id -1;
 
 
-                    string selectQurry = "select payment.PaymentDate as[Invoice Date],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Quantity Billed],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate (In %)],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax Rate (In %)],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Invoice Amount],payment.TotalAmount as[Paid Amount] ,payment.BalanceAmount as[Balance Amount] from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid join AllPaymentDetailes payment on CustomerOrderDelivery.Deliveryid=payment.Invoiceid where CustomerOrderDelivery.Deliveryid='" + txtRefNo.Text + "'";
+                    string selectQurry = "SELECT cod.Deliveryid as[Purchase Invoice ID],payment.PaymentDate as[Payment date],vd.venderId as[Vendor ID],vd.vName as[Vendor Name],vd.vCompName as[Company Name], vd.vAddress as[Address],vode.Quantity as [Quantity Billed],cast((vode.Price)* (vode.Quantity) as numeric(38,2)) AS [Gross Amount], itd.Discount as[Discount Rate (In %)],cast((vode.Price)* (vode.Quantity)*(itd.Discount/100) as numeric(38,2)) as [Discount Amount],cast((((vode.Price)* (vode.Quantity))-(vode.Price)* (vode.Quantity)*(itd.Discount/100))as numeric(38,2)) as [Taxable Value],(case when vd.vState  != (select state from CompnayDetails) then '0.00'else CGST end) as CGST,(case when vd.vState != (select state from CompnayDetails) then '0.0'else SGST end) as SGST,(case when vd.vState = (select state from CompnayDetails) then '0.00'else itd.IGST end) as IGST,itd.CESS, cast((vode.TotalPrice) - ((vode.TotalPrice *vod.Discount) / 100) as numeric(38, 2)) AS[Net Amount (Including Tax)] ,p.InvoiceAmount as [Invoice Amount] ,p.[Paid Amount] ,p.Balance as[Balance Amount],(case when p.Balance > 0 then 'Delivered' else 'Fully settled' end) as [Delivery Status] FROM CustomerOrderDelivery cod INNER JOIN VendorOrderDetails vod ON cod.Orderid = vod.orderid INNER JOIN VendorDetails vd ON vod.venderId = vd.venderId INNER JOIN VendorOrderDesc vode ON vod.orderid = vode.Orderid  INNER JOIN ItemDetails id ON vode.ItemId = id.ItemId  INNER JOIN ItemPriceDetail ipd ON id.ItemId = ipd.ItemId join ItemTaxDetail itd on itd.ItemId = ipd.ItemId left join  (select Invoiceid, MAX(InvoiceAmount) as InvoiceAmount, (MAX(InvoiceAmount) - sum(TotalAmount)) as Balance, sum(TotalAmount) as [Paid Amount] from AllPaymentDetailes  join CustomerOrderDelivery on AllPaymentDetailes.Invoiceid = CustomerOrderDelivery.Deliveryid group by Invoiceid) p on cod.Deliveryid = p.Invoiceid join AllPaymentDetailes payment on cod.Deliveryid=payment.Invoiceid where cod.Deliveryid='" + txtRefNo.Text + "'";
                     DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
                     string balance = "";
                     foreach (DataRow dr in dt.Rows)
@@ -935,6 +952,17 @@ namespace WindowsFormsApplication1
         }
         private void pnlPayment_Paint(object sender, PaintEventArgs e)
         {
+            //txtInvoiceid.Text = txtRefNo.Text;
+            //txtInvoiceAmount.Text = amount.ToString("###0.00");
+            //txtBalance.Text = txttotalammount.Text;
+            //txtNetAmount.Text = txtTotalAmount1.Text;
+            //Double Amount = Convert.ToDouble(txtTotalAmount1.Text);
+            //Double Amount1 = Convert.ToDouble(txtBalance.Text);
+            //double amount4 = Convert.ToDouble(txtRturned.Text);
+            //Double Amount2 = Amount1 - Amount;
+            //double amount5 = Amount2 + amount4;
+            //string Amount3 = amount5.ToString();
+            //txtBalance.Text = amount5.ToString("##0.00");
            
             txtInvoiceid.Text = txtRefNo.Text;
 
@@ -943,10 +971,12 @@ namespace WindowsFormsApplication1
             txtNetAmount.Text = txtTotalAmount1.Text;
             Double Amount = Convert.ToDouble(txtTotalAmount1.Text);
             Double Amount1 = Convert.ToDouble(txtBalance.Text);
+            double amount4 = Convert.ToDouble(txtRturned.Text);
             Double Amount2 = Amount1 - Amount;
-            string Amount3 = Amount2.ToString();
-            txtBalance.Text = Amount2.ToString("##0.00");
-           // allvisible();
+            double amount5 = Amount2 + amount4;
+            string Amount3 = amount5.ToString();
+            txtBalance.Text = amount5.ToString("##0.00");
+            allvisible();
             CmbPageName.SelectedIndex = 0;
             CmbCardType.SelectedIndex = 0;
             CmbCompany.SelectedIndex = 0;
@@ -1694,7 +1724,7 @@ namespace WindowsFormsApplication1
 
             }
             //string s = comboPurchasesearch.SelectedValue.ToString();
-            string selectQurry = "select CustomerOrderDelivery.Deliveryid as[Purchase Invoice ID],CustomerOrderDelivery.DeliveryDate as[Invoice Date],VendorOrderDetails.venderId as [Vendor ID], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Quantity Billed],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate (In %)],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax Rate (In %)],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Invoice Amount],p.[Paid Amount],p.Balance as [Balance Amount] from VendorOrderDetails join VendorDetails on VendorDetails.venderId =VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid left join  (select Invoiceid, (MAX(InvoiceAmount) - sum(TotalAmount)) as Balance , sum(TotalAmount) as [Paid Amount] from AllPaymentDetailes  join CustomerOrderDelivery on AllPaymentDetailes.Invoiceid=CustomerOrderDelivery.Deliveryid  group by Invoiceid) p on CustomerOrderDelivery.Deliveryid=p.Invoiceid where DeliveryDate BETWEEN '" + dateTimePicker4.Value.ToString() + "' AND '" + dateTimePicker3.Value.ToString() + "'";
+            string selectQurry = "SELECT cod.Deliveryid as[Purchase Invoice ID],payment.PaymentDate as[payment date],vd.venderId as[Vendor ID],vd.vName as[Vendor Name],vd.vCompName as[Company Name], vd.vAddress as[Address],vode.Quantity as [Quantity Billed],cast((vode.Price)* (vode.Quantity) as numeric(38,2)) AS [Gross Amount], itd.Discount as[Discount Rate (In %)],cast((vode.Price)* (vode.Quantity)*(itd.Discount/100) as numeric(38,2)) as [Discount Amount],cast((((vode.Price)* (vode.Quantity))-(vode.Price)* (vode.Quantity)*(itd.Discount/100))as numeric(38,2)) as [Taxable Value],(case when vd.vState  != (select state from CompnayDetails) then '0.00'else CGST end) as CGST,(case when vd.vState != (select state from CompnayDetails) then '0.0'else SGST end) as SGST,(case when vd.vState = (select state from CompnayDetails) then '0.00'else itd.IGST end) as IGST,itd.CESS, cast((vode.TotalPrice) - ((vode.TotalPrice *vod.Discount) / 100) as numeric(38, 2)) AS[Net Amount (Including Tax)] ,p.InvoiceAmount as [Invoice Amount] ,p.[Paid Amount] ,p.Balance as[Balance Amount],(case when p.Balance > 0 then 'Delivered' else 'Fully settled' end) as [Delivery Status] FROM CustomerOrderDelivery cod INNER JOIN VendorOrderDetails vod ON cod.Orderid = vod.orderid INNER JOIN VendorDetails vd ON vod.venderId = vd.venderId INNER JOIN VendorOrderDesc vode ON vod.orderid = vode.Orderid  INNER JOIN ItemDetails id ON vode.ItemId = id.ItemId  INNER JOIN ItemPriceDetail ipd ON id.ItemId = ipd.ItemId join ItemTaxDetail itd on itd.ItemId = ipd.ItemId left join  (select Invoiceid, MAX(InvoiceAmount) as InvoiceAmount, (MAX(InvoiceAmount) - sum(TotalAmount)) as Balance, sum(TotalAmount) as [Paid Amount] from AllPaymentDetailes  join CustomerOrderDelivery on AllPaymentDetailes.Invoiceid = CustomerOrderDelivery.Deliveryid group by Invoiceid) p on cod.Deliveryid = p.Invoiceid join AllPaymentDetailes payment on cod.Deliveryid=payment.Invoiceid where DeliveryDate BETWEEN '" + dateTimePicker4.Value.ToString() + "' AND '" + dateTimePicker3.Value.ToString() + "'";
             //"select od.Orderid,od.venderId,itd.ItemName,vod.Quantity,vod.TotalPrice,od.OrderDate,cod.DeliveryDate,coi.InvoiceDate from VendorOrderDetails od join VendorOrderDesc vod on vod.Orderid=od.Orderid join CustomerOrderDelivery cod on cod.Orderid=vod.Orderid join CustomerOrderInvoice coi on coi.Orderid=vod.Orderid join ItemDetails itd on itd.ItemId=vod.ItemId where " + a + "= '" + txtsearch.Text + "'";
             DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
             dataGridView2.DataSource = dt;
@@ -1710,10 +1740,7 @@ namespace WindowsFormsApplication1
            
         }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+       
 
         private void comboBox1_Leave(object sender, EventArgs e)
         {
@@ -1834,6 +1861,8 @@ namespace WindowsFormsApplication1
 
             }
         }
+
+       
 
     }
 }

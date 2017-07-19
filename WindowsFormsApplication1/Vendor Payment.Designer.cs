@@ -79,14 +79,14 @@
             this.textBox23 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtRturned = new System.Windows.Forms.TextBox();
+            this.txtBalance = new System.Windows.Forms.TextBox();
+            this.txtTotalAmount1 = new System.Windows.Forms.TextBox();
             this.textBox20 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.txtNetAmount = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.txtRturned = new System.Windows.Forms.TextBox();
-            this.txtBalance = new System.Windows.Forms.TextBox();
-            this.txtTotalAmount1 = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -558,7 +558,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(1319, 473);
             this.dataGridView2.StandardTab = true;
             this.dataGridView2.TabIndex = 4;
-            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
             this.dataGridView2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView2_KeyPress);
             // 
@@ -684,14 +683,14 @@
             this.groupBox10.Controls.Add(this.textBox23);
             this.groupBox10.Controls.Add(this.textBox2);
             this.groupBox10.Controls.Add(this.textBox4);
-            this.groupBox10.Controls.Add(this.textBox20);
-            this.groupBox10.Controls.Add(this.textBox5);
-            this.groupBox10.Controls.Add(this.textBox6);
             this.groupBox10.Controls.Add(this.txtNetAmount);
-            this.groupBox10.Controls.Add(this.label20);
             this.groupBox10.Controls.Add(this.txtRturned);
             this.groupBox10.Controls.Add(this.txtBalance);
             this.groupBox10.Controls.Add(this.txtTotalAmount1);
+            this.groupBox10.Controls.Add(this.textBox20);
+            this.groupBox10.Controls.Add(this.textBox5);
+            this.groupBox10.Controls.Add(this.textBox6);
+            this.groupBox10.Controls.Add(this.label20);
             this.groupBox10.Controls.Add(this.label27);
             this.groupBox10.Controls.Add(this.label19);
             this.groupBox10.Controls.Add(this.label22);
@@ -798,6 +797,46 @@
             this.textBox4.Text = "₹";
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // txtRturned
+            // 
+            this.txtRturned.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRturned.Location = new System.Drawing.Point(1117, 122);
+            this.txtRturned.Name = "txtRturned";
+            this.txtRturned.Size = new System.Drawing.Size(198, 21);
+            this.txtRturned.TabIndex = 36;
+            this.txtRturned.Text = "0.00";
+            this.txtRturned.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRturned.TextChanged += new System.EventHandler(this.txtRturned_TextChanged);
+            this.txtRturned.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRturned_KeyPress);
+            // 
+            // txtBalance
+            // 
+            this.txtBalance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBalance.Location = new System.Drawing.Point(1117, 79);
+            this.txtBalance.Name = "txtBalance";
+            this.txtBalance.ReadOnly = true;
+            this.txtBalance.Size = new System.Drawing.Size(198, 21);
+            this.txtBalance.TabIndex = 35;
+            this.txtBalance.TabStop = false;
+            this.txtBalance.Text = "0.00";
+            this.txtBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtTotalAmount1
+            // 
+            this.txtTotalAmount1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTotalAmount1.Location = new System.Drawing.Point(1124, 37);
+            this.txtTotalAmount1.Name = "txtTotalAmount1";
+            this.txtTotalAmount1.ReadOnly = true;
+            this.txtTotalAmount1.Size = new System.Drawing.Size(213, 21);
+            this.txtTotalAmount1.TabIndex = 34;
+            this.txtTotalAmount1.TabStop = false;
+            this.txtTotalAmount1.Text = "0.00";
+            this.txtTotalAmount1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTotalAmount1.TextChanged += new System.EventHandler(this.txtTotalAmount1_TextChanged);
+            // 
             // textBox20
             // 
             this.textBox20.Location = new System.Drawing.Point(1089, 77);
@@ -838,7 +877,7 @@
             this.txtNetAmount.Location = new System.Drawing.Point(1117, 161);
             this.txtNetAmount.Name = "txtNetAmount";
             this.txtNetAmount.ReadOnly = true;
-            this.txtNetAmount.Size = new System.Drawing.Size(182, 21);
+            this.txtNetAmount.Size = new System.Drawing.Size(191, 21);
             this.txtNetAmount.TabIndex = 38;
             this.txtNetAmount.TabStop = false;
             this.txtNetAmount.Text = "0.00";
@@ -852,46 +891,6 @@
             this.label20.Size = new System.Drawing.Size(71, 15);
             this.label20.TabIndex = 37;
             this.label20.Text = "Net Amount";
-            // 
-            // txtRturned
-            // 
-            this.txtRturned.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRturned.Location = new System.Drawing.Point(1117, 119);
-            this.txtRturned.Name = "txtRturned";
-            this.txtRturned.Size = new System.Drawing.Size(182, 21);
-            this.txtRturned.TabIndex = 36;
-            this.txtRturned.Text = "0.00";
-            this.txtRturned.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtRturned.TextChanged += new System.EventHandler(this.txtRturned_TextChanged);
-            this.txtRturned.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRturned_KeyPress);
-            // 
-            // txtBalance
-            // 
-            this.txtBalance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBalance.Location = new System.Drawing.Point(1117, 77);
-            this.txtBalance.Name = "txtBalance";
-            this.txtBalance.ReadOnly = true;
-            this.txtBalance.Size = new System.Drawing.Size(182, 21);
-            this.txtBalance.TabIndex = 35;
-            this.txtBalance.TabStop = false;
-            this.txtBalance.Text = "0.00";
-            this.txtBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtTotalAmount1
-            // 
-            this.txtTotalAmount1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTotalAmount1.Location = new System.Drawing.Point(1117, 35);
-            this.txtTotalAmount1.Name = "txtTotalAmount1";
-            this.txtTotalAmount1.ReadOnly = true;
-            this.txtTotalAmount1.Size = new System.Drawing.Size(182, 21);
-            this.txtTotalAmount1.TabIndex = 34;
-            this.txtTotalAmount1.TabStop = false;
-            this.txtTotalAmount1.Text = "0.00";
-            this.txtTotalAmount1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtTotalAmount1.TextChanged += new System.EventHandler(this.txtTotalAmount1_TextChanged);
             // 
             // label27
             // 
@@ -1290,7 +1289,7 @@
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox7.Location = new System.Drawing.Point(920, 12);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(413, 58);
+            this.groupBox7.Size = new System.Drawing.Size(1008, 58);
             this.groupBox7.TabIndex = 9;
             this.groupBox7.TabStop = false;
             // 
@@ -1310,11 +1309,11 @@
             // 
             this.txtInvoiceAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtInvoiceAmount.Location = new System.Drawing.Point(131, 20);
+            this.txtInvoiceAmount.Location = new System.Drawing.Point(138, 20);
             this.txtInvoiceAmount.Multiline = true;
             this.txtInvoiceAmount.Name = "txtInvoiceAmount";
             this.txtInvoiceAmount.ReadOnly = true;
-            this.txtInvoiceAmount.Size = new System.Drawing.Size(260, 23);
+            this.txtInvoiceAmount.Size = new System.Drawing.Size(235, 23);
             this.txtInvoiceAmount.TabIndex = 1;
             this.txtInvoiceAmount.TabStop = false;
             this.txtInvoiceAmount.Text = "0.00";
@@ -1386,7 +1385,7 @@
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(18, 93);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1324, 222);
+            this.groupBox3.Size = new System.Drawing.Size(1325, 222);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             // 

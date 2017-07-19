@@ -1538,7 +1538,6 @@ namespace WindowsFormsApplication1
                     //butback.TabStop = true;
                     //dataGridView1.TabStop = true;
 
-
                 }
                 butmakepayment.TabStop = true;
                 butback.TabStop = true;
