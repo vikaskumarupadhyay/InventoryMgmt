@@ -133,6 +133,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pnlshowdetail = new System.Windows.Forms.Panel();
+            this.butba = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txttransctiondate = new System.Windows.Forms.TextBox();
             this.txtchaquedate = new System.Windows.Forms.TextBox();
@@ -169,7 +170,6 @@
             this.label53 = new System.Windows.Forms.Label();
             this.txtcashamount = new System.Windows.Forms.TextBox();
             this.label54 = new System.Windows.Forms.Label();
-            this.butba = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -1322,6 +1322,16 @@
             this.pnlshowdetail.Size = new System.Drawing.Size(1354, 634);
             this.pnlshowdetail.TabIndex = 61;
             // 
+            // butba
+            // 
+            this.butba.Location = new System.Drawing.Point(17, 317);
+            this.butba.Name = "butba";
+            this.butba.Size = new System.Drawing.Size(75, 23);
+            this.butba.TabIndex = 15;
+            this.butba.Text = "Back";
+            this.butba.UseVisualStyleBackColor = true;
+            this.butba.Click += new System.EventHandler(this.butba_Click);
+            // 
             // groupBox4
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1677,16 +1687,6 @@
             this.label54.Size = new System.Drawing.Size(80, 15);
             this.label54.TabIndex = 0;
             this.label54.Text = "Cash Amount";
-            // 
-            // butba
-            // 
-            this.butba.Location = new System.Drawing.Point(17, 317);
-            this.butba.Name = "butba";
-            this.butba.Size = new System.Drawing.Size(75, 23);
-            this.butba.TabIndex = 15;
-            this.butba.Text = "Back";
-            this.butba.UseVisualStyleBackColor = true;
-            this.butba.Click += new System.EventHandler(this.butba_Click);
             // 
             // Form5
             // 

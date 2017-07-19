@@ -170,21 +170,25 @@ namespace WindowsFormsApplication1
             {
                 s = "p.[Paid Amount]";
             }
+            else if (s == "Column5")
+            {
+                s = "cast((((dbo.VendorOrderDesc.Price)* (dbo.VendorOrderDesc.Quantity))-(dbo.VendorOrderDesc.Price)* (dbo.VendorOrderDesc.Quantity)*(itd.Discount/100))as numeric(38,2))";
+            }
             else if (s == "Column6")
             {
                 s = "(case when dbo.VendorDetails.vState  != (select state from CompnayDetails) then '0.00'else CGST end)";
             }
-              else if (s == "Column7")
+            else if (s == "Column7")
             {
                 s = "(case when dbo.VendorDetails.vState != (select state from CompnayDetails) then '0.0'else SGST end)";
-              }
-            else if(s=="Column8")
-            {
-                s=" (case when dbo.VendorDetails.vState = (select state from CompnayDetails) then '0.00'else itd.IGST end)";
             }
-            else if(s=="Column9")
+            else if (s == "Column8")
             {
-                s="itd.CESS";
+                s = " (case when dbo.VendorDetails.vState = (select state from CompnayDetails) then '0.00'else itd.IGST end)";
+            }
+            else if (s == "Column9")
+            {
+                s = "itd.CESS";
             }
              
             string selectQurry = "SELECT dbo.CustomerOrderDelivery.Deliveryid as[Purchase Invoice ID], dbo.CustomerOrderDelivery.RefNo as[P.O. Reference No.],dbo.CustomerOrderDelivery.DeliveryDate as[Invoice Date], dbo.VendorDetails.venderId as[Vendor ID],dbo.VendorDetails.vName as[Vendor Name], dbo.VendorDetails.vCompName as[Company Name],itd.HSN, dbo.VendorDetails.vAddress as[Address], dbo.VendorOrderDesc.ItemId as[Item ID], dbo.ItemDetails.ItemName as[Item Name], dbo.ItemDetails.ItemCompName as[Item Company Name],itd.HSN,cast(dbo.ItemPriceDetail.MrpPrice as numeric(38, 2)) as[MRP],cast(dbo.VendorOrderDesc.Price as numeric(38, 2)) as[Selling Rate],dbo.VendorOrderDesc.Quantity as [Quantity Billed],cast((dbo.VendorOrderDesc.Price)* (dbo.VendorOrderDesc.Quantity) as numeric(38,2)) AS [Gross Amount], itd.Discount as[Discount Rate (In %)],cast((dbo.VendorOrderDesc.Price)* (dbo.VendorOrderDesc.Quantity)*(itd.Discount/100) as numeric(38,2)) as [Discount Amount],cast((((dbo.VendorOrderDesc.Price)* (dbo.VendorOrderDesc.Quantity))-(dbo.VendorOrderDesc.Price)* (dbo.VendorOrderDesc.Quantity)*(itd.Discount/100))as numeric(38,2)) as [Taxable Value],(case when dbo.VendorDetails.vState  != (select state from CompnayDetails) then '0.00'else CGST end) as CGST,(case when dbo.VendorDetails.vState != (select state from CompnayDetails) then '0.0'else SGST end) as SGST,(case when dbo.VendorDetails.vState = (select state from CompnayDetails) then '0.00'else itd.IGST end) as IGST,itd.CESS, cast((dbo.VendorOrderDesc.TotalPrice) - ((dbo.VendorOrderDesc.TotalPrice * dbo.VendorOrderDetails.Discount) / 100) as numeric(38, 2)) AS[Net Amount (Including Tax)] ,p.InvoiceAmount as [Invoice Amount] ,p.[Paid Amount] ,p.Balance as[Balance Amount],(case when p.Balance > 0 then 'Delivered' else 'Fully settled' end) as [Delivery Status] FROM dbo.CustomerOrderDelivery INNER JOIN dbo.VendorOrderDetails ON dbo.CustomerOrderDelivery.Orderid = dbo.VendorOrderDetails.orderid INNER JOIN dbo.VendorDetails ON dbo.VendorOrderDetails.venderId = dbo.VendorDetails.venderId INNER JOIN dbo.VendorOrderDesc ON dbo.VendorOrderDetails.orderid = dbo.VendorOrderDesc.Orderid  INNER JOIN dbo.ItemDetails ON dbo.VendorOrderDesc.ItemId = dbo.ItemDetails.ItemId  INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId join ItemTaxDetail itd on itd.ItemId = dbo.ItemPriceDetail.ItemId left join  (select Invoiceid, MAX(InvoiceAmount) as InvoiceAmount, (MAX(InvoiceAmount) - sum(TotalAmount)) as Balance, sum(TotalAmount) as [Paid Amount] from AllPaymentDetailes  join CustomerOrderDelivery on AllPaymentDetailes.Invoiceid = CustomerOrderDelivery.Deliveryid group by Invoiceid) p on CustomerOrderDelivery.Deliveryid = p.Invoiceid where " + s + " like '" + txtsearch.Text + "%' and DeliveryDate BETWEEN '" + dateTimePicker1.Value.ToString() + "' AND '" + dateTimePicker2.Value.ToString() + "'";
