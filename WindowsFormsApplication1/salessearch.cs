@@ -303,7 +303,7 @@ namespace WindowsFormsApplication1
             }
             else if (s == "Column5")
             {
-                s = "cast((dbo.customerorderdescriptions.totalammount)- ((dbo.customerorderdescriptions.totalammount)/(1+(dbo.orderdetails.Tax/100)))as numeric(38,2))";
+                s = "cast((((dbo.customerorderdescriptions.Price)* (dbo.customerorderdescriptions.Quantity))-(dbo.customerorderdescriptions.Price)* (dbo.customerorderdescriptions.Quantity)*(itd.Discount/100))as numeric(38,2))";
             }
            
             else if (s == "TotalAmount")
