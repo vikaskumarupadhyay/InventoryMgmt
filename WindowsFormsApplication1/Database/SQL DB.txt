@@ -181,9 +181,7 @@ alter table orderdetails add Taxamount float
 
   create table CompnayTex(TexId varchar(100) primary key,TexName varchar(200),TexAmount decimal ,TexDescription varchar(200))
    go
- create table CompnayDetails(CompnayId varchar(200)  primary key,OnerName varchar(200),Name varchar(1000),Address varchar(1000),City varchar(100), State varchar(100),Zip varchar(100),Country varchar(50),Email varchar(250), WebAddress varchar(50),Phone varchar(15),Mobile varchar(15),Fax varchar(15),PANNO varchar(200),VATNO varchar(200),CSTNO varchar(200),ServiceTaxAmmount decimal,ExciseTaxAmmount decimal,GSTTaxAmmount decimal,Description varchar(500),VAT decimal,CST decimal,GST decimal,TexId varchar(100) foreign key references CompnayTex(TexId), Isactive bit,RagistrationDate datetime)
-
-
+create table CompnayDetails(CompnayId varchar(200)  primary key,OnerName varchar(200),Name varchar(1000),Address varchar(1000),City varchar(100), State varchar(100),Zip varchar(100),Country varchar(50),Email varchar(250), WebAddress varchar(50),Phone varchar(15),Mobile varchar(15),Fax varchar(15),PANNO varchar(200),Description varchar(500),GSTNo varchar(100), Isactive bit,RagistrationDate datetime)
  go
  alter table CompnayDetails Alter column ServiceTaxAmmount varchar(200)
  go
@@ -273,18 +271,6 @@ go
 ALTER TABLE VendorDetails DROP COLUMN vGSTRegnNo
 go
 alter table VendorDetails add vGSTNo varchar(200)
-go
-ALTER TABLE CompnayDetails DROP COLUMN VatNo
-go
-ALTER TABLE CompnayDetails DROP COLUMN CstNo
-go
-ALTER TABLE CompnayDetails DROP COLUMN ServiceTaxRegnNo
-go
-ALTER TABLE CompnayDetails DROP COLUMN ExciseRegnNo
-go
-ALTER TABLE CompnayDetails DROP COLUMN GSTRegnNo
-go
-alter table CompnayDetails add GSTNo varchar(200)
 go
 alter table ItemTaxDetail add Discount decimal(18,2)
 

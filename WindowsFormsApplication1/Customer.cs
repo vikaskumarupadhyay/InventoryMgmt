@@ -195,7 +195,6 @@ namespace WindowsFormsApplication1
                     txtName.Focus();
                     btnList.Enabled = true;
                     textBox1.Text = "";
-                    comserchvalue.SelectedIndex = 0;
                     tabindex2();
                 }
             }
@@ -268,7 +267,7 @@ namespace WindowsFormsApplication1
         {
             tabindex();
             panel1.Visible = true;
-            string selectQuery = "select Custd.CustId as [Customer ID] ,CustName AS [Customer Name] ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustDesc as [Description],CustOpeningBalance as[Opening Balance] ,CustCurrentBalance as[Current Balance] from  CustomerDetails Custd join CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
+            string selectQuery = "select Custd.CustId as [Customer ID] ,CustName AS [Customer Name] ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustPanNo AS [PAN NO], CustGstNo AS [GST NO],CustDesc as [Description],CustOpeningBalance as[Opening Balance] ,CustCurrentBalance as[Current Balance] from  CustomerDetails Custd join CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
             DataTable dt = dbMainClass.getDetailByQuery(selectQuery);
             dataGridView1.DataSource = dt;
             //dataGridView1.DataSource = dt;
@@ -423,10 +422,9 @@ namespace WindowsFormsApplication1
                 txtFAX.Text = cellCollection[12].Value.ToString();
                 txtPanno.Text = cellCollection[13].Value.ToString();
                 txttanno.Text = cellCollection[14].Value.ToString();
-               
-                txtDESCRIPTION.Text = cellCollection[19].Value.ToString();
-                txtCustOpeningBal.Text = cellCollection[20].Value.ToString();
-                txtCURRENTBALANCE.Text = cellCollection[21].Value.ToString();
+                txtDESCRIPTION.Text = cellCollection[15].Value.ToString();
+                txtCustOpeningBal.Text = cellCollection[16].Value.ToString();
+                txtCURRENTBALANCE.Text = cellCollection[17].Value.ToString();
             }
             catch (Exception ex)
             {
@@ -648,8 +646,8 @@ namespace WindowsFormsApplication1
 
             txtCustOpeningBal.Text = "0";
             txtCURRENTBALANCE.Text= "0";
-           
 
+            //comserchvalue.SelectedIndex = 0;
             txtCustCode.Text = "";
             txtCustCode.Text= "";
 
