@@ -4108,9 +4108,9 @@ namespace WindowsFormsApplication1
                             if (itemid != item)
                             {
                                 MessageBox.Show("please select your correct row ");
-                                dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[0].Value = "";
+                                dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value = "";
                                 dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Selected = true;
-                                dataGridView1.AllowUserToAddRows = false;
+                                //dataGridView1.AllowUserToAddRows = false;
                             }
                         }
 
