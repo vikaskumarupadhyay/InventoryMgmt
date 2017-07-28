@@ -4230,6 +4230,11 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void txtRturned_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtRturned.SelectAll();
+        }
+
        
 
 
