@@ -382,8 +382,8 @@ namespace WindowsFormsApplication1
                 //txtFax.Text = cellCollection[6].Value.ToString();
                // txttotalAmount.Text = cellCollection[14].Value.ToString();
                
-                txtInvoiceAmount.Text = cellCollection[18].Value.ToString();
-                BalAmount = Convert.ToDouble(cellCollection[18].Value.ToString());
+                txtInvoiceAmount.Text = cellCollection[17].Value.ToString();
+                BalAmount = Convert.ToDouble(cellCollection[17].Value.ToString());
             }
             catch (Exception ex)
             {
