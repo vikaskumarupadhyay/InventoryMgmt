@@ -79,13 +79,12 @@
             this.textBox23 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.txtRturned = new System.Windows.Forms.TextBox();
+            this.txtNetAmount = new System.Windows.Forms.TextBox();
             this.txtBalance = new System.Windows.Forms.TextBox();
             this.txtTotalAmount1 = new System.Windows.Forms.TextBox();
             this.textBox20 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.txtNetAmount = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -120,6 +119,7 @@
             this.label37 = new System.Windows.Forms.Label();
             this.CashAmount = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
+            this.txtRturned = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.CmbPageName = new System.Windows.Forms.ComboBox();
@@ -169,6 +169,7 @@
             this.showCashAmount = new System.Windows.Forms.TextBox();
             this.label54 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnBack = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -683,8 +684,8 @@
             this.groupBox10.Controls.Add(this.textBox23);
             this.groupBox10.Controls.Add(this.textBox2);
             this.groupBox10.Controls.Add(this.textBox4);
-            this.groupBox10.Controls.Add(this.txtNetAmount);
             this.groupBox10.Controls.Add(this.txtRturned);
+            this.groupBox10.Controls.Add(this.txtNetAmount);
             this.groupBox10.Controls.Add(this.txtBalance);
             this.groupBox10.Controls.Add(this.txtTotalAmount1);
             this.groupBox10.Controls.Add(this.textBox20);
@@ -797,18 +798,18 @@
             this.textBox4.Text = "₹";
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtRturned
+            // txtNetAmount
             // 
-            this.txtRturned.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtNetAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRturned.Location = new System.Drawing.Point(1117, 122);
-            this.txtRturned.Name = "txtRturned";
-            this.txtRturned.Size = new System.Drawing.Size(198, 21);
-            this.txtRturned.TabIndex = 36;
-            this.txtRturned.Text = "0.00";
-            this.txtRturned.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtRturned.TextChanged += new System.EventHandler(this.txtRturned_TextChanged);
-            this.txtRturned.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRturned_KeyPress);
+            this.txtNetAmount.Location = new System.Drawing.Point(1117, 161);
+            this.txtNetAmount.Name = "txtNetAmount";
+            this.txtNetAmount.ReadOnly = true;
+            this.txtNetAmount.Size = new System.Drawing.Size(191, 21);
+            this.txtNetAmount.TabIndex = 38;
+            this.txtNetAmount.TabStop = false;
+            this.txtNetAmount.Text = "0.00";
+            this.txtNetAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtBalance
             // 
@@ -869,19 +870,6 @@
             this.textBox6.TabStop = false;
             this.textBox6.Text = "₹";
             this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtNetAmount
-            // 
-            this.txtNetAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNetAmount.Location = new System.Drawing.Point(1117, 161);
-            this.txtNetAmount.Name = "txtNetAmount";
-            this.txtNetAmount.ReadOnly = true;
-            this.txtNetAmount.Size = new System.Drawing.Size(191, 21);
-            this.txtNetAmount.TabIndex = 38;
-            this.txtNetAmount.TabStop = false;
-            this.txtNetAmount.Text = "0.00";
-            this.txtNetAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label20
             // 
@@ -1201,6 +1189,20 @@
             this.label38.Size = new System.Drawing.Size(80, 15);
             this.label38.TabIndex = 0;
             this.label38.Text = "Cash Amount";
+            // 
+            // txtRturned
+            // 
+            this.txtRturned.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRturned.Location = new System.Drawing.Point(1126, 119);
+            this.txtRturned.Name = "txtRturned";
+            this.txtRturned.Size = new System.Drawing.Size(182, 21);
+            this.txtRturned.TabIndex = 36;
+            this.txtRturned.Text = "0.00";
+            this.txtRturned.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRturned.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtRturned_MouseClick);
+            this.txtRturned.TextChanged += new System.EventHandler(this.txtRturned_TextChanged);
+            this.txtRturned.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRturned_KeyPress);
             // 
             // btnSave
             // 
@@ -1696,12 +1698,23 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.btnBack);
             this.panel4.Controls.Add(this.groupBox3);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1354, 634);
             this.panel4.TabIndex = 73;
+            // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(26, 397);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(145, 32);
+            this.btnBack.TabIndex = 9;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // Form9
             // 
@@ -1895,5 +1908,6 @@
         private System.Windows.Forms.TextBox showCashAmount;
         private System.Windows.Forms.Label label54;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button btnBack;
     }
 }

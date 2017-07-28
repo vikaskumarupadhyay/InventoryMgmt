@@ -1281,6 +1281,7 @@
             this.txtRturned.TabIndex = 36;
             this.txtRturned.Text = "0.00";
             this.txtRturned.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRturned.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtRturned_MouseClick);
             this.txtRturned.TextChanged += new System.EventHandler(this.txtRturned_TextChanged);
             this.txtRturned.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRturned_KeyPress);
             // 
