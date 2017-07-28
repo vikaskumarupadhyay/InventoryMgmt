@@ -258,6 +258,8 @@ go
 alter table customerdetails drop column CustExciseRegnNo
 go
 alter table customerdetails drop column Gstregnno
+go
+ Sp_rename 'CustomerDetails.CustVatNo','CustGstNo'
 
  go
 ALTER TABLE VendorDetails DROP COLUMN vVatNo

@@ -214,20 +214,20 @@ namespace WindowsFormsApplication1
         }
         public void Comp_SaveDetails()
         {
-            string taxId = "";
-            if (combComp.SelectedIndex != 0)
-            {
-                string name = combComp.SelectedItem.ToString();
-                //taxId = TexList[combComp.SelectedIndex-1];
-               string select=" select TexId from CompnayTex where TexName='"+name+"'";
-               DataTable dt1 = dbMainClass.getDetailByQuery(select);
-               foreach (DataRow dr in dt1.Rows)
-               {
-                   taxId = dr[0].ToString();
-               }
+            //string taxId = "";
+            //if (combComp.SelectedIndex != 0)
+            //{
+            //    string name = combComp.SelectedItem.ToString();
+            //    //taxId = TexList[combComp.SelectedIndex-1];
+            //   string select=" select TexId from CompnayTex where TexName='"+name+"'";
+            //   DataTable dt1 = dbMainClass.getDetailByQuery(select);
+            //   foreach (DataRow dr in dt1.Rows)
+            //   {
+            //       taxId = dr[0].ToString();
+            //   }
 
 
-            }
+            //}
             if (updatecounter == 0)
             {
                 if (txtCompnayCode.Text == "C1")
