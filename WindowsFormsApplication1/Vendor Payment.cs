@@ -341,7 +341,7 @@ namespace WindowsFormsApplication1
                         d = Convert.ToDouble(cellCollection1[12].Value.ToString());
                         d1 = d1 + d;
                     }
-                    Double Amount1 = BalAmount - d1;
+                    Double Amount1 = BalAmount;
                     txttotalAmount.Text = Amount1.ToString("###0.00");
                 }
                 else
@@ -899,7 +899,7 @@ namespace WindowsFormsApplication1
                             d = Convert.ToDouble(cellCollection1[12].Value.ToString());
                             d1 = d1 + d;
                         }
-                        Double Amount1 = BalAmount - d1;
+                        Double Amount1 = BalAmount ;
                         txttotalAmount.Text = Amount1.ToString("###0.00");
                     }
                     else
