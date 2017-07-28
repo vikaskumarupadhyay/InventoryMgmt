@@ -2915,7 +2915,6 @@ namespace WindowsFormsApplication1
          {
              if (e.KeyChar == Convert.ToChar(Keys.Enter))
              {
-              
                  if (txtRefNo.Text == "")
                  {
                      MessageBox.Show("please enter the Refence Number");
@@ -2940,7 +2939,6 @@ namespace WindowsFormsApplication1
                      else
                      {
                          butRemoveItem.Enabled = true;
-
                          txtItemCode.Focus();
                          IndexTex2();
                          //addToCartTable.Columns.RemoveAt(6);
@@ -3057,7 +3055,7 @@ namespace WindowsFormsApplication1
                                  string txtcgst = "";
                                  string txtsgst = "";
                                  string txtigst = "";
-                                 for (int b = 0; b < dt3.Rows.Count; b++)
+                                 for (int b = 0; b < dt4.Rows.Count; b++)
                                  {
                                      DataRow dr1 = dt4.Rows[b];
                                      string itemcode = dr1[0].ToString();
