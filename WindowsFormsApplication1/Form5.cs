@@ -299,8 +299,13 @@ namespace WindowsFormsApplication1
             if (!string.IsNullOrEmpty(cell[0].Value.ToString()))
             {
                 setdetails(cell);
-                string selectquery = "SELECT pay.ReceiptDate as[Receipt Date],(select sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid=od.orderid) as [Quantity Billed],cast(cod.price *cod.quantity as numeric(38,2))as[Gross Amount],itd.Discount as[Discount Rate (In %)],od.Discountamount as [Discount Amount],cast((od.WithautTaxamount-od.Discountamount)as numeric(38, 2))as[Taxable Value],Case when cd.CustState != (select top 1 [State] from CompnayDetails )then '0'else (select cast( sum ((((( COD.price*COD.quantity))-( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ))* IT.CGST )/100)as numeric(38,2))from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=od.orderid) end as[CGST],Case when cd.CustState != (select top 1 [State] from CompnayDetails )then '0'else(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.SGST )/100)as numeric(38,2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=od.orderid)end as[SGST],Case when cd.CustState = (select top 1 [State] from CompnayDetails )then '0'else(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.IGST )/100)as numeric(38,2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=od.orderid )end as[IGST],(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.CESS )/100)as numeric(38,2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=od.orderid) as[CESS],cast(((od.WithautTaxamount)-(od.Discountamount))+(od.Taxamount) as numeric(38, 2)) AS[Net Amount (Including Tax)],pay.InvoiceAmount as [Invoice Amount] ,pay.TotalAmount as[Paid Amount],cast((pay.InvoiceAmount-pay.TotalAmount) as numeric(38, 2)) as [Balance Amount] FROM  salesOrderDelivery sod INNER JOIN orderdetails od ON sod.Orderid = od.orderid INNER JOIN CustomerDetails cd ON od.custid = cd.custId   INNER JOIN customerorderdescriptions cod ON od.orderid = cod.Orderid  INNER JOIN ItemDetails id ON cod.ItemId = id.ItemId  INNER JOIN dbo.ItemPriceDetail ON id.ItemId = dbo.ItemPriceDetail.ItemId Join ItemTaxDetail itd on dbo.ItemPriceDetail.ItemId=itd.ItemId  left join  (select Invoiceid, MAX(InvoiceAmount) as InvoiceAmount, (MAX(InvoiceAmount) - sum(TotalAmount)) as Balance, sum(TotalAmount) as [Paid Amount] from SalesPaymentDetailes  join salesOrderDelivery on SalesPaymentDetailes.Invoiceid = salesOrderDelivery.Delivaryid  group by Invoiceid) p on sod.Delivaryid = p.Invoiceid join SalesPaymentDetailes pay on sod.Delivaryid=pay.Invoiceid where sod.Delivaryid='" + txtRefNo.Text + "' ";
+                string selectquery = "SELECT pay.ReceiptDate as[Receipt Date],(select sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid=od.orderid) as [Quantity Billed],cast(od.WithautTaxamount as numeric(38, 2)) as[Gross Amount],od.Discountamount as [Discount Amount],cast((od.WithautTaxamount-od.Discountamount)as numeric(38, 2))as[Taxable Value],Case when cd.CustState != (select top 1 [State] from CompnayDetails )then '0'else (select cast( sum ((((( COD.price*COD.quantity))-( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ))* IT.CGST )/100)as numeric(38,2))from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=od.orderid) end as[CGST],Case when cd.CustState != (select top 1 [State] from CompnayDetails )then '0'else(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.SGST )/100)as numeric(38,2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=od.orderid)end as[SGST],Case when cd.CustState = (select top 1 [State] from CompnayDetails )then '0'else(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.IGST )/100)as numeric(38,2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=od.orderid )end as[IGST],(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.CESS )/100)as numeric(38,2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=od.orderid) as[CESS],cast(((od.WithautTaxamount)-(od.Discountamount))+(od.Taxamount) as numeric(38, 2)) AS[Net Amount (Including Tax)],pay.InvoiceAmount as [Invoice Amount] ,pay.TotalAmount as[Paid Amount],cast((pay.InvoiceAmount-pay.TotalAmount) as numeric(38, 2)) as [Balance Amount] FROM  orderdetails od  JOIN CustomerDetails cd on cd.custId=od.custid join salesOrderDelivery sod on od.orderid=sod.Orderid join SalesPaymentDetailes pay on sod.Delivaryid=pay.Invoiceid where sod.Delivaryid='" + txtRefNo.Text + "' ";
                 DataTable dt = d.getDetailByQuery(selectquery);
+                 string balance = "";
+                foreach (DataRow dr in dt.Rows)
+                {
+                    balance = dr[12].ToString();
+                }
                 panel2.Visible = false;
                 dataGridView1.DataSource = dt;
                 double d2;
@@ -310,17 +315,13 @@ namespace WindowsFormsApplication1
                 {
                     DataGridViewRow currentRow1 = call[c];
                     DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
-                    d2 = Convert.ToDouble(cellCollection1[8].Value.ToString());
+                    d2 = Convert.ToDouble(cellCollection1[12].Value.ToString());
                     d1 = d1 + d2;
                 }
-                Double Amount1 = amount - d1;
+                Double Amount1 = amount;
                 txttotalammount.Text = Amount1.ToString("###0.00");
 
-                string balance = "";
-                foreach (DataRow dr in dt.Rows)
-                {
-                    balance = dr[13].ToString();
-                }
+               
                 if (balance == "0.00")
                 {
                     butmakepayment.Enabled = false;
@@ -355,6 +356,7 @@ namespace WindowsFormsApplication1
                 //txtmobile.Text = collection[6].Value.ToString();
                 // txtfax.Text = collection[7].Value.ToString();
                 //txttotalammount.Text = collection[14].Value.ToString();
+                txtInvoiceAmount.Text = collection[16].Value.ToString();
                 amount = Convert.ToDouble(collection[16].Value.ToString());
             }
             catch (Exception ex)
@@ -411,7 +413,10 @@ namespace WindowsFormsApplication1
             {
                 s = "(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.CESS )/100)as numeric(38,2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=orderdetails.orderid)";
             }
-
+            else if (s == "Column8")
+            {
+                s = "cast(((orderdetails.WithautTaxamount)-(orderdetails.Discountamount))+(orderdetails.Taxamount) as numeric(38, 2))";
+            }
             string selectquery = "select salesOrderDelivery.Delivaryid as [Sales Invoice ID],salesOrderDelivery.DeliveryDate as [Delivery Date],cd.custId as[Customer ID], cd.CustName as[Customer Name],cd.CustCompName as[Compnay Name],cd.CustAddress as [Address],(select sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid=orderdetails.orderid) as [Quantity Billed],cast(orderdetails.WithautTaxamount as numeric(38, 2)) as[Gross Amount],orderdetails.Discountamount as [Discount Amount],cast((orderdetails.WithautTaxamount-orderdetails.Discountamount)as numeric(38, 2))as[Taxable Value],Case when cd.CustState != (select top 1 [State] from CompnayDetails )then '0'else (select cast( sum ((((( COD.price*COD.quantity))-( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ))* IT.CGST )/100)as numeric(38, 2))from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=orderdetails.orderid) end as[CGST],Case when cd.CustState != (select top 1 [State] from CompnayDetails )then '0'else(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.SGST )/100)as numeric(38, 2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=orderdetails.orderid)end as[SGST],Case when cd.CustState = (select top 1 [State] from CompnayDetails )then '0'else(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.IGST )/100)as numeric(38, 2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=orderdetails.orderid)end as[IGST],(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.CESS )/100)as numeric(38, 2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=orderdetails.orderid ) as[CESS],cast(((orderdetails.WithautTaxamount)-(orderdetails.Discountamount))+(orderdetails.Taxamount) as numeric(38, 2)) AS[Net Amount (Including Tax)],p.[Paid Amount], p.Balance as [Balance Amount],(case when p.Balance > 0 then 'Delivered' else 'Fully settled' end) as [Delivery Status] from orderdetails join CustomerDetails  cd on cd.custId =orderdetails.custid join salesOrderDelivery on orderdetails.orderid=salesOrderDelivery.Orderid left join  (select Invoiceid, (MAX(InvoiceAmount) - sum(TotalAmount)) as Balance , sum(TotalAmount) as [Paid Amount] from SalesPaymentDetailes  join salesOrderDelivery on SalesPaymentDetailes.Invoiceid=salesOrderDelivery.Delivaryid group by Invoiceid) p on salesOrderDelivery.Delivaryid=p.Invoiceid where " + s + " like '" + txtsearch.Text + "%'";
 
             DataTable dt = d.getDetailByQuery(selectquery);
@@ -771,7 +776,7 @@ namespace WindowsFormsApplication1
             Double Amount1 = Convert.ToDouble(txtBalance.Text);
             double amount4 = Convert.ToDouble(txtRturned.Text);
             Double Amount2 = Amount1 - Amount;
-            double amount5 = Amount2 + amount4;
+            double amount5 = Amount2 - amount4;
             string Amount3 = amount5.ToString();
             txtBalance.Text = amount5.ToString("##0.00");
 
@@ -1490,7 +1495,7 @@ namespace WindowsFormsApplication1
                 if (!string.IsNullOrEmpty(cell[0].Value.ToString()))
                 {
                     setdetails(cell);
-                    string selectquery = "SELECT pay.ReceiptDate as[Receipt Date],(select sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid=od.orderid) as [Quantity Billed],cast(cod.price *cod.quantity as numeric(38,2))as[Gross Amount],itd.Discount as[Discount Rate (In %)],od.Discountamount as [Discount Amount],cast((od.WithautTaxamount-od.Discountamount)as numeric(38, 2))as[Taxable Value],Case when cd.CustState != (select top 1 [State] from CompnayDetails )then '0'else (select cast( sum ((((( COD.price*COD.quantity))-( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ))* IT.CGST )/100)as numeric(38,2))from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=od.orderid) end as[CGST],Case when cd.CustState != (select top 1 [State] from CompnayDetails )then '0'else(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.SGST )/100)as numeric(38,2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=od.orderid)end as[SGST],Case when cd.CustState = (select top 1 [State] from CompnayDetails )then '0'else(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.IGST )/100)as numeric(38,2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=od.orderid )end as[IGST],(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.CESS )/100)as numeric(38,2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=od.orderid) as[CESS],cast(((od.WithautTaxamount)-(od.Discountamount))+(od.Taxamount) as numeric(38, 2)) AS[Net Amount (Including Tax)],pay.InvoiceAmount as [Invoice Amount] ,pay.TotalAmount as[Paid Amount],cast((pay.InvoiceAmount-pay.TotalAmount) as numeric(38, 2)) as [Balance Amount] FROM  salesOrderDelivery sod INNER JOIN orderdetails od ON sod.Orderid = od.orderid INNER JOIN CustomerDetails cd ON od.custid = cd.custId   INNER JOIN customerorderdescriptions cod ON od.orderid = cod.Orderid  INNER JOIN ItemDetails id ON cod.ItemId = id.ItemId  INNER JOIN dbo.ItemPriceDetail ON id.ItemId = dbo.ItemPriceDetail.ItemId Join ItemTaxDetail itd on dbo.ItemPriceDetail.ItemId=itd.ItemId  left join  (select Invoiceid, MAX(InvoiceAmount) as InvoiceAmount, (MAX(InvoiceAmount) - sum(TotalAmount)) as Balance, sum(TotalAmount) as [Paid Amount] from SalesPaymentDetailes  join salesOrderDelivery on SalesPaymentDetailes.Invoiceid = salesOrderDelivery.Delivaryid  group by Invoiceid) p on sod.Delivaryid = p.Invoiceid join SalesPaymentDetailes pay on sod.Delivaryid=pay.Invoiceid where sod.Delivaryid='" + txtRefNo.Text + "' ";
+                    string selectquery = "SELECT pay.ReceiptDate as[Receipt Date],(select sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid=od.orderid) as [Quantity Billed],cast(od.WithautTaxamount as numeric(38, 2)) as[Gross Amount],od.Discountamount as [Discount Amount],cast((od.WithautTaxamount-od.Discountamount)as numeric(38, 2))as[Taxable Value],Case when cd.CustState != (select top 1 [State] from CompnayDetails )then '0'else (select cast( sum ((((( COD.price*COD.quantity))-( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ))* IT.CGST )/100)as numeric(38,2))from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=od.orderid) end as[CGST],Case when cd.CustState != (select top 1 [State] from CompnayDetails )then '0'else(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.SGST )/100)as numeric(38,2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=od.orderid)end as[SGST],Case when cd.CustState = (select top 1 [State] from CompnayDetails )then '0'else(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.IGST )/100)as numeric(38,2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=od.orderid )end as[IGST],(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.CESS )/100)as numeric(38,2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=od.orderid) as[CESS],cast(((od.WithautTaxamount)-(od.Discountamount))+(od.Taxamount) as numeric(38, 2)) AS[Net Amount (Including Tax)],pay.InvoiceAmount as [Invoice Amount] ,pay.TotalAmount as[Paid Amount],cast((pay.InvoiceAmount-pay.TotalAmount) as numeric(38, 2)) as [Balance Amount] FROM  orderdetails od  JOIN CustomerDetails cd on cd.custId=od.custid join salesOrderDelivery sod on od.orderid=sod.Orderid join SalesPaymentDetailes pay on sod.Delivaryid=pay.Invoiceid where sod.Delivaryid='" + txtRefNo.Text + "' ";
                     DataTable dt = d.getDetailByQuery(selectquery);
                     panel2.Visible = false;
                     dataGridView1.DataSource = dt;
@@ -1501,7 +1506,7 @@ namespace WindowsFormsApplication1
                     {
                         DataGridViewRow currentRow1 = call[c];
                         DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
-                        d2 = Convert.ToDouble(cellCollection1[8].Value.ToString());
+                        d2 = Convert.ToDouble(cellCollection1[12].Value.ToString());
                         d1 = d1 + d2;
                     }
                     Double Amount1 = amount - d1;
@@ -1510,7 +1515,7 @@ namespace WindowsFormsApplication1
                     string balance = "";
                     foreach (DataRow dr in dt.Rows)
                     {
-                        balance = dr[13].ToString();
+                        balance = dr[12].ToString();
                     }
                     if (balance == "0.00")
                     {
