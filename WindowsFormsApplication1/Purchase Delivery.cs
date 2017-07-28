@@ -1368,8 +1368,8 @@ namespace WindowsFormsApplication1
                         int quent1 = Convert.ToInt32(quent);
                         // int curentQuntity = Convert.ToInt32(que);
                         //int quntity = curentQuntity - quent1;
-                        int cuentQuantity = Convert.ToInt32(currid);
-                        int lastQuantity = cuentQuantity + quent1; //cuentQuantity - curentQuntity;
+                       Double cuentQuantity = Convert.ToDouble(currid);
+                       Double lastQuantity = cuentQuantity + quent1; //cuentQuantity - curentQuntity;
                         //int resivquenty = lastQuantity + quent1;
                         //string currid1 = resivquenty.ToString();
                         string updateQurry = "update ItemQuantityDetail set CurrentQuantity='" + lastQuantity + "'where ItemId='" + itid + "'";
@@ -4108,9 +4108,9 @@ namespace WindowsFormsApplication1
                             if (itemid != item)
                             {
                                 MessageBox.Show("please select your correct row ");
-                                dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[0].Value = "";
+                                dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value = "";
                                 dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Selected = true;
-                                dataGridView1.AllowUserToAddRows = false;
+                                //dataGridView1.AllowUserToAddRows = false;
                             }
                         }
 
@@ -4228,6 +4228,11 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show(ex.Message.ToString());
             }
+        }
+
+        private void txtRturned_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtRturned.SelectAll();
         }
 
        

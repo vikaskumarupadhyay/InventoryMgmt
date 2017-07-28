@@ -2076,9 +2076,9 @@ namespace WindowsFormsApplication1
                             if (itemid == item)
                             {
                                 MessageBox.Show("please select your correct row ");
-                                gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[0].Value = "";
+                                gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index].Cells[0].Value = "";
                                 gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[0].Selected = true;
-                                gridPurchaseOrder.AllowUserToAddRows = false;
+                                //gridPurchaseOrder.AllowUserToAddRows = false;
                             }
                         }
 
