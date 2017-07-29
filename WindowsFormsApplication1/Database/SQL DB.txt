@@ -129,7 +129,7 @@ alter table VendorDetails add vServiceTaxRegnNo varchar(100)
 go
 alter table VendorDetails add vExciseRegnNo varchar(100)
 go
-alter table VendorDetails add vGSTRegnNo varchar(100)
+alter table VendorDetails add vGSTRegnNo varchar(100)sss
 go
 alter table VendorOrderDetails add Discount decimal
 go
@@ -148,10 +148,7 @@ Sp_rename 'VendorDetails.vTinNo','vVatNo'
 Sp_rename 'VendorDetails.vOther','vCstNo'
 
 
-alter table CustomerDetails add ServicetaxregnNo varchar(200)
-go
-alter table CustomerDetails add Exciseregnno varchar (200)
-go
+
 alter table CustomerDetails add Gstregnno varchar (200)
 go
 alter table orderdetails add Discount float
@@ -162,39 +159,18 @@ alter table orderdetails add Tax float
 go
 alter table orderdetails add Taxamount float
 
-
-
- 
- Sp_rename 'CustomerDetails.TanNo','CustVatNo'
   
  Sp_rename 'CustomerDetails.PanNo','CustPanNo'
 
  Sp_rename 'CustomerDetails.Others','CustCstNo'
-
- Sp_rename 'CustomerDetails.Exciseregnno','CustExciseRegnNo'
-
- Sp_rename 'CustomerDetails.ServicetaxregnNo','CustServicetaxRegnNo'
-
- --Sp_rename 'CustomerDetails.Exciseregnno','CustExciseRegnNo'
- 
 
 
   create table CompnayTex(TexId varchar(100) primary key,TexName varchar(200),TexAmount decimal ,TexDescription varchar(200))
    go
 create table CompnayDetails(CompnayId varchar(200)  primary key,OnerName varchar(200),Name varchar(1000),Address varchar(1000),City varchar(100), State varchar(100),Zip varchar(100),Country varchar(50),Email varchar(250), WebAddress varchar(50),Phone varchar(15),Mobile varchar(15),Fax varchar(15),PANNO varchar(200),Description varchar(500),GSTNo varchar(100), Isactive bit,RagistrationDate datetime)
  go
- alter table CompnayDetails Alter column ServiceTaxAmmount varchar(200)
- go
-alter table CompnayDetails Alter column ExciseTaxAmmount varchar(200)
-go
-alter table CompnayDetails Alter column GSTTaxAmmount varchar(200)
-go
- ALTER TABLE CompnayDetails DROP COLUMN VAT
- go
-ALTER TABLE CompnayDetails DROP COLUMN CST
-go
-ALTER TABLE CompnayDetails DROP COLUMN GST
-go
+
+
 ALTER TABLE CompnayTex ALTER COLUMN TexAmount decimal(18,2)
 go
 ALTER TABLE VendorAccountDetails ALTER COLUMN vOpeningBalance decimal(18,2)
@@ -248,15 +224,6 @@ go
 
 ALTER TABLE ItemPriceDetail ALTER COLUMN Margin decimal(18,2)
 
-go
-alter table customerdetails drop column CustCstNo
-go
-alter table customerdetails drop column CustServicetaxRegnNo
-go
-alter table customerdetails drop column CustExciseRegnNo
-go
-alter table customerdetails drop column Gstregnno
-go
  Sp_rename 'CustomerDetails.CustVatNo','CustGstNo'
 
  go
