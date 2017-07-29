@@ -79,6 +79,7 @@
             this.textBox23 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtRturned = new System.Windows.Forms.TextBox();
             this.txtNetAmount = new System.Windows.Forms.TextBox();
             this.txtBalance = new System.Windows.Forms.TextBox();
             this.txtTotalAmount1 = new System.Windows.Forms.TextBox();
@@ -119,7 +120,6 @@
             this.label37 = new System.Windows.Forms.Label();
             this.CashAmount = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
-            this.txtRturned = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.CmbPageName = new System.Windows.Forms.ComboBox();
@@ -531,6 +531,7 @@
             this.dateTimePicker4.Name = "dateTimePicker4";
             this.dateTimePicker4.Size = new System.Drawing.Size(256, 21);
             this.dateTimePicker4.TabIndex = 7;
+            this.dateTimePicker4.Value = new System.DateTime(2017, 7, 29, 0, 49, 0, 0);
             this.dateTimePicker4.ValueChanged += new System.EventHandler(this.dateTimePicker4_ValueChanged);
             // 
             // panel3
@@ -797,6 +798,20 @@
             this.textBox4.TabStop = false;
             this.textBox4.Text = "₹";
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtRturned
+            // 
+            this.txtRturned.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRturned.Location = new System.Drawing.Point(1126, 119);
+            this.txtRturned.Name = "txtRturned";
+            this.txtRturned.Size = new System.Drawing.Size(182, 21);
+            this.txtRturned.TabIndex = 36;
+            this.txtRturned.Text = "0.00";
+            this.txtRturned.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRturned.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtRturned_MouseClick);
+            this.txtRturned.TextChanged += new System.EventHandler(this.txtRturned_TextChanged);
+            this.txtRturned.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRturned_KeyPress);
             // 
             // txtNetAmount
             // 
@@ -1189,20 +1204,6 @@
             this.label38.Size = new System.Drawing.Size(80, 15);
             this.label38.TabIndex = 0;
             this.label38.Text = "Cash Amount";
-            // 
-            // txtRturned
-            // 
-            this.txtRturned.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRturned.Location = new System.Drawing.Point(1126, 119);
-            this.txtRturned.Name = "txtRturned";
-            this.txtRturned.Size = new System.Drawing.Size(182, 21);
-            this.txtRturned.TabIndex = 36;
-            this.txtRturned.Text = "0.00";
-            this.txtRturned.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtRturned.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtRturned_MouseClick);
-            this.txtRturned.TextChanged += new System.EventHandler(this.txtRturned_TextChanged);
-            this.txtRturned.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRturned_KeyPress);
             // 
             // btnSave
             // 
