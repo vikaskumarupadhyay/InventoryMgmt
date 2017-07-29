@@ -65,50 +65,16 @@ select top 1 (itemID)  from dbo.ItemDetails order by  Convert(int,SuBString( ite
 end
 go
 
-
-
---PROCEDURE TO GET ALL DETAILS OF VENDORS
-
-CREATE PROCEDURE GETALLDATAVENDER
-AS
-BEGIN
-
-select  vd.venderId as [Vender Id ],vd.vName AS Name ,vd.vCompName AS [Compnay Name] ,vd.vAddress AS Address,vd.vCity AS City,vd. vState AS State ,vd.vZip AS Zip ,vd.vCountry AS Country ,vd.vEmail AS[E-Mail ],vd. vWebAddress AS[Web-Address],vd.vPhone AS Phone ,vd.vMobile AS Mobile ,vd.vFax AS Fax ,vd.vPanNo as[Pan No],vd.vVatNo as [Vat No],vd.vCstNo as[Cst No],vd.vServiceTaxRegnNo as [Service Tax Regn.No],vd.vExciseRegnNo as [Excise Regn.No],vd.vGSTRegnNo as[ GST Regn.No],vd.vDesc AS Description,vad.vOpeningBalance AS OpeningBalance , vad.vCurrentBalance AS CurrentBalance from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID
-
-END
-
-go
---------------------
-
 CREATE PROCEDURE GETALLDATACUSTOMER
 AS
 BEGIN
 
-select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Ballance],CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO]  ,CustServicetaxRegnNo AS [Service Tax Regn. No],CustExciseRegnNo AS [Excise Regn. No] ,Gstregnno AS [GST Regn. No] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID
+select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustPanNo AS [PAN NO],CustGstNo AS [GST NO],Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Ballance],CustDesc AS Description from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID
 
 END
 go
 
 
-alter procedure GETALLDATAVENDER
-AS
-BEGIN
-
-select  vd.venderId as [Vender Id ],vd.vName AS Name ,vd.vCompName AS [Compnay Name] ,vd.vAddress AS Address,vd.vCity AS City,vd. vState AS State ,vd.vZip AS Zip ,vd.vCountry AS Country ,vd.vEmail AS[E-Mail ],vd. vWebAddress AS[Web Address],vd.vPhone AS Phone ,vd.vMobile AS Mobile ,vd.vFax AS Fax ,vd.vPanNo as[PAN No],vd.vVatNo as [VAT No],vd.vCstNo as[CST No],vd.vServiceTaxRegnNo as [Service Tax Regn.No],vd.vExciseRegnNo as [Excise Regn.No],vd.vGSTRegnNo as[GST Regn.No],vd.vDesc AS Description,vad.vOpeningBalance AS [Opening Balance] , vad.vCurrentBalance AS [Current Balance] from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID
-
-END
-GO 
-
-
-Alter PROCEDURE GETALLDATACUSTOMER
-AS
-BEGIN
-
-select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Ballance],CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustCSTNo AS [CST NO]  ,CustServicetaxRegnNo AS [Service Tax Regn. No],CustExciseRegnNo AS [Excise Regn. No] ,Gstregnno AS [GST Regn. No] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID
-
-END
-
-go
 
 create procedure GetUpdateCounterTAX
  as
@@ -123,13 +89,7 @@ select top 1 (TexId)  from dbo.CompnayTex order by  Convert(int,SuBString( TexId
 end
 go
 
-/*alter procedure GETALLDATAVENDER
-AS
-BEGIN
 
-select  vd.venderId as [Vender Id ],vd.vName AS Name ,vd.vCompName AS [Compnay Name] ,vd.vAddress AS Address,vd.vCity AS City,vd. vState AS State ,vd.vZip AS Zip ,vd.vCountry AS Country ,vd.vEmail AS[E-Mail ],vd. vWebAddress AS[Web Address],vd.vPhone AS Phone ,vd.vMobile AS Mobile ,vd.vFax AS Fax ,vd.vPanNo as[PAN NO],vd.vVatNo as [VAT NO],vd.vCstNo as[CST NO],vd.vServiceTaxRegnNo as [SERVICE TAX NO],vd.vExciseRegnNo as [EXCISE NO],vd.vGSTRegnNo as[GST NO],vd.vDesc AS Description,vad.vOpeningBalance AS [Opening Balance] , vad.vCurrentBalance AS [Current Balance] from  vendorDetails vd join    VendorAccountDetails  vad on vd.venderID=vad.venderID
-
-END*/
 
 create procedure GETALLDATAVENDER
 AS

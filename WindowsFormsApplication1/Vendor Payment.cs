@@ -250,17 +250,14 @@ namespace WindowsFormsApplication1
             dataGridView2.DataSource = dt;
 
         }
-
-
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-
             string s = comboBox1.SelectedValue.ToString();
             if (s == "Column1")
             {
                 s = "(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid)";
             }
-           else if (s == "Column2")
+            else if (s == "Column2")
             {
                 s = "cast((VendorOrderDetails.WithoutTexAmount)-(VendorOrderDetails.DisAmount)as numeric(38, 2))";
             }
@@ -304,9 +301,10 @@ namespace WindowsFormsApplication1
             {
                 s = "(case when p.Balance > 0 then 'Delivered' else 'Fully settled' end)";
             }
+
             //string m = "v" + s;
 
-            string selectQurry = "select CustomerOrderDelivery.Deliveryid as[Purchase Invoice ID],CustomerOrderDelivery.DeliveryDate as[Invoice Date],VendorOrderDetails.venderId as [Vendor ID], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Quantity Billed],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.DisAmount as[Dicount Amount],cast((VendorOrderDetails.WithoutTexAmount)-(VendorOrderDetails.DisAmount)as numeric(38, 2))as[Taxable Value],case when VendorDetails .vState != (select state from CompnayDetails) then '0.00'else(select cast(sum(((((voc.Price*voc.Quantity))-(((voc.Price*voc.Quantity)*itd.Discount)/100))*itd.CGST)/100)as numeric(38, 2)) from ItemTaxDetail itd join VendorOrderDesc voc on itd.ItemId=voc.ItemId where voc.Orderid=VendorOrderDetails.Orderid)end as[CGst],case when VendorDetails .vState != (select state from CompnayDetails) then '0.00'else(select cast(sum(((((voc.Price*voc.Quantity))-(((voc.Price*voc.Quantity)*itd.Discount)/100))*itd.SGST)/100)as numeric(38, 2)) from ItemTaxDetail itd join VendorOrderDesc voc on itd.ItemId=voc.ItemId where voc.Orderid=VendorOrderDetails.Orderid)end as[SGst],case when VendorDetails .vState = (select state from CompnayDetails) then '0.00'else(select cast(sum(((((voc.Price*voc.Quantity))-(((voc.Price*voc.Quantity)*itd.Discount)/100))*itd.IGST)/100)as numeric(38, 2)) from ItemTaxDetail itd join VendorOrderDesc voc on itd.ItemId=voc.ItemId where voc.Orderid=VendorOrderDetails.Orderid)end as[IGst],(select cast(sum(((((voc.Price*voc.Quantity))-(((voc.Price*voc.Quantity)*itd.Discount)/100))*itd.CESS)/100)as numeric(38, 2)) from ItemTaxDetail itd join VendorOrderDesc voc on itd.ItemId=voc.ItemId where voc.Orderid=VendorOrderDetails.Orderid)as[CESS],cast(((VendorOrderDetails.WithoutTexAmount)-(VendorOrderDetails.DisAmount))+(VendorOrderDetails.TextTaxAmmount) as numeric(38, 2)) AS[Net Amount (Including Tax)],cast(((VendorOrderDetails.WithoutTexAmount)-(VendorOrderDetails.DisAmount))+(VendorOrderDetails.TextTaxAmmount) as numeric(38, 2)) as[Invoice Amount],p.[Paid Amount],p.Balance as [Balance Amount],(case when p.Balance > 0 then 'Delivered' else 'Fully settled' end) as [Delivery Status] from VendorOrderDetails join VendorDetails on VendorDetails.venderId =VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid left join  (select Invoiceid, (MAX(InvoiceAmount) - sum(TotalAmount)+SUM(returnAmount)) as Balance , sum(TotalAmount) as [Paid Amount] from AllPaymentDetailes  join CustomerOrderDelivery on AllPaymentDetailes.Invoiceid=CustomerOrderDelivery.Deliveryid  group by Invoiceid) p on CustomerOrderDelivery.Deliveryid=p.Invoiceid where " + s + " like '" + txtSearch.Text + "%'";
+            string selectQurry = "select CustomerOrderDelivery.Deliveryid as[Purchase Invoice ID],CustomerOrderDelivery.DeliveryDate as[Invoice Date],VendorOrderDetails.venderId as [Vendor ID], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Quantity Billed],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.DisAmount as[Dicount Amount],cast((VendorOrderDetails.WithoutTexAmount)-(VendorOrderDetails.DisAmount)as numeric(38, 2))as[Taxable Value],case when VendorDetails .vState != (select state from CompnayDetails) then '0.00'else(select cast(sum(((((voc.Price*voc.Quantity))-(((voc.Price*voc.Quantity)*itd.Discount)/100))*itd.CGST)/100)as numeric(38, 2)) from ItemTaxDetail itd join VendorOrderDesc voc on itd.ItemId=voc.ItemId where voc.Orderid=VendorOrderDetails.Orderid)end as[CGst],case when VendorDetails .vState != (select state from CompnayDetails) then '0.00'else(select cast(sum(((((voc.Price*voc.Quantity))-(((voc.Price*voc.Quantity)*itd.Discount)/100))*itd.SGST)/100)as numeric(38, 2)) from ItemTaxDetail itd join VendorOrderDesc voc on itd.ItemId=voc.ItemId where voc.Orderid=VendorOrderDetails.Orderid)end as[SGst],case when VendorDetails .vState = (select state from CompnayDetails) then '0.00'else(select cast(sum(((((voc.Price*voc.Quantity))-(((voc.Price*voc.Quantity)*itd.Discount)/100))*itd.IGST)/100)as numeric(38, 2)) from ItemTaxDetail itd join VendorOrderDesc voc on itd.ItemId=voc.ItemId where voc.Orderid=VendorOrderDetails.Orderid)end as[IGst],(select cast(sum(((((voc.Price*voc.Quantity))-(((voc.Price*voc.Quantity)*itd.Discount)/100))*itd.CESS)/100)as numeric(38, 2)) from ItemTaxDetail itd join VendorOrderDesc voc on itd.ItemId=voc.ItemId where voc.Orderid=VendorOrderDetails.Orderid)as[CESS],cast(((VendorOrderDetails.WithoutTexAmount)-(VendorOrderDetails.DisAmount))+(VendorOrderDetails.TextTaxAmmount) as numeric(38, 2)) AS[Net Amount (Including Tax)],cast(((VendorOrderDetails.WithoutTexAmount)-(VendorOrderDetails.DisAmount))+(VendorOrderDetails.TextTaxAmmount) as numeric(38, 2)) as[Invoice Amount],p.[Paid Amount],p.Balance as [Balance Amount],(case when p.Balance > 0 then 'Delivered' else 'Fully settled' end) as [Delivery Status] from VendorOrderDetails join VendorDetails on VendorDetails.venderId =VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid left join  (select Invoiceid, (MAX(InvoiceAmount) - sum(TotalAmount)+SUM(returnAmount)) as Balance , sum(TotalAmount) as [Paid Amount] from AllPaymentDetailes  join CustomerOrderDelivery on AllPaymentDetailes.Invoiceid=CustomerOrderDelivery.Deliveryid  group by Invoiceid) p on CustomerOrderDelivery.Deliveryid=p.Invoiceid where " + s + " like '" + txtSearch.Text + "%' and  DeliveryDate BETWEEN '" + dateTimePicker4.Text + " " + "0:00:00:000" + "' AND '" + dateTimePicker3.Text + " " + "23:59:00:000" + "'";
             DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
             dataGridView2.DataSource = dt;
         }
@@ -1224,31 +1222,26 @@ namespace WindowsFormsApplication1
 
         private void CashAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
-           
+
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                //if (CashAmount.Text.IndexOf('.') != -1 && CashAmount.Text.Split('.')[1].Length == 2)
-                //{
-                //MessageBox.Show("The maximum decimal points are 2!");
                 e.Handled = false;
-                //}
             }
             else
             {
                 if (e.KeyChar == '\b')
                 {
-                    //if (CashAmount.Text == "")
-                    //{
-                    //    txttotalAmount.Text = "0.00";
-                    //    // txtBalance.Text = "0.00";
-                    //}
-                   
+
                     e.Handled = false;
                 }
                 else
                 {
                     e.Handled = true;
                 }
+            }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
             }
         }
         public void credittext()
@@ -1495,11 +1488,7 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                //if (txtCreditAmount.Text.IndexOf('.') != -1 && txtCreditAmount.Text.Split('.')[1].Length == 2)
-                //{
-                //    //MessageBox.Show("The maximum decimal points are 2!");
                 e.Handled = false;
-                //}
             }
             else
             {
@@ -1513,9 +1502,14 @@ namespace WindowsFormsApplication1
                     e.Handled = true;
                 }
             }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
         }
         Double BalAmunt = 0;
         Double bal2 = 0;
+
         private void txtRturned_TextChanged(object sender, EventArgs e)
         {
             
@@ -1566,25 +1560,23 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                //if (txtRturned.Text.IndexOf('.') != -1 && txtRturned.Text.Split('.')[1].Length == 2)
-                //{
-                //    //MessageBox.Show("The maximum decimal points are 2!");
-                //    e.Handled = true;
-                //}
                 e.Handled = false;
             }
             else
             {
                 if (e.KeyChar == '\b')
                 {
-                    //txtBalance.Text = "0";
+
                     e.Handled = false;
                 }
                 else
                 {
                     e.Handled = true;
-                    //MessageBox.Show("Plese enter numeric value!");
                 }
+            }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
             }
         }
 
@@ -1592,24 +1584,23 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                //if (txtChequeAmount.Text.IndexOf('.') != -1 && txtChequeAmount.Text.Split('.')[1].Length == 2)
-                //{
-                //    //MessageBox.Show("The maximum decimal points are 2!");
                 e.Handled = false;
-                //}
             }
             else
             {
                 if (e.KeyChar == '\b')
                 {
-                   // txtBalance.Text = "0";
+
                     e.Handled = false;
                 }
                 else
                 {
                     e.Handled = true;
-                    //MessageBox.Show("Plese enter numeric value!");
                 }
+            }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
             }
         }
 
@@ -1617,24 +1608,23 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                //if (txtEwalletAmount.Text.IndexOf('.') != -1 && txtEwalletAmount.Text.Split('.')[1].Length == 2)
-                //{
-                //    //MessageBox.Show("The maximum decimal points are 2!");
                 e.Handled = false;
-                //}
             }
             else
             {
                 if (e.KeyChar == '\b')
                 {
-                    //txtBalance.Text = "0";
+
                     e.Handled = false;
                 }
                 else
                 {
                     e.Handled = true;
-                    //MessageBox.Show("Plese enter numeric value!");
                 }
+            }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
             }
         }
 
@@ -1642,24 +1632,23 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                //    if (txtCouponAmount.Text.IndexOf('.') != -1 && txtCouponAmount.Text.Split('.')[1].Length == 2)
-                //    {
-                //        //MessageBox.Show("The maximum decimal points are 2!");
                 e.Handled = false;
-                //}
             }
             else
             {
                 if (e.KeyChar == '\b')
                 {
-                    //txtBalance.Text = "0";
+
                     e.Handled = false;
                 }
                 else
                 {
                     e.Handled = true;
-                    //MessageBox.Show("Plese enter numeric value!");
                 }
+            }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
             }
         }
 
@@ -1725,10 +1714,12 @@ namespace WindowsFormsApplication1
       
         private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
         {
+
             setDate();
         }
         public void setDate()
         {
+           // string s = search();
             DateTime date = Convert.ToDateTime(dateTimePicker3.Text);
             if (date > DateTime.Now.Date)
             {
@@ -1747,7 +1738,7 @@ namespace WindowsFormsApplication1
             }
             //string s = comboPurchasesearch.SelectedValue.ToString();
 
-            string selectQurry = "select CustomerOrderDelivery.Deliveryid as[Purchase Invoice ID],CustomerOrderDelivery.DeliveryDate as[Invoice Date],VendorOrderDetails.venderId as [Vendor ID], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Quantity Billed],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.DisAmount as[Dicount Amount],cast((VendorOrderDetails.WithoutTexAmount)-(VendorOrderDetails.DisAmount)as numeric(38, 2))as[Taxable Value],case when VendorDetails .vState != (select state from CompnayDetails) then '0.00'else(select cast(sum(((((voc.Price*voc.Quantity))-(((voc.Price*voc.Quantity)*itd.Discount)/100))*itd.CGST)/100)as numeric(38, 2)) from ItemTaxDetail itd join VendorOrderDesc voc on itd.ItemId=voc.ItemId where voc.Orderid=VendorOrderDetails.Orderid)end as[CGst],case when VendorDetails .vState != (select state from CompnayDetails) then '0.00'else(select cast(sum(((((voc.Price*voc.Quantity))-(((voc.Price*voc.Quantity)*itd.Discount)/100))*itd.SGST)/100)as numeric(38, 2)) from ItemTaxDetail itd join VendorOrderDesc voc on itd.ItemId=voc.ItemId where voc.Orderid=VendorOrderDetails.Orderid)end as[SGst],case when VendorDetails .vState = (select state from CompnayDetails) then '0.00'else(select cast(sum(((((voc.Price*voc.Quantity))-(((voc.Price*voc.Quantity)*itd.Discount)/100))*itd.IGST)/100)as numeric(38, 2)) from ItemTaxDetail itd join VendorOrderDesc voc on itd.ItemId=voc.ItemId where voc.Orderid=VendorOrderDetails.Orderid)end as[IGst],(select cast(sum(((((voc.Price*voc.Quantity))-(((voc.Price*voc.Quantity)*itd.Discount)/100))*itd.CESS)/100)as numeric(38, 2)) from ItemTaxDetail itd join VendorOrderDesc voc on itd.ItemId=voc.ItemId where voc.Orderid=VendorOrderDetails.Orderid)as[CESS],cast(((VendorOrderDetails.WithoutTexAmount)-(VendorOrderDetails.DisAmount))+(VendorOrderDetails.TextTaxAmmount) as numeric(38, 2)) AS[Net Amount (Including Tax)],cast(((VendorOrderDetails.WithoutTexAmount)-(VendorOrderDetails.DisAmount))+(VendorOrderDetails.TextTaxAmmount) as numeric(38, 2)) as[Invoice Amount],p.[Paid Amount],p.Balance as [Balance Amount],(case when p.Balance > 0 then 'Delivered' else 'Fully settled' end) as [Delivery Status] from VendorOrderDetails join VendorDetails on VendorDetails.venderId =VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid left join  (select Invoiceid, (MAX(InvoiceAmount) - sum(TotalAmount)+SUM(returnAmount)) as Balance , sum(TotalAmount) as [Paid Amount] from AllPaymentDetailes  join CustomerOrderDelivery on AllPaymentDetailes.Invoiceid=CustomerOrderDelivery.Deliveryid  group by Invoiceid) p on CustomerOrderDelivery.Deliveryid=p.Invoiceid where DeliveryDate BETWEEN '" + dateTimePicker4.Value.ToString() + "' AND '" + dateTimePicker3.Value.ToString() + "'";
+            string selectQurry = "select CustomerOrderDelivery.Deliveryid as[Purchase Invoice ID],CustomerOrderDelivery.DeliveryDate as[Invoice Date],VendorOrderDetails.venderId as [Vendor ID], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Quantity Billed],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.DisAmount as[Dicount Amount],cast((VendorOrderDetails.WithoutTexAmount)-(VendorOrderDetails.DisAmount)as numeric(38, 2))as[Taxable Value],case when VendorDetails .vState != (select state from CompnayDetails) then '0.00'else(select cast(sum(((((voc.Price*voc.Quantity))-(((voc.Price*voc.Quantity)*itd.Discount)/100))*itd.CGST)/100)as numeric(38, 2)) from ItemTaxDetail itd join VendorOrderDesc voc on itd.ItemId=voc.ItemId where voc.Orderid=VendorOrderDetails.Orderid)end as[CGst],case when VendorDetails .vState != (select state from CompnayDetails) then '0.00'else(select cast(sum(((((voc.Price*voc.Quantity))-(((voc.Price*voc.Quantity)*itd.Discount)/100))*itd.SGST)/100)as numeric(38, 2)) from ItemTaxDetail itd join VendorOrderDesc voc on itd.ItemId=voc.ItemId where voc.Orderid=VendorOrderDetails.Orderid)end as[SGst],case when VendorDetails .vState = (select state from CompnayDetails) then '0.00'else(select cast(sum(((((voc.Price*voc.Quantity))-(((voc.Price*voc.Quantity)*itd.Discount)/100))*itd.IGST)/100)as numeric(38, 2)) from ItemTaxDetail itd join VendorOrderDesc voc on itd.ItemId=voc.ItemId where voc.Orderid=VendorOrderDetails.Orderid)end as[IGst],(select cast(sum(((((voc.Price*voc.Quantity))-(((voc.Price*voc.Quantity)*itd.Discount)/100))*itd.CESS)/100)as numeric(38, 2)) from ItemTaxDetail itd join VendorOrderDesc voc on itd.ItemId=voc.ItemId where voc.Orderid=VendorOrderDetails.Orderid)as[CESS],cast(((VendorOrderDetails.WithoutTexAmount)-(VendorOrderDetails.DisAmount))+(VendorOrderDetails.TextTaxAmmount) as numeric(38, 2)) AS[Net Amount (Including Tax)],cast(((VendorOrderDetails.WithoutTexAmount)-(VendorOrderDetails.DisAmount))+(VendorOrderDetails.TextTaxAmmount) as numeric(38, 2)) as[Invoice Amount],p.[Paid Amount],p.Balance as [Balance Amount],(case when p.Balance > 0 then 'Delivered' else 'Fully settled' end) as [Delivery Status] from VendorOrderDetails join VendorDetails on VendorDetails.venderId =VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid left join  (select Invoiceid, (MAX(InvoiceAmount) - sum(TotalAmount)+SUM(returnAmount)) as Balance , sum(TotalAmount) as [Paid Amount] from AllPaymentDetailes  join CustomerOrderDelivery on AllPaymentDetailes.Invoiceid=CustomerOrderDelivery.Deliveryid  group by Invoiceid) p on CustomerOrderDelivery.Deliveryid=p.Invoiceid where  DeliveryDate BETWEEN '" + dateTimePicker4.Text + " " + "0:00:00:000" + "' AND '" + dateTimePicker3.Text + " " + "23:59:00:000" + "'";
             //"select od.Orderid,od.venderId,itd.ItemName,vod.Quantity,vod.TotalPrice,od.OrderDate,cod.DeliveryDate,coi.InvoiceDate from VendorOrderDetails od join VendorOrderDesc vod on vod.Orderid=od.Orderid join CustomerOrderDelivery cod on cod.Orderid=vod.Orderid join CustomerOrderInvoice coi on coi.Orderid=vod.Orderid join ItemDetails itd on itd.ItemId=vod.ItemId where " + a + "= '" + txtsearch.Text + "'";
             DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
             dataGridView2.DataSource = dt;

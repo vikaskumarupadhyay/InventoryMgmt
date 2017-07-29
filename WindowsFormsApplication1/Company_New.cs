@@ -20,10 +20,9 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
         }
-
-
         private void Compnay_Load(object sender, EventArgs e)
         {
+            cmbState.SelectedIndex = 0;
             string selectqurry = "select cd.CompnayId as[Company ID], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.PANNO as[PAN NO],cd.GSTNO as[GST NO]from CompnayDetails cd";
             string selectqurryForActualColumnName = "select top 1 cd.CompnayId, cd.OnerName, cd.Name ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email,cd.WebAddress,cd.Phone,cd.Mobile,cd.Fax,cd.PANNO,cd.GSTNO from CompnayDetails cd";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);

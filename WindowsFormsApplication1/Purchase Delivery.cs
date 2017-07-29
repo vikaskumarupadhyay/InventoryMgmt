@@ -3377,14 +3377,10 @@ namespace WindowsFormsApplication1
 
         private void CashAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
-           
+
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                //if (CashAmount.Text.IndexOf('.') != -1 && CashAmount.Text.Split('.')[1].Length == 2)
-                //{
-                    //MessageBox.Show("The maximum decimal points are 2!");
                 e.Handled = false;
-                //}
             }
             else
             {
@@ -3397,6 +3393,10 @@ namespace WindowsFormsApplication1
                 {
                     e.Handled = true;
                 }
+            }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
             }
         }
 
@@ -3622,11 +3622,7 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                //if (txtCreditAmount.Text.IndexOf('.') != -1 && txtCreditAmount.Text.Split('.')[1].Length == 2)
-                //{
-                //    //MessageBox.Show("The maximum decimal points are 2!");
                 e.Handled = false;
-                //}
             }
             else
             {
@@ -3639,6 +3635,10 @@ namespace WindowsFormsApplication1
                 {
                     e.Handled = true;
                 }
+            }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
             }
         }
          Double BalAmunt = 0;
@@ -3691,28 +3691,24 @@ namespace WindowsFormsApplication1
         {
 
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
-
             {
-                //if (txtRturned.Text.IndexOf('.') != -1 && txtRturned.Text.Split('.')[1].Length == 2)
-                //{
-                //    //MessageBox.Show("The maximum decimal points are 2!");
-                //    e.Handled = true;
-                //}
                 e.Handled = false;
             }
             else
             {
                 if (e.KeyChar == '\b')
                 {
-                    txtBalance.Text = "0";
-                    txtRturned.SelectAll();
+
                     e.Handled = false;
                 }
                 else
                 {
                     e.Handled = true;
-                    //MessageBox.Show("Plese enter numeric value!");
                 }
+            }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
             }
         }
 
@@ -3740,24 +3736,23 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                //if (txtChequeAmount.Text.IndexOf('.') != -1 && txtChequeAmount.Text.Split('.')[1].Length == 2)
-                //{
-                //    //MessageBox.Show("The maximum decimal points are 2!");
                 e.Handled = false;
-                //}
             }
             else
             {
                 if (e.KeyChar == '\b')
                 {
-                    txtBalance.Text = "0";
+
                     e.Handled = false;
                 }
                 else
                 {
                     e.Handled = true;
-                    //MessageBox.Show("Plese enter numeric value!");
                 }
+            }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
             }
         }
 
@@ -3765,24 +3760,23 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                //if (txtEwalletAmount.Text.IndexOf('.') != -1 && txtEwalletAmount.Text.Split('.')[1].Length == 2)
-                //{
-                //    //MessageBox.Show("The maximum decimal points are 2!");
                 e.Handled = false;
-                //}
             }
             else
             {
                 if (e.KeyChar == '\b')
                 {
-                    txtBalance.Text = "0";
+
                     e.Handled = false;
                 }
                 else
                 {
                     e.Handled = true;
-                    //MessageBox.Show("Plese enter numeric value!");
                 }
+            }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
             }
         }
 
@@ -3790,24 +3784,23 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-            //    if (txtCouponAmount.Text.IndexOf('.') != -1 && txtCouponAmount.Text.Split('.')[1].Length == 2)
-            //    {
-            //        //MessageBox.Show("The maximum decimal points are 2!");
                 e.Handled = false;
-                //}
             }
             else
             {
                 if (e.KeyChar == '\b')
                 {
-                    txtBalance.Text = "0";
+
                     e.Handled = false;
                 }
                 else
                 {
                     e.Handled = true;
-                    //MessageBox.Show("Plese enter numeric value!");
                 }
+            }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
             }
         }
 
@@ -3815,24 +3808,23 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                //if (txttotalAmount.Text.IndexOf('.') != -1 && txttotalAmount.Text.Split('.')[1].Length == 2)
-                //{
-                //    //MessageBox.Show("The maximum decimal points are 2!");
                 e.Handled = false;
-                //}
             }
             else
             {
                 if (e.KeyChar == '\b')
                 {
-                    txtBalance.Text = "0";
+
                     e.Handled = false;
                 }
                 else
                 {
                     e.Handled = true;
-                    //MessageBox.Show("Plese enter numeric value!");
                 }
+            }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
             }
         }
 
@@ -3840,24 +3832,23 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                //if (txtWAmount.Text.IndexOf('.') != -1 && txtWAmount.Text.Split('.')[1].Length == 2)
-                //{
-                //    //MessageBox.Show("The maximum decimal points are 2!");
                 e.Handled = false;
-                //}
             }
             else
             {
                 if (e.KeyChar == '\b')
                 {
-                    txtBalance.Text = "0";
+
                     e.Handled = false;
                 }
                 else
                 {
                     e.Handled = true;
-                    //MessageBox.Show("Plese enter numeric value!");
                 }
+            }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
             }
         }
 
@@ -3865,24 +3856,23 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                //if (txtDisAmount.Text.IndexOf('.') != -1 && txtDisAmount.Text.Split('.')[1].Length == 2)
-                //{
-                    //MessageBox.Show("The maximum decimal points are 2!");
                 e.Handled = false;
-                //}
             }
             else
             {
                 if (e.KeyChar == '\b')
                 {
-                    txtBalance.Text = "0";
+
                     e.Handled = false;
                 }
                 else
                 {
                     e.Handled = true;
-                    //MessageBox.Show("Plese enter numeric value!");
                 }
+            }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
             }
         }
 
@@ -3890,24 +3880,23 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                //if (txtTaxAmount.Text.IndexOf('.') != -1 && txtTaxAmount.Text.Split('.')[1].Length == 2)
-                //{
-                //    //MessageBox.Show("The maximum decimal points are 2!");
                 e.Handled = false;
-                //}
             }
             else
             {
                 if (e.KeyChar == '\b')
                 {
-                    txtBalance.Text = "0";
+
                     e.Handled = false;
                 }
                 else
                 {
                     e.Handled = true;
-                    //MessageBox.Show("Plese enter numeric value!");
                 }
+            }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
             }
         }
 
@@ -3915,24 +3904,23 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                //if (txtBalance.Text.IndexOf('.') != -1 && txtBalance.Text.Split('.')[1].Length == 2)
-                //{
-                    //MessageBox.Show("The maximum decimal points are 2!");
                 e.Handled = false;
-                //}
             }
             else
             {
                 if (e.KeyChar == '\b')
                 {
-                    txtBalance.Text = "0";
+
                     e.Handled = false;
                 }
                 else
                 {
                     e.Handled = true;
-                    //MessageBox.Show("Plese enter numeric value!");
                 }
+            }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
             }
         }
         private void dataGridView1_KeyUp(object sender, KeyEventArgs e)
