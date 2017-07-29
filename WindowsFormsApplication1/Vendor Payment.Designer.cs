@@ -1290,9 +1290,9 @@
             this.groupBox7.Controls.Add(this.txtInvoiceAmount);
             this.groupBox7.Controls.Add(this.label21);
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox7.Location = new System.Drawing.Point(920, 12);
+            this.groupBox7.Location = new System.Drawing.Point(925, 11);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(1008, 58);
+            this.groupBox7.Size = new System.Drawing.Size(411, 58);
             this.groupBox7.TabIndex = 9;
             this.groupBox7.TabStop = false;
             // 
@@ -1316,7 +1316,7 @@
             this.txtInvoiceAmount.Multiline = true;
             this.txtInvoiceAmount.Name = "txtInvoiceAmount";
             this.txtInvoiceAmount.ReadOnly = true;
-            this.txtInvoiceAmount.Size = new System.Drawing.Size(235, 23);
+            this.txtInvoiceAmount.Size = new System.Drawing.Size(256, 23);
             this.txtInvoiceAmount.TabIndex = 1;
             this.txtInvoiceAmount.TabStop = false;
             this.txtInvoiceAmount.Text = "0.00";
@@ -1325,7 +1325,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(17, 23);
+            this.label21.Location = new System.Drawing.Point(6, 25);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(78, 15);
             this.label21.TabIndex = 0;

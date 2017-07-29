@@ -315,24 +315,25 @@ namespace WindowsFormsApplication1
 
         private void txtVenderOpeningBal_KeyPress(object sender, KeyPressEventArgs e)
         {
-           if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
+            if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                if (txtVenderOpeningBal.Text.IndexOf('.') != -1 && txtVenderOpeningBal.Text.Split('.')[1].Length == 2)
-                {
-                    //MessageBox.Show("The maximum decimal points are 2!");
-                    //e.Handled = true;
-                }
+                e.Handled = false;
             }
             else
             {
                 if (e.KeyChar == '\b')
                 {
+
                     e.Handled = false;
                 }
                 else
                 {
                     e.Handled = true;
                 }
+            }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
             }
 
         //}
