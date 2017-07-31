@@ -290,6 +290,7 @@
             // butremove
             // 
             this.butremove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.butremove.Enabled = false;
             this.butremove.Location = new System.Drawing.Point(1033, 22);
             this.butremove.Name = "butremove";
             this.butremove.Size = new System.Drawing.Size(90, 33);
@@ -303,6 +304,7 @@
             // butadditem
             // 
             this.butadditem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.butadditem.Enabled = false;
             this.butadditem.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.butadditem.FlatAppearance.BorderSize = 3;
             this.butadditem.Location = new System.Drawing.Point(937, 22);
@@ -386,6 +388,7 @@
             // 
             // button2
             // 
+            this.button2.Enabled = false;
             this.button2.Location = new System.Drawing.Point(116, 34);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(24, 23);
@@ -399,6 +402,7 @@
             // 
             this.txtitemcode.Location = new System.Drawing.Point(23, 35);
             this.txtitemcode.Name = "txtitemcode";
+            this.txtitemcode.ReadOnly = true;
             this.txtitemcode.Size = new System.Drawing.Size(92, 21);
             this.txtitemcode.TabIndex = 2;
             this.txtitemcode.Text = "I";
@@ -712,7 +716,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1172, 634);
             this.panel2.TabIndex = 60;
-           // this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // crystalReportViewer1
             // 

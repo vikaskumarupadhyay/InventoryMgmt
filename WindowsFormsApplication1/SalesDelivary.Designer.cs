@@ -113,13 +113,13 @@
             this.textBox23 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtNetAmount = new System.Windows.Forms.TextBox();
             this.txtRturned = new System.Windows.Forms.TextBox();
             this.txtBalance = new System.Windows.Forms.TextBox();
             this.txtTotalAmount1 = new System.Windows.Forms.TextBox();
             this.textBox20 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.txtNetAmount = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -192,7 +192,6 @@
             this.gridsalesdelivary.Size = new System.Drawing.Size(1317, 333);
             this.gridsalesdelivary.StandardTab = true;
             this.gridsalesdelivary.TabIndex = 0;
-           // this.gridsalesdelivary.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesdelivary_CellEndEdit);
             this.gridsalesdelivary.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridsalesdelivary_KeyPress);
             this.gridsalesdelivary.KeyUp += new System.Windows.Forms.KeyEventHandler(this.gridsalesdelivary_KeyUp);
             // 
@@ -223,6 +222,7 @@
             // butRemoveItem
             // 
             this.butRemoveItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.butRemoveItem.Enabled = false;
             this.butRemoveItem.Location = new System.Drawing.Point(1215, 22);
             this.butRemoveItem.Name = "butRemoveItem";
             this.butRemoveItem.Size = new System.Drawing.Size(90, 33);
@@ -236,6 +236,7 @@
             // butAddItem
             // 
             this.butAddItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.butAddItem.Enabled = false;
             this.butAddItem.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.butAddItem.FlatAppearance.BorderSize = 3;
             this.butAddItem.Location = new System.Drawing.Point(1119, 22);
@@ -272,6 +273,7 @@
             // 
             this.txtQuantity.Location = new System.Drawing.Point(695, 35);
             this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.ReadOnly = true;
             this.txtQuantity.Size = new System.Drawing.Size(169, 21);
             this.txtQuantity.TabIndex = 8;
             this.txtQuantity.TabStop = false;
@@ -318,6 +320,7 @@
             // 
             // butitembutton
             // 
+            this.butitembutton.Enabled = false;
             this.butitembutton.Location = new System.Drawing.Point(116, 34);
             this.butitembutton.Name = "butitembutton";
             this.butitembutton.Size = new System.Drawing.Size(24, 23);
@@ -331,6 +334,7 @@
             // 
             this.txtItemCode.Location = new System.Drawing.Point(23, 35);
             this.txtItemCode.Name = "txtItemCode";
+            this.txtItemCode.ReadOnly = true;
             this.txtItemCode.Size = new System.Drawing.Size(92, 21);
             this.txtItemCode.TabIndex = 2;
             this.txtItemCode.Text = "I";
@@ -688,6 +692,7 @@
             this.txtdiccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtdiccount.Location = new System.Drawing.Point(901, 577);
             this.txtdiccount.Name = "txtdiccount";
+            this.txtdiccount.ReadOnly = true;
             this.txtdiccount.Size = new System.Drawing.Size(45, 21);
             this.txtdiccount.TabIndex = 45;
             this.txtdiccount.TabStop = false;
@@ -1192,6 +1197,19 @@
             this.textBox4.Text = "₹";
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // txtNetAmount
+            // 
+            this.txtNetAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNetAmount.Location = new System.Drawing.Point(1126, 159);
+            this.txtNetAmount.Name = "txtNetAmount";
+            this.txtNetAmount.ReadOnly = true;
+            this.txtNetAmount.Size = new System.Drawing.Size(195, 21);
+            this.txtNetAmount.TabIndex = 38;
+            this.txtNetAmount.TabStop = false;
+            this.txtNetAmount.Text = "0.00";
+            this.txtNetAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // txtRturned
             // 
             this.txtRturned.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1202,6 +1220,7 @@
             this.txtRturned.TabIndex = 36;
             this.txtRturned.Text = "0.00";
             this.txtRturned.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRturned.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtRturned_MouseClick);
             this.txtRturned.TextChanged += new System.EventHandler(this.txtRturned_TextChanged);
             this.txtRturned.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRturned_KeyPress);
             // 
@@ -1265,19 +1284,6 @@
             this.textBox6.TabStop = false;
             this.textBox6.Text = "₹";
             this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtNetAmount
-            // 
-            this.txtNetAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNetAmount.Location = new System.Drawing.Point(1126, 159);
-            this.txtNetAmount.Name = "txtNetAmount";
-            this.txtNetAmount.ReadOnly = true;
-            this.txtNetAmount.Size = new System.Drawing.Size(195, 21);
-            this.txtNetAmount.TabIndex = 38;
-            this.txtNetAmount.TabStop = false;
-            this.txtNetAmount.Text = "0.00";
-            this.txtNetAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label20
             // 

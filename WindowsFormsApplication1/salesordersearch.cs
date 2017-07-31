@@ -195,9 +195,14 @@ namespace WindowsFormsApplication1
             }
             else if (s == "Column6")
             {
+                s = "cast((dbo.customerorderdescriptions.totalammount)-((dbo.customerorderdescriptions.totalammount*dbo.orderdetails.Discount)/100)as numeric(38,2))";
+
+            }
+            else if (s == "CGST")
+            {
                 s = "(case when DBo.CustomerDetails.CustState != (select top 1 State from DBO.CompnayDetails) then '0.0'else CGST end)";
             }
-            else if (s == "Column7")
+            else if (s == "SGST")
             {
                 s = "(case when DBo.CustomerDetails.CustState != (select top 1 State from DBO.CompnayDetails) then '0.0'else SGST end)";
             }
@@ -205,11 +210,14 @@ namespace WindowsFormsApplication1
             {
                 s = " (case when DBo.CustomerDetails.CustState = (select top 1 State from DBO.CompnayDetails) then '0.0' else itd.IGST  end)";
             }
-            else if (s == "Column9")
+            else if (s == "CESS")
             {
                 s = "itd.CESS";
             }
-
+            else if (s == "Column7")
+            {
+                s = "(case when exists  ( select orderid from salesOrderDelivery where Orderid=  orderdetails.orderid)then 'Delivered'else 'Pending'end)";
+            }
             string selectquery = "SELECT dbo.customerorderdescriptions.orderid as [Sales Order ID], dbo.orderdetails.date as [Order Date],dbo.CustomerDetails.custId as[Customer ID], dbo.CustomerDetails.CustName as[Customer Name],dbo.CustomerDetails.CustCompName as[Compnay Name],dbo.customerorderdescriptions.ItemId as[Item ID],dbo.ItemDetails.ItemName as[Item Name],dbo.ItemDetails.ItemCompName as[Item Compnay Name],itd.HSN,cast(dbo.ItemPriceDetail.MrpPrice as numeric(38,2)) as[MRP],cast(dbo.customerorderdescriptions.price as numeric(38,2)) as[Selling Rate],dbo.customerorderdescriptions.quantity as [Quantity Billed],cast(dbo.customerorderdescriptions.price *dbo.customerorderdescriptions.quantity as numeric(38,2))as[Gross Amount],itd.Discount as[Discount Rate (In %)],cast((dbo.customerorderdescriptions.price*itd.Discount)/100 as numeric(38,2)) as [Discount Amount],cast((((dbo.customerorderdescriptions.Price)* (dbo.customerorderdescriptions.Quantity))-(dbo.customerorderdescriptions.Price)* (dbo.customerorderdescriptions.Quantity)*(itd.Discount/100))as numeric(38,2)) as [Taxable Value],( case when DBo.CustomerDetails.CustState != DBO.CompnayDetails.State then '0.0'else CGST end) as CGST,(case when DBo.CustomerDetails.CustState != DBO.CompnayDetails.State then '0.0'else SGST end) as SGST,(case when DBo.CustomerDetails.CustState = DBO.CompnayDetails.State then '0.0' else itd.IGST  end) as IGST, itd.CESS, cast((dbo.customerorderdescriptions.totalammount)-((dbo.customerorderdescriptions.totalammount*dbo.orderdetails.Discount)/100)as numeric(38,2)) AS [Net Amount (Including Tax)],(case when exists  ( select orderid from salesOrderDelivery where Orderid=  orderdetails.orderid)then 'Delivered'else 'Pending'end) as [Delivery Status] FROM dbo.CompnayDetails CROSS JOIN dbo.ItemDetails INNER JOIN dbo.customerorderdescriptions ON dbo.ItemDetails.ItemId = dbo.customerorderdescriptions.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId Join ItemTaxDetail itd on dbo.ItemPriceDetail.ItemId=itd.ItemId INNER JOIN dbo.orderdetails ON dbo.customerorderdescriptions.orderid = dbo.orderdetails.orderid INNER JOIN dbo.CustomerDetails ON dbo.orderdetails.custid = dbo.CustomerDetails.custId  Where " + s + " like'" + txtsearch.Text + "%' and date BETWEEN '" + dateTimePicker1.Value.ToString() + "' AND '" + dateTimePicker2.Value.ToString() + "'";
             DataTable dt = d.getDetailByQuery(selectquery);
             dataGridView1.DataSource = dt;
