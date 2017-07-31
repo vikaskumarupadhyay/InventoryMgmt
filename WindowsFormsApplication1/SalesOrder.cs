@@ -2073,6 +2073,16 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyCode == Keys.Enter)
                 {
+                    if(txtcustomercode.Text=="C")
+                    {
+                        MessageBox.Show("please select your customer code");
+                       // gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[0].Value = "";
+                        //gridsalesorder.CurrentCell = gridsalesorder.Rows[gridsalesorder.RowCount - 1].Cells[0];
+                        gridsalesorder.Rows.RemoveAt(0);
+                        //gridsalesorder.AllowUserToAddRows = false;
+                        txtcustomercode.Focus();
+                        return;
+                    }
                     string itemid = gridsalesorder.Rows[0].Cells[0].Value.ToString();
                     if (itemid == "")
                     {
@@ -2092,8 +2102,13 @@ namespace WindowsFormsApplication1
                     {
                         customerid = dr1[0].ToString();
                     }
+                  
+                   
+                    itemid = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index-1].Cells[0].Value.ToString();
+                    //if (itemid != 0)
+                    //{
 
-                    itemid = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[0].Value.ToString();
+                    //}
                     string item = "";
                     string selectQurry = "select ItemId from ItemDetails";
                     DataTable dt1 = d.getDetailByQuery(selectQurry);
@@ -2257,7 +2272,8 @@ namespace WindowsFormsApplication1
                         {
 
                             MessageBox.Show("please select your correct itemid");
-                            gridsalesorder.CurrentCell = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[0];
+                          
+                            //gridsalesorder.CurrentCell = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[0];
 
                         }
 
