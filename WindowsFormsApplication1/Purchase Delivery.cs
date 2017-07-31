@@ -1709,9 +1709,9 @@ namespace WindowsFormsApplication1
                     }
                     else
                     {
-                        button4.Enabled = true;
+                        //button4.Enabled = true;
                      
-                        txtItemCode.Focus();
+                        //txtItemCode.Focus();
                         IndexTex2();
                         //addToCartTable.Columns.RemoveAt(5);
                         //if (!addToCartTable.Columns.Contains("Revised Quantity"))
@@ -1741,7 +1741,7 @@ namespace WindowsFormsApplication1
                             //    addToCartTable.Columns.RemoveAt(5);
                             //    addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
                             //}
-                            button4.Enabled = false;
+                           // button4.Enabled = false;
                             MessageBox.Show("This Order completed");
                             ////addToCartTable.Columns.RemoveAt(6);
                             //if (!addToCartTable.Columns.Contains("Revised Quantity"))
@@ -2649,11 +2649,11 @@ namespace WindowsFormsApplication1
                     if (!string.IsNullOrEmpty(CellCollection[0].Value.ToString()))
                     {
                         setDetails1(CellCollection);
-                        txtQunty.ReadOnly = false;
-                        button3.Enabled = true;
-                        txtQunty.Focus();
+                        //txtQunty.ReadOnly = false;
+                       // button3.Enabled = true;
+                        //txtQunty.Focus();
                         IndexTex2();
-                        txtQunty.Enabled = true;
+                        //txtQunty.Enabled = true;
                     }
                 }
                 if (counter == 2)
@@ -2670,7 +2670,7 @@ namespace WindowsFormsApplication1
                         {
                             panel2.Visible = true;
                             txtRef.Text = "";
-                            button4.Enabled = false;
+                            //button4.Enabled = false;
                             makeBlank();
                             txtSearch.Focus();
                             MessageBox.Show("This Order completed");
@@ -2830,7 +2830,7 @@ namespace WindowsFormsApplication1
                     {
                         panel2.Visible = true;
                         txtRef.Text = "";
-                        button4.Enabled = false;
+                        //button4.Enabled = false;
                         makeBlank();
                         txtSearch.Focus();
                         MessageBox.Show("This Order completed");
