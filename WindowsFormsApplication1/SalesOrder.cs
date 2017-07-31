@@ -2270,19 +2270,25 @@ namespace WindowsFormsApplication1
                     {
                         if (item != itemid)
                         {
-
+                            int selectedindex = gridsalesorder.CurrentCell.RowIndex;
+                            if (selectedindex >0)
+                            {
+                                gridsalesorder.Rows.RemoveAt(selectedindex-1);
+                            }
+                                
+                            
                             MessageBox.Show("please select your correct itemid");
                           
                             //gridsalesorder.CurrentCell = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[0];
 
                         }
 
-                        if (itemid == "I1")
-                        {
-                            MessageBox.Show("please select your correct row ");
-                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[0].Value = "";
-                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[2].Selected = true;
-                        }
+                        //if (itemid == "I1")
+                        //{
+                        //    MessageBox.Show("please select your correct row ");
+                        //    gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[0].Value = "";
+                        //    gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[2].Selected = true;
+                        //}
                     }
 
                 }

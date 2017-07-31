@@ -1295,6 +1295,7 @@ namespace WindowsFormsApplication1
             if (bal2 < return3)
             {
                 MessageBox.Show("please corrct Amount");
+                txtRturned.Text = "0.00";
                 txtRturned.Focus();
                 txtRturned.SelectAll();
                 txtBalance.Text = BalAmunt.ToString("###0.00");
@@ -1708,6 +1709,31 @@ namespace WindowsFormsApplication1
             butback.TabStop = true;
             dataGridView1.TabStop = true;
             dataGridView1.Focus();
+        }
+
+        private void CashAmount_MouseClick(object sender, MouseEventArgs e)
+        {
+            CashAmount.SelectAll();
+        }
+
+        private void txtCreditAmount_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtCreditAmount.SelectAll();
+        }
+
+        private void txtChequeAmount_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtChequeAmount.SelectAll();
+        }
+
+        private void txtEwalletAmount_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtEwalletAmount.SelectAll();
+        }
+
+        private void txtCouponAmount_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtCouponAmount.SelectAll();
         }
 
        

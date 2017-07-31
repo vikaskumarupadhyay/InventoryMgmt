@@ -908,6 +908,7 @@
             this.txtCouponAmount.TabIndex = 27;
             this.txtCouponAmount.Text = "0.00";
             this.txtCouponAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCouponAmount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtCouponAmount_MouseClick);
             this.txtCouponAmount.TextChanged += new System.EventHandler(this.txtCouponAmount_TextChanged);
             this.txtCouponAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCouponAmount_KeyPress);
             this.txtCouponAmount.Leave += new System.EventHandler(this.txtCouponAmount_Leave);
@@ -978,6 +979,7 @@
             this.txtEwalletAmount.TabIndex = 19;
             this.txtEwalletAmount.Text = "0.00";
             this.txtEwalletAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtEwalletAmount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtEwalletAmount_MouseClick);
             this.txtEwalletAmount.TextChanged += new System.EventHandler(this.txtEwalletAmount_TextChanged);
             this.txtEwalletAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEwalletAmount_KeyPress);
             this.txtEwalletAmount.Leave += new System.EventHandler(this.txtEwalletAmount_Leave);
@@ -1048,6 +1050,7 @@
             this.txtChequeAmount.TabIndex = 11;
             this.txtChequeAmount.Text = "0.00";
             this.txtChequeAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtChequeAmount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtChequeAmount_MouseClick);
             this.txtChequeAmount.TextChanged += new System.EventHandler(this.txtChequeAmount_TextChanged);
             this.txtChequeAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtChequeAmount_KeyPress);
             this.txtChequeAmount.Leave += new System.EventHandler(this.txtChequeAmount_Leave);
@@ -1126,6 +1129,7 @@
             this.txtCreditAmount.TabIndex = 3;
             this.txtCreditAmount.Text = "0.00";
             this.txtCreditAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCreditAmount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtCreditAmount_MouseClick);
             this.txtCreditAmount.TextChanged += new System.EventHandler(this.txtCreditAmount_TextChanged);
             this.txtCreditAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCreditAmount_KeyPress);
             this.txtCreditAmount.Leave += new System.EventHandler(this.txtCreditAmount_Leave);
@@ -1147,6 +1151,7 @@
             this.CashAmount.TabIndex = 1;
             this.CashAmount.Text = "0.00";
             this.CashAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CashAmount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.CashAmount_MouseClick);
             this.CashAmount.TextChanged += new System.EventHandler(this.CashAmount_TextChanged);
             this.CashAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CashAmount_KeyPress);
             this.CashAmount.Leave += new System.EventHandler(this.CashAmount_Leave);
