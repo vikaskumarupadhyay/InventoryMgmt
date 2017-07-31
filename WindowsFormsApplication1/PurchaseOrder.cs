@@ -828,6 +828,7 @@ namespace WindowsFormsApplication1
             counter = 0;
             if (counter == 0)
             {
+
                 int count = 0;
 
                 if (txtDiscount.Text == "")
@@ -1679,7 +1680,7 @@ namespace WindowsFormsApplication1
 
         private void Distxt_TextChanged(object sender, EventArgs e)
         {
-
+          /*
             //if (txtdis.Text == "")
             //{
             //    txtdis.Text = "0";
@@ -1717,7 +1718,7 @@ namespace WindowsFormsApplication1
                 //txtdis.Select(txtdis.Text.Length, 0);
 
                 // DisAmmount.Text = totalDiscount.ToString();
-            }
+            }*/
 
         }
         private void Distxt_KeyDown(object sender, KeyEventArgs e)
@@ -2080,9 +2081,13 @@ namespace WindowsFormsApplication1
                                 {
 
                                     MessageBox.Show("please select your correct itemid");
-                                    gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[0];
-
-                                }
+                                    //gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index-1].Cells[0].Value = "";
+                                    gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index].Cells[0];
+                                    if(gridPurchaseOrder.CurrentRow.Index>0)
+                                    {
+                                    gridPurchaseOrder.Rows.RemoveAt(gridPurchaseOrder.CurrentRow.Index-1);
+                                    }
+                                }   
                                 if (itemid == item)
                                 {
                                     MessageBox.Show("please select your correct row ");
