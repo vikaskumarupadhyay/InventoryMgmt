@@ -359,6 +359,7 @@
             // txtRemoveItem
             // 
             this.txtRemoveItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRemoveItem.Enabled = false;
             this.txtRemoveItem.Location = new System.Drawing.Point(1047, 22);
             this.txtRemoveItem.Name = "txtRemoveItem";
             this.txtRemoveItem.Size = new System.Drawing.Size(90, 33);
@@ -371,6 +372,7 @@
             // btnAddItem
             // 
             this.btnAddItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddItem.Enabled = false;
             this.btnAddItem.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnAddItem.FlatAppearance.BorderSize = 3;
             this.btnAddItem.Location = new System.Drawing.Point(951, 22);
@@ -579,6 +581,7 @@
             this.txtItemCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtItemCode.Location = new System.Drawing.Point(23, 35);
             this.txtItemCode.Name = "txtItemCode";
+            this.txtItemCode.ReadOnly = true;
             this.txtItemCode.Size = new System.Drawing.Size(92, 21);
             this.txtItemCode.TabIndex = 2;
             this.txtItemCode.Text = "I";
@@ -683,6 +686,7 @@
             // 
             this.textBox21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox21.Enabled = false;
             this.textBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox21.Location = new System.Drawing.Point(777, 577);
             this.textBox21.Name = "textBox21";
@@ -698,6 +702,7 @@
             this.txtdis.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtdis.BackColor = System.Drawing.SystemColors.Control;
             this.txtdis.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtdis.Enabled = false;
             this.txtdis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtdis.Location = new System.Drawing.Point(739, 577);
             this.txtdis.Name = "txtdis";
@@ -718,6 +723,7 @@
             // 
             this.textBox19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox19.Enabled = false;
             this.textBox19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox19.Location = new System.Drawing.Point(693, 577);
             this.textBox19.Name = "textBox19";
@@ -732,6 +738,7 @@
             // 
             this.textBox18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox18.Enabled = false;
             this.textBox18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox18.Location = new System.Drawing.Point(661, 577);
             this.textBox18.Name = "textBox18";
@@ -746,6 +753,7 @@
             // 
             this.txtDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDiscount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDiscount.Enabled = false;
             this.txtDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDiscount.Location = new System.Drawing.Point(623, 577);
             this.txtDiscount.Name = "txtDiscount";
@@ -760,6 +768,7 @@
             // 
             this.textBox16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox16.Enabled = false;
             this.textBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox16.Location = new System.Drawing.Point(577, 577);
             this.textBox16.Name = "textBox16";
