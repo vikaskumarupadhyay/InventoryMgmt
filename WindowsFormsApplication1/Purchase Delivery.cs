@@ -1709,9 +1709,9 @@ namespace WindowsFormsApplication1
                     }
                     else
                     {
-                        button4.Enabled = true;
+                        //button4.Enabled = true;
                      
-                        txtItemCode.Focus();
+                        //txtItemCode.Focus();
                         IndexTex2();
                         //addToCartTable.Columns.RemoveAt(5);
                         //if (!addToCartTable.Columns.Contains("Revised Quantity"))
@@ -1741,7 +1741,7 @@ namespace WindowsFormsApplication1
                             //    addToCartTable.Columns.RemoveAt(5);
                             //    addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
                             //}
-                            button4.Enabled = false;
+                           // button4.Enabled = false;
                             MessageBox.Show("This Order completed");
                             ////addToCartTable.Columns.RemoveAt(6);
                             //if (!addToCartTable.Columns.Contains("Revised Quantity"))
@@ -2649,11 +2649,11 @@ namespace WindowsFormsApplication1
                     if (!string.IsNullOrEmpty(CellCollection[0].Value.ToString()))
                     {
                         setDetails1(CellCollection);
-                        txtQunty.ReadOnly = false;
-                        button3.Enabled = true;
-                        txtQunty.Focus();
+                        //txtQunty.ReadOnly = false;
+                       // button3.Enabled = true;
+                        //txtQunty.Focus();
                         IndexTex2();
-                        txtQunty.Enabled = true;
+                        //txtQunty.Enabled = true;
                     }
                 }
                 if (counter == 2)
@@ -2670,7 +2670,7 @@ namespace WindowsFormsApplication1
                         {
                             panel2.Visible = true;
                             txtRef.Text = "";
-                            button4.Enabled = false;
+                            //button4.Enabled = false;
                             makeBlank();
                             txtSearch.Focus();
                             MessageBox.Show("This Order completed");
@@ -2830,7 +2830,7 @@ namespace WindowsFormsApplication1
                     {
                         panel2.Visible = true;
                         txtRef.Text = "";
-                        button4.Enabled = false;
+                        //button4.Enabled = false;
                         makeBlank();
                         txtSearch.Focus();
                         MessageBox.Show("This Order completed");
@@ -4193,10 +4193,13 @@ namespace WindowsFormsApplication1
                                 {
 
                                     MessageBox.Show("please select your correct itemid");
-                                    dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[0];
-
+                                    dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0];
+                                    if (dataGridView1.CurrentRow.Index > 0)
+                                    {
+                                        dataGridView1.Rows.RemoveAt(dataGridView1.CurrentRow.Index - 1);
+                                    }
                                 }
-                                if (itemid != item)
+                                if (itemid == item)
                                 {
                                     MessageBox.Show("please select your correct row ");
                                     dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value = "";
@@ -4325,6 +4328,26 @@ namespace WindowsFormsApplication1
         private void txtRturned_MouseClick(object sender, MouseEventArgs e)
         {
             txtRturned.SelectAll();
+        }
+
+        private void txtCouponAmount_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtCouponAmount.SelectAll();
+        }
+
+        private void txtEwalletAmount_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtEwalletAmount.SelectAll();
+        }
+
+        private void txtChequeAmount_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtChequeAmount.SelectAll();
+        }
+
+        private void txtCreditAmount_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtCreditAmount.SelectAll();
         }
 
        

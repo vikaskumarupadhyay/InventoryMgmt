@@ -951,6 +951,7 @@
             this.txtCouponAmount.TabIndex = 27;
             this.txtCouponAmount.Text = "0.00";
             this.txtCouponAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCouponAmount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtCouponAmount_MouseClick);
             this.txtCouponAmount.TextChanged += new System.EventHandler(this.txtCouponAmount_TextChanged);
             this.txtCouponAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCouponAmount_KeyPress);
             this.txtCouponAmount.Leave += new System.EventHandler(this.txtCouponAmount_Leave);
@@ -1022,6 +1023,7 @@
             this.txtEwalletAmount.TabIndex = 19;
             this.txtEwalletAmount.Text = "0.00";
             this.txtEwalletAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtEwalletAmount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtEwalletAmount_MouseClick);
             this.txtEwalletAmount.TextChanged += new System.EventHandler(this.txtEwalletAmount_TextChanged);
             this.txtEwalletAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEwalletAmount_KeyPress);
             this.txtEwalletAmount.Leave += new System.EventHandler(this.txtEwalletAmount_Leave);
@@ -1093,6 +1095,7 @@
             this.txtChequeAmount.TabIndex = 11;
             this.txtChequeAmount.Text = "0.00";
             this.txtChequeAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtChequeAmount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtChequeAmount_MouseClick);
             this.txtChequeAmount.TextChanged += new System.EventHandler(this.txtChequeAmount_TextChanged);
             this.txtChequeAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtChequeAmount_KeyPress);
             this.txtChequeAmount.Leave += new System.EventHandler(this.txtChequeAmount_Leave);
@@ -1171,6 +1174,7 @@
             this.txtCreditAmount.TabIndex = 3;
             this.txtCreditAmount.Text = "0.00";
             this.txtCreditAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCreditAmount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtCreditAmount_MouseClick);
             this.txtCreditAmount.TextChanged += new System.EventHandler(this.txtCreditAmount_TextChanged);
             this.txtCreditAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCreditAmount_KeyPress);
             this.txtCreditAmount.Leave += new System.EventHandler(this.txtCreditAmount_Leave);
@@ -1396,6 +1400,7 @@
             // 
             this.coponCompanyName.Location = new System.Drawing.Point(873, 83);
             this.coponCompanyName.Name = "coponCompanyName";
+            this.coponCompanyName.ReadOnly = true;
             this.coponCompanyName.Size = new System.Drawing.Size(210, 21);
             this.coponCompanyName.TabIndex = 50;
             // 
@@ -1403,6 +1408,7 @@
             // 
             this.EWalleTransactionDate.Location = new System.Drawing.Point(627, 164);
             this.EWalleTransactionDate.Name = "EWalleTransactionDate";
+            this.EWalleTransactionDate.ReadOnly = true;
             this.EWalleTransactionDate.Size = new System.Drawing.Size(210, 21);
             this.EWalleTransactionDate.TabIndex = 17;
             // 
@@ -1410,6 +1416,7 @@
             // 
             this.chChequeDate.Location = new System.Drawing.Point(394, 164);
             this.chChequeDate.Name = "chChequeDate";
+            this.chChequeDate.ReadOnly = true;
             this.chChequeDate.Size = new System.Drawing.Size(210, 21);
             this.chChequeDate.TabIndex = 49;
             // 
@@ -1417,6 +1424,7 @@
             // 
             this.creCardType.Location = new System.Drawing.Point(178, 161);
             this.creCardType.Name = "creCardType";
+            this.creCardType.ReadOnly = true;
             this.creCardType.Size = new System.Drawing.Size(210, 21);
             this.creCardType.TabIndex = 48;
             // 
@@ -1488,6 +1496,7 @@
             // 
             this.showCouponAmount.Location = new System.Drawing.Point(901, 35);
             this.showCouponAmount.Name = "showCouponAmount";
+            this.showCouponAmount.ReadOnly = true;
             this.showCouponAmount.Size = new System.Drawing.Size(182, 21);
             this.showCouponAmount.TabIndex = 27;
             this.showCouponAmount.Text = "0.00";
@@ -1515,6 +1524,7 @@
             // 
             this.EWalleTransactionNumber.Location = new System.Drawing.Point(657, 119);
             this.EWalleTransactionNumber.Name = "EWalleTransactionNumber";
+            this.EWalleTransactionNumber.ReadOnly = true;
             this.EWalleTransactionNumber.Size = new System.Drawing.Size(210, 21);
             this.EWalleTransactionNumber.TabIndex = 23;
             // 
@@ -1531,6 +1541,7 @@
             // 
             this.EWalletCompanyNam.Location = new System.Drawing.Point(657, 77);
             this.EWalletCompanyNam.Name = "EWalletCompanyNam";
+            this.EWalletCompanyNam.ReadOnly = true;
             this.EWalletCompanyNam.Size = new System.Drawing.Size(210, 21);
             this.EWalletCompanyNam.TabIndex = 21;
             // 
@@ -1547,6 +1558,7 @@
             // 
             this.EWalletAmount.Location = new System.Drawing.Point(685, 35);
             this.EWalletAmount.Name = "EWalletAmount";
+            this.EWalletAmount.ReadOnly = true;
             this.EWalletAmount.Size = new System.Drawing.Size(182, 21);
             this.EWalletAmount.TabIndex = 19;
             this.EWalletAmount.Text = "0.00";
@@ -1565,6 +1577,7 @@
             // 
             this.chChequeNumber.Location = new System.Drawing.Point(441, 119);
             this.chChequeNumber.Name = "chChequeNumber";
+            this.chChequeNumber.ReadOnly = true;
             this.chChequeNumber.Size = new System.Drawing.Size(210, 21);
             this.chChequeNumber.TabIndex = 16;
             // 
@@ -1572,6 +1585,7 @@
             // 
             this.cheBankName.Location = new System.Drawing.Point(441, 77);
             this.cheBankName.Name = "cheBankName";
+            this.cheBankName.ReadOnly = true;
             this.cheBankName.Size = new System.Drawing.Size(210, 21);
             this.cheBankName.TabIndex = 15;
             // 
@@ -1606,6 +1620,7 @@
             // 
             this.showChequeAmount.Location = new System.Drawing.Point(469, 35);
             this.showChequeAmount.Name = "showChequeAmount";
+            this.showChequeAmount.ReadOnly = true;
             this.showChequeAmount.Size = new System.Drawing.Size(182, 21);
             this.showChequeAmount.TabIndex = 11;
             this.showChequeAmount.Text = "0.00";
@@ -1633,6 +1648,7 @@
             // 
             this.creCardNumber.Location = new System.Drawing.Point(225, 119);
             this.creCardNumber.Name = "creCardNumber";
+            this.creCardNumber.ReadOnly = true;
             this.creCardNumber.Size = new System.Drawing.Size(210, 21);
             this.creCardNumber.TabIndex = 7;
             // 
@@ -1658,6 +1674,7 @@
             // 
             this.creBankName.Location = new System.Drawing.Point(225, 77);
             this.creBankName.Name = "creBankName";
+            this.creBankName.ReadOnly = true;
             this.creBankName.Size = new System.Drawing.Size(210, 21);
             this.creBankName.TabIndex = 4;
             // 
@@ -1665,6 +1682,7 @@
             // 
             this.showCreditDebitCard.Location = new System.Drawing.Point(253, 35);
             this.showCreditDebitCard.Name = "showCreditDebitCard";
+            this.showCreditDebitCard.ReadOnly = true;
             this.showCreditDebitCard.Size = new System.Drawing.Size(182, 21);
             this.showCreditDebitCard.TabIndex = 3;
             this.showCreditDebitCard.Text = "0.00";
@@ -1683,6 +1701,7 @@
             // 
             this.showCashAmount.Location = new System.Drawing.Point(37, 35);
             this.showCashAmount.Name = "showCashAmount";
+            this.showCashAmount.ReadOnly = true;
             this.showCashAmount.Size = new System.Drawing.Size(182, 21);
             this.showCashAmount.TabIndex = 1;
             this.showCashAmount.Text = "0.00";

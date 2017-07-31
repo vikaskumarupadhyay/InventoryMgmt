@@ -839,9 +839,9 @@ namespace WindowsFormsApplication1
             txtdiccount.ReadOnly = true;
             //dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             gridsalesdelivary.DataSource = addToCartTable;
-            txttaxamount.Visible = true;
-            txtdicountamount.Visible = true;
-            txtwithauttaxamount.Visible = true;
+            txttaxamount.Visible = false;
+            txtdicountamount.Visible = false;
+            txtwithauttaxamount.Visible = false;
 
             txtTotalAmmount.Text = "0";
             txtwithauttaxamount.Text = "0";
@@ -1474,7 +1474,7 @@ namespace WindowsFormsApplication1
                                                 ButSelectPurchaseOrder.Enabled = true;
                                                 salesedelivarytabindex();
                                                 con.Close();
-                              
+                                                txtTotalAmmount.Text = "0.00";
                                                 return;
                                             }
                                             if (result == System.Windows.Forms.DialogResult.No)
@@ -1495,7 +1495,9 @@ namespace WindowsFormsApplication1
                                                 butcustomercode.TabStop = true;
                                                 txtRefNo.Enabled = true;
                                                 ButSelectPurchaseOrder.Enabled = true;
+                                                txtTotalAmmount.Text = "0.00";
                                                 return;
+                                                
                                             }
                                            
                                         }
@@ -1677,18 +1679,18 @@ namespace WindowsFormsApplication1
                                     gridsalesdelivary.AllowUserToAddRows = true;
                                     crystalReportViewer2.Visible = false;
                                     panel2.Visible = false;
-                                    addToCartTable.Columns.RemoveAt(6);
-                                    if (!addToCartTable.Columns.Contains("Revised Quantity"))
-                                    {
-                                        addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
-                                        addToCartTable.Columns.RemoveAt(6);
-                                    }
+                                   // addToCartTable.Columns.RemoveAt(6);
+                                    //if (!addToCartTable.Columns.Contains("Revised Quantity"))
+                                    //{
+                                    //    addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
+                                    //    addToCartTable.Columns.RemoveAt(6);
+                                    //}
 
-                                    if (!addToCartTable.Columns.Contains("Amount"))
-                                    {
-                                        addToCartTable.Columns.RemoveAt(6);
-                                        addToCartTable.Columns.Add(new DataColumn("Amount"));
-                                    }
+                                    //if (!addToCartTable.Columns.Contains("Amount"))
+                                    //{
+                                    //    addToCartTable.Columns.RemoveAt(6);
+                                    //    addToCartTable.Columns.Add(new DataColumn("Amount"));
+                                    //}
                                     txtcustomercode.Focus();
                                     butRemoveItem.Enabled = false;
                                     txtcustomercode.TabStop = true;
@@ -1697,31 +1699,32 @@ namespace WindowsFormsApplication1
                                     ButSelectPurchaseOrder.Enabled = true;
                                     salesedelivarytabindex();
                                     con.Close();
-
+                                    txtTotalAmmount.Text = "0.00";
                                 }
                                 if (result == System.Windows.Forms.DialogResult.No)
                                 {
                                     gridsalesdelivary.AllowUserToAddRows = true;
                                     crystalReportViewer2.Visible = false;
                                     panel2.Visible = false;
-                                    addToCartTable.Columns.RemoveAt(6);
-                                    if (!addToCartTable.Columns.Contains("Revised Quantity"))
-                                    {
-                                        addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
-                                        addToCartTable.Columns.RemoveAt(6);
-                                    }
+                                    //addToCartTable.Columns.RemoveAt(6);
+                                    //if (!addToCartTable.Columns.Contains("Revised Quantity"))
+                                    //{
+                                    //    addToCartTable.Columns.Add(new DataColumn("Revised Quantity"));
+                                    //    addToCartTable.Columns.RemoveAt(6);
+                                    //}
 
-                                    if (!addToCartTable.Columns.Contains("Amount"))
-                                    {
-                                        addToCartTable.Columns.RemoveAt(6);
-                                        addToCartTable.Columns.Add(new DataColumn("Amount"));
-                                    }
+                                    //if (!addToCartTable.Columns.Contains("Amount"))
+                                    //{
+                                    //    addToCartTable.Columns.RemoveAt(6);
+                                    //    addToCartTable.Columns.Add(new DataColumn("Amount"));
+                                    //}
                                     txtcustomercode.Focus();
                                     butRemoveItem.Enabled = false;
                                     txtcustomercode.TabStop = true;
                                     butcustomercode.TabStop = true;
                                     txtRefNo.Enabled = true;
                                     ButSelectPurchaseOrder.Enabled = true;
+                                    txtTotalAmmount.Text = "0.00";
                                 }
                             }
                         }
@@ -1785,10 +1788,8 @@ namespace WindowsFormsApplication1
             dataGridView2.AllowUserToAddRows = true;
             pnlSalesPayment.Visible = false;
             crystalReportViewer2.Visible = false;
-            string selectqurry = "select  payment.orderid as[Orderr ID],payment.custid as [Customer ID], CustomerDetails.CustName as[Customer Name], CustomerDetails.CustAddress as[Customer Address],CustomerDetails.CustCompName as[Customer Compnay Name],payment.date as [Date],(select Sum(customerorderdescriptions.quantity)as [Quantity] from customerorderdescriptions where customerorderdescriptions.orderid= payment.orderid) as[Bild Quanity],payment.WithautTaxamount as[Withaut Tax Amount],payment.Discount as [Discount],payment.Discountamount as [Discount Amount],payment.Tax,payment.Taxamount as [Tax Amount],payment.totalammount as[Total Amount],(case when exists  ( select orderid from salesOrderDelivery where Orderid=  payment.orderid)then 'Delivered'else 'Pending'end) as [Delivery Status]from orderdetails payment  join CustomerDetails on CustomerDetails.custId=payment.custid";
-            //string selectqurry = "select  payment.orderid as[Orderr ID],payment.custid as [Customer ID], CustomerDetails.CustName as[Customer Name], CustomerDetails.CustAddress as[Customer Address],CustomerDetails.CustCompName as[Customer Compnay Name],payment.date as [Date],(select Sum(customerorderdescriptions.quantity)as [Quantity] from customerorderdescriptions where customerorderdescriptions.orderid= payment.orderid) as[Bild Quanity],payment.WithautTaxamount as[Withaut Tax Amount],payment.Discount as [Discount],payment.Discountamount as [Discount Amount],payment.Tax,payment.Taxamount as [Tax Amount],payment.totalammount as[Total Amount],(case when payment.orderid=sod.Orderid then 'Delivered' else 'Fully settled' end) as [Delivery Status] from orderdetails payment join CustomerDetails on CustomerDetails.custId=payment.custid join salesOrderDelivery sod on sod.Orderid=payment.orderid";
-
-            string selectqurryForActualColumnName = "select top 1 payment.orderid ,payment.custid, CustomerDetails.CustName, CustomerDetails.CustAddress,CustomerDetails.CustCompName,payment.date ,(select Sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid= payment.orderid),payment.WithautTaxamount,payment.Discount ,payment.Discountamount ,payment.Tax,payment.Taxamount,payment.totalammount,(case when exists  ( select orderid from salesOrderDelivery where Orderid=  payment.orderid)then 'Delivered'else 'Pending'end)from orderdetails payment  join CustomerDetails on CustomerDetails.custId=payment.custid";
+            string selectqurry = "select orderdetails.orderid as [Order ID],orderdetails.date as [order Date],cd.custId as[Customer ID], cd.CustName as[Customer Name],cd.CustCompName as[Compnay Name],cd.CustAddress as [Address],(select sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid=orderdetails.orderid) as [Quantity Billed],cast(orderdetails.WithautTaxamount as numeric(38, 2)) as[Gross Amount],orderdetails.Discountamount as [Discount Amount],cast((orderdetails.WithautTaxamount-orderdetails.Discountamount)as numeric(38, 2))as[Taxable Value],Case when cd.CustState != (select top 1 [State] from CompnayDetails )then '0'else (select cast( sum ((((( COD.price*COD.quantity))-( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ))* IT.CGST )/100)as numeric(38, 2))from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=orderdetails.orderid) end as[CGST],Case when cd.CustState != (select top 1 [State] from CompnayDetails )then '0'else(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.SGST )/100)as numeric(38, 2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=orderdetails.orderid)end as[SGST],Case when cd.CustState = (select top 1 [State] from CompnayDetails )then '0'else(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.IGST )/100)as numeric(38, 2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=orderdetails.orderid)end as[IGST],(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.CESS )/100)as numeric(38, 2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=orderdetails.orderid ) as[CESS],cast(((orderdetails.WithautTaxamount)-(orderdetails.Discountamount))+(orderdetails.Taxamount) as numeric(38, 2)) AS[Net Amount (Including Tax)],(case when  exists ( select Orderid from salesOrderDelivery where Orderid =orderdetails.orderid) then 'Delivered' else 'Panding'end) as [Delivery Status] from orderdetails join CustomerDetails  cd on cd.custId =orderdetails.custid ";
+            string selectqurryForActualColumnName = "select top 1 orderdetails.orderid,orderdetails.date,cd.custId, cd.CustName,cd.CustCompName,cd.CustAddress,(select sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid=orderdetails.orderid),cast(orderdetails.WithautTaxamount as numeric(38, 2)),orderdetails.Discountamount,cast((orderdetails.WithautTaxamount-orderdetails.Discountamount)as numeric(38, 2)),Case when cd.CustState != (select top 1 [State] from CompnayDetails )then '0'else (select cast( sum ((((( COD.price*COD.quantity))-( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ))* IT.CGST )/100)as numeric(38, 2))from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=orderdetails.orderid) end,Case when cd.CustState != (select top 1 [State] from CompnayDetails )then '0'else(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.SGST )/100)as numeric(38, 2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=orderdetails.orderid)end,Case when cd.CustState = (select top 1 [State] from CompnayDetails )then '0'else(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.IGST )/100)as numeric(38, 2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=orderdetails.orderid)end,(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.CESS )/100)as numeric(38, 2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=orderdetails.orderid ),cast(((orderdetails.WithautTaxamount)-(orderdetails.Discountamount))+(orderdetails.Taxamount) as numeric(38, 2)),(case when  exists ( select Orderid from salesOrderDelivery where Orderid =orderdetails.orderid) then 'Delivered' else 'Panding'end) from orderdetails join CustomerDetails  cd on cd.custId =orderdetails.custid ";
             DataTable dt = d.getDetailByQuery(selectqurry);
             DataTable dtOnlyColumnName = d.getDetailByQuery(selectqurryForActualColumnName);
             DataTable customDataTable = new DataTable();
@@ -1818,16 +1819,16 @@ namespace WindowsFormsApplication1
             txtcustomercode.TabStop = false;
             butcustomercode.TabStop = false;
           //  addToCartTable.Columns.RemoveAt(6);
-            if (!addToCartTable.Columns.Contains("ResivQuantity"))
-            {
-                addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
-               // addToCartTable.Columns.RemoveAt(6);
-            }
+            //if (!addToCartTable.Columns.Contains("ResivQuantity"))
+            //{
+            //    addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
+            //   // addToCartTable.Columns.RemoveAt(6);
+            //}
 
-            if (!addToCartTable.Columns.Contains("Amount"))
-            {
-                addToCartTable.Columns.Add(new DataColumn("Amount"));
-            }
+            //if (!addToCartTable.Columns.Contains("Amount"))
+            //{
+            //    addToCartTable.Columns.Add(new DataColumn("Amount"));
+            //}
            
 
         }
@@ -1983,10 +1984,7 @@ namespace WindowsFormsApplication1
         private void gridsalesdelivary_KeyPress(object sender, KeyPressEventArgs e)
         {
            
-            if (gridsalesdelivary.Rows.Count > 0)
-            {
-                butRemoveItem.Enabled = true;
-            }
+           
 
             if (e.KeyChar == (char)Keys.Escape)
             {
@@ -2005,7 +2003,7 @@ namespace WindowsFormsApplication1
                
                 if (backGroundColor.Name == "DodgerBlue" || backGroundColor.Name =="Highlight")
                 {
-                    MessageBox.Show("Please select your remove button");
+                   // MessageBox.Show("Please select your remove button");
                     return;
                 }
 
@@ -2077,7 +2075,7 @@ namespace WindowsFormsApplication1
 
                     if (backGroundColor1.Name == "DodgerBlue" || backGroundColor1.Name == "Highlight")
                     {
-                        MessageBox.Show("Please select your remove button");
+                        //MessageBox.Show("Please select your remove button");
                         return;
                     }
                     if (addToCartTable.Rows.Count > 0)
@@ -2126,7 +2124,7 @@ namespace WindowsFormsApplication1
 
                             if (gridsalesdelivary.Rows.Count > 0)
                             {
-                                butRemoveItem.Enabled = true;
+                               // butRemoveItem.Enabled = true;
                                 gridsalesdelivary.Rows[gridsalesdelivary.Rows.Count - 1].Selected = false;
 
                             }
@@ -2387,12 +2385,63 @@ namespace WindowsFormsApplication1
             else if (counter == 2)
             {
                 string s2 = comsearchvalue.SelectedValue.ToString();
-                string val2 = s2;
-                if (val2 == "Column1")
+                if (s2 == "custId")
                 {
-                    
+                    s2 = "cd.custId";
                 }
-                string selectQuery2 = "select  orderdetails.orderid as[Orderr ID],orderdetails.custid as [Customer ID], CustomerDetails.CustName as[Customer Name], CustomerDetails.CustAddress as[Customer Address],CustomerDetails.CustCompName as[Customer Compnay Name],orderdetails.date as [Date],(select Sum(customerorderdescriptions.quantity)as [Quantity] from customerorderdescriptions where customerorderdescriptions.orderid= orderdetails.orderid) as[Bild Quanity],orderdetails.WithautTaxamount as[Withaut Tax Amount],orderdetails.Discount as [Discount],orderdetails.Discountamount as [Discount Amount],orderdetails.Tax,orderdetails.Taxamount as [Tax Amount],orderdetails.totalammount as[Total Amount] from orderdetails join CustomerDetails on CustomerDetails.custId=orderdetails.custid where " + val2 + " like '" + txtsearchvalue.Text + "%'";
+                else if (s2 == "CustName")
+                {
+                    s2 = "cd.CustName";
+                }
+                else if (s2 == "CustCompName")
+                {
+                    s2 = "cd.CustCompName";
+                }
+                else if (s2 == "CustAddress")
+                {
+                    s2 = "cd.CustAddress";
+                }
+                else if (s2 == "Column1")
+                {
+                    s2 = "(select sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid=orderdetails.orderid)";
+                }
+                else if (s2 == "Column2")
+                {
+                    s2 = "cast(orderdetails.WithautTaxamount as numeric(38, 2))";
+                }
+                else if (s2 == "Discountamount")
+                {
+                    s2 = "orderdetails.Discountamount";
+                }
+                else if (s2 == "Column3")
+                {
+                    s2 = "cast((orderdetails.WithautTaxamount-orderdetails.Discountamount)as numeric(38, 2))";
+                }
+                else if (s2 == "Column4")
+                {
+                    s2 = "Case when cd.CustState != (select top 1 [State] from CompnayDetails )then '0'else (select cast( sum ((((( COD.price*COD.quantity))-( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ))* IT.CGST )/100)as numeric(38, 2))from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=orderdetails.orderid) end";
+                }
+                else if (s2 == "Column5")
+                {
+                    s2 = "Case when cd.CustState != (select top 1 [State] from CompnayDetails )then '0'else(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.SGST )/100)as numeric(38, 2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=orderdetails.orderid)end";
+                }
+                else if (s2 == "Column6")
+                {
+                    s2 = "Case when cd.CustState = (select top 1 [State] from CompnayDetails )then '0'else(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.IGST )/100)as numeric(38, 2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=orderdetails.orderid)end";
+                }
+                else if (s2 == "Column7")
+                {
+                    s2 = "(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.CESS )/100)as numeric(38, 2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=orderdetails.orderid )";
+                }
+                else if (s2 == "Column8")
+                {
+                    s2 = "cast(((orderdetails.WithautTaxamount)-(orderdetails.Discountamount))+(orderdetails.Taxamount) as numeric(38, 2))";
+                }
+                else if (s2 == "Column9")
+                {
+                    s2 = "(case when  exists ( select Orderid from salesOrderDelivery where Orderid =orderdetails.orderid) then 'Delivered' else 'Panding'end)";
+                }
+                string selectQuery2 = "select orderdetails.orderid as [Order ID],orderdetails.date as [order Date],cd.custId as[Customer ID], cd.CustName as[Customer Name],cd.CustCompName as[Compnay Name],cd.CustAddress as [Address],(select sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid=orderdetails.orderid) as [Quantity Billed],cast(orderdetails.WithautTaxamount as numeric(38, 2)) as[Gross Amount],orderdetails.Discountamount as [Discount Amount],cast((orderdetails.WithautTaxamount-orderdetails.Discountamount)as numeric(38, 2))as[Taxable Value],Case when cd.CustState != (select top 1 [State] from CompnayDetails )then '0'else (select cast( sum ((((( COD.price*COD.quantity))-( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ))* IT.CGST )/100)as numeric(38, 2))from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=orderdetails.orderid) end as[CGST],Case when cd.CustState != (select top 1 [State] from CompnayDetails )then '0'else(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.SGST )/100)as numeric(38, 2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=orderdetails.orderid)end as[SGST],Case when cd.CustState = (select top 1 [State] from CompnayDetails )then '0'else(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.IGST )/100)as numeric(38, 2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=orderdetails.orderid)end as[IGST],(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.CESS )/100)as numeric(38, 2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=orderdetails.orderid ) as[CESS],cast(((orderdetails.WithautTaxamount)-(orderdetails.Discountamount))+(orderdetails.Taxamount) as numeric(38, 2)) AS[Net Amount (Including Tax)],(case when  exists ( select Orderid from salesOrderDelivery where Orderid =orderdetails.orderid) then 'Delivered' else 'Panding'end) as [Delivery Status] from orderdetails join CustomerDetails  cd on cd.custId =orderdetails.custid where " + s2 + " like '" + txtsearchvalue.Text + "%'";
                 DataTable dt2 = d.getDetailByQuery(selectQuery2);
                 dataGridView2.DataSource = dt2;
             }
@@ -2532,110 +2581,134 @@ namespace WindowsFormsApplication1
             if (counter == 2)
             {
                 
-               
-                addToCartTable.Columns.RemoveAt(6);
-                if (!addToCartTable.Columns.Contains("ResivQuantity"))
-                {
-                    addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
-                    addToCartTable.Columns.RemoveAt(6);
-                }
-
-                if (!addToCartTable.Columns.Contains("Amount"))
-                {
-                    addToCartTable.Columns.Add(new DataColumn("Amount"));
-                }
-               
+    
                 DataGridViewCellCollection CellCollection = dataGridView2.Rows[e.RowIndex].Cells;
                 if (!string.IsNullOrEmpty(CellCollection[0].Value.ToString()))
                 {
                     string s = CellCollection[0].Value.ToString();
-                    string s1 = CellCollection[1].Value.ToString();
+                    string s1 = CellCollection[2].Value.ToString();
                     txtRefNo.Text = s;
-                    //MessageBox.Show(" "+s +" "+s1);
-                    string selectqurry = "select custId,CustName,CustCompName,CustAddress,CustPhone,CustMobile,CustFax from CustomerDetails where custId='" + s1 + "'";
-                    SetVendor(selectqurry);
-
-                    string selectqurry1 = "select cod.ItemId,td.ItemName,td.ItemCompName,ipq.MrpPrice,cod.Quantity,cod.Price,cod.totalammount,od.totalammount from orderdetails od join customerorderdescriptions cod on od.Orderid=cod.Orderid join ItemDetails td on td.ItemId=cod.ItemId join ItemPriceDetail ipq on td.ItemId=ipq.ItemId where od. Orderid ='" + s + "'";
-                    DataTable dt2 = d.getDetailByQuery(selectqurry1);
-                    int totalRowCount = addToCartTable.Rows.Count;
                     string selectquery2 = "select Orderid from salesOrderDelivery where Orderid='" + s + "'";
                     DataTable dt1 = d.getDetailByQuery(selectquery2);
                     if (dt1 != null && dt1.Rows != null && dt1.Rows.Count > 0)
                     {
-                        
-                        MessageBox.Show("order details is completed");
                         panel2.Visible = true;
+                        MessageBox.Show("order details is completed");
                         makeblank();
                         txtcustomercode.Focus();
                         txtcustomercode.TabStop = true;
                         butcustomercode.TabStop = true;
                         txtcustomercode.Select(txtcustomercode.Text.Length, 0);
-                       // addToCartTable.Columns.RemoveAt(6);
+                        // addToCartTable.Columns.RemoveAt(6);
                         return;
 
                     }
-                    panel2.Visible = false;
-                    
-                    for (int rowCount = 0; rowCount < totalRowCount; rowCount++)
+                    else
                     {
-                        addToCartTable.Rows.RemoveAt(0);
+                        
+                        string selectqurry = "select custId,CustName,CustCompName,CustAddress,CustPhone,CustMobile,CustFax from CustomerDetails where custId='" + s1 + "'";
+                        SetVendor(selectqurry);
+                        string compnay = "select State from CompnayDetails";
+                        DataTable dt2 = d.getDetailByQuery(compnay);
+                        string companystate = "";
+                        foreach (DataRow dr3 in dt2.Rows)
+                        {
+                            companystate = dr3[0].ToString();
+                        }
+                        string customer = "select CustState from customerdetails where custId='" + txtcustomercode.Text + "'";
+                        DataTable dt3 = d.getDetailByQuery(customer);
+                        string customerstate = "";
+                        foreach (DataRow dr2 in dt3.Rows)
+                        {
+                            customerstate = dr2[0].ToString();
+                        }
+                        string selectQurry = "select ItemId from ItemDetails";
+                        DataTable dt = d.getDetailByQuery(selectQurry);
+                        string selectItem = "select cod.ItemId,ad.ItemName,itd.HSN,cast(cod.price as numeric(38,2)),cod.quantity,cast((cod.price*cod.quantity)-(cod.price*cod.quantity*itd.Discount/100)as numeric(38,2)),itd.Discount,itd.CGST,itd.SGST,itd.IGST,itd.CESS,cod.totalammount from orderdetails od join customerorderdescriptions cod on od.orderid=cod.orderid join ItemDetails ad on cod.ItemId=ad.ItemId join ItemPriceDetail ipd on ad.ItemId=ipd.ItemId join ItemTaxDetail itd on ipd.ItemId=itd.ItemId where cod.orderid='" + s + "'";
+                        DataTable dt4 = d.getDetailByQuery(selectItem);
+                        int totalrowcount = addToCartTable.Rows.Count;
+                        for (int rowcount = 0; rowcount < totalrowcount; rowcount++)
+                        {
+                            addToCartTable.Rows.RemoveAt(0);
+                        }
+                        string txtcgst = "";
+                        string txtsgst = "";
+                        string txtigst = "";
+                        decimal totel = 0;
+                        for (int b = 0; b < dt4.Rows.Count; b++)
+                        {
+                            DataRow dr1 = dt4.Rows[b];
+                            string itemcode = dr1[0].ToString();
+                            if (ls.Contains(itemcode))
+                            {
+                                continue;
+                            }
+
+                            string itemcod = dr1[0].ToString();
+                            string productname = dr1[1].ToString();
+                            string hsn = dr1[2].ToString();
+                            string rate = dr1[3].ToString();
+                            string quantity = dr1[4].ToString();
+                            string taxablevalue = dr1[5].ToString();
+                            string discoun = dr1[6].ToString();
+                            txtcgst = dr1[7].ToString();
+                            txtsgst = dr1[8].ToString();
+                            txtigst = dr1[9].ToString();
+                            string cess = dr1[10].ToString();
+                            string totalamout = dr1[11].ToString();
+                            decimal amt = Convert.ToDecimal(totalamout);
+                            totel = totel + amt;
+                            if (companystate != customerstate)
+                            {
+                                txtcgst = "0.00";
+                                txtsgst = "0.00";
+                            }
+                            if (companystate == customerstate)
+                            {
+                                txtigst = "0.00";
+                            }
+                            dr1 = addToCartTable.NewRow();
+                            dr1[0] = itemcod.Trim();
+                            dr1[1] = productname.Trim();
+                            dr1[2] = hsn.Trim();
+                            dr1[3] = rate.Trim();
+                            dr1[4] = quantity.Trim();
+                            dr1[5] = discoun.Trim();
+                            dr1[6] = taxablevalue.Trim();
+
+                            dr1[7] = txtcgst.Trim();
+                            dr1[8] = txtsgst.Trim();
+                            dr1[9] = txtigst.Trim();
+                            dr1[10] = cess.Trim();
+                            dr1[11] = totalamout.Trim();
+                            int q = Convert.ToInt32(quantity.ToString());
+                            txtqtybuiled.Text = q.ToString();
+                            addToCartTable.Rows.Add(dr1);
+
+
+                        }
+
+                        //gridsalesdelivary.DataSource = null;
+                        panel2.Visible = false;
+                        gridsalesdelivary.DataSource = addToCartTable;
+                        double setam = setAmount(5);
+                        double subtotal = WithTaxAmount(2);
+                        txtdicountamount.Text = setam.ToString();
+                        txtwithauttaxamount.Text = subtotal.ToString();
+                        double taxa = TaxAmount();
+                        txttaxamount.Text = taxa.ToString();
+                        txtTotalAmmount.Text = totel.ToString("###0.00");
                     }
-                    double totel1 = 0;
-                    for (int c = 0; c < dt2.Rows.Count; c++)
-                    {
-                        DataRow dr2 = dt2.Rows[c];
-                        string ItemCode = dr2[0].ToString();
-                        string txtitemNmae = dr2[1].ToString();
-                        string CompanyName = dr2[2].ToString();
-                        string MrpPrice = dr2[3].ToString();
-                        string txtRate = dr2[5].ToString();
-                        string txtQuanity = dr2[4].ToString();
-                        string txtAmoun = dr2[6].ToString();
-                        string txtitemNmea = dr2[6].ToString();
-                        //tot = txtitemNmea;
-                        //if (txtitemNmae == "")
-                        //{
-                        //    txtitemNmae ="0";
-                        //}
-
-                        double amt = Convert.ToDouble(txtitemNmea);
-                        totel1 = totel1 + amt;
-                        dr2 = addToCartTable.NewRow();
-                        dr2[0] = ItemCode.Trim();
-                        dr2[1] = txtitemNmae.Trim();
-                        dr2[2] = CompanyName.Trim();
-                        dr2[3] = MrpPrice.Trim();
-                        dr2[4] = txtRate.Trim();
-                        dr2[5] = txtQuanity.Trim();
-                        dr2[6] = txtQuanity.Trim();
-                        dr2[7] = txtAmoun.Trim();
-                        // dr2[5] = textBox1.Text.Trim();
-                        addToCartTable.Rows.Add(dr2);
-
-                        txtItemCode.Focus();
-
-                    }
-                    doubletabindex();
-                    ButSelectPurchaseOrder.Enabled = false;
-                    txtdiccount.ReadOnly = false;
-                    butRemoveItem.Enabled = true;
-                    double qty = getquantitybuiled1();
-                    txtqtybuiled.Text = qty.ToString();
-                    gridsalesdelivary.DataSource = addToCartTable;
-                    txtTotalAmmount.Text = totel1.ToString();
-                    
 
                 }
-                
-              
-
+               
             }
 
         }
 
         private void dataGridView2_KeyPress_1(object sender, KeyPressEventArgs e)
         {
-            txtItemCode.Focus();
+           // txtItemCode.Focus();
             int currentIndex = dataGridView2.CurrentRow.Index;
             if (e.KeyChar == (char)Keys.Enter)
             {
@@ -2661,102 +2734,131 @@ namespace WindowsFormsApplication1
                 }
                     if (counter == 2)
                     {
-
-                        addToCartTable.Columns.RemoveAt(6);
-                        if (!addToCartTable.Columns.Contains("ResivQuantity"))
-                        {
-                            addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
-                            addToCartTable.Columns.RemoveAt(6);
-                        }
-
-                        if (!addToCartTable.Columns.Contains("Amount"))
-                        {
-                            addToCartTable.Columns.Add(new DataColumn("Amount"));
-                        }
-
                         DataGridViewCellCollection CellCollection = dataGridView2.Rows[currentIndex-1].Cells;
                         if (!string.IsNullOrEmpty(CellCollection[0].Value.ToString()))
                         {
                             string s = CellCollection[0].Value.ToString();
-                            string s1 = CellCollection[1].Value.ToString();
+                            string s1 = CellCollection[2].Value.ToString();
                             txtRefNo.Text = s;
-                            //MessageBox.Show(" "+s +" "+s1);
-                            string selectqurry = "select custId,CustName,CustCompName,CustAddress,CustPhone,CustMobile,CustFax from CustomerDetails where custId='" + s1 + "'";
-                            SetVendor(selectqurry);
-
-                            string selectqurry1 = "select cod.ItemId,td.ItemName,td.ItemCompName,ipq.MrpPrice,cod.Quantity,cod.Price,cod.totalammount,od.totalammount from orderdetails od join customerorderdescriptions cod on od.Orderid=cod.Orderid join ItemDetails td on td.ItemId=cod.ItemId join ItemPriceDetail ipq on td.ItemId=ipq.ItemId where od. Orderid ='" + s + "'";
-                            DataTable dt2 = d.getDetailByQuery(selectqurry1);
-                            int totalRowCount = addToCartTable.Rows.Count;
                             string selectquery2 = "select Orderid from salesOrderDelivery where Orderid='" + s + "'";
                             DataTable dt1 = d.getDetailByQuery(selectquery2);
                             if (dt1 != null && dt1.Rows != null && dt1.Rows.Count > 0)
                             {
-
-                                MessageBox.Show("order details is completed");
                                 panel2.Visible = true;
+                                MessageBox.Show("order details is completed");
                                 makeblank();
                                 txtcustomercode.Focus();
                                 txtcustomercode.TabStop = true;
                                 butcustomercode.TabStop = true;
                                 txtcustomercode.Select(txtcustomercode.Text.Length, 0);
-                                addToCartTable.Columns.RemoveAt(6);
+                                // addToCartTable.Columns.RemoveAt(6);
                                 return;
 
                             }
-                            panel2.Visible = false;
-
-                            for (int rowCount = 0; rowCount < totalRowCount; rowCount++)
+                            else
                             {
-                                addToCartTable.Rows.RemoveAt(0);
+
+                                string selectqurry = "select custId,CustName,CustCompName,CustAddress,CustPhone,CustMobile,CustFax from CustomerDetails where custId='" + s1 + "'";
+                                SetVendor(selectqurry);
+                                string compnay = "select State from CompnayDetails";
+                                DataTable dt2 = d.getDetailByQuery(compnay);
+                                string companystate = "";
+                                foreach (DataRow dr3 in dt2.Rows)
+                                {
+                                    companystate = dr3[0].ToString();
+                                }
+                                string customer = "select CustState from customerdetails where custId='" + txtcustomercode.Text + "'";
+                                DataTable dt3 = d.getDetailByQuery(customer);
+                                string customerstate = "";
+                                foreach (DataRow dr2 in dt3.Rows)
+                                {
+                                    customerstate = dr2[0].ToString();
+                                }
+                                string selectQurry = "select ItemId from ItemDetails";
+                                DataTable dt = d.getDetailByQuery(selectQurry);
+                                string selectItem = "select cod.ItemId,ad.ItemName,itd.HSN,cast(cod.price as numeric(38,2)),cod.quantity,cast((cod.price*cod.quantity)-(cod.price*cod.quantity*itd.Discount/100)as numeric(38,2)),itd.Discount,itd.CGST,itd.SGST,itd.IGST,itd.CESS,cod.totalammount from orderdetails od join customerorderdescriptions cod on od.orderid=cod.orderid join ItemDetails ad on cod.ItemId=ad.ItemId join ItemPriceDetail ipd on ad.ItemId=ipd.ItemId join ItemTaxDetail itd on ipd.ItemId=itd.ItemId where cod.orderid='" + s + "'";
+                                DataTable dt4 = d.getDetailByQuery(selectItem);
+                                int totalrowcount = addToCartTable.Rows.Count;
+                                for (int rowcount = 0; rowcount < totalrowcount; rowcount++)
+                                {
+                                    addToCartTable.Rows.RemoveAt(0);
+                                }
+                                string txtcgst = "";
+                                string txtsgst = "";
+                                string txtigst = "";
+                                decimal totel = 0;
+                                for (int b = 0; b < dt4.Rows.Count; b++)
+                                {
+                                    DataRow dr1 = dt4.Rows[b];
+                                    string itemcode = dr1[0].ToString();
+                                    if (ls.Contains(itemcode))
+                                    {
+                                        continue;
+                                    }
+
+                                    string itemcod = dr1[0].ToString();
+                                    string productname = dr1[1].ToString();
+                                    string hsn = dr1[2].ToString();
+                                    string rate = dr1[3].ToString();
+                                    string quantity = dr1[4].ToString();
+                                    string taxablevalue = dr1[5].ToString();
+                                    string discoun = dr1[6].ToString();
+                                    txtcgst = dr1[7].ToString();
+                                    txtsgst = dr1[8].ToString();
+                                    txtigst = dr1[9].ToString();
+                                    string cess = dr1[10].ToString();
+                                    string totalamout = dr1[11].ToString();
+                                    decimal amt = Convert.ToDecimal(totalamout);
+                                    totel = totel + amt;
+                                    if (companystate != customerstate)
+                                    {
+                                        txtcgst = "0.00";
+                                        txtsgst = "0.00";
+                                    }
+                                    if (companystate == customerstate)
+                                    {
+                                        txtigst = "0.00";
+                                    }
+                                    dr1 = addToCartTable.NewRow();
+                                    dr1[0] = itemcod.Trim();
+                                    dr1[1] = productname.Trim();
+                                    dr1[2] = hsn.Trim();
+                                    dr1[3] = rate.Trim();
+                                    dr1[4] = quantity.Trim();
+                                    dr1[5] = discoun.Trim();
+                                    dr1[6] = taxablevalue.Trim();
+
+                                    dr1[7] = txtcgst.Trim();
+                                    dr1[8] = txtsgst.Trim();
+                                    dr1[9] = txtigst.Trim();
+                                    dr1[10] = cess.Trim();
+                                    dr1[11] = totalamout.Trim();
+                                    int q = Convert.ToInt32(quantity.ToString());
+                                    txtqtybuiled.Text = q.ToString();
+                                    addToCartTable.Rows.Add(dr1);
+
+
+                                }
+
+                                //gridsalesdelivary.DataSource = null;
+                                panel2.Visible = false;
+                                gridsalesdelivary.DataSource = addToCartTable;
+                                double setam = setAmount(5);
+                                double subtotal = WithTaxAmount(2);
+                                txtdicountamount.Text = setam.ToString();
+                                txtwithauttaxamount.Text = subtotal.ToString();
+                                double taxa = TaxAmount();
+                                txttaxamount.Text = taxa.ToString();
+                                txtTotalAmmount.Text = totel.ToString("###0.00");
                             }
-                            double totel1 = 0;
-                            for (int c = 0; c < dt2.Rows.Count; c++)
-                            {
-                                DataRow dr2 = dt2.Rows[c];
-                                string ItemCode = dr2[0].ToString();
-                                string txtitemNmae = dr2[1].ToString();
-                                string CompanyName = dr2[2].ToString();
-                                string MrpPrice = dr2[3].ToString();
-                                string txtRate = dr2[5].ToString();
-                                string txtQuanity = dr2[4].ToString();
-                                string txtAmoun = dr2[6].ToString();
-                                string txtitemNmea = dr2[6].ToString();
-                                //tot = txtitemNmea;
-                                //if (txtitemNmae == "")
-                                //{
-                                //    txtitemNmae ="0";
-                                //}
-
-                                double amt = Convert.ToDouble(txtitemNmea);
-                                totel1 = totel1 + amt;
-                                dr2 = addToCartTable.NewRow();
-                                dr2[0] = ItemCode.Trim();
-                                dr2[1] = txtitemNmae.Trim();
-                                dr2[2] = CompanyName.Trim();
-                                dr2[3] = MrpPrice.Trim();
-                                dr2[4] = txtRate.Trim();
-                                dr2[5] = txtQuanity.Trim();
-                                dr2[6] = txtQuanity.Trim();
-                                dr2[7] = txtAmoun.Trim();
-                                // dr2[5] = textBox1.Text.Trim();
-                                addToCartTable.Rows.Add(dr2);
-
-                                txtItemCode.Focus();
-
-                            }
-                            doubletabindex();
-                            double qty = getquantitybuiled1();
-                            txtqtybuiled.Text = qty.ToString();
-                            gridsalesdelivary.DataSource = addToCartTable;
-                            txtTotalAmmount.Text = totel1.ToString();
-                            
                         }
-                      
-                        }
-                     
+
                     }
-                
+
                 }
+
+            }
+        
 
         public void doubletabindex()
         {
@@ -2944,8 +3046,8 @@ namespace WindowsFormsApplication1
                      }
                      else
                      {
-                         butRemoveItem.Enabled = true;
-                         txtItemCode.Focus();
+                         //butRemoveItem.Enabled = true;
+                        // txtItemCode.Focus();
                          IndexTex2();
                          //addToCartTable.Columns.RemoveAt(6);
                          //if (!addToCartTable.Columns.Contains("Revised Quantity"))
@@ -2975,7 +3077,7 @@ namespace WindowsFormsApplication1
                              //    addToCartTable.Columns.RemoveAt(6);
                              //    addToCartTable.Columns.Add(new DataColumn("Amount"));
                              //}
-                             butRemoveItem.Enabled = false;
+                            // butRemoveItem.Enabled = false;
                              MessageBox.Show("This Order completed");
                              //addToCartTable.Columns.RemoveAt(6);
                              //if (!addToCartTable.Columns.Contains("Revised Quantity"))
@@ -3050,9 +3152,6 @@ namespace WindowsFormsApplication1
                                  // "select it.itemid,iq.ItemName,it.price,it.quantity,it.totalammount from customerorderdescriptions it join ItemDetails iq on it.ItemId=iq.ItemId  where orderid='" + txtRefNo.Text + "'"
                                  string selectItem = "select cod.ItemId,ad.ItemName,itd.HSN,cast(cod.price as numeric(38,2)),cod.quantity,cast((cod.price*cod.quantity)-(cod.price*cod.quantity*itd.Discount/100)as numeric(38,2)),itd.Discount,itd.CGST,itd.SGST,itd.IGST,itd.CESS,cod.totalammount from orderdetails od join customerorderdescriptions cod on od.orderid=cod.orderid join ItemDetails ad on cod.ItemId=ad.ItemId join ItemPriceDetail ipd on ad.ItemId=ipd.ItemId join ItemTaxDetail itd on ipd.ItemId=itd.ItemId where od.orderid='" + txtRefNo.Text + "'";
                                  DataTable dt4 = d.getDetailByQuery(selectItem);
-
-
-
                                  int totalrowcount = addToCartTable.Rows.Count;
                                  for (int rowcount = 0; rowcount < totalrowcount; rowcount++)
                                  {
@@ -3107,6 +3206,8 @@ namespace WindowsFormsApplication1
                                      dr1[9] = txtigst.Trim();
                                      dr1[10] = cess.Trim();
                                      dr1[11] = totalamout.Trim();
+                                     int q = Convert.ToInt32(quantity.ToString());
+                                     txtqtybuiled.Text = q.ToString();
                                      addToCartTable.Rows.Add(dr1);
 
                                     
@@ -3121,12 +3222,13 @@ namespace WindowsFormsApplication1
                                  double taxa = TaxAmount();
                                  txttaxamount.Text = taxa.ToString();
                                 txtTotalAmmount.Text = totel.ToString("###0.00");
+                                
                                 // txtwithauttaxamount.Text = totel.ToString("###0.00");
 
                              }
                          }
-                         double qtybuiled = getquantitybuiled1();
-                         txtqtybuiled.Text = qtybuiled.ToString();
+                         //double qtybuiled = getquantitybuiled1();
+                         //txtqtybuiled.Text = qtybuiled.ToString();
                          if (gridsalesdelivary.Rows.Count > 1)
                          {
                              txtdiccount.ReadOnly = false;
@@ -4013,6 +4115,7 @@ namespace WindowsFormsApplication1
             if (bal2 < return3)
             {
                 MessageBox.Show("please corrct Amount");
+                txtRturned.Text = "0.00";
                 txtRturned.Focus();
                 txtRturned.SelectAll();
                 txtBalance.Text = BalAmunt.ToString("###0.00");
@@ -4298,6 +4401,13 @@ namespace WindowsFormsApplication1
                     //}
                     if (e.KeyCode == Keys.Enter)
                     {
+                        if (txtcustomercode.Text == "C")
+                        {
+                            MessageBox.Show("please select your customer code");
+                            gridsalesdelivary.Rows.RemoveAt(0);
+                            txtcustomercode.Focus();
+                            return;
+                        }
                         string company = "select state from CompnayDetails";
                         DataTable dt3 = d.getDetailByQuery(company);
                         string companystate = "";
@@ -4436,18 +4546,29 @@ namespace WindowsFormsApplication1
 
                             if (item != itemid)
                             {
+                                if (item != itemid)
+                                {
+                                    int selectedindex = gridsalesdelivary.CurrentCell.RowIndex;
+                                    if (selectedindex > 0)
+                                    {
+                                        gridsalesdelivary.Rows.RemoveAt(selectedindex - 1);
+                                    }
 
-                                MessageBox.Show("please select your correct itemid");
-                                gridsalesdelivary.CurrentCell = gridsalesdelivary.Rows[gridsalesdelivary.CurrentRow.Index - 1].Cells[0];
+
+                                    MessageBox.Show("please select your correct itemid");
+
+                                    //gridsalesorder.CurrentCell = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[0];
+
+                                }
 
                             }
-                            if (itemid != item)
-                            {
-                                MessageBox.Show("please select your correct row ");
-                                gridsalesdelivary.Rows[gridsalesdelivary.CurrentRow.Index].Cells[0].Value = "";
-                                gridsalesdelivary.Rows[gridsalesdelivary.CurrentRow.Index].Cells[0].Selected = true;
-                                //dataGridView1.AllowUserToAddRows = false;
-                            }
+                            //if (itemid != item)
+                            //{
+                            //    MessageBox.Show("please select your correct row ");
+                            //    gridsalesdelivary.Rows[gridsalesdelivary.CurrentRow.Index].Cells[0].Value = "";
+                            //    gridsalesdelivary.Rows[gridsalesdelivary.CurrentRow.Index].Cells[0].Selected = true;
+                            //    //dataGridView1.AllowUserToAddRows = false;
+                            //}
                         }
 
                     }
@@ -4474,6 +4595,36 @@ namespace WindowsFormsApplication1
                 }
             }
             return totalAmount;
+        }
+
+        private void txtRturned_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtRturned.SelectAll();
+        }
+
+        private void CashAmount_MouseClick(object sender, MouseEventArgs e)
+        {
+            CashAmount.SelectAll();
+        }
+
+        private void txtCreditAmount_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtCreditAmount.SelectAll();
+        }
+
+        private void txtChequeAmount_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtChequeAmount.SelectAll();
+        }
+
+        private void txtEwalletAmount_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtEwalletAmount.SelectAll();
+        }
+
+        private void txtCouponAmount_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtCouponAmount.SelectAll();
         }
      
 

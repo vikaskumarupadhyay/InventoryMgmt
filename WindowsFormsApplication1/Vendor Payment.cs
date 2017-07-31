@@ -1887,5 +1887,25 @@ namespace WindowsFormsApplication1
             panel3.Visible = false;
             panel4.Visible = false;
         }
+
+        private void txtCreditAmount_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtCreditAmount.SelectAll();
+        }
+
+        private void txtChequeAmount_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtChequeAmount.SelectAll();
+        }
+
+        private void txtEwalletAmount_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtEwalletAmount.SelectAll();
+        }
+
+        private void txtCouponAmount_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtCouponAmount.SelectAll();
+        }
     }
 }
