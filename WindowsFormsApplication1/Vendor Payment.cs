@@ -1550,7 +1550,7 @@ namespace WindowsFormsApplication1
                     {
                         double ReturnAmount = Convert.ToDouble(txtRturned.Text);
                         double bal1 = bal + ReturnAmount;
-                        txtBalance.Text = bal1.ToString();
+                        txtBalance.Text = bal1.ToString("###0.00");
                     }
                 }
             }
