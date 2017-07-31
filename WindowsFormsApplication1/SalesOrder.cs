@@ -531,9 +531,9 @@ namespace WindowsFormsApplication1
             textBox20.ReadOnly = true;
 
             gridsalesorder.DataSource = addToCartTable;
-            discountamount.Visible = true;
-            txttaxamount.Visible = true;
-            txtwithautaxamount.Visible = true;
+            discountamount.Visible = false;
+            txttaxamount.Visible = false;
+            txtwithautaxamount.Visible = false;
 
             crystalReportViewer1.Visible = false;
             tab();
@@ -2104,9 +2104,6 @@ namespace WindowsFormsApplication1
                         {
                             break;
                         }
-
-
-
                     }
                     if (item == itemid)
                     {
@@ -2276,6 +2273,7 @@ namespace WindowsFormsApplication1
             }
             catch (Exception ex)
             {
+                
                 MessageBox.Show(ex.Message.ToString());
             }
 
@@ -2312,6 +2310,8 @@ namespace WindowsFormsApplication1
             }
             return totalAmount;
         }
+
+       
     }
 }
 
