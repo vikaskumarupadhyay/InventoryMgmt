@@ -128,10 +128,9 @@ namespace WindowsFormsApplication1
         {
             dataGridView2.AllowUserToAddRows = true;
             crystalReportViewer2.Visible = false;
-            //string selectquery1 = "select CustName,CustCompName,CustAddress,CustPhone,Custmobile,CustFax from CustomerDetails";
-            //string actualcolumn = "select CustName ,CustCompName ,CustAddress ,CustPhone ,Custmobile ,CustFax  from CustomerDetails";
-            string selectquery1 = "select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Ballance],CustPanNo AS [PAN NO], CustVatNo AS [VAT NO] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
-            string actualcolumn = "select  Custd.CustId  ,CustName  ,CustCompName  ,CustAddress ,CustCity , CustState  ,CustZip  ,CustCountry  ,CustEmail , CustWebAddress ,CustPhone  ,CustMobile  ,CustFax ,CustDesc ,Custad.CustOpeningBalance , Custad.CustCurrentBalance ,CustPanNo , CustVatNo  from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
+
+            string selectquery1 = "select Custd.CustId as [Customer ID] ,CustName AS [Customer Name] ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustPanNo AS [PAN NO], CustGstNo AS [GST NO],CustDesc as [Description],CustOpeningBalance as[Opening Balance] ,CustCurrentBalance as[Current Balance] from  CustomerDetails Custd join CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
+            string actualcolumn = "select top 1 Custd.CustId ,CustName,CustCompName ,CustAddress,CustCity, CustState,CustZip,CustCountry,CustEmail, CustWebAddress,CustPhone,CustMobile,CustFax  ,CustPanNo, CustGstNo,CustDesc,CustOpeningBalance,CustCurrentBalance from  CustomerDetails Custd join CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID  ";
             DataTable dt1 = d.getDetailByQuery(selectquery1);
             DataTable onlycolumn = d.getDetailByQuery(actualcolumn);
             DataTable custometable = new DataTable();
@@ -151,14 +150,10 @@ namespace WindowsFormsApplication1
             comsearchvalue.DataSource = custometable;
             comsearchvalue.ValueMember = "actualcolumnname";
             comsearchvalue.DisplayMember = "aliascolumnname";
-
+            dataGridView2.DataSource = dt1;
             counter = 0;
             panel2.Visible = true;
-            // string selectquery = "select Custid, CustName,CustCompName,CustAddress,CustPhone,CustMobile,CustFax from customerdetails";
-            string selectquery = "select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Ballance],CustPanNo AS [PAN NO], CustVatNo AS [VAT NO] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
-
-            DataTable dt = d.getDetailByQuery(selectquery);
-            dataGridView2.DataSource = dt;
+           
             txtQuantity.TabStop = false;
             txtcustomercode.TabStop = false;
             butcustomercode.TabStop = false;
@@ -980,6 +975,26 @@ namespace WindowsFormsApplication1
 
         private void butSaveButton_Click(object sender, EventArgs e)
         {
+             DataGridViewRowCollection cal1 = gridsalesdelivary.Rows;
+             for (int c = 0; c < cal1.Count - 1; c++)
+             {
+                 DataGridViewRow currentRow2 = cal1[c];
+                 DataGridViewCellCollection cellCollection2 = currentRow2.Cells;
+                 string itid1 = cellCollection2[0].Value.ToString();
+                 if (ls.Contains(itid1))
+                 {
+                     counter++;
+                     continue;
+                 }
+                 counter++;
+                 string que1 = cellCollection2[4].Value.ToString();
+                 if (que1 == "0")
+                 {
+                     MessageBox.Show("please select your quantity");
+                     gridsalesdelivary.AllowUserToAddRows = true;
+                     return;
+                 }
+             }
             if (txtcustomercode.Text == "C" && txtItemCode.Text == "I")
             {
                 MessageBox.Show("please select your customer code");
@@ -1033,6 +1048,12 @@ namespace WindowsFormsApplication1
                     }
                     counter++;
                     string que = cellCollection1[4].Value.ToString();
+                    if (que == "0")
+                    {
+                        MessageBox.Show("please select your quantity");
+                        gridsalesdelivary.AllowUserToAddRows = true;
+                        return;
+                    }
                     //string quent = cellCollection1[6].Value.ToString();
                     //double s = Convert.ToDouble(quent);
 
@@ -1171,6 +1192,7 @@ namespace WindowsFormsApplication1
                         continue;
                     }
                     string que = cellCollection1[4].Value.ToString();
+                   
                     if (que == "")
                     {
                         que = "0";
@@ -1540,6 +1562,7 @@ namespace WindowsFormsApplication1
                         continue;
                     }
                     string que = cellCollection1[4].Value.ToString();
+                  
                     //string quent = cellCollection1[6].Value.ToString();
                    // double s1 = Convert.ToDouble(quent);
 
@@ -2366,7 +2389,7 @@ namespace WindowsFormsApplication1
             {
                 string s = comsearchvalue.SelectedValue.ToString();
                 //string val = s;
-                string selectQuery = "select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Ballance],CustPanNo AS [PAN NO], CustVatNo AS [VAT NO] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID where " + s + " like '" + txtsearchvalue.Text + "%'";
+                string selectQuery = "select Custd.CustId as [Customer ID] ,CustName AS [Customer Name] ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustPanNo AS [PAN NO], CustGstNo AS [GST NO],CustDesc as [Description],CustOpeningBalance as[Opening Balance] ,CustCurrentBalance as[Current Balance] from  CustomerDetails Custd join CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID  where " + s + " like '" + txtsearchvalue.Text + "%'";
 
                 // string selectQuery = "select CustId,CustName,CustCompName,CustAddress,CustPhone,Custmobile,CustFax from CustomerDetails where " + val + " like '" + txtsearchvalue.Text + "%'";
                 DataTable dt = d.getDetailByQuery(selectQuery);
@@ -2562,12 +2585,16 @@ namespace WindowsFormsApplication1
 
             if (counter == 0)
             {
+
                 DataGridViewCellCollection Collection = dataGridView2.Rows[e.RowIndex].Cells;
-                rowcollection(Collection);
-                panel2.Visible = false;
-                tab1();
-                txtcustomercode.TabStop = true;
-                butcustomercode.TabStop = true;
+                if (!string.IsNullOrEmpty(Collection[0].Value.ToString()))
+                {
+                    rowcollection(Collection);
+                    panel2.Visible = false;
+                    tab1();
+                    txtcustomercode.TabStop = true;
+                    butcustomercode.TabStop = true;
+                }
             }
             if (counter == 1)
             {
@@ -4084,16 +4111,17 @@ namespace WindowsFormsApplication1
             }
         }
         Double bal2 = 0;
+        double s = 0.0;
         private void txtRturned_TextChanged(object sender, EventArgs e)
         {
-
+          
             if (txtBalance.Text == "")
             {
                 txtBalance.Text = "0.00";
             }
             if (txtRturned.Text == "0")
             {
-                txtRturned.Text = "0";
+                txtRturned.Text = "0.0";
                 txtRturned.SelectAll();
                 return;
             }
@@ -4115,10 +4143,11 @@ namespace WindowsFormsApplication1
             if (bal2 < return3)
             {
                 MessageBox.Show("please corrct Amount");
-                txtRturned.Text = "0.00";
                 txtRturned.Focus();
                 txtRturned.SelectAll();
                 txtBalance.Text = BalAmunt.ToString("###0.00");
+                txtRturned.Text ="0.0";
+               
             }
             else
             {
@@ -4379,8 +4408,12 @@ namespace WindowsFormsApplication1
 
             try
             {
+                if (gridsalesdelivary.Rows[0].Cells[0].Value == null)
+                {
+                    return;
+                }
                 string itemId = gridsalesdelivary.Rows[0].Cells[0].Value.ToString();
-
+               
                 if (itemId == "")
                 {
                     return;
@@ -4477,6 +4510,13 @@ namespace WindowsFormsApplication1
 
                             gridsalesdelivary.Rows[gridsalesdelivary.CurrentRow.Index - 1].Cells[3].Value = rate;
                             string quantity = gridsalesdelivary.Rows[gridsalesdelivary.CurrentRow.Index - 1].Cells[4].Value.ToString();
+                            int h;
+                            bool he = int.TryParse(quantity, out h);
+                            if (he == false)
+                            {
+                                quantity = "0";
+                                gridsalesdelivary.Rows[gridsalesdelivary.CurrentRow.Index - 1].Cells[4].Value = "0";
+                            }
                             if (quantity == "")
                             {
                                 quantity = "0";

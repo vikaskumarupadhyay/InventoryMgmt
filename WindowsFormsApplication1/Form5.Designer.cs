@@ -143,7 +143,6 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
-            this.txtconame = new System.Windows.Forms.ComboBox();
             this.label40 = new System.Windows.Forms.Label();
             this.txtcoupnamount = new System.Windows.Forms.TextBox();
             this.label41 = new System.Windows.Forms.Label();
@@ -170,6 +169,7 @@
             this.label53 = new System.Windows.Forms.Label();
             this.txtcashamount = new System.Windows.Forms.TextBox();
             this.label54 = new System.Windows.Forms.Label();
+            this.txtcompnayname = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -1341,6 +1341,7 @@
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.txtcompnayname);
             this.groupBox4.Controls.Add(this.txttransctiondate);
             this.groupBox4.Controls.Add(this.txtchaquedate);
             this.groupBox4.Controls.Add(this.txtcardtype);
@@ -1349,7 +1350,6 @@
             this.groupBox4.Controls.Add(this.textBox7);
             this.groupBox4.Controls.Add(this.textBox8);
             this.groupBox4.Controls.Add(this.textBox9);
-            this.groupBox4.Controls.Add(this.txtconame);
             this.groupBox4.Controls.Add(this.label40);
             this.groupBox4.Controls.Add(this.txtcoupnamount);
             this.groupBox4.Controls.Add(this.label41);
@@ -1387,6 +1387,7 @@
             // 
             this.txttransctiondate.Location = new System.Drawing.Point(657, 161);
             this.txttransctiondate.Name = "txttransctiondate";
+            this.txttransctiondate.ReadOnly = true;
             this.txttransctiondate.Size = new System.Drawing.Size(210, 21);
             this.txttransctiondate.TabIndex = 50;
             // 
@@ -1394,6 +1395,7 @@
             // 
             this.txtchaquedate.Location = new System.Drawing.Point(441, 159);
             this.txtchaquedate.Name = "txtchaquedate";
+            this.txtchaquedate.ReadOnly = true;
             this.txtchaquedate.Size = new System.Drawing.Size(210, 21);
             this.txtchaquedate.TabIndex = 49;
             // 
@@ -1401,6 +1403,7 @@
             // 
             this.txtcardtype.Location = new System.Drawing.Point(213, 161);
             this.txtcardtype.Name = "txtcardtype";
+            this.txtcardtype.ReadOnly = true;
             this.txtcardtype.Size = new System.Drawing.Size(220, 21);
             this.txtcardtype.TabIndex = 48;
             // 
@@ -1459,18 +1462,6 @@
             this.textBox9.Text = "₹";
             this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtconame
-            // 
-            this.txtconame.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.txtconame.FormattingEnabled = true;
-            this.txtconame.Items.AddRange(new object[] {
-            "Select Company",
-            "Indian"});
-            this.txtconame.Location = new System.Drawing.Point(873, 76);
-            this.txtconame.Name = "txtconame";
-            this.txtconame.Size = new System.Drawing.Size(210, 23);
-            this.txtconame.TabIndex = 30;
-            // 
             // label40
             // 
             this.label40.AutoSize = true;
@@ -1484,6 +1475,7 @@
             // 
             this.txtcoupnamount.Location = new System.Drawing.Point(901, 34);
             this.txtcoupnamount.Name = "txtcoupnamount";
+            this.txtcoupnamount.ReadOnly = true;
             this.txtcoupnamount.Size = new System.Drawing.Size(182, 21);
             this.txtcoupnamount.TabIndex = 27;
             this.txtcoupnamount.Text = "0.00";
@@ -1511,6 +1503,7 @@
             // 
             this.txttransactionno.Location = new System.Drawing.Point(657, 119);
             this.txttransactionno.Name = "txttransactionno";
+            this.txttransactionno.ReadOnly = true;
             this.txttransactionno.Size = new System.Drawing.Size(210, 21);
             this.txttransactionno.TabIndex = 23;
             // 
@@ -1527,6 +1520,7 @@
             // 
             this.txtecompnayname.Location = new System.Drawing.Point(657, 76);
             this.txtecompnayname.Name = "txtecompnayname";
+            this.txtecompnayname.ReadOnly = true;
             this.txtecompnayname.Size = new System.Drawing.Size(210, 21);
             this.txtecompnayname.TabIndex = 21;
             // 
@@ -1543,6 +1537,7 @@
             // 
             this.txtewamount.Location = new System.Drawing.Point(685, 34);
             this.txtewamount.Name = "txtewamount";
+            this.txtewamount.ReadOnly = true;
             this.txtewamount.Size = new System.Drawing.Size(182, 21);
             this.txtewamount.TabIndex = 19;
             this.txtewamount.Text = "0.00";
@@ -1561,6 +1556,7 @@
             // 
             this.txtchaqueno.Location = new System.Drawing.Point(441, 119);
             this.txtchaqueno.Name = "txtchaqueno";
+            this.txtchaqueno.ReadOnly = true;
             this.txtchaqueno.Size = new System.Drawing.Size(210, 21);
             this.txtchaqueno.TabIndex = 16;
             // 
@@ -1568,6 +1564,7 @@
             // 
             this.txtchaqbankn.Location = new System.Drawing.Point(441, 76);
             this.txtchaqbankn.Name = "txtchaqbankn";
+            this.txtchaqbankn.ReadOnly = true;
             this.txtchaqbankn.Size = new System.Drawing.Size(210, 21);
             this.txtchaqbankn.TabIndex = 15;
             // 
@@ -1602,6 +1599,7 @@
             // 
             this.txtchaque.Location = new System.Drawing.Point(469, 34);
             this.txtchaque.Name = "txtchaque";
+            this.txtchaque.ReadOnly = true;
             this.txtchaque.Size = new System.Drawing.Size(182, 21);
             this.txtchaque.TabIndex = 11;
             this.txtchaque.Text = "0.00";
@@ -1629,6 +1627,7 @@
             // 
             this.txtcardnomber.Location = new System.Drawing.Point(225, 119);
             this.txtcardnomber.Name = "txtcardnomber";
+            this.txtcardnomber.ReadOnly = true;
             this.txtcardnomber.Size = new System.Drawing.Size(210, 21);
             this.txtcardnomber.TabIndex = 7;
             // 
@@ -1654,6 +1653,7 @@
             // 
             this.txtbankname.Location = new System.Drawing.Point(225, 76);
             this.txtbankname.Name = "txtbankname";
+            this.txtbankname.ReadOnly = true;
             this.txtbankname.Size = new System.Drawing.Size(210, 21);
             this.txtbankname.TabIndex = 4;
             // 
@@ -1661,6 +1661,7 @@
             // 
             this.txtcredit.Location = new System.Drawing.Point(253, 34);
             this.txtcredit.Name = "txtcredit";
+            this.txtcredit.ReadOnly = true;
             this.txtcredit.Size = new System.Drawing.Size(182, 21);
             this.txtcredit.TabIndex = 3;
             this.txtcredit.Text = "0.00";
@@ -1679,6 +1680,7 @@
             // 
             this.txtcashamount.Location = new System.Drawing.Point(37, 35);
             this.txtcashamount.Name = "txtcashamount";
+            this.txtcashamount.ReadOnly = true;
             this.txtcashamount.Size = new System.Drawing.Size(182, 21);
             this.txtcashamount.TabIndex = 1;
             this.txtcashamount.Text = "0.00";
@@ -1692,6 +1694,14 @@
             this.label54.Size = new System.Drawing.Size(80, 15);
             this.label54.TabIndex = 0;
             this.label54.Text = "Cash Amount";
+            // 
+            // txtcompnayname
+            // 
+            this.txtcompnayname.Location = new System.Drawing.Point(873, 76);
+            this.txtcompnayname.Name = "txtcompnayname";
+            this.txtcompnayname.ReadOnly = true;
+            this.txtcompnayname.Size = new System.Drawing.Size(210, 21);
+            this.txtcompnayname.TabIndex = 51;
             // 
             // Form5
             // 
@@ -1858,7 +1868,6 @@
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.ComboBox txtconame;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.TextBox txtcoupnamount;
         private System.Windows.Forms.Label label41;
@@ -1889,6 +1898,7 @@
         private System.Windows.Forms.TextBox txtchaquedate;
         private System.Windows.Forms.TextBox txtcardtype;
         private System.Windows.Forms.Button butba;
+        private System.Windows.Forms.TextBox txtcompnayname;
         //private System.Windows.Forms.TextBox textBox15;
         //private System.Windows.Forms.TextBox textBox22;
         //private System.Windows.Forms.Label label8;

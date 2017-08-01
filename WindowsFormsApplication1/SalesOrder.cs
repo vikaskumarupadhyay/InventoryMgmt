@@ -79,8 +79,8 @@ namespace WindowsFormsApplication1
             dataGridView1.AllowUserToAddRows = true;
             // string selectquery1 = "select CustName as [Name],CustCompName as [Compnay Name],CustAddress as [Address],CustPhone as [Phone],Custmobile as [Mobole],CustFax as [Fax] from CustomerDetails";
             // string actualcolumn = "select CustName ,CustCompName ,CustAddress ,CustPhone ,Custmobile ,CustFax  from CustomerDetails";
-            string selectquery1 = "select  Custd.CustId as [Customer ID] ,CustName AS [Customer Name] ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] ,Custad.CustCurrentBalance AS [Current Balance] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
-            string actualcolumn = "select  Custd.CustId  ,CustName  ,CustCompName  ,CustAddress ,CustCity , CustState  ,CustZip  ,CustCountry  ,CustEmail , CustWebAddress ,CustPhone  ,CustMobile  ,CustFax ,CustDesc ,Custad.CustOpeningBalance , Custad.CustCurrentBalance ,CustPanNo , CustVatNo   from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
+            string selectquery1 = "select Custd.CustId as [Customer ID] ,CustName AS [Customer Name] ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustPanNo AS [PAN NO], CustGstNo AS [GST NO],CustDesc as [Description],CustOpeningBalance as[Opening Balance] ,CustCurrentBalance as[Current Balance] from  CustomerDetails Custd join CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
+            string actualcolumn = "select top 1 Custd.CustId ,CustName,CustCompName ,CustAddress,CustCity, CustState,CustZip,CustCountry,CustEmail, CustWebAddress,CustPhone,CustMobile,CustFax  ,CustPanNo, CustGstNo,CustDesc,CustOpeningBalance,CustCurrentBalance from  CustomerDetails Custd join CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID";
             DataTable dt1 = d.getDetailByQuery(selectquery1);
             DataTable onlycolumn = d.getDetailByQuery(actualcolumn);
             DataTable custometable = new DataTable();
@@ -100,15 +100,13 @@ namespace WindowsFormsApplication1
             comsearchsalesvalue.DataSource = custometable;
             comsearchsalesvalue.ValueMember = "actualcolumnname";
             comsearchsalesvalue.DisplayMember = "aliascolumnname";
-
+            dataGridView1.DataSource = dt1;
 
             counter = 0;
             panel2.Visible = true;
             // string selectquery = "select Custid as [Customer Id], CustName as [Name],CustCompName as [Compnay Name],CustAddress as[Address],CustPhone as [Phone],CustMobile as [Mobile],CustFax as[Fax] from customerdetails";
-            string selectquery = "select  Custd.CustId as [Customer ID] ,CustName AS [Customer Name] ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax,CustPanNo AS [PAN NO], CustVatNo AS [VAT NO] ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Balance] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
-
-            DataTable dt = d.getDetailByQuery(selectquery);
-            dataGridView1.DataSource = dt;
+           
+           // dataGridView1.DataSource = dt;
             txtcustomercode.TabStop = false;
             button1.TabStop = false;
             txtsearchvalue.Focus();
@@ -127,6 +125,7 @@ namespace WindowsFormsApplication1
         }
         public void rowcollection(DataGridViewCellCollection cell)
         {
+           
             txtcustomercode.Text = cell[0].Value.ToString();
             txtcustname.Text = cell[1].Value.ToString();
             txtcustcompname.Text = cell[2].Value.ToString();
@@ -196,9 +195,9 @@ namespace WindowsFormsApplication1
         {
             try
             {
-                txtitemcode.Text = cell1[0].Value.ToString();
-                txtProductName.Text = cell1[1].Value.ToString();
-                txtRate.Text = cell1[7].Value.ToString();
+               // txtitemcode.Text = cell1[0].Value.ToString();
+               // txtProductName.Text = cell1[1].Value.ToString();
+               // txtRate.Text = cell1[7].Value.ToString();
                 double rate = Convert.ToDouble(txtRate.Text);
                 // maxquantity = Convert.ToInt32((cell1[3].Value.ToString()));
                 txtQuantity.Text = "1";
@@ -780,6 +779,12 @@ namespace WindowsFormsApplication1
                         string txtRate = cellcollection[3].Value.ToString();
                         //string quantity = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[4].Value.ToString();
                        string quantity = cellcollection[4].Value.ToString();
+                       if (quantity == "0")
+                       {
+                           MessageBox.Show("please select your quantity");
+                           gridsalesorder.AllowUserToAddRows = true;
+                               return;
+                       }
                         string txtAmount = cellcollection[11].Value.ToString();
                         string Orderid = txtsrno.Text;
 
@@ -1586,7 +1591,7 @@ namespace WindowsFormsApplication1
             {
                 string s = comsearchsalesvalue.SelectedValue.ToString();
                 // string val = s;
-                string selectQuery = "select  Custd.CustId as [Customer ID] ,CustName AS Name ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustDesc AS Description,Custad.CustOpeningBalance AS [Opening Balance] , Custad.CustCurrentBalance AS [Current Ballance],CustPanNo AS [PAN NO], CustVatNo AS [VAT NO] from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID where " + s + " like '" + txtsearchvalue.Text + "%'";
+                string selectQuery = "select Custd.CustId as [Customer ID] ,CustName AS [Customer Name] ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustPanNo AS [PAN NO], CustGstNo AS [GST NO],CustDesc as [Description],CustOpeningBalance as[Opening Balance] ,CustCurrentBalance as[Current Balance] from  CustomerDetails Custd join CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID  where " + s + " like '" + txtsearchvalue.Text + "%'";
 
                 // string selectQuery = "select Custid as [Customer Id], CustName as Name,CustCompName as[Compnay Name],CustAddress as [Address],CustPhone as[Phone],Custmobile as[Mobile],CustFax as[Fax] from CustomerDetails where " + s + " like '" + txtsearchvalue.Text + "%'";
                 DataTable dt = d.getDetailByQuery(selectQuery);
@@ -1674,18 +1679,23 @@ namespace WindowsFormsApplication1
         private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
-            txtQuantity.TabStop = false;
-            txtQuantity.ReadOnly = false;
+            //txtQuantity.TabStop = false;
+            //txtQuantity.ReadOnly = false;
             txtsearchvalue.Text = "";
-            panel2.Visible = false;
+            //panel2.Visible = false;
+             
             if (counter == 0)
             {
+
                 DataGridViewCellCollection Collection = dataGridView1.Rows[e.RowIndex].Cells;
-                rowcollection(Collection);
-                panel2.Visible = false;
-                tab1();
-                txtcustomercode.TabStop = true;
-                button1.TabStop = true;
+                if (!string.IsNullOrEmpty(Collection[0].Value.ToString()))
+                {
+                    rowcollection(Collection);
+                    panel2.Visible = false;
+                    tab1();
+                    txtcustomercode.TabStop = true;
+                    button1.TabStop = true;
+                }
             }
             if (counter == 1)
             {
@@ -1976,7 +1986,7 @@ namespace WindowsFormsApplication1
             }
             return totalValue;
         }
-        public Double setAmount(int value)
+        public Double setAmount()
         {
             Double disamount = 0.00;
             DataGridViewRowCollection RowCollection = gridsalesorder.Rows;
@@ -1990,7 +2000,14 @@ namespace WindowsFormsApplication1
                     string addamount = cellCollection[5].Value.ToString();
                     string addamount1 = cellCollection[3].Value.ToString();
                     string addamount2 = cellCollection[4].Value.ToString();
-                    if(addamount2!="")
+                     int h;
+                    bool g=int.TryParse(addamount2,out h);
+                    if (g == false)
+                    {
+                        addamount2 = "0";
+                        cellCollection[4].Value = "0";
+                    }
+                    if (addamount2 != "")
                     {
                     Double amount1 = Convert.ToDouble(addamount.ToString());
                     double amount2 = Convert.ToDouble(addamount1.ToString());
@@ -2073,16 +2090,18 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    if(txtcustomercode.Text=="C")
+                    
+                if(txtcustomercode.Text=="C")
                     {
                         MessageBox.Show("please select your customer code");
-                       // gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[0].Value = "";
-                        //gridsalesorder.CurrentCell = gridsalesorder.Rows[gridsalesorder.RowCount - 1].Cells[0];
                         gridsalesorder.Rows.RemoveAt(0);
-                        //gridsalesorder.AllowUserToAddRows = false;
                         txtcustomercode.Focus();
                         return;
                     }
+                if (gridsalesorder.Rows[0].Cells[0].Value == null) 
+                {
+                    return;
+                }
                     string itemid = gridsalesorder.Rows[0].Cells[0].Value.ToString();
                     if (itemid == "")
                     {
@@ -2140,7 +2159,7 @@ namespace WindowsFormsApplication1
 
                             rate = dr[2].ToString();
                         }
-                        double setam = setAmount(5);
+                        double setam = setAmount();
                         double subtotal = getsubtotal(2);
 
                         if (compnayid != customerid)
@@ -2204,6 +2223,10 @@ namespace WindowsFormsApplication1
                             double igst = Convert.ToDouble(gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[9].Value.ToString());
                             double ces1 = Convert.ToDouble(gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[10].Value.ToString());
 
+                            foreach (char value in quantity)
+                            {
+                                bool s = char.IsNumber(value);
+                            }
                             if (quantity == "")
                             {
                                 quantity = "0";
@@ -2275,10 +2298,10 @@ namespace WindowsFormsApplication1
                             {
                                 gridsalesorder.Rows.RemoveAt(selectedindex-1);
                             }
-                                
-                            
+
                             MessageBox.Show("please select your correct itemid");
-                          
+                            return;
+                             
                             //gridsalesorder.CurrentCell = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[0];
 
                         }
