@@ -1576,10 +1576,7 @@ namespace WindowsFormsApplication1
             //    txttransactionno.Text = dr[12].ToString();
             //    txttransctiondate.Text = dr[13].ToString();
             //    txtCouponAmount.Text= dr[14].ToString();
-            //    txtconame.Text = dr[15].ToString();
-               
-               
-                
+            //    txtconame.Text = dr[15].ToString(); 
             //}
         }
 
@@ -1630,11 +1627,9 @@ namespace WindowsFormsApplication1
                   txttransactionno.Text= dr[13].ToString();
                   if (txtcoupnamount.Text!= "0.00")
                 {
-                    txtconame.Text = dr[16].ToString();
+                    txtcompnayname.Text= dr[16].ToString();
                 }
                   txtcoupnamount.Text = dr[15].ToString();
-              
-
             }
             butmakepayment.TabStop = true;
             butback.TabStop = true;
@@ -1690,7 +1685,7 @@ namespace WindowsFormsApplication1
                     txttransactionno.Text = dr[13].ToString();
                     if (txtcoupnamount.Text != "0.00")
                     {
-                        txtconame.Text = dr[16].ToString();
+                        txtcompnayname.Text = dr[16].ToString();
                     }
                     txtcoupnamount.Text = dr[15].ToString();
               
