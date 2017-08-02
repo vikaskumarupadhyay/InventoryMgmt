@@ -1113,7 +1113,6 @@ namespace WindowsFormsApplication1
 
                     }
 
-                  
                 }
             }
             pnlSalesPayment.Visible = true;
@@ -1131,6 +1130,7 @@ namespace WindowsFormsApplication1
             salesedelivarytabindex();
             CashAmount.Focus();
             txtBalance.Text = txtTotalAmmount.Text;
+            txtRturned.ReadOnly = true;
             
 
         }
@@ -4114,27 +4114,40 @@ namespace WindowsFormsApplication1
         double s = 0.0;
         private void txtRturned_TextChanged(object sender, EventArgs e)
         {
-          
+           
+            if (txtRturned.Text == ".")
+            {
+                return;
+            }
             if (txtBalance.Text == "")
             {
                 txtBalance.Text = "0.00";
             }
-            if (txtRturned.Text == "0")
-            {
-                txtRturned.Text = "0.0";
-                txtRturned.SelectAll();
-                return;
-            }
             if (txtRturned.Text == "")
             {
                 txtRturned.Text = "0.00";
-               // txtRturned.SelectAll();
+                //txtRturned.SelectAll();
+                return;
             }
 
+            if (txtRturned.Text == "0.00")
+            {
+                txtRturned.SelectAll();
+                return;
+            }
+            if(BalAmunt==-0)
+            {
+
+            }
             if (BalAmunt==0)
             {
                 BalAmunt = Convert.ToDouble(txtBalance.Text);
+                if (BalAmunt != -0)
+                {
+                    txtRturned.ReadOnly = true;
+                }
             }
+            
             if (bal2 == 0)
             {
                 bal2 = Convert.ToDouble(txtBalance.Text) * -1;
@@ -4142,12 +4155,11 @@ namespace WindowsFormsApplication1
             Double return3 = Convert.ToDouble(txtRturned.Text);
             if (bal2 < return3)
             {
-                MessageBox.Show("please corrct Amount");
-                txtRturned.Focus();
-                txtRturned.SelectAll();
-                txtBalance.Text = BalAmunt.ToString("###0.00");
-                txtRturned.Text ="0.0";
-               
+                    MessageBox.Show("please corrct Amount");
+                    txtRturned.Focus();
+                    txtRturned.SelectAll();
+                    txtBalance.Text = BalAmunt.ToString("###0.00");
+                    txtRturned.Text = "0.00";
             }
             else
             {
@@ -4183,8 +4195,10 @@ namespace WindowsFormsApplication1
             {
                 if (e.KeyChar == '\b')
                 {
+                    //txtRturned.Text="0.0";
                     //txtBalance.Text = "0.00";
                     e.Handled = false;
+                    return;
                 }
                 else
                 {
@@ -4665,6 +4679,11 @@ namespace WindowsFormsApplication1
         private void txtCouponAmount_MouseClick(object sender, MouseEventArgs e)
         {
             txtCouponAmount.SelectAll();
+        }
+
+        private void txtBalance_TextChanged(object sender, EventArgs e)
+        {
+          
         }
      
 

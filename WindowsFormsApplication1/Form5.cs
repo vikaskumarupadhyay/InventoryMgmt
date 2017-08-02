@@ -1731,6 +1731,11 @@ namespace WindowsFormsApplication1
             txtCouponAmount.SelectAll();
         }
 
+        private void txtRturned_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtRturned.SelectAll();
+        }
+
        
 
       
