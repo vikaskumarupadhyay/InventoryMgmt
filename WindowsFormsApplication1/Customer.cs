@@ -72,9 +72,9 @@ namespace WindowsFormsApplication1
             //else if (value == 0)
             //{
             //    panel1.Visible = false;
-             string selectQuery = "select  Custd.CustId as [Customer ID] ,CustName AS [Customer Name] ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustDesc as [Description],CustOpeningBalance as[Opening Balance] ,CustCurrentBalance as[Current Balance] from  CustomerDetails Custd join CustomerAccountDetails Custad on Custd.CustID=Custad.CustID ";
-               string actualcolumn = "select top 1  Custd.CustId  ,CustName  ,CustCompName  ,CustAddress ,CustCity , CustState  ,CustZip  ,CustCountry  ,CustEmail , CustWebAddress ,CustPhone  ,CustMobile  ,CustFax,CustPanNo , CustVatNo,CustDesc,Custad.CustOpeningBalance,Custad.CustCurrentBalance from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
-   DataTable dt = dbMainClass.getDetailByQuery(selectQuery);
+             string selectQuery = "select  Custd.CustId as [Customer ID] ,CustName AS [Customer Name] ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustPanNo AS [PAN NO], CustGstNo AS [GST NO],CustDesc as [Description],CustOpeningBalance as[Opening Balance] ,CustCurrentBalance as[Current Balance] from  CustomerDetails Custd join CustomerAccountDetails Custad on Custd.CustID=Custad.CustID ";
+             string actualcolumn = "select top 1  Custd.CustId  ,CustName  ,CustCompName  ,CustAddress ,CustCity , CustState  ,CustZip  ,CustCountry  ,CustEmail , CustWebAddress ,CustPhone  ,CustMobile  ,CustFax,CustPanNo ,CustGstNo,CustDesc,Custad.CustOpeningBalance,Custad.CustCurrentBalance from  CustomerDetails Custd join    CustomerAccountDetails  Custad on Custd.CustID=Custad.CustID ";
+            DataTable dt = dbMainClass.getDetailByQuery(selectQuery);
             DataTable onlycolumnname = dbMainClass.getDetailByQuery(actualcolumn);
             DataTable customtable = new DataTable();
             customtable.Columns.Add("Actualtablecolumname");
@@ -271,7 +271,7 @@ namespace WindowsFormsApplication1
             DataTable dt = dbMainClass.getDetailByQuery(selectQuery);
             dataGridView1.DataSource = dt;
             //dataGridView1.DataSource = dt;
-            panel2.TabStop = false;
+             panel2.TabStop = false;
             correcttabindexlist();
             textBox1.Focus();
         }
@@ -500,8 +500,8 @@ namespace WindowsFormsApplication1
         {
            string s= comserchvalue.SelectedValue.ToString();
           // string val = "Cust"+s;
-             string selectQuery = "select  Custd.CustId as [Customer ID] ,CustName AS [Customer Name] ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustPanNo AS [PAN NO], CustVatNo AS [VAT NO],CustDesc as [Description],CustOpeningBalance as[Opening Balance] ,CustCurrentBalance as[Current Balance] from  CustomerDetails Custd join CustomerAccountDetails Custad on Custd.CustID=Custad.CustID where " + s + " like '" + textBox1.Text + "%'";
-  DataTable dt = dbMainClass.getDetailByQuery(selectQuery);
+             string selectQuery = "select  Custd.CustId as [Customer ID] ,CustName AS [Customer Name] ,CustCompName AS [Compnay Name] ,CustAddress AS Address,CustCity AS City, CustState AS State ,CustZip AS Zip ,CustCountry AS Country ,CustEmail AS [E-Mail Address] , CustWebAddress AS [Web Address],CustPhone AS Phone ,CustMobile AS Mobile ,CustFax AS Fax ,CustPanNo AS [PAN NO], CustGstNo AS [GST NO],CustDesc as [Description],CustOpeningBalance as[Opening Balance] ,CustCurrentBalance as[Current Balance] from  CustomerDetails Custd join CustomerAccountDetails Custad on Custd.CustID=Custad.CustID where " + s + " like '" + textBox1.Text + "%'";
+            DataTable dt = dbMainClass.getDetailByQuery(selectQuery);
             dataGridView1.DataSource = dt;
 
         }

@@ -1238,6 +1238,14 @@ namespace WindowsFormsApplication1
             Double Amount2 = Amount1 - Amount;
             string Amount3 = Amount2.ToString();
             txtBalance.Text = Amount2.ToString("##0.00");
+            if (txtRturned.Text == "0.00")
+            {
+                txtRturned.ReadOnly = true;
+            }
+            if (Amount1 < Amount)
+            {
+                txtRturned.ReadOnly = false;
+            }
         }
 
         private void txtBalance_KeyPress(object sender, KeyPressEventArgs e)

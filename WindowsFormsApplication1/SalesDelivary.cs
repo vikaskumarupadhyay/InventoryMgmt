@@ -3625,6 +3625,14 @@ namespace WindowsFormsApplication1
             Double Amount2 = Amount1 - Amount;
             string Amount3 = Amount2.ToString();
             txtBalance.Text = Amount2.ToString("##0.00");
+            if (txtRturned.Text == "0.00")
+            {
+                txtRturned.ReadOnly = true;
+            }
+            if (Amount1 < Amount)
+            {
+                txtRturned.ReadOnly = false;
+            }
         }
 
         private void btnSave_Click_1(object sender, EventArgs e)
@@ -4134,18 +4142,6 @@ namespace WindowsFormsApplication1
             {
                 txtRturned.SelectAll();
                 return;
-            }
-            if(BalAmunt==-0)
-            {
-
-            }
-            if (BalAmunt==0)
-            {
-                BalAmunt = Convert.ToDouble(txtBalance.Text);
-                if (BalAmunt != -0)
-                {
-                    txtRturned.ReadOnly = true;
-                }
             }
             
             if (bal2 == 0)
@@ -4681,11 +4677,7 @@ namespace WindowsFormsApplication1
             txtCouponAmount.SelectAll();
         }
 
-        private void txtBalance_TextChanged(object sender, EventArgs e)
-        {
-          
-        }
-     
+       
 
        
     }
