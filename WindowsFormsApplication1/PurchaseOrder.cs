@@ -862,6 +862,11 @@ namespace WindowsFormsApplication1
                         }
 
                         string txtQuanit = cellCollection[4].Value.ToString();
+                        if (txtQuanit == "0")
+                        {
+                           
+                            return;
+                        }
                         string txtRate = cellCollection[3].Value.ToString();
                         string txtAmoun = cellCollection[11].Value.ToString();
                         string OrderID = txtSrNo.Text;
@@ -957,8 +962,8 @@ namespace WindowsFormsApplication1
 
           }
             //}
-
-
+            gridPurchaseOrder.Focus();
+            gridPurchaseOrder.AllowUserToAddRows = true;
             txtVendorCode.Focus();
             txtVendorCode.Select(txtVendorCode.Text.Length, 0);
 
@@ -1931,9 +1936,13 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
+                    if (gridPurchaseOrder.Rows[0].Cells[0].Value == null)
+                    {
+                        return;
+                    }
                     string itemId = gridPurchaseOrder.Rows[0].Cells[0].Value.ToString();
 
-                    if (itemId == "")
+                    if (itemId =="")
                     {
                         return;
                     }
@@ -2010,6 +2019,11 @@ namespace WindowsFormsApplication1
 
                                 gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[3].Value = rate;
                                 string quantity = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[4].Value.ToString();
+                               // char ch = Convert.ToChar(quantity);
+                                if (quantity.All(char.IsLetter))
+                                {
+                                    quantity = "0";
+                                }
                                 if (quantity == "")
                                 {
                                     quantity = "0";

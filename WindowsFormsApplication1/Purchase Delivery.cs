@@ -1041,6 +1041,10 @@ namespace WindowsFormsApplication1
                         continue;
                     }
                     string que = cellCollection1[4].Value.ToString();
+                    if (que == "0")
+                    {
+                        return;
+                    }
                     //string quent = cellCollection1[4].Value.ToString();
 
 
@@ -1053,9 +1057,17 @@ namespace WindowsFormsApplication1
                         currid = dr["CurrentQuantity"].ToString();
                     }
                     //int quent1=Convert.ToInt32(quent);
-                    int curentQuntity = Convert.ToInt32(que);
-                    int cuentQuantity = Convert.ToInt32(currid);
-                    int lastQuantity = cuentQuantity + curentQuntity;
+                    if (que == "")
+                    {
+                        que = "0";
+                    }
+                   Double curentQuntity = Convert.ToDouble(que);
+                   if (currid == "")
+                   {
+                       currid = "0";
+                   }
+                   Double cuentQuantity = Convert.ToDouble(currid);
+                   Double lastQuantity = cuentQuantity + curentQuntity;
                     //int resivquenty = lastQuantity + quent1;
                     string currid1 = lastQuantity.ToString();
                     string updateQurry = "update ItemQuantityDetail set CurrentQuantity='" + lastQuantity + "'where ItemId='" + itid + "'";
@@ -1073,7 +1085,7 @@ namespace WindowsFormsApplication1
                 {
                     id2 = "1";
                     OrderID = id2;
-                    string insertqurry = "insert into VendorOrderDetails values('" + textVendercod.Text + "','" + txtdate.Value.ToString() + "','" + txttotalAmount.Text + "','" +txtDiscount.Text +"','" + txtdis.Text + "','" + txtDisAmount.Text + "','" + txtTaxAmount.Text + "','" + txtWAmount.Text + "')";
+                    string insertqurry = "insert into VendorOrderDetails values('" + textVendercod.Text + "','" + txtdate.Value.ToString() + "','" + txttotalAmount.Text + "','" + txtDiscount.Text + "','" + txtdis.Text + "','" + txtDisAmount.Text + "','" + txtTaxAmount.Text + "','" + txtWAmount.Text + "')";
                     int insertedRows = dbMainClass.saveDetails(insertqurry);
                     if (insertedRows > 0)
                     {
@@ -1091,8 +1103,13 @@ namespace WindowsFormsApplication1
                                 continue;
                             }
                             count++;
-                            string txtRate = cellCollection[4].Value.ToString();
-                            string txtQuanit = cellCollection[3].Value.ToString();
+                            string txtRate = cellCollection[3].Value.ToString();
+                            string txtQuanit = cellCollection[4].Value.ToString();
+                            if (txtQuanit == "0")
+                            {
+                                dataGridView1.Focus();
+                                return;
+                            }
                             string txtAmoun = cellCollection[11].Value.ToString();
 
                             string Query = "insert into VendorOrderDesc Values('" + OrderID + "','" + txtItemCod + "','" + txtRate + "','" + txtQuanit + "','" + txtAmoun + "')";
@@ -1120,8 +1137,12 @@ namespace WindowsFormsApplication1
                                     continue;
                                 }
                                 count++;
-                                string txtRate = cellCollection[4].Value.ToString();
-                                string txtQuanity = cellCollection[3].Value.ToString();
+                                string txtRate = cellCollection[3].Value.ToString();
+                                string txtQuanity = cellCollection[4].Value.ToString();
+                                if (txtQuanity == "0")
+                                {
+                                    return;
+                                }
                                 string txtAmoun = cellCollection[11].Value.ToString();
                                 //string OrderID1 = OrderID;
 
@@ -1136,7 +1157,7 @@ namespace WindowsFormsApplication1
                             {
 
                                 string insertQurry = "insert into CustomerOrderDelivery Values('" + OrderID + "','true','" + txtdate.Value.ToString() + "','" + Ref + "')";
-                                
+
                                 int insertedRows3 = dbMainClass.saveDetails(insertQurry);
                                 if (insertedRows3 > 0)
                                 {
@@ -1144,7 +1165,7 @@ namespace WindowsFormsApplication1
                                     DeliveryID(txtSrNo.Text);
                                     BlankPaymentPage();
                                     makeBlank();
-                                   
+
                                     dataGridView1.AllowUserToAddRows = true;
                                 }
                                 else
@@ -1171,7 +1192,7 @@ namespace WindowsFormsApplication1
                     {
                         txtWAmount.Text = "0.00";
                     }
-                    string insertqurry1 = "insert into VendorOrderDetails values('" + textVendercod.Text + "','" + txtdate.Value.ToString() + "','" + txttotalAmount.Text + "','" +txtDiscount.Text +"','" + txtdis.Text + "','" + txtDisAmount.Text + "','" + txtTaxAmount.Text + "','" + txtWAmount.Text + "')";
+                    string insertqurry1 = "insert into VendorOrderDetails values('" + textVendercod.Text + "','" + txtdate.Value.ToString() + "','" + txttotalAmount.Text + "','" + txtDiscount.Text + "','" + txtdis.Text + "','" + txtDisAmount.Text + "','" + txtTaxAmount.Text + "','" + txtWAmount.Text + "')";
 
                     int insertedRows1 = dbMainClass.saveDetails(insertqurry1);
                     if (insertedRows1 > 0)
@@ -1185,13 +1206,17 @@ namespace WindowsFormsApplication1
                             DataGridViewCellCollection cellCollection = currentRow.Cells;
                             string txtItemCod = cellCollection[0].Value.ToString();
                             if (ls.Contains(txtItemCod) && dataGridView1.Rows[count].DefaultCellStyle.Font != null)
-                                {
-                                    count++;
-                                    continue;
-                                }
+                            {
+                                count++;
+                                continue;
+                            }
                             count++;
                             string txtRate = cellCollection[3].Value.ToString();
                             string txtQuanit = cellCollection[4].Value.ToString();
+                            if (txtQuanit == "0")
+                            {
+                                return;
+                            }
                             string txtAmoun = cellCollection[11].Value.ToString();
 
                             string Query = "insert into VendorOrderDesc Values('" + OrderID + "','" + txtItemCod + "','" + txtRate + "','" + txtQuanit + "','" + txtAmoun + "')";
@@ -1233,97 +1258,97 @@ namespace WindowsFormsApplication1
                             //int insertedRows4 = dbMainClass.saveDetails(sf1);
                             //if (insertedRows4 > 0)
                             //{
-                                string insertQurry = "insert into CustomerOrderDelivery Values('" + OrderID + "','true','" + txtdate.Value.ToString() + "','" + Ref + "')";
-                                int insertedRows5 = dbMainClass.saveDetails(insertQurry);
-                                if (insertedRows5 > 0)
+                            string insertQurry = "insert into CustomerOrderDelivery Values('" + OrderID + "','true','" + txtdate.Value.ToString() + "','" + Ref + "')";
+                            int insertedRows5 = dbMainClass.saveDetails(insertQurry);
+                            if (insertedRows5 > 0)
+                            {
+                                string qurry = "select vCurrentBalance from VendorAccountDetails where venderId='" + textVendercod.Text + "'";
+                                DataTable dt = dbMainClass.getDetailByQuery(qurry);
+                                string balabce = "";
+                                foreach (DataRow dr in dt.Rows)
                                 {
-                                    string qurry = "select vCurrentBalance from VendorAccountDetails where venderId='" + textVendercod.Text + "'";
-                                    DataTable dt = dbMainClass.getDetailByQuery(qurry);
-                                    string balabce = "";
-                                    foreach (DataRow dr in dt.Rows)
-                                    {
-                                        balabce = dr[0].ToString();
-                                    }
-
-                                    double bal = Convert.ToDouble(balabce.ToString());
-                                    double balan = Convert.ToDouble(txtBalance.Text);
-                                    double b = bal + balan;
-
-                                    string updateQ = "update VendorAccountDetails set vCurrentBalance='" + b + "'where venderId='" + textVendercod.Text + "'";
-                                    int insertedRows3 = dbMainClass.saveDetails(updateQ);
-                                    DateTime d = DateTime.Now;
-                                    string insertQurry1 = "insert into AllPaymentDetailes Values('" + txtInvoiceid.Text + "','" + CashAmount.Text + "','" + txtCreditAmount.Text + "','" + txtDebitBankName.Text + "','" + txtCardNumber.Text + "','" + CmbCardType.SelectedItem.ToString() + "','" + txtChequeAmount.Text + "','" + txtChequeBankName.Text + "','" + txtChequeNumber.Text + "','" + dateTimePicker1.Value.ToString() + "','" + txtEwalletAmount.Text + "','" + EWalletCompanyName.Text + "','" + txtTransactionNumber.Text + "','" + dateTimePicker2.Value.ToString() + "','" + txtCouponAmount.Text + "','" + CmbCompany.SelectedItem.ToString() + "','" + txtInvoiceAmount.Text + "','" + txtTotalAmount1.Text + "','" + txtBalance.Text + "','" + txtRturned.Text + "','" + txtNetAmount.Text + "','"+d+"')";
-                                    int insertedRows = dbMainClass.saveDetails(insertQurry1);
-                                    if (insertedRows > 0)
-                                    {
-
-                                        MessageBox.Show("Details Saved Successfully");
-                                        DeliveryID(txtSrNo.Text);
-                                        BlankPaymentPage();
-                                        makeBlank();
-                                      
-                                        DialogResult result1 = MessageBox.Show("This Page Print", "Important Question", MessageBoxButtons.YesNo);
-                                        if (result1 == System.Windows.Forms.DialogResult.Yes)
-                                        {
-                                            //DeliveryReportViewer.Visible = false;
-                                           // panel2.Visible = true;
-                                            //string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
-                                            SqlConnection con = dbMainClass.openConnection();//new SqlConnection(conntion);
-                                            int id = Convert.ToInt32(txtSrNo.Text);
-                                            int id7 = id - 1;
-                                            ReportDocument crReportDocument;
-                                            crReportDocument = new ReportDocument();
-                                            frmViewReport View = new frmViewReport();
-                                            crReportDocument.Load(Application.StartupPath + "//Report//DeliveryPage.rpt");
-                                            string selectqurry = "select * from purchesDelivery where Deliveryid='" + id7 + "'";
-                                            SqlCommand cmd = new SqlCommand(selectqurry, con);
-                                            SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                                            PurchesDelivery ds = new PurchesDelivery();
-                                            sda.Fill(ds, "purchesDelivery");
-                                            crReportDocument.SetDataSource(ds.Tables[1]);
-                                            //Start Preview                          
-                                            View.CrViewer.ReportSource = crReportDocument;
-                                            View.CrViewer.Refresh();
-
-                                           View.Show();
-                                            DeliveryReportViewer.Visible = false;
-                                            panel2.Visible = false;
-                                            textVendercod.Focus();
-                                            textVendercod.Select(textVendercod.Text.Length, 0);
-                                            textVendercod.TabStop = true;
-                                            button1.TabStop = true;
-                                            button4.Enabled = false;
-                                            
-                                           // crReportDocument.PrintToPrinter(1, false, 0, 0);
-
-                                           // DeliveryPage cryRpt = new DeliveryPage();
-                                            //ReportDocument cryRpt = new ReportDocument();
-                                            //cryRpt.Load("C:\\Users\\Umesh\\Documents\\visual studio 2010\\Projects\\WindowsFormsApplication5\\WindowsFormsApplication5\\PurchesCrystalReport.rpt");
-                                            //cryRpt.SetDataSource(ds.Tables[1]);
-                                            //DeliveryReportViewer.ReportSource = cryRpt;
-                                            //DeliveryReportViewer.Refresh();
-                                        }
-                                        if (result1 == System.Windows.Forms.DialogResult.No)
-                                        {
-                                            DeliveryReportViewer.Visible = false;
-                                            panel2.Visible = false;
-                                            textVendercod.Focus();
-                                            textVendercod.Select(textVendercod.Text.Length, 0);
-                                            textVendercod.TabStop = true;
-                                            button1.TabStop = true;
-                                            button4.Enabled = false;
-                                        }
-
-                                        dataGridView1.AllowUserToAddRows = true;
-
-                                    }
+                                    balabce = dr[0].ToString();
                                 }
-                                else
+
+                                double bal = Convert.ToDouble(balabce.ToString());
+                                double balan = Convert.ToDouble(txtBalance.Text);
+                                double b = bal + balan;
+
+                                string updateQ = "update VendorAccountDetails set vCurrentBalance='" + b + "'where venderId='" + textVendercod.Text + "'";
+                                int insertedRows3 = dbMainClass.saveDetails(updateQ);
+                                DateTime d = DateTime.Now;
+                                string insertQurry1 = "insert into AllPaymentDetailes Values('" + txtInvoiceid.Text + "','" + CashAmount.Text + "','" + txtCreditAmount.Text + "','" + txtDebitBankName.Text + "','" + txtCardNumber.Text + "','" + CmbCardType.SelectedItem.ToString() + "','" + txtChequeAmount.Text + "','" + txtChequeBankName.Text + "','" + txtChequeNumber.Text + "','" + dateTimePicker1.Value.ToString() + "','" + txtEwalletAmount.Text + "','" + EWalletCompanyName.Text + "','" + txtTransactionNumber.Text + "','" + dateTimePicker2.Value.ToString() + "','" + txtCouponAmount.Text + "','" + CmbCompany.SelectedItem.ToString() + "','" + txtInvoiceAmount.Text + "','" + txtTotalAmount1.Text + "','" + txtBalance.Text + "','" + txtRturned.Text + "','" + txtNetAmount.Text + "','" + d + "')";
+                                int insertedRows = dbMainClass.saveDetails(insertQurry1);
+                                if (insertedRows > 0)
                                 {
-                                    MessageBox.Show("Details Not Saved Successfully");
+
+                                    MessageBox.Show("Details Saved Successfully");
+                                    DeliveryID(txtSrNo.Text);
+                                    BlankPaymentPage();
+                                    makeBlank();
+
+                                    DialogResult result1 = MessageBox.Show("This Page Print", "Important Question", MessageBoxButtons.YesNo);
+                                    if (result1 == System.Windows.Forms.DialogResult.Yes)
+                                    {
+                                        //DeliveryReportViewer.Visible = false;
+                                        // panel2.Visible = true;
+                                        //string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
+                                        SqlConnection con = dbMainClass.openConnection();//new SqlConnection(conntion);
+                                        int id = Convert.ToInt32(txtSrNo.Text);
+                                        int id7 = id - 1;
+                                        ReportDocument crReportDocument;
+                                        crReportDocument = new ReportDocument();
+                                        frmViewReport View = new frmViewReport();
+                                        crReportDocument.Load(Application.StartupPath + "//Report//DeliveryPage.rpt");
+                                        string selectqurry = "select * from purchesDelivery where Deliveryid='" + id7 + "'";
+                                        SqlCommand cmd = new SqlCommand(selectqurry, con);
+                                        SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                                        PurchesDelivery ds = new PurchesDelivery();
+                                        sda.Fill(ds, "purchesDelivery");
+                                        crReportDocument.SetDataSource(ds.Tables[1]);
+                                        //Start Preview                          
+                                        View.CrViewer.ReportSource = crReportDocument;
+                                        View.CrViewer.Refresh();
+
+                                        View.Show();
+                                        DeliveryReportViewer.Visible = false;
+                                        panel2.Visible = false;
+                                        textVendercod.Focus();
+                                        textVendercod.Select(textVendercod.Text.Length, 0);
+                                        textVendercod.TabStop = true;
+                                        button1.TabStop = true;
+                                        button4.Enabled = false;
+
+                                        // crReportDocument.PrintToPrinter(1, false, 0, 0);
+
+                                        // DeliveryPage cryRpt = new DeliveryPage();
+                                        //ReportDocument cryRpt = new ReportDocument();
+                                        //cryRpt.Load("C:\\Users\\Umesh\\Documents\\visual studio 2010\\Projects\\WindowsFormsApplication5\\WindowsFormsApplication5\\PurchesCrystalReport.rpt");
+                                        //cryRpt.SetDataSource(ds.Tables[1]);
+                                        //DeliveryReportViewer.ReportSource = cryRpt;
+                                        //DeliveryReportViewer.Refresh();
+                                    }
+                                    if (result1 == System.Windows.Forms.DialogResult.No)
+                                    {
+                                        DeliveryReportViewer.Visible = false;
+                                        panel2.Visible = false;
+                                        textVendercod.Focus();
+                                        textVendercod.Select(textVendercod.Text.Length, 0);
+                                        textVendercod.TabStop = true;
+                                        button1.TabStop = true;
+                                        button4.Enabled = false;
+                                    }
+
                                     dataGridView1.AllowUserToAddRows = true;
+
                                 }
-                           // }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Details Not Saved Successfully");
+                                dataGridView1.AllowUserToAddRows = true;
+                            }
+                            // }
                             //    MessageBox.Show("Details Saved Successfully");
                             //}
                             //else
@@ -1331,9 +1356,11 @@ namespace WindowsFormsApplication1
                             //    MessageBox.Show("Details Not Saved Successfully");
                             //}
                             //}
-                      }
+                        }
                     }
                 }
+                dataGridView1.Focus();
+                dataGridView1.AllowUserToAddRows = true;
             }
              if (txtRef.Text != "")
             {
@@ -2612,7 +2639,7 @@ namespace WindowsFormsApplication1
                 {
                     t = "cast(((VendorOrderDetails.WithoutTexAmount)-(VendorOrderDetails.DisAmount))+(VendorOrderDetails.TextTaxAmmount) as numeric(38, 2))";
                 }
-                else if (t == "Column7")
+                else if (t == "Column8")
                 {
                     t = "(case when  exists ( select Orderid from CustomerOrderDelivery where Orderid = VendorOrderDetails.Orderid) then 'Delivered' else 'Panding'end)";
                 }
@@ -3758,6 +3785,7 @@ namespace WindowsFormsApplication1
             if (bal2 < return3)
             {
                 MessageBox.Show("please corrct Amount");
+                txtRturned.Text = "0";
                 txtRturned.Focus();
                 txtRturned.SelectAll();
                 txtBalance.Text = BalAmunt.ToString("###0.00");
@@ -4031,6 +4059,10 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
+                    if (dataGridView1.Rows[0].Cells[0].Value == null)
+                    {
+                        return;
+                    }
                     string itemId = dataGridView1.Rows[0].Cells[0].Value.ToString();
 
                     if (itemId == "")
@@ -4122,6 +4154,10 @@ namespace WindowsFormsApplication1
 
                                 dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[3].Value = rate;
                                 string quantity = dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[4].Value.ToString();
+                                if(quantity.All(char.IsLetter))
+                                {
+                                    quantity = "0";
+                                }
                                 if (quantity == "")
                                 {
                                     quantity = "0";

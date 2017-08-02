@@ -56,6 +56,66 @@
             this.button4 = new System.Windows.Forms.Button();
             this.buttSave = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlPayment = new System.Windows.Forms.Panel();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.textBox27 = new System.Windows.Forms.TextBox();
+            this.txtInvoiceAmount = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.txtInvoiceid = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.CmbPageName = new System.Windows.Forms.ComboBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.textBox26 = new System.Windows.Forms.TextBox();
+            this.textBox25 = new System.Windows.Forms.TextBox();
+            this.textBox24 = new System.Windows.Forms.TextBox();
+            this.textBox23 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtRturned = new System.Windows.Forms.TextBox();
+            this.txtNetAmount = new System.Windows.Forms.TextBox();
+            this.txtBalance = new System.Windows.Forms.TextBox();
+            this.txtTotalAmount1 = new System.Windows.Forms.TextBox();
+            this.textBox20 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.CmbCompany = new System.Windows.Forms.ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtCouponAmount = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.label25 = new System.Windows.Forms.Label();
+            this.txtTransactionNumber = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.EWalletCompanyName = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.txtEwalletAmount = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.txtChequeNumber = new System.Windows.Forms.TextBox();
+            this.txtChequeBankName = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.txtChequeAmount = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.CmbCardType = new System.Windows.Forms.ComboBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.txtCardNumber = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.txtDebitBankName = new System.Windows.Forms.TextBox();
+            this.txtCreditAmount = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.CashAmount = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -72,6 +132,8 @@
             this.txttotalAmount = new System.Windows.Forms.TextBox();
             this.textBox22 = new System.Windows.Forms.TextBox();
             this.textBox15 = new System.Windows.Forms.TextBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnBack = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.coponCompanyName = new System.Windows.Forms.TextBox();
             this.EWalleTransactionDate = new System.Windows.Forms.TextBox();
@@ -108,84 +170,22 @@
             this.label53 = new System.Windows.Forms.Label();
             this.showCashAmount = new System.Windows.Forms.TextBox();
             this.label54 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.btnBack = new System.Windows.Forms.Button();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.label38 = new System.Windows.Forms.Label();
-            this.CashAmount = new System.Windows.Forms.TextBox();
-            this.label37 = new System.Windows.Forms.Label();
-            this.txtCreditAmount = new System.Windows.Forms.TextBox();
-            this.txtDebitBankName = new System.Windows.Forms.TextBox();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.txtCardNumber = new System.Windows.Forms.TextBox();
-            this.label34 = new System.Windows.Forms.Label();
-            this.CmbCardType = new System.Windows.Forms.ComboBox();
-            this.label33 = new System.Windows.Forms.Label();
-            this.txtChequeAmount = new System.Windows.Forms.TextBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.txtChequeBankName = new System.Windows.Forms.TextBox();
-            this.txtChequeNumber = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label29 = new System.Windows.Forms.Label();
-            this.txtEwalletAmount = new System.Windows.Forms.TextBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.EWalletCompanyName = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.txtTransactionNumber = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label24 = new System.Windows.Forms.Label();
-            this.txtCouponAmount = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.CmbCompany = new System.Windows.Forms.ComboBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox20 = new System.Windows.Forms.TextBox();
-            this.txtTotalAmount1 = new System.Windows.Forms.TextBox();
-            this.txtBalance = new System.Windows.Forms.TextBox();
-            this.txtNetAmount = new System.Windows.Forms.TextBox();
-            this.txtRturned = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox23 = new System.Windows.Forms.TextBox();
-            this.textBox24 = new System.Windows.Forms.TextBox();
-            this.textBox25 = new System.Windows.Forms.TextBox();
-            this.textBox26 = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.CmbPageName = new System.Windows.Forms.ComboBox();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.txtInvoiceid = new System.Windows.Forms.TextBox();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.txtInvoiceAmount = new System.Windows.Forms.TextBox();
-            this.textBox27 = new System.Windows.Forms.TextBox();
-            this.pnlPayment = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
+            this.pnlPayment.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            this.groupBox10.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox6.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.groupBox10.SuspendLayout();
-            this.groupBox9.SuspendLayout();
-            this.groupBox8.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.pnlPayment.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -208,9 +208,9 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(20, 5);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(977, 198);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
@@ -218,7 +218,7 @@
             // txtFax
             // 
             this.txtFax.Location = new System.Drawing.Point(675, 160);
-            this.txtFax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFax.Margin = new System.Windows.Forms.Padding(4);
             this.txtFax.Name = "txtFax";
             this.txtFax.ReadOnly = true;
             this.txtFax.Size = new System.Drawing.Size(259, 23);
@@ -237,7 +237,7 @@
             // txtMobile
             // 
             this.txtMobile.Location = new System.Drawing.Point(360, 160);
-            this.txtMobile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMobile.Margin = new System.Windows.Forms.Padding(4);
             this.txtMobile.Name = "txtMobile";
             this.txtMobile.ReadOnly = true;
             this.txtMobile.Size = new System.Drawing.Size(307, 23);
@@ -256,7 +256,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(155, 38);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(32, 27);
             this.button1.TabIndex = 10;
@@ -268,7 +268,7 @@
             // txtPhone
             // 
             this.txtPhone.Location = new System.Drawing.Point(30, 160);
-            this.txtPhone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(4);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.ReadOnly = true;
             this.txtPhone.Size = new System.Drawing.Size(322, 23);
@@ -277,7 +277,7 @@
             // txtAddress
             // 
             this.txtAddress.Location = new System.Drawing.Point(31, 94);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(4);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.ReadOnly = true;
@@ -308,7 +308,7 @@
             // txtCompanyName
             // 
             this.txtCompanyName.Location = new System.Drawing.Point(557, 40);
-            this.txtCompanyName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCompanyName.Margin = new System.Windows.Forms.Padding(4);
             this.txtCompanyName.Name = "txtCompanyName";
             this.txtCompanyName.ReadOnly = true;
             this.txtCompanyName.Size = new System.Drawing.Size(377, 23);
@@ -317,7 +317,7 @@
             // txtVendorName
             // 
             this.txtVendorName.Location = new System.Drawing.Point(195, 40);
-            this.txtVendorName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtVendorName.Margin = new System.Windows.Forms.Padding(4);
             this.txtVendorName.Name = "txtVendorName";
             this.txtVendorName.ReadOnly = true;
             this.txtVendorName.Size = new System.Drawing.Size(354, 23);
@@ -326,7 +326,7 @@
             // txtvendorId
             // 
             this.txtvendorId.Location = new System.Drawing.Point(30, 40);
-            this.txtvendorId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtvendorId.Margin = new System.Windows.Forms.Padding(4);
             this.txtvendorId.Name = "txtvendorId";
             this.txtvendorId.ReadOnly = true;
             this.txtvendorId.Size = new System.Drawing.Size(121, 23);
@@ -375,9 +375,9 @@
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(1005, 5);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(333, 134);
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
@@ -386,7 +386,7 @@
             // 
             this.txtpayDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.txtpayDate.Location = new System.Drawing.Point(109, 59);
-            this.txtpayDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtpayDate.Margin = new System.Windows.Forms.Padding(4);
             this.txtpayDate.Name = "txtpayDate";
             this.txtpayDate.Size = new System.Drawing.Size(179, 23);
             this.txtpayDate.TabIndex = 16;
@@ -404,7 +404,7 @@
             // txtRefNo
             // 
             this.txtRefNo.Location = new System.Drawing.Point(109, 94);
-            this.txtRefNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRefNo.Margin = new System.Windows.Forms.Padding(4);
             this.txtRefNo.Name = "txtRefNo";
             this.txtRefNo.ReadOnly = true;
             this.txtRefNo.Size = new System.Drawing.Size(179, 23);
@@ -416,7 +416,7 @@
             // txtSrNo
             // 
             this.txtSrNo.Location = new System.Drawing.Point(109, 26);
-            this.txtSrNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSrNo.Margin = new System.Windows.Forms.Padding(4);
             this.txtSrNo.Name = "txtSrNo";
             this.txtSrNo.ReadOnly = true;
             this.txtSrNo.Size = new System.Drawing.Size(179, 23);
@@ -451,7 +451,7 @@
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(20, 210);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1318, 370);
             this.panel1.TabIndex = 28;
@@ -463,14 +463,14 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1314, 366);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            //this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
             // 
@@ -478,7 +478,7 @@
             // 
             this.button4.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Location = new System.Drawing.Point(198, 615);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(119, 31);
             this.button4.TabIndex = 11;
@@ -490,7 +490,7 @@
             // 
             this.buttSave.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttSave.Location = new System.Drawing.Point(20, 615);
-            this.buttSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttSave.Margin = new System.Windows.Forms.Padding(4);
             this.buttSave.Name = "buttSave";
             this.buttSave.Size = new System.Drawing.Size(170, 31);
             this.buttSave.TabIndex = 31;
@@ -500,654 +500,172 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.pnlPayment);
             this.panel2.Controls.Add(this.groupBox11);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.groupBox6);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1362, 683);
             this.panel2.TabIndex = 34;
             // 
-            // groupBox11
+            // pnlPayment
             // 
-            this.groupBox11.Controls.Add(this.label11);
-            this.groupBox11.Controls.Add(this.label12);
-            this.groupBox11.Controls.Add(this.dateTimePicker3);
-            this.groupBox11.Controls.Add(this.dateTimePicker4);
-            this.groupBox11.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox11.Location = new System.Drawing.Point(16, 20);
-            this.groupBox11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox11.Size = new System.Drawing.Size(597, 88);
-            this.groupBox11.TabIndex = 6;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Select Date";
+            this.pnlPayment.Controls.Add(this.groupBox7);
+            this.pnlPayment.Controls.Add(this.groupBox8);
+            this.pnlPayment.Controls.Add(this.btnClose);
+            this.pnlPayment.Controls.Add(this.groupBox9);
+            this.pnlPayment.Controls.Add(this.btnSave);
+            this.pnlPayment.Controls.Add(this.groupBox10);
+            this.pnlPayment.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlPayment.Location = new System.Drawing.Point(0, 0);
+            this.pnlPayment.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlPayment.Name = "pnlPayment";
+            this.pnlPayment.Size = new System.Drawing.Size(1362, 683);
+            this.pnlPayment.TabIndex = 72;
+            this.pnlPayment.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlPayment_Paint);
             // 
-            // label11
+            // groupBox7
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(297, 25);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(23, 16);
-            this.label11.TabIndex = 8;
-            this.label11.Text = "To";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(31, 25);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(38, 16);
-            this.label12.TabIndex = 7;
-            this.label12.Text = "From";
-            // 
-            // dateTimePicker3
-            // 
-            this.dateTimePicker3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker3.Location = new System.Drawing.Point(298, 45);
-            this.dateTimePicker3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(256, 23);
-            this.dateTimePicker3.TabIndex = 8;
-            this.dateTimePicker3.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
-            // 
-            // dateTimePicker4
-            // 
-            this.dateTimePicker4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker4.Location = new System.Drawing.Point(34, 45);
-            this.dateTimePicker4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.Size = new System.Drawing.Size(256, 23);
-            this.dateTimePicker4.TabIndex = 7;
-            this.dateTimePicker4.Value = new System.DateTime(2017, 7, 29, 0, 49, 0, 0);
-            this.dateTimePicker4.ValueChanged += new System.EventHandler(this.dateTimePicker4_ValueChanged);
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel3.Controls.Add(this.dataGridView2);
-            this.panel3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel3.Location = new System.Drawing.Point(16, 114);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1319, 493);
-            this.panel3.TabIndex = 3;
+            this.groupBox7.Controls.Add(this.textBox27);
+            this.groupBox7.Controls.Add(this.txtInvoiceAmount);
+            this.groupBox7.Controls.Add(this.label21);
+            this.groupBox7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox7.Location = new System.Drawing.Point(937, 15);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox7.Size = new System.Drawing.Size(393, 71);
+            this.groupBox7.TabIndex = 9;
+            this.groupBox7.TabStop = false;
             // 
-            // dataGridView2
+            // textBox27
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView2.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView2.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(1315, 489);
-            this.dataGridView2.StandardTab = true;
-            this.dataGridView2.TabIndex = 4;
-            this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
-            this.dataGridView2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView2_KeyPress);
+            this.textBox27.Location = new System.Drawing.Point(124, 28);
+            this.textBox27.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox27.Multiline = true;
+            this.textBox27.Name = "textBox27";
+            this.textBox27.ReadOnly = true;
+            this.textBox27.Size = new System.Drawing.Size(37, 25);
+            this.textBox27.TabIndex = 41;
+            this.textBox27.TabStop = false;
+            this.textBox27.Text = "₹";
+            this.textBox27.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // groupBox6
+            // txtInvoiceAmount
             // 
-            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtInvoiceAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox6.Controls.Add(this.txtSearch);
-            this.groupBox6.Controls.Add(this.label8);
-            this.groupBox6.Controls.Add(this.comboBox1);
-            this.groupBox6.Controls.Add(this.label10);
-            this.groupBox6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox6.Location = new System.Drawing.Point(621, 20);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox6.Size = new System.Drawing.Size(712, 88);
-            this.groupBox6.TabIndex = 0;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Purchase Details";
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(371, 45);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtSearch.Multiline = true;
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(312, 24);
-            this.txtSearch.TabIndex = 2;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
-            this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(31, 25);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(87, 16);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Select Search";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(34, 45);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(329, 24);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.Leave += new System.EventHandler(this.comboBox1_Leave);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(368, 25);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(48, 16);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "Search";
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(16, 615);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(120, 31);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Close";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
-            // txttotalAmount
-            // 
-            this.txttotalAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txttotalAmount.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttotalAmount.Location = new System.Drawing.Point(1204, 588);
-            this.txttotalAmount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txttotalAmount.Name = "txttotalAmount";
-            this.txttotalAmount.ReadOnly = true;
-            this.txttotalAmount.Size = new System.Drawing.Size(134, 23);
-            this.txttotalAmount.TabIndex = 52;
-            this.txttotalAmount.TabStop = false;
-            this.txttotalAmount.Text = "0";
-            this.txttotalAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox22
-            // 
-            this.textBox22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox22.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox22.Location = new System.Drawing.Point(1161, 588);
-            this.textBox22.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox22.Name = "textBox22";
-            this.textBox22.ReadOnly = true;
-            this.textBox22.Size = new System.Drawing.Size(45, 23);
-            this.textBox22.TabIndex = 51;
-            this.textBox22.TabStop = false;
-            this.textBox22.Text = "Rs";
-            this.textBox22.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox15
-            // 
-            this.textBox15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox15.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox15.Location = new System.Drawing.Point(1013, 588);
-            this.textBox15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.ReadOnly = true;
-            this.textBox15.Size = new System.Drawing.Size(149, 23);
-            this.textBox15.TabIndex = 50;
-            this.textBox15.TabStop = false;
-            this.textBox15.Text = "Balance Amount";
-            this.textBox15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.coponCompanyName);
-            this.groupBox3.Controls.Add(this.EWalleTransactionDate);
-            this.groupBox3.Controls.Add(this.chChequeDate);
-            this.groupBox3.Controls.Add(this.creCardType);
-            this.groupBox3.Controls.Add(this.textBox1);
-            this.groupBox3.Controls.Add(this.textBox3);
-            this.groupBox3.Controls.Add(this.textBox7);
-            this.groupBox3.Controls.Add(this.textBox8);
-            this.groupBox3.Controls.Add(this.textBox9);
-            this.groupBox3.Controls.Add(this.label40);
-            this.groupBox3.Controls.Add(this.showCouponAmount);
-            this.groupBox3.Controls.Add(this.label41);
-            this.groupBox3.Controls.Add(this.label42);
-            this.groupBox3.Controls.Add(this.EWalleTransactionNumber);
-            this.groupBox3.Controls.Add(this.label43);
-            this.groupBox3.Controls.Add(this.EWalletCompanyNam);
-            this.groupBox3.Controls.Add(this.label44);
-            this.groupBox3.Controls.Add(this.EWalletAmount);
-            this.groupBox3.Controls.Add(this.label45);
-            this.groupBox3.Controls.Add(this.chChequeNumber);
-            this.groupBox3.Controls.Add(this.cheBankName);
-            this.groupBox3.Controls.Add(this.label46);
-            this.groupBox3.Controls.Add(this.label47);
-            this.groupBox3.Controls.Add(this.label48);
-            this.groupBox3.Controls.Add(this.showChequeAmount);
-            this.groupBox3.Controls.Add(this.label49);
-            this.groupBox3.Controls.Add(this.label50);
-            this.groupBox3.Controls.Add(this.creCardNumber);
-            this.groupBox3.Controls.Add(this.label51);
-            this.groupBox3.Controls.Add(this.label52);
-            this.groupBox3.Controls.Add(this.creBankName);
-            this.groupBox3.Controls.Add(this.showCreditDebitCard);
-            this.groupBox3.Controls.Add(this.label53);
-            this.groupBox3.Controls.Add(this.showCashAmount);
-            this.groupBox3.Controls.Add(this.label54);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(24, 114);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox3.Size = new System.Drawing.Size(1346, 273);
-            this.groupBox3.TabIndex = 8;
-            this.groupBox3.TabStop = false;
-            // 
-            // coponCompanyName
-            // 
-            this.coponCompanyName.Location = new System.Drawing.Point(1164, 102);
-            this.coponCompanyName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.coponCompanyName.Name = "coponCompanyName";
-            this.coponCompanyName.ReadOnly = true;
-            this.coponCompanyName.Size = new System.Drawing.Size(279, 21);
-            this.coponCompanyName.TabIndex = 50;
-            // 
-            // EWalleTransactionDate
-            // 
-            this.EWalleTransactionDate.Location = new System.Drawing.Point(836, 202);
-            this.EWalleTransactionDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.EWalleTransactionDate.Name = "EWalleTransactionDate";
-            this.EWalleTransactionDate.ReadOnly = true;
-            this.EWalleTransactionDate.Size = new System.Drawing.Size(279, 21);
-            this.EWalleTransactionDate.TabIndex = 17;
-            // 
-            // chChequeDate
-            // 
-            this.chChequeDate.Location = new System.Drawing.Point(525, 202);
-            this.chChequeDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.chChequeDate.Name = "chChequeDate";
-            this.chChequeDate.ReadOnly = true;
-            this.chChequeDate.Size = new System.Drawing.Size(279, 21);
-            this.chChequeDate.TabIndex = 49;
-            // 
-            // creCardType
-            // 
-            this.creCardType.Location = new System.Drawing.Point(237, 198);
-            this.creCardType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.creCardType.Name = "creCardType";
-            this.creCardType.ReadOnly = true;
-            this.creCardType.Size = new System.Drawing.Size(279, 21);
-            this.creCardType.TabIndex = 48;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(12, 43);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(37, 21);
-            this.textBox1.TabIndex = 47;
-            this.textBox1.TabStop = false;
-            this.textBox1.Text = "₹";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(300, 43);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(37, 21);
-            this.textBox3.TabIndex = 46;
-            this.textBox3.TabStop = false;
-            this.textBox3.Text = "₹";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(588, 43);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(37, 21);
-            this.textBox7.TabIndex = 45;
-            this.textBox7.TabStop = false;
-            this.textBox7.Text = "₹";
-            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(876, 43);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(37, 21);
-            this.textBox8.TabIndex = 44;
-            this.textBox8.TabStop = false;
-            this.textBox8.Text = "₹";
-            this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(1164, 43);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(37, 21);
-            this.textBox9.TabIndex = 43;
-            this.textBox9.TabStop = false;
-            this.textBox9.Text = "₹";
-            this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(1160, 73);
-            this.label40.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(96, 15);
-            this.label40.TabIndex = 29;
-            this.label40.Text = "Company Name";
-            // 
-            // showCouponAmount
-            // 
-            this.showCouponAmount.Location = new System.Drawing.Point(1201, 43);
-            this.showCouponAmount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.showCouponAmount.Name = "showCouponAmount";
-            this.showCouponAmount.ReadOnly = true;
-            this.showCouponAmount.Size = new System.Drawing.Size(241, 21);
-            this.showCouponAmount.TabIndex = 27;
-            this.showCouponAmount.Text = "0.00";
-            this.showCouponAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(1160, 21);
-            this.label41.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(95, 15);
-            this.label41.TabIndex = 26;
-            this.label41.Text = "Coupon Amount";
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(872, 176);
-            this.label42.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(100, 15);
-            this.label42.TabIndex = 24;
-            this.label42.Text = "Transaction Date";
-            // 
-            // EWalleTransactionNumber
-            // 
-            this.EWalleTransactionNumber.Location = new System.Drawing.Point(876, 146);
-            this.EWalleTransactionNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.EWalleTransactionNumber.Name = "EWalleTransactionNumber";
-            this.EWalleTransactionNumber.ReadOnly = true;
-            this.EWalleTransactionNumber.Size = new System.Drawing.Size(279, 21);
-            this.EWalleTransactionNumber.TabIndex = 23;
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(872, 124);
-            this.label43.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(119, 15);
-            this.label43.TabIndex = 22;
-            this.label43.Text = "Transaction Number";
-            // 
-            // EWalletCompanyNam
-            // 
-            this.EWalletCompanyNam.Location = new System.Drawing.Point(876, 95);
-            this.EWalletCompanyNam.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.EWalletCompanyNam.Name = "EWalletCompanyNam";
-            this.EWalletCompanyNam.ReadOnly = true;
-            this.EWalletCompanyNam.Size = new System.Drawing.Size(279, 21);
-            this.EWalletCompanyNam.TabIndex = 21;
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(872, 73);
-            this.label44.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(96, 15);
-            this.label44.TabIndex = 20;
-            this.label44.Text = "Company Name";
-            // 
-            // EWalletAmount
-            // 
-            this.EWalletAmount.Location = new System.Drawing.Point(913, 43);
-            this.EWalletAmount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.EWalletAmount.Name = "EWalletAmount";
-            this.EWalletAmount.ReadOnly = true;
-            this.EWalletAmount.Size = new System.Drawing.Size(241, 21);
-            this.EWalletAmount.TabIndex = 19;
-            this.EWalletAmount.Text = "0.00";
-            this.EWalletAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(872, 21);
-            this.label45.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(98, 15);
-            this.label45.TabIndex = 18;
-            this.label45.Text = "E-Wallet Amount";
-            // 
-            // chChequeNumber
-            // 
-            this.chChequeNumber.Location = new System.Drawing.Point(588, 146);
-            this.chChequeNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.chChequeNumber.Name = "chChequeNumber";
-            this.chChequeNumber.ReadOnly = true;
-            this.chChequeNumber.Size = new System.Drawing.Size(279, 21);
-            this.chChequeNumber.TabIndex = 16;
-            // 
-            // cheBankName
-            // 
-            this.cheBankName.Location = new System.Drawing.Point(588, 95);
-            this.cheBankName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cheBankName.Name = "cheBankName";
-            this.cheBankName.ReadOnly = true;
-            this.cheBankName.Size = new System.Drawing.Size(279, 21);
-            this.cheBankName.TabIndex = 15;
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(584, 176);
-            this.label46.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(79, 15);
-            this.label46.TabIndex = 14;
-            this.label46.Text = "Cheque Date";
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(584, 124);
-            this.label47.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(98, 15);
-            this.label47.TabIndex = 13;
-            this.label47.Text = "Cheque Number";
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(584, 73);
-            this.label48.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(72, 15);
-            this.label48.TabIndex = 12;
-            this.label48.Text = "Bank Name";
-            // 
-            // showChequeAmount
-            // 
-            this.showChequeAmount.Location = new System.Drawing.Point(625, 43);
-            this.showChequeAmount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.showChequeAmount.Name = "showChequeAmount";
-            this.showChequeAmount.ReadOnly = true;
-            this.showChequeAmount.Size = new System.Drawing.Size(241, 21);
-            this.showChequeAmount.TabIndex = 11;
-            this.showChequeAmount.Text = "0.00";
-            this.showChequeAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label49
-            // 
-            this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(584, 21);
-            this.label49.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(95, 15);
-            this.label49.TabIndex = 10;
-            this.label49.Text = "Cheque Amount";
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(296, 176);
-            this.label50.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(62, 15);
-            this.label50.TabIndex = 8;
-            this.label50.Text = "Card Type";
-            // 
-            // creCardNumber
-            // 
-            this.creCardNumber.Location = new System.Drawing.Point(300, 146);
-            this.creCardNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.creCardNumber.Name = "creCardNumber";
-            this.creCardNumber.ReadOnly = true;
-            this.creCardNumber.Size = new System.Drawing.Size(279, 21);
-            this.creCardNumber.TabIndex = 7;
-            // 
-            // label51
-            // 
-            this.label51.AutoSize = true;
-            this.label51.Location = new System.Drawing.Point(296, 124);
-            this.label51.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(81, 15);
-            this.label51.TabIndex = 6;
-            this.label51.Text = "Card Number";
-            // 
-            // label52
-            // 
-            this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(296, 73);
-            this.label52.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(72, 15);
-            this.label52.TabIndex = 5;
-            this.label52.Text = "Bank Name";
-            // 
-            // creBankName
-            // 
-            this.creBankName.Location = new System.Drawing.Point(300, 95);
-            this.creBankName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.creBankName.Name = "creBankName";
-            this.creBankName.ReadOnly = true;
-            this.creBankName.Size = new System.Drawing.Size(279, 21);
-            this.creBankName.TabIndex = 4;
-            // 
-            // showCreditDebitCard
-            // 
-            this.showCreditDebitCard.Location = new System.Drawing.Point(337, 43);
-            this.showCreditDebitCard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.showCreditDebitCard.Name = "showCreditDebitCard";
-            this.showCreditDebitCard.ReadOnly = true;
-            this.showCreditDebitCard.Size = new System.Drawing.Size(241, 21);
-            this.showCreditDebitCard.TabIndex = 3;
-            this.showCreditDebitCard.Text = "0.00";
-            this.showCreditDebitCard.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label53
-            // 
-            this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(296, 21);
-            this.label53.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(106, 15);
-            this.label53.TabIndex = 2;
-            this.label53.Text = "Credit / Debit Card";
-            // 
-            // showCashAmount
-            // 
-            this.showCashAmount.Location = new System.Drawing.Point(49, 43);
-            this.showCashAmount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.showCashAmount.Name = "showCashAmount";
-            this.showCashAmount.ReadOnly = true;
-            this.showCashAmount.Size = new System.Drawing.Size(241, 21);
-            this.showCashAmount.TabIndex = 1;
-            this.showCashAmount.Text = "0.00";
-            this.showCashAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(8, 21);
-            this.label54.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(80, 15);
-            this.label54.TabIndex = 0;
-            this.label54.Text = "Cash Amount";
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.btnBack);
-            this.panel4.Controls.Add(this.groupBox3);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1362, 683);
-            this.panel4.TabIndex = 73;
-            // 
-            // btnBack
-            // 
-            this.btnBack.Location = new System.Drawing.Point(35, 489);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(193, 39);
-            this.btnBack.TabIndex = 9;
-            this.btnBack.Text = "Back";
-            this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            this.txtInvoiceAmount.Location = new System.Drawing.Point(160, 28);
+            this.txtInvoiceAmount.Margin = new System.Windows.Forms.Padding(4);
+            this.txtInvoiceAmount.Multiline = true;
+            this.txtInvoiceAmount.Name = "txtInvoiceAmount";
+            this.txtInvoiceAmount.ReadOnly = true;
+            this.txtInvoiceAmount.Size = new System.Drawing.Size(196, 25);
+            this.txtInvoiceAmount.TabIndex = 1;
+            this.txtInvoiceAmount.TabStop = false;
+            this.txtInvoiceAmount.Text = "0.00";
+            this.txtInvoiceAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(28, 33);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(88, 16);
+            this.label21.TabIndex = 0;
+            this.label21.Text = "Invoice Amt. :";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.txtInvoiceid);
+            this.groupBox8.Controls.Add(this.label18);
+            this.groupBox8.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox8.Location = new System.Drawing.Point(451, 15);
+            this.groupBox8.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox8.Size = new System.Drawing.Size(478, 71);
+            this.groupBox8.TabIndex = 8;
+            this.groupBox8.TabStop = false;
+            // 
+            // txtInvoiceid
+            // 
+            this.txtInvoiceid.Location = new System.Drawing.Point(110, 28);
+            this.txtInvoiceid.Margin = new System.Windows.Forms.Padding(4);
+            this.txtInvoiceid.Multiline = true;
+            this.txtInvoiceid.Name = "txtInvoiceid";
+            this.txtInvoiceid.ReadOnly = true;
+            this.txtInvoiceid.Size = new System.Drawing.Size(330, 25);
+            this.txtInvoiceid.TabIndex = 1;
+            this.txtInvoiceid.TabStop = false;
+            this.txtInvoiceid.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(22, 31);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(80, 16);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "Invoice No. :";
+            // 
+            // btnClose
+            // 
+            this.btnClose.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Location = new System.Drawing.Point(144, 367);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(120, 31);
+            this.btnClose.TabIndex = 11;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.CmbPageName);
+            this.groupBox9.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox9.Location = new System.Drawing.Point(16, 15);
+            this.groupBox9.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox9.Size = new System.Drawing.Size(427, 71);
+            this.groupBox9.TabIndex = 6;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Payment Details";
+            // 
+            // CmbPageName
+            // 
+            this.CmbPageName.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CmbPageName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbPageName.FormattingEnabled = true;
+            this.CmbPageName.Items.AddRange(new object[] {
+            "Purchase Delivary - Payment"});
+            this.CmbPageName.Location = new System.Drawing.Point(20, 28);
+            this.CmbPageName.Margin = new System.Windows.Forms.Padding(4);
+            this.CmbPageName.Name = "CmbPageName";
+            this.CmbPageName.Size = new System.Drawing.Size(382, 24);
+            this.CmbPageName.TabIndex = 1;
+            this.CmbPageName.TabStop = false;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(16, 367);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(120, 31);
+            this.btnSave.TabIndex = 10;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // groupBox10
             // 
@@ -1209,98 +727,418 @@
             this.groupBox10.TabIndex = 7;
             this.groupBox10.TabStop = false;
             // 
-            // label38
+            // textBox26
             // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(9, 24);
-            this.label38.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(84, 16);
-            this.label38.TabIndex = 0;
-            this.label38.Text = "Cash Amount";
+            this.textBox26.Location = new System.Drawing.Point(12, 43);
+            this.textBox26.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox26.Name = "textBox26";
+            this.textBox26.ReadOnly = true;
+            this.textBox26.Size = new System.Drawing.Size(37, 23);
+            this.textBox26.TabIndex = 47;
+            this.textBox26.TabStop = false;
+            this.textBox26.Text = "₹";
+            this.textBox26.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // CashAmount
+            // textBox25
             // 
-            this.CashAmount.Location = new System.Drawing.Point(48, 43);
-            this.CashAmount.Margin = new System.Windows.Forms.Padding(4);
-            this.CashAmount.Name = "CashAmount";
-            this.CashAmount.Size = new System.Drawing.Size(164, 23);
-            this.CashAmount.TabIndex = 1;
-            this.CashAmount.Text = "0.00";
-            this.CashAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.CashAmount.TextChanged += new System.EventHandler(this.CashAmount_TextChanged);
-            this.CashAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CashAmount_KeyPress);
-            this.CashAmount.Leave += new System.EventHandler(this.CashAmount_Leave);
+            this.textBox25.Location = new System.Drawing.Point(220, 43);
+            this.textBox25.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox25.Name = "textBox25";
+            this.textBox25.ReadOnly = true;
+            this.textBox25.Size = new System.Drawing.Size(37, 23);
+            this.textBox25.TabIndex = 46;
+            this.textBox25.TabStop = false;
+            this.textBox25.Text = "₹";
+            this.textBox25.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label37
+            // textBox24
             // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(217, 24);
-            this.label37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(115, 16);
-            this.label37.TabIndex = 2;
-            this.label37.Text = "Credit / Debit Card";
+            this.textBox24.Location = new System.Drawing.Point(428, 43);
+            this.textBox24.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox24.Name = "textBox24";
+            this.textBox24.ReadOnly = true;
+            this.textBox24.Size = new System.Drawing.Size(37, 23);
+            this.textBox24.TabIndex = 45;
+            this.textBox24.TabStop = false;
+            this.textBox24.Text = "₹";
+            this.textBox24.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtCreditAmount
+            // textBox23
             // 
-            this.txtCreditAmount.Location = new System.Drawing.Point(256, 43);
-            this.txtCreditAmount.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCreditAmount.Name = "txtCreditAmount";
-            this.txtCreditAmount.Size = new System.Drawing.Size(164, 23);
-            this.txtCreditAmount.TabIndex = 3;
-            this.txtCreditAmount.Text = "0.00";
-            this.txtCreditAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtCreditAmount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtCreditAmount_MouseClick);
-            this.txtCreditAmount.TextChanged += new System.EventHandler(this.txtCreditAmount_TextChanged);
-            this.txtCreditAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCreditAmount_KeyPress);
-            this.txtCreditAmount.Leave += new System.EventHandler(this.txtCreditAmount_Leave);
+            this.textBox23.Location = new System.Drawing.Point(636, 43);
+            this.textBox23.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox23.Name = "textBox23";
+            this.textBox23.ReadOnly = true;
+            this.textBox23.Size = new System.Drawing.Size(37, 23);
+            this.textBox23.TabIndex = 44;
+            this.textBox23.TabStop = false;
+            this.textBox23.Text = "₹";
+            this.textBox23.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtDebitBankName
+            // textBox2
             // 
-            this.txtDebitBankName.Location = new System.Drawing.Point(220, 87);
-            this.txtDebitBankName.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDebitBankName.Name = "txtDebitBankName";
-            this.txtDebitBankName.Size = new System.Drawing.Size(200, 23);
-            this.txtDebitBankName.TabIndex = 4;
+            this.textBox2.Location = new System.Drawing.Point(844, 43);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(37, 23);
+            this.textBox2.TabIndex = 43;
+            this.textBox2.TabStop = false;
+            this.textBox2.Text = "₹";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label36
+            // textBox4
             // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(217, 68);
-            this.label36.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(72, 16);
-            this.label36.TabIndex = 5;
-            this.label36.Text = "Bank Name";
+            this.textBox4.Location = new System.Drawing.Point(1052, 131);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.Size = new System.Drawing.Size(37, 23);
+            this.textBox4.TabIndex = 42;
+            this.textBox4.TabStop = false;
+            this.textBox4.Text = "₹";
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label35
+            // txtRturned
             // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(217, 112);
-            this.label35.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(84, 16);
-            this.label35.TabIndex = 6;
-            this.label35.Text = "Card Number";
+            this.txtRturned.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRturned.Location = new System.Drawing.Point(1088, 131);
+            this.txtRturned.Margin = new System.Windows.Forms.Padding(4);
+            this.txtRturned.Name = "txtRturned";
+            this.txtRturned.Size = new System.Drawing.Size(189, 23);
+            this.txtRturned.TabIndex = 36;
+            this.txtRturned.Text = "0.00";
+            this.txtRturned.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRturned.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtRturned_MouseClick);
+            this.txtRturned.TextChanged += new System.EventHandler(this.txtRturned_TextChanged);
+            this.txtRturned.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRturned_KeyPress);
             // 
-            // txtCardNumber
+            // txtNetAmount
             // 
-            this.txtCardNumber.Location = new System.Drawing.Point(220, 131);
-            this.txtCardNumber.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCardNumber.Name = "txtCardNumber";
-            this.txtCardNumber.Size = new System.Drawing.Size(200, 23);
-            this.txtCardNumber.TabIndex = 7;
+            this.txtNetAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNetAmount.Location = new System.Drawing.Point(1088, 175);
+            this.txtNetAmount.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNetAmount.Name = "txtNetAmount";
+            this.txtNetAmount.ReadOnly = true;
+            this.txtNetAmount.Size = new System.Drawing.Size(189, 23);
+            this.txtNetAmount.TabIndex = 38;
+            this.txtNetAmount.TabStop = false;
+            this.txtNetAmount.Text = "0.00";
+            this.txtNetAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label34
+            // txtBalance
             // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(217, 156);
-            this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(67, 16);
-            this.label34.TabIndex = 8;
-            this.label34.Text = "Card Type";
+            this.txtBalance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBalance.Location = new System.Drawing.Point(1088, 87);
+            this.txtBalance.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBalance.Name = "txtBalance";
+            this.txtBalance.ReadOnly = true;
+            this.txtBalance.Size = new System.Drawing.Size(189, 23);
+            this.txtBalance.TabIndex = 35;
+            this.txtBalance.TabStop = false;
+            this.txtBalance.Text = "0.00";
+            this.txtBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtTotalAmount1
+            // 
+            this.txtTotalAmount1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTotalAmount1.Location = new System.Drawing.Point(1088, 43);
+            this.txtTotalAmount1.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTotalAmount1.Name = "txtTotalAmount1";
+            this.txtTotalAmount1.ReadOnly = true;
+            this.txtTotalAmount1.Size = new System.Drawing.Size(189, 23);
+            this.txtTotalAmount1.TabIndex = 34;
+            this.txtTotalAmount1.TabStop = false;
+            this.txtTotalAmount1.Text = "0.00";
+            this.txtTotalAmount1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTotalAmount1.TextChanged += new System.EventHandler(this.txtTotalAmount1_TextChanged);
+            // 
+            // textBox20
+            // 
+            this.textBox20.Location = new System.Drawing.Point(1052, 87);
+            this.textBox20.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox20.Name = "textBox20";
+            this.textBox20.ReadOnly = true;
+            this.textBox20.Size = new System.Drawing.Size(37, 23);
+            this.textBox20.TabIndex = 41;
+            this.textBox20.TabStop = false;
+            this.textBox20.Text = "₹";
+            this.textBox20.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(1052, 43);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(37, 23);
+            this.textBox5.TabIndex = 40;
+            this.textBox5.TabStop = false;
+            this.textBox5.Text = "₹";
+            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(1052, 175);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
+            this.textBox6.Size = new System.Drawing.Size(37, 23);
+            this.textBox6.TabIndex = 39;
+            this.textBox6.TabStop = false;
+            this.textBox6.Text = "₹";
+            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(1049, 155);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(75, 16);
+            this.label20.TabIndex = 37;
+            this.label20.Text = "Net Amount";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(1049, 112);
+            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(60, 16);
+            this.label27.TabIndex = 33;
+            this.label27.Text = "Returned";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(1049, 68);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(52, 16);
+            this.label19.TabIndex = 32;
+            this.label19.Text = "Balance";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(1049, 24);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(85, 16);
+            this.label22.TabIndex = 31;
+            this.label22.Text = "Total Amount";
+            // 
+            // CmbCompany
+            // 
+            this.CmbCompany.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CmbCompany.FormattingEnabled = true;
+            this.CmbCompany.Items.AddRange(new object[] {
+            "Select Company",
+            "Indian"});
+            this.CmbCompany.Location = new System.Drawing.Point(844, 87);
+            this.CmbCompany.Margin = new System.Windows.Forms.Padding(4);
+            this.CmbCompany.Name = "CmbCompany";
+            this.CmbCompany.Size = new System.Drawing.Size(200, 24);
+            this.CmbCompany.TabIndex = 30;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(841, 68);
+            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(98, 16);
+            this.label23.TabIndex = 29;
+            this.label23.Text = "Company Name";
+            // 
+            // txtCouponAmount
+            // 
+            this.txtCouponAmount.Location = new System.Drawing.Point(880, 43);
+            this.txtCouponAmount.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCouponAmount.Name = "txtCouponAmount";
+            this.txtCouponAmount.Size = new System.Drawing.Size(164, 23);
+            this.txtCouponAmount.TabIndex = 27;
+            this.txtCouponAmount.Text = "0.00";
+            this.txtCouponAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCouponAmount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtCouponAmount_MouseClick);
+            this.txtCouponAmount.TextChanged += new System.EventHandler(this.txtCouponAmount_TextChanged);
+            this.txtCouponAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCouponAmount_KeyPress);
+            this.txtCouponAmount.Leave += new System.EventHandler(this.txtCouponAmount_Leave);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(841, 24);
+            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(99, 16);
+            this.label24.TabIndex = 26;
+            this.label24.Text = "Coupon Amount";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker2.Location = new System.Drawing.Point(636, 175);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 23);
+            this.dateTimePicker2.TabIndex = 25;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(633, 156);
+            this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(105, 16);
+            this.label25.TabIndex = 24;
+            this.label25.Text = "Transaction Date";
+            // 
+            // txtTransactionNumber
+            // 
+            this.txtTransactionNumber.Location = new System.Drawing.Point(636, 131);
+            this.txtTransactionNumber.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTransactionNumber.Name = "txtTransactionNumber";
+            this.txtTransactionNumber.Size = new System.Drawing.Size(200, 23);
+            this.txtTransactionNumber.TabIndex = 23;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(633, 112);
+            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(124, 16);
+            this.label26.TabIndex = 22;
+            this.label26.Text = "Transaction Number";
+            // 
+            // EWalletCompanyName
+            // 
+            this.EWalletCompanyName.Location = new System.Drawing.Point(636, 87);
+            this.EWalletCompanyName.Margin = new System.Windows.Forms.Padding(4);
+            this.EWalletCompanyName.Name = "EWalletCompanyName";
+            this.EWalletCompanyName.Size = new System.Drawing.Size(200, 23);
+            this.EWalletCompanyName.TabIndex = 21;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(633, 68);
+            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(98, 16);
+            this.label28.TabIndex = 20;
+            this.label28.Text = "Company Name";
+            // 
+            // txtEwalletAmount
+            // 
+            this.txtEwalletAmount.Location = new System.Drawing.Point(672, 43);
+            this.txtEwalletAmount.Margin = new System.Windows.Forms.Padding(4);
+            this.txtEwalletAmount.Name = "txtEwalletAmount";
+            this.txtEwalletAmount.Size = new System.Drawing.Size(164, 23);
+            this.txtEwalletAmount.TabIndex = 19;
+            this.txtEwalletAmount.Text = "0.00";
+            this.txtEwalletAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtEwalletAmount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtEwalletAmount_MouseClick);
+            this.txtEwalletAmount.TextChanged += new System.EventHandler(this.txtEwalletAmount_TextChanged);
+            this.txtEwalletAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEwalletAmount_KeyPress);
+            this.txtEwalletAmount.Leave += new System.EventHandler(this.txtEwalletAmount_Leave);
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(633, 24);
+            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(104, 16);
+            this.label29.TabIndex = 18;
+            this.label29.Text = "E-Wallet Amount";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(428, 175);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
+            this.dateTimePicker1.TabIndex = 17;
+            // 
+            // txtChequeNumber
+            // 
+            this.txtChequeNumber.Location = new System.Drawing.Point(428, 131);
+            this.txtChequeNumber.Margin = new System.Windows.Forms.Padding(4);
+            this.txtChequeNumber.Name = "txtChequeNumber";
+            this.txtChequeNumber.Size = new System.Drawing.Size(200, 23);
+            this.txtChequeNumber.TabIndex = 16;
+            // 
+            // txtChequeBankName
+            // 
+            this.txtChequeBankName.Location = new System.Drawing.Point(428, 87);
+            this.txtChequeBankName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtChequeBankName.Name = "txtChequeBankName";
+            this.txtChequeBankName.Size = new System.Drawing.Size(200, 23);
+            this.txtChequeBankName.TabIndex = 15;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(425, 156);
+            this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(81, 16);
+            this.label30.TabIndex = 14;
+            this.label30.Text = "Cheque Date";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(425, 112);
+            this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(100, 16);
+            this.label31.TabIndex = 13;
+            this.label31.Text = "Cheque Number";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(425, 68);
+            this.label32.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(72, 16);
+            this.label32.TabIndex = 12;
+            this.label32.Text = "Bank Name";
+            // 
+            // txtChequeAmount
+            // 
+            this.txtChequeAmount.Location = new System.Drawing.Point(464, 43);
+            this.txtChequeAmount.Margin = new System.Windows.Forms.Padding(4);
+            this.txtChequeAmount.Name = "txtChequeAmount";
+            this.txtChequeAmount.Size = new System.Drawing.Size(164, 23);
+            this.txtChequeAmount.TabIndex = 11;
+            this.txtChequeAmount.Text = "0.00";
+            this.txtChequeAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtChequeAmount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtChequeAmount_MouseClick);
+            this.txtChequeAmount.TextChanged += new System.EventHandler(this.txtChequeAmount_TextChanged);
+            this.txtChequeAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtChequeAmount_KeyPress);
+            this.txtChequeAmount.Leave += new System.EventHandler(this.txtChequeAmount_Leave);
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(425, 24);
+            this.label33.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(99, 16);
+            this.label33.TabIndex = 10;
+            this.label33.Text = "Cheque Amount";
             // 
             // CmbCardType
             // 
@@ -1319,581 +1157,743 @@
             this.CmbCardType.Size = new System.Drawing.Size(200, 24);
             this.CmbCardType.TabIndex = 9;
             // 
-            // label33
+            // label34
             // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(425, 24);
-            this.label33.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(99, 16);
-            this.label33.TabIndex = 10;
-            this.label33.Text = "Cheque Amount";
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(217, 156);
+            this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(67, 16);
+            this.label34.TabIndex = 8;
+            this.label34.Text = "Card Type";
             // 
-            // txtChequeAmount
+            // txtCardNumber
             // 
-            this.txtChequeAmount.Location = new System.Drawing.Point(464, 43);
-            this.txtChequeAmount.Margin = new System.Windows.Forms.Padding(4);
-            this.txtChequeAmount.Name = "txtChequeAmount";
-            this.txtChequeAmount.Size = new System.Drawing.Size(164, 23);
-            this.txtChequeAmount.TabIndex = 11;
-            this.txtChequeAmount.Text = "0.00";
-            this.txtChequeAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtChequeAmount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtChequeAmount_MouseClick);
-            this.txtChequeAmount.TextChanged += new System.EventHandler(this.txtChequeAmount_TextChanged);
-            this.txtChequeAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtChequeAmount_KeyPress);
-            this.txtChequeAmount.Leave += new System.EventHandler(this.txtChequeAmount_Leave);
+            this.txtCardNumber.Location = new System.Drawing.Point(220, 131);
+            this.txtCardNumber.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCardNumber.Name = "txtCardNumber";
+            this.txtCardNumber.Size = new System.Drawing.Size(200, 23);
+            this.txtCardNumber.TabIndex = 7;
             // 
-            // label32
+            // label35
             // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(425, 68);
-            this.label32.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(72, 16);
-            this.label32.TabIndex = 12;
-            this.label32.Text = "Bank Name";
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(217, 112);
+            this.label35.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(84, 16);
+            this.label35.TabIndex = 6;
+            this.label35.Text = "Card Number";
             // 
-            // label31
+            // label36
             // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(425, 112);
-            this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(100, 16);
-            this.label31.TabIndex = 13;
-            this.label31.Text = "Cheque Number";
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(217, 68);
+            this.label36.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(72, 16);
+            this.label36.TabIndex = 5;
+            this.label36.Text = "Bank Name";
             // 
-            // label30
+            // txtDebitBankName
             // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(425, 156);
-            this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(81, 16);
-            this.label30.TabIndex = 14;
-            this.label30.Text = "Cheque Date";
+            this.txtDebitBankName.Location = new System.Drawing.Point(220, 87);
+            this.txtDebitBankName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDebitBankName.Name = "txtDebitBankName";
+            this.txtDebitBankName.Size = new System.Drawing.Size(200, 23);
+            this.txtDebitBankName.TabIndex = 4;
             // 
-            // txtChequeBankName
+            // txtCreditAmount
             // 
-            this.txtChequeBankName.Location = new System.Drawing.Point(428, 87);
-            this.txtChequeBankName.Margin = new System.Windows.Forms.Padding(4);
-            this.txtChequeBankName.Name = "txtChequeBankName";
-            this.txtChequeBankName.Size = new System.Drawing.Size(200, 23);
-            this.txtChequeBankName.TabIndex = 15;
+            this.txtCreditAmount.Location = new System.Drawing.Point(256, 43);
+            this.txtCreditAmount.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCreditAmount.Name = "txtCreditAmount";
+            this.txtCreditAmount.Size = new System.Drawing.Size(164, 23);
+            this.txtCreditAmount.TabIndex = 3;
+            this.txtCreditAmount.Text = "0.00";
+            this.txtCreditAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCreditAmount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtCreditAmount_MouseClick);
+            this.txtCreditAmount.TextChanged += new System.EventHandler(this.txtCreditAmount_TextChanged);
+            this.txtCreditAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCreditAmount_KeyPress);
+            this.txtCreditAmount.Leave += new System.EventHandler(this.txtCreditAmount_Leave);
             // 
-            // txtChequeNumber
+            // label37
             // 
-            this.txtChequeNumber.Location = new System.Drawing.Point(428, 131);
-            this.txtChequeNumber.Margin = new System.Windows.Forms.Padding(4);
-            this.txtChequeNumber.Name = "txtChequeNumber";
-            this.txtChequeNumber.Size = new System.Drawing.Size(200, 23);
-            this.txtChequeNumber.TabIndex = 16;
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(217, 24);
+            this.label37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(115, 16);
+            this.label37.TabIndex = 2;
+            this.label37.Text = "Credit / Debit Card";
             // 
-            // dateTimePicker1
+            // CashAmount
             // 
-            this.dateTimePicker1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(428, 175);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
-            this.dateTimePicker1.TabIndex = 17;
+            this.CashAmount.Location = new System.Drawing.Point(48, 43);
+            this.CashAmount.Margin = new System.Windows.Forms.Padding(4);
+            this.CashAmount.Name = "CashAmount";
+            this.CashAmount.Size = new System.Drawing.Size(164, 23);
+            this.CashAmount.TabIndex = 1;
+            this.CashAmount.Text = "0.00";
+            this.CashAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CashAmount.TextChanged += new System.EventHandler(this.CashAmount_TextChanged);
+            this.CashAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CashAmount_KeyPress);
+            this.CashAmount.Leave += new System.EventHandler(this.CashAmount_Leave);
             // 
-            // label29
+            // label38
             // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(633, 24);
-            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(104, 16);
-            this.label29.TabIndex = 18;
-            this.label29.Text = "E-Wallet Amount";
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(9, 24);
+            this.label38.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(84, 16);
+            this.label38.TabIndex = 0;
+            this.label38.Text = "Cash Amount";
             // 
-            // txtEwalletAmount
+            // groupBox11
             // 
-            this.txtEwalletAmount.Location = new System.Drawing.Point(672, 43);
-            this.txtEwalletAmount.Margin = new System.Windows.Forms.Padding(4);
-            this.txtEwalletAmount.Name = "txtEwalletAmount";
-            this.txtEwalletAmount.Size = new System.Drawing.Size(164, 23);
-            this.txtEwalletAmount.TabIndex = 19;
-            this.txtEwalletAmount.Text = "0.00";
-            this.txtEwalletAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtEwalletAmount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtEwalletAmount_MouseClick);
-            this.txtEwalletAmount.TextChanged += new System.EventHandler(this.txtEwalletAmount_TextChanged);
-            this.txtEwalletAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEwalletAmount_KeyPress);
-            this.txtEwalletAmount.Leave += new System.EventHandler(this.txtEwalletAmount_Leave);
+            this.groupBox11.Controls.Add(this.label11);
+            this.groupBox11.Controls.Add(this.label12);
+            this.groupBox11.Controls.Add(this.dateTimePicker3);
+            this.groupBox11.Controls.Add(this.dateTimePicker4);
+            this.groupBox11.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox11.Location = new System.Drawing.Point(16, 20);
+            this.groupBox11.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox11.Size = new System.Drawing.Size(597, 88);
+            this.groupBox11.TabIndex = 6;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Select Date";
             // 
-            // label28
+            // label11
             // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(633, 68);
-            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(98, 16);
-            this.label28.TabIndex = 20;
-            this.label28.Text = "Company Name";
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(297, 25);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(23, 16);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "To";
             // 
-            // EWalletCompanyName
+            // label12
             // 
-            this.EWalletCompanyName.Location = new System.Drawing.Point(636, 87);
-            this.EWalletCompanyName.Margin = new System.Windows.Forms.Padding(4);
-            this.EWalletCompanyName.Name = "EWalletCompanyName";
-            this.EWalletCompanyName.Size = new System.Drawing.Size(200, 23);
-            this.EWalletCompanyName.TabIndex = 21;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(31, 25);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(38, 16);
+            this.label12.TabIndex = 7;
+            this.label12.Text = "From";
             // 
-            // label26
+            // dateTimePicker3
             // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(633, 112);
-            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(124, 16);
-            this.label26.TabIndex = 22;
-            this.label26.Text = "Transaction Number";
+            this.dateTimePicker3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker3.Location = new System.Drawing.Point(298, 45);
+            this.dateTimePicker3.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.Size = new System.Drawing.Size(256, 23);
+            this.dateTimePicker3.TabIndex = 8;
+            this.dateTimePicker3.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
             // 
-            // txtTransactionNumber
+            // dateTimePicker4
             // 
-            this.txtTransactionNumber.Location = new System.Drawing.Point(636, 131);
-            this.txtTransactionNumber.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTransactionNumber.Name = "txtTransactionNumber";
-            this.txtTransactionNumber.Size = new System.Drawing.Size(200, 23);
-            this.txtTransactionNumber.TabIndex = 23;
+            this.dateTimePicker4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker4.Location = new System.Drawing.Point(34, 45);
+            this.dateTimePicker4.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePicker4.Name = "dateTimePicker4";
+            this.dateTimePicker4.Size = new System.Drawing.Size(256, 23);
+            this.dateTimePicker4.TabIndex = 7;
+            this.dateTimePicker4.Value = new System.DateTime(2017, 7, 29, 0, 49, 0, 0);
+            this.dateTimePicker4.ValueChanged += new System.EventHandler(this.dateTimePicker4_ValueChanged);
             // 
-            // label25
+            // panel3
             // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(633, 156);
-            this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(105, 16);
-            this.label25.TabIndex = 24;
-            this.label25.Text = "Transaction Date";
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(636, 175);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 23);
-            this.dateTimePicker2.TabIndex = 25;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(841, 24);
-            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(99, 16);
-            this.label24.TabIndex = 26;
-            this.label24.Text = "Coupon Amount";
-            // 
-            // txtCouponAmount
-            // 
-            this.txtCouponAmount.Location = new System.Drawing.Point(880, 43);
-            this.txtCouponAmount.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCouponAmount.Name = "txtCouponAmount";
-            this.txtCouponAmount.Size = new System.Drawing.Size(164, 23);
-            this.txtCouponAmount.TabIndex = 27;
-            this.txtCouponAmount.Text = "0.00";
-            this.txtCouponAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtCouponAmount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtCouponAmount_MouseClick);
-            this.txtCouponAmount.TextChanged += new System.EventHandler(this.txtCouponAmount_TextChanged);
-            this.txtCouponAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCouponAmount_KeyPress);
-            this.txtCouponAmount.Leave += new System.EventHandler(this.txtCouponAmount_Leave);
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(841, 68);
-            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(98, 16);
-            this.label23.TabIndex = 29;
-            this.label23.Text = "Company Name";
-            // 
-            // CmbCompany
-            // 
-            this.CmbCompany.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.CmbCompany.FormattingEnabled = true;
-            this.CmbCompany.Items.AddRange(new object[] {
-            "Select Company",
-            "Indian"});
-            this.CmbCompany.Location = new System.Drawing.Point(844, 87);
-            this.CmbCompany.Margin = new System.Windows.Forms.Padding(4);
-            this.CmbCompany.Name = "CmbCompany";
-            this.CmbCompany.Size = new System.Drawing.Size(200, 24);
-            this.CmbCompany.TabIndex = 30;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(1049, 24);
-            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(85, 16);
-            this.label22.TabIndex = 31;
-            this.label22.Text = "Total Amount";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(1049, 68);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(52, 16);
-            this.label19.TabIndex = 32;
-            this.label19.Text = "Balance";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(1049, 112);
-            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(60, 16);
-            this.label27.TabIndex = 33;
-            this.label27.Text = "Returned";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(1049, 155);
-            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(75, 16);
-            this.label20.TabIndex = 37;
-            this.label20.Text = "Net Amount";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(1052, 175);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(37, 23);
-            this.textBox6.TabIndex = 39;
-            this.textBox6.TabStop = false;
-            this.textBox6.Text = "₹";
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(1052, 43);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(37, 23);
-            this.textBox5.TabIndex = 40;
-            this.textBox5.TabStop = false;
-            this.textBox5.Text = "₹";
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox20
-            // 
-            this.textBox20.Location = new System.Drawing.Point(1052, 87);
-            this.textBox20.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.ReadOnly = true;
-            this.textBox20.Size = new System.Drawing.Size(37, 23);
-            this.textBox20.TabIndex = 41;
-            this.textBox20.TabStop = false;
-            this.textBox20.Text = "₹";
-            this.textBox20.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtTotalAmount1
-            // 
-            this.txtTotalAmount1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTotalAmount1.Location = new System.Drawing.Point(1088, 43);
-            this.txtTotalAmount1.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTotalAmount1.Name = "txtTotalAmount1";
-            this.txtTotalAmount1.ReadOnly = true;
-            this.txtTotalAmount1.Size = new System.Drawing.Size(189, 23);
-            this.txtTotalAmount1.TabIndex = 34;
-            this.txtTotalAmount1.TabStop = false;
-            this.txtTotalAmount1.Text = "0.00";
-            this.txtTotalAmount1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtTotalAmount1.TextChanged += new System.EventHandler(this.txtTotalAmount1_TextChanged);
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.dataGridView2);
+            this.panel3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel3.Location = new System.Drawing.Point(16, 114);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1319, 493);
+            this.panel3.TabIndex = 3;
             // 
-            // txtBalance
+            // dataGridView2
             // 
-            this.txtBalance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView2.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView2.Size = new System.Drawing.Size(1315, 489);
+            this.dataGridView2.StandardTab = true;
+            this.dataGridView2.TabIndex = 4;
+            this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
+            this.dataGridView2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView2_KeyPress);
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBalance.Location = new System.Drawing.Point(1088, 87);
-            this.txtBalance.Margin = new System.Windows.Forms.Padding(4);
-            this.txtBalance.Name = "txtBalance";
-            this.txtBalance.ReadOnly = true;
-            this.txtBalance.Size = new System.Drawing.Size(189, 23);
-            this.txtBalance.TabIndex = 35;
-            this.txtBalance.TabStop = false;
-            this.txtBalance.Text = "0.00";
-            this.txtBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.groupBox6.Controls.Add(this.txtSearch);
+            this.groupBox6.Controls.Add(this.label8);
+            this.groupBox6.Controls.Add(this.comboBox1);
+            this.groupBox6.Controls.Add(this.label10);
+            this.groupBox6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox6.Location = new System.Drawing.Point(621, 20);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox6.Size = new System.Drawing.Size(712, 88);
+            this.groupBox6.TabIndex = 0;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Purchase Details";
             // 
-            // txtNetAmount
+            // txtSearch
             // 
-            this.txtNetAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNetAmount.Location = new System.Drawing.Point(1088, 175);
-            this.txtNetAmount.Margin = new System.Windows.Forms.Padding(4);
-            this.txtNetAmount.Name = "txtNetAmount";
-            this.txtNetAmount.ReadOnly = true;
-            this.txtNetAmount.Size = new System.Drawing.Size(189, 23);
-            this.txtNetAmount.TabIndex = 38;
-            this.txtNetAmount.TabStop = false;
-            this.txtNetAmount.Text = "0.00";
-            this.txtNetAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSearch.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(371, 45);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSearch.Multiline = true;
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(312, 24);
+            this.txtSearch.TabIndex = 2;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
+            //this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
-            // txtRturned
+            // label8
             // 
-            this.txtRturned.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(31, 25);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(87, 16);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Select Search";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(34, 45);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(329, 24);
+            this.comboBox1.TabIndex = 1;
+            this.comboBox1.Leave += new System.EventHandler(this.comboBox1_Leave);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(368, 25);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(48, 16);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Search";
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(16, 615);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(120, 31);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "Close";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // txttotalAmount
+            // 
+            this.txttotalAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txttotalAmount.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttotalAmount.Location = new System.Drawing.Point(1204, 588);
+            this.txttotalAmount.Margin = new System.Windows.Forms.Padding(4);
+            this.txttotalAmount.Name = "txttotalAmount";
+            this.txttotalAmount.ReadOnly = true;
+            this.txttotalAmount.Size = new System.Drawing.Size(134, 23);
+            this.txttotalAmount.TabIndex = 52;
+            this.txttotalAmount.TabStop = false;
+            this.txttotalAmount.Text = "0";
+            this.txttotalAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox22
+            // 
+            this.textBox22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox22.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox22.Location = new System.Drawing.Point(1161, 588);
+            this.textBox22.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox22.Name = "textBox22";
+            this.textBox22.ReadOnly = true;
+            this.textBox22.Size = new System.Drawing.Size(45, 23);
+            this.textBox22.TabIndex = 51;
+            this.textBox22.TabStop = false;
+            this.textBox22.Text = "Rs";
+            this.textBox22.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox15
+            // 
+            this.textBox15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox15.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox15.Location = new System.Drawing.Point(1013, 588);
+            this.textBox15.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox15.Name = "textBox15";
+            this.textBox15.ReadOnly = true;
+            this.textBox15.Size = new System.Drawing.Size(149, 23);
+            this.textBox15.TabIndex = 50;
+            this.textBox15.TabStop = false;
+            this.textBox15.Text = "Balance Amount";
+            this.textBox15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.btnBack);
+            this.panel4.Controls.Add(this.groupBox3);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1362, 683);
+            this.panel4.TabIndex = 76;
+            // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(51, 427);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(193, 39);
+            this.btnBack.TabIndex = 9;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click_2);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRturned.Location = new System.Drawing.Point(1088, 131);
-            this.txtRturned.Margin = new System.Windows.Forms.Padding(4);
-            this.txtRturned.Name = "txtRturned";
-            this.txtRturned.Size = new System.Drawing.Size(189, 23);
-            this.txtRturned.TabIndex = 36;
-            this.txtRturned.Text = "0.00";
-            this.txtRturned.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtRturned.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtRturned_MouseClick);
-            this.txtRturned.TextChanged += new System.EventHandler(this.txtRturned_TextChanged);
-            this.txtRturned.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRturned_KeyPress);
+            this.groupBox3.Controls.Add(this.coponCompanyName);
+            this.groupBox3.Controls.Add(this.EWalleTransactionDate);
+            this.groupBox3.Controls.Add(this.chChequeDate);
+            this.groupBox3.Controls.Add(this.creCardType);
+            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.textBox3);
+            this.groupBox3.Controls.Add(this.textBox7);
+            this.groupBox3.Controls.Add(this.textBox8);
+            this.groupBox3.Controls.Add(this.textBox9);
+            this.groupBox3.Controls.Add(this.label40);
+            this.groupBox3.Controls.Add(this.showCouponAmount);
+            this.groupBox3.Controls.Add(this.label41);
+            this.groupBox3.Controls.Add(this.label42);
+            this.groupBox3.Controls.Add(this.EWalleTransactionNumber);
+            this.groupBox3.Controls.Add(this.label43);
+            this.groupBox3.Controls.Add(this.EWalletCompanyNam);
+            this.groupBox3.Controls.Add(this.label44);
+            this.groupBox3.Controls.Add(this.EWalletAmount);
+            this.groupBox3.Controls.Add(this.label45);
+            this.groupBox3.Controls.Add(this.chChequeNumber);
+            this.groupBox3.Controls.Add(this.cheBankName);
+            this.groupBox3.Controls.Add(this.label46);
+            this.groupBox3.Controls.Add(this.label47);
+            this.groupBox3.Controls.Add(this.label48);
+            this.groupBox3.Controls.Add(this.showChequeAmount);
+            this.groupBox3.Controls.Add(this.label49);
+            this.groupBox3.Controls.Add(this.label50);
+            this.groupBox3.Controls.Add(this.creCardNumber);
+            this.groupBox3.Controls.Add(this.label51);
+            this.groupBox3.Controls.Add(this.label52);
+            this.groupBox3.Controls.Add(this.creBankName);
+            this.groupBox3.Controls.Add(this.showCreditDebitCard);
+            this.groupBox3.Controls.Add(this.label53);
+            this.groupBox3.Controls.Add(this.showCashAmount);
+            this.groupBox3.Controls.Add(this.label54);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(13, 78);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Size = new System.Drawing.Size(1336, 273);
+            this.groupBox3.TabIndex = 8;
+            this.groupBox3.TabStop = false;
             // 
-            // textBox4
+            // coponCompanyName
             // 
-            this.textBox4.Location = new System.Drawing.Point(1052, 131);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(37, 23);
-            this.textBox4.TabIndex = 42;
-            this.textBox4.TabStop = false;
-            this.textBox4.Text = "₹";
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.coponCompanyName.Location = new System.Drawing.Point(1168, 102);
+            this.coponCompanyName.Margin = new System.Windows.Forms.Padding(4);
+            this.coponCompanyName.Name = "coponCompanyName";
+            this.coponCompanyName.ReadOnly = true;
+            this.coponCompanyName.Size = new System.Drawing.Size(149, 21);
+            this.coponCompanyName.TabIndex = 50;
             // 
-            // textBox2
+            // EWalleTransactionDate
             // 
-            this.textBox2.Location = new System.Drawing.Point(844, 43);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(37, 23);
-            this.textBox2.TabIndex = 43;
-            this.textBox2.TabStop = false;
-            this.textBox2.Text = "₹";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.EWalleTransactionDate.Location = new System.Drawing.Point(836, 202);
+            this.EWalleTransactionDate.Margin = new System.Windows.Forms.Padding(4);
+            this.EWalleTransactionDate.Name = "EWalleTransactionDate";
+            this.EWalleTransactionDate.ReadOnly = true;
+            this.EWalleTransactionDate.Size = new System.Drawing.Size(279, 21);
+            this.EWalleTransactionDate.TabIndex = 17;
             // 
-            // textBox23
+            // chChequeDate
             // 
-            this.textBox23.Location = new System.Drawing.Point(636, 43);
-            this.textBox23.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox23.Name = "textBox23";
-            this.textBox23.ReadOnly = true;
-            this.textBox23.Size = new System.Drawing.Size(37, 23);
-            this.textBox23.TabIndex = 44;
-            this.textBox23.TabStop = false;
-            this.textBox23.Text = "₹";
-            this.textBox23.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.chChequeDate.Location = new System.Drawing.Point(525, 202);
+            this.chChequeDate.Margin = new System.Windows.Forms.Padding(4);
+            this.chChequeDate.Name = "chChequeDate";
+            this.chChequeDate.ReadOnly = true;
+            this.chChequeDate.Size = new System.Drawing.Size(279, 21);
+            this.chChequeDate.TabIndex = 49;
             // 
-            // textBox24
+            // creCardType
             // 
-            this.textBox24.Location = new System.Drawing.Point(428, 43);
-            this.textBox24.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox24.Name = "textBox24";
-            this.textBox24.ReadOnly = true;
-            this.textBox24.Size = new System.Drawing.Size(37, 23);
-            this.textBox24.TabIndex = 45;
-            this.textBox24.TabStop = false;
-            this.textBox24.Text = "₹";
-            this.textBox24.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.creCardType.Location = new System.Drawing.Point(237, 198);
+            this.creCardType.Margin = new System.Windows.Forms.Padding(4);
+            this.creCardType.Name = "creCardType";
+            this.creCardType.ReadOnly = true;
+            this.creCardType.Size = new System.Drawing.Size(279, 21);
+            this.creCardType.TabIndex = 48;
             // 
-            // textBox25
+            // textBox1
             // 
-            this.textBox25.Location = new System.Drawing.Point(220, 43);
-            this.textBox25.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox25.Name = "textBox25";
-            this.textBox25.ReadOnly = true;
-            this.textBox25.Size = new System.Drawing.Size(37, 23);
-            this.textBox25.TabIndex = 46;
-            this.textBox25.TabStop = false;
-            this.textBox25.Text = "₹";
-            this.textBox25.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox1.Location = new System.Drawing.Point(12, 43);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(37, 21);
+            this.textBox1.TabIndex = 47;
+            this.textBox1.TabStop = false;
+            this.textBox1.Text = "₹";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox26
+            // textBox3
             // 
-            this.textBox26.Location = new System.Drawing.Point(12, 43);
-            this.textBox26.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox26.Name = "textBox26";
-            this.textBox26.ReadOnly = true;
-            this.textBox26.Size = new System.Drawing.Size(37, 23);
-            this.textBox26.TabIndex = 47;
-            this.textBox26.TabStop = false;
-            this.textBox26.Text = "₹";
-            this.textBox26.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox3.Location = new System.Drawing.Point(286, 40);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(37, 21);
+            this.textBox3.TabIndex = 46;
+            this.textBox3.TabStop = false;
+            this.textBox3.Text = "₹";
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // btnSave
+            // textBox7
             // 
-            this.btnSave.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(16, 367);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(120, 31);
-            this.btnSave.TabIndex = 10;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.textBox7.Location = new System.Drawing.Point(588, 43);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
+            this.textBox7.Size = new System.Drawing.Size(37, 21);
+            this.textBox7.TabIndex = 45;
+            this.textBox7.TabStop = false;
+            this.textBox7.Text = "₹";
+            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // groupBox9
+            // textBox8
             // 
-            this.groupBox9.Controls.Add(this.CmbPageName);
-            this.groupBox9.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox9.Location = new System.Drawing.Point(16, 15);
-            this.groupBox9.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox9.Size = new System.Drawing.Size(427, 71);
-            this.groupBox9.TabIndex = 6;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Payment Details";
+            this.textBox8.Location = new System.Drawing.Point(876, 43);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.ReadOnly = true;
+            this.textBox8.Size = new System.Drawing.Size(37, 21);
+            this.textBox8.TabIndex = 44;
+            this.textBox8.TabStop = false;
+            this.textBox8.Text = "₹";
+            this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // CmbPageName
+            // textBox9
             // 
-            this.CmbPageName.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.CmbPageName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CmbPageName.FormattingEnabled = true;
-            this.CmbPageName.Items.AddRange(new object[] {
-            "Purchase Delivary - Payment"});
-            this.CmbPageName.Location = new System.Drawing.Point(20, 28);
-            this.CmbPageName.Margin = new System.Windows.Forms.Padding(4);
-            this.CmbPageName.Name = "CmbPageName";
-            this.CmbPageName.Size = new System.Drawing.Size(382, 24);
-            this.CmbPageName.TabIndex = 1;
-            this.CmbPageName.TabStop = false;
+            this.textBox9.Location = new System.Drawing.Point(1164, 43);
+            this.textBox9.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.ReadOnly = true;
+            this.textBox9.Size = new System.Drawing.Size(37, 21);
+            this.textBox9.TabIndex = 43;
+            this.textBox9.TabStop = false;
+            this.textBox9.Text = "₹";
+            this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // btnClose
+            // label40
             // 
-            this.btnClose.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(144, 367);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(120, 31);
-            this.btnClose.TabIndex = 11;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(1160, 73);
+            this.label40.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(96, 15);
+            this.label40.TabIndex = 29;
+            this.label40.Text = "Company Name";
             // 
-            // groupBox8
+            // showCouponAmount
             // 
-            this.groupBox8.Controls.Add(this.txtInvoiceid);
-            this.groupBox8.Controls.Add(this.label18);
-            this.groupBox8.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox8.Location = new System.Drawing.Point(451, 15);
-            this.groupBox8.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox8.Size = new System.Drawing.Size(478, 71);
-            this.groupBox8.TabIndex = 8;
-            this.groupBox8.TabStop = false;
+            this.showCouponAmount.Location = new System.Drawing.Point(1199, 43);
+            this.showCouponAmount.Margin = new System.Windows.Forms.Padding(4);
+            this.showCouponAmount.Name = "showCouponAmount";
+            this.showCouponAmount.ReadOnly = true;
+            this.showCouponAmount.Size = new System.Drawing.Size(110, 21);
+            this.showCouponAmount.TabIndex = 27;
+            this.showCouponAmount.Text = "0.00";
+            this.showCouponAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label18
+            // label41
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(22, 31);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(80, 16);
-            this.label18.TabIndex = 0;
-            this.label18.Text = "Invoice No. :";
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(1160, 21);
+            this.label41.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(95, 15);
+            this.label41.TabIndex = 26;
+            this.label41.Text = "Coupon Amount";
             // 
-            // txtInvoiceid
+            // label42
             // 
-            this.txtInvoiceid.Location = new System.Drawing.Point(110, 28);
-            this.txtInvoiceid.Margin = new System.Windows.Forms.Padding(4);
-            this.txtInvoiceid.Multiline = true;
-            this.txtInvoiceid.Name = "txtInvoiceid";
-            this.txtInvoiceid.ReadOnly = true;
-            this.txtInvoiceid.Size = new System.Drawing.Size(330, 25);
-            this.txtInvoiceid.TabIndex = 1;
-            this.txtInvoiceid.TabStop = false;
-            this.txtInvoiceid.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(872, 176);
+            this.label42.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(100, 15);
+            this.label42.TabIndex = 24;
+            this.label42.Text = "Transaction Date";
             // 
-            // groupBox7
+            // EWalleTransactionNumber
             // 
-            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox7.Controls.Add(this.textBox27);
-            this.groupBox7.Controls.Add(this.txtInvoiceAmount);
-            this.groupBox7.Controls.Add(this.label21);
-            this.groupBox7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox7.Location = new System.Drawing.Point(937, 15);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox7.Size = new System.Drawing.Size(393, 71);
-            this.groupBox7.TabIndex = 9;
-            this.groupBox7.TabStop = false;
+            this.EWalleTransactionNumber.Location = new System.Drawing.Point(876, 146);
+            this.EWalleTransactionNumber.Margin = new System.Windows.Forms.Padding(4);
+            this.EWalleTransactionNumber.Name = "EWalleTransactionNumber";
+            this.EWalleTransactionNumber.ReadOnly = true;
+            this.EWalleTransactionNumber.Size = new System.Drawing.Size(279, 21);
+            this.EWalleTransactionNumber.TabIndex = 23;
             // 
-            // label21
+            // label43
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(28, 33);
-            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(88, 16);
-            this.label21.TabIndex = 0;
-            this.label21.Text = "Invoice Amt. :";
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(872, 124);
+            this.label43.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(119, 15);
+            this.label43.TabIndex = 22;
+            this.label43.Text = "Transaction Number";
             // 
-            // txtInvoiceAmount
+            // EWalletCompanyNam
             // 
-            this.txtInvoiceAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtInvoiceAmount.Location = new System.Drawing.Point(160, 28);
-            this.txtInvoiceAmount.Margin = new System.Windows.Forms.Padding(4);
-            this.txtInvoiceAmount.Multiline = true;
-            this.txtInvoiceAmount.Name = "txtInvoiceAmount";
-            this.txtInvoiceAmount.ReadOnly = true;
-            this.txtInvoiceAmount.Size = new System.Drawing.Size(196, 25);
-            this.txtInvoiceAmount.TabIndex = 1;
-            this.txtInvoiceAmount.TabStop = false;
-            this.txtInvoiceAmount.Text = "0.00";
-            this.txtInvoiceAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.EWalletCompanyNam.Location = new System.Drawing.Point(876, 95);
+            this.EWalletCompanyNam.Margin = new System.Windows.Forms.Padding(4);
+            this.EWalletCompanyNam.Name = "EWalletCompanyNam";
+            this.EWalletCompanyNam.ReadOnly = true;
+            this.EWalletCompanyNam.Size = new System.Drawing.Size(279, 21);
+            this.EWalletCompanyNam.TabIndex = 21;
             // 
-            // textBox27
+            // label44
             // 
-            this.textBox27.Location = new System.Drawing.Point(124, 28);
-            this.textBox27.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox27.Multiline = true;
-            this.textBox27.Name = "textBox27";
-            this.textBox27.ReadOnly = true;
-            this.textBox27.Size = new System.Drawing.Size(37, 25);
-            this.textBox27.TabIndex = 41;
-            this.textBox27.TabStop = false;
-            this.textBox27.Text = "₹";
-            this.textBox27.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(872, 73);
+            this.label44.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(96, 15);
+            this.label44.TabIndex = 20;
+            this.label44.Text = "Company Name";
             // 
-            // pnlPayment
+            // EWalletAmount
             // 
-            this.pnlPayment.Controls.Add(this.panel4);
-            this.pnlPayment.Controls.Add(this.groupBox7);
-            this.pnlPayment.Controls.Add(this.groupBox8);
-            this.pnlPayment.Controls.Add(this.btnClose);
-            this.pnlPayment.Controls.Add(this.groupBox9);
-            this.pnlPayment.Controls.Add(this.btnSave);
-            this.pnlPayment.Controls.Add(this.groupBox10);
-            this.pnlPayment.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlPayment.Location = new System.Drawing.Point(0, 0);
-            this.pnlPayment.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlPayment.Name = "pnlPayment";
-            this.pnlPayment.Size = new System.Drawing.Size(1362, 683);
-            this.pnlPayment.TabIndex = 72;
-            this.pnlPayment.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlPayment_Paint);
+            this.EWalletAmount.Location = new System.Drawing.Point(913, 43);
+            this.EWalletAmount.Margin = new System.Windows.Forms.Padding(4);
+            this.EWalletAmount.Name = "EWalletAmount";
+            this.EWalletAmount.ReadOnly = true;
+            this.EWalletAmount.Size = new System.Drawing.Size(202, 21);
+            this.EWalletAmount.TabIndex = 19;
+            this.EWalletAmount.Text = "0.00";
+            this.EWalletAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(872, 21);
+            this.label45.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(98, 15);
+            this.label45.TabIndex = 18;
+            this.label45.Text = "E-Wallet Amount";
+            // 
+            // chChequeNumber
+            // 
+            this.chChequeNumber.Location = new System.Drawing.Point(588, 146);
+            this.chChequeNumber.Margin = new System.Windows.Forms.Padding(4);
+            this.chChequeNumber.Name = "chChequeNumber";
+            this.chChequeNumber.ReadOnly = true;
+            this.chChequeNumber.Size = new System.Drawing.Size(279, 21);
+            this.chChequeNumber.TabIndex = 16;
+            // 
+            // cheBankName
+            // 
+            this.cheBankName.Location = new System.Drawing.Point(588, 95);
+            this.cheBankName.Margin = new System.Windows.Forms.Padding(4);
+            this.cheBankName.Name = "cheBankName";
+            this.cheBankName.ReadOnly = true;
+            this.cheBankName.Size = new System.Drawing.Size(279, 21);
+            this.cheBankName.TabIndex = 15;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(584, 176);
+            this.label46.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(79, 15);
+            this.label46.TabIndex = 14;
+            this.label46.Text = "Cheque Date";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(584, 124);
+            this.label47.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(98, 15);
+            this.label47.TabIndex = 13;
+            this.label47.Text = "Cheque Number";
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(584, 73);
+            this.label48.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(72, 15);
+            this.label48.TabIndex = 12;
+            this.label48.Text = "Bank Name";
+            // 
+            // showChequeAmount
+            // 
+            this.showChequeAmount.Location = new System.Drawing.Point(625, 43);
+            this.showChequeAmount.Margin = new System.Windows.Forms.Padding(4);
+            this.showChequeAmount.Name = "showChequeAmount";
+            this.showChequeAmount.ReadOnly = true;
+            this.showChequeAmount.Size = new System.Drawing.Size(192, 21);
+            this.showChequeAmount.TabIndex = 11;
+            this.showChequeAmount.Text = "0.00";
+            this.showChequeAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(584, 21);
+            this.label49.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(95, 15);
+            this.label49.TabIndex = 10;
+            this.label49.Text = "Cheque Amount";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(296, 176);
+            this.label50.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(62, 15);
+            this.label50.TabIndex = 8;
+            this.label50.Text = "Card Type";
+            // 
+            // creCardNumber
+            // 
+            this.creCardNumber.Location = new System.Drawing.Point(300, 146);
+            this.creCardNumber.Margin = new System.Windows.Forms.Padding(4);
+            this.creCardNumber.Name = "creCardNumber";
+            this.creCardNumber.ReadOnly = true;
+            this.creCardNumber.Size = new System.Drawing.Size(279, 21);
+            this.creCardNumber.TabIndex = 7;
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(296, 124);
+            this.label51.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(81, 15);
+            this.label51.TabIndex = 6;
+            this.label51.Text = "Card Number";
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(296, 73);
+            this.label52.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(72, 15);
+            this.label52.TabIndex = 5;
+            this.label52.Text = "Bank Name";
+            // 
+            // creBankName
+            // 
+            this.creBankName.Location = new System.Drawing.Point(300, 95);
+            this.creBankName.Margin = new System.Windows.Forms.Padding(4);
+            this.creBankName.Name = "creBankName";
+            this.creBankName.ReadOnly = true;
+            this.creBankName.Size = new System.Drawing.Size(279, 21);
+            this.creBankName.TabIndex = 4;
+            // 
+            // showCreditDebitCard
+            // 
+            this.showCreditDebitCard.Location = new System.Drawing.Point(331, 40);
+            this.showCreditDebitCard.Margin = new System.Windows.Forms.Padding(4);
+            this.showCreditDebitCard.Name = "showCreditDebitCard";
+            this.showCreditDebitCard.ReadOnly = true;
+            this.showCreditDebitCard.Size = new System.Drawing.Size(209, 21);
+            this.showCreditDebitCard.TabIndex = 3;
+            this.showCreditDebitCard.Text = "0.00";
+            this.showCreditDebitCard.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(296, 21);
+            this.label53.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(106, 15);
+            this.label53.TabIndex = 2;
+            this.label53.Text = "Credit / Debit Card";
+            // 
+            // showCashAmount
+            // 
+            this.showCashAmount.Location = new System.Drawing.Point(49, 43);
+            this.showCashAmount.Margin = new System.Windows.Forms.Padding(4);
+            this.showCashAmount.Name = "showCashAmount";
+            this.showCashAmount.ReadOnly = true;
+            this.showCashAmount.Size = new System.Drawing.Size(211, 21);
+            this.showCashAmount.TabIndex = 1;
+            this.showCashAmount.Text = "0.00";
+            this.showCashAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(8, 21);
+            this.label54.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(80, 15);
+            this.label54.TabIndex = 0;
+            this.label54.Text = "Cash Amount";
             // 
             // Form9
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1362, 683);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.pnlPayment);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.txttotalAmount);
             this.Controls.Add(this.textBox22);
@@ -1904,7 +1904,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form9";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vendor Payment";
@@ -1916,23 +1916,23 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.pnlPayment.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.panel4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            this.pnlPayment.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1984,44 +1984,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DateTimePicker dateTimePicker3;
         private System.Windows.Forms.DateTimePicker dateTimePicker4;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox coponCompanyName;
-        private System.Windows.Forms.TextBox EWalleTransactionDate;
-        private System.Windows.Forms.TextBox chChequeDate;
-        private System.Windows.Forms.TextBox creCardType;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.TextBox showCouponAmount;
-        private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.TextBox EWalleTransactionNumber;
-        private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.TextBox EWalletCompanyNam;
-        private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.TextBox EWalletAmount;
-        private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.TextBox chChequeNumber;
-        private System.Windows.Forms.TextBox cheBankName;
-        private System.Windows.Forms.Label label46;
-        private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.TextBox showChequeAmount;
-        private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.Label label50;
-        private System.Windows.Forms.TextBox creCardNumber;
-        private System.Windows.Forms.Label label51;
-        private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.TextBox creBankName;
-        private System.Windows.Forms.TextBox showCreditDebitCard;
-        private System.Windows.Forms.Label label53;
-        private System.Windows.Forms.TextBox showCashAmount;
-        private System.Windows.Forms.Label label54;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Panel pnlPayment;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.TextBox textBox27;
@@ -2082,5 +2044,43 @@
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.TextBox CashAmount;
         private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox coponCompanyName;
+        private System.Windows.Forms.TextBox EWalleTransactionDate;
+        private System.Windows.Forms.TextBox chChequeDate;
+        private System.Windows.Forms.TextBox creCardType;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.TextBox showCouponAmount;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.TextBox EWalleTransactionNumber;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.TextBox EWalletCompanyNam;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.TextBox EWalletAmount;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.TextBox chChequeNumber;
+        private System.Windows.Forms.TextBox cheBankName;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.TextBox showChequeAmount;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.TextBox creCardNumber;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.TextBox creBankName;
+        private System.Windows.Forms.TextBox showCreditDebitCard;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.TextBox showCashAmount;
+        private System.Windows.Forms.Label label54;
     }
 }

@@ -513,6 +513,7 @@ namespace WindowsFormsApplication1
                 }
             }
                */
+            //panel2.Visible = true;
             pnlPayment.Visible = true;
             CashAmount.Focus();
             BlankPaymentPage1();
@@ -1692,13 +1693,6 @@ namespace WindowsFormsApplication1
    
         }
 
-       
-
-        private void txtCreditAmount_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -1707,11 +1701,6 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-      
         private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
         {
 
@@ -1748,13 +1737,6 @@ namespace WindowsFormsApplication1
         {
             setDate();
         }
-
-        private void txtSearch_Leave(object sender, EventArgs e)
-        {
-           
-        }
-
-       
 
         private void comboBox1_Leave(object sender, EventArgs e)
         {
@@ -1881,13 +1863,6 @@ namespace WindowsFormsApplication1
             txtRturned.SelectAll();
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            panel2.Visible = false;
-            panel3.Visible = false;
-            panel4.Visible = false;
-        }
-
         private void txtCreditAmount_MouseClick(object sender, MouseEventArgs e)
         {
             txtCreditAmount.SelectAll();
@@ -1906,6 +1881,15 @@ namespace WindowsFormsApplication1
         private void txtCouponAmount_MouseClick(object sender, MouseEventArgs e)
         {
             txtCouponAmount.SelectAll();
+        }
+
+       
+
+        private void btnBack_Click_2(object sender, EventArgs e)
+        {
+            panel2.Visible = false;
+            panel3.Visible = false;
+            panel4.Visible = false;
         }
     }
 }
