@@ -101,11 +101,9 @@ namespace WindowsFormsApplication1
             comsearchsalesvalue.ValueMember = "actualcolumnname";
             comsearchsalesvalue.DisplayMember = "aliascolumnname";
             dataGridView1.DataSource = dt1;
-
             counter = 0;
             panel2.Visible = true;
             // string selectquery = "select Custid as [Customer Id], CustName as [Name],CustCompName as [Compnay Name],CustAddress as[Address],CustPhone as [Phone],CustMobile as [Mobile],CustFax as[Fax] from customerdetails";
-           
            // dataGridView1.DataSource = dt;
             txtcustomercode.TabStop = false;
             button1.TabStop = false;
@@ -331,8 +329,6 @@ namespace WindowsFormsApplication1
                 txtQuantity.Focus();
                 butadditem.Enabled = true;
             }
-
-
             else
             {
                 txtitemcode.Focus();
@@ -405,17 +401,12 @@ namespace WindowsFormsApplication1
                             butadditem.Enabled = false;
                             txtQuantity.ReadOnly = true;
                             txtQuantity.TabStop = false;
-
                         }
                         //double qtybuiled = getquantitybuiled();
                         //textBox2.Text = qtybuiled.ToString();
-
-
                     }
 
                 }
-
-
 
                 if (txtProductName.Text == "" && txtQuantity.Text == "")
                 {
@@ -429,8 +420,6 @@ namespace WindowsFormsApplication1
                         // txtAmount.Text = "0";
                         MessageBox.Show("Please Enter the Quanity");
                     }
-
-
                     else
                     {
                         string select1 = "select ItemName from ItemDetails where ItemId='" + txtitemcode.Text + "'";
@@ -446,8 +435,7 @@ namespace WindowsFormsApplication1
                         }
                         else
                         {
-                           
-                                    string selectq = "select it.HSN,it.CGST,it.SGST,it.IGST,it.CESS from ItemPriceDetail ipd join ItemDetails ids on ipd.ItemId=ids.ItemId join ItemTaxDetail it on it.ItemId=ids.ItemId where ipd.ItemId='" + txtitemcode.Text + "'";
+                                   string selectq = "select it.HSN,it.CGST,it.SGST,it.IGST,it.CESS from ItemPriceDetail ipd join ItemDetails ids on ipd.ItemId=ids.ItemId join ItemTaxDetail it on it.ItemId=ids.ItemId where ipd.ItemId='" + txtitemcode.Text + "'";
                                     DataTable dta = d.getDetailByQuery(selectq);
                                     string ConpanyName = "";
                                     string mrp = "";
@@ -513,16 +501,11 @@ namespace WindowsFormsApplication1
                             }
 
                             txtitemcode.Select(txtitemcode.Text.Length, 0);
-
-
-
                         }
                     }
                 }
           //  }
         //}
-
-
         private void salesorder_Load(object sender, EventArgs e)
         {
             txtcustomercode.Select(txtcustomercode.Text.Length, 0);
@@ -575,8 +558,6 @@ namespace WindowsFormsApplication1
             string taxtid = "";
             foreach (DataRow dr in dt2.Rows)
             {
-
-
                 taxtid = dr[0].ToString();
             }
             string selectName = "select CGST,SGST,IGST,CESS from ItemTaxDetail where TexId='" + taxtid + "'"; //TexName='" + DB_Main.taxName + "'";
@@ -891,21 +872,12 @@ namespace WindowsFormsApplication1
                         txtsrno.Text = id1.ToString();
                         txtitemcode.Focus();
                         ls.Clear();
-
-
                     }
-
-
-
                 }
-
-
                 //MessageBox.Show("please select your first item id");
                 txtcustomercode.Select(txtcustomercode.Text.Length, 0);
                 gridsalesorder.AllowUserToAddRows = true;
                 txtcustomercode.Focus();
-
-
             }
         }
 
@@ -1004,21 +976,12 @@ namespace WindowsFormsApplication1
                         txtsrno.Text = id1.ToString();
                         txtitemcode.Focus();
                         ls.Clear();
-
-
                     }
-
-
-
                 }
-
-
                 //MessageBox.Show("please select your first item id");
                 txtcustomercode.Select(txtcustomercode.Text.Length, 0);
                 gridsalesorder.AllowUserToAddRows = true;
                 txtcustomercode.Focus();
-
-
             }
         }
 
@@ -1068,15 +1031,10 @@ namespace WindowsFormsApplication1
                 }*/
             }
         }
-
-
         private void button6_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-
-
         private void gridsalesorder_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -1125,8 +1083,6 @@ namespace WindowsFormsApplication1
                 txtcustphone.Text = "";
                 txtcustmobile.Text = "";
                 txtcustfax.Text = "";
-
-
             }
 
         }
@@ -1179,10 +1135,6 @@ namespace WindowsFormsApplication1
 
             //}
         }
-
-
-
-
         private void setvalue()
         {
             if (customerdetails.Rows.Count > 0)
@@ -1222,12 +1174,7 @@ namespace WindowsFormsApplication1
                 }
             }
         }
-
-
-
         public DataGridView orderid { get; set; }
-
-
         private void txtdiscount_TextChanged(object sender, EventArgs e)
         {
             double totalAmount = 0.0;
@@ -1245,16 +1192,12 @@ namespace WindowsFormsApplication1
                 txttotalammount.Text = totalAmount.ToString();
             }
         }
-
-
         private void gridsalesorder_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (gridsalesorder.Rows.Count > 1)
             {
                 butremove.Enabled = true;
-
             }
-
             if (e.KeyChar == (char)Keys.Escape)
             {
                 var dgvcount = gridsalesorder.Rows.Count;
@@ -1268,7 +1211,6 @@ namespace WindowsFormsApplication1
             }
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-
                     int selectewIndex = gridsalesorder.CurrentCell.RowIndex;
                   // int selectewIndexActual = gridsalesorder.SelectedRows[0].Index;
 
@@ -1296,7 +1238,6 @@ namespace WindowsFormsApplication1
                             int q1 = Convert.ToInt32(txtquantitybuiled.Text);
                             q1 -= Convert.ToInt32(quantity.Trim());
                             txtquantitybuiled.Text = q1.ToString();
-
                             if (Amount == "")
                             {
                                 Amount = "0";
@@ -1376,17 +1317,12 @@ namespace WindowsFormsApplication1
                             MessageBox.Show("Item already deleted!");
                         }
                     }
-                
-
-
                 butremove.Enabled = false;
                 savebutton.TabStop = false;
                 butclose.TabStop = false;
                 txtcustomercode.TabStop = true;
                 button1.TabStop = true;
                 button2.TabStop = true;
-
-
             }
         }
 
@@ -1433,12 +1369,10 @@ namespace WindowsFormsApplication1
                 txtcustomercode.Focus();
                 MessageBox.Show("Please enter currect customer code!");
             }
-
         }
 
         private void txtitemcode_KeyPress(object sender, KeyPressEventArgs e)
         {
-
             string select = "select CurrentQuantity from ItemQuantityDetail where itemid='" + txtitemcode.Text + "'";
             DataTable dt1 = d.getDetailByQuery(select);
             string s = "";
@@ -1500,8 +1434,6 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
-
-
                     //double qu=Convert.ToDouble(txtQuantity.Text);
                     string selectquery1 = "select i.ItemId,i.ItemName,cast(ip.SalesPrice as numeric(38,2)),iq.CurrentQuantity from ItemDetails i join ItemPriceDetail ip on i.ItemId=ip.ItemId join ItemQuantityDetail iq on ip.ItemId=iq.ItemId where i.ItemId='" + txtitemcode.Text + "'";
                     DataTable dt = d.getDetailByQuery(selectquery1);
@@ -1526,10 +1458,6 @@ namespace WindowsFormsApplication1
 
                         }
                     }
-
-
-
-
                     else
                     {
                         txtProductName.Text = "";
@@ -2237,7 +2165,7 @@ namespace WindowsFormsApplication1
                             }
 
                             int q1 = Convert.ToInt32(quantity);
-
+                            txtquantitybuiled.Text = q1.ToString();
                             Double rate1 = Convert.ToDouble(rate);
                             Double price = rate1 * q1;
                             if (price.ToString() == "")
