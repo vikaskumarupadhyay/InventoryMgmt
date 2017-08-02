@@ -2020,7 +2020,7 @@ namespace WindowsFormsApplication1
                                 gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[3].Value = rate;
                                 string quantity = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[4].Value.ToString();
                                // char ch = Convert.ToChar(quantity);
-                                if (quantity.All(char.IsLetter))
+                                if (!quantity.All(char.IsNumber))
                                 {
                                     quantity = "0";
                                 }

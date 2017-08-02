@@ -4168,7 +4168,7 @@ namespace WindowsFormsApplication1
 
                                 dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[3].Value = rate;
                                 string quantity = dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[4].Value.ToString();
-                                if(quantity.All(char.IsLetter))
+                                if(!quantity.All(char.IsNumber))
                                 {
                                     quantity = "0";
                                 }
