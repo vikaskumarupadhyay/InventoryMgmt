@@ -8,7 +8,7 @@ create table VendorDetails(venderId varchar(100) primary key,vName varchar(1000)
 go
 create table VendorAccountDetails (id varchar(100),venderId varchar(100) foreign key references VendorDetails(venderId),vOpeningBalance varchar(100), vCurrentBalance varchar(100))
 go
-create table CustomerDetails(custId varchar(100) primary key,CustName varchar(1000),CustCompName varchar(1000),CustAddress varchar(1000),CustCity varchar(100), CustState varchar(100),CustZip varchar(100),CustCountry varchar(50),CustEmail varchar(250), CustWebAddress varchar(50),CustPhone varchar(15),CustMobile varchar(15),CustFax varchar(15),CustDesc varchar(500),PanNo varchar(200),TanNo varchar(200),others varchar(200))
+create table CustomerDetails(custId varchar(100) primary key,CustName varchar(1000),CustCompName varchar(1000),CustAddress varchar(1000),CustCity varchar(100), CustState varchar(100),CustZip varchar(100),CustCountry varchar(50),CustEmail varchar(250), CustWebAddress varchar(50),CustPhone varchar(15),CustMobile varchar(15),CustFax varchar(15),CustPanNo varchar(200),CustGstNo varchar(200),others varchar(200)CustDesc varchar(500))
 go
 
 create table CustomerAccountDetails (id varchar(100),CustId varchar(100) foreign key references CustomerDetails(custId),CustOpeningBalance varchar(100), CustCurrentBalance varchar(100))
@@ -75,8 +75,9 @@ REFERENCES [dbo].[CustomerDetails] ([custId])
 GO
 
 create table salesOrderDelivery(Delivaryid int identity primary key,Orderid int foreign key references orderdetails(Orderid),status bit, DeliveryDate datetime)
+go
 create table salesinvoice(invoiceid int identity primary key,Delivaryid int foreign key references salesOrderDelivery(Delivaryid),Orderid int foreign key references orderdetails(Orderid),invoicedate datetime)
-
+go
 
 USE [SalesMaster]
 GO
@@ -117,8 +118,6 @@ ALTER TABLE [dbo].[customerorderdescriptions]  WITH CHECK ADD FOREIGN KEY([order
 REFERENCES [dbo].[orderdetails] ([orderid])
 GO
 
-
-
 Create table payment(id int identity primary key,invoiceid int foreign key references  salesinvoice(invoiceid),totalammount Decimal,payammount decimal,Remainingammount decimal,paymentmode varchar(300),paymentdate datetime )
 go
 Create table vithautrefrancereceipt(id int identity primary key,CustId varchar(100) foreign key references CustomerDetails(custId),Totalammoun Float,Balanceammount Float,receiptdate datetime )
@@ -129,7 +128,7 @@ alter table VendorDetails add vServiceTaxRegnNo varchar(100)
 go
 alter table VendorDetails add vExciseRegnNo varchar(100)
 go
-alter table VendorDetails add vGSTRegnNo varchar(100)sss
+alter table VendorDetails add vGSTRegnNo varchar(100)
 go
 alter table VendorOrderDetails add Discount decimal
 go
@@ -147,10 +146,6 @@ Sp_rename 'VendorDetails.vTinNo','vVatNo'
 
 Sp_rename 'VendorDetails.vOther','vCstNo'
 
-
-
-alter table CustomerDetails add Gstregnno varchar (200)
-go
 alter table orderdetails add Discount float
 go
 alter table orderdetails add Discountamount float
@@ -158,12 +153,7 @@ go
 alter table orderdetails add Tax float
 go
 alter table orderdetails add Taxamount float
-
-  
- Sp_rename 'CustomerDetails.PanNo','CustPanNo'
-
- Sp_rename 'CustomerDetails.Others','CustCstNo'
-
+go
 
   create table CompnayTex(TexId varchar(100) primary key,TexName varchar(200),TexAmount decimal ,TexDescription varchar(200))
    go
@@ -224,7 +214,7 @@ go
 
 ALTER TABLE ItemPriceDetail ALTER COLUMN Margin decimal(18,2)
 
- Sp_rename 'CustomerDetails.CustVatNo','CustGstNo'
+ //Sp_rename 'CustomerDetails.CustVatNo','CustGstNo'
 
  go
 ALTER TABLE VendorDetails DROP COLUMN vVatNo

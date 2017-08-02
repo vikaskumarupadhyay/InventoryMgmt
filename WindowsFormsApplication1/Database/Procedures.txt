@@ -1,5 +1,4 @@
 
-
 create procedure GetUpdateCounterVender 
  as
 begin

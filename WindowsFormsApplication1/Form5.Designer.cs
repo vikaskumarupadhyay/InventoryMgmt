@@ -135,6 +135,7 @@
             this.pnlshowdetail = new System.Windows.Forms.Panel();
             this.butba = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtcompnayname = new System.Windows.Forms.TextBox();
             this.txttransctiondate = new System.Windows.Forms.TextBox();
             this.txtchaquedate = new System.Windows.Forms.TextBox();
             this.txtcardtype = new System.Windows.Forms.TextBox();
@@ -169,7 +170,6 @@
             this.label53 = new System.Windows.Forms.Label();
             this.txtcashamount = new System.Windows.Forms.TextBox();
             this.label54 = new System.Windows.Forms.Label();
-            this.txtcompnayname = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -515,7 +515,6 @@
             this.pnlSalesPayment.Controls.Add(this.groupBox8);
             this.pnlSalesPayment.Controls.Add(this.btnSave);
             this.pnlSalesPayment.Controls.Add(this.groupBox9);
-            this.pnlSalesPayment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlSalesPayment.Location = new System.Drawing.Point(0, 0);
             this.pnlSalesPayment.Name = "pnlSalesPayment";
             this.pnlSalesPayment.Size = new System.Drawing.Size(1354, 634);
@@ -825,6 +824,7 @@
             this.txtRturned.TabIndex = 36;
             this.txtRturned.Text = "0.00";
             this.txtRturned.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRturned.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtRturned_MouseClick);
             this.txtRturned.TextChanged += new System.EventHandler(this.txtRturned_TextChanged);
             this.txtRturned.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRturned_KeyPress);
             // 
@@ -1383,6 +1383,14 @@
             this.groupBox4.TabIndex = 14;
             this.groupBox4.TabStop = false;
             // 
+            // txtcompnayname
+            // 
+            this.txtcompnayname.Location = new System.Drawing.Point(873, 76);
+            this.txtcompnayname.Name = "txtcompnayname";
+            this.txtcompnayname.ReadOnly = true;
+            this.txtcompnayname.Size = new System.Drawing.Size(210, 21);
+            this.txtcompnayname.TabIndex = 51;
+            // 
             // txttransctiondate
             // 
             this.txttransctiondate.Location = new System.Drawing.Point(657, 161);
@@ -1694,14 +1702,6 @@
             this.label54.Size = new System.Drawing.Size(80, 15);
             this.label54.TabIndex = 0;
             this.label54.Text = "Cash Amount";
-            // 
-            // txtcompnayname
-            // 
-            this.txtcompnayname.Location = new System.Drawing.Point(873, 76);
-            this.txtcompnayname.Name = "txtcompnayname";
-            this.txtcompnayname.ReadOnly = true;
-            this.txtcompnayname.Size = new System.Drawing.Size(210, 21);
-            this.txtcompnayname.TabIndex = 51;
             // 
             // Form5
             // 
