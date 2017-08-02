@@ -408,6 +408,7 @@ namespace WindowsFormsApplication1
         {
             panel2.Visible = true;
             txtSearch.Text = "";
+            panel3.Visible = true;
         }
         int counter = 0;
         private void buttSave_Click(object sender, EventArgs e)
@@ -984,7 +985,7 @@ namespace WindowsFormsApplication1
             //double amount5 = Amount2 + amount4;
             //string Amount3 = amount5.ToString();
             //txtBalance.Text = amount5.ToString("##0.00");
-           
+            txtRturned.ReadOnly = true;
             txtInvoiceid.Text = txtRefNo.Text;
 
             txtInvoiceAmount.Text = BalAmount.ToString("###0.00");
@@ -1212,6 +1213,9 @@ namespace WindowsFormsApplication1
            // Double Amount2 = Amount1 - Amount;
            // string Amount3 = Amount2.ToString();
            // txtNetAmount.Text = txtTotalAmount1.Text;
+            txtRturned.Text = "0.00";
+            bal2 = 0.00;
+            BalAmunt = 0.00;
            // txtBalance.Text = Amount2.ToString("##0.00");
             txtNetAmount.Text = txtTotalAmount1.Text;
             Double Amount = Convert.ToDouble(txtTotalAmount1.Text);
@@ -1219,6 +1223,14 @@ namespace WindowsFormsApplication1
             Double Amount2 = Amount1 - Amount;
             string Amount3 = Amount2.ToString();
             txtBalance.Text = Amount2.ToString("##0.00");
+            if (txtRturned.Text == "0.00")
+            {
+                txtRturned.ReadOnly = true;
+            }
+            if (Amount1 < Amount)
+            {
+                txtRturned.ReadOnly = false;
+            }
         }
 
         private void CashAmount_KeyPress(object sender, KeyPressEventArgs e)
@@ -1513,7 +1525,6 @@ namespace WindowsFormsApplication1
 
         private void txtRturned_TextChanged(object sender, EventArgs e)
         {
-            
             if (txtBalance.Text == "")
             {
                 txtBalance.Text = "0.00";

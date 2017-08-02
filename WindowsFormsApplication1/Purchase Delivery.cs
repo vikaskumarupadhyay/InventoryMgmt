@@ -644,7 +644,7 @@ namespace WindowsFormsApplication1
                                     Mrp = dr1[1].ToString();
                                 }
 
-                                button4.Enabled = true;
+                                //button4.Enabled = true;
                                 DataRow dr = addToCartTable.NewRow();
                                 dr[0] = txtItemCode.Text.Trim();
                                 dr[1] = txtProductName.Text.Trim();
@@ -832,7 +832,7 @@ namespace WindowsFormsApplication1
                                     Mrp = dr1[1].ToString();
                                 }
 
-                                button4.Enabled = true;
+                                //button4.Enabled = true;
                                 DataRow dr = addToCartTable.NewRow();
                                 dr[0] = txtItemCode.Text.Trim();
                                 dr[1] = txtProductName.Text.Trim();
@@ -2125,7 +2125,7 @@ namespace WindowsFormsApplication1
                     button1.TabStop = true;
                     button2.TabStop = true;
                     button3.TabStop = true;
-                    button4.TabStop = true;
+                   // button4.TabStop = true;
                 }
                 else if (textVendercod.Text == "V")
                 {
@@ -3247,6 +3247,7 @@ namespace WindowsFormsApplication1
 
         private void pnlPaymentDetail_Paint(object sender, PaintEventArgs e)
         {
+            txtRturned.ReadOnly = true;
             IndexTex();
             txtInvoiceid.Text = txtSrNo.Text;
             Double total = Convert.ToDouble(txttotalAmount.Text);
@@ -3482,16 +3483,22 @@ namespace WindowsFormsApplication1
 
         private void txtTotalAmount1_TextChanged(object sender, EventArgs e)
         {
+             BalAmunt = 0.00;
+             bal2 = 0.00;
             txtNetAmount.Text = txtTotalAmount1.Text;
             Double Amount = Convert.ToDouble(txtTotalAmount1.Text);
             Double Amount1 = Convert.ToDouble(txtInvoiceAmount.Text);
             Double Amount2 = Amount1 - Amount;
             string Amount3 = Amount2.ToString();
             txtBalance.Text = Amount2.ToString("###0.00");
-            //if (Amount1 > Amount)
-            //{
-            //    txtRturned.ReadOnly = false;
-            //}
+            if (txtRturned.Text == "0.00")
+            {
+                txtRturned.ReadOnly = true;
+            }
+            if (Amount1 < Amount)
+            {
+                txtRturned.ReadOnly = false;
+            }
         }
 
         private void CashAmount_KeyPress(object sender, KeyPressEventArgs e)
@@ -3764,6 +3771,12 @@ namespace WindowsFormsApplication1
          Double bal2 = 0;
         private void txtRturned_TextChanged(object sender, EventArgs e)
         {
+            if (txtRturned.Text == ".")
+            {
+                txtRturned.Text = "0.00";
+                txtRturned.SelectAll();
+                return;
+            }
             if (txtBalance.Text == "")
             {
                 txtBalance.Text = "0.00";
@@ -3784,8 +3797,9 @@ namespace WindowsFormsApplication1
             Double return3 = Convert.ToDouble(txtRturned.Text);
             if (bal2 < return3)
             {
+
                 MessageBox.Show("please corrct Amount");
-                txtRturned.Text = "0";
+                txtRturned.Text = "0.00";
                 txtRturned.Focus();
                 txtRturned.SelectAll();
                 txtBalance.Text = BalAmunt.ToString("###0.00");
@@ -4386,9 +4400,57 @@ namespace WindowsFormsApplication1
             txtCreditAmount.SelectAll();
         }
 
-       
+        private void txtRturned_KeyUp(object sender, KeyEventArgs e)
+        {
+            //if (txtRturned.Text == ".")
+            //{
+            //    txtRturned.Text = "0.00";
+            //    txtRturned.SelectAll();
+            //}
+            //if (txtBalance.Text == "")
+            //{
+            //    txtBalance.Text = "0.00";
+            //}
+            //if (txtRturned.Text == "")
+            //{
+            //    txtRturned.Text = "0.00";
+            //}
 
+            //if (BalAmunt == 0)
+            //{
+            //    BalAmunt = Convert.ToDouble(txtBalance.Text);
+            //}
+            //if (bal2 == 0)
+            //{
+            //    bal2 = Convert.ToDouble(txtBalance.Text) * -1;
+            //}
+            //Double return3 = Convert.ToDouble(txtRturned.Text);
+            //if (bal2 < return3)
+            //{
 
+            //    MessageBox.Show("please corrct Amount");
+            //    txtRturned.Text = "0.00";
+            //    txtRturned.Focus();
+            //    txtRturned.SelectAll();
+            //    txtBalance.Text = BalAmunt.ToString("###0.00");
+            //}
+            //else
+            //{
+            //    string sub = BalAmunt.ToString();
+            //    string return1 = txtRturned.Text;
+            //    double amount1 = 0.0;
+            //    if (double.TryParse(sub, out amount1))
+            //    {
+            //        double bal = Convert.ToDouble(sub);
+            //        if (double.TryParse(return1, out amount1))
+            //        {
+            //            double ReturnAmount = Convert.ToDouble(txtRturned.Text);
+            //            double bal1 = bal + ReturnAmount;
+            //            txtBalance.Text = bal1.ToString("###0.00");
+            //        }
+            //    }
+            //}
+        }
     }
 
 }

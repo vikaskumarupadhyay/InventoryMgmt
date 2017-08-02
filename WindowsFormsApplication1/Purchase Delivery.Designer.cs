@@ -1292,6 +1292,7 @@
             this.txtRturned.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtRturned_MouseClick);
             this.txtRturned.TextChanged += new System.EventHandler(this.txtRturned_TextChanged);
             this.txtRturned.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRturned_KeyPress);
+            this.txtRturned.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtRturned_KeyUp);
             // 
             // txtBalance
             // 
