@@ -1140,7 +1140,7 @@ namespace WindowsFormsApplication1
 
         private void gridPurchaseOrder_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //try
+           /* //try
             //{
             //    if (e.ColumnIndex == 1)
             //    {
@@ -1281,7 +1281,7 @@ namespace WindowsFormsApplication1
                     //}
                     #endregion
                 }
-            }
+            }*/
         }
 
 
@@ -2069,7 +2069,7 @@ namespace WindowsFormsApplication1
                                 txtwithautaxamount.Text = withtotalammount.ToString("###0.00");
                                 Double Quantity = setAmount(4);
                                 txtQuantityBild.Text = Quantity.ToString();
-                                Double toat = setAmount(11);
+                                Double toat = setAmount();
                                 txtTotalAmount.Text = toat.ToString("###0.00");
                                 gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[4];
 
@@ -2170,6 +2170,10 @@ namespace WindowsFormsApplication1
                     string addamount = cellCollection[5].Value.ToString();
                     string addamount1 = cellCollection[3].Value.ToString();
                     string addamount2 = cellCollection[4].Value.ToString();
+                    //if (!addamount2.All(char.IsNumber))
+                    //{
+                    //    addamount2 = "0";
+                    //}
                     if (addamount2 != "")
                     {
                         Double amount1 = Convert.ToDouble(addamount.ToString());
@@ -2198,6 +2202,10 @@ namespace WindowsFormsApplication1
                 {
                     string addamount = cellCollection[4].Value.ToString();
                     string addamount1 = cellCollection[3].Value.ToString();
+                    //if (!addamount.All(char.IsNumber))
+                    //{
+                    //    addamount = "0";
+                    //}
                     Double amount1 = Convert.ToDouble(addamount.ToString());
                     Double amount2 = Convert.ToDouble(addamount1.ToString());
                     Double Amount = amount2 * amount1;
@@ -2219,12 +2227,54 @@ namespace WindowsFormsApplication1
                 if (!string.IsNullOrWhiteSpace(cellCollection[value].Value.ToString()))
                 {
                     string addamount = cellCollection[value].Value.ToString();
+                    //if (!addamount.All(char.IsNumber))
+                    //{
+                    //    addamount = "0";
+                    //}
                Double amount1=Convert.ToDouble(addamount.ToString());
                amount = amount + amount1;
                 }
               
             }
             return amount;
+        }
+        public Double setAmount()
+        {
+            Double amount = 0.00;
+            DataGridViewRowCollection RowCollection = gridPurchaseOrder.Rows;
+            for (int a = 0; a < RowCollection.Count - 1; a++)
+            {
+
+                DataGridViewRow currentRow = RowCollection[a];
+                DataGridViewCellCollection cellCollection = currentRow.Cells;
+                if (!string.IsNullOrWhiteSpace(cellCollection[11].Value.ToString()))
+                {
+                    string addamount = cellCollection[11].Value.ToString();
+                    Double amount1 = Convert.ToDouble(addamount.ToString());
+                    amount = amount + amount1;
+                }
+
+            }
+            return amount;
+        }
+
+        private void gridPurchaseOrder_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            
+            int col = e.ColumnIndex;
+            if (col == 4) 
+            {
+                string value= e.FormattedValue.ToString();
+                if (value != "")
+                {
+                    int quantiy;
+                    bool validNumber = int.TryParse(value, out quantiy);
+                    if (validNumber == false)
+                    {
+                        e.Cancel = true;
+                    }
+                }
+            }
         }
     }
 }

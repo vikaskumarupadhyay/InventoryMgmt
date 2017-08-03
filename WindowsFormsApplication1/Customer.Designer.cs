@@ -233,6 +233,46 @@
             // 
             // comstate
             // 
+            this.comstate.AutoCompleteCustomSource.AddRange(new string[] {
+            "Select State",
+            "Andaman and Nicobar Islands",
+            "Andhra Pradesh",
+            "Arunachal Pradesh",
+            "Assam",
+            "Bihar",
+            "Chandigarh",
+            "Chhattisgarh",
+            "Dadra and Nagar Haveli",
+            "Daman and Diu",
+            "Delhi – National Capital Territory",
+            "Goa",
+            "Gujarat",
+            "Haryana",
+            "Himachal Pradesh",
+            "Jammu & Kashmir",
+            "Jharkhand",
+            "Karnataka",
+            "Kerala",
+            "Lakshadweep",
+            "Madhya Pradesh",
+            "Maharashtra",
+            "Manipur",
+            "Meghalaya",
+            "Mizoram",
+            "Nagaland",
+            "Odisha (Orissa)",
+            "Puducherry (Pondicherry)",
+            "Punjab",
+            "Rajasthan",
+            "Sikkim",
+            "Tamil Nadu",
+            "Telangana",
+            "Tripura",
+            "Uttar Pradesh",
+            "Uttarakhand",
+            "West Bengal"});
+            this.comstate.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comstate.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.comstate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.comstate.FormattingEnabled = true;
             this.comstate.Items.AddRange(new object[] {

@@ -67,12 +67,12 @@ namespace WindowsFormsApplication1
                         else
                         {
 
-                            //if (string.IsNullOrEmpty(txtVenderPhone.Text) && string.IsNullOrEmpty(txtVenderMobile.Text))
-                            //{
-                            //    MessageBox.Show("please Enter the  Mobile No. ya Phone No.");
-                            //}
-                            //else
-                            //{
+                            if (string.IsNullOrEmpty(txtVenderPhone.Text) && string.IsNullOrEmpty(txtVenderMobile.Text))
+                            {
+                                MessageBox.Show("please Enter the  Mobile No. ya Phone No.");
+                            }
+                            else
+                            {
                             //    if (!this.txtVenderEmailAddress.Text.Contains('@') || !this.txtVenderEmailAddress.Text.Contains('.'))
                             //    {
                             //        MessageBox.Show("Please Enter the Correct Email Address");
@@ -135,7 +135,7 @@ namespace WindowsFormsApplication1
                             string Id = dbMainClass.getUniqueID("VENDOR");
                             txtVenderCode.Text = Id;
                             //}
-                            //}
+                          }
                         }
                     }
                 }
@@ -415,7 +415,7 @@ namespace WindowsFormsApplication1
                 //button3.TabIndex = 7;
             
             }
-            else if (counter == 0) 
+            else if (counter == 0)
             {
                 //panel2.Visible = false;
                 panel1.Visible = false;
@@ -726,7 +726,7 @@ namespace WindowsFormsApplication1
         private void txtVenderWebSite_Leave(object sender, EventArgs e)
         {
             string WebSite = txtVenderWebSite.Text;
-            if ((WebSite.LastIndexOf("www") > -1) && (WebSite.LastIndexOf(".") > -1) && (WebSite.LastIndexOf("http://") > -1)|| string.IsNullOrEmpty(WebSite))
+            if ((WebSite.LastIndexOf("www") > -1) && (WebSite.LastIndexOf(".") > -1) && (WebSite.LastIndexOf("http://") > -1) && (WebSite.LastIndexOf("com") > -1) || string.IsNullOrEmpty(WebSite))
             {
                 //MessageBox.Show("Please Enter the Correct Email Address");
             }

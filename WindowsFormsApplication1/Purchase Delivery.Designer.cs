@@ -198,6 +198,7 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.TabStop = false;
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
+            this.dataGridView1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView1_CellValidating);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
             this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
             this.dataGridView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyUp);
@@ -539,6 +540,7 @@
             // 
             // txtdate
             // 
+            this.txtdate.Enabled = false;
             this.txtdate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.txtdate.Location = new System.Drawing.Point(69, 49);
             this.txtdate.Name = "txtdate";
@@ -858,6 +860,7 @@
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.Location = new System.Drawing.Point(0, 0);
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(1320, 465);
             this.dataGridView2.StandardTab = true;
@@ -1623,6 +1626,7 @@
             this.CashAmount.TabIndex = 1;
             this.CashAmount.Text = "0.00";
             this.CashAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CashAmount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.CashAmount_MouseClick);
             this.CashAmount.TextChanged += new System.EventHandler(this.CashAmount_TextChanged);
             this.CashAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CashAmount_KeyPress);
             this.CashAmount.Leave += new System.EventHandler(this.CashAmount_Leave);

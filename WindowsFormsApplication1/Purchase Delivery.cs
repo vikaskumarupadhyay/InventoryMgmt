@@ -2643,6 +2643,10 @@ namespace WindowsFormsApplication1
                 {
                     t = "(case when  exists ( select Orderid from CustomerOrderDelivery where Orderid = VendorOrderDetails.Orderid) then 'Delivered' else 'Panding'end)";
                 }
+                else if (t == "venderId")
+                {
+                    t = "VendorOrderDetails.venderId";
+                }
                 string selectqurry = "select  VendorOrderDetails.Orderid as[Order Id],VendorOrderDetails.venderId as [Vendor Id], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],VendorOrderDetails.OrderDate as[Order Date],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Total Amount],(case when  exists ( select Orderid from CustomerOrderDelivery where Orderid = VendorOrderDetails.Orderid) then 'Delivered' else 'Panding'end) as [Order Status]  from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId where " + t + " like '" + txtSearch.Text + "%'";
                 DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
                 dataGridView2.DataSource = dt;
@@ -4358,21 +4362,21 @@ namespace WindowsFormsApplication1
        
         private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
         {
-            try
-            {
-                if (e.KeyCode == Keys.Enter)
-                {
+            //try
+            //{
+            //    if (e.KeyCode == Keys.Enter)
+            //    {
 
-                    if (dataGridView1.CurrentCell.ColumnIndex == 1)
-                    {
-                        dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[0];
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
+            //        if (dataGridView1.CurrentCell.ColumnIndex ==2)
+            //        {
+            //            dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[0];
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message.ToString());
+            //}
         }
 
         private void txtRturned_MouseClick(object sender, MouseEventArgs e)
@@ -4450,6 +4454,29 @@ namespace WindowsFormsApplication1
             //        }
             //    }
             //}
+        }
+
+        private void CashAmount_MouseClick(object sender, MouseEventArgs e)
+        {
+            CashAmount.SelectAll();
+        }
+
+        private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            int col = e.ColumnIndex;
+            if (col == 4)
+            {
+                string value = e.FormattedValue.ToString();
+                if (value != "")
+                {
+                    int quantiy;
+                    bool validNumber = int.TryParse(value, out quantiy);
+                    if (validNumber == false)
+                    {
+                        e.Cancel = true;
+                    }
+                }
+            }
         }
     }
 

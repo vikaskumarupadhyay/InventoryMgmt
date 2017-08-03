@@ -138,6 +138,46 @@
             // 
             // cmbState
             // 
+            this.cmbState.AutoCompleteCustomSource.AddRange(new string[] {
+            "Select State",
+            "Andaman and Nicobar Islands",
+            "Andhra Pradesh",
+            "Arunachal Pradesh",
+            "Assam",
+            "Bihar",
+            "Chandigarh",
+            "Chhattisgarh",
+            "Dadra and Nagar Haveli",
+            "Daman and Diu",
+            "Delhi – National Capital Territory",
+            "Goa",
+            "Gujarat",
+            "Haryana",
+            "Himachal Pradesh",
+            "Jammu & Kashmir",
+            "Jharkhand",
+            "Karnataka",
+            "Kerala",
+            "Lakshadweep",
+            "Madhya Pradesh",
+            "Maharashtra",
+            "Manipur",
+            "Meghalaya",
+            "Mizoram",
+            "Nagaland",
+            "Odisha (Orissa)",
+            "Puducherry (Pondicherry)",
+            "Punjab",
+            "Rajasthan",
+            "Sikkim",
+            "Tamil Nadu",
+            "Telangana",
+            "Tripura",
+            "Uttar Pradesh",
+            "Uttarakhand",
+            "West Bengal"});
+            this.cmbState.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbState.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.cmbState.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmbState.FormattingEnabled = true;
             this.cmbState.Items.AddRange(new object[] {
@@ -195,7 +235,7 @@
             // 
             this.txtPanNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtPanNo.Location = new System.Drawing.Point(54, 332);
-            this.txtPanNo.MaxLength = 105;
+            this.txtPanNo.MaxLength = 10;
             this.txtPanNo.Name = "txtPanNo";
             this.txtPanNo.Size = new System.Drawing.Size(615, 23);
             this.txtPanNo.TabIndex = 13;
@@ -244,7 +284,7 @@
             this.txtVenderFax.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtVenderFax.Location = new System.Drawing.Point(886, 288);
-            this.txtVenderFax.MaxLength = 105;
+            this.txtVenderFax.MaxLength = 15;
             this.txtVenderFax.Name = "txtVenderFax";
             this.txtVenderFax.Size = new System.Drawing.Size(408, 23);
             this.txtVenderFax.TabIndex = 12;
@@ -262,7 +302,7 @@
             // txtVenderMobile
             // 
             this.txtVenderMobile.Location = new System.Drawing.Point(470, 288);
-            this.txtVenderMobile.MaxLength = 105;
+            this.txtVenderMobile.MaxLength = 11;
             this.txtVenderMobile.Name = "txtVenderMobile";
             this.txtVenderMobile.Size = new System.Drawing.Size(410, 23);
             this.txtVenderMobile.TabIndex = 11;
@@ -271,7 +311,7 @@
             // txtVenderPhone
             // 
             this.txtVenderPhone.Location = new System.Drawing.Point(54, 288);
-            this.txtVenderPhone.MaxLength = 150;
+            this.txtVenderPhone.MaxLength = 11;
             this.txtVenderPhone.Name = "txtVenderPhone";
             this.txtVenderPhone.Size = new System.Drawing.Size(410, 23);
             this.txtVenderPhone.TabIndex = 10;
@@ -612,6 +652,7 @@
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1325, 464);
