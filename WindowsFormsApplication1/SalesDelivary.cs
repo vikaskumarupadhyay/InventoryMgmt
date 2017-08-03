@@ -16,7 +16,7 @@ namespace WindowsFormsApplication1
         double amount = 0;
         List<string> ls = new List<string>();
         int h;
-        double BalAmunt = 0;
+        
         DB_Main d = new DB_Main();
         public salesdelivary()
         {
@@ -3050,6 +3050,7 @@ namespace WindowsFormsApplication1
          {
              if (e.KeyChar == Convert.ToChar(Keys.Enter))
              {
+                 //txtdiccount.ReadOnly = true;
                  if (txtRefNo.Text == "")
                  {
                      MessageBox.Show("please enter the Refence Number");
@@ -3256,10 +3257,10 @@ namespace WindowsFormsApplication1
                          }
                          //double qtybuiled = getquantitybuiled1();
                          //txtqtybuiled.Text = qtybuiled.ToString();
-                         if (gridsalesdelivary.Rows.Count > 1)
-                         {
-                             txtdiccount.ReadOnly = false;
-                         }
+                         //if (gridsalesdelivary.Rows.Count > 1)
+                         //{
+                         //    txtdiccount.ReadOnly = false;
+                         //}
                      }
 
                  }
@@ -3619,6 +3620,8 @@ namespace WindowsFormsApplication1
 
         private void txtTotalAmount1_TextChanged_1(object sender, EventArgs e)
         {
+            BalAmunt = 0.00;
+            bal2 = 0.00;
             txtNetAmount.Text = txtTotalAmount1.Text;
             Double Amount = Convert.ToDouble(txtTotalAmount1.Text);
             Double Amount1 = Convert.ToDouble(txtInvoiceAmount.Text);
@@ -4118,13 +4121,14 @@ namespace WindowsFormsApplication1
                 }
             }
         }
+        double BalAmunt = 0;
         Double bal2 = 0;
-        double s = 0.0;
         private void txtRturned_TextChanged(object sender, EventArgs e)
         {
-           
             if (txtRturned.Text == ".")
             {
+                txtRturned.Text = "0.00";
+                txtRturned.SelectAll();
                 return;
             }
             if (txtBalance.Text == "")
@@ -4134,16 +4138,12 @@ namespace WindowsFormsApplication1
             if (txtRturned.Text == "")
             {
                 txtRturned.Text = "0.00";
-                //txtRturned.SelectAll();
-                return;
             }
 
-            if (txtRturned.Text == "0.00")
+            if (BalAmunt == 0)
             {
-                txtRturned.SelectAll();
-                return;
+                BalAmunt = Convert.ToDouble(txtBalance.Text);
             }
-            
             if (bal2 == 0)
             {
                 bal2 = Convert.ToDouble(txtBalance.Text) * -1;
@@ -4151,11 +4151,12 @@ namespace WindowsFormsApplication1
             Double return3 = Convert.ToDouble(txtRturned.Text);
             if (bal2 < return3)
             {
-                    MessageBox.Show("please corrct Amount");
-                    txtRturned.Focus();
-                    txtRturned.SelectAll();
-                    txtBalance.Text = BalAmunt.ToString("###0.00");
-                    txtRturned.Text = "0.00";
+
+                MessageBox.Show("please corrct Amount");
+                txtRturned.Text = "0.00";
+                txtRturned.Focus();
+                txtRturned.SelectAll();
+                txtBalance.Text = BalAmunt.ToString("###0.00");
             }
             else
             {
@@ -4415,14 +4416,26 @@ namespace WindowsFormsApplication1
         }
         private void gridsalesdelivary_KeyUp(object sender, KeyEventArgs e)
         {
-
             try
             {
+                string itemId = gridsalesdelivary.Rows[0].Cells[0].Value.ToString();
+                string opening = "";
+                string j = "select c.CurrentQuantity,i.ItemId from ItemQuantityDetail c join ItemDetails i on c.ItemId=i.ItemId where i.ItemId='"+itemId+"'";
+                DataTable dt5 = d.getDetailByQuery(j);
+                foreach (DataRow dr in dt5.Rows)
+                {
+                        opening = dr[0].ToString();
+                        if (opening == "-2")
+                        {
+                            return;
+                        }
+                    
+                }
                 if (gridsalesdelivary.Rows[0].Cells[0].Value == null)
                 {
                     return;
                 }
-                string itemId = gridsalesdelivary.Rows[0].Cells[0].Value.ToString();
+               
                
                 if (itemId == "")
                 {
@@ -4483,9 +4496,7 @@ namespace WindowsFormsApplication1
                         }
                         if (item == itemid)
                         {
-
-
-                            string selectqurry = "select Ids.ItemName,itd.HSN, ipd.purChasePrice,itd.CGST,itd.SGST,itd.IGST,itd.CESS,itd.Discount from ItemDetails Ids  join ItemPriceDetail ipd on Ids.ItemId=ipd.ItemId join ItemTaxDetail itd on ipd.ItemId=itd.ItemId  where Ids.ItemId='" + itemid + "'";
+                            string selectqurry = "select Ids.ItemName,itd.HSN, ipd.SalesPrice,itd.CGST,itd.SGST,itd.IGST,itd.CESS,itd.Discount from ItemDetails Ids  join ItemPriceDetail ipd on Ids.ItemId=ipd.ItemId join ItemTaxDetail itd on ipd.ItemId=itd.ItemId  where Ids.ItemId='" + itemid + "'";
                             DataTable dt = d.getDetailByQuery(selectqurry);
                             string rate = "";
                             string gst3 = "";
@@ -4513,8 +4524,6 @@ namespace WindowsFormsApplication1
                                 gridsalesdelivary.Rows[gridsalesdelivary.CurrentRow.Index - 1].Cells[9].Value = igst1.ToString();
                                 gridsalesdelivary.Rows[gridsalesdelivary.CurrentRow.Index - 1].Cells[10].Value = dr[6].ToString();
                                 gridsalesdelivary.Rows[gridsalesdelivary.CurrentRow.Index - 1].Cells[5].Value = dr[7].ToString();
-
-
                                 rate = dr[2].ToString();
                             }
 
