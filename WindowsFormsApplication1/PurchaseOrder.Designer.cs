@@ -294,6 +294,7 @@
             // 
             // dtpDate
             // 
+            this.dtpDate.Enabled = false;
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDate.Location = new System.Drawing.Point(67, 49);
             this.dtpDate.Name = "dtpDate";
@@ -633,6 +634,7 @@
             this.gridPurchaseOrder.TabIndex = 0;
             this.gridPurchaseOrder.TabStop = false;
             this.gridPurchaseOrder.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPurchaseOrder_CellEndEdit);
+            this.gridPurchaseOrder.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gridPurchaseOrder_CellValidating);
             this.gridPurchaseOrder.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridPurchaseOrder_KeyDown);
             this.gridPurchaseOrder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridPurchaseOrder_KeyPress);
             this.gridPurchaseOrder.KeyUp += new System.Windows.Forms.KeyEventHandler(this.gridPurchaseOrder_KeyUp);

@@ -57,6 +57,7 @@ namespace WindowsFormsApplication1
         }
         private void Item_Load(object sender, EventArgs e)
         {
+           
             if(value==1)
             {
             panel1.Visible = true;
@@ -588,23 +589,24 @@ namespace WindowsFormsApplication1
             string value1 = txtItemPrice.Text;
             if (value == "0")
             {
-            if (value1 == "")
+                if (value1 == "")
                 {
                     value1 = "0";
                 }
-            if (value == "")
+                if (value == "")
                 {
                     value = "0";
                 }
-                  string discountAmount = txtItemPrice.Text;
-            double amount = 0.0;
-            if (double.TryParse(discountAmount, out amount))
-            {
-                double pPrice = Convert.ToDouble(value1);
-                double mrp = Convert.ToDouble(value);
-              double totelmrp = mrp - pPrice;
-                txtItemMargin.Text = "0";//totelmrp.ToString();
-           }
+                string discountAmount = txtItemPrice.Text;
+                double amount = 0.0;
+                if (double.TryParse(discountAmount, out amount))
+                {
+                    double pPrice = Convert.ToDouble(value1);
+                    double mrp = Convert.ToDouble(value);
+                    double totelmrp = mrp - pPrice;
+                    txtItemMargin.Text = "0.00";//totelmrp.ToString();
+                }
+            }
             if (value != "0")
             {
                 if (value1 == "")
@@ -620,7 +622,7 @@ namespace WindowsFormsApplication1
                 double totelmrp = mrp - pPrice;
                 txtItemMargin.Text = totelmrp.ToString("###0.00");
             }
-            }
+            
         }
         private void txtItemSalesPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -1373,6 +1375,15 @@ namespace WindowsFormsApplication1
                     txtDis.Focus();
                 }
                 else txtDis.Text = x.ToString("0.00");
+                Double dis1=Convert.ToDouble(txtDis.Text);
+                if (100 < dis1)
+                {
+                    
+                    MessageBox.Show("please maximum 100% Discount");
+                    txtDis.Text = "0.00";
+                    txtDis.Focus();
+                    txtDis.SelectAll();
+                }
             }
             else
             {
