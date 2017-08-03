@@ -1220,7 +1220,8 @@ namespace WindowsFormsApplication1
 
         private void txtTotalAmount1_TextChanged(object sender, EventArgs e)
         {
-
+            BalAmunt = 0.00;
+            bal2 = 0.00;
             if (txtTotalAmount1.Text == "")
             {
                 txtTotalAmount1.Text = "0.00";
