@@ -222,6 +222,7 @@
             this.cmbState.Name = "cmbState";
             this.cmbState.Size = new System.Drawing.Size(307, 24);
             this.cmbState.TabIndex = 5;
+            this.cmbState.Leave += new System.EventHandler(this.cmbState_Leave);
             // 
             // txtGst
             // 

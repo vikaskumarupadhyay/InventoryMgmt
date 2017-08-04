@@ -283,7 +283,7 @@ namespace WindowsFormsApplication1
             }
             else if (s == "Column5")
             {
-                s = "case when VendorDetails .vState != (select state from CompnayDetails) then '0.00'else(select cast(sum(((((voc.Price*voc.Quantity))-(((voc.Price*voc.Quantity)*itd.Discount)/100))*itd.IGST)/100)as numeric(38, 2)) from ItemTaxDetail itd join VendorOrderDesc voc on itd.ItemId=voc.ItemId where voc.Orderid=VendorOrderDetails.Orderid)end";
+                s = "case when VendorDetails .vState = (select state from CompnayDetails) then '0.00'else(select cast(sum(((((voc.Price*voc.Quantity))-(((voc.Price*voc.Quantity)*itd.Discount)/100))*itd.IGST)/100)as numeric(38, 2)) from ItemTaxDetail itd join VendorOrderDesc voc on itd.ItemId=voc.ItemId where voc.Orderid=VendorOrderDetails.Orderid)end";
             }
             else if (s == "Column6")
             {
@@ -1901,6 +1901,11 @@ namespace WindowsFormsApplication1
             panel2.Visible = false;
             panel3.Visible = false;
             panel4.Visible = false;
+        }
+
+        private void CashAmount_MouseClick(object sender, MouseEventArgs e)
+        {
+            CashAmount.SelectAll();
         }
     }
 }

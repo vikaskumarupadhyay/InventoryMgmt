@@ -864,11 +864,17 @@ namespace WindowsFormsApplication1
                         string txtQuanit = cellCollection[4].Value.ToString();
                         if (txtQuanit == "0")
                         {
-                           
+                            gridPurchaseOrder.Focus();
                             return;
                         }
                         string txtRate = cellCollection[3].Value.ToString();
                         string txtAmoun = cellCollection[11].Value.ToString();
+                        if (txtAmoun == "0.00" || txtAmoun == "")
+                        {
+                            gridPurchaseOrder.Focus();
+                            gridPurchaseOrder.AllowUserToAddRows = true;
+                            return;
+                        }
                         string OrderID = txtSrNo.Text;
                         string Query = "insert into VendorOrderDesc Values('" + OrderID + "','" + txtItemCod + "','" + txtRate + "','" + txtQuanit + "','" + txtAmoun + "')";
                         //MessageBox.Show(Query);
@@ -1921,7 +1927,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.Message.ToString());
             }
         }
-
+       
         private void gridPurchaseOrder_KeyUp(object sender, KeyEventArgs e)
         {
             try
@@ -1965,9 +1971,7 @@ namespace WindowsFormsApplication1
                                 vendorstate = dr2[0].ToString();
                             }
 
-
-                            string itemid = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[0].Value.ToString();
-
+                              string  itemid = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[0].Value.ToString();
                             string item = "";
                             string selectQurry = "select ItemId from ItemDetails";
                             DataTable dt1 = dbMainClass.getDetailByQuery(selectQurry);

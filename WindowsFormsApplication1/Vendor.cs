@@ -984,5 +984,10 @@ namespace WindowsFormsApplication1
            
         }
 
+        private void cmbState_Leave(object sender, EventArgs e)
+        {
+            cmbState.SelectedIndex = 0;
+        }
+
     }
 }
