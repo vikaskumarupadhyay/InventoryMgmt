@@ -633,6 +633,7 @@
             this.cmbState.Name = "cmbState";
             this.cmbState.Size = new System.Drawing.Size(308, 24);
             this.cmbState.TabIndex = 5;
+            this.cmbState.SelectedIndexChanged += new System.EventHandler(this.cmbState_SelectedIndexChanged);
             // 
             // label3
             // 

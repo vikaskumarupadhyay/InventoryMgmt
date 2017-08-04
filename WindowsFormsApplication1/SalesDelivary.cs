@@ -4697,11 +4697,11 @@ namespace WindowsFormsApplication1
                 string value = e.FormattedValue.ToString();
                 if (value != "")
                 {
-                    MessageBox.Show("please select your correct quantity");
                     int quantiy;
                     bool validNumber = int.TryParse(value, out quantiy);
                     if (validNumber == false)
                     {
+                        MessageBox.Show("please select your numeric value");
                         e.Cancel = true;
                     }
                 }
