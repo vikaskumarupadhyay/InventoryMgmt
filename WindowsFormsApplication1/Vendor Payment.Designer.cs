@@ -1404,6 +1404,7 @@
             this.CashAmount.TabIndex = 1;
             this.CashAmount.Text = "0.00";
             this.CashAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CashAmount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.CashAmount_MouseClick);
             this.CashAmount.TextChanged += new System.EventHandler(this.CashAmount_TextChanged);
             this.CashAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CashAmount_KeyPress);
             this.CashAmount.Leave += new System.EventHandler(this.CashAmount_Leave);

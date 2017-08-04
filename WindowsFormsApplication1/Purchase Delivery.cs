@@ -408,7 +408,7 @@ namespace WindowsFormsApplication1
             //{
             //    addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
             //}
-
+            dataGridView1.AllowUserToAddRows = true;
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -1111,7 +1111,12 @@ namespace WindowsFormsApplication1
                                 return;
                             }
                             string txtAmoun = cellCollection[11].Value.ToString();
-
+                            if (txtAmoun == "0.00" || txtAmoun == "")
+                            {
+                                dataGridView1.Focus();
+                                dataGridView1.AllowUserToAddRows = true;
+                                return;
+                            }
                             string Query = "insert into VendorOrderDesc Values('" + OrderID + "','" + txtItemCod + "','" + txtRate + "','" + txtQuanit + "','" + txtAmoun + "')";
                             //MessageBox.Show(Query);
                             sf.Add(Query);
@@ -1144,8 +1149,12 @@ namespace WindowsFormsApplication1
                                     return;
                                 }
                                 string txtAmoun = cellCollection[11].Value.ToString();
-                                //string OrderID1 = OrderID;
-
+                                if (txtAmoun == "0.00" || txtAmoun == "")
+                                {
+                                    dataGridView1.Focus();
+                                    dataGridView1.AllowUserToAddRows = true;
+                                    return;
+                                }
                                 string Query = "insert into VendorOrderDesc Values('" + OrderID + "','" + txtItemCode + "','" + txtRate + "','" + txtQuanity + "','" + txtAmoun + "')";
                                 //MessageBox.Show(Query);
 
@@ -1218,7 +1227,12 @@ namespace WindowsFormsApplication1
                                 return;
                             }
                             string txtAmoun = cellCollection[11].Value.ToString();
-
+                            if (txtAmoun == "0.00" || txtAmoun == "")
+                            {
+                                dataGridView1.Focus();
+                                dataGridView1.AllowUserToAddRows = true;
+                                return;
+                            }
                             string Query = "insert into VendorOrderDesc Values('" + OrderID + "','" + txtItemCod + "','" + txtRate + "','" + txtQuanit + "','" + txtAmoun + "')";
                             //MessageBox.Show(Query);
                             sf.Add(Query);
@@ -1431,7 +1445,17 @@ namespace WindowsFormsApplication1
                             count++;
                             string txtRate = cellCollection[3].Value.ToString();
                             string txtQuanity = cellCollection[4].Value.ToString();
+                            if (txtQuanity == "0")
+                            {
+                                return;
+                            }
                             string txtAmoun = cellCollection[11].Value.ToString();
+                            if (txtAmoun == "0.00" || txtAmoun == "")
+                            {
+                                dataGridView1.Focus();
+                                dataGridView1.AllowUserToAddRows = true;
+                                return;
+                            }
                             string OrderID1 = txtRef.Text;
 
                             string Query = "insert into VendorOrderDesc Values('" + OrderID1 + "','" + txtItemCode + "','" + txtRate + "','" + txtQuanity + "','" + txtAmoun + "')";
@@ -2647,7 +2671,7 @@ namespace WindowsFormsApplication1
                 {
                     t = "VendorOrderDetails.venderId";
                 }
-                string selectqurry = "select  VendorOrderDetails.Orderid as[Order Id],VendorOrderDetails.venderId as [Vendor Id], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],VendorOrderDetails.OrderDate as[Order Date],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Bild Quanity],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.Discount as[Discount Rate],VendorOrderDetails.DisAmount as[Dicount Amount],VendorOrderDetails.vat as[Tax],VendorOrderDetails.TextTaxAmmount as[Tax Amount],VendorOrderDetails.TotalPrice as[Total Amount],(case when  exists ( select Orderid from CustomerOrderDelivery where Orderid = VendorOrderDetails.Orderid) then 'Delivered' else 'Panding'end) as [Order Status]  from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId where " + t + " like '" + txtSearch.Text + "%'";
+                string selectqurry = "select VendorOrderDetails.Orderid as[Purchase Order ID],VendorOrderDetails.OrderDate as[Order Date],VendorOrderDetails.venderId as [Vendor ID], VendorDetails.vName as[Vendor Name],VendorDetails.vCompName as[Company Name], VendorDetails.vAddress as[Address],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Quantity Billed],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.DisAmount as[Dicount Amount],cast((VendorOrderDetails.WithoutTexAmount)-(VendorOrderDetails.DisAmount)as numeric(38, 2))as[Taxable Value],case when VendorDetails .vState != (select state from CompnayDetails) then '0.00'else(select cast(sum(((((voc.Price*voc.Quantity))-(((voc.Price*voc.Quantity)*itd.Discount)/100))*itd.CGST)/100)as numeric(38, 2)) from ItemTaxDetail itd join VendorOrderDesc voc on itd.ItemId=voc.ItemId where voc.Orderid=VendorOrderDetails.Orderid)end as[CGst],case when VendorDetails .vState != (select state from CompnayDetails) then '0.00'else(select cast(sum(((((voc.Price*voc.Quantity))-(((voc.Price*voc.Quantity)*itd.Discount)/100))*itd.SGST)/100)as numeric(38, 2)) from ItemTaxDetail itd join VendorOrderDesc voc on itd.ItemId=voc.ItemId where voc.Orderid=VendorOrderDetails.Orderid)end as[SGst],case when VendorDetails .vState = (select state from CompnayDetails) then '0.00'else(select cast(sum(((((voc.Price*voc.Quantity))-(((voc.Price*voc.Quantity)*itd.Discount)/100))*itd.IGST)/100)as numeric(38, 2)) from ItemTaxDetail itd join VendorOrderDesc voc on itd.ItemId=voc.ItemId where voc.Orderid=VendorOrderDetails.Orderid)end as[IGst],(select cast(sum(((((voc.Price*voc.Quantity))-(((voc.Price*voc.Quantity)*itd.Discount)/100))*itd.CESS)/100)as numeric(38, 2)) from ItemTaxDetail itd join VendorOrderDesc voc on itd.ItemId=voc.ItemId where voc.Orderid=VendorOrderDetails.Orderid)as[CESS],cast(((VendorOrderDetails.WithoutTexAmount)-(VendorOrderDetails.DisAmount))+(VendorOrderDetails.TextTaxAmmount) as numeric(38, 2)) AS[Net Amount (Including Tax)],(case when  exists ( select Orderid from CustomerOrderDelivery where Orderid = VendorOrderDetails.Orderid) then 'Delivered' else 'Panding'end) as [Order Status]  from VendorOrderDetails join VendorDetails on VendorDetails.venderId =VendorOrderDetails.venderId where " + t + " like '" + txtSearch.Text + "%'";
                 DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
                 dataGridView2.DataSource = dt;
             }
