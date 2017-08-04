@@ -2271,6 +2271,7 @@ namespace WindowsFormsApplication1
                     bool validNumber = int.TryParse(value, out quantiy);
                     if (validNumber == false)
                     {
+                        MessageBox.Show("Please Enter Int value");
                         e.Cancel = true;
                     }
                 }
