@@ -355,6 +355,7 @@
             // txtZip
             // 
             this.txtZip.Location = new System.Drawing.Point(681, 151);
+            this.txtZip.MaxLength = 6;
             this.txtZip.Multiline = true;
             this.txtZip.Name = "txtZip";
             this.txtZip.Size = new System.Drawing.Size(303, 24);
@@ -395,6 +396,7 @@
             // txtPhone
             // 
             this.txtPhone.Location = new System.Drawing.Point(54, 285);
+            this.txtPhone.MaxLength = 11;
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(410, 23);
             this.txtPhone.TabIndex = 10;
@@ -403,6 +405,7 @@
             // txtMobile
             // 
             this.txtMobile.Location = new System.Drawing.Point(470, 285);
+            this.txtMobile.MaxLength = 11;
             this.txtMobile.Name = "txtMobile";
             this.txtMobile.Size = new System.Drawing.Size(410, 23);
             this.txtMobile.TabIndex = 11;
