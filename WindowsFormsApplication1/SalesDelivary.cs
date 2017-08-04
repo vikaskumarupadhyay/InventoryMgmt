@@ -992,6 +992,20 @@ namespace WindowsFormsApplication1
                      gridsalesdelivary.AllowUserToAddRows = true;
                      return;
                  }
+                 if (que1 == "")
+                 {
+                     MessageBox.Show("please select your correct itemid");
+                     gridsalesdelivary.AllowUserToAddRows = true;
+                     return;
+                 }
+                 string txtAmount = cellCollection2[11].Value.ToString();
+                 if (txtAmount == "0.00")
+                 {
+                     MessageBox.Show("kindly entered valid input");
+                     gridsalesdelivary.AllowUserToAddRows = true;
+                     return;
+                 }
+                
              }
             if (txtcustomercode.Text == "C" && txtItemCode.Text == "I")
             {
@@ -2489,36 +2503,7 @@ namespace WindowsFormsApplication1
                 txtcustomercode.Focus();
                 butcustomercode.TabStop = true;
                 txtcustomercode.TabStop = true;
-                if (counter == 1)
-                {
-                    addToCartTable.Columns.RemoveAt(6);
-                    if (!addToCartTable.Columns.Contains("ResivQuantity"))
-                    {
-                        addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
-                        addToCartTable.Columns.RemoveAt(6);
-
-                    }
-                    if (!addToCartTable.Columns.Contains("Amount"))
-                    {
-                        addToCartTable.Columns.Add(new DataColumn("Amount"));
-                       // addToCartTable.Columns.RemoveAt(6);
-                    }
-                }
-                if (counter == 2)
-                {
-                    addToCartTable.Columns.RemoveAt(6);
-                    if (!addToCartTable.Columns.Contains("ResivQuantity"))
-                    {
-                        addToCartTable.Columns.Add(new DataColumn("ResivQuantity"));
-                        addToCartTable.Columns.RemoveAt(6);
-
-                    }
-                    if (!addToCartTable.Columns.Contains("Amount"))
-                    {
-                        addToCartTable.Columns.Add(new DataColumn("Amount"));
-                        addToCartTable.Columns.RemoveAt(6);
-                    }
-                }
+              
             }
            
             else if (ls.Count == gridsalesdelivary.Rows.Count - 1)
@@ -2544,16 +2529,7 @@ namespace WindowsFormsApplication1
                 ButSelectPurchaseOrder.TabStop = true;
                 txtcustomercode.TabStop = true;
                 butcustomercode.TabStop = true;
-            }
-          
-            else if (txtItemCode.Text == "I")
-            {
-                txtItemCode.Focus();
-                butitembutton.TabStop = true;
-                txtItemCode.TabStop = true;
-            }
-           
-               
+            }      
             else if(txtItemCode.Text!="I")
             {
                 txtQuantity.Focus();
@@ -4425,13 +4401,12 @@ namespace WindowsFormsApplication1
                     foreach (DataRow dr in dt5.Rows)
                     {
                         opening = dr[0].ToString();
-                        if (opening == "-2")
+                        int g1 = Convert.ToInt32(opening);
+                        for (int g2 = 0; g2 > g1;g2++ )
                         {
                             gridsalesdelivary.CurrentCell = gridsalesdelivary.Rows[gridsalesdelivary.CurrentRow.Index - 1].Cells[0];
                             return;
                         }
-
-
                     }
                 }
                 if (gridsalesdelivary.Rows[0].Cells[0].Value == null)
