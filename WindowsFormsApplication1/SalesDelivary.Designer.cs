@@ -1236,7 +1236,6 @@
             this.txtBalance.TabStop = false;
             this.txtBalance.Text = "0.00";
             this.txtBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-           // this.txtBalance.TextChanged += new System.EventHandler(this.txtBalance_TextChanged);
             this.txtBalance.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBalance_KeyPress);
             // 
             // txtTotalAmount1
