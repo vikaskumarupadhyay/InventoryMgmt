@@ -827,17 +827,15 @@ namespace WindowsFormsApplication1
 
         private void salesdelivary_Load(object sender, EventArgs e)
         {
-           
             txtSrNo.ReadOnly = true;
             txtcustomercode.Select(txtcustomercode.Text.Length, 0);
             txtItemCode.Select(txtItemCode.Text.Length, 0);
             txtdiccount.ReadOnly = true;
             //dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             gridsalesdelivary.DataSource = addToCartTable;
-            txttaxamount.Visible = false;
-            txtdicountamount.Visible = false;
-            txtwithauttaxamount.Visible = false;
-
+            txttaxamount.Visible = true;
+            txtdicountamount.Visible =true;
+            txtwithauttaxamount.Visible =true;
             txtTotalAmmount.Text = "0";
             txtwithauttaxamount.Text = "0";
             // txtdiccount.ReadOnly = false;
@@ -4178,30 +4176,25 @@ namespace WindowsFormsApplication1
 
         private void txtRturned_KeyPress(object sender, KeyPressEventArgs e)
         {
-
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                //if (txtRturned.Text.IndexOf('.') != -1 && txtRturned.Text.Split('.')[1].Length == 2)
-                //{
-                //    //MessageBox.Show("The maximum decimal points are 2!");
-                //    e.Handled = true;
-                //}
                 e.Handled = false;
             }
             else
             {
                 if (e.KeyChar == '\b')
                 {
-                    //txtRturned.Text="0.0";
-                    //txtBalance.Text = "0.00";
+
                     e.Handled = false;
-                    return;
                 }
                 else
                 {
                     e.Handled = true;
-                    //MessageBox.Show("Plese enter numeric value!");
                 }
+            }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
             }
         }
 
@@ -4420,16 +4413,26 @@ namespace WindowsFormsApplication1
             {
                 string itemId = gridsalesdelivary.Rows[0].Cells[0].Value.ToString();
                 string opening = "";
-                string j = "select c.CurrentQuantity,i.ItemId from ItemQuantityDetail c join ItemDetails i on c.ItemId=i.ItemId where i.ItemId='"+itemId+"'";
-                DataTable dt5 = d.getDetailByQuery(j);
-                foreach (DataRow dr in dt5.Rows)
+                 DataGridViewRowCollection RowCollection =gridsalesdelivary.Rows;
+                string itemid2="";
+                for (int a = 0; a < RowCollection.Count; a++)
                 {
+                    DataGridViewRow currentRow = RowCollection[a];
+                    DataGridViewCellCollection cellCollection = currentRow.Cells;
+                    itemid2 = cellCollection[0].Value.ToString();
+                    string j = "select c.CurrentQuantity,i.ItemId from ItemQuantityDetail c join ItemDetails i on c.ItemId=i.ItemId where i.ItemId='" + itemid2 + "'";
+                    DataTable dt5 = d.getDetailByQuery(j);
+                    foreach (DataRow dr in dt5.Rows)
+                    {
                         opening = dr[0].ToString();
                         if (opening == "-2")
                         {
+                            gridsalesdelivary.CurrentCell = gridsalesdelivary.Rows[gridsalesdelivary.CurrentRow.Index - 1].Cells[0];
                             return;
                         }
-                    
+
+
+                    }
                 }
                 if (gridsalesdelivary.Rows[0].Cells[0].Value == null)
                 {
