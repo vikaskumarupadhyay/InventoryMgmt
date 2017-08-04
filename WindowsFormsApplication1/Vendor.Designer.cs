@@ -352,6 +352,7 @@
             // txtVenderZip
             // 
             this.txtVenderZip.Location = new System.Drawing.Point(680, 154);
+            this.txtVenderZip.MaxLength = 6;
             this.txtVenderZip.Multiline = true;
             this.txtVenderZip.Name = "txtVenderZip";
             this.txtVenderZip.Size = new System.Drawing.Size(307, 24);
@@ -746,10 +747,10 @@
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(703, 46);
+            this.txtSearch.Location = new System.Drawing.Point(712, 45);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(1322, 24);
+            this.txtSearch.Size = new System.Drawing.Size(590, 24);
             this.txtSearch.TabIndex = 25;
             this.txtSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
