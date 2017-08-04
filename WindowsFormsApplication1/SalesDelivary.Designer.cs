@@ -192,6 +192,7 @@
             this.gridsalesdelivary.Size = new System.Drawing.Size(1317, 333);
             this.gridsalesdelivary.StandardTab = true;
             this.gridsalesdelivary.TabIndex = 0;
+            this.gridsalesdelivary.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gridsalesdelivary_CellValidating);
             this.gridsalesdelivary.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridsalesdelivary_KeyPress);
             this.gridsalesdelivary.KeyUp += new System.Windows.Forms.KeyEventHandler(this.gridsalesdelivary_KeyUp);
             // 
