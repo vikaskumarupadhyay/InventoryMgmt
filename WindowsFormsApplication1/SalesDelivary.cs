@@ -4689,6 +4689,25 @@ namespace WindowsFormsApplication1
             txtCouponAmount.SelectAll();
         }
 
+        private void gridsalesdelivary_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            int col = e.ColumnIndex;
+            if (col == 4)
+            {
+                string value = e.FormattedValue.ToString();
+                if (value != "")
+                {
+                    MessageBox.Show("please select your correct quantity");
+                    int quantiy;
+                    bool validNumber = int.TryParse(value, out quantiy);
+                    if (validNumber == false)
+                    {
+                        e.Cancel = true;
+                    }
+                }
+            }
+        }
+
        
 
        
