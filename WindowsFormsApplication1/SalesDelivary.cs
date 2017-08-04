@@ -999,7 +999,7 @@ namespace WindowsFormsApplication1
                      return;
                  }
                  string txtAmount = cellCollection2[11].Value.ToString();
-                 if (txtAmount == "0.00")
+                 if (txtAmount == "0.00"||txtAmount=="")
                  {
                      MessageBox.Show("kindly entered valid input");
                      gridsalesdelivary.AllowUserToAddRows = true;

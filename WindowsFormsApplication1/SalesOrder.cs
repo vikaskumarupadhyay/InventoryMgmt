@@ -746,7 +746,7 @@ namespace WindowsFormsApplication1
                                 return;
                             }
                             string txtAmount = cellcollection[11].Value.ToString();
-                            if (txtAmount == "0.00")
+                            if (txtAmount == "0.00"||txtAmount=="")
                             {
                                 MessageBox.Show("kindly entered valid input");
                                 gridsalesorder.AllowUserToAddRows = true;
