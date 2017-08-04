@@ -514,9 +514,9 @@ namespace WindowsFormsApplication1
             textBox20.ReadOnly = true;
 
             gridsalesorder.DataSource = addToCartTable;
-            discountamount.Visible = false;
-            txttaxamount.Visible = false;
-            txtwithautaxamount.Visible = false;
+            discountamount.Visible =false;
+            txttaxamount.Visible =false;
+            txtwithautaxamount.Visible =false;
 
             crystalReportViewer1.Visible = false;
             tab();
@@ -655,204 +655,189 @@ namespace WindowsFormsApplication1
         private void savebutton_Click(object sender, EventArgs e)
         {
             panel2.Visible = false;
-            if (txtProductName.Text != "")
-            {
-                MessageBox.Show("please add item");
-                txtQuantity.Focus();
-                return;
-            }
-
-            else if (gridsalesorder.Rows.Count == 1 && txtcustomercode.Text == "C")
-            {
-                MessageBox.Show("please select your customer id");
-                txtcustomercode.Focus();
-            }
-
-
-            else if (gridsalesorder.Rows.Count == 1 && txtitemcode.Text == "I")
-            {
-                MessageBox.Show("please select your item id");
-                txtitemcode.Focus();
-                return;
-            }
-
-            else if (txtitemcode.Text == "" && txtcustomercode.Text == "")
-            {
-                MessageBox.Show("please select your item id");
-                txtitemcode.Focus();
-                return;
-            }
-            else if (ls.Count == gridsalesorder.Rows.Count - 1)
-            {
-                MessageBox.Show("Please Enter The Item");
-                txtitemcode.Focus();
-                txtitemcode.Select(txtitemcode.Text.Length, 0);
-                return;
-            }
-
-            //if (id == "")
+           
+            string opening = "";
+            //DataGridViewRowCollection RowCollection = gridsalesorder.Rows;
+            //string itemid2 = "";
+            //for (int b = 0; b < RowCollection.Count; b++)
             //{
-            //    id = "1";
-            //    txtsrno.Text = id;
-            //}
-            //else
-            //{
-            //    int t = Convert.ToInt32(id);
-            //    int t1 = t + 1;
-            //    txtsrno.Text = t1.ToString();
-            //}
-            //DataGridViewRowCollection call = gridsalesorder.Rows;
-            //for (int c = 0; c < call.Count; c++)
-            //{
-            //        DataGridViewRow currentRow1 = call[c];
-            //        DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
-            //        string itid = cellCollection1[0].Value.ToString();
-            //        string que = cellCollection1[3].Value.ToString();
+            //    DataGridViewRow currentRow = RowCollection[b];
+            //    DataGridViewCellCollection cellCollection = currentRow.Cells;
+            //    // itemid2 = cellCollection[0].Value.ToString();
+            //    string j = "select ItemId from ItemDetails";
+            //    DataTable dt5 = d.getDetailByQuery(j);
+            //    foreach (DataRow dr in dt5.Rows)
+            //    {
+            //        opening = dr[0].ToString();
+            //        if (itemId == opening)
+            //        {
+            //            // gridsalesorder.CurrentCell = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[0];
+            //           // return;
+            //        }
+            //    }
 
-
-
-
-
-
-            //string qurry = "select CurrentQuantity from ItemQuantityDetail where ItemId='" + itid + "'";
-            //DataTable dt = d.getDetailByQuery(qurry);
-            //string id = "";
-            //foreach (DataRow dr in dt.Rows)
-            //{
-            //    id = dr["CurrentQuantity"].ToString();
-            //}
-
-            //int curentQuntity = Convert.ToInt32(que);
-            //int cuentQuantity = Convert.ToInt32(id);
-            //int lastQuantity = cuentQuantity - curentQuntity;
-            //string id1 = lastQuantity.ToString();
-            //string updateQurry = "update ItemQuantityDetail set CurrentQuantity='" + id1 + "'where ItemId='" + itid + "'";
-            //int insertedRows2 = d.saveDetails(updateQurry);
-            //  }
-            gridsalesorder.AllowUserToAddRows = false;
-
-            counter = 0;
-            if (counter == 0)
-            {
-                if (txtwithautaxamount.Text == "")
+                if (txtProductName.Text != "")
                 {
-                    txtwithautaxamount.Text = "0";
+                    MessageBox.Show("please add item");
+                    txtQuantity.Focus();
+                    return;
                 }
-                string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpdate.Text + "','" + txttotalammount.Text + "','" + textBox20.Text + "','" + discountamount.Text + "','" + txttax.Text + "','" + txttaxamount.Text + "','" + txtwithautaxamount.Text + "')";
-                int insertrows = d.saveDetails(insertquery);
-                if (insertrows > 0)
+
+                else if (gridsalesorder.Rows.Count == 1 && txtcustomercode.Text == "C")
                 {
-                    DataGridViewRowCollection rowcollection = gridsalesorder.Rows;
-                    List<string> show = new List<string>();
-                    for (int a = 0; a < rowcollection.Count; a++)
+                    MessageBox.Show("please select your customer id");
+                    txtcustomercode.Focus();
+                }
+
+
+                else if (gridsalesorder.CurrentRow == null)
+                {
+                    MessageBox.Show("Please enter item code first.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    gridsalesorder.Focus();
+                    return;
+                }
+
+                else if (ls.Count == gridsalesorder.Rows.Count - 1)
+                {
+                    MessageBox.Show("Please Enter The Item");
+                    txtitemcode.Focus();
+                    gridsalesorder.Focus();
+                    return;
+                }
+                 else
+                {
+                gridsalesorder.AllowUserToAddRows = false;
+
+                counter = 0;
+                if (counter == 0)
+                {
+                    if (txtwithautaxamount.Text == "")
                     {
-
-                        DataGridViewRow currentrow = rowcollection[a];
-                        DataGridViewCellCollection cellcollection = currentrow.Cells;
-                        string itemcode = cellcollection[0].Value.ToString();
-                        if (ls.Contains(itemcode) && gridsalesorder.Rows[counter].DefaultCellStyle.Font != null)
-                        {
-                            counter++;
-                            continue;
-                        }
-                        counter++;
-                        string ProductName = cellcollection[1].Value.ToString();
-                        string hsn = cellcollection[2].Value.ToString();
-                        string txtRate = cellcollection[3].Value.ToString();
-                        //string quantity = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[4].Value.ToString();
-                       string quantity = cellcollection[4].Value.ToString();
-                       if (quantity == "0")
-                       {
-                           MessageBox.Show("please select your quantity");
-                           gridsalesorder.AllowUserToAddRows = true;
-                               return;
-                       }
-                        string txtAmount = cellcollection[11].Value.ToString();
-                        string Orderid = txtsrno.Text;
-
-                        string query = "insert into customerorderdescriptions Values('" + Orderid + "','" + itemcode + "','" + txtRate + "','" + quantity + "','" + txtAmount + "')";
-                        show.Add(query);
+                        txtwithautaxamount.Text = "0";
                     }
-
-                    counter++;
-
-                    int inserirows1 = d.saveDetails(show);
-                    if (inserirows1 > 0)
+                    string insertquery = "insert into  orderdetails values('" + txtcustomercode.Text + "','" + dtpdate.Text + "','" + txttotalammount.Text + "','" + textBox20.Text + "','" + discountamount.Text + "','" + txttax.Text + "','" + txttaxamount.Text + "','" + txtwithautaxamount.Text + "')";
+                    int insertrows = d.saveDetails(insertquery);
+                    
+                    if (insertrows > 0)
                     {
-                        MessageBox.Show("Details saved successfully");
-
-                        DialogResult result = MessageBox.Show("Do you need to print Sales order", "Impotant questiuon", MessageBoxButtons.YesNo);
-                        if (result == System.Windows.Forms.DialogResult.Yes)
+                        DataGridViewRowCollection rowcollection = gridsalesorder.Rows;
+                        List<string> show = new List<string>();
+                        for (int a = 0; a < rowcollection.Count; a++)
                         {
-                            panel2.Visible = true;
-                            crystalReportViewer1.Visible = true;
-                            //gridsalesorder.AllowUserToAddRows = false;
-                            //// "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
-                            //SqlConnection con = new SqlConnection();
-                            //string a = ConfigurationManager.AppSettings["ConnectionString"];
-                            //con.ConnectionString = a;
-                            //con.Open();
-
-                            //string selectquery = "select * from salesorderreport where orderid='" + txtsrno.Text + "'";
-                            //SqlCommand cmd = new SqlCommand(selectquery, con);
-                            //SqlDataAdapter sd = new SqlDataAdapter(cmd);
-                            //DataSet1 ds = new DataSet1();
-                            //sd.Fill(ds, "compnaydetails");
-
-                            ////CrystalReport1 cr = new CrystalReport1();
-                            //// cr.ParameterFields.Add(textBox1.Text);
-                            //// cr.Load("C:\\Users\\dineshtiwari\\Documents\\Visual Studio 2010\\Projects\\report11\\report11\\CrystalReport1.rpt");
-
-                            //CrystalReport1 report1 = new CrystalReport1();
-                            //report1.SetDataSource(ds.Tables[1]);
-
-                            //crystalReportViewer1.ReportSource = report1;
-                            //crystalReportViewer1.Refresh();
-                            //con.Close();
-
-                            ReportDocument crReportDocument;
-                            crReportDocument = new ReportDocument();
-                            frmViewReport View = new frmViewReport();
-                            crReportDocument.Load(Application.StartupPath + "//Report//CrystalReport1.rpt");
-                            //string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
-                            SqlConnection con = d.openConnection();//new SqlConnection(conntion);
-                            string selectqurry = "select * from salesorderreport where orderid='" + txtsrno.Text + "'";
-                            SqlCommand cmd = new SqlCommand(selectqurry, con);
-                            SqlDataAdapter sda = new SqlDataAdapter(cmd);
-
-                            DataSet1 ds = new DataSet1();
-                            sda.Fill(ds, "compnaydetails");
-                            crReportDocument.SetDataSource(ds.Tables[1]);
-                            //Start Preview                          
-                            View.CrViewer.ReportSource = crReportDocument;
-                            View.CrViewer.Refresh();
-                            View.Show();
-                            panel2.Visible = false;
-                            gridsalesorder.AllowUserToAddRows = true;
-                            txttotalammount.Text = "0.00";
-                            txtitemcode.TabStop = false;
-                            button2.TabStop = false;
-                            butadditem.TabStop = false;
-                            butremove.TabStop = false;
-                            savebutton.TabStop = false;
-                            butclose.TabStop = false;
-                            butremove.Enabled = false;
-                            //End Preview
-
-                            //Start Print
-                            // crReportDocument.PrintToPrinter(1, false, 0, 0);
-                            if (result == System.Windows.Forms.DialogResult.No)
+                            DataGridViewRow currentrow = rowcollection[a];
+                            DataGridViewCellCollection cellcollection = currentrow.Cells;
+                            string itemcode = cellcollection[0].Value.ToString();
+                           
+                            if (ls.Contains(itemcode) && gridsalesorder.Rows[counter].DefaultCellStyle.Font != null)
                             {
-                                crystalReportViewer1.Visible = false;
-                                panel2.Visible = false;
-                                txttotalammount.Text = "0.00";
-
-
+                                counter++;
+                                continue;
                             }
-                            //int id = Convert.ToInt32(txtsrno.Text);
-                            //id = id + 1;
-                            //txtsrno.Text = id.ToString();
-                            //makeblank();
+                            counter++;
+                            string ProductName = cellcollection[1].Value.ToString();
+                            string hsn = cellcollection[2].Value.ToString();
+                            string txtRate = cellcollection[3].Value.ToString();
+                            //string quantity = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[4].Value.ToString();
+                            string quantity = cellcollection[4].Value.ToString();
+                            if (quantity == "0")
+                            {
+                                MessageBox.Show("please select your quantity");
+                                gridsalesorder.AllowUserToAddRows = true;
+                                return;
+                            }
+                            string txtAmount = cellcollection[11].Value.ToString();
+                            if (txtAmount == "0.00")
+                            {
+                                MessageBox.Show("kindly entered valid input");
+                                gridsalesorder.AllowUserToAddRows = true;
+                                return;
+                            }
+                            string Orderid = txtsrno.Text;
+
+                            string query = "insert into customerorderdescriptions Values('" + Orderid + "','" + itemcode + "','" + txtRate + "','" + quantity + "','" + txtAmount + "')";
+                            show.Add(query);
+                        }
+
+                        counter++;
+
+                        int inserirows1 = d.saveDetails(show);
+                        if (inserirows1 > 0)
+                        {
+                            MessageBox.Show("Details saved successfully");
+
+                            DialogResult result = MessageBox.Show("Do you need to print Sales order", "Impotant questiuon", MessageBoxButtons.YesNo);
+                            if (result == System.Windows.Forms.DialogResult.Yes)
+                            {
+                                panel2.Visible = true;
+                                crystalReportViewer1.Visible = true;
+                                //gridsalesorder.AllowUserToAddRows = false;
+                                //// "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
+                                //SqlConnection con = new SqlConnection();
+                                //string a = ConfigurationManager.AppSettings["ConnectionString"];
+                                //con.ConnectionString = a;
+                                //con.Open();
+
+                                //string selectquery = "select * from salesorderreport where orderid='" + txtsrno.Text + "'";
+                                //SqlCommand cmd = new SqlCommand(selectquery, con);
+                                //SqlDataAdapter sd = new SqlDataAdapter(cmd);
+                                //DataSet1 ds = new DataSet1();
+                                //sd.Fill(ds, "compnaydetails");
+
+                                ////CrystalReport1 cr = new CrystalReport1();
+                                //// cr.ParameterFields.Add(textBox1.Text);
+                                //// cr.Load("C:\\Users\\dineshtiwari\\Documents\\Visual Studio 2010\\Projects\\report11\\report11\\CrystalReport1.rpt");
+
+                                //CrystalReport1 report1 = new CrystalReport1();
+                                //report1.SetDataSource(ds.Tables[1]);
+
+                                //crystalReportViewer1.ReportSource = report1;
+                                //crystalReportViewer1.Refresh();
+                                //con.Close();
+
+                                ReportDocument crReportDocument;
+                                crReportDocument = new ReportDocument();
+                                frmViewReport View = new frmViewReport();
+                                crReportDocument.Load(Application.StartupPath + "//Report//CrystalReport1.rpt");
+                                //string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
+                                SqlConnection con = d.openConnection();//new SqlConnection(conntion);
+                                string selectqurry = "select * from salesorderreport where orderid='" + txtsrno.Text + "'";
+                                SqlCommand cmd = new SqlCommand(selectqurry, con);
+                                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+
+                                DataSet1 ds = new DataSet1();
+                                sda.Fill(ds, "compnaydetails");
+                                crReportDocument.SetDataSource(ds.Tables[1]);
+                                //Start Preview                          
+                                View.CrViewer.ReportSource = crReportDocument;
+                                View.CrViewer.Refresh();
+                                View.Show();
+                                panel2.Visible = false;
+                                gridsalesorder.AllowUserToAddRows = true;
+                                txttotalammount.Text = "0.00";
+                                txtitemcode.TabStop = false;
+                                button2.TabStop = false;
+                                butadditem.TabStop = false;
+                                butremove.TabStop = false;
+                                savebutton.TabStop = false;
+                                butclose.TabStop = false;
+                                butremove.Enabled = false;
+                                //End Preview
+
+                                //Start Print
+                                // crReportDocument.PrintToPrinter(1, false, 0, 0);
+                                if (result == System.Windows.Forms.DialogResult.No)
+                                {
+                                    crystalReportViewer1.Visible = false;
+                                    panel2.Visible = false;
+                                    txttotalammount.Text = "0.00";
+
+
+                                }
+                                //int id = Convert.ToInt32(txtsrno.Text);
+                                //id = id + 1;
+                                //txtsrno.Text = id.ToString();
+                                //makeblank();
+                            }
                         }
                         else
                         {
@@ -866,21 +851,22 @@ namespace WindowsFormsApplication1
                             butclose.TabStop = false;
 
                         }
-                        makeblank();
+                            makeblank();
 
-                        int id1 = Convert.ToInt32(txtsrno.Text);
-                        id1 = id1 + 1;
-                        txtsrno.Text = id1.ToString();
-                        txtitemcode.Focus();
-                        ls.Clear();
+                            int id1 = Convert.ToInt32(txtsrno.Text);
+                            id1 = id1 + 1;
+                            txtsrno.Text = id1.ToString();
+                            txtitemcode.Focus();
+                            ls.Clear();
+                        }
                     }
+                    //MessageBox.Show("please select your first item id");
+                    txtcustomercode.Select(txtcustomercode.Text.Length, 0);
+                    gridsalesorder.AllowUserToAddRows = true;
+                    txtcustomercode.Focus();
                 }
-                //MessageBox.Show("please select your first item id");
-                txtcustomercode.Select(txtcustomercode.Text.Length, 0);
-                gridsalesorder.AllowUserToAddRows = true;
-                txtcustomercode.Focus();
             }
-        }
+       
 
         public void cretenew()
         {
