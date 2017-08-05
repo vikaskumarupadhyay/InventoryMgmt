@@ -23,6 +23,7 @@ namespace WindowsFormsApplication1
         private void Compnay_Load(object sender, EventArgs e)
         {
             cmbState.SelectedIndex = 0;
+           
             string selectqurry = "select cd.CompnayId as[Company ID], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.PANNO as[PAN NO],cd.GSTNO as[GST NO]from CompnayDetails cd";
             string selectqurryForActualColumnName = "select top 1 cd.CompnayId, cd.OnerName, cd.Name ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email,cd.WebAddress,cd.Phone,cd.Mobile,cd.Fax,cd.PANNO,cd.GSTNO from CompnayDetails cd";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
@@ -327,8 +328,8 @@ namespace WindowsFormsApplication1
                 txtMobile.Text = cellcolection[11].Value.ToString();
                 txtFax.Text = cellcolection[12].Value.ToString();
                 txtPanNo.Text = cellcolection[13].Value.ToString();
-                txtGst.Text = cellcolection[15].Value.ToString();
-                txtDescription.Text = cellcolection[14].Value.ToString();
+                txtGst.Text = cellcolection[14].Value.ToString();
+                txtDescription.Text = cellcolection[15].Value.ToString();
                 //combComp.Text = cellcolection[16].Value.ToString();
                 //txtTexAmount.Text = cellcolection[17].Value.ToString();
             }
@@ -785,10 +786,15 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void cmbState_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbState_Leave(object sender, EventArgs e)
         {
-            cmbState.SelectedIndex = 0;
+            if (cmbState.Text == "")
+            {
+                cmbState.SelectedIndex = 0;
+            }
         }
+
+       
 
       
     }

@@ -633,7 +633,7 @@
             this.cmbState.Name = "cmbState";
             this.cmbState.Size = new System.Drawing.Size(308, 24);
             this.cmbState.TabIndex = 5;
-            this.cmbState.SelectedIndexChanged += new System.EventHandler(this.cmbState_SelectedIndexChanged);
+            this.cmbState.Leave += new System.EventHandler(this.cmbState_Leave);
             // 
             // label3
             // 
@@ -743,7 +743,7 @@
             this.txtSearch.Location = new System.Drawing.Point(704, 45);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(592, 24);
+            this.txtSearch.Size = new System.Drawing.Size(1220, 24);
             this.txtSearch.TabIndex = 4;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged_1);
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
