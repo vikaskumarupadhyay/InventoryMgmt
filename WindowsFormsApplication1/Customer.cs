@@ -926,10 +926,14 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void comstate_SelectedIndexChanged(object sender, EventArgs e)
+        private void comstate_Leave(object sender, EventArgs e)
         {
-            comstate.SelectedIndex = 0;
+            if (comstate.Text == "")
+            {
+                comstate.SelectedIndex = 0;
+            }
         }
+
 
       
 

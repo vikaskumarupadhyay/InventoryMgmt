@@ -317,7 +317,7 @@
             this.comstate.Name = "comstate";
             this.comstate.Size = new System.Drawing.Size(308, 24);
             this.comstate.TabIndex = 17;
-            this.comstate.SelectedIndexChanged += new System.EventHandler(this.comstate_SelectedIndexChanged);
+            this.comstate.Leave += new System.EventHandler(this.comstate_Leave);
             // 
             // txttanno
             // 
