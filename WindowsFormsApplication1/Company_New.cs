@@ -429,6 +429,11 @@ namespace WindowsFormsApplication1
         {
             btnList.Enabled = false;
              int currentIndex = dataGridView1.CurrentRow.Index;
+             if (currentIndex == 0)
+             {
+                 MessageBox.Show("please select your proper row");
+                currentIndex= currentIndex + 1;
+             }
              if (e.KeyChar == (char)Keys.Enter)
              {
                  updatecounter = 1;
