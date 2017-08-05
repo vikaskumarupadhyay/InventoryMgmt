@@ -743,7 +743,11 @@ namespace WindowsFormsApplication1
             int currentIndex = dataGridView1.CurrentRow.Index;
             if (e.KeyChar == (char)Keys.Enter)
             {
-
+                if (currentIndex == 0)
+                {
+                    MessageBox.Show("Select proper row ! ");
+                    currentIndex = 1;
+                }
                 //if (dataGridView1.RowCount == currentIndex + 1)
                 //    currentIndex = currentIndex + 1;
 

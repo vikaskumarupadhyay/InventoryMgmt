@@ -507,23 +507,23 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                //if (txtItemMrp.Text.IndexOf('.') != -1 && txtItemMrp.Text.Split('.')[1].Length == 2)
-                //{
-                //    //MessageBox.Show("The maximum decimal points are 2!");
-                //    e.Handled = true;
-                //}
                 e.Handled = false;
             }
             else
             {
                 if (e.KeyChar == '\b')
                 {
+
                     e.Handled = false;
                 }
                 else
                 {
                     e.Handled = true;
                 }
+            }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
             }
 
         }
@@ -628,17 +628,13 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                //if (txtItemSalesPrice.Text.IndexOf('.') != -1 && txtItemSalesPrice.Text.Split('.')[1].Length == 2)
-                //{
-                //    //MessageBox.Show("The maximum decimal points are 2!");
-                //    e.Handled = true;
-                //}
-               e.Handled = false;
+                e.Handled = false;
             }
             else
             {
                 if (e.KeyChar == '\b')
                 {
+
                     e.Handled = false;
                 }
                 else
@@ -646,23 +642,31 @@ namespace WindowsFormsApplication1
                     e.Handled = true;
                 }
             }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == '.')
+            {
+                if (e.KeyChar == 2)
+                {
+                    e.Handled = true;
+                }
+            }
+
         }
 
         private void txtItemPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                //if (txtItemPrice.Text.IndexOf('.') != -1 && txtItemPrice.Text.Split('.')[1].Length >= 2)
-                //{
-                //    MessageBox.Show("The maximum decimal points are 2!");
-                //    //e.Handled = true;
-                //}
-               e.Handled = false;
+                e.Handled = false;
             }
             else
             {
                 if (e.KeyChar == '\b')
                 {
+
                     e.Handled = false;
                 }
                 else
@@ -670,13 +674,7 @@ namespace WindowsFormsApplication1
                     e.Handled = true;
                 }
             }
-            char ch = e.KeyChar;
-            if (ch == 46 && txtItemPrice.Text.IndexOf('.') != -1)
-            {
-                e.Handled = true;
-                return;
-            }
-            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
             {
                 e.Handled = true;
             }
@@ -880,23 +878,23 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                //if (txtItemMargin.Text.IndexOf('.') != -1 && txtItemMargin.Text.Split('.')[1].Length == 2)
-                //{
-                //    //MessageBox.Show("The maximum decimal points are 2!");
-                //    e.Handled = true;
-                //}
                 e.Handled = false;
             }
             else
             {
                 if (e.KeyChar == '\b')
                 {
+
                     e.Handled = false;
                 }
                 else
                 {
                     e.Handled = true;
                 }
+            }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
             }
         }
         private void buttClose2_Click(object sender, EventArgs e)
@@ -1093,20 +1091,16 @@ namespace WindowsFormsApplication1
 
         private void txtCgst_KeyPress(object sender, KeyPressEventArgs e)
         {
-           
+
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                //if (txtItemPrice.Text.IndexOf('.') != -1 && txtItemPrice.Text.Split('.')[1].Length >= 2)
-                //{
-                //    MessageBox.Show("The maximum decimal points are 2!");
-                //    //e.Handled = true;
-                //}
                 e.Handled = false;
             }
             else
             {
                 if (e.KeyChar == '\b')
                 {
+
                     e.Handled = false;
                 }
                 else
@@ -1114,35 +1108,24 @@ namespace WindowsFormsApplication1
                     e.Handled = true;
                 }
             }
-            char ch = e.KeyChar;
-            if (ch == 46 && txtCgst.Text.IndexOf('.') != -1)
-            {
-                e.Handled = true;
-                return;
-            }
-            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
             {
                 e.Handled = true;
             }
-
         }
 
         private void txtSgst_KeyPress(object sender, KeyPressEventArgs e)
         {
-          
+
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                //if (txtItemPrice.Text.IndexOf('.') != -1 && txtItemPrice.Text.Split('.')[1].Length >= 2)
-                //{
-                //    MessageBox.Show("The maximum decimal points are 2!");
-                //    //e.Handled = true;
-                //}
                 e.Handled = false;
             }
             else
             {
                 if (e.KeyChar == '\b')
                 {
+
                     e.Handled = false;
                 }
                 else
@@ -1150,35 +1133,24 @@ namespace WindowsFormsApplication1
                     e.Handled = true;
                 }
             }
-            char ch = e.KeyChar;
-            if (ch == 46 && txtSgst.Text.IndexOf('.') != -1)
-            {
-                e.Handled = true;
-                return;
-            }
-            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
             {
                 e.Handled = true;
             }
-
         }
 
         private void txtIgst_KeyPress(object sender, KeyPressEventArgs e)
         {
-          
+
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                //if (txtItemPrice.Text.IndexOf('.') != -1 && txtItemPrice.Text.Split('.')[1].Length >= 2)
-                //{
-                //    MessageBox.Show("The maximum decimal points are 2!");
-                //    //e.Handled = true;
-                //}
                 e.Handled = false;
             }
             else
             {
                 if (e.KeyChar == '\b')
                 {
+
                     e.Handled = false;
                 }
                 else
@@ -1186,17 +1158,10 @@ namespace WindowsFormsApplication1
                     e.Handled = true;
                 }
             }
-            char ch = e.KeyChar;
-            if (ch == 46 && txtIgst.Text.IndexOf('.') != -1)
-            {
-                e.Handled = true;
-                return;
-            }
-            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
             {
                 e.Handled = true;
             }
-           
 
         }
 
@@ -1204,17 +1169,13 @@ namespace WindowsFormsApplication1
         {
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                //if (txtItemPrice.Text.IndexOf('.') != -1 && txtItemPrice.Text.Split('.')[1].Length >= 2)
-                //{
-                //    MessageBox.Show("The maximum decimal points are 2!");
-                //    //e.Handled = true;
-                //}
                 e.Handled = false;
             }
             else
             {
                 if (e.KeyChar == '\b')
                 {
+
                     e.Handled = false;
                 }
                 else
@@ -1222,17 +1183,10 @@ namespace WindowsFormsApplication1
                     e.Handled = true;
                 }
             }
-            char ch = e.KeyChar;
-            if (ch == 46 &&txtCess.Text.IndexOf('.') != -1)
-            {
-                e.Handled = true;
-                return;
-            }
-            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
             {
                 e.Handled = true;
             }
-
         }
 
         private void txtBarCode_KeyPress(object sender, KeyPressEventArgs e)
@@ -1404,20 +1358,15 @@ namespace WindowsFormsApplication1
 
         private void txtDis_KeyPress(object sender, KeyPressEventArgs e)
         {
-
             if ((char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
             {
-                //if (txtItemPrice.Text.IndexOf('.') != -1 && txtItemPrice.Text.Split('.')[1].Length >= 2)
-                //{
-                //    MessageBox.Show("The maximum decimal points are 2!");
-                //    //e.Handled = true;
-                //}
                 e.Handled = false;
             }
             else
             {
                 if (e.KeyChar == '\b')
                 {
+
                     e.Handled = false;
                 }
                 else
@@ -1425,17 +1374,10 @@ namespace WindowsFormsApplication1
                     e.Handled = true;
                 }
             }
-            char ch = e.KeyChar;
-            if (ch == 46 && txtDis.Text.IndexOf('.') != -1)
-            {
-                e.Handled = true;
-                return;
-            }
-            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
             {
                 e.Handled = true;
             }
-
         }
 
         private void txtDis_MouseClick(object sender, MouseEventArgs e)
