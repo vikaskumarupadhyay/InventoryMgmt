@@ -69,7 +69,7 @@ namespace WindowsFormsApplication1
 
                             if (string.IsNullOrEmpty(txtVenderPhone.Text) && string.IsNullOrEmpty(txtVenderMobile.Text))
                             {
-                                MessageBox.Show("please Enter the  Mobile No. ya Phone No.");
+                                MessageBox.Show("please Enter the  Mobile No. Or Phone No.!");
                             }
                             else
                             {
@@ -986,7 +986,10 @@ namespace WindowsFormsApplication1
 
         private void cmbState_Leave(object sender, EventArgs e)
         {
-            cmbState.SelectedIndex = 0;
+            if (cmbState.Text == "")
+            {
+                cmbState.SelectedIndex = 0;
+            }
         }
 
     }

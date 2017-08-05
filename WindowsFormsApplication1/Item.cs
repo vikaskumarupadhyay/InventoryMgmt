@@ -744,6 +744,7 @@ namespace WindowsFormsApplication1
                 txtItemPrice.Text = "";
                 txtItemMargin.Text = "0.00";
             }
+            txtItemPrice.SelectAll();
         }
 
         private void txtItemMrp_MouseClick(object sender, MouseEventArgs e)
@@ -753,7 +754,7 @@ namespace WindowsFormsApplication1
                 txtItemMrp.Text = "";
 
             }
-
+            txtItemMrp.SelectAll();
         }
 
         private void txtItemSalesPrice_MouseClick(object sender, MouseEventArgs e)
@@ -762,7 +763,9 @@ namespace WindowsFormsApplication1
             {
                 txtItemSalesPrice.Text = "";
                 txtItemMargin.Text = "0.00";
+
             }
+            txtItemSalesPrice.SelectAll();
 
         }
 
@@ -773,6 +776,7 @@ namespace WindowsFormsApplication1
                 txtItemOpeningQuant.Text = "";
                txtItemRemaningQuant.Text = "0";
             }
+            txtItemOpeningQuant.SelectAll();
         }
 
         private void txtItemOpeningQuant_Leave(object sender, EventArgs e)
@@ -1432,6 +1436,36 @@ namespace WindowsFormsApplication1
                 e.Handled = true;
             }
 
+        }
+
+        private void txtDis_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtDis.SelectAll();
+        }
+
+        private void txtCgst_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtCgst.SelectAll();
+        }
+
+        private void txtSgst_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtSgst.SelectAll();
+        }
+
+        private void txtIgst_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtIgst.SelectAll();
+        }
+
+        private void txtCess_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtCess.SelectAll();
+        }
+
+        private void txtHsn_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtHsn.SelectAll();
         }
     }
 

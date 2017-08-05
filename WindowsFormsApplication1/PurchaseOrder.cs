@@ -828,7 +828,29 @@ namespace WindowsFormsApplication1
             counter = 0;
             if (counter == 0)
             {
+                DataGridViewRowCollection RowCollection1 = gridPurchaseOrder.Rows;
+                 for (int a = 0; a < RowCollection1.Count; a++)
+                 {
 
+                     DataGridViewRow currentRow1 = RowCollection1[a];
+                     DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
+                     string txtQuanit = cellCollection1[4].Value.ToString();
+                     if (txtQuanit == "0" || txtQuanit == "")
+                     {
+                         MessageBox.Show("Please enter Valid Quantity");
+                         gridPurchaseOrder.AllowUserToAddRows = true;
+                         gridPurchaseOrder.Focus();
+                         return;
+                     }
+                     string txtAmoun = cellCollection1[11].Value.ToString();
+                     if (txtAmoun == "0.00" || txtAmoun == "")
+                     {
+                         gridPurchaseOrder.Focus();
+                         MessageBox.Show("Please enter Valid Quantity");
+                         gridPurchaseOrder.AllowUserToAddRows = true;
+                         return;
+                     }
+                 }
                 int count = 0;
 
                 if (txtDiscount.Text == "")
@@ -862,19 +884,10 @@ namespace WindowsFormsApplication1
                         }
 
                         string txtQuanit = cellCollection[4].Value.ToString();
-                        if (txtQuanit == "0")
-                        {
-                            gridPurchaseOrder.Focus();
-                            return;
-                        }
+                       
                         string txtRate = cellCollection[3].Value.ToString();
                         string txtAmoun = cellCollection[11].Value.ToString();
-                        if (txtAmoun == "0.00" || txtAmoun == "")
-                        {
-                            gridPurchaseOrder.Focus();
-                            gridPurchaseOrder.AllowUserToAddRows = true;
-                            return;
-                        }
+                       
                         string OrderID = txtSrNo.Text;
                         string Query = "insert into VendorOrderDesc Values('" + OrderID + "','" + txtItemCod + "','" + txtRate + "','" + txtQuanit + "','" + txtAmoun + "')";
                         //MessageBox.Show(Query);
