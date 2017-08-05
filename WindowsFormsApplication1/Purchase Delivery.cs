@@ -1030,21 +1030,34 @@ namespace WindowsFormsApplication1
                 string Ref = "0";
                 dataGridView1.AllowUserToAddRows = false;
                 int count = 0;
-                DataGridViewRowCollection call = dataGridView1.Rows;
-                for (int c = 0; c < call.Count; c++)
-                {
-                    DataGridViewRow currentRow1 = call[c];
-                    DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
-                    string itid = cellCollection1[0].Value.ToString();
+                DataGridViewRowCollection RowCollection2 = dataGridView1.Rows;
+                 for (int a = 0; a < RowCollection2.Count; a++)
+                 {
+
+                     DataGridViewRow currentRow1 = RowCollection2[a];
+                     DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
+                      string itid = cellCollection1[0].Value.ToString();
                     if (ls.Contains(itid))
                     {
                         continue;
                     }
-                    string que = cellCollection1[4].Value.ToString();
-                    if (que == "0")
-                    {
-                        return;
-                    }
+                     string txtQuanit = cellCollection1[4].Value.ToString();
+                     if (txtQuanit == "0" || txtQuanit == "")
+                     {
+                         MessageBox.Show("Please enter Valid Quantity");
+                         dataGridView1.AllowUserToAddRows = true;
+                         dataGridView1.Focus();
+                         return;
+                     }
+                     string txtAmoun = cellCollection1[11].Value.ToString();
+                     if (txtAmoun == "0.00" || txtAmoun == "")
+                     {
+                         dataGridView1.Focus();
+                         MessageBox.Show("Please enter Valid Quantity");
+                         dataGridView1.AllowUserToAddRows = true;
+                         return;
+                     }
+                 //}
                     //string quent = cellCollection1[4].Value.ToString();
 
 
@@ -1057,11 +1070,11 @@ namespace WindowsFormsApplication1
                         currid = dr["CurrentQuantity"].ToString();
                     }
                     //int quent1=Convert.ToInt32(quent);
-                    if (que == "")
+                    if (txtQuanit == "")
                     {
-                        que = "0";
+                        txtQuanit = "0";
                     }
-                   Double curentQuntity = Convert.ToDouble(que);
+                    Double curentQuntity = Convert.ToDouble(txtQuanit);
                    if (currid == "")
                    {
                        currid = "0";
@@ -1105,18 +1118,18 @@ namespace WindowsFormsApplication1
                             count++;
                             string txtRate = cellCollection[3].Value.ToString();
                             string txtQuanit = cellCollection[4].Value.ToString();
-                            if (txtQuanit == "0")
-                            {
-                                dataGridView1.Focus();
-                                return;
-                            }
+                            //if (txtQuanit == "0")
+                            //{
+                            //    dataGridView1.Focus();
+                            //    return;
+                            //}
                             string txtAmoun = cellCollection[11].Value.ToString();
-                            if (txtAmoun == "0.00" || txtAmoun == "")
-                            {
-                                dataGridView1.Focus();
-                                dataGridView1.AllowUserToAddRows = true;
-                                return;
-                            }
+                            //if (txtAmoun == "0.00" || txtAmoun == "")
+                            //{
+                            //    dataGridView1.Focus();
+                            //    dataGridView1.AllowUserToAddRows = true;
+                            //    return;
+                            //}
                             string Query = "insert into VendorOrderDesc Values('" + OrderID + "','" + txtItemCod + "','" + txtRate + "','" + txtQuanit + "','" + txtAmoun + "')";
                             //MessageBox.Show(Query);
                             sf.Add(Query);
@@ -1144,17 +1157,17 @@ namespace WindowsFormsApplication1
                                 count++;
                                 string txtRate = cellCollection[3].Value.ToString();
                                 string txtQuanity = cellCollection[4].Value.ToString();
-                                if (txtQuanity == "0")
-                                {
-                                    return;
-                                }
+                                //if (txtQuanity == "0")
+                                //{
+                                //    return;
+                                //}
                                 string txtAmoun = cellCollection[11].Value.ToString();
-                                if (txtAmoun == "0.00" || txtAmoun == "")
-                                {
-                                    dataGridView1.Focus();
-                                    dataGridView1.AllowUserToAddRows = true;
-                                    return;
-                                }
+                               // if (txtAmoun == "0.00" || txtAmoun == "")
+                                //{
+                                //    dataGridView1.Focus();
+                                //    dataGridView1.AllowUserToAddRows = true;
+                                //    return;
+                                //}
                                 string Query = "insert into VendorOrderDesc Values('" + OrderID + "','" + txtItemCode + "','" + txtRate + "','" + txtQuanity + "','" + txtAmoun + "')";
                                 //MessageBox.Show(Query);
 
@@ -1197,6 +1210,33 @@ namespace WindowsFormsApplication1
                     int id3 = Convert.ToInt32(id2);
                     int id4 = id3 + 1;
                     OrderID = id4.ToString();
+                    DataGridViewRowCollection RowCollection1 = dataGridView1.Rows;
+                    for (int a = 0; a < RowCollection2.Count; a++)
+                    {
+
+                        DataGridViewRow currentRow1 = RowCollection1[a];
+                        DataGridViewCellCollection cellCollection1 = currentRow1.Cells;
+                        string itid = cellCollection1[0].Value.ToString();
+                        if (ls.Contains(itid))
+                        {
+                            continue;
+                        }
+                        string txtQuanit = cellCollection1[4].Value.ToString();
+                        if (txtQuanit == "0" || txtQuanit == "")
+                        {
+                            MessageBox.Show("Please enter Valid Quantity");
+                            dataGridView1.AllowUserToAddRows = true;
+                            dataGridView1.Focus();
+                            return;
+                        }
+                        string txtAmoun = cellCollection1[11].Value.ToString();
+                        if (txtAmoun == "0.00" || txtAmoun == "")
+                        {
+                            dataGridView1.Focus();
+                            dataGridView1.AllowUserToAddRows = true;
+                            return;
+                        }
+                    }
                     if (txtWAmount.Text == "")
                     {
                         txtWAmount.Text = "0.00";
@@ -1222,17 +1262,19 @@ namespace WindowsFormsApplication1
                             count++;
                             string txtRate = cellCollection[3].Value.ToString();
                             string txtQuanit = cellCollection[4].Value.ToString();
-                            if (txtQuanit == "0")
-                            {
-                                return;
-                            }
+                            //if (txtQuanit == "0")
+                            //{
+                            //    dataGridView1.Focus();
+                            //    dataGridView1.AllowUserToAddRows = true;
+                            //    return;
+                            //}
                             string txtAmoun = cellCollection[11].Value.ToString();
-                            if (txtAmoun == "0.00" || txtAmoun == "")
-                            {
-                                dataGridView1.Focus();
-                                dataGridView1.AllowUserToAddRows = true;
-                                return;
-                            }
+                            //if (txtAmoun == "0.00" || txtAmoun == "")
+                            //{
+                            //    dataGridView1.Focus();
+                            //    dataGridView1.AllowUserToAddRows = true;
+                            //    return;
+                            //}
                             string Query = "insert into VendorOrderDesc Values('" + OrderID + "','" + txtItemCod + "','" + txtRate + "','" + txtQuanit + "','" + txtAmoun + "')";
                             //MessageBox.Show(Query);
                             sf.Add(Query);
@@ -1378,6 +1420,7 @@ namespace WindowsFormsApplication1
             }
              if (txtRef.Text != "")
             {
+
                 int count = 0;
                 string updateQurry1 = "update VendorOrderDetails set venderId='" + textVendercod.Text + "',TotalPrice='" + txttotalAmount.Text + "',Discount='" + txtDiscount.Text + "',DisAmount='" + txtDisAmount.Text + "',TextTaxAmmount='" + txtTaxAmount.Text + "' where Orderid='" + txtRef.Text + "'";
                 int insertedRows3 = dbMainClass.saveDetails(updateQurry1);
@@ -1445,7 +1488,7 @@ namespace WindowsFormsApplication1
                             count++;
                             string txtRate = cellCollection[3].Value.ToString();
                             string txtQuanity = cellCollection[4].Value.ToString();
-                            if (txtQuanity == "0")
+                            if (txtQuanity == "0" || txtQuanity == "")
                             {
                                 return;
                             }
