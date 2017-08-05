@@ -656,54 +656,17 @@ namespace WindowsFormsApplication1
         {
             panel2.Visible = false;
             string opening = "";
-            DataGridViewRowCollection rowcollection = gridsalesorder.Rows;
-            List<string> show = new List<string>();
-            for (int a = 0; a < rowcollection.Count; a++)
-            {
-                DataGridViewRow currentrow = rowcollection[a];
-                DataGridViewCellCollection cellcollection = currentrow.Cells;
-                string itemcode = cellcollection[0].Value.ToString();
-
-                if (ls.Contains(itemcode) && gridsalesorder.Rows[counter].DefaultCellStyle.Font != null)
-                {
-                    counter++;
-                    continue;
-                }
-                counter++;
-                string ProductName = cellcollection[1].Value.ToString();
-                string hsn = cellcollection[2].Value.ToString();
-                string txtRate = cellcollection[3].Value.ToString();
-                //string quantity = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[4].Value.ToString();
-                string quantity = cellcollection[4].Value.ToString();
-                if (quantity == "0")
-                {
-                    MessageBox.Show("please select your quantity");
-                    gridsalesorder.AllowUserToAddRows = true;
-                    return;
-                }
-                string txtAmount = cellcollection[11].Value.ToString();
-                if (txtAmount == "0.00" || txtAmount == "")
-                {
-                    MessageBox.Show("kindly entered valid amount");
-                    gridsalesorder.AllowUserToAddRows = true;
-                    return;
-                }
-            }
-
                 if (txtProductName.Text != "")
                 {
                     MessageBox.Show("please add item");
                     txtQuantity.Focus();
                     return;
                 }
-
                 else if (gridsalesorder.Rows.Count == 1 && txtcustomercode.Text == "C")
                 {
                     MessageBox.Show("please select your customer id");
                     txtcustomercode.Focus();
                 }
-
-
                 else if (gridsalesorder.CurrentRow == null)
                 {
                     MessageBox.Show("Please enter item code first.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -725,6 +688,28 @@ namespace WindowsFormsApplication1
                     counter = 0;
                     if (counter == 0)
                     {
+                        DataGridViewRowCollection cal1 = gridsalesorder.Rows;
+                        for (int c = 0; c < cal1.Count ; c++)
+                        {
+                            DataGridViewRow currentRow2 = cal1[c];
+                            DataGridViewCellCollection cellCollection2 = currentRow2.Cells;
+                            string que1 = cellCollection2[4].Value.ToString();
+                            if (que1 == "0.00"||que1=="")
+                            {
+                                MessageBox.Show("please select your correct Quantity");
+                                gridsalesorder.AllowUserToAddRows = true;
+                                return;
+                            }
+                            string txtAmount = cellCollection2[11].Value.ToString();
+                            if (txtAmount == "0.00" || txtAmount == "")
+                            {
+                                MessageBox.Show("kindly entered valid input");
+                                gridsalesorder.AllowUserToAddRows = true;
+                                
+                                return;
+                            }
+                        }
+                    
                         if (txtwithautaxamount.Text == "")
                         {
                             txtwithautaxamount.Text = "0";
@@ -735,13 +720,13 @@ namespace WindowsFormsApplication1
                         if (insertrows > 0)
                         {
                             DataGridViewRowCollection rowcollection1 = gridsalesorder.Rows;
-                            List<string> show1 = new List<string>();
-                            for (int b = 0; b < rowcollection.Count; b++)
+                            List<string> show = new List<string>();
+                            for (int b = 0; b < rowcollection1.Count; b++)
                             {
-                                DataGridViewRow currentrow1 = rowcollection[b];
+                                DataGridViewRow currentrow1 = rowcollection1[b];
                                 DataGridViewCellCollection cellcollection1 = currentrow1.Cells;
                                 string itemcode1 = cellcollection1[0].Value.ToString();
-
+                               
                                 if (ls.Contains(itemcode1) && gridsalesorder.Rows[counter].DefaultCellStyle.Font != null)
                                 {
                                     counter++;
@@ -753,6 +738,7 @@ namespace WindowsFormsApplication1
                                 string txtRate1 = cellcollection1[3].Value.ToString();
                                 //string quantity = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[4].Value.ToString();
                                 string quantity1 = cellcollection1[4].Value.ToString();
+                                string txtAmount1 = cellcollection1[11].Value.ToString();
                                 if (quantity1 == "0")
                                 {
                                     MessageBox.Show("please select your quantity");
@@ -762,7 +748,7 @@ namespace WindowsFormsApplication1
 
                                 string Orderid = txtsrno.Text;
 
-                                string query = "insert into customerorderdescriptions Values('" + Orderid + "','" + itemcode1 + "','" + txtRate + "','" + quantity1 + "','" + txtAmount + "')";
+                                string query = "insert into customerorderdescriptions Values('" + Orderid + "','" + itemcode1 + "','" + txtRate1 + "','" + quantity1 + "','" + txtAmount1 + "')";
                                 show.Add(query);
                             }
 
@@ -778,25 +764,6 @@ namespace WindowsFormsApplication1
                                 {
                                     panel2.Visible = true;
                                     crystalReportViewer1.Visible = true;
-                                    //gridsalesorder.AllowUserToAddRows = false;
-                                    //// "Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Security=True";
-                                    //SqlConnection con = new SqlConnection();
-                                    //string a = ConfigurationManager.AppSettings["ConnectionString"];
-                                    //con.ConnectionString = a;
-                                    //con.Open();
-                                    //string selectquery = "select * from salesorderreport where orderid='" + txtsrno.Text + "'";
-                                    //SqlCommand cmd = new SqlCommand(selectquery, con);
-                                    //SqlDataAdapter sd = new SqlDataAdapter(cmd);
-                                    //DataSet1 ds = new DataSet1();
-                                    //sd.Fill(ds, "compnaydetails");
-                                    ////CrystalReport1 cr = new CrystalReport1();
-                                    //// cr.ParameterFields.Add(textBox1.Text);
-                                    //// cr.Load("C:\\Users\\dineshtiwari\\Documents\\Visual Studio 2010\\Projects\\report11\\report11\\CrystalReport1.rpt");
-                                    //CrystalReport1 report1 = new CrystalReport1();
-                                    //report1.SetDataSource(ds.Tables[1]);
-                                    //crystalReportViewer1.ReportSource = report1;
-                                    //crystalReportViewer1.Refresh();
-                                    //con.Close();
                                     ReportDocument crReportDocument;
                                     crReportDocument = new ReportDocument();
                                     frmViewReport View = new frmViewReport();
@@ -869,7 +836,7 @@ namespace WindowsFormsApplication1
                     txtcustomercode.Focus();
                 }
             }
-        
+    
        
 
         public void cretenew()
@@ -1598,6 +1565,14 @@ namespace WindowsFormsApplication1
         private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
+            string g = dataGridView1.Rows.Count.ToString();
+            int g1 = Convert.ToInt32(g);
+            if (g1 ==1)
+            {
+                MessageBox.Show("please select your proper row");
+                dataGridView1.ReadOnly = true;
+                return;
+            }
             //txtQuantity.TabStop = false;
             //txtQuantity.ReadOnly = false;
             txtsearchvalue.Text = "";
@@ -1651,9 +1626,19 @@ namespace WindowsFormsApplication1
         private void dataGridView1_KeyPress_1(object sender, KeyPressEventArgs e)
         {
 
+            string g = dataGridView1.Rows.Count.ToString();
+            int g1 = Convert.ToInt32(g);
+            if (g1 == 1)
+            {
+                MessageBox.Show("please select your proper row");
+                dataGridView1.ReadOnly = true;
+                return;
+            }
             int currentIndex = dataGridView1.CurrentRow.Index;
+           
             if (e.KeyChar == (char)Keys.Enter)
             {
+
                 if (dataGridView1.SelectedRows != null && dataGridView1.SelectedRows.Count > 0)
                 {
                     if (dataGridView1.RowCount == currentIndex - 1)
@@ -2294,6 +2279,8 @@ namespace WindowsFormsApplication1
                 }
             }
         }
+
+       
 
        
     }

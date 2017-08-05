@@ -606,15 +606,7 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("Select proper row");
             }
-            //textBox1.Text = "";
-            //comserchvalue.SelectedIndex = 0;
-            //DataGridViewCellCollection cellCollection = dataGridView1.Rows[e.RowIndex].Cells;
-            //setDetails(cellCollection);
-            //panel1.Visible = false;
-            //updateCounter = 1;
-            //tabindex1();
-            //blank();
-           
+          
         }
 
         private void butclose_Click(object sender, EventArgs e)
@@ -706,6 +698,12 @@ namespace WindowsFormsApplication1
         private void dataGridView1_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             int currentIndex = dataGridView1.CurrentRow.Index;
+            if (currentIndex == 0)
+            {
+                MessageBox.Show("please select your proper row");
+                currentIndex = currentIndex + 1;
+                return;
+            }
             if (e.KeyChar == (char)Keys.Enter)
             {
                 if (dataGridView1.SelectedRows != null && dataGridView1.SelectedRows.Count > 0)
