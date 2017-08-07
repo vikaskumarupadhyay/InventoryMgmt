@@ -14,12 +14,11 @@ namespace WindowsFormsApplication1
     public partial class salesorder : Form
     {
         List<string> ls = new List<string>();
+        public bool ValidationFails = false;
         DB_Main d = new DB_Main();
         public salesorder()
         {
             InitializeComponent();
-
-
         }
         public int maxItemQuantity = 0;
         public int counter = 0;
@@ -698,6 +697,9 @@ namespace WindowsFormsApplication1
                             {
                                 MessageBox.Show("please select your correct Quantity");
                                 gridsalesorder.AllowUserToAddRows = true;
+                              
+                                gridsalesorder.CurrentCell = GetCurrentRowOFGridView().Cells[4];
+                               // gridsalesorder.Focus();
                                 return;
                             }
                             string txtAmount = cellCollection2[11].Value.ToString();
@@ -705,7 +707,7 @@ namespace WindowsFormsApplication1
                             {
                                 MessageBox.Show("kindly entered valid input");
                                 gridsalesorder.AllowUserToAddRows = true;
-                                
+                                gridsalesorder.CurrentCell = GetCurrentRowOFGridView().Cells[4];
                                 return;
                             }
                         }
@@ -2025,13 +2027,9 @@ namespace WindowsFormsApplication1
                     {
                         customerid = dr1[0].ToString();
                     }
-                  
-                   
-                    itemid = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index-1].Cells[0].Value.ToString();
-                    //if (itemid != 0)
-                    //{
 
-                    //}
+
+                    itemid = GetCurrentRowOFGridView().Cells[0].Value.ToString();
                     string item = "";
                     string selectQurry = "select ItemId from ItemDetails";
                     DataTable dt1 = d.getDetailByQuery(selectQurry);
@@ -2052,14 +2050,14 @@ namespace WindowsFormsApplication1
                         string rate = "";
                         foreach (DataRow dr in dt.Rows)
                         {
-                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[1].Value = dr[0].ToString();
-                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[2].Value = dr[1].ToString();
-                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[3].Value = dr[2].ToString();
-                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[5].Value = dr[3].ToString();
-                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[7].Value = dr[4].ToString();
-                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[8].Value = dr[5].ToString();
-                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[9].Value = dr[6].ToString();
-                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[10].Value = dr[7].ToString();
+                            GetCurrentRowOFGridView().Cells[1].Value = dr[0].ToString();
+                            GetCurrentRowOFGridView().Cells[2].Value = dr[1].ToString();
+                            GetCurrentRowOFGridView().Cells[3].Value = dr[2].ToString();
+                            GetCurrentRowOFGridView().Cells[5].Value = dr[3].ToString();
+                            GetCurrentRowOFGridView().Cells[7].Value = dr[4].ToString();
+                            GetCurrentRowOFGridView().Cells[8].Value = dr[5].ToString();
+                            GetCurrentRowOFGridView().Cells[9].Value = dr[6].ToString();
+                            GetCurrentRowOFGridView().Cells[10].Value = dr[7].ToString();
 
                             rate = dr[2].ToString();
                         }
@@ -2068,13 +2066,13 @@ namespace WindowsFormsApplication1
 
                         if (compnayid != customerid)
                         {
-                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[7].Value = "0.00";
-                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[8].Value = "0.00";
-                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[3].Value = rate;
-                            string quantity = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[4].Value.ToString();
-                            string discount = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[5].Value.ToString();
-                            double igst = Convert.ToDouble(gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[9].Value.ToString());
-                            double ces = Convert.ToDouble(gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[10].Value.ToString());
+                            GetCurrentRowOFGridView().Cells[7].Value = "0.00";
+                            GetCurrentRowOFGridView().Cells[8].Value = "0.00";
+                            GetCurrentRowOFGridView().Cells[3].Value = rate;
+                            string quantity = GetCurrentRowOFGridView().Cells[4].Value.ToString();
+                            string discount = GetCurrentRowOFGridView().Cells[5].Value.ToString();
+                            double igst = Convert.ToDouble(GetCurrentRowOFGridView().Cells[9].Value.ToString());
+                            double ces = Convert.ToDouble(GetCurrentRowOFGridView().Cells[10].Value.ToString());
                             if (quantity == "")
                             {
                                 quantity = "0";
@@ -2101,31 +2099,31 @@ namespace WindowsFormsApplication1
                             double g7 = price * g6 / 100;
                             double g8 = g7 + price + g3;
 
-                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[6].Value = price.ToString("###0.00");
-                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[11].Value = g8.ToString("###0.00");
-                            Double rat = Convert.ToDouble(gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[11].Value.ToString());
+                            GetCurrentRowOFGridView().Cells[6].Value = price.ToString("###0.00");
+                            GetCurrentRowOFGridView().Cells[11].Value = g8.ToString("###0.00");
+                            Double rat = Convert.ToDouble(GetCurrentRowOFGridView().Cells[11].Value.ToString());
                             //Double totalammount = Convert.ToDouble(txtTotalAmmount.Text);
                             //Double toat = totalammount + g8;
                             Double totalammount = GetTotalAmountOfAllITem();
                             txttotalammount.Text = totalammount.ToString("###0.00");
-                            gridsalesorder.CurrentCell = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[4];
+                            gridsalesorder.CurrentCell = GetCurrentRowOFGridView().Cells[4];
 
                             if (q1 != 0)
                             {
-                                gridsalesorder.CurrentCell = gridsalesorder.Rows[gridsalesorder.RowCount - 1].Cells[0];
+                                gridsalesorder.CurrentCell = GetCurrentRowOFGridView().Cells[0];
 
                             }
                         }
                         else
                         {
-                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[9].Value = "0.00";
-                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[3].Value = rate;
-                            string quantity = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[4].Value.ToString();
-                            string discount = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[5].Value.ToString();
-                            double cs = Convert.ToDouble(gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[7].Value.ToString());
-                            double gs = Convert.ToDouble(gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[8].Value.ToString());
-                            double igst = Convert.ToDouble(gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[9].Value.ToString());
-                            double ces1 = Convert.ToDouble(gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[10].Value.ToString());
+                            GetCurrentRowOFGridView().Cells[9].Value = "0.00";
+                            GetCurrentRowOFGridView().Cells[3].Value = rate;
+                            string quantity = GetCurrentRowOFGridView().Cells[4].Value.ToString();
+                            string discount = GetCurrentRowOFGridView().Cells[5].Value.ToString();
+                            double cs = Convert.ToDouble(GetCurrentRowOFGridView().Cells[7].Value.ToString());
+                            double gs = Convert.ToDouble(GetCurrentRowOFGridView().Cells[8].Value.ToString());
+                            double igst = Convert.ToDouble(GetCurrentRowOFGridView().Cells[9].Value.ToString());
+                            double ces1 = Convert.ToDouble(GetCurrentRowOFGridView().Cells[10].Value.ToString());
 
                             foreach (char value in quantity)
                             {
@@ -2162,9 +2160,9 @@ namespace WindowsFormsApplication1
                             double g9 = igst;
                             double g10 = price * g9 / 100;
                             double g8 = price + g1 + g4 + g7 + g10;
-                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[6].Value = price.ToString("###0.00");
-                            gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[11].Value = g8.ToString("###0.00");
-                            Double rat = Convert.ToDouble(gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[11].Value.ToString());
+                            GetCurrentRowOFGridView().Cells[6].Value = price.ToString("###0.00");
+                            GetCurrentRowOFGridView().Cells[11].Value = g8.ToString("###0.00");
+                            Double rat = Convert.ToDouble(GetCurrentRowOFGridView().Cells[11].Value.ToString());
                             //Double totalammount = Convert.ToDouble(txtTotalAmmount.Text);
                             //Double toat = totalammount + g8;
                             discountamount.Text= setam.ToString();
@@ -2173,11 +2171,12 @@ namespace WindowsFormsApplication1
                             txttaxamount.Text = taxa.ToString();
                             Double totalammount = GetTotalAmountOfAllITem();
                             txttotalammount.Text = totalammount.ToString("###0.00");
-                            gridsalesorder.CurrentCell = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[4];
+                            gridsalesorder.CurrentCell = GetCurrentRowOFGridView().Cells[4];
 
                             if (q1 != 0)
                             {
-                                gridsalesorder.CurrentCell = gridsalesorder.Rows[gridsalesorder.RowCount - 1].Cells[0];
+
+                                gridsalesorder.CurrentCell = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index + 1].Cells[0];
 
                             }
                             //if (gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[0].Value != null)
@@ -2248,20 +2247,38 @@ namespace WindowsFormsApplication1
 
         private double GetTotalAmountOfAllITem()
         {
-            double totalAmount = 0.0;
-            foreach (DataGridViewRow gridViewRow in gridsalesorder.Rows)
+
+            Double amount = 0.00;
+            DataGridViewRowCollection RowCollection = gridsalesorder.Rows;
+            for (int a = 0; a < RowCollection.Count - 1; a++)
             {
-                if (gridViewRow.Cells[0].Value!=null&&!string.IsNullOrWhiteSpace(gridViewRow.Cells[0].Value.ToString()))
+
+                DataGridViewRow currentRow = RowCollection[a];
+                DataGridViewCellCollection cellCollection = currentRow.Cells;
+                if (!string.IsNullOrWhiteSpace(cellCollection[11].Value.ToString()))
                 {
-                    Double totalAmountForEachItem = Convert.ToDouble(gridViewRow.Cells[gridViewRow.Cells.Count - 1].Value);
-                    totalAmount += totalAmountForEachItem;
+                    string addamount = cellCollection[11].Value.ToString();
+                    Double amount1 = Convert.ToDouble(addamount.ToString());
+                    amount = amount + amount1;
                 }
+
             }
-            return totalAmount;
+            return amount;
+            //double totalAmount = 0.0;
+            //foreach (DataGridViewRow gridViewRow in gridsalesorder.Rows)
+            //{
+            //    if (gridViewRow.Cells[0].Value != null && !string.IsNullOrWhiteSpace(gridViewRow.Cells[0].Value.ToString()))
+            //    {
+            //        Double totalAmountForEachItem = Convert.ToDouble(gridViewRow.Cells[gridViewRow.Cells.Count - 1].Value);
+            //        totalAmount += totalAmountForEachItem;
+            //    }
+            //}
+            //return totalAmount;
         }
 
         private void gridsalesorder_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
+            ValidationFails = false;
             int col = e.ColumnIndex;
             if (col == 4)
             {
@@ -2275,9 +2292,24 @@ namespace WindowsFormsApplication1
                     {
                         MessageBox.Show("please select your correct quantity");
                         e.Cancel = true;
+                        ValidationFails =true;
                     }
                 }
             }
+        }
+        private DataGridViewRow GetCurrentRowOFGridView()
+        {
+
+            int index = gridsalesorder.CurrentRow.Index;
+            if (index == 0)
+            {
+                index = index + 1;
+            }
+            if (ValidationFails == false)
+            {
+                index = index - 1;
+            }
+            return gridsalesorder.Rows[index];
         }
 
        
