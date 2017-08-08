@@ -3077,8 +3077,7 @@ namespace WindowsFormsApplication1
                             
                              txtRefNo.Text = "";
                              txtRefNo.Focus();
-                             //textVendercod.Select(textVendercod.Text.Length, 0);
-                             addToCartTable.Columns.RemoveAt(6);
+                            
                              txtcustomercode.TabStop = true;
                              butcustomercode.TabStop = true;
 
@@ -4637,10 +4636,21 @@ namespace WindowsFormsApplication1
                 string value = e.FormattedValue.ToString();
                 if (value != "")
                 {
-
                     int quantiy;
                     bool validNumber = int.TryParse(value, out quantiy);
                     if (validNumber == false)
+                    {
+                        MessageBox.Show("please select your correct quantity");
+                        e.Cancel = true;
+                        ValidationFails = true;
+                    }
+                }
+                else if (value == "")
+                {
+                    //MessageBox.Show( e.RowIndex.ToString());
+                    int rowIndex = e.RowIndex;
+                    var valueOffirstCell = gridsalesdelivary.Rows[rowIndex].Cells[0].Value;
+                    if (valueOffirstCell != null && !string.IsNullOrWhiteSpace(valueOffirstCell.ToString()))
                     {
                         MessageBox.Show("please select your correct quantity");
                         e.Cancel = true;
