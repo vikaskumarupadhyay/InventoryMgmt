@@ -148,7 +148,7 @@ namespace WindowsFormsApplication1
             }
             else if (s =="Column2")
             {
-                s = "cast((dbo.VendorOrderDesc.TotalPrice)- ((dbo.VendorOrderDesc.TotalPrice)/(1+(dbo.VendorOrderDetails.Vat/100)))as numeric(38,2))";
+                s = "cast(dbo.VendorOrderDesc.Price as numeric(38,2))";
             }
             else if (s =="Column3")
             {
@@ -158,6 +158,11 @@ namespace WindowsFormsApplication1
             {
                 s = "dbo.VendorOrderDetails." + s;
                 
+            }
+            else if (s == "Discount")
+            {
+                s = "itd.Discount";
+
             }
             else if (s =="MrpPrice")
             {

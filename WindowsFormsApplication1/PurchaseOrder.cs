@@ -2298,6 +2298,13 @@ namespace WindowsFormsApplication1
                         ValidationFails = true;
                     }
                 }
+                else
+                {
+                    int columIndex =Convert.ToInt32 (gridPurchaseOrder.CurrentRow.Index.ToString());
+                    MessageBox.Show("Please Enter Int value");
+                    gridPurchaseOrder.Focus();
+                    return;
+                }
             }
         }
 
@@ -2306,7 +2313,15 @@ namespace WindowsFormsApplication1
             int index = gridPurchaseOrder.CurrentRow.Index;
             if (ValidationFails == false)
             {
-                index = index - 1;
+                if (index == 0)
+                {
+                    index = index;
+                }
+                else
+                {
+
+                    index = index - 1;
+                }
             }
             return gridPurchaseOrder.Rows[index];
         }

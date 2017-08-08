@@ -1441,7 +1441,10 @@ namespace WindowsFormsApplication1
                         //count++;
                         string que = cellCollection1[5].Value.ToString();
                         string quent = cellCollection1[4].Value.ToString();
-
+                        if (quent == "")
+                        {
+                            quent = "0";
+                        }
 
 
                         string qurry = "select CurrentQuantity from ItemQuantityDetail where ItemId='" + itid + "'";
@@ -1451,7 +1454,7 @@ namespace WindowsFormsApplication1
                         {
                             currid = dr["CurrentQuantity"].ToString();
                         }
-                        int quent1 = Convert.ToInt32(quent);
+                        Double quent1 = Convert.ToDouble(quent);
                         // int curentQuntity = Convert.ToInt32(que);
                         //int quntity = curentQuntity - quent1;
                        Double cuentQuantity = Convert.ToDouble(currid);
@@ -1844,7 +1847,7 @@ namespace WindowsFormsApplication1
                             //    addToCartTable.Columns.RemoveAt(5);
 
                             //}
-
+                            makeBlank();
                             //if (!addToCartTable.Columns.Contains("Taxable Value"))
                             //{
                             //    addToCartTable.Columns.Add(new DataColumn("Taxable Value"));
@@ -1853,7 +1856,7 @@ namespace WindowsFormsApplication1
                             txtRef.Text = "";
                             txtRef.Focus();
                             //textVendercod.Select(textVendercod.Text.Length, 0);
-                            addToCartTable.Columns.RemoveAt(5);
+                            //addToCartTable.Columns.RemoveAt(5);
                             textVendercod.TabStop = true;
                             button1.TabStop = true;
 

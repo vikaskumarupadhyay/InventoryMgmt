@@ -328,8 +328,8 @@ namespace WindowsFormsApplication1
                 txtMobile.Text = cellcolection[11].Value.ToString();
                 txtFax.Text = cellcolection[12].Value.ToString();
                 txtPanNo.Text = cellcolection[13].Value.ToString();
-                txtGst.Text = cellcolection[14].Value.ToString();
-                txtDescription.Text = cellcolection[15].Value.ToString();
+                txtGst.Text = cellcolection[15].Value.ToString();
+                txtDescription.Text = cellcolection[14].Value.ToString();
                 //combComp.Text = cellcolection[16].Value.ToString();
                 //txtTexAmount.Text = cellcolection[17].Value.ToString();
             }
