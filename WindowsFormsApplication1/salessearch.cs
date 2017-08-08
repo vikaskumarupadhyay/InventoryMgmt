@@ -262,10 +262,7 @@ namespace WindowsFormsApplication1
             txtwithauttaxamoubnt.Text = witha.ToString();
             double qtybuiled = getqtybuiled();
             txtquantitybuiled.Text = qtybuiled.ToString();
-
         }
-
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             string s = comboBox1.SelectedValue.ToString();
@@ -299,7 +296,7 @@ namespace WindowsFormsApplication1
             }
             else if (s == "Column4")
             {
-                s = "cast((dbo.customerorderdescriptions.totalammount*dbo.orderdetails.Discount)/100 as numeric(38,2))";
+                s = "cast((dbo.customerorderdescriptions.price*itd.Discount)/100 as numeric(38,2))";
             }
             else if (s == "Column5")
             {
@@ -345,6 +342,10 @@ namespace WindowsFormsApplication1
             else if (s == "Column10")
             {
                 s = "(case when p.Balance > 0 then 'Delivered' else 'Fully settled' end)";
+            }
+            else if (s == "Discount")
+            {
+                s = "itd.Discount";
             }
             //  s = "od.orderid";
             // string selectquery = "SELECT dbo.CustomerDetails.custId,dbo.CustomerDetails.CustName as[Customer Name], dbo.CustomerDetails.CustCompName as[Compnay Name],dbo.CustomerDetails.CustAddress as [Address], dbo.CustomerDetails.CustCity as[City], dbo.CustomerDetails.CustState as[State], dbo.CustomerDetails.CustZip as[Zip], dbo.CustomerDetails.CustCountry as [Country],dbo.CustomerDetails.CustEmail as[Email], dbo.CustomerDetails.CustWebAddress as[Web Address], dbo.CustomerDetails.CustPhone as[Phone], dbo.CustomerDetails.CustMobile as [Mobile],dbo.CustomerDetails.CustFax as [Fax], dbo.CustomerDetails.CustPanNo as [PAN NO], dbo.CustomerDetails.CustVatNo as [VAT NO], dbo.CustomerDetails.CustCstNo as [CST NO],dbo.CustomerDetails.CustServicetaxRegnNo as[Service Tax Regn NO], dbo.CustomerDetails.CustExciseRegnNo as [Exice Regn No], dbo.CustomerDetails.Gstregnno as[GST Regn No], dbo.customerorderdescriptions.ItemId as [Item Id],dbo.customerorderdescriptions.orderid as [Order Id], dbo.customerorderdescriptions.price as[Price], dbo.customerorderdescriptions.quantity as [Quantity], dbo.customerorderdescriptions.totalammount as[Totalamount], dbo.ItemDetails.ItemName as [Item Name], dbo.ItemPriceDetail.MrpPrice as[MRP Price], dbo.ItemPriceDetail.Margin as[Margin], dbo.orderdetails.totalammount AS Expr1, dbo.orderdetails.Discount as[Discount],dbo.orderdetails.Discountamount as[Discount Amount], dbo.orderdetails.Tax as[Tax], dbo.orderdetails.Taxamount as[Tax Amount], dbo.orderdetails.WithautTaxamount as[Withaut Tax amount], dbo.salesOrderDelivery.Delivaryid as [Delivary Id], dbo.salesOrderDelivery.DeliveryDate as [Delivary Date] FROM dbo.salesOrderDelivery INNER JOIN dbo.ItemDetails INNER JOIN dbo.customerorderdescriptions ON dbo.ItemDetails.ItemId = dbo.customerorderdescriptions.ItemId INNER JOIN dbo.ItemPriceDetail ON dbo.ItemDetails.ItemId = dbo.ItemPriceDetail.ItemId INNER JOIN dbo.orderdetails ON dbo.customerorderdescriptions.orderid = dbo.orderdetails.orderid INNER JOIN dbo.CustomerDetails ON dbo.orderdetails.custid = dbo.CustomerDetails.custId ON dbo.salesOrderDelivery.Orderid = dbo.orderdetails.orderid CROSS JOIN dbo.CompnayDetails Where " + s + " like'" + textBox1.Text + "%' ";

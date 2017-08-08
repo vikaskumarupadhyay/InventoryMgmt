@@ -3183,8 +3183,10 @@ namespace WindowsFormsApplication1
                                  }
                                 
                                   //gridsalesdelivary.DataSource = null;
+                                 Double TotalTax = TaxAmount();
+                                 txttaxamount.Text = TotalTax.ToString("###0.00");
                                  gridsalesdelivary.DataSource = addToCartTable;
-                                 double setam = setAmount(5);
+                                 double setam = setDisAmount();
                                  double subtotal = WithTaxAmount(2);
                                  txtdicountamount.Text = setam.ToString();
                                  txtwithauttaxamount.Text = subtotal.ToString();
@@ -4514,7 +4516,6 @@ namespace WindowsFormsApplication1
                             GetCurrentRowOFGridView().Cells[11].Value = taxv.ToString("###0.00");
                             Double rat = Convert.ToDouble(GetCurrentRowOFGridView().Cells[11].Value.ToString());
                            // Double totalammount = Convert.ToDouble(txtTotalAmmount.Text);
-                           
                             Double toat = setAmount(11);
                             txtTotalAmmount.Text = toat.ToString("###0.00");
                             Double withtotalammount = WithTaxAmount();
