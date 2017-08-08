@@ -4195,7 +4195,7 @@ namespace WindowsFormsApplication1
                             }
 
 
-                            string itemid = dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[0].Value.ToString();
+                            itemId = GetCurrentRowOFGridView().Cells[0].Value.ToString();
 
                             string item = "";
                             string selectQurry = "select ItemId from ItemDetails";
@@ -4203,17 +4203,17 @@ namespace WindowsFormsApplication1
                             foreach (DataRow dr1 in dt1.Rows)
                             {
                                 item = dr1[0].ToString();
-                                if (item == itemid)
+                                if (item == itemId)
                                 {
                                     break;
                                 }
 
                             }
-                            if (item == itemid)
+                            if (item == itemId)
                             {
 
 
-                                string selectqurry = "select Ids.ItemName,itd.HSN, ipd.purChasePrice,itd.CGST,itd.SGST,itd.IGST,itd.CESS,itd.Discount from ItemDetails Ids  join ItemPriceDetail ipd on Ids.ItemId=ipd.ItemId join ItemTaxDetail itd on ipd.ItemId=itd.ItemId  where Ids.ItemId='" + itemid + "'";
+                                string selectqurry = "select Ids.ItemName,itd.HSN, ipd.purChasePrice,itd.CGST,itd.SGST,itd.IGST,itd.CESS,itd.Discount from ItemDetails Ids  join ItemPriceDetail ipd on Ids.ItemId=ipd.ItemId join ItemTaxDetail itd on ipd.ItemId=itd.ItemId  where Ids.ItemId='" + itemId + "'";
                                 DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
                                 string rate = "";
                                 string gst3 = "";
@@ -4233,21 +4233,21 @@ namespace WindowsFormsApplication1
                                     {
                                         igst1 = "0.00";
                                     }
-                                    dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[1].Value = dr[0].ToString();
-                                    dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[2].Value = dr[1].ToString();
-                                    dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[3].Value = dr[2].ToString();
-                                    dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[7].Value = gst3.ToString();
-                                    dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[8].Value = gst4.ToString();
-                                    dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[9].Value = igst1.ToString();
-                                    dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[10].Value = dr[6].ToString();
-                                    dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[5].Value = dr[7].ToString();
+                                    GetCurrentRowOFGridView().Cells[1].Value = dr[0].ToString();
+                                    GetCurrentRowOFGridView().Cells[2].Value = dr[1].ToString();
+                                    GetCurrentRowOFGridView().Cells[3].Value = dr[2].ToString();
+                                    GetCurrentRowOFGridView().Cells[7].Value = gst3.ToString();
+                                    GetCurrentRowOFGridView().Cells[8].Value = gst4.ToString();
+                                    GetCurrentRowOFGridView().Cells[9].Value = igst1.ToString();
+                                    GetCurrentRowOFGridView().Cells[10].Value = dr[6].ToString();
+                                    GetCurrentRowOFGridView().Cells[5].Value = dr[7].ToString();
 
 
                                     rate = dr[2].ToString();
                                 }
 
-                                dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[3].Value = rate;
-                                string quantity = dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[4].Value.ToString();
+                                GetCurrentRowOFGridView().Cells[3].Value = rate;
+                                string quantity = GetCurrentRowOFGridView().Cells[4].Value.ToString();
                                 if(!quantity.All(char.IsNumber))
                                 {
                                     quantity = "0";
@@ -4265,18 +4265,18 @@ namespace WindowsFormsApplication1
                                 }
 
                                 double total = Convert.ToDouble(price.ToString());
-                                double g = Convert.ToDouble(dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[5].Value.ToString());
+                                double g = Convert.ToDouble(GetCurrentRowOFGridView().Cells[5].Value.ToString());
                                 double di = price * g / 100;
                                 price = price - di;
                                 Double discontA = setDisAmount();
                                 txtDisAmount.Text = discontA.ToString("###0.00");
-                                dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[4].Value = q1;
+                                GetCurrentRowOFGridView().Cells[4].Value = q1;
                                 dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[6].Value = price.ToString("###0.00");
-                                Double gst = Convert.ToDouble(dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[8].Value.ToString());
-                                Double cgst = Convert.ToDouble(dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[7].Value.ToString());
-                                Double taxv = Convert.ToDouble(dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[6].Value.ToString());
-                                Double igst = Convert.ToDouble(dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[9].Value.ToString());
-                                Double csst = Convert.ToDouble(dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[10].Value.ToString());
+                                Double gst = Convert.ToDouble(GetCurrentRowOFGridView().Cells[8].Value.ToString());
+                                Double cgst = Convert.ToDouble(GetCurrentRowOFGridView().Cells[7].Value.ToString());
+                                Double taxv = Convert.ToDouble(GetCurrentRowOFGridView().Cells[6].Value.ToString());
+                                Double igst = Convert.ToDouble(GetCurrentRowOFGridView().Cells[9].Value.ToString());
+                                Double csst = Convert.ToDouble(GetCurrentRowOFGridView().Cells[10].Value.ToString());
                                 double g2 = price * gst / 100;
                                 taxv = taxv + g2;
                                 double g1 = price * cgst / 100;
@@ -4287,8 +4287,8 @@ namespace WindowsFormsApplication1
                                 taxv = taxv + csst1;
                                 Double TotalTax = TaxAmount();
                                 txtTaxAmount.Text = TotalTax.ToString("###0.00");
-                                dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[11].Value = taxv.ToString("###0.00");
-                                Double rat = Convert.ToDouble(dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[11].Value.ToString());
+                                GetCurrentRowOFGridView().Cells[11].Value = taxv.ToString("###0.00");
+                                Double rat = Convert.ToDouble(GetCurrentRowOFGridView().Cells[11].Value.ToString());
                                 Double totalammount = Convert.ToDouble(txttotalAmount.Text);
                                 Double toat = setAmount(11);
                                 txttotalAmount.Text = toat.ToString("###0.00");
@@ -4296,11 +4296,11 @@ namespace WindowsFormsApplication1
                                 txtWAmount.Text = withtotalammount.ToString("###0.00");
                                 Double Quantity = setAmount(4);
                                 txtQuantityBild.Text = Quantity.ToString();
-                                dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[4];
+                                dataGridView1.CurrentCell = GetCurrentRowOFGridView().Cells[4];
 
                                 if (q1 != 0)
                                 {
-                                    dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.CurrentRow.Index + 1].Cells[0];
+                                    dataGridView1.CurrentCell = GetCurrentRowOFGridView().Cells[0];
                                 }
 
 
@@ -4319,7 +4319,7 @@ namespace WindowsFormsApplication1
                             else
                             {
 
-                                if (item != itemid)
+                                if (item != itemId)
                                 {
 
                                     MessageBox.Show("please select your correct itemid");
@@ -4329,7 +4329,7 @@ namespace WindowsFormsApplication1
                                         dataGridView1.Rows.RemoveAt(dataGridView1.CurrentRow.Index - 1);
                                     }
                                 }
-                                if (itemid == item)
+                                if (itemId == item)
                                 {
                                     MessageBox.Show("please select your correct row ");
                                     dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value = "";
@@ -4531,14 +4531,31 @@ namespace WindowsFormsApplication1
             //    }
             //}
         }
+        private DataGridViewRow GetCurrentRowOFGridView()
+        {
+            int index = dataGridView1.CurrentRow.Index;
+            if (ValidationFails == false)
+            {
+                if (index == 0)
+                {
+                    index = index+1;
+                }
+                else
+                {
 
+                    index = index - 1;
+                }
+            }
+            return dataGridView1.Rows[index];
+        }
         private void CashAmount_MouseClick(object sender, MouseEventArgs e)
         {
             CashAmount.SelectAll();
         }
-
+        Boolean ValidationFails;
         private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
+            ValidationFails = false;
             int col = e.ColumnIndex;
             if (col == 4)
             {
@@ -4547,10 +4564,24 @@ namespace WindowsFormsApplication1
                 {
                     int quantiy;
                     bool validNumber = int.TryParse(value, out quantiy);
-                    if (validNumber == false)
+                    if (validNumber == false || quantiy == 0)
+                    {
+                        MessageBox.Show("Please Enter Int value");
+
+                        e.Cancel = true;
+                        dataGridView1.AllowUserToAddRows = true;
+                        ValidationFails = true;
+                    }
+                }
+                else
+                {
+                    int columIndex = Convert.ToInt32(dataGridView1.CurrentRow.Index.ToString());
+                    var valueOffirstCell = dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+                    if (valueOffirstCell != null && !string.IsNullOrWhiteSpace(valueOffirstCell.ToString()))
                     {
                         MessageBox.Show("Please Enter Int value");
                         e.Cancel = true;
+                        ValidationFails = true;
                     }
                 }
             }

@@ -2301,9 +2301,13 @@ namespace WindowsFormsApplication1
                 else
                 {
                     int columIndex =Convert.ToInt32 (gridPurchaseOrder.CurrentRow.Index.ToString());
-                    MessageBox.Show("Please Enter Int value");
-                    gridPurchaseOrder.Focus();
-                    return;
+                     var valueOffirstCell = gridPurchaseOrder.Rows[e.RowIndex ].Cells[0].Value;
+                     if (valueOffirstCell != null && !string.IsNullOrWhiteSpace(valueOffirstCell.ToString()))
+                     {
+                         MessageBox.Show("Please Enter Int value");
+                         e.Cancel = true;
+                         ValidationFails = true;
+                     }
                 }
             }
         }
