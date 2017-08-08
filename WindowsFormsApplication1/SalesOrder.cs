@@ -697,9 +697,13 @@ namespace WindowsFormsApplication1
                             {
                                 MessageBox.Show("please select your correct Quantity");
                                 gridsalesorder.AllowUserToAddRows = true;
-                              
+                               
                                 gridsalesorder.CurrentCell = GetCurrentRowOFGridView().Cells[4];
-                               // gridsalesorder.Focus();
+                                if (que1 == "")
+                                {
+                                    que1 = "0";
+                                }
+                                gridsalesorder.Focus();
                                 return;
                             }
                             string txtAmount = cellCollection2[11].Value.ToString();
@@ -2285,21 +2289,31 @@ namespace WindowsFormsApplication1
                 string value = e.FormattedValue.ToString();
                 if (value != "")
                 {
-                  
                     int quantiy;
                     bool validNumber = int.TryParse(value, out quantiy);
                     if (validNumber == false)
                     {
                         MessageBox.Show("please select your correct quantity");
                         e.Cancel = true;
-                        ValidationFails =true;
+                        ValidationFails = true;
+                    }
+                }
+                else if(value=="")
+                {
+                     //MessageBox.Show( e.RowIndex.ToString());
+                    int rowIndex = e.RowIndex;
+                    var valueOffirstCell = gridsalesorder.Rows[rowIndex ].Cells[0].Value;
+                    if (valueOffirstCell != null && !string.IsNullOrWhiteSpace(valueOffirstCell.ToString()))
+                    {
+                        MessageBox.Show("please select your correct quantity");
+                        e.Cancel = true;
+                        ValidationFails = true;
                     }
                 }
             }
         }
         private DataGridViewRow GetCurrentRowOFGridView()
         {
-
             int index = gridsalesorder.CurrentRow.Index;
             if (index == 0)
             {
@@ -2311,10 +2325,6 @@ namespace WindowsFormsApplication1
             }
             return gridsalesorder.Rows[index];
         }
-
-       
-
-       
     }
 }
 
