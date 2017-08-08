@@ -2736,6 +2736,13 @@ namespace WindowsFormsApplication1
 
                     MessageBox.Show("Select proper row ! ");
                     currentIndex = 1;
+                    return;
+                }
+                DataGridViewCellCollection CellCollection1 = dataGridView2.Rows[0].Cells;
+                if (string.IsNullOrEmpty(CellCollection1[0].Value.ToString()))
+                {
+                    MessageBox.Show("Select proper row ! ");
+                    return;
                 }
                 //if (dataGridView1.RowCount == currentIndex + 1)
                 //    currentIndex = currentIndex + 1;
@@ -2894,6 +2901,12 @@ namespace WindowsFormsApplication1
         {
             txtSearch.Text = "";
             comboBox1.SelectedIndex = 0;
+             DataGridViewCellCollection CellCollection1 = dataGridView2.Rows[e.RowIndex].Cells;
+             if (string.IsNullOrEmpty(CellCollection1[0].Value.ToString()))
+             {
+                 MessageBox.Show("Select proper row ! ");
+                 return;
+             }
             //int currentIndex = dataGridView2.CurrentRow.Index;
             //if (dataGridView1.RowCount == currentIndex + 1)
             //currentIndex = currentIndex + 1;
@@ -4146,8 +4159,8 @@ namespace WindowsFormsApplication1
                 if (textVendercod.Text == "V")
                 {
                     MessageBox.Show("Please Enter the Vendor Code");
-                    dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[0].Value = "";
-                    dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.CurrentRow.Index - 1].Cells[0];
+                    GetCurrentRowOFGridView().Cells[0].Value = "";
+                    dataGridView1.CurrentCell = GetCurrentRowOFGridView().Cells[0];
                     textVendercod.Focus();
                     textVendercod.Select(textVendercod.Text.Length, 0);
                 }
@@ -4534,17 +4547,13 @@ namespace WindowsFormsApplication1
         private DataGridViewRow GetCurrentRowOFGridView()
         {
             int index = dataGridView1.CurrentRow.Index;
-            if (ValidationFails == false)
+            if (index == 0)
             {
-                if (index == 0)
-                {
-                    index = index+1;
-                }
-                else
-                {
-
+                index = index +1;
+            }
+       else if (ValidationFails == false)
+            {
                     index = index - 1;
-                }
             }
             return dataGridView1.Rows[index];
         }
@@ -4573,10 +4582,10 @@ namespace WindowsFormsApplication1
                         ValidationFails = true;
                     }
                 }
-                else
+                else if (value == "")
                 {
-                    int columIndex = Convert.ToInt32(dataGridView1.CurrentRow.Index.ToString());
-                    var valueOffirstCell = dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+                    int rowIndex = e.RowIndex;
+                    var valueOffirstCell = dataGridView1.Rows[rowIndex].Cells[0].Value;
                     if (valueOffirstCell != null && !string.IsNullOrWhiteSpace(valueOffirstCell.ToString()))
                     {
                         MessageBox.Show("Please Enter Int value");

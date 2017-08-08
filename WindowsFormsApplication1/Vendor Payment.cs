@@ -513,12 +513,33 @@ namespace WindowsFormsApplication1
                     }
                 }
             }
+             * 
                */
+            
             //panel2.Visible = true;
             pnlPayment.Visible = true;
-            CashAmount.Focus();
+           
             BlankPaymentPage1();
-            CashAmount.SelectAll();
+            string selectQurry = "select payment.PaymentDate as[Invoice Date],(select Sum(VendorOrderDesc.Quantity) from VendorOrderDesc where VendorOrderDesc.Orderid= VendorOrderDetails.Orderid) as[Quantity Billed],VendorOrderDetails.WithoutTexAmount as[Gross Amount],VendorOrderDetails.DisAmount as[Dicount Amount],cast((VendorOrderDetails.WithoutTexAmount)-(VendorOrderDetails.DisAmount)as numeric(38, 2))as[Taxable Value],case when VendorDetails .vState != (select state from CompnayDetails) then '0.00'else(select cast(sum(((((voc.Price*voc.Quantity))-(((voc.Price*voc.Quantity)*itd.Discount)/100))*itd.CGST)/100)as numeric(38, 2)) from ItemTaxDetail itd join VendorOrderDesc voc on itd.ItemId=voc.ItemId where voc.Orderid=VendorOrderDetails.Orderid)end as[CGST],case when VendorDetails .vState != (select state from CompnayDetails) then '0.00'else(select cast(sum(((((voc.Price*voc.Quantity))-(((voc.Price*voc.Quantity)*itd.Discount)/100))*itd.SGST)/100)as numeric(38, 2)) from ItemTaxDetail itd join VendorOrderDesc voc on itd.ItemId=voc.ItemId where voc.Orderid=VendorOrderDetails.Orderid)end as[SGST],case when VendorDetails .vState = (select state from CompnayDetails) then '0.00'else(select cast(sum(((((voc.Price*voc.Quantity))-(((voc.Price*voc.Quantity)*itd.Discount)/100))*itd.IGST)/100)as numeric(38, 2)) from ItemTaxDetail itd join VendorOrderDesc voc on itd.ItemId=voc.ItemId where voc.Orderid=VendorOrderDetails.Orderid)end as[IGST],(select cast(sum(((((voc.Price*voc.Quantity))-(((voc.Price*voc.Quantity)*itd.Discount)/100))*itd.CESS)/100)as numeric(38, 2)) from ItemTaxDetail itd join VendorOrderDesc voc on itd.ItemId=voc.ItemId where voc.Orderid=VendorOrderDetails.Orderid)as[CESS],cast(((VendorOrderDetails.WithoutTexAmount)-(VendorOrderDetails.DisAmount))+(VendorOrderDetails.TextTaxAmmount) as numeric(38, 2)) AS[Net Amount (Including Tax)],cast(((VendorOrderDetails.WithoutTexAmount)-(VendorOrderDetails.DisAmount))+(VendorOrderDetails.TextTaxAmmount) as numeric(38, 2)) as[Invoice Amount],payment.TotalAmount as[Paid Amount] ,payment.BalanceAmount as[Balance Amount] from VendorOrderDetails join VendorDetails on VendorDetails.venderId=VendorOrderDetails.venderId join CustomerOrderDelivery on VendorOrderDetails.Orderid=CustomerOrderDelivery.Orderid join AllPaymentDetailes payment on CustomerOrderDelivery.Deliveryid=payment.Invoiceid where CustomerOrderDelivery.Deliveryid='" + txtRefNo.Text + "'";
+            DataTable dt = dbMainClass.getDetailByQuery(selectQurry);
+            string balance = "";
+            foreach (DataRow dr in dt.Rows)
+            {
+                balance = dr[12].ToString();
+            }
+            Double bal = Convert.ToDouble(balance);
+            if (bal < 0)
+            {
+                txtRturned.ReadOnly = false;
+                txtRturned.Focus();
+                txtRturned.SelectAll();
+            }
+            else
+            {
+                CashAmount.Focus();
+                CashAmount.SelectAll();
+                txtRturned.ReadOnly = true;
+            }
             //makeBlank();
             //makeBlank1();
             //int id = Convert.ToInt32(txtSrNo.Text);
@@ -974,6 +995,7 @@ namespace WindowsFormsApplication1
         }
         private void pnlPayment_Paint(object sender, PaintEventArgs e)
         {
+
             //txtInvoiceid.Text = txtRefNo.Text;
             //txtInvoiceAmount.Text = amount.ToString("###0.00");
             //txtBalance.Text = txttotalammount.Text;
@@ -985,7 +1007,7 @@ namespace WindowsFormsApplication1
             //double amount5 = Amount2 + amount4;
             //string Amount3 = amount5.ToString();
             //txtBalance.Text = amount5.ToString("##0.00");
-            txtRturned.ReadOnly = true;
+           
             txtInvoiceid.Text = txtRefNo.Text;
 
             txtInvoiceAmount.Text = BalAmount.ToString("###0.00");

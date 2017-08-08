@@ -2315,17 +2315,14 @@ namespace WindowsFormsApplication1
         private DataGridViewRow GetCurrentRowOFGridView()
         {
             int index = gridPurchaseOrder.CurrentRow.Index;
-            if (ValidationFails == false)
-            {
-                if (index == 0)
+            if (index == 0)
                 {
                     index = index;
                 }
-                else
-                {
-
+            if (ValidationFails == false)
+            {
+                
                     index = index - 1;
-                }
             }
             return gridPurchaseOrder.Rows[index];
         }
