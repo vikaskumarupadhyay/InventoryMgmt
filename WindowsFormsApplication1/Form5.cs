@@ -783,6 +783,11 @@ namespace WindowsFormsApplication1
             double amount5 = Amount2 + amount4;
             string Amount3 = amount5.ToString();
             txtBalance.Text = amount5.ToString("##0.00");
+            //double s = Convert.ToDouble(txtBalance.Text);
+            //for (int a = 0; a > s; a++)
+            //{
+            //    txtRturned.ReadOnly = false;
+            //}
 
 
         }
