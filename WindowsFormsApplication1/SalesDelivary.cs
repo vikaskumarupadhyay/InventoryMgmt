@@ -4488,7 +4488,6 @@ namespace WindowsFormsApplication1
                             {
                                 price = 0;
                             }
-
                             double total = Convert.ToDouble(price.ToString());
                             double g = Convert.ToDouble(GetCurrentRowOFGridView().Cells[5].Value.ToString());
                             double di = price * g / 100;
@@ -4514,7 +4513,8 @@ namespace WindowsFormsApplication1
                             txttaxamount.Text = TotalTax.ToString("###0.00");
                             GetCurrentRowOFGridView().Cells[11].Value = taxv.ToString("###0.00");
                             Double rat = Convert.ToDouble(GetCurrentRowOFGridView().Cells[11].Value.ToString());
-                            Double totalammount = Convert.ToDouble(txtTotalAmmount.Text);
+                           // Double totalammount = Convert.ToDouble(txtTotalAmmount.Text);
+                           
                             Double toat = setAmount(11);
                             txtTotalAmmount.Text = toat.ToString("###0.00");
                             Double withtotalammount = WithTaxAmount();

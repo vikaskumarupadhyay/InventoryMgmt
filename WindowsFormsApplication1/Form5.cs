@@ -16,7 +16,7 @@ namespace WindowsFormsApplication1
         DataTable customerdetails = new DataTable();
         DataTable addToCartTable = new DataTable();
         public string s;
-        double BalAmunt = 0;
+       
         public Form5()
         {
             InitializeComponent();
@@ -261,7 +261,7 @@ namespace WindowsFormsApplication1
             txtCouponAmount.Text = "0.00";
             txtTotalAmount1.Text = "0.00";
             // txtBalance.Text = "0.00";
-            txtRturned.Text = "0.00";
+           // txtRturned.Text = "0.00";
             txtNetAmount.Text = "0.00";
 
         }
@@ -1274,6 +1274,7 @@ namespace WindowsFormsApplication1
             }
         }
         double bal2 = 0;
+        double BalAmunt = 0;
         private void txtRturned_TextChanged(object sender, EventArgs e)
         {
             if (txtRturned.Text == ".")
