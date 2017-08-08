@@ -699,10 +699,6 @@ namespace WindowsFormsApplication1
                                 gridsalesorder.AllowUserToAddRows = true;
                                
                                 gridsalesorder.CurrentCell = GetCurrentRowOFGridView().Cells[4];
-                                if (que1 == "")
-                                {
-                                    que1 = "0";
-                                }
                                 gridsalesorder.Focus();
                                 return;
                             }
@@ -712,6 +708,7 @@ namespace WindowsFormsApplication1
                                 MessageBox.Show("kindly entered valid input");
                                 gridsalesorder.AllowUserToAddRows = true;
                                 gridsalesorder.CurrentCell = GetCurrentRowOFGridView().Cells[4];
+                                gridsalesorder.Focus();
                                 return;
                             }
                         }
@@ -1887,14 +1884,22 @@ namespace WindowsFormsApplication1
 
         public double getquantitybuiled()
         {
-            double totalValue = 0.0;
-            double s;
-            for (int a = 0; a < gridsalesorder.Rows.Count; a++)
+          
+            Double quantity = 0.00;
+            DataGridViewRowCollection RowCollection = gridsalesorder.Rows;
+            for (int a = 0; a < RowCollection.Count - 1; a++)
             {
-                s = Convert.ToDouble(gridsalesorder.Rows[a].Cells[5].Value);
-                totalValue = totalValue + s;
+
+                DataGridViewRow currentRow = RowCollection[a];
+                DataGridViewCellCollection cellCollection = currentRow.Cells;
+                if (!string.IsNullOrWhiteSpace(cellCollection[0].Value.ToString()))
+                {
+                    string addamount = cellCollection[4].Value.ToString();
+                    Double amount1 = Convert.ToDouble(addamount.ToString());
+                    quantity = quantity + amount1;
+                }
             }
-            return totalValue;
+            return quantity;
         }
         public Double setAmount()
         {
@@ -2142,8 +2147,7 @@ namespace WindowsFormsApplication1
                                 discount = "0";
                             }
 
-                            int q1 = Convert.ToInt32(quantity);
-                            txtquantitybuiled.Text = q1.ToString();
+                            double q1 = Convert.ToInt32(quantity);
                             Double rate1 = Convert.ToDouble(rate);
                             Double price = rate1 * q1;
                             if (price.ToString() == "")
@@ -2176,23 +2180,15 @@ namespace WindowsFormsApplication1
                             Double totalammount = GetTotalAmountOfAllITem();
                             txttotalammount.Text = totalammount.ToString("###0.00");
                             gridsalesorder.CurrentCell = GetCurrentRowOFGridView().Cells[4];
-
+                            double quantity1 = getquantitybuiled();
+                            txtquantitybuiled.Text = quantity1.ToString();
                             if (q1 != 0)
                             {
 
                                 gridsalesorder.CurrentCell = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index + 1].Cells[0];
 
                             }
-                            //if (gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1].Cells[0].Value != null)
-                            //{
-                            //    int co = gridPurchaseOrder.CurrentRow.Index;
-                            //    DataGridViewRow selectedRow = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index - 1];
-                            //    selectedRow.Selected = true;
-                            //    selectedRow.Cells[4].Selected = true;
-                            //    // gridPurchaseOrder.CurrentCell = gridPurchaseOrder.CurrentRow.Cells[5];//[gridPurchaseOrder.CurrentCell.ColumnIndex + 2, gridPurchaseOrder.CurrentCell.RowIndex];
-                            //    //gridPurchaseOrder.Focus();
-                            //}
-
+                          
                         }
                     }
 
