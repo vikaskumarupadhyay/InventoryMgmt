@@ -3178,10 +3178,7 @@ namespace WindowsFormsApplication1
                                      int q = Convert.ToInt32(quantity.ToString());
                                      txtqtybuiled.Text = q.ToString();
                                      addToCartTable.Rows.Add(dr1);
-
-                                    
                                  }
-                                
                                   //gridsalesdelivary.DataSource = null;
                                  Double TotalTax = TaxAmount();
                                  txttaxamount.Text = TotalTax.ToString("###0.00");
@@ -3225,14 +3222,8 @@ namespace WindowsFormsApplication1
                  }
              }
 
-
-        // }
-
-
-
         private void textBox20_KeyPress(object sender, KeyPressEventArgs e)
         {
-          
             if (Char.IsLetterOrDigit(e.KeyChar)||e.KeyChar=='.')
             {
                 e.Handled = false;
