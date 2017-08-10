@@ -143,6 +143,11 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SalesMasterDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesMasterDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SalesOrder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -489,6 +494,17 @@
     </None>
     <None Include="salesdelivaryDataSet.xss">
       <DependentUpon>salesdelivaryDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SalesMasterDataSet.xsc">
+      <DependentUpon>SalesMasterDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SalesMasterDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SalesMasterDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SalesMasterDataSet.xss">
+      <DependentUpon>SalesMasterDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

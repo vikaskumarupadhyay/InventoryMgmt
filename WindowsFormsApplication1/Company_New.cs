@@ -798,9 +798,6 @@ namespace WindowsFormsApplication1
                 cmbState.SelectedIndex = 0;
             }
         }
-
-       
-
       
     }
 }
