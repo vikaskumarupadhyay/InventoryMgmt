@@ -109,11 +109,6 @@
     <Compile Include="customerprint.Designer.cs">
       <DependentUpon>customerprint.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </Compile>
     <Compile Include="DB_Connection\DB_Main.cs" />
     <Compile Include="DeliveryPage.cs">
       <SubType>Component</SubType>
@@ -142,24 +137,6 @@
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-<<<<<<< HEAD
-    <Compile Include="PurchesDelivery2.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PurchesDelivery2.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="PurchSet.cs">
-      <DependentUpon>PurchSet.xsd</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-=======
->>>>>>> 8f9443e194b04fb8847cabe6f61f3a555cf6f163
-    <Compile Include="SalesMasterDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SalesMasterDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="SalesOrder.cs">
       <SubType>Form</SubType>
@@ -223,6 +200,12 @@
     <Compile Include="PurchesDelivery.Designer.cs">
       <DependentUpon>PurchesDelivery.cs</DependentUpon>
     </Compile>
+    <Compile Include="PurchesDelivery2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PurchesDelivery2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PurchSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -232,6 +215,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>salesdelivaryDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SalesOrderReportDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesOrderReportDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="salesordersearch.cs">
       <SubType>Form</SubType>
@@ -449,17 +437,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="ClassDiagram1.cd" />
-    <None Include="DataSet1.xsc">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="DataSet1.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="DataSet1.xss">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -502,16 +479,15 @@
     <None Include="salesdelivaryDataSet.xss">
       <DependentUpon>salesdelivaryDataSet.xsd</DependentUpon>
     </None>
-    <None Include="SalesMasterDataSet.xsc">
-      <DependentUpon>SalesMasterDataSet.xsd</DependentUpon>
+    <None Include="SalesOrderReportDataSet.xsc">
+      <DependentUpon>SalesOrderReportDataSet.xsd</DependentUpon>
     </None>
-    <None Include="SalesMasterDataSet.xsd">
+    <None Include="SalesOrderReportDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SalesMasterDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
+      <LastGenOutput>SalesOrderReportDataSet.Designer.cs</LastGenOutput>
     </None>
-    <None Include="SalesMasterDataSet.xss">
-      <DependentUpon>SalesMasterDataSet.xsd</DependentUpon>
+    <None Include="SalesOrderReportDataSet.xss">
+      <DependentUpon>SalesOrderReportDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

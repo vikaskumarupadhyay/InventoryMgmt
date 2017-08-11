@@ -1,30 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+<xs:schema id="SalesOrderReportDataSet" targetNamespace="http://tempuri.org/SalesOrderReportDataSet.xsd" xmlns:mstns="http://tempuri.org/SalesOrderReportDataSet.xsd" xmlns="http://tempuri.org/SalesOrderReportDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="SalesMasterConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SalesMasterConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.WindowsFormsApplication1.Properties.Settings.GlobalReference.Default.SalesMasterConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="SalesMasterConnectionString1" IsAppSettingsProperty="true" Modifier="Assembly" Name="SalesMasterConnectionString1 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.WindowsFormsApplication1.Properties.Settings.GlobalReference.Default.SalesMasterConnectionString1" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="salesorderreportTableAdapter" GeneratorDataComponentClassName="salesorderreportTableAdapter" Name="salesorderreport" UserDataComponentName="salesorderreportTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SalesMasterConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="SalesMasterConnectionString1 (Settings)" DbObjectName="SalesMaster.dbo.salesorderreport" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        CompnayDetails.Name, CompnayDetails.Address, CompnayDetails.City, CompnayDetails.State, CompnayDetails.Zip, CompnayDetails.Country, 
-                         CompnayDetails.Email, CompnayDetails.WebAddress, CompnayDetails.Phone, CompnayDetails.Mobile, CustomerDetails.CustName, 
-                         CustomerDetails.CustCompName, CustomerDetails.CustAddress, CustomerDetails.CustCity, CustomerDetails.CustState, CustomerDetails.CustZip, 
-                         CustomerDetails.CustCountry, CustomerDetails.CustEmail, CustomerDetails.CustWebAddress, CustomerDetails.CustPhone, CustomerDetails.CustMobile, 
-                         customerorderdescriptions.orderid, customerorderdescriptions.ItemId, customerorderdescriptions.price, customerorderdescriptions.quantity, 
-                         customerorderdescriptions.totalammount, ItemDetails.ItemName, ItemPriceDetail.MrpPrice, orderdetails.date, orderdetails.totalammount AS Expr1, 
-                         orderdetails.Discount, orderdetails.Discountamount, orderdetails.Tax, orderdetails.Taxamount, orderdetails.WithautTaxamount
-FROM            CompnayDetails CROSS JOIN
-                         ItemDetails INNER JOIN
-                         customerorderdescriptions ON ItemDetails.ItemId = customerorderdescriptions.ItemId INNER JOIN
-                         ItemPriceDetail ON ItemDetails.ItemId = ItemPriceDetail.ItemId INNER JOIN
-                         orderdetails ON customerorderdescriptions.orderid = orderdetails.orderid INNER JOIN
-                         CustomerDetails ON orderdetails.custid = CustomerDetails.custId</CommandText>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Name, Address, City, State, Zip, Country, Email, WebAddress, Phone, Mobile, CustName, CustCompName, CustAddress, CustCity, CustState, CustZip, CustCountry, CustEmail, CustWebAddress, CustPhone, CustMobile, orderid, ItemId, price, quantity, Total, [Taxable Value], [CGSTAmt.], [SGST-Amt.], [IGST-Amt.], [ CESS_Amt], Discount_Amount, totalammount, ItemName, ItemCompName, date, Expr1, WithautTaxamount, HSN, CGST, SGST, IGST, CESS, Expr2, Unitid FROM dbo.salesorderreport</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -56,16 +44,26 @@ FROM            CompnayDetails CROSS JOIN
               <Mapping SourceColumn="ItemId" DataSetColumn="ItemId" />
               <Mapping SourceColumn="price" DataSetColumn="price" />
               <Mapping SourceColumn="quantity" DataSetColumn="quantity" />
+              <Mapping SourceColumn="Total" DataSetColumn="Total" />
+              <Mapping SourceColumn="Taxable Value" DataSetColumn="Taxable Value" />
+              <Mapping SourceColumn="CGSTAmt." DataSetColumn="CGSTAmt_" />
+              <Mapping SourceColumn="SGST-Amt." DataSetColumn="SGST-Amt_" />
+              <Mapping SourceColumn="IGST-Amt." DataSetColumn="IGST-Amt_" />
+              <Mapping SourceColumn=" CESS_Amt" DataSetColumn=" CESS_Amt" />
+              <Mapping SourceColumn="Discount_Amount" DataSetColumn="Discount_Amount" />
               <Mapping SourceColumn="totalammount" DataSetColumn="totalammount" />
               <Mapping SourceColumn="ItemName" DataSetColumn="ItemName" />
-              <Mapping SourceColumn="MrpPrice" DataSetColumn="MrpPrice" />
+              <Mapping SourceColumn="ItemCompName" DataSetColumn="ItemCompName" />
               <Mapping SourceColumn="date" DataSetColumn="date" />
               <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
-              <Mapping SourceColumn="Discount" DataSetColumn="Discount" />
-              <Mapping SourceColumn="Discountamount" DataSetColumn="Discountamount" />
-              <Mapping SourceColumn="Tax" DataSetColumn="Tax" />
-              <Mapping SourceColumn="Taxamount" DataSetColumn="Taxamount" />
               <Mapping SourceColumn="WithautTaxamount" DataSetColumn="WithautTaxamount" />
+              <Mapping SourceColumn="HSN" DataSetColumn="HSN" />
+              <Mapping SourceColumn="CGST" DataSetColumn="CGST" />
+              <Mapping SourceColumn="SGST" DataSetColumn="SGST" />
+              <Mapping SourceColumn="IGST" DataSetColumn="IGST" />
+              <Mapping SourceColumn="CESS" DataSetColumn="CESS" />
+              <Mapping SourceColumn="Expr2" DataSetColumn="Expr2" />
+              <Mapping SourceColumn="Unitid" DataSetColumn="Unitid" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -74,10 +72,10 @@ FROM            CompnayDetails CROSS JOIN
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+  <xs:element name="SalesOrderReportDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="SalesOrderReportDataSet" msprop:Generator_UserDSName="SalesOrderReportDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+        <xs:element name="salesorderreport" msprop:Generator_TableClassName="salesorderreportDataTable" msprop:Generator_TableVarName="tablesalesorderreport" msprop:Generator_RowChangedName="salesorderreportRowChanged" msprop:Generator_TablePropName="salesorderreport" msprop:Generator_RowDeletingName="salesorderreportRowDeleting" msprop:Generator_RowChangingName="salesorderreportRowChanging" msprop:Generator_RowEvHandlerName="salesorderreportRowChangeEventHandler" msprop:Generator_RowDeletedName="salesorderreportRowDeleted" msprop:Generator_RowClassName="salesorderreportRow" msprop:Generator_UserTableName="salesorderreport" msprop:Generator_RowEvArgName="salesorderreportRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" minOccurs="0">
@@ -237,6 +235,13 @@ FROM            CompnayDetails CROSS JOIN
               </xs:element>
               <xs:element name="price" msprop:Generator_ColumnVarNameInTable="columnprice" msprop:Generator_ColumnPropNameInRow="price" msprop:Generator_ColumnPropNameInTable="priceColumn" msprop:Generator_UserColumnName="price" type="xs:decimal" minOccurs="0" />
               <xs:element name="quantity" msprop:Generator_ColumnVarNameInTable="columnquantity" msprop:Generator_ColumnPropNameInRow="quantity" msprop:Generator_ColumnPropNameInTable="quantityColumn" msprop:Generator_UserColumnName="quantity" type="xs:int" minOccurs="0" />
+              <xs:element name="Total" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Taxable_x0020_Value" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTaxable_Value" msprop:Generator_ColumnPropNameInRow="Taxable_Value" msprop:Generator_ColumnPropNameInTable="Taxable_ValueColumn" msprop:Generator_UserColumnName="Taxable Value" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CGSTAmt_" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCGSTAmt_" msprop:Generator_ColumnPropNameInRow="CGSTAmt_" msprop:Generator_ColumnPropNameInTable="CGSTAmt_Column" msprop:Generator_UserColumnName="CGSTAmt_" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SGST-Amt_" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="_columnSGST_Amt_" msprop:Generator_ColumnPropNameInRow="_SGST_Amt_" msprop:Generator_ColumnPropNameInTable="_SGST_Amt_Column" msprop:Generator_UserColumnName="SGST-Amt_" type="xs:decimal" minOccurs="0" />
+              <xs:element name="IGST-Amt_" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="_columnIGST_Amt_" msprop:Generator_ColumnPropNameInRow="_IGST_Amt_" msprop:Generator_ColumnPropNameInTable="_IGST_Amt_Column" msprop:Generator_UserColumnName="IGST-Amt_" type="xs:decimal" minOccurs="0" />
+              <xs:element name="_x0020_CESS_Amt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column_CESS_Amt" msprop:Generator_ColumnPropNameInRow="_CESS_Amt" msprop:Generator_ColumnPropNameInTable="_CESS_AmtColumn" msprop:Generator_UserColumnName=" CESS_Amt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Discount_Amount" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDiscount_Amount" msprop:Generator_ColumnPropNameInRow="Discount_Amount" msprop:Generator_ColumnPropNameInTable="Discount_AmountColumn" msprop:Generator_UserColumnName="Discount_Amount" type="xs:decimal" minOccurs="0" />
               <xs:element name="totalammount" msprop:Generator_ColumnVarNameInTable="columntotalammount" msprop:Generator_ColumnPropNameInRow="totalammount" msprop:Generator_ColumnPropNameInTable="totalammountColumn" msprop:Generator_UserColumnName="totalammount" type="xs:decimal" minOccurs="0" />
               <xs:element name="ItemName" msprop:Generator_ColumnVarNameInTable="columnItemName" msprop:Generator_ColumnPropNameInRow="ItemName" msprop:Generator_ColumnPropNameInTable="ItemNameColumn" msprop:Generator_UserColumnName="ItemName" minOccurs="0">
                 <xs:simpleType>
@@ -245,20 +250,29 @@ FROM            CompnayDetails CROSS JOIN
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="MrpPrice" msprop:Generator_ColumnVarNameInTable="columnMrpPrice" msprop:Generator_ColumnPropNameInRow="MrpPrice" msprop:Generator_ColumnPropNameInTable="MrpPriceColumn" msprop:Generator_UserColumnName="MrpPrice" minOccurs="0">
+              <xs:element name="ItemCompName" msprop:Generator_ColumnVarNameInTable="columnItemCompName" msprop:Generator_ColumnPropNameInRow="ItemCompName" msprop:Generator_ColumnPropNameInTable="ItemCompNameColumn" msprop:Generator_UserColumnName="ItemCompName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="100" />
+                    <xs:maxLength value="1000" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="date" msprop:Generator_ColumnVarNameInTable="columndate" msprop:Generator_ColumnPropNameInRow="date" msprop:Generator_ColumnPropNameInTable="dateColumn" msprop:Generator_UserColumnName="date" type="xs:dateTime" minOccurs="0" />
               <xs:element name="Expr1" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_UserColumnName="Expr1" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Discount" msprop:Generator_ColumnVarNameInTable="columnDiscount" msprop:Generator_ColumnPropNameInRow="Discount" msprop:Generator_ColumnPropNameInTable="DiscountColumn" msprop:Generator_UserColumnName="Discount" type="xs:double" minOccurs="0" />
-              <xs:element name="Discountamount" msprop:Generator_ColumnVarNameInTable="columnDiscountamount" msprop:Generator_ColumnPropNameInRow="Discountamount" msprop:Generator_ColumnPropNameInTable="DiscountamountColumn" msprop:Generator_UserColumnName="Discountamount" type="xs:double" minOccurs="0" />
-              <xs:element name="Tax" msprop:Generator_ColumnVarNameInTable="columnTax" msprop:Generator_ColumnPropNameInRow="Tax" msprop:Generator_ColumnPropNameInTable="TaxColumn" msprop:Generator_UserColumnName="Tax" type="xs:double" minOccurs="0" />
-              <xs:element name="Taxamount" msprop:Generator_ColumnVarNameInTable="columnTaxamount" msprop:Generator_ColumnPropNameInRow="Taxamount" msprop:Generator_ColumnPropNameInTable="TaxamountColumn" msprop:Generator_UserColumnName="Taxamount" type="xs:double" minOccurs="0" />
               <xs:element name="WithautTaxamount" msprop:Generator_ColumnVarNameInTable="columnWithautTaxamount" msprop:Generator_ColumnPropNameInRow="WithautTaxamount" msprop:Generator_ColumnPropNameInTable="WithautTaxamountColumn" msprop:Generator_UserColumnName="WithautTaxamount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="HSN" msprop:Generator_ColumnVarNameInTable="columnHSN" msprop:Generator_ColumnPropNameInRow="HSN" msprop:Generator_ColumnPropNameInTable="HSNColumn" msprop:Generator_UserColumnName="HSN" type="xs:int" minOccurs="0" />
+              <xs:element name="CGST" msprop:Generator_ColumnVarNameInTable="columnCGST" msprop:Generator_ColumnPropNameInRow="CGST" msprop:Generator_ColumnPropNameInTable="CGSTColumn" msprop:Generator_UserColumnName="CGST" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SGST" msprop:Generator_ColumnVarNameInTable="columnSGST" msprop:Generator_ColumnPropNameInRow="SGST" msprop:Generator_ColumnPropNameInTable="SGSTColumn" msprop:Generator_UserColumnName="SGST" type="xs:decimal" minOccurs="0" />
+              <xs:element name="IGST" msprop:Generator_ColumnVarNameInTable="columnIGST" msprop:Generator_ColumnPropNameInRow="IGST" msprop:Generator_ColumnPropNameInTable="IGSTColumn" msprop:Generator_UserColumnName="IGST" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CESS" msprop:Generator_ColumnVarNameInTable="columnCESS" msprop:Generator_ColumnPropNameInRow="CESS" msprop:Generator_ColumnPropNameInTable="CESSColumn" msprop:Generator_UserColumnName="CESS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Expr2" msprop:Generator_ColumnVarNameInTable="columnExpr2" msprop:Generator_ColumnPropNameInRow="Expr2" msprop:Generator_ColumnPropNameInTable="Expr2Column" msprop:Generator_UserColumnName="Expr2" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Unitid" msprop:Generator_ColumnVarNameInTable="columnUnitid" msprop:Generator_ColumnPropNameInRow="Unitid" msprop:Generator_ColumnPropNameInTable="UnitidColumn" msprop:Generator_UserColumnName="Unitid" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
