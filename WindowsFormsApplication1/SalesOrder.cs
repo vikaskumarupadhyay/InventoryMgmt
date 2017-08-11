@@ -777,7 +777,7 @@ namespace WindowsFormsApplication1
                                     SqlCommand cmd = new SqlCommand(selectqurry, con);
                                     SqlDataAdapter sda = new SqlDataAdapter(cmd);
 
-                                    DataSet1 ds = new DataSet1();
+                                    SalesOrderReportDataSet ds = new SalesOrderReportDataSet();
                                     sda.Fill(ds, "compnaydetails");
                                     crReportDocument.SetDataSource(ds.Tables[1]);
                                     //Start Preview                          
@@ -901,7 +901,7 @@ namespace WindowsFormsApplication1
                             string selectquery = "select * from salesorderreport where orderid='" + txtsrno.Text + "'";
                             SqlCommand cmd = new SqlCommand(selectquery, con);
                             SqlDataAdapter sd = new SqlDataAdapter(cmd);
-                            DataSet1 ds = new DataSet1();
+                            SalesOrderReportDataSet ds = new SalesOrderReportDataSet();
                             sd.Fill(ds, "compnaydetails");
 
                             //CrystalReport1 cr = new CrystalReport1();
