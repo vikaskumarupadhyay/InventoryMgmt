@@ -4544,19 +4544,7 @@ namespace WindowsFormsApplication1
             //    }
             //}
         }
-        private DataGridViewRow GetCurrentRowOFGridView()
-        {
-            int index = dataGridView1.CurrentRow.Index;
-            if (index == 0)
-            {
-                index = index +1;
-            }
-       else if (ValidationFails == false)
-            {
-                    index = index - 1;
-            }
-            return dataGridView1.Rows[index];
-        }
+       
         private void CashAmount_MouseClick(object sender, MouseEventArgs e)
         {
             CashAmount.SelectAll();
@@ -4594,6 +4582,20 @@ namespace WindowsFormsApplication1
                     }
                 }
             }
+        }
+        private DataGridViewRow GetCurrentRowOFGridView()
+        {
+            int index = dataGridView1.CurrentRow.Index;
+             var valueOffirstCell = dataGridView1.Rows[index].Cells[0].Value;
+             if (valueOffirstCell != null && !string.IsNullOrWhiteSpace(valueOffirstCell.ToString()))
+            {
+                index = index + 1;
+            }
+           else if (ValidationFails == false)
+            {
+                index = index - 1;
+            }
+            return dataGridView1.Rows[index];
         }
     }
 

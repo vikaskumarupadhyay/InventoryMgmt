@@ -68,7 +68,28 @@ FROM            ItemPriceDetail INNER JOIN
               <Mapping SourceColumn="TextTaxAmmount" DataSetColumn="TextTaxAmmount" />
               <Mapping SourceColumn="WithoutTexAmount" DataSetColumn="WithoutTexAmount" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="SalesMasterConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        CompnayDetails.Name, CompnayDetails.Address, CompnayDetails.City, CompnayDetails.State, CompnayDetails.Zip, CompnayDetails.Country, 
+                         CompnayDetails.Email, CompnayDetails.WebAddress, CompnayDetails.Phone, CompnayDetails.Mobile, ItemDetails.ItemName, VendorDetails.vName, 
+                         VendorDetails.vCompName, VendorDetails.vAddress, VendorDetails.vCity, VendorDetails.vState, VendorDetails.vZip, VendorDetails.vCountry, VendorDetails.vEmail, 
+                         VendorDetails.vWebAddress, VendorDetails.vPhone, VendorDetails.vMobile, VendorOrderDesc.Orderid, VendorOrderDesc.ItemId, VendorOrderDesc.Price, 
+                         VendorOrderDesc.Quantity, VendorOrderDesc.TotalPrice, VendorOrderDetails.venderId, VendorOrderDetails.OrderDate, VendorOrderDetails.TotalPrice AS Expr1, 
+                         VendorOrderDetails.Vat, VendorOrderDetails.DisAmount, VendorOrderDetails.TextTaxAmmount, VendorOrderDetails.WithoutTexAmount, ItemTaxDetail.HSN, 
+                         ItemTaxDetail.CGST, ItemTaxDetail.SGST, ItemTaxDetail.IGST, ItemTaxDetail.CESS, ItemTaxDetail.Discount AS Expr2
+FROM            ItemDetails INNER JOIN
+                         VendorOrderDesc ON ItemDetails.ItemId = VendorOrderDesc.ItemId INNER JOIN
+                         VendorOrderDetails ON VendorOrderDesc.Orderid = VendorOrderDetails.Orderid INNER JOIN
+                         VendorDetails ON VendorOrderDetails.venderId = VendorDetails.venderId INNER JOIN
+                         ItemTaxDetail ON ItemDetails.ItemId = ItemTaxDetail.ItemId CROSS JOIN
+                         CompnayDetails</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
         </Tables>
         <Sources />
@@ -78,7 +99,7 @@ FROM            ItemPriceDetail INNER JOIN
   <xs:element name="PurchSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="PurchSet" msprop:Generator_UserDSName="PurchSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="PurchesDtaTable" msprop:Generator_TableClassName="PurchesDtaTableDataTable" msprop:Generator_TableVarName="tablePurchesDtaTable" msprop:Generator_RowChangedName="PurchesDtaTableRowChanged" msprop:Generator_TablePropName="PurchesDtaTable" msprop:Generator_RowDeletingName="PurchesDtaTableRowDeleting" msprop:Generator_RowChangingName="PurchesDtaTableRowChanging" msprop:Generator_RowEvHandlerName="PurchesDtaTableRowChangeEventHandler" msprop:Generator_RowDeletedName="PurchesDtaTableRowDeleted" msprop:Generator_RowClassName="PurchesDtaTableRow" msprop:Generator_UserTableName="PurchesDtaTable" msprop:Generator_RowEvArgName="PurchesDtaTableRowChangeEvent">
+        <xs:element name="PurchesDtaTable" msprop:Generator_TableClassName="PurchesDtaTableDataTable" msprop:Generator_TableVarName="tablePurchesDtaTable" msprop:Generator_TablePropName="PurchesDtaTable" msprop:Generator_RowDeletingName="PurchesDtaTableRowDeleting" msprop:Generator_RowChangingName="PurchesDtaTableRowChanging" msprop:Generator_RowEvHandlerName="PurchesDtaTableRowChangeEventHandler" msprop:Generator_RowDeletedName="PurchesDtaTableRowDeleted" msprop:Generator_UserTableName="PurchesDtaTable" msprop:Generator_RowChangedName="PurchesDtaTableRowChanged" msprop:Generator_RowEvArgName="PurchesDtaTableRowChangeEvent" msprop:Generator_RowClassName="PurchesDtaTableRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" minOccurs="0">
