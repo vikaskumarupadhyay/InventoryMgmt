@@ -143,6 +143,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="PurchesDelivery2.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -153,6 +154,8 @@
       <DependentUpon>PurchSet.xsd</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+=======
+>>>>>>> 8f9443e194b04fb8847cabe6f61f3a555cf6f163
     <Compile Include="SalesMasterDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

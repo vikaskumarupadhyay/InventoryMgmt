@@ -33,5 +33,16 @@ namespace WindowsFormsApplication1.Properties {
                 return ((string)(this["SalesMasterConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DINESHTIWARI-PC\\SQLEXPRESS;Initial Catalog=SalesMaster;Integrated Sec" +
+            "urity=True")]
+        public string SalesMasterConnectionString1 {
+            get {
+                return ((string)(this["SalesMasterConnectionString1"]));
+            }
+        }
     }
 }
