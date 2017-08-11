@@ -20,9 +20,9 @@ namespace WindowsFormsApplication1 {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("SalesMasterDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("SalesOrderReportDataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class SalesMasterDataSet : global::System.Data.DataSet {
+    public partial class SalesOrderReportDataSet : global::System.Data.DataSet {
         
         private salesorderreportDataTable tablesalesorderreport;
         
@@ -30,7 +30,7 @@ namespace WindowsFormsApplication1 {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public SalesMasterDataSet() {
+        public SalesOrderReportDataSet() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace WindowsFormsApplication1 {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected SalesMasterDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected SalesOrderReportDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -127,7 +127,7 @@ namespace WindowsFormsApplication1 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            SalesMasterDataSet cln = ((SalesMasterDataSet)(base.Clone()));
+            SalesOrderReportDataSet cln = ((SalesOrderReportDataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -199,9 +199,9 @@ namespace WindowsFormsApplication1 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "SalesMasterDataSet";
+            this.DataSetName = "SalesOrderReportDataSet";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/SalesMasterDataSet.xsd";
+            this.Namespace = "http://tempuri.org/SalesOrderReportDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tablesalesorderreport = new salesorderreportDataTable();
@@ -225,7 +225,7 @@ namespace WindowsFormsApplication1 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            SalesMasterDataSet ds = new SalesMasterDataSet();
+            SalesOrderReportDataSet ds = new SalesOrderReportDataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -331,25 +331,27 @@ namespace WindowsFormsApplication1 {
             
             private global::System.Data.DataColumn columnTotal;
             
+            private global::System.Data.DataColumn columnTaxable_Value;
+            
+            private global::System.Data.DataColumn columnCGSTAmt_;
+            
+            private global::System.Data.DataColumn _columnSGST_Amt_;
+            
+            private global::System.Data.DataColumn _columnIGST_Amt_;
+            
+            private global::System.Data.DataColumn column_CESS_Amt;
+            
+            private global::System.Data.DataColumn columnDiscount_Amount;
+            
             private global::System.Data.DataColumn columntotalammount;
             
             private global::System.Data.DataColumn columnItemName;
             
             private global::System.Data.DataColumn columnItemCompName;
             
-            private global::System.Data.DataColumn columnMrpPrice;
-            
             private global::System.Data.DataColumn columndate;
             
             private global::System.Data.DataColumn columnExpr1;
-            
-            private global::System.Data.DataColumn columnDiscount;
-            
-            private global::System.Data.DataColumn columnDiscountamount;
-            
-            private global::System.Data.DataColumn columnTax;
-            
-            private global::System.Data.DataColumn columnTaxamount;
             
             private global::System.Data.DataColumn columnWithautTaxamount;
             
@@ -365,7 +367,7 @@ namespace WindowsFormsApplication1 {
             
             private global::System.Data.DataColumn columnExpr2;
             
-            private global::System.Data.DataColumn columnUnitId;
+            private global::System.Data.DataColumn columnUnitid;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -610,6 +612,54 @@ namespace WindowsFormsApplication1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Taxable_ValueColumn {
+                get {
+                    return this.columnTaxable_Value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CGSTAmt_Column {
+                get {
+                    return this.columnCGSTAmt_;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn _SGST_Amt_Column {
+                get {
+                    return this._columnSGST_Amt_;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn _IGST_Amt_Column {
+                get {
+                    return this._columnIGST_Amt_;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn _CESS_AmtColumn {
+                get {
+                    return this.column_CESS_Amt;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Discount_AmountColumn {
+                get {
+                    return this.columnDiscount_Amount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn totalammountColumn {
                 get {
                     return this.columntotalammount;
@@ -634,14 +684,6 @@ namespace WindowsFormsApplication1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn MrpPriceColumn {
-                get {
-                    return this.columnMrpPrice;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn dateColumn {
                 get {
                     return this.columndate;
@@ -653,38 +695,6 @@ namespace WindowsFormsApplication1 {
             public global::System.Data.DataColumn Expr1Column {
                 get {
                     return this.columnExpr1;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DiscountColumn {
-                get {
-                    return this.columnDiscount;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DiscountamountColumn {
-                get {
-                    return this.columnDiscountamount;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TaxColumn {
-                get {
-                    return this.columnTax;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TaxamountColumn {
-                get {
-                    return this.columnTaxamount;
                 }
             }
             
@@ -746,9 +756,9 @@ namespace WindowsFormsApplication1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn UnitIdColumn {
+            public global::System.Data.DataColumn UnitidColumn {
                 get {
-                    return this.columnUnitId;
+                    return this.columnUnitid;
                 }
             }
             
@@ -816,16 +826,17 @@ namespace WindowsFormsApplication1 {
                         decimal price, 
                         int quantity, 
                         decimal Total, 
+                        decimal Taxable_Value, 
+                        decimal CGSTAmt_, 
+                        decimal _SGST_Amt_, 
+                        decimal _IGST_Amt_, 
+                        decimal _CESS_Amt, 
+                        decimal Discount_Amount, 
                         decimal totalammount, 
                         string ItemName, 
                         string ItemCompName, 
-                        decimal MrpPrice, 
                         System.DateTime date, 
                         decimal Expr1, 
-                        double Discount, 
-                        double Discountamount, 
-                        double Tax, 
-                        double Taxamount, 
                         decimal WithautTaxamount, 
                         int HSN, 
                         decimal CGST, 
@@ -833,7 +844,7 @@ namespace WindowsFormsApplication1 {
                         decimal IGST, 
                         decimal CESS, 
                         decimal Expr2, 
-                        string UnitId) {
+                        string Unitid) {
                 salesorderreportRow rowsalesorderreportRow = ((salesorderreportRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Name,
@@ -862,16 +873,17 @@ namespace WindowsFormsApplication1 {
                         price,
                         quantity,
                         Total,
+                        Taxable_Value,
+                        CGSTAmt_,
+                        _SGST_Amt_,
+                        _IGST_Amt_,
+                        _CESS_Amt,
+                        Discount_Amount,
                         totalammount,
                         ItemName,
                         ItemCompName,
-                        MrpPrice,
                         date,
                         Expr1,
-                        Discount,
-                        Discountamount,
-                        Tax,
-                        Taxamount,
                         WithautTaxamount,
                         HSN,
                         CGST,
@@ -879,17 +891,10 @@ namespace WindowsFormsApplication1 {
                         IGST,
                         CESS,
                         Expr2,
-                        UnitId};
+                        Unitid};
                 rowsalesorderreportRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowsalesorderreportRow);
                 return rowsalesorderreportRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public salesorderreportRow FindByUnitId(string UnitId) {
-                return ((salesorderreportRow)(this.Rows.Find(new object[] {
-                            UnitId})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -935,16 +940,17 @@ namespace WindowsFormsApplication1 {
                 this.columnprice = base.Columns["price"];
                 this.columnquantity = base.Columns["quantity"];
                 this.columnTotal = base.Columns["Total"];
+                this.columnTaxable_Value = base.Columns["Taxable Value"];
+                this.columnCGSTAmt_ = base.Columns["CGSTAmt_"];
+                this._columnSGST_Amt_ = base.Columns["SGST-Amt_"];
+                this._columnIGST_Amt_ = base.Columns["IGST-Amt_"];
+                this.column_CESS_Amt = base.Columns[" CESS_Amt"];
+                this.columnDiscount_Amount = base.Columns["Discount_Amount"];
                 this.columntotalammount = base.Columns["totalammount"];
                 this.columnItemName = base.Columns["ItemName"];
                 this.columnItemCompName = base.Columns["ItemCompName"];
-                this.columnMrpPrice = base.Columns["MrpPrice"];
                 this.columndate = base.Columns["date"];
                 this.columnExpr1 = base.Columns["Expr1"];
-                this.columnDiscount = base.Columns["Discount"];
-                this.columnDiscountamount = base.Columns["Discountamount"];
-                this.columnTax = base.Columns["Tax"];
-                this.columnTaxamount = base.Columns["Taxamount"];
                 this.columnWithautTaxamount = base.Columns["WithautTaxamount"];
                 this.columnHSN = base.Columns["HSN"];
                 this.columnCGST = base.Columns["CGST"];
@@ -952,7 +958,7 @@ namespace WindowsFormsApplication1 {
                 this.columnIGST = base.Columns["IGST"];
                 this.columnCESS = base.Columns["CESS"];
                 this.columnExpr2 = base.Columns["Expr2"];
-                this.columnUnitId = base.Columns["UnitId"];
+                this.columnUnitid = base.Columns["Unitid"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1010,26 +1016,32 @@ namespace WindowsFormsApplication1 {
                 base.Columns.Add(this.columnquantity);
                 this.columnTotal = new global::System.Data.DataColumn("Total", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotal);
+                this.columnTaxable_Value = new global::System.Data.DataColumn("Taxable Value", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTaxable_Value);
+                this.columnCGSTAmt_ = new global::System.Data.DataColumn("CGSTAmt_", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCGSTAmt_);
+                this._columnSGST_Amt_ = new global::System.Data.DataColumn("SGST-Amt_", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this._columnSGST_Amt_.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnSGST_Amt_");
+                this._columnSGST_Amt_.ExtendedProperties.Add("Generator_UserColumnName", "SGST-Amt_");
+                base.Columns.Add(this._columnSGST_Amt_);
+                this._columnIGST_Amt_ = new global::System.Data.DataColumn("IGST-Amt_", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this._columnIGST_Amt_.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnIGST_Amt_");
+                this._columnIGST_Amt_.ExtendedProperties.Add("Generator_UserColumnName", "IGST-Amt_");
+                base.Columns.Add(this._columnIGST_Amt_);
+                this.column_CESS_Amt = new global::System.Data.DataColumn(" CESS_Amt", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column_CESS_Amt);
+                this.columnDiscount_Amount = new global::System.Data.DataColumn("Discount_Amount", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDiscount_Amount);
                 this.columntotalammount = new global::System.Data.DataColumn("totalammount", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntotalammount);
                 this.columnItemName = new global::System.Data.DataColumn("ItemName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnItemName);
                 this.columnItemCompName = new global::System.Data.DataColumn("ItemCompName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnItemCompName);
-                this.columnMrpPrice = new global::System.Data.DataColumn("MrpPrice", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMrpPrice);
                 this.columndate = new global::System.Data.DataColumn("date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndate);
                 this.columnExpr1 = new global::System.Data.DataColumn("Expr1", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnExpr1);
-                this.columnDiscount = new global::System.Data.DataColumn("Discount", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDiscount);
-                this.columnDiscountamount = new global::System.Data.DataColumn("Discountamount", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDiscountamount);
-                this.columnTax = new global::System.Data.DataColumn("Tax", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTax);
-                this.columnTaxamount = new global::System.Data.DataColumn("Taxamount", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTaxamount);
                 this.columnWithautTaxamount = new global::System.Data.DataColumn("WithautTaxamount", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnWithautTaxamount);
                 this.columnHSN = new global::System.Data.DataColumn("HSN", typeof(int), null, global::System.Data.MappingType.Element);
@@ -1044,10 +1056,8 @@ namespace WindowsFormsApplication1 {
                 base.Columns.Add(this.columnCESS);
                 this.columnExpr2 = new global::System.Data.DataColumn("Expr2", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnExpr2);
-                this.columnUnitId = new global::System.Data.DataColumn("UnitId", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUnitId);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnUnitId}, true));
+                this.columnUnitid = new global::System.Data.DataColumn("Unitid", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUnitid);
                 this.columnName.MaxLength = 1000;
                 this.columnAddress.MaxLength = 1000;
                 this.columnCity.MaxLength = 100;
@@ -1071,11 +1081,15 @@ namespace WindowsFormsApplication1 {
                 this.columnCustMobile.MaxLength = 15;
                 this.columnItemId.MaxLength = 100;
                 this.columnTotal.ReadOnly = true;
+                this.columnTaxable_Value.ReadOnly = true;
+                this.columnCGSTAmt_.ReadOnly = true;
+                this._columnSGST_Amt_.ReadOnly = true;
+                this._columnIGST_Amt_.ReadOnly = true;
+                this.column_CESS_Amt.ReadOnly = true;
+                this.columnDiscount_Amount.ReadOnly = true;
                 this.columnItemName.MaxLength = 1000;
                 this.columnItemCompName.MaxLength = 1000;
-                this.columnUnitId.AllowDBNull = false;
-                this.columnUnitId.Unique = true;
-                this.columnUnitId.MaxLength = 10;
+                this.columnUnitid.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1143,7 +1157,7 @@ namespace WindowsFormsApplication1 {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                SalesMasterDataSet ds = new SalesMasterDataSet();
+                SalesOrderReportDataSet ds = new SalesOrderReportDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1634,6 +1648,102 @@ namespace WindowsFormsApplication1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal Taxable_Value {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesalesorderreport.Taxable_ValueColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Taxable Value\' in table \'salesorderreport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesalesorderreport.Taxable_ValueColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal CGSTAmt_ {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesalesorderreport.CGSTAmt_Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CGSTAmt_\' in table \'salesorderreport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesalesorderreport.CGSTAmt_Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal _SGST_Amt_ {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesalesorderreport._SGST_Amt_Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SGST-Amt_\' in table \'salesorderreport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesalesorderreport._SGST_Amt_Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal _IGST_Amt_ {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesalesorderreport._IGST_Amt_Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'IGST-Amt_\' in table \'salesorderreport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesalesorderreport._IGST_Amt_Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal _CESS_Amt {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesalesorderreport._CESS_AmtColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \' CESS_Amt\' in table \'salesorderreport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesalesorderreport._CESS_AmtColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal Discount_Amount {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesalesorderreport.Discount_AmountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Discount_Amount\' in table \'salesorderreport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesalesorderreport.Discount_AmountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public decimal totalammount {
                 get {
                     try {
@@ -1682,22 +1792,6 @@ namespace WindowsFormsApplication1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal MrpPrice {
-                get {
-                    try {
-                        return ((decimal)(this[this.tablesalesorderreport.MrpPriceColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'MrpPrice\' in table \'salesorderreport\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablesalesorderreport.MrpPriceColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public System.DateTime date {
                 get {
                     try {
@@ -1725,70 +1819,6 @@ namespace WindowsFormsApplication1 {
                 }
                 set {
                     this[this.tablesalesorderreport.Expr1Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double Discount {
-                get {
-                    try {
-                        return ((double)(this[this.tablesalesorderreport.DiscountColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Discount\' in table \'salesorderreport\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablesalesorderreport.DiscountColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double Discountamount {
-                get {
-                    try {
-                        return ((double)(this[this.tablesalesorderreport.DiscountamountColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Discountamount\' in table \'salesorderreport\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablesalesorderreport.DiscountamountColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double Tax {
-                get {
-                    try {
-                        return ((double)(this[this.tablesalesorderreport.TaxColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Tax\' in table \'salesorderreport\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablesalesorderreport.TaxColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double Taxamount {
-                get {
-                    try {
-                        return ((double)(this[this.tablesalesorderreport.TaxamountColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Taxamount\' in table \'salesorderreport\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablesalesorderreport.TaxamountColumn] = value;
                 }
             }
             
@@ -1906,12 +1936,17 @@ namespace WindowsFormsApplication1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string UnitId {
+            public string Unitid {
                 get {
-                    return ((string)(this[this.tablesalesorderreport.UnitIdColumn]));
+                    try {
+                        return ((string)(this[this.tablesalesorderreport.UnitidColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Unitid\' in table \'salesorderreport\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this[this.tablesalesorderreport.UnitIdColumn] = value;
+                    this[this.tablesalesorderreport.UnitidColumn] = value;
                 }
             }
             
@@ -2229,6 +2264,78 @@ namespace WindowsFormsApplication1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTaxable_ValueNull() {
+                return this.IsNull(this.tablesalesorderreport.Taxable_ValueColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTaxable_ValueNull() {
+                this[this.tablesalesorderreport.Taxable_ValueColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCGSTAmt_Null() {
+                return this.IsNull(this.tablesalesorderreport.CGSTAmt_Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCGSTAmt_Null() {
+                this[this.tablesalesorderreport.CGSTAmt_Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is_SGST_Amt_Null() {
+                return this.IsNull(this.tablesalesorderreport._SGST_Amt_Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set_SGST_Amt_Null() {
+                this[this.tablesalesorderreport._SGST_Amt_Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is_IGST_Amt_Null() {
+                return this.IsNull(this.tablesalesorderreport._IGST_Amt_Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set_IGST_Amt_Null() {
+                this[this.tablesalesorderreport._IGST_Amt_Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is_CESS_AmtNull() {
+                return this.IsNull(this.tablesalesorderreport._CESS_AmtColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set_CESS_AmtNull() {
+                this[this.tablesalesorderreport._CESS_AmtColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDiscount_AmountNull() {
+                return this.IsNull(this.tablesalesorderreport.Discount_AmountColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDiscount_AmountNull() {
+                this[this.tablesalesorderreport.Discount_AmountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IstotalammountNull() {
                 return this.IsNull(this.tablesalesorderreport.totalammountColumn);
             }
@@ -2265,18 +2372,6 @@ namespace WindowsFormsApplication1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsMrpPriceNull() {
-                return this.IsNull(this.tablesalesorderreport.MrpPriceColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetMrpPriceNull() {
-                this[this.tablesalesorderreport.MrpPriceColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsdateNull() {
                 return this.IsNull(this.tablesalesorderreport.dateColumn);
             }
@@ -2297,54 +2392,6 @@ namespace WindowsFormsApplication1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetExpr1Null() {
                 this[this.tablesalesorderreport.Expr1Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDiscountNull() {
-                return this.IsNull(this.tablesalesorderreport.DiscountColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDiscountNull() {
-                this[this.tablesalesorderreport.DiscountColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDiscountamountNull() {
-                return this.IsNull(this.tablesalesorderreport.DiscountamountColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDiscountamountNull() {
-                this[this.tablesalesorderreport.DiscountamountColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTaxNull() {
-                return this.IsNull(this.tablesalesorderreport.TaxColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTaxNull() {
-                this[this.tablesalesorderreport.TaxColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTaxamountNull() {
-                return this.IsNull(this.tablesalesorderreport.TaxamountColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTaxamountNull() {
-                this[this.tablesalesorderreport.TaxamountColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2430,6 +2477,18 @@ namespace WindowsFormsApplication1 {
             public void SetExpr2Null() {
                 this[this.tablesalesorderreport.Expr2Column] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsUnitidNull() {
+                return this.IsNull(this.tablesalesorderreport.UnitidColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetUnitidNull() {
+                this[this.tablesalesorderreport.UnitidColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -2467,7 +2526,7 @@ namespace WindowsFormsApplication1 {
         }
     }
 }
-namespace WindowsFormsApplication1.SalesMasterDataSetTableAdapters {
+namespace WindowsFormsApplication1.SalesOrderReportDataSetTableAdapters {
     
     
     /// <summary>
@@ -2617,16 +2676,17 @@ namespace WindowsFormsApplication1.SalesMasterDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("price", "price");
             tableMapping.ColumnMappings.Add("quantity", "quantity");
             tableMapping.ColumnMappings.Add("Total", "Total");
+            tableMapping.ColumnMappings.Add("Taxable Value", "Taxable Value");
+            tableMapping.ColumnMappings.Add("CGSTAmt.", "CGSTAmt_");
+            tableMapping.ColumnMappings.Add("SGST-Amt.", "SGST-Amt_");
+            tableMapping.ColumnMappings.Add("IGST-Amt.", "IGST-Amt_");
+            tableMapping.ColumnMappings.Add(" CESS_Amt", " CESS_Amt");
+            tableMapping.ColumnMappings.Add("Discount_Amount", "Discount_Amount");
             tableMapping.ColumnMappings.Add("totalammount", "totalammount");
             tableMapping.ColumnMappings.Add("ItemName", "ItemName");
             tableMapping.ColumnMappings.Add("ItemCompName", "ItemCompName");
-            tableMapping.ColumnMappings.Add("MrpPrice", "MrpPrice");
             tableMapping.ColumnMappings.Add("date", "date");
             tableMapping.ColumnMappings.Add("Expr1", "Expr1");
-            tableMapping.ColumnMappings.Add("Discount", "Discount");
-            tableMapping.ColumnMappings.Add("Discountamount", "Discountamount");
-            tableMapping.ColumnMappings.Add("Tax", "Tax");
-            tableMapping.ColumnMappings.Add("Taxamount", "Taxamount");
             tableMapping.ColumnMappings.Add("WithautTaxamount", "WithautTaxamount");
             tableMapping.ColumnMappings.Add("HSN", "HSN");
             tableMapping.ColumnMappings.Add("CGST", "CGST");
@@ -2634,7 +2694,7 @@ namespace WindowsFormsApplication1.SalesMasterDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("IGST", "IGST");
             tableMapping.ColumnMappings.Add("CESS", "CESS");
             tableMapping.ColumnMappings.Add("Expr2", "Expr2");
-            tableMapping.ColumnMappings.Add("UnitId", "UnitId");
+            tableMapping.ColumnMappings.Add("Unitid", "Unitid");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -2651,7 +2711,7 @@ namespace WindowsFormsApplication1.SalesMasterDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT Name, Address, City, State, Zip, Country, Email, WebAddress, Phone, Mobile, CustName, CustCompName, CustAddress, CustCity, CustState, CustZip, CustCountry, CustEmail, CustWebAddress, CustPhone, CustMobile, orderid, ItemId, price, quantity, Total, totalammount, ItemName, ItemCompName, MrpPrice, date, Expr1, Discount, Discountamount, Tax, Taxamount, WithautTaxamount, HSN, CGST, SGST, IGST, CESS, Expr2, UnitId FROM dbo.salesorderreport";
+            this._commandCollection[0].CommandText = @"SELECT Name, Address, City, State, Zip, Country, Email, WebAddress, Phone, Mobile, CustName, CustCompName, CustAddress, CustCity, CustState, CustZip, CustCountry, CustEmail, CustWebAddress, CustPhone, CustMobile, orderid, ItemId, price, quantity, Total, [Taxable Value], [CGSTAmt.], [SGST-Amt.], [IGST-Amt.], [ CESS_Amt], Discount_Amount, totalammount, ItemName, ItemCompName, date, Expr1, WithautTaxamount, HSN, CGST, SGST, IGST, CESS, Expr2, Unitid FROM dbo.salesorderreport";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2659,7 +2719,7 @@ namespace WindowsFormsApplication1.SalesMasterDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(SalesMasterDataSet.salesorderreportDataTable dataTable) {
+        public virtual int Fill(SalesOrderReportDataSet.salesorderreportDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -2672,9 +2732,9 @@ namespace WindowsFormsApplication1.SalesMasterDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SalesMasterDataSet.salesorderreportDataTable GetData() {
+        public virtual SalesOrderReportDataSet.salesorderreportDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            SalesMasterDataSet.salesorderreportDataTable dataTable = new SalesMasterDataSet.salesorderreportDataTable();
+            SalesOrderReportDataSet.salesorderreportDataTable dataTable = new SalesOrderReportDataSet.salesorderreportDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -2748,7 +2808,7 @@ namespace WindowsFormsApplication1.SalesMasterDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateUpdatedRows(SalesMasterDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(SalesOrderReportDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -2758,7 +2818,7 @@ namespace WindowsFormsApplication1.SalesMasterDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateInsertedRows(SalesMasterDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(SalesOrderReportDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -2768,7 +2828,7 @@ namespace WindowsFormsApplication1.SalesMasterDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateDeletedRows(SalesMasterDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(SalesOrderReportDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             return result;
         }
@@ -2802,7 +2862,7 @@ namespace WindowsFormsApplication1.SalesMasterDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public virtual int UpdateAll(SalesMasterDataSet dataSet) {
+        public virtual int UpdateAll(SalesOrderReportDataSet dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
