@@ -515,6 +515,7 @@
             this.pnlSalesPayment.Controls.Add(this.groupBox8);
             this.pnlSalesPayment.Controls.Add(this.btnSave);
             this.pnlSalesPayment.Controls.Add(this.groupBox9);
+            this.pnlSalesPayment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlSalesPayment.Location = new System.Drawing.Point(0, 0);
             this.pnlSalesPayment.Name = "pnlSalesPayment";
             this.pnlSalesPayment.Size = new System.Drawing.Size(1354, 634);
@@ -1323,7 +1324,7 @@
             this.pnlshowdetail.Controls.Add(this.groupBox4);
             this.pnlshowdetail.Location = new System.Drawing.Point(0, 0);
             this.pnlshowdetail.Name = "pnlshowdetail";
-            this.pnlshowdetail.Size = new System.Drawing.Size(1351, 634);
+            this.pnlshowdetail.Size = new System.Drawing.Size(1123, 634);
             this.pnlshowdetail.TabIndex = 61;
             // 
             // butba
@@ -1378,7 +1379,7 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(15, 9);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1336, 216);
+            this.groupBox4.Size = new System.Drawing.Size(1108, 216);
             this.groupBox4.TabIndex = 14;
             this.groupBox4.TabStop = false;
             // 

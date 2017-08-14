@@ -4312,8 +4312,6 @@ namespace WindowsFormsApplication1
                         disamount = disamount + rate1;
                     }
                 }
-
-
             }
             return disamount;
         }
@@ -4323,7 +4321,6 @@ namespace WindowsFormsApplication1
             DataGridViewRowCollection RowCollection = gridsalesdelivary.Rows;
             for (int a = 0; a < RowCollection.Count - 1; a++)
             {
-
                 DataGridViewRow currentRow = RowCollection[a];
                 DataGridViewCellCollection cellCollection = currentRow.Cells;
                 if (!string.IsNullOrWhiteSpace(cellCollection[4].Value.ToString()))

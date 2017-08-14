@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ExcelLibrary.SpreadSheet;
+using System.Text.RegularExpressions;
 
 namespace WindowsFormsApplication1
 {
@@ -23,7 +24,7 @@ namespace WindowsFormsApplication1
         private void Compnay_Load(object sender, EventArgs e)
         {
             cmbState.SelectedIndex = 0;
-           
+
             string selectqurry = "select cd.CompnayId as[Company ID], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.PANNO as[PAN NO],cd.GSTNO as[GST NO]from CompnayDetails cd";
             string selectqurryForActualColumnName = "select top 1 cd.CompnayId, cd.OnerName, cd.Name ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email,cd.WebAddress,cd.Phone,cd.Mobile,cd.Fax,cd.PANNO,cd.GSTNO from CompnayDetails cd";
             DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
@@ -34,7 +35,7 @@ namespace WindowsFormsApplication1
             //List<string> ls = new List<string>();
             DataColumnCollection d = dt.Columns;
             DataColumnCollection dataColumnForName = dtOnlyColumnName.Columns;
-            for (int a = 1; a <d.Count; a++)
+            for (int a = 1; a < d.Count; a++)
             {
                 //DataColumn dc = new DataColumn();
                 string b = d[a].ToString();
@@ -66,29 +67,29 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                string id1 = id.Substring(0,1);
+                string id1 = id.Substring(0, 1);
                 string id2 = id.Substring(1);
                 int s = Convert.ToInt32(id2);
                 int s1 = s + 1;
                 string id3 = id1 + s1.ToString();
                 txtCompnayCode.Text = id3;
             }
-          txtwonername.Focus();
-          string selectCommandGroup = "select TexId,TexName,TexAmount,TexDescription from dbo.CompnayTex";
-          setItemGroupDetail(selectCommandGroup, combComp,"Tax");
-            }
+            txtwonername.Focus();
+            string selectCommandGroup = "select TexId,TexName,TexAmount,TexDescription from dbo.CompnayTex";
+            setItemGroupDetail(selectCommandGroup, combComp, "Tax");
+        }
         private void setItemGroupDetail(string Query, ComboBox cmb, string Message)
         {
             //string selectCommand = "select groupID,GROUPNAME,GROUPDESC from dbo.ItemGroup";
             cmb.Items.Clear();
-          cmb.Items.Add("Select  " + Message);
+            cmb.Items.Add("Select  " + Message);
             dt = dbMainClass.getDataBoundToComboBox(Query);
             if (dt != null && dt.Rows.Count > 0)
             {
-             //   cmb.DataSource = dt;
-              //  cmb.ValueMember = "";
-               // cmb.DisplayMember = "";
-                
+                //   cmb.DataSource = dt;
+                //  cmb.ValueMember = "";
+                // cmb.DisplayMember = "";
+
                 foreach (DataRow dr in dt.Rows)
                 {
                     cmb.Items.Add(dr[1].ToString().ToUpper());
@@ -144,24 +145,24 @@ namespace WindowsFormsApplication1
             btnClose.TabIndex = 7;
             tabindex();
         }
-   private void tabindex()
+        private void tabindex()
         {
             txtCompnayCode.TabStop = false;
             txtwonername.TabStop = false;
             txtCompnayName.TabStop = false;
-            txtCompnayAddress.TabStop =false;
+            txtCompnayAddress.TabStop = false;
             txtCity.TabStop = false;
             cmbState.TabStop = false;
-            txtZip.TabStop= false;
-            txtCountry.TabStop =false;
+            txtZip.TabStop = false;
+            txtCountry.TabStop = false;
             txtEmailAddress.TabStop = false;
             txtWebSite.TabStop = false;
             txtPhone.TabStop = false;
             txtMobile.TabStop = false;
-            txtFax.TabStop= false;
+            txtFax.TabStop = false;
             txtPanNo.TabStop = false;
             txtGst.TabStop = false;
-          
+
             txtGst.TabStop = false;
             txtDescription.TabStop = false;
             btnSave.TabStop = false;
@@ -171,46 +172,46 @@ namespace WindowsFormsApplication1
             combComp.TabStop = false;
             txtTexAmount.TabStop = false;
             //txtGst.TabStop = false;
-           groupBox2.TabStop =false;
-           groupBox1.TabStop = false;
-           btnTex.TabStop = false;
+            groupBox2.TabStop = false;
+            groupBox1.TabStop = false;
+            btnTex.TabStop = false;
         }
- 
 
-   private void tabindex2()
-   {
-       
-       btnClose.TabIndex = 29;
-       //txtCompnayCode.TabStop = false;
-      txtwonername.TabStop = true;
-       txtCompnayName.TabStop =true;
-       txtCompnayAddress.TabStop = true;
-       txtCity.TabStop = true;
-       cmbState.TabStop = true;
-       txtZip.TabStop = true;
-       txtCountry.TabStop = true;
-       txtEmailAddress.TabStop = true;
-       txtWebSite.TabStop = true;
-       txtPhone.TabStop = true;
-       txtMobile.TabStop = true;
-       txtFax.TabStop = true;
-       txtPanNo.TabStop = true;
-       txtGst.TabStop = true;
-       txtDescription.TabStop = true;
-       combComp.TabStop = true;
-       txtTexAmount.TabStop = true;
-       btnTex.TabStop = true;
-       btnSave.TabStop = true;
-       btnList.TabStop = true;
-       btnClose.TabStop = true;
-       groupBox2.TabStop = true;
-       groupBox1.TabStop = true;
 
-   }
+        private void tabindex2()
+        {
+
+            btnClose.TabIndex = 29;
+            //txtCompnayCode.TabStop = false;
+            txtwonername.TabStop = true;
+            txtCompnayName.TabStop = true;
+            txtCompnayAddress.TabStop = true;
+            txtCity.TabStop = true;
+            cmbState.TabStop = true;
+            txtZip.TabStop = true;
+            txtCountry.TabStop = true;
+            txtEmailAddress.TabStop = true;
+            txtWebSite.TabStop = true;
+            txtPhone.TabStop = true;
+            txtMobile.TabStop = true;
+            txtFax.TabStop = true;
+            txtPanNo.TabStop = true;
+            txtGst.TabStop = true;
+            txtDescription.TabStop = true;
+            combComp.TabStop = true;
+            txtTexAmount.TabStop = true;
+            btnTex.TabStop = true;
+            btnSave.TabStop = true;
+            btnList.TabStop = true;
+            btnClose.TabStop = true;
+            groupBox2.TabStop = true;
+            groupBox1.TabStop = true;
+
+        }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Comp_SaveDetails();   
+            Comp_SaveDetails();
         }
         public void Comp_SaveDetails()
         {
@@ -249,7 +250,7 @@ namespace WindowsFormsApplication1
                     {
                         MessageBox.Show("Details Not Save successfully");
                     }
-                   
+
                 }
                 else
                 {
@@ -258,7 +259,7 @@ namespace WindowsFormsApplication1
             }
             if (updatecounter == 1)
             {
-                string updatecommand = "update CompnayDetails set OnerName='" + txtwonername.Text + "', Name='" + txtCompnayName.Text + "',Address='" + txtCompnayAddress.Text + "',City='" + txtCity.Text + "',State='" + cmbState.SelectedItem.ToString()+ "',Zip='" + txtZip.Text + "',Country='" + txtCountry.Text + "',Email='" + txtEmailAddress.Text + "',WebAddress='" + txtWebSite.Text + "',Phone='" + txtPhone.Text + "',Mobile='" + txtMobile.Text + "',Fax='" + txtFax.Text + "',PANNO='" + txtPanNo.Text + "',GSTNO='" + txtGst.Text + "',Description='" + txtDescription.Text + "',RagistrationDate='" + dtpdate.Value.ToString() + "' where CompnayId='" + txtCompnayCode.Text + "' ";
+                string updatecommand = "update CompnayDetails set OnerName='" + txtwonername.Text + "', Name='" + txtCompnayName.Text + "',Address='" + txtCompnayAddress.Text + "',City='" + txtCity.Text + "',State='" + cmbState.SelectedItem.ToString() + "',Zip='" + txtZip.Text + "',Country='" + txtCountry.Text + "',Email='" + txtEmailAddress.Text + "',WebAddress='" + txtWebSite.Text + "',Phone='" + txtPhone.Text + "',Mobile='" + txtMobile.Text + "',Fax='" + txtFax.Text + "',PANNO='" + txtPanNo.Text + "',GSTNO='" + txtGst.Text + "',Description='" + txtDescription.Text + "',RagistrationDate='" + dtpdate.Value.ToString() + "' where CompnayId='" + txtCompnayCode.Text + "' ";
                 int updatequrry = dbMainClass.saveDetails(updatecommand);
                 if (updatequrry > 0)
                 {
@@ -266,32 +267,32 @@ namespace WindowsFormsApplication1
                     //int updatequrry1 = dbMainClass.saveDetails(updateTax);
                     //if (updatequrry1 > 0)
                     //{
-                        MessageBox.Show("Details updated successfully");
-                        makeblank();
-                        string selectqury = "select max (CompnayId) from compnaydetails";
-                        DataTable dt1 = dbMainClass.getDetailByQuery(selectqury);
-                        string id = "";
-                        foreach (DataRow dr in dt1.Rows)
-                        {
-                            id = dr[0].ToString();
-                        }
-                        string id1 = id.Substring(0, 1);
-                        string id2 = id.Substring(1);
-                        int s = Convert.ToInt32(id2);
-                        int s1 = s + 1;
-                        string id3 = id1 + s1.ToString();
-                        txtCompnayCode.Text = id3;
-
-                    }
-                    else
+                    MessageBox.Show("Details updated successfully");
+                    makeblank();
+                    string selectqury = "select max (CompnayId) from compnaydetails";
+                    DataTable dt1 = dbMainClass.getDetailByQuery(selectqury);
+                    string id = "";
+                    foreach (DataRow dr in dt1.Rows)
                     {
-                        MessageBox.Show("Details save not successfully");
-                        
+                        id = dr[0].ToString();
                     }
-               // }
-               
+                    string id1 = id.Substring(0, 1);
+                    string id2 = id.Substring(1);
+                    int s = Convert.ToInt32(id2);
+                    int s1 = s + 1;
+                    string id3 = id1 + s1.ToString();
+                    txtCompnayCode.Text = id3;
+
+                }
+                else
+                {
+                    MessageBox.Show("Details save not successfully");
+
+                }
+                // }
+
             }
-           makeblank();
+            makeblank();
             btnList.Enabled = true;
             ComDetails.SelectedIndex = 0;
             txtwonername.Focus();
@@ -308,7 +309,7 @@ namespace WindowsFormsApplication1
             dataGridView1.DataSource = dt;
             tabindex1();
             // panel1.Visible = false;
-           
+
         }
         private void setdetails(DataGridViewCellCollection cellcolection)
         {
@@ -328,8 +329,8 @@ namespace WindowsFormsApplication1
                 txtMobile.Text = cellcolection[11].Value.ToString();
                 txtFax.Text = cellcolection[12].Value.ToString();
                 txtPanNo.Text = cellcolection[13].Value.ToString();
-                txtGst.Text = cellcolection[15].Value.ToString();
-                txtDescription.Text = cellcolection[14].Value.ToString();
+                txtGst.Text = cellcolection[14].Value.ToString();
+                txtDescription.Text = cellcolection[15].Value.ToString();
                 //combComp.Text = cellcolection[16].Value.ToString();
                 //txtTexAmount.Text = cellcolection[17].Value.ToString();
             }
@@ -341,25 +342,25 @@ namespace WindowsFormsApplication1
 
         private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
-             int currentIndex = dataGridView1.CurrentRow.Index;
-             if (e.KeyChar == (char)Keys.Enter)
-             {
-                 if (dataGridView1.SelectedRows != null && dataGridView1.SelectedRows.Count > 0)
-                 {
-                     //if (dataGridView1.RowCount == currentIndex + 1)
-                     //    currentIndex = currentIndex + 1;
-                     DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex].Cells;
-                     if (!string.IsNullOrEmpty(cellcollection[0].Value.ToString()))
-                     {
-                         setdetails(cellcollection);
-                         panel1.Visible = false;
-                         txtwonername.Focus();
-                         tabindex2();
 
-                     }
-                 }
-             }
+            int currentIndex = dataGridView1.CurrentRow.Index;
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if (dataGridView1.SelectedRows != null && dataGridView1.SelectedRows.Count > 0)
+                {
+                    //if (dataGridView1.RowCount == currentIndex + 1)
+                    //    currentIndex = currentIndex + 1;
+                    DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex].Cells;
+                    if (!string.IsNullOrEmpty(cellcollection[0].Value.ToString()))
+                    {
+                        setdetails(cellcollection);
+                        panel1.Visible = false;
+                        txtwonername.Focus();
+                        tabindex2();
+
+                    }
+                }
+            }
         }
 
         private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
@@ -386,7 +387,7 @@ namespace WindowsFormsApplication1
             updatecounter = 1;
             int currentIndex = dataGridView1.CurrentRow.Index;
             DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex].Cells;
-            if ((string)dataGridView1.SelectedRows[0].Cells[0].Value==null)
+            if ((string)dataGridView1.SelectedRows[0].Cells[0].Value == null)
             {
                 MessageBox.Show("Select proper row");
             }
@@ -399,8 +400,8 @@ namespace WindowsFormsApplication1
                 btnList.Enabled = false;
                 tabindex2();
             }
-           
-           
+
+
         }
 
         private void butAddNewRecord_Click_1(object sender, EventArgs e)
@@ -428,53 +429,53 @@ namespace WindowsFormsApplication1
         private void dataGridView1_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             btnList.Enabled = false;
-             int currentIndex = dataGridView1.CurrentRow.Index;
-             if (currentIndex == 0)
-             {
-                 MessageBox.Show("please select your proper row");
-                currentIndex= currentIndex + 1;
-             }
-             if (e.KeyChar == (char)Keys.Enter)
-             {
-                 updatecounter = 1;
-                 DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex-1].Cells;
-                 if (!string.IsNullOrEmpty(cellcollection[0].Value.ToString()))
-                 {
-                     setdetails(cellcollection);
-                     panel1.Visible = false;
-                     txtwonername.Focus();
-                     tabindex2();
-                 }
-             }    
+            int currentIndex = dataGridView1.CurrentRow.Index;
+            if (currentIndex == 0)
+            {
+                MessageBox.Show("please select your proper row");
+                currentIndex = currentIndex + 1;
+            }
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                updatecounter = 1;
+                DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex - 1].Cells;
+                if (!string.IsNullOrEmpty(cellcollection[0].Value.ToString()))
+                {
+                    setdetails(cellcollection);
+                    panel1.Visible = false;
+                    txtwonername.Focus();
+                    tabindex2();
+                }
+            }
         }
 
-       
+
         private void button1_Click(object sender, EventArgs e)
         {
-                Tex t = new Tex(this.combComp, TexList);
-                t.Show();
-               
-                // t.MdiParent = this;
-                dtpdate.TabStop = false;
-                btnSave.Focus();
-                return;
+            Tex t = new Tex(this.combComp, TexList);
+            t.Show();
+
+            // t.MdiParent = this;
+            dtpdate.TabStop = false;
+            btnSave.Focus();
+            return;
         }
 
         private void combComp_SelectedIndexChanged(object sender, EventArgs e)
         {
-               DB_Main.taxName = combComp.SelectedItem.ToString();
-                string selectName = "select TexAmount from CompnayTex where TexName='" + DB_Main.taxName + "'";
-                DataTable dt = dbMainClass.getDetailByQuery(selectName);
-                foreach (DataRow dr in dt.Rows)
-                {
-                    txtTexAmount.Text = dr[0].ToString();
-                }
-           
+            DB_Main.taxName = combComp.SelectedItem.ToString();
+            string selectName = "select TexAmount from CompnayTex where TexName='" + DB_Main.taxName + "'";
+            DataTable dt = dbMainClass.getDetailByQuery(selectName);
+            foreach (DataRow dr in dt.Rows)
+            {
+                txtTexAmount.Text = dr[0].ToString();
+            }
+
         }
 
         private void txtTexAmount_MouseClick(object sender, MouseEventArgs e)
         {
-            if (txtTexAmount.Text =="0.00")
+            if (txtTexAmount.Text == "0.00")
             {
                 txtTexAmount.Text = "";
             }
@@ -578,7 +579,7 @@ namespace WindowsFormsApplication1
 
         private void btnList_KeyDown(object sender, KeyEventArgs e)
         {
-            
+
         }
 
         private void Company_New_KeyDown(object sender, KeyEventArgs e)
@@ -629,40 +630,59 @@ namespace WindowsFormsApplication1
                 }
             }
         }
+        bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
 
         private void txtEmailAddress_Leave(object sender, EventArgs e)
         {
-            string email = txtEmailAddress.Text;
-            if ((email.LastIndexOf("@") > -1) && (email.LastIndexOf(".") > -1) || string.IsNullOrEmpty(email))
+            Regex mRegxExpression;
+
+            if (txtEmailAddress.Text.Trim() != string.Empty)
             {
-                //MessageBox.Show("Please Enter the Correct Email Address");
+                mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
+
+                if (!mRegxExpression.IsMatch(txtEmailAddress.Text.Trim()))
+                {
+
+                    MessageBox.Show("E-mail address format is not correct.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    txtEmailAddress.Focus();
+
+                }
+
             }
-            else
-            {
-                txtEmailAddress.Focus();
-                MessageBox.Show("Please enter the email address in correct format!");
-            }
+
         }
 
         private void txtWebSite_Leave(object sender, EventArgs e)
         {
-            string WebSite = txtWebSite.Text;
-            if ((WebSite.LastIndexOf("www") > -1) && (WebSite.LastIndexOf(".") > -1) && (WebSite.LastIndexOf("http://") > -1) || string.IsNullOrEmpty(WebSite))
-            {
-                //MessageBox.Show("Please Enter the Correct Email Address");
-            }
-            else
-            {
-                txtWebSite.Focus();
-                MessageBox.Show("Please enter the web address in currect format!");
-            }
+            //Regex mRegxExpression;
+
+      bool isValidUrl= Uri.IsWellFormedUriString(txtWebSite.Text, UriKind.Absolute);
+      if (!isValidUrl) 
+      {
+                  MessageBox.Show("Web site format is not correct.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                  txtWebSite.Focus();
+      }
+          
         }
 
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (Char.IsDigit(e.KeyChar))
             {
-                e.Handled = false;
+               e.Handled = false;
             }
             else
             {
@@ -780,12 +800,12 @@ namespace WindowsFormsApplication1
 
         private void combComp_Leave(object sender, EventArgs e)
         {
-            if ((combComp.Items[0].ToString() != "Select  Tax")&&(combComp.SelectedItem == null))
+            if ((combComp.Items[0].ToString() != "Select  Tax") && (combComp.SelectedItem == null))
             {
                 combComp.Items.Insert(0, "Select  Tax");
                 combComp.SelectedIndex = 0;
             }
-            else if(combComp.SelectedItem != null)
+            else if (combComp.SelectedItem != null)
             {
                 DB_Main.taxName = combComp.SelectedItem.ToString();
             }
@@ -798,6 +818,74 @@ namespace WindowsFormsApplication1
                 cmbState.SelectedIndex = 0;
             }
         }
-      
+
+        private void txtwonername_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = e.KeyChar != (char)Keys.Back && e.KeyChar == (char)Keys.Delete && !char.IsSeparator(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsDigit(e.KeyChar);
+        }
+
+        private void txtCompnayName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            e.Handled = e.KeyChar != (char)Keys.Back && e.KeyChar == (char)Keys.Delete && !char.IsSeparator(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsDigit(e.KeyChar);
+        }
+
+        private void txtCompnayAddress_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            e.Handled = e.KeyChar != (char)Keys.Back && e.KeyChar == (char)Keys.Delete && !char.IsSeparator(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsDigit(e.KeyChar);
+        }
+
+        private void txtCity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            e.Handled = e.KeyChar != (char)Keys.Back && e.KeyChar == (char)Keys.Delete && !char.IsSeparator(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsDigit(e.KeyChar);
+        }
+
+        private void cmbState_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        public string email { get; set; }
+
+        private void txtPanNo_Validating(object sender, CancelEventArgs e)
+        {
+           
+        }
+
+        private void txtPanNo_Leave(object sender, EventArgs e)
+        {
+            Regex mRegxExpression;
+
+            if (txtPanNo.Text.Trim() != string.Empty)
+            {
+                mRegxExpression = new Regex("[A-Z]{5}[0-9]{4}[A-Z]{1}");
+                if (!mRegxExpression.IsMatch(txtPanNo.Text.Trim()))
+                {
+                    txtPanNo.Focus();
+                    MessageBox.Show("Pan Card  format is not correct", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
+            }
+        }
+
+        private void txtGst_Leave(object sender, EventArgs e)
+        {
+            Regex mRegxExpression;
+            if (txtGst.Text.Trim() != string.Empty)
+            {
+                mRegxExpression = new Regex("[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[0-9]{1}[Z]{1}[0-9]{1}$");
+                if (!mRegxExpression.IsMatch(txtGst.Text.Trim()))
+                {
+                    txtGst.Focus();
+                    MessageBox.Show("Gst in format is not correct", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+        }
+
+       
+
     }
 }

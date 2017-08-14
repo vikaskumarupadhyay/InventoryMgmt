@@ -507,6 +507,26 @@ namespace WindowsFormsApplication1
             CashAmount.Focus();
             salesedelivarytabindex();
             CashAmount.SelectAll();
+            string selectquery = "SELECT pay.ReceiptDate as[Receipt Date],(select sum(customerorderdescriptions.quantity) from customerorderdescriptions where customerorderdescriptions.orderid=od.orderid) as [Quantity Billed],cast(od.WithautTaxamount as numeric(38, 2)) as[Gross Amount],od.Discountamount as [Discount Amount],cast((od.WithautTaxamount-od.Discountamount)as numeric(38, 2))as[Taxable Value],Case when cd.CustState != (select top 1 [State] from CompnayDetails )then '0'else (select cast( sum ((((( COD.price*COD.quantity))-( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ))* IT.CGST )/100)as numeric(38,2))from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=od.orderid) end as[CGST],Case when cd.CustState != (select top 1 [State] from CompnayDetails )then '0'else(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.SGST )/100)as numeric(38,2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=od.orderid)end as[SGST],Case when cd.CustState = (select top 1 [State] from CompnayDetails )then '0'else(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.IGST )/100)as numeric(38,2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=od.orderid )end as[IGST],(select cast( sum ((((( COD.price*COD.quantity)) -  ( ( ( COD.price*COD.quantity) * IT.Discount) / 100 ) ) * IT.CESS )/100)as numeric(38,2)) from ItemTaxDetail IT JOIN customerorderdescriptions COD  ON  IT.ItemId=COD.ItemId WHERE COD.orderid=od.orderid) as[CESS],cast(((od.WithautTaxamount)-(od.Discountamount))+(od.Taxamount) as numeric(38, 2)) AS[Net Amount (Including Tax)],pay.InvoiceAmount as [Invoice Amount] ,pay.TotalAmount as[Paid Amount],pay.BalanceAmount as [Balance Amount] FROM  orderdetails od  JOIN CustomerDetails cd on cd.custId=od.custid join salesOrderDelivery sod on od.orderid=sod.Orderid join SalesPaymentDetailes pay on sod.Delivaryid=pay.Invoiceid where sod.Delivaryid='" + txtRefNo.Text + "' ";
+            DataTable dt = d.getDetailByQuery(selectquery);
+            string balance = "";
+            foreach (DataRow dr in dt.Rows)
+            {
+                balance = dr[12].ToString();
+            }
+            Double bal = Convert.ToDouble(balance);
+            if (bal < 0)
+            {
+                txtRturned.ReadOnly = false;
+                txtRturned.Focus();
+                txtRturned.SelectAll();
+            }
+            else
+            {
+                CashAmount.Focus();
+                CashAmount.SelectAll();
+                txtRturned.ReadOnly = true;
+            }
             //string Chaquedate = Value.Bankdate;
             //string bankname = Value.Bankname;
             //string chaqueno = Value.chaqueno;

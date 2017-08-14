@@ -329,9 +329,11 @@
             this.txtCompnayName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCompnayName.Location = new System.Drawing.Point(769, 39);
+            this.txtCompnayName.MaxLength = 300;
             this.txtCompnayName.Name = "txtCompnayName";
             this.txtCompnayName.Size = new System.Drawing.Size(525, 23);
             this.txtCompnayName.TabIndex = 2;
+            this.txtCompnayName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCompnayName_KeyPress);
             // 
             // txtCompnayAddress
             // 
@@ -343,6 +345,7 @@
             this.txtCompnayAddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtCompnayAddress.Size = new System.Drawing.Size(1240, 46);
             this.txtCompnayAddress.TabIndex = 3;
+            this.txtCompnayAddress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCompnayAddress_KeyPress);
             // 
             // txtCity
             // 
@@ -351,6 +354,7 @@
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(307, 24);
             this.txtCity.TabIndex = 4;
+            this.txtCity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCity_KeyPress);
             // 
             // txtZip
             // 
@@ -369,6 +373,7 @@
             this.txtCountry.Location = new System.Drawing.Point(990, 151);
             this.txtCountry.Multiline = true;
             this.txtCountry.Name = "txtCountry";
+            this.txtCountry.ReadOnly = true;
             this.txtCountry.Size = new System.Drawing.Size(304, 24);
             this.txtCountry.TabIndex = 7;
             this.txtCountry.Text = "India";
@@ -391,6 +396,7 @@
             this.txtWebSite.Name = "txtWebSite";
             this.txtWebSite.Size = new System.Drawing.Size(1240, 23);
             this.txtWebSite.TabIndex = 9;
+           // this.txtWebSite.TextChanged += new System.EventHandler(this.txtWebSite_TextChanged);
             this.txtWebSite.Leave += new System.EventHandler(this.txtWebSite_Leave);
             // 
             // txtPhone
@@ -467,14 +473,18 @@
             this.txtPanNo.Name = "txtPanNo";
             this.txtPanNo.Size = new System.Drawing.Size(615, 23);
             this.txtPanNo.TabIndex = 13;
+            this.txtPanNo.Leave += new System.EventHandler(this.txtPanNo_Leave);
+            this.txtPanNo.Validating += new System.ComponentModel.CancelEventHandler(this.txtPanNo_Validating);
             // 
             // txtGst
             // 
             this.txtGst.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtGst.Location = new System.Drawing.Point(675, 329);
+            this.txtGst.MaxLength = 15;
             this.txtGst.Name = "txtGst";
             this.txtGst.Size = new System.Drawing.Size(619, 23);
             this.txtGst.TabIndex = 14;
+            this.txtGst.Leave += new System.EventHandler(this.txtGst_Leave);
             // 
             // label16
             // 
@@ -498,9 +508,11 @@
             // 
             this.txtwonername.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtwonername.Location = new System.Drawing.Point(192, 39);
+            this.txtwonername.MaxLength = 300;
             this.txtwonername.Name = "txtwonername";
             this.txtwonername.Size = new System.Drawing.Size(571, 21);
             this.txtwonername.TabIndex = 1;
+            this.txtwonername.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtwonername_KeyPress);
             // 
             // groupBox1
             // 
@@ -633,6 +645,7 @@
             this.cmbState.Name = "cmbState";
             this.cmbState.Size = new System.Drawing.Size(308, 24);
             this.cmbState.TabIndex = 5;
+            this.cmbState.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbState_KeyPress);
             this.cmbState.Leave += new System.EventHandler(this.cmbState_Leave);
             // 
             // label3
@@ -709,7 +722,7 @@
             this.groupBox3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(16, 16);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1329, 79);
+            this.groupBox3.Size = new System.Drawing.Size(24, 79);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Company Search";
@@ -743,7 +756,7 @@
             this.txtSearch.Location = new System.Drawing.Point(704, 45);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(1220, 24);
+            this.txtSearch.Size = new System.Drawing.Size(0, 24);
             this.txtSearch.TabIndex = 4;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged_1);
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
@@ -768,7 +781,7 @@
             this.panel2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(16, 102);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1329, 468);
+            this.panel2.Size = new System.Drawing.Size(24, 468);
             this.panel2.TabIndex = 12;
             // 
             // dataGridView1
@@ -779,7 +792,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1325, 464);
+            this.dataGridView1.Size = new System.Drawing.Size(20, 464);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
@@ -795,10 +808,9 @@
             this.panel1.Controls.Add(this.butUpdate);
             this.panel1.Controls.Add(this.butAddNewRecord);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1362, 648);
+            this.panel1.Size = new System.Drawing.Size(57, 648);
             this.panel1.TabIndex = 32;
             // 
             // Company_New
