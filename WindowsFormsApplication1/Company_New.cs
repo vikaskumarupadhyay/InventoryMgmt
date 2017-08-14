@@ -23,60 +23,91 @@ namespace WindowsFormsApplication1
         }
         private void Compnay_Load(object sender, EventArgs e)
         {
-            cmbState.SelectedIndex = 0;
+           
+            string selectquery = "select * from CompnayDetails";
+            DataTable dt = dbMainClass.getDetailByQuery(selectquery);
+            if (dt.Rows.Count == null)
+            {
+                txtCompnayCode.Text = "C1";
+            }
+            if (dt.Rows.Count > 0)
+            {
+                txtCompnayCode.Text = dt.Rows[0]["CompnayId"].ToString();
+                txtwonername.Text = dt.Rows[0]["OnerName"].ToString();
+                txtCompnayName.Text = dt.Rows[0]["Name"].ToString();
+                txtCompnayAddress.Text = dt.Rows[0]["Address"].ToString();
+                txtCity.Text = dt.Rows[0]["City"].ToString();
+                cmbState.Text = dt.Rows[0]["State"].ToString();
+                txtZip.Text = dt.Rows[0]["Zip"].ToString();
+                txtCountry.Text = dt.Rows[0]["Country"].ToString();
+                txtEmailAddress.Text = dt.Rows[0]["Email"].ToString();
+                txtWebSite.Text = dt.Rows[0]["WebAddress"].ToString();
+                txtPhone.Text = dt.Rows[0]["Phone"].ToString();
+                txtMobile.Text = dt.Rows[0]["Mobile"].ToString();
+                txtFax.Text = dt.Rows[0]["Fax"].ToString();
+                txtPanNo.Text = dt.Rows[0]["PANNO"].ToString();
+                txtGst.Text = dt.Rows[0]["GSTNo"].ToString();
+                txtDescription.Text = dt.Rows[0]["Description"].ToString();
+                makeblank();
+            }
+          
+            //string selectqurry = "select cd.CompnayId as[Company ID], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.PANNO as[PAN NO],cd.GSTNO as[GST NO]from CompnayDetails cd";
+            //string selectqurryForActualColumnName = "select top 1 cd.CompnayId, cd.OnerName, cd.Name ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email,cd.WebAddress,cd.Phone,cd.Mobile,cd.Fax,cd.PANNO,cd.GSTNO from CompnayDetails cd";
+            //DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
+            //DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
+            //DataTable customDataTable = new DataTable();
+            //customDataTable.Columns.Add("ActualTableColumnName");
+            //customDataTable.Columns.Add("AliasTableColumnName");
+            ////List<string> ls = new List<string>();
+            //DataColumnCollection d = dt.Columns;
+            //DataColumnCollection dataColumnForName = dtOnlyColumnName.Columns;
+            //for (int a = 1; a < d.Count; a++)
+            //{
+            //    //DataColumn dc = new DataColumn();
+            //    string b = d[a].ToString();
+            //    string actualColumnName = dataColumnForName[a].ToString();
+            //    DataRow dr = customDataTable.NewRow();
+            //    dr["ActualTableColumnName"] = actualColumnName;
+            //    dr["AliasTableColumnName"] = b;
+            //    customDataTable.Rows.Add(dr);
+            //    //  ls.Add(b);
+            //}
 
-            string selectqurry = "select cd.CompnayId as[Company ID], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.PANNO as[PAN NO],cd.GSTNO as[GST NO]from CompnayDetails cd";
-            string selectqurryForActualColumnName = "select top 1 cd.CompnayId, cd.OnerName, cd.Name ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email,cd.WebAddress,cd.Phone,cd.Mobile,cd.Fax,cd.PANNO,cd.GSTNO from CompnayDetails cd";
-            DataTable dt = dbMainClass.getDetailByQuery(selectqurry);
-            DataTable dtOnlyColumnName = dbMainClass.getDetailByQuery(selectqurryForActualColumnName);
-            DataTable customDataTable = new DataTable();
-            customDataTable.Columns.Add("ActualTableColumnName");
-            customDataTable.Columns.Add("AliasTableColumnName");
-            //List<string> ls = new List<string>();
-            DataColumnCollection d = dt.Columns;
-            DataColumnCollection dataColumnForName = dtOnlyColumnName.Columns;
-            for (int a = 1; a < d.Count; a++)
-            {
-                //DataColumn dc = new DataColumn();
-                string b = d[a].ToString();
-                string actualColumnName = dataColumnForName[a].ToString();
-                DataRow dr = customDataTable.NewRow();
-                dr["ActualTableColumnName"] = actualColumnName;
-                dr["AliasTableColumnName"] = b;
-                customDataTable.Rows.Add(dr);
-                //  ls.Add(b);
-            }
+            //ComDetails.DataSource = customDataTable;
+            //ComDetails.ValueMember = "ActualTableColumnName";
+            //ComDetails.DisplayMember = "AliasTableColumnName";
+            //dataGridView1.DataSource = dt;
 
-            ComDetails.DataSource = customDataTable;
-            ComDetails.ValueMember = "ActualTableColumnName";
-            ComDetails.DisplayMember = "AliasTableColumnName";
-            dataGridView1.DataSource = dt;
+            //panel1.Visible = false;
+            //string selectqury = "select max (CompnayId)  from compnaydetails";
+            //DataTable dt1 = dbMainClass.getDetailByQuery(selectqury);
+            //string id = "";
+            //foreach (DataRow dr in dt1.Rows)
+            //{
+            //    id = dr[0].ToString();
+            //}
+            //if (id == "")
+            //{
+            //    id = "1";
+            //    txtCompnayCode.Text = "C" + id;
+            //}
+            //else
+            //{
+            //    string id1 = id.Substring(0, 1);
+            //    string id2 = id.Substring(1);
+            //    int s = Convert.ToInt32(id2);
+            //    int s1 = s + 1;
+            //    string id3 = id1 + s1.ToString();
+            //    txtCompnayCode.Text = id3;
+            //}
+            //txtwonername.Focus();
+            //string selectCommandGroup = "select TexId,TexName,TexAmount,TexDescription from dbo.CompnayTex";
+            //setItemGroupDetail(selectCommandGroup, combComp, "Tax");
+        }
 
-            panel1.Visible = false;
-            string selectqury = "select max (CompnayId)  from compnaydetails";
-            DataTable dt1 = dbMainClass.getDetailByQuery(selectqury);
-            string id = "";
-            foreach (DataRow dr in dt1.Rows)
-            {
-                id = dr[0].ToString();
-            }
-            if (id == "")
-            {
-                id = "1";
-                txtCompnayCode.Text = "C" + id;
-            }
-            else
-            {
-                string id1 = id.Substring(0, 1);
-                string id2 = id.Substring(1);
-                int s = Convert.ToInt32(id2);
-                int s1 = s + 1;
-                string id3 = id1 + s1.ToString();
-                txtCompnayCode.Text = id3;
-            }
-            txtwonername.Focus();
-            string selectCommandGroup = "select TexId,TexName,TexAmount,TexDescription from dbo.CompnayTex";
-            setItemGroupDetail(selectCommandGroup, combComp, "Tax");
+        private string setdetails()
+        {
+            throw new NotImplementedException();
         }
         private void setItemGroupDetail(string Query, ComboBox cmb, string Message)
         {
@@ -114,36 +145,58 @@ namespace WindowsFormsApplication1
         private void makeblank()
         {
             //txtCompnayCode.Text = "C";
-            txtwonername.Text = "";
-            txtCompnayName.Text = "";
-            txtCompnayAddress.Text = "";
-            txtCity.Text = "";
-            txtZip.Text = "";
-            txtCountry.Text = "";
-            txtEmailAddress.Text = "";
-            txtWebSite.Text = "";
-            txtPhone.Text = "";
-            txtMobile.Text = "";
-            txtFax.Text = "";
-            txtPanNo.Text = "";
-            txtGst.Text = "";
-            txtDescription.Text = "";
-            cmbState.SelectedIndex = 0;
-            combComp.SelectedIndex = 0;
-            txtTexAmount.Text = "0";
+            txtwonername.ReadOnly =true;
+            txtCompnayName.ReadOnly = true;
+            txtCompnayAddress.ReadOnly = true;
+            txtCity.ReadOnly = true;
+            txtZip.ReadOnly = true;
+            txtCountry.ReadOnly = true;
+            txtEmailAddress.ReadOnly = true;
+            txtWebSite.ReadOnly = true;
+            txtPhone.ReadOnly = true;
+            txtMobile.ReadOnly=true;
+            txtFax.ReadOnly=true;
+            txtPanNo.ReadOnly=true;
+            txtGst.ReadOnly=true;
+            txtDescription.ReadOnly=true;
+            cmbState.Enabled = false;
+            //combComp.SelectedIndex = 0;
+           // txtTexAmount.Text = "0";
+
+        }
+        private void makeblank1()
+        {
+            //txtCompnayCode.Text = "C";
+            txtwonername.ReadOnly = false;
+            txtCompnayName.ReadOnly = false;
+            txtCompnayAddress.ReadOnly = false;
+            txtCity.ReadOnly = false;
+            txtZip.ReadOnly = false;
+            txtCountry.ReadOnly = false;
+            txtEmailAddress.ReadOnly = false;
+            txtWebSite.ReadOnly = false;
+            txtPhone.ReadOnly = false;
+            txtMobile.ReadOnly = false;
+            txtFax.ReadOnly = false;
+            txtPanNo.ReadOnly = false;
+            txtGst.ReadOnly = false;
+            txtDescription.ReadOnly = false;
+            cmbState.Enabled =false;
+            //combComp.SelectedIndex = 0;
+            // txtTexAmount.Text = "0";
 
         }
         private void tabindex1()
         {
-            txtSearch.Focus();
-            txtSearch.TabIndex = 1;
-            dataGridView1.TabIndex = 2;
-            butUpdate.TabIndex = 3;
-            butAddNewRecord.TabIndex = 4;
-            btnPrint.TabIndex = 5;
-            btnExportToExcel.TabIndex = 6;
-            btnClose.TabIndex = 7;
-            tabindex();
+            //txtSearch.Focus();
+            //txtSearch.TabIndex = 1;
+            //dataGridView1.TabIndex = 2;
+            //butUpdate.TabIndex = 3;
+            //butAddNewRecord.TabIndex = 4;
+            //btnPrint.TabIndex = 5;
+            //btnExportToExcel.TabIndex = 6;
+            //btnClose.TabIndex = 7;
+            //tabindex();
         }
         private void tabindex()
         {
@@ -167,7 +220,7 @@ namespace WindowsFormsApplication1
             txtDescription.TabStop = false;
             btnSave.TabStop = false;
             btnClose.TabStop = false;
-            btnList.TabStop = false;
+           // btnList.TabStop = false;
             dtpdate.TabStop = false;
             combComp.TabStop = false;
             txtTexAmount.TabStop = false;
@@ -202,7 +255,7 @@ namespace WindowsFormsApplication1
             txtTexAmount.TabStop = true;
             btnTex.TabStop = true;
             btnSave.TabStop = true;
-            btnList.TabStop = true;
+           // btnList.TabStop = true;
             btnClose.TabStop = true;
             groupBox2.TabStop = true;
             groupBox1.TabStop = true;
@@ -215,27 +268,15 @@ namespace WindowsFormsApplication1
         }
         public void Comp_SaveDetails()
         {
-            //string taxId = "";
-            //if (combComp.SelectedIndex != 0)
-            //{
-            //    string name = combComp.SelectedItem.ToString();
-            //    //taxId = TexList[combComp.SelectedIndex-1];
-            //   string select=" select TexId from CompnayTex where TexName='"+name+"'";
-            //   DataTable dt1 = dbMainClass.getDetailByQuery(select);
-            //   foreach (DataRow dr in dt1.Rows)
-            //   {
-            //       taxId = dr[0].ToString();
-            //   }
-
-
-            //}
             if (updatecounter == 0)
             {
                 if (txtCompnayCode.Text == "C1")
                 {
                     string insertquery = "insert into CompnayDetails Values ('" + txtCompnayCode.Text + "','" + txtwonername.Text + "','" + txtCompnayName.Text + "','" + txtCompnayAddress.Text + "','" + txtCity.Text + "','" + cmbState.SelectedItem.ToString() + "','" + txtZip.Text + "','" + txtCountry.Text + "','" + txtEmailAddress.Text + "','" + txtWebSite.Text + "','" + txtPhone.Text + "','" + txtMobile.Text + "','" + txtFax.Text + "','" + txtPanNo.Text + "','" + txtGst.Text + "','" + txtDescription.Text + "','" + true + "','" + dtpdate.Value.ToString() + "')";
                     int insertrow = dbMainClass.saveDetails(insertquery);
-                    if (insertrow > 0)
+                    string insertquery1 = "Update CompnayDetails set CompnayId='" + txtCompnayCode.Text + "',OnerName='" + txtwonername.Text + "',Name='" + txtCompnayName.Text + "',Address='" + txtCompnayAddress.Text + "',City='" + txtCity.Text + "',State='" + cmbState.SelectedItem.ToString() + "',Zip='" + txtZip.Text + "',Country='" + txtCountry.Text + "',Email='" + txtEmailAddress.Text + "',WebAddress='" + txtWebSite.Text + "',Phone='" + txtPhone.Text + "',Mobile='" + txtMobile.Text + "',Fax='" + txtFax.Text + "',PANNO='" + txtPanNo.Text + "',GSTNo='" + txtGst.Text + "',Description='" + txtDescription.Text + "',Isactive='" + true + "',RagistrationDate='" + dtpdate.Value.ToString() + "'";
+                    int insertrow1 = dbMainClass.saveDetails(insertquery1);
+                    if (insertrow1 > 0)
                     {
                         MessageBox.Show("Details save successfully");
                         string id = txtCompnayCode.Text;
@@ -293,25 +334,25 @@ namespace WindowsFormsApplication1
 
             }
             makeblank();
-            btnList.Enabled = true;
-            ComDetails.SelectedIndex = 0;
+            //btnList.Enabled = true;
+            //ComDetails.SelectedIndex = 0;
             txtwonername.Focus();
         }
 
 
         private void btnList_Click(object sender, EventArgs e)
         {
-            txtSearch.Text = "";
-            ComDetails.TabIndex = 0;
-            panel1.Visible = true;
-            string selectQuery1 = "select cd.CompnayId as [Company ID], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.PANNO as[PAN No],cd.GSTNO as[GST No],cd.Description,cd.RagistrationDate as[Creation Date],cd.Isactive as [Active] from CompnayDetails cd ";
-            DataTable dt = dbMainClass.getDetailByQuery(selectQuery1);
-            dataGridView1.DataSource = dt;
-            tabindex1();
-            // panel1.Visible = false;
+            //txtSearch.Text = "";
+            //ComDetails.TabIndex = 0;
+            //panel1.Visible = true;
+            //string selectQuery1 = "select cd.CompnayId as [Company ID], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.PANNO as[PAN No],cd.GSTNO as[GST No],cd.Description,cd.RagistrationDate as[Creation Date],cd.Isactive as [Active] from CompnayDetails cd ";
+            //DataTable dt = dbMainClass.getDetailByQuery(selectQuery1);
+            //dataGridView1.DataSource = dt;
+            //tabindex1();
+            //// panel1.Visible = false;
 
         }
-        private void setdetails(DataGridViewCellCollection cellcolection)
+        private void setdetails1(DataGridViewCellCollection cellcolection)
         {
             try
             {
@@ -343,111 +384,111 @@ namespace WindowsFormsApplication1
         private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
         {
 
-            int currentIndex = dataGridView1.CurrentRow.Index;
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                if (dataGridView1.SelectedRows != null && dataGridView1.SelectedRows.Count > 0)
-                {
-                    //if (dataGridView1.RowCount == currentIndex + 1)
-                    //    currentIndex = currentIndex + 1;
-                    DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex].Cells;
-                    if (!string.IsNullOrEmpty(cellcollection[0].Value.ToString()))
-                    {
-                        setdetails(cellcollection);
-                        panel1.Visible = false;
-                        txtwonername.Focus();
-                        tabindex2();
+            //int currentIndex = dataGridView1.CurrentRow.Index;
+            //if (e.KeyChar == (char)Keys.Enter)
+            //{
+            //    if (dataGridView1.SelectedRows != null && dataGridView1.SelectedRows.Count > 0)
+            //    {
+            //        //if (dataGridView1.RowCount == currentIndex + 1)
+            //        //    currentIndex = currentIndex + 1;
+            //        DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex].Cells;
+            //        if (!string.IsNullOrEmpty(cellcollection[0].Value.ToString()))
+            //        {
+            //            setdetails1(cellcollection);
+            //            panel1.Visible = false;
+            //            txtwonername.Focus();
+            //            tabindex2();
 
-                    }
-                }
-            }
+            //        }
+            //    }
+            //}
         }
 
         private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            btnList.Enabled = false;
-            updatecounter = 1;
-            int currentIndex = dataGridView1.CurrentRow.Index;
-            DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex].Cells;
-            if (!string.IsNullOrEmpty(cellcollection[0].Value.ToString()))
-            {
-                setdetails(cellcollection);
-                panel1.Visible = false;
-                txtwonername.Focus();
-                tabindex2();
-            }
-            else
-            {
-                MessageBox.Show("Select proper row");
-            }
-        }
+        //    btnList.Enabled = false;
+        //    updatecounter = 1;
+        //    int currentIndex = dataGridView1.CurrentRow.Index;
+        //    DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex].Cells;
+        //    if (!string.IsNullOrEmpty(cellcollection[0].Value.ToString()))
+        //    {
+        //        setdetails1(cellcollection);
+        //        panel1.Visible = false;
+        //        txtwonername.Focus();
+        //        tabindex2();
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Select proper row");
+        //    }
+        //}
 
-        private void butUpdate_Click_1(object sender, EventArgs e)
-        {
-            updatecounter = 1;
-            int currentIndex = dataGridView1.CurrentRow.Index;
-            DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex].Cells;
-            if ((string)dataGridView1.SelectedRows[0].Cells[0].Value == null)
-            {
-                MessageBox.Show("Select proper row");
-            }
-            else
-            {
+        //private void butUpdate_Click_1(object sender, EventArgs e)
+        //{
+        //    updatecounter = 1;
+        //    int currentIndex = dataGridView1.CurrentRow.Index;
+        //    DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex].Cells;
+        //    if ((string)dataGridView1.SelectedRows[0].Cells[0].Value == null)
+        //    {
+        //        MessageBox.Show("Select proper row");
+        //    }
+        //    else
+        //    {
 
-                setdetails(cellcollection);
-                panel1.Visible = false;
-                txtwonername.Focus();
-                btnList.Enabled = false;
-                tabindex2();
-            }
+        //        //setdetails1(cellcollection);
+        //        panel1.Visible = false;
+        //        txtwonername.Focus();
+        //        btnList.Enabled = false;
+        //        tabindex2();
+        //    }
 
 
         }
 
         private void butAddNewRecord_Click_1(object sender, EventArgs e)
         {
-            panel1.Visible = false;
+            //panel1.Visible = false;
             txtwonername.Focus();
             tabindex2();
         }
 
-        private void txtSearch_TextChanged_1(object sender, EventArgs e)
-        {
-            string s = ComDetails.SelectedValue.ToString();
-            string selectQuery1 = "select cd.CompnayId as[Company ID], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.PANNO as[PAN NO],cd.GSTNO as[GST NO] from CompnayDetails cd  where " + s + " like '" + txtSearch.Text + "%'";
-            DataTable dt = dbMainClass.getDetailByQuery(selectQuery1);
-            dataGridView1.DataSource = dt;
-        }
+        //private void txtSearch_TextChanged_1(object sender, EventArgs e)
+        //{
+        //    string s = ComDetails.SelectedValue.ToString();
+        //    string selectQuery1 = "select cd.CompnayId as[Company ID], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.PANNO as[PAN NO],cd.GSTNO as[GST NO] from CompnayDetails cd  where " + s + " like '" + txtSearch.Text + "%'";
+        //    DataTable dt = dbMainClass.getDetailByQuery(selectQuery1);
+        //    dataGridView1.DataSource = dt;
+        //}
 
         private void butClose_Click(object sender, EventArgs e)
         {
-            panel1.Visible = false;
+            //panel1.Visible = false;
             txtwonername.Focus();
             tabindex2();
         }
 
-        private void dataGridView1_KeyPress_1(object sender, KeyPressEventArgs e)
-        {
-            btnList.Enabled = false;
-            int currentIndex = dataGridView1.CurrentRow.Index;
-            if (currentIndex == 0)
-            {
-                MessageBox.Show("please select your proper row");
-                currentIndex = currentIndex + 1;
-            }
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                updatecounter = 1;
-                DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex - 1].Cells;
-                if (!string.IsNullOrEmpty(cellcollection[0].Value.ToString()))
-                {
-                    setdetails(cellcollection);
-                    panel1.Visible = false;
-                    txtwonername.Focus();
-                    tabindex2();
-                }
-            }
-        }
+        //private void dataGridView1_KeyPress_1(object sender, KeyPressEventArgs e)
+        //{
+        //    btnList.Enabled = false;
+        //    int currentIndex = dataGridView1.CurrentRow.Index;
+        //    if (currentIndex == 0)
+        //    {
+        //        MessageBox.Show("please select your proper row");
+        //        currentIndex = currentIndex + 1;
+        //    }
+        //    if (e.KeyChar == (char)Keys.Enter)
+        //    {
+        //        updatecounter = 1;
+        //        DataGridViewCellCollection cellcollection = dataGridView1.Rows[currentIndex - 1].Cells;
+        //        if (!string.IsNullOrEmpty(cellcollection[0].Value.ToString()))
+        //        {
+        //            setdetails1(cellcollection);
+        //            panel1.Visible = false;
+        //            txtwonername.Focus();
+        //            tabindex2();
+        //        }
+        //    }
+        //}
 
 
         private void button1_Click(object sender, EventArgs e)
@@ -515,72 +556,8 @@ namespace WindowsFormsApplication1
             this.Close();
         }
 
-        private void btnExportToExcel_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.AllowUserToAddRows == true)
-            {
-                dataGridView1.AllowUserToAddRows = false;
-            }
-            string FileName = "";
-            SaveFileDialog openFileDialog1 = new SaveFileDialog();
-            //FolderBrowserDialog openFileDialog1 = new FolderBrowserDialog();
-            openFileDialog1.Filter = "xls files (*.xls)|*.xls|All files (*.*)|*.*";
-            openFileDialog1.FileName = "Company Details";
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                FileName = openFileDialog1.FileName;
-
-
-                //DataGridViewColumnCollection column = dataGridView1.Columns;
-                int cout = 0;
-                int rowCoumt = 0;
-                // column1 = dc.Name.ToString();
-                string file = FileName;//+ ".xls"; //System.Configuration.ConfigurationManager.AppSettings["ExcelFilePath1"] + FolderName + "newdoc.xls";
-                Workbook workbook = new Workbook();
-                Worksheet worksheet = new Worksheet("First Sheet");
-
-                foreach (DataGridViewColumn dc in dataGridView1.Columns)
-                {
-
-                    worksheet.Cells[rowCoumt, cout] = new Cell(dc.Name);
-                    cout++;
-
-                }
-
-                //foreach (DataGridViewRow row in dataGridView1.Rows) { }
-                DataGridViewRowCollection rowcollection = dataGridView1.Rows;
-
-                int rowindex = 1;
-                //int countindex = 0;
-                for (int a = 0; a < rowcollection.Count; a++)
-                {
-                    DataGridViewRow currentrow = rowcollection[a];
-                    DataGridViewCellCollection cellcollecton = currentrow.Cells;
-                    int countrow = 0;
-
-                    for (int b = 0; b < currentrow.Cells.Count; b++)
-                    {
-                        worksheet.Cells[rowindex, countrow] = new Cell(currentrow.Cells[b].Value.ToString());
-                        // countindex++;
-                        countrow++;
-                    }
-                    // name = cellcollecton[0].Value.ToString() + " , " + cellcollecton[1].Value.ToString() + " , " + cellcollecton[2].Value.ToString() + " , " + cellcollecton[3].Value.ToString() + " , " + cellcollecton[4].Value.ToString() + " , " + cellcollecton[5].Value.ToString() + "  , " + cellcollecton[6].Value.ToString() + " , " + cellcollecton[7].Value.ToString() + " , " + cellcollecton[8].Value.ToString() + " , " + cellcollecton[9].Value.ToString() + " , " + cellcollecton[10].Value.ToString() + " , " + cellcollecton[11].Value.ToString() + " , " + cellcollecton[12].Value.ToString() + ", " + cellcollecton[13].Value.ToString() + " , " + cellcollecton[14].Value.ToString() + " , " + cellcollecton[15].Value.ToString();
-                    rowindex++;
-                }
-                workbook.Worksheets.Add(worksheet);
-                workbook.Save(file);
-                dataGridView1.AllowUserToAddRows = true;
-            }
-            else
-            {
-                dataGridView1.AllowUserToAddRows = true;
-            }
-        }
-
-        private void btnList_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
+       
+       
 
         private void Company_New_KeyDown(object sender, KeyEventArgs e)
         {
@@ -602,14 +579,7 @@ namespace WindowsFormsApplication1
             }*/
         }
 
-        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                dataGridView1.AllowUserToAddRows = true;
-                dataGridView1.Focus();
-            }
-        }
+      
 
         private void txtZip_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -813,10 +783,10 @@ namespace WindowsFormsApplication1
 
         private void cmbState_Leave(object sender, EventArgs e)
         {
-            if (cmbState.Text == "")
+            if (cmbState.SelectedIndex < 0)
             {
                 cmbState.SelectedIndex = 0;
-            }
+            } 
         }
 
         private void txtwonername_KeyPress(object sender, KeyPressEventArgs e)
@@ -844,7 +814,15 @@ namespace WindowsFormsApplication1
 
         private void cmbState_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            if (cmbState.SelectedItem == "Something")
+            {
+                cmbState.Text = "Something";
+            }
+            else
+            {
+                cmbState.Text = "";
+                //cmbState.Items.Clear();
+            }
         }
 
         public string email { get; set; }
@@ -885,7 +863,35 @@ namespace WindowsFormsApplication1
             }
         }
 
-       
-
+        private void butUpdate_Click(object sender, EventArgs e)
+        {
+            string selectquery = "select * from CompnayDetails";
+            DataTable dt = dbMainClass.getDetailByQuery(selectquery);
+            if (dt.Rows.Count == null)
+            {
+                txtCompnayCode.Text = "C1";
+            }
+            if (dt.Rows.Count > 0)
+            {
+                txtCompnayCode.Text = dt.Rows[0]["CompnayId"].ToString();
+                txtwonername.Text = dt.Rows[0]["OnerName"].ToString();
+                txtCompnayName.Text = dt.Rows[0]["Name"].ToString();
+                txtCompnayAddress.Text = dt.Rows[0]["Address"].ToString();
+                txtCity.Text = dt.Rows[0]["City"].ToString();
+                cmbState.Text = dt.Rows[0]["State"].ToString();
+                txtZip.Text = dt.Rows[0]["Zip"].ToString();
+                txtCountry.Text = dt.Rows[0]["Country"].ToString();
+                txtEmailAddress.Text = dt.Rows[0]["Email"].ToString();
+                txtWebSite.Text = dt.Rows[0]["WebAddress"].ToString();
+                txtPhone.Text = dt.Rows[0]["Phone"].ToString();
+                txtMobile.Text = dt.Rows[0]["Mobile"].ToString();
+                txtFax.Text = dt.Rows[0]["Fax"].ToString();
+                txtPanNo.Text = dt.Rows[0]["PANNO"].ToString();
+                txtGst.Text = dt.Rows[0]["GSTNo"].ToString();
+                txtDescription.Text = dt.Rows[0]["Description"].ToString();
+                makeblank1();
+                txtwonername.Focus();
+            }          
+        }
     }
 }

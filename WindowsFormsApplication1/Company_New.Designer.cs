@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnList = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.dtpdate = new System.Windows.Forms.DateTimePicker();
@@ -71,40 +70,10 @@
             this.txtwonername = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmbState = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.butAddNewRecord = new System.Windows.Forms.Button();
             this.butUpdate = new System.Windows.Forms.Button();
-            this.butClose = new System.Windows.Forms.Button();
-            this.btnExportToExcel = new System.Windows.Forms.Button();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.ComDetails = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnList
-            // 
-            this.btnList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnList.Location = new System.Drawing.Point(1261, 18);
-            this.btnList.Name = "btnList";
-            this.btnList.Size = new System.Drawing.Size(88, 31);
-            this.btnList.TabIndex = 30;
-            this.btnList.Text = "&List";
-            this.btnList.UseVisualStyleBackColor = true;
-            this.btnList.Click += new System.EventHandler(this.btnList_Click);
-            this.btnList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnList_KeyDown);
             // 
             // btnSave
             // 
@@ -396,7 +365,6 @@
             this.txtWebSite.Name = "txtWebSite";
             this.txtWebSite.Size = new System.Drawing.Size(1240, 23);
             this.txtWebSite.TabIndex = 9;
-           // this.txtWebSite.TextChanged += new System.EventHandler(this.txtWebSite_TextChanged);
             this.txtWebSite.Leave += new System.EventHandler(this.txtWebSite_Leave);
             // 
             // txtPhone
@@ -648,170 +616,16 @@
             this.cmbState.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbState_KeyPress);
             this.cmbState.Leave += new System.EventHandler(this.cmbState_Leave);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(56, 26);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 14);
-            this.label3.TabIndex = 1;
-            // 
-            // butAddNewRecord
-            // 
-            this.butAddNewRecord.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.butAddNewRecord.Location = new System.Drawing.Point(142, 576);
-            this.butAddNewRecord.Name = "butAddNewRecord";
-            this.butAddNewRecord.Size = new System.Drawing.Size(183, 31);
-            this.butAddNewRecord.TabIndex = 6;
-            this.butAddNewRecord.Text = "&Add New Record";
-            this.butAddNewRecord.UseVisualStyleBackColor = true;
-            this.butAddNewRecord.Click += new System.EventHandler(this.butAddNewRecord_Click_1);
-            // 
             // butUpdate
             // 
             this.butUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.butUpdate.Location = new System.Drawing.Point(16, 576);
+            this.butUpdate.Location = new System.Drawing.Point(266, 582);
             this.butUpdate.Name = "butUpdate";
             this.butUpdate.Size = new System.Drawing.Size(120, 31);
             this.butUpdate.TabIndex = 7;
-            this.butUpdate.Text = "&Update";
+            this.butUpdate.Text = "Update";
             this.butUpdate.UseVisualStyleBackColor = true;
-            this.butUpdate.Click += new System.EventHandler(this.butUpdate_Click_1);
-            // 
-            // butClose
-            // 
-            this.butClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.butClose.Location = new System.Drawing.Point(623, 576);
-            this.butClose.Name = "butClose";
-            this.butClose.Size = new System.Drawing.Size(120, 31);
-            this.butClose.TabIndex = 8;
-            this.butClose.Text = "&Back";
-            this.butClose.UseVisualStyleBackColor = true;
-            this.butClose.Click += new System.EventHandler(this.butClose_Click);
-            // 
-            // btnExportToExcel
-            // 
-            this.btnExportToExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExportToExcel.Location = new System.Drawing.Point(440, 576);
-            this.btnExportToExcel.Name = "btnExportToExcel";
-            this.btnExportToExcel.Size = new System.Drawing.Size(175, 31);
-            this.btnExportToExcel.TabIndex = 9;
-            this.btnExportToExcel.Text = "E&xport To Excel";
-            this.btnExportToExcel.UseVisualStyleBackColor = true;
-            this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.Enabled = false;
-            this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrint.Location = new System.Drawing.Point(333, 576);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(99, 31);
-            this.btnPrint.TabIndex = 10;
-            this.btnPrint.Text = "Print";
-            this.btnPrint.UseVisualStyleBackColor = true;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.ComDetails);
-            this.groupBox3.Controls.Add(this.label14);
-            this.groupBox3.Controls.Add(this.txtSearch);
-            this.groupBox3.Controls.Add(this.label15);
-            this.groupBox3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(16, 16);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(24, 79);
-            this.groupBox3.TabIndex = 11;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Company Search";
-            // 
-            // ComDetails
-            // 
-            this.ComDetails.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ComDetails.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ComDetails.FormattingEnabled = true;
-            this.ComDetails.Location = new System.Drawing.Point(33, 45);
-            this.ComDetails.Name = "ComDetails";
-            this.ComDetails.Size = new System.Drawing.Size(665, 24);
-            this.ComDetails.TabIndex = 0;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label14.Location = new System.Drawing.Point(30, 26);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(69, 14);
-            this.label14.TabIndex = 2;
-            this.label14.Text = "Select Field";
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(704, 45);
-            this.txtSearch.Multiline = true;
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(0, 24);
-            this.txtSearch.TabIndex = 4;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged_1);
-            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
-            this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(701, 26);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(65, 14);
-            this.label15.TabIndex = 3;
-            this.label15.Text = "Type Text";
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(16, 102);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(24, 468);
-            this.panel2.TabIndex = 12;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(20, 464);
-            this.dataGridView1.StandardTab = true;
-            this.dataGridView1.TabIndex = 5;
-            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
-            this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress_1);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.groupBox3);
-            this.panel1.Controls.Add(this.btnPrint);
-            this.panel1.Controls.Add(this.btnExportToExcel);
-            this.panel1.Controls.Add(this.butClose);
-            this.panel1.Controls.Add(this.butUpdate);
-            this.panel1.Controls.Add(this.butAddNewRecord);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(57, 648);
-            this.panel1.TabIndex = 32;
+            this.butUpdate.Click += new System.EventHandler(this.butUpdate_Click);
             // 
             // Company_New
             // 
@@ -819,11 +633,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1362, 648);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btnList);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.butUpdate);
             this.Controls.Add(this.dtpdate);
             this.Controls.Add(this.groupBox2);
             this.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -838,19 +651,12 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnList;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.DateTimePicker dtpdate;
@@ -893,20 +699,7 @@
         private System.Windows.Forms.TextBox txtwonername;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cmbState;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button butAddNewRecord;
         private System.Windows.Forms.Button butUpdate;
-        private System.Windows.Forms.Button butClose;
-        private System.Windows.Forms.Button btnExportToExcel;
-        private System.Windows.Forms.Button btnPrint;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ComboBox ComDetails;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Panel panel1;
 
 
     }
