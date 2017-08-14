@@ -113,12 +113,6 @@
     <Compile Include="DeliveryPage.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DeliveryPage1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DeliveryPage.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Display form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,12 +193,6 @@
     </Compile>
     <Compile Include="PurchesDelivery.Designer.cs">
       <DependentUpon>PurchesDelivery.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PurchesDelivery2.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PurchesDelivery2.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="PurchSet.Designer.cs">
       <AutoGen>True</AutoGen>
