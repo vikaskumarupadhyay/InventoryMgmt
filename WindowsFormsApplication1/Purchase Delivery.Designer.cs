@@ -833,6 +833,7 @@
             // DeliveryReportViewer
             // 
             this.DeliveryReportViewer.ActiveViewIndex = -1;
+            this.DeliveryReportViewer.AutoSize = true;
             this.DeliveryReportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.DeliveryReportViewer.Cursor = System.Windows.Forms.Cursors.Default;
             this.DeliveryReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1682,6 +1683,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.groupBox4.ResumeLayout(false);

@@ -13,7 +13,7 @@ namespace WindowsFormsApplication1
     public partial class Form7 : Form
     {
         List<string> ls = new List<string>();
-
+        
         public int counter = 0;
         DB_Main dbMainClass = new DB_Main();
         DataTable vendorDetails = new DataTable();
@@ -26,6 +26,7 @@ namespace WindowsFormsApplication1
 
         private void Form7_Load(object sender, EventArgs e)
         {
+            //DeliveryReportViewer
             txtItemCode.Enabled = false;
             button2.Enabled = false;
             textVendercod.Select(textVendercod.Text.Length, 0);
