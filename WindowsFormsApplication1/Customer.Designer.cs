@@ -317,6 +317,7 @@
             this.comstate.Name = "comstate";
             this.comstate.Size = new System.Drawing.Size(308, 24);
             this.comstate.TabIndex = 17;
+            this.comstate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comstate_KeyPress);
             this.comstate.Leave += new System.EventHandler(this.comstate_Leave);
             // 
             // txttanno
@@ -327,6 +328,7 @@
             this.txttanno.Name = "txttanno";
             this.txttanno.Size = new System.Drawing.Size(619, 23);
             this.txttanno.TabIndex = 26;
+            this.txttanno.Leave += new System.EventHandler(this.txttanno_Leave);
             // 
             // txtPanno
             // 
@@ -338,6 +340,7 @@
             this.txtPanno.Size = new System.Drawing.Size(615, 23);
             this.txtPanno.TabIndex = 25;
             this.txtPanno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPanno_KeyPress);
+            this.txtPanno.Leave += new System.EventHandler(this.txtPanno_Leave);
             // 
             // label19
             // 
@@ -452,8 +455,10 @@
             this.txtCustCountry.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtCustCountry.Multiline = true;
             this.txtCustCountry.Name = "txtCustCountry";
+            this.txtCustCountry.ReadOnly = true;
             this.txtCustCountry.Size = new System.Drawing.Size(297, 24);
             this.txtCustCountry.TabIndex = 19;
+            this.txtCustCountry.Text = "India";
             // 
             // txtZIP
             // 
@@ -470,10 +475,12 @@
             // 
             this.txtCity.Location = new System.Drawing.Point(54, 150);
             this.txtCity.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtCity.MaxLength = 250;
             this.txtCity.Multiline = true;
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(307, 24);
             this.txtCity.TabIndex = 16;
+            this.txtCity.Leave += new System.EventHandler(this.txtCity_Leave);
             // 
             // txtAddress
             // 
@@ -494,17 +501,21 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCompnyName.Location = new System.Drawing.Point(773, 37);
             this.txtCompnyName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtCompnyName.MaxLength = 500;
             this.txtCompnyName.Name = "txtCompnyName";
             this.txtCompnyName.Size = new System.Drawing.Size(523, 23);
             this.txtCompnyName.TabIndex = 14;
+            this.txtCompnyName.Leave += new System.EventHandler(this.txtCompnyName_Leave);
             // 
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(194, 37);
             this.txtName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtName.MaxLength = 250;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(571, 23);
             this.txtName.TabIndex = 13;
+            this.txtName.Leave += new System.EventHandler(this.txtName_Leave);
             // 
             // txtCustCode
             // 

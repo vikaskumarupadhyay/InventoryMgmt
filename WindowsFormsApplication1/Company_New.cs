@@ -29,6 +29,7 @@ namespace WindowsFormsApplication1
             if (dt.Rows.Count == null)
             {
                 txtCompnayCode.Text = "C1";
+                btnSave.Enabled = true;
             }
             if (dt.Rows.Count > 0)
             {
@@ -48,7 +49,9 @@ namespace WindowsFormsApplication1
                 txtPanNo.Text = dt.Rows[0]["PANNO"].ToString();
                 txtGst.Text = dt.Rows[0]["GSTNo"].ToString();
                 txtDescription.Text = dt.Rows[0]["Description"].ToString();
+                btnSave.Enabled = false;
                 makeblank();
+                makeblank2();
             }
           
             //string selectqurry = "select cd.CompnayId as[Company ID], cd.OnerName as[Owner Name], cd.Name as[Company Name] ,cd.Address,cd.City,cd.State,cd.Zip,cd.Country,cd.Email as[E-Mail],cd.WebAddress as[Web Address],cd.Phone,cd.Mobile,cd.Fax,cd.PANNO as[PAN NO],cd.GSTNO as[GST NO]from CompnayDetails cd";
@@ -159,14 +162,49 @@ namespace WindowsFormsApplication1
             txtPanNo.ReadOnly=true;
             txtGst.ReadOnly=true;
             txtDescription.ReadOnly=true;
+            cmbState.Enabled = true;
+            txtwonername.TabStop = false;
+            txtCompnayName.TabStop = false;
+            txtCompnayAddress.TabStop = false;
+            txtCity.TabStop = false;
+            txtZip.TabStop = false;
+            txtCountry.TabStop = false;
+            txtEmailAddress.TabStop = false;
+            txtWebSite.TabStop = false;
+            txtPhone.TabStop = false;
+            txtMobile.TabStop = false;
+            txtFax.TabStop = false;
+            txtPanNo.TabStop = false;
+            txtGst.TabStop = false;
+            txtDescription.TabStop = false;
+            cmbState.TabStop = false;
             cmbState.Enabled = false;
+            btnSave.Enabled = false;
             //combComp.SelectedIndex = 0;
            // txtTexAmount.Text = "0";
 
         }
+        private void makeblank2()
+        {
+            txtwonername.TabStop = false;
+            txtCompnayName.TabStop = false;
+            txtCompnayAddress.TabStop = false;
+            txtCity.TabStop = false;
+            txtZip.TabStop = false;
+            txtCountry.TabStop = false;
+            txtEmailAddress.TabStop = false;
+            txtWebSite.TabStop = false;
+            txtPhone.TabStop = false;
+            txtMobile.TabStop = false;
+            txtFax.TabStop = false;
+            txtPanNo.TabStop = false;
+            txtGst.TabStop = false;
+            txtDescription.TabStop = false;
+            cmbState.TabStop = false;
+            cmbState.Enabled = false;
+        }
         private void makeblank1()
         {
-            //txtCompnayCode.Text = "C";
             txtwonername.ReadOnly = false;
             txtCompnayName.ReadOnly = false;
             txtCompnayAddress.ReadOnly = false;
@@ -182,9 +220,23 @@ namespace WindowsFormsApplication1
             txtGst.ReadOnly = false;
             txtDescription.ReadOnly = false;
             cmbState.Enabled =false;
-            //combComp.SelectedIndex = 0;
-            // txtTexAmount.Text = "0";
-
+            txtwonername.TabStop = true;
+            txtCompnayName.TabStop = true;
+            txtCompnayAddress.TabStop = true;
+            txtCity.TabStop = true;
+            txtZip.TabStop = true;
+            txtCountry.TabStop = true;
+            txtEmailAddress.TabStop = true;
+            txtWebSite.TabStop = true;
+            txtPhone.TabStop = true;
+            txtMobile.TabStop = true;
+            txtFax.TabStop = true;
+            txtPanNo.TabStop = true;
+            txtGst.TabStop = true;
+            txtDescription.TabStop = true;
+            cmbState.TabStop = true;
+            cmbState.Enabled = true;
+            butUpdate.Enabled = false;
         }
         private void tabindex1()
         {
@@ -617,7 +669,6 @@ namespace WindowsFormsApplication1
         private void txtEmailAddress_Leave(object sender, EventArgs e)
         {
             Regex mRegxExpression;
-
             if (txtEmailAddress.Text.Trim() != string.Empty)
             {
                 mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
@@ -789,29 +840,6 @@ namespace WindowsFormsApplication1
             } 
         }
 
-        private void txtwonername_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = e.KeyChar != (char)Keys.Back && e.KeyChar == (char)Keys.Delete && !char.IsSeparator(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsDigit(e.KeyChar);
-        }
-
-        private void txtCompnayName_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-            e.Handled = e.KeyChar != (char)Keys.Back && e.KeyChar == (char)Keys.Delete && !char.IsSeparator(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsDigit(e.KeyChar);
-        }
-
-        private void txtCompnayAddress_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-            e.Handled = e.KeyChar != (char)Keys.Back && e.KeyChar == (char)Keys.Delete && !char.IsSeparator(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsDigit(e.KeyChar);
-        }
-
-        private void txtCity_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-            e.Handled = e.KeyChar != (char)Keys.Back && e.KeyChar == (char)Keys.Delete && !char.IsSeparator(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsDigit(e.KeyChar);
-        }
-
         private void cmbState_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (cmbState.SelectedItem == "Something")
@@ -826,11 +854,6 @@ namespace WindowsFormsApplication1
         }
 
         public string email { get; set; }
-
-        private void txtPanNo_Validating(object sender, CancelEventArgs e)
-        {
-           
-        }
 
         private void txtPanNo_Leave(object sender, EventArgs e)
         {
@@ -890,8 +913,63 @@ namespace WindowsFormsApplication1
                 txtGst.Text = dt.Rows[0]["GSTNo"].ToString();
                 txtDescription.Text = dt.Rows[0]["Description"].ToString();
                 makeblank1();
+                btnSave.Enabled = true;
                 txtwonername.Focus();
             }          
+        }
+
+        private void txtwonername_Leave(object sender, EventArgs e)
+        {
+            Regex mRegxExpression;
+            if (txtwonername.Text.Trim() != string.Empty)
+            {
+                mRegxExpression = new Regex("^[a-z -']+$");
+
+                if (!mRegxExpression.IsMatch(txtwonername.Text.Trim()))
+                {
+
+                    MessageBox.Show("E-mail address format is not correct.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    txtwonername.Focus();
+
+                }
+
+            }
+        }
+
+        private void txtCompnayName_Leave(object sender, EventArgs e)
+        {
+            Regex mRegxExpression;
+            if (txtCompnayName.Text.Trim() != string.Empty)
+            {
+                mRegxExpression = new Regex("^[a-z -']+$");
+
+                if (!mRegxExpression.IsMatch(txtCompnayName.Text.Trim()))
+                {
+
+                    MessageBox.Show("E-mail address format is not correct.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    txtCompnayName.Focus();
+
+                }
+
+            }
+        }
+
+        private void txtCity_Leave(object sender, EventArgs e)
+        {
+            Regex mRegxExpression;
+            if (txtCity.Text.Trim() != string.Empty)
+            {
+                mRegxExpression = new Regex("[0-9A-Za-z ]+$");
+                if (!mRegxExpression.IsMatch(txtCity.Text.Trim()))
+                {
+                    MessageBox.Show("E-mail address format is not correct.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtCity.Focus();
+
+                }
+
+            }
         }
     }
 }

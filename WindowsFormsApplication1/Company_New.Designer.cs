@@ -298,11 +298,11 @@
             this.txtCompnayName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCompnayName.Location = new System.Drawing.Point(769, 39);
-            this.txtCompnayName.MaxLength = 300;
+            this.txtCompnayName.MaxLength = 500;
             this.txtCompnayName.Name = "txtCompnayName";
             this.txtCompnayName.Size = new System.Drawing.Size(525, 23);
             this.txtCompnayName.TabIndex = 2;
-            this.txtCompnayName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCompnayName_KeyPress);
+            this.txtCompnayName.Leave += new System.EventHandler(this.txtCompnayName_Leave);
             // 
             // txtCompnayAddress
             // 
@@ -314,16 +314,16 @@
             this.txtCompnayAddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtCompnayAddress.Size = new System.Drawing.Size(1240, 46);
             this.txtCompnayAddress.TabIndex = 3;
-            this.txtCompnayAddress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCompnayAddress_KeyPress);
             // 
             // txtCity
             // 
             this.txtCity.Location = new System.Drawing.Point(54, 151);
+            this.txtCity.MaxLength = 250;
             this.txtCity.Multiline = true;
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(307, 24);
             this.txtCity.TabIndex = 4;
-            this.txtCity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCity_KeyPress);
+            this.txtCity.Leave += new System.EventHandler(this.txtCity_Leave);
             // 
             // txtZip
             // 
@@ -442,7 +442,6 @@
             this.txtPanNo.Size = new System.Drawing.Size(615, 23);
             this.txtPanNo.TabIndex = 13;
             this.txtPanNo.Leave += new System.EventHandler(this.txtPanNo_Leave);
-            this.txtPanNo.Validating += new System.ComponentModel.CancelEventHandler(this.txtPanNo_Validating);
             // 
             // txtGst
             // 
@@ -480,7 +479,7 @@
             this.txtwonername.Name = "txtwonername";
             this.txtwonername.Size = new System.Drawing.Size(571, 21);
             this.txtwonername.TabIndex = 1;
-            this.txtwonername.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtwonername_KeyPress);
+            this.txtwonername.Leave += new System.EventHandler(this.txtwonername_Leave);
             // 
             // groupBox1
             // 

@@ -268,17 +268,21 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtItemCompName.Location = new System.Drawing.Point(836, 40);
             this.txtItemCompName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtItemCompName.MaxLength = 250;
             this.txtItemCompName.Name = "txtItemCompName";
             this.txtItemCompName.Size = new System.Drawing.Size(461, 23);
             this.txtItemCompName.TabIndex = 3;
+            this.txtItemCompName.Leave += new System.EventHandler(this.txtItemCompName_Leave);
             // 
             // txtItemProductName
             // 
             this.txtItemProductName.Location = new System.Drawing.Point(333, 40);
             this.txtItemProductName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtItemProductName.MaxLength = 250;
             this.txtItemProductName.Name = "txtItemProductName";
             this.txtItemProductName.Size = new System.Drawing.Size(495, 23);
             this.txtItemProductName.TabIndex = 2;
+            this.txtItemProductName.Leave += new System.EventHandler(this.txtItemProductName_Leave);
             // 
             // txtItemProductCode
             // 
@@ -852,7 +856,7 @@
             this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(1281, 24);
+            this.txtSearch.Size = new System.Drawing.Size(1302, 24);
             this.txtSearch.TabIndex = 3;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged_1);
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown_1);
