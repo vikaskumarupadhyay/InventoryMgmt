@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System .IO;
 using ExcelLibrary.SpreadSheet;
+using System.Text.RegularExpressions;
 
 
 namespace WindowsFormsApplication1
@@ -711,29 +712,30 @@ namespace WindowsFormsApplication1
 
         private void txtVenderEmailAddress_Leave(object sender, EventArgs e)
         {
-            string email = txtVenderEmailAddress.Text;
-            if ((email.LastIndexOf("@") > -1) && (email.LastIndexOf(".") > -1) || string.IsNullOrEmpty(email))
+            Regex mRegxExpression;
+            if (txtVenderEmailAddress.Text.Trim() != string.Empty)
             {
-                //MessageBox.Show("Please Enter the Correct Email Address");
-            }
-            else
-            {
-                txtVenderEmailAddress.Focus();
-                MessageBox.Show("Please enter valid email address!");
+                mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
+
+                if (!mRegxExpression.IsMatch(txtVenderEmailAddress.Text.Trim()))
+                {
+
+                    MessageBox.Show("E-mail address format is not correct.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    txtVenderEmailAddress.Focus();
+
+                }
+
             }
         }
 
         private void txtVenderWebSite_Leave(object sender, EventArgs e)
         {
-            string WebSite = txtVenderWebSite.Text;
-            if ((WebSite.LastIndexOf("www") > -1) && (WebSite.LastIndexOf(".") > -1) && (WebSite.LastIndexOf("http://") > -1) && (WebSite.LastIndexOf("com") > -1) || string.IsNullOrEmpty(WebSite))
+            bool isValidUrl = Uri.IsWellFormedUriString(txtVenderWebSite.Text, UriKind.Absolute);
+            if (!isValidUrl)
             {
-                //MessageBox.Show("Please Enter the Correct Email Address");
-            }
-            else
-            {
+                MessageBox.Show("Web site format is not correct.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtVenderWebSite.Focus();
-                MessageBox.Show("Please enter valid web address!");
             }
         }
 
@@ -990,9 +992,107 @@ namespace WindowsFormsApplication1
 
         private void cmbState_Leave(object sender, EventArgs e)
         {
-            if (cmbState.Text == "")
+            if (cmbState.SelectedIndex < 0)
             {
                 cmbState.SelectedIndex = 0;
+            } 
+        }
+
+        private void cmbState_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (cmbState.SelectedItem == "Something")
+            {
+                cmbState.Text = "Something";
+            }
+            else
+            {
+                cmbState.Text = "";
+                //cmbState.Items.Clear();
+            }
+        }
+
+        private void txtPanNo_Leave(object sender, EventArgs e)
+        {
+            Regex mRegxExpression;
+
+            if (txtPanNo.Text.Trim() != string.Empty)
+            {
+                mRegxExpression = new Regex("[A-Z]{5}[0-9]{4}[A-Z]{1}");
+                if (!mRegxExpression.IsMatch(txtPanNo.Text.Trim()))
+                {
+                    txtPanNo.Focus();
+                    MessageBox.Show("Pan Card  format is not correct", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+        }
+
+        private void txtGst_Leave(object sender, EventArgs e)
+        {
+            Regex mRegxExpression;
+            if (txtGst.Text.Trim() != string.Empty)
+            {
+                mRegxExpression = new Regex("[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[0-9]{1}[Z]{1}[0-9]{1}$");
+                if (!mRegxExpression.IsMatch(txtGst.Text.Trim()))
+                {
+                    txtGst.Focus();
+                    MessageBox.Show("Gst in format is not correct", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+        }
+
+        private void txtVenderName_Leave(object sender, EventArgs e)
+        {
+            Regex mRegxExpression;
+            if (txtVenderName.Text.Trim() != string.Empty)
+            {
+                mRegxExpression = new Regex("^[a-z -']+$");
+
+                if (!mRegxExpression.IsMatch(txtVenderName.Text.Trim()))
+                {
+
+                    MessageBox.Show("E-mail address format is not correct.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    txtVenderName.Focus();
+
+                }
+
+            }
+        }
+
+        private void txtCompanyName_Leave(object sender, EventArgs e)
+        {
+            Regex mRegxExpression;
+            if (txtCompanyName.Text.Trim() != string.Empty)
+            {
+                mRegxExpression = new Regex("^[a-z -']+$");
+
+                if (!mRegxExpression.IsMatch(txtCompanyName.Text.Trim()))
+                {
+
+                    MessageBox.Show("E-mail address format is not correct.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    txtCompanyName.Focus();
+
+                }
+
+            }
+        }
+
+        private void txtVenderCity_Leave(object sender, EventArgs e)
+        {
+            Regex mRegxExpression;
+            if (txtVenderCity.Text.Trim() != string.Empty)
+            {
+                mRegxExpression = new Regex("[0-9A-Za-z ]+$");
+                if (!mRegxExpression.IsMatch(txtVenderCity.Text.Trim()))
+                {
+                    MessageBox.Show("E-mail address format is not correct.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtVenderCity.Focus();
+
+                }
+
             }
         }
 

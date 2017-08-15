@@ -8,7 +8,9 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using ExcelLibrary.SpreadSheet;
+using System.Text.RegularExpressions;
 namespace WindowsFormsApplication1
+ 
 
 {
     public partial class Item : Form
@@ -1408,6 +1410,44 @@ namespace WindowsFormsApplication1
         private void txtHsn_MouseClick(object sender, MouseEventArgs e)
         {
             txtHsn.SelectAll();
+        }
+
+        private void txtItemProductName_Leave(object sender, EventArgs e)
+        {
+            Regex mRegxExpression;
+            if (txtItemProductName.Text.Trim() != string.Empty)
+            {
+                mRegxExpression = new Regex("^[a-z -']+$");
+
+                if (!mRegxExpression.IsMatch(txtItemProductName.Text.Trim()))
+                {
+
+                    MessageBox.Show("E-mail address format is not correct.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    txtItemProductName.Focus();
+
+                }
+
+            }
+        }
+
+        private void txtItemCompName_Leave(object sender, EventArgs e)
+        {
+            Regex mRegxExpression;
+            if (txtItemCompName.Text.Trim() != string.Empty)
+            {
+                mRegxExpression = new Regex("^[a-z -']+$");
+
+                if (!mRegxExpression.IsMatch(txtItemCompName.Text.Trim()))
+                {
+
+                    MessageBox.Show("E-mail address format is not correct.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    txtItemCompName.Focus();
+
+                }
+
+            }
         }
     }
 

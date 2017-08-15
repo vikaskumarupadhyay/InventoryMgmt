@@ -834,9 +834,9 @@ namespace WindowsFormsApplication1
             txtdiccount.ReadOnly = true;
             //dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             gridsalesdelivary.DataSource = addToCartTable;
-            txttaxamount.Visible = true;
-            txtdicountamount.Visible =true;
-            txtwithauttaxamount.Visible =true;
+            txttaxamount.Visible = false;
+            txtdicountamount.Visible =false;
+            txtwithauttaxamount.Visible =false;
             txtTotalAmmount.Text = "0";
             txtwithauttaxamount.Text = "0";
             // txtdiccount.ReadOnly = false;
@@ -2021,9 +2021,6 @@ namespace WindowsFormsApplication1
 
         private void gridsalesdelivary_KeyPress(object sender, KeyPressEventArgs e)
         {
-           
-           
-
             if (e.KeyChar == (char)Keys.Escape)
             {
                 txtItemCode.Enabled = true;
@@ -4340,6 +4337,10 @@ namespace WindowsFormsApplication1
         {
             try
             {
+                if (gridsalesdelivary.Rows[0].Cells[0].Value == null)
+                {
+                    return;
+                }
                 string itemId = gridsalesdelivary.Rows[0].Cells[0].Value.ToString();
                 string opening = "";
                  DataGridViewRowCollection RowCollection =gridsalesdelivary.Rows;
@@ -4532,21 +4533,15 @@ namespace WindowsFormsApplication1
                         }
                         else
                         {
-
-                            if (item != itemid)
-                            {
                                 if (item != itemid)
                                 {
-                                    int selectedindex = gridsalesdelivary.CurrentCell.RowIndex;
-                                    if (selectedindex > 0)
-                                    {
-                                        gridsalesdelivary.Rows.RemoveAt(selectedindex - 1);
-                                    }
-
-
                                     MessageBox.Show("please select your correct itemid");
-
-                                    //gridsalesorder.CurrentCell = gridsalesorder.Rows[gridsalesorder.CurrentRow.Index - 1].Cells[0];
+                                    //int selectedindex = gridsalesdelivary.CurrentCell.RowIndex;
+                                    gridsalesdelivary.CurrentCell = gridsalesdelivary.Rows[gridsalesdelivary.CurrentRow.Index].Cells[0];
+                                    if (gridsalesdelivary.CurrentRow.Index > 0)
+                                    {
+                                        gridsalesdelivary.Rows.RemoveAt(gridsalesdelivary.CurrentRow.Index-1);
+                                    }
 
                                 }
 
@@ -4558,7 +4553,7 @@ namespace WindowsFormsApplication1
                             //    gridsalesdelivary.Rows[gridsalesdelivary.CurrentRow.Index].Cells[0].Selected = true;
                             //    //dataGridView1.AllowUserToAddRows = false;
                             //}
-                        }
+                        //}
 
                     }
 

@@ -222,15 +222,18 @@
             this.cmbState.Name = "cmbState";
             this.cmbState.Size = new System.Drawing.Size(307, 24);
             this.cmbState.TabIndex = 5;
+            this.cmbState.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbState_KeyPress);
             this.cmbState.Leave += new System.EventHandler(this.cmbState_Leave);
             // 
             // txtGst
             // 
             this.txtGst.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtGst.Location = new System.Drawing.Point(675, 332);
+            this.txtGst.MaxLength = 15;
             this.txtGst.Name = "txtGst";
             this.txtGst.Size = new System.Drawing.Size(619, 23);
             this.txtGst.TabIndex = 14;
+            this.txtGst.Leave += new System.EventHandler(this.txtGst_Leave);
             // 
             // txtPanNo
             // 
@@ -241,6 +244,7 @@
             this.txtPanNo.Size = new System.Drawing.Size(615, 23);
             this.txtPanNo.TabIndex = 13;
             this.txtPanNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPanNo_KeyPress);
+            this.txtPanNo.Leave += new System.EventHandler(this.txtPanNo_Leave);
             // 
             // label20
             // 
@@ -346,6 +350,7 @@
             this.txtVenderCountry.Location = new System.Drawing.Point(993, 154);
             this.txtVenderCountry.Multiline = true;
             this.txtVenderCountry.Name = "txtVenderCountry";
+            this.txtVenderCountry.ReadOnly = true;
             this.txtVenderCountry.Size = new System.Drawing.Size(300, 24);
             this.txtVenderCountry.TabIndex = 7;
             this.txtVenderCountry.Text = "India";
@@ -363,10 +368,12 @@
             // txtVenderCity
             // 
             this.txtVenderCity.Location = new System.Drawing.Point(54, 154);
+            this.txtVenderCity.MaxLength = 250;
             this.txtVenderCity.Multiline = true;
             this.txtVenderCity.Name = "txtVenderCity";
             this.txtVenderCity.Size = new System.Drawing.Size(307, 24);
             this.txtVenderCity.TabIndex = 4;
+            this.txtVenderCity.Leave += new System.EventHandler(this.txtVenderCity_Leave);
             // 
             // txtVenderAddress
             // 
@@ -384,16 +391,20 @@
             this.txtCompanyName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCompanyName.Location = new System.Drawing.Point(769, 39);
+            this.txtCompanyName.MaxLength = 500;
             this.txtCompanyName.Name = "txtCompanyName";
             this.txtCompanyName.Size = new System.Drawing.Size(524, 23);
             this.txtCompanyName.TabIndex = 2;
+            this.txtCompanyName.Leave += new System.EventHandler(this.txtCompanyName_Leave);
             // 
             // txtVenderName
             // 
             this.txtVenderName.Location = new System.Drawing.Point(192, 39);
+            this.txtVenderName.MaxLength = 250;
             this.txtVenderName.Name = "txtVenderName";
             this.txtVenderName.Size = new System.Drawing.Size(571, 23);
             this.txtVenderName.TabIndex = 1;
+            this.txtVenderName.Leave += new System.EventHandler(this.txtVenderName_Leave);
             // 
             // txtVenderCode
             // 
@@ -751,7 +762,7 @@
             this.txtSearch.Location = new System.Drawing.Point(712, 45);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(590, 24);
+            this.txtSearch.Size = new System.Drawing.Size(1303, 24);
             this.txtSearch.TabIndex = 25;
             this.txtSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
