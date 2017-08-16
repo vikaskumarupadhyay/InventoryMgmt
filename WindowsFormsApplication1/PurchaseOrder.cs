@@ -1947,7 +1947,6 @@ namespace WindowsFormsApplication1
         {
             try
             {
-               
                         if (e.KeyCode == Keys.Enter)
                         {
                             if (txtVendorCode.Text == "V")
@@ -1971,7 +1970,6 @@ namespace WindowsFormsApplication1
                     }
                     else
                     {
-                   
                             string company = "select state from CompnayDetails";
                             DataTable dt3 = dbMainClass.getDetailByQuery(company);
                             string companystate = "";

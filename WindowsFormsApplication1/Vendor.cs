@@ -136,6 +136,7 @@ namespace WindowsFormsApplication1
                             string Id = dbMainClass.getUniqueID("VENDOR");
                             txtVenderCode.Text = Id;
                             //}
+                            cmbState.SelectedIndex = 0;
                           }
                         }
                     }
@@ -160,7 +161,7 @@ namespace WindowsFormsApplication1
             txtVenderAddress.Text = "";
             txtVenderCity.Text = "";
             cmbState.SelectedIndex = 0;
-            txtVenderCountry.Text = "";
+           // txtVenderCountry.Text = "";
             txtVenderZip.Text = "";
             txtVenderEmailAddress.Text = "";
             txtVenderWebSite.Text = "";
@@ -292,7 +293,6 @@ namespace WindowsFormsApplication1
             txtVenderAddress.TabStop = true;
             txtVenderCity.TabStop = true;
             cmbState.TabStop = true;
-            txtVenderCountry.TabStop = true;
             txtVenderZip.TabStop = true;
             txtVenderEmailAddress.TabStop = true;
             txtVenderWebSite.TabStop = true;
@@ -1042,57 +1042,63 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void txtVenderName_Leave(object sender, EventArgs e)
+        private void txtVenderName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Regex mRegxExpression;
-            if (txtVenderName.Text.Trim() != string.Empty)
+            if (Char.IsLetter(e.KeyChar) || (char.IsDigit(e.KeyChar) || (char.IsWhiteSpace(e.KeyChar))))
             {
-                mRegxExpression = new Regex("^[a-z -']+$");
-
-                if (!mRegxExpression.IsMatch(txtVenderName.Text.Trim()))
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
                 {
-
-                    MessageBox.Show("E-mail address format is not correct.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    txtVenderName.Focus();
-
+                    e.Handled = false;
                 }
-
+                else
+                {
+                    e.Handled = true;
+                    MessageBox.Show("Plese enter Charecte Value");
+                }
             }
         }
 
-        private void txtCompanyName_Leave(object sender, EventArgs e)
+        private void txtCompanyName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Regex mRegxExpression;
-            if (txtCompanyName.Text.Trim() != string.Empty)
+            if (Char.IsLetter(e.KeyChar) || (char.IsDigit(e.KeyChar) || (char.IsWhiteSpace(e.KeyChar))))
             {
-                mRegxExpression = new Regex("^[a-z -']+$");
-
-                if (!mRegxExpression.IsMatch(txtCompanyName.Text.Trim()))
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
                 {
-
-                    MessageBox.Show("E-mail address format is not correct.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    txtCompanyName.Focus();
-
+                    e.Handled = false;
                 }
-
+                else
+                {
+                    e.Handled = true;
+                    MessageBox.Show("Plese enter Charecte Value");
+                }
             }
         }
 
-        private void txtVenderCity_Leave(object sender, EventArgs e)
+        private void txtVenderCity_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Regex mRegxExpression;
-            if (txtVenderCity.Text.Trim() != string.Empty)
+            if (Char.IsLetter(e.KeyChar) || (char.IsDigit(e.KeyChar) || (char.IsWhiteSpace(e.KeyChar))))
             {
-                mRegxExpression = new Regex("[0-9A-Za-z ]+$");
-                if (!mRegxExpression.IsMatch(txtVenderCity.Text.Trim()))
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
                 {
-                    MessageBox.Show("E-mail address format is not correct.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtVenderCity.Focus();
-
+                    e.Handled = false;
                 }
-
+                else
+                {
+                    e.Handled = true;
+                    MessageBox.Show("Plese enter Charecte Value");
+                }
             }
         }
 

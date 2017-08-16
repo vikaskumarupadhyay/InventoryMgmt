@@ -353,6 +353,7 @@
             this.txtVenderCountry.ReadOnly = true;
             this.txtVenderCountry.Size = new System.Drawing.Size(300, 24);
             this.txtVenderCountry.TabIndex = 7;
+            this.txtVenderCountry.TabStop = false;
             this.txtVenderCountry.Text = "India";
             // 
             // txtVenderZip
@@ -373,7 +374,7 @@
             this.txtVenderCity.Name = "txtVenderCity";
             this.txtVenderCity.Size = new System.Drawing.Size(307, 24);
             this.txtVenderCity.TabIndex = 4;
-            this.txtVenderCity.Leave += new System.EventHandler(this.txtVenderCity_Leave);
+            this.txtVenderCity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVenderCity_KeyPress);
             // 
             // txtVenderAddress
             // 
@@ -395,7 +396,7 @@
             this.txtCompanyName.Name = "txtCompanyName";
             this.txtCompanyName.Size = new System.Drawing.Size(524, 23);
             this.txtCompanyName.TabIndex = 2;
-            this.txtCompanyName.Leave += new System.EventHandler(this.txtCompanyName_Leave);
+            this.txtCompanyName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCompanyName_KeyPress);
             // 
             // txtVenderName
             // 
@@ -404,7 +405,7 @@
             this.txtVenderName.Name = "txtVenderName";
             this.txtVenderName.Size = new System.Drawing.Size(571, 23);
             this.txtVenderName.TabIndex = 1;
-            this.txtVenderName.Leave += new System.EventHandler(this.txtVenderName_Leave);
+            this.txtVenderName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVenderName_KeyPress);
             // 
             // txtVenderCode
             // 
