@@ -1412,41 +1412,47 @@ namespace WindowsFormsApplication1
             txtHsn.SelectAll();
         }
 
-        private void txtItemProductName_Leave(object sender, EventArgs e)
+       
+
+      
+
+        private void txtItemProductName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Regex mRegxExpression;
-            if (txtItemProductName.Text.Trim() != string.Empty)
+            if (Char.IsLetter(e.KeyChar) || (char.IsDigit(e.KeyChar) || (char.IsWhiteSpace(e.KeyChar))))
             {
-                mRegxExpression = new Regex("^[a-z -']+$");
-
-                if (!mRegxExpression.IsMatch(txtItemProductName.Text.Trim()))
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
                 {
-
-                    MessageBox.Show("E-mail address format is not correct.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    txtItemProductName.Focus();
-
+                    e.Handled = false;
                 }
-
+                else
+                {
+                    e.Handled = true;
+                    MessageBox.Show("Plese enter correct Value");
+                }
             }
         }
 
-        private void txtItemCompName_Leave(object sender, EventArgs e)
+        private void txtItemCompName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Regex mRegxExpression;
-            if (txtItemCompName.Text.Trim() != string.Empty)
+            if (Char.IsLetter(e.KeyChar) || (char.IsDigit(e.KeyChar) || (char.IsWhiteSpace(e.KeyChar))))
             {
-                mRegxExpression = new Regex("^[a-z -']+$");
-
-                if (!mRegxExpression.IsMatch(txtItemCompName.Text.Trim()))
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
                 {
-
-                    MessageBox.Show("E-mail address format is not correct.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    txtItemCompName.Focus();
-
+                    e.Handled = false;
                 }
-
+                else
+                {
+                    e.Handled = true;
+                    MessageBox.Show("Plese enter correct Value");
+                }
             }
         }
     }

@@ -272,7 +272,7 @@
             this.txtItemCompName.Name = "txtItemCompName";
             this.txtItemCompName.Size = new System.Drawing.Size(461, 23);
             this.txtItemCompName.TabIndex = 3;
-            this.txtItemCompName.Leave += new System.EventHandler(this.txtItemCompName_Leave);
+            this.txtItemCompName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemCompName_KeyPress);
             // 
             // txtItemProductName
             // 
@@ -282,7 +282,7 @@
             this.txtItemProductName.Name = "txtItemProductName";
             this.txtItemProductName.Size = new System.Drawing.Size(495, 23);
             this.txtItemProductName.TabIndex = 2;
-            this.txtItemProductName.Leave += new System.EventHandler(this.txtItemProductName_Leave);
+            this.txtItemProductName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemProductName_KeyPress);
             // 
             // txtItemProductCode
             // 

@@ -458,6 +458,7 @@
             this.txtCustCountry.ReadOnly = true;
             this.txtCustCountry.Size = new System.Drawing.Size(297, 24);
             this.txtCustCountry.TabIndex = 19;
+            this.txtCustCountry.TabStop = false;
             this.txtCustCountry.Text = "India";
             // 
             // txtZIP
@@ -480,7 +481,7 @@
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(307, 24);
             this.txtCity.TabIndex = 16;
-            this.txtCity.Leave += new System.EventHandler(this.txtCity_Leave);
+            this.txtCity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCity_KeyPress);
             // 
             // txtAddress
             // 
@@ -505,7 +506,7 @@
             this.txtCompnyName.Name = "txtCompnyName";
             this.txtCompnyName.Size = new System.Drawing.Size(523, 23);
             this.txtCompnyName.TabIndex = 14;
-            this.txtCompnyName.Leave += new System.EventHandler(this.txtCompnyName_Leave);
+            this.txtCompnyName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCompnyName_KeyPress);
             // 
             // txtName
             // 
@@ -515,7 +516,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(571, 23);
             this.txtName.TabIndex = 13;
-            this.txtName.Leave += new System.EventHandler(this.txtName_Leave);
+            this.txtName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtName_KeyPress);
             // 
             // txtCustCode
             // 
@@ -773,7 +774,7 @@
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(961, 24);
+            this.textBox1.Size = new System.Drawing.Size(1305, 24);
             this.textBox1.TabIndex = 3;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);

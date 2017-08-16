@@ -23,13 +23,14 @@ namespace WindowsFormsApplication1
         }
         private void Compnay_Load(object sender, EventArgs e)
         {
-           
+            cmbState.SelectedIndex = 0;
             string selectquery = "select * from CompnayDetails";
             DataTable dt = dbMainClass.getDetailByQuery(selectquery);
-            if (dt.Rows.Count == null)
+            if (dt.Rows.Count ==0)
             {
                 txtCompnayCode.Text = "C1";
                 btnSave.Enabled = true;
+                butUpdate.Enabled = false;
             }
             if (dt.Rows.Count > 0)
             {
@@ -180,6 +181,7 @@ namespace WindowsFormsApplication1
             cmbState.TabStop = false;
             cmbState.Enabled = false;
             btnSave.Enabled = false;
+            butUpdate.Enabled = true;
             //combComp.SelectedIndex = 0;
            // txtTexAmount.Text = "0";
 
@@ -210,7 +212,7 @@ namespace WindowsFormsApplication1
             txtCompnayAddress.ReadOnly = false;
             txtCity.ReadOnly = false;
             txtZip.ReadOnly = false;
-            txtCountry.ReadOnly = false;
+            //txtCountry.ReadOnly = false;
             txtEmailAddress.ReadOnly = false;
             txtWebSite.ReadOnly = false;
             txtPhone.ReadOnly = false;
@@ -225,7 +227,7 @@ namespace WindowsFormsApplication1
             txtCompnayAddress.TabStop = true;
             txtCity.TabStop = true;
             txtZip.TabStop = true;
-            txtCountry.TabStop = true;
+           // txtCountry.TabStop = true;
             txtEmailAddress.TabStop = true;
             txtWebSite.TabStop = true;
             txtPhone.TabStop = true;
@@ -918,57 +920,65 @@ namespace WindowsFormsApplication1
             }          
         }
 
-        private void txtwonername_Leave(object sender, EventArgs e)
+      
+
+        private void txtwonername_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Regex mRegxExpression;
-            if (txtwonername.Text.Trim() != string.Empty)
+            if (Char.IsLetter(e.KeyChar)||(char.IsDigit(e.KeyChar)||(char.IsWhiteSpace(e.KeyChar))))
             {
-                mRegxExpression = new Regex("^[a-z -']+$");
-
-                if (!mRegxExpression.IsMatch(txtwonername.Text.Trim()))
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
                 {
-
-                    MessageBox.Show("E-mail address format is not correct.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    txtwonername.Focus();
-
+                    e.Handled = false;
                 }
-
+                else
+                {
+                    e.Handled = true;
+                    MessageBox.Show("Plese enter Charecte Value");
+                }
             }
         }
 
-        private void txtCompnayName_Leave(object sender, EventArgs e)
+        private void txtCompnayName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Regex mRegxExpression;
-            if (txtCompnayName.Text.Trim() != string.Empty)
+            if (Char.IsLetter(e.KeyChar) || (char.IsDigit(e.KeyChar) || (char.IsWhiteSpace(e.KeyChar))))
             {
-                mRegxExpression = new Regex("^[a-z -']+$");
-
-                if (!mRegxExpression.IsMatch(txtCompnayName.Text.Trim()))
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
                 {
-
-                    MessageBox.Show("E-mail address format is not correct.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    txtCompnayName.Focus();
-
+                    e.Handled = false;
                 }
-
+                else
+                {
+                    e.Handled = true;
+                    MessageBox.Show("Plese enter Charecte Value");
+                }
             }
         }
 
-        private void txtCity_Leave(object sender, EventArgs e)
+        private void txtCity_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Regex mRegxExpression;
-            if (txtCity.Text.Trim() != string.Empty)
+            if (Char.IsLetter(e.KeyChar) || (char.IsDigit(e.KeyChar) || (char.IsWhiteSpace(e.KeyChar))))
             {
-                mRegxExpression = new Regex("[0-9A-Za-z ]+$");
-                if (!mRegxExpression.IsMatch(txtCity.Text.Trim()))
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
                 {
-                    MessageBox.Show("E-mail address format is not correct.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtCity.Focus();
-
+                    e.Handled = false;
                 }
-
+                else
+                {
+                    e.Handled = true;
+                    MessageBox.Show("Plese enter Charecte Value");
+                }
             }
         }
     }

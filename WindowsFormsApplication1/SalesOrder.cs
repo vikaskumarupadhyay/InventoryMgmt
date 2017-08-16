@@ -1767,14 +1767,7 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void gridsalesorder_CellLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            //string itemid = gridsalesorder.Rows[e.RowIndex].Cells[0].Value.ToString();
-            //string quantity = gridsalesorder.Rows[e.RowIndex].Cells[5].Value.ToString();
-            //if (itemid == "")
-            //{
-            // }
-        }
+       
 
         private void salesorder_KeyDown(object sender, KeyEventArgs e)
         {
