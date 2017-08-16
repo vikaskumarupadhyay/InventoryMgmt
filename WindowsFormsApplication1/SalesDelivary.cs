@@ -1697,7 +1697,7 @@ namespace WindowsFormsApplication1
                                     crReportDocument.Load(Application.StartupPath + "//Report//CrystalReportsalesdelivary2.rpt");
                                     //string conntion = "Data Source=DELL-PC;Initial Catalog=SalesMaster;User ID=sa; Password=dell@12345;";
                                     SqlConnection con = d.openConnection();//new SqlConnection(conntion);
-                                    string selectqurry = "select * from salesorderdelivaryreport where Delivaryid='" + txtSrNo.Text + "'";
+                                    string selectqurry = "select * from searchsalesdelivary where Delivaryid='" + txtSrNo.Text + "'";
                                     SqlCommand cmd = new SqlCommand(selectqurry, con);
                                     SqlDataAdapter sda = new SqlDataAdapter(cmd);
 
