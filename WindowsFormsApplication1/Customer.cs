@@ -196,6 +196,7 @@ namespace WindowsFormsApplication1
                     txtName.Focus();
                     btnList.Enabled = true;
                     textBox1.Text = "";
+                    comstate.SelectedIndex = 0;
                     tabindex2();
                 }
             }
@@ -321,7 +322,7 @@ namespace WindowsFormsApplication1
             txtCity.TabStop = false;
             comstate.TabStop = false;
             txtZIP.TabStop = false;
-            txtCustCountry.TabStop = false;
+           // txtCustCountry.TabStop = false;
             txtEMAILADDRESS.TabStop = false;
             txtWEBSITE.TabStop = false;
             txtTXTPHONE.TabStop = false;
@@ -363,7 +364,6 @@ namespace WindowsFormsApplication1
             txtCity.TabStop = true;
             comstate.TabStop = true;
             txtZIP.TabStop = true;
-            txtCustCountry.TabStop = true;
             txtEMAILADDRESS.TabStop = true;
             txtWEBSITE.TabStop = true;
             txtTXTPHONE.TabStop = true;
@@ -625,7 +625,7 @@ namespace WindowsFormsApplication1
             txtAddress.Text = "";
             txtCity.Text = "";
             comstate.Text = "";
-            txtCustCountry.Text = "";
+            //txtCustCountry.Text = "";
             txtZIP.Text = "";
             txtEMAILADDRESS.Text = "";
             txtWEBSITE.Text = "";
@@ -940,60 +940,6 @@ namespace WindowsFormsApplication1
             } 
         }
 
-        private void txtName_Leave(object sender, EventArgs e)
-        {
-            Regex mRegxExpression;
-            if (txtName.Text.Trim() != string.Empty)
-            {
-                mRegxExpression = new Regex("^[a-z -']+$");
-
-                if (!mRegxExpression.IsMatch(txtName.Text.Trim()))
-                {
-
-                    MessageBox.Show("E-mail address format is not correct.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    txtName.Focus();
-
-                }
-
-            }
-        }
-
-        private void txtCompnyName_Leave(object sender, EventArgs e)
-        {
-            Regex mRegxExpression;
-            if (txtCompnyName.Text.Trim() != string.Empty)
-            {
-                mRegxExpression = new Regex("^[a-z -']+$");
-
-                if (!mRegxExpression.IsMatch(txtCompnyName.Text.Trim()))
-                {
-
-                    MessageBox.Show("E-mail address format is not correct.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    txtCompnyName.Focus();
-
-                }
-
-            }
-        }
-
-        private void txtCity_Leave(object sender, EventArgs e)
-        {
-            Regex mRegxExpression;
-            if (txtCity.Text.Trim() != string.Empty)
-            {
-                mRegxExpression = new Regex("[0-9A-Za-z ]+$");
-                if (!mRegxExpression.IsMatch(txtCity.Text.Trim()))
-                {
-                    MessageBox.Show("E-mail address format is not correct.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtCity.Focus();
-
-                }
-
-            }
-        }
-
         private void comstate_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (comstate.SelectedItem == "Something")
@@ -1035,6 +981,66 @@ namespace WindowsFormsApplication1
                     MessageBox.Show("Gst in format is not correct", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
+            }
+        }
+
+        private void txtName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsLetter(e.KeyChar) || (char.IsDigit(e.KeyChar) || (char.IsWhiteSpace(e.KeyChar))))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    MessageBox.Show("Plese enter correct Value");
+                }
+            }
+        }
+
+        private void txtCompnyName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsLetter(e.KeyChar) || (char.IsDigit(e.KeyChar) || (char.IsWhiteSpace(e.KeyChar))))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    MessageBox.Show("Plese enter correct Value");
+                }
+            }
+        }
+
+        private void txtCity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsLetter(e.KeyChar) || (char.IsDigit(e.KeyChar) || (char.IsWhiteSpace(e.KeyChar))))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                    MessageBox.Show("Plese enter correct Value");
+                }
             }
         }
 

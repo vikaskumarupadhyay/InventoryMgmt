@@ -302,7 +302,7 @@
             this.txtCompnayName.Name = "txtCompnayName";
             this.txtCompnayName.Size = new System.Drawing.Size(525, 23);
             this.txtCompnayName.TabIndex = 2;
-            this.txtCompnayName.Leave += new System.EventHandler(this.txtCompnayName_Leave);
+            this.txtCompnayName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCompnayName_KeyPress);
             // 
             // txtCompnayAddress
             // 
@@ -323,7 +323,7 @@
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(307, 24);
             this.txtCity.TabIndex = 4;
-            this.txtCity.Leave += new System.EventHandler(this.txtCity_Leave);
+            this.txtCity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCity_KeyPress);
             // 
             // txtZip
             // 
@@ -345,6 +345,7 @@
             this.txtCountry.ReadOnly = true;
             this.txtCountry.Size = new System.Drawing.Size(304, 24);
             this.txtCountry.TabIndex = 7;
+            this.txtCountry.TabStop = false;
             this.txtCountry.Text = "India";
             // 
             // txtEmailAddress
@@ -479,7 +480,7 @@
             this.txtwonername.Name = "txtwonername";
             this.txtwonername.Size = new System.Drawing.Size(571, 21);
             this.txtwonername.TabIndex = 1;
-            this.txtwonername.Leave += new System.EventHandler(this.txtwonername_Leave);
+            this.txtwonername.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtwonername_KeyPress);
             // 
             // groupBox1
             // 

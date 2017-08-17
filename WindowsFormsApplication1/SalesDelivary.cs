@@ -1092,12 +1092,7 @@ namespace WindowsFormsApplication1
                     }
                     crystalReportViewer2.Visible = false;
                     panel2.Visible = false;
-                    // createnewsave();
-                    //if (pnlSalesPayment.Visible == false)
-                    //{
-                    //    pnlSalesPayment.Visible = true;
-                    //}
-
+                   
                     if (gridsalesdelivary.Rows.Count == 1)
                     {
                         // gridsalesorder.AllowUserToAddRows = true;
@@ -1187,16 +1182,13 @@ namespace WindowsFormsApplication1
                 txtTotalAmount1.Text = d.ToString();
             }
         }
-      
         public void createnewsave()
         {
             gridsalesdelivary.AllowUserToAddRows = false;
             if (txtRefNo.Text == "")
             {
                 string s = "0";
-
                 DataGridViewRowCollection call = gridsalesdelivary.Rows;
-
                 for (int c = 0; c < call.Count; c++)
                 {
                     DataGridViewRow currentRow1 = call[c];
@@ -1233,8 +1225,6 @@ namespace WindowsFormsApplication1
                     string updateQurry = "update ItemQuantityDetail set CurrentQuantity='" + lastQuantity + "'where ItemId='" + itid + "'";
                     int insertedRows2 = d.saveDetails(updateQurry);
                 }
-
-
                 string order = "select orderid from orderdetails ";
                 DataTable d1 = d.getDetailByQuery(order);
                 string id = "";
@@ -1251,12 +1241,10 @@ namespace WindowsFormsApplication1
                     int insertrows = d.saveDetails(insertquery);
                     if (insertrows > 0)
                     {
-
                         DataGridViewRowCollection rowcollection = gridsalesdelivary.Rows;
                         List<string> show = new List<string>();
                         for (int a = 0; a < rowcollection.Count; a++)
                         {
-                            
                             DataGridViewRow currentrow = rowcollection[a];
                             DataGridViewCellCollection cellcollection = currentrow.Cells;
                             string txtitemcode = cellcollection[0].Value.ToString();
@@ -1274,29 +1262,22 @@ namespace WindowsFormsApplication1
                             //string updatequery = "update orderdetails set totalammount='" + txtTotalAmmount.Text + "' where orderid='" + Orderid + "' ";
                             //int update = d.saveDetails(updatequery);
                             string query = "insert into customerorderdescriptions Values('" + Orderid + "','" + txtitemcode + "','" + txtRate + "','" + txtQuantity + "','" + txtAmount + "')";
-
-
-                            // int insertrow = d.saveDetails(query);
                             show.Add(query);
                         }
 
                         int inserirow1 = d.saveDetails(show);
                         if (inserirow1 > 0)
                         {
-
                             if (id5 == "")
                             {
                                 counter = 0;
                                 string deleteQurry = "delete customerorderdescriptions where Orderid='" + txtRefNo.Text + "'";
                                 DataTable dt = d.getDetailByQuery(deleteQurry);
                                 //dataGridView1.DataSource = "";
-
-
                                 DataGridViewRowCollection RowCollection2 = gridsalesdelivary.Rows;
                                 List<string> sf1 = new List<string>();
                                 for (int a = 0; a < RowCollection2.Count; a++)
                                 {
-                                   
                                     DataGridViewRow currentRow = RowCollection2[a];
                                     DataGridViewCellCollection cellCollection = currentRow.Cells;
                                     string txtItemCode = cellCollection[0].Value.ToString();
@@ -1313,10 +1294,7 @@ namespace WindowsFormsApplication1
                                     // string updatequery = "update orderdetails set totalammount='" + txtTotalAmmount.Text + "',,'" + txtwithauttaxamount.Text + "','" + txtTotalAmmount.Text + "','" + txtdiccount.Text + "','" + txttax.Text + "','" + txtdicountamount.Text + "','" + txttaxamount.Text + "' where orderid='" + OrderID1 + "' ";
                                     //int update = d.saveDetails(updatequery);
                                     string Query = "insert into customerorderdescriptions Values('" + OrderID1 + "','" + txtItemCode + "','" + txtRate + "','" + txtQuanity + "','" + txtAmoun + "','" + s + "')";
-                                    //MessageBox.Show(Query);
-
                                     sf1.Add(Query);
-
                                 }
                                 int insertedRows4 = d.saveDetails(sf1);
                                 if (insertedRows4 > 0)
