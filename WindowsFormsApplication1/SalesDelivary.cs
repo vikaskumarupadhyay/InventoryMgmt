@@ -1415,11 +1415,9 @@ namespace WindowsFormsApplication1
                                         {
                                             balabce = dr[0].ToString();
                                         }
-
                                         double bal = Convert.ToDouble(balabce.ToString());
                                         double balan = Convert.ToDouble(txtBalance.Text);
                                         double b = bal+balan;
-                                      
                                         string updateQ = "update CustomerAccountDetails set CustCurrentBalance='" + b + "'where CustId='" + txtcustomercode.Text + "'";
                                         int insertedRows2 = d.saveDetails(updateQ);
                                         DateTime f = DateTime.Now;
@@ -1463,7 +1461,6 @@ namespace WindowsFormsApplication1
                                                 string selectqurry = "select * from salesorderdelivaryreport where Delivaryid='" + txtSrNo.Text + "'";
                                                 SqlCommand cmd = new SqlCommand(selectqurry, con);
                                                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
-
                                                 SalesOrderReportDataSet ds = new SalesOrderReportDataSet();
                                                 sda.Fill(ds, "compnaydetails");
                                                 crReportDocument.SetDataSource(ds.Tables[1]);
@@ -1512,9 +1509,7 @@ namespace WindowsFormsApplication1
                                                 ButSelectPurchaseOrder.Enabled = true;
                                                 txtTotalAmmount.Text = "0.00";
                                                 return;
-                                                
                                             }
-                                           
                                         }
                                     }
                                     else
