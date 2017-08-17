@@ -2177,8 +2177,6 @@ namespace WindowsFormsApplication1
                 }
                
             }
-        //}
-
         private void txtcustomercode_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (Char.IsDigit(e.KeyChar))

@@ -732,6 +732,10 @@ namespace WindowsFormsApplication1
         private void txtVenderWebSite_Leave(object sender, EventArgs e)
         {
             bool isValidUrl = Uri.IsWellFormedUriString(txtVenderWebSite.Text, UriKind.Absolute);
+            if (txtVenderWebSite.Text=="")
+            {
+                return;
+            }
             if (!isValidUrl)
             {
                 MessageBox.Show("Web site format is not correct.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);

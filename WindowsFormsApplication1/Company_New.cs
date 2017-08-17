@@ -334,12 +334,7 @@ namespace WindowsFormsApplication1
                     {
                         MessageBox.Show("Details save successfully");
                         string id = txtCompnayCode.Text;
-                        string id1 = id.Substring(0, 1);
-                        string id2 = id.Substring(1);
-                        int s = Convert.ToInt32(id2);
-                        int s1 = s + 1;
-                        string id3 = id1 + s1.ToString();
-                        txtCompnayCode.Text = id3;
+                        txtCompnayCode.Text = id;
                     }
                     else
                     {
@@ -374,9 +369,9 @@ namespace WindowsFormsApplication1
                     string id1 = id.Substring(0, 1);
                     string id2 = id.Substring(1);
                     int s = Convert.ToInt32(id2);
-                    int s1 = s + 1;
-                    string id3 = id1 + s1.ToString();
-                    txtCompnayCode.Text = id3;
+                     int s1 = s + 1;
+                    string id3 = id1 ;
+                    txtCompnayCode.Text = id3+s1.ToString();
 
                 }
                 else
@@ -690,9 +685,12 @@ namespace WindowsFormsApplication1
 
         private void txtWebSite_Leave(object sender, EventArgs e)
         {
-            //Regex mRegxExpression;
-
+          
       bool isValidUrl= Uri.IsWellFormedUriString(txtWebSite.Text, UriKind.Absolute);
+      if (txtWebSite.Text=="")
+      {
+          return;
+      }
       if (!isValidUrl) 
       {
                   MessageBox.Show("Web site format is not correct.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
