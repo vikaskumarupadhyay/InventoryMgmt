@@ -944,18 +944,7 @@ namespace WindowsFormsApplication1
             } 
         }
 
-        private void comstate_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (comstate.SelectedItem == "Something")
-            {
-                comstate.Text = "Something";
-            }
-            else
-            {
-                comstate.Text = "";
-                //cmbState.Items.Clear();
-            }
-        }
+       
 
         private void txtPanno_Leave(object sender, EventArgs e)
         {

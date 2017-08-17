@@ -613,7 +613,7 @@
             this.cmbState.Name = "cmbState";
             this.cmbState.Size = new System.Drawing.Size(308, 24);
             this.cmbState.TabIndex = 5;
-            this.cmbState.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbState_KeyPress);
+            //this.cmbState.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbState_KeyPress);
             this.cmbState.Leave += new System.EventHandler(this.cmbState_Leave);
             // 
             // butUpdate

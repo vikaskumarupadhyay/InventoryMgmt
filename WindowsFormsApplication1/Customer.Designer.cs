@@ -317,7 +317,6 @@
             this.comstate.Name = "comstate";
             this.comstate.Size = new System.Drawing.Size(308, 24);
             this.comstate.TabIndex = 17;
-            this.comstate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comstate_KeyPress);
             this.comstate.Leave += new System.EventHandler(this.comstate_Leave);
             // 
             // txttanno

@@ -840,19 +840,6 @@ namespace WindowsFormsApplication1
             } 
         }
 
-        private void cmbState_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (cmbState.SelectedItem == "Something")
-            {
-                cmbState.Text = "Something";
-            }
-            else
-            {
-                cmbState.Text = "";
-                //cmbState.Items.Clear();
-            }
-        }
-
         public string email { get; set; }
 
         private void txtPanNo_Leave(object sender, EventArgs e)
