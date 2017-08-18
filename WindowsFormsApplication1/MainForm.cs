@@ -19,7 +19,7 @@ namespace WindowsFormsApplication1
         frmVendorDetails F2;
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void vendorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -54,6 +54,7 @@ namespace WindowsFormsApplication1
         Customer F3;
         private void customerToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //throw new Exception("errr");
             if (F3 == null)
             {
                 F3 = new Customer(0);
@@ -95,8 +96,10 @@ namespace WindowsFormsApplication1
 
         void F4_FormClosed(object sender, FormClosedEventArgs e)
         {
+            
             F4 = null;
             //throw new NotImplementedException();
+            
         }
 
         private void schemeToolStripMenuItem_Click(object sender, EventArgs e)
