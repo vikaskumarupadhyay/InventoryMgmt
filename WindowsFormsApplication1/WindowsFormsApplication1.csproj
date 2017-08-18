@@ -91,12 +91,6 @@
       <DependentUpon>CrystalReport1.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CrystalReportsalesdelivary.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReportsalesdelivary.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="CrystalReportsalesdelivary2.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -479,6 +473,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Database\crocus sql query.sql" />
     <Content Include="Database\DeliveryGridview.txt" />
     <Content Include="Database\Procedures.txt" />
     <Content Include="Database\purchesDelivery.txt" />
