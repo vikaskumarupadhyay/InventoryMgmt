@@ -615,9 +615,9 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.gridPurchaseOrder);
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(15, 238);
+            this.panel1.Location = new System.Drawing.Point(15, 171);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1153, 337);
+            this.panel1.Size = new System.Drawing.Size(1153, 404);
             this.panel1.TabIndex = 34;
             // 
             // gridPurchaseOrder
@@ -629,7 +629,7 @@
             this.gridPurchaseOrder.Location = new System.Drawing.Point(0, 0);
             this.gridPurchaseOrder.MultiSelect = false;
             this.gridPurchaseOrder.Name = "gridPurchaseOrder";
-            this.gridPurchaseOrder.Size = new System.Drawing.Size(1149, 333);
+            this.gridPurchaseOrder.Size = new System.Drawing.Size(1149, 400);
             this.gridPurchaseOrder.StandardTab = true;
             this.gridPurchaseOrder.TabIndex = 0;
             this.gridPurchaseOrder.TabStop = false;
