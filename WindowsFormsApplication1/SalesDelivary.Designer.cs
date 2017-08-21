@@ -177,9 +177,9 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.gridsalesdelivary);
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(15, 238);
+            this.panel1.Location = new System.Drawing.Point(15, 166);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1321, 337);
+            this.panel1.Size = new System.Drawing.Size(1321, 409);
             this.panel1.TabIndex = 37;
             // 
             // gridsalesdelivary
@@ -189,7 +189,7 @@
             this.gridsalesdelivary.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridsalesdelivary.Location = new System.Drawing.Point(0, 0);
             this.gridsalesdelivary.Name = "gridsalesdelivary";
-            this.gridsalesdelivary.Size = new System.Drawing.Size(1317, 333);
+            this.gridsalesdelivary.Size = new System.Drawing.Size(1317, 405);
             this.gridsalesdelivary.StandardTab = true;
             this.gridsalesdelivary.TabIndex = 0;
             this.gridsalesdelivary.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gridsalesdelivary_CellValidating);

@@ -177,9 +177,9 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(15, 238);
+            this.panel1.Location = new System.Drawing.Point(15, 168);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1321, 337);
+            this.panel1.Size = new System.Drawing.Size(1321, 407);
             this.panel1.TabIndex = 23;
             // 
             // dataGridView1
@@ -193,7 +193,7 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1317, 333);
+            this.dataGridView1.Size = new System.Drawing.Size(1317, 403);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.TabStop = false;

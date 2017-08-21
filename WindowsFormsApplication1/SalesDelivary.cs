@@ -828,6 +828,7 @@ namespace WindowsFormsApplication1
 
         private void salesdelivary_Load(object sender, EventArgs e)
         {
+            groupBox3.Visible = false;
             txtSrNo.ReadOnly = true;
             txtcustomercode.Select(txtcustomercode.Text.Length, 0);
             txtItemCode.Select(txtItemCode.Text.Length, 0);
