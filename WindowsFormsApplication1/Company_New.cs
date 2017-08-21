@@ -276,12 +276,8 @@ namespace WindowsFormsApplication1
             btnClose.TabStop = false;
            // btnList.TabStop = false;
             dtpdate.TabStop = false;
-            combComp.TabStop = false;
-            txtTexAmount.TabStop = false;
-            //txtGst.TabStop = false;
-            groupBox2.TabStop = false;
+          
             groupBox1.TabStop = false;
-            btnTex.TabStop = false;
         }
 
 
@@ -305,13 +301,8 @@ namespace WindowsFormsApplication1
             txtPanNo.TabStop = true;
             txtGst.TabStop = true;
             txtDescription.TabStop = true;
-            combComp.TabStop = true;
-            txtTexAmount.TabStop = true;
-            btnTex.TabStop = true;
-            btnSave.TabStop = true;
-           // btnList.TabStop = true;
+           
             btnClose.TabStop = true;
-            groupBox2.TabStop = true;
             groupBox1.TabStop = true;
 
         }
@@ -542,8 +533,6 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Tex t = new Tex(this.combComp, TexList);
-            t.Show();
 
             // t.MdiParent = this;
             dtpdate.TabStop = false;
@@ -553,46 +542,17 @@ namespace WindowsFormsApplication1
 
         private void combComp_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DB_Main.taxName = combComp.SelectedItem.ToString();
-            string selectName = "select TexAmount from CompnayTex where TexName='" + DB_Main.taxName + "'";
-            DataTable dt = dbMainClass.getDetailByQuery(selectName);
-            foreach (DataRow dr in dt.Rows)
-            {
-                txtTexAmount.Text = dr[0].ToString();
-            }
 
         }
 
         private void txtTexAmount_MouseClick(object sender, MouseEventArgs e)
         {
-            if (txtTexAmount.Text == "0.00")
-            {
-                txtTexAmount.Text = "";
-            }
+          
         }
 
         private void txtTexAmount_Leave(object sender, EventArgs e)
         {
-            decimal x;
-            if (decimal.TryParse(txtTexAmount.Text, out x))
-            {
-                if (txtTexAmount.Text.IndexOf('.') != -1 && txtTexAmount.Text.Split('.')[1].Length > 2)
-                {
-                    MessageBox.Show("The maximum decimal points are 2!");
-                    txtTexAmount.Focus();
-                }
-                else txtTexAmount.Text = x.ToString("0.00");
-            }
-            else
-            {
-                txtTexAmount.Text = "0.00";
-                //MessageBox.Show("Data invalid!");
-                //txtVenderOpeningBal.Focus();
-            }
-            /*if (txtTexAmount.Text == "")
-            {
-                txtTexAmount.Text = "0";
-            }*/
+            
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -762,40 +722,7 @@ namespace WindowsFormsApplication1
 
         private void txtTexAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
-            char ch = e.KeyChar;
-            if (ch == 46 && txtTexAmount.Text.IndexOf('.') != -1)
-            {
-                e.Handled = true;
-                return;
-            }
-            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
-            {
-                e.Handled = true;
-            }
-
-            /*string value = txtTexAmount.Text;
-            bool moreThanOneDecimalChar = false;
-            int g = 0;
-            char h = '.';
-            for (int a = 0; a < value.Length; a++)
-            {
-                if (value[a] == '.')
-                {
-                    g++;
-                }
-            }
-            if (g == 1)
-            {
-                moreThanOneDecimalChar = true;
-            }
-            if (moreThanOneDecimalChar == false || e.KeyChar == '\b')
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsLetter(e.KeyChar) || (moreThanOneDecimalChar && e.KeyChar == '.') || Char.IsPunctuation(e.KeyChar))
-            {
-                e.Handled = true;
-            }*/
+           
         }
 
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
@@ -809,27 +736,12 @@ namespace WindowsFormsApplication1
         private void combComp_DropDown(object sender, EventArgs e)
         {
 
-            if (combComp.Items[0].ToString() == "Select  Tax")
-            {
-                combComp.Items.RemoveAt(0);
-            }
-            //else if (combComp.Items[0].ToString() != "Select  Tax")
-            //{
-            //    combComp.Items.Insert(0,"Select  Tax");
-            //}
+           
         }
 
         private void combComp_Leave(object sender, EventArgs e)
         {
-            if ((combComp.Items[0].ToString() != "Select  Tax") && (combComp.SelectedItem == null))
-            {
-                combComp.Items.Insert(0, "Select  Tax");
-                combComp.SelectedIndex = 0;
-            }
-            else if (combComp.SelectedItem != null)
-            {
-                DB_Main.taxName = combComp.SelectedItem.ToString();
-            }
+           
         }
 
         private void cmbState_Leave(object sender, EventArgs e)

@@ -31,12 +31,6 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.dtpdate = new System.Windows.Forms.DateTimePicker();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.btnTex = new System.Windows.Forms.Button();
-            this.txtTexAmount = new System.Windows.Forms.TextBox();
-            this.combComp = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -71,14 +65,13 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmbState = new System.Windows.Forms.ComboBox();
             this.butUpdate = new System.Windows.Forms.Button();
-            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(14, 582);
+            this.btnSave.Location = new System.Drawing.Point(14, 515);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(120, 31);
             this.btnSave.TabIndex = 28;
@@ -90,7 +83,7 @@
             // 
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(140, 582);
+            this.btnClose.Location = new System.Drawing.Point(140, 515);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(120, 31);
             this.btnClose.TabIndex = 29;
@@ -107,82 +100,6 @@
             this.dtpdate.TabIndex = 23;
             this.dtpdate.TabStop = false;
             this.dtpdate.Visible = false;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.label25);
-            this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Controls.Add(this.btnTex);
-            this.groupBox2.Controls.Add(this.txtTexAmount);
-            this.groupBox2.Controls.Add(this.combComp);
-            this.groupBox2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(14, 498);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1331, 78);
-            this.groupBox2.TabIndex = 21;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Tax Type";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(744, 19);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(118, 16);
-            this.label25.TabIndex = 39;
-            this.label25.Text = "Tax Amount (In %)";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(49, 19);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(66, 16);
-            this.label18.TabIndex = 38;
-            this.label18.Text = "Tax Name";
-            // 
-            // btnTex
-            // 
-            this.btnTex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTex.Enabled = false;
-            this.btnTex.Location = new System.Drawing.Point(1261, 37);
-            this.btnTex.Name = "btnTex";
-            this.btnTex.Size = new System.Drawing.Size(37, 26);
-            this.btnTex.TabIndex = 37;
-            this.btnTex.Text = "...";
-            this.btnTex.UseVisualStyleBackColor = true;
-            this.btnTex.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // txtTexAmount
-            // 
-            this.txtTexAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTexAmount.Enabled = false;
-            this.txtTexAmount.Location = new System.Drawing.Point(747, 38);
-            this.txtTexAmount.Multiline = true;
-            this.txtTexAmount.Name = "txtTexAmount";
-            this.txtTexAmount.Size = new System.Drawing.Size(508, 24);
-            this.txtTexAmount.TabIndex = 36;
-            this.txtTexAmount.Text = "0.00";
-            this.txtTexAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtTexAmount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtTexAmount_MouseClick);
-            this.txtTexAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTexAmount_KeyPress);
-            this.txtTexAmount.Leave += new System.EventHandler(this.txtTexAmount_Leave);
-            // 
-            // combComp
-            // 
-            this.combComp.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.combComp.Enabled = false;
-            this.combComp.FormattingEnabled = true;
-            this.combComp.Location = new System.Drawing.Point(52, 38);
-            this.combComp.Name = "combComp";
-            this.combComp.Size = new System.Drawing.Size(689, 24);
-            this.combComp.TabIndex = 35;
-            this.combComp.DropDown += new System.EventHandler(this.combComp_DropDown);
-            this.combComp.SelectedIndexChanged += new System.EventHandler(this.combComp_SelectedIndexChanged);
-            this.combComp.Leave += new System.EventHandler(this.combComp_Leave);
             // 
             // label1
             // 
@@ -613,13 +530,12 @@
             this.cmbState.Name = "cmbState";
             this.cmbState.Size = new System.Drawing.Size(308, 24);
             this.cmbState.TabIndex = 5;
-            //this.cmbState.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbState_KeyPress);
             this.cmbState.Leave += new System.EventHandler(this.cmbState_Leave);
             // 
             // butUpdate
             // 
             this.butUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.butUpdate.Location = new System.Drawing.Point(266, 582);
+            this.butUpdate.Location = new System.Drawing.Point(285, 515);
             this.butUpdate.Name = "butUpdate";
             this.butUpdate.Size = new System.Drawing.Size(120, 31);
             this.butUpdate.TabIndex = 7;
@@ -638,7 +554,6 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.butUpdate);
             this.Controls.Add(this.dtpdate);
-            this.Controls.Add(this.groupBox2);
             this.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KeyPreview = true;
             this.Name = "Company_New";
@@ -647,8 +562,6 @@
             this.Text = "Compnay";
             this.Load += new System.EventHandler(this.Compnay_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Company_New_KeyDown);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -660,12 +573,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.DateTimePicker dtpdate;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnTex;
-        private System.Windows.Forms.TextBox txtTexAmount;
-        private System.Windows.Forms.ComboBox combComp;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
