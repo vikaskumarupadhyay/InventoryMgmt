@@ -507,6 +507,7 @@ namespace WindowsFormsApplication1
         //}
         private void salesorder_Load(object sender, EventArgs e)
         {
+            groupBox3.Visible = false;
             dtpdate.Enabled = false;
             txtcustomercode.Select(txtcustomercode.Text.Length, 0);
             txtitemcode.Select(txtitemcode.Text.Length, 0);

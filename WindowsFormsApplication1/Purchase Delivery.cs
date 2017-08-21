@@ -26,7 +26,7 @@ namespace WindowsFormsApplication1
 
         private void Form7_Load(object sender, EventArgs e)
         {
-            //DeliveryReportViewer
+            groupBox3.Visible = false;//DeliveryReportViewer
             txtItemCode.Enabled = false;
             button2.Enabled = false;
             textVendercod.Select(textVendercod.Text.Length, 0);
