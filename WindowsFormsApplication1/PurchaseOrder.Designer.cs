@@ -635,6 +635,7 @@
             this.gridPurchaseOrder.TabStop = false;
             this.gridPurchaseOrder.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPurchaseOrder_CellEndEdit);
             this.gridPurchaseOrder.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gridPurchaseOrder_CellValidating);
+            this.gridPurchaseOrder.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.gridPurchaseOrder_EditingControlShowing);
             this.gridPurchaseOrder.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridPurchaseOrder_KeyDown);
             this.gridPurchaseOrder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridPurchaseOrder_KeyPress);
             this.gridPurchaseOrder.KeyUp += new System.Windows.Forms.KeyEventHandler(this.gridPurchaseOrder_KeyUp);
