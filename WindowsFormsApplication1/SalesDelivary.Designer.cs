@@ -193,6 +193,7 @@
             this.gridsalesdelivary.StandardTab = true;
             this.gridsalesdelivary.TabIndex = 0;
             this.gridsalesdelivary.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gridsalesdelivary_CellValidating);
+            this.gridsalesdelivary.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.gridsalesdelivary_EditingControlShowing);
             this.gridsalesdelivary.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridsalesdelivary_KeyPress);
             this.gridsalesdelivary.KeyUp += new System.Windows.Forms.KeyEventHandler(this.gridsalesdelivary_KeyUp);
             // 
@@ -985,7 +986,7 @@
             this.txtInvoiceAmount.Multiline = true;
             this.txtInvoiceAmount.Name = "txtInvoiceAmount";
             this.txtInvoiceAmount.ReadOnly = true;
-            this.txtInvoiceAmount.Size = new System.Drawing.Size(289, 23);
+            this.txtInvoiceAmount.Size = new System.Drawing.Size(616, 23);
             this.txtInvoiceAmount.TabIndex = 1;
             this.txtInvoiceAmount.TabStop = false;
             this.txtInvoiceAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1206,7 +1207,7 @@
             this.txtNetAmount.Location = new System.Drawing.Point(1126, 159);
             this.txtNetAmount.Name = "txtNetAmount";
             this.txtNetAmount.ReadOnly = true;
-            this.txtNetAmount.Size = new System.Drawing.Size(195, 21);
+            this.txtNetAmount.Size = new System.Drawing.Size(616, 21);
             this.txtNetAmount.TabIndex = 38;
             this.txtNetAmount.TabStop = false;
             this.txtNetAmount.Text = "0.00";
@@ -1218,7 +1219,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtRturned.Location = new System.Drawing.Point(1124, 121);
             this.txtRturned.Name = "txtRturned";
-            this.txtRturned.Size = new System.Drawing.Size(190, 21);
+            this.txtRturned.Size = new System.Drawing.Size(616, 21);
             this.txtRturned.TabIndex = 36;
             this.txtRturned.Text = "0.00";
             this.txtRturned.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1233,7 +1234,7 @@
             this.txtBalance.Location = new System.Drawing.Point(1124, 72);
             this.txtBalance.Name = "txtBalance";
             this.txtBalance.ReadOnly = true;
-            this.txtBalance.Size = new System.Drawing.Size(193, 21);
+            this.txtBalance.Size = new System.Drawing.Size(616, 21);
             this.txtBalance.TabIndex = 35;
             this.txtBalance.TabStop = false;
             this.txtBalance.Text = "0.00";
@@ -1247,7 +1248,7 @@
             this.txtTotalAmount1.Location = new System.Drawing.Point(1124, 35);
             this.txtTotalAmount1.Name = "txtTotalAmount1";
             this.txtTotalAmount1.ReadOnly = true;
-            this.txtTotalAmount1.Size = new System.Drawing.Size(213, 21);
+            this.txtTotalAmount1.Size = new System.Drawing.Size(616, 21);
             this.txtTotalAmount1.TabIndex = 34;
             this.txtTotalAmount1.TabStop = false;
             this.txtTotalAmount1.Text = "0.00";

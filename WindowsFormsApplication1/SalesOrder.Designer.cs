@@ -127,6 +127,7 @@
             this.gridsalesorder.TabStop = false;
             this.gridsalesorder.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridsalesorder_CellDoubleClick);
             this.gridsalesorder.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gridsalesorder_CellValidating);
+            this.gridsalesorder.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.gridsalesorder_EditingControlShowing);
             this.gridsalesorder.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridsalesorder_KeyDown);
             this.gridsalesorder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridsalesorder_KeyPress);
             this.gridsalesorder.KeyUp += new System.Windows.Forms.KeyEventHandler(this.gridsalesorder_KeyUp);
