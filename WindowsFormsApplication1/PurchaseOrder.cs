@@ -2400,11 +2400,12 @@ namespace WindowsFormsApplication1
                             {
 
                                 MessageBox.Show("please select your correct itemid");
-                                //gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index-1].Cells[0].Value = "";
-                                gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index].Cells[0];
+                                gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index-1].Cells[0].Value = "";
+                                //gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index].Cells[0];
                                 if (gridPurchaseOrder.CurrentRow.Index > 0)
                                 {
-                                    gridPurchaseOrder.Rows.RemoveAt(gridPurchaseOrder.CurrentRow.Index - 1);
+                                    //gridPurchaseOrder.Rows.RemoveAt(gridPurchaseOrder.CurrentRow.Index - 1);
+                                    gridPurchaseOrder.CurrentCell = gridPurchaseOrder.Rows[gridPurchaseOrder.CurrentRow.Index-1].Cells[0];
                                 }
                             }
                             //if (itemId == item)
@@ -2613,7 +2614,7 @@ namespace WindowsFormsApplication1
                         ValidationFails = true;
                     }
                 }
-                else
+          else if(value == "")
                 {
                     int columIndex = Convert.ToInt32(gridPurchaseOrder.CurrentRow.Index.ToString());
                     var valueOffirstCell = gridPurchaseOrder.Rows[e.RowIndex].Cells[0].Value;
