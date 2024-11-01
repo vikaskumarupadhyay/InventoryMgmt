@@ -1,0 +1,12 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/WindowsFormsApplication1/bin
+/WindowsFormsApplication1/bin/Debug/WindowsFormsApplication1.exe.config
+/WindowsFormsApplication1/bin/Debug/WindowsFormsApplication1.pdb
+/WindowsFormsApplication1/obj
+/WindowsFormsApplication1/obj/Debug/WindowsFormsApplication1.csproj.FileListAbsolute.txt
+/WindowsFormsApplication1/obj/Debug/WindowsFormsApplication1.csproj.GenerateResource.Cache
+/WindowsFormsApplication1/obj/Debug/WindowsFormsApplication1.exe
+/WindowsFormsApplication1/obj/Debug/WindowsFormsApplication1.pdb

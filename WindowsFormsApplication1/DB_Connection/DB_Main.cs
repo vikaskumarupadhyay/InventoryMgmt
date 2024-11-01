@@ -131,10 +131,6 @@ using System.Configuration;
            
             return insertedRows;
         }
-
-              
-
-
         public int saveDetails(string InsertQuery1, string InsertQuery2, string InsertQuery3)
         {
             int insertedRows = 0;
