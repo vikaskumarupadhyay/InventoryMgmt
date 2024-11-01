@@ -9,14 +9,14 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class Form7 : Form
+    public partial class PurchaseDelivery : Form
     {
         public int counter = 0;
         DB_Main dbMainClass = new DB_Main();
         DataTable vendorDetails = new DataTable();
         DataTable ItemDetails = new DataTable();
         DataTable addToCartTable = new DataTable();
-        public Form7()
+        public PurchaseDelivery()
         {
             InitializeComponent();
         }

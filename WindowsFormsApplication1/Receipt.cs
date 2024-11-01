@@ -9,19 +9,19 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class Form5 : Form
+    public partial class Receipt : Form
 
     {
         string invoice = "";
         DB_Main d = new DB_Main();
         DataTable customerdetails = new DataTable();
         DataTable addToCartTable = new DataTable();
-        public Form5()
+        public Receipt()
         {
             InitializeComponent();
 
         }
-       public Form5(string invoiceid)
+       public Receipt(string invoiceid)
         {
             invoice = invoiceid;
             InitializeComponent();

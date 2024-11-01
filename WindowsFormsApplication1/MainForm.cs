@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -61,28 +61,28 @@ namespace WindowsFormsApplication1
 
         private void deliveryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form7 F7 = new Form7();
+            PurchaseDelivery F7 = new PurchaseDelivery();
             F7.Show();
             F7.MdiParent = this;
         }
 
         private void invoiceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form8 F8 = new Form8();
+            PurchaseInvoice F8 = new PurchaseInvoice();
             F8.Show();
             F8.MdiParent = this;
         }
 
         private void vendorPaymentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form9 F9 = new Form9();
+            VendorPayment F9 = new VendorPayment();
             F9.Show();
             F9.MdiParent = this;
         }
 
         private void taxCreationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form5 F5 = new Form5();
+            Receipt F5 = new Receipt();
             F5.Show();
             F5.MdiParent = this;
         }
@@ -110,7 +110,7 @@ namespace WindowsFormsApplication1
 
         private void invoiceToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Form5 F5 = new Form5();
+            Receipt F5 = new Receipt();
             F5.Show();
             F5.MdiParent = this;
         }

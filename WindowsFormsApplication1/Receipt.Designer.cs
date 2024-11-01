@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class Form5
+    partial class Receipt
     {
         /// <summary>
         /// Required designer variable.

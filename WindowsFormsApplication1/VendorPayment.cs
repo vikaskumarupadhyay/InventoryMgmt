@@ -9,16 +9,16 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class Form9 : Form
+    public partial class VendorPayment : Form
     {
         public string orderid9;
         DB_Main dbMainClass = new DB_Main();
         DataTable vendorDetails = new DataTable();
-        public Form9()
+        public VendorPayment()
         {
             InitializeComponent();
         }
-        public Form9(string a)
+        public VendorPayment(string a)
         {
             orderid9 = a;
             InitializeComponent();

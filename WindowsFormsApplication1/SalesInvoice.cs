@@ -366,7 +366,7 @@ namespace WindowsFormsApplication1
              int id3 = Convert.ToInt32(txtSrNo.Text);
              int id4 = id3 + 1;
              txtSrNo.Text = id4.ToString();
-             Form5 s = new Form5(id3.ToString());
+             Receipt s = new Receipt(id3.ToString());
              s.Show();
                  makeblank();
              }   

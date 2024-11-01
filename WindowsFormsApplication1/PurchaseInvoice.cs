@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class Form8 : Form
+    public partial class PurchaseInvoice : Form
     {
         public int counter = 0;
         DB_Main dbMainClass = new DB_Main();
@@ -17,7 +17,7 @@ namespace WindowsFormsApplication1
         DataTable ItemDetails = new DataTable();
         DataTable addToCartTable = new DataTable();
         //private DataTable VendorOrderDetails;
-        public Form8()
+        public PurchaseInvoice()
         {
             InitializeComponent();
         }
@@ -593,7 +593,7 @@ namespace WindowsFormsApplication1
                 int id1 = id + 1;
                 txtSrNo.Text = id1.ToString();
                // F9.MdiParent = this;
-                Form9 F9 = new Form9(id.ToString());
+                VendorPayment F9 = new VendorPayment(id.ToString());
                 F9.Show();
                 makeBlank();
             
@@ -673,7 +673,7 @@ namespace WindowsFormsApplication1
                 int id = Convert.ToInt32(txtSrNo.Text);
                 int id1 = id + 1;
                 txtSrNo.Text = id1.ToString();
-                Form9 F9 = new Form9(id.ToString());
+                VendorPayment F9 = new VendorPayment(id.ToString());
                 F9.Show();
 
             }
